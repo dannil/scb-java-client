@@ -20,26 +20,38 @@ public final class SCBPopulationAPI {
 	}
 
 	public final PopulationCollection getPopulationForRegion(String region) {
-		// TODO
-
-		return null;
+		String[] regions = new String[1];
+		regions[0] = region;
+		return this.getPopulationForRegions(regions);
 	}
 
 	public final PopulationCollection getPopulationForRegions(String[] regions) {
-		// TODO
+		WebResource webResource = this.client.resource("http://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0101/BE0101A/BefolkningNy");
 
-		return null;
-	}
+		QueryBuilder<String> builder = new QueryBuilder<String>();
+		String query = builder.buildQuery("BE0101N1", "Region", regions);
 
-	public final PopulationCollection getPopulationForYear(long year) {
-		// TODO
+		System.out.println(query);
 
-		return null;
-	}
+		ClientResponse response = webResource.accept("application/json").post(ClientResponse.class, query);
 
-	public final PopulationCollection getPopulationForRegions(long[] years) {
-		// TODO
+		String output = response.getEntity(String.class);
+		System.out.println("Output from Server .... \n");
+		System.out.println(output);
 
+		// For some reason we get a question-mark in the beginning of the
+		// response so we need to drop that to ensure valid JSON
+		String result = output.substring(1, output.length());
+		System.out.println("Modified result .... \n");
+		System.out.println(result);
+
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			JsonNode node = mapper.readTree(result);
+			return new PopulationCollection(node.get("data"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
@@ -62,7 +74,7 @@ public final class SCBPopulationAPI {
 		WebResource webResource = this.client.resource("http://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0101/BE0101A/BefolkningNy");
 
 		QueryBuilder<Integer> builder = new QueryBuilder<Integer>();
-		String query = builder.buildQuery("BE0101N1", years);
+		String query = builder.buildQuery("BE0101N1", "Tid", years);
 
 		System.out.println(query);
 
