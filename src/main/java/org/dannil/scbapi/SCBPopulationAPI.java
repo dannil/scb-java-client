@@ -1,8 +1,8 @@
 package org.dannil.scbapi;
 
 import java.io.IOException;
-import java.util.Hashtable;
 import java.util.List;
+import java.util.Locale;
 
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -13,21 +13,23 @@ import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 
-public final class SCBPopulationAPI {
+public final class SCBPopulationAPI extends AbstractSCBAPI {
 
 	private Client client;
 
-	private Hashtable<String, String> regionMappings;
-
 	public SCBPopulationAPI() {
 		this.client = Client.create();
+	}
 
+	public SCBPopulationAPI(Locale local) {
+		this();
+		setLocale(this.locale);
 	}
 
 	public final PopulationCollection getPopulation() {
 		// TODO
 
-		WebResource webResource = this.client.resource("http://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0101/BE0101A/BefolkningNy");
+		WebResource webResource = this.client.resource("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy");
 		ClientResponse response = webResource.accept("application/json").get(ClientResponse.class);
 		String output = response.getEntity(String.class);
 
@@ -59,7 +61,7 @@ public final class SCBPopulationAPI {
 	}
 
 	public final PopulationCollection getPopulationForRegions(String[] regions) {
-		WebResource webResource = this.client.resource("http://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0101/BE0101A/BefolkningNy");
+		WebResource webResource = this.client.resource("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy");
 
 		QueryBuilder<String> queryBuilder = new QueryBuilder<String>();
 		String query = queryBuilder.build("BE0101N1", "Region", regions);
@@ -104,7 +106,7 @@ public final class SCBPopulationAPI {
 	}
 
 	public final PopulationCollection getPopulationForYears(Integer[] years) {
-		WebResource webResource = this.client.resource("http://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0101/BE0101A/BefolkningNy");
+		WebResource webResource = this.client.resource("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy");
 
 		QueryBuilder<Integer> queryBuilder = new QueryBuilder<Integer>();
 		String query = queryBuilder.build("BE0101N1", "Tid", years);

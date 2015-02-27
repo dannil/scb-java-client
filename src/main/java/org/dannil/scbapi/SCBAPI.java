@@ -1,15 +1,41 @@
 package org.dannil.scbapi;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 
 public final class SCBAPI {
 
+	private List<AbstractSCBAPI> apis;
+	private Locale locale;
+
 	private SCBPopulationAPI populationApi;
 
 	public SCBAPI() {
+		this.apis = new ArrayList<AbstractSCBAPI>();
+		this.locale = new Locale("en");
+
 		this.populationApi = new SCBPopulationAPI();
+		this.apis.add(this.populationApi);
+
+		setLocaleForAPIs();
+	}
+
+	public SCBAPI(Locale locale) {
+		this();
+		this.locale = locale;
+
+		setLocaleForAPIs();
+	}
+
+	private void setLocaleForAPIs() {
+		for (AbstractSCBAPI api : this.apis) {
+			api.setLocale(this.locale);
+		}
 	}
 
 	public final void test() {
