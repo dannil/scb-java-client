@@ -2,33 +2,33 @@ package org.dannil.scbapi.model;
 
 import java.util.List;
 
-public final class QueryBuilder {
+public final class QueryBuilder<E, K> {
 
 	public QueryBuilder() {
 
 	}
 
-	public final String build(String[] codes, List<Object[]> values) {
+	public final String build(List<E> codes, List<List<K>> values) {
 		StringBuilder builder = new StringBuilder();
 		builder.append("{");
 		builder.append("\"query\": [");
-		for (int i = 0; i < codes.length; i++) {
+		for (int i = 0; i < codes.size(); i++) {
 			builder.append("{");
-			builder.append("\"code\": \"" + codes[i] + "\",");
+			builder.append("\"code\": \"" + codes.get(i) + "\",");
 			builder.append("\"selection\": {");
 			builder.append("\"filter\": \"item\",");
 			builder.append("\"values\": [");
-			Object[] data = values.get(i);
-			for (int k = 0; k < data.length; k++) {
-				builder.append("\"" + data[k] + "\"");
-				if (k != data.length - 1) {
+			List<K> data = values.get(i);
+			for (int j = 0; j < data.size(); j++) {
+				builder.append("\"" + data.get(j) + "\"");
+				if (j != data.size() - 1) {
 					builder.append(",");
 				}
 			}
 			builder.append("]");
 			builder.append("}");
 			builder.append("}");
-			if (i != codes.length - 1) {
+			if (i != codes.size() - 1) {
 				builder.append(",");
 			}
 		}
