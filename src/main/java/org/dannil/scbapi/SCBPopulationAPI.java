@@ -1,6 +1,7 @@
 package org.dannil.scbapi;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -21,13 +22,12 @@ public final class SCBPopulationAPI extends AbstractSCBAPI {
 		this.client = Client.create();
 	}
 
-	public SCBPopulationAPI(Locale local) {
+	public SCBPopulationAPI(Locale locale) {
 		this();
-		setLocale(this.locale);
+		this.locale = locale;
 	}
 
 	public final PopulationCollection getPopulation() {
-		// TODO
 
 		WebResource webResource = this.client.resource("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy");
 		ClientResponse response = webResource.accept("application/json").get(ClientResponse.class);
@@ -63,8 +63,11 @@ public final class SCBPopulationAPI extends AbstractSCBAPI {
 	public final PopulationCollection getPopulationForRegions(String[] regions) {
 		WebResource webResource = this.client.resource("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy");
 
-		QueryBuilder<String> queryBuilder = new QueryBuilder<String>();
-		String query = queryBuilder.build("BE0101N1", "Region", regions);
+		QueryBuilder queryBuilder = new QueryBuilder();
+		List<Object[]> values = new ArrayList<Object[]>();
+		values.add(new String[] { "BE0101N1" });
+		values.add(regions);
+		String query = queryBuilder.build(new String[] { "ContentsCode", "Region" }, values);
 
 		System.out.println(query);
 
@@ -108,8 +111,11 @@ public final class SCBPopulationAPI extends AbstractSCBAPI {
 	public final PopulationCollection getPopulationForYears(Integer[] years) {
 		WebResource webResource = this.client.resource("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy");
 
-		QueryBuilder<Integer> queryBuilder = new QueryBuilder<Integer>();
-		String query = queryBuilder.build("BE0101N1", "Tid", years);
+		QueryBuilder queryBuilder = new QueryBuilder();
+		List<Object[]> values = new ArrayList<Object[]>();
+		values.add(new String[] { "BE0101N1" });
+		values.add(years);
+		String query = queryBuilder.build(new String[] { "ContentsCode", "Tid" }, values);
 
 		System.out.println(query);
 

@@ -1,40 +1,37 @@
 package org.dannil.scbapi.model;
 
-public final class QueryBuilder<E> {
+import java.util.List;
+
+public final class QueryBuilder {
 
 	public QueryBuilder() {
 
 	}
 
-	public final String build(String table, String code, E[] values) {
+	public final String build(String[] codes, List<Object[]> values) {
 		StringBuilder builder = new StringBuilder();
 		builder.append("{");
 		builder.append("\"query\": [");
-		builder.append("{");
-		builder.append("\"code\": \"ContentsCode\",");
-		builder.append("\"selection\": {");
-		builder.append("\"filter\": \"item\",");
-		builder.append("\"values\": [");
-		builder.append("\"" + table + "\"");
-		builder.append("]");
-		builder.append("}");
-		builder.append("},");
-		builder.append("{");
-		builder.append("\"code\": \"" + code + "\",");
-		builder.append("\"selection\": {");
-		builder.append("\"filter\": \"item\",");
-		builder.append("\"values\": [");
-
-		for (int i = 0; i < values.length; i++) {
-			builder.append("\"" + values[i] + "\"");
-			if (i != values.length - 1) {
+		for (int i = 0; i < codes.length; i++) {
+			builder.append("{");
+			builder.append("\"code\": \"" + codes[i] + "\",");
+			builder.append("\"selection\": {");
+			builder.append("\"filter\": \"item\",");
+			builder.append("\"values\": [");
+			Object[] data = values.get(i);
+			for (int k = 0; k < data.length; k++) {
+				builder.append("\"" + data[k] + "\"");
+				if (k != data.length - 1) {
+					builder.append(",");
+				}
+			}
+			builder.append("]");
+			builder.append("}");
+			builder.append("}");
+			if (i != codes.length - 1) {
 				builder.append(",");
 			}
 		}
-
-		builder.append("]");
-		builder.append("}");
-		builder.append("}");
 		builder.append("],");
 		builder.append("\"response\": {");
 		builder.append("\"format\": \"json\"");

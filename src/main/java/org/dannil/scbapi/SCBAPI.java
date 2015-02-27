@@ -4,6 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import org.dannil.scbapi.model.QueryBuilder;
+
+import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.ClientResponse;
+import com.sun.jersey.api.client.WebResource;
+
 public final class SCBAPI extends AbstractSCBAPI {
 
 	private List<AbstractSCBAPI> apis;
@@ -33,6 +39,24 @@ public final class SCBAPI extends AbstractSCBAPI {
 
 	public final SCBPopulationAPI population() {
 		return this.populationApi;
+	}
+
+	public void test() {
+		WebResource webResource = Client.create().resource("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/EN/EN0106/BransleForbrTjKv07");
+
+		QueryBuilder queryBuilder = new QueryBuilder();
+		List<Object[]> values = new ArrayList<Object[]>();
+		values.add(new String[] { "koks" });
+		values.add(new String[] { "2012k4", "2013k1" });
+		String query = queryBuilder.build(new String[] { "Bransle", "Tid" }, values);
+
+		System.out.println(query);
+
+		ClientResponse response = webResource.accept("application/json").post(ClientResponse.class, query);
+
+		String output = response.getEntity(String.class);
+		System.out.println("New Output from Server .... \n");
+		System.out.println(output);
 	}
 
 }
