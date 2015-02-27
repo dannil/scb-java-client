@@ -28,8 +28,8 @@ public final class SCBPopulationAPI extends AbstractSCBAPI {
 	}
 
 	public final PopulationCollection getPopulation() {
-		WebResource webResource = this.client.resource("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy");
-		ClientResponse response = webResource.accept("application/json").get(ClientResponse.class);
+		WebResource resource = this.client.resource("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy");
+		ClientResponse response = resource.accept("application/json").get(ClientResponse.class);
 		String output = response.getEntity(String.class);
 
 		ObjectMapper mapper = new ObjectMapper();
@@ -57,7 +57,7 @@ public final class SCBPopulationAPI extends AbstractSCBAPI {
 	}
 
 	public final PopulationCollection getPopulationForRegions(List<String> regions) {
-		WebResource webResource = this.client.resource("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy");
+		WebResource resource = this.client.resource("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy");
 
 		QueryBuilder<String, String> queryBuilder = new QueryBuilder<String, String>();
 		List<String> codes = new ArrayList<String>();
@@ -76,7 +76,7 @@ public final class SCBPopulationAPI extends AbstractSCBAPI {
 
 		System.out.println(query);
 
-		ClientResponse response = webResource.accept("application/json").post(ClientResponse.class, query);
+		ClientResponse response = resource.accept("application/json").post(ClientResponse.class, query);
 
 		String output = response.getEntity(String.class);
 		System.out.println("Output from Server .... \n");
@@ -112,7 +112,7 @@ public final class SCBPopulationAPI extends AbstractSCBAPI {
 	}
 
 	public final PopulationCollection getPopulationForYears(List<Integer> years) {
-		WebResource webResource = this.client.resource("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy");
+		WebResource resource = this.client.resource("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy");
 
 		QueryBuilder<String, String> queryBuilder = new QueryBuilder<String, String>();
 		List<String> codes = new ArrayList<String>();
@@ -137,7 +137,7 @@ public final class SCBPopulationAPI extends AbstractSCBAPI {
 
 		System.out.println(query);
 
-		ClientResponse response = webResource.accept("application/json").post(ClientResponse.class, query);
+		ClientResponse response = resource.accept("application/json").post(ClientResponse.class, query);
 
 		String output = response.getEntity(String.class);
 		System.out.println("Output from Server .... \n");
