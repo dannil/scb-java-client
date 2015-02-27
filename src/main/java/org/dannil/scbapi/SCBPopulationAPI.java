@@ -28,8 +28,8 @@ public final class SCBPopulationAPI {
 	public final PopulationCollection getPopulationForRegions(String[] regions) {
 		WebResource webResource = this.client.resource("http://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0101/BE0101A/BefolkningNy");
 
-		QueryBuilder<String> builder = new QueryBuilder<String>();
-		String query = builder.buildQuery("BE0101N1", "Region", regions);
+		QueryBuilder<String> queryBuilder = new QueryBuilder<String>();
+		String query = queryBuilder.build("BE0101N1", "Region", regions);
 
 		System.out.println(query);
 
@@ -73,8 +73,8 @@ public final class SCBPopulationAPI {
 	public final PopulationCollection getPopulationForYears(Integer[] years) {
 		WebResource webResource = this.client.resource("http://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0101/BE0101A/BefolkningNy");
 
-		QueryBuilder<Integer> builder = new QueryBuilder<Integer>();
-		String query = builder.buildQuery("BE0101N1", "Tid", years);
+		QueryBuilder<Integer> queryBuilder = new QueryBuilder<Integer>();
+		String query = queryBuilder.build("BE0101N1", "Tid", years);
 
 		System.out.println(query);
 

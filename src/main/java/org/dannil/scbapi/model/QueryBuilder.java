@@ -6,7 +6,7 @@ public final class QueryBuilder<E> {
 
 	}
 
-	public final String buildQuery(String table, String code, E[] values) {
+	public final String build(String table, String code, E[] values) {
 		StringBuilder builder = new StringBuilder();
 		builder.append("{");
 		builder.append("\"query\": [");
