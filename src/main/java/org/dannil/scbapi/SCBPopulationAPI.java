@@ -53,9 +53,7 @@ public final class SCBPopulationAPI extends AbstractSCBAPI {
 	}
 
 	public final PopulationCollection getPopulationForRegion(String region) {
-		List<String> regions = new ArrayList<String>(1);
-		regions.add(region);
-		return this.getPopulationForRegions(regions);
+		return this.getPopulationForRegions(ListUtility.toList(region));
 	}
 
 	public final PopulationCollection getPopulationForRegions(List<String> regions) {
@@ -101,9 +99,7 @@ public final class SCBPopulationAPI extends AbstractSCBAPI {
 	}
 
 	public final PopulationCollection getPopulationForYear(int year) {
-		List<Integer> years = new ArrayList<Integer>(1);
-		years.add(year);
-		return this.getPopulationForYears(years);
+		return this.getPopulationForYears(ListUtility.toList(year));
 	}
 
 	public final PopulationCollection getPopulationBetweenYears(int startYear, int endYear) {
