@@ -1,6 +1,8 @@
 package org.dannil.scbapi;
 
 import java.io.IOException;
+import java.util.Hashtable;
+import java.util.List;
 
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -15,8 +17,39 @@ public final class SCBPopulationAPI {
 
 	private Client client;
 
+	private Hashtable<String, String> regionMappings;
+
 	public SCBPopulationAPI() {
 		this.client = Client.create();
+
+	}
+
+	public final PopulationCollection getPopulation() {
+		// TODO
+
+		WebResource webResource = this.client.resource("http://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0101/BE0101A/BefolkningNy");
+		ClientResponse response = webResource.accept("application/json").get(ClientResponse.class);
+		String output = response.getEntity(String.class);
+
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			JsonNode node = mapper.readTree(output);
+			List<JsonNode> nodes = node.findValues("values");
+			node = nodes.get(nodes.size() - 1);
+			System.out.println("Nodes value: " + node.toString());
+
+			Integer[] years = new Integer[node.size()];
+			for (int i = 0; i < years.length; i++) {
+				years[i] = node.get(i).asInt();
+				System.out.println(years[i]);
+			}
+
+			return this.getPopulationForYears(years);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return null;
 	}
 
 	public final PopulationCollection getPopulationForRegion(String region) {
