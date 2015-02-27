@@ -13,8 +13,10 @@ import com.sun.jersey.api.client.WebResource;
 
 public final class SCBAPI {
 
-	public SCBAPI() {
+	private Client client;
 
+	public SCBAPI() {
+		this.client = Client.create();
 	}
 
 	public final void test() {
@@ -30,21 +32,50 @@ public final class SCBAPI {
 		System.out.println(output);
 	}
 
-	public final void getPopulationForYears(int[] years) {
+	public final PopulationCollection getPopulationForRegion(String region) {
 		// TODO
+
+		return null;
 	}
 
-	public final void getPopulationBetweenYears(int startYear, int endYear) {
+	public final PopulationCollection getPopulationForRegions(String[] regions) {
+		// TODO
 
+		return null;
+	}
+
+	public final PopulationCollection getPopulationForYear(Long year) {
+		// TODO
+
+		return null;
+	}
+
+	public final PopulationCollection getPopulationForRegions(Long[] years) {
+		// TODO
+
+		return null;
+	}
+
+	public final PopulationCollection getPopulationForYear(int year) {
+		int[] years = new int[1];
+		years[0] = year;
+		return this.getPopulationForYears(years);
+	}
+
+	public final PopulationCollection getPopulationBetweenYears(int startYear, int endYear) {
 		int[] years = new int[endYear - startYear + 1];
 		for (int i = 0; i < years.length; i++) {
 			years[i] = startYear + i;
 			System.out.println(years[i]);
 		}
+		return this.getPopulationForYears(years);
+	}
 
-		Client client = Client.create();
+	public final PopulationCollection getPopulationForYears(int[] years) {
+		WebResource webResource = this.client.resource("http://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0101/BE0101A/BefolkningNy");
 
-		WebResource webResource = client.resource("http://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0101/BE0101A/BefolkningNy");
+		// TODO Refactor this code into a query builder class so it can be
+		// applied to all operations
 
 		StringBuilder builder = new StringBuilder();
 		builder.append("{");
@@ -65,7 +96,7 @@ public final class SCBAPI {
 		builder.append("\"values\": [");
 
 		for (int year : years) {
-			if (year != endYear) {
+			if (year != years[years.length - 1]) {
 				builder.append("\"" + year + "\",");
 			} else {
 				builder.append("\"" + year + "\"");
@@ -110,9 +141,13 @@ public final class SCBAPI {
 			for (Population p : collection2.getPopulations()) {
 				System.out.println(p.toString());
 			}
+
+			return new PopulationCollection(node.get("data"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
+		return null;
 	}
 
 }
