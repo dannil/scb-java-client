@@ -1,4 +1,4 @@
-package org.dannil.scbapi.model;
+package org.dannil.scbapi.utility;
 
 import java.util.List;
 

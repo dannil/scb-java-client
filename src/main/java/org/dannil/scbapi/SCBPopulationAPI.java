@@ -8,7 +8,8 @@ import java.util.Locale;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.dannil.scbapi.model.PopulationCollection;
-import org.dannil.scbapi.model.QueryBuilder;
+import org.dannil.scbapi.utility.ListUtility;
+import org.dannil.scbapi.utility.QueryBuilder;
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;

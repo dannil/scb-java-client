@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import org.dannil.scbapi.model.QueryBuilder;
+import org.dannil.scbapi.utility.QueryBuilder;
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;

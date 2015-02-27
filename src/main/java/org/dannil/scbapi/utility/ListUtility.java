@@ -1,4 +1,4 @@
-package org.dannil.scbapi;
+package org.dannil.scbapi.utility;
 
 import java.util.ArrayList;
 
