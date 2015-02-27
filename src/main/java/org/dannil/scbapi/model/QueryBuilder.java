@@ -6,7 +6,7 @@ public final class QueryBuilder<E> {
 
 	}
 
-	public final String buildQuery(String table, String code, E[] data) {
+	public final String buildQuery(String table, E[] data) {
 		StringBuilder builder = new StringBuilder();
 		builder.append("{");
 		builder.append("\"query\": [");
@@ -25,11 +25,10 @@ public final class QueryBuilder<E> {
 		builder.append("\"filter\": \"item\",");
 		builder.append("\"values\": [");
 
-		for (E dataObj : data) {
-			if (dataObj != data[data.length - 1]) {
-				builder.append("\"" + dataObj + "\",");
-			} else {
-				builder.append("\"" + dataObj + "\"");
+		for (int i = 0; i < data.length; i++) {
+			builder.append("\"" + data[i] + "\"");
+			if (i != data.length - 1) {
+				builder.append(",");
 			}
 		}
 
