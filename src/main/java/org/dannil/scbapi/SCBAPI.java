@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.map.ObjectMapper;
-import org.dannil.scbapi.model.Population;
 import org.dannil.scbapi.model.PopulationCollection;
 import org.dannil.scbapi.model.QueryBuilder;
 
@@ -75,9 +74,6 @@ public final class SCBAPI {
 	public final PopulationCollection getPopulationForYears(Integer[] years) {
 		WebResource webResource = this.client.resource("http://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0101/BE0101A/BefolkningNy");
 
-		// TODO Refactor this code into a query builder class so it can be
-		// applied to all operations
-
 		QueryBuilder<Integer> builder = new QueryBuilder<Integer>();
 		String query = builder.buildQuery("BE0101N1", years);
 
@@ -86,36 +82,22 @@ public final class SCBAPI {
 		ClientResponse response = webResource.accept("application/json").post(ClientResponse.class, query);
 
 		String output = response.getEntity(String.class);
+		System.out.println("Output from Server .... \n");
+		System.out.println(output);
 
 		// For some reason we get a question-mark in the beginning of the
 		// response so we need to drop that to ensure valid JSON
 		String result = output.substring(1, output.length());
-
-		System.out.println("Output from Server .... \n");
-		System.out.println(output);
-
+		System.out.println("Modified result .... \n");
 		System.out.println(result);
 
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			JsonNode node = mapper.readTree(result);
-			System.out.println("Printing data: " + node.get("data"));
-
-			PopulationCollection collection = new PopulationCollection(node.get("data"));
-			for (Population p : collection.getPopulations()) {
-				System.out.println(p.toString());
-			}
-
-			PopulationCollection collection2 = collection.getPopulationForRegion("00");
-			for (Population p : collection2.getPopulations()) {
-				System.out.println(p.toString());
-			}
-
 			return new PopulationCollection(node.get("data"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 		return null;
 	}
 }
