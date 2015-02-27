@@ -45,19 +45,19 @@ public final class SCBAPI {
 		return null;
 	}
 
-	public final PopulationCollection getPopulationForYear(Long year) {
+	public final PopulationCollection getPopulationForYear(long year) {
 		// TODO
 
 		return null;
 	}
 
-	public final PopulationCollection getPopulationForRegions(Long[] years) {
+	public final PopulationCollection getPopulationForRegions(long[] years) {
 		// TODO
 
 		return null;
 	}
 
-	public final PopulationCollection getPopulationForYear(Integer year) {
+	public final PopulationCollection getPopulationForYear(int year) {
 		Integer[] years = new Integer[1];
 		years[0] = year;
 		return this.getPopulationForYears(years);
@@ -79,7 +79,9 @@ public final class SCBAPI {
 		// applied to all operations
 
 		QueryBuilder<Integer> builder = new QueryBuilder<Integer>();
-		String query = builder.buildQuery("BE0101N1", "", years);
+		String query = builder.buildQuery("BE0101N1", years);
+
+		System.out.println(query);
 
 		ClientResponse response = webResource.accept("application/json").post(ClientResponse.class, query);
 
