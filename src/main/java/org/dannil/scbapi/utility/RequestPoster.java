@@ -12,15 +12,9 @@ public class RequestPoster {
 		String result = response.getEntity(String.class);
 
 		System.out.println("Output from server: " + result);
-		System.out.println(result.charAt(0));
 
 		// For some reason we get a question-mark in the beginning of the
 		// response so we need to drop that to ensure valid JSON
-		if (result.charAt(0) == '?') {
-			System.out.println(result.substring(1, result.length()));
-			return result.substring(1, result.length());
-		}
-		System.out.println(result.substring(1, result.length()));
-		return result;
+		return result.substring(1, result.length());
 	}
 }
