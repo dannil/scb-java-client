@@ -3,7 +3,7 @@ package org.dannil.scbapi.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.codehaus.jackson.JsonNode;
+import com.fasterxml.jackson.databind.JsonNode;
 
 public final class PopulationCollection {
 
