@@ -126,13 +126,7 @@ public final class SCBPopulationAPI extends AbstractSCBAPI {
 		table.add("BE0101N1");
 
 		values.add(table);
-
-		// Convert the years to strings
-		List<String> stringYears = new ArrayList<String>(years.size());
-		for (Integer year : years) {
-			stringYears.add(String.valueOf(year));
-		}
-		values.add(stringYears);
+		values.add(ListUtility.toString(years));
 
 		String query = queryBuilder.build(codes, values);
 
