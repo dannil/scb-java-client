@@ -8,9 +8,12 @@ import java.util.Locale;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.dannil.scbapi.model.PopulationCollection;
+import org.dannil.scbapi.utility.JsonUtility;
 import org.dannil.scbapi.utility.ListUtility;
 import org.dannil.scbapi.utility.QueryBuilder;
+import org.dannil.scbapi.utility.RequestPoster;
 
+import com.google.common.collect.ArrayListMultimap;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
@@ -61,42 +64,16 @@ public final class SCBPopulationAPI extends AbstractSCBAPI {
 		WebResource resource = this.client.resource("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy");
 
 		QueryBuilder<String, String> queryBuilder = new QueryBuilder<String, String>();
-		List<String> codes = new ArrayList<String>();
-		List<List<String>> values = new ArrayList<List<String>>();
 
-		codes.add("ContentsCode");
-		codes.add("Region");
-
-		List<String> table = new ArrayList<String>();
-		table.add("BE0101N1");
-
-		values.add(table);
-		values.add(regions);
-
-		String query = queryBuilder.build(codes, values);
-
-		System.out.println(query);
-
-		ClientResponse response = resource.accept("application/json").post(ClientResponse.class, query);
-
-		String output = response.getEntity(String.class);
-		System.out.println("Output from Server .... \n");
-		System.out.println(output);
-
-		// For some reason we get a question-mark in the beginning of the
-		// response so we need to drop that to ensure valid JSON
-		String result = output.substring(1, output.length());
-		System.out.println("Modified result .... \n");
-		System.out.println(result);
-
-		ObjectMapper mapper = new ObjectMapper();
-		try {
-			JsonNode node = mapper.readTree(result);
-			return new PopulationCollection(node.get("data"));
-		} catch (IOException e) {
-			e.printStackTrace();
+		ArrayListMultimap<String, String> map = ArrayListMultimap.create();
+		map.put("ContentsCode", "BE0101N1");
+		for (String region : regions) {
+			map.put("Region", region);
 		}
-		return null;
+
+		String query = queryBuilder.build(map);
+		String response = RequestPoster.makePostRequest(resource, query);
+		return new PopulationCollection(JsonUtility.getNode(response, "data"));
 	}
 
 	public final PopulationCollection getPopulationForYear(int year) {
@@ -116,41 +93,15 @@ public final class SCBPopulationAPI extends AbstractSCBAPI {
 		WebResource resource = this.client.resource("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy");
 
 		QueryBuilder<String, String> queryBuilder = new QueryBuilder<String, String>();
-		List<String> codes = new ArrayList<String>();
-		List<List<String>> values = new ArrayList<List<String>>();
 
-		codes.add("ContentsCode");
-		codes.add("Tid");
-
-		List<String> table = new ArrayList<String>();
-		table.add("BE0101N1");
-
-		values.add(table);
-		values.add(ListUtility.toString(years));
-
-		String query = queryBuilder.build(codes, values);
-
-		System.out.println(query);
-
-		ClientResponse response = resource.accept("application/json").post(ClientResponse.class, query);
-
-		String output = response.getEntity(String.class);
-		System.out.println("Output from Server .... \n");
-		System.out.println(output);
-
-		// For some reason we get a question-mark in the beginning of the
-		// response so we need to drop that to ensure valid JSON
-		String result = output.substring(1, output.length());
-		System.out.println("Modified result .... \n");
-		System.out.println(result);
-
-		ObjectMapper mapper = new ObjectMapper();
-		try {
-			JsonNode node = mapper.readTree(result);
-			return new PopulationCollection(node.get("data"));
-		} catch (IOException e) {
-			e.printStackTrace();
+		ArrayListMultimap<String, String> map = ArrayListMultimap.create();
+		map.put("ContentsCode", "BE0101N1");
+		for (Integer year : years) {
+			map.put("Tid", year.toString());
 		}
-		return null;
+
+		String query = queryBuilder.build(map);
+		String response = RequestPoster.makePostRequest(resource, query);
+		return new PopulationCollection(JsonUtility.getNode(response, "data"));
 	}
 }
