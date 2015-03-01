@@ -17,10 +17,8 @@ import com.google.common.collect.ArrayListMultimap;
 
 public final class SCBPopulationAPI extends AbstractSCBAPI implements ISCBPopulationAPI {
 
-	// private Client client;
-
 	public SCBPopulationAPI() {
-		// this.client = Client.create();
+		this.locale = new Locale("sv");
 	}
 
 	public SCBPopulationAPI(Locale locale) {
