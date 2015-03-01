@@ -27,7 +27,7 @@ public final class SCBPopulationAPI extends AbstractSCBAPI implements ISCBPopula
 	}
 
 	private final List<Integer> getAvailableYears() {
-		String response = RequestPoster.makeGetRequest("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy");
+		String response = RequestPoster.doGet("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy");
 
 		ObjectMapper mapper = new ObjectMapper();
 		try {
@@ -58,7 +58,7 @@ public final class SCBPopulationAPI extends AbstractSCBAPI implements ISCBPopula
 		}
 
 		String query = queryBuilder.build(map);
-		String response = RequestPoster.makePostRequest("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy", query);
+		String response = RequestPoster.doPost("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy", query);
 
 		return new PopulationCollection(JsonUtility.getNode(response, "data"));
 	}
@@ -85,7 +85,7 @@ public final class SCBPopulationAPI extends AbstractSCBAPI implements ISCBPopula
 		}
 
 		String query = queryBuilder.build(map);
-		String response = RequestPoster.makePostRequest("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy", query);
+		String response = RequestPoster.doPost("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy", query);
 		return new PopulationCollection(JsonUtility.getNode(response, "data"));
 	}
 
@@ -102,7 +102,7 @@ public final class SCBPopulationAPI extends AbstractSCBAPI implements ISCBPopula
 		}
 
 		String query = queryBuilder.build(map);
-		String response = RequestPoster.makePostRequest("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy", query);
+		String response = RequestPoster.doPost("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy", query);
 		return new PopulationCollection(JsonUtility.getNode(response, "data"));
 	}
 
@@ -129,7 +129,7 @@ public final class SCBPopulationAPI extends AbstractSCBAPI implements ISCBPopula
 		}
 
 		String query = queryBuilder.build(map);
-		String response = RequestPoster.makePostRequest("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy", query);
+		String response = RequestPoster.doPost("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy", query);
 		return new PopulationCollection(JsonUtility.getNode(response, "data"));
 	}
 }

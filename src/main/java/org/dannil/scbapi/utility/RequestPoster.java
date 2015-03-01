@@ -8,7 +8,7 @@ import javax.ws.rs.core.Response;
 
 public class RequestPoster {
 
-	public static final String makeGetRequest(String address) {
+	public static final String doGet(String address) {
 		Client client = ClientBuilder.newClient();
 		WebTarget target = client.target(address);
 		Response response = target.request().get();
@@ -18,7 +18,7 @@ public class RequestPoster {
 		return result;
 	}
 
-	public static final String makePostRequest(String address, String query) {
+	public static final String doPost(String address, String query) {
 		System.out.println("Query: " + query);
 
 		Client client = ClientBuilder.newClient();

@@ -42,7 +42,7 @@ public final class SCBAPI extends AbstractSCBAPI {
 	}
 
 	public final Map<String, String> getRegionMappings() {
-		String response = RequestPoster.makeGetRequest("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy");
+		String response = RequestPoster.doGet("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy");
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			JsonNode node = mapper.readTree(response);
@@ -77,7 +77,7 @@ public final class SCBAPI extends AbstractSCBAPI {
 		map.put("Tid", "2013k1");
 
 		String query = queryBuilder.build(map);
-		String response = RequestPoster.makePostRequest("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/EN/EN0106/BransleForbrTjKv07", query);
+		String response = RequestPoster.doPost("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/EN/EN0106/BransleForbrTjKv07", query);
 
 		System.out.println(response);
 	}
