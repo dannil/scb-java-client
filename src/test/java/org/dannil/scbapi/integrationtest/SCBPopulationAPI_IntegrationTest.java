@@ -45,7 +45,7 @@ public class SCBPopulationAPI_IntegrationTest {
 
 	@Test
 	public final void getPopulationForRegionAndYearsNotNull() {
-		Assert.assertNotEquals(0, this.populationApi.getPopulationForRegion("1263", this.years).getPopulations().size());
+		Assert.assertNotEquals(0, this.populationApi.getPopulationForRegion(this.regions.get(0), this.years).getPopulations().size());
 	}
 
 	@Test
