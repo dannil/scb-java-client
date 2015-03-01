@@ -34,6 +34,7 @@ public final class QueryBuilder<E, K> {
 			if (i != map.keySet().size() - 1) {
 				builder.append(",");
 			}
+			i++;
 		}
 		builder.append("],");
 		builder.append("\"response\": {");
