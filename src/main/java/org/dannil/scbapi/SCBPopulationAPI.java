@@ -34,7 +34,6 @@ public final class SCBPopulationAPI extends AbstractSCBAPI implements ISCBPopula
 			JsonNode node = mapper.readTree(response);
 			List<JsonNode> nodes = node.findValues("values");
 			node = nodes.get(nodes.size() - 1);
-			// System.out.println("Nodes value: " + node.toString());
 
 			List<Integer> years = new ArrayList<Integer>(node.size());
 			for (int i = 0; i < node.size(); i++) {
@@ -55,13 +54,11 @@ public final class SCBPopulationAPI extends AbstractSCBAPI implements ISCBPopula
 
 		List<Integer> years = this.getAvailableYears();
 		for (Integer year : years) {
-			System.out.println(year);
 			map.put("Tid", year.toString());
 		}
 
 		String query = queryBuilder.build(map);
 		String response = RequestPoster.makePostRequest("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy", query);
-		System.out.println(response);
 
 		return new PopulationCollection(JsonUtility.getNode(response, "data"));
 	}
