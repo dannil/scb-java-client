@@ -1,12 +1,17 @@
 package org.dannil.scbapi;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import org.dannil.scbapi.utility.QueryBuilder;
 import org.dannil.scbapi.utility.RequestPoster;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.ArrayListMultimap;
 
 public final class SCBAPI extends AbstractSCBAPI {
@@ -34,6 +39,28 @@ public final class SCBAPI extends AbstractSCBAPI {
 		for (AbstractSCBAPI api : this.apis) {
 			api.setLocale(this.locale);
 		}
+	}
+
+	public final Map<String, String> getRegionMappings() {
+		String response = RequestPoster.makeGetRequest("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy");
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			JsonNode node = mapper.readTree(response);
+			List<JsonNode> valueNodes = node.findValues("values");
+			List<JsonNode> valueTextNodes = node.findValues("valueTexts");
+
+			JsonNode values = valueNodes.get(0);
+			JsonNode valueTexts = valueTextNodes.get(0);
+
+			Map<String, String> map = new Hashtable<String, String>();
+			for (int i = 0; i < values.size(); i++) {
+				map.put(values.get(i).asText(), valueTexts.get(i).asText());
+			}
+			return map;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public final SCBPopulationAPI population() {

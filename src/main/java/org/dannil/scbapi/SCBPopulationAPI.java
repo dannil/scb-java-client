@@ -2,10 +2,8 @@ package org.dannil.scbapi;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Hashtable;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 import org.dannil.scbapi.model.PopulationCollection;
 import org.dannil.scbapi.utility.JsonUtility;
@@ -21,38 +19,11 @@ public final class SCBPopulationAPI extends AbstractSCBAPI implements ISCBPopula
 
 	public SCBPopulationAPI() {
 		this.locale = new Locale("sv");
-
-		Map<Integer, String> map = this.getRegionMappings();
-		for (Integer key : map.keySet()) {
-			System.out.println(key + " : " + map.get(key));
-		}
 	}
 
 	public SCBPopulationAPI(Locale locale) {
 		this();
 		this.locale = locale;
-	}
-
-	private final Map<Integer, String> getRegionMappings() {
-		String response = RequestPoster.makeGetRequest("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy");
-		ObjectMapper mapper = new ObjectMapper();
-		try {
-			JsonNode node = mapper.readTree(response);
-			List<JsonNode> valueNodes = node.findValues("values");
-			List<JsonNode> valueTextNodes = node.findValues("valueTexts");
-
-			JsonNode values = valueNodes.get(0);
-			JsonNode valueTexts = valueTextNodes.get(0);
-
-			Map<Integer, String> map = new Hashtable<Integer, String>();
-			for (int i = 0; i < values.size(); i++) {
-				map.put(values.get(i).asInt(), valueTexts.get(i).asText());
-			}
-			return map;
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 
 	private final List<Integer> getAvailableYears() {
