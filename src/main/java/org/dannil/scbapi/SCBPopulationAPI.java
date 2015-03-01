@@ -15,7 +15,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.ArrayListMultimap;
 
-public final class SCBPopulationAPI extends AbstractSCBAPI {
+public final class SCBPopulationAPI extends AbstractSCBAPI implements ISCBPopulationAPI {
 
 	// private Client client;
 
@@ -121,8 +121,6 @@ public final class SCBPopulationAPI extends AbstractSCBAPI {
 
 		String query = queryBuilder.build(map);
 		String response = RequestPoster.makePostRequest("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy", query);
-		System.out.println("Response: " + response);
-
 		return new PopulationCollection(JsonUtility.getNode(response, "data"));
 	}
 }

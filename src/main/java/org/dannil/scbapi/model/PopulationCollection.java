@@ -3,9 +3,11 @@ package org.dannil.scbapi.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.dannil.scbapi.ISCBPopulationAPI;
+
 import com.fasterxml.jackson.databind.JsonNode;
 
-public final class PopulationCollection {
+public final class PopulationCollection implements ISCBPopulationAPI {
 
 	// TODO
 
@@ -34,22 +36,67 @@ public final class PopulationCollection {
 		}
 	}
 
-	public void add(Population p) {
-		this.populations.add(p);
+	@Override
+	public PopulationCollection getPopulation() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	public PopulationCollection getPopulationForRegion(String regionCode) {
+	@Override
+	public PopulationCollection getPopulationForRegion(String region) {
 		final PopulationCollection c = new PopulationCollection();
 		for (Population p : this.populations) {
-			if (p.getRegion().equals(regionCode)) {
+			if (p.getRegion().equals(region)) {
 				c.add(p);
 			}
 		}
 		return c;
 	}
 
-	public PopulationCollection getPopulationForYear(Long year) {
+	@Override
+	public PopulationCollection getPopulationForRegion(String region, List<Integer> years) {
+		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public PopulationCollection getPopulationForRegion(String region, Integer year) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PopulationCollection getPopulationForRegions(List<String> regions) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PopulationCollection getPopulationForRegions(List<String> regions, List<Integer> years) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PopulationCollection getPopulationForYear(int year) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PopulationCollection getPopulationBetweenYears(int startYear, int endYear) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PopulationCollection getPopulationForYears(List<Integer> years) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void add(Population p) {
+		this.populations.add(p);
 	}
 
 	public List<Population> getPopulations() {
