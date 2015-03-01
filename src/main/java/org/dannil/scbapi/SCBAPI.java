@@ -50,7 +50,7 @@ public final class SCBAPI extends AbstractSCBAPI {
 		map.put("Tid", "2013k1");
 
 		String query = queryBuilder.build(map);
-		String response = RequestPoster.makeGetRequest("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/EN/EN0106/BransleForbrTjKv07");
+		String response = RequestPoster.makePostRequest("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/EN/EN0106/BransleForbrTjKv07", query);
 
 		System.out.println(response);
 	}
