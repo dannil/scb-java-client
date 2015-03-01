@@ -8,18 +8,17 @@
 		<guava.version>18.0</guava.version>
 		<jackson-core.version>2.5.1</jackson-core.version>
 		<jackson-databind.version>2.5.1</jackson-databind.version>
-		
-		<jersey-client.version>1.19</jersey-client.version>
 	</properties>
 
 	<dependencies>
 	
+		<!-- LICENSE : Apache License 2.0 -->
 		<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-client</artifactId>
-			<version>1.19</version>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-client</artifactId>
+			<version>3.0.10.Final</version>
 		</dependency>
-		
+
 		<!-- LICENSE : Apache License 2.0 -->
 		<dependency>
 			<groupId>com.google.guava</groupId>
@@ -44,7 +43,6 @@
 	</dependencies>
 	
 	<build>
-    	<sourceDirectory>src</sourceDirectory>
 		<plugins>
       		<plugin>
 	        	<artifactId>maven-compiler-plugin</artifactId>

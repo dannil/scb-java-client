@@ -14,16 +14,13 @@ import org.dannil.scbapi.utility.RequestPoster;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.ArrayListMultimap;
-import com.sun.jersey.api.client.Client;
-import com.sun.jersey.api.client.ClientResponse;
-import com.sun.jersey.api.client.WebResource;
 
 public final class SCBPopulationAPI extends AbstractSCBAPI {
 
-	private Client client;
+	// private Client client;
 
 	public SCBPopulationAPI() {
-		this.client = Client.create();
+		// this.client = Client.create();
 	}
 
 	public SCBPopulationAPI(Locale locale) {
@@ -32,14 +29,15 @@ public final class SCBPopulationAPI extends AbstractSCBAPI {
 	}
 
 	public final PopulationCollection getPopulation() {
-		WebResource resource = this.client.resource("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy");
-		ClientResponse response = resource.accept("application/json").get(ClientResponse.class);
-		String output = response.getEntity(String.class);
+		String response = RequestPoster.makeGetRequest("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy");
+
+		System.out.println(response);
 
 		ObjectMapper mapper = new ObjectMapper();
 		try {
-			JsonNode node = mapper.readTree(output);
+			JsonNode node = mapper.readTree(response);
 			List<JsonNode> nodes = node.findValues("values");
+
 			node = nodes.get(nodes.size() - 1);
 			System.out.println("Nodes value: " + node.toString());
 
@@ -61,8 +59,6 @@ public final class SCBPopulationAPI extends AbstractSCBAPI {
 	}
 
 	public final PopulationCollection getPopulationForRegions(List<String> regions) {
-		WebResource resource = this.client.resource("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy");
-
 		QueryBuilder<String, String> queryBuilder = new QueryBuilder<String, String>();
 
 		ArrayListMultimap<String, String> map = ArrayListMultimap.create();
@@ -72,7 +68,7 @@ public final class SCBPopulationAPI extends AbstractSCBAPI {
 		}
 
 		String query = queryBuilder.build(map);
-		String response = RequestPoster.makePostRequest(resource, query);
+		String response = RequestPoster.makePostRequest("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy", query);
 		return new PopulationCollection(JsonUtility.getNode(response, "data"));
 	}
 
@@ -90,8 +86,6 @@ public final class SCBPopulationAPI extends AbstractSCBAPI {
 	}
 
 	public final PopulationCollection getPopulationForYears(List<Integer> years) {
-		WebResource resource = this.client.resource("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy");
-
 		QueryBuilder<String, String> queryBuilder = new QueryBuilder<String, String>();
 
 		ArrayListMultimap<String, String> map = ArrayListMultimap.create();
@@ -101,7 +95,9 @@ public final class SCBPopulationAPI extends AbstractSCBAPI {
 		}
 
 		String query = queryBuilder.build(map);
-		String response = RequestPoster.makePostRequest(resource, query);
+		String response = RequestPoster.makePostRequest("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy", query);
+		System.out.println("Response: " + response);
+
 		return new PopulationCollection(JsonUtility.getNode(response, "data"));
 	}
 }

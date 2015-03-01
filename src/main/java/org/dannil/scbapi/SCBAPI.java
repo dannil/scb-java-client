@@ -8,8 +8,6 @@ import org.dannil.scbapi.utility.QueryBuilder;
 import org.dannil.scbapi.utility.RequestPoster;
 
 import com.google.common.collect.ArrayListMultimap;
-import com.sun.jersey.api.client.Client;
-import com.sun.jersey.api.client.WebResource;
 
 public final class SCBAPI extends AbstractSCBAPI {
 
@@ -43,8 +41,6 @@ public final class SCBAPI extends AbstractSCBAPI {
 	}
 
 	public void test() {
-		WebResource resource = Client.create().resource("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/EN/EN0106/BransleForbrTjKv07");
-
 		QueryBuilder<String, String> queryBuilder = new QueryBuilder<String, String>();
 
 		ArrayListMultimap<String, String> map = ArrayListMultimap.create();
@@ -54,7 +50,7 @@ public final class SCBAPI extends AbstractSCBAPI {
 		map.put("Tid", "2013k1");
 
 		String query = queryBuilder.build(map);
-		String response = RequestPoster.makePostRequest(resource, query);
+		String response = RequestPoster.makeGetRequest("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/EN/EN0106/BransleForbrTjKv07");
 
 		System.out.println(response);
 	}
