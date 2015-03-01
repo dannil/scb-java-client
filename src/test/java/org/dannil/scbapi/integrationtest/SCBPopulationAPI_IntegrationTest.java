@@ -7,7 +7,10 @@ import org.dannil.scbapi.SCBPopulationAPI;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
+@RunWith(JUnit4.class)
 public class SCBPopulationAPI_IntegrationTest {
 
 	private SCBPopulationAPI populationApi;
@@ -16,9 +19,7 @@ public class SCBPopulationAPI_IntegrationTest {
 	private List<Integer> years;
 
 	@Before
-	public final void init() throws InterruptedException {
-		Thread.sleep(100);
-
+	public final void init() {
 		this.populationApi = new SCBPopulationAPI();
 
 		this.regions = new ArrayList<String>();
