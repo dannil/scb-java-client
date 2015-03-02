@@ -38,8 +38,7 @@ public final class PopulationCollection implements ISCBPopulationAPI {
 
 	@Override
 	public PopulationCollection getPopulation() {
-		// TODO Auto-generated method stub
-		return null;
+		return this;
 	}
 
 	@Override
@@ -55,44 +54,89 @@ public final class PopulationCollection implements ISCBPopulationAPI {
 
 	@Override
 	public PopulationCollection getPopulationForRegion(String region, List<Integer> years) {
-		// TODO Auto-generated method stub
-		return null;
+		final PopulationCollection c = new PopulationCollection();
+		for (Population p : this.populations) {
+			for (Integer year : years) {
+				if (p.getRegion().equals(region) && p.getYear().equals(year)) {
+					c.add(p);
+				}
+			}
+		}
+		return c;
 	}
 
 	@Override
 	public PopulationCollection getPopulationForRegion(String region, Integer year) {
-		// TODO Auto-generated method stub
-		return null;
+		final PopulationCollection c = new PopulationCollection();
+		for (Population p : this.populations) {
+			if (p.getRegion().equals(region) && p.getYear().equals(year)) {
+				c.add(p);
+			}
+		}
+		return c;
 	}
 
 	@Override
 	public PopulationCollection getPopulationForRegions(List<String> regions) {
-		// TODO Auto-generated method stub
-		return null;
+		final PopulationCollection c = new PopulationCollection();
+		for (Population p : this.populations) {
+			for (String region : regions) {
+				if (p.equals(region)) {
+					c.add(p);
+				}
+			}
+		}
+		return c;
 	}
 
 	@Override
 	public PopulationCollection getPopulationForRegions(List<String> regions, List<Integer> years) {
-		// TODO Auto-generated method stub
-		return null;
+		final PopulationCollection c = new PopulationCollection();
+		for (Population p : this.populations) {
+			for (String region : regions) {
+				for (Integer year : years) {
+					if (p.getRegion().equals(region) && p.getYear().equals(year)) {
+						c.add(p);
+					}
+				}
+			}
+		}
+		return c;
 	}
 
 	@Override
 	public PopulationCollection getPopulationForYear(int year) {
-		// TODO Auto-generated method stub
-		return null;
+		final PopulationCollection c = new PopulationCollection();
+		for (Population p : this.populations) {
+			if (p.equals(year)) {
+				c.add(p);
+			}
+		}
+		return c;
 	}
 
 	@Override
 	public PopulationCollection getPopulationBetweenYears(int startYear, int endYear) {
-		// TODO Auto-generated method stub
-		return null;
+		final PopulationCollection c = new PopulationCollection();
+		for (Population p : this.populations) {
+			if (p.getYear() >= startYear && p.getYear() <= endYear) {
+				c.add(p);
+			}
+		}
+		return c;
 	}
 
 	@Override
 	public PopulationCollection getPopulationForYears(List<Integer> years) {
-		// TODO Auto-generated method stub
-		return null;
+		final PopulationCollection c = new PopulationCollection();
+		for (Population p : this.populations) {
+			for (Integer year : years) {
+				if (p.getYear().equals(year)) {
+					c.add(p);
+				}
+			}
+		}
+		return c;
 	}
 
 	public void add(Population p) {
