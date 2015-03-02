@@ -3,11 +3,11 @@ package org.dannil.scbapi.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.dannil.scbapi.ISCBPopulationAPI;
+import org.dannil.scbapi.PopulationOperations;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-public final class PopulationCollection implements ISCBPopulationAPI {
+public final class PopulationCollection implements PopulationOperations {
 
 	// TODO
 

@@ -2,7 +2,7 @@ package org.dannil.scbapi;
 
 import java.util.Locale;
 
-public abstract class AbstractSCBAPI {
+public abstract class AbstractAPI {
 
 	protected Locale locale;
 

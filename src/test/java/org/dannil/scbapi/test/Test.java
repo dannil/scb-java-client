@@ -49,7 +49,7 @@ public class Test {
 		// WORKS
 		PopulationCollection collection4 = api.population().getPopulation();
 		for (Population p : collection4.getPopulations()) {
-			System.out.println(p);
+			// System.out.println(p);
 		}
 
 		// WORKS

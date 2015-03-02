@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.dannil.scbapi.SCBAPI;
-import org.dannil.scbapi.SCBPopulationAPI;
+import org.dannil.scbapi.PopulationAPI;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,7 +15,7 @@ import org.junit.runners.JUnit4;
 public class SCBPopulationAPI_IntegrationTest {
 
 	private SCBAPI coreApi;
-	private SCBPopulationAPI populationApi;
+	private PopulationAPI populationApi;
 
 	private List<String> regionCodes;
 	private List<String> regionTexts;
@@ -23,7 +23,7 @@ public class SCBPopulationAPI_IntegrationTest {
 
 	public SCBPopulationAPI_IntegrationTest() {
 		this.coreApi = new SCBAPI();
-		this.populationApi = new SCBPopulationAPI();
+		this.populationApi = new PopulationAPI();
 
 		this.regionCodes = new ArrayList<String>();
 		this.regionTexts = new ArrayList<String>();

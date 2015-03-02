@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.dannil.scbapi.model.PopulationCollection;
 
-public interface ISCBPopulationAPI {
+public interface PopulationOperations {
 
 	public PopulationCollection getPopulation();
 

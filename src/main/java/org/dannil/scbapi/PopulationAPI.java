@@ -15,13 +15,13 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.ArrayListMultimap;
 
-public final class SCBPopulationAPI extends AbstractSCBAPI implements ISCBPopulationAPI {
+public final class PopulationAPI extends AbstractAPI implements PopulationOperations {
 
-	public SCBPopulationAPI() {
+	public PopulationAPI() {
 		this.locale = Locale.getDefault();
 	}
 
-	public SCBPopulationAPI(Locale locale) {
+	public PopulationAPI(Locale locale) {
 		this();
 		this.locale = locale;
 	}
