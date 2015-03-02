@@ -19,6 +19,7 @@ public final class SCBAPI extends AbstractSCBAPI {
 	private List<AbstractSCBAPI> apis;
 
 	private SCBPopulationAPI populationApi;
+	private SCBAreaAPI areaApi;
 
 	public SCBAPI() {
 		this.apis = new ArrayList<AbstractSCBAPI>();
@@ -26,6 +27,9 @@ public final class SCBAPI extends AbstractSCBAPI {
 
 		this.populationApi = new SCBPopulationAPI(this.locale);
 		this.apis.add(this.populationApi);
+
+		this.areaApi = new SCBAreaAPI(this.locale);
+		this.apis.add(this.areaApi);
 	}
 
 	public SCBAPI(Locale locale) {
