@@ -41,43 +41,18 @@ public class SCBPopulationAPI_IntegrationTest {
 	}
 
 	@Test
-	public final void getPopulationForRegionNotNull() {
-		Assert.assertNotEquals(0, this.populationApi.getPopulationForRegion(this.regionCodes.get(0)).getPopulations().size());
+	public final void getPopulationForRegionsNotNull() {
+		Assert.assertNotEquals(0, this.populationApi.getPopulation(this.regionCodes, null).getPopulations().size());
 	}
 
 	@Test
 	public final void getPopulationForRegionAndYearsNotNull() {
-		Assert.assertNotEquals(0, this.populationApi.getPopulationForRegion(this.regionCodes.get(0), this.years).getPopulations().size());
-	}
-
-	@Test
-	public final void getPopulationForRegionAndYearNotNull() {
-		Assert.assertNotEquals(0, this.populationApi.getPopulationForRegion(this.regionCodes.get(0), this.years.get(0)).getPopulations().size());
-	}
-
-	@Test
-	public final void getPopulationForRegions() {
-		Assert.assertNotEquals(0, this.populationApi.getPopulationForRegions(this.regionCodes).getPopulations().size());
-	}
-
-	@Test
-	public final void getPopulationForRegionsAndYearsNotNull() {
-		Assert.assertNotEquals(0, this.populationApi.getPopulationForRegions(this.regionCodes, this.years).getPopulations().size());
-	}
-
-	@Test
-	public final void getPopulationForYearNotNull() {
-		Assert.assertNotEquals(0, this.populationApi.getPopulationForYear(this.years.get(0)).getPopulations().size());
+		Assert.assertNotEquals(0, this.populationApi.getPopulation(this.regionCodes, this.years).getPopulations().size());
 	}
 
 	@Test
 	public final void getPopulationBetweenYearsNotNull() {
-		Assert.assertNotEquals(0, this.populationApi.getPopulationBetweenYears(this.years.get(0), this.years.get(this.years.size() - 1)).getPopulations().size());
-	}
-
-	@Test
-	public final void getPopulationForYearsNotNull() {
-		Assert.assertNotEquals(0, this.populationApi.getPopulationForYears(this.years).getPopulations().size());
+		Assert.assertNotEquals(0, this.populationApi.getPopulation(null, this.years).getPopulations().size());
 	}
 
 }
