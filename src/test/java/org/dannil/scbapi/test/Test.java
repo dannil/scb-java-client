@@ -31,7 +31,5 @@ public class Test {
 		for (Population p : collection4.getPopulations()) {
 			System.out.println(p);
 		}
-
-		api.environment().getAreaForRegions(regions, types, years);
 	}
 }
