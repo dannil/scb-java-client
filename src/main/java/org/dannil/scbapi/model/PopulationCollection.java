@@ -42,69 +42,6 @@ public final class PopulationCollection implements ISCBPopulationAPI {
 	}
 
 	@Override
-	public PopulationCollection getPopulationForRegion(String region) {
-		final PopulationCollection c = new PopulationCollection();
-		for (Population p : this.populations) {
-			if (p.getRegion().equals(region)) {
-				c.add(p);
-			}
-		}
-		return c;
-	}
-
-	@Override
-	public PopulationCollection getPopulationForRegion(String region, List<Integer> years) {
-		final PopulationCollection c = new PopulationCollection();
-		for (Population p : this.populations) {
-			for (Integer year : years) {
-				if (p.getRegion().equals(region) && p.getYear().equals(year)) {
-					c.add(p);
-				}
-			}
-		}
-		return c;
-	}
-
-	@Override
-	public PopulationCollection getPopulationForRegion(String region, Integer year) {
-		final PopulationCollection c = new PopulationCollection();
-		for (Population p : this.populations) {
-			if (p.getRegion().equals(region) && p.getYear().equals(year)) {
-				c.add(p);
-			}
-		}
-		return c;
-	}
-
-	@Override
-	public PopulationCollection getPopulationForRegions(List<String> regions) {
-		final PopulationCollection c = new PopulationCollection();
-		for (Population p : this.populations) {
-			for (String region : regions) {
-				if (p.equals(region)) {
-					c.add(p);
-				}
-			}
-		}
-		return c;
-	}
-
-	@Override
-	public PopulationCollection getPopulationForRegions(List<String> regions, List<Integer> years) {
-		final PopulationCollection c = new PopulationCollection();
-		for (Population p : this.populations) {
-			for (String region : regions) {
-				for (Integer year : years) {
-					if (p.getRegion().equals(region) && p.getYear().equals(year)) {
-						c.add(p);
-					}
-				}
-			}
-		}
-		return c;
-	}
-
-	@Override
 	public PopulationCollection getPopulationForYear(int year) {
 		final PopulationCollection c = new PopulationCollection();
 		for (Population p : this.populations) {
@@ -133,6 +70,69 @@ public final class PopulationCollection implements ISCBPopulationAPI {
 			for (Integer year : years) {
 				if (p.getYear().equals(year)) {
 					c.add(p);
+				}
+			}
+		}
+		return c;
+	}
+
+	@Override
+	public PopulationCollection getPopulationForRegion(String region) {
+		final PopulationCollection c = new PopulationCollection();
+		for (Population p : this.populations) {
+			if (p.getRegion().equals(region)) {
+				c.add(p);
+			}
+		}
+		return c;
+	}
+
+	@Override
+	public PopulationCollection getPopulationForRegion(String region, Integer year) {
+		final PopulationCollection c = new PopulationCollection();
+		for (Population p : this.populations) {
+			if (p.getRegion().equals(region) && p.getYear().equals(year)) {
+				c.add(p);
+			}
+		}
+		return c;
+	}
+
+	@Override
+	public PopulationCollection getPopulationForRegion(String region, List<Integer> years) {
+		final PopulationCollection c = new PopulationCollection();
+		for (Population p : this.populations) {
+			for (Integer year : years) {
+				if (p.getRegion().equals(region) && p.getYear().equals(year)) {
+					c.add(p);
+				}
+			}
+		}
+		return c;
+	}
+
+	@Override
+	public PopulationCollection getPopulationForRegions(List<String> regions) {
+		final PopulationCollection c = new PopulationCollection();
+		for (Population p : this.populations) {
+			for (String region : regions) {
+				if (p.equals(region)) {
+					c.add(p);
+				}
+			}
+		}
+		return c;
+	}
+
+	@Override
+	public PopulationCollection getPopulationForRegions(List<String> regions, List<Integer> years) {
+		final PopulationCollection c = new PopulationCollection();
+		for (Population p : this.populations) {
+			for (String region : regions) {
+				for (Integer year : years) {
+					if (p.getRegion().equals(region) && p.getYear().equals(year)) {
+						c.add(p);
+					}
 				}
 			}
 		}
