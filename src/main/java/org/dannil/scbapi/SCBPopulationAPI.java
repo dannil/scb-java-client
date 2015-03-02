@@ -63,49 +63,6 @@ public final class SCBPopulationAPI extends AbstractSCBAPI implements ISCBPopula
 		return new PopulationCollection(JsonUtility.getNode(response, "data"));
 	}
 
-	public final PopulationCollection getPopulationForRegion(String region) {
-		return this.getPopulationForRegions(ListUtility.toList(region));
-	}
-
-	public final PopulationCollection getPopulationForRegion(String region, List<Integer> years) {
-		return this.getPopulationForRegions(ListUtility.toList(region), years);
-	}
-
-	public final PopulationCollection getPopulationForRegion(String region, Integer year) {
-		return this.getPopulationForRegions(ListUtility.toList(region), ListUtility.toList(year));
-	}
-
-	public final PopulationCollection getPopulationForRegions(List<String> regions) {
-		QueryBuilder<String, String> queryBuilder = new QueryBuilder<String, String>();
-
-		ArrayListMultimap<String, String> map = ArrayListMultimap.create();
-		map.put("ContentsCode", "BE0101N1");
-		for (String region : regions) {
-			map.put("Region", region);
-		}
-
-		String query = queryBuilder.build(map);
-		String response = RequestPoster.doPost("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy", query);
-		return new PopulationCollection(JsonUtility.getNode(response, "data"));
-	}
-
-	public final PopulationCollection getPopulationForRegions(List<String> regions, List<Integer> years) {
-		QueryBuilder<String, String> queryBuilder = new QueryBuilder<String, String>();
-
-		ArrayListMultimap<String, String> map = ArrayListMultimap.create();
-		map.put("ContentsCode", "BE0101N1");
-		for (String region : regions) {
-			map.put("Region", region);
-		}
-		for (Integer year : years) {
-			map.put("Tid", year.toString());
-		}
-
-		String query = queryBuilder.build(map);
-		String response = RequestPoster.doPost("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy", query);
-		return new PopulationCollection(JsonUtility.getNode(response, "data"));
-	}
-
 	public final PopulationCollection getPopulationForYear(int year) {
 		return this.getPopulationForYears(ListUtility.toList(year));
 	}
@@ -120,16 +77,44 @@ public final class SCBPopulationAPI extends AbstractSCBAPI implements ISCBPopula
 	}
 
 	public final PopulationCollection getPopulationForYears(List<Integer> years) {
+		return this.getPopulationForRegions(null, years);
+	}
+
+	public final PopulationCollection getPopulationForRegion(String region) {
+		return this.getPopulationForRegions(ListUtility.toList(region));
+	}
+
+	public final PopulationCollection getPopulationForRegion(String region, List<Integer> years) {
+		return this.getPopulationForRegions(ListUtility.toList(region), years);
+	}
+
+	public final PopulationCollection getPopulationForRegion(String region, Integer year) {
+		return this.getPopulationForRegions(ListUtility.toList(region), ListUtility.toList(year));
+	}
+
+	public final PopulationCollection getPopulationForRegions(List<String> regions) {
+		return this.getPopulationForRegions(regions, null);
+	}
+
+	public final PopulationCollection getPopulationForRegions(List<String> regions, List<Integer> years) {
 		QueryBuilder<String, String> queryBuilder = new QueryBuilder<String, String>();
 
 		ArrayListMultimap<String, String> map = ArrayListMultimap.create();
 		map.put("ContentsCode", "BE0101N1");
-		for (Integer year : years) {
-			map.put("Tid", year.toString());
+		if (regions != null) {
+			for (String region : regions) {
+				map.put("Region", region);
+			}
+		}
+		if (years != null) {
+			for (Integer year : years) {
+				map.put("Tid", year.toString());
+			}
 		}
 
 		String query = queryBuilder.build(map);
 		String response = RequestPoster.doPost("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy", query);
 		return new PopulationCollection(JsonUtility.getNode(response, "data"));
 	}
+
 }

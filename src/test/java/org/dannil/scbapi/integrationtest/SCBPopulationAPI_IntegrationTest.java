@@ -26,6 +26,8 @@ public class SCBPopulationAPI_IntegrationTest {
 		this.populationApi = new SCBPopulationAPI();
 
 		this.regionCodes = new ArrayList<String>();
+		this.regionTexts = new ArrayList<String>();
+
 		Map<String, String> map = this.coreApi.getRegionMappings();
 		for (String code : map.keySet()) {
 			this.regionCodes.add(code);
