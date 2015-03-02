@@ -42,26 +42,6 @@ public final class PopulationAPI extends AbstractAPI implements PopulationOperat
 		this.url = "http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy";
 	}
 
-	public final List<Integer> getAvailableYears() {
-		String response = RequestPoster.doGet(this.url);
-
-		ObjectMapper mapper = new ObjectMapper();
-		try {
-			JsonNode node = mapper.readTree(response);
-			List<JsonNode> nodes = node.findValues("values");
-			node = nodes.get(nodes.size() - 1);
-
-			List<Integer> years = new ArrayList<Integer>(node.size());
-			for (int i = 0; i < node.size(); i++) {
-				years.add(node.get(i).asInt());
-			}
-			return years;
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
 	public final List<String> getAvailableRegions() {
 		String response = RequestPoster.doGet(this.url);
 
@@ -82,8 +62,28 @@ public final class PopulationAPI extends AbstractAPI implements PopulationOperat
 		return null;
 	}
 
+	public final List<Integer> getAvailableYears() {
+		String response = RequestPoster.doGet(this.url);
+
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			JsonNode node = mapper.readTree(response);
+			List<JsonNode> nodes = node.findValues("values");
+			node = nodes.get(nodes.size() - 1);
+
+			List<Integer> years = new ArrayList<Integer>(node.size());
+			for (int i = 0; i < node.size(); i++) {
+				years.add(node.get(i).asInt());
+			}
+			return years;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 	public final PopulationCollection getPopulation() {
-		return this.getPopulation(this.getAvailableRegions(), this.getAvailableYears());
+		return this.getPopulation(null, null);
 	}
 
 	public final PopulationCollection getPopulation(List<String> regions, List<Integer> years) {
