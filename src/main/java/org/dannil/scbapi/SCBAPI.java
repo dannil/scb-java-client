@@ -19,7 +19,7 @@ public final class SCBAPI extends AbstractAPI {
 	private List<AbstractAPI> apis;
 
 	private PopulationAPI populationApi;
-	private AreaAPI areaApi;
+	private EnvironmentAPI areaApi;
 
 	public SCBAPI() {
 		this.apis = new ArrayList<AbstractAPI>();
@@ -27,7 +27,7 @@ public final class SCBAPI extends AbstractAPI {
 		this.populationApi = new PopulationAPI();
 		this.apis.add(this.populationApi);
 
-		this.areaApi = new AreaAPI();
+		this.areaApi = new EnvironmentAPI();
 		this.apis.add(this.areaApi);
 
 		setLocale(Locale.getDefault());
@@ -61,7 +61,7 @@ public final class SCBAPI extends AbstractAPI {
 		return null;
 	}
 
-	public final AreaAPI area() {
+	public final EnvironmentAPI area() {
 		return this.areaApi;
 	}
 
