@@ -1,8 +1,14 @@
 package org.dannil.scbapi;
 
+import java.util.List;
 import java.util.Locale;
 
-public final class EnvironmentAPI extends AbstractAPI implements EnvironmentOperations {
+import org.dannil.scbapi.utility.QueryBuilder;
+import org.dannil.scbapi.utility.RequestPoster;
+
+import com.google.common.collect.ArrayListMultimap;
+
+public final class EnvironmentAPI extends AbstractAPI implements AreaOperations {
 
 	public EnvironmentAPI() {
 		this.locale = Locale.getDefault();
@@ -13,4 +19,28 @@ public final class EnvironmentAPI extends AbstractAPI implements EnvironmentOper
 		this.locale = locale;
 	}
 
+	public final void getAreaForRegions(List<String> regions, List<String> types, List<Integer> years) {
+		QueryBuilder<String, String> queryBuilder = new QueryBuilder<String, String>();
+
+		ArrayListMultimap<String, String> map = ArrayListMultimap.create();
+		map.put("ContentsCode", "MI0802AA");
+		if (regions != null) {
+			for (String region : regions) {
+				map.put("Region", region);
+			}
+		}
+		if (types != null) {
+			for (String type : types) {
+				map.put("ArealTyp", type);
+			}
+		}
+		if (years != null) {
+			for (Integer year : years) {
+				map.put("Tid", year.toString());
+			}
+		}
+
+		String query = queryBuilder.build(map);
+		String response = RequestPoster.doPost("http://api.scb.se/OV0104/v1/doris/sv/ssd/MI/MI0802/Areal2012", query);
+	}
 }

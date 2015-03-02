@@ -7,7 +7,6 @@ import java.util.Locale;
 
 import org.dannil.scbapi.model.PopulationCollection;
 import org.dannil.scbapi.utility.JsonUtility;
-import org.dannil.scbapi.utility.ListUtility;
 import org.dannil.scbapi.utility.QueryBuilder;
 import org.dannil.scbapi.utility.RequestPoster;
 
@@ -63,57 +62,31 @@ public final class PopulationAPI extends AbstractAPI implements PopulationOperat
 		return null;
 	}
 
+	public final List<String> getAvailableRegions() {
+		String response = RequestPoster.doGet(this.url);
+
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			JsonNode node = mapper.readTree(response);
+			List<JsonNode> nodes = node.findValues("values");
+			node = nodes.get(0);
+
+			List<String> years = new ArrayList<String>(node.size());
+			for (int i = 0; i < node.size(); i++) {
+				years.add(node.get(i).asText());
+			}
+			return years;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 	public final PopulationCollection getPopulation() {
-		QueryBuilder<String, String> queryBuilder = new QueryBuilder<String, String>();
-
-		ArrayListMultimap<String, String> map = ArrayListMultimap.create();
-		map.put("ContentsCode", "BE0101N1");
-
-		List<Integer> years = this.getAvailableYears();
-		for (Integer year : years) {
-			map.put("Tid", year.toString());
-		}
-
-		String query = queryBuilder.build(map);
-		String response = RequestPoster.doPost(this.url, query);
-
-		return new PopulationCollection(JsonUtility.getNode(response, "data"));
+		return this.getPopulation(this.getAvailableRegions(), this.getAvailableYears());
 	}
 
-	public final PopulationCollection getPopulationForYear(int year) {
-		return this.getPopulationForYears(ListUtility.toList(year));
-	}
-
-	public final PopulationCollection getPopulationBetweenYears(int startYear, int endYear) {
-		int size = endYear - startYear + 1;
-		List<Integer> years = new ArrayList<Integer>(size);
-		for (int i = 0; i < size; i++) {
-			years.add(startYear + i);
-		}
-		return this.getPopulationForYears(years);
-	}
-
-	public final PopulationCollection getPopulationForYears(List<Integer> years) {
-		return this.getPopulationForRegions(null, years);
-	}
-
-	public final PopulationCollection getPopulationForRegion(String region) {
-		return this.getPopulationForRegions(ListUtility.toList(region));
-	}
-
-	public final PopulationCollection getPopulationForRegion(String region, List<Integer> years) {
-		return this.getPopulationForRegions(ListUtility.toList(region), years);
-	}
-
-	public final PopulationCollection getPopulationForRegion(String region, Integer year) {
-		return this.getPopulationForRegions(ListUtility.toList(region), ListUtility.toList(year));
-	}
-
-	public final PopulationCollection getPopulationForRegions(List<String> regions) {
-		return this.getPopulationForRegions(regions, null);
-	}
-
-	public final PopulationCollection getPopulationForRegions(List<String> regions, List<Integer> years) {
+	public final PopulationCollection getPopulation(List<String> regions, List<Integer> years) {
 		QueryBuilder<String, String> queryBuilder = new QueryBuilder<String, String>();
 
 		ArrayListMultimap<String, String> map = ArrayListMultimap.create();
