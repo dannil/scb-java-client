@@ -2,11 +2,11 @@ package org.dannil.scbapi.integrationtest;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
-import org.dannil.scbapi.SCBAPI;
 import org.dannil.scbapi.PopulationAPI;
+import org.dannil.scbapi.SCBAPI;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -21,20 +21,18 @@ public class SCBPopulationAPI_IntegrationTest {
 	private List<String> regionTexts;
 	private List<Integer> years;
 
-	public SCBPopulationAPI_IntegrationTest() {
+	@Before
+	public void initialize() {
 		this.coreApi = new SCBAPI();
-		this.populationApi = new PopulationAPI();
+		this.populationApi = this.coreApi.population();
 
 		this.regionCodes = new ArrayList<String>();
 		this.regionTexts = new ArrayList<String>();
 
-		Map<String, String> map = this.coreApi.getRegionMappings();
-		for (String code : map.keySet()) {
-			this.regionCodes.add(code);
-			this.regionTexts.add(map.get(code));
-		}
+		this.regionCodes.add("1263");
 
-		this.years = this.populationApi.getAvailableYears();
+		this.years = new ArrayList<Integer>();
+		this.years.add(2002);
 	}
 
 	@Test
