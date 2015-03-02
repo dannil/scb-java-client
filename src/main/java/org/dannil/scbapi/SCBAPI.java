@@ -22,7 +22,7 @@ public final class SCBAPI extends AbstractSCBAPI {
 
 	public SCBAPI() {
 		this.apis = new ArrayList<AbstractSCBAPI>();
-		this.locale = new Locale("sv");
+		this.locale = Locale.getDefault();
 
 		this.populationApi = new SCBPopulationAPI(this.locale);
 		this.apis.add(this.populationApi);

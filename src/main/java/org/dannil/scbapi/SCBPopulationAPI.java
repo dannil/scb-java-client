@@ -18,7 +18,7 @@ import com.google.common.collect.ArrayListMultimap;
 public final class SCBPopulationAPI extends AbstractSCBAPI implements ISCBPopulationAPI {
 
 	public SCBPopulationAPI() {
-		this.locale = new Locale("sv");
+		this.locale = Locale.getDefault();
 	}
 
 	public SCBPopulationAPI(Locale locale) {
@@ -26,7 +26,7 @@ public final class SCBPopulationAPI extends AbstractSCBAPI implements ISCBPopula
 		this.locale = locale;
 	}
 
-	private final List<Integer> getAvailableYears() {
+	public final List<Integer> getAvailableYears() {
 		String response = RequestPoster.doGet("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy");
 
 		ObjectMapper mapper = new ObjectMapper();
