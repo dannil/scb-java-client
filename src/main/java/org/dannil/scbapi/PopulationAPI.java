@@ -17,17 +17,34 @@ import com.google.common.collect.ArrayListMultimap;
 
 public final class PopulationAPI extends AbstractAPI implements PopulationOperations {
 
+	private String url;
+
 	public PopulationAPI() {
 		this.locale = Locale.getDefault();
+
+		buildUrl();
 	}
 
 	public PopulationAPI(Locale locale) {
 		this();
 		this.locale = locale;
+
+		buildUrl();
+	}
+
+	@Override
+	public final void setLocale(Locale locale) {
+		this.locale = locale;
+
+		buildUrl();
+	}
+
+	public final void buildUrl() {
+		this.url = "http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy";
 	}
 
 	public final List<Integer> getAvailableYears() {
-		String response = RequestPoster.doGet("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy");
+		String response = RequestPoster.doGet(this.url);
 
 		ObjectMapper mapper = new ObjectMapper();
 		try {
@@ -58,7 +75,7 @@ public final class PopulationAPI extends AbstractAPI implements PopulationOperat
 		}
 
 		String query = queryBuilder.build(map);
-		String response = RequestPoster.doPost("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy", query);
+		String response = RequestPoster.doPost(this.url, query);
 
 		return new PopulationCollection(JsonUtility.getNode(response, "data"));
 	}
@@ -113,8 +130,7 @@ public final class PopulationAPI extends AbstractAPI implements PopulationOperat
 		}
 
 		String query = queryBuilder.build(map);
-		String response = RequestPoster.doPost("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy", query);
+		String response = RequestPoster.doPost(this.url, query);
 		return new PopulationCollection(JsonUtility.getNode(response, "data"));
 	}
-
 }
