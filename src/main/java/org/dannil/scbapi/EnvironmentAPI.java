@@ -3,12 +3,15 @@ package org.dannil.scbapi;
 import java.util.List;
 import java.util.Locale;
 
+import org.dannil.scbapi.model.AreaCollection;
 import org.dannil.scbapi.utility.QueryBuilder;
 import org.dannil.scbapi.utility.RequestPoster;
 
 import com.google.common.collect.ArrayListMultimap;
 
 public final class EnvironmentAPI extends AbstractAPI implements AreaOperations {
+
+	// TODO
 
 	public EnvironmentAPI() {
 		this.locale = Locale.getDefault();
@@ -19,7 +22,11 @@ public final class EnvironmentAPI extends AbstractAPI implements AreaOperations 
 		this.locale = locale;
 	}
 
-	public final void getAreaForRegions(List<String> regions, List<String> types, List<Integer> years) {
+	public final AreaCollection getArea() {
+		return null;
+	}
+
+	public final AreaCollection getArea(List<String> regions, List<String> types, List<Integer> years) {
 		QueryBuilder<String, String> queryBuilder = new QueryBuilder<String, String>();
 
 		ArrayListMultimap<String, String> map = ArrayListMultimap.create();
@@ -42,5 +49,6 @@ public final class EnvironmentAPI extends AbstractAPI implements AreaOperations 
 
 		String query = queryBuilder.build(map);
 		String response = RequestPoster.doPost("http://api.scb.se/OV0104/v1/doris/sv/ssd/MI/MI0802/Areal2012", query);
+		return null;
 	}
 }
