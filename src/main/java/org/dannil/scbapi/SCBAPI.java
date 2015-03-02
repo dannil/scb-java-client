@@ -23,26 +23,20 @@ public final class SCBAPI extends AbstractSCBAPI {
 
 	public SCBAPI() {
 		this.apis = new ArrayList<AbstractSCBAPI>();
-		this.locale = Locale.getDefault();
 
-		this.populationApi = new SCBPopulationAPI(this.locale);
+		this.populationApi = new SCBPopulationAPI();
 		this.apis.add(this.populationApi);
 
-		this.areaApi = new SCBAreaAPI(this.locale);
+		this.areaApi = new SCBAreaAPI();
 		this.apis.add(this.areaApi);
+
+		setLocale(Locale.getDefault());
 	}
 
 	public SCBAPI(Locale locale) {
 		this();
-		this.locale = locale;
 
-		setLocaleForAPIs();
-	}
-
-	private void setLocaleForAPIs() {
-		for (AbstractSCBAPI api : this.apis) {
-			api.setLocale(this.locale);
-		}
+		setLocale(locale);
 	}
 
 	public final Map<String, String> getRegionMappings() {
@@ -67,8 +61,21 @@ public final class SCBAPI extends AbstractSCBAPI {
 		return null;
 	}
 
+	public final SCBAreaAPI area() {
+		return this.areaApi;
+	}
+
 	public final SCBPopulationAPI population() {
 		return this.populationApi;
+	}
+
+	@Override
+	public final void setLocale(Locale locale) {
+		this.locale = locale;
+
+		for (AbstractSCBAPI api : this.apis) {
+			api.setLocale(this.locale);
+		}
 	}
 
 	public void test() {
