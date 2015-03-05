@@ -104,6 +104,6 @@ public final class PopulationAPI extends AbstractAPI implements PopulationOperat
 
 		String query = queryBuilder.build(map);
 		String response = RequestPoster.doPost(this.url, query);
-		return new PopulationCollection(JsonUtility.getNode(response, "data"));
+		return new PopulationCollection(JsonUtility.getNode(response));
 	}
 }

@@ -15,8 +15,10 @@ public final class AreaCollection implements AreaOperations {
 		this.areas = new ArrayList<Area>();
 	}
 
-	public AreaCollection(JsonNode data) {
+	public AreaCollection(JsonNode node) {
 		this();
+
+		JsonNode data = node.get("data");
 
 		List<JsonNode> keys = data.findValues("key");
 		List<JsonNode> values = data.findValues("values");

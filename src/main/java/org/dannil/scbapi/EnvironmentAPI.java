@@ -50,6 +50,6 @@ public final class EnvironmentAPI extends AbstractAPI implements AreaOperations 
 
 		String query = queryBuilder.build(map);
 		String response = RequestPoster.doPost("http://api.scb.se/OV0104/v1/doris/sv/ssd/MI/MI0802/Areal2012", query);
-		return new AreaCollection(JsonUtility.getNode(response, "data"));
+		return new AreaCollection(JsonUtility.getNode(response));
 	}
 }

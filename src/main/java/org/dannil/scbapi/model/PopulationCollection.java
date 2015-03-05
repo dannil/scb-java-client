@@ -17,8 +17,10 @@ public final class PopulationCollection implements PopulationOperations {
 		this.populations = new ArrayList<Population>();
 	}
 
-	public PopulationCollection(JsonNode data) {
+	public PopulationCollection(JsonNode node) {
 		this();
+
+		JsonNode data = node.get("data");
 
 		List<JsonNode> keys = data.findValues("key");
 		List<JsonNode> values = data.findValues("values");
