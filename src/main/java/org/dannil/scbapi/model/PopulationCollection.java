@@ -43,7 +43,9 @@ public final class PopulationCollection implements PopulationOperations {
 	public PopulationCollection getPopulation(List<String> regions, List<Integer> years) {
 		final PopulationCollection c = new PopulationCollection();
 		for (Population p : this.populations) {
-			if (regions == null) {
+			if (regions == null && years == null) {
+				return this;
+			} else if (regions == null) {
 				for (Integer year : years) {
 					if (p.getYear().equals(year)) {
 						c.add(p);
