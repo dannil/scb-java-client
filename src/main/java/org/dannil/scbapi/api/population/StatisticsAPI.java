@@ -1,10 +1,11 @@
-package org.dannil.scbapi;
+package org.dannil.scbapi.api.population;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import org.dannil.scbapi.api.AbstractAPI;
 import org.dannil.scbapi.model.PopulationCollection;
 import org.dannil.scbapi.utility.JsonUtility;
 import org.dannil.scbapi.utility.QueryBuilder;
@@ -14,17 +15,17 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.ArrayListMultimap;
 
-public final class PopulationAPI extends AbstractAPI implements PopulationOperations {
+public final class StatisticsAPI extends AbstractAPI implements PopulationOperations {
 
 	private String url;
 
-	public PopulationAPI() {
+	public StatisticsAPI() {
 		this.locale = Locale.getDefault();
 
 		buildUrl();
 	}
 
-	public PopulationAPI(Locale locale) {
+	public StatisticsAPI(Locale locale) {
 		this();
 		this.locale = locale;
 

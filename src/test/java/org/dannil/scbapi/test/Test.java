@@ -3,8 +3,11 @@ package org.dannil.scbapi.test;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
-import org.dannil.scbapi.SCBAPI;
+import org.dannil.scbapi.api.SCBAPI;
+import org.dannil.scbapi.model.Area;
+import org.dannil.scbapi.model.AreaCollection;
 import org.dannil.scbapi.model.Population;
 import org.dannil.scbapi.model.PopulationCollection;
 
@@ -16,7 +19,8 @@ public class Test {
 		SCBAPI api = new SCBAPI(locale);
 
 		List<String> regions = new ArrayList<String>();
-		regions.add("1263");
+		regions.add("00");
+		regions.add("1267");
 
 		List<String> types = new ArrayList<String>();
 		types.add("01");
@@ -26,10 +30,26 @@ public class Test {
 		years.add(2012);
 		years.add(2013);
 
+		Map<String, String> map = api.getRegionMappings();
+		for (String key : map.keySet()) {
+			// System.out.println(key + " : " + map.get(key));
+		}
+
 		// WORKS
 		PopulationCollection collection4 = api.population().getPopulation();
 		for (Population p : collection4.getPopulations()) {
-			System.out.println(p);
+			// System.out.println(p);
 		}
+
+		AreaCollection collection5 = api.environment().getArea(regions, null, years);
+		for (Area a : collection5.getAreas()) {
+			System.out.println(a);
+		}
+
+		AreaCollection collection6 = api.environment().getArea(regions, types, years);
+		for (Area a : collection6.getAreas()) {
+			System.out.println(a);
+		}
+
 	}
 }

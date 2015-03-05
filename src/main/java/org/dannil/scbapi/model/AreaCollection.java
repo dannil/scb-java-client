@@ -3,7 +3,7 @@ package org.dannil.scbapi.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.dannil.scbapi.AreaOperations;
+import org.dannil.scbapi.api.environment.AreaOperations;
 
 import com.fasterxml.jackson.databind.JsonNode;
 

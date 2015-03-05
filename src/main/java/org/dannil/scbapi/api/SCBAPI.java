@@ -1,4 +1,4 @@
-package org.dannil.scbapi;
+package org.dannil.scbapi.api;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import org.dannil.scbapi.api.environment.EnvironmentAPI;
+import org.dannil.scbapi.api.population.StatisticsAPI;
 import org.dannil.scbapi.utility.QueryBuilder;
 import org.dannil.scbapi.utility.RequestPoster;
 
@@ -18,13 +20,13 @@ public final class SCBAPI extends AbstractAPI {
 
 	private List<AbstractAPI> apis;
 
-	private PopulationAPI populationApi;
+	private StatisticsAPI populationApi;
 	private EnvironmentAPI environmentApi;
 
 	public SCBAPI() {
 		this.apis = new ArrayList<AbstractAPI>();
 
-		this.populationApi = new PopulationAPI();
+		this.populationApi = new StatisticsAPI();
 		this.apis.add(this.populationApi);
 
 		this.environmentApi = new EnvironmentAPI();
@@ -65,7 +67,7 @@ public final class SCBAPI extends AbstractAPI {
 		return this.environmentApi;
 	}
 
-	public final PopulationAPI population() {
+	public final StatisticsAPI population() {
 		return this.populationApi;
 	}
 

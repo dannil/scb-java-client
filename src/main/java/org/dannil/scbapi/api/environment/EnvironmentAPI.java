@@ -1,8 +1,9 @@
-package org.dannil.scbapi;
+package org.dannil.scbapi.api.environment;
 
 import java.util.List;
 import java.util.Locale;
 
+import org.dannil.scbapi.api.AbstractAPI;
 import org.dannil.scbapi.model.AreaCollection;
 import org.dannil.scbapi.utility.JsonUtility;
 import org.dannil.scbapi.utility.QueryBuilder;

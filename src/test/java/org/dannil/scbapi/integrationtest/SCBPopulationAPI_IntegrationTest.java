@@ -3,8 +3,8 @@ package org.dannil.scbapi.integrationtest;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.dannil.scbapi.PopulationAPI;
-import org.dannil.scbapi.SCBAPI;
+import org.dannil.scbapi.api.SCBAPI;
+import org.dannil.scbapi.api.population.StatisticsAPI;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,7 +15,7 @@ import org.junit.runners.JUnit4;
 public class SCBPopulationAPI_IntegrationTest {
 
 	private SCBAPI coreApi;
-	private PopulationAPI populationApi;
+	private StatisticsAPI populationApi;
 
 	private List<String> regionCodes;
 	private List<String> regionTexts;
