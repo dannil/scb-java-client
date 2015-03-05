@@ -1,56 +1,26 @@
 package org.dannil.scbapi.api.environment;
 
-import java.util.List;
 import java.util.Locale;
 
-import org.dannil.scbapi.api.AbstractAPI;
-import org.dannil.scbapi.model.AreaCollection;
-import org.dannil.scbapi.utility.JsonUtility;
-import org.dannil.scbapi.utility.QueryBuilder;
-import org.dannil.scbapi.utility.RequestPoster;
+import org.dannil.scbapi.api.AbstractContainerAPI;
 
-import com.google.common.collect.ArrayListMultimap;
+public final class EnvironmentAPI extends AbstractContainerAPI {
 
-public final class EnvironmentAPI extends AbstractAPI implements AreaOperations {
-
-	// TODO
+	private LandAndWaterAreaAPI landAndWaterArea;
 
 	public EnvironmentAPI() {
-		this.locale = Locale.getDefault();
+		this.landAndWaterArea = new LandAndWaterAreaAPI();
+		super.apis.add(this.landAndWaterArea);
 	}
 
 	public EnvironmentAPI(Locale locale) {
 		this();
-		this.locale = locale;
+
+		super.setLocale(locale);
 	}
 
-	public final AreaCollection getArea() {
-		return this.getArea(null, null, null);
+	public LandAndWaterAreaAPI landAndWater() {
+		return this.landAndWaterArea;
 	}
 
-	public final AreaCollection getArea(List<String> regions, List<String> types, List<Integer> years) {
-		QueryBuilder<String, String> queryBuilder = new QueryBuilder<String, String>();
-
-		ArrayListMultimap<String, String> map = ArrayListMultimap.create();
-		map.put("ContentsCode", "MI0802AA");
-		if (regions != null) {
-			for (String region : regions) {
-				map.put("Region", region);
-			}
-		}
-		if (types != null) {
-			for (String type : types) {
-				map.put("ArealTyp", type);
-			}
-		}
-		if (years != null) {
-			for (Integer year : years) {
-				map.put("Tid", year.toString());
-			}
-		}
-
-		String query = queryBuilder.build(map);
-		String response = RequestPoster.doPost("http://api.scb.se/OV0104/v1/doris/sv/ssd/MI/MI0802/Areal2012", query);
-		return new AreaCollection(JsonUtility.getNode(response));
-	}
 }
