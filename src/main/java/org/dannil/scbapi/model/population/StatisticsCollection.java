@@ -1,23 +1,23 @@
-package org.dannil.scbapi.model;
+package org.dannil.scbapi.model.population;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.dannil.scbapi.api.population.PopulationOperations;
+import org.dannil.scbapi.api.population.StatisticsOperations;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-public final class PopulationCollection implements PopulationOperations {
+public final class StatisticsCollection implements StatisticsOperations {
 
 	// TODO
 
-	private List<Population> populations;
+	private List<Statistics> populations;
 
-	private PopulationCollection() {
-		this.populations = new ArrayList<Population>();
+	private StatisticsCollection() {
+		this.populations = new ArrayList<Statistics>();
 	}
 
-	public PopulationCollection(JsonNode node) {
+	public StatisticsCollection(JsonNode node) {
 		this();
 
 		JsonNode data = node.get("data");
@@ -33,18 +33,18 @@ public final class PopulationCollection implements PopulationOperations {
 			JsonNode valueAtPosition = values.get(i);
 			final Long amount = valueAtPosition.get(0).asLong();
 
-			Population p = new Population(region, year, amount);
+			Statistics p = new Statistics(region, year, amount);
 			this.populations.add(p);
 		}
 	}
 
-	public PopulationCollection getPopulation() {
+	public StatisticsCollection getPopulation() {
 		return this;
 	}
 
-	public PopulationCollection getPopulation(List<String> regions, List<Integer> years) {
-		final PopulationCollection c = new PopulationCollection();
-		for (Population p : this.populations) {
+	public StatisticsCollection getPopulation(List<String> regions, List<Integer> years) {
+		final StatisticsCollection c = new StatisticsCollection();
+		for (Statistics p : this.populations) {
 			if (regions == null && years == null) {
 				return this;
 			} else if (regions == null) {
@@ -72,15 +72,15 @@ public final class PopulationCollection implements PopulationOperations {
 		return c;
 	}
 
-	public void add(Population p) {
+	public void add(Statistics p) {
 		this.populations.add(p);
 	}
 
-	public List<Population> getPopulations() {
+	public List<Statistics> getPopulations() {
 		return this.populations;
 	}
 
-	public void setPopulations(List<Population> populations) {
+	public void setPopulations(List<Statistics> populations) {
 		this.populations = populations;
 	}
 

@@ -8,7 +8,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import org.dannil.scbapi.api.environment.EnvironmentAPI;
-import org.dannil.scbapi.api.population.StatisticsAPI;
+import org.dannil.scbapi.api.population.PopulationAPI;
 import org.dannil.scbapi.utility.QueryBuilder;
 import org.dannil.scbapi.utility.RequestPoster;
 
@@ -20,13 +20,13 @@ public final class SCBAPI extends AbstractAPI {
 
 	private List<AbstractAPI> apis;
 
-	private StatisticsAPI populationApi;
+	private PopulationAPI populationApi;
 	private EnvironmentAPI environmentApi;
 
 	public SCBAPI() {
 		this.apis = new ArrayList<AbstractAPI>();
 
-		this.populationApi = new StatisticsAPI();
+		this.populationApi = new PopulationAPI();
 		this.apis.add(this.populationApi);
 
 		this.environmentApi = new EnvironmentAPI();
@@ -67,7 +67,7 @@ public final class SCBAPI extends AbstractAPI {
 		return this.environmentApi;
 	}
 
-	public final StatisticsAPI population() {
+	public final PopulationAPI population() {
 		return this.populationApi;
 	}
 

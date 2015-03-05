@@ -8,8 +8,8 @@ import java.util.Map;
 import org.dannil.scbapi.api.SCBAPI;
 import org.dannil.scbapi.model.Area;
 import org.dannil.scbapi.model.AreaCollection;
-import org.dannil.scbapi.model.Population;
-import org.dannil.scbapi.model.PopulationCollection;
+import org.dannil.scbapi.model.population.Statistics;
+import org.dannil.scbapi.model.population.StatisticsCollection;
 
 public class Test {
 
@@ -36,8 +36,8 @@ public class Test {
 		}
 
 		// WORKS
-		PopulationCollection collection4 = api.population().getPopulation();
-		for (Population p : collection4.getPopulations()) {
+		StatisticsCollection collection4 = api.population().statistics().getPopulation();
+		for (Statistics p : collection4.getPopulations()) {
 			// System.out.println(p);
 		}
 
