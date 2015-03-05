@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Locale;
 
 import org.dannil.scbapi.model.AreaCollection;
+import org.dannil.scbapi.utility.JsonUtility;
 import org.dannil.scbapi.utility.QueryBuilder;
 import org.dannil.scbapi.utility.RequestPoster;
 
@@ -23,7 +24,7 @@ public final class EnvironmentAPI extends AbstractAPI implements AreaOperations 
 	}
 
 	public final AreaCollection getArea() {
-		return null;
+		return this.getArea(null, null, null);
 	}
 
 	public final AreaCollection getArea(List<String> regions, List<String> types, List<Integer> years) {
@@ -49,6 +50,6 @@ public final class EnvironmentAPI extends AbstractAPI implements AreaOperations 
 
 		String query = queryBuilder.build(map);
 		String response = RequestPoster.doPost("http://api.scb.se/OV0104/v1/doris/sv/ssd/MI/MI0802/Areal2012", query);
-		return null;
+		return new AreaCollection(JsonUtility.getNode(response, "data"));
 	}
 }
