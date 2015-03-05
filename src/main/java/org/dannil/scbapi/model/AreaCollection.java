@@ -46,14 +46,74 @@ public final class AreaCollection implements AreaOperations {
 
 	@Override
 	public AreaCollection getArea() {
-		// TODO Auto-generated method stub
-		return null;
+		return this;
 	}
 
 	@Override
 	public AreaCollection getArea(List<String> regions, List<String> types, List<Integer> years) {
-		// TODO Auto-generated method stub
-		return null;
+		final AreaCollection c = new AreaCollection();
+		for (Area a : c.getAreas()) {
+			if (regions == null && types == null && years == null) {
+				return this;
+			} else if (regions == null && types == null) {
+				for (Integer year : years) {
+					if (a.getYear().equals(year)) {
+						c.add(a);
+					}
+				}
+			} else if (regions == null && years == null) {
+				for (String type : types) {
+					if (a.getType() == type) {
+						c.add(a);
+					}
+				}
+			} else if (types == null && years == null) {
+				for (String region : regions) {
+					if (a.getRegion().equals(region)) {
+						c.add(a);
+					}
+				}
+			} else if (regions == null) {
+				for (String type : types) {
+					for (Integer year : years) {
+						if (a.getType() == type && a.getYear().equals(year)) {
+							c.add(a);
+						}
+					}
+				}
+			} else if (types == null) {
+				for (String region : regions) {
+					for (Integer year : years) {
+						if (a.getRegion().equals(region) && a.getYear().equals(year)) {
+							c.add(a);
+						}
+					}
+				}
+			} else if (years == null) {
+				for (String region : regions) {
+					for (String type : types) {
+						if (a.getRegion().equals(region) && a.getType() == type) {
+							c.add(a);
+						}
+					}
+				}
+			} else {
+				for (String region : regions) {
+					for (String type : types) {
+						for (Integer year : years) {
+							if (a.getRegion().equals(region) && a.getType() == type && a.getYear().equals(year)) {
+								c.add(a);
+							}
+						}
+					}
+				}
+			}
+		}
+		return c;
+	}
+
+	public void add(Area a) {
+		this.areas.add(a);
 	}
 
 	public List<Area> getAreas() {
