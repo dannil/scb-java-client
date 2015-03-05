@@ -16,29 +16,27 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.ArrayListMultimap;
 
-public final class SCBAPI extends AbstractAPI {
-
-	private List<AbstractAPI> apis;
+public final class SCBAPI extends AbstractContainerAPI {
 
 	private PopulationAPI populationApi;
 	private EnvironmentAPI environmentApi;
 
 	public SCBAPI() {
-		this.apis = new ArrayList<AbstractAPI>();
+		super.apis = new ArrayList<AbstractAPI>();
 
 		this.populationApi = new PopulationAPI();
-		this.apis.add(this.populationApi);
+		super.apis.add(this.populationApi);
 
 		this.environmentApi = new EnvironmentAPI();
-		this.apis.add(this.environmentApi);
+		super.apis.add(this.environmentApi);
 
-		setLocale(Locale.getDefault());
+		super.setLocale(Locale.getDefault());
 	}
 
 	public SCBAPI(Locale locale) {
 		this();
 
-		setLocale(locale);
+		super.setLocale(locale);
 	}
 
 	public final Map<String, String> getRegionMappings() {
@@ -69,15 +67,6 @@ public final class SCBAPI extends AbstractAPI {
 
 	public final PopulationAPI population() {
 		return this.populationApi;
-	}
-
-	@Override
-	public final void setLocale(Locale locale) {
-		this.locale = locale;
-
-		for (AbstractAPI api : this.apis) {
-			api.setLocale(this.locale);
-		}
 	}
 
 	public void test() {

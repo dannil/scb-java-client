@@ -1,39 +1,28 @@
 package org.dannil.scbapi.api.population;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
 import org.dannil.scbapi.api.AbstractAPI;
+import org.dannil.scbapi.api.AbstractContainerAPI;
 
-public final class PopulationAPI extends AbstractAPI {
-
-	private List<AbstractAPI> apis;
+public final class PopulationAPI extends AbstractContainerAPI {
 
 	private StatisticsAPI statistics;
 
 	public PopulationAPI() {
-		this.apis = new ArrayList<AbstractAPI>();
+		super.apis = new ArrayList<AbstractAPI>();
 
 		this.statistics = new StatisticsAPI();
-		this.apis.add(this.statistics);
+		super.apis.add(this.statistics);
 
-		setLocale(Locale.getDefault());
+		super.setLocale(Locale.getDefault());
 	}
 
 	public PopulationAPI(Locale locale) {
 		this();
 
-		setLocale(locale);
-	}
-
-	@Override
-	public final void setLocale(Locale locale) {
-		this.locale = locale;
-
-		for (AbstractAPI api : this.apis) {
-			api.setLocale(this.locale);
-		}
+		super.setLocale(locale);
 	}
 
 	public StatisticsAPI statistics() {
