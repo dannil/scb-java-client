@@ -1,9 +1,7 @@
 package org.dannil.scbapi.api.population;
 
-import java.util.ArrayList;
 import java.util.Locale;
 
-import org.dannil.scbapi.api.AbstractAPI;
 import org.dannil.scbapi.api.AbstractContainerAPI;
 
 public final class PopulationAPI extends AbstractContainerAPI {
@@ -11,8 +9,6 @@ public final class PopulationAPI extends AbstractContainerAPI {
 	private StatisticsAPI statistics;
 
 	public PopulationAPI() {
-		super.apis = new ArrayList<AbstractAPI>();
-
 		this.statistics = new StatisticsAPI();
 		super.apis.add(this.statistics);
 
