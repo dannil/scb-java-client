@@ -15,7 +15,7 @@ import org.junit.runners.JUnit4;
 public class SCBPopulationAPI_IntegrationTest {
 
 	private SCBAPI coreApi;
-	private StatisticsAPI populationApi;
+	private StatisticsAPI statisticsAPI;
 
 	private List<String> regionCodes;
 	private List<String> regionTexts;
@@ -24,7 +24,7 @@ public class SCBPopulationAPI_IntegrationTest {
 	@Before
 	public void initialize() {
 		this.coreApi = new SCBAPI();
-		this.populationApi = this.coreApi.population();
+		this.statisticsAPI = this.coreApi.population().statistics();
 
 		this.regionCodes = new ArrayList<String>();
 		this.regionTexts = new ArrayList<String>();
@@ -37,22 +37,22 @@ public class SCBPopulationAPI_IntegrationTest {
 
 	@Test
 	public final void getPopulationNotNull() {
-		Assert.assertNotEquals(0, this.populationApi.getPopulation().getPopulations().size());
+		Assert.assertNotEquals(0, this.statisticsAPI.getPopulation().getPopulations().size());
 	}
 
 	@Test
 	public final void getPopulationForRegionsNotNull() {
-		Assert.assertNotEquals(0, this.populationApi.getPopulation(this.regionCodes, null).getPopulations().size());
+		Assert.assertNotEquals(0, this.statisticsAPI.getPopulation(this.regionCodes, null).getPopulations().size());
 	}
 
 	@Test
 	public final void getPopulationForRegionAndYearsNotNull() {
-		Assert.assertNotEquals(0, this.populationApi.getPopulation(this.regionCodes, this.years).getPopulations().size());
+		Assert.assertNotEquals(0, this.statisticsAPI.getPopulation(this.regionCodes, this.years).getPopulations().size());
 	}
 
 	@Test
 	public final void getPopulationBetweenYearsNotNull() {
-		Assert.assertNotEquals(0, this.populationApi.getPopulation(null, this.years).getPopulations().size());
+		Assert.assertNotEquals(0, this.statisticsAPI.getPopulation(null, this.years).getPopulations().size());
 	}
 
 }
