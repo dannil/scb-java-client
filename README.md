@@ -3,4 +3,4 @@
 
 # scb-api
 
-Java implementation of the API for SCB (Statistiska centralbyrån).
+Java implementation of the SCB (Statistiska centralbyrån) API.
