@@ -41,12 +41,12 @@ public class Test {
 			// System.out.println(p);
 		}
 
-		AreaCollection collection5 = api.environment().getArea(regions, null, years);
+		AreaCollection collection5 = api.environment().landAndWater().getArea(regions, null, years);
 		for (Area a : collection5.getAreas()) {
 			System.out.println(a);
 		}
 
-		AreaCollection collection6 = api.environment().getArea(regions, types, years);
+		AreaCollection collection6 = api.environment().landAndWater().getArea(regions, types, years);
 		for (Area a : collection6.getAreas()) {
 			System.out.println(a);
 		}
