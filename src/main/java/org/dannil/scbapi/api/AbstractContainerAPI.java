@@ -8,12 +8,12 @@ public abstract class AbstractContainerAPI extends AbstractAPI {
 
 	protected List<AbstractAPI> apis;
 
-	public AbstractContainerAPI() {
+	protected AbstractContainerAPI() {
 		this.apis = new ArrayList<AbstractAPI>();
 	}
 
 	@Override
-	public final void setLocale(Locale locale) {
+	protected final void setLocale(Locale locale) {
 		super.locale = locale;
 
 		for (AbstractAPI api : this.apis) {
