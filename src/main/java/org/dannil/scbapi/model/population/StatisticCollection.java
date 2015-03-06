@@ -3,21 +3,21 @@ package org.dannil.scbapi.model.population;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.dannil.scbapi.api.population.StatisticsOperations;
+import org.dannil.scbapi.api.population.StatisticOperations;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-public final class StatisticsCollection implements StatisticsOperations {
+public final class StatisticCollection implements StatisticOperations {
 
 	// TODO
 
 	private List<Statistics> populations;
 
-	private StatisticsCollection() {
+	private StatisticCollection() {
 		this.populations = new ArrayList<Statistics>();
 	}
 
-	public StatisticsCollection(JsonNode node) {
+	public StatisticCollection(JsonNode node) {
 		this();
 
 		JsonNode data = node.get("data");
@@ -38,12 +38,12 @@ public final class StatisticsCollection implements StatisticsOperations {
 		}
 	}
 
-	public StatisticsCollection getPopulation() {
+	public StatisticCollection getPopulation() {
 		return this;
 	}
 
-	public StatisticsCollection getPopulation(List<String> regions, List<Integer> years) {
-		final StatisticsCollection c = new StatisticsCollection();
+	public StatisticCollection getPopulation(List<String> regions, List<Integer> years) {
+		final StatisticCollection c = new StatisticCollection();
 		for (Statistics p : this.populations) {
 			if (regions == null && years == null) {
 				return this;

@@ -10,7 +10,7 @@ import org.dannil.scbapi.utility.RequestPoster;
 
 import com.google.common.collect.ArrayListMultimap;
 
-public final class LandAndWaterAreasAPI extends AbstractAPI implements AreaOperations {
+public final class LandAndWaterAreaAPI extends AbstractAPI implements AreaOperations {
 
 	@Override
 	public final AreaCollection getArea() {

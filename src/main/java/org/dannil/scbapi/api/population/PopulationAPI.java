@@ -6,11 +6,11 @@ import org.dannil.scbapi.api.AbstractContainerAPI;
 
 public final class PopulationAPI extends AbstractContainerAPI {
 
-	private StatisticsAPI statistics;
+	private StatisticAPI statistic;
 
 	public PopulationAPI() {
-		this.statistics = new StatisticsAPI();
-		super.apis.add(this.statistics);
+		this.statistic = new StatisticAPI();
+		super.apis.add(this.statistic);
 
 		super.setLocale(Locale.getDefault());
 	}
@@ -21,8 +21,8 @@ public final class PopulationAPI extends AbstractContainerAPI {
 		super.setLocale(locale);
 	}
 
-	public StatisticsAPI statistics() {
-		return this.statistics;
+	public StatisticAPI statistic() {
+		return this.statistic;
 	}
 
 }

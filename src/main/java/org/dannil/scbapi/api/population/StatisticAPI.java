@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Locale;
 
 import org.dannil.scbapi.api.AbstractAPI;
-import org.dannil.scbapi.model.population.StatisticsCollection;
+import org.dannil.scbapi.model.population.StatisticCollection;
 import org.dannil.scbapi.utility.JsonUtility;
 import org.dannil.scbapi.utility.QueryBuilder;
 import org.dannil.scbapi.utility.RequestPoster;
@@ -15,17 +15,17 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.ArrayListMultimap;
 
-public final class StatisticsAPI extends AbstractAPI implements StatisticsOperations {
+public final class StatisticAPI extends AbstractAPI implements StatisticOperations {
 
 	private String url;
 
-	public StatisticsAPI() {
+	public StatisticAPI() {
 		this.locale = Locale.getDefault();
 
 		buildUrl();
 	}
 
-	public StatisticsAPI(Locale locale) {
+	public StatisticAPI(Locale locale) {
 		this();
 		this.locale = locale;
 
@@ -83,11 +83,11 @@ public final class StatisticsAPI extends AbstractAPI implements StatisticsOperat
 		return null;
 	}
 
-	public final StatisticsCollection getPopulation() {
+	public final StatisticCollection getPopulation() {
 		return this.getPopulation(null, null);
 	}
 
-	public final StatisticsCollection getPopulation(List<String> regions, List<Integer> years) {
+	public final StatisticCollection getPopulation(List<String> regions, List<Integer> years) {
 		QueryBuilder<String, String> queryBuilder = new QueryBuilder<String, String>();
 
 		ArrayListMultimap<String, String> map = ArrayListMultimap.create();
@@ -105,6 +105,6 @@ public final class StatisticsAPI extends AbstractAPI implements StatisticsOperat
 
 		String query = queryBuilder.build(map);
 		String response = RequestPoster.doPost(this.url, query);
-		return new StatisticsCollection(JsonUtility.getNode(response));
+		return new StatisticCollection(JsonUtility.getNode(response));
 	}
 }
