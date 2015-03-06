@@ -6,6 +6,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import org.dannil.scbapi.api.SCBAPI;
+import org.dannil.scbapi.api.environment.LandAndWaterAreasAPI;
 import org.dannil.scbapi.model.Area;
 import org.dannil.scbapi.model.AreaCollection;
 import org.dannil.scbapi.model.population.Statistics;
@@ -15,7 +16,7 @@ public class Test {
 
 	public static void main(String[] args) {
 
-		Locale locale = new Locale("sv");
+		Locale locale = new Locale("en");
 		SCBAPI api = new SCBAPI(locale);
 
 		List<String> regions = new ArrayList<String>();
@@ -41,12 +42,15 @@ public class Test {
 			// System.out.println(p);
 		}
 
-		AreaCollection collection5 = api.environment().landAndWater().getArea(regions, null, years);
+		AreaCollection collection5 = api.environment().landAndWaterAreas().getArea(regions, null, years);
 		for (Area a : collection5.getAreas()) {
 			System.out.println(a);
 		}
 
-		AreaCollection collection6 = api.environment().landAndWater().getArea(regions, types, years);
+		api.setLocale(new Locale("sv"));
+
+		LandAndWaterAreasAPI lawApi = api.environment().landAndWaterAreas();
+		AreaCollection collection6 = lawApi.getArea(regions, types, years);
 		for (Area a : collection6.getAreas()) {
 			System.out.println(a);
 		}

@@ -6,11 +6,11 @@ import org.dannil.scbapi.api.AbstractContainerAPI;
 
 public final class EnvironmentAPI extends AbstractContainerAPI {
 
-	private LandAndWaterAreaAPI landAndWaterArea;
+	private LandAndWaterAreasAPI landAndWaterAreas;
 
 	public EnvironmentAPI() {
-		this.landAndWaterArea = new LandAndWaterAreaAPI();
-		super.apis.add(this.landAndWaterArea);
+		this.landAndWaterAreas = new LandAndWaterAreasAPI();
+		super.apis.add(this.landAndWaterAreas);
 	}
 
 	public EnvironmentAPI(Locale locale) {
@@ -19,8 +19,8 @@ public final class EnvironmentAPI extends AbstractContainerAPI {
 		super.setLocale(locale);
 	}
 
-	public LandAndWaterAreaAPI landAndWater() {
-		return this.landAndWaterArea;
+	public LandAndWaterAreasAPI landAndWaterAreas() {
+		return this.landAndWaterAreas;
 	}
 
 }
