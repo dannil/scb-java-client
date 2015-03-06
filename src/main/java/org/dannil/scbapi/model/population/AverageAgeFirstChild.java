@@ -1,4 +1,4 @@
-package org.dannil.scbapi.model;
+package org.dannil.scbapi.model.population;
 
 public final class AverageAgeFirstChild {
 

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Locale;
 
 import org.dannil.scbapi.api.AbstractAPI;
-import org.dannil.scbapi.model.AverageAgeFirstChild;
+import org.dannil.scbapi.model.population.AverageAgeFirstChild;
 import org.dannil.scbapi.utility.QueryBuilder;
 import org.dannil.scbapi.utility.RequestPoster;
 

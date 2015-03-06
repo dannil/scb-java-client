@@ -2,7 +2,7 @@ package org.dannil.scbapi.api.population;
 
 import java.util.List;
 
-import org.dannil.scbapi.model.AverageAgeFirstChild;
+import org.dannil.scbapi.model.population.AverageAgeFirstChild;
 
 public interface DemographyOperations {
 

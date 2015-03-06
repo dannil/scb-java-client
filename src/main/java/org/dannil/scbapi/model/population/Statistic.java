@@ -1,16 +1,16 @@
 package org.dannil.scbapi.model.population;
 
-public final class Statistics {
+public final class Statistic {
 
 	private String region;
 	private Integer year;
 	private Long amount;
 
-	public Statistics() {
+	public Statistic() {
 
 	}
 
-	public Statistics(String region, Integer year, Long amount) {
+	public Statistic(String region, Integer year, Long amount) {
 		this.region = region;
 		this.year = year;
 		this.amount = amount;
