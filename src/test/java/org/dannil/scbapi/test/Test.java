@@ -6,11 +6,9 @@ import java.util.Locale;
 import java.util.Map;
 
 import org.dannil.scbapi.api.SCBAPI;
-import org.dannil.scbapi.api.environment.LandAndWaterAreasAPI;
+import org.dannil.scbapi.api.environment.LandAndWaterAreaAPI;
 import org.dannil.scbapi.model.Area;
-import org.dannil.scbapi.model.AreaCollection;
-import org.dannil.scbapi.model.population.Statistics;
-import org.dannil.scbapi.model.population.StatisticsCollection;
+import org.dannil.scbapi.model.population.Statistic;
 
 public class Test {
 
@@ -37,23 +35,25 @@ public class Test {
 		}
 
 		// WORKS
-		StatisticsCollection collection4 = api.population().statistics().getPopulation();
-		for (Statistics p : collection4.getPopulations()) {
+		List<Statistic> collection4 = api.population().statistic().getPopulation();
+		for (Statistic p : collection4) {
 			// System.out.println(p);
 		}
 
-		AreaCollection collection5 = api.environment().landAndWaterAreas().getArea(regions, null, years);
-		for (Area a : collection5.getAreas()) {
+		List<Area> collection5 = api.environment().landAndWaterArea().getArea(regions, null, years);
+		for (Area a : collection5) {
 			System.out.println(a);
 		}
 
 		api.setLocale(new Locale("sv"));
 
-		LandAndWaterAreasAPI lawApi = api.environment().landAndWaterAreas();
-		AreaCollection collection6 = lawApi.getArea(regions, types, years);
-		for (Area a : collection6.getAreas()) {
+		LandAndWaterAreaAPI lawApi = api.environment().landAndWaterArea();
+		List<Area> collection6 = lawApi.getArea(regions, types, years);
+		for (Area a : collection6) {
 			System.out.println(a);
 		}
+
+		api.population().demography().getAverageAgeFirstChild(regions, null, years);
 
 	}
 }
