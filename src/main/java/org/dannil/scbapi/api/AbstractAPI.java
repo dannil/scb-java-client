@@ -6,7 +6,7 @@ public abstract class AbstractAPI {
 
 	protected Locale locale;
 
-	protected void setLocale(Locale locale) {
+	public void setLocale(Locale locale) {
 		this.locale = locale;
 	}
 
