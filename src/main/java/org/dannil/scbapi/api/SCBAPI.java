@@ -1,7 +1,6 @@
 package org.dannil.scbapi.api;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Locale;
@@ -22,8 +21,6 @@ public final class SCBAPI extends AbstractContainerAPI {
 	private EnvironmentAPI environmentApi;
 
 	public SCBAPI() {
-		super.apis = new ArrayList<AbstractAPI>();
-
 		this.populationApi = new PopulationAPI();
 		super.apis.add(this.populationApi);
 
