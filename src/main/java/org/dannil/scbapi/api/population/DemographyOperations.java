@@ -1,4 +1,4 @@
-package org.dannil.scbapi.api.environment;
+package org.dannil.scbapi.api.population;
 
 import java.util.List;
 
