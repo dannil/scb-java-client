@@ -40,7 +40,7 @@ public final class LandAndWaterAreaAPI extends AbstractAPI implements AreaOperat
 		}
 
 		String query = queryBuilder.build(map);
-		String response = RequestPoster.doPost("http://api.scb.se/OV0104/v1/doris/sv/ssd/MI/MI0802/Areal2012", query);
+		String response = RequestPoster.doPost("http://api.scb.se/OV0104/v1/doris/" + super.locale.getLanguage() + "/ssd/MI/MI0802/Areal2012", query);
 		return new AreaCollection(JsonUtility.getNode(response));
 	}
 
