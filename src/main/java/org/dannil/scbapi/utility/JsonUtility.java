@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.dannil.scbapi.model.environment.Area;
+import org.dannil.scbapi.model.environment.landandwaterarea.Area;
 import org.dannil.scbapi.model.population.statistic.PopulationStatistic;
 
 import com.fasterxml.jackson.databind.JsonNode;

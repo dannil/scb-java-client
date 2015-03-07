@@ -3,6 +3,7 @@ package org.dannil.scbapi.api.environment;
 import java.util.Locale;
 
 import org.dannil.scbapi.api.AbstractContainerAPI;
+import org.dannil.scbapi.api.environment.landandwaterarea.LandAndWaterAreaAPI;
 
 public final class EnvironmentAPI extends AbstractContainerAPI {
 
