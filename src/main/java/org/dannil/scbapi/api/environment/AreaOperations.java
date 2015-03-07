@@ -2,7 +2,7 @@ package org.dannil.scbapi.api.environment;
 
 import java.util.List;
 
-import org.dannil.scbapi.model.Area;
+import org.dannil.scbapi.model.environment.Area;
 
 public interface AreaOperations {
 

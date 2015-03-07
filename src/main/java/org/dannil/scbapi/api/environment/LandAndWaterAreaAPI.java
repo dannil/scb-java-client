@@ -3,7 +3,7 @@ package org.dannil.scbapi.api.environment;
 import java.util.List;
 
 import org.dannil.scbapi.api.AbstractAPI;
-import org.dannil.scbapi.model.Area;
+import org.dannil.scbapi.model.environment.Area;
 import org.dannil.scbapi.utility.JsonUtility;
 import org.dannil.scbapi.utility.QueryBuilder;
 import org.dannil.scbapi.utility.RequestPoster;
