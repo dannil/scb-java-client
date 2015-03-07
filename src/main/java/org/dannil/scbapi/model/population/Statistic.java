@@ -1,9 +1,7 @@
 package org.dannil.scbapi.model.population;
 
-public final class Statistic {
+public final class Statistic extends AbstractPopulationModel {
 
-	private String region;
-	private Integer year;
 	private Long amount;
 
 	public Statistic() {
@@ -11,25 +9,9 @@ public final class Statistic {
 	}
 
 	public Statistic(String region, Integer year, Long amount) {
-		this.region = region;
-		this.year = year;
+		super.region = region;
+		super.year = year;
 		this.amount = amount;
-	}
-
-	public final String getRegion() {
-		return this.region;
-	}
-
-	public final void setRegion(String region) {
-		this.region = region;
-	}
-
-	public final Integer getYear() {
-		return this.year;
-	}
-
-	public final void setYear(Integer year) {
-		this.year = year;
 	}
 
 	public final Long getAmount() {
@@ -42,7 +24,7 @@ public final class Statistic {
 
 	@Override
 	public String toString() {
-		return "Population [region=" + this.region + ", year=" + this.year + ", amount=" + this.amount + "]";
+		return "Population [region=" + super.region + ", year=" + super.year + ", amount=" + this.amount + "]";
 	}
 
 }
