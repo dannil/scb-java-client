@@ -6,9 +6,9 @@ import java.util.Locale;
 import java.util.Map;
 
 import org.dannil.scbapi.api.SCBAPI;
-import org.dannil.scbapi.api.environment.LandAndWaterAreaAPI;
-import org.dannil.scbapi.model.Area;
-import org.dannil.scbapi.model.population.Statistic;
+import org.dannil.scbapi.api.environment.landandwaterarea.LandAndWaterAreaAPI;
+import org.dannil.scbapi.model.environment.landandwaterarea.Area;
+import org.dannil.scbapi.model.population.statistic.Statistic;
 
 public class Test {
 
@@ -37,7 +37,7 @@ public class Test {
 		// WORKS
 		List<Statistic> collection4 = api.population().statistic().getPopulation();
 		for (Statistic p : collection4) {
-			// System.out.println(p);
+			System.out.println(p);
 		}
 
 		List<Area> collection5 = api.environment().landAndWaterArea().getArea(regions, null, years);
