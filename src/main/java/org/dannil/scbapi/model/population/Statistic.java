@@ -5,12 +5,11 @@ public final class Statistic extends AbstractPopulationModel {
 	private Long amount;
 
 	public Statistic() {
-
+		super();
 	}
 
 	public Statistic(String region, Integer year, Long amount) {
-		super.region = region;
-		super.year = year;
+		super(region, year);
 		this.amount = amount;
 	}
 

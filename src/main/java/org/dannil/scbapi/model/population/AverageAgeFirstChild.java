@@ -6,13 +6,13 @@ public final class AverageAgeFirstChild extends AbstractPopulationModel {
 	private Double averageAge;
 
 	public AverageAgeFirstChild() {
-
+		super();
 	}
 
 	public AverageAgeFirstChild(String region, Integer gender, Integer year, Double averageAge) {
-		this.region = region;
+		super(region, year);
 		this.gender = gender;
-		this.year = year;
+		this.averageAge = averageAge;
 	}
 
 	public final Integer getGender() {

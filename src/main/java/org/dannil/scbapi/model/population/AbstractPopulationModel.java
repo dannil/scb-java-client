@@ -5,6 +5,16 @@ public abstract class AbstractPopulationModel {
 	protected String region;
 	protected Integer year;
 
+	protected AbstractPopulationModel() {
+
+	}
+
+	protected AbstractPopulationModel(String region, Integer year) {
+		this();
+		this.region = region;
+		this.year = year;
+	}
+
 	public String getRegion() {
 		return this.region;
 	}
