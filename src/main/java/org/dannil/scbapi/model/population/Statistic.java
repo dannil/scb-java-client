@@ -23,7 +23,7 @@ public final class Statistic extends AbstractPopulationModel {
 
 	@Override
 	public String toString() {
-		return "Population [region=" + super.region + ", year=" + super.year + ", amount=" + this.amount + "]";
+		return "Statistic [region=" + super.region + ", year=" + super.year + ", amount=" + this.amount + "]";
 	}
 
 }
