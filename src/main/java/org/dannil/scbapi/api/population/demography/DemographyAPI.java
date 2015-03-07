@@ -1,4 +1,4 @@
-package org.dannil.scbapi.api.population;
+package org.dannil.scbapi.api.population.demography;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Locale;
 
 import org.dannil.scbapi.api.AbstractAPI;
-import org.dannil.scbapi.model.population.AverageAgeFirstChild;
+import org.dannil.scbapi.model.population.demography.AverageAgeFirstChild;
 import org.dannil.scbapi.utility.QueryBuilder;
 import org.dannil.scbapi.utility.RequestPoster;
 

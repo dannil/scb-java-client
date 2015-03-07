@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.dannil.scbapi.api.SCBAPI;
-import org.dannil.scbapi.api.population.StatisticAPI;
+import org.dannil.scbapi.api.population.statistic.StatisticAPI;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

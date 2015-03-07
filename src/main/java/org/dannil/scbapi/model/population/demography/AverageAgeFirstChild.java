@@ -1,18 +1,29 @@
-package org.dannil.scbapi.model.population;
+package org.dannil.scbapi.model.population.demography;
 
-public final class AverageAgeFirstChild extends AbstractPopulationModel {
+public final class AverageAgeFirstChild {
 
+	private String region;
 	private Integer gender;
+	private Integer year;
 	private Double averageAge;
 
 	public AverageAgeFirstChild() {
-		super();
+
 	}
 
 	public AverageAgeFirstChild(String region, Integer gender, Integer year, Double averageAge) {
-		super(region, year);
+		this.region = region;
 		this.gender = gender;
+		this.year = year;
 		this.averageAge = averageAge;
+	}
+
+	public final String getRegion() {
+		return this.region;
+	}
+
+	public final void setRegion(String region) {
+		this.region = region;
 	}
 
 	public final Integer getGender() {
@@ -21,6 +32,14 @@ public final class AverageAgeFirstChild extends AbstractPopulationModel {
 
 	public final void setGender(Integer gender) {
 		this.gender = gender;
+	}
+
+	public final Integer getYear() {
+		return this.year;
+	}
+
+	public final void setYear(Integer year) {
+		this.year = year;
 	}
 
 	public final Double getAverageAge() {
