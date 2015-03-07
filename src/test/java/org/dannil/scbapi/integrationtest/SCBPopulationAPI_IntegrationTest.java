@@ -42,17 +42,17 @@ public class SCBPopulationAPI_IntegrationTest {
 
 	@Test
 	public final void getPopulationForRegionsNotNull() {
-		Assert.assertNotEquals(0, this.statisticsAPI.getPopulation(this.regionCodes, null).size());
+		Assert.assertNotEquals(0, this.statisticsAPI.getPopulation(this.regionCodes, null, null).size());
 	}
 
 	@Test
 	public final void getPopulationForRegionAndYearsNotNull() {
-		Assert.assertNotEquals(0, this.statisticsAPI.getPopulation(this.regionCodes, this.years).size());
+		Assert.assertNotEquals(0, this.statisticsAPI.getPopulation(this.regionCodes, null, this.years).size());
 	}
 
 	@Test
 	public final void getPopulationBetweenYearsNotNull() {
-		Assert.assertNotEquals(0, this.statisticsAPI.getPopulation(null, this.years).size());
+		Assert.assertNotEquals(0, this.statisticsAPI.getPopulation(null, null, this.years).size());
 	}
 
 }
