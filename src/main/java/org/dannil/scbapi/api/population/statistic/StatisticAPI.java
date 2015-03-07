@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Locale;
 
 import org.dannil.scbapi.api.AbstractAPI;
-import org.dannil.scbapi.model.population.statistic.PopulationStatistic;
+import org.dannil.scbapi.model.population.statistic.Statistic;
 import org.dannil.scbapi.utility.JsonUtility;
 import org.dannil.scbapi.utility.QueryBuilder;
 import org.dannil.scbapi.utility.RequestPoster;
@@ -83,11 +83,11 @@ public final class StatisticAPI extends AbstractAPI implements StatisticOperatio
 		return null;
 	}
 
-	public final List<PopulationStatistic> getPopulation() {
+	public final List<Statistic> getPopulation() {
 		return this.getPopulation(null, null, null);
 	}
 
-	public final List<PopulationStatistic> getPopulation(List<String> regions, List<Integer> genders, List<Integer> years) {
+	public final List<Statistic> getPopulation(List<String> regions, List<Integer> genders, List<Integer> years) {
 		QueryBuilder<String, String> queryBuilder = new QueryBuilder<String, String>();
 
 		ArrayListMultimap<String, String> map = ArrayListMultimap.create();

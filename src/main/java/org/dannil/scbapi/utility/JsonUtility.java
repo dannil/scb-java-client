@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.dannil.scbapi.model.environment.landandwaterarea.Area;
-import org.dannil.scbapi.model.population.statistic.PopulationStatistic;
+import org.dannil.scbapi.model.population.statistic.Statistic;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -61,13 +61,13 @@ public class JsonUtility {
 		return areas;
 	}
 
-	public static final List<PopulationStatistic> parseStatistic(JsonNode node) {
+	public static final List<Statistic> parseStatistic(JsonNode node) {
 		JsonNode data = node.get("data");
 
 		List<JsonNode> keys = data.findValues("key");
 		List<JsonNode> values = data.findValues("values");
 
-		List<PopulationStatistic> statistics = new ArrayList<PopulationStatistic>();
+		List<Statistic> statistics = new ArrayList<Statistic>();
 		for (int i = 0; i < keys.size(); i++) {
 			String region = null;
 			Integer gender = null;
@@ -86,7 +86,7 @@ public class JsonUtility {
 			JsonNode valueAtPosition = values.get(i);
 			final Long amount = valueAtPosition.get(0).asLong();
 
-			PopulationStatistic s = new PopulationStatistic(region, gender, year, amount);
+			Statistic s = new Statistic(region, gender, year, amount);
 			statistics.add(s);
 		}
 		return statistics;

@@ -1,15 +1,15 @@
 package org.dannil.scbapi.model.population.statistic;
 
-public abstract class AbstractPopulationStatisticModel {
+public abstract class AbstractStatisticModel {
 
 	protected String region;
 	protected Integer year;
 
-	protected AbstractPopulationStatisticModel() {
+	protected AbstractStatisticModel() {
 
 	}
 
-	protected AbstractPopulationStatisticModel(String region, Integer year) {
+	protected AbstractStatisticModel(String region, Integer year) {
 		this();
 		this.region = region;
 		this.year = year;
