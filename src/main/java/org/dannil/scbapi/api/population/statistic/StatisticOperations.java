@@ -8,6 +8,6 @@ public interface StatisticOperations {
 
 	public List<PopulationStatistic> getPopulation();
 
-	public List<PopulationStatistic> getPopulation(List<String> regions, List<Integer> years);
+	public List<PopulationStatistic> getPopulation(List<String> regions, List<Integer> genders, List<Integer> years);
 
 }

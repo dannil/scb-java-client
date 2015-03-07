@@ -84,10 +84,10 @@ public final class StatisticAPI extends AbstractAPI implements StatisticOperatio
 	}
 
 	public final List<PopulationStatistic> getPopulation() {
-		return this.getPopulation(null, null);
+		return this.getPopulation(null, null, null);
 	}
 
-	public final List<PopulationStatistic> getPopulation(List<String> regions, List<Integer> years) {
+	public final List<PopulationStatistic> getPopulation(List<String> regions, List<Integer> genders, List<Integer> years) {
 		QueryBuilder<String, String> queryBuilder = new QueryBuilder<String, String>();
 
 		ArrayListMultimap<String, String> map = ArrayListMultimap.create();
@@ -95,6 +95,11 @@ public final class StatisticAPI extends AbstractAPI implements StatisticOperatio
 		if (regions != null) {
 			for (String region : regions) {
 				map.put("Region", region);
+			}
+		}
+		if (genders != null) {
+			for (Integer gender : genders) {
+				map.put("Kod", gender.toString());
 			}
 		}
 		if (years != null) {

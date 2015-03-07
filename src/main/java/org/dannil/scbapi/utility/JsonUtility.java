@@ -69,14 +69,24 @@ public class JsonUtility {
 
 		List<PopulationStatistic> statistics = new ArrayList<PopulationStatistic>();
 		for (int i = 0; i < keys.size(); i++) {
+			String region = null;
+			Integer gender = null;
+			Integer year = null;
+
 			JsonNode keyAtPosition = keys.get(i);
-			final String region = keyAtPosition.get(0).asText();
-			final Integer year = keyAtPosition.get(1).asInt();
+			if (keyAtPosition.size() < 3) {
+				region = keyAtPosition.get(0).asText();
+				year = keyAtPosition.get(1).asInt();
+			} else {
+				region = keyAtPosition.get(0).asText();
+				gender = keyAtPosition.get(1).asInt();
+				year = keyAtPosition.get(2).asInt();
+			}
 
 			JsonNode valueAtPosition = values.get(i);
 			final Long amount = valueAtPosition.get(0).asLong();
 
-			PopulationStatistic s = new PopulationStatistic(region, year, amount);
+			PopulationStatistic s = new PopulationStatistic(region, gender, year, amount);
 			statistics.add(s);
 		}
 		return statistics;
