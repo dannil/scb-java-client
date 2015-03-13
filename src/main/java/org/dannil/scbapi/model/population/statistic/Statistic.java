@@ -53,8 +53,12 @@ public final class Statistic extends AbstractStatisticModel {
 
 	@Override
 	public String toString() {
-		return "Statistic [region=" + super.region + ", year=" + super.year + ", relationshipStatus=" + this.relationshipStatus + ", age=" + this.age + ", gender=" + this.gender + ", amount="
+		return "Statistic [region=" + super.region + ", year=" + super.year + ", relationshipStatus=" + this.relationshipStatus + ", " + "age=" + this.age + ", gender=" + this.gender + ", amount="
 				+ this.amount + "]";
+	}
+
+	public static enum Codes {
+		REGION, CIVILSTAND, ALDER, KON, TID
 	}
 
 }

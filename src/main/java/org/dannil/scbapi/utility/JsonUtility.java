@@ -2,10 +2,13 @@ package org.dannil.scbapi.utility;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.dannil.scbapi.model.environment.landandwaterarea.Area;
 import org.dannil.scbapi.model.population.statistic.Statistic;
+import org.dannil.scbapi.model.population.statistic.Statistic.Codes;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -62,31 +65,58 @@ public class JsonUtility {
 	}
 
 	public static final List<Statistic> parseStatistic(JsonNode node) {
+		JsonNode columns = node.get("columns");
+		List<String> codes = columns.findValuesAsText("code");
+		codes.remove(codes.size() - 1);
+
+		Map<String, Integer> mappings = new HashMap<String, Integer>();
+		int i = 0;
+		for (String code : codes) {
+			for (Codes statisticCode : Statistic.Codes.values()) {
+				if (Statistic.Codes.valueOf(code.toUpperCase()).equals(statisticCode)) {
+					mappings.put(code, i);
+					i++;
+				}
+			}
+		}
+
+		for (String z : mappings.keySet()) {
+			System.out.println(z + " : " + mappings.get(z));
+		}
+
 		JsonNode data = node.get("data");
 
 		List<JsonNode> keys = data.findValues("key");
 		List<JsonNode> values = data.findValues("values");
 
 		List<Statistic> statistics = new ArrayList<Statistic>();
-		for (int i = 0; i < keys.size(); i++) {
-			String region = null;
-			Integer gender = null;
-			Integer year = null;
+		for (int j = 0; j < keys.size(); j++) {
+			JsonNode keyAtPosition = keys.get(j);
 
-			JsonNode keyAtPosition = keys.get(i);
-			if (keyAtPosition.size() < 3) {
-				region = keyAtPosition.get(0).asText();
-				year = keyAtPosition.get(1).asInt();
-			} else {
-				region = keyAtPosition.get(0).asText();
-				gender = keyAtPosition.get(1).asInt();
-				year = keyAtPosition.get(2).asInt();
-			}
+			String region = (mappings.get("Region") != null ? keyAtPosition.get(mappings.get("Region")).asText() : null);
+			String relationshipStatus = (mappings.get("Civilstand") != null ? keyAtPosition.get(mappings.get("Civilstand")).asText() : null);
+			String age = (mappings.get("Alder") != null ? keyAtPosition.get(mappings.get("Alder")).asText() : null);
+			Integer gender = (mappings.get("Kon") != null ? keyAtPosition.get(mappings.get("Kon")).asInt() : null);
+			Integer year = (mappings.get("Tid") != null ? keyAtPosition.get(mappings.get("Tid")).asInt() : null);
 
-			JsonNode valueAtPosition = values.get(i);
+			// String region = null;
+			// Integer gender = null;
+			// Integer year = null;
+			//
+			// JsonNode keyAtPosition = keys.get(i);
+			// if (keyAtPosition.size() < 3) {
+			// region = keyAtPosition.get(0).asText();
+			// year = keyAtPosition.get(1).asInt();
+			// } else {
+			// region = keyAtPosition.get(0).asText();
+			// gender = keyAtPosition.get(1).asInt();
+			// year = keyAtPosition.get(2).asInt();
+			// }
+
+			JsonNode valueAtPosition = values.get(j);
 			final Long amount = valueAtPosition.get(0).asLong();
 
-			Statistic s = new Statistic(region, gender, year, amount);
+			Statistic s = new Statistic(region, relationshipStatus, age, gender, year, amount);
 			statistics.add(s);
 		}
 		return statistics;
