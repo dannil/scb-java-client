@@ -1,5 +1,6 @@
 package org.dannil.scbapi.model.population.statistic;
 
+
 public final class Statistic extends AbstractStatisticModel {
 
 	private String relationshipStatus;
@@ -57,8 +58,12 @@ public final class Statistic extends AbstractStatisticModel {
 				+ this.amount + "]";
 	}
 
+	public static String[] getCodes() {
+		return new String[] { "Region", "Civilstand", "Alder", "Kon", "Tid", "BE0101N1", "BE0101N2" };
+	}
+
 	public static enum Codes {
-		REGION, CIVILSTAND, ALDER, KON, TID
+		REGION, CIVILSTAND, ALDER, KON, TID, BE0101N1, BE0101N2
 	}
 
 }

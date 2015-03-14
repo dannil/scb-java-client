@@ -8,7 +8,6 @@ import java.util.Map;
 
 import org.dannil.scbapi.model.environment.landandwaterarea.Area;
 import org.dannil.scbapi.model.population.statistic.Statistic;
-import org.dannil.scbapi.model.population.statistic.Statistic.Codes;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -67,21 +66,16 @@ public class JsonUtility {
 	public static final List<Statistic> parseStatistic(JsonNode node) {
 		JsonNode columns = node.get("columns");
 		List<String> codes = columns.findValuesAsText("code");
-		codes.remove(codes.size() - 1);
 
 		Map<String, Integer> mappings = new HashMap<String, Integer>();
 		int i = 0;
 		for (String code : codes) {
-			for (Codes statisticCode : Statistic.Codes.values()) {
-				if (Statistic.Codes.valueOf(code.toUpperCase()).equals(statisticCode)) {
+			for (String stored : Statistic.getCodes()) {
+				if (code.equals(stored)) {
 					mappings.put(code, i);
 					i++;
 				}
 			}
-		}
-
-		for (String z : mappings.keySet()) {
-			System.out.println(z + " : " + mappings.get(z));
 		}
 
 		JsonNode data = node.get("data");
@@ -99,20 +93,6 @@ public class JsonUtility {
 			Integer gender = (mappings.get("Kon") != null ? keyAtPosition.get(mappings.get("Kon")).asInt() : null);
 			Integer year = (mappings.get("Tid") != null ? keyAtPosition.get(mappings.get("Tid")).asInt() : null);
 
-			// String region = null;
-			// Integer gender = null;
-			// Integer year = null;
-			//
-			// JsonNode keyAtPosition = keys.get(i);
-			// if (keyAtPosition.size() < 3) {
-			// region = keyAtPosition.get(0).asText();
-			// year = keyAtPosition.get(1).asInt();
-			// } else {
-			// region = keyAtPosition.get(0).asText();
-			// gender = keyAtPosition.get(1).asInt();
-			// year = keyAtPosition.get(2).asInt();
-			// }
-
 			JsonNode valueAtPosition = values.get(j);
 			final Long amount = valueAtPosition.get(0).asLong();
 
@@ -121,4 +101,5 @@ public class JsonUtility {
 		}
 		return statistics;
 	}
+
 }
