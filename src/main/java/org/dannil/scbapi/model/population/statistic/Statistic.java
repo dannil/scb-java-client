@@ -1,5 +1,7 @@
 package org.dannil.scbapi.model.population.statistic;
 
+import java.util.Arrays;
+import java.util.List;
 
 public final class Statistic extends AbstractStatisticModel {
 
@@ -58,8 +60,8 @@ public final class Statistic extends AbstractStatisticModel {
 				+ this.amount + "]";
 	}
 
-	public static String[] getCodes() {
-		return new String[] { "Region", "Civilstand", "Alder", "Kon", "Tid", "BE0101N1", "BE0101N2" };
+	public static List<String> getCodes() {
+		return Arrays.asList("Region", "Civilstand", "Alder", "Kon", "Tid", "BE0101N1", "BE0101N2");
 	}
 
 	public static enum Codes {
