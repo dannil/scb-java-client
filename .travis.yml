@@ -11,3 +11,6 @@ os:
 branches:
   only:
     - dev
+	
+after_success:
+  - mvn jacoco:report coveralls:report

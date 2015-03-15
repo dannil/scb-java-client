@@ -11,6 +11,9 @@
 		<guava.version>18.0</guava.version>
 		<jackson-core.version>2.5.1</jackson-core.version>
 		<jackson-databind.version>2.5.1</jackson-databind.version>
+
+		<coveralls-maven-plugin.version>3.0.1</coveralls-maven-plugin.version>
+		<jacoco-maven-plugin.version>0.7.2.201409121644</jacoco-maven-plugin.version>
 	</properties>
 
 	<dependencies>
@@ -54,6 +57,33 @@
 	
 	<build>
 		<plugins>
+		
+			<plugin>
+			    <groupId>org.eluder.coveralls</groupId>
+			    <artifactId>coveralls-maven-plugin</artifactId>
+			    <version>${coveralls-maven-plugin.version}</version>
+			</plugin>
+		
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${jacoco-maven-plugin.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		
       		<plugin>
 	        	<artifactId>maven-compiler-plugin</artifactId>
 	        	<version>3.1</version>
@@ -62,6 +92,7 @@
 	          		<target>1.7</target>
 	        	</configuration>
 			</plugin>
+			
 		</plugins>
 	</build>
 	
