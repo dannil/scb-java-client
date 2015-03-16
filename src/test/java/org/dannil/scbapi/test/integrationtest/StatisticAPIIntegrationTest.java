@@ -1,4 +1,4 @@
-package org.dannil.scbapi.integrationtest;
+package org.dannil.scbapi.test.integrationtest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class StatisticAPI_IntegrationTest {
+public class StatisticAPIIntegrationTest {
 
 	private SCBAPI api;
 	private StatisticAPI statisticsAPI;
