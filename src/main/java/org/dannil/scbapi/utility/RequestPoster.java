@@ -18,6 +18,8 @@ public class RequestPoster {
 	}
 
 	public static final String doPost(String address, String query) {
+		System.out.println("Query: " + query);
+
 		Client client = ClientBuilder.newClient();
 		WebTarget target = client.target(address);
 		Response response = target.request().post(Entity.json(query));
