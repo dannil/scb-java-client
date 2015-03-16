@@ -14,19 +14,14 @@ public class RequestPoster {
 		Response response = target.request().get();
 		String result = response.readEntity(String.class);
 
-		System.out.println("Output from server: " + result);
 		return result;
 	}
 
 	public static final String doPost(String address, String query) {
-		System.out.println("Query: " + query);
-
 		Client client = ClientBuilder.newClient();
 		WebTarget target = client.target(address);
 		Response response = target.request().post(Entity.json(query));
 		String result = response.readEntity(String.class);
-
-		System.out.println("Output from server: " + result);
 
 		// For some reason we get a question-mark in the beginning of the
 		// response so we need to drop that to ensure valid JSON; this
