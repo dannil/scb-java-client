@@ -35,7 +35,7 @@ public class StatisticAPI_IntegrationTest {
 		this.relationshipStatuses.add("OG");
 		this.relationshipStatuses.add("G");
 		this.relationshipStatuses.add("SK");
-		this.relationshipStatuses.add("ÄNKL");
+		this.relationshipStatuses.add("Ã„NKL");
 
 		this.ages = new ArrayList<String>();
 		this.ages.add("25");
