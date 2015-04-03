@@ -8,6 +8,8 @@ import java.util.Map;
 
 import org.dannil.scbapi.model.environment.landandwaterarea.Area;
 import org.dannil.scbapi.model.population.statistic.Statistic;
+import org.dannil.scbapi.model.population.statistic.Statistic.Gender;
+import org.dannil.scbapi.model.population.statistic.Statistic.RelationshipStatus;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -88,9 +90,9 @@ public class JsonUtility {
 			JsonNode keyAtPosition = keys.get(j);
 
 			String region = (mappings.get("Region") != null ? keyAtPosition.get(mappings.get("Region")).asText() : null);
-			String relationshipStatus = (mappings.get("Civilstand") != null ? keyAtPosition.get(mappings.get("Civilstand")).asText() : null);
+			RelationshipStatus relationshipStatus = RelationshipStatus.of((mappings.get("Civilstand") != null ? keyAtPosition.get(mappings.get("Civilstand")).asText() : null));
 			String age = (mappings.get("Alder") != null ? keyAtPosition.get(mappings.get("Alder")).asText() : null);
-			Integer gender = (mappings.get("Kon") != null ? keyAtPosition.get(mappings.get("Kon")).asInt() : null);
+			Gender gender = Gender.of((mappings.get("Kon") != null ? keyAtPosition.get(mappings.get("Kon")).asInt() : null));
 			Integer year = (mappings.get("Tid") != null ? keyAtPosition.get(mappings.get("Tid")).asInt() : null);
 
 			JsonNode valueAtPosition = values.get(j);
@@ -101,5 +103,4 @@ public class JsonUtility {
 		}
 		return statistics;
 	}
-
 }

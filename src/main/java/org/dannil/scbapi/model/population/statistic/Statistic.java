@@ -5,16 +5,16 @@ import java.util.List;
 
 public final class Statistic extends AbstractStatisticModel {
 
-	private String relationshipStatus;
+	private RelationshipStatus relationshipStatus;
 	private String age;
-	private Integer gender;
+	private Gender gender;
 	private Long amount;
 
 	public Statistic() {
 		super();
 	}
 
-	public Statistic(String region, String relationshipStatus, String age, Integer gender, Integer year, Long amount) {
+	public Statistic(String region, RelationshipStatus relationshipStatus, String age, Gender gender, Integer year, Long amount) {
 		super(region, year);
 		this.relationshipStatus = relationshipStatus;
 		this.age = age;
@@ -22,11 +22,11 @@ public final class Statistic extends AbstractStatisticModel {
 		this.amount = amount;
 	}
 
-	public final String getRelationshipStatus() {
+	public final RelationshipStatus getRelationshipStatus() {
 		return this.relationshipStatus;
 	}
 
-	public final void setRelationshipStatus(String relationshipStatus) {
+	public final void setRelationshipStatus(RelationshipStatus relationshipStatus) {
 		this.relationshipStatus = relationshipStatus;
 	}
 
@@ -38,11 +38,11 @@ public final class Statistic extends AbstractStatisticModel {
 		this.age = age;
 	}
 
-	public final Integer getGender() {
+	public final Gender getGender() {
 		return this.gender;
 	}
 
-	public final void setGender(Integer gender) {
+	public final void setGender(Gender gender) {
 		this.gender = gender;
 	}
 
@@ -56,8 +56,8 @@ public final class Statistic extends AbstractStatisticModel {
 
 	@Override
 	public String toString() {
-		return "Statistic [region=" + super.region + ", year=" + super.year + ", relationshipStatus=" + this.relationshipStatus + ", " + "age=" + this.age
-				+ ", gender=" + this.gender + ", amount=" + this.amount + "]";
+		return "Statistic [region=" + super.region + ", year=" + super.year + ", relationshipStatus=" + this.relationshipStatus + ", " + "age=" + this.age + ", gender=" + this.gender + ", amount="
+				+ this.amount + "]";
 	}
 
 	public static List<String> getCodes() {
@@ -65,12 +65,22 @@ public final class Statistic extends AbstractStatisticModel {
 	}
 
 	public enum RelationshipStatus {
-		UNMARRIED("OG"), MARRIED("G"), DIVORCED("SK"), WIDOW("ÄNKL");
+		UNMARRIED("OG"), MARRIED("G"), DIVORCED("SK"), WIDOW("ÄNKL"), NULL(null);
 
 		private final String status;
 
 		private RelationshipStatus(String status) {
 			this.status = status;
+		}
+
+		public static RelationshipStatus of(String name) {
+			for (RelationshipStatus status : values()) {
+				if (status.status != null && status.status.equals(name)) {
+					return status;
+				}
+				return NULL;
+			}
+			throw new IllegalArgumentException(name);
 		}
 
 		@Override
@@ -80,12 +90,22 @@ public final class Statistic extends AbstractStatisticModel {
 	}
 
 	public enum Gender {
-		MAN(1), WOMAN(2);
+		MAN(1), WOMAN(2), NULL(null);
 
 		private final Integer gender;
 
 		private Gender(Integer gender) {
 			this.gender = gender;
+		}
+
+		public static Gender of(Integer name) {
+			for (Gender gender : values()) {
+				if (gender.gender != null && gender.gender.equals(name)) {
+					return gender;
+				}
+				return NULL;
+			}
+			throw new IllegalArgumentException(name.toString());
 		}
 
 		@Override
