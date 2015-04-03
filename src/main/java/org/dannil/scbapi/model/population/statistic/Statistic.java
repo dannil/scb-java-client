@@ -64,4 +64,34 @@ public final class Statistic extends AbstractStatisticModel {
 		return Arrays.asList("Region", "Civilstand", "Alder", "Kon", "Tid", "BE0101N1", "BE0101N2");
 	}
 
+	public enum RelationshipStatus {
+		UNMARRIED("OG"), MARRIED("G"), DIVORCED("SK"), WIDOW("ÄNKL");
+
+		private final String status;
+
+		private RelationshipStatus(String status) {
+			this.status = status;
+		}
+
+		@Override
+		public String toString() {
+			return this.status;
+		}
+	}
+
+	public enum Gender {
+		MAN(1), WOMAN(2);
+
+		private final Integer gender;
+
+		private Gender(Integer gender) {
+			this.gender = gender;
+		}
+
+		@Override
+		public String toString() {
+			return this.gender.toString();
+		}
+	}
+
 }

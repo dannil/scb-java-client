@@ -7,6 +7,8 @@ import java.util.Locale;
 
 import org.dannil.scbapi.api.AbstractAPI;
 import org.dannil.scbapi.model.population.statistic.Statistic;
+import org.dannil.scbapi.model.population.statistic.Statistic.Gender;
+import org.dannil.scbapi.model.population.statistic.Statistic.RelationshipStatus;
 import org.dannil.scbapi.utility.JsonUtility;
 import org.dannil.scbapi.utility.QueryBuilder;
 import org.dannil.scbapi.utility.RequestPoster;
@@ -83,12 +85,13 @@ public final class StatisticAPI extends AbstractAPI implements StatisticOperatio
 		return null;
 	}
 
+	@Override
 	public final List<Statistic> getPopulation() {
 		return this.getPopulation(null, null, null, null, null);
 	}
 
-	public final List<Statistic> getPopulation(List<String> regions, List<String> relationshipStatuses, List<String> ages, List<Integer> genders,
-			List<Integer> years) {
+	@Override
+	public final List<Statistic> getPopulation(List<String> regions, List<RelationshipStatus> relationshipStatuses, List<String> ages, List<Gender> genders, List<Integer> years) {
 		QueryBuilder<String, String> queryBuilder = new QueryBuilder<String, String>();
 
 		ArrayListMultimap<String, String> map = ArrayListMultimap.create();
@@ -99,8 +102,8 @@ public final class StatisticAPI extends AbstractAPI implements StatisticOperatio
 			}
 		}
 		if (relationshipStatuses != null) {
-			for (String relationshipStatus : relationshipStatuses) {
-				map.put("Civilstand", relationshipStatus);
+			for (RelationshipStatus relationshipStatus : relationshipStatuses) {
+				map.put("Civilstand", relationshipStatus.toString());
 			}
 		}
 		if (ages != null) {
@@ -109,7 +112,7 @@ public final class StatisticAPI extends AbstractAPI implements StatisticOperatio
 			}
 		}
 		if (genders != null) {
-			for (Integer gender : genders) {
+			for (Gender gender : genders) {
 				map.put("Kon", gender.toString());
 			}
 		}
