@@ -56,8 +56,19 @@ public final class Statistic extends AbstractStatisticModel {
 
 	@Override
 	public String toString() {
-		return "Statistic [region=" + super.region + ", year=" + super.year + ", relationshipStatus=" + this.relationshipStatus + ", " + "age=" + this.age + ", gender=" + this.gender + ", amount="
-				+ this.amount + "]";
+		StringBuilder builder = new StringBuilder();
+
+		builder.append("Statistic ");
+		builder.append("[");
+		builder.append("region=" + super.region + ", ");
+		builder.append("year=" + super.year + ", ");
+		builder.append("relationshipStatus=" + this.relationshipStatus.toString() + ", ");
+		builder.append("age=" + this.age + ", ");
+		builder.append("gender=" + this.gender.toString() + ", ");
+		builder.append("amount=" + this.amount);
+		builder.append("]");
+
+		return builder.toString();
 	}
 
 	public static List<String> getCodes() {
@@ -67,50 +78,50 @@ public final class Statistic extends AbstractStatisticModel {
 	public enum RelationshipStatus {
 		UNMARRIED("OG"), MARRIED("G"), DIVORCED("SK"), WIDOW("ÄNKL"), NULL(null);
 
-		private final String status;
+		private final String value;
 
-		private RelationshipStatus(String status) {
-			this.status = status;
+		private RelationshipStatus(String value) {
+			this.value = value;
 		}
 
-		public static RelationshipStatus of(String name) {
+		public static RelationshipStatus of(String value) {
 			for (RelationshipStatus status : values()) {
-				if (status.status != null && status.status.equals(name)) {
+				if (status.value != null && status.value.equals(value)) {
 					return status;
 				}
 				return NULL;
 			}
-			throw new IllegalArgumentException(name);
+			throw new IllegalArgumentException(value);
 		}
 
 		@Override
 		public String toString() {
-			return this.status;
+			return this.value;
 		}
 	}
 
 	public enum Gender {
 		MAN(1), WOMAN(2), NULL(null);
 
-		private final Integer gender;
+		private final Integer value;
 
-		private Gender(Integer gender) {
-			this.gender = gender;
+		private Gender(Integer value) {
+			this.value = value;
 		}
 
-		public static Gender of(Integer name) {
+		public static Gender of(Integer value) {
 			for (Gender gender : values()) {
-				if (gender.gender != null && gender.gender.equals(name)) {
+				if (gender.value != null && gender.value.equals(value)) {
 					return gender;
 				}
 				return NULL;
 			}
-			throw new IllegalArgumentException(name.toString());
+			throw new IllegalArgumentException(value.toString());
 		}
 
 		@Override
 		public String toString() {
-			return this.gender.toString();
+			return (this.value != null ? this.value.toString() : null);
 		}
 	}
 
