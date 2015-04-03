@@ -14,7 +14,7 @@
 	
 		<junit.version>4.12</junit.version>
 	
-		<resteasy-client.version>3.0.10.Final</resteasy-client.version>
+		<resteasy-client.version>3.0.11.Final</resteasy-client.version>
 		<guava.version>18.0</guava.version>
 		<jackson-core.version>2.5.1</jackson-core.version>
 		<jackson-databind.version>2.5.1</jackson-databind.version>
