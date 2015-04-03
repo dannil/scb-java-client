@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.dannil.scbapi.api.SCBAPI;
 import org.dannil.scbapi.api.population.statistic.StatisticAPI;
+import org.dannil.scbapi.model.population.statistic.Statistic.Gender;
+import org.dannil.scbapi.model.population.statistic.Statistic.RelationshipStatus;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,9 +20,9 @@ public class StatisticAPIIntegrationTest {
 	private StatisticAPI statisticsAPI;
 
 	private List<String> regions;
-	private List<String> relationshipStatuses;
+	private List<RelationshipStatus> relationshipStatuses;
 	private List<String> ages;
-	private List<Integer> genders;
+	private List<Gender> genders;
 	private List<Integer> years;
 
 	@Before
@@ -31,19 +33,19 @@ public class StatisticAPIIntegrationTest {
 		this.regions = new ArrayList<String>();
 		this.regions.add("1263");
 
-		this.relationshipStatuses = new ArrayList<String>();
-		this.relationshipStatuses.add("OG");
-		this.relationshipStatuses.add("G");
-		this.relationshipStatuses.add("SK");
-		this.relationshipStatuses.add("ÄNKL");
+		this.relationshipStatuses = new ArrayList<RelationshipStatus>();
+		this.relationshipStatuses.add(RelationshipStatus.UNMARRIED);
+		this.relationshipStatuses.add(RelationshipStatus.MARRIED);
+		this.relationshipStatuses.add(RelationshipStatus.DIVORCED);
+		this.relationshipStatuses.add(RelationshipStatus.WIDOW);
 
 		this.ages = new ArrayList<String>();
 		this.ages.add("25");
 		this.ages.add("30");
 
-		this.genders = new ArrayList<Integer>();
-		this.genders.add(1);
-		this.genders.add(2);
+		this.genders = new ArrayList<Gender>();
+		this.genders.add(Gender.MAN);
+		this.genders.add(Gender.WOMAN);
 
 		this.years = new ArrayList<Integer>();
 		this.years.add(2002);
