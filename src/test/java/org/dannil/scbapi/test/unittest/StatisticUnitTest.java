@@ -135,6 +135,11 @@ public class StatisticUnitTest {
 	}
 
 	@Test
+	public final void getCodes() {
+		Assert.assertNotNull(Statistic.getCodes());
+	}
+
+	@Test
 	public final void equals() {
 		Statistic statistic = new Statistic();
 		Statistic statistic2 = new Statistic();
@@ -157,7 +162,7 @@ public class StatisticUnitTest {
 	}
 
 	@Test
-	public final void equalsHashCode() {
+	public final void equalsHashCodeNullValues() {
 		Statistic statistic = new Statistic();
 		Statistic statistic2 = new Statistic();
 
@@ -165,8 +170,23 @@ public class StatisticUnitTest {
 	}
 
 	@Test
-	public final void toStringNotNull() {
+	public final void equalsHashCodeNotNullValues() {
+		Statistic statistic = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+
+		Assert.assertEquals(statistic.hashCode(), statistic2.hashCode());
+	}
+
+	@Test
+	public final void convertToString() {
 		Statistic statistic = new Statistic();
+
+		Assert.assertNotNull(statistic.toString());
+	}
+
+	@Test
+	public final void convertToStringNullValues() {
+		Statistic statistic = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
 		Assert.assertNotNull(statistic.toString());
 	}
