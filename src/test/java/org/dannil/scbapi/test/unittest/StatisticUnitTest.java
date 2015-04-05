@@ -162,6 +162,192 @@ public class StatisticUnitTest {
 	}
 
 	@Test
+	public final void notEqualsOnRegion() {
+		Statistic statistic = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+
+		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		statistic2.setRegion("1452");
+
+		Assert.assertFalse(statistic.equals(statistic2));
+	}
+
+	@Test
+	public final void notEqualsOnNullRegion() {
+		Statistic statistic = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+
+		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		statistic2.setRegion(null);
+
+		Assert.assertFalse(statistic.equals(statistic2));
+	}
+
+	@Test
+	public final void equalsOnBothNullRegion() {
+		Statistic statistic = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		statistic.setRegion(null);
+
+		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		statistic2.setRegion(null);
+
+		Assert.assertTrue(statistic.equals(statistic2));
+	}
+
+	@Test
+	public final void notEqualsOnRelationshipStatus() {
+		Statistic statistic = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+
+		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		statistic2.setRelationshipStatus(RelationshipStatus.DIVORCED);
+
+		Assert.assertFalse(statistic.equals(statistic2));
+	}
+
+	@Test
+	public final void notEqualsOnNullRelationshipStatus() {
+		Statistic statistic = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+
+		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		statistic2.setRelationshipStatus(null);
+
+		Assert.assertFalse(statistic.equals(statistic2));
+	}
+
+	@Test
+	public final void equalsOnBothNullRelationshipStatus() {
+		Statistic statistic = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		statistic.setRelationshipStatus(null);
+
+		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		statistic2.setRelationshipStatus(null);
+
+		Assert.assertTrue(statistic.equals(statistic2));
+	}
+
+	@Test
+	public final void notEqualsOnAge() {
+		Statistic statistic = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+
+		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		statistic2.setAge("56");
+
+		Assert.assertFalse(statistic.equals(statistic2));
+	}
+
+	@Test
+	public final void notEqualsOnNullAge() {
+		Statistic statistic = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+
+		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		statistic2.setAge(null);
+
+		Assert.assertFalse(statistic.equals(statistic2));
+	}
+
+	@Test
+	public final void equalsOnBothNullAge() {
+		Statistic statistic = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		statistic.setAge(null);
+
+		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		statistic2.setAge(null);
+
+		Assert.assertTrue(statistic.equals(statistic2));
+	}
+
+	@Test
+	public final void notEqualsOnGender() {
+		Statistic statistic = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+
+		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		statistic2.setGender(Gender.WOMAN);
+
+		Assert.assertFalse(statistic.equals(statistic2));
+	}
+
+	@Test
+	public final void notEqualsOnNullGender() {
+		Statistic statistic = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+
+		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		statistic2.setGender(null);
+
+		Assert.assertFalse(statistic.equals(statistic2));
+	}
+
+	@Test
+	public final void equalsOnBothNullGender() {
+		Statistic statistic = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		statistic.setGender(null);
+
+		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		statistic2.setGender(null);
+
+		Assert.assertTrue(statistic.equals(statistic2));
+	}
+
+	@Test
+	public final void notEqualsOnYear() {
+		Statistic statistic = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+
+		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		statistic2.setYear(1999);
+
+		Assert.assertFalse(statistic.equals(statistic2));
+	}
+
+	@Test
+	public final void notEqualsOnNullYear() {
+		Statistic statistic = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+
+		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		statistic2.setYear(null);
+
+		Assert.assertFalse(statistic.equals(statistic2));
+	}
+
+	@Test
+	public final void equalsOnBothNullYear() {
+		Statistic statistic = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		statistic.setYear(null);
+
+		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		statistic2.setYear(null);
+
+		Assert.assertTrue(statistic.equals(statistic2));
+	}
+
+	@Test
+	public final void notEqualsOnAmount() {
+		Statistic statistic = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+
+		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		statistic2.setAmount(54321L);
+
+		Assert.assertFalse(statistic.equals(statistic2));
+	}
+
+	@Test
+	public final void notEqualsOnNullAmount() {
+		Statistic statistic = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+
+		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		statistic2.setAmount(null);
+
+		Assert.assertFalse(statistic.equals(statistic2));
+	}
+
+	@Test
+	public final void equalsOnBothNullAmount() {
+		Statistic statistic = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		statistic.setAmount(null);
+
+		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		statistic2.setAmount(null);
+
+		Assert.assertTrue(statistic.equals(statistic2));
+	}
+
+	@Test
 	public final void equalsHashCodeNullValues() {
 		Statistic statistic = new Statistic();
 		Statistic statistic2 = new Statistic();
