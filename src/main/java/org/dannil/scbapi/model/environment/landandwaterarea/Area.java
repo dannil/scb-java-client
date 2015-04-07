@@ -68,9 +68,8 @@ public final class Area extends AbstractLandAndWaterAreaModel {
 				if (type.value != null && type.value.equals(value)) {
 					return type;
 				}
-				return NULL;
 			}
-			throw new IllegalArgumentException(value);
+			return NULL;
 		}
 
 		@Override

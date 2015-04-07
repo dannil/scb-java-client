@@ -60,7 +60,7 @@ public class JsonUtility {
 			JsonNode keyAtPosition = keys.get(j);
 
 			String region = (mappings.get("Region") != null ? keyAtPosition.get(mappings.get("Region")).asText() : null);
-			Type type = Type.of((mappings.get("ArealTyp") != null ? keyAtPosition.get(mappings.get("ArealTyp")).asText() : null));
+			Type type = (mappings.get("ArealTyp") != null ? Type.of(keyAtPosition.get(mappings.get("ArealTyp")).asText()) : null);
 			Integer year = (mappings.get("Tid") != null ? keyAtPosition.get(mappings.get("Tid")).asInt() : null);
 
 			JsonNode valueAtPosition = values.get(j);
@@ -97,9 +97,9 @@ public class JsonUtility {
 			JsonNode keyAtPosition = keys.get(j);
 
 			String region = (mappings.get("Region") != null ? keyAtPosition.get(mappings.get("Region")).asText() : null);
-			RelationshipStatus relationshipStatus = RelationshipStatus.of((mappings.get("Civilstand") != null ? keyAtPosition.get(mappings.get("Civilstand")).asText() : null));
+			RelationshipStatus relationshipStatus = (mappings.get("Civilstand") != null ? RelationshipStatus.of(keyAtPosition.get(mappings.get("Civilstand")).asText()) : null);
 			String age = (mappings.get("Alder") != null ? keyAtPosition.get(mappings.get("Alder")).asText() : null);
-			Gender gender = Gender.of((mappings.get("Kon") != null ? keyAtPosition.get(mappings.get("Kon")).asInt() : null));
+			Gender gender = (mappings.get("Kon") != null ? Gender.of(keyAtPosition.get(mappings.get("Kon")).asInt()) : null);
 			Integer year = (mappings.get("Tid") != null ? keyAtPosition.get(mappings.get("Tid")).asInt() : null);
 
 			JsonNode valueAtPosition = values.get(j);

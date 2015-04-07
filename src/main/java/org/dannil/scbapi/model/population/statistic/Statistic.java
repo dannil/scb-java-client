@@ -140,7 +140,6 @@ public final class Statistic extends AbstractStatisticModel {
 				if (status.value != null && status.value.equals(value)) {
 					return status;
 				}
-				return NULL;
 			}
 			throw new IllegalArgumentException(value);
 		}
@@ -165,7 +164,6 @@ public final class Statistic extends AbstractStatisticModel {
 				if (gender.value != null && gender.value.equals(value)) {
 					return gender;
 				}
-				return NULL;
 			}
 			throw new IllegalArgumentException(value.toString());
 		}
