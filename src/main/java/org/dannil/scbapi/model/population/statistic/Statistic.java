@@ -1,7 +1,8 @@
 package org.dannil.scbapi.model.population.statistic;
 
-import java.util.Arrays;
 import java.util.List;
+
+import org.dannil.scbapi.utility.JsonUtility;
 
 public final class Statistic extends AbstractStatisticModel {
 
@@ -122,7 +123,7 @@ public final class Statistic extends AbstractStatisticModel {
 	}
 
 	public static List<String> getCodes() {
-		return Arrays.asList("Region", "Civilstand", "Alder", "Kon", "Tid", "BE0101N1", "BE0101N2");
+		return JsonUtility.getCodes("BE/BE0101/BE0101A/BefolkningNy");
 	}
 
 	public enum RelationshipStatus {

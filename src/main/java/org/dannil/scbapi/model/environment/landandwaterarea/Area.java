@@ -37,7 +37,17 @@ public final class Area extends AbstractLandAndWaterAreaModel {
 
 	@Override
 	public String toString() {
-		return "Area [region=" + super.region + ", year=" + super.year + ", type=" + this.type + ", squareKm=" + this.squareKm + "]";
+		StringBuilder builder = new StringBuilder();
+
+		builder.append("Area ");
+		builder.append("[");
+		builder.append("region=" + super.region + ", ");
+		builder.append("year=" + super.year + ", ");
+		builder.append("type=" + (this.type != null ? this.type.toString() : null) + ", ");
+		builder.append("squareKm=" + this.squareKm);
+		builder.append("]");
+
+		return builder.toString();
 	}
 
 	public static List<String> getCodes() {
