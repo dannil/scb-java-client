@@ -52,19 +52,19 @@ public final class Area extends AbstractLandAndWaterAreaModel {
 			this.value = value;
 		}
 
-		public static Type of(Integer value) {
+		public static Type of(String value) {
 			for (Type type : values()) {
 				if (type.value != null && type.value.equals(value)) {
 					return type;
 				}
 				return NULL;
 			}
-			throw new IllegalArgumentException(value.toString());
+			throw new IllegalArgumentException(value);
 		}
 
 		@Override
 		public String toString() {
-			return (this.value != null ? this.value.toString() : null);
+			return this.value;
 		}
 	}
 
