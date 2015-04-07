@@ -127,7 +127,7 @@ public final class Statistic extends AbstractStatisticModel {
 	}
 
 	public enum RelationshipStatus {
-		UNMARRIED("OG"), MARRIED("G"), DIVORCED("SK"), WIDOW("ÄNKL"), NULL(null);
+		UNMARRIED("OG"), MARRIED("G"), DIVORCED("SK"), WIDOW("ÄNKL");
 
 		private final String value;
 
@@ -151,7 +151,7 @@ public final class Statistic extends AbstractStatisticModel {
 	}
 
 	public enum Gender {
-		MAN(1), WOMAN(2), NULL(null);
+		MAN(1), WOMAN(2);
 
 		private final Integer value;
 
