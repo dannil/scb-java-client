@@ -39,10 +39,11 @@ public class JsonUtility {
 		JsonNode columns = node.get("columns");
 		List<String> codes = columns.findValuesAsText("code");
 
+		List<String> storedCodes = Area.getCodes();
 		Map<String, Integer> mappings = new HashMap<String, Integer>();
 		int i = 0;
 		for (String code : codes) {
-			for (String stored : Area.getCodes()) {
+			for (String stored : storedCodes) {
 				if (code.equals(stored)) {
 					mappings.put(code, i);
 					i++;
@@ -76,10 +77,11 @@ public class JsonUtility {
 		JsonNode columns = node.get("columns");
 		List<String> codes = columns.findValuesAsText("code");
 
+		List<String> storedCodes = Statistic.getCodes();
 		Map<String, Integer> mappings = new HashMap<String, Integer>();
 		int i = 0;
 		for (String code : codes) {
-			for (String stored : Statistic.getCodes()) {
+			for (String stored : storedCodes) {
 				if (code.equals(stored)) {
 					mappings.put(code, i);
 					i++;
