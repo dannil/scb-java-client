@@ -1,6 +1,7 @@
 package org.dannil.scbapi.test.integrationtest;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.dannil.scbapi.api.SCBAPI;
@@ -87,6 +88,26 @@ public class StatisticAPIIntegrationTest {
 	}
 
 	@Test
+	public final void getPopulationForRelationshipStatusUnmarried() {
+		Assert.assertNotEquals(0, this.statisticsAPI.getPopulation(null, Arrays.asList(RelationshipStatus.UNMARRIED), null, null, null).size());
+	}
+
+	@Test
+	public final void getPopulationForRelationshipStatusMarried() {
+		Assert.assertNotEquals(0, this.statisticsAPI.getPopulation(null, Arrays.asList(RelationshipStatus.MARRIED), null, null, null).size());
+	}
+
+	@Test
+	public final void getPopulationForRelationshipStatusDivorced() {
+		Assert.assertNotEquals(0, this.statisticsAPI.getPopulation(null, Arrays.asList(RelationshipStatus.DIVORCED), null, null, null).size());
+	}
+
+	@Test
+	public final void getPopulationForRelationshipStatusWidow() {
+		Assert.assertNotEquals(0, this.statisticsAPI.getPopulation(null, Arrays.asList(RelationshipStatus.WIDOW), null, null, null).size());
+	}
+
+	@Test
 	public final void getPopulationForAges() {
 		Assert.assertNotEquals(0, this.statisticsAPI.getPopulation(null, null, this.ages, null, null).size());
 	}
@@ -94,6 +115,16 @@ public class StatisticAPIIntegrationTest {
 	@Test
 	public final void getPopulationForGenders() {
 		Assert.assertNotEquals(0, this.statisticsAPI.getPopulation(null, null, null, this.genders, null).size());
+	}
+
+	@Test
+	public final void getPopulationForGenderMan() {
+		Assert.assertNotEquals(0, this.statisticsAPI.getPopulation(null, null, null, Arrays.asList(Gender.MAN), null).size());
+	}
+
+	@Test
+	public final void getPopulationForGenderWoman() {
+		Assert.assertNotEquals(0, this.statisticsAPI.getPopulation(null, null, null, Arrays.asList(Gender.WOMAN), null).size());
 	}
 
 	@Test
