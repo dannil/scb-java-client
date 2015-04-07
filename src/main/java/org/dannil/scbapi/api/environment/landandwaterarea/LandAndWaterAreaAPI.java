@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.dannil.scbapi.api.AbstractAPI;
 import org.dannil.scbapi.model.environment.landandwaterarea.Area;
+import org.dannil.scbapi.model.environment.landandwaterarea.Area.Type;
 import org.dannil.scbapi.utility.JsonUtility;
 import org.dannil.scbapi.utility.QueryBuilder;
 import org.dannil.scbapi.utility.RequestPoster;
@@ -18,7 +19,7 @@ public final class LandAndWaterAreaAPI extends AbstractAPI implements AreaOperat
 	}
 
 	@Override
-	public final List<Area> getArea(List<String> regions, List<String> types, List<Integer> years) {
+	public final List<Area> getArea(List<String> regions, List<Type> types, List<Integer> years) {
 		QueryBuilder<String, String> queryBuilder = new QueryBuilder<String, String>();
 
 		ArrayListMultimap<String, String> map = ArrayListMultimap.create();
@@ -29,8 +30,8 @@ public final class LandAndWaterAreaAPI extends AbstractAPI implements AreaOperat
 			}
 		}
 		if (types != null) {
-			for (String type : types) {
-				map.put("ArealTyp", type);
+			for (Type type : types) {
+				map.put("ArealTyp", type.toString());
 			}
 		}
 		if (years != null) {
