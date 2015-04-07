@@ -55,7 +55,7 @@ public final class Area extends AbstractLandAndWaterAreaModel {
 	}
 
 	public enum Type {
-		LANDAREA("01"), INLANDWATEREXCLUDINGTHEFOURLARGELAKES("02"), THEFOURLARGELAKES("03"), SEAWATER("04"), NULL(null);
+		LANDAREA("01"), INLANDWATEREXCLUDINGTHEFOURLARGELAKES("02"), THEFOURLARGELAKES("03"), SEAWATER("04");
 
 		private final String value;
 
@@ -69,7 +69,7 @@ public final class Area extends AbstractLandAndWaterAreaModel {
 					return type;
 				}
 			}
-			return NULL;
+			throw new IllegalArgumentException(value);
 		}
 
 		@Override
