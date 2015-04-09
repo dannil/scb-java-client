@@ -13,4 +13,4 @@ branches:
     - dev
 
 after_success:
-  - mvn jacoco:report coveralls:report
+  - mvn -DTRAVIS_JOB_ID=$TRAVIS_JOB_ID jacoco:report coveralls:report
