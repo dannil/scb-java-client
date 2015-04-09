@@ -92,113 +92,12 @@ public class StatisticAPIIntegrationTest {
 
 		// Due to constraints set by SCB, we can only do 10 calls every 10
 		// seconds, so we need an artificial timer which handles this.
-		Thread.sleep(800);
+		Thread.sleep(600);
 	}
 
 	@Test
 	public final void getPopulation() {
 		Assert.assertNotEquals(0, this.statisticsAPI.getPopulation(this.regions, this.statuses, this.ages, this.genders, this.years));
 	}
-
-	// @Test
-	// public final void getPopulationNotNull() {
-	// Assert.assertNotEquals(0, this.statisticsAPI.getPopulation().size());
-	// }
-	//
-	// @Test
-	// public final void getPopulationForRegions() {
-	// Assert.assertNotEquals(0,
-	// this.statisticsAPI.getPopulation(StatisticAPIIntegrationTest.regions,
-	// null, null, null, null).size());
-	// }
-	//
-	// @Test
-	// public final void getPopulationForRegionsAndRelationshipStatuses() {
-	// Assert.assertNotEquals(0, this.statisticsAPI.getPopulation(this.regions,
-	// this.relationshipStatuses, null, null, null).size());
-	// }
-	//
-	// @Test
-	// public final void getPopulationForRegionsAndRelationshipStatusesAndAges()
-	// {
-	// Assert.assertNotEquals(0, this.statisticsAPI.getPopulation(this.regions,
-	// this.relationshipStatuses, this.ages, null, null).size());
-	// }
-	//
-	// @Test
-	// public final void
-	// getPopulationgetPopulationForRegionsAndRelationshipStatusesAndAgesAndGenders()
-	// {
-	// Assert.assertNotEquals(0, this.statisticsAPI.getPopulation(this.regions,
-	// this.relationshipStatuses, this.ages, this.genders, null).size());
-	// }
-	//
-	// @Test
-	// public final void
-	// getPopulationgetPopulationForRegionsAndRelationshipStatusesAndAgesAndGendersAndYears()
-	// {
-	// Assert.assertNotEquals(0, this.statisticsAPI.getPopulation(this.regions,
-	// this.relationshipStatuses, this.ages, this.genders, this.years).size());
-	// }
-	//
-	// @Test
-	// public final void getPopulationForRelationshipStatuses() {
-	// Assert.assertNotEquals(0, this.statisticsAPI.getPopulation(null,
-	// this.relationshipStatuses, null, null, null).size());
-	// }
-	//
-	// @Test
-	// public final void getPopulationForRelationshipStatusUnmarried() {
-	// Assert.assertNotEquals(0, this.statisticsAPI.getPopulation(null,
-	// Arrays.asList(RelationshipStatus.UNMARRIED), null, null, null).size());
-	// }
-	//
-	// @Test
-	// public final void getPopulationForRelationshipStatusMarried() {
-	// Assert.assertNotEquals(0, this.statisticsAPI.getPopulation(null,
-	// Arrays.asList(RelationshipStatus.MARRIED), null, null, null).size());
-	// }
-	//
-	// @Test
-	// public final void getPopulationForRelationshipStatusDivorced() {
-	// Assert.assertNotEquals(0, this.statisticsAPI.getPopulation(null,
-	// Arrays.asList(RelationshipStatus.DIVORCED), null, null, null).size());
-	// }
-	//
-	// @Test
-	// public final void getPopulationForRelationshipStatusWidow() {
-	// Assert.assertNotEquals(0, this.statisticsAPI.getPopulation(null,
-	// Arrays.asList(RelationshipStatus.WIDOW), null, null, null).size());
-	// }
-	//
-	// @Test
-	// public final void getPopulationForAges() {
-	// Assert.assertNotEquals(0, this.statisticsAPI.getPopulation(null, null,
-	// this.ages, null, null).size());
-	// }
-	//
-	// @Test
-	// public final void getPopulationForGenders() {
-	// Assert.assertNotEquals(0, this.statisticsAPI.getPopulation(null, null,
-	// null, this.genders, null).size());
-	// }
-	//
-	// @Test
-	// public final void getPopulationForGenderMan() {
-	// Assert.assertNotEquals(0, this.statisticsAPI.getPopulation(null, null,
-	// null, Arrays.asList(Gender.MAN), null).size());
-	// }
-	//
-	// @Test
-	// public final void getPopulationForGenderWoman() {
-	// Assert.assertNotEquals(0, this.statisticsAPI.getPopulation(null, null,
-	// null, Arrays.asList(Gender.WOMAN), null).size());
-	// }
-	//
-	// @Test
-	// public final void getPopulationForYears() {
-	// Assert.assertNotEquals(0, this.statisticsAPI.getPopulation(null, null,
-	// null, null, this.years).size());
-	// }
 
 }
