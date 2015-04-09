@@ -61,6 +61,9 @@ public class StatisticAPIIntegrationTest {
 			}
 		}
 
+		// Special case: test with everything null
+		parameters.add(new Object[] { null, null, null, null, null });
+
 		// Special case: test with everything at once
 		parameters.add(new Object[] { regions, statuses, ages, genders, years });
 
