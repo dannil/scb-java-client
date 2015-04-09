@@ -32,4 +32,8 @@ public class RequestPoster {
 		return result.substring(1, result.length());
 	}
 
+	public static final String getCodes(String table) {
+		return doGet(String.format("http://api.scb.se/OV0104/v1/doris/en/ssd/%s", table));
+	}
+
 }

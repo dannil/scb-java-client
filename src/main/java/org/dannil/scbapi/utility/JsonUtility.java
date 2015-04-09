@@ -113,9 +113,7 @@ public class JsonUtility {
 		return statistics;
 	}
 
-	public static final List<String> getCodes(String table) {
-		String content = RequestPoster.doGet(String.format("http://api.scb.se/OV0104/v1/doris/en/ssd/%s", table));
-
+	public static final List<String> getCodes(String content) {
 		JsonNode data = getNode(content);
 		List<String> codes = data.findValuesAsText("code");
 
