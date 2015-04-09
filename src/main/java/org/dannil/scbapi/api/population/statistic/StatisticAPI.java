@@ -98,27 +98,37 @@ public final class StatisticAPI extends AbstractAPI implements StatisticOperatio
 		map.put("ContentsCode", "BE0101N1");
 		if (regions != null) {
 			for (String region : regions) {
-				map.put("Region", region);
+				if (region != null) {
+					map.put("Region", region);
+				}
 			}
 		}
 		if (relationshipStatuses != null) {
 			for (RelationshipStatus relationshipStatus : relationshipStatuses) {
-				map.put("Civilstand", relationshipStatus.toString());
+				if (relationshipStatus != null) {
+					map.put("Civilstand", relationshipStatus.toString());
+				}
 			}
 		}
 		if (ages != null) {
 			for (String age : ages) {
-				map.put("Alder", age);
+				if (age != null) {
+					map.put("Alder", age);
+				}
 			}
 		}
 		if (genders != null) {
 			for (Gender gender : genders) {
-				map.put("Kon", gender.toString());
+				if (gender != null) {
+					map.put("Kon", gender.toString());
+				}
 			}
 		}
 		if (years != null) {
 			for (Integer year : years) {
-				map.put("Tid", year.toString());
+				if (year != null) {
+					map.put("Tid", year.toString());
+				}
 			}
 		}
 
