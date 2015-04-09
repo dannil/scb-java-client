@@ -3,8 +3,11 @@ package org.dannil.scbapi.model.population.statistic;
 import java.util.List;
 
 import org.dannil.scbapi.utility.JsonUtility;
+import org.dannil.scbapi.utility.RequestPoster;
 
 public final class Statistic extends AbstractStatisticModel {
+
+	private static List<String> codes;
 
 	private RelationshipStatus relationshipStatus;
 	private String age;
@@ -123,7 +126,10 @@ public final class Statistic extends AbstractStatisticModel {
 	}
 
 	public static List<String> getCodes() {
-		return JsonUtility.getCodes("BE/BE0101/BE0101A/BefolkningNy");
+		if (codes == null) {
+			codes = JsonUtility.getCodes(RequestPoster.getCodes("BE/BE0101/BE0101A/BefolkningNy"));
+		}
+		return codes;
 	}
 
 	public enum RelationshipStatus {
