@@ -25,7 +25,7 @@ public class StatisticAPIIntegrationTest {
 	@Parameters(name = "{index}: getPopulation({0}, {1}, {2}, {3}, {4})")
 	public static Collection<Object[]> data() {
 		List<String> regions;
-		List<RelationshipStatus> relationshipStatuses;
+		List<RelationshipStatus> statuses;
 		List<String> ages;
 		List<Gender> genders;
 		List<Integer> years;
@@ -34,7 +34,7 @@ public class StatisticAPIIntegrationTest {
 		regions.add("1263");
 		regions.add(null);
 
-		relationshipStatuses = Arrays.asList(RelationshipStatus.values());
+		statuses = Arrays.asList(RelationshipStatus.values());
 
 		ages = new ArrayList<String>();
 		ages.add("25");
@@ -50,51 +50,51 @@ public class StatisticAPIIntegrationTest {
 
 		// Test with real data
 		for (String region : regions) {
-			for (RelationshipStatus status : relationshipStatuses) {
+			for (RelationshipStatus status : statuses) {
 				for (String age : ages) {
 					for (Gender gender : genders) {
 						for (Integer year : years) {
-							parameters.add(new Object[] { region, status, age, gender, year });
+							parameters.add(new Object[] { ListUtility.toList(region), ListUtility.toList(status), ListUtility.toList(age), ListUtility.toList(gender), ListUtility.toList(year) });
 						}
 					}
 				}
 			}
 		}
 
+		// Special case: test with everything at once
+		parameters.add(new Object[] { regions, statuses, ages, genders, years });
+
 		return parameters;
 	}
 
-	private String region;
-	private RelationshipStatus status;
-	private String age;
-	private Gender gender;
-	private Integer year;
+	List<String> regions;
+	List<RelationshipStatus> statuses;
+	List<String> ages;
+	List<Gender> genders;
+	List<Integer> years;
 
 	private StatisticAPIIntegrationTest() {
 		this.api = new SCBAPI();
 		this.statisticsAPI = this.api.population().statistic();
 	}
 
-	public StatisticAPIIntegrationTest(String region, RelationshipStatus status, String age, Gender gender, Integer year) throws InterruptedException {
+	public StatisticAPIIntegrationTest(List<String> regions, List<RelationshipStatus> statuses, List<String> ages, List<Gender> genders, List<Integer> years) throws InterruptedException {
 		this();
 
-		this.region = region;
-		this.status = status;
-		this.age = age;
-		this.gender = gender;
-		this.year = year;
+		this.regions = regions;
+		this.statuses = statuses;
+		this.ages = ages;
+		this.genders = genders;
+		this.years = years;
 
 		// Due to constraints set by SCB, we can only do 10 calls every 10
 		// seconds, so we need an artificial timer which handles this.
-		Thread.sleep(900);
+		Thread.sleep(800);
 	}
 
 	@Test
 	public final void getPopulation() {
-		Assert.assertNotEquals(
-				0,
-				this.statisticsAPI.getPopulation(ListUtility.toList(this.region), ListUtility.toList(this.status), ListUtility.toList(this.age), ListUtility.toList(this.gender),
-						ListUtility.toList(this.year)));
+		Assert.assertNotEquals(0, this.statisticsAPI.getPopulation(this.regions, this.statuses, this.ages, this.genders, this.years));
 	}
 
 	// @Test
