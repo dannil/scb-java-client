@@ -36,20 +36,7 @@ public class JsonUtility {
 	}
 
 	public static final List<Area> parseAreas(JsonNode node) {
-		JsonNode columns = node.get("columns");
-		List<String> codes = columns.findValuesAsText("code");
-
-		List<String> storedCodes = Area.getCodes();
-		Map<String, Integer> mappings = new HashMap<String, Integer>();
-		int i = 0;
-		for (String code : codes) {
-			for (String stored : storedCodes) {
-				if (code.equals(stored)) {
-					mappings.put(code, i);
-					i++;
-				}
-			}
-		}
+		Map<String, Integer> mappings = generateMappings(node.get("columns").findValuesAsText("code"), Area.getCodes());
 
 		JsonNode data = node.get("data");
 
@@ -74,20 +61,7 @@ public class JsonUtility {
 	}
 
 	public static final List<Statistic> parseStatistic(JsonNode node) {
-		JsonNode columns = node.get("columns");
-		List<String> codes = columns.findValuesAsText("code");
-
-		List<String> storedCodes = Statistic.getCodes();
-		Map<String, Integer> mappings = new HashMap<String, Integer>();
-		int i = 0;
-		for (String code : codes) {
-			for (String stored : storedCodes) {
-				if (code.equals(stored)) {
-					mappings.put(code, i);
-					i++;
-				}
-			}
-		}
+		Map<String, Integer> mappings = generateMappings(node.get("columns").findValuesAsText("code"), Statistic.getCodes());
 
 		JsonNode data = node.get("data");
 
@@ -111,6 +85,20 @@ public class JsonUtility {
 			statistics.add(s);
 		}
 		return statistics;
+	}
+
+	private static final Map<String, Integer> generateMappings(List<String> inputCodes, List<String> storedCodes) {
+		Map<String, Integer> mappings = new HashMap<String, Integer>();
+		int i = 0;
+		for (String input : inputCodes) {
+			for (String stored : storedCodes) {
+				if (input.equals(stored)) {
+					mappings.put(input, i);
+					i++;
+				}
+			}
+		}
+		return mappings;
 	}
 
 	public static final List<String> getCodes(String content) {
