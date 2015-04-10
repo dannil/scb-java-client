@@ -16,8 +16,8 @@
 	
 		<resteasy-client.version>3.0.11.Final</resteasy-client.version>
 		<guava.version>18.0</guava.version>
-		<jackson-core.version>2.5.1</jackson-core.version>
-		<jackson-databind.version>2.5.1</jackson-databind.version>
+		<jackson-core.version>2.5.2</jackson-core.version>
+		<jackson-databind.version>2.5.2</jackson-databind.version>
 
 		<coveralls-maven-plugin.version>3.0.1</coveralls-maven-plugin.version>
 		<jacoco-maven-plugin.version>0.7.2.201409121644</jacoco-maven-plugin.version>
@@ -69,6 +69,12 @@
 			    <groupId>org.eluder.coveralls</groupId>
 			    <artifactId>coveralls-maven-plugin</artifactId>
 			    <version>${coveralls-maven-plugin.version}</version>
+			    
+			    <configuration>
+		            <sourceEncoding>UTF-8</sourceEncoding>
+		            <serviceName>travis-ci</serviceName>
+		            <serviceJobId>${env.TRAVIS_JOB_ID}</serviceJobId>
+			    </configuration>
 			</plugin>
 		
 			<plugin>
