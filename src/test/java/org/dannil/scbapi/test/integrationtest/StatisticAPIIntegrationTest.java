@@ -9,6 +9,7 @@ import org.dannil.scbapi.api.SCBAPI;
 import org.dannil.scbapi.api.population.statistic.StatisticAPI;
 import org.dannil.scbapi.model.population.statistic.Statistic.Gender;
 import org.dannil.scbapi.model.population.statistic.Statistic.RelationshipStatus;
+import org.dannil.scbapi.test.utility.Config;
 import org.dannil.scbapi.utility.ListUtility;
 import org.junit.Assert;
 import org.junit.Test;
@@ -92,7 +93,7 @@ public class StatisticAPIIntegrationTest {
 
 		// Due to constraints set by SCB, we can only do 10 calls every 10
 		// seconds, so we need an artificial timer which handles this.
-		Thread.sleep(600);
+		Thread.sleep(Config.TIMER);
 	}
 
 	@Test
