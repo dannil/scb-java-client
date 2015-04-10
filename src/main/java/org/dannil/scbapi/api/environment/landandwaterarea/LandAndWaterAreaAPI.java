@@ -26,17 +26,23 @@ public final class LandAndWaterAreaAPI extends AbstractAPI implements AreaOperat
 		map.put("ContentsCode", "MI0802AA");
 		if (regions != null) {
 			for (String region : regions) {
-				map.put("Region", region);
+				if (region != null) {
+					map.put("Region", region);
+				}
 			}
 		}
 		if (types != null) {
 			for (Type type : types) {
-				map.put("ArealTyp", type.toString());
+				if (type != null) {
+					map.put("ArealTyp", type.toString());
+				}
 			}
 		}
 		if (years != null) {
 			for (Integer year : years) {
-				map.put("Tid", year.toString());
+				if (year != null) {
+					map.put("Tid", year.toString());
+				}
 			}
 		}
 

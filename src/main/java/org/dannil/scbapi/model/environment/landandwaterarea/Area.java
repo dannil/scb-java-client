@@ -3,8 +3,11 @@ package org.dannil.scbapi.model.environment.landandwaterarea;
 import java.util.List;
 
 import org.dannil.scbapi.utility.JsonUtility;
+import org.dannil.scbapi.utility.RequestPoster;
 
 public final class Area extends AbstractLandAndWaterAreaModel {
+
+	private static List<String> codes;
 
 	private Type type;
 	private Double squareKm;
@@ -51,7 +54,10 @@ public final class Area extends AbstractLandAndWaterAreaModel {
 	}
 
 	public static List<String> getCodes() {
-		return JsonUtility.getCodes("MI/MI0802/Areal2012");
+		if (codes == null) {
+			codes = JsonUtility.getCodes(RequestPoster.getCodes("MI/MI0802/Areal2012"));
+		}
+		return codes;
 	}
 
 	public enum Type {
