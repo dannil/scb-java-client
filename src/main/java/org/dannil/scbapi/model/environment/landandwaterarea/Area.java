@@ -60,6 +60,9 @@ public final class Area extends AbstractLandAndWaterAreaModel {
 			return false;
 		}
 		Area other = (Area) obj;
+		if (!super.equals(obj)) {
+			return false;
+		}
 		if (this.squareKm == null) {
 			if (other.squareKm != null) {
 				return false;
