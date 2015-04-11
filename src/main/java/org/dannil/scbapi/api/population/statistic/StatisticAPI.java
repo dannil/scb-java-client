@@ -1,6 +1,5 @@
 package org.dannil.scbapi.api.population.statistic;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -13,8 +12,6 @@ import org.dannil.scbapi.utility.JsonUtility;
 import org.dannil.scbapi.utility.QueryBuilder;
 import org.dannil.scbapi.utility.RequestPoster;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.ArrayListMultimap;
 
 public final class StatisticAPI extends AbstractAPI implements StatisticOperations {
@@ -45,44 +42,19 @@ public final class StatisticAPI extends AbstractAPI implements StatisticOperatio
 		this.url = "http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy";
 	}
 
-	public final List<String> getAvailableRegions() {
-		String response = RequestPoster.doGet(this.url);
-
-		ObjectMapper mapper = new ObjectMapper();
-		try {
-			JsonNode node = mapper.readTree(response);
-			List<JsonNode> nodes = node.findValues("values");
-			node = nodes.get(0);
-
-			List<String> years = new ArrayList<String>(node.size());
-			for (int i = 0; i < node.size(); i++) {
-				years.add(node.get(i).asText());
-			}
-			return years;
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return null;
+	public final List<String> getRegions() {
+		return super.getRegions(this.url);
 	}
 
-	public final List<Integer> getAvailableYears() {
-		String response = RequestPoster.doGet(this.url);
+	public final List<Integer> getYears() {
+		List<String> fetchedYears = super.getYears(this.url);
 
-		ObjectMapper mapper = new ObjectMapper();
-		try {
-			JsonNode node = mapper.readTree(response);
-			List<JsonNode> nodes = node.findValues("values");
-			node = nodes.get(nodes.size() - 1);
-
-			List<Integer> years = new ArrayList<Integer>(node.size());
-			for (int i = 0; i < node.size(); i++) {
-				years.add(node.get(i).asInt());
-			}
-			return years;
-		} catch (IOException e) {
-			e.printStackTrace();
+		List<Integer> years = new ArrayList<Integer>(fetchedYears.size());
+		for (String fetchedYear : fetchedYears) {
+			years.add(Integer.valueOf(fetchedYear));
 		}
-		return null;
+
+		return years;
 	}
 
 	@Override
