@@ -1,6 +1,8 @@
 package org.dannil.scbapi.api.environment.landandwaterarea;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import org.dannil.scbapi.api.AbstractAPI;
 import org.dannil.scbapi.model.environment.landandwaterarea.Area;
@@ -12,6 +14,47 @@ import org.dannil.scbapi.utility.RequestPoster;
 import com.google.common.collect.ArrayListMultimap;
 
 public final class LandAndWaterAreaAPI extends AbstractAPI implements AreaOperations {
+
+	private String url;
+
+	public LandAndWaterAreaAPI() {
+		super.locale = Locale.getDefault();
+
+		buildUrl();
+	}
+
+	public LandAndWaterAreaAPI(Locale locale) {
+		this();
+		super.locale = locale;
+
+		buildUrl();
+	}
+
+	@Override
+	public final void setLocale(Locale locale) {
+		super.locale = locale;
+
+		buildUrl();
+	}
+
+	public final void buildUrl() {
+		this.url = "http://api.scb.se/OV0104/v1/doris/" + super.locale.getLanguage() + "/ssd/MI/MI0802/Areal2012";
+	}
+
+	public final List<String> getRegions() {
+		return super.getRegions(this.url);
+	}
+
+	public final List<Integer> getYears() {
+		List<String> fetchedYears = super.getYears(this.url);
+
+		List<Integer> years = new ArrayList<Integer>(fetchedYears.size());
+		for (String fetchedYear : fetchedYears) {
+			years.add(Integer.valueOf(fetchedYear));
+		}
+
+		return years;
+	}
 
 	@Override
 	public final List<Area> getArea() {
@@ -47,7 +90,7 @@ public final class LandAndWaterAreaAPI extends AbstractAPI implements AreaOperat
 		}
 
 		String query = queryBuilder.build(map);
-		String response = RequestPoster.doPost("http://api.scb.se/OV0104/v1/doris/" + super.locale.getLanguage() + "/ssd/MI/MI0802/Areal2012", query);
+		String response = RequestPoster.doPost(this.url, query);
 		return JsonUtility.parseAreas(JsonUtility.getNode(response));
 	}
 

@@ -19,27 +19,27 @@ public final class StatisticAPI extends AbstractAPI implements StatisticOperatio
 	private String url;
 
 	public StatisticAPI() {
-		this.locale = Locale.getDefault();
+		super.locale = Locale.getDefault();
 
 		buildUrl();
 	}
 
 	public StatisticAPI(Locale locale) {
 		this();
-		this.locale = locale;
+		super.locale = locale;
 
 		buildUrl();
 	}
 
 	@Override
 	public final void setLocale(Locale locale) {
-		this.locale = locale;
+		super.locale = locale;
 
 		buildUrl();
 	}
 
 	public final void buildUrl() {
-		this.url = "http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy";
+		this.url = "http://api.scb.se/OV0104/v1/doris/" + super.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy";
 	}
 
 	public final List<String> getRegions() {
