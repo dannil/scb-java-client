@@ -155,18 +155,25 @@ public class StatisticUnitTest {
 	}
 
 	@Test
+	public final void notEqualsNull() {
+		Statistic statistic = new Statistic();
+
+		Assert.assertFalse(statistic.equals(null));
+	}
+
+	@Test
+	public final void notEqualsIncompatibleObject() {
+		Statistic statistic = new Statistic();
+
+		Assert.assertFalse(statistic.equals(new Object()));
+	}
+
+	@Test
 	public final void equalsItselfWithValues() {
 		Statistic statistic = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
 		Assert.assertTrue(statistic.equals(statistic2));
-	}
-
-	@Test
-	public final void notEqualsNull() {
-		Statistic statistic = new Statistic();
-
-		Assert.assertFalse(statistic.equals(null));
 	}
 
 	@Test
@@ -180,7 +187,17 @@ public class StatisticUnitTest {
 	}
 
 	@Test
-	public final void notEqualsOnNullRegion() {
+	public final void notEqualsOnFirstNullRegion() {
+		Statistic statistic = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		statistic.setRegion(null);
+
+		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+
+		Assert.assertFalse(statistic.equals(statistic2));
+	}
+
+	@Test
+	public final void notEqualsOnSecondNullRegion() {
 		Statistic statistic = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
 		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
@@ -200,7 +217,17 @@ public class StatisticUnitTest {
 	}
 
 	@Test
-	public final void notEqualsOnNullRelationshipStatus() {
+	public final void notEqualsOnFirstNullRelationshipStatus() {
+		Statistic statistic = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		statistic.setRelationshipStatus(null);
+
+		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+
+		Assert.assertFalse(statistic.equals(statistic2));
+	}
+
+	@Test
+	public final void notEqualsOnSecondNullRelationshipStatus() {
 		Statistic statistic = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
 		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
@@ -220,7 +247,17 @@ public class StatisticUnitTest {
 	}
 
 	@Test
-	public final void notEqualsOnNullAge() {
+	public final void notEqualsOnFirstNullAge() {
+		Statistic statistic = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		statistic.setAge(null);
+
+		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+
+		Assert.assertFalse(statistic.equals(statistic2));
+	}
+
+	@Test
+	public final void notEqualsOnSecondNullAge() {
 		Statistic statistic = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
 		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
@@ -240,7 +277,17 @@ public class StatisticUnitTest {
 	}
 
 	@Test
-	public final void notEqualsOnNullGender() {
+	public final void notEqualsOnFirstNullGender() {
+		Statistic statistic = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		statistic.setGender(null);
+
+		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+
+		Assert.assertFalse(statistic.equals(statistic2));
+	}
+
+	@Test
+	public final void notEqualsOnSecondNullGender() {
 		Statistic statistic = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
 		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
@@ -260,7 +307,17 @@ public class StatisticUnitTest {
 	}
 
 	@Test
-	public final void notEqualsOnNullYear() {
+	public final void notEqualsOnFirstNullYear() {
+		Statistic statistic = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		statistic.setYear(null);
+
+		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+
+		Assert.assertFalse(statistic.equals(statistic2));
+	}
+
+	@Test
+	public final void notEqualsOnSecondNullYear() {
 		Statistic statistic = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
 		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
@@ -280,7 +337,17 @@ public class StatisticUnitTest {
 	}
 
 	@Test
-	public final void notEqualsOnNullAmount() {
+	public final void notEqualsOnFirstNullAmount() {
+		Statistic statistic = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		statistic.setAmount(null);
+
+		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+
+		Assert.assertFalse(statistic.equals(statistic2));
+	}
+
+	@Test
+	public final void notEqualsOnSecondNullAmount() {
 		Statistic statistic = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
 		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);

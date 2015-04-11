@@ -110,18 +110,25 @@ public class AreaUnitTest {
 	}
 
 	@Test
+	public final void notEqualsNull() {
+		Area area = new Area();
+
+		Assert.assertFalse(area.equals(null));
+	}
+
+	@Test
+	public final void notEqualsIncompatibleObject() {
+		Area area = new Area();
+
+		Assert.assertFalse(area.equals(new Object()));
+	}
+
+	@Test
 	public final void equalsItselfWithValues() {
 		Area area = new Area("1267", Type.LANDAREA, 2009, 200d);
 		Area area2 = new Area("1267", Type.LANDAREA, 2009, 200d);
 
 		Assert.assertTrue(area.equals(area2));
-	}
-
-	@Test
-	public final void notEqualsNull() {
-		Area area = new Area();
-
-		Assert.assertFalse(area.equals(null));
 	}
 
 	@Test
@@ -135,7 +142,17 @@ public class AreaUnitTest {
 	}
 
 	@Test
-	public final void notEqualsOnNullRegion() {
+	public final void notEqualsOnFirstNullRegion() {
+		Area area = new Area("1267", Type.LANDAREA, 2009, 200d);
+		area.setRegion(null);
+
+		Area area2 = new Area("1267", Type.LANDAREA, 2009, 200d);
+
+		Assert.assertFalse(area.equals(area2));
+	}
+
+	@Test
+	public final void notEqualsOnSecondNullRegion() {
 		Area area = new Area("1267", Type.LANDAREA, 2009, 200d);
 
 		Area area2 = new Area("1267", Type.LANDAREA, 2009, 200d);
@@ -155,7 +172,17 @@ public class AreaUnitTest {
 	}
 
 	@Test
-	public final void notEqualsOnNullType() {
+	public final void notEqualsOnFirstNullType() {
+		Area area = new Area("1267", Type.LANDAREA, 2009, 200d);
+		area.setType(null);
+
+		Area area2 = new Area("1267", Type.LANDAREA, 2009, 200d);
+
+		Assert.assertFalse(area.equals(area2));
+	}
+
+	@Test
+	public final void notEqualsOnSecondNullType() {
 		Area area = new Area("1267", Type.LANDAREA, 2009, 200d);
 
 		Area area2 = new Area("1267", Type.LANDAREA, 2009, 200d);
@@ -175,7 +202,17 @@ public class AreaUnitTest {
 	}
 
 	@Test
-	public final void notEqualsOnNullYear() {
+	public final void notEqualsOnFirstNullYear() {
+		Area area = new Area("1267", Type.LANDAREA, 2009, 200d);
+		area.setYear(null);
+
+		Area area2 = new Area("1267", Type.LANDAREA, 2009, 200d);
+
+		Assert.assertFalse(area.equals(area2));
+	}
+
+	@Test
+	public final void notEqualsOnSecondNullYear() {
 		Area area = new Area("1267", Type.LANDAREA, 2009, 200d);
 
 		Area area2 = new Area("1267", Type.LANDAREA, 2009, 200d);
@@ -195,7 +232,17 @@ public class AreaUnitTest {
 	}
 
 	@Test
-	public final void notEqualsOnNullSquareKm() {
+	public final void notEqualsOnFirstNullSquareKm() {
+		Area area = new Area("1267", Type.LANDAREA, 2009, 200d);
+		area.setSquareKm(null);
+
+		Area area2 = new Area("1267", Type.LANDAREA, 2009, 200d);
+
+		Assert.assertFalse(area.equals(area2));
+	}
+
+	@Test
+	public final void notEqualsOnSecondNullSquareKm() {
 		Area area = new Area("1267", Type.LANDAREA, 2009, 200d);
 
 		Area area2 = new Area("1267", Type.LANDAREA, 2009, 200d);
