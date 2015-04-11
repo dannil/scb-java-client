@@ -13,11 +13,11 @@ public abstract class AbstractAPI {
 
 	protected Locale locale;
 
-	public void setLocale(Locale locale) {
+	protected void setLocale(Locale locale) {
 		this.locale = locale;
 	}
 
-	public List<String> getRegions(String url) {
+	protected List<String> getRegions(String url) {
 		String content = RequestPoster.doGet(url);
 
 		JsonNode contentAsJsonNode = JsonUtility.getNode(content);
@@ -34,7 +34,7 @@ public abstract class AbstractAPI {
 		return regions;
 	}
 
-	public List<String> getYears(String url) {
+	protected List<String> getYears(String url) {
 		String content = RequestPoster.doGet(url);
 
 		JsonNode contentAsJsonNode = JsonUtility.getNode(content);
