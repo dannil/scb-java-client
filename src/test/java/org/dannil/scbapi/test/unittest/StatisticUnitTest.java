@@ -3,6 +3,7 @@ package org.dannil.scbapi.test.unittest;
 import org.dannil.scbapi.model.population.statistic.Statistic;
 import org.dannil.scbapi.model.population.statistic.Statistic.Gender;
 import org.dannil.scbapi.model.population.statistic.Statistic.RelationshipStatus;
+import org.jboss.resteasy.spi.NotImplementedYetException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -155,6 +156,11 @@ public class StatisticUnitTest {
 	}
 
 	@Test
+	public final void equalsItselfWithValues() {
+		throw new NotImplementedYetException();
+	}
+
+	@Test
 	public final void notEqualsNull() {
 		Statistic statistic = new Statistic();
 
@@ -282,17 +288,17 @@ public class StatisticUnitTest {
 	}
 
 	@Test
-	public final void equalsHashCodeNullValues() {
-		Statistic statistic = new Statistic();
-		Statistic statistic2 = new Statistic();
+	public final void equalsHashCode() {
+		Statistic statistic = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
 		Assert.assertEquals(statistic.hashCode(), statistic2.hashCode());
 	}
 
 	@Test
-	public final void equalsHashCodeNotNullValues() {
-		Statistic statistic = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
-		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+	public final void equalsHashCodeNullValues() {
+		Statistic statistic = new Statistic();
+		Statistic statistic2 = new Statistic();
 
 		Assert.assertEquals(statistic.hashCode(), statistic2.hashCode());
 	}
