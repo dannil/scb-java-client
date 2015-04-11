@@ -39,6 +39,41 @@ public final class Area extends AbstractLandAndWaterAreaModel {
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = super.hashCode();
+		result = prime * result + ((this.squareKm == null) ? 0 : this.squareKm.hashCode());
+		result = prime * result + ((this.type == null) ? 0 : this.type.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof Area)) {
+			return false;
+		}
+		Area other = (Area) obj;
+		if (this.squareKm == null) {
+			if (other.squareKm != null) {
+				return false;
+			}
+		} else if (!this.squareKm.equals(other.squareKm)) {
+			return false;
+		}
+		if (this.type != other.type) {
+			return false;
+		}
+		return true;
+	}
+
+	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 
