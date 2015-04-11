@@ -2,7 +2,6 @@ package org.dannil.scbapi.test.unittest;
 
 import org.dannil.scbapi.model.environment.landandwaterarea.Area;
 import org.dannil.scbapi.model.environment.landandwaterarea.Area.Type;
-import org.jboss.resteasy.spi.NotImplementedYetException;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -112,7 +111,10 @@ public class AreaUnitTest {
 
 	@Test
 	public final void equalsItselfWithValues() {
-		throw new NotImplementedYetException();
+		Area area = new Area("1267", Type.LANDAREA, 2009, 200d);
+		Area area2 = new Area("1267", Type.LANDAREA, 2009, 200d);
+
+		Assert.assertTrue(area.equals(area2));
 	}
 
 	@Test
