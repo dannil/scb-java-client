@@ -11,6 +11,7 @@ import org.dannil.scbapi.api.population.statistic.StatisticAPI;
 import org.dannil.scbapi.model.environment.landandwaterarea.Area;
 import org.dannil.scbapi.model.environment.landandwaterarea.Area.Type;
 import org.dannil.scbapi.model.population.demography.AverageAgeFirstChild;
+import org.dannil.scbapi.model.population.statistic.Statistic;
 
 public class Test {
 
@@ -41,26 +42,17 @@ public class Test {
 
 		StatisticAPI statisticApi = api.population().statistic();
 
-		// List<Statistic> collection8 =
-		// api.population().statistic().getPopulation(regions, null, ages, null,
-		// years);
-		// for (Statistic p : collection8) {
-		// System.out.println(p);
-		// }
-		//
-		// // WORKS
-		// List<Statistic> collection4 =
-		// api.population().statistic().getPopulation();
-		// for (Statistic p : collection4) {
-		// System.out.println(p);
-		// }
-		//
+		List<Statistic> collection8 = statisticApi.getPopulation(regions, null, ages, null, years);
+		for (Statistic p : collection8) {
+			System.out.println(p);
+		}
+
+		List<Statistic> collection4 = statisticApi.getPopulation();
+		for (Statistic p : collection4) {
+			System.out.println(p);
+		}
+
 		LandAndWaterAreaAPI lawApi = api.environment().landAndWaterArea();
-		//
-		// List<Area> collection5 = lawApi.getArea(regions, null, years);
-		// for (Area a : collection5) {
-		// System.out.println(a);
-		// }
 
 		List<Area> collection6 = lawApi.getArea(regions, types, years);
 		for (Area a : collection6) {
