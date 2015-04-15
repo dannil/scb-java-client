@@ -29,7 +29,7 @@ public abstract class AbstractAPI {
 
 		List<String> regions = new ArrayList<String>(jsonRegions.size());
 		for (int j = 0; j < jsonRegions.size(); j++) {
-			regions.add(jsonRegions.get(j).asText());
+			regions.add(jsonRegions.get(j).toString());
 		}
 		return regions;
 	}
@@ -46,7 +46,7 @@ public abstract class AbstractAPI {
 
 		List<String> years = new ArrayList<String>(jsonYears.size());
 		for (int j = 0; j < jsonYears.size(); j++) {
-			years.add(jsonYears.get(j).asText());
+			years.add(jsonYears.get(j).toString());
 		}
 		return years;
 	}
