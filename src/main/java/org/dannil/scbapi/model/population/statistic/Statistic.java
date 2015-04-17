@@ -176,7 +176,7 @@ public final class Statistic extends AbstractStatisticModel {
 
 		@Override
 		public String toString() {
-			return (this.value != null ? this.value.toString() : null);
+			return this.value.toString();
 		}
 	}
 
