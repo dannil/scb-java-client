@@ -52,7 +52,6 @@ public final class LandAndWaterAreaAPI extends AbstractAPI implements AreaOperat
 		for (String fetchedYear : fetchedYears) {
 			years.add(Integer.valueOf(fetchedYear));
 		}
-
 		return years;
 	}
 

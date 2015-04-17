@@ -53,7 +53,6 @@ public final class StatisticAPI extends AbstractAPI implements StatisticOperatio
 		for (String fetchedYear : fetchedYears) {
 			years.add(Integer.valueOf(fetchedYear));
 		}
-
 		return years;
 	}
 
