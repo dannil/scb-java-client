@@ -16,38 +16,30 @@ import com.google.common.collect.ArrayListMultimap;
 
 public final class StatisticAPI extends AbstractAPI implements StatisticOperations {
 
-	private String url;
-
 	public StatisticAPI() {
 		super.locale = Locale.getDefault();
-
-		buildUrl();
 	}
 
 	public StatisticAPI(Locale locale) {
 		this();
 		super.locale = locale;
-
-		buildUrl();
 	}
 
 	@Override
 	public final void setLocale(Locale locale) {
 		super.locale = locale;
-
-		buildUrl();
 	}
 
-	public final void buildUrl() {
-		this.url = "http://api.scb.se/OV0104/v1/doris/" + super.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy";
+	private final String getUrl() {
+		return "http://api.scb.se/OV0104/v1/doris/" + super.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy";
 	}
 
 	public final List<String> getRegions() {
-		return super.getRegions(this.url);
+		return super.getRegions(getUrl());
 	}
 
 	public final List<Integer> getYears() {
-		List<String> fetchedYears = super.getYears(this.url);
+		List<String> fetchedYears = super.getYears(getUrl());
 
 		List<Integer> years = new ArrayList<Integer>(fetchedYears.size());
 		for (String fetchedYear : fetchedYears) {
@@ -104,7 +96,7 @@ public final class StatisticAPI extends AbstractAPI implements StatisticOperatio
 		}
 
 		String query = queryBuilder.build(map);
-		String response = RequestPoster.doPost(this.url, query);
+		String response = RequestPoster.doPost(getUrl(), query);
 		return JsonUtility.parseStatistic(JsonUtility.getNode(response));
 	}
 }

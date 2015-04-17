@@ -15,38 +15,30 @@ import com.google.common.collect.ArrayListMultimap;
 
 public final class LandAndWaterAreaAPI extends AbstractAPI implements AreaOperations {
 
-	private String url;
-
 	public LandAndWaterAreaAPI() {
 		super.locale = Locale.getDefault();
-
-		buildUrl();
 	}
 
 	public LandAndWaterAreaAPI(Locale locale) {
 		this();
 		super.locale = locale;
-
-		buildUrl();
 	}
 
 	@Override
 	public final void setLocale(Locale locale) {
 		super.locale = locale;
-
-		buildUrl();
 	}
 
-	public final void buildUrl() {
-		this.url = "http://api.scb.se/OV0104/v1/doris/" + super.locale.getLanguage() + "/ssd/MI/MI0802/Areal2012";
+	private final String getUrl() {
+		return "http://api.scb.se/OV0104/v1/doris/" + super.locale.getLanguage() + "/ssd/MI/MI0802/Areal2012";
 	}
 
 	public final List<String> getRegions() {
-		return super.getRegions(this.url);
+		return super.getRegions(getUrl());
 	}
 
 	public final List<Integer> getYears() {
-		List<String> fetchedYears = super.getYears(this.url);
+		List<String> fetchedYears = super.getYears(getUrl());
 
 		List<Integer> years = new ArrayList<Integer>(fetchedYears.size());
 		for (String fetchedYear : fetchedYears) {
@@ -89,7 +81,7 @@ public final class LandAndWaterAreaAPI extends AbstractAPI implements AreaOperat
 		}
 
 		String query = queryBuilder.build(map);
-		String response = RequestPoster.doPost(this.url, query);
+		String response = RequestPoster.doPost(getUrl(), query);
 		return JsonUtility.parseAreas(JsonUtility.getNode(response));
 	}
 
