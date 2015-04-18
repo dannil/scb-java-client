@@ -171,7 +171,7 @@ public final class Statistic extends AbstractStatisticModel {
 					return gender;
 				}
 			}
-			throw new IllegalArgumentException(value.toString());
+			throw new IllegalArgumentException(String.valueOf(value));
 		}
 
 		@Override
