@@ -109,7 +109,7 @@ public final class Area extends AbstractLandAndWaterAreaModel {
 
 		public static Type of(String value) {
 			for (Type type : values()) {
-				if (type.value != null && type.value.equals(value)) {
+				if (type.value.equals(value)) {
 					return type;
 				}
 			}

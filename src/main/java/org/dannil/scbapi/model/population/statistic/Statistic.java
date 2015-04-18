@@ -143,7 +143,7 @@ public final class Statistic extends AbstractStatisticModel {
 
 		public static RelationshipStatus of(String value) {
 			for (RelationshipStatus status : values()) {
-				if (status.value != null && status.value.equals(value)) {
+				if (status.value.equals(value)) {
 					return status;
 				}
 			}
@@ -167,7 +167,7 @@ public final class Statistic extends AbstractStatisticModel {
 
 		public static Gender of(Integer value) {
 			for (Gender gender : values()) {
-				if (gender.value != null && gender.value.equals(value)) {
+				if (gender.value.equals(value)) {
 					return gender;
 				}
 			}
