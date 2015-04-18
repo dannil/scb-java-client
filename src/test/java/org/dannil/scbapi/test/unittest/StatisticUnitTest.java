@@ -386,4 +386,52 @@ public class StatisticUnitTest {
 		Assert.assertNotNull(statistic.toString());
 	}
 
+	@Test
+	public final void relationshipStatusValues() {
+		Assert.assertNotNull(RelationshipStatus.values());
+	}
+
+	@Test
+	public final void genderValues() {
+		Assert.assertNotNull(Gender.values());
+	}
+
+	@Test
+	public final void relationshipStatusValueOf() {
+		RelationshipStatus status = RelationshipStatus.valueOf("UNMARRIED");
+
+		Assert.assertNotNull(status);
+	}
+
+	@Test
+	public final void genderValueOf() {
+		Gender gender = Gender.valueOf("MAN");
+
+		Assert.assertNotNull(gender);
+	}
+
+	@Test
+	public final void convertValueToRelationshipStatus() {
+		RelationshipStatus status = RelationshipStatus.of("OG");
+
+		Assert.assertNotNull(status);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public final void illegalArgumentForType() {
+		RelationshipStatus.of(null);
+	}
+
+	@Test
+	public final void convertValueToGender() {
+		Gender gender = Gender.of(1);
+
+		Assert.assertNotNull(gender);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public final void illegalArgumentForGender() {
+		Gender.of(null);
+	}
+
 }

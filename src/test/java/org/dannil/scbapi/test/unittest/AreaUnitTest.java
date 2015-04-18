@@ -281,10 +281,18 @@ public class AreaUnitTest {
 		Assert.assertNotNull(area.toString());
 	}
 
-	// @Test
-	// public final void test() {
-	// throw new NotImplementedYetException();
-	// }
+	@Test
+	public final void convertValueToType() {
+		Type type = Type.of("01");
+
+		Assert.assertNotNull(type);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public final void illegalArgumentForType() {
+		Type.of(null);
+	}
+
 	//
 	// @Test
 	// public final void test() {
