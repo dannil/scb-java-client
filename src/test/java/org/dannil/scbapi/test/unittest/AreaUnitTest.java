@@ -282,6 +282,18 @@ public class AreaUnitTest {
 	}
 
 	@Test
+	public final void typeValues() {
+		Assert.assertNotNull(Type.values());
+	}
+
+	@Test
+	public final void typeValueOf() {
+		Type type = Type.valueOf("LANDAREA");
+
+		Assert.assertNotNull(type);
+	}
+
+	@Test
 	public final void convertValueToType() {
 		Type type = Type.of("01");
 
