@@ -302,7 +302,7 @@ public class AreaUnitTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public final void illegalArgumentForType() {
-		Type.of(null);
+		Type.of("ABC");
 	}
 
 	//
