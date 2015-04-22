@@ -60,7 +60,7 @@ public class JsonUtility {
 		return areas;
 	}
 
-	public static final List<Statistic> parseStatistic(JsonNode node) {
+	public static final List<Statistic> oldParseStatistics(JsonNode node) {
 		Map<String, Integer> mappings = generateMappings(node.get("columns").findValuesAsText("code"), Statistic.getCodes());
 
 		JsonNode data = node.get("data");
@@ -87,15 +87,53 @@ public class JsonUtility {
 		return statistics;
 	}
 
+	private static final List<Map<String, String>> genericParse(JsonNode node, List<String> codes) {
+		Map<String, Integer> mappings = generateMappings(node.get("columns").findValuesAsText("code"), codes);
+
+		JsonNode data = node.get("data");
+
+		List<JsonNode> keys = data.findValues("key");
+		List<JsonNode> values = data.findValues("values");
+
+		List<Map<String, String>> contents = new ArrayList<Map<String, String>>();
+		for (int j = 0; j < keys.size(); j++) {
+			JsonNode keyAtPosition = keys.get(j);
+
+			Map<String, String> keyContents = new HashMap<String, String>();
+			for (String code : codes) {
+				if (mappings.containsKey(code)) {
+					keyContents.put(code, keyAtPosition.get(mappings.get(code)).asText());
+				}
+			}
+
+			JsonNode valueAtPosition = values.get(j);
+			String value = valueAtPosition.get(0).asText();
+			keyContents.put("Value", value);
+
+			contents.add(keyContents);
+		}
+		return contents;
+	}
+
+	public static final List<Statistic> parseStatistics(JsonNode node) {
+		List<Map<String, String>> contents = genericParse(node, Statistic.getCodes());
+
+		List<Statistic> statistics = new ArrayList<Statistic>();
+		for (Map<String, String> map : contents) {
+			Statistic statistic = new Statistic(map.get("Region"), RelationshipStatus.of(map.get("Civilstand")), map.get("Alder"), Gender.of(ParseUtility.parseInteger(map.get("Kon"), null)),
+					ParseUtility.parseInteger(map.get("Tid"), null), ParseUtility.parseLong(map.get("Value"), null));
+			statistics.add(statistic);
+		}
+		return statistics;
+	}
+
 	private static final Map<String, Integer> generateMappings(List<String> inputCodes, List<String> storedCodes) {
 		Map<String, Integer> mappings = new HashMap<String, Integer>();
 		int i = 0;
 		for (String input : inputCodes) {
-			for (String stored : storedCodes) {
-				if (input.equals(stored)) {
-					mappings.put(input, i);
-					i++;
-				}
+			if (inputCodes.contains(input)) {
+				mappings.put(input, i);
+				i++;
 			}
 		}
 		return mappings;

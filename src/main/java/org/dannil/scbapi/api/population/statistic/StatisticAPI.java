@@ -97,6 +97,6 @@ public final class StatisticAPI extends AbstractAPI implements StatisticOperatio
 
 		String query = queryBuilder.build(map);
 		String response = RequestPoster.doPost(getUrl(), query);
-		return JsonUtility.parseStatistic(JsonUtility.getNode(response));
+		return JsonUtility.parseStatistics(JsonUtility.getNode(response));
 	}
 }
