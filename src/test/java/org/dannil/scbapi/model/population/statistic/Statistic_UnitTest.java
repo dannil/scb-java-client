@@ -1,10 +1,12 @@
 package org.dannil.scbapi.model.population.statistic;
 
-import org.dannil.scbapi.model.population.statistic.Statistic;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import org.dannil.scbapi.model.population.statistic.Statistic.Gender;
 import org.dannil.scbapi.model.population.statistic.Statistic.RelationshipStatus;
-import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -12,18 +14,11 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class Statistic_UnitTest {
 
-	private Statistic statistic;
-
-	@Before
-	public final void init() {
-		this.statistic = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
-	}
-
 	@Test
 	public final void createWithDefaultConstructor() {
 		Statistic statistic = new Statistic();
 
-		Assert.assertNotNull(statistic);
+		assertNotNull(statistic);
 	}
 
 	@Test
@@ -32,7 +27,7 @@ public class Statistic_UnitTest {
 
 		statistic.setRegion("1267");
 
-		Assert.assertNotNull(statistic.getRegion());
+		assertNotNull(statistic.getRegion());
 	}
 
 	@Test
@@ -41,7 +36,7 @@ public class Statistic_UnitTest {
 
 		statistic.setRegion("1267");
 
-		Assert.assertEquals("1267", statistic.getRegion());
+		assertEquals("1267", statistic.getRegion());
 	}
 
 	@Test
@@ -50,7 +45,7 @@ public class Statistic_UnitTest {
 
 		statistic.setRelationshipStatus(RelationshipStatus.MARRIED);
 
-		Assert.assertNotNull(statistic.getRelationshipStatus());
+		assertNotNull(statistic.getRelationshipStatus());
 	}
 
 	@Test
@@ -59,7 +54,7 @@ public class Statistic_UnitTest {
 
 		statistic.setRelationshipStatus(RelationshipStatus.MARRIED);
 
-		Assert.assertEquals(RelationshipStatus.MARRIED, statistic.getRelationshipStatus());
+		assertEquals(RelationshipStatus.MARRIED, statistic.getRelationshipStatus());
 	}
 
 	@Test
@@ -68,7 +63,7 @@ public class Statistic_UnitTest {
 
 		statistic.setAge("20");
 
-		Assert.assertNotNull(statistic.getAge());
+		assertNotNull(statistic.getAge());
 	}
 
 	@Test
@@ -77,7 +72,7 @@ public class Statistic_UnitTest {
 
 		statistic.setAge("20");
 
-		Assert.assertEquals("20", statistic.getAge());
+		assertEquals("20", statistic.getAge());
 	}
 
 	@Test
@@ -86,7 +81,7 @@ public class Statistic_UnitTest {
 
 		statistic.setGender(Gender.MAN);
 
-		Assert.assertNotNull(statistic.getGender());
+		assertNotNull(statistic.getGender());
 	}
 
 	@Test
@@ -95,7 +90,7 @@ public class Statistic_UnitTest {
 
 		statistic.setGender(Gender.MAN);
 
-		Assert.assertEquals(Gender.MAN, statistic.getGender());
+		assertEquals(Gender.MAN, statistic.getGender());
 	}
 
 	@Test
@@ -104,7 +99,7 @@ public class Statistic_UnitTest {
 
 		statistic.setYear(2011);
 
-		Assert.assertNotNull(statistic.getYear());
+		assertNotNull(statistic.getYear());
 	}
 
 	@Test
@@ -113,7 +108,7 @@ public class Statistic_UnitTest {
 
 		statistic.setYear(2011);
 
-		Assert.assertEquals(Integer.valueOf(2011), statistic.getYear());
+		assertEquals(Integer.valueOf(2011), statistic.getYear());
 	}
 
 	@Test
@@ -122,7 +117,7 @@ public class Statistic_UnitTest {
 
 		statistic.setAmount(12345L);
 
-		Assert.assertNotNull(statistic.getAmount());
+		assertNotNull(statistic.getAmount());
 	}
 
 	@Test
@@ -131,12 +126,12 @@ public class Statistic_UnitTest {
 
 		statistic.setAmount(12345L);
 
-		Assert.assertEquals(Long.valueOf(12345L), statistic.getAmount());
+		assertEquals(Long.valueOf(12345L), statistic.getAmount());
 	}
 
 	@Test
 	public final void getCodes() {
-		Assert.assertNotNull(Statistic.getCodes());
+		assertNotNull(Statistic.getCodes());
 	}
 
 	@Test
@@ -144,28 +139,28 @@ public class Statistic_UnitTest {
 		Statistic statistic = new Statistic();
 		Statistic statistic2 = new Statistic();
 
-		Assert.assertTrue(statistic.equals(statistic2));
+		assertTrue(statistic.equals(statistic2));
 	}
 
 	@Test
 	public final void equalsItself() {
 		Statistic statistic = new Statistic();
 
-		Assert.assertTrue(statistic.equals(statistic));
+		assertTrue(statistic.equals(statistic));
 	}
 
 	@Test
 	public final void notEqualsNull() {
 		Statistic statistic = new Statistic();
 
-		Assert.assertFalse(statistic.equals(null));
+		assertFalse(statistic.equals(null));
 	}
 
 	@Test
 	public final void notEqualsIncompatibleObject() {
 		Statistic statistic = new Statistic();
 
-		Assert.assertFalse(statistic.equals(new Object()));
+		assertFalse(statistic.equals(new Object()));
 	}
 
 	@Test
@@ -173,7 +168,7 @@ public class Statistic_UnitTest {
 		Statistic statistic = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
-		Assert.assertTrue(statistic.equals(statistic2));
+		assertTrue(statistic.equals(statistic2));
 	}
 
 	@Test
@@ -183,7 +178,7 @@ public class Statistic_UnitTest {
 		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 		statistic2.setRegion("1452");
 
-		Assert.assertFalse(statistic.equals(statistic2));
+		assertFalse(statistic.equals(statistic2));
 	}
 
 	@Test
@@ -193,7 +188,7 @@ public class Statistic_UnitTest {
 
 		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
-		Assert.assertFalse(statistic.equals(statistic2));
+		assertFalse(statistic.equals(statistic2));
 	}
 
 	@Test
@@ -203,7 +198,7 @@ public class Statistic_UnitTest {
 		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 		statistic2.setRegion(null);
 
-		Assert.assertFalse(statistic.equals(statistic2));
+		assertFalse(statistic.equals(statistic2));
 	}
 
 	@Test
@@ -213,7 +208,7 @@ public class Statistic_UnitTest {
 		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 		statistic2.setRelationshipStatus(RelationshipStatus.DIVORCED);
 
-		Assert.assertFalse(statistic.equals(statistic2));
+		assertFalse(statistic.equals(statistic2));
 	}
 
 	@Test
@@ -223,7 +218,7 @@ public class Statistic_UnitTest {
 
 		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
-		Assert.assertFalse(statistic.equals(statistic2));
+		assertFalse(statistic.equals(statistic2));
 	}
 
 	@Test
@@ -233,7 +228,7 @@ public class Statistic_UnitTest {
 		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 		statistic2.setRelationshipStatus(null);
 
-		Assert.assertFalse(statistic.equals(statistic2));
+		assertFalse(statistic.equals(statistic2));
 	}
 
 	@Test
@@ -243,7 +238,7 @@ public class Statistic_UnitTest {
 		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 		statistic2.setAge("56");
 
-		Assert.assertFalse(statistic.equals(statistic2));
+		assertFalse(statistic.equals(statistic2));
 	}
 
 	@Test
@@ -253,7 +248,7 @@ public class Statistic_UnitTest {
 
 		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
-		Assert.assertFalse(statistic.equals(statistic2));
+		assertFalse(statistic.equals(statistic2));
 	}
 
 	@Test
@@ -263,7 +258,7 @@ public class Statistic_UnitTest {
 		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 		statistic2.setAge(null);
 
-		Assert.assertFalse(statistic.equals(statistic2));
+		assertFalse(statistic.equals(statistic2));
 	}
 
 	@Test
@@ -273,7 +268,7 @@ public class Statistic_UnitTest {
 		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 		statistic2.setGender(Gender.WOMAN);
 
-		Assert.assertFalse(statistic.equals(statistic2));
+		assertFalse(statistic.equals(statistic2));
 	}
 
 	@Test
@@ -283,7 +278,7 @@ public class Statistic_UnitTest {
 
 		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
-		Assert.assertFalse(statistic.equals(statistic2));
+		assertFalse(statistic.equals(statistic2));
 	}
 
 	@Test
@@ -293,7 +288,7 @@ public class Statistic_UnitTest {
 		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 		statistic2.setGender(null);
 
-		Assert.assertFalse(statistic.equals(statistic2));
+		assertFalse(statistic.equals(statistic2));
 	}
 
 	@Test
@@ -303,7 +298,7 @@ public class Statistic_UnitTest {
 		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 		statistic2.setYear(1999);
 
-		Assert.assertFalse(statistic.equals(statistic2));
+		assertFalse(statistic.equals(statistic2));
 	}
 
 	@Test
@@ -313,7 +308,7 @@ public class Statistic_UnitTest {
 
 		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
-		Assert.assertFalse(statistic.equals(statistic2));
+		assertFalse(statistic.equals(statistic2));
 	}
 
 	@Test
@@ -323,7 +318,7 @@ public class Statistic_UnitTest {
 		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 		statistic2.setYear(null);
 
-		Assert.assertFalse(statistic.equals(statistic2));
+		assertFalse(statistic.equals(statistic2));
 	}
 
 	@Test
@@ -333,7 +328,7 @@ public class Statistic_UnitTest {
 		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 		statistic2.setAmount(54321L);
 
-		Assert.assertFalse(statistic.equals(statistic2));
+		assertFalse(statistic.equals(statistic2));
 	}
 
 	@Test
@@ -343,7 +338,7 @@ public class Statistic_UnitTest {
 
 		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
-		Assert.assertFalse(statistic.equals(statistic2));
+		assertFalse(statistic.equals(statistic2));
 	}
 
 	@Test
@@ -353,7 +348,7 @@ public class Statistic_UnitTest {
 		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 		statistic2.setAmount(null);
 
-		Assert.assertFalse(statistic.equals(statistic2));
+		assertFalse(statistic.equals(statistic2));
 	}
 
 	@Test
@@ -361,7 +356,7 @@ public class Statistic_UnitTest {
 		Statistic statistic = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 		Statistic statistic2 = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
-		Assert.assertEquals(statistic.hashCode(), statistic2.hashCode());
+		assertEquals(statistic.hashCode(), statistic2.hashCode());
 	}
 
 	@Test
@@ -369,52 +364,52 @@ public class Statistic_UnitTest {
 		Statistic statistic = new Statistic();
 		Statistic statistic2 = new Statistic();
 
-		Assert.assertEquals(statistic.hashCode(), statistic2.hashCode());
+		assertEquals(statistic.hashCode(), statistic2.hashCode());
 	}
 
 	@Test
 	public final void convertToString() {
 		Statistic statistic = new Statistic();
 
-		Assert.assertNotNull(statistic.toString());
+		assertNotNull(statistic.toString());
 	}
 
 	@Test
 	public final void convertToStringNullValues() {
 		Statistic statistic = new Statistic("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
-		Assert.assertNotNull(statistic.toString());
+		assertNotNull(statistic.toString());
 	}
 
 	@Test
 	public final void relationshipStatusValues() {
-		Assert.assertNotNull(RelationshipStatus.values());
+		assertNotNull(RelationshipStatus.values());
 	}
 
 	@Test
 	public final void genderValues() {
-		Assert.assertNotNull(Gender.values());
+		assertNotNull(Gender.values());
 	}
 
 	@Test
 	public final void relationshipStatusValueOf() {
 		RelationshipStatus status = RelationshipStatus.valueOf("UNMARRIED");
 
-		Assert.assertNotNull(status);
+		assertNotNull(status);
 	}
 
 	@Test
 	public final void genderValueOf() {
 		Gender gender = Gender.valueOf("MAN");
 
-		Assert.assertNotNull(gender);
+		assertNotNull(gender);
 	}
 
 	@Test
 	public final void convertValueToRelationshipStatus() {
 		RelationshipStatus status = RelationshipStatus.of("OG");
 
-		Assert.assertNotNull(status);
+		assertNotNull(status);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -426,7 +421,7 @@ public class Statistic_UnitTest {
 	public final void convertValueToGender() {
 		Gender gender = Gender.of(1);
 
-		Assert.assertNotNull(gender);
+		assertNotNull(gender);
 	}
 
 	@Test(expected = IllegalArgumentException.class)

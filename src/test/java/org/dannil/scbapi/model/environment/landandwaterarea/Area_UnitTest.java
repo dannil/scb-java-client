@@ -1,8 +1,11 @@
 package org.dannil.scbapi.model.environment.landandwaterarea;
 
-import org.dannil.scbapi.model.environment.landandwaterarea.Area;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import org.dannil.scbapi.model.environment.landandwaterarea.Area.Type;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -14,7 +17,7 @@ public class Area_UnitTest {
 	public final void createWithDefaultConstructor() {
 		Area area = new Area();
 
-		Assert.assertNotNull(area);
+		assertNotNull(area);
 	}
 
 	@Test
@@ -23,7 +26,7 @@ public class Area_UnitTest {
 
 		area.setRegion("1267");
 
-		Assert.assertNotNull(area.getRegion());
+		assertNotNull(area.getRegion());
 	}
 
 	@Test
@@ -32,7 +35,7 @@ public class Area_UnitTest {
 
 		area.setRegion("1267");
 
-		Assert.assertEquals("1267", area.getRegion());
+		assertEquals("1267", area.getRegion());
 	}
 
 	@Test
@@ -41,7 +44,7 @@ public class Area_UnitTest {
 
 		area.setType(Type.LANDAREA);
 
-		Assert.assertNotNull(area.getType());
+		assertNotNull(area.getType());
 	}
 
 	@Test
@@ -50,7 +53,7 @@ public class Area_UnitTest {
 
 		area.setType(Type.LANDAREA);
 
-		Assert.assertEquals(Type.LANDAREA, area.getType());
+		assertEquals(Type.LANDAREA, area.getType());
 	}
 
 	@Test
@@ -59,7 +62,7 @@ public class Area_UnitTest {
 
 		area.setYear(2011);
 
-		Assert.assertNotNull(area.getYear());
+		assertNotNull(area.getYear());
 	}
 
 	@Test
@@ -68,7 +71,7 @@ public class Area_UnitTest {
 
 		area.setYear(2011);
 
-		Assert.assertEquals(Integer.valueOf(2011), area.getYear());
+		assertEquals(Integer.valueOf(2011), area.getYear());
 	}
 
 	@Test
@@ -77,7 +80,7 @@ public class Area_UnitTest {
 
 		area.setSquareKm(143d);
 
-		Assert.assertNotNull(area.getSquareKm());
+		assertNotNull(area.getSquareKm());
 	}
 
 	@Test
@@ -86,12 +89,12 @@ public class Area_UnitTest {
 
 		area.setSquareKm(143d);
 
-		Assert.assertEquals(Double.valueOf(143d), area.getSquareKm());
+		assertEquals(Double.valueOf(143d), area.getSquareKm());
 	}
 
 	@Test
 	public final void getCodes() {
-		Assert.assertNotNull(Area.getCodes());
+		assertNotNull(Area.getCodes());
 	}
 
 	@Test
@@ -99,28 +102,28 @@ public class Area_UnitTest {
 		Area area = new Area();
 		Area area2 = new Area();
 
-		Assert.assertTrue(area.equals(area2));
+		assertTrue(area.equals(area2));
 	}
 
 	@Test
 	public final void equalsItself() {
 		Area area = new Area();
 
-		Assert.assertTrue(area.equals(area));
+		assertTrue(area.equals(area));
 	}
 
 	@Test
 	public final void notEqualsNull() {
 		Area area = new Area();
 
-		Assert.assertFalse(area.equals(null));
+		assertFalse(area.equals(null));
 	}
 
 	@Test
 	public final void notEqualsIncompatibleObject() {
 		Area area = new Area();
 
-		Assert.assertFalse(area.equals(new Object()));
+		assertFalse(area.equals(new Object()));
 	}
 
 	@Test
@@ -128,7 +131,7 @@ public class Area_UnitTest {
 		Area area = new Area("1267", Type.LANDAREA, 2009, 200d);
 		Area area2 = new Area("1267", Type.LANDAREA, 2009, 200d);
 
-		Assert.assertTrue(area.equals(area2));
+		assertTrue(area.equals(area2));
 	}
 
 	@Test
@@ -138,7 +141,7 @@ public class Area_UnitTest {
 		Area area2 = new Area("1267", Type.LANDAREA, 2009, 200d);
 		area2.setRegion("1263");
 
-		Assert.assertFalse(area.equals(area2));
+		assertFalse(area.equals(area2));
 	}
 
 	@Test
@@ -148,7 +151,7 @@ public class Area_UnitTest {
 
 		Area area2 = new Area("1267", Type.LANDAREA, 2009, 200d);
 
-		Assert.assertFalse(area.equals(area2));
+		assertFalse(area.equals(area2));
 	}
 
 	@Test
@@ -158,7 +161,7 @@ public class Area_UnitTest {
 		Area area2 = new Area("1267", Type.LANDAREA, 2009, 200d);
 		area2.setRegion(null);
 
-		Assert.assertFalse(area.equals(area2));
+		assertFalse(area.equals(area2));
 	}
 
 	@Test
@@ -168,7 +171,7 @@ public class Area_UnitTest {
 		Area area2 = new Area("1267", Type.LANDAREA, 2009, 200d);
 		area2.setType(Type.SEAWATER);
 
-		Assert.assertFalse(area.equals(area2));
+		assertFalse(area.equals(area2));
 	}
 
 	@Test
@@ -178,7 +181,7 @@ public class Area_UnitTest {
 
 		Area area2 = new Area("1267", Type.LANDAREA, 2009, 200d);
 
-		Assert.assertFalse(area.equals(area2));
+		assertFalse(area.equals(area2));
 	}
 
 	@Test
@@ -188,7 +191,7 @@ public class Area_UnitTest {
 		Area area2 = new Area("1267", Type.LANDAREA, 2009, 200d);
 		area2.setType(null);
 
-		Assert.assertFalse(area.equals(area2));
+		assertFalse(area.equals(area2));
 	}
 
 	@Test
@@ -198,7 +201,7 @@ public class Area_UnitTest {
 		Area area2 = new Area("1267", Type.LANDAREA, 2009, 200d);
 		area2.setYear(2011);
 
-		Assert.assertFalse(area.equals(area2));
+		assertFalse(area.equals(area2));
 	}
 
 	@Test
@@ -208,7 +211,7 @@ public class Area_UnitTest {
 
 		Area area2 = new Area("1267", Type.LANDAREA, 2009, 200d);
 
-		Assert.assertFalse(area.equals(area2));
+		assertFalse(area.equals(area2));
 	}
 
 	@Test
@@ -218,7 +221,7 @@ public class Area_UnitTest {
 		Area area2 = new Area("1267", Type.LANDAREA, 2009, 200d);
 		area2.setYear(null);
 
-		Assert.assertFalse(area.equals(area2));
+		assertFalse(area.equals(area2));
 	}
 
 	@Test
@@ -228,7 +231,7 @@ public class Area_UnitTest {
 		Area area2 = new Area("1267", Type.LANDAREA, 2009, 200d);
 		area2.setSquareKm(300d);
 
-		Assert.assertFalse(area.equals(area2));
+		assertFalse(area.equals(area2));
 	}
 
 	@Test
@@ -238,7 +241,7 @@ public class Area_UnitTest {
 
 		Area area2 = new Area("1267", Type.LANDAREA, 2009, 200d);
 
-		Assert.assertFalse(area.equals(area2));
+		assertFalse(area.equals(area2));
 	}
 
 	@Test
@@ -248,7 +251,7 @@ public class Area_UnitTest {
 		Area area2 = new Area("1267", Type.LANDAREA, 2009, 200d);
 		area2.setSquareKm(null);
 
-		Assert.assertFalse(area.equals(area2));
+		assertFalse(area.equals(area2));
 	}
 
 	@Test
@@ -256,7 +259,7 @@ public class Area_UnitTest {
 		Area area = new Area("1267", Type.LANDAREA, 2009, 200d);
 		Area area2 = new Area("1267", Type.LANDAREA, 2009, 200d);
 
-		Assert.assertEquals(area.hashCode(), area2.hashCode());
+		assertEquals(area.hashCode(), area2.hashCode());
 	}
 
 	@Test
@@ -264,40 +267,40 @@ public class Area_UnitTest {
 		Area area = new Area();
 		Area area2 = new Area();
 
-		Assert.assertEquals(area.hashCode(), area2.hashCode());
+		assertEquals(area.hashCode(), area2.hashCode());
 	}
 
 	@Test
 	public final void convertToString() {
 		Area area = new Area("1267", Type.LANDAREA, 2009, 200d);
 
-		Assert.assertNotNull(area.toString());
+		assertNotNull(area.toString());
 	}
 
 	@Test
 	public final void convertToStringNullValues() {
 		Area area = new Area();
 
-		Assert.assertNotNull(area.toString());
+		assertNotNull(area.toString());
 	}
 
 	@Test
 	public final void typeValues() {
-		Assert.assertNotNull(Type.values());
+		assertNotNull(Type.values());
 	}
 
 	@Test
 	public final void typeValueOf() {
 		Type type = Type.valueOf("LANDAREA");
 
-		Assert.assertNotNull(type);
+		assertNotNull(type);
 	}
 
 	@Test
 	public final void convertValueToType() {
 		Type type = Type.of("01");
 
-		Assert.assertNotNull(type);
+		assertNotNull(type);
 	}
 
 	@Test(expected = IllegalArgumentException.class)

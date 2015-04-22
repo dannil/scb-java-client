@@ -1,16 +1,16 @@
 package org.dannil.scbapi.api.environment.landandwaterarea;
 
+import static org.junit.Assert.assertNotEquals;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
 import org.dannil.scbapi.api.SCBAPI;
-import org.dannil.scbapi.api.environment.landandwaterarea.LandAndWaterAreaAPI;
 import org.dannil.scbapi.model.environment.landandwaterarea.Area.Type;
 import org.dannil.scbapi.test.utility.Config;
 import org.dannil.scbapi.utility.ListUtility;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -81,7 +81,7 @@ public class LandAndWaterAreaAPI_GetArea_IntegrationTest {
 
 	@Test
 	public final void getArea() {
-		Assert.assertNotEquals(0, this.landAndWaterAreaAPI.getArea(this.regions, this.types, this.years));
+		assertNotEquals(0, this.landAndWaterAreaAPI.getArea(this.regions, this.types, this.years));
 	}
 
 }
