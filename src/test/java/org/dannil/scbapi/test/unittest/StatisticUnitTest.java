@@ -419,7 +419,7 @@ public class StatisticUnitTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public final void illegalArgumentForType() {
-		RelationshipStatus.of(null);
+		RelationshipStatus.of("ABC");
 	}
 
 	@Test
@@ -431,7 +431,7 @@ public class StatisticUnitTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public final void illegalArgumentForGender() {
-		Gender.of(null);
+		Gender.of(-1);
 	}
 
 }
