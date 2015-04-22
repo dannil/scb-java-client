@@ -35,58 +35,6 @@ public class JsonUtility {
 		return null;
 	}
 
-	public static final List<Area> parseAreas(JsonNode node) {
-		Map<String, Integer> mappings = generateMappings(node.get("columns").findValuesAsText("code"), Area.getCodes());
-
-		JsonNode data = node.get("data");
-
-		List<JsonNode> keys = data.findValues("key");
-		List<JsonNode> values = data.findValues("values");
-
-		List<Area> areas = new ArrayList<Area>();
-		for (int j = 0; j < keys.size(); j++) {
-			JsonNode keyAtPosition = keys.get(j);
-
-			String region = (mappings.get("Region") != null ? keyAtPosition.get(mappings.get("Region")).asText() : null);
-			Type type = (mappings.get("ArealTyp") != null ? Type.of(keyAtPosition.get(mappings.get("ArealTyp")).asText()) : null);
-			Integer year = (mappings.get("Tid") != null ? keyAtPosition.get(mappings.get("Tid")).asInt() : null);
-
-			JsonNode valueAtPosition = values.get(j);
-			final Double squareKm = valueAtPosition.get(0).asDouble();
-
-			Area a = new Area(region, type, year, squareKm);
-			areas.add(a);
-		}
-		return areas;
-	}
-
-	public static final List<Statistic> oldParseStatistics(JsonNode node) {
-		Map<String, Integer> mappings = generateMappings(node.get("columns").findValuesAsText("code"), Statistic.getCodes());
-
-		JsonNode data = node.get("data");
-
-		List<JsonNode> keys = data.findValues("key");
-		List<JsonNode> values = data.findValues("values");
-
-		List<Statistic> statistics = new ArrayList<Statistic>();
-		for (int j = 0; j < keys.size(); j++) {
-			JsonNode keyAtPosition = keys.get(j);
-
-			String region = (mappings.get("Region") != null ? keyAtPosition.get(mappings.get("Region")).asText() : null);
-			RelationshipStatus relationshipStatus = (mappings.get("Civilstand") != null ? RelationshipStatus.of(keyAtPosition.get(mappings.get("Civilstand")).asText()) : null);
-			String age = (mappings.get("Alder") != null ? keyAtPosition.get(mappings.get("Alder")).asText() : null);
-			Gender gender = (mappings.get("Kon") != null ? Gender.of(keyAtPosition.get(mappings.get("Kon")).asInt()) : null);
-			Integer year = (mappings.get("Tid") != null ? keyAtPosition.get(mappings.get("Tid")).asInt() : null);
-
-			JsonNode valueAtPosition = values.get(j);
-			final Long amount = valueAtPosition.get(0).asLong();
-
-			Statistic s = new Statistic(region, relationshipStatus, age, gender, year, amount);
-			statistics.add(s);
-		}
-		return statistics;
-	}
-
 	private static final List<Map<String, String>> genericParse(JsonNode node, List<String> codes) {
 		Map<String, Integer> mappings = generateMappings(node.get("columns").findValuesAsText("code"), codes);
 
@@ -113,6 +61,17 @@ public class JsonUtility {
 			contents.add(keyContents);
 		}
 		return contents;
+	}
+
+	public static final List<Area> parseAreas(JsonNode node) {
+		List<Map<String, String>> contents = genericParse(node, Area.getCodes());
+
+		List<Area> areas = new ArrayList<Area>();
+		for (Map<String, String> map : contents) {
+			Area area = new Area(map.get("Region"), Type.of(map.get("ArealTyp")), ParseUtility.parseInteger(map.get("Tid"), null), ParseUtility.parseDouble(map.get("Value"), null));
+			areas.add(area);
+		}
+		return areas;
 	}
 
 	public static final List<Statistic> parseStatistics(JsonNode node) {
