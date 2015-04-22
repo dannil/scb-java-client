@@ -1,4 +1,4 @@
-package org.dannil.scbapi.test.integrationtest;
+package org.dannil.scbapi.api.environment.landandwaterarea;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,7 +17,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Parameterized.class)
-public class LandAndWaterAreaAPIIntegrationTest {
+public class LandAndWaterAreaAPI_GetArea_IntegrationTest {
 
 	private SCBAPI api;
 	private LandAndWaterAreaAPI landAndWaterAreaAPI;
@@ -62,12 +62,12 @@ public class LandAndWaterAreaAPIIntegrationTest {
 	List<Type> types;
 	List<Integer> years;
 
-	private LandAndWaterAreaAPIIntegrationTest() {
+	private LandAndWaterAreaAPI_GetArea_IntegrationTest() {
 		this.api = new SCBAPI();
 		this.landAndWaterAreaAPI = this.api.environment().landAndWaterArea();
 	}
 
-	public LandAndWaterAreaAPIIntegrationTest(List<String> regions, List<Type> types, List<Integer> years) throws InterruptedException {
+	public LandAndWaterAreaAPI_GetArea_IntegrationTest(List<String> regions, List<Type> types, List<Integer> years) throws InterruptedException {
 		this();
 
 		this.regions = regions;

@@ -1,4 +1,4 @@
-package org.dannil.scbapi.test.integrationtest;
+package org.dannil.scbapi.api.population.statistic;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,7 +18,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Parameterized.class)
-public class StatisticAPIIntegrationTest {
+public class StatisticAPI_GetPopulation_IntegrationTest {
 
 	private SCBAPI api;
 	private StatisticAPI statisticsAPI;
@@ -77,12 +77,12 @@ public class StatisticAPIIntegrationTest {
 	List<Gender> genders;
 	List<Integer> years;
 
-	private StatisticAPIIntegrationTest() {
+	private StatisticAPI_GetPopulation_IntegrationTest() {
 		this.api = new SCBAPI();
 		this.statisticsAPI = this.api.population().statistic();
 	}
 
-	public StatisticAPIIntegrationTest(List<String> regions, List<RelationshipStatus> statuses, List<String> ages, List<Gender> genders, List<Integer> years) throws InterruptedException {
+	public StatisticAPI_GetPopulation_IntegrationTest(List<String> regions, List<RelationshipStatus> statuses, List<String> ages, List<Gender> genders, List<Integer> years) throws InterruptedException {
 		this();
 
 		this.regions = regions;

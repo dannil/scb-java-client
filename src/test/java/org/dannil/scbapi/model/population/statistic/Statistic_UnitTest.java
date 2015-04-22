@@ -1,4 +1,4 @@
-package org.dannil.scbapi.test.unittest;
+package org.dannil.scbapi.model.population.statistic;
 
 import org.dannil.scbapi.model.population.statistic.Statistic;
 import org.dannil.scbapi.model.population.statistic.Statistic.Gender;
@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class StatisticUnitTest {
+public class Statistic_UnitTest {
 
 	private Statistic statistic;
 

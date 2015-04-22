@@ -1,4 +1,4 @@
-package org.dannil.scbapi.test.unittest;
+package org.dannil.scbapi.model.environment.landandwaterarea;
 
 import org.dannil.scbapi.model.environment.landandwaterarea.Area;
 import org.dannil.scbapi.model.environment.landandwaterarea.Area.Type;
@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class AreaUnitTest {
+public class Area_UnitTest {
 
 	@Test
 	public final void createWithDefaultConstructor() {
