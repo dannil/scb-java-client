@@ -15,12 +15,23 @@ public class ParseUtility {
 
 	public static Long parseLong(String string, Object defaultValue) {
 		try {
-			return Long.valueOf(string.toString());
+			return Long.valueOf(string);
 		} catch (NumberFormatException e) {
 			if (defaultValue == null) {
 				return null;
 			}
 			return (long) defaultValue;
+		}
+	}
+
+	public static Double parseDouble(String string, Object defaultValue) {
+		try {
+			return Double.valueOf(string);
+		} catch (NumberFormatException e) {
+			if (defaultValue == null) {
+				return null;
+			}
+			return (double) defaultValue;
 		}
 	}
 
