@@ -6,7 +6,6 @@ import java.util.Collection;
 import java.util.List;
 
 import org.dannil.scbapi.api.SCBAPI;
-import org.dannil.scbapi.api.population.statistic.StatisticAPI;
 import org.dannil.scbapi.model.population.statistic.Statistic.Gender;
 import org.dannil.scbapi.model.population.statistic.Statistic.RelationshipStatus;
 import org.dannil.scbapi.test.utility.Config;
@@ -82,7 +81,8 @@ public class StatisticAPI_GetPopulation_IntegrationTest {
 		this.statisticsAPI = this.api.population().statistic();
 	}
 
-	public StatisticAPI_GetPopulation_IntegrationTest(List<String> regions, List<RelationshipStatus> statuses, List<String> ages, List<Gender> genders, List<Integer> years) throws InterruptedException {
+	private StatisticAPI_GetPopulation_IntegrationTest(List<String> regions, List<RelationshipStatus> statuses, List<String> ages, List<Gender> genders, List<Integer> years)
+			throws InterruptedException {
 		this();
 
 		this.regions = regions;

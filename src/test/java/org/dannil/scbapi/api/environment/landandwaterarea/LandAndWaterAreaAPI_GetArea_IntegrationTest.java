@@ -67,7 +67,7 @@ public class LandAndWaterAreaAPI_GetArea_IntegrationTest {
 		this.landAndWaterAreaAPI = this.api.environment().landAndWaterArea();
 	}
 
-	public LandAndWaterAreaAPI_GetArea_IntegrationTest(List<String> regions, List<Type> types, List<Integer> years) throws InterruptedException {
+	private LandAndWaterAreaAPI_GetArea_IntegrationTest(List<String> regions, List<Type> types, List<Integer> years) throws InterruptedException {
 		this();
 
 		this.regions = regions;
