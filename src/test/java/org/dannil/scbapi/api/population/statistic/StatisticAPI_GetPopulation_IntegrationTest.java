@@ -81,7 +81,7 @@ public class StatisticAPI_GetPopulation_IntegrationTest {
 		this.statisticsAPI = this.api.population().statistic();
 	}
 
-	private StatisticAPI_GetPopulation_IntegrationTest(List<String> regions, List<RelationshipStatus> statuses, List<String> ages, List<Gender> genders, List<Integer> years)
+	public StatisticAPI_GetPopulation_IntegrationTest(List<String> regions, List<RelationshipStatus> statuses, List<String> ages, List<Gender> genders, List<Integer> years)
 			throws InterruptedException {
 		this();
 
