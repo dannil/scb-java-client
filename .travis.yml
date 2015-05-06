@@ -16,7 +16,7 @@ env:
 addons:
   coverity_scan:
     project:
-      name: dannil/HttpDownloader
+      name: dannil/scb-api
       description: Build submitted via Travis CI
     notification_email: bobkant-fyrsvamp@hotmail.com
     build_command_prepend: mvn clean
