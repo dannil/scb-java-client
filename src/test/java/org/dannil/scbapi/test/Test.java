@@ -12,6 +12,7 @@ import org.dannil.scbapi.model.environment.landandwaterarea.Area;
 import org.dannil.scbapi.model.environment.landandwaterarea.Area.Type;
 import org.dannil.scbapi.model.population.demography.AverageAgeFirstChild;
 import org.dannil.scbapi.model.population.statistic.Statistic;
+import org.dannil.scbapi.utility.ParseUtility;
 
 public class Test {
 
@@ -40,6 +41,8 @@ public class Test {
 			// System.out.println(key + " : " + map.get(key));
 		}
 
+		System.out.println(ParseUtility.parseLong("221", null));
+
 		StatisticAPI statisticApi = api.population().statistic();
 
 		List<Statistic> collection8 = statisticApi.getPopulation(regions, null, ages, null, years);
@@ -50,6 +53,11 @@ public class Test {
 		List<Statistic> collection4 = statisticApi.getPopulation();
 		for (Statistic p : collection4) {
 			System.out.println(p);
+		}
+
+		List<Integer> availableYears = statisticApi.getYears();
+		for (Integer year : availableYears) {
+			System.out.println(year);
 		}
 
 		LandAndWaterAreaAPI lawApi = api.environment().landAndWaterArea();
