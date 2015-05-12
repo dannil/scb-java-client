@@ -25,7 +25,7 @@ public class ParseUtility {
 			if (defaultValue == null) {
 				return null;
 			}
-			return (int) defaultValue;
+			return (Integer) defaultValue;
 		}
 	}
 
@@ -36,7 +36,7 @@ public class ParseUtility {
 			if (defaultValue == null) {
 				return null;
 			}
-			return (long) defaultValue;
+			return (Long) defaultValue;
 		}
 	}
 
@@ -47,7 +47,7 @@ public class ParseUtility {
 			if (defaultValue == null) {
 				return null;
 			}
-			return (double) defaultValue;
+			return (Double) defaultValue;
 		}
 	}
 
