@@ -8,6 +8,7 @@ os:
 branches:
   only:
   - dev
+  - coverity_scan
 after_success:
 - mvn -DTRAVIS_JOB_ID=$TRAVIS_JOB_ID jacoco:report coveralls:report
 env:
