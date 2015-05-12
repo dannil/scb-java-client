@@ -52,7 +52,12 @@ public class JsonUtility {
 	}
 
 	private static final List<Map<String, String>> genericParse(JsonNode node, List<String> codes) {
-		Map<String, Integer> mappings = generateMappings(node.get("columns").findValuesAsText("code"), codes);
+		JsonNode columns = node.get("columns");
+		if (columns == null) {
+			throw new NullPointerException("Non-existing element in the JSON: \"columns\"");
+		}
+
+		Map<String, Integer> mappings = generateMappings(columns.findValuesAsText("code"), codes);
 
 		JsonNode data = node.get("data");
 
