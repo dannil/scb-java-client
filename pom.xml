@@ -83,6 +83,7 @@
 				<version>${jacoco-maven-plugin.version}</version>
 				<executions>
 					<execution>
+						<phase>test</phase>
 						<goals>
 							<goal>prepare-agent</goal>
 						</goals>
