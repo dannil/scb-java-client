@@ -32,55 +32,49 @@ import com.google.common.collect.ArrayListMultimap;
 
 public class DemographyAPI extends AbstractAPI implements DemographyOperations {
 
-	private String url;
-
 	public DemographyAPI() {
-		this.locale = Locale.getDefault();
-
-		buildUrl();
+		super.locale = Locale.getDefault();
 	}
 
 	public DemographyAPI(Locale locale) {
 		this();
-		this.locale = locale;
-
-		buildUrl();
+		super.locale = locale;
 	}
 
 	@Override
 	public void setLocale(Locale locale) {
-		this.locale = locale;
-
-		buildUrl();
+		super.locale = locale;
 	}
 
-	public void buildUrl() {
-		this.url = "http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0701/MedelAlderNY";
+	private String getUrl() {
+		return "http://api.scb.se/OV0104/v1/doris/" + super.locale.getLanguage() + "/ssd/BE/BE0701/MedelAlderNY";
 	}
 
-	public List<String> getAvailableRegions() {
+	public List<String> getRegions() {
+		return super.getRegions(getUrl());
+
 		// TODO Call super method
-		String response = RequestPoster.doGet(this.url);
-
-		ObjectMapper mapper = new ObjectMapper();
-		try {
-			JsonNode node = mapper.readTree(response);
-			List<JsonNode> nodes = node.findValues("values");
-			node = nodes.get(0);
-
-			List<String> years = new ArrayList<String>(node.size());
-			for (int i = 0; i < node.size(); i++) {
-				years.add(node.get(i).asText());
-			}
-			return years;
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return null;
+		// String response = RequestPoster.doGet(this.url);
+		//
+		// ObjectMapper mapper = new ObjectMapper();
+		// try {
+		// JsonNode node = mapper.readTree(response);
+		// List<JsonNode> nodes = node.findValues("values");
+		// node = nodes.get(0);
+		//
+		// List<String> years = new ArrayList<String>(node.size());
+		// for (int i = 0; i < node.size(); i++) {
+		// years.add(node.get(i).asText());
+		// }
+		// return years;
+		// } catch (IOException e) {
+		// e.printStackTrace();
+		// }
+		// return null;
 	}
 
-	public List<Integer> getAvailableGenders() {
-		String response = RequestPoster.doGet(this.url);
+	public List<Integer> getGenders() {
+		String response = RequestPoster.doGet(getUrl());
 
 		ObjectMapper mapper = new ObjectMapper();
 		try {
@@ -99,25 +93,33 @@ public class DemographyAPI extends AbstractAPI implements DemographyOperations {
 		return null;
 	}
 
-	public List<Integer> getAvailableYears() {
-		// TODO Call super method
-		String response = RequestPoster.doGet(this.url);
+	public List<Integer> getYears() {
+		List<String> fetchedYears = super.getYears(getUrl());
 
-		ObjectMapper mapper = new ObjectMapper();
-		try {
-			JsonNode node = mapper.readTree(response);
-			List<JsonNode> nodes = node.findValues("values");
-			node = nodes.get(nodes.size() - 1);
-
-			List<Integer> years = new ArrayList<Integer>(node.size());
-			for (int i = 0; i < node.size(); i++) {
-				years.add(node.get(i).asInt());
-			}
-			return years;
-		} catch (IOException e) {
-			e.printStackTrace();
+		List<Integer> years = new ArrayList<Integer>(fetchedYears.size());
+		for (String fetchedYear : fetchedYears) {
+			years.add(Integer.valueOf(fetchedYear));
 		}
-		return null;
+		return years;
+
+		// // TODO Call super method
+		// String response = RequestPoster.doGet(this.url);
+		//
+		// ObjectMapper mapper = new ObjectMapper();
+		// try {
+		// JsonNode node = mapper.readTree(response);
+		// List<JsonNode> nodes = node.findValues("values");
+		// node = nodes.get(nodes.size() - 1);
+		//
+		// List<Integer> years = new ArrayList<Integer>(node.size());
+		// for (int i = 0; i < node.size(); i++) {
+		// years.add(node.get(i).asInt());
+		// }
+		// return years;
+		// } catch (IOException e) {
+		// e.printStackTrace();
+		// }
+		// return null;
 	}
 
 	@Override
@@ -148,7 +150,10 @@ public class DemographyAPI extends AbstractAPI implements DemographyOperations {
 		}
 
 		String query = queryBuilder.build(map);
-		String response = RequestPoster.doPost(this.url, query);
+		String response = RequestPoster.doPost(getUrl(), query);
+
+		// TODO Implement parsing method for returning model for
+		// averageAgeFirstChild
 		return null;
 	}
 
