@@ -31,7 +31,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.ArrayListMultimap;
 
-public final class SCBAPI extends AbstractContainerAPI {
+public class SCBAPI extends AbstractContainerAPI {
 
 	private PopulationAPI populationApi;
 	private EnvironmentAPI environmentApi;
@@ -52,7 +52,7 @@ public final class SCBAPI extends AbstractContainerAPI {
 		super.setLocale(locale);
 	}
 
-	public final Map<String, String> getRegionMappings() {
+	public Map<String, String> getRegionMappings() {
 		String response = RequestPoster.doGet("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy");
 		ObjectMapper mapper = new ObjectMapper();
 		try {
@@ -74,11 +74,11 @@ public final class SCBAPI extends AbstractContainerAPI {
 		return null;
 	}
 
-	public final EnvironmentAPI environment() {
+	public EnvironmentAPI environment() {
 		return this.environmentApi;
 	}
 
-	public final PopulationAPI population() {
+	public PopulationAPI population() {
 		return this.populationApi;
 	}
 

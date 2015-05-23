@@ -33,11 +33,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class JsonUtility {
 
-	public static final JsonNode getNode(String json) {
+	public static JsonNode getNode(String json) {
 		return getNode(json, null);
 	}
 
-	public static final JsonNode getNode(String json, String field) {
+	public static JsonNode getNode(String json, String field) {
 		try {
 			ObjectMapper mapper = new ObjectMapper();
 			JsonNode node = mapper.readTree(json);
@@ -51,7 +51,7 @@ public class JsonUtility {
 		return null;
 	}
 
-	private static final List<Map<String, String>> genericParse(JsonNode node, List<String> codes) {
+	private static List<Map<String, String>> genericParse(JsonNode node, List<String> codes) {
 		JsonNode columns = node.get("columns");
 		if (columns == null) {
 			throw new NullPointerException("Non-existing element in the JSON: \"columns\"");
@@ -84,7 +84,7 @@ public class JsonUtility {
 		return contents;
 	}
 
-	public static final List<Area> parseAreas(JsonNode node) {
+	public static List<Area> parseAreas(JsonNode node) {
 		List<Map<String, String>> contents = genericParse(node, Area.getCodes());
 
 		List<Area> areas = new ArrayList<Area>();
@@ -95,7 +95,7 @@ public class JsonUtility {
 		return areas;
 	}
 
-	public static final List<Statistic> parseStatistics(JsonNode node) {
+	public static List<Statistic> parseStatistics(JsonNode node) {
 		List<Map<String, String>> contents = genericParse(node, Statistic.getCodes());
 
 		List<Statistic> statistics = new ArrayList<Statistic>();
@@ -107,7 +107,7 @@ public class JsonUtility {
 		return statistics;
 	}
 
-	private static final Map<String, Integer> generateMappings(List<String> inputCodes, List<String> storedCodes) {
+	private static Map<String, Integer> generateMappings(List<String> inputCodes, List<String> storedCodes) {
 		Map<String, Integer> mappings = new HashMap<String, Integer>();
 		int i = 0;
 		for (String input : inputCodes) {
@@ -119,7 +119,7 @@ public class JsonUtility {
 		return mappings;
 	}
 
-	public static final List<String> getCodes(String content) {
+	public static List<String> getCodes(String content) {
 		JsonNode data = getNode(content);
 		List<String> codes = data.findValuesAsText("code");
 

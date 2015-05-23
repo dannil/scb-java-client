@@ -22,7 +22,7 @@ import org.dannil.scbapi.api.AbstractContainerAPI;
 import org.dannil.scbapi.api.population.demography.DemographyAPI;
 import org.dannil.scbapi.api.population.statistic.StatisticAPI;
 
-public final class PopulationAPI extends AbstractContainerAPI {
+public class PopulationAPI extends AbstractContainerAPI {
 
 	private DemographyAPI demography;
 	private StatisticAPI statistic;

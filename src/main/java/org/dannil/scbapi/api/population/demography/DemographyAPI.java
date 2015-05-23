@@ -30,7 +30,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.ArrayListMultimap;
 
-public final class DemographyAPI extends AbstractAPI implements DemographyOperations {
+public class DemographyAPI extends AbstractAPI implements DemographyOperations {
 
 	private String url;
 
@@ -48,17 +48,18 @@ public final class DemographyAPI extends AbstractAPI implements DemographyOperat
 	}
 
 	@Override
-	public final void setLocale(Locale locale) {
+	public void setLocale(Locale locale) {
 		this.locale = locale;
 
 		buildUrl();
 	}
 
-	public final void buildUrl() {
+	public void buildUrl() {
 		this.url = "http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/BE/BE0701/MedelAlderNY";
 	}
 
-	public final List<String> getAvailableRegions() {
+	public List<String> getAvailableRegions() {
+		// TODO Call super method
 		String response = RequestPoster.doGet(this.url);
 
 		ObjectMapper mapper = new ObjectMapper();
@@ -78,7 +79,7 @@ public final class DemographyAPI extends AbstractAPI implements DemographyOperat
 		return null;
 	}
 
-	public final List<Integer> getAvailableGenders() {
+	public List<Integer> getAvailableGenders() {
 		String response = RequestPoster.doGet(this.url);
 
 		ObjectMapper mapper = new ObjectMapper();
@@ -98,7 +99,8 @@ public final class DemographyAPI extends AbstractAPI implements DemographyOperat
 		return null;
 	}
 
-	public final List<Integer> getAvailableYears() {
+	public List<Integer> getAvailableYears() {
+		// TODO Call super method
 		String response = RequestPoster.doGet(this.url);
 
 		ObjectMapper mapper = new ObjectMapper();

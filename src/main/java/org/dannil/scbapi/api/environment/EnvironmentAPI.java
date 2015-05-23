@@ -21,7 +21,7 @@ import java.util.Locale;
 import org.dannil.scbapi.api.AbstractContainerAPI;
 import org.dannil.scbapi.api.environment.landandwaterarea.LandAndWaterAreaAPI;
 
-public final class EnvironmentAPI extends AbstractContainerAPI {
+public class EnvironmentAPI extends AbstractContainerAPI {
 
 	private LandAndWaterAreaAPI landAndWaterArea;
 

@@ -27,7 +27,7 @@ import org.apache.commons.io.input.BOMInputStream;
 
 public class RequestPoster {
 
-	public static final String doGet(String address) {
+	public static String doGet(String address) {
 		StringBuilder builder = new StringBuilder();
 		try {
 			URL url = new URL(address);
@@ -53,7 +53,7 @@ public class RequestPoster {
 		}
 	}
 
-	public static final String doPost(String address, String query) {
+	public static String doPost(String address, String query) {
 		System.out.println("Query: " + query);
 
 		StringBuilder builder = new StringBuilder();
@@ -97,7 +97,7 @@ public class RequestPoster {
 		}
 	}
 
-	public static final String getCodes(String table) {
+	public static String getCodes(String table) {
 		return doGet(String.format("http://api.scb.se/OV0104/v1/doris/en/ssd/%s", table));
 	}
 

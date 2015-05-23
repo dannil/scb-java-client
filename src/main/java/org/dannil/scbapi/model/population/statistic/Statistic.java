@@ -21,7 +21,7 @@ import java.util.List;
 import org.dannil.scbapi.utility.JsonUtility;
 import org.dannil.scbapi.utility.RequestPoster;
 
-public final class Statistic extends AbstractStatisticModel {
+public class Statistic extends AbstractStatisticModel {
 
 	private static List<String> codes;
 
@@ -42,35 +42,35 @@ public final class Statistic extends AbstractStatisticModel {
 		this.amount = amount;
 	}
 
-	public final RelationshipStatus getRelationshipStatus() {
+	public RelationshipStatus getRelationshipStatus() {
 		return this.relationshipStatus;
 	}
 
-	public final void setRelationshipStatus(RelationshipStatus relationshipStatus) {
+	public void setRelationshipStatus(RelationshipStatus relationshipStatus) {
 		this.relationshipStatus = relationshipStatus;
 	}
 
-	public final String getAge() {
+	public String getAge() {
 		return this.age;
 	}
 
-	public final void setAge(String age) {
+	public void setAge(String age) {
 		this.age = age;
 	}
 
-	public final Gender getGender() {
+	public Gender getGender() {
 		return this.gender;
 	}
 
-	public final void setGender(Gender gender) {
+	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
 
-	public final Long getAmount() {
+	public Long getAmount() {
 		return this.amount;
 	}
 
-	public final void setAmount(Long amount) {
+	public void setAmount(Long amount) {
 		this.amount = amount;
 	}
 

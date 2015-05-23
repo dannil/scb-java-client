@@ -29,7 +29,7 @@ public abstract class AbstractContainerAPI extends AbstractAPI {
 	}
 
 	@Override
-	public final void setLocale(Locale locale) {
+	public void setLocale(Locale locale) {
 		super.locale = locale;
 
 		for (AbstractAPI api : this.apis) {

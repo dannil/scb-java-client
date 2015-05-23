@@ -21,7 +21,7 @@ import java.util.List;
 import org.dannil.scbapi.utility.JsonUtility;
 import org.dannil.scbapi.utility.RequestPoster;
 
-public final class Area extends AbstractLandAndWaterAreaModel {
+public class Area extends AbstractLandAndWaterAreaModel {
 
 	private static List<String> codes;
 
@@ -38,19 +38,19 @@ public final class Area extends AbstractLandAndWaterAreaModel {
 		this.squareKm = squareKm;
 	}
 
-	public final Type getType() {
+	public Type getType() {
 		return this.type;
 	}
 
-	public final void setType(Type type) {
+	public void setType(Type type) {
 		this.type = type;
 	}
 
-	public final Double getSquareKm() {
+	public Double getSquareKm() {
 		return this.squareKm;
 	}
 
-	public final void setSquareKm(Double squareKm) {
+	public void setSquareKm(Double squareKm) {
 		this.squareKm = squareKm;
 	}
 

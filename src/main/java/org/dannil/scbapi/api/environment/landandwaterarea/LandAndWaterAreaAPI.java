@@ -29,7 +29,7 @@ import org.dannil.scbapi.utility.RequestPoster;
 
 import com.google.common.collect.ArrayListMultimap;
 
-public final class LandAndWaterAreaAPI extends AbstractAPI implements AreaOperations {
+public class LandAndWaterAreaAPI extends AbstractAPI implements AreaOperations {
 
 	public LandAndWaterAreaAPI() {
 		super.locale = Locale.getDefault();
@@ -41,19 +41,19 @@ public final class LandAndWaterAreaAPI extends AbstractAPI implements AreaOperat
 	}
 
 	@Override
-	public final void setLocale(Locale locale) {
+	public void setLocale(Locale locale) {
 		super.locale = locale;
 	}
 
-	private final String getUrl() {
+	private String getUrl() {
 		return "http://api.scb.se/OV0104/v1/doris/" + super.locale.getLanguage() + "/ssd/MI/MI0802/Areal2012";
 	}
 
-	public final List<String> getRegions() {
+	public List<String> getRegions() {
 		return super.getRegions(getUrl());
 	}
 
-	public final List<Integer> getYears() {
+	public List<Integer> getYears() {
 		List<String> fetchedYears = super.getYears(getUrl());
 
 		List<Integer> years = new ArrayList<Integer>(fetchedYears.size());
@@ -64,12 +64,12 @@ public final class LandAndWaterAreaAPI extends AbstractAPI implements AreaOperat
 	}
 
 	@Override
-	public final List<Area> getArea() {
+	public List<Area> getArea() {
 		return this.getArea(null, null, null);
 	}
 
 	@Override
-	public final List<Area> getArea(List<String> regions, List<Type> types, List<Integer> years) {
+	public List<Area> getArea(List<String> regions, List<Type> types, List<Integer> years) {
 		QueryBuilder<String, String> queryBuilder = new QueryBuilder<String, String>();
 
 		ArrayListMultimap<String, String> map = ArrayListMultimap.create();

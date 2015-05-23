@@ -16,7 +16,7 @@ limitations under the License.
 
 package org.dannil.scbapi.model.population.demography;
 
-public final class AverageAgeFirstChild {
+public class AverageAgeFirstChild {
 
 	private String region;
 	private Integer gender;
@@ -34,35 +34,35 @@ public final class AverageAgeFirstChild {
 		this.averageAge = averageAge;
 	}
 
-	public final String getRegion() {
+	public String getRegion() {
 		return this.region;
 	}
 
-	public final void setRegion(String region) {
+	public void setRegion(String region) {
 		this.region = region;
 	}
 
-	public final Integer getGender() {
+	public Integer getGender() {
 		return this.gender;
 	}
 
-	public final void setGender(Integer gender) {
+	public void setGender(Integer gender) {
 		this.gender = gender;
 	}
 
-	public final Integer getYear() {
+	public Integer getYear() {
 		return this.year;
 	}
 
-	public final void setYear(Integer year) {
+	public void setYear(Integer year) {
 		this.year = year;
 	}
 
-	public final Double getAverageAge() {
+	public Double getAverageAge() {
 		return this.averageAge;
 	}
 
-	public final void setAverageAge(Double averageAge) {
+	public void setAverageAge(Double averageAge) {
 		this.averageAge = averageAge;
 	}
 

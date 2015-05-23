@@ -21,7 +21,7 @@ import java.util.List;
 
 public class ListUtility<E> {
 
-	public static final <E> List<E> toList(E value) {
+	public static <E> List<E> toList(E value) {
 		if (value == null) {
 			return null;
 		}
@@ -30,7 +30,7 @@ public class ListUtility<E> {
 		return list;
 	}
 
-	public static final <E> List<String> toString(List<E> list) {
+	public static <E> List<String> toString(List<E> list) {
 		List<String> temp = new ArrayList<String>();
 		for (E data : list) {
 			temp.add(String.valueOf(data));

@@ -20,13 +20,13 @@ import java.util.List;
 
 import com.google.common.collect.ArrayListMultimap;
 
-public final class QueryBuilder<E, K> {
+public class QueryBuilder<E, K> {
 
 	public QueryBuilder() {
 
 	}
 
-	public final String build(ArrayListMultimap<E, K> map) {
+	public String build(ArrayListMultimap<E, K> map) {
 		StringBuilder builder = new StringBuilder();
 		builder.append("{");
 		builder.append("\"query\": [");
