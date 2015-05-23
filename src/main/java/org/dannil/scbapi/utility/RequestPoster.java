@@ -40,7 +40,7 @@ public class RequestPoster {
 			connection.setRequestProperty("Accept", "application/json");
 			connection.setRequestProperty("Content-Type", "application/json; charset=utf-8");
 
-			try (BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
+			try (BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), "utf-8"))) {
 				String line;
 				while ((line = br.readLine()) != null) {
 					builder.append(line);
@@ -76,7 +76,7 @@ public class RequestPoster {
 				writer.close();
 			}
 
-			try (BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
+			try (BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), "utf-8"))) {
 				try (BOMInputStream bis = new BOMInputStream(connection.getInputStream())) {
 					if (bis.hasBOM()) {
 						String line;
@@ -96,8 +96,9 @@ public class RequestPoster {
 
 			return builder.toString();
 		} catch (Exception e) {
-			throw new RuntimeException(e);
+			e.printStackTrace();
 		}
+		return null;
 	}
 
 	public static String getCodes(String table) {
