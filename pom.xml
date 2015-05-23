@@ -14,7 +14,7 @@
 	
 		<junit.version>4.12</junit.version>
 	
-		<resteasy-client.version>3.0.11.Final</resteasy-client.version>
+		<commons.version>2.4</commons.version>
 		<guava.version>18.0</guava.version>
 		<jackson-core.version>2.5.3</jackson-core.version>
 		<jackson-databind.version>2.5.3</jackson-databind.version>
@@ -31,12 +31,12 @@
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
-	
+		
 		<!-- LICENSE : Apache License 2.0 -->
 		<dependency>
-			<groupId>org.jboss.resteasy</groupId>
-			<artifactId>resteasy-client</artifactId>
-			<version>${resteasy-client.version}</version>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons.version}</version>
 		</dependency>
 
 		<!-- LICENSE : Apache License 2.0 -->
