@@ -38,11 +38,11 @@ public class RequestPoster {
 			connection.setDoInput(true);
 			connection.setRequestMethod("GET");
 			connection.setRequestProperty("Accept", "application/json");
+			connection.setRequestProperty("Content-Type", "application/json; charset=utf-8");
 
 			try (BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
 				String line;
 				while ((line = br.readLine()) != null) {
-					System.out.println(line);
 					builder.append(line);
 				}
 			}
@@ -57,7 +57,7 @@ public class RequestPoster {
 
 	public static String doPost(String address, String query) {
 		// System.out.println("post address: " + address);
-		// System.out.println("Query: " + query);
+		System.out.println("Query: " + query);
 
 		StringBuilder builder = new StringBuilder();
 		try {
@@ -78,9 +78,16 @@ public class RequestPoster {
 
 			try (BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
 				try (BOMInputStream bis = new BOMInputStream(connection.getInputStream())) {
-					String line;
-					while ((line = br.readLine()) != null) {
-						builder.append(line);
+					if (bis.hasBOM()) {
+						String line;
+						while ((line = br.readLine()) != null) {
+							builder.append(line);
+						}
+					} else {
+						String line;
+						while ((line = br.readLine()) != null) {
+							builder.append(line);
+						}
 					}
 				}
 			}
