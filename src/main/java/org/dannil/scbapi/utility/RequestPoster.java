@@ -16,36 +16,85 @@ limitations under the License.
 
 package org.dannil.scbapi.utility;
 
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Entity;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.Response;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+import org.apache.commons.io.input.BOMInputStream;
 
 public class RequestPoster {
 
 	public static final String doGet(String address) {
-		Client client = ClientBuilder.newClient();
-		WebTarget target = client.target(address);
-		Response response = target.request().get();
-		String result = response.readEntity(String.class);
+		StringBuilder builder = new StringBuilder();
+		try {
+			URL url = new URL(address);
 
-		return result;
+			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
+			connection.setDoInput(true);
+			connection.setRequestMethod("GET");
+			connection.setRequestProperty("Accept", "application/json");
+
+			InputStream stream = connection.getInputStream();
+			try (BufferedReader br = new BufferedReader(new InputStreamReader(stream))) {
+				String line;
+				while ((line = br.readLine()) != null) {
+					builder.append(line);
+				}
+			}
+			connection.disconnect();
+
+			return builder.toString();
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	public static final String doPost(String address, String query) {
 		System.out.println("Query: " + query);
 
-		Client client = ClientBuilder.newClient();
-		WebTarget target = client.target(address);
-		Response response = target.request().post(Entity.json(query));
-		String result = response.readEntity(String.class);
+		StringBuilder builder = new StringBuilder();
+		try {
+			URL url = new URL(address);
 
-		// For some reason we get a question-mark in the beginning of the
-		// response so we need to drop that to ensure valid JSON; this
-		// occurs with different request clients so it's definitely a
-		// problem on the server side
-		return result.substring(1, result.length());
+			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
+			connection.setDoInput(true);
+			connection.setDoOutput(true);
+			connection.setRequestMethod("POST");
+			connection.setRequestProperty("Accept", "application/json");
+			connection.setRequestProperty("Content-Type", "application/json; charset=utf-8");
+
+			try (OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream(), "utf-8")) {
+				writer.write(query);
+				writer.close();
+			}
+
+			InputStream stream = connection.getInputStream();
+			try (BufferedReader br = new BufferedReader(new InputStreamReader(stream))) {
+				try (BOMInputStream bis = new BOMInputStream(stream)) {
+					if (bis.hasBOM()) {
+						String line;
+						while ((line = br.readLine()) != null) {
+							builder.append(line);
+						}
+					} else {
+						String line;
+						while ((line = br.readLine()) != null) {
+							builder.append(line);
+						}
+					}
+				}
+			}
+			connection.disconnect();
+
+			return builder.toString();
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	public static final String getCodes(String table) {
