@@ -87,8 +87,6 @@ public class RequestPoster {
 
 			connection.disconnect();
 
-			System.out.println(builder.toString());
-
 			return builder.toString();
 		} catch (Exception e) {
 			throw new RuntimeException(e);
