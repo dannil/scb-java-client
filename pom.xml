@@ -14,8 +14,7 @@
 	
 		<junit.version>4.12</junit.version>
 	
-		<commons.version>2.4</commons.version>
-		<guava.version>18.0</guava.version>
+		<commons-io.version>2.4</commons-io.version>
 		<jackson-core.version>2.5.3</jackson-core.version>
 		<jackson-databind.version>2.5.3</jackson-databind.version>
 
@@ -36,14 +35,7 @@
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
-			<version>${commons.version}</version>
-		</dependency>
-
-		<!-- LICENSE : Apache License 2.0 -->
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>${guava.version}</version>
+			<version>${commons-io.version}</version>
 		</dependency>
 		
 		<!-- LICENSE : Apache License 2.0 -->

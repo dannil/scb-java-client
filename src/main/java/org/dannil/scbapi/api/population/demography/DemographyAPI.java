@@ -18,17 +18,19 @@ package org.dannil.scbapi.api.population.demography;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import org.dannil.scbapi.api.AbstractAPI;
 import org.dannil.scbapi.model.population.demography.AverageAgeFirstChild;
+import org.dannil.scbapi.utility.ListUtility;
 import org.dannil.scbapi.utility.QueryBuilder;
 import org.dannil.scbapi.utility.RequestPoster;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.common.collect.ArrayListMultimap;
 
 public class DemographyAPI extends AbstractAPI implements DemographyOperations {
 
@@ -131,22 +133,28 @@ public class DemographyAPI extends AbstractAPI implements DemographyOperations {
 	public List<AverageAgeFirstChild> getAverageAgeFirstChild(List<String> regions, List<Integer> genders, List<Integer> years) {
 		QueryBuilder<String, String> queryBuilder = new QueryBuilder<String, String>();
 
-		ArrayListMultimap<String, String> map = ArrayListMultimap.create();
-		map.put("ContentsCode", "BE0701AB");
+		Map<String, List<String>> map = new HashMap<String, List<String>>();
+		map.put("ContentsCode", ListUtility.toList("BE0701AB"));
 		if (regions != null) {
+			List<String> values = new ArrayList<String>();
 			for (String region : regions) {
-				map.put("Region", region);
+				values.add(region);
 			}
+			map.put("Region", values);
 		}
 		if (genders != null) {
+			List<String> values = new ArrayList<String>();
 			for (Integer gender : genders) {
-				map.put("Kon", gender.toString());
+				values.add(gender.toString());
 			}
+			map.put("Kon", values);
 		}
 		if (years != null) {
+			List<String> values = new ArrayList<String>();
 			for (Integer year : years) {
-				map.put("Tid", year.toString());
+				values.add(year.toString());
 			}
+			map.put("Tid", values);
 		}
 
 		String query = queryBuilder.build(map);

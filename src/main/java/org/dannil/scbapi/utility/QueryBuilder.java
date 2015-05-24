@@ -17,8 +17,7 @@ limitations under the License.
 package org.dannil.scbapi.utility;
 
 import java.util.List;
-
-import com.google.common.collect.ArrayListMultimap;
+import java.util.Map;
 
 public class QueryBuilder<E, K> {
 
@@ -26,7 +25,7 @@ public class QueryBuilder<E, K> {
 
 	}
 
-	public String build(ArrayListMultimap<E, K> map) {
+	public String build(Map<E, List<K>> map) {
 		StringBuilder builder = new StringBuilder();
 		builder.append("{");
 		builder.append("\"query\": [");

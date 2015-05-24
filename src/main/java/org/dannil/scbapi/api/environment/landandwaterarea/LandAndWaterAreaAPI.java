@@ -17,17 +17,18 @@ limitations under the License.
 package org.dannil.scbapi.api.environment.landandwaterarea;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import org.dannil.scbapi.api.AbstractAPI;
 import org.dannil.scbapi.model.environment.landandwaterarea.Area;
 import org.dannil.scbapi.model.environment.landandwaterarea.Area.Type;
 import org.dannil.scbapi.utility.JsonUtility;
+import org.dannil.scbapi.utility.ListUtility;
 import org.dannil.scbapi.utility.QueryBuilder;
 import org.dannil.scbapi.utility.RequestPoster;
-
-import com.google.common.collect.ArrayListMultimap;
 
 public class LandAndWaterAreaAPI extends AbstractAPI implements AreaOperations {
 
@@ -72,33 +73,38 @@ public class LandAndWaterAreaAPI extends AbstractAPI implements AreaOperations {
 	public List<Area> getArea(List<String> regions, List<Type> types, List<Integer> years) {
 		QueryBuilder<String, String> queryBuilder = new QueryBuilder<String, String>();
 
-		ArrayListMultimap<String, String> map = ArrayListMultimap.create();
-		map.put("ContentsCode", "MI0802AA");
+		Map<String, List<String>> map = new HashMap<String, List<String>>();
+		map.put("ContentsCode", ListUtility.toList("MI0802AA"));
 		if (regions != null) {
+			List<String> values = new ArrayList<String>();
 			for (String region : regions) {
 				if (region != null) {
-					map.put("Region", region);
+					values.add(region);
 				}
 			}
+			map.put("Region", values);
 		}
 		if (types != null) {
+			List<String> values = new ArrayList<String>();
 			for (Type type : types) {
 				if (type != null) {
-					map.put("ArealTyp", type.toString());
+					values.add(type.toString());
 				}
 			}
+			map.put("ArealTyp", values);
 		}
 		if (years != null) {
+			List<String> values = new ArrayList<String>();
 			for (Integer year : years) {
 				if (year != null) {
-					map.put("Tid", year.toString());
+					values.add(year.toString());
 				}
 			}
+			map.put("Tid", values);
 		}
 
 		String query = queryBuilder.build(map);
 		String response = RequestPoster.doPost(getUrl(), query);
 		return JsonUtility.parseAreas(JsonUtility.getNode(response));
 	}
-
 }

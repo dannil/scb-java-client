@@ -17,18 +17,19 @@ limitations under the License.
 package org.dannil.scbapi.api.population.statistic;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import org.dannil.scbapi.api.AbstractAPI;
 import org.dannil.scbapi.model.population.statistic.Statistic;
 import org.dannil.scbapi.model.population.statistic.Statistic.Gender;
 import org.dannil.scbapi.model.population.statistic.Statistic.RelationshipStatus;
 import org.dannil.scbapi.utility.JsonUtility;
+import org.dannil.scbapi.utility.ListUtility;
 import org.dannil.scbapi.utility.QueryBuilder;
 import org.dannil.scbapi.utility.RequestPoster;
-
-import com.google.common.collect.ArrayListMultimap;
 
 public class StatisticAPI extends AbstractAPI implements StatisticOperations {
 
@@ -73,42 +74,52 @@ public class StatisticAPI extends AbstractAPI implements StatisticOperations {
 	public List<Statistic> getPopulation(List<String> regions, List<RelationshipStatus> relationshipStatuses, List<String> ages, List<Gender> genders, List<Integer> years) {
 		QueryBuilder<String, String> queryBuilder = new QueryBuilder<String, String>();
 
-		ArrayListMultimap<String, String> map = ArrayListMultimap.create();
-		map.put("ContentsCode", "BE0101N1");
+		Map<String, List<String>> map = new HashMap<String, List<String>>();
+		map.put("ContentsCode", ListUtility.toList("BE0101N1"));
 		if (regions != null) {
+			List<String> values = new ArrayList<String>();
 			for (String region : regions) {
 				if (region != null) {
-					map.put("Region", region);
+					values.add(region);
 				}
 			}
+			map.put("Region", values);
 		}
 		if (relationshipStatuses != null) {
+			List<String> values = new ArrayList<String>();
 			for (RelationshipStatus relationshipStatus : relationshipStatuses) {
 				if (relationshipStatus != null) {
-					map.put("Civilstand", relationshipStatus.toString());
+					values.add(relationshipStatus.toString());
 				}
+				map.put("Civilstand", values);
 			}
 		}
 		if (ages != null) {
+			List<String> values = new ArrayList<String>();
 			for (String age : ages) {
 				if (age != null) {
-					map.put("Alder", age);
+					values.add(age);
 				}
 			}
+			map.put("Alder", values);
 		}
 		if (genders != null) {
+			List<String> values = new ArrayList<String>();
 			for (Gender gender : genders) {
 				if (gender != null) {
-					map.put("Kon", gender.toString());
+					values.add(gender.toString());
 				}
 			}
+			map.put("Kon", values);
 		}
 		if (years != null) {
+			List<String> values = new ArrayList<String>();
 			for (Integer year : years) {
 				if (year != null) {
-					map.put("Tid", year.toString());
+					values.add(year.toString());
 				}
 			}
+			map.put("Tid", values);
 		}
 
 		String query = queryBuilder.build(map);

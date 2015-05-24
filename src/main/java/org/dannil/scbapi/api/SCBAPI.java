@@ -24,12 +24,10 @@ import java.util.Map;
 
 import org.dannil.scbapi.api.environment.EnvironmentAPI;
 import org.dannil.scbapi.api.population.PopulationAPI;
-import org.dannil.scbapi.utility.QueryBuilder;
 import org.dannil.scbapi.utility.RequestPoster;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.common.collect.ArrayListMultimap;
 
 public class SCBAPI extends AbstractContainerAPI {
 
@@ -83,17 +81,21 @@ public class SCBAPI extends AbstractContainerAPI {
 	}
 
 	public void test() {
-		QueryBuilder<String, String> queryBuilder = new QueryBuilder<String, String>();
-
-		ArrayListMultimap<String, String> map = ArrayListMultimap.create();
-		map.put("Bransle", "koks");
-		map.put("Bransle", "prop");
-		map.put("Tid", "2012k4");
-		map.put("Tid", "2013k1");
-
-		String query = queryBuilder.build(map);
-		String response = RequestPoster.doPost("http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/EN/EN0106/BransleForbrTjKv07", query);
-
-		System.out.println(response);
+		// QueryBuilder<String, String> queryBuilder = new QueryBuilder<String,
+		// String>();
+		//
+		// ArrayListMultimap<String, String> map = ArrayListMultimap.create();
+		// map.put("Bransle", "koks");
+		// map.put("Bransle", "prop");
+		// map.put("Tid", "2012k4");
+		// map.put("Tid", "2013k1");
+		//
+		// String query = queryBuilder.build(map);
+		// String response =
+		// RequestPoster.doPost("http://api.scb.se/OV0104/v1/doris/" +
+		// this.locale.getLanguage() + "/ssd/EN/EN0106/BransleForbrTjKv07",
+		// query);
+		//
+		// System.out.println(response);
 	}
 }
