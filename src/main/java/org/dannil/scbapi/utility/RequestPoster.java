@@ -51,9 +51,10 @@ public class RequestPoster {
 			connection.disconnect();
 
 			return builder.toString();
-		} catch (Exception e) {
-			throw new RuntimeException(e);
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
+		return null;
 	}
 
 	public static String doPost(String address, String query) {
