@@ -17,6 +17,7 @@ limitations under the License.
 package org.dannil.scbapi.utility;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
@@ -95,7 +96,7 @@ public class RequestPoster {
 			connection.disconnect();
 
 			return builder.toString();
-		} catch (Exception e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return null;
