@@ -52,9 +52,8 @@ public class RequestPoster {
 
 			return builder.toString();
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
-		return null;
 	}
 
 	public static String doPost(String address, String query) {
@@ -98,9 +97,8 @@ public class RequestPoster {
 
 			return builder.toString();
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
-		return null;
 	}
 
 	public static String getCodes(String table) {

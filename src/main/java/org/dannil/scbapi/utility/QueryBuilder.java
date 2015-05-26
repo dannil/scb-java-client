@@ -18,6 +18,7 @@ package org.dannil.scbapi.utility;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 public class QueryBuilder<E, K> {
 
@@ -30,13 +31,13 @@ public class QueryBuilder<E, K> {
 		builder.append("{");
 		builder.append("\"query\": [");
 		int i = 0;
-		for (E code : map.keySet()) {
+		for (Entry<E, List<K>> entry : map.entrySet()) {
 			builder.append("{");
-			builder.append("\"code\": \"" + code + "\",");
+			builder.append("\"code\": \"" + entry.getKey() + "\",");
 			builder.append("\"selection\": {");
 			builder.append("\"filter\": \"item\",");
 			builder.append("\"values\": [");
-			List<K> values = map.get(code);
+			List<K> values = entry.getValue();
 			for (int j = 0; j < values.size(); j++) {
 				builder.append("\"" + values.get(j) + "\"");
 				if (j != values.size() - 1) {
