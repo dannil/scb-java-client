@@ -54,25 +54,6 @@ public class DemographyAPI extends AbstractAPI implements DemographyOperations {
 
 	public List<String> getRegions() {
 		return super.getRegions(getUrl());
-
-		// TODO Call super method
-		// String response = RequestPoster.doGet(this.url);
-		//
-		// ObjectMapper mapper = new ObjectMapper();
-		// try {
-		// JsonNode node = mapper.readTree(response);
-		// List<JsonNode> nodes = node.findValues("values");
-		// node = nodes.get(0);
-		//
-		// List<String> years = new ArrayList<String>(node.size());
-		// for (int i = 0; i < node.size(); i++) {
-		// years.add(node.get(i).asText());
-		// }
-		// return years;
-		// } catch (IOException e) {
-		// e.printStackTrace();
-		// }
-		// return null;
 	}
 
 	public List<Integer> getGenders() {
@@ -103,25 +84,6 @@ public class DemographyAPI extends AbstractAPI implements DemographyOperations {
 			years.add(Integer.valueOf(fetchedYear));
 		}
 		return years;
-
-		// // TODO Call super method
-		// String response = RequestPoster.doGet(this.url);
-		//
-		// ObjectMapper mapper = new ObjectMapper();
-		// try {
-		// JsonNode node = mapper.readTree(response);
-		// List<JsonNode> nodes = node.findValues("values");
-		// node = nodes.get(nodes.size() - 1);
-		//
-		// List<Integer> years = new ArrayList<Integer>(node.size());
-		// for (int i = 0; i < node.size(); i++) {
-		// years.add(node.get(i).asInt());
-		// }
-		// return years;
-		// } catch (IOException e) {
-		// e.printStackTrace();
-		// }
-		// return null;
 	}
 
 	@Override
