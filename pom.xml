@@ -8,6 +8,29 @@
 	<artifactId>scb-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
+	<name>scb-api</name>
+	<description>Java implementation of the SCB (Statistiska centralbyrån) API</description>
+  	<url>https://github.com/dannil/scb-api</url>
+
+	<developers>
+		<developer>
+			<id>dannil</id>
+			<name>dannil</name>
+			<roles>
+				<role>developer</role>
+			</roles>
+		</developer>
+	</developers>
+  
+	<scm>
+		<url>https://github.com/dannil/scb-api</url>
+		<connection>scm:git:git@github.com:dannil/scb-api.git</connection>
+	</scm>
+	<issueManagement>
+		<system>GitHub</system>
+		<url>https://github.com/dannil/scb-api/issues</url>
+	</issueManagement>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
