@@ -1,5 +1,5 @@
 /*
-Copyright 2014 Daniel Nilsson
+Copyright 2014, 2015 Daniel Nilsson
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -72,57 +72,17 @@ public class StatisticAPI extends AbstractAPI implements StatisticOperations {
 
 	@Override
 	public List<Statistic> getPopulation(List<String> regions, List<RelationshipStatus> relationshipStatuses, List<String> ages, List<Gender> genders, List<Integer> years) {
-		QueryBuilder<String, String> queryBuilder = new QueryBuilder<String, String>();
+		Map<String, List<?>> mappings = new HashMap<String, List<?>>();
+		mappings.put("ContentsCode", ListUtility.toList("BE0101N1"));
+		mappings.put("Region", regions);
+		mappings.put("Civilstand", relationshipStatuses);
+		mappings.put("Alder", ages);
+		mappings.put("Kon", genders);
+		mappings.put("Tid", years);
 
-		Map<String, List<String>> map = new HashMap<String, List<String>>();
-		map.put("ContentsCode", ListUtility.toList("BE0101N1"));
-		if (regions != null) {
-			List<String> values = new ArrayList<String>();
-			for (String region : regions) {
-				if (region != null) {
-					values.add(region);
-				}
-			}
-			map.put("Region", values);
-		}
-		if (relationshipStatuses != null) {
-			List<String> values = new ArrayList<String>();
-			for (RelationshipStatus relationshipStatus : relationshipStatuses) {
-				if (relationshipStatus != null) {
-					values.add(relationshipStatus.toString());
-				}
-				map.put("Civilstand", values);
-			}
-		}
-		if (ages != null) {
-			List<String> values = new ArrayList<String>();
-			for (String age : ages) {
-				if (age != null) {
-					values.add(age);
-				}
-			}
-			map.put("Alder", values);
-		}
-		if (genders != null) {
-			List<String> values = new ArrayList<String>();
-			for (Gender gender : genders) {
-				if (gender != null) {
-					values.add(gender.toString());
-				}
-			}
-			map.put("Kon", values);
-		}
-		if (years != null) {
-			List<String> values = new ArrayList<String>();
-			for (Integer year : years) {
-				if (year != null) {
-					values.add(year.toString());
-				}
-			}
-			map.put("Tid", values);
-		}
+		QueryBuilder builder = new QueryBuilder(mappings);
 
-		String query = queryBuilder.build(map);
+		String query = builder.build();
 		String response = RequestPoster.doPost(getUrl(), query);
 		return JsonUtility.parseStatistics(JsonUtility.getNode(response));
 	}

@@ -1,5 +1,5 @@
 /*
-Copyright 2014 Daniel Nilsson
+Copyright 2014, 2015 Daniel Nilsson
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -16,28 +16,52 @@ limitations under the License.
 
 package org.dannil.scbapi.utility;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public class QueryBuilder<E, K> {
+public class QueryBuilder {
 
-	public QueryBuilder() {
+	private Map<String, List<?>> map;
 
+	public QueryBuilder(Map<String, List<?>> map) {
+		this.map = map;
 	}
 
-	public String build(Map<E, List<K>> map) {
+	private void filter() {
+		Map<String, List<?>> map = new HashMap<String, List<?>>();
+
+		for (Entry<String, List<?>> entry : this.map.entrySet()) {
+			if (entry.getKey() != null && entry.getValue() != null) {
+				List<Object> values = new ArrayList<Object>();
+				for (Object o : entry.getValue()) {
+					if (o != null) {
+						values.add(o);
+					}
+				}
+				map.put(entry.getKey(), values);
+			}
+		}
+
+		this.map = map;
+	}
+
+	public String build() {
+		filter();
+
 		StringBuilder builder = new StringBuilder();
 		builder.append("{");
 		builder.append("\"query\": [");
 		int i = 0;
-		for (Entry<E, List<K>> entry : map.entrySet()) {
+		for (Entry<String, List<?>> entry : this.map.entrySet()) {
 			builder.append("{");
 			builder.append("\"code\": \"" + entry.getKey() + "\",");
 			builder.append("\"selection\": {");
 			builder.append("\"filter\": \"item\",");
 			builder.append("\"values\": [");
-			List<K> values = entry.getValue();
+			List<?> values = entry.getValue();
 			for (int j = 0; j < values.size(); j++) {
 				builder.append("\"" + values.get(j) + "\"");
 				if (j != values.size() - 1) {
@@ -47,7 +71,7 @@ public class QueryBuilder<E, K> {
 			builder.append("]");
 			builder.append("}");
 			builder.append("}");
-			if (i != map.keySet().size() - 1) {
+			if (i != this.map.keySet().size() - 1) {
 				builder.append(",");
 			}
 			i++;
