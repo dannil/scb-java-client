@@ -1,5 +1,5 @@
 /*
-Copyright 2014 Daniel Nilsson
+Copyright 2014, 2015 Daniel Nilsson
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -93,33 +93,15 @@ public class DemographyAPI extends AbstractAPI implements DemographyOperations {
 
 	@Override
 	public List<AverageAgeFirstChild> getAverageAgeFirstChild(List<String> regions, List<Integer> genders, List<Integer> years) {
-		QueryBuilder<String, String> queryBuilder = new QueryBuilder<String, String>();
+		Map<String, List<?>> mappings = new HashMap<String, List<?>>();
+		mappings.put("ContentsCode", ListUtility.toList("BE0701AB"));
+		mappings.put("Region", regions);
+		mappings.put("Kon", genders);
+		mappings.put("Tid", years);
 
-		Map<String, List<String>> map = new HashMap<String, List<String>>();
-		map.put("ContentsCode", ListUtility.toList("BE0701AB"));
-		if (regions != null) {
-			List<String> values = new ArrayList<String>();
-			for (String region : regions) {
-				values.add(region);
-			}
-			map.put("Region", values);
-		}
-		if (genders != null) {
-			List<String> values = new ArrayList<String>();
-			for (Integer gender : genders) {
-				values.add(gender.toString());
-			}
-			map.put("Kon", values);
-		}
-		if (years != null) {
-			List<String> values = new ArrayList<String>();
-			for (Integer year : years) {
-				values.add(year.toString());
-			}
-			map.put("Tid", values);
-		}
+		QueryBuilder builder = new QueryBuilder(mappings);
 
-		String query = queryBuilder.build(map);
+		String query = builder.build();
 		String response = RequestPoster.doPost(getUrl(), query);
 
 		// TODO Implement parsing method for returning model for

@@ -1,5 +1,5 @@
 /*
-Copyright 2014 Daniel Nilsson
+Copyright 2014, 2015 Daniel Nilsson
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -71,40 +71,17 @@ public class LandAndWaterAreaAPI extends AbstractAPI implements AreaOperations {
 
 	@Override
 	public List<Area> getArea(List<String> regions, List<Type> types, List<Integer> years) {
-		QueryBuilder<String, String> queryBuilder = new QueryBuilder<String, String>();
+		Map<String, List<?>> mappings = new HashMap<String, List<?>>();
+		mappings.put("ContentsCode", ListUtility.toList("MI0802AA"));
+		mappings.put("Region", regions);
+		mappings.put("ArealTyp", types);
+		mappings.put("Tid", years);
 
-		Map<String, List<String>> map = new HashMap<String, List<String>>();
-		map.put("ContentsCode", ListUtility.toList("MI0802AA"));
-		if (regions != null) {
-			List<String> values = new ArrayList<String>();
-			for (String region : regions) {
-				if (region != null) {
-					values.add(region);
-				}
-			}
-			map.put("Region", values);
-		}
-		if (types != null) {
-			List<String> values = new ArrayList<String>();
-			for (Type type : types) {
-				if (type != null) {
-					values.add(type.toString());
-				}
-			}
-			map.put("ArealTyp", values);
-		}
-		if (years != null) {
-			List<String> values = new ArrayList<String>();
-			for (Integer year : years) {
-				if (year != null) {
-					values.add(year.toString());
-				}
-			}
-			map.put("Tid", values);
-		}
+		QueryBuilder builder = new QueryBuilder(mappings);
 
-		String query = queryBuilder.build(map);
+		String query = builder.build();
 		String response = RequestPoster.doPost(getUrl(), query);
+
 		return JsonUtility.parseAreas(JsonUtility.getNode(response));
 	}
 }
