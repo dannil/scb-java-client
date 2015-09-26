@@ -110,7 +110,7 @@ public class JsonUtility {
 		Map<String, Integer> mappings = new HashMap<String, Integer>();
 		int i = 0;
 		for (String input : inputCodes) {
-			if (inputCodes.contains(input)) {
+			if (storedCodes.contains(input)) {
 				mappings.put(input, i);
 				i++;
 			}
