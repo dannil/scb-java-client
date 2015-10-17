@@ -7,6 +7,7 @@
 	<groupId>com.github.dannil</groupId>
 	<artifactId>scb-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 
 	<name>scb-api</name>
 	<description>Java implementation of the SCB (Statistiska centralbyrån) API</description>
@@ -15,10 +16,13 @@
 	<developers>
 		<developer>
 			<id>dannil</id>
-			<name>dannil</name>
+			<name>Daniel Nilsson</name>
+			<email>daniel.nilsson@dannils.se</email>
 			<roles>
+				<role>architect</role>
 				<role>developer</role>
 			</roles>
+			<timezone>Europe/Stockholm</timezone>
 		</developer>
 	</developers>
 	
