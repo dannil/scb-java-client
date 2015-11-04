@@ -88,7 +88,7 @@ public class JsonUtility {
 
 		List<Area> areas = new ArrayList<Area>();
 		for (Map<String, String> map : contents) {
-			Area area = new Area(map.get("Region"), Type.of(map.get("ArealTyp")), ParseUtility.parseInteger(map.get("Tid"), null), ParseUtility.parseDouble(map.get("Value"), null));
+			Area area = new Area(map.get("Region"), Type.of(map.get("ArealTyp")), ParseUtility.parseInteger(map.get("Tid")), ParseUtility.parseDouble(map.get("Value")));
 			areas.add(area);
 		}
 		return areas;
@@ -99,8 +99,8 @@ public class JsonUtility {
 
 		List<Statistic> statistics = new ArrayList<Statistic>();
 		for (Map<String, String> map : contents) {
-			Statistic statistic = new Statistic(map.get("Region"), RelationshipStatus.of(map.get("Civilstand")), map.get("Alder"), Gender.of(ParseUtility.parseInteger(map.get("Kon"), null)),
-					ParseUtility.parseInteger(map.get("Tid"), null), ParseUtility.parseLong(map.get("Value"), null));
+			Statistic statistic = new Statistic(map.get("Region"), RelationshipStatus.of(map.get("Civilstand")), map.get("Alder"), Gender.of(ParseUtility.parseInteger(map.get("Kon"))),
+					ParseUtility.parseInteger(map.get("Tid")), ParseUtility.parseLong(map.get("Value")));
 			statistics.add(statistic);
 		}
 		return statistics;

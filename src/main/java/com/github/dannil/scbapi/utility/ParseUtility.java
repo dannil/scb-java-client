@@ -17,6 +17,10 @@ limitations under the License.
 package com.github.dannil.scbapi.utility;
 
 public class ParseUtility {
+	
+	public static Integer parseInteger(String string) {
+		return parseInteger(string, null);
+	}
 
 	public static Integer parseInteger(String string, Object defaultValue) {
 		try {
@@ -28,6 +32,10 @@ public class ParseUtility {
 			return (Integer) defaultValue;
 		}
 	}
+	
+	public static Long parseLong(String string) {
+		return parseLong(string, null);
+	}
 
 	public static Long parseLong(String string, Object defaultValue) {
 		try {
@@ -38,6 +46,10 @@ public class ParseUtility {
 			}
 			return (Long) defaultValue;
 		}
+	}
+	
+	public static Double parseDouble(String string) {
+		return parseDouble(string, null);
 	}
 
 	public static Double parseDouble(String string, Object defaultValue) {
