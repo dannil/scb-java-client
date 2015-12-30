@@ -19,7 +19,7 @@ addons:
     project:
       name: dannil/scb-api
       description: Build submitted via Travis CI
-    notification_email: bobkant-fyrsvamp@hotmail.com
+    notification_email: daniel.nilsson94@outlook.com
     build_command_prepend: mvn clean
     build_command: mvn -DskipTests=true compile
     branch_pattern: coverity_scan
