@@ -94,7 +94,7 @@ public class Statistic extends AbstractStatisticModel {
 
 		Statistic other = (Statistic) obj;
 		return super.equals(other) && Objects.equals(this.age, other.age) && Objects.equals(this.amount, other.amount) && Objects.equals(this.gender, other.gender)
-				&& Objects.equals(this.region, other.relationshipStatus);
+				&& Objects.equals(this.relationshipStatus, other.relationshipStatus);
 	}
 
 	@Override
