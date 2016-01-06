@@ -17,6 +17,7 @@ limitations under the License.
 package com.github.dannil.scbapi.model.environment.landandwaterarea;
 
 import java.util.List;
+import java.util.Objects;
 
 import com.github.dannil.scbapi.utility.JsonUtility;
 import com.github.dannil.scbapi.utility.RequestPoster;
@@ -56,12 +57,7 @@ public class Area extends AbstractLandAndWaterAreaModel {
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = super.hashCode();
-		result = prime * result + ((this.squareKm == null) ? 0 : this.squareKm.hashCode());
-		result = prime * result + ((this.type == null) ? 0 : this.type.hashCode());
-		return result;
+		return Objects.hash(super.hashCode(), this.type, this.squareKm);
 	}
 
 	@Override
@@ -75,21 +71,9 @@ public class Area extends AbstractLandAndWaterAreaModel {
 		if (!(obj instanceof Area)) {
 			return false;
 		}
+
 		Area other = (Area) obj;
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (this.squareKm == null) {
-			if (other.squareKm != null) {
-				return false;
-			}
-		} else if (!this.squareKm.equals(other.squareKm)) {
-			return false;
-		}
-		if (this.type != other.type) {
-			return false;
-		}
-		return true;
+		return super.equals(obj) && Objects.equals(this.type, other.type) && Objects.equals(this.squareKm, other.squareKm);
 	}
 
 	@Override

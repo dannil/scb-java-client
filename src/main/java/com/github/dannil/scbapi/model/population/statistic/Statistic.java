@@ -17,6 +17,7 @@ limitations under the License.
 package com.github.dannil.scbapi.model.population.statistic;
 
 import java.util.List;
+import java.util.Objects;
 
 import com.github.dannil.scbapi.utility.JsonUtility;
 import com.github.dannil.scbapi.utility.RequestPoster;
@@ -76,14 +77,7 @@ public class Statistic extends AbstractStatisticModel {
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = super.hashCode();
-		result = prime * result + ((this.age == null) ? 0 : this.age.hashCode());
-		result = prime * result + ((this.amount == null) ? 0 : this.amount.hashCode());
-		result = prime * result + ((this.gender == null) ? 0 : this.gender.hashCode());
-		result = prime * result + ((this.relationshipStatus == null) ? 0 : this.relationshipStatus.hashCode());
-		return result;
+		return Objects.hash(super.hashCode(), this.age, this.amount, this.gender, this.relationshipStatus);
 	}
 
 	@Override
@@ -97,31 +91,10 @@ public class Statistic extends AbstractStatisticModel {
 		if (!(obj instanceof Statistic)) {
 			return false;
 		}
+
 		Statistic other = (Statistic) obj;
-		if (!super.equals(obj)) {
-			return false;
-		}
-		if (this.age == null) {
-			if (other.age != null) {
-				return false;
-			}
-		} else if (!this.age.equals(other.age)) {
-			return false;
-		}
-		if (this.amount == null) {
-			if (other.amount != null) {
-				return false;
-			}
-		} else if (!this.amount.equals(other.amount)) {
-			return false;
-		}
-		if (this.gender != other.gender) {
-			return false;
-		}
-		if (this.relationshipStatus != other.relationshipStatus) {
-			return false;
-		}
-		return true;
+		return super.equals(other) && Objects.equals(this.age, other.age) && Objects.equals(this.amount, other.amount) && Objects.equals(this.gender, other.gender)
+				&& Objects.equals(this.region, other.relationshipStatus);
 	}
 
 	@Override
