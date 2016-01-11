@@ -66,11 +66,11 @@ public class StatisticAPI extends AbstractAPI implements StatisticOperations {
 	}
 
 	@Override
-	public List<LiveBirth> getLiveBirths(List<String> regions, List<String> motherAge, List<Gender> genders, List<Integer> years) {
+	public List<LiveBirth> getLiveBirths(List<String> regions, List<String> motherAges, List<Gender> genders, List<Integer> years) {
 		Map<String, List<?>> mappings = new HashMap<String, List<?>>();
 		mappings.put("ContentsCode", ListUtility.toList("BE0101E2"));
 		mappings.put("Region", regions);
-		mappings.put("AlderModer", motherAge);
+		mappings.put("AlderModer", motherAges);
 		mappings.put("Kon", genders);
 		mappings.put("Tid", years);
 
