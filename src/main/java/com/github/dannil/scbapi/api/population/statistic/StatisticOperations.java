@@ -24,6 +24,10 @@ import com.github.dannil.scbapi.model.population.statistic.Statistic.Relationshi
 
 public interface StatisticOperations {
 
+	public void getBirthed();
+
+	public void getBirthed(List<String> regions, List<String> motherAge, List<Gender> genders, List<Integer> years);
+
 	public List<Statistic> getPopulation();
 
 	public List<Statistic> getPopulation(List<String> regions, List<RelationshipStatus> relationshipStatuses, List<String> ages, List<Gender> genders, List<Integer> years);

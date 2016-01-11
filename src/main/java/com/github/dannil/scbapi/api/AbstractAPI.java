@@ -22,14 +22,25 @@ import java.util.Locale;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.dannil.scbapi.utility.JsonUtility;
+import com.github.dannil.scbapi.utility.QueryBuilder;
 import com.github.dannil.scbapi.utility.RequestPoster;
 
 public abstract class AbstractAPI {
 
 	protected Locale locale;
 
+	protected QueryBuilder queryBuilder;
+
+	protected AbstractAPI() {
+		this.queryBuilder = QueryBuilder.getInstance();
+	}
+
 	protected void setLocale(Locale locale) {
 		this.locale = locale;
+	}
+
+	protected String getBaseUrl() {
+		return "http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/";
 	}
 
 	protected List<String> getRegions(String url) {
