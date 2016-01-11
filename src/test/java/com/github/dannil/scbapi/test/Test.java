@@ -11,7 +11,8 @@ import com.github.dannil.scbapi.api.population.statistic.StatisticAPI;
 import com.github.dannil.scbapi.model.environment.landandwaterarea.Area;
 import com.github.dannil.scbapi.model.environment.landandwaterarea.Area.Type;
 import com.github.dannil.scbapi.model.population.demography.AverageAgeFirstChild;
-import com.github.dannil.scbapi.model.population.statistic.Statistic;
+import com.github.dannil.scbapi.model.population.statistic.LiveBirth;
+import com.github.dannil.scbapi.model.population.statistic.Population;
 import com.github.dannil.scbapi.utility.ParseUtility;
 
 public class Test {
@@ -45,20 +46,25 @@ public class Test {
 
 		StatisticAPI statisticApi = api.population().statistic();
 
-		List<Statistic> collection8 = statisticApi.getPopulation(regions, null, ages, null, years);
-		for (Statistic p : collection8) {
+		List<LiveBirth> collection9 = statisticApi.getLiveBirths();
+		for (LiveBirth l : collection9) {
+			System.out.println(l);
+		}
+
+		List<Population> collection8 = statisticApi.getPopulation(regions, null, ages, null, years);
+		for (Population p : collection8) {
 			System.out.println(p);
 		}
 
-		List<Statistic> collection4 = statisticApi.getPopulation();
-		for (Statistic p : collection4) {
+		List<Population> collection4 = statisticApi.getPopulation();
+		for (Population p : collection4) {
 			System.out.println(p);
 		}
 
-		List<Integer> availableYears = statisticApi.getYears();
-		for (Integer year : availableYears) {
-			System.out.println(year);
-		}
+		// List<Integer> availableYears = statisticApi.getYears();
+		// for (Integer year : availableYears) {
+		// System.out.println(year);
+		// }
 
 		LandAndWaterAreaAPI lawApi = api.environment().landAndWaterArea();
 
