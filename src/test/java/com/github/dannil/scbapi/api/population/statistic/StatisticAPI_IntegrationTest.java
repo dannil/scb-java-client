@@ -32,7 +32,7 @@ public class StatisticAPI_IntegrationTest {
 	private StatisticAPI statisticsAPI;
 
 	@Before
-	public final void init() {
+	public void init() {
 		this.api = new SCBAPI();
 		this.statisticsAPI = this.api.population().statistic();
 	}
@@ -50,7 +50,12 @@ public class StatisticAPI_IntegrationTest {
 	// }
 
 	@Test
-	public final void getPopulation() {
+	public void getLiveBirths() {
+		assertNotEquals(0, this.statisticsAPI.getLiveBirths().size());
+	}
+
+	@Test
+	public void getPopulation() {
 		assertNotEquals(0, this.statisticsAPI.getPopulation().size());
 	}
 
