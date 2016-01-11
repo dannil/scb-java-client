@@ -16,7 +16,6 @@ limitations under the License.
 
 package com.github.dannil.scbapi.api.environment.landandwaterarea;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -27,7 +26,6 @@ import com.github.dannil.scbapi.model.environment.landandwaterarea.Area;
 import com.github.dannil.scbapi.model.environment.landandwaterarea.Area.Type;
 import com.github.dannil.scbapi.utility.JsonUtility;
 import com.github.dannil.scbapi.utility.ListUtility;
-import com.github.dannil.scbapi.utility.QueryBuilder;
 import com.github.dannil.scbapi.utility.RequestPoster;
 
 public class LandAndWaterAreaAPI extends AbstractAPI implements AreaOperations {
@@ -46,23 +44,19 @@ public class LandAndWaterAreaAPI extends AbstractAPI implements AreaOperations {
 		super.locale = locale;
 	}
 
-	private String getUrl() {
-		return "http://api.scb.se/OV0104/v1/doris/" + super.locale.getLanguage() + "/ssd/MI/MI0802/Areal2012";
-	}
-
-	public List<String> getRegions() {
-		return super.getRegions(getUrl());
-	}
-
-	public List<Integer> getYears() {
-		List<String> fetchedYears = super.getYears(getUrl());
-
-		List<Integer> years = new ArrayList<Integer>(fetchedYears.size());
-		for (String fetchedYear : fetchedYears) {
-			years.add(Integer.valueOf(fetchedYear));
-		}
-		return years;
-	}
+	// public List<String> getRegions() {
+	// return super.getRegions(getUrl());
+	// }
+	//
+	// public List<Integer> getYears() {
+	// List<String> fetchedYears = super.getYears(getUrl());
+	//
+	// List<Integer> years = new ArrayList<Integer>(fetchedYears.size());
+	// for (String fetchedYear : fetchedYears) {
+	// years.add(Integer.valueOf(fetchedYear));
+	// }
+	// return years;
+	// }
 
 	@Override
 	public List<Area> getArea() {
@@ -77,10 +71,7 @@ public class LandAndWaterAreaAPI extends AbstractAPI implements AreaOperations {
 		mappings.put("ArealTyp", types);
 		mappings.put("Tid", years);
 
-		QueryBuilder builder = new QueryBuilder(mappings);
-
-		String query = builder.build();
-		String response = RequestPoster.doPost(getUrl(), query);
+		String response = RequestPoster.doPost(super.getBaseUrl() + "MI/MI0802/Areal2012", super.queryBuilder.build(mappings));
 
 		return JsonUtility.parseAreas(JsonUtility.getNode(response));
 	}
