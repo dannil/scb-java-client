@@ -18,18 +18,19 @@ package com.github.dannil.scbapi.api.population.statistic;
 
 import java.util.List;
 
-import com.github.dannil.scbapi.model.population.statistic.Statistic;
-import com.github.dannil.scbapi.model.population.statistic.Statistic.Gender;
-import com.github.dannil.scbapi.model.population.statistic.Statistic.RelationshipStatus;
+import com.github.dannil.scbapi.model.Gender;
+import com.github.dannil.scbapi.model.RelationshipStatus;
+import com.github.dannil.scbapi.model.population.statistic.LiveBirth;
+import com.github.dannil.scbapi.model.population.statistic.Population;
 
 public interface StatisticOperations {
 
-	public void getBirthed();
+	public List<LiveBirth> getLiveBirths();
 
-	public void getBirthed(List<String> regions, List<String> motherAge, List<Gender> genders, List<Integer> years);
+	public List<LiveBirth> getLiveBirths(List<String> regions, List<String> motherAge, List<Gender> genders, List<Integer> years);
 
-	public List<Statistic> getPopulation();
+	public List<Population> getPopulation();
 
-	public List<Statistic> getPopulation(List<String> regions, List<RelationshipStatus> relationshipStatuses, List<String> ages, List<Gender> genders, List<Integer> years);
+	public List<Population> getPopulation(List<String> regions, List<RelationshipStatus> relationshipStatuses, List<String> ages, List<Gender> genders, List<Integer> years);
 
 }

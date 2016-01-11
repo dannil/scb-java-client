@@ -22,9 +22,10 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbapi.api.AbstractAPI;
-import com.github.dannil.scbapi.model.population.statistic.Statistic;
-import com.github.dannil.scbapi.model.population.statistic.Statistic.Gender;
-import com.github.dannil.scbapi.model.population.statistic.Statistic.RelationshipStatus;
+import com.github.dannil.scbapi.model.Gender;
+import com.github.dannil.scbapi.model.RelationshipStatus;
+import com.github.dannil.scbapi.model.population.statistic.LiveBirth;
+import com.github.dannil.scbapi.model.population.statistic.Population;
 import com.github.dannil.scbapi.utility.JsonUtility;
 import com.github.dannil.scbapi.utility.ListUtility;
 import com.github.dannil.scbapi.utility.RequestPoster;
@@ -60,12 +61,12 @@ public class StatisticAPI extends AbstractAPI implements StatisticOperations {
 	// }
 
 	@Override
-	public void getBirthed() {
-		this.getBirthed(null, null, null, null);
+	public List<LiveBirth> getLiveBirths() {
+		return this.getLiveBirths(null, null, null, null);
 	}
 
 	@Override
-	public void getBirthed(List<String> regions, List<String> motherAge, List<Gender> genders, List<Integer> years) {
+	public List<LiveBirth> getLiveBirths(List<String> regions, List<String> motherAge, List<Gender> genders, List<Integer> years) {
 		Map<String, List<?>> mappings = new HashMap<String, List<?>>();
 		mappings.put("ContentsCode", ListUtility.toList("BE0101E2"));
 		mappings.put("Region", regions);
@@ -74,15 +75,19 @@ public class StatisticAPI extends AbstractAPI implements StatisticOperations {
 		mappings.put("Tid", years);
 
 		String response = RequestPoster.doPost(super.getBaseUrl() + "BE/BE0101/BE0101H/FoddaK", super.queryBuilder.build(mappings));
+
+		System.out.println(response);
+
+		return JsonUtility.parseLiveBirths(JsonUtility.getNode(response));
 	}
 
 	@Override
-	public List<Statistic> getPopulation() {
+	public List<Population> getPopulation() {
 		return this.getPopulation(null, null, null, null, null);
 	}
 
 	@Override
-	public List<Statistic> getPopulation(List<String> regions, List<RelationshipStatus> relationshipStatuses, List<String> ages, List<Gender> genders, List<Integer> years) {
+	public List<Population> getPopulation(List<String> regions, List<RelationshipStatus> relationshipStatuses, List<String> ages, List<Gender> genders, List<Integer> years) {
 		Map<String, List<?>> mappings = new HashMap<String, List<?>>();
 		mappings.put("ContentsCode", ListUtility.toList("BE0101N1"));
 		mappings.put("Region", regions);
@@ -93,7 +98,9 @@ public class StatisticAPI extends AbstractAPI implements StatisticOperations {
 
 		String response = RequestPoster.doPost(super.getBaseUrl() + "BE/BE0101/BE0101A/BefolkningNy", super.queryBuilder.build(mappings));
 
-		return JsonUtility.parseStatistics(JsonUtility.getNode(response));
+		System.out.println(response);
+
+		return JsonUtility.parsePopulation(JsonUtility.getNode(response));
 	}
 
 }

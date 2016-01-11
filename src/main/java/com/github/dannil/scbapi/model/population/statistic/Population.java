@@ -19,10 +19,13 @@ package com.github.dannil.scbapi.model.population.statistic;
 import java.util.List;
 import java.util.Objects;
 
+import com.github.dannil.scbapi.model.AbstractRegionAndYearModel;
+import com.github.dannil.scbapi.model.Gender;
+import com.github.dannil.scbapi.model.RelationshipStatus;
 import com.github.dannil.scbapi.utility.JsonUtility;
 import com.github.dannil.scbapi.utility.RequestPoster;
 
-public class Statistic extends AbstractStatisticModel {
+public class Population extends AbstractRegionAndYearModel<String, Integer> {
 
 	private static List<String> codes;
 
@@ -31,11 +34,11 @@ public class Statistic extends AbstractStatisticModel {
 	private Gender gender;
 	private Long amount;
 
-	public Statistic() {
+	public Population() {
 		super();
 	}
 
-	public Statistic(String region, RelationshipStatus relationshipStatus, String age, Gender gender, Integer year, Long amount) {
+	public Population(String region, RelationshipStatus relationshipStatus, String age, Gender gender, Integer year, Long amount) {
 		super(region, year);
 		this.relationshipStatus = relationshipStatus;
 		this.age = age;
@@ -77,7 +80,7 @@ public class Statistic extends AbstractStatisticModel {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(super.hashCode(), this.age, this.amount, this.gender, this.relationshipStatus);
+		return Objects.hash(super.hashCode(), this.relationshipStatus, this.age, this.gender, this.amount);
 	}
 
 	@Override
@@ -88,27 +91,31 @@ public class Statistic extends AbstractStatisticModel {
 		if (obj == null) {
 			return false;
 		}
-		if (!(obj instanceof Statistic)) {
+		if (!(obj instanceof Population)) {
 			return false;
 		}
 
-		Statistic other = (Statistic) obj;
-		return super.equals(other) && Objects.equals(this.age, other.age) && Objects.equals(this.amount, other.amount) && Objects.equals(this.gender, other.gender)
-				&& Objects.equals(this.relationshipStatus, other.relationshipStatus);
+		Population other = (Population) obj;
+		return super.equals(other) && Objects.equals(this.relationshipStatus, other.relationshipStatus) && Objects.equals(this.age, other.age) && Objects.equals(this.gender, other.gender)
+				&& Objects.equals(this.amount, other.amount);
 	}
 
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 
-		builder.append("Statistic ");
-		builder.append("[");
-		builder.append("region=" + super.region + ", ");
-		builder.append("year=" + super.year + ", ");
-		builder.append("relationshipStatus=" + (this.relationshipStatus != null ? this.relationshipStatus.toString() : null) + ", ");
-		builder.append("age=" + this.age + ", ");
-		builder.append("gender=" + (this.gender != null ? this.gender.toString() : null) + ", ");
-		builder.append("amount=" + this.amount);
+		builder.append("Population [relationshipStatus=");
+		builder.append(this.relationshipStatus);
+		builder.append(", age=");
+		builder.append(this.age);
+		builder.append(", gender=");
+		builder.append(this.gender);
+		builder.append(", amount=");
+		builder.append(this.amount);
+		builder.append(", region=");
+		builder.append(super.region);
+		builder.append(", year=");
+		builder.append(super.year);
 		builder.append("]");
 
 		return builder.toString();
@@ -119,62 +126,6 @@ public class Statistic extends AbstractStatisticModel {
 			codes = JsonUtility.getCodes(RequestPoster.getCodes("BE/BE0101/BE0101A/BefolkningNy"));
 		}
 		return codes;
-	}
-
-	public enum RelationshipStatus {
-		UNMARRIED("OG"), MARRIED("G"), DIVORCED("SK"), WIDOW("ÄNKL");
-
-		private final String value;
-
-		private RelationshipStatus(String value) {
-			this.value = value;
-		}
-
-		public static RelationshipStatus of(String value) {
-			if (value == null) {
-				return null;
-			}
-
-			for (RelationshipStatus status : values()) {
-				if (status.value.equals(value)) {
-					return status;
-				}
-			}
-			throw new IllegalArgumentException(value);
-		}
-
-		@Override
-		public String toString() {
-			return this.value;
-		}
-	}
-
-	public enum Gender {
-		MAN(1), WOMAN(2);
-
-		private final Integer value;
-
-		private Gender(Integer value) {
-			this.value = value;
-		}
-
-		public static Gender of(Integer value) {
-			if (value == null) {
-				return null;
-			}
-
-			for (Gender gender : values()) {
-				if (gender.value.equals(value)) {
-					return gender;
-				}
-			}
-			throw new IllegalArgumentException(String.valueOf(value));
-		}
-
-		@Override
-		public String toString() {
-			return this.value.toString();
-		}
 	}
 
 }

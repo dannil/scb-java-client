@@ -24,11 +24,12 @@ import java.util.Map;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.dannil.scbapi.model.Gender;
+import com.github.dannil.scbapi.model.RelationshipStatus;
 import com.github.dannil.scbapi.model.environment.landandwaterarea.Area;
 import com.github.dannil.scbapi.model.environment.landandwaterarea.Area.Type;
-import com.github.dannil.scbapi.model.population.statistic.Statistic;
-import com.github.dannil.scbapi.model.population.statistic.Statistic.Gender;
-import com.github.dannil.scbapi.model.population.statistic.Statistic.RelationshipStatus;
+import com.github.dannil.scbapi.model.population.statistic.LiveBirth;
+import com.github.dannil.scbapi.model.population.statistic.Population;
 
 public class JsonUtility {
 
@@ -94,16 +95,34 @@ public class JsonUtility {
 		return areas;
 	}
 
-	public static List<Statistic> parseStatistics(JsonNode node) {
-		List<Map<String, String>> contents = genericParse(node, Statistic.getCodes());
+	public static List<LiveBirth> parseLiveBirths(JsonNode node) {
+		List<Map<String, String>> contents = genericParse(node, LiveBirth.getCodes());
 
-		List<Statistic> statistics = new ArrayList<Statistic>();
+		List<LiveBirth> liveBirths = new ArrayList<LiveBirth>();
 		for (Map<String, String> map : contents) {
-			Statistic statistic = new Statistic(map.get("Region"), RelationshipStatus.of(map.get("Civilstand")), map.get("Alder"), Gender.of(ParseUtility.parseInteger(map.get("Kon"))),
-					ParseUtility.parseInteger(map.get("Tid")), ParseUtility.parseLong(map.get("Value")));
-			statistics.add(statistic);
+
+			LiveBirth liveBirth = new LiveBirth();
+			liveBirth.setRegion(map.get("Region"));
+			liveBirth.setYear(ParseUtility.parseInteger(map.get("Tid")));
+			liveBirth.setMotherAge(map.get("AlderModer"));
+			liveBirth.setGender(Gender.of(ParseUtility.parseInteger(map.get("Kon"))));
+			liveBirth.setAmount(ParseUtility.parseLong(map.get("Value")));
+
+			liveBirths.add(liveBirth);
 		}
-		return statistics;
+		return liveBirths;
+	}
+
+	public static List<Population> parsePopulation(JsonNode node) {
+		List<Map<String, String>> contents = genericParse(node, Population.getCodes());
+
+		List<Population> populations = new ArrayList<Population>();
+		for (Map<String, String> map : contents) {
+			Population population = new Population(map.get("Region"), RelationshipStatus.of(map.get("Civilstand")), map.get("Alder"), Gender.of(ParseUtility.parseInteger(map.get("Kon"))),
+					ParseUtility.parseInteger(map.get("Tid")), ParseUtility.parseLong(map.get("Value")));
+			populations.add(population);
+		}
+		return populations;
 	}
 
 	private static Map<String, Integer> generateMappings(List<String> inputCodes, List<String> storedCodes) {
