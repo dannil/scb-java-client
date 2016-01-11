@@ -16,19 +16,14 @@ limitations under the License.
 
 package com.github.dannil.scbapi.api.population.demography;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.dannil.scbapi.api.AbstractAPI;
 import com.github.dannil.scbapi.model.population.demography.AverageAgeFirstChild;
 import com.github.dannil.scbapi.utility.ListUtility;
-import com.github.dannil.scbapi.utility.QueryBuilder;
 import com.github.dannil.scbapi.utility.RequestPoster;
 
 public class DemographyAPI extends AbstractAPI implements DemographyOperations {
@@ -47,43 +42,39 @@ public class DemographyAPI extends AbstractAPI implements DemographyOperations {
 		super.locale = locale;
 	}
 
-	private String getUrl() {
-		return "http://api.scb.se/OV0104/v1/doris/" + super.locale.getLanguage() + "/ssd/BE/BE0701/MedelAlderNY";
-	}
-
-	public List<String> getRegions() {
-		return super.getRegions(getUrl());
-	}
-
-	public List<Integer> getGenders() {
-		String response = RequestPoster.doGet(getUrl());
-
-		ObjectMapper mapper = new ObjectMapper();
-		try {
-			JsonNode node = mapper.readTree(response);
-			List<JsonNode> nodes = node.findValues("values");
-			node = nodes.get(1);
-
-			List<Integer> genders = new ArrayList<Integer>(node.size());
-			for (int i = 0; i < node.size(); i++) {
-				genders.add(node.get(i).asInt());
-			}
-			return genders;
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	public List<Integer> getYears() {
-		List<String> fetchedYears = super.getYears(getUrl());
-
-		List<Integer> years = new ArrayList<Integer>(fetchedYears.size());
-		for (String fetchedYear : fetchedYears) {
-			years.add(Integer.valueOf(fetchedYear));
-		}
-		return years;
-	}
+	// public List<String> getRegions() {
+	// return super.getRegions(getUrl());
+	// }
+	//
+	// public List<Integer> getGenders() {
+	// String response = RequestPoster.doGet(getUrl());
+	//
+	// ObjectMapper mapper = new ObjectMapper();
+	// try {
+	// JsonNode node = mapper.readTree(response);
+	// List<JsonNode> nodes = node.findValues("values");
+	// node = nodes.get(1);
+	//
+	// List<Integer> genders = new ArrayList<Integer>(node.size());
+	// for (int i = 0; i < node.size(); i++) {
+	// genders.add(node.get(i).asInt());
+	// }
+	// return genders;
+	// } catch (IOException e) {
+	// e.printStackTrace();
+	// }
+	// return null;
+	// }
+	//
+	// public List<Integer> getYears() {
+	// List<String> fetchedYears = super.getYears(getUrl());
+	//
+	// List<Integer> years = new ArrayList<Integer>(fetchedYears.size());
+	// for (String fetchedYear : fetchedYears) {
+	// years.add(Integer.valueOf(fetchedYear));
+	// }
+	// return years;
+	// }
 
 	@Override
 	public List<AverageAgeFirstChild> getAverageAgeFirstChild() {
@@ -98,10 +89,7 @@ public class DemographyAPI extends AbstractAPI implements DemographyOperations {
 		mappings.put("Kon", genders);
 		mappings.put("Tid", years);
 
-		QueryBuilder builder = new QueryBuilder(mappings);
-
-		String query = builder.build();
-		String response = RequestPoster.doPost(getUrl(), query);
+		String response = RequestPoster.doPost(super.getBaseUrl() + "BE/BE0701/MedelAlderNY", super.queryBuilder.build(mappings));
 
 		// TODO Implement parsing method for returning model for
 		// averageAgeFirstChild
