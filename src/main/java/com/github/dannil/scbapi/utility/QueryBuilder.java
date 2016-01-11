@@ -24,16 +24,23 @@ import java.util.Map.Entry;
 
 public class QueryBuilder {
 
-	private Map<String, List<?>> map;
+	private static QueryBuilder queryBuilder;
 
-	public QueryBuilder(Map<String, List<?>> map) {
-		this.map = map;
+	public static QueryBuilder getInstance() {
+		if (queryBuilder == null) {
+			queryBuilder = new QueryBuilder();
+		}
+		return queryBuilder;
 	}
 
-	private void filter() {
-		Map<String, List<?>> map = new HashMap<String, List<?>>();
+	private QueryBuilder() {
 
-		for (Entry<String, List<?>> entry : this.map.entrySet()) {
+	}
+
+	public String build(Map<String, List<?>> inputMap) {
+		Map<String, List<?>> filteredMap = new HashMap<String, List<?>>();
+
+		for (Entry<String, List<?>> entry : inputMap.entrySet()) {
 			if (entry.getKey() != null && entry.getValue() != null) {
 				List<Object> values = new ArrayList<Object>();
 				for (Object o : entry.getValue()) {
@@ -41,21 +48,15 @@ public class QueryBuilder {
 						values.add(o);
 					}
 				}
-				map.put(entry.getKey(), values);
+				filteredMap.put(entry.getKey(), values);
 			}
 		}
-
-		this.map = map;
-	}
-
-	public String build() {
-		filter();
 
 		StringBuilder builder = new StringBuilder();
 		builder.append("{");
 		builder.append("\"query\": [");
 		int i = 0;
-		for (Entry<String, List<?>> entry : this.map.entrySet()) {
+		for (Entry<String, List<?>> entry : filteredMap.entrySet()) {
 			builder.append("{");
 			builder.append("\"code\": \"" + entry.getKey() + "\",");
 			builder.append("\"selection\": {");
@@ -71,7 +72,7 @@ public class QueryBuilder {
 			builder.append("]");
 			builder.append("}");
 			builder.append("}");
-			if (i != this.map.keySet().size() - 1) {
+			if (i != filteredMap.keySet().size() - 1) {
 				builder.append(",");
 			}
 			i++;
