@@ -16,11 +16,14 @@ limitations under the License.
 
 package com.github.dannil.scbapi.model.population.demography;
 
-public class AverageAgeFirstChild {
+import com.github.dannil.scbapi.model.AbstractRegionAndYearModel;
 
-	private String region;
+public class AverageAgeFirstChild extends AbstractRegionAndYearModel<String, Integer> {
+
+	// TODO Investigate if the whole Demography tree hierarchy should extend
+	// AbstractRegionAndYearModel
+
 	private Integer gender;
-	private Integer year;
 	private Double averageAge;
 
 	public AverageAgeFirstChild() {
@@ -28,18 +31,9 @@ public class AverageAgeFirstChild {
 	}
 
 	public AverageAgeFirstChild(String region, Integer gender, Integer year, Double averageAge) {
-		this.region = region;
+		super(region, year);
 		this.gender = gender;
-		this.year = year;
 		this.averageAge = averageAge;
-	}
-
-	public String getRegion() {
-		return this.region;
-	}
-
-	public void setRegion(String region) {
-		this.region = region;
 	}
 
 	public Integer getGender() {
@@ -48,14 +42,6 @@ public class AverageAgeFirstChild {
 
 	public void setGender(Integer gender) {
 		this.gender = gender;
-	}
-
-	public Integer getYear() {
-		return this.year;
-	}
-
-	public void setYear(Integer year) {
-		this.year = year;
 	}
 
 	public Double getAverageAge() {
