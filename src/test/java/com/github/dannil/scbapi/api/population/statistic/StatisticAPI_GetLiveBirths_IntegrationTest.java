@@ -105,7 +105,7 @@ public class StatisticAPI_GetLiveBirths_IntegrationTest {
 	}
 
 	@Test
-	public final void getPopulation() {
+	public final void getLiveBirths() {
 		Assert.assertNotEquals(0, this.statisticsAPI.getLiveBirths(this.regions, this.motherAges, this.genders, this.years));
 	}
 
