@@ -76,7 +76,7 @@ public class StatisticAPI extends AbstractAPI implements StatisticOperations {
 
 		String response = RequestPoster.doPost(super.getBaseUrl() + "BE/BE0101/BE0101H/FoddaK", super.queryBuilder.build(mappings));
 
-		System.out.println(response);
+		// System.out.println(response);
 
 		return JsonUtility.parseLiveBirths(JsonUtility.getNode(response));
 	}
@@ -98,7 +98,7 @@ public class StatisticAPI extends AbstractAPI implements StatisticOperations {
 
 		String response = RequestPoster.doPost(super.getBaseUrl() + "BE/BE0101/BE0101A/BefolkningNy", super.queryBuilder.build(mappings));
 
-		System.out.println(response);
+		// System.out.println(response);
 
 		return JsonUtility.parsePopulation(JsonUtility.getNode(response));
 	}
