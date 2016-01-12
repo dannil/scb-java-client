@@ -20,9 +20,6 @@ import com.github.dannil.scbapi.model.AbstractRegionAndYearModel;
 
 public class AverageAgeFirstChild extends AbstractRegionAndYearModel<String, Integer> {
 
-	// TODO Investigate if the whole Demography tree hierarchy should extend
-	// AbstractRegionAndYearModel
-
 	private Integer gender;
 	private Double averageAge;
 
