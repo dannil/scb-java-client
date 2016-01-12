@@ -28,13 +28,11 @@ import com.github.dannil.scbapi.api.SCBAPI;
 @RunWith(JUnit4.class)
 public class LandAndWaterArea_IntegrationTest {
 
-	private SCBAPI api;
 	private LandAndWaterAreaAPI landAndWaterAreaApi;
 
 	@Before
 	public final void init() {
-		this.api = new SCBAPI();
-		this.landAndWaterAreaApi = this.api.environment().landAndWaterArea();
+		this.landAndWaterAreaApi = new SCBAPI().environment().landAndWaterArea();
 	}
 
 	// TODO Enable tests in the future

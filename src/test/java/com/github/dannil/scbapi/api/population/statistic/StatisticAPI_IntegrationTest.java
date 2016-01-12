@@ -28,13 +28,11 @@ import com.github.dannil.scbapi.api.SCBAPI;
 @RunWith(JUnit4.class)
 public class StatisticAPI_IntegrationTest {
 
-	private SCBAPI api;
-	private StatisticAPI statisticsAPI;
+	private StatisticAPI statisticAPI;
 
 	@Before
 	public void init() {
-		this.api = new SCBAPI();
-		this.statisticsAPI = this.api.population().statistic();
+		this.statisticAPI = new SCBAPI().population().statistic();
 	}
 
 	// TODO Enable tests in the future
@@ -51,12 +49,12 @@ public class StatisticAPI_IntegrationTest {
 
 	@Test
 	public void getLiveBirths() {
-		assertNotEquals(0, this.statisticsAPI.getLiveBirths().size());
+		assertNotEquals(0, this.statisticAPI.getLiveBirths().size());
 	}
 
 	@Test
 	public void getPopulation() {
-		assertNotEquals(0, this.statisticsAPI.getPopulation().size());
+		assertNotEquals(0, this.statisticAPI.getPopulation().size());
 	}
 
 }
