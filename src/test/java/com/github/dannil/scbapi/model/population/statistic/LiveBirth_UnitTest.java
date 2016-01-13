@@ -125,6 +125,14 @@ public class LiveBirth_UnitTest {
 	}
 
 	@Test
+	public void notEqualsRegion() {
+		LiveBirth liveBirth = new LiveBirth("1263", "21", Gender.MAN, 2002, 12345L);
+		LiveBirth liveBirth2 = new LiveBirth("1267", "21", Gender.MAN, 2002, 12345L);
+
+		assertFalse(liveBirth.equals(liveBirth2));
+	}
+
+	@Test
 	public void notEqualsMotherAge() {
 		LiveBirth liveBirth = new LiveBirth("1263", "21", Gender.MAN, 2002, 12345L);
 		LiveBirth liveBirth2 = new LiveBirth("1263", "tot", Gender.MAN, 2002, 12345L);
@@ -136,6 +144,14 @@ public class LiveBirth_UnitTest {
 	public void notEqualsGender() {
 		LiveBirth liveBirth = new LiveBirth("1263", "tot", Gender.MAN, 2002, 12345L);
 		LiveBirth liveBirth2 = new LiveBirth("1263", "tot", Gender.WOMAN, 2002, 12345L);
+
+		assertFalse(liveBirth.equals(liveBirth2));
+	}
+
+	@Test
+	public void notEqualsYear() {
+		LiveBirth liveBirth = new LiveBirth("1263", "21", Gender.MAN, 1996, 12345L);
+		LiveBirth liveBirth2 = new LiveBirth("1263", "21", Gender.MAN, 2002, 12345L);
 
 		assertFalse(liveBirth.equals(liveBirth2));
 	}
