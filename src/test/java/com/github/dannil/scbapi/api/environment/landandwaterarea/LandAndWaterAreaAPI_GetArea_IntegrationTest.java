@@ -29,7 +29,6 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 import com.github.dannil.scbapi.api.SCBAPI;
-import com.github.dannil.scbapi.api.environment.landandwaterarea.LandAndWaterAreaAPI;
 import com.github.dannil.scbapi.model.environment.landandwaterarea.Area.Type;
 import com.github.dannil.scbapi.test.utility.Config;
 import com.github.dannil.scbapi.utility.ListUtility;
@@ -37,7 +36,10 @@ import com.github.dannil.scbapi.utility.ListUtility;
 @RunWith(Parameterized.class)
 public class LandAndWaterAreaAPI_GetArea_IntegrationTest {
 
-	private SCBAPI api;
+	private List<String> regions;
+	private List<Type> types;
+	private List<Integer> years;
+
 	private LandAndWaterAreaAPI landAndWaterAreaAPI;
 
 	@Parameters(name = "{index}: getArea({0}, {1}, {2})")
@@ -76,13 +78,8 @@ public class LandAndWaterAreaAPI_GetArea_IntegrationTest {
 		return parameters;
 	}
 
-	List<String> regions;
-	List<Type> types;
-	List<Integer> years;
-
 	private LandAndWaterAreaAPI_GetArea_IntegrationTest() {
-		this.api = new SCBAPI();
-		this.landAndWaterAreaAPI = this.api.environment().landAndWaterArea();
+		this.landAndWaterAreaAPI = new SCBAPI().environment().landAndWaterArea();
 	}
 
 	public LandAndWaterAreaAPI_GetArea_IntegrationTest(List<String> regions, List<Type> types, List<Integer> years) throws InterruptedException {
@@ -94,7 +91,7 @@ public class LandAndWaterAreaAPI_GetArea_IntegrationTest {
 
 		// Due to constraints set by SCB, we can only do 10 calls every 10
 		// seconds, so we need an artificial timer which handles this.
-		Thread.sleep(Config.TIMER);
+		Thread.sleep(Config.getTimerMs());
 	}
 
 	@Test

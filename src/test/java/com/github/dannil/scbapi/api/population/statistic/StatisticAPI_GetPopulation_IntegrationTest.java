@@ -36,7 +36,12 @@ import com.github.dannil.scbapi.utility.ListUtility;
 @RunWith(Parameterized.class)
 public class StatisticAPI_GetPopulation_IntegrationTest {
 
-	private SCBAPI api;
+	private List<String> regions;
+	private List<RelationshipStatus> statuses;
+	private List<String> ages;
+	private List<Gender> genders;
+	private List<Integer> years;
+
 	private StatisticAPI statisticsAPI;
 
 	@Parameters(name = "{index}: getPopulation({0}, {1}, {2}, {3}, {4})")
@@ -87,15 +92,8 @@ public class StatisticAPI_GetPopulation_IntegrationTest {
 		return parameters;
 	}
 
-	List<String> regions;
-	List<RelationshipStatus> statuses;
-	List<String> ages;
-	List<Gender> genders;
-	List<Integer> years;
-
 	private StatisticAPI_GetPopulation_IntegrationTest() {
-		this.api = new SCBAPI();
-		this.statisticsAPI = this.api.population().statistic();
+		this.statisticsAPI = new SCBAPI().population().statistic();
 	}
 
 	public StatisticAPI_GetPopulation_IntegrationTest(List<String> regions, List<RelationshipStatus> statuses, List<String> ages, List<Gender> genders, List<Integer> years)
@@ -110,7 +108,7 @@ public class StatisticAPI_GetPopulation_IntegrationTest {
 
 		// Due to constraints set by SCB, we can only do 10 calls every 10
 		// seconds, so we need an artificial timer which handles this.
-		Thread.sleep(Config.TIMER);
+		Thread.sleep(Config.getTimerMs());
 	}
 
 	@Test

@@ -55,7 +55,7 @@ public class ParseUtility_UnitTest {
 
 	@Test
 	public void parseLongOverloaded() {
-		assertEquals(Long.valueOf(123456789123456789L), ParseUtility.parseLong("123456789123456789L", -1L));
+		assertEquals(Long.valueOf(123456789123456789L), ParseUtility.parseLong("123456789123456789", -1L));
 	}
 
 	@Test

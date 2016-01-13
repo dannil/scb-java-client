@@ -35,7 +35,11 @@ import com.github.dannil.scbapi.utility.ListUtility;
 @RunWith(Parameterized.class)
 public class StatisticAPI_GetLiveBirths_IntegrationTest {
 
-	private SCBAPI api;
+	private List<String> regions;
+	private List<String> motherAges;
+	private List<Gender> genders;
+	private List<Integer> years;
+
 	private StatisticAPI statisticsAPI;
 
 	@Parameters(name = "{index}: getLiveBirths({0}, {1}, {2}, {3}, {4})")
@@ -81,14 +85,8 @@ public class StatisticAPI_GetLiveBirths_IntegrationTest {
 		return parameters;
 	}
 
-	List<String> regions;
-	List<String> motherAges;
-	List<Gender> genders;
-	List<Integer> years;
-
 	private StatisticAPI_GetLiveBirths_IntegrationTest() {
-		this.api = new SCBAPI();
-		this.statisticsAPI = this.api.population().statistic();
+		this.statisticsAPI = new SCBAPI().population().statistic();
 	}
 
 	public StatisticAPI_GetLiveBirths_IntegrationTest(List<String> regions, List<String> motherAges, List<Gender> genders, List<Integer> years) throws InterruptedException {
@@ -101,7 +99,7 @@ public class StatisticAPI_GetLiveBirths_IntegrationTest {
 
 		// Due to constraints set by SCB, we can only do 10 calls every 10
 		// seconds, so we need an artificial timer which handles this.
-		Thread.sleep(Config.TIMER);
+		Thread.sleep(Config.getTimerMs());
 	}
 
 	@Test
