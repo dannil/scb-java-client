@@ -2,7 +2,6 @@ language: java
 jdk:
 - oraclejdk8
 - oraclejdk7
-- openjdk7
 os:
 - linux
 branches:
@@ -22,14 +21,4 @@ after_success:
   
 env:
   global:
-    secure: JBPvTE+7g7FhS1HdvLyNx1eBJBTE9DHmqU3kQNKz87lBp83etXMl/tNWH8P2LAKGIewmu/Oh7WpS1nr4CtnU1DhNIlPIaSaMTwkowodGwTOlAA+Iat6yRbxnS+5b+ev+PjtcJ/JF20buwUPiMNDWIU+qKIHaqnYhW6kdt6bedcQ=
-
-addons:
-  coverity_scan:
-    project:
-      name: dannil/scb-api
-      description: Build submitted via Travis CI
-    notification_email: daniel.nilsson94@outlook.com
-    build_command_prepend: mvn clean
-    build_command: mvn -DskipTests=true compile
-    branch_pattern: coverity_scan
+    secure: ofEkkHQ6uRC4PLKYV2UocHPmgpbdZIyX2HUglenQOXzkT4RUA39t3XBJxDEKYe95U1UfPOo1kLaAmVvnQcfmIsm/vB9xet8PNTODowKltMhNcK5oyy58iGkwR/Klep4b0mWYUh3w39LdgnOzQ6nra3Hap7B4bMZ8bPNiVLxp4/A=
