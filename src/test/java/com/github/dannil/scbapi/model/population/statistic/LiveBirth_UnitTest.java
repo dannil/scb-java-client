@@ -16,6 +16,7 @@ limitations under the License.
 
 package com.github.dannil.scbapi.model.population.statistic;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -37,45 +38,148 @@ public class LiveBirth_UnitTest {
 	}
 
 	@Test
-	public final void getCodes() {
+	public void setRegion() {
+		LiveBirth liveBirth = new LiveBirth();
+
+		liveBirth.setRegion("1263");
+
+		assertEquals("1263", liveBirth.getRegion());
+	}
+
+	@Test
+	public void setMotherAge() {
+		LiveBirth liveBirth = new LiveBirth();
+
+		liveBirth.setMotherAge("tot");
+
+		assertEquals("tot", liveBirth.getMotherAge());
+	}
+
+	@Test
+	public void setGender() {
+		LiveBirth liveBirth = new LiveBirth();
+
+		liveBirth.setGender(Gender.MAN);
+
+		assertEquals(Gender.MAN, liveBirth.getGender());
+	}
+
+	@Test
+	public void setYear() {
+		LiveBirth liveBirth = new LiveBirth();
+
+		liveBirth.setYear(1996);
+
+		assertEquals(Integer.valueOf(1996), liveBirth.getYear());
+	}
+
+	@Test
+	public void setAmount() {
+		LiveBirth liveBirth = new LiveBirth();
+
+		liveBirth.setAmount(12345L);
+
+		assertEquals(Long.valueOf(12345L), liveBirth.getAmount());
+	}
+
+	@Test
+	public void getCodes() {
 		assertNotNull(LiveBirth.getCodes());
 	}
 
 	@Test
-	public final void equals() {
-		LiveBirth LiveBirth = new LiveBirth();
-		LiveBirth LiveBirth2 = new LiveBirth();
+	public void equals() {
+		LiveBirth liveBirth = new LiveBirth();
+		LiveBirth liveBirth2 = new LiveBirth();
 
-		assertTrue(LiveBirth.equals(LiveBirth2));
+		assertEquals(liveBirth, liveBirth2);
 	}
 
 	@Test
-	public final void equalsItself() {
-		LiveBirth LiveBirth = new LiveBirth();
+	public void equalsItself() {
+		LiveBirth liveBirth = new LiveBirth();
 
-		assertTrue(LiveBirth.equals(LiveBirth));
+		assertEquals(liveBirth, liveBirth);
 	}
 
 	@Test
-	public final void notEqualsNull() {
-		LiveBirth LiveBirth = new LiveBirth();
-
-		assertFalse(LiveBirth.equals(null));
-	}
-
-	@Test
-	public final void notEqualsIncompatibleObject() {
-		LiveBirth LiveBirth = new LiveBirth();
-
-		assertFalse(LiveBirth.equals(new Object()));
-	}
-
-	@Test
-	public final void equalsItselfWithValues() {
+	public void equalsItselfWithValues() {
 		LiveBirth liveBirth = new LiveBirth("1263", "tot", Gender.MAN, 2002, 12345L);
 		LiveBirth liveBirth2 = new LiveBirth("1263", "tot", Gender.MAN, 2002, 12345L);
 
-		assertTrue(liveBirth.equals(liveBirth2));
+		assertEquals(liveBirth, liveBirth2);
+	}
+
+	@Test
+	public void notEqualsNull() {
+		LiveBirth liveBirth = new LiveBirth();
+
+		assertFalse(liveBirth.equals(null));
+	}
+
+	@Test
+	public void notEqualsIncompatibleObject() {
+		LiveBirth liveBirth = new LiveBirth();
+
+		assertFalse(liveBirth.equals(new Object()));
+	}
+
+	@Test
+	public void notEqualsMotherAge() {
+		LiveBirth liveBirth = new LiveBirth("1263", "21", Gender.MAN, 2002, 12345L);
+		LiveBirth liveBirth2 = new LiveBirth("1263", "tot", Gender.MAN, 2002, 12345L);
+
+		assertFalse(liveBirth.equals(liveBirth2));
+	}
+
+	@Test
+	public void notEqualsGender() {
+		LiveBirth liveBirth = new LiveBirth("1263", "tot", Gender.MAN, 2002, 12345L);
+		LiveBirth liveBirth2 = new LiveBirth("1263", "tot", Gender.WOMAN, 2002, 12345L);
+
+		assertFalse(liveBirth.equals(liveBirth2));
+	}
+
+	@Test
+	public void notEqualsAmount() {
+		LiveBirth liveBirth = new LiveBirth("1263", "tot", Gender.MAN, 2002, 12345L);
+		LiveBirth liveBirth2 = new LiveBirth("1263", "tot", Gender.MAN, 2002, 54321L);
+
+		assertFalse(liveBirth.equals(liveBirth2));
+	}
+
+	@Test
+	public void equalsHashCode() {
+		LiveBirth liveBirth = new LiveBirth("1263", "tot", Gender.MAN, 2002, 12345L);
+		LiveBirth liveBirth2 = new LiveBirth("1263", "tot", Gender.MAN, 2002, 12345L);
+
+		assertEquals(liveBirth.hashCode(), liveBirth2.hashCode());
+	}
+
+	@Test
+	public void equalsHashCodeNullValues() {
+		LiveBirth liveBirth = new LiveBirth();
+		LiveBirth liveBirth2 = new LiveBirth();
+
+		assertEquals(liveBirth.hashCode(), liveBirth2.hashCode());
+	}
+
+	@Test
+	public void convertToStringNullValues() {
+		LiveBirth liveBirth = new LiveBirth();
+
+		assertNotNull(liveBirth.toString());
+	}
+
+	@Test
+	public void convertToString() {
+		LiveBirth liveBirth = new LiveBirth("1263", "tot", Gender.MAN, 2002, 12345L);
+
+		assertTrue(liveBirth.toString().contains("1263"));
+		assertTrue(liveBirth.toString().contains("tot"));
+		assertTrue(liveBirth.toString().contains("1"));
+		assertTrue(liveBirth.toString().contains("2002"));
+		assertTrue(liveBirth.toString().contains("12345"));
 	}
 
 }
