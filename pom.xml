@@ -48,8 +48,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	
 		<junit.version>4.12</junit.version>
-	
-		<commons-io.version>2.4</commons-io.version>
+
 		<jackson-core.version>2.7.0</jackson-core.version>
 		<jackson-databind.version>2.7.0</jackson-databind.version>
 
@@ -64,13 +63,6 @@
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
 			<scope>test</scope>
-		</dependency>
-		
-		<!-- LICENSE : Apache License 2.0 -->
-		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>${commons-io.version}</version>
 		</dependency>
 		
 		<!-- LICENSE : Apache License 2.0 -->

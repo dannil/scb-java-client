@@ -23,8 +23,6 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import org.apache.commons.io.input.BOMInputStream;
-
 public class RequestPoster {
 
 	public static String doGet(String address) {
@@ -42,6 +40,15 @@ public class RequestPoster {
 			connection.setRequestProperty("Content-Type", "application/json; charset=utf-8");
 
 			try (BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), "utf-8"))) {
+				// Handle UTF-8 byte order mark (BOM)
+				br.mark(4);
+
+				// Checks if the stream contains a BOM. If it doesn't, reset the
+				// stream pointer to the location specified by br.mark()
+				if ('\uFEFF' != br.read()) {
+					br.reset();
+				}
+
 				String line;
 				while ((line = br.readLine()) != null) {
 					builder.append(line);
@@ -78,18 +85,18 @@ public class RequestPoster {
 			}
 
 			try (BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), "utf-8"))) {
-				try (BOMInputStream bis = new BOMInputStream(connection.getInputStream())) {
-					if (bis.hasBOM()) {
-						String line;
-						while ((line = br.readLine()) != null) {
-							builder.append(line);
-						}
-					} else {
-						String line;
-						while ((line = br.readLine()) != null) {
-							builder.append(line);
-						}
-					}
+				// Handle UTF-8 byte order mark (BOM)
+				br.mark(4);
+
+				// Checks if the stream contains a BOM. If it doesn't, reset the
+				// stream pointer to the location specified by br.mark()
+				if ('\uFEFF' != br.read()) {
+					br.reset();
+				}
+
+				String line;
+				while ((line = br.readLine()) != null) {
+					builder.append(line);
 				}
 			}
 
