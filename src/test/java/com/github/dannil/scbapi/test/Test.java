@@ -3,7 +3,6 @@ package com.github.dannil.scbapi.test;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 import com.github.dannil.scbapi.api.SCBAPI;
 import com.github.dannil.scbapi.api.environment.landandwaterarea.LandAndWaterAreaAPI;
@@ -37,10 +36,10 @@ public class Test {
 		ages.add("18");
 		ages.add("20");
 
-		Map<String, String> map = api.getRegionMappings();
-		for (String key : map.keySet()) {
-			// System.out.println(key + " : " + map.get(key));
-		}
+		// Map<String, String> map = api.getRegionMappings();
+		// for (String key : map.keySet()) {
+		// // System.out.println(key + " : " + map.get(key));
+		// }
 
 		System.out.println(ParseUtility.parseLong("221", null));
 
