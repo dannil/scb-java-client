@@ -50,22 +50,4 @@ public class SCBAPI extends AbstractContainerAPI {
 		return this.populationApi;
 	}
 
-	public void test() {
-		// QueryBuilder<String, String> queryBuilder = new QueryBuilder<String,
-		// String>();
-		//
-		// ArrayListMultimap<String, String> map = ArrayListMultimap.create();
-		// map.put("Bransle", "koks");
-		// map.put("Bransle", "prop");
-		// map.put("Tid", "2012k4");
-		// map.put("Tid", "2013k1");
-		//
-		// String query = queryBuilder.build(map);
-		// String response =
-		// RequestPoster.doPost("http://api.scb.se/OV0104/v1/doris/" +
-		// this.locale.getLanguage() + "/ssd/EN/EN0106/BransleForbrTjKv07",
-		// query);
-		//
-		// System.out.println(response);
-	}
 }
