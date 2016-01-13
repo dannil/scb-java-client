@@ -20,8 +20,8 @@ import java.util.List;
 import java.util.Objects;
 
 import com.github.dannil.scbapi.model.AbstractRegionAndYearModel;
-import com.github.dannil.scbapi.model.Gender;
-import com.github.dannil.scbapi.model.RelationshipStatus;
+import com.github.dannil.scbapi.model.population.Gender;
+import com.github.dannil.scbapi.model.population.RelationshipStatus;
 import com.github.dannil.scbapi.utility.JsonUtility;
 import com.github.dannil.scbapi.utility.RequestPoster;
 

@@ -1,4 +1,4 @@
-package com.github.dannil.scbapi.model;
+package com.github.dannil.scbapi.model.population;
 
 public enum Gender {
 	MAN(1), WOMAN(2);

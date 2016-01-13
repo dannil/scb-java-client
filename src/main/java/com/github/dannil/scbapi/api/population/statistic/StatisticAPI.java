@@ -22,8 +22,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbapi.api.AbstractAPI;
-import com.github.dannil.scbapi.model.Gender;
-import com.github.dannil.scbapi.model.RelationshipStatus;
+import com.github.dannil.scbapi.model.population.Gender;
+import com.github.dannil.scbapi.model.population.RelationshipStatus;
 import com.github.dannil.scbapi.model.population.statistic.LiveBirth;
 import com.github.dannil.scbapi.model.population.statistic.Population;
 import com.github.dannil.scbapi.utility.JsonUtility;

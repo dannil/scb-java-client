@@ -1,4 +1,4 @@
-package com.github.dannil.scbapi.model;
+package com.github.dannil.scbapi.model.population;
 
 public enum RelationshipStatus {
 	UNMARRIED("OG"), MARRIED("G"), DIVORCED("SK"), WIDOW("ÄNKL");
