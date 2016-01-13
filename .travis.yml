@@ -10,13 +10,20 @@ branches:
   - master
   - dev
   - coverity_scan
-before_script:
-  - pip install --user codecov
+  
+sudo: required
+  
 after_success:
-  - codecov
+  - mvn jacoco:report
+  - curl http://www.jpm4j.org/install/script > jpmInstall.sh
+  - sudo sh jpmInstall.sh
+  - sudo jpm install com.codacy:codacy-coverage-reporter:assembly
+  - codacy-coverage-reporter -l Java -r target/site/jacoco/jacoco.xml
+  
 env:
   global:
     secure: JBPvTE+7g7FhS1HdvLyNx1eBJBTE9DHmqU3kQNKz87lBp83etXMl/tNWH8P2LAKGIewmu/Oh7WpS1nr4CtnU1DhNIlPIaSaMTwkowodGwTOlAA+Iat6yRbxnS+5b+ev+PjtcJ/JF20buwUPiMNDWIU+qKIHaqnYhW6kdt6bedcQ=
+
 addons:
   coverity_scan:
     project:
