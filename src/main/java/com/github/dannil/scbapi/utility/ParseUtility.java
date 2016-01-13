@@ -17,49 +17,49 @@ limitations under the License.
 package com.github.dannil.scbapi.utility;
 
 public class ParseUtility {
-	
+
 	public static Integer parseInteger(String string) {
 		return parseInteger(string, null);
 	}
 
-	public static Integer parseInteger(String string, Object defaultValue) {
+	public static Integer parseInteger(String string, Integer defaultValue) {
 		try {
 			return Integer.valueOf(string);
 		} catch (NumberFormatException e) {
 			if (defaultValue == null) {
 				return null;
 			}
-			return (Integer) defaultValue;
+			return defaultValue;
 		}
 	}
-	
+
 	public static Long parseLong(String string) {
 		return parseLong(string, null);
 	}
 
-	public static Long parseLong(String string, Object defaultValue) {
+	public static Long parseLong(String string, Long defaultValue) {
 		try {
 			return Long.valueOf(string);
 		} catch (NumberFormatException e) {
 			if (defaultValue == null) {
 				return null;
 			}
-			return (Long) defaultValue;
+			return defaultValue;
 		}
 	}
-	
+
 	public static Double parseDouble(String string) {
 		return parseDouble(string, null);
 	}
 
-	public static Double parseDouble(String string, Object defaultValue) {
+	public static Double parseDouble(String string, Double defaultValue) {
 		try {
 			return Double.valueOf(string);
 		} catch (NumberFormatException e) {
 			if (defaultValue == null) {
 				return null;
 			}
-			return (Double) defaultValue;
+			return defaultValue;
 		}
 	}
 
