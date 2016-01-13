@@ -18,8 +18,8 @@ package com.github.dannil.scbapi.api.environment.landandwaterarea;
 
 import java.util.List;
 
+import com.github.dannil.scbapi.model.environment.Type;
 import com.github.dannil.scbapi.model.environment.landandwaterarea.Area;
-import com.github.dannil.scbapi.model.environment.landandwaterarea.Area.Type;
 
 public interface AreaOperations {
 

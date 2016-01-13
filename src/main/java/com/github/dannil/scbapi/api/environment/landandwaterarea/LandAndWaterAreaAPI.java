@@ -22,8 +22,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbapi.api.AbstractAPI;
+import com.github.dannil.scbapi.model.environment.Type;
 import com.github.dannil.scbapi.model.environment.landandwaterarea.Area;
-import com.github.dannil.scbapi.model.environment.landandwaterarea.Area.Type;
 import com.github.dannil.scbapi.utility.JsonUtility;
 import com.github.dannil.scbapi.utility.ListUtility;
 import com.github.dannil.scbapi.utility.RequestPoster;

@@ -24,8 +24,8 @@ import java.util.Map;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.dannil.scbapi.model.environment.Type;
 import com.github.dannil.scbapi.model.environment.landandwaterarea.Area;
-import com.github.dannil.scbapi.model.environment.landandwaterarea.Area.Type;
 import com.github.dannil.scbapi.model.population.Gender;
 import com.github.dannil.scbapi.model.population.RelationshipStatus;
 import com.github.dannil.scbapi.model.population.statistic.LiveBirth;

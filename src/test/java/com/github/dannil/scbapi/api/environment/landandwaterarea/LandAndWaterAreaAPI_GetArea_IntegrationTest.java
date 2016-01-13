@@ -29,7 +29,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 import com.github.dannil.scbapi.api.SCBAPI;
-import com.github.dannil.scbapi.model.environment.landandwaterarea.Area.Type;
+import com.github.dannil.scbapi.model.environment.Type;
 import com.github.dannil.scbapi.test.utility.Config;
 import com.github.dannil.scbapi.utility.ListUtility;
 

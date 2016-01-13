@@ -19,10 +19,12 @@ package com.github.dannil.scbapi.model.environment.landandwaterarea;
 import java.util.List;
 import java.util.Objects;
 
+import com.github.dannil.scbapi.model.AbstractRegionAndYearModel;
+import com.github.dannil.scbapi.model.environment.Type;
 import com.github.dannil.scbapi.utility.JsonUtility;
 import com.github.dannil.scbapi.utility.RequestPoster;
 
-public class Area extends AbstractLandAndWaterAreaModel {
+public class Area extends AbstractRegionAndYearModel<String, Integer> {
 
 	private static List<String> codes;
 
@@ -80,12 +82,14 @@ public class Area extends AbstractLandAndWaterAreaModel {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 
-		builder.append("Area ");
-		builder.append("[");
-		builder.append("region=" + super.region + ", ");
-		builder.append("year=" + super.year + ", ");
-		builder.append("type=" + (this.type != null ? this.type.toString() : null) + ", ");
-		builder.append("squareKm=" + this.squareKm);
+		builder.append("Area [type=");
+		builder.append(this.type);
+		builder.append(", squareKm=");
+		builder.append(this.squareKm);
+		builder.append(", region=");
+		builder.append(super.region);
+		builder.append(", year=");
+		builder.append(super.year);
 		builder.append("]");
 
 		return builder.toString();
@@ -96,34 +100,6 @@ public class Area extends AbstractLandAndWaterAreaModel {
 			codes = JsonUtility.getCodes(RequestPoster.getCodes("MI/MI0802/Areal2012"));
 		}
 		return codes;
-	}
-
-	public enum Type {
-		LANDAREA("01"), INLANDWATEREXCLUDINGTHEFOURLARGELAKES("02"), THEFOURLARGELAKES("03"), SEAWATER("04");
-
-		private final String value;
-
-		private Type(String value) {
-			this.value = value;
-		}
-
-		public static Type of(String value) {
-			if (value == null) {
-				return null;
-			}
-
-			for (Type type : values()) {
-				if (type.value.equals(value)) {
-					return type;
-				}
-			}
-			throw new IllegalArgumentException(value);
-		}
-
-		@Override
-		public String toString() {
-			return this.value;
-		}
 	}
 
 }
