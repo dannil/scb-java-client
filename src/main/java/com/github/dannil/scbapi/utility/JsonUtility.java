@@ -54,7 +54,7 @@ public class JsonUtility {
 	private static List<Map<String, String>> genericParse(JsonNode node, List<String> codes) {
 		JsonNode columns = node.get("columns");
 		if (columns == null) {
-			throw new NullPointerException("Non-existing element in the JSON: \"columns\"");
+			throw new IllegalArgumentException("Non-existing element in JSON payload: \"columns\"");
 		}
 
 		Map<String, Integer> mappings = generateMappings(columns.findValuesAsText("code"), codes);
