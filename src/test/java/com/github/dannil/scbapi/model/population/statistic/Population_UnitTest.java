@@ -32,14 +32,14 @@ import com.github.dannil.scbapi.model.population.RelationshipStatus;
 public class Population_UnitTest {
 
 	@Test
-	public final void createWithDefaultConstructor() {
+	public void createWithDefaultConstructor() {
 		Population population = new Population();
 
 		assertNotNull(population);
 	}
 
 	@Test
-	public final void setRegion() {
+	public void setRegion() {
 		Population population = new Population();
 
 		population.setRegion("1267");
@@ -48,7 +48,7 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public final void getRegion() {
+	public void getRegion() {
 		Population population = new Population();
 
 		population.setRegion("1267");
@@ -57,7 +57,7 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public final void setRelationshipStatus() {
+	public void setRelationshipStatus() {
 		Population population = new Population();
 
 		population.setRelationshipStatus(RelationshipStatus.MARRIED);
@@ -66,7 +66,7 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public final void getRelationshipStatus() {
+	public void getRelationshipStatus() {
 		Population population = new Population();
 
 		population.setRelationshipStatus(RelationshipStatus.MARRIED);
@@ -75,7 +75,7 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public final void setAge() {
+	public void setAge() {
 		Population population = new Population();
 
 		population.setAge("20");
@@ -84,7 +84,7 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public final void getAge() {
+	public void getAge() {
 		Population population = new Population();
 
 		population.setAge("20");
@@ -93,7 +93,7 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public final void setGender() {
+	public void setGender() {
 		Population population = new Population();
 
 		population.setGender(Gender.MAN);
@@ -102,7 +102,7 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public final void getGender() {
+	public void getGender() {
 		Population population = new Population();
 
 		population.setGender(Gender.MAN);
@@ -111,7 +111,7 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public final void setYear() {
+	public void setYear() {
 		Population population = new Population();
 
 		population.setYear(2011);
@@ -120,7 +120,7 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public final void getYear() {
+	public void getYear() {
 		Population population = new Population();
 
 		population.setYear(2011);
@@ -129,7 +129,7 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public final void setAmount() {
+	public void setAmount() {
 		Population population = new Population();
 
 		population.setAmount(12345L);
@@ -138,7 +138,7 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public final void getAmount() {
+	public void getAmount() {
 		Population population = new Population();
 
 		population.setAmount(12345L);
@@ -147,12 +147,12 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public final void getCodes() {
+	public void getCodes() {
 		assertNotNull(Population.getCodes());
 	}
 
 	@Test
-	public final void equals() {
+	public void equals() {
 		Population population = new Population();
 		Population population2 = new Population();
 
@@ -160,28 +160,28 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public final void equalsItself() {
+	public void equalsItself() {
 		Population population = new Population();
 
 		assertTrue(population.equals(population));
 	}
 
 	@Test
-	public final void notEqualsNull() {
+	public void notEqualsNull() {
 		Population population = new Population();
 
 		assertFalse(population.equals(null));
 	}
 
 	@Test
-	public final void notEqualsIncompatibleObject() {
+	public void notEqualsIncompatibleObject() {
 		Population population = new Population();
 
 		assertFalse(population.equals(new Object()));
 	}
 
 	@Test
-	public final void equalsItselfWithValues() {
+	public void equalsItselfWithValues() {
 		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
@@ -189,7 +189,7 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public final void notEqualsOnRegion() {
+	public void notEqualsOnRegion() {
 		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
 		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
@@ -199,7 +199,7 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public final void notEqualsOnFirstNullRegion() {
+	public void notEqualsOnFirstNullRegion() {
 		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 		population.setRegion(null);
 
@@ -209,7 +209,7 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public final void notEqualsOnSecondNullRegion() {
+	public void notEqualsOnSecondNullRegion() {
 		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
 		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
@@ -219,7 +219,7 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public final void notEqualsOnRelationshipStatus() {
+	public void notEqualsOnRelationshipStatus() {
 		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
 		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
@@ -229,7 +229,7 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public final void notEqualsOnFirstNullRelationshipStatus() {
+	public void notEqualsOnFirstNullRelationshipStatus() {
 		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 		population.setRelationshipStatus(null);
 
@@ -239,7 +239,7 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public final void notEqualsOnSecondNullRelationshipStatus() {
+	public void notEqualsOnSecondNullRelationshipStatus() {
 		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
 		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
@@ -249,7 +249,7 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public final void notEqualsOnAge() {
+	public void notEqualsOnAge() {
 		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
 		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
@@ -259,7 +259,7 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public final void notEqualsOnFirstNullAge() {
+	public void notEqualsOnFirstNullAge() {
 		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 		population.setAge(null);
 
@@ -269,7 +269,7 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public final void notEqualsOnSecondNullAge() {
+	public void notEqualsOnSecondNullAge() {
 		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
 		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
@@ -279,7 +279,7 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public final void notEqualsOnGender() {
+	public void notEqualsOnGender() {
 		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
 		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
@@ -289,7 +289,7 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public final void notEqualsOnFirstNullGender() {
+	public void notEqualsOnFirstNullGender() {
 		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 		population.setGender(null);
 
@@ -299,7 +299,7 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public final void notEqualsOnSecondNullGender() {
+	public void notEqualsOnSecondNullGender() {
 		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
 		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
@@ -309,7 +309,7 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public final void notEqualsOnYear() {
+	public void notEqualsOnYear() {
 		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
 		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
@@ -319,7 +319,7 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public final void notEqualsOnFirstNullYear() {
+	public void notEqualsOnFirstNullYear() {
 		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 		population.setYear(null);
 
@@ -329,7 +329,7 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public final void notEqualsOnSecondNullYear() {
+	public void notEqualsOnSecondNullYear() {
 		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
 		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
@@ -339,7 +339,7 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public final void notEqualsOnAmount() {
+	public void notEqualsOnAmount() {
 		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
 		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
@@ -349,7 +349,7 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public final void notEqualsOnFirstNullAmount() {
+	public void notEqualsOnFirstNullAmount() {
 		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 		population.setAmount(null);
 
@@ -359,7 +359,7 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public final void notEqualsOnSecondNullAmount() {
+	public void notEqualsOnSecondNullAmount() {
 		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
 		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
@@ -369,7 +369,7 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public final void equalsHashCode() {
+	public void equalsHashCode() {
 		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
@@ -377,7 +377,7 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public final void equalsHashCodeNullValues() {
+	public void equalsHashCodeNullValues() {
 		Population population = new Population();
 		Population population2 = new Population();
 
@@ -385,14 +385,14 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public final void convertToString() {
+	public void convertToStringNullValues() {
 		Population population = new Population();
 
 		assertNotNull(population.toString());
 	}
 
 	@Test
-	public final void convertToStringNullValues() {
+	public void convertToString() {
 		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
 		assertNotNull(population.toString());
