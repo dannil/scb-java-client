@@ -1,5 +1,6 @@
 package com.github.dannil.scbapi.model.population;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
@@ -18,14 +19,14 @@ public class Gender_UnitTest {
 	public final void genderValueOf() {
 		Gender gender = Gender.valueOf("MAN");
 
-		assertNotNull(gender);
+		assertEquals(Gender.MAN, gender);
 	}
 
 	@Test
 	public final void convertValueToGender() {
 		Gender gender = Gender.of(1);
 
-		assertNotNull(gender);
+		assertEquals(Gender.MAN, gender);
 	}
 
 	@Test(expected = IllegalArgumentException.class)

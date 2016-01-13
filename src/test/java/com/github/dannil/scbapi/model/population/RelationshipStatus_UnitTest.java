@@ -1,5 +1,6 @@
 package com.github.dannil.scbapi.model.population;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
@@ -18,14 +19,14 @@ public class RelationshipStatus_UnitTest {
 	public final void relationshipStatusValueOf() {
 		RelationshipStatus status = RelationshipStatus.valueOf("UNMARRIED");
 
-		assertNotNull(status);
+		assertEquals(RelationshipStatus.UNMARRIED, status);
 	}
 
 	@Test
 	public final void convertValueToRelationshipStatus() {
 		RelationshipStatus status = RelationshipStatus.of("OG");
 
-		assertNotNull(status);
+		assertEquals(RelationshipStatus.UNMARRIED, status);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
