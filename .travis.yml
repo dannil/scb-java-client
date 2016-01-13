@@ -10,8 +10,10 @@ branches:
   - master
   - dev
   - coverity_scan
+before_script:
+  - pip install --user codecov
 after_success:
-- mvn clean test jacoco:report coveralls:report -DTRAVIS_JOB_ID=$TRAVIS_JOB_ID
+- codecov
 env:
   global:
     secure: JBPvTE+7g7FhS1HdvLyNx1eBJBTE9DHmqU3kQNKz87lBp83etXMl/tNWH8P2LAKGIewmu/Oh7WpS1nr4CtnU1DhNIlPIaSaMTwkowodGwTOlAA+Iat6yRbxnS+5b+ev+PjtcJ/JF20buwUPiMNDWIU+qKIHaqnYhW6kdt6bedcQ=

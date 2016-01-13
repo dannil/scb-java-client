@@ -92,7 +92,7 @@
 	<build>
 		<plugins>
 		
-			<plugin>
+			<!-- <plugin>
 			    <groupId>org.eluder.coveralls</groupId>
 			    <artifactId>coveralls-maven-plugin</artifactId>
 			    <version>${coveralls-maven-plugin.version}</version>
@@ -103,7 +103,7 @@
 		            <serviceJobId>${env.TRAVIS_JOB_ID}</serviceJobId>
 		            <branch>dev</branch>
 			    </configuration>
-			</plugin>
+			</plugin> -->
 		
 			<plugin>
 				<groupId>org.jacoco</groupId>
