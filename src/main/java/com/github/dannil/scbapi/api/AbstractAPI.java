@@ -35,6 +35,10 @@ public abstract class AbstractAPI {
 		this.queryBuilder = QueryBuilder.getInstance();
 	}
 
+	public Locale getLocale() {
+		return this.locale;
+	}
+
 	protected void setLocale(Locale locale) {
 		this.locale = locale;
 	}
