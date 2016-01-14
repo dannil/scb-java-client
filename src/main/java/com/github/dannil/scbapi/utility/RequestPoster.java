@@ -57,6 +57,8 @@ public class RequestPoster {
 
 		connection.disconnect();
 
+		br.close();
+
 		return builder.toString();
 	}
 
@@ -77,23 +79,24 @@ public class RequestPoster {
 			writer.close();
 		}
 
-		try (BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), "utf-8"))) {
-			// Handle UTF-8 byte order mark (BOM)
-			br.mark(4);
+		BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), "utf-8"));
+		// Handle UTF-8 byte order mark (BOM)
+		br.mark(4);
 
-			// Checks if the stream contains a BOM. If it doesn't, reset the
-			// stream pointer to the location specified by br.mark()
-			if ('\uFEFF' != br.read()) {
-				br.reset();
-			}
+		// Checks if the stream contains a BOM. If it doesn't, reset the
+		// stream pointer to the location specified by br.mark()
+		if ('\uFEFF' != br.read()) {
+			br.reset();
+		}
 
-			String line;
-			while ((line = br.readLine()) != null) {
-				builder.append(line);
-			}
+		String line;
+		while ((line = br.readLine()) != null) {
+			builder.append(line);
 		}
 
 		connection.disconnect();
+
+		br.close();
 
 		return builder.toString();
 	}
