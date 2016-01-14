@@ -25,91 +25,83 @@ import java.net.URL;
 
 public class RequestPoster {
 
-	public static String doGet(String address) {
-		// System.out.println("get address: " + address);
-
+	public static String doGet(String address) throws IOException {
 		StringBuilder builder = new StringBuilder();
-		try {
-			URL url = new URL(address);
+		URL url = new URL(address);
 
-			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
-			connection.setDoInput(true);
-			connection.setRequestMethod("GET");
-			connection.setRequestProperty("Accept", "application/json");
-			connection.setRequestProperty("Content-Type", "application/json; charset=utf-8");
+		connection.setDoInput(true);
+		connection.setRequestMethod("GET");
+		connection.setRequestProperty("Accept", "application/json");
+		connection.setRequestProperty("Content-Type", "application/json; charset=utf-8");
 
-			try (BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), "utf-8"))) {
-				// Handle UTF-8 byte order mark (BOM)
-				br.mark(4);
+		BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), "utf-8"));
+		// Handle UTF-8 byte order mark (BOM)
+		br.mark(4);
 
-				// Checks if the stream contains a BOM. If it doesn't, reset the
-				// stream pointer to the location specified by br.mark()
-				if ('\uFEFF' != br.read()) {
-					br.reset();
-				}
-
-				String line;
-				while ((line = br.readLine()) != null) {
-					builder.append(line);
-				}
-			}
-
-			connection.disconnect();
-
-			return builder.toString();
-		} catch (IOException e) {
-			throw new RuntimeException(e);
+		// Checks if the stream contains a BOM. If it doesn't, reset the
+		// stream pointer to the location specified by br.mark()
+		if ('\uFEFF' != br.read()) {
+			br.reset();
 		}
+
+		String line;
+		while ((line = br.readLine()) != null) {
+			builder.append(line);
+		}
+
+		connection.disconnect();
+
+		return builder.toString();
 	}
 
-	public static String doPost(String address, String query) {
-		// System.out.println("post address: " + address);
-		System.out.println("Query: " + query);
-
+	public static String doPost(String address, String query) throws IOException {
 		StringBuilder builder = new StringBuilder();
-		try {
-			URL url = new URL(address);
+		URL url = new URL(address);
 
-			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
-			connection.setDoInput(true);
-			connection.setDoOutput(true);
-			connection.setRequestMethod("POST");
-			connection.setRequestProperty("Accept", "application/json");
-			connection.setRequestProperty("Content-Type", "application/json; charset=utf-8");
+		connection.setDoInput(true);
+		connection.setDoOutput(true);
+		connection.setRequestMethod("POST");
+		connection.setRequestProperty("Accept", "application/json");
+		connection.setRequestProperty("Content-Type", "application/json; charset=utf-8");
 
-			try (OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream(), "utf-8")) {
-				writer.write(query);
-				writer.close();
-			}
-
-			try (BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), "utf-8"))) {
-				// Handle UTF-8 byte order mark (BOM)
-				br.mark(4);
-
-				// Checks if the stream contains a BOM. If it doesn't, reset the
-				// stream pointer to the location specified by br.mark()
-				if ('\uFEFF' != br.read()) {
-					br.reset();
-				}
-
-				String line;
-				while ((line = br.readLine()) != null) {
-					builder.append(line);
-				}
-			}
-
-			connection.disconnect();
-
-			return builder.toString();
-		} catch (IOException e) {
-			throw new RuntimeException(e);
+		try (OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream(), "utf-8")) {
+			writer.write(query);
+			writer.close();
 		}
+
+		try (BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), "utf-8"))) {
+			// Handle UTF-8 byte order mark (BOM)
+			br.mark(4);
+
+			// Checks if the stream contains a BOM. If it doesn't, reset the
+			// stream pointer to the location specified by br.mark()
+			if ('\uFEFF' != br.read()) {
+				br.reset();
+			}
+
+			String line;
+			while ((line = br.readLine()) != null) {
+				builder.append(line);
+			}
+		}
+
+		connection.disconnect();
+
+		return builder.toString();
 	}
 
 	public static String getCodes(String table) {
-		return doGet(String.format("http://api.scb.se/OV0104/v1/doris/en/ssd/%s", table));
+		try {
+			return doGet(String.format("http://api.scb.se/OV0104/v1/doris/sv/ssd/%s", table));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

@@ -28,7 +28,6 @@ import com.github.dannil.scbapi.model.population.statistic.LiveBirth;
 import com.github.dannil.scbapi.model.population.statistic.Population;
 import com.github.dannil.scbapi.utility.JsonUtility;
 import com.github.dannil.scbapi.utility.ListUtility;
-import com.github.dannil.scbapi.utility.RequestPoster;
 
 public class StatisticAPI extends AbstractAPI implements StatisticOperations {
 
@@ -74,7 +73,7 @@ public class StatisticAPI extends AbstractAPI implements StatisticOperations {
 		mappings.put("Kon", genders);
 		mappings.put("Tid", years);
 
-		String response = RequestPoster.doPost(super.getBaseUrl() + "BE/BE0101/BE0101H/FoddaK", super.queryBuilder.build(mappings));
+		String response = super.post(super.getBaseUrl() + "BE/BE0101/BE0101H/FoddaK", super.queryBuilder.build(mappings));
 
 		// System.out.println(response);
 
@@ -96,7 +95,7 @@ public class StatisticAPI extends AbstractAPI implements StatisticOperations {
 		mappings.put("Kon", genders);
 		mappings.put("Tid", years);
 
-		String response = RequestPoster.doPost(super.getBaseUrl() + "BE/BE0101/BE0101A/BefolkningNy", super.queryBuilder.build(mappings));
+		String response = super.post(super.getBaseUrl() + "BE/BE0101/BE0101A/BefolkningNy", super.queryBuilder.build(mappings));
 
 		// System.out.println(response);
 

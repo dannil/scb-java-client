@@ -26,7 +26,6 @@ import com.github.dannil.scbapi.model.environment.Type;
 import com.github.dannil.scbapi.model.environment.landandwaterarea.Area;
 import com.github.dannil.scbapi.utility.JsonUtility;
 import com.github.dannil.scbapi.utility.ListUtility;
-import com.github.dannil.scbapi.utility.RequestPoster;
 
 public class LandAndWaterAreaAPI extends AbstractAPI implements AreaOperations {
 
@@ -71,7 +70,7 @@ public class LandAndWaterAreaAPI extends AbstractAPI implements AreaOperations {
 		mappings.put("ArealTyp", types);
 		mappings.put("Tid", years);
 
-		String response = RequestPoster.doPost(super.getBaseUrl() + "MI/MI0802/Areal2012", super.queryBuilder.build(mappings));
+		String response = super.post(super.getBaseUrl() + "MI/MI0802/Areal2012", super.queryBuilder.build(mappings));
 
 		return JsonUtility.parseAreas(JsonUtility.getNode(response));
 	}

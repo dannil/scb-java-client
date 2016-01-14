@@ -26,7 +26,6 @@ import com.github.dannil.scbapi.model.population.Gender;
 import com.github.dannil.scbapi.model.population.demography.AverageAgeFirstChild;
 import com.github.dannil.scbapi.utility.JsonUtility;
 import com.github.dannil.scbapi.utility.ListUtility;
-import com.github.dannil.scbapi.utility.RequestPoster;
 
 public class DemographyAPI extends AbstractAPI implements DemographyOperations {
 
@@ -91,7 +90,7 @@ public class DemographyAPI extends AbstractAPI implements DemographyOperations {
 		mappings.put("Kon", genders);
 		mappings.put("Tid", years);
 
-		String response = RequestPoster.doPost(super.getBaseUrl() + "BE/BE0701/MedelAlderNY", super.queryBuilder.build(mappings));
+		String response = super.post(super.getBaseUrl() + "BE/BE0701/MedelAlderNY", super.queryBuilder.build(mappings));
 
 		// TODO Implement parsing method for returning model for
 		// averageAgeFirstChild

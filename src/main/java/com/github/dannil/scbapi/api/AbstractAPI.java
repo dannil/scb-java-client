@@ -16,6 +16,8 @@ limitations under the License.
 
 package com.github.dannil.scbapi.api;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -32,6 +34,8 @@ public abstract class AbstractAPI {
 	protected QueryBuilder queryBuilder;
 
 	protected AbstractAPI() {
+		this.locale = Locale.getDefault();
+
 		this.queryBuilder = QueryBuilder.getInstance();
 	}
 
@@ -47,8 +51,74 @@ public abstract class AbstractAPI {
 		return "http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/";
 	}
 
+	// TODO Improve method
+	public String get(String address) {
+		String internalAddress = address;
+
+		try {
+			String response = RequestPoster.doGet(internalAddress);
+			return response;
+		} catch (IOException e) {
+			// Generally for 404
+
+			if (e instanceof FileNotFoundException) {
+				// 404
+
+				// Some tables only support Swedish so we need to fall back to
+				// Swedish if this is the case
+				Locale fallback = new Locale("sv", "SE");
+
+				int start = internalAddress.indexOf(this.locale.getLanguage(), internalAddress.indexOf("doris"));
+
+				StringBuilder builder = new StringBuilder(address);
+				builder.replace(start, start + this.locale.getLanguage().length(), fallback.getLanguage());
+
+				internalAddress = builder.toString();
+
+				// System.out.println("Address: " + internalAddress);
+			}
+
+		}
+		return get(internalAddress);
+	}
+
+	// TODO Improve method
+	public String post(String address, String query) {
+		String internalAddress = address;
+
+		try {
+			String response = RequestPoster.doPost(internalAddress, query);
+
+			System.out.println("Query: " + query);
+
+			return response;
+		} catch (IOException e) {
+			// Generally for 404
+
+			if (e instanceof FileNotFoundException) {
+				// 404
+
+				// Some tables only support Swedish so we need to fall back to
+				// Swedish if this is the case
+				Locale fallback = new Locale("sv", "SE");
+
+				int start = internalAddress.indexOf(this.locale.getLanguage(), internalAddress.indexOf("doris"));
+
+				StringBuilder builder = new StringBuilder(address);
+				builder.replace(start, start + this.locale.getLanguage().length(), fallback.getLanguage());
+
+				internalAddress = builder.toString();
+
+				// System.out.println("Address: " + internalAddress);
+			}
+
+		}
+		return post(internalAddress, query);
+
+	}
+
 	protected List<String> getRegions(String url) {
-		String content = RequestPoster.doGet(url);
+		String content = get(url);
 
 		JsonNode contentAsJsonNode = JsonUtility.getNode(content);
 
@@ -65,7 +135,7 @@ public abstract class AbstractAPI {
 	}
 
 	protected List<String> getYears(String url) {
-		String content = RequestPoster.doGet(url);
+		String content = get(url);
 
 		JsonNode contentAsJsonNode = JsonUtility.getNode(content);
 
