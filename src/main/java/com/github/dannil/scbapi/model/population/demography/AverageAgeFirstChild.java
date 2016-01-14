@@ -80,7 +80,7 @@ public class AverageAgeFirstChild extends AbstractRegionAndYearModel<String, Int
 
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
+		StringBuilder builder = new StringBuilder(128);
 
 		builder.append("AverageAgeFirstChild [gender=");
 		builder.append(this.gender);
@@ -90,7 +90,7 @@ public class AverageAgeFirstChild extends AbstractRegionAndYearModel<String, Int
 		builder.append(super.region);
 		builder.append(", year=");
 		builder.append(super.year);
-		builder.append("]");
+		builder.append(']');
 
 		return builder.toString();
 	}
