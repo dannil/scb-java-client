@@ -27,6 +27,8 @@ public class SCBAPI extends AbstractContainerAPI {
 	private EnvironmentAPI environmentApi;
 
 	public SCBAPI() {
+		super();
+
 		this.populationApi = new PopulationAPI();
 		super.apis.add(this.populationApi);
 

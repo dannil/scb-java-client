@@ -28,6 +28,8 @@ public class PopulationAPI extends AbstractContainerAPI {
 	private StatisticAPI statistic;
 
 	public PopulationAPI() {
+		super();
+
 		this.demography = new DemographyAPI();
 		super.apis.add(this.demography);
 

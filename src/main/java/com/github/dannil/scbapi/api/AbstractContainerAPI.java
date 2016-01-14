@@ -25,6 +25,8 @@ public abstract class AbstractContainerAPI extends AbstractAPI {
 	protected List<AbstractAPI> apis;
 
 	protected AbstractContainerAPI() {
+		super();
+
 		this.apis = new ArrayList<AbstractAPI>();
 	}
 

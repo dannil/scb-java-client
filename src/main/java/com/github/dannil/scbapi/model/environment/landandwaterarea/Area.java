@@ -80,7 +80,7 @@ public class Area extends AbstractRegionAndYearModel<String, Integer> {
 
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
+		StringBuilder builder = new StringBuilder(128);
 
 		builder.append("Area [type=");
 		builder.append(this.type);
@@ -90,7 +90,7 @@ public class Area extends AbstractRegionAndYearModel<String, Integer> {
 		builder.append(super.region);
 		builder.append(", year=");
 		builder.append(super.year);
-		builder.append("]");
+		builder.append(']');
 
 		return builder.toString();
 	}

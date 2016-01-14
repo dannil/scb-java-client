@@ -30,7 +30,7 @@ import com.github.dannil.scbapi.utility.ListUtility;
 public class LandAndWaterAreaAPI extends AbstractAPI implements AreaOperations {
 
 	public LandAndWaterAreaAPI() {
-		super.locale = Locale.getDefault();
+		super();
 	}
 
 	public LandAndWaterAreaAPI(Locale locale) {

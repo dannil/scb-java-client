@@ -23,7 +23,7 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class RequestPoster {
+public abstract class RequestPoster {
 
 	public static String doGet(String address) throws IOException {
 		StringBuilder builder = new StringBuilder();

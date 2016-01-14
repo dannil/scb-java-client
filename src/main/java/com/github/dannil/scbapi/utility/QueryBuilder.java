@@ -52,36 +52,30 @@ public class QueryBuilder {
 			}
 		}
 
-		StringBuilder builder = new StringBuilder();
-		builder.append("{");
+		// Approximate a good initial capacity for the string buffer
+		StringBuilder builder = new StringBuilder(filteredMap.size() * 80);
+		builder.append('{');
 		builder.append("\"query\": [");
 		int i = 0;
 		for (Entry<String, List<?>> entry : filteredMap.entrySet()) {
-			builder.append("{");
-			builder.append("\"code\": \"" + entry.getKey() + "\",");
-			builder.append("\"selection\": {");
-			builder.append("\"filter\": \"item\",");
-			builder.append("\"values\": [");
+			builder.append('{');
+			builder.append("\"code\": \"" + entry.getKey() + "\",\"selection\": {\"filter\": \"item\",\"values\": [");
 			List<?> values = entry.getValue();
 			for (int j = 0; j < values.size(); j++) {
 				builder.append("\"" + values.get(j) + "\"");
 				if (j != values.size() - 1) {
-					builder.append(",");
+					builder.append(',');
 				}
 			}
-			builder.append("]");
-			builder.append("}");
-			builder.append("}");
+			builder.append(']');
+			builder.append('}');
+			builder.append('}');
 			if (i != filteredMap.keySet().size() - 1) {
-				builder.append(",");
+				builder.append(',');
 			}
 			i++;
 		}
-		builder.append("],");
-		builder.append("\"response\": {");
-		builder.append("\"format\": \"json\"");
-		builder.append("}");
-		builder.append("}");
+		builder.append("],\"response\": {\"format\": \"json\"}}");
 
 		return builder.toString();
 	}

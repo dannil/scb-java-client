@@ -30,7 +30,7 @@ import com.github.dannil.scbapi.utility.ListUtility;
 public class DemographyAPI extends AbstractAPI implements DemographyOperations {
 
 	public DemographyAPI() {
-		super.locale = Locale.getDefault();
+		super();
 	}
 
 	public DemographyAPI(Locale locale) {

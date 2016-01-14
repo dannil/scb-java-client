@@ -32,7 +32,7 @@ import com.github.dannil.scbapi.utility.ListUtility;
 public class StatisticAPI extends AbstractAPI implements StatisticOperations {
 
 	public StatisticAPI() {
-		super.locale = Locale.getDefault();
+		super();
 	}
 
 	public StatisticAPI(Locale locale) {
