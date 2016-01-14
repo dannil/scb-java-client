@@ -16,9 +16,12 @@ limitations under the License.
 
 package com.github.dannil.scbapi.model.population.statistic;
 
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -114,7 +117,7 @@ public class LiveBirth_UnitTest {
 	public void notEqualsNull() {
 		LiveBirth liveBirth = new LiveBirth();
 
-		assertFalse(liveBirth.equals(null));
+		assertThat(liveBirth, not(equalTo(null)));
 	}
 
 	@Test

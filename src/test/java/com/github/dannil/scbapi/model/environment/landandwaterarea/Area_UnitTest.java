@@ -16,9 +16,12 @@ limitations under the License.
 
 package com.github.dannil.scbapi.model.environment.landandwaterarea;
 
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -133,7 +136,7 @@ public class Area_UnitTest {
 	public final void notEqualsNull() {
 		Area area = new Area();
 
-		assertFalse(area.equals(null));
+		assertThat(area, not(equalTo(null)));
 	}
 
 	@Test
@@ -300,65 +303,5 @@ public class Area_UnitTest {
 
 		assertNotNull(area.toString());
 	}
-
-	@Test
-	public final void typeValues() {
-		assertNotNull(Type.values());
-	}
-
-	@Test
-	public final void typeValueOf() {
-		Type type = Type.valueOf("LANDAREA");
-
-		assertNotNull(type);
-	}
-
-	@Test
-	public final void convertValueToType() {
-		Type type = Type.of("01");
-
-		assertNotNull(type);
-	}
-
-	@Test(expected = IllegalArgumentException.class)
-	public final void illegalArgumentForType() {
-		Type.of("ABC");
-	}
-
-	//
-	// @Test
-	// public final void test() {
-	// throw new NotImplementedYetException();
-	// }
-	//
-	// @Test
-	// public final void test() {
-	// throw new NotImplementedYetException();
-	// }
-	//
-	// @Test
-	// public final void test() {
-	// throw new NotImplementedYetException();
-	// }
-	//
-	// @Test
-	// public final void test() {
-	// throw new NotImplementedYetException();
-	// }
-	//
-	// @Test
-	// public final void test() {
-	// throw new NotImplementedYetException();
-	// }
-	//
-	// @Test
-	// public final void test() {
-	// throw new NotImplementedYetException();
-	// }
-	//
-	// @Test
-	// public final void test() {
-	// throw new NotImplementedYetException();
-	// }
 
 }
