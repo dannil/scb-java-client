@@ -32,7 +32,7 @@ public class AverageAgeFirstChild extends AbstractRegionAndYearModel<String, Int
 	private Double averageAge;
 
 	public AverageAgeFirstChild() {
-
+		super();
 	}
 
 	public AverageAgeFirstChild(String region, Gender gender, Integer year, Double averageAge) {
