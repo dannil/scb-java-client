@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.Locale;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -80,6 +81,10 @@ public class DemographyAPI_GetAverageAgeFirstChild_IntegrationTest {
 
 	private DemographyAPI_GetAverageAgeFirstChild_IntegrationTest() {
 		this.demographyAPI = new SCBAPI().population().demography();
+
+		// Test DemographyAPI with English locale
+		Locale locale = new Locale("en", "US");
+		this.demographyAPI.setLocale(locale);
 	}
 
 	public DemographyAPI_GetAverageAgeFirstChild_IntegrationTest(List<String> regions, List<Gender> genders, List<Integer> years) throws InterruptedException {

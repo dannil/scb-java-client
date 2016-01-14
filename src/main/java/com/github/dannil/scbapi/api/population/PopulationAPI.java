@@ -24,17 +24,17 @@ import com.github.dannil.scbapi.api.population.statistic.StatisticAPI;
 
 public class PopulationAPI extends AbstractContainerAPI {
 
-	private DemographyAPI demography;
-	private StatisticAPI statistic;
+	private DemographyAPI demographyApi;
+	private StatisticAPI statisticApi;
 
 	public PopulationAPI() {
 		super();
 
-		this.demography = new DemographyAPI();
-		super.apis.add(this.demography);
+		this.demographyApi = new DemographyAPI();
+		super.apis.add(this.demographyApi);
 
-		this.statistic = new StatisticAPI();
-		super.apis.add(this.statistic);
+		this.statisticApi = new StatisticAPI();
+		super.apis.add(this.statisticApi);
 
 		super.setLocale(Locale.getDefault());
 	}
@@ -46,11 +46,11 @@ public class PopulationAPI extends AbstractContainerAPI {
 	}
 
 	public DemographyAPI demography() {
-		return this.demography;
+		return this.demographyApi;
 	}
 
 	public StatisticAPI statistic() {
-		return this.statistic;
+		return this.statisticApi;
 	}
 
 }

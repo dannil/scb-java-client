@@ -58,26 +58,27 @@ public abstract class AbstractAPI {
 		try {
 			String response = RequestPoster.doGet(internalAddress);
 			return response;
-		} catch (IOException e) {
+		} catch (FileNotFoundException e) {
 			// Generally for 404
 
-			if (e instanceof FileNotFoundException) {
-				// 404
+			// 404
 
-				// Some tables only support Swedish so we need to fall back to
-				// Swedish if this is the case
-				Locale fallback = new Locale("sv", "SE");
+			// Some tables only support Swedish so we need to fall back to
+			// Swedish if this is the case
+			Locale fallback = new Locale("sv", "SE");
 
-				int start = internalAddress.indexOf(this.locale.getLanguage(), internalAddress.indexOf("doris"));
+			int start = internalAddress.indexOf(this.locale.getLanguage(), internalAddress.indexOf("doris"));
 
-				StringBuilder builder = new StringBuilder(address);
-				builder.replace(start, start + this.locale.getLanguage().length(), fallback.getLanguage());
+			StringBuilder builder = new StringBuilder(address);
+			builder.replace(start, start + this.locale.getLanguage().length(), fallback.getLanguage());
 
-				internalAddress = builder.toString();
+			internalAddress = builder.toString();
 
-				// System.out.println("Address: " + internalAddress);
-			}
+			// System.out.println("Address: " + internalAddress);
 
+		} catch (IOException e) {
+			// Handle all other cases
+			e.printStackTrace();
 		}
 		return get(internalAddress);
 	}
@@ -92,27 +93,27 @@ public abstract class AbstractAPI {
 			System.out.println("Query: " + query);
 
 			return response;
+
+		} catch (FileNotFoundException e) {
+			// 404
+
+			// Some tables only support Swedish so we need to fall back to
+			// Swedish if this is the case
+			Locale fallback = new Locale("sv", "SE");
+
+			int start = internalAddress.indexOf(this.locale.getLanguage(), internalAddress.indexOf("doris"));
+
+			StringBuilder builder = new StringBuilder(address);
+			builder.replace(start, start + this.locale.getLanguage().length(), fallback.getLanguage());
+
+			internalAddress = builder.toString();
+
+			// System.out.println("Address: " + internalAddress);
 		} catch (IOException e) {
-			// Generally for 404
-
-			if (e instanceof FileNotFoundException) {
-				// 404
-
-				// Some tables only support Swedish so we need to fall back to
-				// Swedish if this is the case
-				Locale fallback = new Locale("sv", "SE");
-
-				int start = internalAddress.indexOf(this.locale.getLanguage(), internalAddress.indexOf("doris"));
-
-				StringBuilder builder = new StringBuilder(address);
-				builder.replace(start, start + this.locale.getLanguage().length(), fallback.getLanguage());
-
-				internalAddress = builder.toString();
-
-				// System.out.println("Address: " + internalAddress);
-			}
-
+			// Handle all other cases
+			e.printStackTrace();
 		}
+
 		return post(internalAddress, query);
 
 	}

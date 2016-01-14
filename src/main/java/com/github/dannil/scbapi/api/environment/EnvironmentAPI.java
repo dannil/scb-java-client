@@ -23,11 +23,11 @@ import com.github.dannil.scbapi.api.environment.landandwaterarea.LandAndWaterAre
 
 public class EnvironmentAPI extends AbstractContainerAPI {
 
-	private LandAndWaterAreaAPI landAndWaterArea;
+	private LandAndWaterAreaAPI landAndWaterAreaApi;
 
 	public EnvironmentAPI() {
-		this.landAndWaterArea = new LandAndWaterAreaAPI();
-		super.apis.add(this.landAndWaterArea);
+		this.landAndWaterAreaApi = new LandAndWaterAreaAPI();
+		super.apis.add(this.landAndWaterAreaApi);
 	}
 
 	public EnvironmentAPI(Locale locale) {
@@ -37,7 +37,7 @@ public class EnvironmentAPI extends AbstractContainerAPI {
 	}
 
 	public LandAndWaterAreaAPI landAndWaterArea() {
-		return this.landAndWaterArea;
+		return this.landAndWaterAreaApi;
 	}
 
 }

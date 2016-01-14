@@ -8,11 +8,10 @@ public abstract class AbstractRegionAndYearModel<R, Y> {
 	protected Y year;
 
 	protected AbstractRegionAndYearModel() {
-
+		// To enable derived classes to use their default constructor
 	}
 
 	protected AbstractRegionAndYearModel(R region, Y year) {
-		this();
 		this.region = region;
 		this.year = year;
 	}
