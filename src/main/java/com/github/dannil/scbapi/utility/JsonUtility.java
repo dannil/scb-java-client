@@ -28,6 +28,7 @@ import com.github.dannil.scbapi.model.environment.Type;
 import com.github.dannil.scbapi.model.environment.landandwaterarea.Area;
 import com.github.dannil.scbapi.model.population.Gender;
 import com.github.dannil.scbapi.model.population.RelationshipStatus;
+import com.github.dannil.scbapi.model.population.demography.AverageAgeFirstChild;
 import com.github.dannil.scbapi.model.population.statistic.LiveBirth;
 import com.github.dannil.scbapi.model.population.statistic.Population;
 
@@ -93,6 +94,23 @@ public class JsonUtility {
 			areas.add(area);
 		}
 		return areas;
+	}
+
+	public static List<AverageAgeFirstChild> parseAverageAgeFirstChild(JsonNode node) {
+		List<Map<String, String>> contents = genericParse(node, AverageAgeFirstChild.getCodes());
+
+		List<AverageAgeFirstChild> averageAgeFirstChildren = new ArrayList<AverageAgeFirstChild>();
+		for (Map<String, String> map : contents) {
+
+			AverageAgeFirstChild averageAgeFirstChild = new AverageAgeFirstChild();
+			averageAgeFirstChild.setRegion(map.get("Region"));
+			averageAgeFirstChild.setYear(ParseUtility.parseInteger(map.get("Tid")));
+			averageAgeFirstChild.setGender(Gender.of(ParseUtility.parseInteger(map.get("Kon"))));
+			averageAgeFirstChild.setAverageAge(ParseUtility.parseDouble(map.get("Value")));
+
+			averageAgeFirstChildren.add(averageAgeFirstChild);
+		}
+		return averageAgeFirstChildren;
 	}
 
 	public static List<LiveBirth> parseLiveBirths(JsonNode node) {

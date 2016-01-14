@@ -16,28 +16,36 @@ limitations under the License.
 
 package com.github.dannil.scbapi.model.population.demography;
 
+import java.util.List;
+import java.util.Objects;
+
 import com.github.dannil.scbapi.model.AbstractRegionAndYearModel;
+import com.github.dannil.scbapi.model.population.Gender;
+import com.github.dannil.scbapi.utility.JsonUtility;
+import com.github.dannil.scbapi.utility.RequestPoster;
 
 public class AverageAgeFirstChild extends AbstractRegionAndYearModel<String, Integer> {
 
-	private Integer gender;
+	private static List<String> codes;
+
+	private Gender gender;
 	private Double averageAge;
 
 	public AverageAgeFirstChild() {
 
 	}
 
-	public AverageAgeFirstChild(String region, Integer gender, Integer year, Double averageAge) {
+	public AverageAgeFirstChild(String region, Gender gender, Integer year, Double averageAge) {
 		super(region, year);
 		this.gender = gender;
 		this.averageAge = averageAge;
 	}
 
-	public Integer getGender() {
+	public Gender getGender() {
 		return this.gender;
 	}
 
-	public void setGender(Integer gender) {
+	public void setGender(Gender gender) {
 		this.gender = gender;
 	}
 
@@ -47,6 +55,51 @@ public class AverageAgeFirstChild extends AbstractRegionAndYearModel<String, Int
 
 	public void setAverageAge(Double averageAge) {
 		this.averageAge = averageAge;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(super.hashCode(), this.gender, this.averageAge);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof AverageAgeFirstChild)) {
+			return false;
+		}
+
+		AverageAgeFirstChild other = (AverageAgeFirstChild) obj;
+		return super.equals(other) && Objects.equals(this.gender, other.gender) && Objects.equals(this.averageAge, other.averageAge);
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+
+		builder.append("AverageAgeFirstChild [gender=");
+		builder.append(this.gender);
+		builder.append(", averageAge=");
+		builder.append(this.averageAge);
+		builder.append(", region=");
+		builder.append(super.region);
+		builder.append(", year=");
+		builder.append(super.year);
+		builder.append("]");
+
+		return builder.toString();
+	}
+
+	public static List<String> getCodes() {
+		if (codes == null) {
+			codes = JsonUtility.getCodes(RequestPoster.getCodes("BE/BE0701/MedelAlderNY"));
+		}
+		return codes;
 	}
 
 }

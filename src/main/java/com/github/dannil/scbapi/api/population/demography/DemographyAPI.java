@@ -24,6 +24,7 @@ import java.util.Map;
 import com.github.dannil.scbapi.api.AbstractAPI;
 import com.github.dannil.scbapi.model.population.Gender;
 import com.github.dannil.scbapi.model.population.demography.AverageAgeFirstChild;
+import com.github.dannil.scbapi.utility.JsonUtility;
 import com.github.dannil.scbapi.utility.ListUtility;
 import com.github.dannil.scbapi.utility.RequestPoster;
 
@@ -94,7 +95,7 @@ public class DemographyAPI extends AbstractAPI implements DemographyOperations {
 
 		// TODO Implement parsing method for returning model for
 		// averageAgeFirstChild
-		return null;
+		return JsonUtility.parseAverageAgeFirstChild(JsonUtility.getNode(response));
 	}
 
 }
