@@ -12,7 +12,7 @@ import com.github.dannil.scbapi.utility.RequestPoster;
 
 public class Junk {
 
-	public Map<String, String> getRegionMappings() {
+	public Map<String, String> getRegionMappings() throws IOException {
 		String response = RequestPoster.doGet("http://api.scb.se/OV0104/v1/doris/" + new Locale("sv", "SE").getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy");
 		ObjectMapper mapper = new ObjectMapper();
 		try {
