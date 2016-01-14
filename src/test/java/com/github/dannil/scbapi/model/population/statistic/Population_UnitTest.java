@@ -16,13 +16,9 @@ limitations under the License.
 
 package com.github.dannil.scbapi.model.population.statistic;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -159,28 +155,28 @@ public class Population_UnitTest {
 		Population population = new Population();
 		Population population2 = new Population();
 
-		assertTrue(population.equals(population2));
+		assertEquals(population, population2);
 	}
 
 	@Test
 	public void equalsItself() {
 		Population population = new Population();
 
-		assertTrue(population.equals(population));
+		assertEquals(population, population);
 	}
 
 	@Test
 	public void notEqualsNull() {
 		Population population = new Population();
 
-		assertThat(population, not(equalTo(null)));
+		assertNotEquals(population, null);
 	}
 
 	@Test
 	public void notEqualsIncompatibleObject() {
 		Population population = new Population();
 
-		assertFalse(population.equals(new Object()));
+		assertNotEquals(population, new Object());
 	}
 
 	@Test
@@ -188,7 +184,7 @@ public class Population_UnitTest {
 		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
-		assertTrue(population.equals(population2));
+		assertEquals(population, population2);
 	}
 
 	@Test
@@ -198,7 +194,7 @@ public class Population_UnitTest {
 		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 		population2.setRegion("1452");
 
-		assertFalse(population.equals(population2));
+		assertNotEquals(population, population2);
 	}
 
 	@Test
@@ -208,7 +204,7 @@ public class Population_UnitTest {
 
 		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
-		assertFalse(population.equals(population2));
+		assertNotEquals(population, population2);
 	}
 
 	@Test
@@ -218,7 +214,7 @@ public class Population_UnitTest {
 		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 		population2.setRegion(null);
 
-		assertFalse(population.equals(population2));
+		assertNotEquals(population, population2);
 	}
 
 	@Test
@@ -228,7 +224,7 @@ public class Population_UnitTest {
 		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 		population2.setRelationshipStatus(RelationshipStatus.DIVORCED);
 
-		assertFalse(population.equals(population2));
+		assertNotEquals(population, population2);
 	}
 
 	@Test
@@ -238,7 +234,7 @@ public class Population_UnitTest {
 
 		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
-		assertFalse(population.equals(population2));
+		assertNotEquals(population, population2);
 	}
 
 	@Test
@@ -248,7 +244,7 @@ public class Population_UnitTest {
 		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 		population2.setRelationshipStatus(null);
 
-		assertFalse(population.equals(population2));
+		assertNotEquals(population, population2);
 	}
 
 	@Test
@@ -258,7 +254,7 @@ public class Population_UnitTest {
 		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 		population2.setAge("56");
 
-		assertFalse(population.equals(population2));
+		assertNotEquals(population, population2);
 	}
 
 	@Test
@@ -268,7 +264,7 @@ public class Population_UnitTest {
 
 		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
-		assertFalse(population.equals(population2));
+		assertNotEquals(population, population2);
 	}
 
 	@Test
@@ -278,7 +274,7 @@ public class Population_UnitTest {
 		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 		population2.setAge(null);
 
-		assertFalse(population.equals(population2));
+		assertNotEquals(population, population2);
 	}
 
 	@Test
@@ -288,7 +284,7 @@ public class Population_UnitTest {
 		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 		population2.setGender(Gender.WOMAN);
 
-		assertFalse(population.equals(population2));
+		assertNotEquals(population, population2);
 	}
 
 	@Test
@@ -298,7 +294,7 @@ public class Population_UnitTest {
 
 		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
-		assertFalse(population.equals(population2));
+		assertNotEquals(population, population2);
 	}
 
 	@Test
@@ -308,7 +304,7 @@ public class Population_UnitTest {
 		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 		population2.setGender(null);
 
-		assertFalse(population.equals(population2));
+		assertNotEquals(population, population2);
 	}
 
 	@Test
@@ -318,7 +314,7 @@ public class Population_UnitTest {
 		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 		population2.setYear(1999);
 
-		assertFalse(population.equals(population2));
+		assertNotEquals(population, population2);
 	}
 
 	@Test
@@ -328,7 +324,7 @@ public class Population_UnitTest {
 
 		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
-		assertFalse(population.equals(population2));
+		assertNotEquals(population, population2);
 	}
 
 	@Test
@@ -338,7 +334,7 @@ public class Population_UnitTest {
 		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 		population2.setYear(null);
 
-		assertFalse(population.equals(population2));
+		assertNotEquals(population, population2);
 	}
 
 	@Test
@@ -348,7 +344,7 @@ public class Population_UnitTest {
 		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 		population2.setAmount(54321L);
 
-		assertFalse(population.equals(population2));
+		assertNotEquals(population, population2);
 	}
 
 	@Test
@@ -358,7 +354,7 @@ public class Population_UnitTest {
 
 		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 
-		assertFalse(population.equals(population2));
+		assertNotEquals(population, population2);
 	}
 
 	@Test
@@ -368,7 +364,7 @@ public class Population_UnitTest {
 		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
 		population2.setAmount(null);
 
-		assertFalse(population.equals(population2));
+		assertNotEquals(population, population2);
 	}
 
 	@Test

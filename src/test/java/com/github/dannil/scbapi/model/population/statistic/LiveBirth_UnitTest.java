@@ -16,12 +16,9 @@ limitations under the License.
 
 package com.github.dannil.scbapi.model.population.statistic;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -117,14 +114,14 @@ public class LiveBirth_UnitTest {
 	public void notEqualsNull() {
 		LiveBirth liveBirth = new LiveBirth();
 
-		assertThat(liveBirth, not(equalTo(null)));
+		assertNotEquals(liveBirth, null);
 	}
 
 	@Test
 	public void notEqualsIncompatibleObject() {
 		LiveBirth liveBirth = new LiveBirth();
 
-		assertFalse(liveBirth.equals(new Object()));
+		assertNotEquals(liveBirth, new Object());
 	}
 
 	@Test
@@ -132,7 +129,7 @@ public class LiveBirth_UnitTest {
 		LiveBirth liveBirth = new LiveBirth("1263", "21", Gender.MAN, 2002, 12345L);
 		LiveBirth liveBirth2 = new LiveBirth("1267", "21", Gender.MAN, 2002, 12345L);
 
-		assertFalse(liveBirth.equals(liveBirth2));
+		assertNotEquals(liveBirth, liveBirth2);
 	}
 
 	@Test
@@ -140,7 +137,7 @@ public class LiveBirth_UnitTest {
 		LiveBirth liveBirth = new LiveBirth("1263", "21", Gender.MAN, 2002, 12345L);
 		LiveBirth liveBirth2 = new LiveBirth("1263", "tot", Gender.MAN, 2002, 12345L);
 
-		assertFalse(liveBirth.equals(liveBirth2));
+		assertNotEquals(liveBirth, liveBirth2);
 	}
 
 	@Test
@@ -148,7 +145,7 @@ public class LiveBirth_UnitTest {
 		LiveBirth liveBirth = new LiveBirth("1263", "tot", Gender.MAN, 2002, 12345L);
 		LiveBirth liveBirth2 = new LiveBirth("1263", "tot", Gender.WOMAN, 2002, 12345L);
 
-		assertFalse(liveBirth.equals(liveBirth2));
+		assertNotEquals(liveBirth, liveBirth2);
 	}
 
 	@Test
@@ -156,7 +153,7 @@ public class LiveBirth_UnitTest {
 		LiveBirth liveBirth = new LiveBirth("1263", "21", Gender.MAN, 1996, 12345L);
 		LiveBirth liveBirth2 = new LiveBirth("1263", "21", Gender.MAN, 2002, 12345L);
 
-		assertFalse(liveBirth.equals(liveBirth2));
+		assertNotEquals(liveBirth, liveBirth2);
 	}
 
 	@Test
@@ -164,7 +161,7 @@ public class LiveBirth_UnitTest {
 		LiveBirth liveBirth = new LiveBirth("1263", "tot", Gender.MAN, 2002, 12345L);
 		LiveBirth liveBirth2 = new LiveBirth("1263", "tot", Gender.MAN, 2002, 54321L);
 
-		assertFalse(liveBirth.equals(liveBirth2));
+		assertNotEquals(liveBirth, liveBirth2);
 	}
 
 	@Test
