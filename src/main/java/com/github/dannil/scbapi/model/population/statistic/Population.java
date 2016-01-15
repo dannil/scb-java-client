@@ -122,10 +122,7 @@ public class Population extends AbstractRegionAndYearModel<String, Integer> {
 	}
 
 	public static List<String> getCodes() {
-		if (codes == null) {
-			codes = JsonUtility.getCodes(RequestPoster.getCodes("BE/BE0101/BE0101A/BefolkningNy"));
-		}
-		return codes;
+		return JsonUtility.getCodes(RequestPoster.getCodes("BE/BE0101/BE0101A/BefolkningNy"));
 	}
 
 }

@@ -26,8 +26,6 @@ import com.github.dannil.scbapi.utility.RequestPoster;
 
 public class AverageAgeFirstChild extends AbstractRegionAndYearModel<String, Integer> {
 
-	private static List<String> codes;
-
 	private Gender gender;
 	private Double averageAge;
 
@@ -96,10 +94,7 @@ public class AverageAgeFirstChild extends AbstractRegionAndYearModel<String, Int
 	}
 
 	public static List<String> getCodes() {
-		if (codes == null) {
-			codes = JsonUtility.getCodes(RequestPoster.getCodes("BE/BE0701/MedelAlderNY"));
-		}
-		return codes;
+		return JsonUtility.getCodes(RequestPoster.getCodes("BE/BE0701/MedelAlderNY"));
 	}
 
 }

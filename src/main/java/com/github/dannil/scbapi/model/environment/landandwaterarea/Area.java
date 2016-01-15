@@ -26,8 +26,6 @@ import com.github.dannil.scbapi.utility.RequestPoster;
 
 public class Area extends AbstractRegionAndYearModel<String, Integer> {
 
-	private static List<String> codes;
-
 	private Type type;
 	private Double squareKm;
 
@@ -96,10 +94,7 @@ public class Area extends AbstractRegionAndYearModel<String, Integer> {
 	}
 
 	public static List<String> getCodes() {
-		if (codes == null) {
-			codes = JsonUtility.getCodes(RequestPoster.getCodes("MI/MI0802/Areal2012"));
-		}
-		return codes;
+		return JsonUtility.getCodes(RequestPoster.getCodes("MI/MI0802/Areal2012"));
 	}
 
 }

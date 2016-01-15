@@ -26,8 +26,6 @@ import com.github.dannil.scbapi.utility.RequestPoster;
 
 public class LiveBirth extends AbstractRegionAndYearModel<String, Integer> {
 
-	private static List<String> codes;
-
 	private String motherAge;
 	private Gender gender;
 	private Long amount;
@@ -108,10 +106,7 @@ public class LiveBirth extends AbstractRegionAndYearModel<String, Integer> {
 	}
 
 	public static List<String> getCodes() {
-		if (codes == null) {
-			codes = JsonUtility.getCodes(RequestPoster.getCodes("BE/BE0101/BE0101H/FoddaK"));
-		}
-		return codes;
+		return JsonUtility.getCodes(RequestPoster.getCodes("BE/BE0101/BE0101H/FoddaK"));
 	}
 
 }
