@@ -54,31 +54,6 @@ public class AverageAgeFirstChild_UnitTest {
 		assertEquals(Double.valueOf(34.56), avg.getAverageAge());
 	}
 
-	// Special cases (beginning with super) that tests the superclass
-	// @Test
-	// public void superEqualsItself() {
-	// AbstractRegionAndYearModel<String, Integer> avg = new
-	// AverageAgeFirstChild();
-	//
-	// assertEquals(avg, avg);
-	// }
-	//
-	// @Test
-	// public void superNotEqualsNull() {
-	// AbstractRegionAndYearModel<String, Integer> avg = new
-	// AverageAgeFirstChild();
-	//
-	// assertNotEquals(avg, null);
-	// }
-	//
-	// @Test
-	// public void superNotEqualsIncompatibleObject() {
-	// AbstractRegionAndYearModel<String, Integer> avg = new
-	// AverageAgeFirstChild();
-	//
-	// assertNotEquals(avg, new Object());
-	// }
-
 	@Test
 	public void getCodes() {
 		assertNotNull(AverageAgeFirstChild.getCodes());
