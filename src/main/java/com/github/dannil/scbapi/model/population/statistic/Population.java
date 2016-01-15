@@ -27,8 +27,6 @@ import com.github.dannil.scbapi.utility.RequestPoster;
 
 public class Population extends AbstractRegionAndYearModel<String, Integer> {
 
-	private static List<String> codes;
-
 	private RelationshipStatus relationshipStatus;
 	private String age;
 	private Gender gender;
