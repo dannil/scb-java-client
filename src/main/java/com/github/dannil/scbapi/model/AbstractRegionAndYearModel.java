@@ -39,16 +39,6 @@ public abstract class AbstractRegionAndYearModel<R, Y> {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (!(obj instanceof AbstractRegionAndYearModel<?, ?>)) {
-			return false;
-		}
-
 		AbstractRegionAndYearModel<?, ?> other = (AbstractRegionAndYearModel<?, ?>) obj;
 		return Objects.equals(this.region, other.region) && Objects.equals(this.year, other.year);
 	}
