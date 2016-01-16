@@ -14,7 +14,7 @@ public class SCBAPI_UnitTest {
 	@Test
 	public void createWithLocaleConstructor() {
 		Locale locale = new Locale("sv", "SE");
-		SCBAPI api = new SCBAPI();
+		SCBAPI api = new SCBAPI(locale);
 
 		assertEquals(locale, api.getLocale());
 	}
