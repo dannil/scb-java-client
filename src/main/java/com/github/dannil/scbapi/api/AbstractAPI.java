@@ -62,69 +62,64 @@ public class AbstractAPI {
 
 	// TODO Improve method
 	protected String get(String address) {
-		String internalAddress = getBaseUrl() + address;
-
 		try {
-			String response = RequestPoster.doGet(internalAddress);
+			String response = RequestPoster.doGet(address);
+
 			return response;
 		} catch (FileNotFoundException e) {
-			// Generally for 404
-
 			// 404
 
-			// Some tables only support Swedish so we need to fall back to
-			// Swedish if this is the case
-			Locale fallback = new Locale("sv", "SE");
-
-			int start = internalAddress.indexOf(this.locale.getLanguage(), internalAddress.indexOf("doris"));
-
-			StringBuilder builder = new StringBuilder(address);
-			builder.replace(start, start + this.locale.getLanguage().length(), fallback.getLanguage());
-
-			internalAddress = builder.toString();
-
-			// System.out.println("Address: " + internalAddress);
-
+			return get(toFallbackUrl(address));
 		} catch (IOException e) {
 			// Handle all other cases
 			e.printStackTrace();
+
+			return "IOException";
 		}
-		return get(internalAddress);
 	}
 
 	// TODO Improve method
 	protected String post(String address, String query) {
-		String internalAddress = getBaseUrl() + address;
-
 		try {
-			String response = RequestPoster.doPost(internalAddress, query);
+			String response = RequestPoster.doPost(address, query);
 
 			LOGGER.log(Level.INFO, query);
 
 			return response;
-
 		} catch (FileNotFoundException e) {
 			// 404
 
-			// Some tables only support Swedish so we need to fall back to
-			// Swedish if this is the case
-			Locale fallback = new Locale("sv", "SE");
-
-			int start = internalAddress.indexOf(this.locale.getLanguage(), internalAddress.indexOf("doris"));
-
-			StringBuilder builder = new StringBuilder(address);
-			builder.replace(start, start + this.locale.getLanguage().length(), fallback.getLanguage());
-
-			internalAddress = builder.toString();
-
-			// System.out.println("Address: " + internalAddress);
+			return post(toFallbackUrl(address), query);
 		} catch (IOException e) {
 			// Handle all other cases
 			e.printStackTrace();
+
+			return "IOException";
+		}
+	}
+
+	// TODO Maybe should be in a separate utility class?
+	private String toFallbackUrl(String url) {
+		String internalAddress;
+
+		// Make sure we don't include the base URL if it's already included
+		if (!url.contains("doris")) {
+			internalAddress = getBaseUrl() + url;
+		} else {
+			internalAddress = url;
 		}
 
-		return post(internalAddress, query);
+		// Some tables only support Swedish so we need to fall back to
+		// Swedish if this is the case
+		Locale fallback = new Locale("sv", "SE");
 
+		int start = internalAddress.indexOf(this.locale.getLanguage(), internalAddress.indexOf("doris"));
+		int end = start + this.locale.getLanguage().length();
+
+		StringBuilder builder = new StringBuilder(internalAddress);
+		builder.replace(start, end, fallback.getLanguage());
+
+		return builder.toString();
 	}
 
 	protected List<String> getRegions(String url) {
