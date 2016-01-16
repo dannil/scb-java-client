@@ -63,13 +63,19 @@ public class AbstractAPI {
 	// TODO Improve method
 	protected String get(String address) {
 		try {
-			String response = RequestPoster.doGet(address);
+			String response = RequestPoster.doGet(getBaseUrl() + address);
 
 			return response;
 		} catch (FileNotFoundException e) {
-			// 404
+			// 404, call the API again with the fallback language
 
-			return get(toFallbackUrl(address));
+			try {
+				return RequestPoster.doGet(toFallbackUrl(getBaseUrl() + address));
+			} catch (IOException e1) {
+				e1.printStackTrace();
+
+				return "UNHANDLED";
+			}
 		} catch (IOException e) {
 			// Handle all other cases
 			e.printStackTrace();
@@ -81,15 +87,23 @@ public class AbstractAPI {
 	// TODO Improve method
 	protected String post(String address, String query) {
 		try {
-			String response = RequestPoster.doPost(address, query);
+			String response = RequestPoster.doPost(getBaseUrl() + address, query);
 
 			LOGGER.log(Level.INFO, query);
 
 			return response;
 		} catch (FileNotFoundException e) {
-			// 404
+			// 404, call the API again with the fallback language
 
-			return post(toFallbackUrl(address), query);
+			try {
+				LOGGER.log(Level.INFO, query);
+
+				return RequestPoster.doPost(toFallbackUrl(getBaseUrl() + address), query);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+
+				return "UNHANDLED";
+			}
 		} catch (IOException e) {
 			// Handle all other cases
 			e.printStackTrace();
@@ -100,14 +114,7 @@ public class AbstractAPI {
 
 	// TODO Maybe should be in a separate utility class?
 	private String toFallbackUrl(String url) {
-		String internalAddress;
-
-		// Make sure we don't include the base URL if it's already included
-		if (!url.contains("doris")) {
-			internalAddress = getBaseUrl() + url;
-		} else {
-			internalAddress = url;
-		}
+		String internalAddress = url;
 
 		// Some tables only support Swedish so we need to fall back to
 		// Swedish if this is the case
