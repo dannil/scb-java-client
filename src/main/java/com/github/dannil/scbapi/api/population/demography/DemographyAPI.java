@@ -86,8 +86,6 @@ public class DemographyAPI extends AbstractAPI implements DemographyOperations {
 
 		String response = super.post("BE/BE0701/MedelAlderNY", super.queryBuilder.build(mappings));
 
-		// TODO Implement parsing method for returning model for
-		// averageAgeFirstChild
 		return JsonUtility.parseAverageAgeFirstChild(JsonUtility.getNode(response));
 	}
 
