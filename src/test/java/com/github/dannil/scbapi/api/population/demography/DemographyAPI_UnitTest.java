@@ -24,8 +24,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import com.github.dannil.scbapi.api.population.demography.DemographyAPI;
-
 @RunWith(JUnit4.class)
 public class DemographyAPI_UnitTest {
 

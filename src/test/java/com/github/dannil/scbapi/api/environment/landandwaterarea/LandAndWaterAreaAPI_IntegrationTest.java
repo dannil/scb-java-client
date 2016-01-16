@@ -26,7 +26,7 @@ import org.junit.runners.JUnit4;
 import com.github.dannil.scbapi.api.SCBAPI;
 
 @RunWith(JUnit4.class)
-public class LandAndWaterArea_IntegrationTest {
+public class LandAndWaterAreaAPI_IntegrationTest {
 
 	private LandAndWaterAreaAPI landAndWaterAreaApi;
 
