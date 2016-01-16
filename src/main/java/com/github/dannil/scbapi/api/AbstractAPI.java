@@ -43,11 +43,16 @@ public class AbstractAPI {
 		this.queryBuilder = QueryBuilder.getInstance();
 	}
 
+	protected AbstractAPI(Locale locale) {
+		this();
+		this.locale = locale;
+	}
+
 	public Locale getLocale() {
 		return this.locale;
 	}
 
-	protected void setLocale(Locale locale) {
+	public void setLocale(Locale locale) {
 		this.locale = locale;
 	}
 
@@ -56,8 +61,8 @@ public class AbstractAPI {
 	}
 
 	// TODO Improve method
-	public String get(String address) {
-		String internalAddress = address;
+	protected String get(String address) {
+		String internalAddress = getBaseUrl() + address;
 
 		try {
 			String response = RequestPoster.doGet(internalAddress);
@@ -88,8 +93,8 @@ public class AbstractAPI {
 	}
 
 	// TODO Improve method
-	public String post(String address, String query) {
-		String internalAddress = address;
+	protected String post(String address, String query) {
+		String internalAddress = getBaseUrl() + address;
 
 		try {
 			String response = RequestPoster.doPost(internalAddress, query);

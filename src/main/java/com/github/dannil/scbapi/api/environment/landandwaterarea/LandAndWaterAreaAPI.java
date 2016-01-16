@@ -34,13 +34,7 @@ public class LandAndWaterAreaAPI extends AbstractAPI implements AreaOperations {
 	}
 
 	public LandAndWaterAreaAPI(Locale locale) {
-		this();
-		super.locale = locale;
-	}
-
-	@Override
-	public void setLocale(Locale locale) {
-		super.locale = locale;
+		super(locale);
 	}
 
 	// public List<String> getRegions() {
@@ -70,7 +64,7 @@ public class LandAndWaterAreaAPI extends AbstractAPI implements AreaOperations {
 		mappings.put("ArealTyp", types);
 		mappings.put("Tid", years);
 
-		String response = super.post(super.getBaseUrl() + "MI/MI0802/Areal2012", super.queryBuilder.build(mappings));
+		String response = super.post("MI/MI0802/Areal2012", super.queryBuilder.build(mappings));
 
 		return JsonUtility.parseAreas(JsonUtility.getNode(response));
 	}

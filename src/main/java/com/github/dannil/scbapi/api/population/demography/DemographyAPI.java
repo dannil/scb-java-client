@@ -34,13 +34,7 @@ public class DemographyAPI extends AbstractAPI implements DemographyOperations {
 	}
 
 	public DemographyAPI(Locale locale) {
-		this();
-		super.locale = locale;
-	}
-
-	@Override
-	public void setLocale(Locale locale) {
-		super.locale = locale;
+		super(locale);
 	}
 
 	// public List<String> getRegions() {
@@ -90,7 +84,7 @@ public class DemographyAPI extends AbstractAPI implements DemographyOperations {
 		mappings.put("Kon", genders);
 		mappings.put("Tid", years);
 
-		String response = super.post(super.getBaseUrl() + "BE/BE0701/MedelAlderNY", super.queryBuilder.build(mappings));
+		String response = super.post("BE/BE0701/MedelAlderNY", super.queryBuilder.build(mappings));
 
 		// TODO Implement parsing method for returning model for
 		// averageAgeFirstChild

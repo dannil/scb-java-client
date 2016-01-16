@@ -36,13 +36,7 @@ public class StatisticAPI extends AbstractAPI implements StatisticOperations {
 	}
 
 	public StatisticAPI(Locale locale) {
-		this();
-		super.locale = locale;
-	}
-
-	@Override
-	public void setLocale(Locale locale) {
-		super.locale = locale;
+		super(locale);
 	}
 
 	// public List<String> getRegions() {
@@ -73,7 +67,7 @@ public class StatisticAPI extends AbstractAPI implements StatisticOperations {
 		mappings.put("Kon", genders);
 		mappings.put("Tid", years);
 
-		String response = super.post(super.getBaseUrl() + "BE/BE0101/BE0101H/FoddaK", super.queryBuilder.build(mappings));
+		String response = super.post("BE/BE0101/BE0101H/FoddaK", super.queryBuilder.build(mappings));
 
 		// System.out.println(response);
 
@@ -95,7 +89,7 @@ public class StatisticAPI extends AbstractAPI implements StatisticOperations {
 		mappings.put("Kon", genders);
 		mappings.put("Tid", years);
 
-		String response = super.post(super.getBaseUrl() + "BE/BE0101/BE0101A/BefolkningNy", super.queryBuilder.build(mappings));
+		String response = super.post("BE/BE0101/BE0101A/BefolkningNy", super.queryBuilder.build(mappings));
 
 		// System.out.println(response);
 
