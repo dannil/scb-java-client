@@ -29,14 +29,10 @@ public class QueryBuilder {
 	private static Object lock = new Object();
 
 	public static QueryBuilder getInstance() {
-		if (builder != null) {
-			return builder;
-		} else {
-			// Synchronized instance
-			synchronized (lock) {
-				if (builder == null) {
-					builder = new QueryBuilder();
-				}
+		// Synchronized instance
+		synchronized (lock) {
+			if (builder == null) {
+				builder = new QueryBuilder();
 			}
 			return builder;
 		}
