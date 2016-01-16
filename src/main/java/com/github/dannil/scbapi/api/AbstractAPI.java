@@ -29,7 +29,7 @@ import com.github.dannil.scbapi.utility.JsonUtility;
 import com.github.dannil.scbapi.utility.QueryBuilder;
 import com.github.dannil.scbapi.utility.RequestPoster;
 
-public abstract class AbstractAPI {
+public class AbstractAPI {
 
 	private static final Logger LOGGER = Logger.getLogger(AbstractAPI.class.getName());
 

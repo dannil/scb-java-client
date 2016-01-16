@@ -34,6 +34,10 @@ import com.github.dannil.scbapi.model.population.statistic.Population;
 
 public class JsonUtility {
 
+	private JsonUtility() {
+
+	}
+
 	public static JsonNode getNode(String json) {
 		return getNode(json, null);
 	}
