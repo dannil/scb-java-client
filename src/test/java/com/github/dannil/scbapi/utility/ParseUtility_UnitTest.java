@@ -17,7 +17,6 @@ limitations under the License.
 package com.github.dannil.scbapi.utility;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,13 +24,6 @@ import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
 public class ParseUtility_UnitTest {
-
-	@Test
-	public void createWithConstructor() {
-		ParseUtility parseUtility = new ParseUtility();
-
-		assertNotNull(parseUtility);
-	}
 
 	@Test
 	public void parseInteger() {

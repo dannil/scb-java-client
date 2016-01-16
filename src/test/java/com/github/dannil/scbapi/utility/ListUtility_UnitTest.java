@@ -17,7 +17,6 @@ limitations under the License.
 package com.github.dannil.scbapi.utility;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,13 +27,6 @@ import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
 public class ListUtility_UnitTest {
-
-	@Test
-	public void createWithConstructor() {
-		ListUtility<String> listUtility = new ListUtility<String>();
-
-		assertNotNull(listUtility);
-	}
 
 	@Test
 	public void toList() {

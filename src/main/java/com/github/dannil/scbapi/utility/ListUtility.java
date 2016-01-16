@@ -21,6 +21,10 @@ import java.util.List;
 
 public class ListUtility<E> {
 
+	private ListUtility() {
+
+	}
+
 	public static <E> List<E> toList(E value) {
 		if (value == null) {
 			return null;

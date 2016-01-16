@@ -26,11 +26,20 @@ public class QueryBuilder {
 
 	private static QueryBuilder builder;
 
+	private static Object lock = new Object();
+
 	public static QueryBuilder getInstance() {
-		if (builder == null) {
-			builder = new QueryBuilder();
+		if (builder != null) {
+			return builder;
+		} else {
+			// Synchronized instance
+			synchronized (lock) {
+				if (builder == null) {
+					builder = new QueryBuilder();
+				}
+			}
+			return builder;
 		}
-		return builder;
 	}
 
 	private QueryBuilder() {

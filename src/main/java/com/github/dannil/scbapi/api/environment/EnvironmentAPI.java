@@ -26,6 +26,8 @@ public class EnvironmentAPI extends AbstractContainerAPI {
 	private LandAndWaterAreaAPI landAndWaterAreaApi;
 
 	public EnvironmentAPI() {
+		super();
+
 		this.landAndWaterAreaApi = new LandAndWaterAreaAPI();
 		super.apis.add(this.landAndWaterAreaApi);
 	}

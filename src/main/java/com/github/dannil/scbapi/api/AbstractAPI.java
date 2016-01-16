@@ -21,6 +21,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.dannil.scbapi.utility.JsonUtility;
@@ -28,6 +30,8 @@ import com.github.dannil.scbapi.utility.QueryBuilder;
 import com.github.dannil.scbapi.utility.RequestPoster;
 
 public abstract class AbstractAPI {
+
+	private static final Logger LOGGER = Logger.getLogger(AbstractAPI.class.getName());
 
 	protected Locale locale;
 
@@ -90,7 +94,7 @@ public abstract class AbstractAPI {
 		try {
 			String response = RequestPoster.doPost(internalAddress, query);
 
-			System.out.println("Query: " + query);
+			LOGGER.log(Level.INFO, query);
 
 			return response;
 
