@@ -38,6 +38,7 @@ public class QueryBuilder {
 	}
 
 	public String build(Map<String, List<?>> inputMap) {
+		// Filter out null values
 		Map<String, List<?>> filteredMap = new HashMap<String, List<?>>();
 
 		for (Entry<String, List<?>> entry : inputMap.entrySet()) {
@@ -53,13 +54,13 @@ public class QueryBuilder {
 		}
 
 		// Approximate a good initial capacity for the string buffer
-		StringBuilder builder = new StringBuilder(filteredMap.size() * 80);
-		builder.append('{');
-		builder.append("\"query\": [");
+		StringBuilder builder = new StringBuilder(44 + (80 * filteredMap.size()));
+
+		// Construct the query
+		builder.append("{\"query\": [");
 		int i = 0;
 		for (Entry<String, List<?>> entry : filteredMap.entrySet()) {
-			builder.append('{');
-			builder.append("\"code\": \"" + entry.getKey() + "\",\"selection\": {\"filter\": \"item\",\"values\": [");
+			builder.append("{\"code\": \"" + entry.getKey() + "\",\"selection\": {\"filter\": \"item\",\"values\": [");
 			List<?> values = entry.getValue();
 			for (int j = 0; j < values.size(); j++) {
 				builder.append("\"" + values.get(j) + "\"");
@@ -67,9 +68,7 @@ public class QueryBuilder {
 					builder.append(',');
 				}
 			}
-			builder.append(']');
-			builder.append('}');
-			builder.append('}');
+			builder.append("]}}");
 			if (i != filteredMap.keySet().size() - 1) {
 				builder.append(',');
 			}
@@ -79,5 +78,4 @@ public class QueryBuilder {
 
 		return builder.toString();
 	}
-
 }
