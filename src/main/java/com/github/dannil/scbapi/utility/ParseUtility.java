@@ -18,6 +18,10 @@ package com.github.dannil.scbapi.utility;
 
 public class ParseUtility {
 
+	private ParseUtility() {
+
+	}
+
 	public static Integer parseInteger(String string) {
 		return parseInteger(string, null);
 	}

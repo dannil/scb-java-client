@@ -2,7 +2,7 @@ package com.github.dannil.scbapi.model;
 
 import java.util.Objects;
 
-public abstract class AbstractRegionAndYearModel<R, Y> {
+public class AbstractRegionAndYearModel<R, Y> {
 
 	protected R region;
 	protected Y year;

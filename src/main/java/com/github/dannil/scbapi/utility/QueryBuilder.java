@@ -24,13 +24,13 @@ import java.util.Map.Entry;
 
 public class QueryBuilder {
 
-	private static QueryBuilder queryBuilder;
+	private static QueryBuilder builder;
 
 	public static QueryBuilder getInstance() {
-		if (queryBuilder == null) {
-			queryBuilder = new QueryBuilder();
+		if (builder == null) {
+			builder = new QueryBuilder();
 		}
-		return queryBuilder;
+		return builder;
 	}
 
 	private QueryBuilder() {
@@ -42,7 +42,7 @@ public class QueryBuilder {
 		Map<String, List<?>> filteredMap = new HashMap<String, List<?>>();
 
 		for (Entry<String, List<?>> entry : inputMap.entrySet()) {
-			if (entry.getKey() != null && entry.getValue() != null) {
+			if (entry.getValue() != null) {
 				List<Object> values = new ArrayList<Object>();
 				for (Object o : entry.getValue()) {
 					if (o != null) {
@@ -54,7 +54,8 @@ public class QueryBuilder {
 		}
 
 		// Approximate a good initial capacity for the string buffer
-		StringBuilder builder = new StringBuilder(44 + (80 * filteredMap.size()));
+		int size = Math.max(44 + (80 * filteredMap.size()), 256);
+		StringBuilder builder = new StringBuilder(size);
 
 		// Construct the query
 		builder.append("{\"query\": [");
