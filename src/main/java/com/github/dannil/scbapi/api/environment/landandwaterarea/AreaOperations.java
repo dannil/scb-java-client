@@ -23,8 +23,8 @@ import com.github.dannil.scbapi.model.environment.landandwaterarea.Area;
 
 public interface AreaOperations {
 
-	public List<Area> getArea();
+	List<Area> getArea();
 
-	public List<Area> getArea(List<String> regions, List<Type> types, List<Integer> years);
+	List<Area> getArea(List<String> regions, List<Type> types, List<Integer> years);
 
 }

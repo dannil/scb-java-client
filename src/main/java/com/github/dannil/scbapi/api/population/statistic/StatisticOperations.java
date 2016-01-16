@@ -25,12 +25,12 @@ import com.github.dannil.scbapi.model.population.statistic.Population;
 
 public interface StatisticOperations {
 
-	public List<LiveBirth> getLiveBirths();
+	List<LiveBirth> getLiveBirths();
 
-	public List<LiveBirth> getLiveBirths(List<String> regions, List<String> motherAge, List<Gender> genders, List<Integer> years);
+	List<LiveBirth> getLiveBirths(List<String> regions, List<String> motherAge, List<Gender> genders, List<Integer> years);
 
-	public List<Population> getPopulation();
+	List<Population> getPopulation();
 
-	public List<Population> getPopulation(List<String> regions, List<RelationshipStatus> relationshipStatuses, List<String> ages, List<Gender> genders, List<Integer> years);
+	List<Population> getPopulation(List<String> regions, List<RelationshipStatus> relationshipStatuses, List<String> ages, List<Gender> genders, List<Integer> years);
 
 }
