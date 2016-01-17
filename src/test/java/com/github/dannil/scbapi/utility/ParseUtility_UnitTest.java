@@ -31,6 +31,11 @@ public class ParseUtility_UnitTest {
 	}
 
 	@Test
+	public void parseIntegerNullDefault() {
+		assertEquals(null, ParseUtility.parseInteger("helloworld", null));
+	}
+
+	@Test
 	public void parseIntegerOverloaded() {
 		assertEquals(Integer.valueOf(42), ParseUtility.parseInteger("42", -1));
 	}
@@ -46,6 +51,11 @@ public class ParseUtility_UnitTest {
 	}
 
 	@Test
+	public void parseLongNullDefault() {
+		assertEquals(null, ParseUtility.parseLong("helloworld", null));
+	}
+
+	@Test
 	public void parseLongOverloaded() {
 		assertEquals(Long.valueOf(123456789123456789L), ParseUtility.parseLong("123456789123456789", -1L));
 	}
@@ -58,6 +68,11 @@ public class ParseUtility_UnitTest {
 	@Test
 	public void parseDouble() {
 		assertEquals(Double.valueOf(0.123456789), ParseUtility.parseDouble("0.123456789"));
+	}
+
+	@Test
+	public void parseDoubleNullDefault() {
+		assertEquals(null, ParseUtility.parseDouble("helloworld", null));
 	}
 
 	@Test
