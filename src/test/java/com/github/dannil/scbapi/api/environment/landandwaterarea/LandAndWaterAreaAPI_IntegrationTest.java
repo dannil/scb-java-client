@@ -31,7 +31,7 @@ public class LandAndWaterAreaAPI_IntegrationTest {
 	private LandAndWaterAreaAPI landAndWaterAreaApi;
 
 	@Before
-	public final void init() {
+	public void setup() {
 		this.landAndWaterAreaApi = new SCBAPI().environment().landAndWaterArea();
 	}
 
@@ -48,7 +48,7 @@ public class LandAndWaterAreaAPI_IntegrationTest {
 	// }
 
 	@Test
-	public final void getArea() {
+	public void getArea() {
 		assertNotEquals(0, this.landAndWaterAreaApi.getArea().size());
 	}
 

@@ -31,7 +31,7 @@ public class StatisticAPI_IntegrationTest {
 	private StatisticAPI statisticAPI;
 
 	@Before
-	public void init() {
+	public void setup() {
 		this.statisticAPI = new SCBAPI().population().statistic();
 	}
 

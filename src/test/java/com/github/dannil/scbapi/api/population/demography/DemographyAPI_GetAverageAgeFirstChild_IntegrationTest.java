@@ -100,8 +100,8 @@ public class DemographyAPI_GetAverageAgeFirstChild_IntegrationTest {
 	}
 
 	@Test
-	public final void getAverageAgeFirstChild() {
-		assertNotEquals(0, this.demographyAPI.getAverageAgeFirstChild(this.regions, this.genders, this.years));
+	public void getAverageAgeFirstChild() {
+		assertNotEquals(0, this.demographyAPI.getAverageAgeFirstChild(this.regions, this.genders, this.years).size());
 	}
 
 }

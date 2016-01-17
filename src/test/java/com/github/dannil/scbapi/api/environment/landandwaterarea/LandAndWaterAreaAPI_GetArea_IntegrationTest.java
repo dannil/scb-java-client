@@ -95,8 +95,8 @@ public class LandAndWaterAreaAPI_GetArea_IntegrationTest {
 	}
 
 	@Test
-	public final void getArea() {
-		assertNotEquals(0, this.landAndWaterAreaAPI.getArea(this.regions, this.types, this.years));
+	public void getArea() {
+		assertNotEquals(0, this.landAndWaterAreaAPI.getArea(this.regions, this.types, this.years).size());
 	}
 
 }

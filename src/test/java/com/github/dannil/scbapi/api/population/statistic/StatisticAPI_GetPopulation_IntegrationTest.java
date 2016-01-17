@@ -16,12 +16,13 @@ limitations under the License.
 
 package com.github.dannil.scbapi.api.population.statistic;
 
+import static org.junit.Assert.assertNotEquals;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -112,8 +113,8 @@ public class StatisticAPI_GetPopulation_IntegrationTest {
 	}
 
 	@Test
-	public final void getPopulation() {
-		Assert.assertNotEquals(0, this.statisticsAPI.getPopulation(this.regions, this.statuses, this.ages, this.genders, this.years));
+	public void getPopulation() {
+		assertNotEquals(0, this.statisticsAPI.getPopulation(this.regions, this.statuses, this.ages, this.genders, this.years).size());
 	}
 
 }

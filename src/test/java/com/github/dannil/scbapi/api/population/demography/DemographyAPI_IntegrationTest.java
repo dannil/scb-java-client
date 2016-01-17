@@ -31,12 +31,12 @@ public class DemographyAPI_IntegrationTest {
 	private DemographyAPI demographyApi;
 
 	@Before
-	public final void init() {
+	public void setup() {
 		this.demographyApi = new SCBAPI().population().demography();
 	}
 
 	@Test
-	public final void getArea() {
+	public void getArea() {
 		assertNotEquals(0, this.demographyApi.getAverageAgeFirstChild().size());
 	}
 
