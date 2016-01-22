@@ -22,7 +22,6 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbapi.api.AbstractAPI;
-import com.github.dannil.scbapi.model.population.Gender;
 import com.github.dannil.scbapi.model.population.demography.AverageAgeFirstChild;
 import com.github.dannil.scbapi.utility.JsonUtility;
 import com.github.dannil.scbapi.utility.ListUtility;
@@ -77,7 +76,7 @@ public class DemographyAPI extends AbstractAPI implements DemographyOperations {
 	}
 
 	@Override
-	public List<AverageAgeFirstChild> getAverageAgeFirstChild(List<String> regions, List<Gender> genders, List<Integer> years) {
+	public List<AverageAgeFirstChild> getAverageAgeFirstChild(List<String> regions, List<Integer> genders, List<Integer> years) {
 		Map<String, List<?>> mappings = new HashMap<String, List<?>>();
 		mappings.put("ContentsCode", ListUtility.toList("BE0701AB"));
 		mappings.put("Region", regions);

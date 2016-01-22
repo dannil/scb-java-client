@@ -20,23 +20,21 @@ import java.util.List;
 import java.util.Objects;
 
 import com.github.dannil.scbapi.model.AbstractRegionAndYearModel;
-import com.github.dannil.scbapi.model.population.Gender;
-import com.github.dannil.scbapi.model.population.RelationshipStatus;
 import com.github.dannil.scbapi.utility.JsonUtility;
 import com.github.dannil.scbapi.utility.RequestPoster;
 
 public class Population extends AbstractRegionAndYearModel<String, Integer> {
 
-	private RelationshipStatus relationshipStatus;
+	private String relationshipStatus;
 	private String age;
-	private Gender gender;
+	private Integer gender;
 	private Long amount;
 
 	public Population() {
 		super();
 	}
 
-	public Population(String region, RelationshipStatus relationshipStatus, String age, Gender gender, Integer year, Long amount) {
+	public Population(String region, String relationshipStatus, String age, Integer gender, Integer year, Long amount) {
 		super(region, year);
 		this.relationshipStatus = relationshipStatus;
 		this.age = age;
@@ -44,11 +42,11 @@ public class Population extends AbstractRegionAndYearModel<String, Integer> {
 		this.amount = amount;
 	}
 
-	public RelationshipStatus getRelationshipStatus() {
+	public String getRelationshipStatus() {
 		return this.relationshipStatus;
 	}
 
-	public void setRelationshipStatus(RelationshipStatus relationshipStatus) {
+	public void setRelationshipStatus(String relationshipStatus) {
 		this.relationshipStatus = relationshipStatus;
 	}
 
@@ -60,11 +58,11 @@ public class Population extends AbstractRegionAndYearModel<String, Integer> {
 		this.age = age;
 	}
 
-	public Gender getGender() {
+	public Integer getGender() {
 		return this.gender;
 	}
 
-	public void setGender(Gender gender) {
+	public void setGender(Integer gender) {
 		this.gender = gender;
 	}
 

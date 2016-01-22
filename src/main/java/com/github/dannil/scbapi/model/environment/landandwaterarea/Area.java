@@ -20,30 +20,29 @@ import java.util.List;
 import java.util.Objects;
 
 import com.github.dannil.scbapi.model.AbstractRegionAndYearModel;
-import com.github.dannil.scbapi.model.environment.Type;
 import com.github.dannil.scbapi.utility.JsonUtility;
 import com.github.dannil.scbapi.utility.RequestPoster;
 
 public class Area extends AbstractRegionAndYearModel<String, Integer> {
 
-	private Type type;
+	private String type;
 	private Double squareKm;
 
 	public Area() {
 		super();
 	}
 
-	public Area(String region, Type type, Integer year, Double squareKm) {
+	public Area(String region, String type, Integer year, Double squareKm) {
 		super(region, year);
 		this.type = type;
 		this.squareKm = squareKm;
 	}
 
-	public Type getType() {
+	public String getType() {
 		return this.type;
 	}
 
-	public void setType(Type type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 

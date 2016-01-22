@@ -20,21 +20,20 @@ import java.util.List;
 import java.util.Objects;
 
 import com.github.dannil.scbapi.model.AbstractRegionAndYearModel;
-import com.github.dannil.scbapi.model.population.Gender;
 import com.github.dannil.scbapi.utility.JsonUtility;
 import com.github.dannil.scbapi.utility.RequestPoster;
 
 public class LiveBirth extends AbstractRegionAndYearModel<String, Integer> {
 
 	private String motherAge;
-	private Gender gender;
+	private Integer gender;
 	private Long amount;
 
 	public LiveBirth() {
 		super();
 	}
 
-	public LiveBirth(String region, String motherAge, Gender gender, Integer year, Long amount) {
+	public LiveBirth(String region, String motherAge, Integer gender, Integer year, Long amount) {
 		super(region, year);
 		this.motherAge = motherAge;
 		this.gender = gender;
@@ -49,11 +48,11 @@ public class LiveBirth extends AbstractRegionAndYearModel<String, Integer> {
 		this.motherAge = motherAge;
 	}
 
-	public Gender getGender() {
+	public Integer getGender() {
 		return this.gender;
 	}
 
-	public void setGender(Gender gender) {
+	public void setGender(Integer gender) {
 		this.gender = gender;
 	}
 

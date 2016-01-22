@@ -24,10 +24,7 @@ import java.util.Map;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.dannil.scbapi.model.environment.Type;
 import com.github.dannil.scbapi.model.environment.landandwaterarea.Area;
-import com.github.dannil.scbapi.model.population.Gender;
-import com.github.dannil.scbapi.model.population.RelationshipStatus;
 import com.github.dannil.scbapi.model.population.demography.AverageAgeFirstChild;
 import com.github.dannil.scbapi.model.population.statistic.LiveBirth;
 import com.github.dannil.scbapi.model.population.statistic.Population;
@@ -94,7 +91,7 @@ public class JsonUtility {
 
 		List<Area> areas = new ArrayList<Area>();
 		for (Map<String, String> map : contents) {
-			Area area = new Area(map.get("Region"), Type.of(map.get("ArealTyp")), ParseUtility.parseInteger(map.get("Tid")), ParseUtility.parseDouble(map.get("Value")));
+			Area area = new Area(map.get("Region"), map.get("ArealTyp"), ParseUtility.parseInteger(map.get("Tid")), ParseUtility.parseDouble(map.get("Value")));
 			areas.add(area);
 		}
 		return areas;
@@ -109,7 +106,7 @@ public class JsonUtility {
 			AverageAgeFirstChild averageAgeFirstChild = new AverageAgeFirstChild();
 			averageAgeFirstChild.setRegion(map.get("Region"));
 			averageAgeFirstChild.setYear(ParseUtility.parseInteger(map.get("Tid")));
-			averageAgeFirstChild.setGender(Gender.of(ParseUtility.parseInteger(map.get("Kon"))));
+			averageAgeFirstChild.setGender(ParseUtility.parseInteger(map.get("Kon")));
 			averageAgeFirstChild.setAverageAge(ParseUtility.parseDouble(map.get("Value")));
 
 			averageAgeFirstChildren.add(averageAgeFirstChild);
@@ -127,7 +124,7 @@ public class JsonUtility {
 			liveBirth.setRegion(map.get("Region"));
 			liveBirth.setYear(ParseUtility.parseInteger(map.get("Tid")));
 			liveBirth.setMotherAge(map.get("AlderModer"));
-			liveBirth.setGender(Gender.of(ParseUtility.parseInteger(map.get("Kon"))));
+			liveBirth.setGender(ParseUtility.parseInteger(map.get("Kon")));
 			liveBirth.setAmount(ParseUtility.parseLong(map.get("Value")));
 
 			liveBirths.add(liveBirth);
@@ -140,8 +137,8 @@ public class JsonUtility {
 
 		List<Population> populations = new ArrayList<Population>();
 		for (Map<String, String> map : contents) {
-			Population population = new Population(map.get("Region"), RelationshipStatus.of(map.get("Civilstand")), map.get("Alder"), Gender.of(ParseUtility.parseInteger(map.get("Kon"))),
-					ParseUtility.parseInteger(map.get("Tid")), ParseUtility.parseLong(map.get("Value")));
+			Population population = new Population(map.get("Region"), map.get("Civilstand"), map.get("Alder"), ParseUtility.parseInteger(map.get("Kon")), ParseUtility.parseInteger(map.get("Tid")),
+					ParseUtility.parseLong(map.get("Value")));
 			populations.add(population);
 		}
 		return populations;

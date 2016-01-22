@@ -18,8 +18,6 @@ package com.github.dannil.scbapi.api.population.statistic;
 
 import java.util.List;
 
-import com.github.dannil.scbapi.model.population.Gender;
-import com.github.dannil.scbapi.model.population.RelationshipStatus;
 import com.github.dannil.scbapi.model.population.statistic.LiveBirth;
 import com.github.dannil.scbapi.model.population.statistic.Population;
 
@@ -27,10 +25,10 @@ public interface StatisticOperations {
 
 	List<LiveBirth> getLiveBirths();
 
-	List<LiveBirth> getLiveBirths(List<String> regions, List<String> motherAge, List<Gender> genders, List<Integer> years);
+	List<LiveBirth> getLiveBirths(List<String> regions, List<String> motherAge, List<Integer> genders, List<Integer> years);
 
 	List<Population> getPopulation();
 
-	List<Population> getPopulation(List<String> regions, List<RelationshipStatus> relationshipStatuses, List<String> ages, List<Gender> genders, List<Integer> years);
+	List<Population> getPopulation(List<String> regions, List<String> relationshipStatuses, List<String> ages, List<Integer> genders, List<Integer> years);
 
 }

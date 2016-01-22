@@ -20,30 +20,29 @@ import java.util.List;
 import java.util.Objects;
 
 import com.github.dannil.scbapi.model.AbstractRegionAndYearModel;
-import com.github.dannil.scbapi.model.population.Gender;
 import com.github.dannil.scbapi.utility.JsonUtility;
 import com.github.dannil.scbapi.utility.RequestPoster;
 
 public class AverageAgeFirstChild extends AbstractRegionAndYearModel<String, Integer> {
 
-	private Gender gender;
+	private Integer gender;
 	private Double averageAge;
 
 	public AverageAgeFirstChild() {
 		super();
 	}
 
-	public AverageAgeFirstChild(String region, Gender gender, Integer year, Double averageAge) {
+	public AverageAgeFirstChild(String region, Integer gender, Integer year, Double averageAge) {
 		super(region, year);
 		this.gender = gender;
 		this.averageAge = averageAge;
 	}
 
-	public Gender getGender() {
+	public Integer getGender() {
 		return this.gender;
 	}
 
-	public void setGender(Gender gender) {
+	public void setGender(Integer gender) {
 		this.gender = gender;
 	}
 

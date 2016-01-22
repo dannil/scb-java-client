@@ -22,8 +22,6 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbapi.api.AbstractAPI;
-import com.github.dannil.scbapi.model.population.Gender;
-import com.github.dannil.scbapi.model.population.RelationshipStatus;
 import com.github.dannil.scbapi.model.population.statistic.LiveBirth;
 import com.github.dannil.scbapi.model.population.statistic.Population;
 import com.github.dannil.scbapi.utility.JsonUtility;
@@ -59,7 +57,7 @@ public class StatisticAPI extends AbstractAPI implements StatisticOperations {
 	}
 
 	@Override
-	public List<LiveBirth> getLiveBirths(List<String> regions, List<String> motherAges, List<Gender> genders, List<Integer> years) {
+	public List<LiveBirth> getLiveBirths(List<String> regions, List<String> motherAges, List<Integer> genders, List<Integer> years) {
 		Map<String, List<?>> mappings = new HashMap<String, List<?>>();
 		mappings.put("ContentsCode", ListUtility.toList("BE0101E2"));
 		mappings.put("Region", regions);
@@ -80,7 +78,7 @@ public class StatisticAPI extends AbstractAPI implements StatisticOperations {
 	}
 
 	@Override
-	public List<Population> getPopulation(List<String> regions, List<RelationshipStatus> relationshipStatuses, List<String> ages, List<Gender> genders, List<Integer> years) {
+	public List<Population> getPopulation(List<String> regions, List<String> relationshipStatuses, List<String> ages, List<Integer> genders, List<Integer> years) {
 		Map<String, List<?>> mappings = new HashMap<String, List<?>>();
 		mappings.put("ContentsCode", ListUtility.toList("BE0101N1"));
 		mappings.put("Region", regions);

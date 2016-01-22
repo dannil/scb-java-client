@@ -22,7 +22,6 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbapi.api.AbstractAPI;
-import com.github.dannil.scbapi.model.environment.Type;
 import com.github.dannil.scbapi.model.environment.landandwaterarea.Area;
 import com.github.dannil.scbapi.utility.JsonUtility;
 import com.github.dannil.scbapi.utility.ListUtility;
@@ -57,7 +56,7 @@ public class LandAndWaterAreaAPI extends AbstractAPI implements AreaOperations {
 	}
 
 	@Override
-	public List<Area> getArea(List<String> regions, List<Type> types, List<Integer> years) {
+	public List<Area> getArea(List<String> regions, List<String> types, List<Integer> years) {
 		Map<String, List<?>> mappings = new HashMap<String, List<?>>();
 		mappings.put("ContentsCode", ListUtility.toList("MI0802AA"));
 		mappings.put("Region", regions);
