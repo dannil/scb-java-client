@@ -29,8 +29,6 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 import com.github.dannil.scbapi.api.SCBAPI;
-import com.github.dannil.scbapi.model.population.Gender;
-import com.github.dannil.scbapi.model.population.RelationshipStatus;
 import com.github.dannil.scbapi.test.utility.Config;
 import com.github.dannil.scbapi.utility.ListUtility;
 
@@ -38,9 +36,9 @@ import com.github.dannil.scbapi.utility.ListUtility;
 public class StatisticAPI_GetPopulation_IntegrationTest {
 
 	private List<String> regions;
-	private List<RelationshipStatus> statuses;
+	private List<String> statuses;
 	private List<String> ages;
-	private List<Gender> genders;
+	private List<Integer> genders;
 	private List<Integer> years;
 
 	private StatisticAPI statisticsAPI;
@@ -48,22 +46,22 @@ public class StatisticAPI_GetPopulation_IntegrationTest {
 	@Parameters(name = "{index}: getPopulation({0}, {1}, {2}, {3}, {4})")
 	public static Collection<Object[]> data() {
 		List<String> regions;
-		List<RelationshipStatus> statuses;
+		List<String> statuses;
 		List<String> ages;
-		List<Gender> genders;
+		List<Integer> genders;
 		List<Integer> years;
 
 		regions = new ArrayList<String>();
 		regions.add("1263");
 		regions.add(null);
 
-		statuses = Arrays.asList(RelationshipStatus.values());
+		statuses = Arrays.asList(new String[] { "OG", "G", "SK", "ÄNKL" });
 
 		ages = new ArrayList<String>();
 		ages.add("25");
 		ages.add(null);
 
-		genders = Arrays.asList(Gender.values());
+		genders = Arrays.asList(new Integer[] { 1, 2 });
 
 		years = new ArrayList<Integer>();
 		years.add(2002);
@@ -73,9 +71,9 @@ public class StatisticAPI_GetPopulation_IntegrationTest {
 
 		// Test with real data
 		for (String region : regions) {
-			for (RelationshipStatus status : statuses) {
+			for (String status : statuses) {
 				for (String age : ages) {
-					for (Gender gender : genders) {
+					for (Integer gender : genders) {
 						for (Integer year : years) {
 							parameters.add(new Object[] { ListUtility.toList(region), ListUtility.toList(status), ListUtility.toList(age), ListUtility.toList(gender), ListUtility.toList(year) });
 						}
@@ -97,8 +95,7 @@ public class StatisticAPI_GetPopulation_IntegrationTest {
 		this.statisticsAPI = new SCBAPI().population().statistic();
 	}
 
-	public StatisticAPI_GetPopulation_IntegrationTest(List<String> regions, List<RelationshipStatus> statuses, List<String> ages, List<Gender> genders, List<Integer> years)
-			throws InterruptedException {
+	public StatisticAPI_GetPopulation_IntegrationTest(List<String> regions, List<String> statuses, List<String> ages, List<Integer> genders, List<Integer> years) throws InterruptedException {
 		this();
 
 		this.regions = regions;

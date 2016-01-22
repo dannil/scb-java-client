@@ -29,7 +29,6 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 import com.github.dannil.scbapi.api.SCBAPI;
-import com.github.dannil.scbapi.model.environment.Type;
 import com.github.dannil.scbapi.test.utility.Config;
 import com.github.dannil.scbapi.utility.ListUtility;
 
@@ -37,7 +36,7 @@ import com.github.dannil.scbapi.utility.ListUtility;
 public class LandAndWaterAreaAPI_GetArea_IntegrationTest {
 
 	private List<String> regions;
-	private List<Type> types;
+	private List<String> types;
 	private List<Integer> years;
 
 	private LandAndWaterAreaAPI landAndWaterAreaAPI;
@@ -45,14 +44,14 @@ public class LandAndWaterAreaAPI_GetArea_IntegrationTest {
 	@Parameters(name = "{index}: getArea({0}, {1}, {2})")
 	public static Collection<Object[]> data() {
 		List<String> regions;
-		List<Type> types;
+		List<String> types;
 		List<Integer> years;
 
 		regions = new ArrayList<String>();
 		regions.add("1263");
 		regions.add(null);
 
-		types = Arrays.asList(Type.values());
+		types = Arrays.asList(new String[] { "01", "02", "03", "04" });
 
 		years = new ArrayList<Integer>();
 		years.add(2012);
@@ -62,7 +61,7 @@ public class LandAndWaterAreaAPI_GetArea_IntegrationTest {
 
 		// Test with real data
 		for (String region : regions) {
-			for (Type type : types) {
+			for (String type : types) {
 				for (Integer year : years) {
 					parameters.add(new Object[] { ListUtility.toList(region), ListUtility.toList(type), ListUtility.toList(year) });
 				}
@@ -82,7 +81,7 @@ public class LandAndWaterAreaAPI_GetArea_IntegrationTest {
 		this.landAndWaterAreaAPI = new SCBAPI().environment().landAndWaterArea();
 	}
 
-	public LandAndWaterAreaAPI_GetArea_IntegrationTest(List<String> regions, List<Type> types, List<Integer> years) throws InterruptedException {
+	public LandAndWaterAreaAPI_GetArea_IntegrationTest(List<String> regions, List<String> types, List<Integer> years) throws InterruptedException {
 		this();
 
 		this.regions = regions;

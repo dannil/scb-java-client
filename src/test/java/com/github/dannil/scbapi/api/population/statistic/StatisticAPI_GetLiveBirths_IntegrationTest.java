@@ -29,7 +29,6 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 import com.github.dannil.scbapi.api.SCBAPI;
-import com.github.dannil.scbapi.model.population.Gender;
 import com.github.dannil.scbapi.test.utility.Config;
 import com.github.dannil.scbapi.utility.ListUtility;
 
@@ -38,7 +37,7 @@ public class StatisticAPI_GetLiveBirths_IntegrationTest {
 
 	private List<String> regions;
 	private List<String> motherAges;
-	private List<Gender> genders;
+	private List<Integer> genders;
 	private List<Integer> years;
 
 	private StatisticAPI statisticsAPI;
@@ -47,7 +46,7 @@ public class StatisticAPI_GetLiveBirths_IntegrationTest {
 	public static Collection<Object[]> data() {
 		List<String> regions;
 		List<String> motherAges;
-		List<Gender> genders;
+		List<Integer> genders;
 		List<Integer> years;
 
 		regions = new ArrayList<String>();
@@ -58,7 +57,7 @@ public class StatisticAPI_GetLiveBirths_IntegrationTest {
 		motherAges.add("tot");
 		motherAges.add(null);
 
-		genders = Arrays.asList(Gender.values());
+		genders = Arrays.asList(new Integer[] { 1, 2 });
 
 		years = new ArrayList<Integer>();
 		years.add(1996);
@@ -69,7 +68,7 @@ public class StatisticAPI_GetLiveBirths_IntegrationTest {
 		// Test with real data
 		for (String region : regions) {
 			for (String motherAge : motherAges) {
-				for (Gender gender : genders) {
+				for (Integer gender : genders) {
 					for (Integer year : years) {
 						parameters.add(new Object[] { ListUtility.toList(region), ListUtility.toList(motherAge), ListUtility.toList(gender), ListUtility.toList(year) });
 					}
@@ -90,7 +89,7 @@ public class StatisticAPI_GetLiveBirths_IntegrationTest {
 		this.statisticsAPI = new SCBAPI().population().statistic();
 	}
 
-	public StatisticAPI_GetLiveBirths_IntegrationTest(List<String> regions, List<String> motherAges, List<Gender> genders, List<Integer> years) throws InterruptedException {
+	public StatisticAPI_GetLiveBirths_IntegrationTest(List<String> regions, List<String> motherAges, List<Integer> genders, List<Integer> years) throws InterruptedException {
 		this();
 
 		this.regions = regions;

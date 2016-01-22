@@ -25,8 +25,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import com.github.dannil.scbapi.model.population.Gender;
-
 @RunWith(JUnit4.class)
 public class LiveBirth_UnitTest {
 
@@ -59,9 +57,9 @@ public class LiveBirth_UnitTest {
 	public void setGender() {
 		LiveBirth liveBirth = new LiveBirth();
 
-		liveBirth.setGender(Gender.MAN);
+		liveBirth.setGender(1);
 
-		assertEquals(Gender.MAN, liveBirth.getGender());
+		assertEquals(Integer.valueOf(1), liveBirth.getGender());
 	}
 
 	@Test
@@ -104,8 +102,8 @@ public class LiveBirth_UnitTest {
 
 	@Test
 	public void equalsItselfWithValues() {
-		LiveBirth liveBirth = new LiveBirth("1263", "tot", Gender.MAN, 2002, 12345L);
-		LiveBirth liveBirth2 = new LiveBirth("1263", "tot", Gender.MAN, 2002, 12345L);
+		LiveBirth liveBirth = new LiveBirth("1263", "tot", 1, 2002, 12345L);
+		LiveBirth liveBirth2 = new LiveBirth("1263", "tot", 1, 2002, 12345L);
 
 		assertEquals(liveBirth, liveBirth2);
 	}
@@ -126,48 +124,48 @@ public class LiveBirth_UnitTest {
 
 	@Test
 	public void notEqualsRegion() {
-		LiveBirth liveBirth = new LiveBirth("1263", "21", Gender.MAN, 2002, 12345L);
-		LiveBirth liveBirth2 = new LiveBirth("1267", "21", Gender.MAN, 2002, 12345L);
+		LiveBirth liveBirth = new LiveBirth("1263", "21", 1, 2002, 12345L);
+		LiveBirth liveBirth2 = new LiveBirth("1267", "21", 1, 2002, 12345L);
 
 		assertNotEquals(liveBirth, liveBirth2);
 	}
 
 	@Test
 	public void notEqualsMotherAge() {
-		LiveBirth liveBirth = new LiveBirth("1263", "21", Gender.MAN, 2002, 12345L);
-		LiveBirth liveBirth2 = new LiveBirth("1263", "tot", Gender.MAN, 2002, 12345L);
+		LiveBirth liveBirth = new LiveBirth("1263", "21", 1, 2002, 12345L);
+		LiveBirth liveBirth2 = new LiveBirth("1263", "tot", 1, 2002, 12345L);
 
 		assertNotEquals(liveBirth, liveBirth2);
 	}
 
 	@Test
 	public void notEqualsGender() {
-		LiveBirth liveBirth = new LiveBirth("1263", "tot", Gender.MAN, 2002, 12345L);
-		LiveBirth liveBirth2 = new LiveBirth("1263", "tot", Gender.WOMAN, 2002, 12345L);
+		LiveBirth liveBirth = new LiveBirth("1263", "tot", 1, 2002, 12345L);
+		LiveBirth liveBirth2 = new LiveBirth("1263", "tot", 2, 2002, 12345L);
 
 		assertNotEquals(liveBirth, liveBirth2);
 	}
 
 	@Test
 	public void notEqualsYear() {
-		LiveBirth liveBirth = new LiveBirth("1263", "21", Gender.MAN, 1996, 12345L);
-		LiveBirth liveBirth2 = new LiveBirth("1263", "21", Gender.MAN, 2002, 12345L);
+		LiveBirth liveBirth = new LiveBirth("1263", "21", 1, 1996, 12345L);
+		LiveBirth liveBirth2 = new LiveBirth("1263", "21", 1, 2002, 12345L);
 
 		assertNotEquals(liveBirth, liveBirth2);
 	}
 
 	@Test
 	public void notEqualsAmount() {
-		LiveBirth liveBirth = new LiveBirth("1263", "tot", Gender.MAN, 2002, 12345L);
-		LiveBirth liveBirth2 = new LiveBirth("1263", "tot", Gender.MAN, 2002, 54321L);
+		LiveBirth liveBirth = new LiveBirth("1263", "tot", 1, 2002, 12345L);
+		LiveBirth liveBirth2 = new LiveBirth("1263", "tot", 1, 2002, 54321L);
 
 		assertNotEquals(liveBirth, liveBirth2);
 	}
 
 	@Test
 	public void equalsHashCode() {
-		LiveBirth liveBirth = new LiveBirth("1263", "tot", Gender.MAN, 2002, 12345L);
-		LiveBirth liveBirth2 = new LiveBirth("1263", "tot", Gender.MAN, 2002, 12345L);
+		LiveBirth liveBirth = new LiveBirth("1263", "tot", 1, 2002, 12345L);
+		LiveBirth liveBirth2 = new LiveBirth("1263", "tot", 1, 2002, 12345L);
 
 		assertEquals(liveBirth.hashCode(), liveBirth2.hashCode());
 	}
@@ -189,7 +187,7 @@ public class LiveBirth_UnitTest {
 
 	@Test
 	public void convertToString() {
-		LiveBirth liveBirth = new LiveBirth("1263", "tot", Gender.MAN, 2002, 12345L);
+		LiveBirth liveBirth = new LiveBirth("1263", "tot", 1, 2002, 12345L);
 
 		assertTrue(liveBirth.toString().contains("1263"));
 		assertTrue(liveBirth.toString().contains("tot"));

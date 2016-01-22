@@ -24,9 +24,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import com.github.dannil.scbapi.model.population.Gender;
-import com.github.dannil.scbapi.model.population.RelationshipStatus;
-
 @RunWith(JUnit4.class)
 public class Population_UnitTest {
 
@@ -59,7 +56,7 @@ public class Population_UnitTest {
 	public void setRelationshipStatus() {
 		Population population = new Population();
 
-		population.setRelationshipStatus(RelationshipStatus.MARRIED);
+		population.setRelationshipStatus("G");
 
 		assertNotNull(population.getRelationshipStatus());
 	}
@@ -68,9 +65,9 @@ public class Population_UnitTest {
 	public void getRelationshipStatus() {
 		Population population = new Population();
 
-		population.setRelationshipStatus(RelationshipStatus.MARRIED);
+		population.setRelationshipStatus("G");
 
-		assertEquals(RelationshipStatus.MARRIED, population.getRelationshipStatus());
+		assertEquals("G", population.getRelationshipStatus());
 	}
 
 	@Test
@@ -95,7 +92,7 @@ public class Population_UnitTest {
 	public void setGender() {
 		Population population = new Population();
 
-		population.setGender(Gender.MAN);
+		population.setGender(1);
 
 		assertNotNull(population.getGender());
 	}
@@ -104,9 +101,9 @@ public class Population_UnitTest {
 	public void getGender() {
 		Population population = new Population();
 
-		population.setGender(Gender.MAN);
+		population.setGender(1);
 
-		assertEquals(Gender.MAN, population.getGender());
+		assertEquals(Integer.valueOf(1), population.getGender());
 	}
 
 	@Test
@@ -181,17 +178,17 @@ public class Population_UnitTest {
 
 	@Test
 	public void equalsItselfWithValues() {
-		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
-		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		Population population = new Population("1267", "G", "20", 1, 2011, 12345L);
+		Population population2 = new Population("1267", "G", "20", 1, 2011, 12345L);
 
 		assertEquals(population, population2);
 	}
 
 	@Test
 	public void notEqualsOnRegion() {
-		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		Population population = new Population("1267", "G", "20", 1, 2011, 12345L);
 
-		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		Population population2 = new Population("1267", "G", "20", 1, 2011, 12345L);
 		population2.setRegion("1452");
 
 		assertNotEquals(population, population2);
@@ -199,19 +196,19 @@ public class Population_UnitTest {
 
 	@Test
 	public void notEqualsOnFirstNullRegion() {
-		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		Population population = new Population("1267", "G", "20", 1, 2011, 12345L);
 		population.setRegion(null);
 
-		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		Population population2 = new Population("1267", "G", "20", 1, 2011, 12345L);
 
 		assertNotEquals(population, population2);
 	}
 
 	@Test
 	public void notEqualsOnSecondNullRegion() {
-		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		Population population = new Population("1267", "G", "20", 1, 2011, 12345L);
 
-		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		Population population2 = new Population("1267", "G", "20", 1, 2011, 12345L);
 		population2.setRegion(null);
 
 		assertNotEquals(population, population2);
@@ -219,29 +216,29 @@ public class Population_UnitTest {
 
 	@Test
 	public void notEqualsOnRelationshipStatus() {
-		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		Population population = new Population("1267", "G", "20", 1, 2011, 12345L);
 
-		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
-		population2.setRelationshipStatus(RelationshipStatus.DIVORCED);
+		Population population2 = new Population("1267", "G", "20", 1, 2011, 12345L);
+		population2.setRelationshipStatus("SK");
 
 		assertNotEquals(population, population2);
 	}
 
 	@Test
 	public void notEqualsOnFirstNullRelationshipStatus() {
-		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		Population population = new Population("1267", "G", "20", 1, 2011, 12345L);
 		population.setRelationshipStatus(null);
 
-		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		Population population2 = new Population("1267", "G", "20", 1, 2011, 12345L);
 
 		assertNotEquals(population, population2);
 	}
 
 	@Test
 	public void notEqualsOnSecondNullRelationshipStatus() {
-		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		Population population = new Population("1267", "G", "20", 1, 2011, 12345L);
 
-		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		Population population2 = new Population("1267", "G", "20", 1, 2011, 12345L);
 		population2.setRelationshipStatus(null);
 
 		assertNotEquals(population, population2);
@@ -249,9 +246,9 @@ public class Population_UnitTest {
 
 	@Test
 	public void notEqualsOnAge() {
-		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		Population population = new Population("1267", "G", "20", 1, 2011, 12345L);
 
-		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		Population population2 = new Population("1267", "G", "20", 1, 2011, 12345L);
 		population2.setAge("56");
 
 		assertNotEquals(population, population2);
@@ -259,19 +256,19 @@ public class Population_UnitTest {
 
 	@Test
 	public void notEqualsOnFirstNullAge() {
-		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		Population population = new Population("1267", "G", "20", 1, 2011, 12345L);
 		population.setAge(null);
 
-		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		Population population2 = new Population("1267", "G", "20", 1, 2011, 12345L);
 
 		assertNotEquals(population, population2);
 	}
 
 	@Test
 	public void notEqualsOnSecondNullAge() {
-		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		Population population = new Population("1267", "G", "20", 1, 2011, 12345L);
 
-		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		Population population2 = new Population("1267", "G", "20", 1, 2011, 12345L);
 		population2.setAge(null);
 
 		assertNotEquals(population, population2);
@@ -279,29 +276,29 @@ public class Population_UnitTest {
 
 	@Test
 	public void notEqualsOnGender() {
-		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		Population population = new Population("1267", "G", "20", 1, 2011, 12345L);
 
-		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
-		population2.setGender(Gender.WOMAN);
+		Population population2 = new Population("1267", "G", "20", 1, 2011, 12345L);
+		population2.setGender(2);
 
 		assertNotEquals(population, population2);
 	}
 
 	@Test
 	public void notEqualsOnFirstNullGender() {
-		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		Population population = new Population("1267", "G", "20", 1, 2011, 12345L);
 		population.setGender(null);
 
-		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		Population population2 = new Population("1267", "G", "20", 1, 2011, 12345L);
 
 		assertNotEquals(population, population2);
 	}
 
 	@Test
 	public void notEqualsOnSecondNullGender() {
-		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		Population population = new Population("1267", "G", "20", 1, 2011, 12345L);
 
-		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		Population population2 = new Population("1267", "G", "20", 1, 2011, 12345L);
 		population2.setGender(null);
 
 		assertNotEquals(population, population2);
@@ -309,9 +306,9 @@ public class Population_UnitTest {
 
 	@Test
 	public void notEqualsOnYear() {
-		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		Population population = new Population("1267", "G", "20", 1, 2011, 12345L);
 
-		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		Population population2 = new Population("1267", "G", "20", 1, 2011, 12345L);
 		population2.setYear(1999);
 
 		assertNotEquals(population, population2);
@@ -319,19 +316,19 @@ public class Population_UnitTest {
 
 	@Test
 	public void notEqualsOnFirstNullYear() {
-		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		Population population = new Population("1267", "G", "20", 1, 2011, 12345L);
 		population.setYear(null);
 
-		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		Population population2 = new Population("1267", "G", "20", 1, 2011, 12345L);
 
 		assertNotEquals(population, population2);
 	}
 
 	@Test
 	public void notEqualsOnSecondNullYear() {
-		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		Population population = new Population("1267", "G", "20", 1, 2011, 12345L);
 
-		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		Population population2 = new Population("1267", "G", "20", 1, 2011, 12345L);
 		population2.setYear(null);
 
 		assertNotEquals(population, population2);
@@ -339,9 +336,9 @@ public class Population_UnitTest {
 
 	@Test
 	public void notEqualsOnAmount() {
-		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		Population population = new Population("1267", "G", "20", 1, 2011, 12345L);
 
-		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		Population population2 = new Population("1267", "G", "20", 1, 2011, 12345L);
 		population2.setAmount(54321L);
 
 		assertNotEquals(population, population2);
@@ -349,19 +346,19 @@ public class Population_UnitTest {
 
 	@Test
 	public void notEqualsOnFirstNullAmount() {
-		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		Population population = new Population("1267", "G", "20", 1, 2011, 12345L);
 		population.setAmount(null);
 
-		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		Population population2 = new Population("1267", "G", "20", 1, 2011, 12345L);
 
 		assertNotEquals(population, population2);
 	}
 
 	@Test
 	public void notEqualsOnSecondNullAmount() {
-		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		Population population = new Population("1267", "G", "20", 1, 2011, 12345L);
 
-		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		Population population2 = new Population("1267", "G", "20", 1, 2011, 12345L);
 		population2.setAmount(null);
 
 		assertNotEquals(population, population2);
@@ -369,8 +366,8 @@ public class Population_UnitTest {
 
 	@Test
 	public void equalsHashCode() {
-		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
-		Population population2 = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		Population population = new Population("1267", "G", "20", 1, 2011, 12345L);
+		Population population2 = new Population("1267", "G", "20", 1, 2011, 12345L);
 
 		assertEquals(population.hashCode(), population2.hashCode());
 	}
@@ -392,7 +389,7 @@ public class Population_UnitTest {
 
 	@Test
 	public void convertToString() {
-		Population population = new Population("1267", RelationshipStatus.MARRIED, "20", Gender.MAN, 2011, 12345L);
+		Population population = new Population("1267", "G", "20", 1, 2011, 12345L);
 
 		assertNotNull(population.toString());
 	}

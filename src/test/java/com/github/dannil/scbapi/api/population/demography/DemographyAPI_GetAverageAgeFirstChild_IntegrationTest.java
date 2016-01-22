@@ -30,7 +30,6 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 import com.github.dannil.scbapi.api.SCBAPI;
-import com.github.dannil.scbapi.model.population.Gender;
 import com.github.dannil.scbapi.test.utility.Config;
 import com.github.dannil.scbapi.utility.ListUtility;
 
@@ -38,7 +37,7 @@ import com.github.dannil.scbapi.utility.ListUtility;
 public class DemographyAPI_GetAverageAgeFirstChild_IntegrationTest {
 
 	private List<String> regions;
-	private List<Gender> genders;
+	private List<Integer> genders;
 	private List<Integer> years;
 
 	private DemographyAPI demographyAPI;
@@ -46,14 +45,14 @@ public class DemographyAPI_GetAverageAgeFirstChild_IntegrationTest {
 	@Parameters(name = "{index}: getAverageAgeFirstChild({0}, {1}, {2})")
 	public static Collection<Object[]> data() {
 		List<String> regions;
-		List<Gender> genders;
+		List<Integer> genders;
 		List<Integer> years;
 
 		regions = new ArrayList<String>();
 		regions.add("1263");
 		regions.add(null);
 
-		genders = Arrays.asList(Gender.values());
+		genders = Arrays.asList(new Integer[] { 1, 2 });
 
 		years = new ArrayList<Integer>();
 		years.add(2002);
@@ -63,7 +62,7 @@ public class DemographyAPI_GetAverageAgeFirstChild_IntegrationTest {
 
 		// Test with real data
 		for (String region : regions) {
-			for (Gender gender : genders) {
+			for (Integer gender : genders) {
 				for (Integer year : years) {
 					parameters.add(new Object[] { ListUtility.toList(region), ListUtility.toList(gender), ListUtility.toList(year) });
 				}
@@ -87,7 +86,7 @@ public class DemographyAPI_GetAverageAgeFirstChild_IntegrationTest {
 		this.demographyAPI.setLocale(locale);
 	}
 
-	public DemographyAPI_GetAverageAgeFirstChild_IntegrationTest(List<String> regions, List<Gender> genders, List<Integer> years) throws InterruptedException {
+	public DemographyAPI_GetAverageAgeFirstChild_IntegrationTest(List<String> regions, List<Integer> genders, List<Integer> years) throws InterruptedException {
 		this();
 
 		this.regions = regions;

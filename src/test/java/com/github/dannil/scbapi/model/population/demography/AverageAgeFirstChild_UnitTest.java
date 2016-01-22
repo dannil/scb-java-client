@@ -7,8 +7,6 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import com.github.dannil.scbapi.model.population.Gender;
-
 public class AverageAgeFirstChild_UnitTest {
 
 	@Test
@@ -31,9 +29,9 @@ public class AverageAgeFirstChild_UnitTest {
 	public void setGender() {
 		AverageAgeFirstChild avg = new AverageAgeFirstChild();
 
-		avg.setGender(Gender.MAN);
+		avg.setGender(1);
 
-		assertEquals(Gender.MAN, avg.getGender());
+		assertEquals(Integer.valueOf(1), avg.getGender());
 	}
 
 	@Test
@@ -76,8 +74,8 @@ public class AverageAgeFirstChild_UnitTest {
 
 	@Test
 	public void equalsItselfWithValues() {
-		AverageAgeFirstChild avg = new AverageAgeFirstChild("1263", Gender.WOMAN, 1996, 34.56);
-		AverageAgeFirstChild avg2 = new AverageAgeFirstChild("1263", Gender.WOMAN, 1996, 34.56);
+		AverageAgeFirstChild avg = new AverageAgeFirstChild("1263", 2, 1996, 34.56);
+		AverageAgeFirstChild avg2 = new AverageAgeFirstChild("1263", 2, 1996, 34.56);
 
 		assertEquals(avg, avg2);
 	}
@@ -98,40 +96,40 @@ public class AverageAgeFirstChild_UnitTest {
 
 	@Test
 	public void notEqualsRegion() {
-		AverageAgeFirstChild avg = new AverageAgeFirstChild("1263", Gender.WOMAN, 1996, 34.56);
-		AverageAgeFirstChild avg2 = new AverageAgeFirstChild("1267", Gender.WOMAN, 1996, 34.56);
+		AverageAgeFirstChild avg = new AverageAgeFirstChild("1263", 2, 1996, 34.56);
+		AverageAgeFirstChild avg2 = new AverageAgeFirstChild("1267", 2, 1996, 34.56);
 
 		assertNotEquals(avg, avg2);
 	}
 
 	@Test
 	public void notEqualsGender() {
-		AverageAgeFirstChild avg = new AverageAgeFirstChild("1263", Gender.WOMAN, 1996, 34.56);
-		AverageAgeFirstChild avg2 = new AverageAgeFirstChild("1263", Gender.MAN, 1996, 34.56);
+		AverageAgeFirstChild avg = new AverageAgeFirstChild("1263", 2, 1996, 34.56);
+		AverageAgeFirstChild avg2 = new AverageAgeFirstChild("1263", 1, 1996, 34.56);
 
 		assertNotEquals(avg, avg2);
 	}
 
 	@Test
 	public void notEqualsYear() {
-		AverageAgeFirstChild avg = new AverageAgeFirstChild("1263", Gender.WOMAN, 1996, 34.56);
-		AverageAgeFirstChild avg2 = new AverageAgeFirstChild("1263", Gender.WOMAN, 2002, 34.56);
+		AverageAgeFirstChild avg = new AverageAgeFirstChild("1263", 2, 1996, 34.56);
+		AverageAgeFirstChild avg2 = new AverageAgeFirstChild("1263", 2, 2002, 34.56);
 
 		assertNotEquals(avg, avg2);
 	}
 
 	@Test
 	public void notEqualsAverageAge() {
-		AverageAgeFirstChild avg = new AverageAgeFirstChild("1263", Gender.WOMAN, 1996, 34.56);
-		AverageAgeFirstChild avg2 = new AverageAgeFirstChild("1263", Gender.WOMAN, 1996, 65.43);
+		AverageAgeFirstChild avg = new AverageAgeFirstChild("1263", 2, 1996, 34.56);
+		AverageAgeFirstChild avg2 = new AverageAgeFirstChild("1263", 2, 1996, 65.43);
 
 		assertNotEquals(avg, avg2);
 	}
 
 	@Test
 	public void equalsHashCode() {
-		AverageAgeFirstChild avg = new AverageAgeFirstChild("1263", Gender.WOMAN, 1996, 34.56);
-		AverageAgeFirstChild avg2 = new AverageAgeFirstChild("1263", Gender.WOMAN, 1996, 34.56);
+		AverageAgeFirstChild avg = new AverageAgeFirstChild("1263", 2, 1996, 34.56);
+		AverageAgeFirstChild avg2 = new AverageAgeFirstChild("1263", 2, 1996, 34.56);
 
 		assertEquals(avg.hashCode(), avg2.hashCode());
 	}
@@ -153,7 +151,7 @@ public class AverageAgeFirstChild_UnitTest {
 
 	@Test
 	public void convertToString() {
-		AverageAgeFirstChild avg = new AverageAgeFirstChild("1263", Gender.WOMAN, 1996, 34.56);
+		AverageAgeFirstChild avg = new AverageAgeFirstChild("1263", 2, 1996, 34.56);
 
 		assertTrue(avg.toString().contains("1263"));
 		assertTrue(avg.toString().contains("2"));
