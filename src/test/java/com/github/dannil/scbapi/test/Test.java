@@ -7,7 +7,6 @@ import java.util.Locale;
 import com.github.dannil.scbapi.api.SCBAPI;
 import com.github.dannil.scbapi.api.environment.landandwaterarea.LandAndWaterAreaAPI;
 import com.github.dannil.scbapi.api.population.statistic.StatisticAPI;
-import com.github.dannil.scbapi.model.environment.Type;
 import com.github.dannil.scbapi.model.environment.landandwaterarea.Area;
 import com.github.dannil.scbapi.model.population.demography.AverageAgeFirstChild;
 import com.github.dannil.scbapi.model.population.statistic.LiveBirth;
@@ -25,8 +24,8 @@ public class Test {
 		// regions.add("00");
 		regions.add("1267");
 
-		List<Type> types = new ArrayList<Type>();
-		types.add(Type.INLANDWATEREXCLUDINGTHEFOURLARGELAKES);
+		List<String> types = new ArrayList<String>();
+		types.add("01");
 
 		List<Integer> years = new ArrayList<Integer>();
 		years.add(2012);

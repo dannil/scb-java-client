@@ -1,6 +1,7 @@
 package com.github.dannil.scbapi.test.junk;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Locale;
@@ -8,9 +9,34 @@ import java.util.Map;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.dannil.scbapi.api.AbstractAPI;
+import com.github.dannil.scbapi.utility.JsonUtility;
+import com.github.dannil.scbapi.utility.ListUtility;
 import com.github.dannil.scbapi.utility.RequestPoster;
 
 public class Junk {
+
+	public static void main(String[] args) {
+
+		class DummyAPI extends AbstractAPI {
+
+			public void exec() {
+				Map<String, List<?>> mappings = new HashMap<String, List<?>>();
+				mappings.put("ContentsCode", ListUtility.toList("000000C5"));
+				mappings.put("Sektor", ListUtility.toList("2"));
+				mappings.put("Yrke2012", ListUtility.toList("0210"));
+				mappings.put("Kon", ListUtility.toList("1+2"));
+				mappings.put("Tid", ListUtility.toList("2014"));
+
+				String response = super.post("AM/AM0110/AM0110A/LoneSpridSektorYrk4A", super.queryBuilder.build(mappings));
+				System.out.println(JsonUtility.getNode(response));
+			}
+
+		}
+
+		DummyAPI api = new DummyAPI();
+		api.exec();
+	}
 
 	public Map<String, String> getRegionMappings() throws IOException {
 		String response = RequestPoster.doGet("http://api.scb.se/OV0104/v1/doris/" + new Locale("sv", "SE").getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy");
