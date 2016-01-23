@@ -23,16 +23,16 @@ import com.github.dannil.scbapi.model.AbstractRegionAndYearModel;
 import com.github.dannil.scbapi.utility.JsonUtility;
 import com.github.dannil.scbapi.utility.RequestPoster;
 
-public class AverageAgeFirstChild extends AbstractRegionAndYearModel<String, Integer> {
+public class MeanAgeFirstChild extends AbstractRegionAndYearModel<String, Integer> {
 
 	private Integer gender;
 	private Double averageAge;
 
-	public AverageAgeFirstChild() {
+	public MeanAgeFirstChild() {
 		super();
 	}
 
-	public AverageAgeFirstChild(String region, Integer gender, Integer year, Double averageAge) {
+	public MeanAgeFirstChild(String region, Integer gender, Integer year, Double averageAge) {
 		super(region, year);
 		this.gender = gender;
 		this.averageAge = averageAge;
@@ -67,11 +67,11 @@ public class AverageAgeFirstChild extends AbstractRegionAndYearModel<String, Int
 		if (obj == null) {
 			return false;
 		}
-		if (!(obj instanceof AverageAgeFirstChild)) {
+		if (!(obj instanceof MeanAgeFirstChild)) {
 			return false;
 		}
 
-		AverageAgeFirstChild other = (AverageAgeFirstChild) obj;
+		MeanAgeFirstChild other = (MeanAgeFirstChild) obj;
 		return super.equals(other) && Objects.equals(this.gender, other.gender) && Objects.equals(this.averageAge, other.averageAge);
 	}
 
@@ -79,7 +79,7 @@ public class AverageAgeFirstChild extends AbstractRegionAndYearModel<String, Int
 	public String toString() {
 		StringBuilder builder = new StringBuilder(128);
 
-		builder.append("AverageAgeFirstChild [gender=");
+		builder.append(MeanAgeFirstChild.class.getSimpleName() + " [gender=");
 		builder.append(this.gender);
 		builder.append(", averageAge=");
 		builder.append(this.averageAge);

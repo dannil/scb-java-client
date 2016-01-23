@@ -37,7 +37,7 @@ public class DemographyAPI_IntegrationTest {
 
 	@Test
 	public void getArea() {
-		assertNotEquals(0, this.demographyApi.getAverageAgeFirstChild().size());
+		assertNotEquals(0, this.demographyApi.getMeanAgeFirstChild().size());
 	}
 
 }

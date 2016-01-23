@@ -18,12 +18,16 @@ package com.github.dannil.scbapi.api.population.demography;
 
 import java.util.List;
 
-import com.github.dannil.scbapi.model.population.demography.AverageAgeFirstChild;
+import com.github.dannil.scbapi.model.population.demography.MeanAgeFirstChild;
 
 public interface DemographyOperations {
 
-	List<AverageAgeFirstChild> getAverageAgeFirstChild();
+	List<MeanAgeFirstChild> getMeanAgeFirstChild();
 
-	List<AverageAgeFirstChild> getAverageAgeFirstChild(List<String> regions, List<Integer> genders, List<Integer> years);
+	List<MeanAgeFirstChild> getMeanAgeFirstChild(List<String> regions, List<Integer> genders, List<Integer> years);
+
+	List<Object> getFertilityRate();
+
+	List<Object> getFertilityRate(List<String> regions, List<Integer> genders, List<Integer> years);
 
 }

@@ -25,7 +25,7 @@ import java.util.Map;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.dannil.scbapi.model.environment.landandwaterarea.Area;
-import com.github.dannil.scbapi.model.population.demography.AverageAgeFirstChild;
+import com.github.dannil.scbapi.model.population.demography.MeanAgeFirstChild;
 import com.github.dannil.scbapi.model.population.statistic.LiveBirth;
 import com.github.dannil.scbapi.model.population.statistic.Population;
 
@@ -97,13 +97,13 @@ public class JsonUtility {
 		return areas;
 	}
 
-	public static List<AverageAgeFirstChild> parseAverageAgeFirstChild(JsonNode node) {
-		List<Map<String, String>> contents = genericParse(node, AverageAgeFirstChild.getCodes());
+	public static List<MeanAgeFirstChild> parseAverageAgeFirstChild(JsonNode node) {
+		List<Map<String, String>> contents = genericParse(node, MeanAgeFirstChild.getCodes());
 
-		List<AverageAgeFirstChild> averageAgeFirstChildren = new ArrayList<AverageAgeFirstChild>();
+		List<MeanAgeFirstChild> averageAgeFirstChildren = new ArrayList<MeanAgeFirstChild>();
 		for (Map<String, String> map : contents) {
 
-			AverageAgeFirstChild averageAgeFirstChild = new AverageAgeFirstChild();
+			MeanAgeFirstChild averageAgeFirstChild = new MeanAgeFirstChild();
 			averageAgeFirstChild.setRegion(map.get("Region"));
 			averageAgeFirstChild.setYear(ParseUtility.parseInteger(map.get("Tid")));
 			averageAgeFirstChild.setGender(ParseUtility.parseInteger(map.get("Kon")));
