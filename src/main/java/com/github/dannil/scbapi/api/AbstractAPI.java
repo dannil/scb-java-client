@@ -26,6 +26,7 @@ import java.util.logging.Logger;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.dannil.scbapi.utility.JsonUtility;
+import com.github.dannil.scbapi.utility.Localization;
 import com.github.dannil.scbapi.utility.QueryBuilder;
 import com.github.dannil.scbapi.utility.RequestPoster;
 
@@ -46,6 +47,8 @@ public class AbstractAPI {
 	protected AbstractAPI(Locale locale) {
 		this();
 		this.locale = locale;
+
+		Localization.setLanguage(locale);
 	}
 
 	public Locale getLocale() {
@@ -54,6 +57,8 @@ public class AbstractAPI {
 
 	public void setLocale(Locale locale) {
 		this.locale = locale;
+
+		Localization.setLanguage(locale);
 	}
 
 	protected String getBaseUrl() {
@@ -143,6 +148,11 @@ public class AbstractAPI {
 		for (int j = 0; j < jsonRegions.size(); j++) {
 			regions.add(jsonRegions.get(j).asText());
 		}
+
+		if (regions.isEmpty()) {
+			throw new UnsupportedOperationException("Regions is not supported for URL " + url);
+		}
+
 		return regions;
 	}
 
@@ -160,6 +170,11 @@ public class AbstractAPI {
 		for (int j = 0; j < jsonYears.size(); j++) {
 			years.add(jsonYears.get(j).asText());
 		}
+
+		if (years.isEmpty()) {
+			throw new UnsupportedOperationException("Years is not supported for URL " + url);
+		}
+
 		return years;
 	}
 
