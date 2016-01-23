@@ -134,7 +134,7 @@ public class AbstractAPI {
 		return builder.toString();
 	}
 
-	protected List<String> getRegions(String url) {
+	public List<String> getRegions(String url) {
 		String content = get(url);
 
 		JsonNode contentAsJsonNode = JsonUtility.getNode(content);
@@ -142,15 +142,16 @@ public class AbstractAPI {
 		List<String> codes = contentAsJsonNode.findValuesAsText("code");
 		List<JsonNode> values = contentAsJsonNode.findValues("values");
 
-		JsonNode jsonRegions = values.get(codes.indexOf("Region"));
+		int position = codes.indexOf("Region");
+		if (position < 0) {
+			throw new UnsupportedOperationException(Localization.getString("regions_is_not_supported_for_url", url));
+		}
+
+		JsonNode jsonRegions = values.get(position);
 
 		List<String> regions = new ArrayList<String>(jsonRegions.size());
 		for (int j = 0; j < jsonRegions.size(); j++) {
 			regions.add(jsonRegions.get(j).asText());
-		}
-
-		if (regions.isEmpty()) {
-			throw new UnsupportedOperationException("Regions is not supported for URL " + url);
 		}
 
 		return regions;
@@ -164,15 +165,16 @@ public class AbstractAPI {
 		List<String> codes = contentAsJsonNode.findValuesAsText("code");
 		List<JsonNode> values = contentAsJsonNode.findValues("values");
 
-		JsonNode jsonYears = values.get(codes.indexOf("Tid"));
+		int position = codes.indexOf("Tid");
+		if (position < 0) {
+			throw new UnsupportedOperationException(Localization.getString("years_is_not_supported_for_url", url));
+		}
+
+		JsonNode jsonYears = values.get(position);
 
 		List<String> years = new ArrayList<String>(jsonYears.size());
 		for (int j = 0; j < jsonYears.size(); j++) {
 			years.add(jsonYears.get(j).asText());
-		}
-
-		if (years.isEmpty()) {
-			throw new UnsupportedOperationException("Years is not supported for URL " + url);
 		}
 
 		return years;
