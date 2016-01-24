@@ -3,12 +3,13 @@ package com.github.dannil.scbapi.test;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.ResourceBundle;
 
 import com.github.dannil.scbapi.api.SCBAPI;
 import com.github.dannil.scbapi.api.environment.landandwaterarea.LandAndWaterAreaAPI;
 import com.github.dannil.scbapi.api.population.statistic.StatisticAPI;
 import com.github.dannil.scbapi.model.environment.landandwaterarea.Area;
-import com.github.dannil.scbapi.model.population.demography.AverageAgeFirstChild;
+import com.github.dannil.scbapi.model.population.demography.MeanAgeFirstChild;
 import com.github.dannil.scbapi.model.population.statistic.LiveBirth;
 import com.github.dannil.scbapi.model.population.statistic.Population;
 import com.github.dannil.scbapi.utility.ParseUtility;
@@ -16,7 +17,6 @@ import com.github.dannil.scbapi.utility.ParseUtility;
 public class Test {
 
 	public static void main(String[] args) {
-
 		Locale locale = new Locale("en");
 		SCBAPI api = new SCBAPI(locale);
 
@@ -71,10 +71,16 @@ public class Test {
 			System.out.println(a);
 		}
 
-		List<AverageAgeFirstChild> collection7 = api.population().demography().getAverageAgeFirstChild(regions, null, null);
-		for (AverageAgeFirstChild a : collection7) {
+		List<MeanAgeFirstChild> collection7 = api.population().demography().getMeanAgeFirstChild(regions, null, null);
+		for (MeanAgeFirstChild a : collection7) {
 			System.out.println(a);
 		}
 
+		// api.population().demography().getFertilityRate();
+
+		ResourceBundle bundle = ResourceBundle.getBundle("language", api.getLocale());
+		bundle.getString("hello");
+
+		System.out.println(api.getRegions("HE/HE0103/HE0103B/BefolkningAlder"));
 	}
 }
