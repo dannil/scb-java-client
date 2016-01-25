@@ -1,7 +1,10 @@
 package com.github.dannil.scbapi.utility;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 import org.junit.Test;
@@ -18,6 +21,16 @@ public class JsonUtility_UnitTest {
 
 	public JsonUtility_UnitTest() {
 		this.json = "{\"query\": [{\"code\": \"ContentsCode\",\"selection\": {\"filter\": \"item\",\"values\": [\"MI0802AA\"]}}],\"response\": {\"format\": \"json\"}}";
+	}
+
+	@Test
+	public void callPrivateConstructor() throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		Constructor<?>[] cons = JsonUtility.class.getDeclaredConstructors();
+		cons[0].setAccessible(true);
+		cons[0].newInstance();
+		cons[0].setAccessible(false);
+
+		assertFalse(cons[0].isAccessible());
 	}
 
 	@Test
