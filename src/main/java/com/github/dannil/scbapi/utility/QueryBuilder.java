@@ -75,7 +75,7 @@ public class QueryBuilder {
 				}
 			}
 			builder.append("]}}");
-			if (i != filteredMap.keySet().size() - 1) {
+			if (i != filteredMap.size() - 1) {
 				builder.append(',');
 			}
 			i++;
