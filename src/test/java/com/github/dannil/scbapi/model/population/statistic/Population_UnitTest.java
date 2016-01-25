@@ -125,21 +125,21 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public void setAmount() {
+	public void setValue() {
 		Population population = new Population();
 
-		population.setAmount(12345L);
+		population.setValue(12345L);
 
-		assertNotNull(population.getAmount());
+		assertNotNull(population.getValue());
 	}
 
 	@Test
-	public void getAmount() {
+	public void getValue() {
 		Population population = new Population();
 
-		population.setAmount(12345L);
+		population.setValue(12345L);
 
-		assertEquals(Long.valueOf(12345L), population.getAmount());
+		assertEquals(Long.valueOf(12345L), population.getValue());
 	}
 
 	@Test
@@ -335,19 +335,19 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public void notEqualsOnAmount() {
+	public void notEqualsOnValue() {
 		Population population = new Population("1267", "G", "20", 1, 2011, 12345L);
 
 		Population population2 = new Population("1267", "G", "20", 1, 2011, 12345L);
-		population2.setAmount(54321L);
+		population2.setValue(54321L);
 
 		assertNotEquals(population, population2);
 	}
 
 	@Test
-	public void notEqualsOnFirstNullAmount() {
+	public void notEqualsOnFirstNullValue() {
 		Population population = new Population("1267", "G", "20", 1, 2011, 12345L);
-		population.setAmount(null);
+		population.setValue(null);
 
 		Population population2 = new Population("1267", "G", "20", 1, 2011, 12345L);
 
@@ -355,11 +355,11 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public void notEqualsOnSecondNullAmount() {
+	public void notEqualsOnSecondNullValue() {
 		Population population = new Population("1267", "G", "20", 1, 2011, 12345L);
 
 		Population population2 = new Population("1267", "G", "20", 1, 2011, 12345L);
-		population2.setAmount(null);
+		population2.setValue(null);
 
 		assertNotEquals(population, population2);
 	}

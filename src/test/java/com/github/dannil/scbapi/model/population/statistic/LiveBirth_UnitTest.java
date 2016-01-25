@@ -72,12 +72,12 @@ public class LiveBirth_UnitTest {
 	}
 
 	@Test
-	public void setAmount() {
+	public void setValue() {
 		LiveBirth liveBirth = new LiveBirth();
 
-		liveBirth.setAmount(12345L);
+		liveBirth.setValue(12345L);
 
-		assertEquals(Long.valueOf(12345L), liveBirth.getAmount());
+		assertEquals(Long.valueOf(12345L), liveBirth.getValue());
 	}
 
 	@Test

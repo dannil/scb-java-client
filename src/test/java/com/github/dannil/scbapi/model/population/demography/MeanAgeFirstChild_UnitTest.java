@@ -44,12 +44,12 @@ public class MeanAgeFirstChild_UnitTest {
 	}
 
 	@Test
-	public void setAverageAge() {
+	public void setValue() {
 		MeanAgeFirstChild avg = new MeanAgeFirstChild();
 
-		avg.setAverageAge(34.56);
+		avg.setValue(34.56);
 
-		assertEquals(Double.valueOf(34.56), avg.getAverageAge());
+		assertEquals(Double.valueOf(34.56), avg.getValue());
 	}
 
 	@Test

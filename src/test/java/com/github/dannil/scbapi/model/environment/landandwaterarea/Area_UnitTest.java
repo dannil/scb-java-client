@@ -89,21 +89,21 @@ public class Area_UnitTest {
 	}
 
 	@Test
-	public void setSquareKm() {
+	public void setValue() {
 		Area area = new Area();
 
-		area.setSquareKm(143d);
+		area.setValue(143d);
 
-		assertNotNull(area.getSquareKm());
+		assertNotNull(area.getValue());
 	}
 
 	@Test
-	public void getSquareKm() {
+	public void getValue() {
 		Area area = new Area();
 
-		area.setSquareKm(143d);
+		area.setValue(143d);
 
-		assertEquals(Double.valueOf(143d), area.getSquareKm());
+		assertEquals(Double.valueOf(143d), area.getValue());
 	}
 
 	@Test
@@ -239,19 +239,19 @@ public class Area_UnitTest {
 	}
 
 	@Test
-	public void notEqualsOnSquareKm() {
+	public void notEqualsOnValue() {
 		Area area = new Area("1267", "01", 2009, 200d);
 
 		Area area2 = new Area("1267", "01", 2009, 200d);
-		area2.setSquareKm(300d);
+		area2.setValue(300d);
 
 		assertNotEquals(area, area2);
 	}
 
 	@Test
-	public void notEqualsOnFirstNullSquareKm() {
+	public void notEqualsOnFirstNullValue() {
 		Area area = new Area("1267", "01", 2009, 200d);
-		area.setSquareKm(null);
+		area.setValue(null);
 
 		Area area2 = new Area("1267", "01", 2009, 200d);
 
@@ -259,11 +259,11 @@ public class Area_UnitTest {
 	}
 
 	@Test
-	public void notEqualsOnSecondNullSquareKm() {
+	public void notEqualsOnSecondNullValue() {
 		Area area = new Area("1267", "01", 2009, 200d);
 
 		Area area2 = new Area("1267", "01", 2009, 200d);
-		area2.setSquareKm(null);
+		area2.setValue(null);
 
 		assertNotEquals(area, area2);
 	}
