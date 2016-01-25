@@ -35,7 +35,7 @@ public class AbstractRegionAndYearModel<R, Y, V> extends AbstractModel<V> {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(this.region, this.year);
+		return Objects.hash(super.hashCode(), this.region, this.year);
 	}
 
 	@Override
