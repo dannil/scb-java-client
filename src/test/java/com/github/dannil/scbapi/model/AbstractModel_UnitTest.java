@@ -11,7 +11,7 @@ import org.junit.runners.JUnit4;
 public class AbstractModel_UnitTest {
 
 	// Dummy class which doesn't override AbstractModel equals
-	// method. This makes us able thoroughly test the equals method.
+	// method. This enables us to thoroughly test the equals method.
 	public class DummyClass extends AbstractModel<Long> {
 
 		public DummyClass() {
