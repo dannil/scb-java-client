@@ -23,19 +23,17 @@ import com.github.dannil.scbapi.model.AbstractRegionAndYearModel;
 import com.github.dannil.scbapi.utility.JsonUtility;
 import com.github.dannil.scbapi.utility.RequestPoster;
 
-public class Area extends AbstractRegionAndYearModel<String, Integer> {
+public class Area extends AbstractRegionAndYearModel<String, Integer, Double> {
 
 	private String type;
-	private Double squareKm;
 
 	public Area() {
 		super();
 	}
 
-	public Area(String region, String type, Integer year, Double squareKm) {
-		super(region, year);
+	public Area(String region, String type, Integer year, Double value) {
+		super(region, year, value);
 		this.type = type;
-		this.squareKm = squareKm;
 	}
 
 	public String getType() {
@@ -46,17 +44,9 @@ public class Area extends AbstractRegionAndYearModel<String, Integer> {
 		this.type = type;
 	}
 
-	public Double getSquareKm() {
-		return this.squareKm;
-	}
-
-	public void setSquareKm(Double squareKm) {
-		this.squareKm = squareKm;
-	}
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(super.hashCode(), this.type, this.squareKm);
+		return Objects.hash(super.hashCode(), this.type);
 	}
 
 	@Override
@@ -72,7 +62,7 @@ public class Area extends AbstractRegionAndYearModel<String, Integer> {
 		}
 
 		Area other = (Area) obj;
-		return super.equals(obj) && Objects.equals(this.type, other.type) && Objects.equals(this.squareKm, other.squareKm);
+		return super.equals(obj) && Objects.equals(this.type, other.type);
 	}
 
 	@Override
@@ -82,12 +72,12 @@ public class Area extends AbstractRegionAndYearModel<String, Integer> {
 		builder.append(this.getClass().getSimpleName());
 		builder.append(" [type=");
 		builder.append(this.type);
-		builder.append(", squareKm=");
-		builder.append(this.squareKm);
 		builder.append(", region=");
 		builder.append(super.region);
 		builder.append(", year=");
 		builder.append(super.year);
+		builder.append(", value=");
+		builder.append(super.value);
 		builder.append(']');
 
 		return builder.toString();

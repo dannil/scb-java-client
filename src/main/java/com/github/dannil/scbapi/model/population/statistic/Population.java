@@ -23,23 +23,21 @@ import com.github.dannil.scbapi.model.AbstractRegionAndYearModel;
 import com.github.dannil.scbapi.utility.JsonUtility;
 import com.github.dannil.scbapi.utility.RequestPoster;
 
-public class Population extends AbstractRegionAndYearModel<String, Integer> {
+public class Population extends AbstractRegionAndYearModel<String, Integer, Long> {
 
 	private String relationshipStatus;
 	private String age;
 	private Integer gender;
-	private Long amount;
 
 	public Population() {
 		super();
 	}
 
-	public Population(String region, String relationshipStatus, String age, Integer gender, Integer year, Long amount) {
-		super(region, year);
+	public Population(String region, String relationshipStatus, String age, Integer gender, Integer year, Long value) {
+		super(region, year, value);
 		this.relationshipStatus = relationshipStatus;
 		this.age = age;
 		this.gender = gender;
-		this.amount = amount;
 	}
 
 	public String getRelationshipStatus() {
@@ -66,17 +64,9 @@ public class Population extends AbstractRegionAndYearModel<String, Integer> {
 		this.gender = gender;
 	}
 
-	public Long getAmount() {
-		return this.amount;
-	}
-
-	public void setAmount(Long amount) {
-		this.amount = amount;
-	}
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(super.hashCode(), this.relationshipStatus, this.age, this.gender, this.amount);
+		return Objects.hash(super.hashCode(), this.relationshipStatus, this.age, this.gender);
 	}
 
 	@Override
@@ -92,8 +82,7 @@ public class Population extends AbstractRegionAndYearModel<String, Integer> {
 		}
 
 		Population other = (Population) obj;
-		return super.equals(other) && Objects.equals(this.relationshipStatus, other.relationshipStatus) && Objects.equals(this.age, other.age) && Objects.equals(this.gender, other.gender)
-				&& Objects.equals(this.amount, other.amount);
+		return super.equals(other) && Objects.equals(this.relationshipStatus, other.relationshipStatus) && Objects.equals(this.age, other.age) && Objects.equals(this.gender, other.gender);
 	}
 
 	@Override
@@ -107,12 +96,12 @@ public class Population extends AbstractRegionAndYearModel<String, Integer> {
 		builder.append(this.age);
 		builder.append(", gender=");
 		builder.append(this.gender);
-		builder.append(", amount=");
-		builder.append(this.amount);
 		builder.append(", region=");
 		builder.append(super.region);
 		builder.append(", year=");
 		builder.append(super.year);
+		builder.append(", value=");
+		builder.append(super.value);
 		builder.append(']');
 
 		return builder.toString();

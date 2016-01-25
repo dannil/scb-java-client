@@ -1,6 +1,7 @@
 package com.github.dannil.scbapi.test.junk;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
@@ -10,6 +11,8 @@ import java.util.Map;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.dannil.scbapi.api.AbstractAPI;
+import com.github.dannil.scbapi.api.SCBAPI;
+import com.github.dannil.scbapi.model.environment.landandwaterarea.Area;
 import com.github.dannil.scbapi.utility.JsonUtility;
 import com.github.dannil.scbapi.utility.ListUtility;
 import com.github.dannil.scbapi.utility.RequestPoster;
@@ -36,6 +39,12 @@ public class Junk {
 
 		DummyAPI api = new DummyAPI();
 		api.exec();
+
+		SCBAPI t = new SCBAPI();
+		Collection<Area> c1 = t.environment().landAndWaterArea().getArea();
+		for (Area a : c1) {
+			System.out.println(a);
+		}
 	}
 
 	public Map<String, String> getRegionMappings() throws IOException {

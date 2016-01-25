@@ -2,7 +2,7 @@ package com.github.dannil.scbapi.model;
 
 import java.util.Objects;
 
-public class AbstractRegionAndYearModel<R, Y> {
+public class AbstractRegionAndYearModel<R, Y, V> extends AbstractModel<V> {
 
 	protected R region;
 	protected Y year;
@@ -11,7 +11,8 @@ public class AbstractRegionAndYearModel<R, Y> {
 		// To enable derived classes to use their default constructor
 	}
 
-	protected AbstractRegionAndYearModel(R region, Y year) {
+	protected AbstractRegionAndYearModel(R region, Y year, V value) {
+		super(value);
 		this.region = region;
 		this.year = year;
 	}
@@ -45,12 +46,12 @@ public class AbstractRegionAndYearModel<R, Y> {
 		if (obj == null) {
 			return false;
 		}
-		if (!(obj instanceof AbstractRegionAndYearModel<?, ?>)) {
+		if (!(obj instanceof AbstractRegionAndYearModel<?, ?, ?>)) {
 			return false;
 		}
 
-		AbstractRegionAndYearModel<?, ?> other = (AbstractRegionAndYearModel<?, ?>) obj;
-		return Objects.equals(this.region, other.region) && Objects.equals(this.year, other.year);
+		AbstractRegionAndYearModel<?, ?, ?> other = (AbstractRegionAndYearModel<?, ?, ?>) obj;
+		return super.equals(other) && Objects.equals(this.region, other.region) && Objects.equals(this.year, other.year);
 	}
 
 }

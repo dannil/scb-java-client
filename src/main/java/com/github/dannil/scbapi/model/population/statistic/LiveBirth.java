@@ -23,21 +23,19 @@ import com.github.dannil.scbapi.model.AbstractRegionAndYearModel;
 import com.github.dannil.scbapi.utility.JsonUtility;
 import com.github.dannil.scbapi.utility.RequestPoster;
 
-public class LiveBirth extends AbstractRegionAndYearModel<String, Integer> {
+public class LiveBirth extends AbstractRegionAndYearModel<String, Integer, Long> {
 
 	private String motherAge;
 	private Integer gender;
-	private Long amount;
 
 	public LiveBirth() {
 		super();
 	}
 
-	public LiveBirth(String region, String motherAge, Integer gender, Integer year, Long amount) {
-		super(region, year);
+	public LiveBirth(String region, String motherAge, Integer gender, Integer year, Long value) {
+		super(region, year, value);
 		this.motherAge = motherAge;
 		this.gender = gender;
-		this.amount = amount;
 	}
 
 	public String getMotherAge() {
@@ -56,17 +54,9 @@ public class LiveBirth extends AbstractRegionAndYearModel<String, Integer> {
 		this.gender = gender;
 	}
 
-	public Long getAmount() {
-		return this.amount;
-	}
-
-	public void setAmount(Long amount) {
-		this.amount = amount;
-	}
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(super.hashCode(), this.motherAge, this.gender, this.amount);
+		return Objects.hash(super.hashCode(), this.motherAge, this.gender);
 	}
 
 	@Override
@@ -82,7 +72,7 @@ public class LiveBirth extends AbstractRegionAndYearModel<String, Integer> {
 		}
 
 		LiveBirth other = (LiveBirth) obj;
-		return super.equals(other) && Objects.equals(this.motherAge, other.motherAge) && Objects.equals(this.gender, other.gender) && Objects.equals(this.amount, other.amount);
+		return super.equals(other) && Objects.equals(this.motherAge, other.motherAge) && Objects.equals(this.gender, other.gender);
 	}
 
 	@Override
@@ -94,12 +84,12 @@ public class LiveBirth extends AbstractRegionAndYearModel<String, Integer> {
 		builder.append(this.motherAge);
 		builder.append(", gender=");
 		builder.append(this.gender);
-		builder.append(", amount=");
-		builder.append(this.amount);
 		builder.append(", region=");
 		builder.append(super.region);
 		builder.append(", year=");
 		builder.append(super.year);
+		builder.append(", value=");
+		builder.append(super.value);
 		builder.append(']');
 
 		return builder.toString();

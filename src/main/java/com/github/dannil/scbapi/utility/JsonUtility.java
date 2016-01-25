@@ -107,7 +107,7 @@ public class JsonUtility {
 			averageAgeFirstChild.setRegion(map.get("Region"));
 			averageAgeFirstChild.setYear(ParseUtility.parseInteger(map.get("Tid")));
 			averageAgeFirstChild.setGender(ParseUtility.parseInteger(map.get("Kon")));
-			averageAgeFirstChild.setAverageAge(ParseUtility.parseDouble(map.get("Value")));
+			averageAgeFirstChild.setValue(ParseUtility.parseDouble(map.get("Value")));
 
 			averageAgeFirstChildren.add(averageAgeFirstChild);
 		}
@@ -125,7 +125,7 @@ public class JsonUtility {
 			liveBirth.setYear(ParseUtility.parseInteger(map.get("Tid")));
 			liveBirth.setMotherAge(map.get("AlderModer"));
 			liveBirth.setGender(ParseUtility.parseInteger(map.get("Kon")));
-			liveBirth.setAmount(ParseUtility.parseLong(map.get("Value")));
+			liveBirth.setValue(ParseUtility.parseLong(map.get("Value")));
 
 			liveBirths.add(liveBirth);
 		}

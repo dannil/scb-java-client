@@ -23,19 +23,17 @@ import com.github.dannil.scbapi.model.AbstractRegionAndYearModel;
 import com.github.dannil.scbapi.utility.JsonUtility;
 import com.github.dannil.scbapi.utility.RequestPoster;
 
-public class MeanAgeFirstChild extends AbstractRegionAndYearModel<String, Integer> {
+public class MeanAgeFirstChild extends AbstractRegionAndYearModel<String, Integer, Double> {
 
 	private Integer gender;
-	private Double averageAge;
 
 	public MeanAgeFirstChild() {
 		super();
 	}
 
-	public MeanAgeFirstChild(String region, Integer gender, Integer year, Double averageAge) {
-		super(region, year);
+	public MeanAgeFirstChild(String region, Integer gender, Integer year, Double value) {
+		super(region, year, value);
 		this.gender = gender;
-		this.averageAge = averageAge;
 	}
 
 	public Integer getGender() {
@@ -46,17 +44,9 @@ public class MeanAgeFirstChild extends AbstractRegionAndYearModel<String, Intege
 		this.gender = gender;
 	}
 
-	public Double getAverageAge() {
-		return this.averageAge;
-	}
-
-	public void setAverageAge(Double averageAge) {
-		this.averageAge = averageAge;
-	}
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(super.hashCode(), this.gender, this.averageAge);
+		return Objects.hash(super.hashCode(), this.gender);
 	}
 
 	@Override
@@ -72,7 +62,7 @@ public class MeanAgeFirstChild extends AbstractRegionAndYearModel<String, Intege
 		}
 
 		MeanAgeFirstChild other = (MeanAgeFirstChild) obj;
-		return super.equals(other) && Objects.equals(this.gender, other.gender) && Objects.equals(this.averageAge, other.averageAge);
+		return super.equals(other) && Objects.equals(this.gender, other.gender);
 	}
 
 	@Override
@@ -82,12 +72,12 @@ public class MeanAgeFirstChild extends AbstractRegionAndYearModel<String, Intege
 		builder.append(this.getClass().getSimpleName());
 		builder.append(" [gender=");
 		builder.append(this.gender);
-		builder.append(", averageAge=");
-		builder.append(this.averageAge);
 		builder.append(", region=");
 		builder.append(super.region);
 		builder.append(", year=");
 		builder.append(super.year);
+		builder.append(", value=");
+		builder.append(super.value);
 		builder.append(']');
 
 		return builder.toString();
