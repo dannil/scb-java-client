@@ -26,7 +26,7 @@ import com.github.dannil.scbapi.model.population.demography.MeanAgeFirstChild;
 import com.github.dannil.scbapi.utility.JsonUtility;
 import com.github.dannil.scbapi.utility.ListUtility;
 
-public class DemographyAPI extends AbstractAPI implements DemographyOperations {
+public class DemographyAPI extends AbstractAPI implements IMeanAgeFirstChild, IFertilityRate {
 
 	public DemographyAPI() {
 		super();

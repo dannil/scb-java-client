@@ -20,7 +20,7 @@ import java.util.List;
 
 import com.github.dannil.scbapi.model.environment.landandwaterarea.Area;
 
-public interface AreaOperations {
+public interface IArea {
 
 	List<Area> getArea();
 

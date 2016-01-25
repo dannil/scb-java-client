@@ -14,21 +14,16 @@ See the License for the specific language governing permissions and
 limitations under the License. 
  */
 
-package com.github.dannil.scbapi.api.population.statistic;
+package com.github.dannil.scbapi.api.population.demography;
 
 import java.util.List;
 
-import com.github.dannil.scbapi.model.population.statistic.LiveBirth;
-import com.github.dannil.scbapi.model.population.statistic.Population;
+import com.github.dannil.scbapi.model.population.demography.MeanAgeFirstChild;
 
-public interface StatisticOperations {
+public interface IMeanAgeFirstChild {
 
-	List<LiveBirth> getLiveBirths();
+	List<MeanAgeFirstChild> getMeanAgeFirstChild();
 
-	List<LiveBirth> getLiveBirths(List<String> regions, List<String> motherAge, List<Integer> genders, List<Integer> years);
-
-	List<Population> getPopulation();
-
-	List<Population> getPopulation(List<String> regions, List<String> relationshipStatuses, List<String> ages, List<Integer> genders, List<Integer> years);
+	List<MeanAgeFirstChild> getMeanAgeFirstChild(List<String> regions, List<Integer> genders, List<Integer> years);
 
 }

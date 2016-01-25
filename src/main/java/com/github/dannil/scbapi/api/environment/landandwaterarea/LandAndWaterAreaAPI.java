@@ -26,7 +26,7 @@ import com.github.dannil.scbapi.model.environment.landandwaterarea.Area;
 import com.github.dannil.scbapi.utility.JsonUtility;
 import com.github.dannil.scbapi.utility.ListUtility;
 
-public class LandAndWaterAreaAPI extends AbstractAPI implements AreaOperations {
+public class LandAndWaterAreaAPI extends AbstractAPI implements IArea {
 
 	public LandAndWaterAreaAPI() {
 		super();

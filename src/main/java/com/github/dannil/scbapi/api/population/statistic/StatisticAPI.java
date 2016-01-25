@@ -27,7 +27,7 @@ import com.github.dannil.scbapi.model.population.statistic.Population;
 import com.github.dannil.scbapi.utility.JsonUtility;
 import com.github.dannil.scbapi.utility.ListUtility;
 
-public class StatisticAPI extends AbstractAPI implements StatisticOperations {
+public class StatisticAPI extends AbstractAPI implements ILiveBirth, IPopulation {
 
 	public StatisticAPI() {
 		super();
