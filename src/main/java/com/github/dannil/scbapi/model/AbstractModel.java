@@ -2,12 +2,12 @@ package com.github.dannil.scbapi.model;
 
 import java.util.Objects;
 
-public abstract class AbstractModel<Y> {
+public class AbstractModel<Y> {
 
 	protected Y value;
 
 	protected AbstractModel() {
-
+		// To enable derived classes to use their default constructor
 	}
 
 	protected AbstractModel(Y value) {

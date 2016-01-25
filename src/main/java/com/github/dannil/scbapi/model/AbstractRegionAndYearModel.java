@@ -9,6 +9,7 @@ public class AbstractRegionAndYearModel<R, Y, V> extends AbstractModel<V> {
 
 	protected AbstractRegionAndYearModel() {
 		// To enable derived classes to use their default constructor
+		super();
 	}
 
 	protected AbstractRegionAndYearModel(R region, Y year, V value) {

@@ -101,7 +101,8 @@ public class DemographyAPI extends AbstractAPI implements DemographyOperations {
 		mappings.put("Kon", genders);
 		mappings.put("Tid", years);
 
-		String response = super.post("BE/BE0701/FruktsamhetSumNy", super.queryBuilder.build(mappings));
+		// String response = super.post("BE/BE0701/FruktsamhetSumNy",
+		// super.queryBuilder.build(mappings));
 
 		// System.out.println(response);
 
