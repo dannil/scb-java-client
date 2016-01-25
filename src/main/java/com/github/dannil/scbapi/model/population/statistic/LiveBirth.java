@@ -89,7 +89,8 @@ public class LiveBirth extends AbstractRegionAndYearModel<String, Integer> {
 	public String toString() {
 		StringBuilder builder = new StringBuilder(128);
 
-		builder.append("LiveBirth [motherAge=");
+		builder.append(this.getClass().getSimpleName());
+		builder.append(" [motherAge=");
 		builder.append(this.motherAge);
 		builder.append(", gender=");
 		builder.append(this.gender);

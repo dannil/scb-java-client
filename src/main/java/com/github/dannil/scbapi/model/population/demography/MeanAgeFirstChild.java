@@ -79,7 +79,8 @@ public class MeanAgeFirstChild extends AbstractRegionAndYearModel<String, Intege
 	public String toString() {
 		StringBuilder builder = new StringBuilder(128);
 
-		builder.append(MeanAgeFirstChild.class.getSimpleName() + " [gender=");
+		builder.append(this.getClass().getSimpleName());
+		builder.append(" [gender=");
 		builder.append(this.gender);
 		builder.append(", averageAge=");
 		builder.append(this.averageAge);

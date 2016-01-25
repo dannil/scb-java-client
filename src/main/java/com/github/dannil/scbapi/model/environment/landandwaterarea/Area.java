@@ -79,7 +79,8 @@ public class Area extends AbstractRegionAndYearModel<String, Integer> {
 	public String toString() {
 		StringBuilder builder = new StringBuilder(128);
 
-		builder.append("Area [type=");
+		builder.append(this.getClass().getSimpleName());
+		builder.append(" [type=");
 		builder.append(this.type);
 		builder.append(", squareKm=");
 		builder.append(this.squareKm);

@@ -100,7 +100,8 @@ public class Population extends AbstractRegionAndYearModel<String, Integer> {
 	public String toString() {
 		StringBuilder builder = new StringBuilder(128);
 
-		builder.append("Population [relationshipStatus=");
+		builder.append(this.getClass().getSimpleName());
+		builder.append(" [relationshipStatus=");
 		builder.append(this.relationshipStatus);
 		builder.append(", age=");
 		builder.append(this.age);
