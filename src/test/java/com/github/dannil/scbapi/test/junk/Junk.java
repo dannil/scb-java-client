@@ -13,7 +13,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.dannil.scbapi.api.AbstractAPI;
 import com.github.dannil.scbapi.api.SCBAPI;
 import com.github.dannil.scbapi.model.environment.landandwaterarea.Area;
-import com.github.dannil.scbapi.utility.JsonUtility;
 import com.github.dannil.scbapi.utility.ListUtility;
 import com.github.dannil.scbapi.utility.RequestPoster;
 
@@ -32,7 +31,7 @@ public class Junk {
 				mappings.put("Tid", ListUtility.toList("2014"));
 
 				String response = super.post("AM/AM0110/AM0110A/LoneSpridSektorYrk4A", super.queryBuilder.build(mappings));
-				System.out.println(JsonUtility.getNode(response));
+				System.out.println(response);
 			}
 
 		}
