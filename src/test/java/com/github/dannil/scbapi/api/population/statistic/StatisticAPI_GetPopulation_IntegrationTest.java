@@ -23,6 +23,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -103,7 +104,10 @@ public class StatisticAPI_GetPopulation_IntegrationTest {
 		this.ages = ages;
 		this.genders = genders;
 		this.years = years;
+	}
 
+	@Before
+	public void setup() throws InterruptedException {
 		// Due to constraints set by SCB, we can only do 10 calls every 10
 		// seconds, so we need an artificial timer which handles this.
 		Thread.sleep(Config.getTimerMs());

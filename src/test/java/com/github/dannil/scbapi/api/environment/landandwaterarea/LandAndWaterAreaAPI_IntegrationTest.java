@@ -24,6 +24,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import com.github.dannil.scbapi.api.SCBAPI;
+import com.github.dannil.scbapi.test.utility.Config;
 
 @RunWith(JUnit4.class)
 public class LandAndWaterAreaAPI_IntegrationTest {
@@ -31,8 +32,9 @@ public class LandAndWaterAreaAPI_IntegrationTest {
 	private LandAndWaterAreaAPI landAndWaterAreaApi;
 
 	@Before
-	public void setup() {
+	public void setup() throws InterruptedException {
 		this.landAndWaterAreaApi = new SCBAPI().environment().landAndWaterArea();
+		Thread.sleep(Config.getTimerMs());
 	}
 
 	// TODO Enable tests in the future

@@ -24,6 +24,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -86,13 +87,16 @@ public class DemographyAPI_GetAverageAgeFirstChild_IntegrationTest {
 		this.demographyAPI.setLocale(locale);
 	}
 
-	public DemographyAPI_GetAverageAgeFirstChild_IntegrationTest(List<String> regions, List<Integer> genders, List<Integer> years) throws InterruptedException {
+	public DemographyAPI_GetAverageAgeFirstChild_IntegrationTest(List<String> regions, List<Integer> genders, List<Integer> years) {
 		this();
 
 		this.regions = regions;
 		this.genders = genders;
 		this.years = years;
+	}
 
+	@Before
+	public void setup() throws InterruptedException {
 		// Due to constraints set by SCB, we can only do 10 calls every 10
 		// seconds, so we need an artificial timer which handles this.
 		Thread.sleep(Config.getTimerMs());

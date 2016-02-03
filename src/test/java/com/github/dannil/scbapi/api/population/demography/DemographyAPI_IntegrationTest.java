@@ -24,6 +24,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import com.github.dannil.scbapi.api.SCBAPI;
+import com.github.dannil.scbapi.test.utility.Config;
 
 @RunWith(JUnit4.class)
 public class DemographyAPI_IntegrationTest {
@@ -31,8 +32,9 @@ public class DemographyAPI_IntegrationTest {
 	private DemographyAPI demographyApi;
 
 	@Before
-	public void setup() {
+	public void setup() throws InterruptedException {
 		this.demographyApi = new SCBAPI().population().demography();
+		Thread.sleep(Config.getTimerMs());
 	}
 
 	@Test
