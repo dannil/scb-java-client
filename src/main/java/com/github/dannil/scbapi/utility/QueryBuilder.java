@@ -42,19 +42,23 @@ public class QueryBuilder {
 
 	}
 
+	private List<?> filterValue(List<?> entry, Object value) {
+		List<Object> filteredValues = new ArrayList<Object>();
+		for (Object o : entry) {
+			if (o != value) {
+				filteredValues.add(o);
+			}
+		}
+		return filteredValues;
+	}
+
 	public String build(Map<String, List<?>> inputMap) {
 		// Filter out null values
 		Map<String, List<?>> filteredMap = new HashMap<String, List<?>>();
 
 		for (Entry<String, List<?>> entry : inputMap.entrySet()) {
 			if (entry.getValue() != null) {
-				List<Object> values = new ArrayList<Object>();
-				for (Object o : entry.getValue()) {
-					if (o != null) {
-						values.add(o);
-					}
-				}
-				filteredMap.put(entry.getKey(), values);
+				filteredMap.put(entry.getKey(), filterValue(entry.getValue(), null));
 			}
 		}
 
