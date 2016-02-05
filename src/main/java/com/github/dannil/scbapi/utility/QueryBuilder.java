@@ -21,6 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 
 public class QueryBuilder {
 
@@ -45,7 +46,7 @@ public class QueryBuilder {
 	private List<?> filterValue(List<?> entry, Object value) {
 		List<Object> filteredValues = new ArrayList<Object>();
 		for (Object o : entry) {
-			if (o != value) {
+			if (!Objects.equals(o, value)) {
 				filteredValues.add(o);
 			}
 		}
