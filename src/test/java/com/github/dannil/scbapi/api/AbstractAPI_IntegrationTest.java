@@ -4,6 +4,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -59,7 +60,7 @@ public class AbstractAPI_IntegrationTest {
 		// Build the payload
 		QueryBuilder builder = QueryBuilder.getInstance();
 
-		Map<String, List<?>> map = new HashMap<String, List<?>>();
+		Map<String, Collection<?>> map = new HashMap<String, Collection<?>>();
 		map.put("ContentsCode", ListUtility.toList("HE0103D2"));
 		map.put("Alder", ListUtility.toList("tot"));
 		map.put("Kon", ListUtility.toList("4"));
