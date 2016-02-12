@@ -1,17 +1,17 @@
 /*
-Copyright 2014 Daniel Nilsson
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License. 
+ * Copyright 2014 Daniel Nilsson
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package com.github.dannil.scbapi.api.population.statistic;
@@ -76,7 +76,8 @@ public class StatisticAPI_GetPopulation_IntegrationTest {
 				for (String age : ages) {
 					for (Integer gender : genders) {
 						for (Integer year : years) {
-							parameters.add(new Object[] { ListUtility.toList(region), ListUtility.toList(status), ListUtility.toList(age), ListUtility.toList(gender), ListUtility.toList(year) });
+							parameters.add(new Object[] { ListUtility.toList(region), ListUtility.toList(status),
+									ListUtility.toList(age), ListUtility.toList(gender), ListUtility.toList(year) });
 						}
 					}
 				}
@@ -96,7 +97,8 @@ public class StatisticAPI_GetPopulation_IntegrationTest {
 		this.statisticsAPI = new SCBAPI().population().statistic();
 	}
 
-	public StatisticAPI_GetPopulation_IntegrationTest(List<String> regions, List<String> statuses, List<String> ages, List<Integer> genders, List<Integer> years) throws InterruptedException {
+	public StatisticAPI_GetPopulation_IntegrationTest(List<String> regions, List<String> statuses, List<String> ages,
+			List<Integer> genders, List<Integer> years) throws InterruptedException {
 		this();
 
 		this.regions = regions;
@@ -115,7 +117,9 @@ public class StatisticAPI_GetPopulation_IntegrationTest {
 
 	@Test
 	public void getPopulation() {
-		assertNotEquals(0, this.statisticsAPI.getPopulation(this.regions, this.statuses, this.ages, this.genders, this.years).size());
+		assertNotEquals(0,
+				this.statisticsAPI.getPopulation(this.regions, this.statuses, this.ages, this.genders, this.years)
+						.size());
 	}
 
 }
