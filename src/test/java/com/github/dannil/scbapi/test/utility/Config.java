@@ -20,7 +20,7 @@ public final class Config {
 
 			// 10000 10
 			timerMs = (int) (((timeWindow * 1000.0) / timeWindow) * (maxCalls / 100.0 + 0.9));
-			System.out.println("timerMs: " + timerMs);
+			// System.out.println("timerMs: " + timerMs);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
