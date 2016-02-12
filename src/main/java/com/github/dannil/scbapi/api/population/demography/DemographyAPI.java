@@ -1,21 +1,22 @@
 /*
-Copyright 2014, 2015 Daniel Nilsson
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License. 
+ * Copyright 2014 Daniel Nilsson
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package com.github.dannil.scbapi.api.population.demography;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -36,20 +37,20 @@ public class DemographyAPI extends AbstractAPI implements IMeanAgeFirstChild, IF
 		super(locale);
 	}
 
-	// public List<String> getRegions() {
+	// public Collection<String> getRegions() {
 	// return super.getRegions(getUrl());
 	// }
 	//
-	// public List<Integer> getGenders() {
+	// public Collection<Integer> getGenders() {
 	// String response = RequestPoster.doGet(getUrl());
 	//
 	// ObjectMapper mapper = new ObjectMapper();
 	// try {
 	// JsonNode node = mapper.readTree(response);
-	// List<JsonNode> nodes = node.findValues("values");
+	// Collection<JsonNode> nodes = node.findValues("values");
 	// node = nodes.get(1);
 	//
-	// List<Integer> genders = new ArrayList<Integer>(node.size());
+	// Collection<Integer> genders = new ArrayCollection<Integer>(node.size());
 	// for (int i = 0; i < node.size(); i++) {
 	// genders.add(node.get(i).asInt());
 	// }
@@ -60,10 +61,10 @@ public class DemographyAPI extends AbstractAPI implements IMeanAgeFirstChild, IF
 	// return null;
 	// }
 	//
-	// public List<Integer> getYears() {
-	// List<String> fetchedYears = super.getYears(getUrl());
+	// public Collection<Integer> getYears() {
+	// Collection<String> fetchedYears = super.getYears(getUrl());
 	//
-	// List<Integer> years = new ArrayList<Integer>(fetchedYears.size());
+	// Collection<Integer> years = new ArrayCollection<Integer>(fetchedYears.size());
 	// for (String fetchedYear : fetchedYears) {
 	// years.add(Integer.valueOf(fetchedYear));
 	// }
@@ -76,8 +77,9 @@ public class DemographyAPI extends AbstractAPI implements IMeanAgeFirstChild, IF
 	}
 
 	@Override
-	public List<MeanAgeFirstChild> getMeanAgeFirstChild(List<String> regions, List<Integer> genders, List<Integer> years) {
-		Map<String, List<?>> mappings = new HashMap<String, List<?>>();
+	public List<MeanAgeFirstChild> getMeanAgeFirstChild(Collection<String> regions, Collection<Integer> genders,
+			Collection<Integer> years) {
+		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
 		mappings.put("ContentsCode", ListUtility.toList("BE0701AB"));
 		mappings.put("Region", regions);
 		mappings.put("Kon", genders);
@@ -94,8 +96,9 @@ public class DemographyAPI extends AbstractAPI implements IMeanAgeFirstChild, IF
 	}
 
 	@Override
-	public List<Object> getFertilityRate(List<String> regions, List<Integer> genders, List<Integer> years) {
-		Map<String, List<?>> mappings = new HashMap<String, List<?>>();
+	public List<Object> getFertilityRate(Collection<String> regions, Collection<Integer> genders,
+			Collection<Integer> years) {
+		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
 		mappings.put("ContentsCode", ListUtility.toList("BE0701AA"));
 		mappings.put("Region", regions);
 		mappings.put("Kon", genders);

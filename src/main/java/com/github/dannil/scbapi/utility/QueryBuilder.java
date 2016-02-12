@@ -1,22 +1,23 @@
 /*
-Copyright 2014 Daniel Nilsson
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License. 
+ * Copyright 2014 Daniel Nilsson
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package com.github.dannil.scbapi.utility;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,7 +44,7 @@ public class QueryBuilder {
 
 	}
 
-	private List<?> filterValue(List<?> entry, Object value) {
+	private List<?> filterValue(Collection<?> entry, Object value) {
 		List<Object> filteredValues = new ArrayList<Object>();
 		for (Object o : entry) {
 			if (!Objects.equals(o, value)) {
@@ -53,11 +54,11 @@ public class QueryBuilder {
 		return filteredValues;
 	}
 
-	public String build(Map<String, List<?>> inputMap) {
+	public String build(Map<String, Collection<?>> inputMap) {
 		// Filter out null values
 		Map<String, List<?>> filteredMap = new HashMap<String, List<?>>();
 
-		for (Entry<String, List<?>> entry : inputMap.entrySet()) {
+		for (Entry<String, Collection<?>> entry : inputMap.entrySet()) {
 			if (entry.getValue() != null) {
 				filteredMap.put(entry.getKey(), filterValue(entry.getValue(), null));
 			}

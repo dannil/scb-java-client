@@ -23,14 +23,15 @@ public class Junk {
 		class DummyAPI extends AbstractAPI {
 
 			public void exec() {
-				Map<String, List<?>> mappings = new HashMap<String, List<?>>();
+				Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
 				mappings.put("ContentsCode", ListUtility.toList("000000C5"));
 				mappings.put("Sektor", ListUtility.toList("2"));
 				mappings.put("Yrke2012", ListUtility.toList("0210"));
 				mappings.put("Kon", ListUtility.toList("1+2"));
 				mappings.put("Tid", ListUtility.toList("2014"));
 
-				String response = super.post("AM/AM0110/AM0110A/LoneSpridSektorYrk4A", super.queryBuilder.build(mappings));
+				String response = super.post("AM/AM0110/AM0110A/LoneSpridSektorYrk4A",
+						super.queryBuilder.build(mappings));
 				System.out.println(response);
 			}
 
@@ -47,7 +48,8 @@ public class Junk {
 	}
 
 	public Map<String, String> getRegionMappings() throws IOException {
-		String response = RequestPoster.doGet("http://api.scb.se/OV0104/v1/doris/" + new Locale("sv", "SE").getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy");
+		String response = RequestPoster.doGet("http://api.scb.se/OV0104/v1/doris/"
+				+ new Locale("sv", "SE").getLanguage() + "/ssd/BE/BE0101/BE0101A/BefolkningNy");
 		ObjectMapper mapper = new ObjectMapper();
 		try {
 			JsonNode node = mapper.readTree(response);

@@ -1,21 +1,22 @@
 /*
-Copyright 2014, 2015 Daniel Nilsson
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License. 
+ * Copyright 2014 Daniel Nilsson
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package com.github.dannil.scbapi.api.population.statistic;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -57,8 +58,9 @@ public class StatisticAPI extends AbstractAPI implements ILiveBirth, IPopulation
 	}
 
 	@Override
-	public List<LiveBirth> getLiveBirths(List<String> regions, List<String> motherAges, List<Integer> genders, List<Integer> years) {
-		Map<String, List<?>> mappings = new HashMap<String, List<?>>();
+	public List<LiveBirth> getLiveBirths(Collection<String> regions, Collection<String> motherAges,
+			Collection<Integer> genders, Collection<Integer> years) {
+		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
 		mappings.put("ContentsCode", ListUtility.toList("BE0101E2"));
 		mappings.put("Region", regions);
 		mappings.put("AlderModer", motherAges);
@@ -78,8 +80,9 @@ public class StatisticAPI extends AbstractAPI implements ILiveBirth, IPopulation
 	}
 
 	@Override
-	public List<Population> getPopulation(List<String> regions, List<String> relationshipStatuses, List<String> ages, List<Integer> genders, List<Integer> years) {
-		Map<String, List<?>> mappings = new HashMap<String, List<?>>();
+	public List<Population> getPopulation(Collection<String> regions, Collection<String> relationshipStatuses,
+			Collection<String> ages, Collection<Integer> genders, Collection<Integer> years) {
+		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
 		mappings.put("ContentsCode", ListUtility.toList("BE0101N1"));
 		mappings.put("Region", regions);
 		mappings.put("Civilstand", relationshipStatuses);
