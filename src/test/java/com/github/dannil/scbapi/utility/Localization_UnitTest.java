@@ -16,29 +16,27 @@
 
 package com.github.dannil.scbapi.utility;
 
-import java.util.Locale;
-import java.util.ResourceBundle;
+import static org.junit.Assert.assertFalse;
 
-public class Localization {
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
-	private static ResourceBundle bundle;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
-	private Localization() {
+@RunWith(JUnit4.class)
+public class Localization_UnitTest {
 
+	@Test
+	public void callPrivateConstructor() throws InstantiationException, IllegalAccessException,
+			IllegalArgumentException, InvocationTargetException {
+		Constructor<?>[] cons = Localization.class.getDeclaredConstructors();
+		cons[0].setAccessible(true);
+		cons[0].newInstance();
+		cons[0].setAccessible(false);
+
+		assertFalse(cons[0].isAccessible());
 	}
 
-	public static void setLanguage(Locale locale) {
-		bundle = ResourceBundle.getBundle("language", locale);
-	}
-
-	public static String getString(String key, Object... args) {
-		String s = bundle.getString(key);
-		if (s == null) {
-			s = ResourceBundle.getBundle("language", new Locale("en", "US")).getString(key);
-		}
-
-		return String.format(s, args);
-
-		// return s;
-	}
 }
