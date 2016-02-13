@@ -28,7 +28,7 @@ import com.github.dannil.scbapi.model.population.statistic.Population;
 import com.github.dannil.scbapi.utility.JsonUtility;
 import com.github.dannil.scbapi.utility.ListUtility;
 
-public class StatisticAPI extends AbstractAPI implements ILiveBirth, IPopulation {
+public class StatisticAPI extends AbstractAPI {
 
 	public StatisticAPI() {
 		super();
@@ -52,12 +52,10 @@ public class StatisticAPI extends AbstractAPI implements ILiveBirth, IPopulation
 	// return years;
 	// }
 
-	@Override
 	public List<LiveBirth> getLiveBirths() {
 		return this.getLiveBirths(null, null, null, null);
 	}
 
-	@Override
 	public List<LiveBirth> getLiveBirths(Collection<String> regions, Collection<String> motherAges,
 			Collection<Integer> genders, Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
@@ -74,12 +72,10 @@ public class StatisticAPI extends AbstractAPI implements ILiveBirth, IPopulation
 		return JsonUtility.parseLiveBirths(JsonUtility.getNode(response));
 	}
 
-	@Override
 	public List<Population> getPopulation() {
 		return this.getPopulation(null, null, null, null, null);
 	}
 
-	@Override
 	public List<Population> getPopulation(Collection<String> regions, Collection<String> relationshipStatuses,
 			Collection<String> ages, Collection<Integer> genders, Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();

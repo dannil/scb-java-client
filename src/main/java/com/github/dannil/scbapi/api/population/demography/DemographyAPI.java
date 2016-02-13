@@ -27,7 +27,7 @@ import com.github.dannil.scbapi.model.population.demography.MeanAgeFirstChild;
 import com.github.dannil.scbapi.utility.JsonUtility;
 import com.github.dannil.scbapi.utility.ListUtility;
 
-public class DemographyAPI extends AbstractAPI implements IMeanAgeFirstChild, IFertilityRate {
+public class DemographyAPI extends AbstractAPI {
 
 	public DemographyAPI() {
 		super();
@@ -71,12 +71,10 @@ public class DemographyAPI extends AbstractAPI implements IMeanAgeFirstChild, IF
 	// return years;
 	// }
 
-	@Override
 	public List<MeanAgeFirstChild> getMeanAgeFirstChild() {
 		return this.getMeanAgeFirstChild(null, null, null);
 	}
 
-	@Override
 	public List<MeanAgeFirstChild> getMeanAgeFirstChild(Collection<String> regions, Collection<Integer> genders,
 			Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
@@ -90,12 +88,10 @@ public class DemographyAPI extends AbstractAPI implements IMeanAgeFirstChild, IF
 		return JsonUtility.parseAverageAgeFirstChild(JsonUtility.getNode(response));
 	}
 
-	@Override
 	public List<Object> getFertilityRate() {
 		return this.getFertilityRate(null, null, null);
 	}
 
-	@Override
 	public List<Object> getFertilityRate(Collection<String> regions, Collection<Integer> genders,
 			Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();

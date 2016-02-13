@@ -27,7 +27,7 @@ import com.github.dannil.scbapi.model.environment.landandwaterarea.Area;
 import com.github.dannil.scbapi.utility.JsonUtility;
 import com.github.dannil.scbapi.utility.ListUtility;
 
-public class LandAndWaterAreaAPI extends AbstractAPI implements IArea {
+public class LandAndWaterAreaAPI extends AbstractAPI {
 
 	public LandAndWaterAreaAPI() {
 		super();
@@ -51,12 +51,10 @@ public class LandAndWaterAreaAPI extends AbstractAPI implements IArea {
 	// return years;
 	// }
 
-	@Override
 	public List<Area> getArea() {
 		return this.getArea(null, null, null);
 	}
 
-	@Override
 	public List<Area> getArea(Collection<String> regions, Collection<String> types, Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
 		mappings.put("ContentsCode", ListUtility.toList("MI0802AA"));
