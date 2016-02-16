@@ -43,7 +43,7 @@ public class AbstractAPI {
 		this.locale = Locale.getDefault();
 
 		this.queryBuilder = QueryBuilder.getInstance();
-		this.localization = new Localization(locale);
+		this.localization = new Localization(this.locale);
 	}
 
 	protected AbstractAPI(Locale locale) {
@@ -146,7 +146,8 @@ public class AbstractAPI {
 
 		int position = codes.indexOf("Region");
 		if (position < 0) {
-			//throw new UnsupportedOperationException(Localization.getString("regions_is_not_supported_for_url", url));
+			throw new UnsupportedOperationException(
+					this.localization.getString("regions_is_not_supported_for_url", url));
 		}
 
 		JsonNode jsonRegions = values.get(position);
@@ -169,7 +170,7 @@ public class AbstractAPI {
 
 		int position = codes.indexOf("Tid");
 		if (position < 0) {
-			//throw new UnsupportedOperationException(Localization.getString("years_is_not_supported_for_url", url));
+			throw new UnsupportedOperationException(this.localization.getString("years_is_not_supported_for_url", url));
 		}
 
 		JsonNode jsonYears = values.get(position);
