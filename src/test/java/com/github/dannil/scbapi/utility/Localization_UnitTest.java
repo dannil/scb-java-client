@@ -64,6 +64,14 @@ public class Localization_UnitTest {
 	}
 	
 	@Test
+	public void getStringFallback() {
+		Localization localization = new Localization(new Locale("sv", "SE"));
+		
+		assertNotEquals(new Locale("en", "US"), localization.getLanguage());
+		assertEquals("UniqueEnglish", localization.getString("unique"));
+	}
+	
+	@Test
 	public void setLanguage() {
 		Localization localization = new Localization(new Locale("sv", "SE"));
 		
