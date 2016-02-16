@@ -37,18 +37,20 @@ public class AbstractAPI {
 	protected Locale locale;
 
 	protected QueryBuilder queryBuilder;
+	protected Localization localization;
 
 	protected AbstractAPI() {
 		this.locale = Locale.getDefault();
 
 		this.queryBuilder = QueryBuilder.getInstance();
+		this.localization = new Localization(locale);
 	}
 
 	protected AbstractAPI(Locale locale) {
 		this();
 		this.locale = locale;
 
-		Localization.setLanguage(locale);
+		this.localization.setLanguage(this.locale);
 	}
 
 	public Locale getLocale() {
@@ -58,7 +60,7 @@ public class AbstractAPI {
 	public void setLocale(Locale locale) {
 		this.locale = locale;
 
-		Localization.setLanguage(locale);
+		this.localization.setLanguage(locale);
 	}
 
 	protected String getBaseUrl() {
@@ -144,7 +146,7 @@ public class AbstractAPI {
 
 		int position = codes.indexOf("Region");
 		if (position < 0) {
-			throw new UnsupportedOperationException(Localization.getString("regions_is_not_supported_for_url", url));
+			//throw new UnsupportedOperationException(Localization.getString("regions_is_not_supported_for_url", url));
 		}
 
 		JsonNode jsonRegions = values.get(position);
@@ -167,7 +169,7 @@ public class AbstractAPI {
 
 		int position = codes.indexOf("Tid");
 		if (position < 0) {
-			throw new UnsupportedOperationException(Localization.getString("years_is_not_supported_for_url", url));
+			//throw new UnsupportedOperationException(Localization.getString("years_is_not_supported_for_url", url));
 		}
 
 		JsonNode jsonYears = values.get(position);

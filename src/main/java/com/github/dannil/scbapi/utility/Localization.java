@@ -20,25 +20,31 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class Localization {
+	
+	private Locale fallbackLocale;
+	
+	private ResourceBundle bundle;
 
-	private static ResourceBundle bundle;
-
-	private Localization() {
-
+	public Localization(Locale locale) {
+		this.fallbackLocale = new Locale("en", "US");
+		
+		this.bundle = ResourceBundle.getBundle("language", locale);
 	}
 
-	public static void setLanguage(Locale locale) {
-		bundle = ResourceBundle.getBundle("language", locale);
+	public void setLanguage(Locale locale) {
+		this.bundle = ResourceBundle.getBundle("language", locale);
 	}
-
-	public static String getString(String key, Object... args) {
-		String s = bundle.getString(key);
+	
+	public String getString(String key) {
+		String s = this.bundle.getString(key);
 		if (s == null) {
-			s = ResourceBundle.getBundle("language", new Locale("en", "US")).getString(key);
+			s = ResourceBundle.getBundle("language", this.fallbackLocale).getString(key);
 		}
+		return s;
+	}
 
-		return String.format(s, args);
-
+	public String getString(String key, Object... args) {
+		return String.format(getString(key), args);
 		// return s;
 	}
 }
