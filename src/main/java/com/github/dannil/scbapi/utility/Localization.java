@@ -29,11 +29,7 @@ public class Localization {
 	public Localization(Locale locale) {
 		this.fallbackLocale = new Locale("en", "US");
 
-		try {
-			this.bundle = ResourceBundle.getBundle("language", locale);
-		} catch (NullPointerException e1) {
-			throw new IllegalArgumentException("Argument locale can't be null");
-		}
+		this.bundle = ResourceBundle.getBundle("language", locale);
 	}
 
 	public Locale getLanguage() {
@@ -48,8 +44,6 @@ public class Localization {
 		String s;
 		try {
 			s = this.bundle.getString(key);
-		} catch (NullPointerException e1) {
-			throw new IllegalArgumentException("Argument key can't be null");
 		} catch (MissingResourceException e2) {
 			s = ResourceBundle.getBundle("language", this.fallbackLocale).getString(key);
 		}

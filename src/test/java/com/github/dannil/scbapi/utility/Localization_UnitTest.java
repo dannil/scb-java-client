@@ -18,7 +18,6 @@ package com.github.dannil.scbapi.utility;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNull;
 
 import java.util.Locale;
 
@@ -36,12 +35,12 @@ public class Localization_UnitTest {
 		assertEquals(new Locale("sv", "SE"), localization.getLanguage());
 	}
 
-	@Test(expected = IllegalArgumentException.class)
-	public void createWithConstructorNullArgument() {
-		Localization localization = new Localization(null);
-
-		assertNull(localization);
-	}
+	// @Test(expected = NullPointerException.class)
+	// public void createWithConstructorNullArgument() {
+	// Localization localization = new Localization(null);
+	//
+	// assertNull(localization);
+	// }
 
 	@Test
 	public void getString() {
@@ -50,14 +49,14 @@ public class Localization_UnitTest {
 		assertEquals("TestSvenska", localization.getString("test"));
 	}
 
-	@Test(expected = IllegalArgumentException.class)
-	public void getStringNullArgument() {
-		Localization localization = new Localization(new Locale("sv", "SE"));
-
-		String s = localization.getString(null);
-
-		assertNull(s);
-	}
+	// @Test(expected = NullPointerException.class)
+	// public void getStringNullArgument() {
+	// Localization localization = new Localization(new Locale("sv", "SE"));
+	//
+	// String s = localization.getString(null);
+	//
+	// assertNull(s);
+	// }
 
 	@Test
 	public void getStringFallback() {
