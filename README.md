@@ -5,4 +5,4 @@
 
 # scb-api
 
-API client implementation for the SCB (Statistiska centralbyrån) API.
+Java wrapper client implementation for the SCB (Statistiska centralbyrån) API.
