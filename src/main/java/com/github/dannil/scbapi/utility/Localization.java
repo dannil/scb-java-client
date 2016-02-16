@@ -21,23 +21,21 @@ import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 public class Localization {
-	
+
 	private Locale fallbackLocale;
-	
+
 	private ResourceBundle bundle;
 
 	public Localization(Locale locale) {
 		this.fallbackLocale = new Locale("en", "US");
-		
+
 		try {
 			this.bundle = ResourceBundle.getBundle("language", locale);
 		} catch (NullPointerException e1) {
 			throw new IllegalArgumentException("Argument locale can't be null");
-		} catch (MissingResourceException e2) {
-			throw new MissingResourceException("No ResourceBundle available for " + locale, "language", locale.toString());
 		}
 	}
-	
+
 	public Locale getLanguage() {
 		return this.bundle.getLocale();
 	}
@@ -45,7 +43,7 @@ public class Localization {
 	public void setLanguage(Locale locale) {
 		this.bundle = ResourceBundle.getBundle("language", locale);
 	}
-	
+
 	public String getString(String key) {
 		String s;
 		try {
@@ -62,5 +60,5 @@ public class Localization {
 		return String.format(getString(key), args);
 		// return s;
 	}
-	
+
 }

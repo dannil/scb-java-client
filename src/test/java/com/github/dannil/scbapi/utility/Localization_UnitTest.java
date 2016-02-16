@@ -16,14 +16,10 @@
 
 package com.github.dannil.scbapi.utility;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Locale;
 
 import org.junit.Test;
@@ -32,49 +28,59 @@ import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
 public class Localization_UnitTest {
-	
+
 	@Test
 	public void createWithConstructor() {
 		Localization localization = new Localization(new Locale("sv", "SE"));
-		
+
 		assertEquals(new Locale("sv", "SE"), localization.getLanguage());
 	}
-	
+
 	@Test(expected = IllegalArgumentException.class)
 	public void createWithConstructorNullArgument() {
 		Localization localization = new Localization(null);
-		
+
 		assertNull(localization);
 	}
-	
+
 	@Test
 	public void getString() {
 		Localization localization = new Localization(new Locale("sv", "SE"));
-		
+
 		assertEquals("TestSvenska", localization.getString("test"));
 	}
-	
+
 	@Test(expected = IllegalArgumentException.class)
 	public void getStringNullArgument() {
 		Localization localization = new Localization(new Locale("sv", "SE"));
-		
+
 		String s = localization.getString(null);
-		
+
 		assertNull(s);
 	}
-	
+
 	@Test
 	public void getStringFallback() {
 		Localization localization = new Localization(new Locale("sv", "SE"));
-		
+
 		assertNotEquals(new Locale("en", "US"), localization.getLanguage());
 		assertEquals("UniqueEnglish", localization.getString("unique"));
 	}
-	
+
+	@Test
+	public void getStringFormat() {
+		Localization localization = new Localization(new Locale("en", "US"));
+
+		String url = "http://www.abc.com";
+		String translation = localization.getString("regions_is_not_supported_for_url", url);
+
+		assertEquals("Regions is not supported for URL " + url, translation);
+	}
+
 	@Test
 	public void setLanguage() {
 		Localization localization = new Localization(new Locale("sv", "SE"));
-		
+
 		assertEquals("TestSvenska", localization.getString("test"));
 		localization.setLanguage(new Locale("en", "US"));
 		assertEquals("TestEnglish", localization.getString("test"));
