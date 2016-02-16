@@ -17,6 +17,7 @@
 package com.github.dannil.scbapi.utility;
 
 import java.util.Locale;
+import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 public class Localization {
@@ -28,7 +29,17 @@ public class Localization {
 	public Localization(Locale locale) {
 		this.fallbackLocale = new Locale("en", "US");
 		
-		this.bundle = ResourceBundle.getBundle("language", locale);
+		try {
+			this.bundle = ResourceBundle.getBundle("language", locale);
+		} catch (NullPointerException e1) {
+			throw new IllegalArgumentException("Argument locale can't be null");
+		} catch (MissingResourceException e2) {
+			throw new MissingResourceException("No ResourceBundle available for " + locale, "language", locale.toString());
+		}
+	}
+	
+	public Locale getLanguage() {
+		return this.bundle.getLocale();
 	}
 
 	public void setLanguage(Locale locale) {
@@ -36,8 +47,12 @@ public class Localization {
 	}
 	
 	public String getString(String key) {
-		String s = this.bundle.getString(key);
-		if (s == null) {
+		String s;
+		try {
+			s = this.bundle.getString(key);
+		} catch (NullPointerException e1) {
+			throw new IllegalArgumentException("Argument key can't be null");
+		} catch (MissingResourceException e2) {
 			s = ResourceBundle.getBundle("language", this.fallbackLocale).getString(key);
 		}
 		return s;
@@ -47,4 +62,5 @@ public class Localization {
 		return String.format(getString(key), args);
 		// return s;
 	}
+	
 }
