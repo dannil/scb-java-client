@@ -53,16 +53,45 @@ public class AbstractAPI {
 		this.localization.setLanguage(this.locale);
 	}
 
+	/**
+	 * Retrieves the language for this API instance.
+	 * 
+	 * @return the language for this API instance
+	 */
 	public Locale getLocale() {
 		return this.locale;
 	}
 
+	/**
+	 * Sets the language for this API instance. Note that doing this after a call to
+	 * {@link #setLocalizationLanguage(Locale)} overwrites the localization language with the input
+	 * of this method.
+	 * 
+	 * @param locale
+	 *            the language for the API instance
+	 */
 	public void setLocale(Locale locale) {
 		this.locale = locale;
 
 		this.localization.setLanguage(locale);
 	}
 
+	/**
+	 * Changes the language used for the localization. Useful if the API needs to be in a different
+	 * language than the error messages.
+	 * 
+	 * @param locale
+	 *            the language for the localization
+	 */
+	public void setLocalizationLanguage(Locale locale) {
+		this.localization.setLanguage(locale);
+	}
+
+	/**
+	 * Determines the base URL for the API based on the current locale.
+	 * 
+	 * @return the URL representing the entry point for the API.
+	 */
 	protected String getBaseUrl() {
 		return "http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/";
 	}
