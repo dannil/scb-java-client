@@ -52,7 +52,7 @@
 		<jackson-core.version>2.7.1</jackson-core.version>
 		<jackson-databind.version>2.7.1-1</jackson-databind.version>
 
-		<jacoco-maven-plugin.version>0.7.5.201505241946</jacoco-maven-plugin.version>
+		<jacoco-maven-plugin.version>0.7.6.201602180812</jacoco-maven-plugin.version>
 	</properties>
 
 	<dependencies>
