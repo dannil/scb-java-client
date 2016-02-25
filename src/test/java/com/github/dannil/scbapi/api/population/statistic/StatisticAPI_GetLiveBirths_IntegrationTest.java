@@ -23,18 +23,17 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 import com.github.dannil.scbapi.api.SCBAPI;
-import com.github.dannil.scbapi.test.utility.Config;
+import com.github.dannil.scbapi.test.model.RemoteIntegrationTestSuite;
 import com.github.dannil.scbapi.utility.ListUtility;
 
 @RunWith(Parameterized.class)
-public class StatisticAPI_GetLiveBirths_IntegrationTest {
+public class StatisticAPI_GetLiveBirths_IntegrationTest extends RemoteIntegrationTestSuite {
 
 	private List<String> regions;
 	private List<String> motherAges;
@@ -99,13 +98,6 @@ public class StatisticAPI_GetLiveBirths_IntegrationTest {
 		this.motherAges = motherAges;
 		this.genders = genders;
 		this.years = years;
-	}
-
-	@Before
-	public void setup() throws InterruptedException {
-		// Due to constraints set by SCB, we can only do 10 calls every 10
-		// seconds, so we need an artificial timer which handles this.
-		Thread.sleep(Config.getTimerMs());
 	}
 
 	@Test

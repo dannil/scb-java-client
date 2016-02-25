@@ -24,17 +24,16 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import com.github.dannil.scbapi.api.SCBAPI;
-import com.github.dannil.scbapi.test.utility.Config;
+import com.github.dannil.scbapi.test.model.RemoteIntegrationTestSuite;
 
 @RunWith(JUnit4.class)
-public class StatisticAPI_IntegrationTest {
+public class StatisticAPI_IntegrationTest extends RemoteIntegrationTestSuite {
 
 	private StatisticAPI statisticAPI;
 
 	@Before
 	public void setup() throws InterruptedException {
 		this.statisticAPI = new SCBAPI().population().statistic();
-		Thread.sleep(Config.getTimerMs());
 	}
 
 	// TODO Enable tests in the future
