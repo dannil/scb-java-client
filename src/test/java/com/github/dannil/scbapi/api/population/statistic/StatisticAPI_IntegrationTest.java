@@ -32,7 +32,7 @@ public class StatisticAPI_IntegrationTest extends RemoteIntegrationTestSuite {
 	private StatisticAPI statisticAPI;
 
 	@Before
-	public void setup() throws InterruptedException {
+	public void setup() {
 		this.statisticAPI = new SCBAPI().population().statistic();
 	}
 

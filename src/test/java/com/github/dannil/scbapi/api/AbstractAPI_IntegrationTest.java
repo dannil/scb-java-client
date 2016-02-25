@@ -18,6 +18,7 @@ package com.github.dannil.scbapi.api;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Collection;
@@ -105,6 +106,15 @@ public class AbstractAPI_IntegrationTest {
 		assertFalse(regions.isEmpty());
 	}
 
+	@Test(expected = UnsupportedOperationException.class)
+	public void getRegionsInvalidTable() {
+		DummyAPI api = new DummyAPI();
+
+		List<String> regions = api.getRegions("BE/BE0401/BE0401A/BefolkprognRev2015");
+
+		assertNull(regions);
+	}
+
 	@Test
 	public void getYears() {
 		DummyAPI api = new DummyAPI();
@@ -113,6 +123,15 @@ public class AbstractAPI_IntegrationTest {
 
 		assertNotNull(years);
 		assertFalse(years.isEmpty());
+	}
+
+	@Test(expected = UnsupportedOperationException.class)
+	public void getYearsInvalidTable() {
+		DummyAPI api = new DummyAPI();
+
+		List<String> years = api.getYears("NR/NR0105/NR0105A");
+
+		assertNull(years);
 	}
 
 }
