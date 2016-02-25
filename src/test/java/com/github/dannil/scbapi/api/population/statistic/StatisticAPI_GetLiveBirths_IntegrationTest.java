@@ -31,7 +31,6 @@ import org.junit.runners.Parameterized.Parameters;
 
 import com.github.dannil.scbapi.api.SCBAPI;
 import com.github.dannil.scbapi.test.utility.Config;
-import com.github.dannil.scbapi.utility.ListUtility;
 
 @RunWith(Parameterized.class)
 public class StatisticAPI_GetLiveBirths_IntegrationTest {
@@ -71,8 +70,8 @@ public class StatisticAPI_GetLiveBirths_IntegrationTest {
 			for (String motherAge : motherAges) {
 				for (Integer gender : genders) {
 					for (Integer year : years) {
-						parameters.add(new Object[] { ListUtility.toList(region), ListUtility.toList(motherAge),
-								ListUtility.toList(gender), ListUtility.toList(year) });
+						parameters.add(new Object[] { Arrays.asList(region), Arrays.asList(motherAge),
+								Arrays.asList(gender), Arrays.asList(year) });
 					}
 				}
 			}

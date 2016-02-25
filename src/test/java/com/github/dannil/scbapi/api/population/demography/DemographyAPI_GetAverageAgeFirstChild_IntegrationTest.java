@@ -32,7 +32,6 @@ import org.junit.runners.Parameterized.Parameters;
 
 import com.github.dannil.scbapi.api.SCBAPI;
 import com.github.dannil.scbapi.test.utility.Config;
-import com.github.dannil.scbapi.utility.ListUtility;
 
 @RunWith(Parameterized.class)
 public class DemographyAPI_GetAverageAgeFirstChild_IntegrationTest {
@@ -65,8 +64,8 @@ public class DemographyAPI_GetAverageAgeFirstChild_IntegrationTest {
 		for (String region : regions) {
 			for (Integer gender : genders) {
 				for (Integer year : years) {
-					parameters.add(new Object[] { ListUtility.toList(region), ListUtility.toList(gender),
-							ListUtility.toList(year) });
+					parameters.add(new Object[] { Arrays.asList(region), Arrays.asList(gender),
+							Arrays.asList(year) });
 				}
 			}
 		}
