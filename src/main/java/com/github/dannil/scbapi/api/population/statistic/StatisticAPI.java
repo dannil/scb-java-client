@@ -16,7 +16,6 @@
 
 package com.github.dannil.scbapi.api.population.statistic;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -27,6 +26,7 @@ import com.github.dannil.scbapi.api.AbstractAPI;
 import com.github.dannil.scbapi.model.population.statistic.LiveBirth;
 import com.github.dannil.scbapi.model.population.statistic.Population;
 import com.github.dannil.scbapi.utility.JsonUtility;
+import com.github.dannil.scbapi.utility.ListUtility;
 
 public class StatisticAPI extends AbstractAPI {
 
@@ -59,7 +59,7 @@ public class StatisticAPI extends AbstractAPI {
 	public List<LiveBirth> getLiveBirths(Collection<String> regions, Collection<String> motherAges,
 			Collection<Integer> genders, Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
-		mappings.put("ContentsCode", Arrays.asList("BE0101E2"));
+		mappings.put("ContentsCode", ListUtility.toList("BE0101E2"));
 		mappings.put("Region", regions);
 		mappings.put("AlderModer", motherAges);
 		mappings.put("Kon", genders);
@@ -79,7 +79,7 @@ public class StatisticAPI extends AbstractAPI {
 	public List<Population> getPopulation(Collection<String> regions, Collection<String> relationshipStatuses,
 			Collection<String> ages, Collection<Integer> genders, Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
-		mappings.put("ContentsCode", Arrays.asList("BE0101N1"));
+		mappings.put("ContentsCode", ListUtility.toList("BE0101N1"));
 		mappings.put("Region", regions);
 		mappings.put("Civilstand", relationshipStatuses);
 		mappings.put("Alder", ages);

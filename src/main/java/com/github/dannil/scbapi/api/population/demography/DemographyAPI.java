@@ -16,7 +16,6 @@
 
 package com.github.dannil.scbapi.api.population.demography;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -26,6 +25,7 @@ import java.util.Map;
 import com.github.dannil.scbapi.api.AbstractAPI;
 import com.github.dannil.scbapi.model.population.demography.MeanAgeFirstChild;
 import com.github.dannil.scbapi.utility.JsonUtility;
+import com.github.dannil.scbapi.utility.ListUtility;
 
 public class DemographyAPI extends AbstractAPI {
 
@@ -78,7 +78,7 @@ public class DemographyAPI extends AbstractAPI {
 	public List<MeanAgeFirstChild> getMeanAgeFirstChild(Collection<String> regions, Collection<Integer> genders,
 			Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
-		mappings.put("ContentsCode", Arrays.asList("BE0701AB"));
+		mappings.put("ContentsCode", ListUtility.toList("BE0701AB"));
 		mappings.put("Region", regions);
 		mappings.put("Kon", genders);
 		mappings.put("Tid", years);
@@ -95,7 +95,7 @@ public class DemographyAPI extends AbstractAPI {
 	public List<Object> getFertilityRate(Collection<String> regions, Collection<Integer> genders,
 			Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
-		mappings.put("ContentsCode", Arrays.asList("BE0701AA"));
+		mappings.put("ContentsCode", ListUtility.toList("BE0701AA"));
 		mappings.put("Region", regions);
 		mappings.put("Kon", genders);
 		mappings.put("Tid", years);

@@ -16,7 +16,6 @@
 
 package com.github.dannil.scbapi.api.environment.landandwaterarea;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -26,6 +25,7 @@ import java.util.Map;
 import com.github.dannil.scbapi.api.AbstractAPI;
 import com.github.dannil.scbapi.model.environment.landandwaterarea.Area;
 import com.github.dannil.scbapi.utility.JsonUtility;
+import com.github.dannil.scbapi.utility.ListUtility;
 
 public class LandAndWaterAreaAPI extends AbstractAPI {
 
@@ -57,7 +57,7 @@ public class LandAndWaterAreaAPI extends AbstractAPI {
 
 	public List<Area> getArea(Collection<String> regions, Collection<String> types, Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
-		mappings.put("ContentsCode", Arrays.asList("MI0802AA"));
+		mappings.put("ContentsCode", ListUtility.toList("MI0802AA"));
 		mappings.put("Region", regions);
 		mappings.put("ArealTyp", types);
 		mappings.put("Tid", years);

@@ -31,6 +31,7 @@ import org.junit.runners.Parameterized.Parameters;
 
 import com.github.dannil.scbapi.api.SCBAPI;
 import com.github.dannil.scbapi.test.utility.Config;
+import com.github.dannil.scbapi.utility.ListUtility;
 
 @RunWith(Parameterized.class)
 public class LandAndWaterAreaAPI_GetArea_IntegrationTest {
@@ -63,8 +64,8 @@ public class LandAndWaterAreaAPI_GetArea_IntegrationTest {
 		for (String region : regions) {
 			for (String type : types) {
 				for (Integer year : years) {
-					parameters.add(new Object[] { Arrays.asList(region), Arrays.asList(type),
-							Arrays.asList(year) });
+					parameters.add(new Object[] { ListUtility.toList(region), ListUtility.toList(type),
+							ListUtility.toList(year) });
 				}
 			}
 		}

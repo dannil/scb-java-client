@@ -17,7 +17,6 @@
 package com.github.dannil.scbapi.test.junk;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Hashtable;
@@ -30,6 +29,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.dannil.scbapi.api.AbstractAPI;
 import com.github.dannil.scbapi.api.SCBAPI;
 import com.github.dannil.scbapi.model.environment.landandwaterarea.Area;
+import com.github.dannil.scbapi.utility.ListUtility;
 import com.github.dannil.scbapi.utility.RequestPoster;
 
 public class Junk {
@@ -40,11 +40,11 @@ public class Junk {
 
 			public void exec() {
 				Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
-				mappings.put("ContentsCode", Arrays.asList("000000C5"));
-				mappings.put("Sektor", Arrays.asList("2"));
-				mappings.put("Yrke2012", Arrays.asList("0210"));
-				mappings.put("Kon", Arrays.asList("1+2"));
-				mappings.put("Tid", Arrays.asList("2014"));
+				mappings.put("ContentsCode", ListUtility.toList("000000C5"));
+				mappings.put("Sektor", ListUtility.toList("2"));
+				mappings.put("Yrke2012", ListUtility.toList("0210"));
+				mappings.put("Kon", ListUtility.toList("1+2"));
+				mappings.put("Tid", ListUtility.toList("2014"));
 
 				String response = super.post("AM/AM0110/AM0110A/LoneSpridSektorYrk4A",
 						super.queryBuilder.build(mappings));

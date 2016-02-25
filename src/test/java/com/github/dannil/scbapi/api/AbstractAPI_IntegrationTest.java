@@ -20,7 +20,6 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -31,6 +30,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import com.github.dannil.scbapi.utility.ListUtility;
 import com.github.dannil.scbapi.utility.QueryBuilder;
 
 @RunWith(JUnit4.class)
@@ -77,11 +77,11 @@ public class AbstractAPI_IntegrationTest {
 		QueryBuilder builder = QueryBuilder.getInstance();
 
 		Map<String, Collection<?>> map = new HashMap<String, Collection<?>>();
-		map.put("ContentsCode", Arrays.asList("HE0103D2"));
-		map.put("Alder", Arrays.asList("tot"));
-		map.put("Kon", Arrays.asList("4"));
-		map.put("Boendeform", Arrays.asList("SMAG"));
-		map.put("Tid", Arrays.asList("2012"));
+		map.put("ContentsCode", ListUtility.toList("HE0103D2"));
+		map.put("Alder", ListUtility.toList("tot"));
+		map.put("Kon", ListUtility.toList("4"));
+		map.put("Boendeform", ListUtility.toList("SMAG"));
+		map.put("Tid", ListUtility.toList("2012"));
 
 		// This request is performed by a dummy API which is set to English (as
 		// specified in the setup method.
