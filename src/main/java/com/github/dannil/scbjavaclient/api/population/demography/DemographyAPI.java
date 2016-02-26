@@ -88,26 +88,26 @@ public class DemographyAPI extends AbstractAPI {
 		return JsonUtility.parseAverageAgeFirstChild(JsonUtility.getNode(response));
 	}
 
-	public List<Object> getFertilityRate() {
-		return this.getFertilityRate(null, null, null);
-	}
-
-	public List<Object> getFertilityRate(Collection<String> regions, Collection<Integer> genders,
-			Collection<Integer> years) {
-		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
-		mappings.put("ContentsCode", ListUtility.toList("BE0701AA"));
-		mappings.put("Region", regions);
-		mappings.put("Kon", genders);
-		mappings.put("Tid", years);
-
-		// String response = super.post("BE/BE0701/FruktsamhetSumNy",
-		// super.queryBuilder.build(mappings));
-
-		// System.out.println(response);
-
-		// TODO Implement parsing
-
-		return null;
-	}
+	// public List<Object> getFertilityRate() {
+	// return this.getFertilityRate(null, null, null);
+	// }
+	//
+	// public List<Object> getFertilityRate(Collection<String> regions, Collection<Integer> genders,
+	// Collection<Integer> years) {
+	// Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
+	// mappings.put("ContentsCode", ListUtility.toList("BE0701AA"));
+	// mappings.put("Region", regions);
+	// mappings.put("Kon", genders);
+	// mappings.put("Tid", years);
+	//
+	// // String response = super.post("BE/BE0701/FruktsamhetSumNy",
+	// // super.queryBuilder.build(mappings));
+	//
+	// // System.out.println(response);
+	//
+	// // TODO Implement parsing
+	//
+	// return null;
+	// }
 
 }
