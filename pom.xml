@@ -5,7 +5,7 @@
 		 					 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.dannil</groupId>
-	<artifactId>scb-api</artifactId>
+	<artifactId>scb-java-client</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
@@ -44,45 +44,43 @@
 	</issueManagement>
 
 	<properties>
+		<!-- General configuration -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	
-		<junit.version>4.12</junit.version>
-
+		<!-- Core dependencies -->
 		<jackson-core.version>2.7.1</jackson-core.version>
 		<jackson-databind.version>2.7.1-1</jackson-databind.version>
-
+	
+		<!-- Test dependencies -->
+		<junit.version>4.12</junit.version>
 		<jacoco-maven-plugin.version>0.7.6.201602180812</jacoco-maven-plugin.version>
 	</properties>
 
 	<dependencies>
-	
+		<!-- Core dependencies -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${jackson-core.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson-databind.version}</version>
+		</dependency>
+
+		<!-- Test dependencies -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
-		
-		<!-- LICENSE : Apache License 2.0 -->
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-core</artifactId>
-			<version>${jackson-core.version}</version>
-		</dependency>
-		
-		<!-- LICENSE : Apache License 2.0 -->
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>${jackson-databind.version}</version>
-		</dependency>
-		
 	</dependencies>
 	
 	<build>
 		<plugins>
-		
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
@@ -102,13 +100,11 @@
 					</execution>
 				</executions>
 			</plugin>
-			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
 				<version>2.4.3</version>
 				<executions>
-				
 					<execution>
 						<id>shade</id>
 						<phase>package</phase>
@@ -120,10 +116,8 @@
 							<createDependencyReducedPom>false</createDependencyReducedPom>
 						</configuration>
 					</execution>
-					
 				</executions>
 			</plugin>
-			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
@@ -132,7 +126,6 @@
 					<argLine>${argLine} -Dfile.encoding=UTF-8</argLine>
 				</configuration>
 			</plugin>
-		
       		<plugin>
 	        	<artifactId>maven-compiler-plugin</artifactId>
 	        	<version>3.5.1</version>
@@ -142,8 +135,6 @@
 	          		<encoding>${project.build.sourceEncoding}</encoding>
 	        	</configuration>
 			</plugin>
-			
 		</plugins>
 	</build>
-	
 </project>

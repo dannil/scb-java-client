@@ -28,7 +28,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.github.dannil.scbapi.model.population.statistic.LiveBirth;
+import com.github.dannil.scbjavaclient.model.population.statistic.LiveBirth;
 
 @RunWith(JUnit4.class)
 public class JsonUtility_UnitTest {

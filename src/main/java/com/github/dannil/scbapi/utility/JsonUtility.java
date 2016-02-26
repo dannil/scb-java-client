@@ -24,10 +24,10 @@ import java.util.Map;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.dannil.scbapi.model.environment.landandwaterarea.Area;
-import com.github.dannil.scbapi.model.population.demography.MeanAgeFirstChild;
-import com.github.dannil.scbapi.model.population.statistic.LiveBirth;
-import com.github.dannil.scbapi.model.population.statistic.Population;
+import com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area;
+import com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstChild;
+import com.github.dannil.scbjavaclient.model.population.statistic.LiveBirth;
+import com.github.dannil.scbjavaclient.model.population.statistic.Population;
 
 public class JsonUtility {
 

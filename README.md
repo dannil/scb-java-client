@@ -3,9 +3,9 @@
 [![Codacy Coverage Badge](https://api.codacy.com/project/badge/coverage/af5b976ee2f94fd4b25ef1ae991d7993)](https://www.codacy.com/app/dannil/scb-api)
 [![Dependency Status](https://www.versioneye.com/user/projects/56a60ed01b78fd0035000109/badge.svg?style=flat)](https://www.versioneye.com/user/projects/56a60ed01b78fd0035000109)
 
-# scb-api
+# scb-java-client
 
-Java wrapper client implementation for the SCB (Statistiska centralbyrån) API.
+Java client for the SCB (Statistiska centralbyrån) API.
 
 ## Getting Started
 
@@ -13,10 +13,10 @@ Java wrapper client implementation for the SCB (Statistiska centralbyrån) API.
 
 ## Usage
 
-This demonstarates the typical usage of the client API.
+This demonstarates the typical usage of the client.
 
 ```java
-// Create the client API
+// Create the client
 SCBAPI baseApi = new SCBAPI();
 
 // Retrieve all population statistics
@@ -30,7 +30,7 @@ DemographyAPI demographyApi = baseApi.population().demography();
 List<MeanAgeFirstChild> firstChild = demographyApi.getMeanAgeFirstChild();
 ```
 
-The client API also supports selecting specific values directly from the SCB API.
+The client also supports selecting specific values directly from the SCB API.
 
 ```java
 // Specify the criterion for the information we want to receive
