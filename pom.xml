@@ -9,9 +9,9 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>scb-api</name>
+	<name>scb-java-client</name>
 	<description>Java implementation of the SCB (Statistiska centralbyrån) API</description>
-  	<url>https://github.com/dannil/scb-api</url>
+  	<url>https://github.com/dannil/scb-java-client</url>
 
 	<developers>
 		<developer>
@@ -138,4 +138,5 @@
 			</plugin>
 		</plugins>
 	</build>
+	
 </project>
