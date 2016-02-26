@@ -28,10 +28,10 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import com.github.dannil.scbapi.test.model.RemoteIntegrationTestSuite;
-import com.github.dannil.scbapi.utility.ListUtility;
 import com.github.dannil.scbjavaclient.api.SCBAPI;
 import com.github.dannil.scbjavaclient.api.population.statistic.StatisticAPI;
+import com.github.dannil.scbjavaclient.test.model.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.utility.ListUtility;
 
 @RunWith(Parameterized.class)
 public class StatisticAPI_GetLiveBirths_IntegrationTest extends RemoteIntegrationTestSuite {

@@ -25,10 +25,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.github.dannil.scbapi.utility.JsonUtility;
-import com.github.dannil.scbapi.utility.Localization;
-import com.github.dannil.scbapi.utility.QueryBuilder;
-import com.github.dannil.scbapi.utility.RequestPoster;
+import com.github.dannil.scbjavaclient.utility.JsonUtility;
+import com.github.dannil.scbjavaclient.utility.Localization;
+import com.github.dannil.scbjavaclient.utility.QueryBuilder;
+import com.github.dannil.scbjavaclient.utility.RequestPoster;
 
 public abstract class AbstractAPI {
 

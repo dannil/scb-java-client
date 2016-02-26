@@ -23,9 +23,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import com.github.dannil.scbapi.test.model.RemoteIntegrationTestSuite;
 import com.github.dannil.scbjavaclient.api.SCBAPI;
 import com.github.dannil.scbjavaclient.api.environment.landandwaterarea.LandAndWaterAreaAPI;
+import com.github.dannil.scbjavaclient.test.model.RemoteIntegrationTestSuite;
 
 @RunWith(JUnit4.class)
 public class LandAndWaterAreaAPI_IntegrationTest extends RemoteIntegrationTestSuite {

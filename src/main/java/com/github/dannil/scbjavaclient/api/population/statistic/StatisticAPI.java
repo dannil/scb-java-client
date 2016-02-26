@@ -22,11 +22,11 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import com.github.dannil.scbapi.utility.JsonUtility;
-import com.github.dannil.scbapi.utility.ListUtility;
 import com.github.dannil.scbjavaclient.api.AbstractAPI;
 import com.github.dannil.scbjavaclient.model.population.statistic.LiveBirth;
 import com.github.dannil.scbjavaclient.model.population.statistic.Population;
+import com.github.dannil.scbjavaclient.utility.JsonUtility;
+import com.github.dannil.scbjavaclient.utility.ListUtility;
 
 public class StatisticAPI extends AbstractAPI {
 

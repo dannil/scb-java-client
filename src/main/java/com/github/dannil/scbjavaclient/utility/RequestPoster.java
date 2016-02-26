@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.github.dannil.scbapi.utility;
+package com.github.dannil.scbjavaclient.utility;
 
 import java.io.BufferedReader;
 import java.io.IOException;

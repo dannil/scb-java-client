@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.github.dannil.scbapi.utility;
+package com.github.dannil.scbjavaclient.utility;
 
 import java.util.Locale;
 import java.util.MissingResourceException;

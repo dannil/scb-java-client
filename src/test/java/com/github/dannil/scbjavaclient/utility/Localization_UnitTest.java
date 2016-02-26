@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.github.dannil.scbapi.utility;
+package com.github.dannil.scbjavaclient.utility;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
@@ -24,6 +24,8 @@ import java.util.Locale;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+
+import com.github.dannil.scbjavaclient.utility.Localization;
 
 @RunWith(JUnit4.class)
 public class Localization_UnitTest {

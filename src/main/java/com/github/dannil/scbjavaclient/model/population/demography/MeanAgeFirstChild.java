@@ -19,9 +19,9 @@ package com.github.dannil.scbjavaclient.model.population.demography;
 import java.util.List;
 import java.util.Objects;
 
-import com.github.dannil.scbapi.utility.JsonUtility;
-import com.github.dannil.scbapi.utility.RequestPoster;
 import com.github.dannil.scbjavaclient.model.AbstractRegionAndYearModel;
+import com.github.dannil.scbjavaclient.utility.JsonUtility;
+import com.github.dannil.scbjavaclient.utility.RequestPoster;
 
 public class MeanAgeFirstChild extends AbstractRegionAndYearModel<String, Integer, Double> {
 

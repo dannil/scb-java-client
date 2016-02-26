@@ -14,14 +14,13 @@
  * limitations under the License.
  */
 
-package com.github.dannil.scbapi.test;
+package com.github.dannil.scbjavaclient.test;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import com.github.dannil.scbapi.utility.ParseUtility;
 import com.github.dannil.scbjavaclient.api.SCBAPI;
 import com.github.dannil.scbjavaclient.api.environment.landandwaterarea.LandAndWaterAreaAPI;
 import com.github.dannil.scbjavaclient.api.population.statistic.StatisticAPI;
@@ -29,6 +28,7 @@ import com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area;
 import com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstChild;
 import com.github.dannil.scbjavaclient.model.population.statistic.LiveBirth;
 import com.github.dannil.scbjavaclient.model.population.statistic.Population;
+import com.github.dannil.scbjavaclient.utility.ParseUtility;
 
 public class Test {
 

@@ -14,29 +14,65 @@
  * limitations under the License.
  */
 
-package com.github.dannil.scbapi.utility;
+package com.github.dannil.scbjavaclient.utility;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import com.github.dannil.scbjavaclient.utility.ListUtility;
+
 @RunWith(JUnit4.class)
-public class RequestPoster_UnitTest {
+public class ListUtility_UnitTest {
 
 	@Test
 	public void callPrivateConstructor() throws InstantiationException, IllegalAccessException,
 			IllegalArgumentException, InvocationTargetException {
-		Constructor<?>[] cons = RequestPoster.class.getDeclaredConstructors();
+		Constructor<?>[] cons = ListUtility.class.getDeclaredConstructors();
 		cons[0].setAccessible(true);
 		cons[0].newInstance();
 		cons[0].setAccessible(false);
 
 		assertFalse(cons[0].isAccessible());
+	}
+
+	@Test
+	public void toList() {
+		String test = "helloworld";
+
+		List<String> list1 = ListUtility.toList(test);
+
+		List<String> list2 = new ArrayList<String>();
+		list2.add(test);
+
+		assertEquals(list1, list2);
+	}
+
+	@Test
+	public void toStringWithValues() {
+		List<Integer> list1 = new ArrayList<Integer>();
+		list1.add(42);
+
+		List<String> list2 = new ArrayList<String>();
+		list2.add("42");
+
+		assertEquals(list2, ListUtility.toString(list1));
+	}
+
+	@Test
+	public void toStringNoValues() {
+		List<Integer> list1 = new ArrayList<Integer>();
+		List<String> list2 = new ArrayList<String>();
+
+		assertEquals(list2, ListUtility.toString(list1));
 	}
 
 }

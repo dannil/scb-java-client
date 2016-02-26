@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.github.dannil.scbapi.utility;
+package com.github.dannil.scbjavaclient.utility;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -29,6 +29,7 @@ import org.junit.runners.JUnit4;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.dannil.scbjavaclient.model.population.statistic.LiveBirth;
+import com.github.dannil.scbjavaclient.utility.JsonUtility;
 
 @RunWith(JUnit4.class)
 public class JsonUtility_UnitTest {

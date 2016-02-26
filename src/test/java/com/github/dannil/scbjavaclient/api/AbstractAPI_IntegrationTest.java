@@ -31,9 +31,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import com.github.dannil.scbapi.utility.ListUtility;
-import com.github.dannil.scbapi.utility.QueryBuilder;
 import com.github.dannil.scbjavaclient.api.AbstractAPI;
+import com.github.dannil.scbjavaclient.utility.ListUtility;
+import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 @RunWith(JUnit4.class)
 public class AbstractAPI_IntegrationTest {

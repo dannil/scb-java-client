@@ -1,8 +1,8 @@
-package com.github.dannil.scbapi.test.model;
+package com.github.dannil.scbjavaclient.test.model;
 
 import org.junit.Before;
 
-import com.github.dannil.scbapi.test.utility.Config;
+import com.github.dannil.scbjavaclient.test.utility.Config;
 
 public abstract class RemoteIntegrationTestSuite {
 

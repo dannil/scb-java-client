@@ -1,10 +1,10 @@
-package com.github.dannil.scbapi.test.utility;
+package com.github.dannil.scbjavaclient.test.utility;
 
 import java.io.IOException;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.github.dannil.scbapi.utility.JsonUtility;
-import com.github.dannil.scbapi.utility.RequestPoster;
+import com.github.dannil.scbjavaclient.utility.JsonUtility;
+import com.github.dannil.scbjavaclient.utility.RequestPoster;
 
 public final class Config {
 
