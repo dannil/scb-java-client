@@ -9,6 +9,18 @@ Java client for the SCB (Statistiska centralbyrån) API.
 
 ## Installation
 
+### Maven
+
+Add the dependency to your project's POM.
+
+```xml
+<dependency>
+  <groupId>com.github.dannil</groupId>
+  <artifactId>scb-java-client</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+</dependency>
+```
+
 ## Usage
 
 This demonstarates the typical usage of the client.
