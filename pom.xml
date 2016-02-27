@@ -1,6 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
-		 					 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.dannil</groupId>
@@ -34,13 +33,13 @@
 	</licenses>
 
 	<scm>
-		<connection>scm:git:git@github.com:dannil/scb-api.git</connection>
-		<developerConnection>scm:git:git@github.com:dannil/scb-api.git</developerConnection>
-		<url>git@github.com:dannil/scb-api.git</url>
+		<connection>scm:git:git@github.com:dannil/scb-java-client.git</connection>
+		<developerConnection>scm:git:git@github.com:dannil/scb-java-client.git</developerConnection>
+		<url>git@github.com:dannil/scb-java-client.git</url>
 	</scm>
 	<issueManagement>
 		<system>GitHub</system>
-		<url>https://github.com/dannil/scb-api/issues</url>
+		<url>https://github.com/dannil/scb-java-client/issues</url>
 	</issueManagement>
 
 	<properties>
