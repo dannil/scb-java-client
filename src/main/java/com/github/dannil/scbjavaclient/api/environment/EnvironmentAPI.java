@@ -25,6 +25,9 @@ public class EnvironmentAPI extends AbstractContainerAPI {
 
 	private LandAndWaterAreaAPI landAndWaterAreaApi;
 
+	/**
+	 * Default constructor. Initializes values and creates sub-clients.
+	 */
 	public EnvironmentAPI() {
 		super();
 
@@ -32,12 +35,23 @@ public class EnvironmentAPI extends AbstractContainerAPI {
 		super.apis.add(this.landAndWaterAreaApi);
 	}
 
+	/**
+	 * Overloaded constructor
+	 * 
+	 * @param locale
+	 *            the locale for this client
+	 */
 	public EnvironmentAPI(Locale locale) {
 		this();
 
 		super.setLocale(locale);
 	}
 
+	/**
+	 * Retrieve the client for interacting with land and water area data.
+	 * 
+	 * @return a client for land and water area data
+	 */
 	public LandAndWaterAreaAPI landAndWaterArea() {
 		return this.landAndWaterAreaApi;
 	}

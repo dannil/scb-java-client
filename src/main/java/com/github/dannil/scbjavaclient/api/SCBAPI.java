@@ -26,6 +26,9 @@ public class SCBAPI extends AbstractContainerAPI {
 	private PopulationAPI populationApi;
 	private EnvironmentAPI environmentApi;
 
+	/**
+	 * Default constructor. Initializes values and creates sub-clients.
+	 */
 	public SCBAPI() {
 		super();
 
@@ -38,16 +41,32 @@ public class SCBAPI extends AbstractContainerAPI {
 		super.setLocale(Locale.getDefault());
 	}
 
+	/**
+	 * Overloaded constructor.
+	 * 
+	 * @param locale
+	 *            the locale for this client
+	 */
 	public SCBAPI(Locale locale) {
 		this();
 
 		super.setLocale(locale);
 	}
 
+	/**
+	 * Retrieve the client for interacting with environment data.
+	 * 
+	 * @return a client for environment data
+	 */
 	public EnvironmentAPI environment() {
 		return this.environmentApi;
 	}
 
+	/**
+	 * Retrieve the client for interacting with population data.
+	 * 
+	 * @return a client for population data
+	 */
 	public PopulationAPI population() {
 		return this.populationApi;
 	}

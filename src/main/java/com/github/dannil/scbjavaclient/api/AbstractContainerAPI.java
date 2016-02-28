@@ -24,16 +24,20 @@ public abstract class AbstractContainerAPI extends AbstractAPI {
 
 	protected List<AbstractAPI> apis;
 
+	/**
+	 * Default constructor.
+	 */
 	protected AbstractContainerAPI() {
 		super();
 
 		this.apis = new ArrayList<AbstractAPI>();
 	}
 
+	/**
+	 * Set the locale for all sub-clients.
+	 */
 	@Override
 	public void setLocale(Locale locale) {
-		super.locale = locale;
-
 		for (AbstractAPI api : this.apis) {
 			api.setLocale(super.locale);
 		}

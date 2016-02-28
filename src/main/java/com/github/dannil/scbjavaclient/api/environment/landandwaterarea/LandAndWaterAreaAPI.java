@@ -29,10 +29,19 @@ import com.github.dannil.scbjavaclient.utility.ListUtility;
 
 public class LandAndWaterAreaAPI extends AbstractAPI {
 
+	/**
+	 * Default constructor.
+	 */
 	public LandAndWaterAreaAPI() {
 		super();
 	}
 
+	/**
+	 * Overloaded constructor.
+	 * 
+	 * @param locale
+	 *            the locale for this client
+	 */
 	public LandAndWaterAreaAPI(Locale locale) {
 		super(locale);
 	}
@@ -51,10 +60,32 @@ public class LandAndWaterAreaAPI extends AbstractAPI {
 	// return years;
 	// }
 
+	/**
+	 * Fetch all area data.
+	 * 
+	 * @return the area data wrapped in a list of
+	 *         {@link com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area Area}
+	 *         objects
+	 * 
+	 * @see LandAndWaterAreaAPI#getArea(Collection, Collection, Collection)
+	 */
 	public List<Area> getArea() {
 		return this.getArea(null, null, null);
 	}
 
+	/**
+	 * Fetch all area data which match the input constraints.
+	 * 
+	 * @param regions
+	 *            the regions to fetch data for
+	 * @param types
+	 *            the types to fetch data for
+	 * @param years
+	 *            the years to fetch data for
+	 * @return the area data wrapped in a list of
+	 *         {@link com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area Area}
+	 *         objects
+	 */
 	public List<Area> getArea(Collection<String> regions, Collection<String> types, Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
 		mappings.put("ContentsCode", ListUtility.toList("MI0802AA"));

@@ -27,6 +27,9 @@ public class PopulationAPI extends AbstractContainerAPI {
 	private DemographyAPI demographyApi;
 	private StatisticAPI statisticApi;
 
+	/**
+	 * Default constructor. Initializes values and creates sub-clients.
+	 */
 	public PopulationAPI() {
 		super();
 
@@ -39,16 +42,32 @@ public class PopulationAPI extends AbstractContainerAPI {
 		super.setLocale(Locale.getDefault());
 	}
 
+	/**
+	 * Overloaded constructor
+	 * 
+	 * @param locale
+	 *            the locale for this client
+	 */
 	public PopulationAPI(Locale locale) {
 		this();
 
 		super.setLocale(locale);
 	}
 
+	/**
+	 * Retrieve the client for interacting with demography data.
+	 * 
+	 * @return a client for demography data
+	 */
 	public DemographyAPI demography() {
 		return this.demographyApi;
 	}
 
+	/**
+	 * Retrieve the client for interacting with statistic data.
+	 * 
+	 * @return a client for statistic data
+	 */
 	public StatisticAPI statistic() {
 		return this.statisticApi;
 	}

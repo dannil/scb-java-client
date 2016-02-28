@@ -46,6 +46,12 @@ public abstract class AbstractAPI {
 		this.localization = new Localization(this.locale);
 	}
 
+	/**
+	 * Overloaded constructor
+	 * 
+	 * @param locale
+	 *            the locale for this instance
+	 */
 	protected AbstractAPI(Locale locale) {
 		this();
 		this.locale = locale;
@@ -63,12 +69,12 @@ public abstract class AbstractAPI {
 	}
 
 	/**
-	 * Sets the language for this API instance. Note that doing this after a call to
+	 * Sets the language for this client instance. Note that doing this after a call to
 	 * {@link #setLocalizationLanguage(Locale)} overwrites the localization language with the input
 	 * of this method.
 	 * 
 	 * @param locale
-	 *            the language for the API instance
+	 *            the language for this client
 	 */
 	public void setLocale(Locale locale) {
 		this.locale = locale;
@@ -77,8 +83,8 @@ public abstract class AbstractAPI {
 	}
 
 	/**
-	 * Changes the language used for the localization. Useful if the API needs to be in a different
-	 * language than the error messages.
+	 * Changes the language used for the localization. Useful if the client needs to be in a
+	 * different language than the error messages.
 	 * 
 	 * @param locale
 	 *            the language for the localization
@@ -96,6 +102,13 @@ public abstract class AbstractAPI {
 		return "http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/";
 	}
 
+	/**
+	 * Performs a GET request towards the address.
+	 * 
+	 * @param address
+	 *            the address which will be sent a GET request
+	 * @return a string representation of the API's response
+	 */
 	// TODO Improve method
 	protected String get(String address) {
 		try {
@@ -106,7 +119,7 @@ public abstract class AbstractAPI {
 			// 404, call the API again with the fallback language
 
 			try {
-				return RequestPoster.doGet(toFallbackUrl(getBaseUrl() + address));
+				return RequestPoster.doGet(toUrl(getBaseUrl() + address, this.locale));
 			} catch (IOException e1) {
 				e1.printStackTrace();
 
@@ -120,6 +133,15 @@ public abstract class AbstractAPI {
 		}
 	}
 
+	/**
+	 * Performs a POST request towards the address.
+	 * 
+	 * @param address
+	 *            the address which will be sent a POST request
+	 * @param query
+	 *            the payload which the API processes
+	 * @return a string representation of the API's response
+	 */
 	// TODO Improve method
 	protected String post(String address, String query) {
 		try {
@@ -134,7 +156,7 @@ public abstract class AbstractAPI {
 			try {
 				LOGGER.log(Level.INFO, query);
 
-				return RequestPoster.doPost(toFallbackUrl(getBaseUrl() + address), query);
+				return RequestPoster.doPost(toUrl(getBaseUrl() + address, this.locale), query);
 			} catch (IOException e1) {
 				e1.printStackTrace();
 
@@ -149,15 +171,24 @@ public abstract class AbstractAPI {
 	}
 
 	// TODO Maybe should be in a separate utility class?
-	private String toFallbackUrl(String url) {
+	/**
+	 * Generates a new URL to the API with the specified inputs.
+	 * 
+	 * @param url
+	 *            the URL to edit
+	 * @param locale
+	 *            the locale which to manipulate the URL with
+	 * @return
+	 */
+	private String toUrl(String url, Locale locale) {
 		String internalAddress = url;
 
 		// Some tables only support Swedish so we need to fall back to
 		// Swedish if this is the case
 		Locale fallback = new Locale("sv", "SE");
 
-		int start = internalAddress.indexOf(this.locale.getLanguage(), internalAddress.indexOf("doris"));
-		int end = start + this.locale.getLanguage().length();
+		int start = internalAddress.indexOf(locale.getLanguage(), internalAddress.indexOf("doris"));
+		int end = start + locale.getLanguage().length();
 
 		StringBuilder builder = new StringBuilder(internalAddress);
 		builder.replace(start, end, fallback.getLanguage());
@@ -165,6 +196,15 @@ public abstract class AbstractAPI {
 		return builder.toString();
 	}
 
+	/**
+	 * Returns the list of the available regions for a given URL.
+	 * 
+	 * @param url
+	 *            the URL to retrieve the regions from
+	 * @throws UnsupportedOperationException
+	 *             if the specified URL doesn't supply a regions table
+	 * @return a list of the available regions for the given URL
+	 */
 	public List<String> getRegions(String url) {
 		String content = get(url);
 
@@ -189,6 +229,15 @@ public abstract class AbstractAPI {
 		return regions;
 	}
 
+	/**
+	 * Returns the list of the available years for a given URL.
+	 * 
+	 * @param url
+	 *            the URL to retrieve the years from
+	 * @throws UnsupportedOperationException
+	 *             if the specified URL doesn't supply a years table
+	 * @return a list of the available years for the given URL
+	 */
 	protected List<String> getYears(String url) {
 		String content = get(url);
 
