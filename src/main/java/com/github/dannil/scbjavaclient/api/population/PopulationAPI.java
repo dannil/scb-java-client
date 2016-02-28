@@ -38,8 +38,6 @@ public class PopulationAPI extends AbstractContainerAPI {
 
 		this.statisticApi = new StatisticAPI();
 		super.apis.add(this.statisticApi);
-
-		super.setLocale(Locale.getDefault());
 	}
 
 	/**
