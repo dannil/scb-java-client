@@ -24,8 +24,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import com.github.dannil.scbjavaclient.api.population.PopulationAPI;
-
 @RunWith(JUnit4.class)
 public class PopulationAPI_UnitTest {
 
@@ -35,6 +33,16 @@ public class PopulationAPI_UnitTest {
 		PopulationAPI api = new PopulationAPI(locale);
 
 		assertEquals(locale, api.getLocale());
+	}
+
+	@Test
+	public void isSubClientsSameLocale() {
+		Locale locale = Locale.getDefault();
+
+		PopulationAPI api = new PopulationAPI();
+
+		assertEquals(api.demography().getLocale(), locale);
+		assertEquals(api.statistic().getLocale(), locale);
 	}
 
 }
