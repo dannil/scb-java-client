@@ -17,8 +17,12 @@
 package com.github.dannil.scbjavaclient.test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
@@ -98,6 +102,17 @@ public class Test {
 		ResourceBundle bundle = ResourceBundle.getBundle("language", client.getLocale());
 		bundle.getString("hello");
 
-		System.out.println(client.getRegions("HE/HE0103/HE0103B/BefolkningAlder"));
+		// System.out.println(client.getRegions("HE/HE0103/HE0103B/BefolkningAlder"));
+
+		Map<String, Collection<?>> payload = new HashMap<String, Collection<?>>();
+		payload.put("ContentsCode", Arrays.asList("BE0101N1"));
+		payload.put("Region", Arrays.asList("00", "01", "0114"));
+		payload.put("Civilstand", Arrays.asList("OG", "G"));
+		payload.put("Alder", Arrays.asList(45, 50));
+		payload.put("Kon", null);
+		payload.put("Tid", Arrays.asList(2011, 2012));
+
+		String response = client.getRawData("BE/BE0101/BE0101A/BefolkningNy", payload);
+		System.out.println(response);
 	}
 }
