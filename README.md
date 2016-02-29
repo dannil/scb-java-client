@@ -27,17 +27,17 @@ This demonstarates the typical usage of the client.
 
 ```java
 // Create the client
-SCBAPI baseApi = new SCBAPI();
+SCBClient baseClient = new SCBClient();
 
 // Retrieve all population statistics
-List<Population> population = baseApi.population().statistic().getPopulation();
+List<Population> population = baseClient.population().statistic().getPopulation();
 
-// Perform operations with the DemographyAPI
-DemographyAPI demographyApi = baseApi.population().demography();
+// Perform operations with the DemographyClient
+DemographyClient demographyClient = baseClient.population().demography();
 
 // Retrieve all mean age for first child birth statistics 
-// using the DemographyAPI
-List<MeanAgeFirstChild> firstChild = demographyApi.getMeanAgeFirstChild();
+// using the DemographyClient
+List<MeanAgeFirstChild> firstChild = demographyClient.getMeanAgeFirstChild();
 ```
 
 The client also supports selecting specific values directly from the SCB API.
@@ -49,5 +49,5 @@ List<String> types = Arrays.asList("01", "02");
 List<Integer> years = Arrays.asList(2012, 2014);
 
 // Retrieve all area statistics using the selected values
-List<Area> areas = baseApi.environment().landAndWaterArea().getArea(regions, types, years);
+List<Area> areas = baseClient.environment().landAndWaterArea().getArea(regions, types, years);
 ```

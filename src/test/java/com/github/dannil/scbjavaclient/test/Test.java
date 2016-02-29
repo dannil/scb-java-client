@@ -21,9 +21,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import com.github.dannil.scbjavaclient.api.SCBAPI;
-import com.github.dannil.scbjavaclient.api.environment.landandwaterarea.LandAndWaterAreaAPI;
-import com.github.dannil.scbjavaclient.api.population.statistic.StatisticAPI;
+import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.LandAndWaterAreaClient;
+import com.github.dannil.scbjavaclient.client.population.statistic.StatisticClient;
 import com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area;
 import com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstChild;
 import com.github.dannil.scbjavaclient.model.population.statistic.LiveBirth;
@@ -34,7 +34,7 @@ public class Test {
 
 	public static void main(String[] args) {
 		Locale locale = new Locale("en");
-		SCBAPI api = new SCBAPI(locale);
+		SCBClient client = new SCBClient(locale);
 
 		List<String> regions = new ArrayList<String>();
 		// regions.add("00");
@@ -58,19 +58,19 @@ public class Test {
 
 		System.out.println(ParseUtility.parseLong("221", null));
 
-		StatisticAPI statisticApi = api.population().statistic();
+		StatisticClient statisticClient = client.population().statistic();
 
-		List<LiveBirth> collection9 = statisticApi.getLiveBirths();
+		List<LiveBirth> collection9 = statisticClient.getLiveBirths();
 		for (LiveBirth l : collection9) {
 			System.out.println(l);
 		}
 
-		List<Population> collection8 = statisticApi.getPopulation(regions, null, ages, null, years);
+		List<Population> collection8 = statisticClient.getPopulation(regions, null, ages, null, years);
 		for (Population p : collection8) {
 			System.out.println(p);
 		}
 
-		List<Population> collection4 = statisticApi.getPopulation();
+		List<Population> collection4 = statisticClient.getPopulation();
 		for (Population p : collection4) {
 			System.out.println(p);
 		}
@@ -80,23 +80,24 @@ public class Test {
 		// System.out.println(year);
 		// }
 
-		LandAndWaterAreaAPI lawApi = api.environment().landAndWaterArea();
+		LandAndWaterAreaClient lawClient = client.environment().landAndWaterArea();
 
-		List<Area> collection6 = lawApi.getArea(regions, types, years);
+		List<Area> collection6 = lawClient.getArea(regions, types, years);
 		for (Area a : collection6) {
 			System.out.println(a);
 		}
 
-		List<MeanAgeFirstChild> collection7 = api.population().demography().getMeanAgeFirstChild(regions, null, null);
+		List<MeanAgeFirstChild> collection7 = client.population().demography()
+				.getMeanAgeFirstChild(regions, null, null);
 		for (MeanAgeFirstChild a : collection7) {
 			System.out.println(a);
 		}
 
 		// api.population().demography().getFertilityRate();
 
-		ResourceBundle bundle = ResourceBundle.getBundle("language", api.getLocale());
+		ResourceBundle bundle = ResourceBundle.getBundle("language", client.getLocale());
 		bundle.getString("hello");
 
-		System.out.println(api.getRegions("HE/HE0103/HE0103B/BefolkningAlder"));
+		System.out.println(client.getRegions("HE/HE0103/HE0103B/BefolkningAlder"));
 	}
 }

@@ -19,7 +19,7 @@ package com.github.dannil.scbjavaclient.model;
 import java.util.Objects;
 
 /**
- * Abstract model which holds the value of the API response.
+ * Abstract model which holds the value of the Client response.
  * 
  * @author Daniel Nilsson
  *
