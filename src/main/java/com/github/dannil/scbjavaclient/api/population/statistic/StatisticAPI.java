@@ -28,12 +28,26 @@ import com.github.dannil.scbjavaclient.model.population.statistic.Population;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.ListUtility;
 
+/**
+ * Client which handles population statistic data fetching.
+ * 
+ * @author Daniel Nilsson
+ */
 public class StatisticAPI extends AbstractAPI {
 
+	/**
+	 * Default constructor.
+	 */
 	public StatisticAPI() {
 		super();
 	}
 
+	/**
+	 * Overloaded constructor.
+	 * 
+	 * @param locale
+	 *            the locale for this client
+	 */
 	public StatisticAPI(Locale locale) {
 		super(locale);
 	}
@@ -52,10 +66,31 @@ public class StatisticAPI extends AbstractAPI {
 	// return years;
 	// }
 
+	/**
+	 * Fetch all live births data.
+	 * 
+	 * @return the live births data wrapped in a list of {@link LiveBirth} objects
+	 * 
+	 * @see StatisticAPI#getLiveBirths(Collection, Collection, Collection, Collection)
+	 */
 	public List<LiveBirth> getLiveBirths() {
 		return this.getLiveBirths(null, null, null, null);
 	}
 
+	/**
+	 * Fetch all live births data which match the input constraints.
+	 * 
+	 * @param regions
+	 *            the regions to fetch data for
+	 * @param motherAges
+	 *            the mothers' ages to fetch data for
+	 * @param genders
+	 *            the genders to fetch data for
+	 * @param years
+	 *            the years to fetch data for
+	 * 
+	 * @return the live births data wrapped in a list of {@link LiveBirth} objects
+	 */
 	public List<LiveBirth> getLiveBirths(Collection<String> regions, Collection<String> motherAges,
 			Collection<Integer> genders, Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
@@ -72,10 +107,33 @@ public class StatisticAPI extends AbstractAPI {
 		return JsonUtility.parseLiveBirths(JsonUtility.getNode(response));
 	}
 
+	/**
+	 * Fetch all population data data.
+	 * 
+	 * @return the population data wrapped in a list of {@link Population} objects
+	 * 
+	 * @see StatisticAPI#getPopulation(Collection, Collection, Collection, Collection, Collection)
+	 */
 	public List<Population> getPopulation() {
 		return this.getPopulation(null, null, null, null, null);
 	}
 
+	/**
+	 * Fetch all population data which match the input constraints.
+	 * 
+	 * @param regions
+	 *            the regions to fetch data for
+	 * @param relationshipStatuses
+	 *            the relationship statuses to fetch data for
+	 * @param ages
+	 *            the ages to fetch data for
+	 * @param genders
+	 *            the genders to fetch data for
+	 * @param years
+	 *            the years to fetch data for
+	 * 
+	 * @return the population data wrapped in a list of {@link Population} objects
+	 */
 	public List<Population> getPopulation(Collection<String> regions, Collection<String> relationshipStatuses,
 			Collection<String> ages, Collection<Integer> genders, Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();

@@ -27,6 +27,11 @@ import com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.ListUtility;
 
+/**
+ * Client which handles environment land and water area data fetching.
+ * 
+ * @author Daniel Nilsson
+ */
 public class LandAndWaterAreaAPI extends AbstractAPI {
 
 	/**
@@ -63,9 +68,7 @@ public class LandAndWaterAreaAPI extends AbstractAPI {
 	/**
 	 * Fetch all area data.
 	 * 
-	 * @return the area data wrapped in a list of
-	 *         {@link com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area Area}
-	 *         objects
+	 * @return the area data wrapped in a list of {@link Area} objects
 	 * 
 	 * @see LandAndWaterAreaAPI#getArea(Collection, Collection, Collection)
 	 */
@@ -82,9 +85,7 @@ public class LandAndWaterAreaAPI extends AbstractAPI {
 	 *            the types to fetch data for
 	 * @param years
 	 *            the years to fetch data for
-	 * @return the area data wrapped in a list of
-	 *         {@link com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area Area}
-	 *         objects
+	 * @return the area data wrapped in a list of {@link Area} objects
 	 */
 	public List<Area> getArea(Collection<String> regions, Collection<String> types, Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();

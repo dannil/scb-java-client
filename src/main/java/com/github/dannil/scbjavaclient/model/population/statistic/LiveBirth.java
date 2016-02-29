@@ -23,33 +23,77 @@ import com.github.dannil.scbjavaclient.model.AbstractRegionAndYearModel;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.RequestPoster;
 
+/**
+ * Model for live births data
+ * 
+ * @author Daniel Nilsson
+ */
 public class LiveBirth extends AbstractRegionAndYearModel<String, Integer, Long> {
 
 	private String motherAge;
 	private Integer gender;
 
+	/**
+	 * Default constructor.
+	 */
 	public LiveBirth() {
 		super();
 	}
 
+	/**
+	 * Overloaded constructor.
+	 * 
+	 * @param region
+	 *            the region
+	 * @param motherAge
+	 *            the mother's age
+	 * @param gender
+	 *            the gender
+	 * @param year
+	 *            the year
+	 * @param value
+	 *            the value
+	 */
 	public LiveBirth(String region, String motherAge, Integer gender, Integer year, Long value) {
 		super(region, year, value);
 		this.motherAge = motherAge;
 		this.gender = gender;
 	}
 
+	/**
+	 * Getter for mother's age.
+	 * 
+	 * @return the mother's age.
+	 */
 	public String getMotherAge() {
 		return this.motherAge;
 	}
 
+	/**
+	 * Setter for mother's age.
+	 * 
+	 * @param motherAge
+	 *            the mother's age
+	 */
 	public void setMotherAge(String motherAge) {
 		this.motherAge = motherAge;
 	}
 
+	/**
+	 * Getter for gender.
+	 * 
+	 * @return the gender
+	 */
 	public Integer getGender() {
 		return this.gender;
 	}
 
+	/**
+	 * Setter for gender.
+	 * 
+	 * @param gender
+	 *            the gender
+	 */
 	public void setGender(Integer gender) {
 		this.gender = gender;
 	}
@@ -96,6 +140,11 @@ public class LiveBirth extends AbstractRegionAndYearModel<String, Integer, Long>
 		return builder.toString();
 	}
 
+	/**
+	 * Get the codes for the live births from the API.
+	 * 
+	 * @return a list of codes that is used by the API to index the live births values
+	 */
 	public static List<String> getCodes() {
 		return JsonUtility.getCodes(RequestPoster.getCodes("BE/BE0101/BE0101H/FoddaK"));
 	}

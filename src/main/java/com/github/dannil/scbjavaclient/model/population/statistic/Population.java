@@ -23,16 +23,40 @@ import com.github.dannil.scbjavaclient.model.AbstractRegionAndYearModel;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.RequestPoster;
 
+/**
+ * Model for population data.
+ * 
+ * @author Daniel Nilsson
+ */
 public class Population extends AbstractRegionAndYearModel<String, Integer, Long> {
 
 	private String relationshipStatus;
 	private String age;
 	private Integer gender;
 
+	/**
+	 * Default constructor.
+	 */
 	public Population() {
 		super();
 	}
 
+	/**
+	 * Overloaded constructor.
+	 * 
+	 * @param region
+	 *            the region
+	 * @param relationshipStatus
+	 *            the relationship status
+	 * @param age
+	 *            the age
+	 * @param gender
+	 *            the gender
+	 * @param year
+	 *            the year
+	 * @param value
+	 *            the value
+	 */
 	public Population(String region, String relationshipStatus, String age, Integer gender, Integer year, Long value) {
 		super(region, year, value);
 		this.relationshipStatus = relationshipStatus;
@@ -40,26 +64,59 @@ public class Population extends AbstractRegionAndYearModel<String, Integer, Long
 		this.gender = gender;
 	}
 
+	/**
+	 * Getter for relationship status.
+	 * 
+	 * @return the relationship status
+	 */
 	public String getRelationshipStatus() {
 		return this.relationshipStatus;
 	}
 
+	/**
+	 * Setter for relationship status.
+	 * 
+	 * @param relationshipStatus
+	 *            the relationship status
+	 */
 	public void setRelationshipStatus(String relationshipStatus) {
 		this.relationshipStatus = relationshipStatus;
 	}
 
+	/**
+	 * Getter for age.
+	 * 
+	 * @return the age
+	 */
 	public String getAge() {
 		return this.age;
 	}
 
+	/**
+	 * Setter for age.
+	 * 
+	 * @param age
+	 *            the age
+	 */
 	public void setAge(String age) {
 		this.age = age;
 	}
 
+	/**
+	 * Getter for gender.
+	 * 
+	 * @return the gender
+	 */
 	public Integer getGender() {
 		return this.gender;
 	}
 
+	/**
+	 * Setter for gender.
+	 * 
+	 * @param gender
+	 *            the gender
+	 */
 	public void setGender(Integer gender) {
 		this.gender = gender;
 	}
@@ -108,6 +165,11 @@ public class Population extends AbstractRegionAndYearModel<String, Integer, Long
 		return builder.toString();
 	}
 
+	/**
+	 * Get the codes for the population model from the API.
+	 * 
+	 * @return a list of codes that is used by the API to index the population values
+	 */
 	public static List<String> getCodes() {
 		return JsonUtility.getCodes(RequestPoster.getCodes("BE/BE0101/BE0101A/BefolkningNy"));
 	}

@@ -23,23 +23,54 @@ import com.github.dannil.scbjavaclient.model.AbstractRegionAndYearModel;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.RequestPoster;
 
+/**
+ * Model for mean age first child data.
+ * 
+ * @author Daniel Nilsson
+ */
 public class MeanAgeFirstChild extends AbstractRegionAndYearModel<String, Integer, Double> {
 
 	private Integer gender;
 
+	/**
+	 * Default constructor.
+	 */
 	public MeanAgeFirstChild() {
 		super();
 	}
 
+	/**
+	 * Overloaded constructor.
+	 * 
+	 * @param region
+	 *            the region
+	 * @param gender
+	 *            the gender
+	 * @param year
+	 *            the year
+	 * @param value
+	 *            the value
+	 */
 	public MeanAgeFirstChild(String region, Integer gender, Integer year, Double value) {
 		super(region, year, value);
 		this.gender = gender;
 	}
 
+	/**
+	 * Getter for gender.
+	 * 
+	 * @return the gender
+	 */
 	public Integer getGender() {
 		return this.gender;
 	}
 
+	/**
+	 * Setter for gender.
+	 * 
+	 * @param gender
+	 *            the gender
+	 */
 	public void setGender(Integer gender) {
 		this.gender = gender;
 	}
@@ -83,6 +114,11 @@ public class MeanAgeFirstChild extends AbstractRegionAndYearModel<String, Intege
 		return builder.toString();
 	}
 
+	/**
+	 * Get the codes for the mean age first child model from the API.
+	 * 
+	 * @return a list of codes that is used by the API to index the mean age first child values
+	 */
 	public static List<String> getCodes() {
 		return JsonUtility.getCodes(RequestPoster.getCodes("BE/BE0701/MedelAlderNY"));
 	}

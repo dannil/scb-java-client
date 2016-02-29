@@ -23,23 +23,54 @@ import com.github.dannil.scbjavaclient.model.AbstractRegionAndYearModel;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.RequestPoster;
 
+/**
+ * Model for area data.
+ * 
+ * @author Daniel Nilsson
+ */
 public class Area extends AbstractRegionAndYearModel<String, Integer, Double> {
 
 	private String type;
 
+	/**
+	 * Default constructor.
+	 */
 	public Area() {
 		super();
 	}
 
+	/**
+	 * Overloaded constructor.
+	 * 
+	 * @param region
+	 *            the region
+	 * @param type
+	 *            the type
+	 * @param year
+	 *            the year
+	 * @param value
+	 *            the value
+	 */
 	public Area(String region, String type, Integer year, Double value) {
 		super(region, year, value);
 		this.type = type;
 	}
 
+	/**
+	 * Getter for type.
+	 * 
+	 * @return the type
+	 */
 	public String getType() {
 		return this.type;
 	}
 
+	/**
+	 * Setter for type
+	 * 
+	 * @param type
+	 *            the type
+	 */
 	public void setType(String type) {
 		this.type = type;
 	}
@@ -83,6 +114,11 @@ public class Area extends AbstractRegionAndYearModel<String, Integer, Double> {
 		return builder.toString();
 	}
 
+	/**
+	 * Get the codes for the area model from the API.
+	 * 
+	 * @return a list of codes that is used by the API to index the area values
+	 */
 	public static List<String> getCodes() {
 		return JsonUtility.getCodes(RequestPoster.getCodes("MI/MI0802/Areal2012"));
 	}

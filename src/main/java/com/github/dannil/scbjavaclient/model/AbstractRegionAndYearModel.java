@@ -18,34 +18,82 @@ package com.github.dannil.scbjavaclient.model;
 
 import java.util.Objects;
 
+/**
+ * Abstract model which handles region, year and value. Since these values are used by almost every
+ * single API response, this class will be extended by a majority of the implemented models.
+ * 
+ * @author Daniel Nilsson
+ *
+ * @param <R>
+ *            the region
+ * @param <Y>
+ *            the year
+ * @param <V>
+ *            the value
+ */
 public class AbstractRegionAndYearModel<R, Y, V> extends AbstractModel<V> {
 
 	protected R region;
 	protected Y year;
 
+	/**
+	 * Default constructor.
+	 */
 	protected AbstractRegionAndYearModel() {
 		// To enable derived classes to use their default constructor
 		super();
 	}
 
+	/**
+	 * Overloaded constructor.
+	 * 
+	 * @param region
+	 *            the region
+	 * @param year
+	 *            the year
+	 * @param value
+	 *            the value
+	 */
 	protected AbstractRegionAndYearModel(R region, Y year, V value) {
 		super(value);
 		this.region = region;
 		this.year = year;
 	}
 
+	/**
+	 * Getter for region
+	 * 
+	 * @return the region
+	 */
 	public R getRegion() {
 		return this.region;
 	}
 
+	/**
+	 * Setter for
+	 * 
+	 * @param region
+	 *            the region
+	 */
 	public void setRegion(R region) {
 		this.region = region;
 	}
 
+	/**
+	 * Getter for year
+	 * 
+	 * @return the year
+	 */
 	public Y getYear() {
 		return this.year;
 	}
 
+	/**
+	 * Setter for year
+	 * 
+	 * @param year
+	 *            the year
+	 */
 	public void setYear(Y year) {
 		this.year = year;
 	}

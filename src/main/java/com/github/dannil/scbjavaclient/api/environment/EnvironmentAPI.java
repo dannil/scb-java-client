@@ -21,6 +21,11 @@ import java.util.Locale;
 import com.github.dannil.scbjavaclient.api.AbstractContainerAPI;
 import com.github.dannil.scbjavaclient.api.environment.landandwaterarea.LandAndWaterAreaAPI;
 
+/**
+ * Client which handles environment data fetching.
+ * 
+ * @author Daniel Nilsson
+ */
 public class EnvironmentAPI extends AbstractContainerAPI {
 
 	private LandAndWaterAreaAPI landAndWaterAreaApi;
@@ -48,9 +53,9 @@ public class EnvironmentAPI extends AbstractContainerAPI {
 	}
 
 	/**
-	 * Retrieve the client for interacting with land and water area data.
+	 * Retrieve the client for interacting with environment land and water area data.
 	 * 
-	 * @return a client for land and water area data
+	 * @return a client for environment land and water area data
 	 */
 	public LandAndWaterAreaAPI landAndWaterArea() {
 		return this.landAndWaterAreaApi;

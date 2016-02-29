@@ -29,16 +29,38 @@ import com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstC
 import com.github.dannil.scbjavaclient.model.population.statistic.LiveBirth;
 import com.github.dannil.scbjavaclient.model.population.statistic.Population;
 
+/**
+ * Utility class for converting JSON to Java objects
+ * 
+ * @author Daniel Nilsson
+ */
 public class JsonUtility {
 
 	private JsonUtility() {
 
 	}
 
+	/**
+	 * Parse the JSON string into a {@link JsonNode} object.
+	 * 
+	 * @param json
+	 *            the JSON content
+	 * 
+	 * @return a {@link JsonNode} object
+	 */
 	public static JsonNode getNode(String json) {
 		return getNode(json, null);
 	}
 
+	/**
+	 * Parse the JSON string into a {@link JsonNode} object with the specified field as root field.
+	 * 
+	 * @param json
+	 *            the JSON content
+	 * @param field
+	 *            the field in the JSON to become the root
+	 * @return a {@link JsonNode} object with the specified field as root.
+	 */
 	public static JsonNode getNode(String json, String field) {
 		try {
 			ObjectMapper mapper = new ObjectMapper();

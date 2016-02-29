@@ -30,6 +30,11 @@ import com.github.dannil.scbjavaclient.utility.Localization;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 import com.github.dannil.scbjavaclient.utility.RequestPoster;
 
+/**
+ * Abstract class which specifies how clients should operate.
+ * 
+ * @author Daniel Nilsson
+ */
 public abstract class AbstractAPI {
 
 	private static final Logger LOGGER = Logger.getLogger(AbstractAPI.class.getName());
@@ -50,7 +55,7 @@ public abstract class AbstractAPI {
 	 * Overloaded constructor
 	 * 
 	 * @param locale
-	 *            the locale for this instance
+	 *            the locale for this client
 	 */
 	protected AbstractAPI(Locale locale) {
 		this();
@@ -103,7 +108,7 @@ public abstract class AbstractAPI {
 	}
 
 	/**
-	 * Performs a GET request towards the address.
+	 * Performs a GET request to the specified address.
 	 * 
 	 * @param address
 	 *            the address which will be sent a GET request
@@ -134,7 +139,7 @@ public abstract class AbstractAPI {
 	}
 
 	/**
-	 * Performs a POST request towards the address.
+	 * Performs a POST request to the specified address.
 	 * 
 	 * @param address
 	 *            the address which will be sent a POST request

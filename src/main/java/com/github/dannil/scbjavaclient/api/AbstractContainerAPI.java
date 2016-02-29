@@ -20,6 +20,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+/**
+ * Abstract class which specifies how methods by container clients (a client that has
+ * sub-clients) should operate.
+ * 
+ * @author Daniel Nilsson
+ */
 public abstract class AbstractContainerAPI extends AbstractAPI {
 
 	protected List<AbstractAPI> apis;

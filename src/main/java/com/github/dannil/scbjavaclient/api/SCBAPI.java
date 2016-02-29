@@ -21,6 +21,11 @@ import java.util.Locale;
 import com.github.dannil.scbjavaclient.api.environment.EnvironmentAPI;
 import com.github.dannil.scbjavaclient.api.population.PopulationAPI;
 
+/**
+ * Root client for the client hierarchy.
+ * 
+ * @author Daniel Nilsson
+ */
 public class SCBAPI extends AbstractContainerAPI {
 
 	private PopulationAPI populationApi;
@@ -37,8 +42,6 @@ public class SCBAPI extends AbstractContainerAPI {
 
 		this.environmentApi = new EnvironmentAPI();
 		super.apis.add(this.environmentApi);
-
-		super.setLocale(Locale.getDefault());
 	}
 
 	/**

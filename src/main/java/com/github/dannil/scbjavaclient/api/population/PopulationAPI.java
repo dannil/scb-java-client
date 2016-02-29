@@ -22,6 +22,11 @@ import com.github.dannil.scbjavaclient.api.AbstractContainerAPI;
 import com.github.dannil.scbjavaclient.api.population.demography.DemographyAPI;
 import com.github.dannil.scbjavaclient.api.population.statistic.StatisticAPI;
 
+/**
+ * Client which handles population data fetching.
+ * 
+ * @author Daniel Nilsson
+ */
 public class PopulationAPI extends AbstractContainerAPI {
 
 	private DemographyAPI demographyApi;
@@ -53,18 +58,18 @@ public class PopulationAPI extends AbstractContainerAPI {
 	}
 
 	/**
-	 * Retrieve the client for interacting with demography data.
+	 * Retrieve the client for interacting with population demography data.
 	 * 
-	 * @return a client for demography data
+	 * @return a client for population demography data
 	 */
 	public DemographyAPI demography() {
 		return this.demographyApi;
 	}
 
 	/**
-	 * Retrieve the client for interacting with statistic data.
+	 * Retrieve the client for interacting with population statistic data.
 	 * 
-	 * @return a client for statistic data
+	 * @return a client for population statistic data
 	 */
 	public StatisticAPI statistic() {
 		return this.statisticApi;

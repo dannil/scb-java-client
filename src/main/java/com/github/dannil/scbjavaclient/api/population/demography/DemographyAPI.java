@@ -27,12 +27,26 @@ import com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstC
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.ListUtility;
 
+/**
+ * Client which handles population demography data fetching.
+ * 
+ * @author Daniel Nilsson
+ */
 public class DemographyAPI extends AbstractAPI {
 
+	/**
+	 * Default constructor.
+	 */
 	public DemographyAPI() {
 		super();
 	}
 
+	/**
+	 * Overloaded constructor.
+	 * 
+	 * @param locale
+	 *            the locale for this client
+	 */
 	public DemographyAPI(Locale locale) {
 		super(locale);
 	}
@@ -71,10 +85,30 @@ public class DemographyAPI extends AbstractAPI {
 	// return years;
 	// }
 
+	/**
+	 * Fetch all mean age for the first child data.
+	 * 
+	 * @return the mean age for the first child data wrapped in a list of {@link MeanAgeFirstChild}
+	 *         objects
+	 * 
+	 * @see DemographyAPI#getMeanAgeFirstChild(Collection, Collection, Collection)
+	 */
 	public List<MeanAgeFirstChild> getMeanAgeFirstChild() {
 		return this.getMeanAgeFirstChild(null, null, null);
 	}
 
+	/**
+	 * Fetch all mean age for the first child data which match the input constraints.
+	 * 
+	 * @param regions
+	 *            the regions to fetch data for
+	 * @param genders
+	 *            the genders to fetch data for
+	 * @param years
+	 *            the years to fetch data for
+	 * @return the mean age for the first child data wrapped in a list of {@link MeanAgeFirstChild}
+	 *         objects
+	 */
 	public List<MeanAgeFirstChild> getMeanAgeFirstChild(Collection<String> regions, Collection<Integer> genders,
 			Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();

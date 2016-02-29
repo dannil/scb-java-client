@@ -18,23 +18,51 @@ package com.github.dannil.scbjavaclient.model;
 
 import java.util.Objects;
 
-public class AbstractModel<Y> {
+/**
+ * Abstract model which holds the value of the API response.
+ * 
+ * @author Daniel Nilsson
+ *
+ * @param <V>
+ *            the value
+ */
+public class AbstractModel<V> {
 
-	protected Y value;
+	protected V value;
 
+	/**
+	 * Default constructor.
+	 */
 	protected AbstractModel() {
 		// To enable derived classes to use their default constructor
 	}
 
-	protected AbstractModel(Y value) {
+	/**
+	 * Overloaded constructor.
+	 * 
+	 * @param value
+	 *            the value
+	 */
+	protected AbstractModel(V value) {
 		this.value = value;
 	}
 
-	public Y getValue() {
+	/**
+	 * Getter for value.
+	 * 
+	 * @return the value
+	 */
+	public V getValue() {
 		return this.value;
 	}
 
-	public void setValue(Y value) {
+	/**
+	 * Setter for value.
+	 * 
+	 * @param value
+	 *            the value
+	 */
+	public void setValue(V value) {
 		this.value = value;
 	}
 
