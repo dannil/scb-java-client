@@ -16,7 +16,9 @@
 
 package com.github.dannil.scbjavaclient.client;
 
+import java.util.Collection;
 import java.util.Locale;
+import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.environment.EnvironmentClient;
 import com.github.dannil.scbjavaclient.client.population.PopulationClient;
@@ -72,6 +74,20 @@ public class SCBClient extends AbstractContainerClient {
 	 */
 	public PopulationClient population() {
 		return this.populationClient;
+	}
+
+	/**
+	 * Fetch the JSON response from the specified table. Useful if you're only interested in the raw
+	 * JSON data.
+	 * 
+	 * @param table
+	 *            the table to fetch data from
+	 * @param payload
+	 *            the selected values
+	 * @return a JSON string
+	 */
+	public String getRawData(String table, Map<String, Collection<?>> payload) {
+		return super.post(table, super.queryBuilder.build(payload));
 	}
 
 }
