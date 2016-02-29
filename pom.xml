@@ -8,7 +8,7 @@
 	<packaging>jar</packaging>
 
 	<name>scb-java-client</name>
-	<description>Java implementation of the SCB (Statistiska centralbyrån) API</description>
+	<description>Java client for the SCB (Statistiska centralbyrån) API</description>
 	<url>https://github.com/dannil/scb-java-client</url>
 
 	<developers>
@@ -106,9 +106,9 @@
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-gpg-plugin</artifactId>
 						<version>1.6</version>
-						<configuration>
+						<!-- <configuration>
 							<passphrase>${gpg.passphrase}</passphrase>
-						</configuration>
+						</configuration> -->
 						<executions>
 							<execution>
 								<id>sign-artifacts</id>
