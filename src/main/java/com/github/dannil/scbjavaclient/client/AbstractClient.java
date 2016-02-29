@@ -183,7 +183,7 @@ public abstract class AbstractClient {
 	 *            the URL to edit
 	 * @param locale
 	 *            the locale which to manipulate the URL with
-	 * @return
+	 * @return the modified URL
 	 */
 	private String toUrl(String url, Locale locale) {
 		String internalAddress = url;
