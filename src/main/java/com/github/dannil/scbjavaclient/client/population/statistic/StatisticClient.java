@@ -69,7 +69,9 @@ public class StatisticClient extends AbstractClient {
 	/**
 	 * Fetch all live births data.
 	 * 
-	 * @return the live births data wrapped in a list of {@link LiveBirth} objects
+	 * @return the live births data wrapped in a list of
+	 *         {@link com.github.dannil.scbjavaclient.model.population.statistic.LiveBirth
+	 *         LiveBirth} objects
 	 * 
 	 * @see StatisticClient#getLiveBirths(Collection, Collection, Collection, Collection)
 	 */
@@ -89,7 +91,9 @@ public class StatisticClient extends AbstractClient {
 	 * @param years
 	 *            the years to fetch data for
 	 * 
-	 * @return the live births data wrapped in a list of {@link LiveBirth} objects
+	 * @return the live births data wrapped in a list of
+	 *         {@link com.github.dannil.scbjavaclient.model.population.statistic.LiveBirth
+	 *         LiveBirth} objects
 	 */
 	public List<LiveBirth> getLiveBirths(Collection<String> regions, Collection<String> motherAges,
 			Collection<Integer> genders, Collection<Integer> years) {
@@ -110,9 +114,12 @@ public class StatisticClient extends AbstractClient {
 	/**
 	 * Fetch all population data data.
 	 * 
-	 * @return the population data wrapped in a list of {@link Population} objects
+	 * @return the population data wrapped in a list of
+	 *         {@link com.github.dannil.scbjavaclient.model.population.statistic.Population
+	 *         Population} objects
 	 * 
-	 * @see StatisticClient#getPopulation(Collection, Collection, Collection, Collection, Collection)
+	 * @see StatisticClient#getPopulation(Collection, Collection, Collection, Collection,
+	 *      Collection)
 	 */
 	public List<Population> getPopulation() {
 		return this.getPopulation(null, null, null, null, null);
@@ -132,7 +139,9 @@ public class StatisticClient extends AbstractClient {
 	 * @param years
 	 *            the years to fetch data for
 	 * 
-	 * @return the population data wrapped in a list of {@link Population} objects
+	 * @return the population data wrapped in a list of
+	 *         {@link com.github.dannil.scbjavaclient.model.population.statistic.Population
+	 *         Population} objects
 	 */
 	public List<Population> getPopulation(Collection<String> regions, Collection<String> relationshipStatuses,
 			Collection<String> ages, Collection<Integer> genders, Collection<Integer> years) {

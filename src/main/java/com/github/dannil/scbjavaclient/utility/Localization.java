@@ -20,26 +20,58 @@ import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
+/**
+ * Class for handling localization for the clients.
+ * 
+ * @author Daniel Nilsson
+ */
 public class Localization {
 
 	private Locale fallbackLocale;
 
 	private ResourceBundle bundle;
 
+	/**
+	 * Overloaded constructor.
+	 * 
+	 * @param locale
+	 *            the locale for this localization instance
+	 */
 	public Localization(Locale locale) {
 		this.fallbackLocale = new Locale("en", "US");
 
 		this.bundle = ResourceBundle.getBundle("language", locale);
 	}
 
+	/**
+	 * Getter for the language for this localization instance. This is the same as the locale
+	 * specified in {@link Localization#getLanguage() getLanguage()}.
+	 * 
+	 * @return the language for this localization instance.
+	 */
 	public Locale getLanguage() {
 		return this.bundle.getLocale();
 	}
 
+	/**
+	 * Setter for the language for this localization instance.
+	 * 
+	 * @param locale
+	 *            the locale
+	 */
 	public void setLanguage(Locale locale) {
 		this.bundle = ResourceBundle.getBundle("language", locale);
 	}
 
+	/**
+	 * Returns the translation for the specified key. If it can't find the key in the current
+	 * specified language's localization file, it attempts to use the fallback locale's localization
+	 * file as the translation source.
+	 * 
+	 * @param key
+	 *            the key to get the translation for
+	 * @return the translated string
+	 */
 	public String getString(String key) {
 		String s;
 		try {
@@ -50,6 +82,15 @@ public class Localization {
 		return s;
 	}
 
+	/**
+	 * Returns a formatted translation for the specified key.
+	 * 
+	 * @param key
+	 *            the key to get the translation for
+	 * @param args
+	 *            the formatting which shall be inserted into the translation
+	 * @return the translated string
+	 */
 	public String getString(String key, Object... args) {
 		return String.format(getString(key), args);
 		// return s;

@@ -23,12 +23,26 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+/**
+ * Class which sends URL requests to the specified address, in this case the SCB API.
+ * 
+ * @author Daniel Nilsson
+ */
 public class RequestPoster {
 
 	private RequestPoster() {
 
 	}
 
+	/**
+	 * Perform a GET request to the specified address.
+	 * 
+	 * @param address
+	 *            the address to perform request to
+	 * @return the response from this request as a string
+	 * @throws IOException
+	 *             if the address isn't a valid URL format
+	 */
 	public static String doGet(String address) throws IOException {
 		StringBuilder builder = new StringBuilder();
 		URL url = new URL(address);
@@ -61,6 +75,17 @@ public class RequestPoster {
 		return builder.toString();
 	}
 
+	/**
+	 * Perform a POST request to the specified address and the specified query (payload).
+	 * 
+	 * @param address
+	 *            the address to perform request to
+	 * @param query
+	 *            the payload to send along
+	 * @return the response from this request as a string
+	 * @throws IOException
+	 *             if the address isn't a valid URL format
+	 */
 	public static String doPost(String address, String query) throws IOException {
 		StringBuilder builder = new StringBuilder();
 		URL url = new URL(address);
@@ -99,6 +124,13 @@ public class RequestPoster {
 		return builder.toString();
 	}
 
+	/**
+	 * Return the available codes from the specified table.
+	 * 
+	 * @param table
+	 *            the table to fetch the codes from
+	 * @return the available codes from the specified table
+	 */
 	public static String getCodes(String table) {
 		try {
 			return doGet(String.format("http://api.scb.se/OV0104/v1/doris/sv/ssd/%s", table));

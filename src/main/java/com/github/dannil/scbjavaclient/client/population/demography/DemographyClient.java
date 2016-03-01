@@ -88,8 +88,9 @@ public class DemographyClient extends AbstractClient {
 	/**
 	 * Fetch all mean age for the first child data.
 	 * 
-	 * @return the mean age for the first child data wrapped in a list of {@link MeanAgeFirstChild}
-	 *         objects
+	 * @return the mean age for the first child data wrapped in a list of
+	 *         {@link com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstChild
+	 *         MeanAgeFirstChild} objects
 	 * 
 	 * @see DemographyClient#getMeanAgeFirstChild(Collection, Collection, Collection)
 	 */
@@ -106,8 +107,9 @@ public class DemographyClient extends AbstractClient {
 	 *            the genders to fetch data for
 	 * @param years
 	 *            the years to fetch data for
-	 * @return the mean age for the first child data wrapped in a list of {@link MeanAgeFirstChild}
-	 *         objects
+	 * @return the mean age for the first child data wrapped in a list of
+	 *         {@link com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstChild
+	 *         MeanAgeFirstChild} objects
 	 */
 	public List<MeanAgeFirstChild> getMeanAgeFirstChild(Collection<String> regions, Collection<Integer> genders,
 			Collection<Integer> years) {

@@ -19,12 +19,27 @@ package com.github.dannil.scbjavaclient.utility;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Utility class which (among other things) converts elements to single-element lists.
+ * 
+ * @author Daniel Nilsson
+ *
+ * @param <E>
+ *            data type of the list
+ */
 public class ListUtility<E> {
 
 	private ListUtility() {
 
 	}
 
+	/**
+	 * Convert the input to a list with the input as its only member.
+	 * 
+	 * @param value
+	 *            the value to convert to a list
+	 * @return null if the input is null, otherwise a list with the input as its only member
+	 */
 	public static <E> List<E> toList(E value) {
 		if (value == null) {
 			return null;
@@ -34,6 +49,13 @@ public class ListUtility<E> {
 		return list;
 	}
 
+	/**
+	 * Convert the input list to its string representation of its members.
+	 * 
+	 * @param list
+	 *            the list to convert to its string representation
+	 * @return the string representation of the list's members
+	 */
 	public static <E> List<String> toString(List<E> list) {
 		List<String> temp = new ArrayList<String>();
 		for (E data : list) {

@@ -68,7 +68,9 @@ public class LandAndWaterAreaClient extends AbstractClient {
 	/**
 	 * Fetch all area data.
 	 * 
-	 * @return the area data wrapped in a list of {@link Area} objects
+	 * @return the area data wrapped in a list of
+	 *         {@link com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area Area}
+	 *         objects
 	 * 
 	 * @see LandAndWaterAreaClient#getArea(Collection, Collection, Collection)
 	 */
@@ -85,7 +87,9 @@ public class LandAndWaterAreaClient extends AbstractClient {
 	 *            the types to fetch data for
 	 * @param years
 	 *            the years to fetch data for
-	 * @return the area data wrapped in a list of {@link Area} objects
+	 * @return the area data wrapped in a list of
+	 *         {@link com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area Area}
+	 *         objects
 	 */
 	public List<Area> getArea(Collection<String> regions, Collection<String> types, Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();

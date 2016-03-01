@@ -75,6 +75,15 @@ public class JsonUtility {
 		return null;
 	}
 
+	/**
+	 * Parses the {@link JsonNode} into a list of keys and values with the help of the code input.
+	 * 
+	 * @param node
+	 *            the node to parse
+	 * @param codes
+	 *            the codes which should be parsed
+	 * @return a list which contains the matching keys and values
+	 */
 	private static List<Map<String, String>> genericParse(JsonNode node, List<String> codes) {
 		JsonNode columns = node.get("columns");
 		if (columns == null) {
@@ -108,6 +117,16 @@ public class JsonUtility {
 		return contents;
 	}
 
+	/**
+	 * Parses the {@link JsonNode} into a list of
+	 * {@link com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area Area}.
+	 * 
+	 * @param node
+	 *            the node to parse
+	 * @return a list of
+	 *         {@link com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area Area}
+	 *         objects
+	 */
 	public static List<Area> parseAreas(JsonNode node) {
 		List<Map<String, String>> contents = genericParse(node, Area.getCodes());
 
@@ -120,6 +139,17 @@ public class JsonUtility {
 		return areas;
 	}
 
+	/**
+	 * Parses the {@link JsonNode} into a list of
+	 * {@link com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstChild
+	 * MeanAgeFirstChild}.
+	 * 
+	 * @param node
+	 *            the node to parse
+	 * @return a list of
+	 *         {@link com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstChild
+	 *         MeanAgeFirstChild} objects
+	 */
 	public static List<MeanAgeFirstChild> parseAverageAgeFirstChild(JsonNode node) {
 		List<Map<String, String>> contents = genericParse(node, MeanAgeFirstChild.getCodes());
 
@@ -137,6 +167,16 @@ public class JsonUtility {
 		return averageAgeFirstChildren;
 	}
 
+	/**
+	 * Parses the {@link JsonNode} into a list of
+	 * {@link com.github.dannil.scbjavaclient.model.population.statistic.LiveBirth LiveBirth}.
+	 * 
+	 * @param node
+	 *            the node to parse
+	 * @return a list of
+	 *         {@link com.github.dannil.scbjavaclient.model.population.statistic.LiveBirth
+	 *         LiveBirth} objects
+	 */
 	public static List<LiveBirth> parseLiveBirths(JsonNode node) {
 		List<Map<String, String>> contents = genericParse(node, LiveBirth.getCodes());
 
@@ -155,6 +195,16 @@ public class JsonUtility {
 		return liveBirths;
 	}
 
+	/**
+	 * Parses the {@link JsonNode} into a list of
+	 * {@link com.github.dannil.scbjavaclient.model.population.statistic.Population Population}.
+	 * 
+	 * @param node
+	 *            the node to parse
+	 * @return a list of
+	 *         {@link com.github.dannil.scbjavaclient.model.population.statistic.Population
+	 *         Population} objects
+	 */
 	public static List<Population> parsePopulation(JsonNode node) {
 		List<Map<String, String>> contents = genericParse(node, Population.getCodes());
 
@@ -168,6 +218,17 @@ public class JsonUtility {
 		return populations;
 	}
 
+	/**
+	 * Generates the position for the input codes. Used by
+	 * {@link JsonUtility#genericParse(JsonNode, List) genericParse(JsonNode, List)} to figure out
+	 * the position for every key.
+	 * 
+	 * @param inputCodes
+	 *            the input codes to calculated indexes for
+	 * @param storedCodes
+	 *            the stored codes to match against the input codes
+	 * @return a map which specifies what position (0-indexed) every key resides at
+	 */
 	private static Map<String, Integer> generateMappings(List<String> inputCodes, List<String> storedCodes) {
 		Map<String, Integer> mappings = new HashMap<String, Integer>();
 		int i = 0;
@@ -180,6 +241,13 @@ public class JsonUtility {
 		return mappings;
 	}
 
+	/**
+	 * Extracts the codes from the input.
+	 * 
+	 * @param content
+	 *            the input which should be parsed
+	 * @return a list of codes for the input
+	 */
 	public static List<String> getCodes(String content) {
 		JsonNode data = getNode(content);
 		List<String> codes = data.findValuesAsText("code");
