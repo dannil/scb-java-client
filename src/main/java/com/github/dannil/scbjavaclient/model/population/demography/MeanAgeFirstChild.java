@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.github.dannil.scbjavaclient.model.AbstractRegionAndYearModel;
+import com.github.dannil.scbjavaclient.model.AbstractRegionYearAndValueModel;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.RequestPoster;
 
@@ -29,7 +29,7 @@ import com.github.dannil.scbjavaclient.utility.RequestPoster;
  * 
  * @author Daniel Nilsson
  */
-public class MeanAgeFirstChild extends AbstractRegionAndYearModel<String, Integer, Double> {
+public class MeanAgeFirstChild extends AbstractRegionYearAndValueModel<String, Integer, Double> {
 
 	@JsonProperty("kon")
 	private Integer gender;

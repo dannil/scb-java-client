@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.github.dannil.scbjavaclient.model.AbstractRegionAndYearModel;
+import com.github.dannil.scbjavaclient.model.AbstractRegionYearAndValueModel;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.RequestPoster;
 
@@ -29,7 +29,7 @@ import com.github.dannil.scbjavaclient.utility.RequestPoster;
  * 
  * @author Daniel Nilsson
  */
-public class Population extends AbstractRegionAndYearModel<String, Integer, Long> {
+public class Population extends AbstractRegionYearAndValueModel<String, Integer, Long> {
 
 	@JsonProperty("civilstand")
 	private String relationshipStatus;

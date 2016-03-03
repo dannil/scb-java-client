@@ -28,7 +28,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @param <V>
  *            the value
  */
-public class AbstractModel<V> {
+public class AbstractValueModel<V> {
 
 	@JsonProperty("value")
 	protected V value;
@@ -36,7 +36,7 @@ public class AbstractModel<V> {
 	/**
 	 * Default constructor.
 	 */
-	protected AbstractModel() {
+	protected AbstractValueModel() {
 		// To enable derived classes to use their default constructor
 	}
 
@@ -46,7 +46,7 @@ public class AbstractModel<V> {
 	 * @param value
 	 *            the value
 	 */
-	protected AbstractModel(V value) {
+	protected AbstractValueModel(V value) {
 		this.value = value;
 	}
 
@@ -82,11 +82,11 @@ public class AbstractModel<V> {
 		if (obj == null) {
 			return false;
 		}
-		if (!(obj instanceof AbstractModel<?>)) {
+		if (!(obj instanceof AbstractValueModel<?>)) {
 			return false;
 		}
 
-		AbstractModel<?> other = (AbstractModel<?>) obj;
+		AbstractValueModel<?> other = (AbstractValueModel<?>) obj;
 		return Objects.equals(this.value, other.value);
 	}
 

@@ -23,21 +23,21 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import com.github.dannil.scbjavaclient.model.AbstractRegionAndYearModel;
+import com.github.dannil.scbjavaclient.model.AbstractValueModel;
 
 @RunWith(JUnit4.class)
-public class AbstractRegionAndYearModel_UnitTest {
+public class AbstractValueModel_UnitTest {
 
-	// Dummy class which doesn't override AbstractRegionAndYearModel equals
+	// Dummy class which doesn't override AbstractModel equals
 	// method. This enables us to thoroughly test the equals method.
-	public class DummyClass extends AbstractRegionAndYearModel<String, Integer, Long> {
+	public class DummyClass extends AbstractValueModel<Long> {
 
 		public DummyClass() {
-			super();
+
 		}
 
-		public DummyClass(String region, Integer year, Long value) {
-			super(region, year, value);
+		public DummyClass(Long value) {
+			super(value);
 		}
 
 	}
@@ -45,7 +45,7 @@ public class AbstractRegionAndYearModel_UnitTest {
 	// Tests the superclass
 	@Test
 	public void superEqualsItself() {
-		AbstractRegionAndYearModel<String, Integer, Long> dummy = new DummyClass();
+		AbstractValueModel<Long> dummy = new DummyClass();
 
 		assertEquals(dummy, dummy);
 	}
@@ -53,7 +53,7 @@ public class AbstractRegionAndYearModel_UnitTest {
 	// Tests the superclass
 	@Test
 	public void superNotEqualsNull() {
-		AbstractRegionAndYearModel<String, Integer, Long> dummy = new DummyClass();
+		AbstractValueModel<Long> dummy = new DummyClass();
 
 		assertNotEquals(dummy, null);
 	}
@@ -61,7 +61,7 @@ public class AbstractRegionAndYearModel_UnitTest {
 	// Tests the superclass
 	@Test
 	public void superNotEqualsIncompatibleObject() {
-		AbstractRegionAndYearModel<String, Integer, Long> dummy = new DummyClass();
+		AbstractValueModel<Long> dummy = new DummyClass();
 
 		assertNotEquals(dummy, new Object());
 	}
