@@ -16,11 +16,18 @@
 
 package com.github.dannil.scbjavaclient.client.population;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.population.demography.DemographyClient;
 import com.github.dannil.scbjavaclient.client.population.statistic.StatisticClient;
+import com.github.dannil.scbjavaclient.model.population.NumberOfChildrenBornByFirstName;
+import com.github.dannil.scbjavaclient.utility.JsonUtility;
+import com.github.dannil.scbjavaclient.utility.ListUtility;
 
 /**
  * Client which handles population data fetching.
@@ -73,6 +80,22 @@ public class PopulationClient extends AbstractContainerClient {
 	 */
 	public StatisticClient statistic() {
 		return this.statisticClient;
+	}
+
+	public List<NumberOfChildrenBornByFirstName> getNumberOfChildrenBornByFirstName() {
+		return this.getNumberOfChildrenBornByFirstName(null, null);
+	}
+
+	public List<NumberOfChildrenBornByFirstName> getNumberOfChildrenBornByFirstName(Collection<String> firstnames,
+			Collection<Integer> years) {
+		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
+		mappings.put("ContentsCode", ListUtility.toList("BE0001AH"));
+		mappings.put("Tilltalsnamn", firstnames);
+		mappings.put("Tid", years);
+
+		String response = super.post("BE/BE0001/BE0001T04Ar", super.queryBuilder.build(mappings));
+
+		return JsonUtility.nodeToList(NumberOfChildrenBornByFirstName.class, JsonUtility.toConventionalJson(response));
 	}
 
 }
