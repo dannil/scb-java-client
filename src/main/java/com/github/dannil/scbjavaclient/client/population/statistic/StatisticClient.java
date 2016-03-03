@@ -23,6 +23,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.model.population.statistic.AverageAge;
 import com.github.dannil.scbjavaclient.model.population.statistic.LiveBirth;
 import com.github.dannil.scbjavaclient.model.population.statistic.Population;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
@@ -66,6 +67,23 @@ public class StatisticClient extends AbstractClient {
 	// return years;
 	// }
 
+	public List<AverageAge> getAverageAge() {
+		return this.getAverageAge(null, null, null);
+	}
+
+	public List<AverageAge> getAverageAge(Collection<String> regions, Collection<String> genders,
+			Collection<Integer> years) {
+		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
+		mappings.put("ContentsCode", ListUtility.toList("BE0101G9"));
+		mappings.put("Region", regions);
+		mappings.put("Kon", genders);
+		mappings.put("Tid", years);
+
+		String response = super.post("BE/BE0101/BE0101B/BefolkningMedelAlder", super.queryBuilder.build(mappings));
+
+		return JsonUtility.nodeToList(AverageAge.class, JsonUtility.toConventionalJson(response));
+	}
+
 	/**
 	 * Fetch all live births data.
 	 * 
@@ -105,8 +123,6 @@ public class StatisticClient extends AbstractClient {
 		mappings.put("Tid", years);
 
 		String response = super.post("BE/BE0101/BE0101H/FoddaK", super.queryBuilder.build(mappings));
-
-		// System.out.println(response);
 
 		return JsonUtility.nodeToList(LiveBirth.class, JsonUtility.toConventionalJson(response));
 	}
