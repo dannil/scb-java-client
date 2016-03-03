@@ -69,20 +69,11 @@ public class JsonUtility_UnitTest {
 		assertNull(populations);
 	}
 
-	// @Test
-	// public void getNodeInvalidJson() {
-	// JsonNode node = JsonUtility.getNode("hello world");
-	//
-	// assertEquals(null, node);
-	// }
-	//
-	// @Test(expected = IllegalArgumentException.class)
-	// public void genericParseWithoutColumns() {
-	// JsonNode node = JsonUtility.getNode(this.json);
-	//
-	// List<LiveBirth> liveBirths = JsonUtility.nodeToList(Area.class, node);
-	//
-	// assertEquals(null, liveBirths);
-	// }
+	@Test
+	public void getNodeInvalidJson() {
+		JsonNode node = JsonUtility.getNode("hello world");
+
+		assertEquals(null, node);
+	}
 
 }
