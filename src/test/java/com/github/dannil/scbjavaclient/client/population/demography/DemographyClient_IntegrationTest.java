@@ -37,8 +37,13 @@ public class DemographyClient_IntegrationTest extends RemoteIntegrationTestSuite
 	}
 
 	@Test
-	public void getArea() {
-		assertNotEquals(0, this.demographyClient.getMedianAgeFirstChild().size());
+	public void getFertilityRate() {
+		assertNotEquals(0, this.demographyClient.getFertilityRate().size());
+	}
+
+	@Test
+	public void getMeanAgeFirstChild() {
+		assertNotEquals(0, this.demographyClient.getMeanAgeFirstChild().size());
 	}
 
 }
