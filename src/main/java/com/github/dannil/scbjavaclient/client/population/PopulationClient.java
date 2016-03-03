@@ -25,7 +25,7 @@ import java.util.Map;
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.population.demography.DemographyClient;
 import com.github.dannil.scbjavaclient.client.population.statistic.StatisticClient;
-import com.github.dannil.scbjavaclient.model.population.NumberOfChildrenBornByFirstName;
+import com.github.dannil.scbjavaclient.model.population.NumberOfChildrenBornWithFirstName;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.ListUtility;
 
@@ -82,11 +82,11 @@ public class PopulationClient extends AbstractContainerClient {
 		return this.statisticClient;
 	}
 
-	public List<NumberOfChildrenBornByFirstName> getNumberOfChildrenBornByFirstName() {
-		return this.getNumberOfChildrenBornByFirstName(null, null);
+	public List<NumberOfChildrenBornWithFirstName> getNumberOfChildrenBornWithFirstName() {
+		return this.getNumberOfChildrenBornWithFirstName(null, null);
 	}
 
-	public List<NumberOfChildrenBornByFirstName> getNumberOfChildrenBornByFirstName(Collection<String> firstnames,
+	public List<NumberOfChildrenBornWithFirstName> getNumberOfChildrenBornWithFirstName(Collection<String> firstnames,
 			Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
 		mappings.put("ContentsCode", ListUtility.toList("BE0001AH"));
@@ -95,7 +95,8 @@ public class PopulationClient extends AbstractContainerClient {
 
 		String response = super.post("BE/BE0001/BE0001T04Ar", super.queryBuilder.build(mappings));
 
-		return JsonUtility.nodeToList(NumberOfChildrenBornByFirstName.class, JsonUtility.toConventionalJson(response));
+		return JsonUtility
+				.nodeToList(NumberOfChildrenBornWithFirstName.class, JsonUtility.toConventionalJson(response));
 	}
 
 }

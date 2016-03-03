@@ -27,6 +27,7 @@ import java.util.ResourceBundle;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
 import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.LandAndWaterAreaClient;
+import com.github.dannil.scbjavaclient.client.population.PopulationClient;
 import com.github.dannil.scbjavaclient.client.population.statistic.StatisticClient;
 import com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area;
 import com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstChild;
@@ -39,6 +40,8 @@ public class Test {
 	public static void main(String[] args) {
 		Locale locale = new Locale("en");
 		SCBClient client = new SCBClient(locale);
+
+		PopulationClient populationClient = client.population();
 
 		List<String> regions = new ArrayList<String>();
 		// regions.add("00");
@@ -114,5 +117,9 @@ public class Test {
 
 		String response = client.getRawData("BE/BE0101/BE0101A/BefolkningNy", payload);
 		System.out.println(response);
+
+		System.out.println(statisticClient.getAverageAge());
+
+		System.out.println(populationClient.getNumberOfChildrenBornWithFirstName());
 	}
 }

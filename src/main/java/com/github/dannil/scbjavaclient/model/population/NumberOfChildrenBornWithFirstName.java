@@ -8,16 +8,16 @@ import com.github.dannil.scbjavaclient.model.AbstractYearAndValueModel;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.RequestPoster;
 
-public class NumberOfChildrenBornByFirstName extends AbstractYearAndValueModel<Integer, String> {
+public class NumberOfChildrenBornWithFirstName extends AbstractYearAndValueModel<Integer, String> {
 
 	@JsonProperty("tilltalsnamn")
 	private String firstname;
 
-	public NumberOfChildrenBornByFirstName() {
+	public NumberOfChildrenBornWithFirstName() {
 		super();
 	}
 
-	public NumberOfChildrenBornByFirstName(String firstname, Integer year, String value) {
+	public NumberOfChildrenBornWithFirstName(String firstname, Integer year, String value) {
 		super(year, value);
 		this.firstname = firstname;
 	}
@@ -43,11 +43,11 @@ public class NumberOfChildrenBornByFirstName extends AbstractYearAndValueModel<I
 		if (obj == null) {
 			return false;
 		}
-		if (!(obj instanceof NumberOfChildrenBornByFirstName)) {
+		if (!(obj instanceof NumberOfChildrenBornWithFirstName)) {
 			return false;
 		}
 
-		NumberOfChildrenBornByFirstName other = (NumberOfChildrenBornByFirstName) obj;
+		NumberOfChildrenBornWithFirstName other = (NumberOfChildrenBornWithFirstName) obj;
 		return super.equals(other) && Objects.equals(this.firstname, other.firstname);
 	}
 
