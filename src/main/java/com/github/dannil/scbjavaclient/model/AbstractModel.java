@@ -18,6 +18,8 @@ package com.github.dannil.scbjavaclient.model;
 
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * Abstract model which holds the value of the Client response.
  * 
@@ -28,6 +30,7 @@ import java.util.Objects;
  */
 public class AbstractModel<V> {
 
+	@JsonProperty("value")
 	protected V value;
 
 	/**

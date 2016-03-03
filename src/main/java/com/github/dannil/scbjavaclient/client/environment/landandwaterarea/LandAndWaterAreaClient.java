@@ -100,6 +100,6 @@ public class LandAndWaterAreaClient extends AbstractClient {
 
 		String response = super.post("MI/MI0802/Areal2012", super.queryBuilder.build(mappings));
 
-		return JsonUtility.parseAreas(JsonUtility.getNode(response));
+		return JsonUtility.nodeToList(Area.class, JsonUtility.toConventionalJson(response));
 	}
 }

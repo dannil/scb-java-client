@@ -108,7 +108,7 @@ public class StatisticClient extends AbstractClient {
 
 		// System.out.println(response);
 
-		return JsonUtility.parseLiveBirths(JsonUtility.getNode(response));
+		return JsonUtility.nodeToList(LiveBirth.class, JsonUtility.toConventionalJson(response));
 	}
 
 	/**
@@ -155,9 +155,7 @@ public class StatisticClient extends AbstractClient {
 
 		String response = super.post("BE/BE0101/BE0101A/BefolkningNy", super.queryBuilder.build(mappings));
 
-		// System.out.println(response);
-
-		return JsonUtility.parsePopulation(JsonUtility.getNode(response));
+		return JsonUtility.nodeToList(Population.class, JsonUtility.toConventionalJson(response));
 	}
 
 }

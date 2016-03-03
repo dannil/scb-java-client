@@ -18,6 +18,8 @@ package com.github.dannil.scbjavaclient.model;
 
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * Abstract model which handles region, year and value. Since these values are used by almost every
  * single Client response, this class will be extended by a majority of the implemented models.
@@ -33,7 +35,10 @@ import java.util.Objects;
  */
 public class AbstractRegionAndYearModel<R, Y, V> extends AbstractModel<V> {
 
+	@JsonProperty("region")
 	protected R region;
+
+	@JsonProperty("tid")
 	protected Y year;
 
 	/**

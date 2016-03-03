@@ -121,7 +121,7 @@ public class DemographyClient extends AbstractClient {
 
 		String response = super.post("BE/BE0701/MedelAlderNY", super.queryBuilder.build(mappings));
 
-		return JsonUtility.parseAverageAgeFirstChild(JsonUtility.getNode(response));
+		return JsonUtility.nodeToList(MeanAgeFirstChild.class, JsonUtility.toConventionalJson(response));
 	}
 
 	// public List<Object> getFertilityRate() {
