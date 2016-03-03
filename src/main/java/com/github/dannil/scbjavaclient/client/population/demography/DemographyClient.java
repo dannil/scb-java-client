@@ -86,6 +86,23 @@ public class DemographyClient extends AbstractClient {
 	// return years;
 	// }
 
+	public List<FertilityRate> getFertilityRate() {
+		return this.getFertilityRate(null, null, null);
+	}
+
+	public List<FertilityRate> getFertilityRate(Collection<String> regions, Collection<Integer> genders,
+			Collection<Integer> years) {
+		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
+		mappings.put("ContentsCode", ListUtility.toList("BE0701AA"));
+		mappings.put("Region", regions);
+		mappings.put("Kon", genders);
+		mappings.put("Tid", years);
+
+		String response = super.post("BE/BE0701/FruktsamhetSumNy", super.queryBuilder.build(mappings));
+
+		return JsonUtility.nodeToList(FertilityRate.class, JsonUtility.toConventionalJson(response));
+	}
+
 	/**
 	 * Fetch all mean age for the first child data.
 	 * 
@@ -123,23 +140,6 @@ public class DemographyClient extends AbstractClient {
 		String response = super.post("BE/BE0701/MedelAlderNY", super.queryBuilder.build(mappings));
 
 		return JsonUtility.nodeToList(MedianAgeFirstChild.class, JsonUtility.toConventionalJson(response));
-	}
-
-	public List<FertilityRate> getFertilityRate() {
-		return this.getFertilityRate(null, null, null);
-	}
-
-	public List<FertilityRate> getFertilityRate(Collection<String> regions, Collection<Integer> genders,
-			Collection<Integer> years) {
-		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
-		mappings.put("ContentsCode", ListUtility.toList("BE0701AA"));
-		mappings.put("Region", regions);
-		mappings.put("Kon", genders);
-		mappings.put("Tid", years);
-
-		String response = super.post("BE/BE0701/FruktsamhetSumNy", super.queryBuilder.build(mappings));
-
-		return JsonUtility.nodeToList(FertilityRate.class, JsonUtility.toConventionalJson(response));
 	}
 
 }
