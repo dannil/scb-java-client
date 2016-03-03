@@ -24,7 +24,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.client.population.demography.DemographyClient;
 import com.github.dannil.scbjavaclient.test.model.RemoteIntegrationTestSuite;
 
 @RunWith(JUnit4.class)
@@ -39,7 +38,7 @@ public class DemographyClient_IntegrationTest extends RemoteIntegrationTestSuite
 
 	@Test
 	public void getArea() {
-		assertNotEquals(0, this.demographyClient.getMeanAgeFirstChild().size());
+		assertNotEquals(0, this.demographyClient.getMedianAgeFirstChild().size());
 	}
 
 }

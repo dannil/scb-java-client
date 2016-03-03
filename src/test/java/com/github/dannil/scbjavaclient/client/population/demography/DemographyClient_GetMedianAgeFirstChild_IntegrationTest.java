@@ -34,7 +34,7 @@ import com.github.dannil.scbjavaclient.test.model.RemoteIntegrationTestSuite;
 import com.github.dannil.scbjavaclient.utility.ListUtility;
 
 @RunWith(Parameterized.class)
-public class DemographyClient_GetMeanAgeFirstChild_IntegrationTest extends RemoteIntegrationTestSuite {
+public class DemographyClient_GetMedianAgeFirstChild_IntegrationTest extends RemoteIntegrationTestSuite {
 
 	private List<String> regions;
 	private List<Integer> genders;
@@ -42,7 +42,7 @@ public class DemographyClient_GetMeanAgeFirstChild_IntegrationTest extends Remot
 
 	private DemographyClient demographyClient;
 
-	@Parameters(name = "{index}: getMeanAgeFirstChild({0}, {1}, {2})")
+	@Parameters(name = "{index}: getMedianAgeFirstChild({0}, {1}, {2})")
 	public static Collection<Object[]> data() {
 		List<String> regions;
 		List<Integer> genders;
@@ -79,7 +79,7 @@ public class DemographyClient_GetMeanAgeFirstChild_IntegrationTest extends Remot
 		return parameters;
 	}
 
-	private DemographyClient_GetMeanAgeFirstChild_IntegrationTest() {
+	private DemographyClient_GetMedianAgeFirstChild_IntegrationTest() {
 		this.demographyClient = new SCBClient().population().demography();
 
 		// Test DemographyClient with English locale
@@ -87,7 +87,7 @@ public class DemographyClient_GetMeanAgeFirstChild_IntegrationTest extends Remot
 		this.demographyClient.setLocale(locale);
 	}
 
-	public DemographyClient_GetMeanAgeFirstChild_IntegrationTest(List<String> regions, List<Integer> genders,
+	public DemographyClient_GetMedianAgeFirstChild_IntegrationTest(List<String> regions, List<Integer> genders,
 			List<Integer> years) {
 		this();
 
@@ -98,7 +98,7 @@ public class DemographyClient_GetMeanAgeFirstChild_IntegrationTest extends Remot
 
 	@Test
 	public void getMeanAgeFirstChild() {
-		assertNotEquals(0, this.demographyClient.getMeanAgeFirstChild(this.regions, this.genders, this.years).size());
+		assertNotEquals(0, this.demographyClient.getMedianAgeFirstChild(this.regions, this.genders, this.years).size());
 	}
 
 }

@@ -29,7 +29,7 @@ import com.github.dannil.scbjavaclient.utility.RequestPoster;
  * 
  * @author Daniel Nilsson
  */
-public class MeanAgeFirstChild extends AbstractRegionYearAndValueModel<String, Integer, Double> {
+public class MedianAgeFirstChild extends AbstractRegionYearAndValueModel<String, Integer, Double> {
 
 	@JsonProperty("kon")
 	private Integer gender;
@@ -37,7 +37,7 @@ public class MeanAgeFirstChild extends AbstractRegionYearAndValueModel<String, I
 	/**
 	 * Default constructor.
 	 */
-	public MeanAgeFirstChild() {
+	public MedianAgeFirstChild() {
 		super();
 	}
 
@@ -53,7 +53,7 @@ public class MeanAgeFirstChild extends AbstractRegionYearAndValueModel<String, I
 	 * @param value
 	 *            the value
 	 */
-	public MeanAgeFirstChild(String region, Integer gender, Integer year, Double value) {
+	public MedianAgeFirstChild(String region, Integer gender, Integer year, Double value) {
 		super(region, year, value);
 		this.gender = gender;
 	}
@@ -90,11 +90,11 @@ public class MeanAgeFirstChild extends AbstractRegionYearAndValueModel<String, I
 		if (obj == null) {
 			return false;
 		}
-		if (!(obj instanceof MeanAgeFirstChild)) {
+		if (!(obj instanceof MedianAgeFirstChild)) {
 			return false;
 		}
 
-		MeanAgeFirstChild other = (MeanAgeFirstChild) obj;
+		MedianAgeFirstChild other = (MedianAgeFirstChild) obj;
 		return super.equals(other) && Objects.equals(this.gender, other.gender);
 	}
 

@@ -23,7 +23,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
-import com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstChild;
+import com.github.dannil.scbjavaclient.model.population.demography.MedianAgeFirstChild;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.ListUtility;
 
@@ -89,13 +89,13 @@ public class DemographyClient extends AbstractClient {
 	 * Fetch all mean age for the first child data.
 	 * 
 	 * @return the mean age for the first child data wrapped in a list of
-	 *         {@link com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstChild
-	 *         MeanAgeFirstChild} objects
+	 *         {@link com.github.dannil.scbjavaclient.model.population.demography.MedianAgeFirstChild
+	 *         MedianAgeFirstChild} objects
 	 * 
 	 * @see DemographyClient#getMeanAgeFirstChild(Collection, Collection, Collection)
 	 */
-	public List<MeanAgeFirstChild> getMeanAgeFirstChild() {
-		return this.getMeanAgeFirstChild(null, null, null);
+	public List<MedianAgeFirstChild> getMedianAgeFirstChild() {
+		return this.getMedianAgeFirstChild(null, null, null);
 	}
 
 	/**
@@ -108,10 +108,10 @@ public class DemographyClient extends AbstractClient {
 	 * @param years
 	 *            the years to fetch data for
 	 * @return the mean age for the first child data wrapped in a list of
-	 *         {@link com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstChild
-	 *         MeanAgeFirstChild} objects
+	 *         {@link com.github.dannil.scbjavaclient.model.population.demography.MedianAgeFirstChild
+	 *         MedianAgeFirstChild} objects
 	 */
-	public List<MeanAgeFirstChild> getMeanAgeFirstChild(Collection<String> regions, Collection<Integer> genders,
+	public List<MedianAgeFirstChild> getMedianAgeFirstChild(Collection<String> regions, Collection<Integer> genders,
 			Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
 		mappings.put("ContentsCode", ListUtility.toList("BE0701AB"));
@@ -121,7 +121,7 @@ public class DemographyClient extends AbstractClient {
 
 		String response = super.post("BE/BE0701/MedelAlderNY", super.queryBuilder.build(mappings));
 
-		return JsonUtility.nodeToList(MeanAgeFirstChild.class, JsonUtility.toConventionalJson(response));
+		return JsonUtility.nodeToList(MedianAgeFirstChild.class, JsonUtility.toConventionalJson(response));
 	}
 
 	// public List<Object> getFertilityRate() {

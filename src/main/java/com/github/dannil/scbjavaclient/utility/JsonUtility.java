@@ -211,22 +211,22 @@ public class JsonUtility {
 
 	// /**
 	// * Parses the {@link JsonNode} into a list of
-	// * {@link com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstChild
-	// * MeanAgeFirstChild}.
+	// * {@link com.github.dannil.scbjavaclient.model.population.demography.MedianAgeFirstChild
+	// * MedianAgeFirstChild}.
 	// *
 	// * @param node
 	// * the node to parse
 	// * @return a list of
-	// * {@link com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstChild
-	// * MeanAgeFirstChild} objects
+	// * {@link com.github.dannil.scbjavaclient.model.population.demography.MedianAgeFirstChild
+	// * MedianAgeFirstChild} objects
 	// */
-	// public static List<MeanAgeFirstChild> parseAverageAgeFirstChild(JsonNode node) {
-	// List<Map<String, String>> contents = genericParse(node, MeanAgeFirstChild.getCodes());
+	// public static List<MedianAgeFirstChild> parseAverageAgeFirstChild(JsonNode node) {
+	// List<Map<String, String>> contents = genericParse(node, MedianAgeFirstChild.getCodes());
 	//
-	// List<MeanAgeFirstChild> averageAgeFirstChildren = new ArrayList<MeanAgeFirstChild>();
+	// List<MedianAgeFirstChild> averageAgeFirstChildren = new ArrayList<MedianAgeFirstChild>();
 	// for (Map<String, String> map : contents) {
 	//
-	// MeanAgeFirstChild averageAgeFirstChild = new MeanAgeFirstChild();
+	// MedianAgeFirstChild averageAgeFirstChild = new MedianAgeFirstChild();
 	// averageAgeFirstChild.setRegion(map.get("Region"));
 	// averageAgeFirstChild.setYear(ParseUtility.parseInteger(map.get("Tid")));
 	// averageAgeFirstChild.setGender(ParseUtility.parseInteger(map.get("Kon")));
