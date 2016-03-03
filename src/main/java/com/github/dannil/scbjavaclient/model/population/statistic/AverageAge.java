@@ -29,6 +29,11 @@ public class AverageAge extends AbstractRegionAndYearModel<String, Integer, Doub
 	}
 
 	@Override
+	public int hashCode() {
+		return Objects.hash(super.hashCode(), this.gender);
+	}
+
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
 			return true;
