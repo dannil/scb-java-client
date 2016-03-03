@@ -23,12 +23,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import com.github.dannil.scbjavaclient.model.AbstractRegionYearAndValueModel;
-
 @RunWith(JUnit4.class)
 public class AbstractRegionYearAndValueModel_UnitTest {
 
-	// Dummy class which doesn't override AbstractRegionAndYearModel equals
+	// Dummy class which doesn't override the equals
 	// method. This enables us to thoroughly test the equals method.
 	public class DummyClass extends AbstractRegionYearAndValueModel<String, Integer, Long> {
 

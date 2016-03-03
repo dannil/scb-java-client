@@ -24,7 +24,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.client.population.statistic.StatisticClient;
 import com.github.dannil.scbjavaclient.test.model.RemoteIntegrationTestSuite;
 
 @RunWith(JUnit4.class)
@@ -48,6 +47,11 @@ public class StatisticClient_IntegrationTest extends RemoteIntegrationTestSuite 
 	// public final void getYears() {
 	// assertNotEquals(0, this.statisticsClient.getYears().size());
 	// }
+
+	@Test
+	public void getAverageAge() {
+		assertNotEquals(0, this.statisticClient.getAverageAge().size());
+	}
 
 	@Test
 	public void getLiveBirths() {
