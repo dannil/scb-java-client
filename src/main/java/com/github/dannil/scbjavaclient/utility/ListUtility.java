@@ -36,6 +36,8 @@ public class ListUtility<E> {
 	/**
 	 * Convert the input to a list with the input as its only member.
 	 * 
+	 * @param <E>
+	 *            the data type of value
 	 * @param value
 	 *            the value to convert to a list
 	 * @return null if the input is null, otherwise a list with the input as its only member
@@ -52,6 +54,8 @@ public class ListUtility<E> {
 	/**
 	 * Convert the input list to its string representation of its members.
 	 * 
+	 * @param <E>
+	 *            the data type of value
 	 * @param list
 	 *            the list to convert to its string representation
 	 * @return the string representation of the list's members

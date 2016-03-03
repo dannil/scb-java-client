@@ -95,6 +95,7 @@ public class QueryBuilder {
 	 * <p>
 	 * { "code": "Tid", "selection": { "filter": "item", "values": [ "2011", "2012" ] } }
 	 * </p>
+	 * <p>
 	 * The method works on the principle of pasting all these blocks together in an orderly fashion
 	 * to conform to the SCB API specification.
 	 * </p>

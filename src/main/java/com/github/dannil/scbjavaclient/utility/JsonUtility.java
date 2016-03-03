@@ -124,6 +124,8 @@ public class JsonUtility {
 	/**
 	 * Converts the {@link JsonNode} into a list of the specified class.
 	 * 
+	 * @param <T>
+	 *            the data type of the list
 	 * @param clazz
 	 *            the class to convert each JSON entry to
 	 * @param node
@@ -133,8 +135,6 @@ public class JsonUtility {
 	 */
 	public static <T> List<T> nodeToList(Class<?> clazz, JsonNode node) {
 		try {
-			ObjectMapper mapper = new ObjectMapper();
-
 			JavaType type = mapper.getTypeFactory().constructCollectionType(List.class, clazz);
 
 			return mapper.readValue(node.toString(), type);
