@@ -18,6 +18,7 @@ package com.github.dannil.scbjavaclient.utility;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -28,8 +29,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.github.dannil.scbjavaclient.model.population.statistic.LiveBirth;
-import com.github.dannil.scbjavaclient.utility.JsonUtility;
+import com.github.dannil.scbjavaclient.model.population.statistic.Population;
 
 @RunWith(JUnit4.class)
 public class JsonUtility_UnitTest {
@@ -61,19 +61,28 @@ public class JsonUtility_UnitTest {
 	}
 
 	@Test
-	public void getNodeInvalidJson() {
-		JsonNode node = JsonUtility.getNode("hello world");
-
-		assertEquals(null, node);
-	}
-
-	@Test(expected = IllegalArgumentException.class)
-	public void genericParseWithoutColumns() {
+	public void nodeToListInvalidJson() {
 		JsonNode node = JsonUtility.getNode(this.json);
 
-		List<LiveBirth> liveBirths = JsonUtility.parseLiveBirths(node);
+		List<Population> populations = JsonUtility.nodeToList(Population.class, node);
 
-		assertEquals(null, liveBirths);
+		assertNull(populations);
 	}
+
+	// @Test
+	// public void getNodeInvalidJson() {
+	// JsonNode node = JsonUtility.getNode("hello world");
+	//
+	// assertEquals(null, node);
+	// }
+	//
+	// @Test(expected = IllegalArgumentException.class)
+	// public void genericParseWithoutColumns() {
+	// JsonNode node = JsonUtility.getNode(this.json);
+	//
+	// List<LiveBirth> liveBirths = JsonUtility.nodeToList(Area.class, node);
+	//
+	// assertEquals(null, liveBirths);
+	// }
 
 }

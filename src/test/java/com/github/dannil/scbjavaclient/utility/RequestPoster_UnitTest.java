@@ -17,6 +17,7 @@
 package com.github.dannil.scbjavaclient.utility;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -24,8 +25,6 @@ import java.lang.reflect.InvocationTargetException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-
-import com.github.dannil.scbjavaclient.utility.RequestPoster;
 
 @RunWith(JUnit4.class)
 public class RequestPoster_UnitTest {
@@ -39,6 +38,13 @@ public class RequestPoster_UnitTest {
 		cons[0].setAccessible(false);
 
 		assertFalse(cons[0].isAccessible());
+	}
+
+	@Test
+	public void getCodesInvalidTable() {
+		String response = RequestPoster.getCodes("ABCABCABC");
+
+		assertNull(response);
 	}
 
 }
