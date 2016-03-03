@@ -174,7 +174,7 @@ public class Population extends AbstractRegionYearAndValueModel<String, Integer,
 	/**
 	 * Get the codes for the population model from the API.
 	 * 
-	 * @return a list of codes that is used by the API to index the population values
+	 * @return a list of codes that is used by the API to index the values
 	 */
 	public static List<String> getCodes() {
 		return JsonUtility.getCodes(RequestPoster.getCodes("BE/BE0101/BE0101A/BefolkningNy"));

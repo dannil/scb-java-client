@@ -119,7 +119,7 @@ public class Area extends AbstractRegionYearAndValueModel<String, Integer, Doubl
 	/**
 	 * Get the codes for the area model from the API.
 	 *
-	 * @return a list of codes that is used by the API to index the area values
+	 * @return a list of codes that is used by the API to index the values
 	 */
 	public static List<String> getCodes() {
 		return JsonUtility.getCodes(RequestPoster.getCodes("MI/MI0802/Areal2012"));

@@ -119,7 +119,7 @@ public class MedianAgeFirstChild extends AbstractRegionYearAndValueModel<String,
 	/**
 	 * Get the codes for the mean age first child model from the API.
 	 *
-	 * @return a list of codes that is used by the API to index the mean age first child values
+	 * @return a list of codes that is used by the API to index the values
 	 */
 	public static List<String> getCodes() {
 		return JsonUtility.getCodes(RequestPoster.getCodes("BE/BE0701/MedelAlderNY"));

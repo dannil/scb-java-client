@@ -88,7 +88,7 @@ public class AverageAge extends AbstractRegionYearAndValueModel<String, Integer,
 	/**
 	 * Get the codes for the live births from the API.
 	 * 
-	 * @return a list of codes that is used by the API to index the live births values
+	 * @return a list of codes that is used by the API to index the values
 	 */
 	public static List<String> getCodes() {
 		return JsonUtility.getCodes(RequestPoster.getCodes("BE/BE0101/BE0101B/BefolkningMedelAlder"));
