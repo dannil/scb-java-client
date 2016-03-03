@@ -3,11 +3,11 @@ package com.github.dannil.scbjavaclient.model.population.statistic;
 import java.util.List;
 import java.util.Objects;
 
-import com.github.dannil.scbjavaclient.model.AbstractRegionAndYearModel;
+import com.github.dannil.scbjavaclient.model.AbstractRegionYearAndValueModel;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.RequestPoster;
 
-public class AverageAge extends AbstractRegionAndYearModel<String, Integer, Double> {
+public class AverageAge extends AbstractRegionYearAndValueModel<String, Integer, Double> {
 
 	private String gender;
 
