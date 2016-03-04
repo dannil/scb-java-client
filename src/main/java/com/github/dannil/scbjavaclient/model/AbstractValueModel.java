@@ -28,7 +28,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @param <V>
  *            the value
  */
-public class AbstractValueModel<V> {
+public abstract class AbstractValueModel<V> {
 
 	@JsonProperty("value")
 	protected V value;
@@ -89,5 +89,7 @@ public class AbstractValueModel<V> {
 		AbstractValueModel<?> other = (AbstractValueModel<?>) obj;
 		return Objects.equals(this.value, other.value);
 	}
+
+	public abstract String toString();
 
 }

@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @param <V>
  *            the value
  */
-public class AbstractRegionYearAndValueModel<R, Y, V> extends AbstractValueModel<V> {
+public abstract class AbstractRegionYearAndValueModel<R, Y, V> extends AbstractValueModel<V> {
 
 	@JsonProperty("region")
 	protected R region;
@@ -124,5 +124,7 @@ public class AbstractRegionYearAndValueModel<R, Y, V> extends AbstractValueModel
 		return super.equals(other) && Objects.equals(this.region, other.region)
 				&& Objects.equals(this.year, other.year);
 	}
+
+	public abstract String toString();
 
 }

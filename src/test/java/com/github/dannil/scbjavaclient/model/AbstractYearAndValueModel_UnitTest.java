@@ -38,6 +38,11 @@ public class AbstractYearAndValueModel_UnitTest {
 			super(year, value);
 		}
 
+		@Override
+		public String toString() {
+			return "Dummy";
+		}
+
 	}
 
 	// Tests the superclass

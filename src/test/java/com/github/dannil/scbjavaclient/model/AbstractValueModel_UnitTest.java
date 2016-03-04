@@ -38,6 +38,11 @@ public class AbstractValueModel_UnitTest {
 			super(value);
 		}
 
+		@Override
+		public String toString() {
+			return "Dummy";
+		}
+
 	}
 
 	// Tests the superclass

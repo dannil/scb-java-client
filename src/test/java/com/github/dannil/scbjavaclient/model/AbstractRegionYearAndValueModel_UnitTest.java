@@ -38,6 +38,11 @@ public class AbstractRegionYearAndValueModel_UnitTest {
 			super(region, year, value);
 		}
 
+		@Override
+		public String toString() {
+			return "Dummy";
+		}
+
 	}
 
 	// Tests the superclass

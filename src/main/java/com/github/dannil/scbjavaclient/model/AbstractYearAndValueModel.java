@@ -20,7 +20,7 @@ import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class AbstractYearAndValueModel<Y, V> extends AbstractValueModel<V> {
+public abstract class AbstractYearAndValueModel<Y, V> extends AbstractValueModel<V> {
 
 	@JsonProperty("tid")
 	protected Y year;
@@ -63,5 +63,7 @@ public class AbstractYearAndValueModel<Y, V> extends AbstractValueModel<V> {
 		AbstractYearAndValueModel<?, ?> other = (AbstractYearAndValueModel<?, ?>) obj;
 		return super.equals(other) && Objects.equals(this.year, other.year);
 	}
+
+	public abstract String toString();
 
 }
