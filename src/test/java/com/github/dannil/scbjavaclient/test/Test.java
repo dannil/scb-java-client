@@ -31,10 +31,7 @@ import com.github.dannil.scbjavaclient.client.population.PopulationClient;
 import com.github.dannil.scbjavaclient.client.population.demography.DemographyClient;
 import com.github.dannil.scbjavaclient.client.population.statistic.StatisticClient;
 import com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area;
-import com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstChild;
 import com.github.dannil.scbjavaclient.model.population.statistic.LiveBirth;
-import com.github.dannil.scbjavaclient.model.population.statistic.Population;
-import com.github.dannil.scbjavaclient.utility.ParseUtility;
 
 public class Test {
 
@@ -66,21 +63,11 @@ public class Test {
 		// // System.out.println(key + " : " + map.get(key));
 		// }
 
-		System.out.println(ParseUtility.parseLong("221", null));
+		// System.out.println(ParseUtility.parseLong("221", null));
 
 		List<LiveBirth> collection9 = statisticClient.getLiveBirths();
 		for (LiveBirth l : collection9) {
-			System.out.println(l);
-		}
-
-		List<Population> collection8 = statisticClient.getPopulation(regions, null, ages, null, years);
-		for (Population p : collection8) {
-			System.out.println(p);
-		}
-
-		List<Population> collection4 = statisticClient.getPopulation();
-		for (Population p : collection4) {
-			System.out.println(p);
+			// System.out.println(l);
 		}
 
 		// List<Integer> availableYears = statisticApi.getYears();
@@ -95,11 +82,11 @@ public class Test {
 			System.out.println(a);
 		}
 
-		List<MeanAgeFirstChild> collection7 = client.population().demography()
-				.getMeanAgeFirstChild(regions, null, null);
-		for (MeanAgeFirstChild a : collection7) {
-			System.out.println(a);
-		}
+		// List<MeanAgeFirstChild> collection7 = client.population().demography()
+		// .getMeanAgeFirstChild(regions, null, null);
+		// for (MeanAgeFirstChild a : collection7) {
+		// System.out.println(a);
+		// }
 
 		// api.population().demography().getFertilityRate();
 
