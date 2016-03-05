@@ -25,6 +25,7 @@ import java.util.Map;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.MissingNode;
 
 /**
  * Utility class for converting JSON to Java objects
@@ -74,7 +75,7 @@ public class JsonUtility {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return null;
+		return MissingNode.getInstance();
 	}
 
 	/**
@@ -113,11 +114,9 @@ public class JsonUtility {
 
 				map.put(key, keysNode.get(j).asText());
 			}
-
 			map.put("value", valuesNode.get(0).asText());
 			entries.add(map);
 		}
-
 		return mapper.convertValue(entries, JsonNode.class);
 	}
 
