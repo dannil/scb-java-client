@@ -125,6 +125,7 @@ public abstract class AbstractRegionYearAndValueModel<R, Y, V> extends AbstractV
 				&& Objects.equals(this.year, other.year);
 	}
 
+	@Override
 	public abstract String toString();
 
 }

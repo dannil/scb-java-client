@@ -90,6 +90,7 @@ public abstract class AbstractValueModel<V> {
 		return Objects.equals(this.value, other.value);
 	}
 
+	@Override
 	public abstract String toString();
 
 }

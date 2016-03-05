@@ -64,6 +64,7 @@ public abstract class AbstractYearAndValueModel<Y, V> extends AbstractValueModel
 		return super.equals(other) && Objects.equals(this.year, other.year);
 	}
 
+	@Override
 	public abstract String toString();
 
 }
