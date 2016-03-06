@@ -44,7 +44,7 @@ public abstract class AbstractContainerClient extends AbstractClient {
 	 */
 	@Override
 	public void setLocale(Locale locale) {
-		super.locale = locale;
+		super.setLocale(locale);
 
 		for (AbstractClient client : this.clients) {
 			client.setLocale(super.locale);
