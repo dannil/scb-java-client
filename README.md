@@ -33,7 +33,7 @@ SCBClient baseClient = new SCBClient();
 List<Population> population = baseClient.population().statistic().getPopulation();
 
 // Perform operations with the DemographyClient
-DemographyClient demographyClient = baseClient.population().demography();
+PopulationDemographyClient demographyClient = baseClient.population().demography();
 
 // Retrieve all mean age for first child birth statistics 
 // using the DemographyClient
