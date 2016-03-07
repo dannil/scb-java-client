@@ -88,6 +88,9 @@ public class JsonUtility {
 	 */
 	public static JsonNode toConventionalJson(String json) {
 		JsonNode node = getNode(json);
+		if (!node.has("columns")) {
+			return node;
+		}
 
 		JsonNode columns = node.get("columns");
 		JsonNode data = node.get("data");
@@ -123,20 +126,38 @@ public class JsonUtility {
 	/**
 	 * Converts the {@link JsonNode} into a list of the specified class.
 	 * 
-	 * @param <T>
-	 *            the data type of the list
-	 * @param clazz
-	 *            the class to convert each JSON entry to
 	 * @param node
 	 *            the node to process
+	 * @param clazz
+	 *            the class to convert each JSON entry to
+	 * 
+	 * @param <T>
+	 *            the data type of the list
 	 * @return a list of elements, which type is the specified class. Each element represents the
 	 *         corresponding entry in the {@link JsonNode}
 	 */
-	public static <T> List<T> nodeToList(Class<?> clazz, JsonNode node) {
+	public static <T> List<T> jsonToListOf(JsonNode node, Class<?> clazz) {
+		return jsonToListOf(node.toString(), clazz);
+	}
+
+	/**
+	 * Converts the JSON string into a list of the specified class.
+	 * 
+	 * @param json
+	 *            the json to process
+	 * @param clazz
+	 *            the class to convert each JSON entry to
+	 * 
+	 * @param <T>
+	 *            the data type of the list
+	 * @return a list of elements, which type is the specified class. Each element represents the
+	 *         corresponding entry in the JSON
+	 */
+	public static <T> List<T> jsonToListOf(String json, Class<?> clazz) {
 		try {
 			JavaType type = mapper.getTypeFactory().constructCollectionType(List.class, clazz);
 
-			return mapper.readValue(node.toString(), type);
+			return mapper.readValue(toConventionalJson(json).toString(), type);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -183,109 +204,6 @@ public class JsonUtility {
 	// contents.add(keyContents);
 	// }
 	// return contents;
-	// }
-
-	// /**
-	// * Parses the {@link JsonNode} into a list of
-	// * {@link com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area Area}.
-	// *
-	// * @param node
-	// * the node to parse
-	// * @return a list of
-	// * {@link com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area Area}
-	// * objects
-	// */
-	// public static List<Area> parseAreas(JsonNode node) {
-	// List<Map<String, String>> contents = genericParse(node, Area.getCodes());
-	//
-	// List<Area> areas = new ArrayList<Area>();
-	// for (Map<String, String> map : contents) {
-	// Area area = new Area(map.get("Region"), map.get("ArealTyp"),
-	// ParseUtility.parseInteger(map.get("Tid")),
-	// ParseUtility.parseDouble(map.get("Value")));
-	// areas.add(area);
-	// }
-	// return areas;
-	// }
-
-	// /**
-	// * Parses the {@link JsonNode} into a list of
-	// * {@link com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstChild
-	// * MeanAgeFirstChild}.
-	// *
-	// * @param node
-	// * the node to parse
-	// * @return a list of
-	// * {@link com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstChild
-	// * MeanAgeFirstChild} objects
-	// */
-	// public static List<MeanAgeFirstChild> parseAverageAgeFirstChild(JsonNode node) {
-	// List<Map<String, String>> contents = genericParse(node, MeanAgeFirstChild.getCodes());
-	//
-	// List<MeanAgeFirstChild> averageAgeFirstChildren = new ArrayList<MeanAgeFirstChild>();
-	// for (Map<String, String> map : contents) {
-	//
-	// MeanAgeFirstChild averageAgeFirstChild = new MeanAgeFirstChild();
-	// averageAgeFirstChild.setRegion(map.get("Region"));
-	// averageAgeFirstChild.setYear(ParseUtility.parseInteger(map.get("Tid")));
-	// averageAgeFirstChild.setGender(ParseUtility.parseInteger(map.get("Kon")));
-	// averageAgeFirstChild.setValue(ParseUtility.parseDouble(map.get("Value")));
-	//
-	// averageAgeFirstChildren.add(averageAgeFirstChild);
-	// }
-	// return averageAgeFirstChildren;
-	// }
-
-	// /**
-	// * Parses the {@link JsonNode} into a list of
-	// * {@link com.github.dannil.scbjavaclient.model.population.statistic.LiveBirth LiveBirth}.
-	// *
-	// * @param node
-	// * the node to parse
-	// * @return a list of
-	// * {@link com.github.dannil.scbjavaclient.model.population.statistic.LiveBirth
-	// * LiveBirth} objects
-	// */
-	// public static List<LiveBirth> parseLiveBirths(JsonNode node) {
-	// List<Map<String, String>> contents = genericParse(node, LiveBirth.getCodes());
-	//
-	// List<LiveBirth> liveBirths = new ArrayList<LiveBirth>();
-	// for (Map<String, String> map : contents) {
-	//
-	// LiveBirth liveBirth = new LiveBirth();
-	// liveBirth.setRegion(map.get("Region"));
-	// liveBirth.setYear(ParseUtility.parseInteger(map.get("Tid")));
-	// liveBirth.setMotherAge(map.get("AlderModer"));
-	// liveBirth.setGender(ParseUtility.parseInteger(map.get("Kon")));
-	// liveBirth.setValue(ParseUtility.parseLong(map.get("Value")));
-	//
-	// liveBirths.add(liveBirth);
-	// }
-	// return liveBirths;
-	// }
-
-	// /**
-	// * Parses the {@link JsonNode} into a list of
-	// * {@link com.github.dannil.scbjavaclient.model.population.statistic.Population Population}.
-	// *
-	// * @param node
-	// * the node to parse
-	// * @return a list of
-	// * {@link com.github.dannil.scbjavaclient.model.population.statistic.Population
-	// * Population} objects
-	// */
-	// public static List<Population> parsePopulation(JsonNode node) {
-	// List<Map<String, String>> contents = genericParse(node, Population.getCodes());
-	//
-	// List<Population> populations = new ArrayList<Population>();
-	// for (Map<String, String> map : contents) {
-	// Population population = new Population(map.get("Region"), map.get("Civilstand"),
-	// map.get("Alder"),
-	// ParseUtility.parseInteger(map.get("Kon")), ParseUtility.parseInteger(map.get("Tid")),
-	// ParseUtility.parseLong(map.get("Value")));
-	// populations.add(population);
-	// }
-	// return populations;
 	// }
 
 	// /**

@@ -18,6 +18,7 @@ package com.github.dannil.scbjavaclient.utility;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
 import java.lang.reflect.Constructor;
@@ -62,10 +63,21 @@ public class JsonUtility_UnitTest {
 	}
 
 	@Test
-	public void nodeToListInvalidJson() {
+	public void jsonToListNonConventionalJson() {
+		String nonConventionalJson = "{\"columns\":[{\"code\":\"Region\",\"text\":\"region\",\"type\":\"d\"},{\"code\":\"Civilstand\",\"text\":\"maritalstatus\",\"type\":\"d\"},{\"code\":\"Alder\",\"text\":\"age\",\"type\":\"d\"},{\"code\":\"Tid\",\"text\":\"year\",\"type\":\"t\"},{\"code\":\"BE0101N1\",\"text\":\"Population\",\"type\":\"c\"}],\"comments\":[],\"data\":[{\"key\":[\"00\",\"OG\",\"45\",\"2011\"],\"values\":[\"48403\"]}]}";
+
+		JsonNode node = JsonUtility.getNode(nonConventionalJson);
+
+		List<Population> populations = JsonUtility.jsonToListOf(node, Population.class);
+
+		assertNotNull(populations);
+	}
+
+	@Test
+	public void jsonToListOfInvalidJson() {
 		JsonNode node = JsonUtility.getNode(this.json);
 
-		List<Population> populations = JsonUtility.nodeToList(Population.class, node);
+		List<Population> populations = JsonUtility.jsonToListOf(node, Population.class);
 
 		assertNull(populations);
 	}

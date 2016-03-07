@@ -95,8 +95,7 @@ public class PopulationClient extends AbstractContainerClient {
 
 		String response = super.post("BE/BE0001/BE0001T04Ar", super.queryBuilder.build(mappings));
 
-		return JsonUtility
-				.nodeToList(NumberOfChildrenBornWithFirstName.class, JsonUtility.toConventionalJson(response));
+		return JsonUtility.jsonToListOf(response, NumberOfChildrenBornWithFirstName.class);
 	}
 
 }
