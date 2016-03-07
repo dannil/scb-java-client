@@ -32,12 +32,12 @@ SCBClient baseClient = new SCBClient();
 // Retrieve all population statistics
 List<Population> population = baseClient.population().statistic().getPopulation();
 
-// Perform operations with the DemographyClient
-PopulationDemographyClient demographyClient = baseClient.population().demography();
+// Perform operations with the PopulationDemographyClient
+PopulationDemographyClient populationDemographyClient = baseClient.population().demography();
 
 // Retrieve all mean age for first child birth statistics 
-// using the DemographyClient
-List<MeanAgeFirstChild> firstChild = demographyClient.getMeanAgeFirstChild();
+// using the PopulationDemographyClient
+List<MeanAgeFirstChild> firstChild = populationDemographyClient.getMeanAgeFirstChild();
 ```
 
 The client also supports selecting specific values directly from the SCB API.
