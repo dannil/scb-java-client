@@ -43,10 +43,24 @@ List<MeanAgeFirstChild> firstChild = demographyClient.getMeanAgeFirstChild();
 The client also supports selecting specific values directly from the SCB API.
 
 ```java
-// Specify the criterion for the information we want to receive
+// Specify the criterion for the information we want to retrieve
 List<String> regions = Arrays.asList("00", "01", "0114");
 List<String> types = Arrays.asList("01", "02");
-List<Integer> years = Arrays.asList(2012, 2014);
+
+// Defining an input as null means that we want to retrieve all information
+// for this input. 
+// 
+// Example: if the information from the API specifies that it has information 
+// for the years 2011 through 2015 (for a specific table), the inputs underneath 
+// this row would result in an equivalent response from the API.
+//
+// List<Integer> years = Arrays.asList(2011, 2012, 2013, 2014, 2015);
+// List<Integer> years = null;
+// 
+// This makes it easy to be selective when we have a case where we 
+// want to retrieve all information for one input and at the same time 
+// restrict the input for another (for example the years 2012 and 2014).
+List<Integer> years = null;
 
 // Retrieve all area statistics using the selected values
 List<Area> areas = baseClient.environment().landAndWaterArea().getArea(regions, types, years);

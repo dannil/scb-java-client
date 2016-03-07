@@ -102,4 +102,5 @@ public class LandAndWaterAreaClient extends AbstractClient {
 
 		return JsonUtility.jsonToListOf(response, Area.class);
 	}
+
 }
