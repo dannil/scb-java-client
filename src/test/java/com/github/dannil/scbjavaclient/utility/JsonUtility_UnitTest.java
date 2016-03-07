@@ -18,11 +18,11 @@ package com.github.dannil.scbjavaclient.utility;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
@@ -68,9 +68,12 @@ public class JsonUtility_UnitTest {
 
 		JsonNode node = JsonUtility.getNode(nonConventionalJson);
 
-		List<Population> populations = JsonUtility.jsonToListOf(node, Population.class);
+		List<Population> convertedPopulations = JsonUtility.jsonToListOf(node, Population.class);
 
-		assertNotNull(populations);
+		Population p = new Population("00", "OG", "45", null, 2011, Long.valueOf(48403));
+		List<Population> staticPopulations = Arrays.asList(p);
+
+		assertEquals(convertedPopulations, staticPopulations);
 	}
 
 	@Test
