@@ -136,7 +136,7 @@ public class JsonUtility {
 	 * @return a list of elements, which type is the specified class. Each element represents the
 	 *         corresponding entry in the {@link JsonNode}
 	 */
-	public static <T> List<T> jsonToListOf(JsonNode node, Class<?> clazz) {
+	public static <T> List<T> jsonToListOf(JsonNode node, Class<T> clazz) {
 		return jsonToListOf(node.toString(), clazz);
 	}
 
@@ -153,7 +153,7 @@ public class JsonUtility {
 	 * @return a list of elements, which type is the specified class. Each element represents the
 	 *         corresponding entry in the JSON
 	 */
-	public static <T> List<T> jsonToListOf(String json, Class<?> clazz) {
+	public static <T> List<T> jsonToListOf(String json, Class<T> clazz) {
 		try {
 			JavaType type = mapper.getTypeFactory().constructCollectionType(List.class, clazz);
 
