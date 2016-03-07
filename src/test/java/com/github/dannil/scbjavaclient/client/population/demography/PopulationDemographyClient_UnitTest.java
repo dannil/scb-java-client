@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.population.statistic;
+package com.github.dannil.scbjavaclient.client.population.demography;
 
 import static org.junit.Assert.assertEquals;
 
@@ -24,17 +24,27 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import com.github.dannil.scbjavaclient.client.population.statistic.StatisticClient;
+import com.github.dannil.scbjavaclient.client.population.demography.PopulationDemographyClient;
 
 @RunWith(JUnit4.class)
-public class StatisticClient_UnitTest {
+public class PopulationDemographyClient_UnitTest {
 
 	@Test
 	public void createWithLocaleConstructor() {
 		Locale locale = new Locale("sv", "SE");
-		StatisticClient client = new StatisticClient(locale);
+		PopulationDemographyClient populationDemographyClient = new PopulationDemographyClient(locale);
 
-		assertEquals(locale, client.getLocale());
+		assertEquals(locale, populationDemographyClient.getLocale());
+	}
+
+	@Test
+	public void setLocale() {
+		Locale locale = new Locale("sv", "SE");
+		PopulationDemographyClient populationDemographyClient = new PopulationDemographyClient();
+
+		populationDemographyClient.setLocale(locale);
+
+		assertEquals(locale, populationDemographyClient.getLocale());
 	}
 
 }

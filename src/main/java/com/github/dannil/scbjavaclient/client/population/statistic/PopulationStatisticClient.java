@@ -34,12 +34,12 @@ import com.github.dannil.scbjavaclient.utility.ListUtility;
  * 
  * @author Daniel Nilsson
  */
-public class StatisticClient extends AbstractClient {
+public class PopulationStatisticClient extends AbstractClient {
 
 	/**
 	 * Default constructor.
 	 */
-	public StatisticClient() {
+	public PopulationStatisticClient() {
 		super();
 	}
 
@@ -49,7 +49,7 @@ public class StatisticClient extends AbstractClient {
 	 * @param locale
 	 *            the locale for this client
 	 */
-	public StatisticClient(Locale locale) {
+	public PopulationStatisticClient(Locale locale) {
 		super(locale);
 	}
 
@@ -91,7 +91,7 @@ public class StatisticClient extends AbstractClient {
 	 *         {@link com.github.dannil.scbjavaclient.model.population.statistic.LiveBirth
 	 *         LiveBirth} objects
 	 * 
-	 * @see StatisticClient#getLiveBirths(Collection, Collection, Collection, Collection)
+	 * @see PopulationStatisticClient#getLiveBirths(Collection, Collection, Collection, Collection)
 	 */
 	public List<LiveBirth> getLiveBirths() {
 		return this.getLiveBirths(null, null, null, null);
@@ -134,7 +134,7 @@ public class StatisticClient extends AbstractClient {
 	 *         {@link com.github.dannil.scbjavaclient.model.population.statistic.Population
 	 *         Population} objects
 	 * 
-	 * @see StatisticClient#getPopulation(Collection, Collection, Collection, Collection,
+	 * @see PopulationStatisticClient#getPopulation(Collection, Collection, Collection, Collection,
 	 *      Collection)
 	 */
 	public List<Population> getPopulation() {

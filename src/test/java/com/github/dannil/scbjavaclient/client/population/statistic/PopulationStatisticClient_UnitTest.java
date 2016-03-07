@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.environment.landandwaterarea;
+package com.github.dannil.scbjavaclient.client.population.statistic;
 
 import static org.junit.Assert.assertEquals;
 
@@ -24,15 +24,15 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.LandAndWaterAreaClient;
+import com.github.dannil.scbjavaclient.client.population.statistic.PopulationStatisticClient;
 
 @RunWith(JUnit4.class)
-public class LandAndWaterAreaClient_UnitTest {
+public class PopulationStatisticClient_UnitTest {
 
 	@Test
 	public void createWithLocaleConstructor() {
 		Locale locale = new Locale("sv", "SE");
-		LandAndWaterAreaClient client = new LandAndWaterAreaClient(locale);
+		PopulationStatisticClient client = new PopulationStatisticClient(locale);
 
 		assertEquals(locale, client.getLocale());
 	}

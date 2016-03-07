@@ -1,5 +1,5 @@
 /*
- * Copyright 2014 Daniel Nilsson
+ * Copyright 2016 Daniel Nilsson
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.population.demography;
+package com.github.dannil.scbjavaclient.client.population.statistic;
 
 import static org.junit.Assert.assertNotEquals;
 
@@ -33,17 +33,19 @@ import com.github.dannil.scbjavaclient.test.model.RemoteIntegrationTestSuite;
 import com.github.dannil.scbjavaclient.utility.ListUtility;
 
 @RunWith(Parameterized.class)
-public class DemographyClient_GetFertilityRate extends RemoteIntegrationTestSuite {
+public class PopulationStatisticClient_GetLiveBirths_IntegrationTest extends RemoteIntegrationTestSuite {
 
 	private List<String> regions;
+	private List<String> motherAges;
 	private List<Integer> genders;
 	private List<Integer> years;
 
-	private DemographyClient demographyClient;
+	private PopulationStatisticClient statisticsClient;
 
-	@Parameters(name = "{index}: getFertilityRate({0}, {1}, {2})")
+	@Parameters(name = "{index}: getLiveBirths({0}, {1}, {2}, {3})")
 	public static Collection<Object[]> data() {
 		List<String> regions;
+		List<String> motherAges;
 		List<Integer> genders;
 		List<Integer> years;
 
@@ -51,48 +53,57 @@ public class DemographyClient_GetFertilityRate extends RemoteIntegrationTestSuit
 		regions.add("1263");
 		regions.add(null);
 
+		motherAges = new ArrayList<String>();
+		motherAges.add("tot");
+		motherAges.add(null);
+
 		genders = Arrays.asList(new Integer[] { 1, 2 });
 
 		years = new ArrayList<Integer>();
-		years.add(2002);
+		years.add(1996);
 		years.add(null);
 
 		List<Object[]> parameters = new ArrayList<Object[]>();
 
 		// Test with real data
 		for (String region : regions) {
-			for (Integer gender : genders) {
-				for (Integer year : years) {
-					parameters.add(new Object[] { ListUtility.toList(region), ListUtility.toList(gender),
-							ListUtility.toList(year) });
+			for (String motherAge : motherAges) {
+				for (Integer gender : genders) {
+					for (Integer year : years) {
+						parameters.add(new Object[] { ListUtility.toList(region), ListUtility.toList(motherAge),
+								ListUtility.toList(gender), ListUtility.toList(year) });
+					}
 				}
 			}
 		}
 
 		// Special case: test with everything null
-		parameters.add(new Object[] { null, null, null });
+		parameters.add(new Object[] { null, null, null, null });
 
 		// Special case: test with everything at once
-		parameters.add(new Object[] { regions, genders, years });
+		parameters.add(new Object[] { regions, motherAges, genders, years });
 
 		return parameters;
 	}
 
-	private DemographyClient_GetFertilityRate() {
-		this.demographyClient = new SCBClient().population().demography();
+	private PopulationStatisticClient_GetLiveBirths_IntegrationTest() {
+		this.statisticsClient = new SCBClient().population().statistic();
 	}
 
-	public DemographyClient_GetFertilityRate(List<String> regions, List<Integer> genders, List<Integer> years) {
+	public PopulationStatisticClient_GetLiveBirths_IntegrationTest(List<String> regions, List<String> motherAges,
+			List<Integer> genders, List<Integer> years) {
 		this();
 
 		this.regions = regions;
+		this.motherAges = motherAges;
 		this.genders = genders;
 		this.years = years;
 	}
 
 	@Test
-	public void getFertilityRate() {
-		assertNotEquals(0, this.demographyClient.getFertilityRate(this.regions, this.genders, this.years).size());
+	public void getLiveBirths() {
+		assertNotEquals(0, this.statisticsClient.getLiveBirths(this.regions, this.motherAges, this.genders, this.years)
+				.size());
 	}
 
 }

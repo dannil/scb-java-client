@@ -26,10 +26,10 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.LandAndWaterAreaClient;
+import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.EnvironmentLandAndWaterAreaClient;
 import com.github.dannil.scbjavaclient.client.population.PopulationClient;
-import com.github.dannil.scbjavaclient.client.population.demography.DemographyClient;
-import com.github.dannil.scbjavaclient.client.population.statistic.StatisticClient;
+import com.github.dannil.scbjavaclient.client.population.demography.PopulationDemographyClient;
+import com.github.dannil.scbjavaclient.client.population.statistic.PopulationStatisticClient;
 import com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area;
 import com.github.dannil.scbjavaclient.model.population.statistic.LiveBirth;
 
@@ -40,8 +40,8 @@ public class Test {
 		SCBClient client = new SCBClient(locale);
 
 		PopulationClient populationClient = client.population();
-		DemographyClient demographyClient = client.population().demography();
-		StatisticClient statisticClient = client.population().statistic();
+		PopulationDemographyClient populationDemographyClient = client.population().demography();
+		PopulationStatisticClient populationStatisticClient = client.population().statistic();
 
 		List<String> regions = new ArrayList<String>();
 		// regions.add("00");
@@ -65,7 +65,7 @@ public class Test {
 
 		// System.out.println(ParseUtility.parseLong("221", null));
 
-		List<LiveBirth> collection9 = statisticClient.getLiveBirths();
+		List<LiveBirth> collection9 = populationStatisticClient.getLiveBirths();
 		for (LiveBirth l : collection9) {
 			// System.out.println(l);
 		}
@@ -75,7 +75,7 @@ public class Test {
 		// System.out.println(year);
 		// }
 
-		LandAndWaterAreaClient lawClient = client.environment().landAndWaterArea();
+		EnvironmentLandAndWaterAreaClient lawClient = client.environment().landAndWaterArea();
 
 		List<Area> collection6 = lawClient.getArea(regions, types, years);
 		for (Area a : collection6) {
@@ -106,10 +106,10 @@ public class Test {
 		String response = client.getRawData("BE/BE0101/BE0101A/BefolkningNy", payload);
 		System.out.println(response);
 
-		System.out.println(statisticClient.getAverageAge());
+		System.out.println(populationStatisticClient.getAverageAge());
 
 		System.out.println(populationClient.getNumberOfChildrenBornWithFirstName());
 
-		System.out.println(demographyClient.getFertilityRate());
+		System.out.println(populationDemographyClient.getFertilityRate());
 	}
 }

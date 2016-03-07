@@ -24,17 +24,17 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.LandAndWaterAreaClient;
+import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.EnvironmentLandAndWaterAreaClient;
 import com.github.dannil.scbjavaclient.test.model.RemoteIntegrationTestSuite;
 
 @RunWith(JUnit4.class)
-public class LandAndWaterAreaClient_IntegrationTest extends RemoteIntegrationTestSuite {
+public class EnvironmentLandAndWaterAreaClient_IntegrationTest extends RemoteIntegrationTestSuite {
 
-	private LandAndWaterAreaClient landAndWaterAreaClient;
+	private EnvironmentLandAndWaterAreaClient environmentLandAndWaterAreaClient;
 
 	@Before
 	public void setup() {
-		this.landAndWaterAreaClient = new SCBClient().environment().landAndWaterArea();
+		this.environmentLandAndWaterAreaClient = new SCBClient().environment().landAndWaterArea();
 	}
 
 	// TODO Enable tests in the future
@@ -51,7 +51,7 @@ public class LandAndWaterAreaClient_IntegrationTest extends RemoteIntegrationTes
 
 	@Test
 	public void getArea() {
-		assertNotEquals(0, this.landAndWaterAreaClient.getArea().size());
+		assertNotEquals(0, this.environmentLandAndWaterAreaClient.getArea().size());
 	}
 
 }

@@ -33,12 +33,12 @@ import com.github.dannil.scbjavaclient.utility.ListUtility;
  * 
  * @author Daniel Nilsson
  */
-public class DemographyClient extends AbstractClient {
+public class PopulationDemographyClient extends AbstractClient {
 
 	/**
 	 * Default constructor.
 	 */
-	public DemographyClient() {
+	public PopulationDemographyClient() {
 		super();
 	}
 
@@ -48,7 +48,7 @@ public class DemographyClient extends AbstractClient {
 	 * @param locale
 	 *            the locale for this client
 	 */
-	public DemographyClient(Locale locale) {
+	public PopulationDemographyClient(Locale locale) {
 		super(locale);
 	}
 
@@ -110,7 +110,7 @@ public class DemographyClient extends AbstractClient {
 	 *         {@link com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstChild
 	 *         MeanAgeFirstChild} objects
 	 * 
-	 * @see DemographyClient#getMeanAgeFirstChild(Collection, Collection, Collection)
+	 * @see PopulationDemographyClient#getMeanAgeFirstChild(Collection, Collection, Collection)
 	 */
 	public List<MeanAgeFirstChild> getMeanAgeFirstChild() {
 		return this.getMeanAgeFirstChild(null, null, null);

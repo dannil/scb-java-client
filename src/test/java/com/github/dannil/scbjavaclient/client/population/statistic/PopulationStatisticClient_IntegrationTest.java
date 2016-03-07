@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Daniel Nilsson
+ * Copyright 2014 Daniel Nilsson
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.population.demography;
+package com.github.dannil.scbjavaclient.client.population.statistic;
 
 import static org.junit.Assert.assertNotEquals;
 
@@ -27,23 +27,40 @@ import com.github.dannil.scbjavaclient.client.SCBClient;
 import com.github.dannil.scbjavaclient.test.model.RemoteIntegrationTestSuite;
 
 @RunWith(JUnit4.class)
-public class DemographyClient_IntegrationTest extends RemoteIntegrationTestSuite {
+public class PopulationStatisticClient_IntegrationTest extends RemoteIntegrationTestSuite {
 
-	private DemographyClient demographyClient;
+	private PopulationStatisticClient populationStatisticClient;
 
 	@Before
 	public void setup() {
-		this.demographyClient = new SCBClient().population().demography();
+		this.populationStatisticClient = new SCBClient().population().statistic();
+	}
+
+	// TODO Enable tests in the future
+
+	// @Test
+	// public final void getRegions() {
+	// assertNotEquals(0, this.statisticsClient.getRegions().size());
+	// }
+
+	// @Test
+	// public final void getYears() {
+	// assertNotEquals(0, this.statisticsClient.getYears().size());
+	// }
+
+	@Test
+	public void getAverageAge() {
+		assertNotEquals(0, this.populationStatisticClient.getAverageAge().size());
 	}
 
 	@Test
-	public void getFertilityRate() {
-		assertNotEquals(0, this.demographyClient.getFertilityRate().size());
+	public void getLiveBirths() {
+		assertNotEquals(0, this.populationStatisticClient.getLiveBirths().size());
 	}
 
 	@Test
-	public void getMeanAgeFirstChild() {
-		assertNotEquals(0, this.demographyClient.getMeanAgeFirstChild().size());
+	public void getPopulation() {
+		assertNotEquals(0, this.populationStatisticClient.getPopulation().size());
 	}
 
 }

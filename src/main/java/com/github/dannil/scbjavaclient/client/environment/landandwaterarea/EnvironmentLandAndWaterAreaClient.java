@@ -32,12 +32,12 @@ import com.github.dannil.scbjavaclient.utility.ListUtility;
  * 
  * @author Daniel Nilsson
  */
-public class LandAndWaterAreaClient extends AbstractClient {
+public class EnvironmentLandAndWaterAreaClient extends AbstractClient {
 
 	/**
 	 * Default constructor.
 	 */
-	public LandAndWaterAreaClient() {
+	public EnvironmentLandAndWaterAreaClient() {
 		super();
 	}
 
@@ -47,7 +47,7 @@ public class LandAndWaterAreaClient extends AbstractClient {
 	 * @param locale
 	 *            the locale for this client
 	 */
-	public LandAndWaterAreaClient(Locale locale) {
+	public EnvironmentLandAndWaterAreaClient(Locale locale) {
 		super(locale);
 	}
 
@@ -72,7 +72,7 @@ public class LandAndWaterAreaClient extends AbstractClient {
 	 *         {@link com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area Area}
 	 *         objects
 	 * 
-	 * @see LandAndWaterAreaClient#getArea(Collection, Collection, Collection)
+	 * @see EnvironmentLandAndWaterAreaClient#getArea(Collection, Collection, Collection)
 	 */
 	public List<Area> getArea() {
 		return this.getArea(null, null, null);

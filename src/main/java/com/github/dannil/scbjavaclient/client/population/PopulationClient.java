@@ -23,8 +23,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
-import com.github.dannil.scbjavaclient.client.population.demography.DemographyClient;
-import com.github.dannil.scbjavaclient.client.population.statistic.StatisticClient;
+import com.github.dannil.scbjavaclient.client.population.demography.PopulationDemographyClient;
+import com.github.dannil.scbjavaclient.client.population.statistic.PopulationStatisticClient;
 import com.github.dannil.scbjavaclient.model.population.NumberOfChildrenBornWithFirstName;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.ListUtility;
@@ -36,8 +36,8 @@ import com.github.dannil.scbjavaclient.utility.ListUtility;
  */
 public class PopulationClient extends AbstractContainerClient {
 
-	private DemographyClient demographyClient;
-	private StatisticClient statisticClient;
+	private PopulationDemographyClient populationDemographyClient;
+	private PopulationStatisticClient populationStatisticClient;
 
 	/**
 	 * Default constructor. Initializes values and creates sub-clients.
@@ -45,11 +45,11 @@ public class PopulationClient extends AbstractContainerClient {
 	public PopulationClient() {
 		super();
 
-		this.demographyClient = new DemographyClient();
-		super.clients.add(this.demographyClient);
+		this.populationDemographyClient = new PopulationDemographyClient();
+		super.clients.add(this.populationDemographyClient);
 
-		this.statisticClient = new StatisticClient();
-		super.clients.add(this.statisticClient);
+		this.populationStatisticClient = new PopulationStatisticClient();
+		super.clients.add(this.populationStatisticClient);
 	}
 
 	/**
@@ -69,8 +69,8 @@ public class PopulationClient extends AbstractContainerClient {
 	 * 
 	 * @return a client for population demography data
 	 */
-	public DemographyClient demography() {
-		return this.demographyClient;
+	public PopulationDemographyClient demography() {
+		return this.populationDemographyClient;
 	}
 
 	/**
@@ -78,8 +78,8 @@ public class PopulationClient extends AbstractContainerClient {
 	 * 
 	 * @return a client for population statistic data
 	 */
-	public StatisticClient statistic() {
-		return this.statisticClient;
+	public PopulationStatisticClient statistic() {
+		return this.populationStatisticClient;
 	}
 
 	public List<NumberOfChildrenBornWithFirstName> getNumberOfChildrenBornWithFirstName() {
