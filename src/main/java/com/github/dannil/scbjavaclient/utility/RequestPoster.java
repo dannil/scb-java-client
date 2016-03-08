@@ -53,6 +53,8 @@ public class RequestPoster {
 		connection.setRequestMethod("GET");
 		connection.setRequestProperty("Accept", "application/json");
 		connection.setRequestProperty("Content-Type", "application/json; charset=utf-8");
+		connection.setRequestProperty("User-Agent",
+				"scb-java-client/VERSION-HERE (github.com/dannil/scb-java-client), " + System.getProperty("os.name"));
 
 		try (BufferedReader br = new BufferedReader(new InputStreamReader(connection.getInputStream(), "utf-8"))) {
 			// Handle UTF-8 byte order mark (BOM)
@@ -97,6 +99,8 @@ public class RequestPoster {
 		connection.setRequestMethod("POST");
 		connection.setRequestProperty("Accept", "application/json");
 		connection.setRequestProperty("Content-Type", "application/json; charset=utf-8");
+		connection.setRequestProperty("User-Agent",
+				"scb-java-client/VERSION-HERE (github.com/dannil/scb-java-client), " + System.getProperty("os.name"));
 
 		try (OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream(), "utf-8")) {
 			writer.write(query);
