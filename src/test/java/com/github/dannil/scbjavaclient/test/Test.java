@@ -31,14 +31,15 @@ import com.github.dannil.scbjavaclient.client.population.PopulationClient;
 import com.github.dannil.scbjavaclient.client.population.demography.PopulationDemographyClient;
 import com.github.dannil.scbjavaclient.client.population.statistic.PopulationStatisticClient;
 import com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area;
+import com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstChild;
 import com.github.dannil.scbjavaclient.model.population.statistic.LiveBirth;
 
 public class Test {
 
-	public static void main(String[] args) {
-		Locale locale = new Locale("en");
-		SCBClient client = new SCBClient(locale);
+	private static Locale locale = new Locale("en");
+	private static SCBClient client = new SCBClient(locale);
 
+	public static void main(String[] args) {
 		PopulationClient populationClient = client.population();
 		PopulationDemographyClient populationDemographyClient = client.population().demography();
 		PopulationStatisticClient populationStatisticClient = client.population().statistic();
@@ -60,7 +61,7 @@ public class Test {
 
 		// Map<String, String> map = api.getRegionMappings();
 		// for (String key : map.keySet()) {
-		// // System.out.println(key + " : " + map.get(key));
+		// System.out.println(key + " : " + map.get(key));
 		// }
 
 		// System.out.println(ParseUtility.parseLong("221", null));
@@ -74,7 +75,7 @@ public class Test {
 		// for (Integer year : availableYears) {
 		// System.out.println(year);
 		// }
-
+		//
 		EnvironmentLandAndWaterAreaClient lawClient = client.environment().landAndWaterArea();
 
 		List<Area> collection6 = lawClient.getArea(regions, types, years);
@@ -82,11 +83,11 @@ public class Test {
 			System.out.println(a);
 		}
 
-		// List<MeanAgeFirstChild> collection7 = client.population().demography()
-		// .getMeanAgeFirstChild(regions, null, null);
-		// for (MeanAgeFirstChild a : collection7) {
-		// System.out.println(a);
-		// }
+		List<MeanAgeFirstChild> collection7 = client.population().demography()
+				.getMeanAgeFirstChild(regions, null, null);
+		for (MeanAgeFirstChild a : collection7) {
+			System.out.println(a);
+		}
 
 		// api.population().demography().getFertilityRate();
 
