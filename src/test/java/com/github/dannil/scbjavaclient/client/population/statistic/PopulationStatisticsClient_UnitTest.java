@@ -24,15 +24,15 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import com.github.dannil.scbjavaclient.client.population.statistic.PopulationStatisticClient;
+import com.github.dannil.scbjavaclient.client.population.statistic.PopulationStatisticsClient;
 
 @RunWith(JUnit4.class)
-public class PopulationStatisticClient_UnitTest {
+public class PopulationStatisticsClient_UnitTest {
 
 	@Test
 	public void createWithLocaleConstructor() {
 		Locale locale = new Locale("sv", "SE");
-		PopulationStatisticClient client = new PopulationStatisticClient(locale);
+		PopulationStatisticsClient client = new PopulationStatisticsClient(locale);
 
 		assertEquals(locale, client.getLocale());
 	}

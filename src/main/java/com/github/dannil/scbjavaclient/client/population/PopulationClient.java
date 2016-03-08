@@ -21,7 +21,7 @@ import java.util.Locale;
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.population.demography.PopulationDemographyClient;
 import com.github.dannil.scbjavaclient.client.population.name.PopulationNameStatisticsClient;
-import com.github.dannil.scbjavaclient.client.population.statistic.PopulationStatisticClient;
+import com.github.dannil.scbjavaclient.client.population.statistic.PopulationStatisticsClient;
 
 /**
  * Client which handles population data fetching.
@@ -32,7 +32,7 @@ public class PopulationClient extends AbstractContainerClient {
 
 	private PopulationDemographyClient populationDemographyClient;
 	private PopulationNameStatisticsClient populationNameStatisticsClient;
-	private PopulationStatisticClient populationStatisticClient;
+	private PopulationStatisticsClient populationStatisticsClient;
 
 	/**
 	 * Default constructor. Initializes values and creates sub-clients.
@@ -43,8 +43,8 @@ public class PopulationClient extends AbstractContainerClient {
 		this.populationDemographyClient = new PopulationDemographyClient();
 		super.clients.add(this.populationDemographyClient);
 
-		this.populationStatisticClient = new PopulationStatisticClient();
-		super.clients.add(this.populationStatisticClient);
+		this.populationStatisticsClient = new PopulationStatisticsClient();
+		super.clients.add(this.populationStatisticsClient);
 
 		this.populationNameStatisticsClient = new PopulationNameStatisticsClient();
 		super.clients.add(this.populationNameStatisticsClient);
@@ -76,8 +76,8 @@ public class PopulationClient extends AbstractContainerClient {
 	 * 
 	 * @return a client for population statistic data
 	 */
-	public PopulationStatisticClient statistic() {
-		return this.populationStatisticClient;
+	public PopulationStatisticsClient statistic() {
+		return this.populationStatisticsClient;
 	}
 
 	/**

@@ -30,7 +30,7 @@ import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.Envir
 import com.github.dannil.scbjavaclient.client.population.PopulationClient;
 import com.github.dannil.scbjavaclient.client.population.demography.PopulationDemographyClient;
 import com.github.dannil.scbjavaclient.client.population.name.PopulationNameStatisticsClient;
-import com.github.dannil.scbjavaclient.client.population.statistic.PopulationStatisticClient;
+import com.github.dannil.scbjavaclient.client.population.statistic.PopulationStatisticsClient;
 import com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area;
 import com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstChild;
 import com.github.dannil.scbjavaclient.model.population.statistic.LiveBirth;
@@ -44,7 +44,7 @@ public class Test {
 		PopulationClient populationClient = client.population();
 		PopulationDemographyClient populationDemographyClient = client.population().demography();
 		PopulationNameStatisticsClient populationNameStatisticsClient = client.population().nameStatistics();
-		PopulationStatisticClient populationStatisticClient = client.population().statistic();
+		PopulationStatisticsClient populationStatisticsClient = client.population().statistic();
 
 		List<String> regions = new ArrayList<String>();
 		// regions.add("00");
@@ -68,7 +68,7 @@ public class Test {
 
 		// System.out.println(ParseUtility.parseLong("221", null));
 
-		List<LiveBirth> collection9 = populationStatisticClient.getLiveBirths();
+		List<LiveBirth> collection9 = populationStatisticsClient.getLiveBirths();
 		for (LiveBirth l : collection9) {
 			// System.out.println(l);
 		}
@@ -109,7 +109,7 @@ public class Test {
 		String response = client.getRawData("BE/BE0101/BE0101A/BefolkningNy", payload);
 		System.out.println(response);
 
-		System.out.println(populationStatisticClient.getAverageAge());
+		System.out.println(populationStatisticsClient.getAverageAge());
 
 		System.out.println(populationNameStatisticsClient.getNumberOfChildrenBornWithFirstName());
 

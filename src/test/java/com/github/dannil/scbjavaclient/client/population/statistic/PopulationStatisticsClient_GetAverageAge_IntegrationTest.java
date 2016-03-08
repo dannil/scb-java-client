@@ -1,5 +1,5 @@
 /*
- * Copyright 2014 Daniel Nilsson
+ * Copyright 2016 Daniel Nilsson
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,40 +29,29 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.client.population.statistic.PopulationStatisticClient;
 import com.github.dannil.scbjavaclient.test.model.RemoteIntegrationTestSuite;
 import com.github.dannil.scbjavaclient.utility.ListUtility;
 
 @RunWith(Parameterized.class)
-public class PopulationStatisticClient_GetPopulation_IntegrationTest extends RemoteIntegrationTestSuite {
+public class PopulationStatisticsClient_GetAverageAge_IntegrationTest extends RemoteIntegrationTestSuite {
 
 	private List<String> regions;
-	private List<String> statuses;
-	private List<String> ages;
-	private List<Integer> genders;
+	private List<String> genders;
 	private List<Integer> years;
 
-	private PopulationStatisticClient statisticsClient;
+	private PopulationStatisticsClient statisticsClient;
 
-	@Parameters(name = "{index}: getPopulation({0}, {1}, {2}, {3}, {4})")
+	@Parameters(name = "{index}: getAverageAge({0}, {1}, {2})")
 	public static Collection<Object[]> data() {
 		List<String> regions;
-		List<String> statuses;
-		List<String> ages;
-		List<Integer> genders;
+		List<String> genders;
 		List<Integer> years;
 
 		regions = new ArrayList<String>();
 		regions.add("1263");
 		regions.add(null);
 
-		statuses = Arrays.asList(new String[] { "OG", "G", "SK", "ÄNKL" });
-
-		ages = new ArrayList<String>();
-		ages.add("25");
-		ages.add(null);
-
-		genders = Arrays.asList(new Integer[] { 1, 2 });
+		genders = Arrays.asList(new String[] { "1", "2", "1+2" });
 
 		years = new ArrayList<Integer>();
 		years.add(2002);
@@ -72,47 +61,38 @@ public class PopulationStatisticClient_GetPopulation_IntegrationTest extends Rem
 
 		// Test with real data
 		for (String region : regions) {
-			for (String status : statuses) {
-				for (String age : ages) {
-					for (Integer gender : genders) {
-						for (Integer year : years) {
-							parameters.add(new Object[] { ListUtility.toList(region), ListUtility.toList(status),
-									ListUtility.toList(age), ListUtility.toList(gender), ListUtility.toList(year) });
-						}
-					}
+			for (String gender : genders) {
+				for (Integer year : years) {
+					parameters.add(new Object[] { ListUtility.toList(region), ListUtility.toList(gender),
+							ListUtility.toList(year) });
 				}
 			}
 		}
 
 		// Special case: test with everything null
-		parameters.add(new Object[] { null, null, null, null, null });
+		parameters.add(new Object[] { null, null, null });
 
 		// Special case: test with everything at once
-		parameters.add(new Object[] { regions, statuses, ages, genders, years });
+		parameters.add(new Object[] { regions, genders, years });
 
 		return parameters;
 	}
 
-	private PopulationStatisticClient_GetPopulation_IntegrationTest() {
+	private PopulationStatisticsClient_GetAverageAge_IntegrationTest() {
 		this.statisticsClient = new SCBClient().population().statistic();
 	}
 
-	public PopulationStatisticClient_GetPopulation_IntegrationTest(List<String> regions, List<String> statuses, List<String> ages,
-			List<Integer> genders, List<Integer> years) {
+	public PopulationStatisticsClient_GetAverageAge_IntegrationTest(List<String> regions, List<String> genders, List<Integer> years) {
 		this();
 
 		this.regions = regions;
-		this.statuses = statuses;
-		this.ages = ages;
 		this.genders = genders;
 		this.years = years;
 	}
 
 	@Test
-	public void getPopulation() {
-		assertNotEquals(0,
-				this.statisticsClient.getPopulation(this.regions, this.statuses, this.ages, this.genders, this.years)
-						.size());
+	public void getAverageAge() {
+		assertNotEquals(0, this.statisticsClient.getAverageAge(this.regions, this.genders, this.years).size());
 	}
 
 }

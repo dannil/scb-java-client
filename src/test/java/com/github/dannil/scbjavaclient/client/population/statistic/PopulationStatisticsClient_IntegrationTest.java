@@ -27,13 +27,13 @@ import com.github.dannil.scbjavaclient.client.SCBClient;
 import com.github.dannil.scbjavaclient.test.model.RemoteIntegrationTestSuite;
 
 @RunWith(JUnit4.class)
-public class PopulationStatisticClient_IntegrationTest extends RemoteIntegrationTestSuite {
+public class PopulationStatisticsClient_IntegrationTest extends RemoteIntegrationTestSuite {
 
-	private PopulationStatisticClient populationStatisticClient;
+	private PopulationStatisticsClient populationStatisticsClient;
 
 	@Before
 	public void setup() {
-		this.populationStatisticClient = new SCBClient().population().statistic();
+		this.populationStatisticsClient = new SCBClient().population().statistic();
 	}
 
 	// TODO Enable tests in the future
@@ -50,17 +50,17 @@ public class PopulationStatisticClient_IntegrationTest extends RemoteIntegration
 
 	@Test
 	public void getAverageAge() {
-		assertNotEquals(0, this.populationStatisticClient.getAverageAge().size());
+		assertNotEquals(0, this.populationStatisticsClient.getAverageAge().size());
 	}
 
 	@Test
 	public void getLiveBirths() {
-		assertNotEquals(0, this.populationStatisticClient.getLiveBirths().size());
+		assertNotEquals(0, this.populationStatisticsClient.getLiveBirths().size());
 	}
 
 	@Test
 	public void getPopulation() {
-		assertNotEquals(0, this.populationStatisticClient.getPopulation().size());
+		assertNotEquals(0, this.populationStatisticsClient.getPopulation().size());
 	}
 
 }
