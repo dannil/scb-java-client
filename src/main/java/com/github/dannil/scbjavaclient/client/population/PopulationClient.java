@@ -16,18 +16,12 @@
 
 package com.github.dannil.scbjavaclient.client.population;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.population.demography.PopulationDemographyClient;
+import com.github.dannil.scbjavaclient.client.population.name.PopulationNameStatisticsClient;
 import com.github.dannil.scbjavaclient.client.population.statistic.PopulationStatisticClient;
-import com.github.dannil.scbjavaclient.model.population.NumberOfChildrenBornWithFirstName;
-import com.github.dannil.scbjavaclient.utility.JsonUtility;
-import com.github.dannil.scbjavaclient.utility.ListUtility;
 
 /**
  * Client which handles population data fetching.
@@ -37,6 +31,7 @@ import com.github.dannil.scbjavaclient.utility.ListUtility;
 public class PopulationClient extends AbstractContainerClient {
 
 	private PopulationDemographyClient populationDemographyClient;
+	private PopulationNameStatisticsClient populationNameStatisticsClient;
 	private PopulationStatisticClient populationStatisticClient;
 
 	/**
@@ -50,6 +45,9 @@ public class PopulationClient extends AbstractContainerClient {
 
 		this.populationStatisticClient = new PopulationStatisticClient();
 		super.clients.add(this.populationStatisticClient);
+
+		this.populationNameStatisticsClient = new PopulationNameStatisticsClient();
+		super.clients.add(this.populationNameStatisticsClient);
 	}
 
 	/**
@@ -82,20 +80,13 @@ public class PopulationClient extends AbstractContainerClient {
 		return this.populationStatisticClient;
 	}
 
-	public List<NumberOfChildrenBornWithFirstName> getNumberOfChildrenBornWithFirstName() {
-		return this.getNumberOfChildrenBornWithFirstName(null, null);
-	}
-
-	public List<NumberOfChildrenBornWithFirstName> getNumberOfChildrenBornWithFirstName(Collection<String> firstnames,
-			Collection<Integer> years) {
-		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
-		mappings.put("ContentsCode", ListUtility.toList("BE0001AH"));
-		mappings.put("Tilltalsnamn", firstnames);
-		mappings.put("Tid", years);
-
-		String response = super.post("BE/BE0001/BE0001T04Ar", super.queryBuilder.build(mappings));
-
-		return JsonUtility.jsonToListOf(response, NumberOfChildrenBornWithFirstName.class);
+	/**
+	 * Retrieve the client for interacting with population name statistic data.
+	 * 
+	 * @return a client for population statistic data
+	 */
+	public PopulationNameStatisticsClient nameStatistics() {
+		return this.populationNameStatisticsClient;
 	}
 
 }

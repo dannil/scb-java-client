@@ -29,6 +29,7 @@ import com.github.dannil.scbjavaclient.client.SCBClient;
 import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.EnvironmentLandAndWaterAreaClient;
 import com.github.dannil.scbjavaclient.client.population.PopulationClient;
 import com.github.dannil.scbjavaclient.client.population.demography.PopulationDemographyClient;
+import com.github.dannil.scbjavaclient.client.population.name.PopulationNameStatisticsClient;
 import com.github.dannil.scbjavaclient.client.population.statistic.PopulationStatisticClient;
 import com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area;
 import com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstChild;
@@ -42,6 +43,7 @@ public class Test {
 	public static void main(String[] args) {
 		PopulationClient populationClient = client.population();
 		PopulationDemographyClient populationDemographyClient = client.population().demography();
+		PopulationNameStatisticsClient populationNameStatisticsClient = client.population().nameStatistics();
 		PopulationStatisticClient populationStatisticClient = client.population().statistic();
 
 		List<String> regions = new ArrayList<String>();
@@ -109,7 +111,7 @@ public class Test {
 
 		System.out.println(populationStatisticClient.getAverageAge());
 
-		System.out.println(populationClient.getNumberOfChildrenBornWithFirstName());
+		System.out.println(populationNameStatisticsClient.getNumberOfChildrenBornWithFirstName());
 
 		System.out.println(populationDemographyClient.getFertilityRate());
 	}

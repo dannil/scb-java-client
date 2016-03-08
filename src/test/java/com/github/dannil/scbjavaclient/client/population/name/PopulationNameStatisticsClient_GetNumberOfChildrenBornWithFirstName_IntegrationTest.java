@@ -1,5 +1,5 @@
 /*
- * Copyright 2014 Daniel Nilsson
+ * Copyright 2016 Daniel Nilsson
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.population;
+package com.github.dannil.scbjavaclient.client.population.name;
 
 import static org.junit.Assert.assertNotEquals;
 
@@ -32,12 +32,13 @@ import com.github.dannil.scbjavaclient.test.model.RemoteIntegrationTestSuite;
 import com.github.dannil.scbjavaclient.utility.ListUtility;
 
 @RunWith(Parameterized.class)
-public class PopulationClient_GetNumberOfChildrenBornWithFirstName_IntegrationTest extends RemoteIntegrationTestSuite {
+public class PopulationNameStatisticsClient_GetNumberOfChildrenBornWithFirstName_IntegrationTest extends
+		RemoteIntegrationTestSuite {
 
 	private List<String> firstnames;
 	private List<Integer> years;
 
-	private PopulationClient populationClient;
+	private PopulationNameStatisticsClient populationNameStatisticsClient;
 
 	@Parameters(name = "{index}: getNumberOfChildrenBornWithFirstName({0}, {1}")
 	public static Collection<Object[]> data() {
@@ -70,11 +71,11 @@ public class PopulationClient_GetNumberOfChildrenBornWithFirstName_IntegrationTe
 		return parameters;
 	}
 
-	private PopulationClient_GetNumberOfChildrenBornWithFirstName_IntegrationTest() {
-		this.populationClient = new SCBClient().population();
+	private PopulationNameStatisticsClient_GetNumberOfChildrenBornWithFirstName_IntegrationTest() {
+		this.populationNameStatisticsClient = new SCBClient().population().nameStatistics();
 	}
 
-	public PopulationClient_GetNumberOfChildrenBornWithFirstName_IntegrationTest(List<String> firstnames,
+	public PopulationNameStatisticsClient_GetNumberOfChildrenBornWithFirstName_IntegrationTest(List<String> firstnames,
 			List<Integer> years) {
 		this();
 
@@ -84,8 +85,9 @@ public class PopulationClient_GetNumberOfChildrenBornWithFirstName_IntegrationTe
 
 	@Test
 	public void getNumberOfChildrenBornWithFirstName() {
-		assertNotEquals(0, this.populationClient.getNumberOfChildrenBornWithFirstName(this.firstnames, this.years)
-				.size());
+		assertNotEquals(0,
+				this.populationNameStatisticsClient.getNumberOfChildrenBornWithFirstName(this.firstnames, this.years)
+						.size());
 	}
 
 }

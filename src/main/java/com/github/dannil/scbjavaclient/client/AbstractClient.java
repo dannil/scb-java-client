@@ -266,4 +266,11 @@ public abstract class AbstractClient {
 		return years;
 	}
 
+	// /**
+	// * Returns the URL endpoint which this client represents.
+	// *
+	// * @return the URL endpoint for this client
+	// */
+	// protected abstract String getUrl();
+
 }
