@@ -30,7 +30,7 @@ import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.ListUtility;
 
 /**
- * Client which handles population statistic data fetching.
+ * Client which handles population statistics data fetching.
  * 
  * @author Daniel Nilsson
  */

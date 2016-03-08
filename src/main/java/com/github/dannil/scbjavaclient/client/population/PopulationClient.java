@@ -74,9 +74,9 @@ public class PopulationClient extends AbstractContainerClient {
 	/**
 	 * Retrieve the client for interacting with population statistic data.
 	 * 
-	 * @return a client for population statistic data
+	 * @return a client for population statistics data
 	 */
-	public PopulationStatisticsClient statistic() {
+	public PopulationStatisticsClient statistics() {
 		return this.populationStatisticsClient;
 	}
 

@@ -44,7 +44,7 @@ public class PopulationClient_UnitTest {
 		PopulationClient client = new PopulationClient();
 
 		assertEquals(client.demography().getLocale(), locale);
-		assertEquals(client.statistic().getLocale(), locale);
+		assertEquals(client.statistics().getLocale(), locale);
 	}
 
 }

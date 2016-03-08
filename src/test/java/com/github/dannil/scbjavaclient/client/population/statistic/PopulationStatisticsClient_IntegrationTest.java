@@ -33,7 +33,7 @@ public class PopulationStatisticsClient_IntegrationTest extends RemoteIntegratio
 
 	@Before
 	public void setup() {
-		this.populationStatisticsClient = new SCBClient().population().statistic();
+		this.populationStatisticsClient = new SCBClient().population().statistics();
 	}
 
 	// TODO Enable tests in the future

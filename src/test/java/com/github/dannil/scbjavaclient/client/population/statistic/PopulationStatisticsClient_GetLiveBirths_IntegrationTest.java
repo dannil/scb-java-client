@@ -87,7 +87,7 @@ public class PopulationStatisticsClient_GetLiveBirths_IntegrationTest extends Re
 	}
 
 	private PopulationStatisticsClient_GetLiveBirths_IntegrationTest() {
-		this.statisticsClient = new SCBClient().population().statistic();
+		this.statisticsClient = new SCBClient().population().statistics();
 	}
 
 	public PopulationStatisticsClient_GetLiveBirths_IntegrationTest(List<String> regions, List<String> motherAges,

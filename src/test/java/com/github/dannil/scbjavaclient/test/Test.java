@@ -44,7 +44,7 @@ public class Test {
 		PopulationClient populationClient = client.population();
 		PopulationDemographyClient populationDemographyClient = client.population().demography();
 		PopulationNameStatisticsClient populationNameStatisticsClient = client.population().nameStatistics();
-		PopulationStatisticsClient populationStatisticsClient = client.population().statistic();
+		PopulationStatisticsClient populationStatisticsClient = client.population().statistics();
 
 		List<String> regions = new ArrayList<String>();
 		// regions.add("00");

@@ -94,7 +94,7 @@ public class PopulationStatisticsClient_GetPopulation_IntegrationTest extends Re
 	}
 
 	private PopulationStatisticsClient_GetPopulation_IntegrationTest() {
-		this.statisticsClient = new SCBClient().population().statistic();
+		this.statisticsClient = new SCBClient().population().statistics();
 	}
 
 	public PopulationStatisticsClient_GetPopulation_IntegrationTest(List<String> regions, List<String> statuses, List<String> ages,

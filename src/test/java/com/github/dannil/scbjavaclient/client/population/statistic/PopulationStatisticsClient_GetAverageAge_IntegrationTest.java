@@ -79,7 +79,7 @@ public class PopulationStatisticsClient_GetAverageAge_IntegrationTest extends Re
 	}
 
 	private PopulationStatisticsClient_GetAverageAge_IntegrationTest() {
-		this.statisticsClient = new SCBClient().population().statistic();
+		this.statisticsClient = new SCBClient().population().statistics();
 	}
 
 	public PopulationStatisticsClient_GetAverageAge_IntegrationTest(List<String> regions, List<String> genders, List<Integer> years) {
