@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
-import com.github.dannil.scbjavaclient.utility.RequestPoster;
+import com.github.dannil.scbjavaclient.utility.Requester;
 
 public final class Config {
 
@@ -12,7 +12,7 @@ public final class Config {
 
 	static {
 		try {
-			String response = RequestPoster.doGet("http://api.scb.se/OV0104/v1/doris/en/ssd/?config");
+			String response = Requester.doGet("http://api.scb.se/OV0104/v1/doris/en/ssd/?config");
 			JsonNode node = JsonUtility.getNode(response);
 
 			int maxCalls = node.get("maxCalls").asInt();

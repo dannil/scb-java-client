@@ -22,7 +22,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.dannil.scbjavaclient.model.AbstractRegionYearAndValueModel;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
-import com.github.dannil.scbjavaclient.utility.RequestPoster;
+import com.github.dannil.scbjavaclient.utility.Requester;
 
 /**
  * Model for live births data
@@ -150,7 +150,7 @@ public class LiveBirth extends AbstractRegionYearAndValueModel<String, Integer, 
 	 * @return a list of codes that is used by the API to index the values
 	 */
 	public static List<String> getCodes() {
-		return JsonUtility.getCodes(RequestPoster.getCodes("BE/BE0101/BE0101H/FoddaK"));
+		return JsonUtility.getCodes(Requester.getCodes("BE/BE0101/BE0101H/FoddaK"));
 	}
 
 }

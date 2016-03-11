@@ -28,7 +28,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.Localization;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
-import com.github.dannil.scbjavaclient.utility.RequestPoster;
+import com.github.dannil.scbjavaclient.utility.Requester;
 
 /**
  * Abstract class which specifies how clients should operate.
@@ -117,14 +117,14 @@ public abstract class AbstractClient {
 	// TODO Improve method
 	protected String get(String address) {
 		try {
-			String response = RequestPoster.doGet(getBaseUrl() + address);
+			String response = Requester.doGet(getBaseUrl() + address);
 
 			return response;
 		} catch (FileNotFoundException e) {
 			// 404, call the Client again with the fallback language
 
 			try {
-				return RequestPoster.doGet(toUrl(getBaseUrl() + address, this.locale));
+				return Requester.doGet(toUrl(getBaseUrl() + address, this.locale));
 			} catch (IOException e1) {
 				e1.printStackTrace();
 
@@ -150,7 +150,7 @@ public abstract class AbstractClient {
 	// TODO Improve method
 	protected String post(String address, String query) {
 		try {
-			String response = RequestPoster.doPost(getBaseUrl() + address, query);
+			String response = Requester.doPost(getBaseUrl() + address, query);
 
 			LOGGER.log(Level.INFO, query);
 
@@ -161,7 +161,7 @@ public abstract class AbstractClient {
 			try {
 				LOGGER.log(Level.INFO, query);
 
-				return RequestPoster.doPost(toUrl(getBaseUrl() + address, this.locale), query);
+				return Requester.doPost(toUrl(getBaseUrl() + address, this.locale), query);
 			} catch (IOException e1) {
 				e1.printStackTrace();
 

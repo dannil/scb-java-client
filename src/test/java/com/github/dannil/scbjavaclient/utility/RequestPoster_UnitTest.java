@@ -32,7 +32,7 @@ public class RequestPoster_UnitTest {
 	@Test
 	public void callPrivateConstructor() throws InstantiationException, IllegalAccessException,
 			IllegalArgumentException, InvocationTargetException {
-		Constructor<?>[] cons = RequestPoster.class.getDeclaredConstructors();
+		Constructor<?>[] cons = Requester.class.getDeclaredConstructors();
 		cons[0].setAccessible(true);
 		cons[0].newInstance();
 		cons[0].setAccessible(false);
@@ -42,7 +42,7 @@ public class RequestPoster_UnitTest {
 
 	@Test
 	public void getCodesInvalidTable() {
-		String response = RequestPoster.getCodes("ABCABCABC");
+		String response = Requester.getCodes("ABCABCABC");
 
 		assertNull(response);
 	}

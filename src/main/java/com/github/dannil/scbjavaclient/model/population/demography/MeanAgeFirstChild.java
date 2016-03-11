@@ -22,7 +22,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.dannil.scbjavaclient.model.AbstractRegionYearAndValueModel;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
-import com.github.dannil.scbjavaclient.utility.RequestPoster;
+import com.github.dannil.scbjavaclient.utility.Requester;
 
 /**
  * Model for mean age first child data.
@@ -122,7 +122,7 @@ public class MeanAgeFirstChild extends AbstractRegionYearAndValueModel<String, I
 	 * @return a list of codes that is used by the API to index the values
 	 */
 	public static List<String> getCodes() {
-		return JsonUtility.getCodes(RequestPoster.getCodes("BE/BE0701/MedelAlderNY"));
+		return JsonUtility.getCodes(Requester.getCodes("BE/BE0701/MedelAlderNY"));
 	}
 
 }

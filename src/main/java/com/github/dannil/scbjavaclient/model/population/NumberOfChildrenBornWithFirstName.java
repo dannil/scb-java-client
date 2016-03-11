@@ -22,7 +22,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.dannil.scbjavaclient.model.AbstractYearAndValueModel;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
-import com.github.dannil.scbjavaclient.utility.RequestPoster;
+import com.github.dannil.scbjavaclient.utility.Requester;
 
 public class NumberOfChildrenBornWithFirstName extends AbstractYearAndValueModel<Integer, String> {
 
@@ -89,7 +89,7 @@ public class NumberOfChildrenBornWithFirstName extends AbstractYearAndValueModel
 	 * @return a list of codes that is used by the API to index the values
 	 */
 	public static List<String> getCodes() {
-		return JsonUtility.getCodes(RequestPoster.getCodes("BE/BE0001/BE0001T04Ar"));
+		return JsonUtility.getCodes(Requester.getCodes("BE/BE0001/BE0001T04Ar"));
 	}
 
 }
