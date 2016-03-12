@@ -31,7 +31,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.utility.ListUtility;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
@@ -90,6 +89,8 @@ public class AbstractClient_IntegrationTest {
 		// This means that if we receive a response with Swedish text, we've
 		// used the fallback url.
 		String response = client.post(url, builder.build(map));
+
+		System.out.println(response);
 
 		assertTrue(response.contains("ålder"));
 		assertTrue(response.contains("kön"));

@@ -228,7 +228,7 @@ public abstract class Requester {
 	 */
 	public static String getCodes(String table) {
 		try {
-			Requester get = (GETRequester) RequesterFactory.getInstance("GETRequester");
+			Requester get = RequesterFactory.getInstance("GET");
 			return get.doRequest(String.format("http://api.scb.se/OV0104/v1/doris/sv/ssd/%s", table));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

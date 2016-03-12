@@ -166,7 +166,7 @@ public abstract class AbstractClient {
 			try {
 				LOGGER.log(Level.INFO, query);
 
-				return post.doRequest(getBaseUrl() + address);
+				return post.doRequest(toUrl(getBaseUrl() + address, this.locale));
 			} catch (IOException e1) {
 				e1.printStackTrace();
 
