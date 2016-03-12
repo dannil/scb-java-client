@@ -28,17 +28,16 @@ import java.util.Map;
 import java.util.Properties;
 
 /**
- * Class which sends URL requests to the specified address, in this case the SCB API.
+ * Class which contains the logic for sending URL requests to the specified address, in this case
+ * the SCB API.
  * 
  * @author Daniel Nilsson
  */
-public abstract class Requester {
-
-	public abstract String doRequest(String address) throws IOException;
+public abstract class AbstractRequester {
 
 	private Map<String, String> requestProperties;
 
-	protected Requester() {
+	protected AbstractRequester() {
 		this.requestProperties = new HashMap<String, String>();
 
 		Properties prop = new Properties();
@@ -118,7 +117,7 @@ public abstract class Requester {
 	 */
 	public static String getCodes(String table) {
 		try {
-			Requester get = RequesterFactory.getInstance("GET");
+			AbstractRequester get = RequesterFactory.getInstance("GET");
 			return get.doRequest(String.format("http://api.scb.se/OV0104/v1/doris/sv/ssd/%s", table));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -126,5 +125,7 @@ public abstract class Requester {
 		}
 		return null;
 	}
+
+	public abstract String doRequest(String address) throws IOException;
 
 }

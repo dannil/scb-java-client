@@ -4,13 +4,9 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 
-public class POSTRequester extends Requester {
+public class POSTRequester extends AbstractRequester {
 
 	private String payload;
-
-	public POSTRequester() {
-		super();
-	}
 
 	public String getPayload() {
 		return this.payload;

@@ -3,11 +3,7 @@ package com.github.dannil.scbjavaclient.utility.requester;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 
-public class GETRequester extends Requester {
-
-	public GETRequester() {
-		super();
-	}
+public class GETRequester extends AbstractRequester {
 
 	@Override
 	public String doRequest(String address) throws IOException {

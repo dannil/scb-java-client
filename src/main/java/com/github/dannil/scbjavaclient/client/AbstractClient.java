@@ -29,7 +29,7 @@ import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.Localization;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 import com.github.dannil.scbjavaclient.utility.requester.POSTRequester;
-import com.github.dannil.scbjavaclient.utility.requester.Requester;
+import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
 import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
 
 /**
@@ -118,7 +118,7 @@ public abstract class AbstractClient {
 	 */
 	// TODO Improve method
 	protected String get(String address) {
-		Requester get = RequesterFactory.getInstance("GET");
+		AbstractRequester get = RequesterFactory.getInstance("GET");
 		try {
 			String response = get.doRequest(getBaseUrl() + address);
 
@@ -152,7 +152,7 @@ public abstract class AbstractClient {
 	 */
 	// TODO Improve method
 	protected String post(String address, String query) {
-		Requester post = RequesterFactory.getInstance("POST");
+		AbstractRequester post = RequesterFactory.getInstance("POST");
 		((POSTRequester) post).setPayload(query);
 		try {
 			String response = post.doRequest(getBaseUrl() + address);

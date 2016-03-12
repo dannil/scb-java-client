@@ -10,7 +10,7 @@ public class RequesterFactory {
 		private static final POSTRequester INSTANCE = new POSTRequester();
 	}
 
-	public static Requester getInstance(String method) {
+	public static AbstractRequester getInstance(String method) {
 		switch (method.toUpperCase()) {
 			case "GET":
 				return GETHolder.INSTANCE;

@@ -22,7 +22,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.dannil.scbjavaclient.model.AbstractRegionYearAndValueModel;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
-import com.github.dannil.scbjavaclient.utility.requester.Requester;
+import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
 
 /**
  * Model for population data.
@@ -177,7 +177,7 @@ public class Population extends AbstractRegionYearAndValueModel<String, Integer,
 	 * @return a list of codes that is used by the API to index the values
 	 */
 	public static List<String> getCodes() {
-		return JsonUtility.getCodes(Requester.getCodes("BE/BE0101/BE0101A/BefolkningNy"));
+		return JsonUtility.getCodes(AbstractRequester.getCodes("BE/BE0101/BE0101A/BefolkningNy"));
 	}
 
 }
