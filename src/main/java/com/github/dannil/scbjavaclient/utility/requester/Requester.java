@@ -49,7 +49,7 @@ public abstract class Requester {
 		Properties prop = new Properties();
 		InputStream input = null;
 		try {
-			input = getClass().getClassLoader().getResourceAsStream("project.properties");
+			input = getClass().getClassLoader().getResourceAsStream("scbjavaclient.properties");
 
 			// load a properties file
 			prop.load(input);
