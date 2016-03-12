@@ -22,7 +22,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.dannil.scbjavaclient.model.AbstractYearAndValueModel;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
-import com.github.dannil.scbjavaclient.utility.Requester;
+import com.github.dannil.scbjavaclient.utility.requester.Requester;
 
 public class NumberOfChildrenBornWithFirstName extends AbstractYearAndValueModel<Integer, String> {
 

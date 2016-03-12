@@ -28,7 +28,9 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.Localization;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
-import com.github.dannil.scbjavaclient.utility.Requester;
+import com.github.dannil.scbjavaclient.utility.requester.POSTRequester;
+import com.github.dannil.scbjavaclient.utility.requester.Requester;
+import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
 
 /**
  * Abstract class which specifies how clients should operate.
@@ -108,23 +110,24 @@ public abstract class AbstractClient {
 	}
 
 	/**
-	 * Performs a GET request to the specified address.
+	 * Performs a GETRequester request to the specified address.
 	 * 
 	 * @param address
-	 *            the address which will be sent a GET request
+	 *            the address which will be sent a GETRequester request
 	 * @return a string representation of the API's response
 	 */
 	// TODO Improve method
 	protected String get(String address) {
+		Requester get = RequesterFactory.getInstance("GET");
 		try {
-			String response = Requester.doGet(getBaseUrl() + address);
+			String response = get.doRequest(getBaseUrl() + address);
 
 			return response;
 		} catch (FileNotFoundException e) {
 			// 404, call the Client again with the fallback language
 
 			try {
-				return Requester.doGet(toUrl(getBaseUrl() + address, this.locale));
+				return get.doRequest(toUrl(getBaseUrl() + address, this.locale));
 			} catch (IOException e1) {
 				e1.printStackTrace();
 
@@ -149,8 +152,10 @@ public abstract class AbstractClient {
 	 */
 	// TODO Improve method
 	protected String post(String address, String query) {
+		Requester post = RequesterFactory.getInstance("POST");
+		((POSTRequester) post).setPayload(query);
 		try {
-			String response = Requester.doPost(getBaseUrl() + address, query);
+			String response = post.doRequest(getBaseUrl() + address);
 
 			LOGGER.log(Level.INFO, query);
 
@@ -161,7 +166,7 @@ public abstract class AbstractClient {
 			try {
 				LOGGER.log(Level.INFO, query);
 
-				return Requester.doPost(toUrl(getBaseUrl() + address, this.locale), query);
+				return post.doRequest(getBaseUrl() + address);
 			} catch (IOException e1) {
 				e1.printStackTrace();
 

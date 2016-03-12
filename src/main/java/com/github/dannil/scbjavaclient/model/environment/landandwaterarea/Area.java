@@ -22,7 +22,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.dannil.scbjavaclient.model.AbstractRegionYearAndValueModel;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
-import com.github.dannil.scbjavaclient.utility.Requester;
+import com.github.dannil.scbjavaclient.utility.requester.Requester;
 
 /**
  * Model for area data.

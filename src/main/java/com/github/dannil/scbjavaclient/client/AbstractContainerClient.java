@@ -36,7 +36,7 @@ public abstract class AbstractContainerClient extends AbstractClient {
 	protected AbstractContainerClient() {
 		super();
 
-		this.clients = new ArrayList<AbstractClient>();
+		this.clients = new ArrayList<>();
 	}
 
 	/**

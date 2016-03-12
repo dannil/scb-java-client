@@ -14,19 +14,23 @@
  * limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.utility;
+package com.github.dannil.scbjavaclient.utility.requester;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+
+import com.github.dannil.scbjavaclient.utility.ListUtility;
+import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
  * Class which sends URL requests to the specified address, in this case the SCB API.
@@ -37,32 +41,11 @@ public abstract class Requester {
 
 	public abstract String doRequest(String address) throws IOException;
 
-	private Map<String, String> requestProperties = new HashMap<String, String>();
+	private Map<String, String> requestProperties;
 
-	private static GET get;
-	private static POST post;
+	protected Requester() {
+		this.requestProperties = new HashMap<String, String>();
 
-	public static Requester getInstance(String method) {
-		if (get == null) {
-			get = new GET();
-		}
-		if (post == null) {
-			post = new POST();
-		}
-
-		switch (method) {
-			case "GET":
-				return get;
-
-			case "POST":
-				return post;
-
-			default:
-				throw new IllegalArgumentException(method + " is not a valid method");
-		}
-	}
-
-	private Requester() {
 		Properties prop = new Properties();
 		InputStream input = null;
 		try {
@@ -71,7 +54,7 @@ public abstract class Requester {
 			// load a properties file
 			prop.load(input);
 
-			// get the property value and print it out
+			// gETRequester the property value and print it out
 
 			String artifactId = prop.getProperty("artifactId");
 			String version = prop.getProperty("version");
@@ -97,58 +80,6 @@ public abstract class Requester {
 
 		} catch (IOException ex) {
 			ex.printStackTrace();
-		}
-
-	}
-
-	public static class GET extends Requester {
-
-		@Override
-		public String doRequest(String address) throws IOException {
-			HttpURLConnection httpUrlConnection = super.prepareConnection(address);
-
-			httpUrlConnection.setDoInput(true);
-			httpUrlConnection.setRequestMethod("GET");
-
-			String response = super.getResponse(httpUrlConnection);
-			return response;
-			// throw new UnsupportedOperationException();
-		}
-
-	}
-
-	public static class POST extends Requester {
-
-		private String payload;
-
-		@Override
-		public String doRequest(String address) throws IOException {
-			if (this.payload == null) {
-				throw new NullPointerException("Payload is null");
-			}
-
-			HttpURLConnection httpUrlConnection = super.prepareConnection(address);
-
-			httpUrlConnection.setDoInput(true);
-			httpUrlConnection.setDoOutput(true);
-			httpUrlConnection.setRequestMethod("POST");
-
-			try (OutputStreamWriter writer = new OutputStreamWriter(httpUrlConnection.getOutputStream(), "utf-8")) {
-				writer.write(this.payload);
-				writer.close();
-			}
-
-			String response = super.getResponse(httpUrlConnection);
-			return response;
-			// throw new UnsupportedOperationException();
-		}
-
-		public String getPayload() {
-			return this.payload;
-		}
-
-		public void setPayload(String payload) {
-			this.payload = payload;
 		}
 
 	}
@@ -193,7 +124,7 @@ public abstract class Requester {
 	}
 
 	// /**
-	// * Perform a GET request to the specified address.
+	// * Perform a GETRequester request to the specified address.
 	// *
 	// * @param address
 	// * the address to perform request to
@@ -208,7 +139,7 @@ public abstract class Requester {
 	// HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 	//
 	// connection.setDoInput(true);
-	// connection.setRequestMethod("GET");
+	// connection.setRequestMethod("GETRequester");
 	//
 	// setRequestProperties(connection, "Accept", "Content-Type", "User-Agent");
 	//
@@ -288,22 +219,23 @@ public abstract class Requester {
 	// return builder.toString();
 	// }
 	//
-	// /**
-	// * Return the available codes from the specified table.
-	// *
-	// * @param table
-	// * the table to fetch the codes from
-	// * @return the available codes from the specified table
-	// */
-	// public static String getCodes(String table) {
-	// try {
-	// return doGet(String.format("http://api.scb.se/OV0104/v1/doris/sv/ssd/%s", table));
-	// } catch (IOException e) {
-	// // TODO Auto-generated catch block
-	// e.printStackTrace();
-	// }
-	// return null;
-	// }
+	/**
+	 * Return the available codes from the specified table.
+	 *
+	 * @param table
+	 *            the table to fetch the codes from
+	 * @return the available codes from the specified table
+	 */
+	public static String getCodes(String table) {
+		try {
+			Requester get = (GETRequester) RequesterFactory.getInstance("GETRequester");
+			return get.doRequest(String.format("http://api.scb.se/OV0104/v1/doris/sv/ssd/%s", table));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 	public static void main(String[] args) throws IOException {
 		// Requester poster = new Requester();
@@ -312,11 +244,17 @@ public abstract class Requester {
 		// System.out.println(poster.post
 		// .doRequest("http://api.scb.se/OV0104/v1/doris/en/ssd/BE/BE0001/BE0001T04Ar", null));
 
-		Requester get = Requester.getInstance("GET");
+		Requester get = RequesterFactory.getInstance("GET");
 		System.out.println(get.doRequest("http://google.com"));
 
-		Requester post = Requester.getInstance("POST");
-		// post.setPayload
-		System.out.println(post.doRequest("http://api.scb.se/OV0104/v1/doris/en/ssd/BE/BE0001/BE0001T04Ar"));
+		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
+		mappings.put("ContentsCode", ListUtility.toList("BE0701AB"));
+		mappings.put("Region", Arrays.asList("0114"));
+
+		QueryBuilder b = QueryBuilder.getInstance();
+
+		Requester post = RequesterFactory.getInstance("POST");
+		((POSTRequester) post).setPayload(b.build(mappings));
+		System.out.println(post.doRequest("http://api.scb.se/OV0104/v1/doris/en/ssd/BE/BE0701/MedelAlderNY"));
 	}
 }
