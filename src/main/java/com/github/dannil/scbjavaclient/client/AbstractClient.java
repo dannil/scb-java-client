@@ -110,10 +110,10 @@ public abstract class AbstractClient {
 	}
 
 	/**
-	 * Performs a GETRequester request to the specified address.
+	 * Performs a GET request to the specified address.
 	 * 
 	 * @param address
-	 *            the address which will be sent a GETRequester request
+	 *            the address which will be sent a GET request
 	 * @return a string representation of the API's response
 	 */
 	// TODO Improve method

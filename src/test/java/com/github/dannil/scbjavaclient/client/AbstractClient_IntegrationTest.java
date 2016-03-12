@@ -90,8 +90,6 @@ public class AbstractClient_IntegrationTest {
 		// used the fallback url.
 		String response = client.post(url, builder.build(map));
 
-		System.out.println(response);
-
 		assertTrue(response.contains("ålder"));
 		assertTrue(response.contains("kön"));
 		assertTrue(response.contains("boendeform"));
