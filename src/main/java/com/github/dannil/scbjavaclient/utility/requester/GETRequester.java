@@ -6,7 +6,7 @@ import java.net.HttpURLConnection;
 public class GETRequester extends Requester {
 
 	public GETRequester() {
-		// TODO Auto-generated constructor stub
+		super();
 	}
 
 	@Override
@@ -18,7 +18,6 @@ public class GETRequester extends Requester {
 
 		String response = super.getResponse(httpUrlConnection);
 		return response;
-		// throw new UnsupportedOperationException();
 	}
 
 }

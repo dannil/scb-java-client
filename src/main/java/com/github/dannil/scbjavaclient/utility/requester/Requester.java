@@ -56,8 +56,10 @@ public abstract class Requester {
 			this.requestProperties.put("Content-Type", "application/json; charset=utf-8");
 
 			StringBuilder builder = new StringBuilder(64);
-			builder.append(artifactId + "/" + version);
-			builder.append(" ");
+			builder.append(artifactId);
+			builder.append('/');
+			builder.append(version);
+			builder.append(' ');
 			builder.append("(" + url + ")");
 			builder.append(", ");
 			builder.append(System.getProperty("os.name"));

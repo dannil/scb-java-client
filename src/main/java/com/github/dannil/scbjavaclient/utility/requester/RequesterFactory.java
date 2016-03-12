@@ -1,25 +1,22 @@
 package com.github.dannil.scbjavaclient.utility.requester;
 
-
 public class RequesterFactory {
 
-	private static GETRequester get;
-	private static POSTRequester post;
+	private static class GETHolder {
+		private static final GETRequester INSTANCE = new GETRequester();
+	}
+
+	private static class POSTHolder {
+		private static final POSTRequester INSTANCE = new POSTRequester();
+	}
 
 	public static Requester getInstance(String method) {
-		if (get == null) {
-			get = new GETRequester();
-		}
-		if (post == null) {
-			post = new POSTRequester();
-		}
-
-		switch (method) {
+		switch (method.toUpperCase()) {
 			case "GET":
-				return get;
+				return GETHolder.INSTANCE;
 
 			case "POST":
-				return post;
+				return POSTHolder.INSTANCE;
 
 			default:
 				throw new IllegalArgumentException(method + " is not a valid method");

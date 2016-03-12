@@ -9,7 +9,7 @@ public class POSTRequester extends Requester {
 	private String payload;
 
 	public POSTRequester() {
-		// TODO Auto-generated constructor stub
+		super();
 	}
 
 	public String getPayload() {
@@ -23,7 +23,7 @@ public class POSTRequester extends Requester {
 	@Override
 	public String doRequest(String address) throws IOException {
 		if (this.payload == null) {
-			throw new NullPointerException("Payload is null");
+			throw new IllegalStateException("Payload is null");
 		}
 
 		HttpURLConnection httpUrlConnection = super.prepareConnection(address);
