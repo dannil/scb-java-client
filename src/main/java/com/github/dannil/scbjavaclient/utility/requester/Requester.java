@@ -60,9 +60,9 @@ public abstract class Requester {
 			String version = prop.getProperty("version");
 			String url = prop.getProperty("url");
 
-			System.out.println(artifactId);
-			System.out.println(version);
-			System.out.println(url);
+			// System.out.println(artifactId);
+			// System.out.println(version);
+			// System.out.println(url);
 
 			this.requestProperties.put("Accept", "application/json");
 			this.requestProperties.put("Content-Type", "application/json; charset=utf-8");
@@ -77,11 +77,9 @@ public abstract class Requester {
 			this.requestProperties.put("User-Agent", builder.toString());
 			// requestProperties.put();
 			// requestProperties.put();
-
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
-
 	}
 
 	public void setRequestProperties(URLConnection urlConnection, String... props) {
