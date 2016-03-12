@@ -57,7 +57,7 @@ public class PopulationDemographyClient extends AbstractClient {
 	// }
 	//
 	// public Collection<Integer> getGenders() {
-	// String response = RequestPoster.doGet(getUrl());
+	// String response = Requester.doGet(getUrl());
 	//
 	// ObjectMapper mapper = new ObjectMapper();
 	// try {

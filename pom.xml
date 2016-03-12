@@ -24,6 +24,8 @@
 		</developer>
 	</developers>
 
+
+
 	<licenses>
 		<license>
 			<name>Apache License, Version 2.0</name>
@@ -126,6 +128,13 @@
 	</profiles>
 
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

@@ -22,7 +22,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.dannil.scbjavaclient.model.AbstractRegionYearAndValueModel;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
-import com.github.dannil.scbjavaclient.utility.RequestPoster;
+import com.github.dannil.scbjavaclient.utility.requester.Requester;
 
 /**
  * Model for area data.
@@ -122,7 +122,7 @@ public class Area extends AbstractRegionYearAndValueModel<String, Integer, Doubl
 	 * @return a list of codes that is used by the API to index the values
 	 */
 	public static List<String> getCodes() {
-		return JsonUtility.getCodes(RequestPoster.getCodes("MI/MI0802/Areal2012"));
+		return JsonUtility.getCodes(Requester.getCodes("MI/MI0802/Areal2012"));
 	}
 
 }

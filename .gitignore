@@ -32,7 +32,6 @@ local.properties
 .settings/
 .loadpath
 /src/main/resources/rebel.xml
-project.properties
 /project.properties
  PDT-specific
 .buildpath
@@ -80,7 +79,6 @@ Desktop.ini
 # Other
 ######################
 *.db
-project.properties
 /project.properties
 .classpath
 *.log
