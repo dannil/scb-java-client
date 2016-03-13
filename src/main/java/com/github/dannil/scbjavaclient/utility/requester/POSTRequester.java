@@ -24,6 +24,11 @@ public class POSTRequester extends AbstractRequester {
 
 	private String payload;
 
+	public POSTRequester() {
+		super();
+		super.requestProperties.put("Request-Method", "POST");
+	}
+
 	public String getPayload() {
 		return this.payload;
 	}
@@ -42,7 +47,7 @@ public class POSTRequester extends AbstractRequester {
 
 		httpUrlConnection.setDoInput(true);
 		httpUrlConnection.setDoOutput(true);
-		httpUrlConnection.setRequestMethod("POST");
+		httpUrlConnection.setRequestMethod(super.requestProperties.get("Request-Method"));
 
 		try (OutputStreamWriter writer = new OutputStreamWriter(httpUrlConnection.getOutputStream(), "utf-8")) {
 			writer.write(this.payload);
@@ -51,7 +56,6 @@ public class POSTRequester extends AbstractRequester {
 
 		String response = super.getResponse(httpUrlConnection);
 		return response;
-		// throw new UnsupportedOperationException();
 	}
 
 }

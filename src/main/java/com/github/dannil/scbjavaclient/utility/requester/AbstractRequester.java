@@ -35,7 +35,7 @@ import java.util.Properties;
  */
 public abstract class AbstractRequester {
 
-	private Map<String, String> requestProperties;
+	protected Map<String, String> requestProperties;
 
 	protected AbstractRequester() {
 		this.requestProperties = new HashMap<String, String>();
