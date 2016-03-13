@@ -69,7 +69,7 @@ public abstract class AbstractRequester {
 		}
 	}
 
-	public void setRequestProperties(URLConnection urlConnection, String... props) {
+	protected void setRequestProperties(URLConnection urlConnection, String... props) {
 		for (String prop : props) {
 			urlConnection.addRequestProperty(prop, this.requestProperties.get(prop));
 		}
