@@ -17,6 +17,9 @@
 package com.github.dannil.scbjavaclient.utility.requester;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+
+import java.io.IOException;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,6 +34,15 @@ public class POSTRequester_UnitTest {
 		post.setPayload("payload");
 
 		assertEquals("payload", post.getPayload());
+	}
+
+	@Test(expected = IllegalStateException.class)
+	public void doRequestIllegalStateNullPayload() throws IOException {
+		POSTRequester post = (POSTRequester) RequesterFactory.getInstance("POST");
+
+		String response = post.doRequest("http://api.scb.se/OV0104/v1/doris/en/ssd/BE/BE0701/MedelAlderNY");
+
+		assertNull(response);
 	}
 
 }
