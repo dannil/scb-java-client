@@ -152,8 +152,7 @@ public abstract class AbstractClient {
 	 */
 	// TODO Improve method
 	protected String post(String address, String query) {
-		AbstractRequester abs = RequesterFactory.getInstance("POST");
-		POSTRequester post = (POSTRequester) abs;
+		POSTRequester post = (POSTRequester) RequesterFactory.getInstance("POST");
 		post.setPayload(query);
 		try {
 			String response = post.doRequest(getBaseUrl() + address);
