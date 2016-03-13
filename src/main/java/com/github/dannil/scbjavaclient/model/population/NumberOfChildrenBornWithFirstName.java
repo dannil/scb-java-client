@@ -1,5 +1,5 @@
 /*
- * Copyright 2014 Daniel Nilsson
+ * Copyright 2016 Daniel Nilsson
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,72 +14,41 @@
  * limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.model.environment.landandwaterarea;
+package com.github.dannil.scbjavaclient.model.population;
 
 import java.util.List;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.github.dannil.scbjavaclient.model.AbstractRegionYearAndValueModel;
+import com.github.dannil.scbjavaclient.model.AbstractYearAndValueModel;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
 
-/**
- * Model for area data.
- * 
- * @author Daniel Nilsson
- */
-public class Area extends AbstractRegionYearAndValueModel<String, Integer, Double> {
+public class NumberOfChildrenBornWithFirstName extends AbstractYearAndValueModel<Integer, String> {
 
-	@JsonProperty("arealTyp")
-	private String type;
+	@JsonProperty("tilltalsnamn")
+	private String firstname;
 
-	/**
-	 * Default constructor.
-	 */
-	public Area() {
+	public NumberOfChildrenBornWithFirstName() {
 		super();
 	}
 
-	/**
-	 * Overloaded constructor.
-	 * 
-	 * @param region
-	 *            the region
-	 * @param type
-	 *            the type
-	 * @param year
-	 *            the year
-	 * @param value
-	 *            the value
-	 */
-	public Area(String region, String type, Integer year, Double value) {
-		super(region, year, value);
-		this.type = type;
+	public NumberOfChildrenBornWithFirstName(String firstname, Integer year, String value) {
+		super(year, value);
+		this.firstname = firstname;
 	}
 
-	/**
-	 * Getter for type.
-	 * 
-	 * @return the type
-	 */
-	public String getType() {
-		return this.type;
+	public String getFirstname() {
+		return this.firstname;
 	}
 
-	/**
-	 * Setter for type
-	 * 
-	 * @param type
-	 *            the type
-	 */
-	public void setType(String type) {
-		this.type = type;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(super.hashCode(), this.type);
+		return Objects.hash(super.hashCode(), this.firstname);
 	}
 
 	@Override
@@ -90,12 +59,12 @@ public class Area extends AbstractRegionYearAndValueModel<String, Integer, Doubl
 		if (obj == null) {
 			return false;
 		}
-		if (!(obj instanceof Area)) {
+		if (!(obj instanceof NumberOfChildrenBornWithFirstName)) {
 			return false;
 		}
 
-		Area other = (Area) obj;
-		return super.equals(obj) && Objects.equals(this.type, other.type);
+		NumberOfChildrenBornWithFirstName other = (NumberOfChildrenBornWithFirstName) obj;
+		return super.equals(other) && Objects.equals(this.firstname, other.firstname);
 	}
 
 	@Override
@@ -103,10 +72,8 @@ public class Area extends AbstractRegionYearAndValueModel<String, Integer, Doubl
 		StringBuilder builder = new StringBuilder(128);
 
 		builder.append(this.getClass().getSimpleName());
-		builder.append(" [type=");
-		builder.append(this.type);
-		builder.append(", region=");
-		builder.append(super.region);
+		builder.append(" [firstname=");
+		builder.append(this.firstname);
 		builder.append(", year=");
 		builder.append(super.year);
 		builder.append(", value=");
@@ -117,12 +84,12 @@ public class Area extends AbstractRegionYearAndValueModel<String, Integer, Doubl
 	}
 
 	/**
-	 * Get the codes for the area model from the API.
-	 *
+	 * Get the codes for the live births from the API.
+	 * 
 	 * @return a list of codes that is used by the API to index the values
 	 */
 	public static List<String> getCodes() {
-		return JsonUtility.getCodes(AbstractRequester.getCodes("MI/MI0802/Areal2012"));
+		return JsonUtility.getCodes(AbstractRequester.getCodes("BE/BE0001/BE0001T04Ar"));
 	}
 
 }

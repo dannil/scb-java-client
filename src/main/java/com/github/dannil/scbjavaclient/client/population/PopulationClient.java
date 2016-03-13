@@ -19,8 +19,9 @@ package com.github.dannil.scbjavaclient.client.population;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
-import com.github.dannil.scbjavaclient.client.population.demography.DemographyClient;
-import com.github.dannil.scbjavaclient.client.population.statistic.StatisticClient;
+import com.github.dannil.scbjavaclient.client.population.demography.PopulationDemographyClient;
+import com.github.dannil.scbjavaclient.client.population.name.PopulationNameStatisticsClient;
+import com.github.dannil.scbjavaclient.client.population.statistic.PopulationStatisticsClient;
 
 /**
  * Client which handles population data fetching.
@@ -29,8 +30,9 @@ import com.github.dannil.scbjavaclient.client.population.statistic.StatisticClie
  */
 public class PopulationClient extends AbstractContainerClient {
 
-	private DemographyClient demographyClient;
-	private StatisticClient statisticClient;
+	private PopulationDemographyClient populationDemographyClient;
+	private PopulationNameStatisticsClient populationNameStatisticsClient;
+	private PopulationStatisticsClient populationStatisticsClient;
 
 	/**
 	 * Default constructor. Initializes values and creates sub-clients.
@@ -38,11 +40,14 @@ public class PopulationClient extends AbstractContainerClient {
 	public PopulationClient() {
 		super();
 
-		this.demographyClient = new DemographyClient();
-		super.clients.add(this.demographyClient);
+		this.populationDemographyClient = new PopulationDemographyClient();
+		super.clients.add(this.populationDemographyClient);
 
-		this.statisticClient = new StatisticClient();
-		super.clients.add(this.statisticClient);
+		this.populationStatisticsClient = new PopulationStatisticsClient();
+		super.clients.add(this.populationStatisticsClient);
+
+		this.populationNameStatisticsClient = new PopulationNameStatisticsClient();
+		super.clients.add(this.populationNameStatisticsClient);
 	}
 
 	/**
@@ -62,17 +67,26 @@ public class PopulationClient extends AbstractContainerClient {
 	 * 
 	 * @return a client for population demography data
 	 */
-	public DemographyClient demography() {
-		return this.demographyClient;
+	public PopulationDemographyClient demography() {
+		return this.populationDemographyClient;
 	}
 
 	/**
 	 * Retrieve the client for interacting with population statistic data.
 	 * 
+	 * @return a client for population statistics data
+	 */
+	public PopulationStatisticsClient statistics() {
+		return this.populationStatisticsClient;
+	}
+
+	/**
+	 * Retrieve the client for interacting with population name statistic data.
+	 * 
 	 * @return a client for population statistic data
 	 */
-	public StatisticClient statistic() {
-		return this.statisticClient;
+	public PopulationNameStatisticsClient nameStatistics() {
+		return this.populationNameStatisticsClient;
 	}
 
 }

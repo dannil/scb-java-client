@@ -19,7 +19,7 @@ package com.github.dannil.scbjavaclient.client.environment;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
-import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.LandAndWaterAreaClient;
+import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.EnvironmentLandAndWaterAreaClient;
 
 /**
  * Client which handles environment data fetching.
@@ -28,7 +28,7 @@ import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.LandA
  */
 public class EnvironmentClient extends AbstractContainerClient {
 
-	private LandAndWaterAreaClient landAndWaterAreaClient;
+	private EnvironmentLandAndWaterAreaClient environmentLandAndWaterAreaClient;
 
 	/**
 	 * Default constructor. Initializes values and creates sub-clients.
@@ -36,8 +36,8 @@ public class EnvironmentClient extends AbstractContainerClient {
 	public EnvironmentClient() {
 		super();
 
-		this.landAndWaterAreaClient = new LandAndWaterAreaClient();
-		super.clients.add(this.landAndWaterAreaClient);
+		this.environmentLandAndWaterAreaClient = new EnvironmentLandAndWaterAreaClient();
+		super.clients.add(this.environmentLandAndWaterAreaClient);
 	}
 
 	/**
@@ -57,8 +57,8 @@ public class EnvironmentClient extends AbstractContainerClient {
 	 * 
 	 * @return a client for environment land and water area data
 	 */
-	public LandAndWaterAreaClient landAndWaterArea() {
-		return this.landAndWaterAreaClient;
+	public EnvironmentLandAndWaterAreaClient landAndWaterArea() {
+		return this.environmentLandAndWaterAreaClient;
 	}
 
 }

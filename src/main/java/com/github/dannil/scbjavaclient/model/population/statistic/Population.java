@@ -19,19 +19,25 @@ package com.github.dannil.scbjavaclient.model.population.statistic;
 import java.util.List;
 import java.util.Objects;
 
-import com.github.dannil.scbjavaclient.model.AbstractRegionAndYearModel;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.github.dannil.scbjavaclient.model.AbstractRegionYearAndValueModel;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
-import com.github.dannil.scbjavaclient.utility.RequestPoster;
+import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
 
 /**
  * Model for population data.
  * 
  * @author Daniel Nilsson
  */
-public class Population extends AbstractRegionAndYearModel<String, Integer, Long> {
+public class Population extends AbstractRegionYearAndValueModel<String, Integer, Long> {
 
+	@JsonProperty("civilstand")
 	private String relationshipStatus;
+
+	@JsonProperty("alder")
 	private String age;
+
+	@JsonProperty("kon")
 	private Integer gender;
 
 	/**
@@ -168,10 +174,10 @@ public class Population extends AbstractRegionAndYearModel<String, Integer, Long
 	/**
 	 * Get the codes for the population model from the API.
 	 * 
-	 * @return a list of codes that is used by the API to index the population values
+	 * @return a list of codes that is used by the API to index the values
 	 */
 	public static List<String> getCodes() {
-		return JsonUtility.getCodes(RequestPoster.getCodes("BE/BE0101/BE0101A/BefolkningNy"));
+		return JsonUtility.getCodes(AbstractRequester.getCodes("BE/BE0101/BE0101A/BefolkningNy"));
 	}
 
 }

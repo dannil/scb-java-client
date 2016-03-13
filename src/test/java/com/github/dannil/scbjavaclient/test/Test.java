@@ -26,19 +26,25 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.LandAndWaterAreaClient;
-import com.github.dannil.scbjavaclient.client.population.statistic.StatisticClient;
+import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.EnvironmentLandAndWaterAreaClient;
+import com.github.dannil.scbjavaclient.client.population.PopulationClient;
+import com.github.dannil.scbjavaclient.client.population.demography.PopulationDemographyClient;
+import com.github.dannil.scbjavaclient.client.population.name.PopulationNameStatisticsClient;
+import com.github.dannil.scbjavaclient.client.population.statistic.PopulationStatisticsClient;
 import com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area;
 import com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstChild;
 import com.github.dannil.scbjavaclient.model.population.statistic.LiveBirth;
-import com.github.dannil.scbjavaclient.model.population.statistic.Population;
-import com.github.dannil.scbjavaclient.utility.ParseUtility;
 
 public class Test {
 
+	private static Locale locale = new Locale("en");
+	private static SCBClient client = new SCBClient(locale);
+
 	public static void main(String[] args) {
-		Locale locale = new Locale("en");
-		SCBClient client = new SCBClient(locale);
+		PopulationClient populationClient = client.population();
+		PopulationDemographyClient populationDemographyClient = client.population().demography();
+		PopulationNameStatisticsClient populationNameStatisticsClient = client.population().nameStatistics();
+		PopulationStatisticsClient populationStatisticsClient = client.population().statistics();
 
 		List<String> regions = new ArrayList<String>();
 		// regions.add("00");
@@ -57,34 +63,22 @@ public class Test {
 
 		// Map<String, String> map = api.getRegionMappings();
 		// for (String key : map.keySet()) {
-		// // System.out.println(key + " : " + map.get(key));
+		// System.out.println(key + " : " + map.get(key));
 		// }
 
-		System.out.println(ParseUtility.parseLong("221", null));
+		// System.out.println(ParseUtility.parseLong("221", null));
 
-		StatisticClient statisticClient = client.population().statistic();
-
-		List<LiveBirth> collection9 = statisticClient.getLiveBirths();
+		List<LiveBirth> collection9 = populationStatisticsClient.getLiveBirths();
 		for (LiveBirth l : collection9) {
-			System.out.println(l);
-		}
-
-		List<Population> collection8 = statisticClient.getPopulation(regions, null, ages, null, years);
-		for (Population p : collection8) {
-			System.out.println(p);
-		}
-
-		List<Population> collection4 = statisticClient.getPopulation();
-		for (Population p : collection4) {
-			System.out.println(p);
+			// System.out.println(l);
 		}
 
 		// List<Integer> availableYears = statisticApi.getYears();
 		// for (Integer year : availableYears) {
 		// System.out.println(year);
 		// }
-
-		LandAndWaterAreaClient lawClient = client.environment().landAndWaterArea();
+		//
+		EnvironmentLandAndWaterAreaClient lawClient = client.environment().landAndWaterArea();
 
 		List<Area> collection6 = lawClient.getArea(regions, types, years);
 		for (Area a : collection6) {
@@ -114,5 +108,11 @@ public class Test {
 
 		String response = client.getRawData("BE/BE0101/BE0101A/BefolkningNy", payload);
 		System.out.println(response);
+
+		System.out.println(populationStatisticsClient.getAverageAge());
+
+		System.out.println(populationNameStatisticsClient.getNumberOfChildrenBornWithFirstName());
+
+		System.out.println(populationDemographyClient.getFertilityRate());
 	}
 }

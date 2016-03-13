@@ -14,37 +14,30 @@
  * limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.population;
+package com.github.dannil.scbjavaclient.client.population.name;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
-import java.util.Locale;
-
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import com.github.dannil.scbjavaclient.client.population.PopulationClient;
+import com.github.dannil.scbjavaclient.client.SCBClient;
 
 @RunWith(JUnit4.class)
-public class PopulationClient_UnitTest {
+public class PopulationNameStatisticsClient_IntegrationTest {
 
-	@Test
-	public void createWithLocaleConstructor() {
-		Locale locale = new Locale("sv", "SE");
-		PopulationClient client = new PopulationClient(locale);
+	private PopulationNameStatisticsClient populationNameStatisticsClient;
 
-		assertEquals(locale, client.getLocale());
+	@Before
+	public void setup() {
+		this.populationNameStatisticsClient = new SCBClient().population().nameStatistics();
 	}
 
 	@Test
-	public void isSubClientsSameLocale() {
-		Locale locale = Locale.getDefault();
-
-		PopulationClient client = new PopulationClient();
-
-		assertEquals(client.demography().getLocale(), locale);
-		assertEquals(client.statistics().getLocale(), locale);
+	public void getNumberOfChildrenBornWithFirstName() {
+		assertNotEquals(0, this.populationNameStatisticsClient.getNumberOfChildrenBornWithFirstName().size());
 	}
 
 }

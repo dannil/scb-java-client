@@ -1,5 +1,5 @@
 /*
- * Copyright 2014 Daniel Nilsson
+ * Copyright 2016 Daniel Nilsson
  * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.model.environment.landandwaterarea;
+package com.github.dannil.scbjavaclient.model.population.demography;
 
 import java.util.List;
 import java.util.Objects;
@@ -24,62 +24,31 @@ import com.github.dannil.scbjavaclient.model.AbstractRegionYearAndValueModel;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
 
-/**
- * Model for area data.
- * 
- * @author Daniel Nilsson
- */
-public class Area extends AbstractRegionYearAndValueModel<String, Integer, Double> {
+public class FertilityRate extends AbstractRegionYearAndValueModel<String, Integer, Double> {
 
-	@JsonProperty("arealTyp")
-	private String type;
+	@JsonProperty("kon")
+	private Integer gender;
 
-	/**
-	 * Default constructor.
-	 */
-	public Area() {
+	public FertilityRate() {
 		super();
 	}
 
-	/**
-	 * Overloaded constructor.
-	 * 
-	 * @param region
-	 *            the region
-	 * @param type
-	 *            the type
-	 * @param year
-	 *            the year
-	 * @param value
-	 *            the value
-	 */
-	public Area(String region, String type, Integer year, Double value) {
+	public FertilityRate(String region, Integer gender, Integer year, Double value) {
 		super(region, year, value);
-		this.type = type;
+		this.gender = gender;
 	}
 
-	/**
-	 * Getter for type.
-	 * 
-	 * @return the type
-	 */
-	public String getType() {
-		return this.type;
+	public Integer getGender() {
+		return this.gender;
 	}
 
-	/**
-	 * Setter for type
-	 * 
-	 * @param type
-	 *            the type
-	 */
-	public void setType(String type) {
-		this.type = type;
+	public void setGender(Integer gender) {
+		this.gender = gender;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(super.hashCode(), this.type);
+		return Objects.hash(super.hashCode(), this.gender);
 	}
 
 	@Override
@@ -90,12 +59,12 @@ public class Area extends AbstractRegionYearAndValueModel<String, Integer, Doubl
 		if (obj == null) {
 			return false;
 		}
-		if (!(obj instanceof Area)) {
+		if (!(obj instanceof FertilityRate)) {
 			return false;
 		}
 
-		Area other = (Area) obj;
-		return super.equals(obj) && Objects.equals(this.type, other.type);
+		FertilityRate other = (FertilityRate) obj;
+		return super.equals(other) && Objects.equals(this.gender, other.gender);
 	}
 
 	@Override
@@ -103,8 +72,8 @@ public class Area extends AbstractRegionYearAndValueModel<String, Integer, Doubl
 		StringBuilder builder = new StringBuilder(128);
 
 		builder.append(this.getClass().getSimpleName());
-		builder.append(" [type=");
-		builder.append(this.type);
+		builder.append(" [gender=");
+		builder.append(this.gender);
 		builder.append(", region=");
 		builder.append(super.region);
 		builder.append(", year=");
@@ -117,12 +86,12 @@ public class Area extends AbstractRegionYearAndValueModel<String, Integer, Doubl
 	}
 
 	/**
-	 * Get the codes for the area model from the API.
-	 *
+	 * Get the codes for the population model from the API.
+	 * 
 	 * @return a list of codes that is used by the API to index the values
 	 */
 	public static List<String> getCodes() {
-		return JsonUtility.getCodes(AbstractRequester.getCodes("MI/MI0802/Areal2012"));
+		return JsonUtility.getCodes(AbstractRequester.getCodes("BE/BE0701/FruktsamhetSumNy"));
 	}
 
 }

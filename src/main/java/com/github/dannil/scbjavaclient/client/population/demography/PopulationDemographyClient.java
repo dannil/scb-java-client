@@ -23,6 +23,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.model.population.demography.FertilityRate;
 import com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstChild;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.ListUtility;
@@ -32,12 +33,12 @@ import com.github.dannil.scbjavaclient.utility.ListUtility;
  * 
  * @author Daniel Nilsson
  */
-public class DemographyClient extends AbstractClient {
+public class PopulationDemographyClient extends AbstractClient {
 
 	/**
 	 * Default constructor.
 	 */
-	public DemographyClient() {
+	public PopulationDemographyClient() {
 		super();
 	}
 
@@ -47,7 +48,7 @@ public class DemographyClient extends AbstractClient {
 	 * @param locale
 	 *            the locale for this client
 	 */
-	public DemographyClient(Locale locale) {
+	public PopulationDemographyClient(Locale locale) {
 		super(locale);
 	}
 
@@ -56,7 +57,7 @@ public class DemographyClient extends AbstractClient {
 	// }
 	//
 	// public Collection<Integer> getGenders() {
-	// String response = RequestPoster.doGet(getUrl());
+	// String response = AbstractRequester.doGet(getUrl());
 	//
 	// ObjectMapper mapper = new ObjectMapper();
 	// try {
@@ -85,13 +86,31 @@ public class DemographyClient extends AbstractClient {
 	// return years;
 	// }
 
+	public List<FertilityRate> getFertilityRate() {
+		return this.getFertilityRate(null, null, null);
+	}
+
+	public List<FertilityRate> getFertilityRate(Collection<String> regions, Collection<Integer> genders,
+			Collection<Integer> years) {
+		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
+		mappings.put("ContentsCode", ListUtility.toList("BE0701AA"));
+		mappings.put("Region", regions);
+		mappings.put("Kon", genders);
+		mappings.put("Tid", years);
+
+		String response = super.post("BE/BE0701/FruktsamhetSumNy", super.queryBuilder.build(mappings));
+
+		return JsonUtility.jsonToListOf(response, FertilityRate.class);
+	}
+
 	/**
 	 * Fetch all mean age for the first child data.
 	 * 
-	 * @return the mean age for the first child data wrapped in a list of {@link MeanAgeFirstChild}
-	 *         objects
+	 * @return the mean age for the first child data wrapped in a list of
+	 *         {@link com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstChild
+	 *         MeanAgeFirstChild} objects
 	 * 
-	 * @see DemographyClient#getMeanAgeFirstChild(Collection, Collection, Collection)
+	 * @see PopulationDemographyClient#getMeanAgeFirstChild(Collection, Collection, Collection)
 	 */
 	public List<MeanAgeFirstChild> getMeanAgeFirstChild() {
 		return this.getMeanAgeFirstChild(null, null, null);
@@ -106,8 +125,9 @@ public class DemographyClient extends AbstractClient {
 	 *            the genders to fetch data for
 	 * @param years
 	 *            the years to fetch data for
-	 * @return the mean age for the first child data wrapped in a list of {@link MeanAgeFirstChild}
-	 *         objects
+	 * @return the mean age for the first child data wrapped in a list of
+	 *         {@link com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstChild
+	 *         MeanAgeFirstChild} objects
 	 */
 	public List<MeanAgeFirstChild> getMeanAgeFirstChild(Collection<String> regions, Collection<Integer> genders,
 			Collection<Integer> years) {
@@ -119,29 +139,7 @@ public class DemographyClient extends AbstractClient {
 
 		String response = super.post("BE/BE0701/MedelAlderNY", super.queryBuilder.build(mappings));
 
-		return JsonUtility.parseAverageAgeFirstChild(JsonUtility.getNode(response));
+		return JsonUtility.jsonToListOf(response, MeanAgeFirstChild.class);
 	}
-
-	// public List<Object> getFertilityRate() {
-	// return this.getFertilityRate(null, null, null);
-	// }
-	//
-	// public List<Object> getFertilityRate(Collection<String> regions, Collection<Integer> genders,
-	// Collection<Integer> years) {
-	// Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
-	// mappings.put("ContentsCode", ListUtility.toList("BE0701AA"));
-	// mappings.put("Region", regions);
-	// mappings.put("Kon", genders);
-	// mappings.put("Tid", years);
-	//
-	// // String response = super.post("BE/BE0701/FruktsamhetSumNy",
-	// // super.queryBuilder.build(mappings));
-	//
-	// // System.out.println(response);
-	//
-	// // TODO Implement parsing
-	//
-	// return null;
-	// }
 
 }

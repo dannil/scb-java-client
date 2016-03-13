@@ -18,9 +18,11 @@ package com.github.dannil.scbjavaclient.utility;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.Test;
@@ -28,8 +30,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.github.dannil.scbjavaclient.model.population.statistic.LiveBirth;
-import com.github.dannil.scbjavaclient.utility.JsonUtility;
+import com.fasterxml.jackson.databind.node.MissingNode;
+import com.github.dannil.scbjavaclient.model.population.statistic.Population;
 
 @RunWith(JUnit4.class)
 public class JsonUtility_UnitTest {
@@ -61,19 +63,33 @@ public class JsonUtility_UnitTest {
 	}
 
 	@Test
+	public void jsonToListNonConventionalJson() {
+		String nonConventionalJson = "{\"columns\":[{\"code\":\"Region\",\"text\":\"region\",\"type\":\"d\"},{\"code\":\"Civilstand\",\"text\":\"maritalstatus\",\"type\":\"d\"},{\"code\":\"Alder\",\"text\":\"age\",\"type\":\"d\"},{\"code\":\"Tid\",\"text\":\"year\",\"type\":\"t\"},{\"code\":\"BE0101N1\",\"text\":\"Population\",\"type\":\"c\"}],\"comments\":[],\"data\":[{\"key\":[\"00\",\"OG\",\"45\",\"2011\"],\"values\":[\"48403\"]}]}";
+
+		JsonNode node = JsonUtility.getNode(nonConventionalJson);
+
+		List<Population> convertedPopulations = JsonUtility.jsonToListOf(node, Population.class);
+
+		Population p = new Population("00", "OG", "45", null, 2011, Long.valueOf(48403));
+		List<Population> staticPopulations = Arrays.asList(p);
+
+		assertEquals(convertedPopulations, staticPopulations);
+	}
+
+	@Test
+	public void jsonToListOfInvalidJson() {
+		JsonNode node = JsonUtility.getNode(this.json);
+
+		List<Population> populations = JsonUtility.jsonToListOf(node, Population.class);
+
+		assertNull(populations);
+	}
+
+	@Test
 	public void getNodeInvalidJson() {
 		JsonNode node = JsonUtility.getNode("hello world");
 
-		assertEquals(null, node);
-	}
-
-	@Test(expected = IllegalArgumentException.class)
-	public void genericParseWithoutColumns() {
-		JsonNode node = JsonUtility.getNode(this.json);
-
-		List<LiveBirth> liveBirths = JsonUtility.parseLiveBirths(node);
-
-		assertEquals(null, liveBirths);
+		assertEquals(MissingNode.getInstance(), node);
 	}
 
 }

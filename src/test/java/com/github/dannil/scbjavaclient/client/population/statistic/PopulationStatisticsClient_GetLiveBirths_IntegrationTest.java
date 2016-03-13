@@ -29,21 +29,20 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.client.population.statistic.StatisticClient;
 import com.github.dannil.scbjavaclient.test.model.RemoteIntegrationTestSuite;
 import com.github.dannil.scbjavaclient.utility.ListUtility;
 
 @RunWith(Parameterized.class)
-public class StatisticClient_GetLiveBirths_IntegrationTest extends RemoteIntegrationTestSuite {
+public class PopulationStatisticsClient_GetLiveBirths_IntegrationTest extends RemoteIntegrationTestSuite {
 
 	private List<String> regions;
 	private List<String> motherAges;
 	private List<Integer> genders;
 	private List<Integer> years;
 
-	private StatisticClient statisticsClient;
+	private PopulationStatisticsClient statisticsClient;
 
-	@Parameters(name = "{index}: getLiveBirths({0}, {1}, {2}, {3}, {4})")
+	@Parameters(name = "{index}: getLiveBirths({0}, {1}, {2}, {3})")
 	public static Collection<Object[]> data() {
 		List<String> regions;
 		List<String> motherAges;
@@ -87,11 +86,11 @@ public class StatisticClient_GetLiveBirths_IntegrationTest extends RemoteIntegra
 		return parameters;
 	}
 
-	private StatisticClient_GetLiveBirths_IntegrationTest() {
-		this.statisticsClient = new SCBClient().population().statistic();
+	private PopulationStatisticsClient_GetLiveBirths_IntegrationTest() {
+		this.statisticsClient = new SCBClient().population().statistics();
 	}
 
-	public StatisticClient_GetLiveBirths_IntegrationTest(List<String> regions, List<String> motherAges,
+	public PopulationStatisticsClient_GetLiveBirths_IntegrationTest(List<String> regions, List<String> motherAges,
 			List<Integer> genders, List<Integer> years) {
 		this();
 

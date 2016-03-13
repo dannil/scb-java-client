@@ -18,57 +18,34 @@ package com.github.dannil.scbjavaclient.model;
 
 import java.util.Objects;
 
-/**
- * Abstract model which holds the value of the Client response.
- * 
- * @author Daniel Nilsson
- *
- * @param <V>
- *            the value
- */
-public class AbstractModel<V> {
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-	protected V value;
+public abstract class AbstractYearAndValueModel<Y, V> extends AbstractValueModel<V> {
 
-	/**
-	 * Default constructor.
-	 */
-	protected AbstractModel() {
+	@JsonProperty("tid")
+	protected Y year;
+
+	public AbstractYearAndValueModel() {
 		// To enable derived classes to use their default constructor
+		super();
 	}
 
-	/**
-	 * Overloaded constructor.
-	 * 
-	 * @param value
-	 *            the value
-	 */
-	protected AbstractModel(V value) {
-		this.value = value;
+	public AbstractYearAndValueModel(Y year, V value) {
+		super(value);
+		this.year = year;
 	}
 
-	/**
-	 * Getter for value.
-	 * 
-	 * @return the value
-	 */
-	public V getValue() {
-		return this.value;
+	public Y getYear() {
+		return this.year;
 	}
 
-	/**
-	 * Setter for value.
-	 * 
-	 * @param value
-	 *            the value
-	 */
-	public void setValue(V value) {
-		this.value = value;
+	public void setYear(Y year) {
+		this.year = year;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hashCode(this.value);
+		return Objects.hash(super.hashCode(), this.year);
 	}
 
 	@Override
@@ -79,12 +56,15 @@ public class AbstractModel<V> {
 		if (obj == null) {
 			return false;
 		}
-		if (!(obj instanceof AbstractModel<?>)) {
+		if (!(obj instanceof AbstractYearAndValueModel<?, ?>)) {
 			return false;
 		}
 
-		AbstractModel<?> other = (AbstractModel<?>) obj;
-		return Objects.equals(this.value, other.value);
+		AbstractYearAndValueModel<?, ?> other = (AbstractYearAndValueModel<?, ?>) obj;
+		return super.equals(other) && Objects.equals(this.year, other.year);
 	}
+
+	@Override
+	public abstract String toString();
 
 }

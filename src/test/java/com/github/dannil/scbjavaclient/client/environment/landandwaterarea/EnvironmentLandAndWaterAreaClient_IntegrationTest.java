@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.population.statistic;
+package com.github.dannil.scbjavaclient.client.environment.landandwaterarea;
 
 import static org.junit.Assert.assertNotEquals;
 
@@ -24,39 +24,34 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.client.population.statistic.StatisticClient;
+import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.EnvironmentLandAndWaterAreaClient;
 import com.github.dannil.scbjavaclient.test.model.RemoteIntegrationTestSuite;
 
 @RunWith(JUnit4.class)
-public class StatisticClient_IntegrationTest extends RemoteIntegrationTestSuite {
+public class EnvironmentLandAndWaterAreaClient_IntegrationTest extends RemoteIntegrationTestSuite {
 
-	private StatisticClient statisticClient;
+	private EnvironmentLandAndWaterAreaClient environmentLandAndWaterAreaClient;
 
 	@Before
 	public void setup() {
-		this.statisticClient = new SCBClient().population().statistic();
+		this.environmentLandAndWaterAreaClient = new SCBClient().environment().landAndWaterArea();
 	}
 
 	// TODO Enable tests in the future
 
 	// @Test
 	// public final void getRegions() {
-	// assertNotEquals(0, this.statisticsClient.getRegions().size());
+	// assertNotEquals(0, this.landAndWaterAreaClient.getRegions().size());
 	// }
-
+	//
 	// @Test
 	// public final void getYears() {
-	// assertNotEquals(0, this.statisticsClient.getYears().size());
+	// assertNotEquals(0, this.landAndWaterAreaClient.getYears().size());
 	// }
 
 	@Test
-	public void getLiveBirths() {
-		assertNotEquals(0, this.statisticClient.getLiveBirths().size());
-	}
-
-	@Test
-	public void getPopulation() {
-		assertNotEquals(0, this.statisticClient.getPopulation().size());
+	public void getArea() {
+		assertNotEquals(0, this.environmentLandAndWaterAreaClient.getArea().size());
 	}
 
 }

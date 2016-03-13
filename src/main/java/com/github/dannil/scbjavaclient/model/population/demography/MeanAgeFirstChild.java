@@ -19,17 +19,19 @@ package com.github.dannil.scbjavaclient.model.population.demography;
 import java.util.List;
 import java.util.Objects;
 
-import com.github.dannil.scbjavaclient.model.AbstractRegionAndYearModel;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.github.dannil.scbjavaclient.model.AbstractRegionYearAndValueModel;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
-import com.github.dannil.scbjavaclient.utility.RequestPoster;
+import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
 
 /**
  * Model for mean age first child data.
  * 
  * @author Daniel Nilsson
  */
-public class MeanAgeFirstChild extends AbstractRegionAndYearModel<String, Integer, Double> {
+public class MeanAgeFirstChild extends AbstractRegionYearAndValueModel<String, Integer, Double> {
 
+	@JsonProperty("kon")
 	private Integer gender;
 
 	/**
@@ -116,11 +118,11 @@ public class MeanAgeFirstChild extends AbstractRegionAndYearModel<String, Intege
 
 	/**
 	 * Get the codes for the mean age first child model from the API.
-	 * 
-	 * @return a list of codes that is used by the API to index the mean age first child values
+	 *
+	 * @return a list of codes that is used by the API to index the values
 	 */
 	public static List<String> getCodes() {
-		return JsonUtility.getCodes(RequestPoster.getCodes("BE/BE0701/MedelAlderNY"));
+		return JsonUtility.getCodes(AbstractRequester.getCodes("BE/BE0701/MedelAlderNY"));
 	}
 
 }

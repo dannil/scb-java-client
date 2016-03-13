@@ -34,13 +34,13 @@ import com.github.dannil.scbjavaclient.test.model.RemoteIntegrationTestSuite;
 import com.github.dannil.scbjavaclient.utility.ListUtility;
 
 @RunWith(Parameterized.class)
-public class DemographyClient_GetMeanAgeFirstChild_IntegrationTest extends RemoteIntegrationTestSuite {
+public class PopulationDemographyClient_GetMeanAgeFirstChild_IntegrationTest extends RemoteIntegrationTestSuite {
 
 	private List<String> regions;
 	private List<Integer> genders;
 	private List<Integer> years;
 
-	private DemographyClient demographyClient;
+	private PopulationDemographyClient populationDemographyClient;
 
 	@Parameters(name = "{index}: getMeanAgeFirstChild({0}, {1}, {2})")
 	public static Collection<Object[]> data() {
@@ -79,15 +79,15 @@ public class DemographyClient_GetMeanAgeFirstChild_IntegrationTest extends Remot
 		return parameters;
 	}
 
-	private DemographyClient_GetMeanAgeFirstChild_IntegrationTest() {
-		this.demographyClient = new SCBClient().population().demography();
+	private PopulationDemographyClient_GetMeanAgeFirstChild_IntegrationTest() {
+		this.populationDemographyClient = new SCBClient().population().demography();
 
-		// Test DemographyClient with English locale
+		// Test PopulationDemographyClient with English locale
 		Locale locale = new Locale("en", "US");
-		this.demographyClient.setLocale(locale);
+		this.populationDemographyClient.setLocale(locale);
 	}
 
-	public DemographyClient_GetMeanAgeFirstChild_IntegrationTest(List<String> regions, List<Integer> genders,
+	public PopulationDemographyClient_GetMeanAgeFirstChild_IntegrationTest(List<String> regions, List<Integer> genders,
 			List<Integer> years) {
 		this();
 
@@ -98,7 +98,7 @@ public class DemographyClient_GetMeanAgeFirstChild_IntegrationTest extends Remot
 
 	@Test
 	public void getMeanAgeFirstChild() {
-		assertNotEquals(0, this.demographyClient.getMeanAgeFirstChild(this.regions, this.genders, this.years).size());
+		assertNotEquals(0, this.populationDemographyClient.getMeanAgeFirstChild(this.regions, this.genders, this.years).size());
 	}
 
 }

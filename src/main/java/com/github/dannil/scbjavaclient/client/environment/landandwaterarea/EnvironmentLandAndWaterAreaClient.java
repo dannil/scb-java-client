@@ -32,12 +32,12 @@ import com.github.dannil.scbjavaclient.utility.ListUtility;
  * 
  * @author Daniel Nilsson
  */
-public class LandAndWaterAreaClient extends AbstractClient {
+public class EnvironmentLandAndWaterAreaClient extends AbstractClient {
 
 	/**
 	 * Default constructor.
 	 */
-	public LandAndWaterAreaClient() {
+	public EnvironmentLandAndWaterAreaClient() {
 		super();
 	}
 
@@ -47,7 +47,7 @@ public class LandAndWaterAreaClient extends AbstractClient {
 	 * @param locale
 	 *            the locale for this client
 	 */
-	public LandAndWaterAreaClient(Locale locale) {
+	public EnvironmentLandAndWaterAreaClient(Locale locale) {
 		super(locale);
 	}
 
@@ -68,9 +68,11 @@ public class LandAndWaterAreaClient extends AbstractClient {
 	/**
 	 * Fetch all area data.
 	 * 
-	 * @return the area data wrapped in a list of {@link Area} objects
+	 * @return the area data wrapped in a list of
+	 *         {@link com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area Area}
+	 *         objects
 	 * 
-	 * @see LandAndWaterAreaClient#getArea(Collection, Collection, Collection)
+	 * @see EnvironmentLandAndWaterAreaClient#getArea(Collection, Collection, Collection)
 	 */
 	public List<Area> getArea() {
 		return this.getArea(null, null, null);
@@ -85,7 +87,9 @@ public class LandAndWaterAreaClient extends AbstractClient {
 	 *            the types to fetch data for
 	 * @param years
 	 *            the years to fetch data for
-	 * @return the area data wrapped in a list of {@link Area} objects
+	 * @return the area data wrapped in a list of
+	 *         {@link com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area Area}
+	 *         objects
 	 */
 	public List<Area> getArea(Collection<String> regions, Collection<String> types, Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
@@ -96,6 +100,7 @@ public class LandAndWaterAreaClient extends AbstractClient {
 
 		String response = super.post("MI/MI0802/Areal2012", super.queryBuilder.build(mappings));
 
-		return JsonUtility.parseAreas(JsonUtility.getNode(response));
+		return JsonUtility.jsonToListOf(response, Area.class);
 	}
+
 }

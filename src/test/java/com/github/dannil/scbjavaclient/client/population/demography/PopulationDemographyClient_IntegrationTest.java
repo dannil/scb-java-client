@@ -16,35 +16,34 @@
 
 package com.github.dannil.scbjavaclient.client.population.demography;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
-import java.util.Locale;
-
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import com.github.dannil.scbjavaclient.client.population.demography.DemographyClient;
+import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.model.RemoteIntegrationTestSuite;
 
 @RunWith(JUnit4.class)
-public class DemographyClient_UnitTest {
+public class PopulationDemographyClient_IntegrationTest extends RemoteIntegrationTestSuite {
 
-	@Test
-	public void createWithLocaleConstructor() {
-		Locale locale = new Locale("sv", "SE");
-		DemographyClient demographyClient = new DemographyClient(locale);
+	private PopulationDemographyClient populationDemographyClient;
 
-		assertEquals(locale, demographyClient.getLocale());
+	@Before
+	public void setup() {
+		this.populationDemographyClient = new SCBClient().population().demography();
 	}
 
 	@Test
-	public void setLocale() {
-		Locale locale = new Locale("sv", "SE");
-		DemographyClient demographyClient = new DemographyClient();
+	public void getFertilityRate() {
+		assertNotEquals(0, this.populationDemographyClient.getFertilityRate().size());
+	}
 
-		demographyClient.setLocale(locale);
-
-		assertEquals(locale, demographyClient.getLocale());
+	@Test
+	public void getMeanAgeFirstChild() {
+		assertNotEquals(0, this.populationDemographyClient.getMeanAgeFirstChild().size());
 	}
 
 }

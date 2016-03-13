@@ -16,29 +16,33 @@
 
 package com.github.dannil.scbjavaclient.utility;
 
-import static org.junit.Assert.assertFalse;
-
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
+import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import com.github.dannil.scbjavaclient.utility.RequestPoster;
+import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
 
 @RunWith(JUnit4.class)
 public class RequestPoster_UnitTest {
 
-	@Test
-	public void callPrivateConstructor() throws InstantiationException, IllegalAccessException,
-			IllegalArgumentException, InvocationTargetException {
-		Constructor<?>[] cons = RequestPoster.class.getDeclaredConstructors();
-		cons[0].setAccessible(true);
-		cons[0].newInstance();
-		cons[0].setAccessible(false);
+	// @Test
+	// public void callPrivateConstructor() throws InstantiationException, IllegalAccessException,
+	// IllegalArgumentException, InvocationTargetException {
+	// Constructor<?>[] cons = AbstractRequester.class.getDeclaredConstructors();
+	// cons[0].setAccessible(true);
+	// cons[0].newInstance();
+	// cons[0].setAccessible(false);
+	//
+	// assertFalse(cons[0].isAccessible());
+	// }
 
-		assertFalse(cons[0].isAccessible());
+	@Test
+	public void getCodesInvalidTable() {
+		String response = AbstractRequester.getCodes("ABCABCABC");
+
+		assertNull(response);
 	}
 
 }

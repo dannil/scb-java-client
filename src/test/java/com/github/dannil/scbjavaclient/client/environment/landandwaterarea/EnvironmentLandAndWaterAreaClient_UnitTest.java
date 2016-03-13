@@ -24,15 +24,15 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.LandAndWaterAreaClient;
+import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.EnvironmentLandAndWaterAreaClient;
 
 @RunWith(JUnit4.class)
-public class LandAndWaterAreaClient_UnitTest {
+public class EnvironmentLandAndWaterAreaClient_UnitTest {
 
 	@Test
 	public void createWithLocaleConstructor() {
 		Locale locale = new Locale("sv", "SE");
-		LandAndWaterAreaClient client = new LandAndWaterAreaClient(locale);
+		EnvironmentLandAndWaterAreaClient client = new EnvironmentLandAndWaterAreaClient(locale);
 
 		assertEquals(locale, client.getLocale());
 	}

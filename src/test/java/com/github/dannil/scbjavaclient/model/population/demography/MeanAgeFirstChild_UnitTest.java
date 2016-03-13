@@ -23,51 +23,49 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstChild;
-
 public class MeanAgeFirstChild_UnitTest {
 
 	@Test
 	public final void createWithDefaultConstructor() {
-		MeanAgeFirstChild avg = new MeanAgeFirstChild();
+		MeanAgeFirstChild mean = new MeanAgeFirstChild();
 
-		assertNotNull(avg);
+		assertNotNull(mean);
 	}
 
 	@Test
 	public void setRegion() {
-		MeanAgeFirstChild avg = new MeanAgeFirstChild();
+		MeanAgeFirstChild mean = new MeanAgeFirstChild();
 
-		avg.setRegion("1263");
+		mean.setRegion("1263");
 
-		assertEquals("1263", avg.getRegion());
+		assertEquals("1263", mean.getRegion());
 	}
 
 	@Test
 	public void setGender() {
-		MeanAgeFirstChild avg = new MeanAgeFirstChild();
+		MeanAgeFirstChild mean = new MeanAgeFirstChild();
 
-		avg.setGender(1);
+		mean.setGender(1);
 
-		assertEquals(Integer.valueOf(1), avg.getGender());
+		assertEquals(Integer.valueOf(1), mean.getGender());
 	}
 
 	@Test
 	public void setYear() {
-		MeanAgeFirstChild avg = new MeanAgeFirstChild();
+		MeanAgeFirstChild mean = new MeanAgeFirstChild();
 
-		avg.setYear(1996);
+		mean.setYear(1996);
 
-		assertEquals(Integer.valueOf(1996), avg.getYear());
+		assertEquals(Integer.valueOf(1996), mean.getYear());
 	}
 
 	@Test
 	public void setValue() {
-		MeanAgeFirstChild avg = new MeanAgeFirstChild();
+		MeanAgeFirstChild mean = new MeanAgeFirstChild();
 
-		avg.setValue(34.56);
+		mean.setValue(34.56);
 
-		assertEquals(Double.valueOf(34.56), avg.getValue());
+		assertEquals(Double.valueOf(34.56), mean.getValue());
 	}
 
 	@Test
@@ -77,104 +75,104 @@ public class MeanAgeFirstChild_UnitTest {
 
 	@Test
 	public void equals() {
-		MeanAgeFirstChild avg = new MeanAgeFirstChild();
-		MeanAgeFirstChild avg2 = new MeanAgeFirstChild();
+		MeanAgeFirstChild mean = new MeanAgeFirstChild();
+		MeanAgeFirstChild mean2 = new MeanAgeFirstChild();
 
-		assertEquals(avg, avg2);
+		assertEquals(mean, mean2);
 	}
 
 	@Test
 	public void equalsItself() {
-		MeanAgeFirstChild avg = new MeanAgeFirstChild();
+		MeanAgeFirstChild mean = new MeanAgeFirstChild();
 
-		assertEquals(avg, avg);
+		assertEquals(mean, mean);
 	}
 
 	@Test
 	public void equalsItselfWithValues() {
-		MeanAgeFirstChild avg = new MeanAgeFirstChild("1263", 2, 1996, 34.56);
-		MeanAgeFirstChild avg2 = new MeanAgeFirstChild("1263", 2, 1996, 34.56);
+		MeanAgeFirstChild mean = new MeanAgeFirstChild("1263", 2, 1996, 34.56);
+		MeanAgeFirstChild mean2 = new MeanAgeFirstChild("1263", 2, 1996, 34.56);
 
-		assertEquals(avg, avg2);
+		assertEquals(mean, mean2);
 	}
 
 	@Test
 	public void notEqualsNull() {
-		MeanAgeFirstChild avg = new MeanAgeFirstChild();
+		MeanAgeFirstChild mean = new MeanAgeFirstChild();
 
-		assertNotEquals(avg, null);
+		assertNotEquals(mean, null);
 	}
 
 	@Test
 	public void notEqualsIncompatibleObject() {
-		MeanAgeFirstChild avg = new MeanAgeFirstChild();
+		MeanAgeFirstChild mean = new MeanAgeFirstChild();
 
-		assertNotEquals(avg, new Object());
+		assertNotEquals(mean, new Object());
 	}
 
 	@Test
 	public void notEqualsRegion() {
-		MeanAgeFirstChild avg = new MeanAgeFirstChild("1263", 2, 1996, 34.56);
-		MeanAgeFirstChild avg2 = new MeanAgeFirstChild("1267", 2, 1996, 34.56);
+		MeanAgeFirstChild mean = new MeanAgeFirstChild("1263", 2, 1996, 34.56);
+		MeanAgeFirstChild mean2 = new MeanAgeFirstChild("1267", 2, 1996, 34.56);
 
-		assertNotEquals(avg, avg2);
+		assertNotEquals(mean, mean2);
 	}
 
 	@Test
 	public void notEqualsGender() {
-		MeanAgeFirstChild avg = new MeanAgeFirstChild("1263", 2, 1996, 34.56);
-		MeanAgeFirstChild avg2 = new MeanAgeFirstChild("1263", 1, 1996, 34.56);
+		MeanAgeFirstChild mean = new MeanAgeFirstChild("1263", 2, 1996, 34.56);
+		MeanAgeFirstChild mean2 = new MeanAgeFirstChild("1263", 1, 1996, 34.56);
 
-		assertNotEquals(avg, avg2);
+		assertNotEquals(mean, mean2);
 	}
 
 	@Test
 	public void notEqualsYear() {
-		MeanAgeFirstChild avg = new MeanAgeFirstChild("1263", 2, 1996, 34.56);
-		MeanAgeFirstChild avg2 = new MeanAgeFirstChild("1263", 2, 2002, 34.56);
+		MeanAgeFirstChild mean = new MeanAgeFirstChild("1263", 2, 1996, 34.56);
+		MeanAgeFirstChild mean2 = new MeanAgeFirstChild("1263", 2, 2002, 34.56);
 
-		assertNotEquals(avg, avg2);
+		assertNotEquals(mean, mean2);
 	}
 
 	@Test
-	public void notEqualsAverageAge() {
-		MeanAgeFirstChild avg = new MeanAgeFirstChild("1263", 2, 1996, 34.56);
-		MeanAgeFirstChild avg2 = new MeanAgeFirstChild("1263", 2, 1996, 65.43);
+	public void notEqualsValue() {
+		MeanAgeFirstChild mean = new MeanAgeFirstChild("1263", 2, 1996, 34.56);
+		MeanAgeFirstChild mean2 = new MeanAgeFirstChild("1263", 2, 1996, 65.43);
 
-		assertNotEquals(avg, avg2);
+		assertNotEquals(mean, mean2);
 	}
 
 	@Test
 	public void equalsHashCode() {
-		MeanAgeFirstChild avg = new MeanAgeFirstChild("1263", 2, 1996, 34.56);
-		MeanAgeFirstChild avg2 = new MeanAgeFirstChild("1263", 2, 1996, 34.56);
+		MeanAgeFirstChild mean = new MeanAgeFirstChild("1263", 2, 1996, 34.56);
+		MeanAgeFirstChild mean2 = new MeanAgeFirstChild("1263", 2, 1996, 34.56);
 
-		assertEquals(avg.hashCode(), avg2.hashCode());
+		assertEquals(mean.hashCode(), mean2.hashCode());
 	}
 
 	@Test
 	public void equalsHashCodeNullValues() {
-		MeanAgeFirstChild avg = new MeanAgeFirstChild();
-		MeanAgeFirstChild avg2 = new MeanAgeFirstChild();
+		MeanAgeFirstChild mean = new MeanAgeFirstChild();
+		MeanAgeFirstChild mean2 = new MeanAgeFirstChild();
 
-		assertEquals(avg.hashCode(), avg2.hashCode());
+		assertEquals(mean.hashCode(), mean2.hashCode());
 	}
 
 	@Test
 	public void convertToStringNullValues() {
-		MeanAgeFirstChild avg = new MeanAgeFirstChild();
+		MeanAgeFirstChild mean = new MeanAgeFirstChild();
 
-		assertNotNull(avg.toString());
+		assertNotNull(mean.toString());
 	}
 
 	@Test
 	public void convertToString() {
-		MeanAgeFirstChild avg = new MeanAgeFirstChild("1263", 2, 1996, 34.56);
+		MeanAgeFirstChild mean = new MeanAgeFirstChild("1263", 2, 1996, 34.56);
 
-		assertTrue(avg.toString().contains("1263"));
-		assertTrue(avg.toString().contains("2"));
-		assertTrue(avg.toString().contains("1996"));
-		assertTrue(avg.toString().contains("34.56"));
+		assertTrue(mean.toString().contains("1263"));
+		assertTrue(mean.toString().contains("2"));
+		assertTrue(mean.toString().contains("1996"));
+		assertTrue(mean.toString().contains("34.56"));
 	}
 
 }

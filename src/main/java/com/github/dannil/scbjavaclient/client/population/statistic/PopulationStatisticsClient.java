@@ -23,22 +23,23 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.model.population.statistic.AverageAge;
 import com.github.dannil.scbjavaclient.model.population.statistic.LiveBirth;
 import com.github.dannil.scbjavaclient.model.population.statistic.Population;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.ListUtility;
 
 /**
- * Client which handles population statistic data fetching.
+ * Client which handles population statistics data fetching.
  * 
  * @author Daniel Nilsson
  */
-public class StatisticClient extends AbstractClient {
+public class PopulationStatisticsClient extends AbstractClient {
 
 	/**
 	 * Default constructor.
 	 */
-	public StatisticClient() {
+	public PopulationStatisticsClient() {
 		super();
 	}
 
@@ -48,7 +49,7 @@ public class StatisticClient extends AbstractClient {
 	 * @param locale
 	 *            the locale for this client
 	 */
-	public StatisticClient(Locale locale) {
+	public PopulationStatisticsClient(Locale locale) {
 		super(locale);
 	}
 
@@ -66,12 +67,31 @@ public class StatisticClient extends AbstractClient {
 	// return years;
 	// }
 
+	public List<AverageAge> getAverageAge() {
+		return this.getAverageAge(null, null, null);
+	}
+
+	public List<AverageAge> getAverageAge(Collection<String> regions, Collection<String> genders,
+			Collection<Integer> years) {
+		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
+		mappings.put("ContentsCode", ListUtility.toList("BE0101G9"));
+		mappings.put("Region", regions);
+		mappings.put("Kon", genders);
+		mappings.put("Tid", years);
+
+		String response = super.post("BE/BE0101/BE0101B/BefolkningMedelAlder", super.queryBuilder.build(mappings));
+
+		return JsonUtility.jsonToListOf(response, AverageAge.class);
+	}
+
 	/**
 	 * Fetch all live births data.
 	 * 
-	 * @return the live births data wrapped in a list of {@link LiveBirth} objects
+	 * @return the live births data wrapped in a list of
+	 *         {@link com.github.dannil.scbjavaclient.model.population.statistic.LiveBirth
+	 *         LiveBirth} objects
 	 * 
-	 * @see StatisticClient#getLiveBirths(Collection, Collection, Collection, Collection)
+	 * @see PopulationStatisticsClient#getLiveBirths(Collection, Collection, Collection, Collection)
 	 */
 	public List<LiveBirth> getLiveBirths() {
 		return this.getLiveBirths(null, null, null, null);
@@ -89,7 +109,9 @@ public class StatisticClient extends AbstractClient {
 	 * @param years
 	 *            the years to fetch data for
 	 * 
-	 * @return the live births data wrapped in a list of {@link LiveBirth} objects
+	 * @return the live births data wrapped in a list of
+	 *         {@link com.github.dannil.scbjavaclient.model.population.statistic.LiveBirth
+	 *         LiveBirth} objects
 	 */
 	public List<LiveBirth> getLiveBirths(Collection<String> regions, Collection<String> motherAges,
 			Collection<Integer> genders, Collection<Integer> years) {
@@ -102,17 +124,18 @@ public class StatisticClient extends AbstractClient {
 
 		String response = super.post("BE/BE0101/BE0101H/FoddaK", super.queryBuilder.build(mappings));
 
-		// System.out.println(response);
-
-		return JsonUtility.parseLiveBirths(JsonUtility.getNode(response));
+		return JsonUtility.jsonToListOf(response, LiveBirth.class);
 	}
 
 	/**
 	 * Fetch all population data data.
 	 * 
-	 * @return the population data wrapped in a list of {@link Population} objects
+	 * @return the population data wrapped in a list of
+	 *         {@link com.github.dannil.scbjavaclient.model.population.statistic.Population
+	 *         Population} objects
 	 * 
-	 * @see StatisticClient#getPopulation(Collection, Collection, Collection, Collection, Collection)
+	 * @see PopulationStatisticsClient#getPopulation(Collection, Collection, Collection, Collection,
+	 *      Collection)
 	 */
 	public List<Population> getPopulation() {
 		return this.getPopulation(null, null, null, null, null);
@@ -132,7 +155,9 @@ public class StatisticClient extends AbstractClient {
 	 * @param years
 	 *            the years to fetch data for
 	 * 
-	 * @return the population data wrapped in a list of {@link Population} objects
+	 * @return the population data wrapped in a list of
+	 *         {@link com.github.dannil.scbjavaclient.model.population.statistic.Population
+	 *         Population} objects
 	 */
 	public List<Population> getPopulation(Collection<String> regions, Collection<String> relationshipStatuses,
 			Collection<String> ages, Collection<Integer> genders, Collection<Integer> years) {
@@ -146,9 +171,7 @@ public class StatisticClient extends AbstractClient {
 
 		String response = super.post("BE/BE0101/BE0101A/BefolkningNy", super.queryBuilder.build(mappings));
 
-		// System.out.println(response);
-
-		return JsonUtility.parsePopulation(JsonUtility.getNode(response));
+		return JsonUtility.jsonToListOf(response, Population.class);
 	}
 
 }
