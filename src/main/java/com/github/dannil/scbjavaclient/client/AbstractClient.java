@@ -118,7 +118,7 @@ public abstract class AbstractClient {
 	 */
 	// TODO Improve method
 	protected String get(String address) {
-		AbstractRequester get = RequesterFactory.getInstance("GET");
+		AbstractRequester get = RequesterFactory.getRequester("GET");
 		try {
 			String response = get.doRequest(getBaseUrl() + address);
 
@@ -152,7 +152,7 @@ public abstract class AbstractClient {
 	 */
 	// TODO Improve method
 	protected String post(String address, String query) {
-		POSTRequester post = (POSTRequester) RequesterFactory.getInstance("POST");
+		POSTRequester post = (POSTRequester) RequesterFactory.getRequester("POST");
 		post.setPayload(query);
 		try {
 			String response = post.doRequest(getBaseUrl() + address);

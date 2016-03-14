@@ -41,7 +41,7 @@ public class RequesterSingletonFactory {
 
 	}
 
-	public static AbstractRequester getInstance(String method) {
+	public static AbstractRequester getRequester(String method) {
 		if (!requesters.containsKey(method)) {
 			throw new IllegalArgumentException(method + " is not a valid method");
 		}

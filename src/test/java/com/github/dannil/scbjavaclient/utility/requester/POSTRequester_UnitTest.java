@@ -30,7 +30,7 @@ public class POSTRequester_UnitTest {
 
 	@Test
 	public void getPayload() {
-		POSTRequester post = (POSTRequester) RequesterFactory.getInstance("POST");
+		POSTRequester post = (POSTRequester) RequesterFactory.getRequester("POST");
 		post.setPayload("payload");
 
 		assertEquals("payload", post.getPayload());
@@ -38,7 +38,7 @@ public class POSTRequester_UnitTest {
 
 	@Test(expected = IllegalStateException.class)
 	public void doRequestIllegalStateNullPayload() throws IOException {
-		POSTRequester post = (POSTRequester) RequesterFactory.getInstance("POST");
+		POSTRequester post = (POSTRequester) RequesterFactory.getRequester("POST");
 
 		String response = post.doRequest("http://api.scb.se/OV0104/v1/doris/en/ssd/BE/BE0701/MedelAlderNY");
 

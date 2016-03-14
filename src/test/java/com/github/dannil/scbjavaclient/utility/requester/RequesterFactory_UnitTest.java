@@ -41,8 +41,8 @@ public class RequesterFactory_UnitTest {
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void getInstanceIllegalArgument() {
-		AbstractRequester abs = RequesterFactory.getInstance("BLABLA");
+	public void getRequesterIllegalArgument() {
+		AbstractRequester abs = RequesterFactory.getRequester("BLABLA");
 
 		assertNull(abs);
 	}
