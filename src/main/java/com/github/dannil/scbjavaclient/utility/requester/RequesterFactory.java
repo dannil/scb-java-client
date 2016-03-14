@@ -16,12 +16,24 @@
 
 package com.github.dannil.scbjavaclient.utility.requester;
 
+/**
+ * Factory for returning regular (non-singleton) requesters.
+ * 
+ * @author Daniel Nilsson
+ */
 public class RequesterFactory {
 
 	private RequesterFactory() {
 
 	}
 
+	/**
+	 * Returns a regular (non-singleton) requester which matches the method.
+	 * 
+	 * @param method
+	 *            the method (i.e. GET or POST)
+	 * @return a regular (non-singleton) Requester which matches the method.
+	 */
 	public static AbstractRequester getRequester(String method) {
 		switch (method.toUpperCase()) {
 			case "GET":

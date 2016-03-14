@@ -19,6 +19,11 @@ package com.github.dannil.scbjavaclient.utility.requester;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Factory for returning singleton requesters.
+ * 
+ * @author Daniel Nilsson
+ */
 public class RequesterSingletonFactory {
 
 	private static Map<String, AbstractRequester> requesters;
@@ -41,6 +46,13 @@ public class RequesterSingletonFactory {
 
 	}
 
+	/**
+	 * Returns a singleton requester which matches the method.
+	 * 
+	 * @param method
+	 *            the method (i.e. GET or POST)
+	 * @return a singleton Requester which matches the method.
+	 */
 	public static AbstractRequester getRequester(String method) {
 		if (!requesters.containsKey(method)) {
 			throw new IllegalArgumentException(method + " is not a valid method");
