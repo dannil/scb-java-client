@@ -58,7 +58,6 @@ public class POSTRequester extends AbstractRequester {
 		try (OutputStreamWriter writer = new OutputStreamWriter(httpUrlConnection.getOutputStream(),
 				super.charset.name())) {
 			writer.write(this.payload);
-			writer.close();
 		}
 
 		String response = super.getResponse(httpUrlConnection);
