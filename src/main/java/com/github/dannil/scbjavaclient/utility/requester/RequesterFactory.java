@@ -16,6 +16,9 @@
 
 package com.github.dannil.scbjavaclient.utility.requester;
 
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+
 /**
  * Factory for returning regular (non-singleton) requesters.
  * 
@@ -28,19 +31,37 @@ public class RequesterFactory {
 	}
 
 	/**
-	 * Returns a regular (non-singleton) requester which matches the method.
+	 * Returns a regular (non-singleton) requester which matches the method. All responses are
+	 * read as UTF-8 character encoding.
 	 * 
 	 * @param method
 	 *            the method (i.e. GET or POST)
-	 * @return a regular (non-singleton) Requester which matches the method.
+	 * @return a regular (non-singleton) requester which matches the method.
 	 */
 	public static AbstractRequester getRequester(String method) {
+		return getRequester(method, StandardCharsets.UTF_8);
+	}
+
+	/**
+	 * Returns a regular (non-singleton) requester which matches the method. All responses are
+	 * read as to match the character encoding.
+	 * 
+	 * @param method
+	 *            the method (i.e. GET or POST)
+	 * @param charset
+	 *            the character encoding to use
+	 * @return a regular (non-singleton) requester which matches the method.
+	 */
+	public static AbstractRequester getRequester(String method, Charset charset) {
+		// AbstractRequester abs = getRequester(method);
+		// abs.setCharset(charset);
+		// return abs;
 		switch (method.toUpperCase()) {
 			case "GET":
-				return new GETRequester();
+				return new GETRequester(charset);
 
 			case "POST":
-				return new POSTRequester();
+				return new POSTRequester(charset);
 
 			default:
 				throw new IllegalArgumentException(method + " is not a valid method");

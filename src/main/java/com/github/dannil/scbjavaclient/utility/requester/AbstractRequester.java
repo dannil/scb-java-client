@@ -23,6 +23,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -34,6 +35,8 @@ import java.util.Properties;
  * @author Daniel Nilsson
  */
 public abstract class AbstractRequester {
+
+	protected Charset charset;
 
 	protected Map<String, String> requestProperties;
 
@@ -87,7 +90,8 @@ public abstract class AbstractRequester {
 	protected String getResponse(HttpURLConnection httpUrlConnection) throws IOException {
 		StringBuilder builder = new StringBuilder(32);
 
-		try (BufferedReader br = new BufferedReader(new InputStreamReader(httpUrlConnection.getInputStream(), "utf-8"))) {
+		try (BufferedReader br = new BufferedReader(new InputStreamReader(httpUrlConnection.getInputStream(),
+				this.charset.name()))) {
 			// Handle UTF-8 byte order mark (BOM)
 			br.mark(4);
 
@@ -127,5 +131,13 @@ public abstract class AbstractRequester {
 	}
 
 	public abstract String doRequest(String address) throws IOException;
+
+	public Charset getCharset() {
+		return this.charset;
+	}
+
+	public void setCharset(Charset charset) {
+		this.charset = charset;
+	}
 
 }

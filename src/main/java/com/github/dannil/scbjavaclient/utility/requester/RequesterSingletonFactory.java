@@ -16,6 +16,8 @@
 
 package com.github.dannil.scbjavaclient.utility.requester;
 
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,11 +37,11 @@ public class RequesterSingletonFactory {
 	}
 
 	private static class GETHolder {
-		private static final GETRequester INSTANCE = new GETRequester();
+		private static final GETRequester INSTANCE = new GETRequester(StandardCharsets.UTF_8);
 	}
 
 	private static class POSTHolder {
-		private static final POSTRequester INSTANCE = new POSTRequester();
+		private static final POSTRequester INSTANCE = new POSTRequester(StandardCharsets.UTF_8);
 	}
 
 	private RequesterSingletonFactory() {
@@ -51,24 +53,29 @@ public class RequesterSingletonFactory {
 	 * 
 	 * @param method
 	 *            the method (i.e. GET or POST)
-	 * @return a singleton Requester which matches the method.
+	 * @return a singleton requester which matches the method.
 	 */
 	public static AbstractRequester getRequester(String method) {
+		return getRequester(method, StandardCharsets.UTF_8);
+	}
+
+	/**
+	 * Returns a singleton requester which matches the method. All responses are
+	 * read as to match the character encoding.
+	 * 
+	 * @param method
+	 *            the method (i.e. GET or POST)
+	 * @param charset
+	 *            the character encoding to use
+	 * @return a singleton requester which matches the method.
+	 */
+	public static AbstractRequester getRequester(String method, Charset charset) {
 		if (!requesters.containsKey(method)) {
 			throw new IllegalArgumentException(method + " is not a valid method");
 		}
-		return requesters.get(method);
-
-		// switch (method.toUpperCase()) {
-		// case "GET":
-		// return GETHolder.INSTANCE;
-		//
-		// case "POST":
-		// return POSTHolder.INSTANCE;
-		//
-		// default:
-		// throw new IllegalArgumentException(method + " is not a valid method");
-		// }
+		AbstractRequester abs = requesters.get(method);
+		abs.setCharset(charset);
+		return abs;
 	}
 
 }

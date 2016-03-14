@@ -18,12 +18,18 @@ package com.github.dannil.scbjavaclient.utility.requester;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
+import java.nio.charset.Charset;
 
 public class GETRequester extends AbstractRequester {
 
 	public GETRequester() {
 		super();
 		super.requestProperties.put("Request-Method", "GET");
+	}
+
+	public GETRequester(Charset charset) {
+		this();
+		super.charset = charset;
 	}
 
 	@Override

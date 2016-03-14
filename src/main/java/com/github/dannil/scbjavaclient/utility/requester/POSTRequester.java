@@ -19,6 +19,7 @@ package com.github.dannil.scbjavaclient.utility.requester;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
+import java.nio.charset.Charset;
 
 public class POSTRequester extends AbstractRequester {
 
@@ -27,6 +28,11 @@ public class POSTRequester extends AbstractRequester {
 	public POSTRequester() {
 		super();
 		super.requestProperties.put("Request-Method", "POST");
+	}
+
+	public POSTRequester(Charset charset) {
+		this();
+		super.charset = charset;
 	}
 
 	public String getPayload() {
@@ -49,7 +55,8 @@ public class POSTRequester extends AbstractRequester {
 		httpUrlConnection.setDoOutput(true);
 		httpUrlConnection.setRequestMethod(super.requestProperties.get("Request-Method"));
 
-		try (OutputStreamWriter writer = new OutputStreamWriter(httpUrlConnection.getOutputStream(), "utf-8")) {
+		try (OutputStreamWriter writer = new OutputStreamWriter(httpUrlConnection.getOutputStream(),
+				super.charset.name())) {
 			writer.write(this.payload);
 			writer.close();
 		}
