@@ -18,6 +18,9 @@ package com.github.dannil.scbjavaclient.client.population.name;
 
 import static org.junit.Assert.assertNotEquals;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -38,6 +41,15 @@ public class PopulationNameStatisticsClient_IntegrationTest {
 	@Test
 	public void getNumberOfChildrenBornWithFirstName() {
 		assertNotEquals(0, this.populationNameStatisticsClient.getNumberOfChildrenBornWithFirstName().size());
+	}
+
+	@Test
+	public void getNumberOfChildrenBornWithFirstNameWithParameters() {
+		List<String> firstnames = Arrays.asList("AdinaK");
+		List<Integer> years = Arrays.asList(2002);
+
+		assertNotEquals(0, this.populationNameStatisticsClient.getNumberOfChildrenBornWithFirstName(firstnames, years)
+				.size());
 	}
 
 }

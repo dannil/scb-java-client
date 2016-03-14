@@ -18,6 +18,9 @@ package com.github.dannil.scbjavaclient.client.population.demography;
 
 import static org.junit.Assert.assertNotEquals;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -42,8 +45,26 @@ public class PopulationDemographyClient_IntegrationTest extends RemoteIntegratio
 	}
 
 	@Test
+	public void getFertilityRateWithParameters() {
+		List<String> regions = Arrays.asList("1263");
+		List<Integer> genders = Arrays.asList(1, 2);
+		List<Integer> years = Arrays.asList(2002);
+
+		assertNotEquals(0, this.populationDemographyClient.getFertilityRate(regions, genders, years).size());
+	}
+
+	@Test
 	public void getMeanAgeFirstChild() {
 		assertNotEquals(0, this.populationDemographyClient.getMeanAgeFirstChild().size());
+	}
+
+	@Test
+	public void getMeanAgeFirstChildWithParameters() {
+		List<String> regions = Arrays.asList("1263");
+		List<Integer> genders = Arrays.asList(1, 2);
+		List<Integer> years = Arrays.asList(2002);
+
+		assertNotEquals(0, this.populationDemographyClient.getMeanAgeFirstChild(regions, genders, years).size());
 	}
 
 }
