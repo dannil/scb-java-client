@@ -22,7 +22,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Factory for returning singleton requesters.
+ * Factory for returning singleton requesters. The regular {@link RequesterFactory} is recommended
+ * instead of this class; this class should only be used if you really need a singleton.
  * 
  * @author Daniel Nilsson
  */

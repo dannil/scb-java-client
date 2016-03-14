@@ -39,8 +39,6 @@ public class RequesterSingletonFactory_UnitTest {
 
 	@Test
 	public void requesterIsSingleton() {
-		System.out.println("requesterIsSingleton");
-
 		AbstractRequester abs1 = RequesterSingletonFactory.getRequester("GET", StandardCharsets.UTF_8);
 		AbstractRequester abs2 = RequesterSingletonFactory.getRequester("GET", StandardCharsets.US_ASCII);
 

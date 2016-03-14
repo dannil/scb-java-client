@@ -24,13 +24,13 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
 /**
- * Class which contains the logic for sending URL requests to the specified address, in this case
- * the SCB API.
+ * Class which contains the logic for sending URL requests to a specified address.
  * 
  * @author Daniel Nilsson
  */
@@ -41,6 +41,8 @@ public abstract class AbstractRequester {
 	protected Map<String, String> requestProperties;
 
 	protected AbstractRequester() {
+		this.charset = StandardCharsets.UTF_8;
+
 		this.requestProperties = new HashMap<String, String>();
 
 		Properties prop = new Properties();
