@@ -60,7 +60,7 @@ public class EnvironmentLandAndWaterAreaClient_IntegrationTest extends RemoteInt
 	public void getAreaWithParameters() {
 		List<String> regions = Arrays.asList("1263");
 		List<String> types = Arrays.asList("01", "02", "03", "04");
-		List<Integer> years = Arrays.asList(2002);
+		List<Integer> years = Arrays.asList(2012);
 
 		assertNotEquals(0, this.environmentLandAndWaterAreaClient.getArea(regions, types, years).size());
 	}
