@@ -18,6 +18,9 @@ package com.github.dannil.scbjavaclient.client.population.statistic;
 
 import static org.junit.Assert.assertNotEquals;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -54,13 +57,44 @@ public class PopulationStatisticsClient_IntegrationTest extends RemoteIntegratio
 	}
 
 	@Test
+	public void getAverageAgeWithParameters() {
+		List<String> regions = Arrays.asList("1263");
+		List<String> genders = Arrays.asList("1", "2", "1+2");
+		List<Integer> years = Arrays.asList(2002);
+
+		assertNotEquals(0, this.populationStatisticsClient.getAverageAge(regions, genders, years).size());
+	}
+
+	@Test
 	public void getLiveBirths() {
 		assertNotEquals(0, this.populationStatisticsClient.getLiveBirths().size());
 	}
 
 	@Test
+	public void getLiveBirthsWithParameters() {
+		List<String> regions = Arrays.asList("1263");
+		List<String> motherAges = Arrays.asList("tot");
+		List<Integer> genders = Arrays.asList(1, 2);
+		List<Integer> years = Arrays.asList(1996);
+
+		assertNotEquals(0, this.populationStatisticsClient.getLiveBirths(regions, motherAges, genders, years).size());
+	}
+
+	@Test
 	public void getPopulation() {
 		assertNotEquals(0, this.populationStatisticsClient.getPopulation().size());
+	}
+
+	@Test
+	public void getPopulationWithParameters() {
+		List<String> regions = Arrays.asList("1263");
+		List<String> statuses = Arrays.asList("OG", "G", "SK", "ÄNKL");
+		List<String> ages = Arrays.asList("25");
+		List<Integer> genders = Arrays.asList(1, 2);
+		List<Integer> years = Arrays.asList(1996);
+
+		assertNotEquals(0, this.populationStatisticsClient.getPopulation(regions, statuses, ages, genders, years)
+				.size());
 	}
 
 }
