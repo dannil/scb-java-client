@@ -16,47 +16,23 @@
 
 package com.github.dannil.scbjavaclient.utility.requester;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class RequesterFactory {
-
-	private static Map<String, AbstractRequester> requesters;
-
-	static {
-		requesters = new HashMap<String, AbstractRequester>();
-		requesters.put("GET", GETHolder.INSTANCE);
-		requesters.put("POST", POSTHolder.INSTANCE);
-	}
-
-	private static class GETHolder {
-		private static final GETRequester INSTANCE = new GETRequester();
-	}
-
-	private static class POSTHolder {
-		private static final POSTRequester INSTANCE = new POSTRequester();
-	}
-
-	public static AbstractRequester getInstance(String method) {
-		if (!requesters.containsKey(method)) {
-			throw new IllegalArgumentException(method + " is not a valid method");
-		}
-		return requesters.get(method);
-
-		// switch (method.toUpperCase()) {
-		// case "GET":
-		// return GETHolder.INSTANCE;
-		//
-		// case "POST":
-		// return POSTHolder.INSTANCE;
-		//
-		// default:
-		// throw new IllegalArgumentException(method + " is not a valid method");
-		// }
-	}
 
 	private RequesterFactory() {
 
+	}
+
+	public static AbstractRequester getRequester(String method) {
+		switch (method.toUpperCase()) {
+			case "GET":
+				return new GETRequester();
+
+			case "POST":
+				return new POSTRequester();
+
+			default:
+				throw new IllegalArgumentException(method + " is not a valid method");
+		}
 	}
 
 }
