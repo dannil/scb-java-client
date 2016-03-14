@@ -13,7 +13,7 @@ public final class Config {
 
 	static {
 		try {
-			AbstractRequester get = RequesterFactory.getInstance("GET");
+			AbstractRequester get = RequesterFactory.getRequester("GET");
 			String response = get.doRequest("http://api.scb.se/OV0104/v1/doris/en/ssd/?config");
 			JsonNode node = JsonUtility.getNode(response);
 
