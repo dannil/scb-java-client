@@ -40,38 +40,43 @@ public abstract class AbstractRequester {
 
 	protected Map<String, String> requestProperties;
 
+	private static Properties properties;
+
+	static {
+		properties = new Properties();
+		InputStream input = null;
+		try {
+			input = AbstractRequester.class.getClassLoader().getResourceAsStream("project.properties");
+
+			properties.load(input);
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
+	}
+
 	protected AbstractRequester() {
 		this.charset = StandardCharsets.UTF_8;
 
 		this.requestProperties = new HashMap<String, String>();
 
-		Properties prop = new Properties();
-		InputStream input = null;
-		try {
-			input = getClass().getClassLoader().getResourceAsStream("project.properties");
+		String artifactId = properties.getProperty("artifactId");
+		String version = properties.getProperty("version");
+		String url = properties.getProperty("url");
 
-			prop.load(input);
+		this.requestProperties.put("Accept", "application/json");
+		this.requestProperties.put("Content-Type", "application/json; charset=" + this.charset.name().toLowerCase());
 
-			String artifactId = prop.getProperty("artifactId");
-			String version = prop.getProperty("version");
-			String url = prop.getProperty("url");
+		StringBuilder builder = new StringBuilder(64);
+		builder.append(artifactId);
+		builder.append('/');
+		builder.append(version);
+		builder.append(' ');
+		builder.append("(" + url + ")");
+		builder.append(", ");
+		builder.append(System.getProperty("os.name"));
 
-			this.requestProperties.put("Accept", "application/json");
-			this.requestProperties.put("Content-Type", "application/json; charset=utf-8");
+		this.requestProperties.put("User-Agent", builder.toString());
 
-			StringBuilder builder = new StringBuilder(64);
-			builder.append(artifactId);
-			builder.append('/');
-			builder.append(version);
-			builder.append(' ');
-			builder.append("(" + url + ")");
-			builder.append(", ");
-			builder.append(System.getProperty("os.name"));
-
-			this.requestProperties.put("User-Agent", builder.toString());
-		} catch (IOException ex) {
-			ex.printStackTrace();
-		}
 	}
 
 	protected void setRequestProperties(URLConnection urlConnection, String... props) {
@@ -91,6 +96,11 @@ public abstract class AbstractRequester {
 
 	protected String getResponse(HttpURLConnection httpUrlConnection) throws IOException {
 		StringBuilder builder = new StringBuilder(32);
+
+		// Map<String, List<String>> map = httpUrlConnection.getHeaderFields();
+		// for (Map.Entry<String, List<String>> entry : map.entrySet()) {
+		// System.out.println("Key : " + entry.getKey() + ", Value : " + entry.getValue());
+		// }
 
 		try (BufferedReader br = new BufferedReader(new InputStreamReader(httpUrlConnection.getInputStream(),
 				this.charset.name()))) {
@@ -140,6 +150,7 @@ public abstract class AbstractRequester {
 
 	public void setCharset(Charset charset) {
 		this.charset = charset;
+		this.requestProperties.put("Content-Type", "application/json; charset=" + this.charset.name().toLowerCase());
 	}
 
 }
