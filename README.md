@@ -7,6 +7,8 @@
 
 Java client for the SCB (Statistiska centralbyrån) API.
 
+Pull requests are welcomed and should be targeted against the branch named "dev".
+
 ## Installation
 
 ### Maven
