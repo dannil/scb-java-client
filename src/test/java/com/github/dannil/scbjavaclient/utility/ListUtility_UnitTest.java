@@ -28,8 +28,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import com.github.dannil.scbjavaclient.utility.ListUtility;
-
 @RunWith(JUnit4.class)
 public class ListUtility_UnitTest {
 
@@ -54,6 +52,13 @@ public class ListUtility_UnitTest {
 		list2.add(test);
 
 		assertEquals(list1, list2);
+	}
+
+	@Test
+	public void toListNull() {
+		List<String> list = ListUtility.toList(null);
+
+		assertEquals(null, list);
 	}
 
 	@Test
