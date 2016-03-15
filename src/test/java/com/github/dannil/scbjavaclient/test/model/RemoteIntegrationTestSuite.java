@@ -11,7 +11,7 @@ public abstract class RemoteIntegrationTestSuite {
 	}
 
 	@Before
-	public void setup() throws InterruptedException {
+	public void setupTimer() throws InterruptedException {
 		// Due to constraints set by SCB, we can only do 10 calls every 10
 		// seconds, so we need an artificial timer which handles this.
 		Thread.sleep(Config.getTimerMs());
