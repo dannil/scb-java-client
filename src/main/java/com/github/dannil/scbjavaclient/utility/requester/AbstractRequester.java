@@ -26,6 +26,7 @@ import java.net.URLConnection;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
@@ -94,13 +95,13 @@ public abstract class AbstractRequester {
 		return connection;
 	}
 
-	protected String getResponse(HttpURLConnection httpUrlConnection) throws IOException {
+	protected Response getResponse(HttpURLConnection httpUrlConnection) throws IOException {
 		StringBuilder builder = new StringBuilder(32);
 
-		// Map<String, List<String>> map = httpUrlConnection.getHeaderFields();
-		// for (Map.Entry<String, List<String>> entry : map.entrySet()) {
-		// System.out.println("Key : " + entry.getKey() + ", Value : " + entry.getValue());
-		// }
+		Map<String, List<String>> map = httpUrlConnection.getHeaderFields();
+		for (Map.Entry<String, List<String>> entry : map.entrySet()) {
+			System.out.println("Key : " + entry.getKey() + ", Value : " + entry.getValue());
+		}
 
 		try (BufferedReader br = new BufferedReader(new InputStreamReader(httpUrlConnection.getInputStream(),
 				this.charset.name()))) {
