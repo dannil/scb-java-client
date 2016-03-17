@@ -75,7 +75,6 @@ public class RequesterSingletonFactory {
 			throw new IllegalArgumentException(method + " is not a valid method");
 		}
 		AbstractRequester abs = requesters.get(method);
-		abs.setCharset(charset);
 		return abs;
 	}
 
