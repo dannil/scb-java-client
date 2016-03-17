@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNull;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.nio.charset.StandardCharsets;
 
 import org.junit.Test;
 
@@ -36,15 +37,13 @@ public class RequesterSingletonFactory_UnitTest {
 		assertNull(abs);
 	}
 
-	// @Test
-	// public void requesterIsSingleton() {
-	// AbstractRequester abs1 = RequesterSingletonFactory.getRequester("GET",
-	// StandardCharsets.UTF_8);
-	// AbstractRequester abs2 = RequesterSingletonFactory.getRequester("GET",
-	// StandardCharsets.US_ASCII);
-	//
-	// assertEquals(StandardCharsets.US_ASCII, abs1.getCharset());
-	// assertEquals(abs1.getCharset(), abs2.getCharset());
-	// }
+	@Test
+	public void requesterIsSingleton() {
+		AbstractRequester abs1 = RequesterSingletonFactory.getRequester("GET", StandardCharsets.UTF_8);
+		AbstractRequester abs2 = RequesterSingletonFactory.getRequester("GET", StandardCharsets.US_ASCII);
+
+		assertEquals(StandardCharsets.US_ASCII, abs1.getCharset());
+		assertEquals(abs1.getCharset(), abs2.getCharset());
+	}
 
 }

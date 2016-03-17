@@ -146,4 +146,13 @@ public abstract class AbstractRequester {
 
 	public abstract String getResponse(String address);
 
+	public Charset getCharset() {
+		return this.charset;
+	}
+
+	public void setCharset(Charset charset) {
+		this.charset = charset;
+		this.requestProperties.put("Content-Type", "application/json; charset=" + this.charset.name().toLowerCase());
+	}
+
 }

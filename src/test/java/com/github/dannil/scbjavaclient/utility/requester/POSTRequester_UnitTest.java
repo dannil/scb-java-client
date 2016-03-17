@@ -20,6 +20,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,12 +29,12 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class POSTRequester_UnitTest {
 
-	// @Test
-	// public void getCharset() {
-	// POSTRequester post = (POSTRequester) RequesterFactory.getRequester("POST");
-	//
-	// assertEquals(StandardCharsets.UTF_8, post.getCharset());
-	// }
+	@Test
+	public void getCharset() {
+		POSTRequester post = (POSTRequester) RequesterFactory.getRequester("POST");
+
+		assertEquals(StandardCharsets.UTF_8, post.getCharset());
+	}
 
 	@Test
 	public void getPayload() {
