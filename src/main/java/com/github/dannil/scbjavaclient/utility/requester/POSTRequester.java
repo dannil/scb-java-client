@@ -23,7 +23,7 @@ import java.util.Map.Entry;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
+import org.apache.http.entity.ByteArrayEntity;
 
 import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
 
@@ -62,7 +62,7 @@ public class POSTRequester extends AbstractRequester {
 
 		HttpEntity entity;
 		try {
-			entity = new StringEntity(this.query);
+			entity = new ByteArrayEntity(this.query.getBytes(this.charset.name()));
 			request.setEntity(entity);
 		} catch (IOException e) {
 			throw new SCBClientParsingException(e);
