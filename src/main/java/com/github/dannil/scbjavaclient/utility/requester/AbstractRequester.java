@@ -16,8 +16,10 @@
 
 package com.github.dannil.scbjavaclient.utility.requester;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
@@ -96,15 +98,38 @@ public abstract class AbstractRequester {
 					break;
 
 				case 404:
-					throw new SCBClientUrlNotFoundException();
+					throw new SCBClientUrlNotFoundException(request.getURI().toString());
 
 				case 429:
-					throw new SCBClientTooManyRequestsException();
+					throw new SCBClientTooManyRequestsException(request.getURI().toString());
 			}
 			return response;
 		} catch (IOException e) {
 			throw new SCBClientException(e);
 		}
+	}
+
+	protected String getBody(HttpResponse response) {
+		StringBuilder builder = new StringBuilder(64);
+		try (BufferedReader br = new BufferedReader(new InputStreamReader(response.getEntity().getContent(),
+				this.charset.name()))) {
+			// Handle UTF-8 byte order mark (BOM)
+			br.mark(4);
+
+			// Checks if the stream contains a BOM. If it doesn't, reset the
+			// stream pointer to the location specified by br.mark()
+			if ('\uFEFF' != br.read()) {
+				br.reset();
+			}
+
+			String line;
+			while ((line = br.readLine()) != null) {
+				builder.append(line);
+			}
+		} catch (IOException e) {
+			throw new SCBClientException(e);
+		}
+		return builder.toString();
 	}
 
 	/**

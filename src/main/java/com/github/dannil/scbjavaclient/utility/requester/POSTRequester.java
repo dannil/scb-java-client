@@ -16,16 +16,16 @@
 
 package com.github.dannil.scbjavaclient.utility.requester;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.util.Map.Entry;
 
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 
-import com.github.dannil.scbjavaclient.exception.SCBClientException;
+import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
 
 public class POSTRequester extends AbstractRequester {
 
@@ -55,23 +55,21 @@ public class POSTRequester extends AbstractRequester {
 			throw new IllegalStateException("Payload is null");
 		}
 
-		HttpGet request = new HttpGet(url);
+		HttpPost request = new HttpPost(url);
 		for (Entry<String, String> entry : super.requestProperties.entrySet()) {
 			request.addHeader(entry.getKey(), entry.getValue());
 		}
 
+		HttpEntity entity;
+		try {
+			entity = new StringEntity(this.query);
+			request.setEntity(entity);
+		} catch (IOException e) {
+			throw new SCBClientParsingException(e);
+		}
+
 		HttpResponse response = super.getResponse(request);
 
-		StringBuilder builder = new StringBuilder(64);
-		try (BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()))) {
-			String line = "";
-			while ((line = rd.readLine()) != null) {
-				builder.append(line);
-			}
-		} catch (IOException e) {
-			throw new SCBClientException(e);
-		}
-		return builder.toString();
+		return super.getBody(response);
 	}
-
 }
