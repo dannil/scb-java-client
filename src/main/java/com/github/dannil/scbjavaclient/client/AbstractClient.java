@@ -110,24 +110,24 @@ public abstract class AbstractClient {
 	}
 
 	/**
-	 * Performs a GET request to the specified address.
+	 * Performs a GET request to the specified URL.
 	 * 
-	 * @param address
-	 *            the address which will be sent a GET request
+	 * @param url
+	 *            the URL which will be sent a GET request
 	 * @return a string representation of the API's response
 	 */
 	// TODO Improve method
-	protected String get(String address) {
+	protected String get(String url) {
 		AbstractRequester get = RequesterFactory.getRequester("GET");
 		try {
-			String response = get.doRequest(getBaseUrl() + address);
+			String response = get.doRequest(getBaseUrl() + url);
 
 			return response;
 		} catch (FileNotFoundException e) {
 			// 404, call the Client again with the fallback language
 
 			try {
-				return get.doRequest(toUrl(getBaseUrl() + address, this.locale));
+				return get.doRequest(toUrl(getBaseUrl() + url, this.locale));
 			} catch (IOException e1) {
 				e1.printStackTrace();
 
@@ -142,20 +142,20 @@ public abstract class AbstractClient {
 	}
 
 	/**
-	 * Performs a POST request to the specified address.
+	 * Performs a POST request to the specified URL.
 	 * 
-	 * @param address
-	 *            the address which will be sent a POST request
+	 * @param url
+	 *            the URL which will be sent a POST request
 	 * @param query
 	 *            the payload which the API processes
 	 * @return a string representation of the API's response
 	 */
 	// TODO Improve method
-	protected String post(String address, String query) {
+	protected String post(String url, String query) {
 		POSTRequester post = (POSTRequester) RequesterFactory.getRequester("POST");
 		post.setPayload(query);
 		try {
-			String response = post.doRequest(getBaseUrl() + address);
+			String response = post.doRequest(getBaseUrl() + url);
 
 			LOGGER.log(Level.INFO, query);
 
@@ -166,7 +166,7 @@ public abstract class AbstractClient {
 			try {
 				LOGGER.log(Level.INFO, query);
 
-				return post.doRequest(toUrl(getBaseUrl() + address, this.locale));
+				return post.doRequest(toUrl(getBaseUrl() + url, this.locale));
 			} catch (IOException e1) {
 				e1.printStackTrace();
 
