@@ -16,28 +16,33 @@
 
 package com.github.dannil.scbjavaclient.utility.requester;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLConnection;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpRequestBase;
+import org.apache.http.impl.client.HttpClientBuilder;
+
+import com.github.dannil.scbjavaclient.exception.SCBClientException;
+import com.github.dannil.scbjavaclient.exception.SCBClientTooManyRequestsException;
+import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
 
 /**
  * Class which contains the logic for sending URL requests to a specified address.
  * 
  * @author Daniel Nilsson
  */
-public abstract class AbstractRequester {
+public abstract class AbstractRequesterNew {
 
 	protected Charset charset;
+
+	protected HttpClient client;
 
 	protected Map<String, String> requestProperties;
 
@@ -47,7 +52,7 @@ public abstract class AbstractRequester {
 		properties = new Properties();
 		InputStream input = null;
 		try {
-			input = AbstractRequester.class.getClassLoader().getResourceAsStream("project.properties");
+			input = AbstractRequesterNew.class.getClassLoader().getResourceAsStream("project.properties");
 
 			properties.load(input);
 		} catch (IOException ex) {
@@ -55,7 +60,9 @@ public abstract class AbstractRequester {
 		}
 	}
 
-	protected AbstractRequester() {
+	protected AbstractRequesterNew() {
+		this.client = HttpClientBuilder.create().build();
+
 		this.charset = StandardCharsets.UTF_8;
 
 		this.requestProperties = new HashMap<String, String>();
@@ -77,52 +84,27 @@ public abstract class AbstractRequester {
 		builder.append(System.getProperty("os.name"));
 
 		this.requestProperties.put("User-Agent", builder.toString());
-
 	}
 
-	protected void setRequestProperties(URLConnection urlConnection, String... props) {
-		for (String prop : props) {
-			urlConnection.addRequestProperty(prop, this.requestProperties.get(prop));
-		}
-	}
+	protected HttpResponse getResponse(HttpRequestBase request) {
+		try {
+			HttpResponse response = this.client.execute(request);
 
-	protected HttpURLConnection prepareConnection(String address) throws IOException {
-		URL url = new URL(address);
+			int statusCode = response.getStatusLine().getStatusCode();
+			switch (statusCode) {
+				case 200:
+					break;
 
-		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-		setRequestProperties(connection, "Accept", "Content-Type", "User-Agent");
+				case 404:
+					throw new SCBClientUrlNotFoundException();
 
-		return connection;
-	}
-
-	protected String getResponse(HttpURLConnection httpUrlConnection) throws IOException {
-		StringBuilder builder = new StringBuilder(32);
-
-		Map<String, List<String>> map = httpUrlConnection.getHeaderFields();
-		for (Map.Entry<String, List<String>> entry : map.entrySet()) {
-			System.out.println("Key : " + entry.getKey() + ", Value : " + entry.getValue());
-		}
-
-		try (BufferedReader br = new BufferedReader(new InputStreamReader(httpUrlConnection.getInputStream(),
-				this.charset.name()))) {
-			// Handle UTF-8 byte order mark (BOM)
-			br.mark(4);
-
-			// Checks if the stream contains a BOM. If it doesn't, reset the
-			// stream pointer to the location specified by br.mark()
-			if ('\uFEFF' != br.read()) {
-				br.reset();
+				case 429:
+					throw new SCBClientTooManyRequestsException();
 			}
-
-			String line;
-			while ((line = br.readLine()) != null) {
-				builder.append(line);
-			}
+			return response;
+		} catch (IOException e) {
+			throw new SCBClientException(e);
 		}
-
-		httpUrlConnection.disconnect();
-
-		return builder.toString();
 	}
 
 	/**
@@ -143,7 +125,7 @@ public abstract class AbstractRequester {
 		return null;
 	}
 
-	public abstract String doRequest(String address) throws IOException;
+	public abstract String getResponse(String address) throws IOException;
 
 	public Charset getCharset() {
 		return this.charset;
