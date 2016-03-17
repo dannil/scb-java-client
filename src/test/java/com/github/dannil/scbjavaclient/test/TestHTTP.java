@@ -2,7 +2,7 @@ package com.github.dannil.scbjavaclient.test;
 
 import java.io.IOException;
 
-import com.github.dannil.scbjavaclient.utility.requester.GETRequesterNew;
+import com.github.dannil.scbjavaclient.utility.requester.GETRequester;
 import com.github.dannil.scbjavaclient.utility.requester.HttpRequester;
 import com.github.dannil.scbjavaclient.utility.requester.RequestMethod;
 
@@ -14,7 +14,7 @@ public class TestHTTP {
 		String response = HttpRequester.doGetRequest(url, RequestMethod.GET);
 		System.out.println(response);
 
-		GETRequesterNew getRequester = new GETRequesterNew();
+		GETRequester getRequester = new GETRequester();
 		String res = getRequester.getResponse(url);
 		System.out.println(res);
 	}
