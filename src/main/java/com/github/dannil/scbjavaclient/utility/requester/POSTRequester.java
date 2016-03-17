@@ -16,18 +16,24 @@
 
 package com.github.dannil.scbjavaclient.utility.requester;
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
+import java.io.InputStreamReader;
 import java.nio.charset.Charset;
+import java.util.Map.Entry;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+
+import com.github.dannil.scbjavaclient.exception.SCBClientException;
 
 public class POSTRequester extends AbstractRequester {
 
-	private String payload;
+	private String query;
 
 	public POSTRequester() {
 		super();
-		super.requestProperties.put("Request-Method", "POST");
+		super.requestProperties.put("Request-Method", "GET");
 	}
 
 	public POSTRequester(Charset charset) {
@@ -35,33 +41,37 @@ public class POSTRequester extends AbstractRequester {
 		super.charset = charset;
 	}
 
-	public String getPayload() {
-		return this.payload;
+	public String getQuery() {
+		return this.query;
 	}
 
-	public void setPayload(String payload) {
-		this.payload = payload;
+	public void setQuery(String query) {
+		this.query = query;
 	}
 
 	@Override
-	public String doRequest(String address) throws IOException {
-		if (this.payload == null) {
+	public String getResponse(String url) {
+		if (this.query == null) {
 			throw new IllegalStateException("Payload is null");
 		}
 
-		HttpURLConnection httpUrlConnection = super.prepareConnection(address);
-
-		httpUrlConnection.setDoInput(true);
-		httpUrlConnection.setDoOutput(true);
-		httpUrlConnection.setRequestMethod(super.requestProperties.get("Request-Method"));
-
-		try (OutputStreamWriter writer = new OutputStreamWriter(httpUrlConnection.getOutputStream(),
-				super.charset.name())) {
-			writer.write(this.payload);
+		HttpGet request = new HttpGet(url);
+		for (Entry<String, String> entry : super.requestProperties.entrySet()) {
+			request.addHeader(entry.getKey(), entry.getValue());
 		}
 
-		String response = super.getResponse(httpUrlConnection);
-		return response;
+		HttpResponse response = super.getResponse(request);
+
+		StringBuilder builder = new StringBuilder(64);
+		try (BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()))) {
+			String line = "";
+			while ((line = rd.readLine()) != null) {
+				builder.append(line);
+			}
+		} catch (IOException e) {
+			throw new SCBClientException(e);
+		}
+		return builder.toString();
 	}
 
 }

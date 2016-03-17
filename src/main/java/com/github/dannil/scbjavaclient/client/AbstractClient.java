@@ -16,8 +16,6 @@
 
 package com.github.dannil.scbjavaclient.client;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -25,6 +23,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.github.dannil.scbjavaclient.exception.SCBClientException;
+import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.Localization;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
@@ -110,73 +110,57 @@ public abstract class AbstractClient {
 	}
 
 	/**
-	 * Performs a GET request to the specified address.
+	 * Performs a GET request to the specified URL.
 	 * 
-	 * @param address
-	 *            the address which will be sent a GET request
+	 * @param url
+	 *            the URL which will be sent a GET request
 	 * @return a string representation of the API's response
 	 */
 	// TODO Improve method
-	protected String get(String address) {
+	protected String get(String url) {
 		AbstractRequester get = RequesterFactory.getRequester("GET");
 		try {
-			String response = get.doRequest(getBaseUrl() + address);
-
-			return response;
-		} catch (FileNotFoundException e) {
-			// 404, call the Client again with the fallback language
-
+			return get.getResponse(getBaseUrl() + url);
+		} catch (SCBClientUrlNotFoundException e) {
+			// 404, call the client again with the fallback language
 			try {
-				return get.doRequest(toUrl(getBaseUrl() + address, this.locale));
-			} catch (IOException e1) {
-				e1.printStackTrace();
-
-				return "UNHANDLED";
+				return get.getResponse(toUrl(getBaseUrl() + url, this.locale));
+			} catch (SCBClientException e1) {
+				throw e1;
 			}
-		} catch (IOException e) {
+		} catch (SCBClientException e) {
 			// Handle all other cases
-			e.printStackTrace();
-
-			return "IOException";
+			throw e;
 		}
 	}
 
 	/**
-	 * Performs a POST request to the specified address.
+	 * Performs a POST request to the specified URL.
 	 * 
-	 * @param address
-	 *            the address which will be sent a POST request
+	 * @param url
+	 *            the URL which will be sent a POST request
 	 * @param query
 	 *            the payload which the API processes
 	 * @return a string representation of the API's response
 	 */
 	// TODO Improve method
-	protected String post(String address, String query) {
+	protected String post(String url, String query) {
 		POSTRequester post = (POSTRequester) RequesterFactory.getRequester("POST");
-		post.setPayload(query);
+		post.setQuery(query);
 		try {
-			String response = post.doRequest(getBaseUrl() + address);
-
+			String response = post.getResponse(getBaseUrl() + url);
 			LOGGER.log(Level.INFO, query);
-
 			return response;
-		} catch (FileNotFoundException e) {
-			// 404, call the Client again with the fallback language
-
+		} catch (SCBClientUrlNotFoundException e) {
+			// 404, call the client again with the fallback language
 			try {
-				LOGGER.log(Level.INFO, query);
-
-				return post.doRequest(toUrl(getBaseUrl() + address, this.locale));
-			} catch (IOException e1) {
-				e1.printStackTrace();
-
-				return "UNHANDLED";
+				return post.getResponse(toUrl(getBaseUrl() + url, this.locale));
+			} catch (SCBClientException e1) {
+				throw e1;
 			}
-		} catch (IOException e) {
+		} catch (SCBClientException e) {
 			// Handle all other cases
-			e.printStackTrace();
-
-			return "IOException";
+			throw e;
 		}
 	}
 
