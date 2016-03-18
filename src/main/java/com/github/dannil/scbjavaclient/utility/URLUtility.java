@@ -48,11 +48,10 @@ public class URLUtility {
 	 * @return the modified URL
 	 */
 	public static String changeUrlLocale(String url, Locale fallback) {
-		String apiName = "doris";
+		String startPoint = "doris";
 
-		int start = url.indexOf(apiName) + apiName.length() + 1;
-		String atLanguage = url.substring(start);
-		int end = start + atLanguage.indexOf('/');
+		int start = url.indexOf(startPoint) + startPoint.length() + 1;
+		int end = start + url.substring(start).indexOf('/');
 
 		StringBuilder builder = new StringBuilder(url);
 		builder.replace(start, end, fallback.getLanguage());
