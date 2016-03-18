@@ -28,6 +28,7 @@ import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.Localization;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
+import com.github.dannil.scbjavaclient.utility.URLUtility;
 import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
 import com.github.dannil.scbjavaclient.utility.requester.POSTRequester;
 import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
@@ -116,7 +117,6 @@ public abstract class AbstractClient {
 	 *            the URL which will be sent a GET request
 	 * @return a string representation of the API's response
 	 */
-	// TODO Improve method
 	protected String get(String url) {
 		AbstractRequester get = RequesterFactory.getRequester("GET");
 		try {
@@ -124,7 +124,7 @@ public abstract class AbstractClient {
 		} catch (SCBClientUrlNotFoundException e) {
 			// 404, call the client again with the fallback language
 			try {
-				return get.getResponse(toUrl(getBaseUrl() + url, this.locale));
+				return get.getResponse(URLUtility.changeUrlLocale(getBaseUrl() + url));
 			} catch (SCBClientException e1) {
 				throw e1;
 			}
@@ -143,7 +143,6 @@ public abstract class AbstractClient {
 	 *            the payload which the API processes
 	 * @return a string representation of the API's response
 	 */
-	// TODO Improve method
 	protected String post(String url, String query) {
 		POSTRequester post = (POSTRequester) RequesterFactory.getRequester("POST");
 		post.setQuery(query);
@@ -154,7 +153,7 @@ public abstract class AbstractClient {
 		} catch (SCBClientUrlNotFoundException e) {
 			// 404, call the client again with the fallback language
 			try {
-				return post.getResponse(toUrl(getBaseUrl() + url, this.locale));
+				return post.getResponse(URLUtility.changeUrlLocale(getBaseUrl() + url));
 			} catch (SCBClientException e1) {
 				throw e1;
 			}
@@ -162,32 +161,6 @@ public abstract class AbstractClient {
 			// Handle all other cases
 			throw e;
 		}
-	}
-
-	// TODO Maybe should be in a separate utility class?
-	/**
-	 * Generates a new URL to the API with the specified inputs.
-	 * 
-	 * @param url
-	 *            the URL to edit
-	 * @param locale
-	 *            the locale which to manipulate the URL with
-	 * @return the modified URL
-	 */
-	private String toUrl(String url, Locale locale) {
-		String internalAddress = url;
-
-		// Some tables only support Swedish so we need to fall back to
-		// Swedish if this is the case
-		Locale fallback = new Locale("sv", "SE");
-
-		int start = internalAddress.indexOf(locale.getLanguage(), internalAddress.indexOf("doris"));
-		int end = start + locale.getLanguage().length();
-
-		StringBuilder builder = new StringBuilder(internalAddress);
-		builder.replace(start, end, fallback.getLanguage());
-
-		return builder.toString();
 	}
 
 	/**
