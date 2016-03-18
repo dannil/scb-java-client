@@ -41,7 +41,7 @@ public class URLUtility_UnitTest {
 	}
 
 	@Test
-	public void toList() {
+	public void changeUrlLocale() {
 		String url = URLUtility
 				.changeUrlLocale("http://api.scb.se/OV0104/v1/doris/en/ssd/BE/BE0101/BE0101A/BefolkningNy");
 
