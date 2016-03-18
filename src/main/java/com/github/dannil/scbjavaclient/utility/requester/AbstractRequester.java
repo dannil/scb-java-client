@@ -102,6 +102,9 @@ public abstract class AbstractRequester {
 
 				case 429:
 					throw new SCBClientTooManyRequestsException(request.getURI().toString());
+
+				default:
+					break;
 			}
 			return response;
 		} catch (IOException e) {
