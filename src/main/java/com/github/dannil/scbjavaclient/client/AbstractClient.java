@@ -28,6 +28,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.Localization;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
+import com.github.dannil.scbjavaclient.utility.URLUtility;
 import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
 import com.github.dannil.scbjavaclient.utility.requester.POSTRequester;
 import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
@@ -127,7 +128,7 @@ public abstract class AbstractClient {
 			// 404, call the Client again with the fallback language
 
 			try {
-				return get.doRequest(toUrl(getBaseUrl() + url, this.locale));
+				return get.doRequest(URLUtility.changeUrlLocale(getBaseUrl() + url));
 			} catch (IOException e1) {
 				e1.printStackTrace();
 
@@ -166,7 +167,7 @@ public abstract class AbstractClient {
 			try {
 				LOGGER.log(Level.INFO, query);
 
-				return post.doRequest(toUrl(getBaseUrl() + url, this.locale));
+				return post.doRequest(URLUtility.changeUrlLocale(getBaseUrl() + url));
 			} catch (IOException e1) {
 				e1.printStackTrace();
 
@@ -178,32 +179,6 @@ public abstract class AbstractClient {
 
 			return "IOException";
 		}
-	}
-
-	// TODO Maybe should be in a separate utility class?
-	/**
-	 * Generates a new URL to the API with the specified inputs.
-	 * 
-	 * @param url
-	 *            the URL to edit
-	 * @param locale
-	 *            the locale which to manipulate the URL with
-	 * @return the modified URL
-	 */
-	private String toUrl(String url, Locale locale) {
-		String internalAddress = url;
-
-		// Some tables only support Swedish so we need to fall back to
-		// Swedish if this is the case
-		Locale fallback = new Locale("sv", "SE");
-
-		int start = internalAddress.indexOf(locale.getLanguage(), internalAddress.indexOf("doris"));
-		int end = start + locale.getLanguage().length();
-
-		StringBuilder builder = new StringBuilder(internalAddress);
-		builder.replace(start, end, fallback.getLanguage());
-
-		return builder.toString();
 	}
 
 	/**
