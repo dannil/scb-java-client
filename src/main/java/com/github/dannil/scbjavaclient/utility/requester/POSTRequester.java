@@ -60,9 +60,8 @@ public class POSTRequester extends AbstractRequester {
 			request.addHeader(entry.getKey(), entry.getValue());
 		}
 
-		HttpEntity entity;
 		try {
-			entity = new ByteArrayEntity(this.query.getBytes(this.charset.name()));
+			HttpEntity entity = new ByteArrayEntity(this.query.getBytes(this.charset.name()));
 			request.setEntity(entity);
 		} catch (IOException e) {
 			throw new SCBClientParsingException(e);
