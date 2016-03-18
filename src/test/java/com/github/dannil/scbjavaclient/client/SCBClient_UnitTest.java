@@ -60,4 +60,15 @@ public class SCBClient_UnitTest {
 		assertTrue(response.contains("Tid"));
 	}
 
+	@Test
+	public void setLocalizationLanguage() {
+		Locale locale = new Locale("sv", "SE");
+		SCBClient client = new SCBClient(locale);
+
+		Locale localizationLocale = new Locale("en", "US");
+		client.setLocalizationLanguage(localizationLocale);
+
+		assertEquals(localizationLocale, client.localization.getLanguage());
+	}
+
 }
