@@ -104,7 +104,7 @@ public abstract class AbstractRequester {
 					throw new SCBClientTooManyRequestsException(request.getURI().toString());
 
 				default:
-					break;
+					throw new SCBClientException("Unhandled HTTP status code " + statusCode);
 			}
 			return response;
 		} catch (IOException e) {
