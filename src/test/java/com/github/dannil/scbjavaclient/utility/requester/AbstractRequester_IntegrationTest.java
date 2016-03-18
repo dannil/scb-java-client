@@ -66,8 +66,6 @@ public class AbstractRequester_IntegrationTest extends RemoteIntegrationTestSuit
 		assertNotNull(e);
 		assertTrue(e instanceof SCBClientTooManyRequestsException);
 
-		System.out.println(Config.getTimerMs() * 10);
-
 		// Make sure the other tests don't fail due to this test making too many requests
 		Thread.sleep(Math.min(Config.getTimerMs() * 10, 10000));
 	}
