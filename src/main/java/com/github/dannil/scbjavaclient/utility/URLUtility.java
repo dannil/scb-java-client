@@ -25,25 +25,39 @@ public class URLUtility {
 	}
 
 	/**
-	 * Generates a new URL to the API by replacing the current locale present in the URL (defined
-	 * by the input locale) with the fallback locale.
+	 * Generates a new URL to the API by replacing the current locale in the URL with the default
+	 * fallback locale's language (swedish).
 	 *
 	 * @param url
 	 *            the URL to edit
 	 * @return the modified URL
 	 */
 	public static String changeUrlLocale(String url) {
+		Locale fallback = new Locale("sv", "SE");
+		return changeUrlLocale(url, fallback);
+	}
+
+	/**
+	 * Generates a new URL to the API by replacing the current locale in the URL with the specified
+	 * fallback locale.
+	 *
+	 * @param url
+	 *            the URL to edit
+	 * @param fallback
+	 *            the fallback locale to use
+	 * @return the modified URL
+	 */
+	public static String changeUrlLocale(String url, Locale fallback) {
 		String apiName = "doris";
 
 		int start = url.indexOf(apiName) + apiName.length() + 1;
 		String atLanguage = url.substring(start);
 		int end = start + atLanguage.indexOf('/');
 
-		Locale fallback = new Locale("sv", "SE");
-
 		StringBuilder builder = new StringBuilder(url);
 		builder.replace(start, end, fallback.getLanguage());
 
 		return builder.toString();
 	}
+
 }
