@@ -143,7 +143,7 @@ public abstract class AbstractRequester {
 	 * @return the available codes from the specified table
 	 */
 	public static String getCodes(String table) {
-		AbstractRequester get = RequesterFactory.getRequester("GET");
+		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
 		return get.getResponse("http://api.scb.se/OV0104/v1/doris/sv/ssd/" + table);
 	}
 

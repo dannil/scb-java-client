@@ -31,14 +31,14 @@ public class POSTRequester_UnitTest {
 
 	@Test
 	public void getCharset() {
-		POSTRequester post = (POSTRequester) RequesterFactory.getRequester("POST");
+		POSTRequester post = (POSTRequester) RequesterFactory.getRequester(RequestMethod.POST);
 
 		assertEquals(StandardCharsets.UTF_8, post.getCharset());
 	}
 
 	@Test
 	public void getPayload() {
-		POSTRequester post = (POSTRequester) RequesterFactory.getRequester("POST");
+		POSTRequester post = (POSTRequester) RequesterFactory.getRequester(RequestMethod.POST);
 		post.setQuery("payload");
 
 		assertEquals("payload", post.getQuery());
@@ -46,7 +46,7 @@ public class POSTRequester_UnitTest {
 
 	@Test(expected = IllegalStateException.class)
 	public void doRequestIllegalStateNullPayload() throws IOException {
-		POSTRequester post = (POSTRequester) RequesterFactory.getRequester("POST");
+		POSTRequester post = (POSTRequester) RequesterFactory.getRequester(RequestMethod.POST);
 
 		String response = post.getResponse("http://api.scb.se/OV0104/v1/doris/en/ssd/BE/BE0701/MedelAlderNY");
 

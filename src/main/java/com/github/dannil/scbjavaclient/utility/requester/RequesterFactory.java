@@ -38,7 +38,7 @@ public class RequesterFactory {
 	 *            the method (i.e. GET or POST)
 	 * @return a regular (non-singleton) requester which matches the method.
 	 */
-	public static AbstractRequester getRequester(String method) {
+	public static AbstractRequester getRequester(RequestMethod method) {
 		return getRequester(method, StandardCharsets.UTF_8);
 	}
 
@@ -52,15 +52,15 @@ public class RequesterFactory {
 	 *            the character encoding to use
 	 * @return a regular (non-singleton) requester which matches the method.
 	 */
-	public static AbstractRequester getRequester(String method, Charset charset) {
+	public static AbstractRequester getRequester(RequestMethod method, Charset charset) {
 		// AbstractRequester abs = getRequester(method);
 		// abs.setCharset(charset);
 		// return abs;
-		switch (method.toUpperCase()) {
-			case "GET":
+		switch (method) {
+			case GET:
 				return new GETRequester(charset);
 
-			case "POST":
+			case POST:
 				return new POSTRequester(charset);
 
 			default:

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
+import com.github.dannil.scbjavaclient.utility.requester.RequestMethod;
 import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
 
 public final class Config {
@@ -12,7 +13,7 @@ public final class Config {
 
 	static {
 		try {
-			AbstractRequester get = RequesterFactory.getRequester("GET");
+			AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
 			String response = get.getResponse("http://api.scb.se/OV0104/v1/doris/en/ssd/?config");
 			JsonNode node = JsonUtility.getNode(response);
 

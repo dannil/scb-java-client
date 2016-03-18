@@ -29,12 +29,12 @@ import java.util.Map;
  */
 public class RequesterSingletonFactory {
 
-	private static Map<String, AbstractRequester> requesters;
+	private static Map<RequestMethod, AbstractRequester> requesters;
 
 	static {
-		requesters = new HashMap<String, AbstractRequester>();
-		requesters.put("GET", GETHolder.INSTANCE);
-		requesters.put("POST", POSTHolder.INSTANCE);
+		requesters = new HashMap<RequestMethod, AbstractRequester>();
+		requesters.put(RequestMethod.GET, GETHolder.INSTANCE);
+		requesters.put(RequestMethod.POST, POSTHolder.INSTANCE);
 	}
 
 	private static class GETHolder {
@@ -57,7 +57,7 @@ public class RequesterSingletonFactory {
 	 *            the method (i.e. GET or POST)
 	 * @return a singleton requester which matches the method.
 	 */
-	public static AbstractRequester getRequester(String method) {
+	public static AbstractRequester getRequester(RequestMethod method) {
 		return getRequester(method, StandardCharsets.UTF_8);
 	}
 
@@ -71,7 +71,7 @@ public class RequesterSingletonFactory {
 	 *            the character encoding to use
 	 * @return a singleton requester which matches the method.
 	 */
-	public static AbstractRequester getRequester(String method, Charset charset) {
+	public static AbstractRequester getRequester(RequestMethod method, Charset charset) {
 		if (!requesters.containsKey(method)) {
 			throw new IllegalArgumentException(method + " is not a valid method");
 		}

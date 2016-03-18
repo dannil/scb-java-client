@@ -31,6 +31,7 @@ import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 import com.github.dannil.scbjavaclient.utility.URLUtility;
 import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
 import com.github.dannil.scbjavaclient.utility.requester.POSTRequester;
+import com.github.dannil.scbjavaclient.utility.requester.RequestMethod;
 import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
 
 /**
@@ -118,7 +119,7 @@ public abstract class AbstractClient {
 	 * @return a string representation of the API's response
 	 */
 	protected String get(String url) {
-		AbstractRequester get = RequesterFactory.getRequester("GET");
+		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
 		try {
 			return get.getResponse(getBaseUrl() + url);
 		} catch (SCBClientUrlNotFoundException e) {
@@ -144,7 +145,7 @@ public abstract class AbstractClient {
 	 * @return a string representation of the API's response
 	 */
 	protected String post(String url, String query) {
-		POSTRequester post = (POSTRequester) RequesterFactory.getRequester("POST");
+		POSTRequester post = (POSTRequester) RequesterFactory.getRequester(RequestMethod.POST);
 		post.setQuery(query);
 		try {
 			String response = post.getResponse(getBaseUrl() + url);

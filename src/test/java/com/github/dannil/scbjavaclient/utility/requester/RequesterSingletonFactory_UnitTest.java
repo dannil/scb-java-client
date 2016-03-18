@@ -25,22 +25,22 @@ public class RequesterSingletonFactory_UnitTest {
 
 	@Test
 	public void getRequester() {
-		AbstractRequester abs = RequesterSingletonFactory.getRequester("GET");
+		AbstractRequester abs = RequesterSingletonFactory.getRequester(RequestMethod.GET);
 
-		assertEquals(RequesterSingletonFactory.getRequester("GET"), abs);
+		assertEquals(RequesterSingletonFactory.getRequester(RequestMethod.GET), abs);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void getRequesterIllegalArgument() {
-		AbstractRequester abs = RequesterSingletonFactory.getRequester("BLABLA");
+		AbstractRequester abs = RequesterSingletonFactory.getRequester(null);
 
 		assertNull(abs);
 	}
 
 	@Test
 	public void requesterIsSingleton() {
-		AbstractRequester abs1 = RequesterSingletonFactory.getRequester("GET", StandardCharsets.UTF_8);
-		AbstractRequester abs2 = RequesterSingletonFactory.getRequester("GET", StandardCharsets.US_ASCII);
+		AbstractRequester abs1 = RequesterSingletonFactory.getRequester(RequestMethod.GET, StandardCharsets.UTF_8);
+		AbstractRequester abs2 = RequesterSingletonFactory.getRequester(RequestMethod.GET, StandardCharsets.US_ASCII);
 
 		assertEquals(StandardCharsets.US_ASCII, abs1.getCharset());
 		assertEquals(abs1.getCharset(), abs2.getCharset());
