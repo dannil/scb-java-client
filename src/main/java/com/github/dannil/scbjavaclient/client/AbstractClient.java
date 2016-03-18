@@ -124,7 +124,7 @@ public abstract class AbstractClient {
 		} catch (SCBClientUrlNotFoundException e) {
 			// 404, call the client again with the fallback language
 			try {
-				return get.getResponse(URLUtility.changeUrlLocale(getBaseUrl() + url));
+				return get.getResponse(URLUtility.changeLanguageForUrl(getBaseUrl() + url));
 			} catch (SCBClientException e1) {
 				throw e1;
 			}
@@ -153,7 +153,7 @@ public abstract class AbstractClient {
 		} catch (SCBClientUrlNotFoundException e) {
 			// 404, call the client again with the fallback language
 			try {
-				return post.getResponse(URLUtility.changeUrlLocale(getBaseUrl() + url));
+				return post.getResponse(URLUtility.changeLanguageForUrl(getBaseUrl() + url));
 			} catch (SCBClientException e1) {
 				throw e1;
 			}

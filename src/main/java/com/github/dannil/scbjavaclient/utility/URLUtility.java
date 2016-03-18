@@ -32,9 +32,9 @@ public class URLUtility {
 	 *            the URL to edit
 	 * @return the modified URL
 	 */
-	public static String changeUrlLocale(String url) {
+	public static String changeLanguageForUrl(String url) {
 		Locale fallback = new Locale("sv", "SE");
-		return changeUrlLocale(url, fallback);
+		return changeLanguageForUrl(url, fallback);
 	}
 
 	/**
@@ -47,7 +47,7 @@ public class URLUtility {
 	 *            the fallback locale to use
 	 * @return the modified URL
 	 */
-	public static String changeUrlLocale(String url, Locale fallback) {
+	public static String changeLanguageForUrl(String url, Locale fallback) {
 		String startPoint = "doris";
 
 		int start = url.indexOf(startPoint) + startPoint.length() + 1;

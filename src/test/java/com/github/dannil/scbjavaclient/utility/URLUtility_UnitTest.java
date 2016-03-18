@@ -43,7 +43,7 @@ public class URLUtility_UnitTest {
 	@Test
 	public void changeUrlLocale() {
 		String url = URLUtility
-				.changeUrlLocale("http://api.scb.se/OV0104/v1/doris/en/ssd/BE/BE0101/BE0101A/BefolkningNy");
+				.changeLanguageForUrl("http://api.scb.se/OV0104/v1/doris/en/ssd/BE/BE0101/BE0101A/BefolkningNy");
 
 		assertEquals("http://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0101/BE0101A/BefolkningNy", url);
 	}
