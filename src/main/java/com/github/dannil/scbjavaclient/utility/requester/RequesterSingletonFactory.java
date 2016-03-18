@@ -50,7 +50,8 @@ public class RequesterSingletonFactory {
 	}
 
 	/**
-	 * Returns a singleton requester which matches the method.
+	 * Returns a singleton requester which matches the method. All responses are
+	 * read as UTF-8 character encoding.
 	 * 
 	 * @param method
 	 *            the method (i.e. GET or POST)
