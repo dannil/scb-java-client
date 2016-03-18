@@ -17,17 +17,23 @@
 package com.github.dannil.scbjavaclient.utility.requester;
 
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
 import java.nio.charset.Charset;
+import java.util.Map.Entry;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.ByteArrayEntity;
+
+import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
 
 public class POSTRequester extends AbstractRequester {
 
-	private String payload;
+	private String query;
 
 	public POSTRequester() {
 		super();
-		super.requestProperties.put("Request-Method", "POST");
+		super.requestProperties.put("Request-Method", "GET");
 	}
 
 	public POSTRequester(Charset charset) {
@@ -35,33 +41,35 @@ public class POSTRequester extends AbstractRequester {
 		super.charset = charset;
 	}
 
-	public String getPayload() {
-		return this.payload;
+	public String getQuery() {
+		return this.query;
 	}
 
-	public void setPayload(String payload) {
-		this.payload = payload;
+	public void setQuery(String query) {
+		this.query = query;
 	}
 
 	@Override
-	public String doRequest(String address) throws IOException {
-		if (this.payload == null) {
+	public String getResponse(String url) {
+		if (this.query == null) {
 			throw new IllegalStateException("Payload is null");
 		}
 
-		HttpURLConnection httpUrlConnection = super.prepareConnection(address);
-
-		httpUrlConnection.setDoInput(true);
-		httpUrlConnection.setDoOutput(true);
-		httpUrlConnection.setRequestMethod(super.requestProperties.get("Request-Method"));
-
-		try (OutputStreamWriter writer = new OutputStreamWriter(httpUrlConnection.getOutputStream(),
-				super.charset.name())) {
-			writer.write(this.payload);
+		HttpPost request = new HttpPost(url);
+		for (Entry<String, String> entry : super.requestProperties.entrySet()) {
+			request.addHeader(entry.getKey(), entry.getValue());
 		}
 
-		String response = super.getResponse(httpUrlConnection);
-		return response;
-	}
+		HttpEntity entity;
+		try {
+			entity = new ByteArrayEntity(this.query.getBytes(this.charset.name()));
+			request.setEntity(entity);
+		} catch (IOException e) {
+			throw new SCBClientParsingException(e);
+		}
 
+		HttpResponse response = super.getResponse(request);
+
+		return super.getBody(response);
+	}
 }

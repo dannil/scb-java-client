@@ -1,8 +1,7 @@
 package com.github.dannil.scbjavaclient.test.utility;
 
-import java.io.IOException;
-
 import com.fasterxml.jackson.databind.JsonNode;
+import com.github.dannil.scbjavaclient.exception.SCBClientException;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
 import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
@@ -14,7 +13,7 @@ public final class Config {
 	static {
 		try {
 			AbstractRequester get = RequesterFactory.getRequester("GET");
-			String response = get.doRequest("http://api.scb.se/OV0104/v1/doris/en/ssd/?config");
+			String response = get.getResponse("http://api.scb.se/OV0104/v1/doris/en/ssd/?config");
 			JsonNode node = JsonUtility.getNode(response);
 
 			int maxCalls = node.get("maxCalls").asInt();
@@ -23,11 +22,9 @@ public final class Config {
 			// 10000 10
 			timerMs = (int) (((timeWindow * 1000.0) / timeWindow) * (maxCalls / 100.0 + 0.9));
 			// System.out.println("timerMs: " + timerMs);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (SCBClientException e) {
+			throw e;
 		}
-
 	}
 
 	public static int getTimerMs() {

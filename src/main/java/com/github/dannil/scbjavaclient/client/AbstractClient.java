@@ -16,8 +16,6 @@
 
 package com.github.dannil.scbjavaclient.client;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -25,6 +23,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.github.dannil.scbjavaclient.exception.SCBClientException;
+import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.Localization;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
@@ -117,28 +117,20 @@ public abstract class AbstractClient {
 	 *            the URL which will be sent a GET request
 	 * @return a string representation of the API's response
 	 */
-	// TODO Improve method
 	protected String get(String url) {
 		AbstractRequester get = RequesterFactory.getRequester("GET");
 		try {
-			String response = get.doRequest(getBaseUrl() + url);
-
-			return response;
-		} catch (FileNotFoundException e) {
-			// 404, call the Client again with the fallback language
-
+			return get.getResponse(getBaseUrl() + url);
+		} catch (SCBClientUrlNotFoundException e) {
+			// 404, call the client again with the fallback language
 			try {
-				return get.doRequest(URLUtility.changeUrlLocale(getBaseUrl() + url));
-			} catch (IOException e1) {
-				e1.printStackTrace();
-
-				return "UNHANDLED";
+				return get.getResponse(URLUtility.changeUrlLocale(getBaseUrl() + url));
+			} catch (SCBClientException e1) {
+				throw e1;
 			}
-		} catch (IOException e) {
+		} catch (SCBClientException e) {
 			// Handle all other cases
-			e.printStackTrace();
-
-			return "IOException";
+			throw e;
 		}
 	}
 
@@ -151,33 +143,23 @@ public abstract class AbstractClient {
 	 *            the payload which the API processes
 	 * @return a string representation of the API's response
 	 */
-	// TODO Improve method
 	protected String post(String url, String query) {
 		POSTRequester post = (POSTRequester) RequesterFactory.getRequester("POST");
-		post.setPayload(query);
+		post.setQuery(query);
 		try {
-			String response = post.doRequest(getBaseUrl() + url);
-
+			String response = post.getResponse(getBaseUrl() + url);
 			LOGGER.log(Level.INFO, query);
-
 			return response;
-		} catch (FileNotFoundException e) {
-			// 404, call the Client again with the fallback language
-
+		} catch (SCBClientUrlNotFoundException e) {
+			// 404, call the client again with the fallback language
 			try {
-				LOGGER.log(Level.INFO, query);
-
-				return post.doRequest(URLUtility.changeUrlLocale(getBaseUrl() + url));
-			} catch (IOException e1) {
-				e1.printStackTrace();
-
-				return "UNHANDLED";
+				return post.getResponse(URLUtility.changeUrlLocale(getBaseUrl() + url));
+			} catch (SCBClientException e1) {
+				throw e1;
 			}
-		} catch (IOException e) {
+		} catch (SCBClientException e) {
 			// Handle all other cases
-			e.printStackTrace();
-
-			return "IOException";
+			throw e;
 		}
 	}
 

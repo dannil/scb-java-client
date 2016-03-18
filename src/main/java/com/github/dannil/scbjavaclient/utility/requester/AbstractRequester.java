@@ -20,14 +20,20 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLConnection;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpRequestBase;
+import org.apache.http.impl.client.HttpClientBuilder;
+
+import com.github.dannil.scbjavaclient.exception.SCBClientException;
+import com.github.dannil.scbjavaclient.exception.SCBClientTooManyRequestsException;
+import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
 
 /**
  * Class which contains the logic for sending URL requests to a specified address.
@@ -37,6 +43,8 @@ import java.util.Properties;
 public abstract class AbstractRequester {
 
 	protected Charset charset;
+
+	protected HttpClient client;
 
 	protected Map<String, String> requestProperties;
 
@@ -55,6 +63,8 @@ public abstract class AbstractRequester {
 	}
 
 	protected AbstractRequester() {
+		this.client = HttpClientBuilder.create().build();
+
 		this.charset = StandardCharsets.UTF_8;
 
 		this.requestProperties = new HashMap<String, String>();
@@ -76,33 +86,32 @@ public abstract class AbstractRequester {
 		builder.append(System.getProperty("os.name"));
 
 		this.requestProperties.put("User-Agent", builder.toString());
-
 	}
 
-	protected void setRequestProperties(URLConnection urlConnection, String... props) {
-		for (String prop : props) {
-			urlConnection.addRequestProperty(prop, this.requestProperties.get(prop));
+	protected HttpResponse getResponse(HttpRequestBase request) {
+		try {
+			HttpResponse response = this.client.execute(request);
+
+			int statusCode = response.getStatusLine().getStatusCode();
+			switch (statusCode) {
+				case 200:
+					break;
+
+				case 404:
+					throw new SCBClientUrlNotFoundException(request.getURI().toString());
+
+				case 429:
+					throw new SCBClientTooManyRequestsException(request.getURI().toString());
+			}
+			return response;
+		} catch (IOException e) {
+			throw new SCBClientException(e);
 		}
 	}
 
-	protected HttpURLConnection prepareConnection(String address) throws IOException {
-		URL url = new URL(address);
-
-		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-		setRequestProperties(connection, "Accept", "Content-Type", "User-Agent");
-
-		return connection;
-	}
-
-	protected String getResponse(HttpURLConnection httpUrlConnection) throws IOException {
-		StringBuilder builder = new StringBuilder(32);
-
-		// Map<String, List<String>> map = httpUrlConnection.getHeaderFields();
-		// for (Map.Entry<String, List<String>> entry : map.entrySet()) {
-		// System.out.println("Key : " + entry.getKey() + ", Value : " + entry.getValue());
-		// }
-
-		try (BufferedReader br = new BufferedReader(new InputStreamReader(httpUrlConnection.getInputStream(),
+	protected String getBody(HttpResponse response) {
+		StringBuilder builder = new StringBuilder(64);
+		try (BufferedReader br = new BufferedReader(new InputStreamReader(response.getEntity().getContent(),
 				this.charset.name()))) {
 			// Handle UTF-8 byte order mark (BOM)
 			br.mark(4);
@@ -117,10 +126,9 @@ public abstract class AbstractRequester {
 			while ((line = br.readLine()) != null) {
 				builder.append(line);
 			}
+		} catch (IOException e) {
+			throw new SCBClientException(e);
 		}
-
-		httpUrlConnection.disconnect();
-
 		return builder.toString();
 	}
 
@@ -132,17 +140,11 @@ public abstract class AbstractRequester {
 	 * @return the available codes from the specified table
 	 */
 	public static String getCodes(String table) {
-		try {
-			AbstractRequester get = RequesterFactory.getRequester("GET");
-			return get.doRequest(String.format("http://api.scb.se/OV0104/v1/doris/sv/ssd/%s", table));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
+		AbstractRequester get = RequesterFactory.getRequester("GET");
+		return get.getResponse("http://api.scb.se/OV0104/v1/doris/sv/ssd/" + table);
 	}
 
-	public abstract String doRequest(String address) throws IOException;
+	public abstract String getResponse(String address);
 
 	public Charset getCharset() {
 		return this.charset;
