@@ -23,7 +23,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.github.dannil.scbjavaclient.exception.SCBClientException;
 import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.Localization;
@@ -124,14 +123,7 @@ public abstract class AbstractClient {
 			return get.getResponse(getBaseUrl() + url);
 		} catch (SCBClientUrlNotFoundException e) {
 			// 404, call the client again with the fallback language
-			try {
-				return get.getResponse(URLUtility.changeLanguageForUrl(getBaseUrl() + url));
-			} catch (SCBClientException e1) {
-				throw e1;
-			}
-		} catch (SCBClientException e) {
-			// Handle all other cases
-			throw e;
+			return get.getResponse(URLUtility.changeLanguageForUrl(getBaseUrl() + url));
 		}
 	}
 
@@ -153,14 +145,7 @@ public abstract class AbstractClient {
 			return response;
 		} catch (SCBClientUrlNotFoundException e) {
 			// 404, call the client again with the fallback language
-			try {
-				return post.getResponse(URLUtility.changeLanguageForUrl(getBaseUrl() + url));
-			} catch (SCBClientException e1) {
-				throw e1;
-			}
-		} catch (SCBClientException e) {
-			// Handle all other cases
-			throw e;
+			return post.getResponse(URLUtility.changeLanguageForUrl(getBaseUrl() + url));
 		}
 	}
 
