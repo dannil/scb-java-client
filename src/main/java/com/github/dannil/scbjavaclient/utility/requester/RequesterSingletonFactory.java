@@ -38,11 +38,11 @@ public class RequesterSingletonFactory {
 	}
 
 	private static class GETHolder {
-		private static final GETRequester INSTANCE = new GETRequester(StandardCharsets.UTF_8);
+		private static final AbstractRequester INSTANCE = new GETRequester(StandardCharsets.UTF_8);
 	}
 
 	private static class POSTHolder {
-		private static final POSTRequester INSTANCE = new POSTRequester(StandardCharsets.UTF_8);
+		private static final AbstractRequester INSTANCE = new POSTRequester(StandardCharsets.UTF_8);
 	}
 
 	private RequesterSingletonFactory() {
