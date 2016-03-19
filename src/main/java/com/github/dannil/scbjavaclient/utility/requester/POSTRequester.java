@@ -16,7 +16,6 @@
 
 package com.github.dannil.scbjavaclient.utility.requester;
 
-import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.Map.Entry;
 
@@ -24,8 +23,6 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ByteArrayEntity;
-
-import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
 
 public class POSTRequester extends AbstractRequester {
 
@@ -60,12 +57,25 @@ public class POSTRequester extends AbstractRequester {
 			request.addHeader(entry.getKey(), entry.getValue());
 		}
 
-		try {
-			HttpEntity entity = new ByteArrayEntity(this.query.getBytes(this.charset.name()));
-			request.setEntity(entity);
-		} catch (IOException e) {
-			throw new SCBClientParsingException(e);
-		}
+		HttpEntity entity = new ByteArrayEntity(this.query.getBytes(Charset.forName(this.charset.name())));
+		request.setEntity(entity);
+
+		// try {
+		// HttpEntity entity = new ByteArrayEntity(this.query.getBytes(this.charset.name()));
+		// request.setEntity(entity);
+		// } catch (UnsupportedEncodingException e) {
+		// throw new SCBClientParsingException(e);
+		// }
+
+		// HttpEntity entity;
+		// try {
+		// entity = new ByteArrayEntity(this.query.getBytes(this.charset.name()));
+		// } catch (UnsupportedEncodingException e) {
+		// System.out.println("unsupported");
+		// entity = new ByteArrayEntity(this.query.getBytes(Charset.forName("UTF-8")));
+		// // throw new SCBClientParsingException(e);
+		// }
+		// request.setEntity(entity);
 
 		HttpResponse response = super.getResponse(request);
 
