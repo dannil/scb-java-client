@@ -74,9 +74,6 @@ public class AbstractClient_IntegrationTest {
 
 		String url = "HE/HE0103/HE0103B/BefolkningAlder";
 
-		// Build the payload
-		QueryBuilder builder = QueryBuilder.getInstance();
-
 		Map<String, Collection<?>> map = new HashMap<String, Collection<?>>();
 		map.put("ContentsCode", ListUtility.toList("HE0103D2"));
 		map.put("Alder", ListUtility.toList("tot"));
@@ -84,11 +81,11 @@ public class AbstractClient_IntegrationTest {
 		map.put("Boendeform", ListUtility.toList("SMAG"));
 		map.put("Tid", ListUtility.toList("2012"));
 
-		// This request is performed by a dummy Client which is set to English (as
+		// This request is performed by a dummy client which is set to English (as
 		// specified in the setup method.
 		// This means that if we receive a response with Swedish text, we've
 		// used the fallback url.
-		String response = client.post(url, builder.build(map));
+		String response = client.post(url, QueryBuilder.build(map));
 
 		assertTrue(response.contains("ålder"));
 		assertTrue(response.contains("kön"));

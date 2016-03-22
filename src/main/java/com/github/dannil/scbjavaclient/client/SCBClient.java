@@ -22,6 +22,7 @@ import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.environment.EnvironmentClient;
 import com.github.dannil.scbjavaclient.client.population.PopulationClient;
+import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
  * Root client for the client hierarchy.
@@ -87,7 +88,7 @@ public class SCBClient extends AbstractContainerClient {
 	 * @return a JSON string
 	 */
 	public String getRawData(String table, Map<String, Collection<?>> payload) {
-		return super.post(table, super.queryBuilder.build(payload));
+		return super.post(table, QueryBuilder.build(payload));
 	}
 
 }

@@ -26,7 +26,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.Localization;
-import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 import com.github.dannil.scbjavaclient.utility.URLUtility;
 import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
 import com.github.dannil.scbjavaclient.utility.requester.POSTRequester;
@@ -44,13 +43,11 @@ public abstract class AbstractClient {
 
 	protected Locale locale;
 
-	protected QueryBuilder queryBuilder;
 	protected Localization localization;
 
 	protected AbstractClient() {
 		this.locale = Locale.getDefault();
 
-		this.queryBuilder = QueryBuilder.getInstance();
 		this.localization = new Localization(this.locale);
 	}
 

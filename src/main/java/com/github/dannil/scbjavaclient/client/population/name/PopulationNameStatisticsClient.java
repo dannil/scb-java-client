@@ -26,6 +26,7 @@ import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.model.population.NumberOfChildrenBornWithFirstName;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.ListUtility;
+import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
  * Client which handles population name statistics data fetching.
@@ -83,7 +84,7 @@ public class PopulationNameStatisticsClient extends AbstractClient {
 		mappings.put("Tilltalsnamn", firstnames);
 		mappings.put("Tid", years);
 
-		String response = super.post("BE/BE0001/BE0001T04Ar", super.queryBuilder.build(mappings));
+		String response = super.post("BE/BE0001/BE0001T04Ar", QueryBuilder.build(mappings));
 
 		return JsonUtility.jsonToListOf(response, NumberOfChildrenBornWithFirstName.class);
 	}

@@ -26,6 +26,7 @@ import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.ListUtility;
+import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
  * Client which handles environment land and water area data fetching.
@@ -98,7 +99,7 @@ public class EnvironmentLandAndWaterAreaClient extends AbstractClient {
 		mappings.put("ArealTyp", types);
 		mappings.put("Tid", years);
 
-		String response = super.post("MI/MI0802/Areal2012", super.queryBuilder.build(mappings));
+		String response = super.post("MI/MI0802/Areal2012", QueryBuilder.build(mappings));
 
 		return JsonUtility.jsonToListOf(response, Area.class);
 	}

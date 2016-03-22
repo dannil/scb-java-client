@@ -27,6 +27,7 @@ import com.github.dannil.scbjavaclient.model.population.demography.FertilityRate
 import com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstChild;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.ListUtility;
+import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
  * Client which handles population demography data fetching.
@@ -120,7 +121,7 @@ public class PopulationDemographyClient extends AbstractClient {
 		mappings.put("Kon", genders);
 		mappings.put("Tid", years);
 
-		String response = super.post("BE/BE0701/FruktsamhetSumNy", super.queryBuilder.build(mappings));
+		String response = super.post("BE/BE0701/FruktsamhetSumNy", QueryBuilder.build(mappings));
 
 		return JsonUtility.jsonToListOf(response, FertilityRate.class);
 	}
@@ -159,7 +160,7 @@ public class PopulationDemographyClient extends AbstractClient {
 		mappings.put("Kon", genders);
 		mappings.put("Tid", years);
 
-		String response = super.post("BE/BE0701/MedelAlderNY", super.queryBuilder.build(mappings));
+		String response = super.post("BE/BE0701/MedelAlderNY", QueryBuilder.build(mappings));
 
 		return JsonUtility.jsonToListOf(response, MeanAgeFirstChild.class);
 	}

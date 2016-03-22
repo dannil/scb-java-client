@@ -32,29 +32,6 @@ import java.util.Objects;
  */
 public class QueryBuilder {
 
-	private static QueryBuilder builder;
-
-	private static Object lock = new Object();
-
-	/**
-	 * Get the instance of this class.
-	 * 
-	 * @return the instance of this class
-	 */
-	public static QueryBuilder getInstance() {
-		// Synchronized instance
-		synchronized (lock) {
-			if (builder == null) {
-				builder = new QueryBuilder();
-			}
-			return builder;
-		}
-	}
-
-	private QueryBuilder() {
-
-	}
-
 	/**
 	 * Filter out the specified value from the input collection.
 	 * 
@@ -64,7 +41,7 @@ public class QueryBuilder {
 	 *            the value to remove from the collection
 	 * @return a collection with the specified value removed
 	 */
-	private List<?> filterValue(Collection<?> collection, Object value) {
+	private static List<?> filterValue(Collection<?> collection, Object value) {
 		List<Object> filteredValues = new ArrayList<Object>();
 		for (Object o : collection) {
 			if (!Objects.equals(o, value)) {
@@ -104,7 +81,7 @@ public class QueryBuilder {
 	 *            the input map which contains the keys and the values for every key
 	 * @return a string which can be sent as the payload to the SCB API
 	 */
-	public String build(Map<String, Collection<?>> inputMap) {
+	public static String build(Map<String, Collection<?>> inputMap) {
 		// 1: Filter out null values
 		Map<String, List<?>> filteredMap = new HashMap<String, List<?>>();
 
