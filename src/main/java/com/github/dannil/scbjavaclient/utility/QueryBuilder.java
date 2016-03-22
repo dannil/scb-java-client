@@ -32,6 +32,10 @@ import java.util.Objects;
  */
 public class QueryBuilder {
 
+	private QueryBuilder() {
+
+	}
+
 	/**
 	 * Filter out the specified value from the input collection.
 	 * 
