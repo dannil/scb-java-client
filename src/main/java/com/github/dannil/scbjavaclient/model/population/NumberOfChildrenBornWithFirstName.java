@@ -24,24 +24,53 @@ import com.github.dannil.scbjavaclient.model.AbstractYearAndValueModel;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
 
+/**
+ * Model for number of children born with first name.
+ * 
+ * @author Daniel Nilsson
+ */
 public class NumberOfChildrenBornWithFirstName extends AbstractYearAndValueModel<Integer, String> {
 
 	@JsonProperty("tilltalsnamn")
 	private String firstname;
 
+	/**
+	 * Default constructor.
+	 */
 	public NumberOfChildrenBornWithFirstName() {
 		super();
 	}
 
+	/**
+	 * Overloaded constructor.
+	 * 
+	 * @param firstname
+	 *            the firstname
+	 * @param year
+	 *            the year
+	 * @param value
+	 *            the value
+	 */
 	public NumberOfChildrenBornWithFirstName(String firstname, Integer year, String value) {
 		super(year, value);
 		this.firstname = firstname;
 	}
 
+	/**
+	 * Getter for firstname.
+	 * 
+	 * @return the firstname
+	 */
 	public String getFirstname() {
 		return this.firstname;
 	}
 
+	/**
+	 * Setter for firstname.
+	 * 
+	 * @param firstname
+	 *            the firstname
+	 */
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
 	}
@@ -84,7 +113,7 @@ public class NumberOfChildrenBornWithFirstName extends AbstractYearAndValueModel
 	}
 
 	/**
-	 * Get the codes for the live births from the API.
+	 * Get the codes for the number of children born with first name from the API.
 	 * 
 	 * @return a list of codes that is used by the API to index the values
 	 */

@@ -24,24 +24,55 @@ import com.github.dannil.scbjavaclient.model.AbstractRegionYearAndValueModel;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
 
+/**
+ * Model for average age.
+ * 
+ * @author Daniel Nilsson
+ */
 public class AverageAge extends AbstractRegionYearAndValueModel<String, Integer, Double> {
 
 	@JsonProperty("kon")
 	private String gender;
 
+	/**
+	 * Default constructor.
+	 */
 	public AverageAge() {
 		super();
 	}
 
+	/**
+	 * Overloaded constructor.
+	 * 
+	 * @param region
+	 *            the region
+	 * @param gender
+	 *            the gender
+	 * @param year
+	 *            the year
+	 * @param value
+	 *            the value
+	 */
 	public AverageAge(String region, String gender, Integer year, Double value) {
 		super(region, year, value);
 		this.gender = gender;
 	}
 
+	/**
+	 * Getter for gender.
+	 * 
+	 * @return the gender
+	 */
 	public String getGender() {
 		return this.gender;
 	}
 
+	/**
+	 * Setter for gender.
+	 * 
+	 * @param gender
+	 *            the gender
+	 */
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
@@ -86,7 +117,7 @@ public class AverageAge extends AbstractRegionYearAndValueModel<String, Integer,
 	}
 
 	/**
-	 * Get the codes for the live births from the API.
+	 * Get the codes for the average age from the API.
 	 * 
 	 * @return a list of codes that is used by the API to index the values
 	 */
