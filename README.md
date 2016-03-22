@@ -86,6 +86,7 @@ plaintext from the URL endpoint of the table.
 //		The relationship statuses OG (unmarried) and G (married)
 //		The ages 45 and 50
 //		The genders are null; we want to retrieve information for all genders
+//		The years 2011 and 2012
 Map<String, Collection<?>> inputs = new HashMap<String, Collection<?>>();
 inputs.put("ContentsCode", Arrays.asList("BE0101N1"));
 inputs.put("Region", Arrays.asList("00", "01", "0114"));
