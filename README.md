@@ -75,3 +75,25 @@ List<Integer> years = null;
 // Retrieve all area statistics using the selected values
 List<Area> areas = baseClient.environment().landAndWaterArea().getArea(regions, types, years);
 ```
+
+If you know the required inputs and you're only interested in the JSON data, you may use the 
+method getRawData() to specify the table and the inputs. The required inputs can be viewed in 
+plaintext from the URL endpoint of the table.
+```java
+// Specifies the criterion for the information we want to retrieve, in this case:
+// 		The contents code (so the API know what information we want for the response)
+//		The regions 00, 01 and 0114
+//		The relationship statuses OG (unmarried) and G (married)
+//		The ages 45 and 50
+//		The genders are null; we want to retrieve information for all genders
+Map<String, Collection<?>> inputs = new HashMap<String, Collection<?>>();
+inputs.put("ContentsCode", Arrays.asList("BE0101N1"));
+inputs.put("Region", Arrays.asList("00", "01", "0114"));
+inputs.put("Civilstand", Arrays.asList("OG", "G"));
+inputs.put("Alder", Arrays.asList(45, 50));
+inputs.put("Kon", null);
+inputs.put("Tid", Arrays.asList(2011, 2012));
+
+// Specify the table to retrieve from and our inputs to this table. The response will be a JSON
+// string containing the information that matched our criterion.
+String json = baseClient.getRawData("BE/BE0101/BE0101A/BefolkningNy", inputs);
