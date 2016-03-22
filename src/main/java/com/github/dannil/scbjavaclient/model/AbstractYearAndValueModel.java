@@ -20,25 +20,57 @@ import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * Abstract model which handles year and value.
+ * 
+ * @author Daniel Nilsson
+ *
+ * @param <Y>
+ *            the year
+ * @param <V>
+ *            the value
+ */
 public abstract class AbstractYearAndValueModel<Y, V> extends AbstractValueModel<V> {
 
 	@JsonProperty("tid")
 	protected Y year;
 
+	/**
+	 * Default constructor.
+	 */
 	public AbstractYearAndValueModel() {
 		// To enable derived classes to use their default constructor
 		super();
 	}
 
+	/**
+	 * Overloaded constructor.
+	 * 
+	 * @param year
+	 *            the year
+	 * @param value
+	 *            the value
+	 */
 	public AbstractYearAndValueModel(Y year, V value) {
 		super(value);
 		this.year = year;
 	}
 
+	/**
+	 * Getter for year
+	 * 
+	 * @return the year
+	 */
 	public Y getYear() {
 		return this.year;
 	}
 
+	/**
+	 * Setter for year
+	 * 
+	 * @param year
+	 *            the year
+	 */
 	public void setYear(Y year) {
 		this.year = year;
 	}

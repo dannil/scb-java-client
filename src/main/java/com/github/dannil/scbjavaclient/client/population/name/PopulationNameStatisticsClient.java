@@ -51,10 +51,30 @@ public class PopulationNameStatisticsClient extends AbstractClient {
 		super(locale);
 	}
 
+	/**
+	 * Fetch all number of children born with first name data.
+	 * 
+	 * @return the number of children born with first name data wrapped in a list of
+	 *         {@link com.github.dannil.scbjavaclient.model.population.NumberOfChildrenBornWithFirstName
+	 *         NumberOfChildrenBornWithFirstName} objects
+	 * 
+	 * @see PopulationNameStatisticsClient#NumberOfChildrenBornWithFirstName(Collection, Collection)
+	 */
 	public List<NumberOfChildrenBornWithFirstName> getNumberOfChildrenBornWithFirstName() {
 		return this.getNumberOfChildrenBornWithFirstName(null, null);
 	}
 
+	/**
+	 * Fetch number of children born with first name data which match the input constraints.
+	 * 
+	 * @param firstnames
+	 *            the firstnames to fetch data for
+	 * @param years
+	 *            the years to fetch data for
+	 * @return the number of children born with first name data wrapped in a list of
+	 *         {@link com.github.dannil.scbjavaclient.model.population.NumberOfChildrenBornWithFirstName
+	 *         NumberOfChildrenBornWithFirstName} objects
+	 */
 	public List<NumberOfChildrenBornWithFirstName> getNumberOfChildrenBornWithFirstName(Collection<String> firstnames,
 			Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();

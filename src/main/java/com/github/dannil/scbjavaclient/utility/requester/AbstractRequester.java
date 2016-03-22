@@ -147,12 +147,30 @@ public abstract class AbstractRequester {
 		return get.getResponse("http://api.scb.se/OV0104/v1/doris/sv/ssd/" + table);
 	}
 
-	public abstract String getResponse(String address);
+	/**
+	 * Returns the response as a string.
+	 * 
+	 * @param url
+	 *            the URL to get the response from
+	 * @return the response
+	 */
+	public abstract String getResponse(String url);
 
+	/**
+	 * Getter for charset.
+	 * 
+	 * @return the charset
+	 */
 	public Charset getCharset() {
 		return this.charset;
 	}
 
+	/**
+	 * Setter for charset. Also updates the request properties with the new charset.
+	 * 
+	 * @param charset
+	 *            the charset
+	 */
 	public void setCharset(Charset charset) {
 		this.charset = charset;
 		this.requestProperties.put("Content-Type", "application/json; charset=" + this.charset.name().toLowerCase());

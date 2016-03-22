@@ -23,6 +23,14 @@ package com.github.dannil.scbjavaclient.utility.requester;
  */
 public enum RequestMethod {
 
-	GET, POST
+	/**
+	 * Enumerable for HTTP method GET.
+	 */
+	GET,
+
+	/**
+	 * Enumerable for HTTP method POST.
+	 */
+	POST
 
 }

@@ -22,13 +22,27 @@ import java.util.Map.Entry;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 
+/**
+ * HTTP requester for GET requests.
+ * 
+ * @author Daniel Nilsson
+ */
 public class GETRequester extends AbstractRequester {
 
+	/**
+	 * Default constructor.
+	 */
 	public GETRequester() {
 		super();
 		super.requestProperties.put("Request-Method", "GET");
 	}
 
+	/**
+	 * Overloaded constructor.
+	 * 
+	 * @param charset
+	 *            the charset
+	 */
 	public GETRequester(Charset charset) {
 		this();
 		super.charset = charset;

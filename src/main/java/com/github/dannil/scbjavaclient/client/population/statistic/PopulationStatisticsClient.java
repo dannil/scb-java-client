@@ -67,10 +67,33 @@ public class PopulationStatisticsClient extends AbstractClient {
 	// return years;
 	// }
 
+	/**
+	 * Fetch all average age data.
+	 * 
+	 * @return the average age data wrapped in a list of
+	 *         {@link com.github.dannil.scbjavaclient.model.population.statistic.AverageAge
+	 *         AverageAge} objects
+	 * 
+	 * @see PopulationStatisticsClient#getAverageAge(Collection, Collection, Collection)
+	 */
 	public List<AverageAge> getAverageAge() {
 		return this.getAverageAge(null, null, null);
 	}
 
+	/**
+	 * Fetch all average age data which match the input constraints.
+	 * 
+	 * @param regions
+	 *            the regions to fetch data for
+	 * @param genders
+	 *            the genders to fetch data for
+	 * @param years
+	 *            the years to fetch data for
+	 * 
+	 * @return the average age data wrapped in a list of
+	 *         {@link com.github.dannil.scbjavaclient.model.population.statistic.AverageAge
+	 *         AverageAge} objects
+	 */
 	public List<AverageAge> getAverageAge(Collection<String> regions, Collection<String> genders,
 			Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();

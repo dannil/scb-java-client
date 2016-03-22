@@ -18,6 +18,11 @@ package com.github.dannil.scbjavaclient.utility;
 
 import java.util.Locale;
 
+/**
+ * Utility class which handles URL operations.
+ * 
+ * @author Daniel Nilsson
+ */
 public class URLUtility {
 
 	private URLUtility() {

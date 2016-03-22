@@ -24,24 +24,49 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ByteArrayEntity;
 
+/**
+ * HTTP requester for POST requests.
+ * 
+ * @author Daniel Nilsson
+ */
 public class POSTRequester extends AbstractRequester {
 
 	private String query;
 
+	/**
+	 * Default constructor.
+	 */
 	public POSTRequester() {
 		super();
 		super.requestProperties.put("Request-Method", "GET");
 	}
 
+	/**
+	 * Overloaded constructor.
+	 * 
+	 * @param charset
+	 *            the charset
+	 */
 	public POSTRequester(Charset charset) {
 		this();
 		super.charset = charset;
 	}
 
+	/**
+	 * Getter for query.
+	 * 
+	 * @return the query
+	 */
 	public String getQuery() {
 		return this.query;
 	}
 
+	/**
+	 * Setter for query.
+	 * 
+	 * @param query
+	 *            the query
+	 */
 	public void setQuery(String query) {
 		this.query = query;
 	}

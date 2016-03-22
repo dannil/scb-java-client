@@ -86,10 +86,32 @@ public class PopulationDemographyClient extends AbstractClient {
 	// return years;
 	// }
 
+	/**
+	 * Fetch all fertility rate data.
+	 * 
+	 * @return the fertility rate data wrapped in a list of
+	 *         {@link com.github.dannil.scbjavaclient.model.population.demography.FertilityRate
+	 *         FertilityRate} objects
+	 * 
+	 * @see PopulationDemographyClient#getFertilityRate(Collection, Collection, Collection)
+	 */
 	public List<FertilityRate> getFertilityRate() {
 		return this.getFertilityRate(null, null, null);
 	}
 
+	/**
+	 * Fetch all fertility rate data which match the input constraints.
+	 * 
+	 * @param regions
+	 *            the regions to fetch data for
+	 * @param genders
+	 *            the genders to fetch data for
+	 * @param years
+	 *            the years to fetch data for
+	 * @return the fertility rate data wrapped in a list of
+	 *         {@link com.github.dannil.scbjavaclient.model.population.demography.FertilityRate
+	 *         FertilityRate} objects
+	 */
 	public List<FertilityRate> getFertilityRate(Collection<String> regions, Collection<Integer> genders,
 			Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
