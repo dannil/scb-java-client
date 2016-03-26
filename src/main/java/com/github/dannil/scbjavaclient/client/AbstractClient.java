@@ -130,7 +130,7 @@ public abstract class AbstractClient {
 	 * @param url
 	 *            the URL which will be sent a POST request
 	 * @param query
-	 *            the payload which the API processes
+	 *            the query which the API will process
 	 * @return a string representation of the API's response
 	 */
 	protected String post(String url, String query) {
