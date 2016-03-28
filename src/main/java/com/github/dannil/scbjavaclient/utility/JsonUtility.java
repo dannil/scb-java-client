@@ -97,12 +97,6 @@ public class JsonUtility {
 		List<String> contentCodes = new ArrayList<String>();
 
 		List<String> codes = columns.findValuesAsText("code");
-		List<String> types = columns.findValuesAsText("type");
-		for (int l = 0; l < codes.size(); l++) {
-			if (types.get(l).equals("c")) {
-				contentCodes.add(codes.get(l));
-			}
-		}
 
 		List<Map<String, Object>> entries = new ArrayList<Map<String, Object>>();
 		for (int i = 0; i < data.size(); i++) {
@@ -123,6 +117,14 @@ public class JsonUtility {
 				key = new String(c);
 
 				map.put(key, keysNode.get(j).asText());
+			}
+
+			// Sort out the content codes
+			List<String> types = columns.findValuesAsText("type");
+			for (int l = 0; l < codes.size(); l++) {
+				if (types.get(l).equals("c")) {
+					contentCodes.add(codes.get(l));
+				}
 			}
 
 			Map<String, String> valuePairs = new HashMap<String, String>();
