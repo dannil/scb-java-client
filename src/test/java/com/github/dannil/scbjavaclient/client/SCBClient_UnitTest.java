@@ -45,6 +45,19 @@ public class SCBClient_UnitTest {
 		Locale locale = new Locale("sv", "SE");
 		SCBClient client = new SCBClient(locale);
 
+		String response = client.getRawData("BE/BE0101/BE0101A/BefolkningNy");
+
+		assertTrue(response.contains("BE0101N1"));
+		assertTrue(response.contains("BE0101N2"));
+		assertTrue(response.contains("Region"));
+		assertTrue(response.contains("Tid"));
+	}
+
+	@Test
+	public void getRawDataInputs() {
+		Locale locale = new Locale("sv", "SE");
+		SCBClient client = new SCBClient(locale);
+
 		Map<String, Collection<?>> payload = new HashMap<String, Collection<?>>();
 		payload.put("ContentsCode", Arrays.asList("BE0101N1"));
 		payload.put("Region", Arrays.asList("00", "01", "0114"));

@@ -16,12 +16,17 @@
 
 package com.github.dannil.scbjavaclient.client;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.github.dannil.scbjavaclient.client.environment.EnvironmentClient;
 import com.github.dannil.scbjavaclient.client.population.PopulationClient;
+import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
@@ -75,6 +80,42 @@ public class SCBClient extends AbstractContainerClient {
 	 */
 	public PopulationClient population() {
 		return this.populationClient;
+	}
+
+	/**
+	 * <p>
+	 * Fetch the JSON response from the specified table. As opposed to
+	 * {@link #getRawData(String, Map)}, this method fetches all available data and therefore
+	 * doesn't support selecting specific values before calling the API.
+	 * </p>
+	 * 
+	 * <p>
+	 * Do note: as this method matches all content codes available on the API, the response is
+	 * likely to be several times larger than the response when selecting values.
+	 * </p>
+	 * 
+	 * @param table
+	 *            the table to fetch data from
+	 * @return a JSON string containing all available data in the specified table
+	 */
+	public String getRawData(String table) {
+		String tableData = super.get(table);
+
+		Map<String, Collection<?>> inputs = new HashMap<String, Collection<?>>();
+		JsonNode node = JsonUtility.getNode(tableData, "variables");
+		for (int i = 0; i < node.size(); i++) {
+			JsonNode child = node.get(i);
+			if (child.get("code").asText().equals("ContentsCode")) {
+				JsonNode values = child.get("values");
+				List<String> valueTexts = new ArrayList<String>(values.size());
+				for (int j = 0; j < values.size(); j++) {
+					valueTexts.add(values.get(j).asText());
+				}
+				inputs.put("ContentsCode", valueTexts);
+				break;
+			}
+		}
+		return getRawData(table, inputs);
 	}
 
 	/**
