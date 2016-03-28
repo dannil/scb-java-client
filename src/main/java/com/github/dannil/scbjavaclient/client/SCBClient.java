@@ -99,10 +99,10 @@ public class SCBClient extends AbstractContainerClient {
 	 * @return a JSON string containing all available data in the specified table
 	 */
 	public String getRawData(String table) {
-		String tableData = super.get(table);
+		String json = super.get(table);
 
 		Map<String, Collection<?>> inputs = new HashMap<String, Collection<?>>();
-		JsonNode node = JsonUtility.getNode(tableData, "variables");
+		JsonNode node = JsonUtility.getNode(json, "variables");
 		for (int i = 0; i < node.size(); i++) {
 			JsonNode child = node.get(i);
 			if (child.get("code").asText().equals("ContentsCode")) {
