@@ -16,6 +16,8 @@
 
 package com.github.dannil.scbjavaclient.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,48 +32,49 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public abstract class AbstractValueModel<V> {
 
-	@JsonProperty("value")
-	protected V value;
+	@JsonProperty("values")
+	protected List<V> values;
 
 	/**
 	 * Default constructor.
 	 */
 	protected AbstractValueModel() {
 		// To enable derived classes to use their default constructor
+		this.values = new ArrayList<V>();
 	}
 
 	/**
 	 * Overloaded constructor.
 	 * 
-	 * @param value
-	 *            the value
+	 * @param values
+	 *            the values
 	 */
-	protected AbstractValueModel(V value) {
-		this.value = value;
+	protected AbstractValueModel(List<V> values) {
+		this.values = values;
 	}
 
 	/**
-	 * Getter for value.
+	 * Getter for values.
 	 * 
-	 * @return the value
+	 * @return the values
 	 */
-	public V getValue() {
-		return this.value;
+	public List<V> getValues() {
+		return this.values;
 	}
 
 	/**
-	 * Setter for value.
+	 * Setter for values.
 	 * 
-	 * @param value
-	 *            the value
+	 * @param values
+	 *            the values
 	 */
-	public void setValue(V value) {
-		this.value = value;
+	public void setValues(List<V> values) {
+		this.values = values;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hashCode(this.value);
+		return Objects.hashCode(this.values);
 	}
 
 	@Override
@@ -87,7 +90,7 @@ public abstract class AbstractValueModel<V> {
 		}
 
 		AbstractValueModel<?> other = (AbstractValueModel<?>) obj;
-		return Objects.equals(this.value, other.value);
+		return Objects.equals(this.values, other.values);
 	}
 
 	@Override

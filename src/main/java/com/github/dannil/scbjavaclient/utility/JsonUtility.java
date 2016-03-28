@@ -94,11 +94,21 @@ public class JsonUtility {
 		JsonNode columns = node.get("columns");
 		JsonNode data = node.get("data");
 
-		List<String> codes = columns.findValuesAsText("code");
+		List<String> contentCodes = new ArrayList<String>();
 
-		List<Map<String, String>> entries = new ArrayList<Map<String, String>>();
+		List<String> codes = columns.findValuesAsText("code");
+		List<String> types = columns.findValuesAsText("type");
+		for (int l = 0; l < codes.size(); l++) {
+			if (types.get(l).equals("c")) {
+				contentCodes.add(codes.get(l));
+			}
+		}
+
+		// System.out.println(contentCodes);
+
+		List<Map<String, Object>> entries = new ArrayList<Map<String, Object>>();
 		for (int i = 0; i < data.size(); i++) {
-			Map<String, String> map = new HashMap<String, String>();
+			Map<String, Object> map = new HashMap<String, Object>();
 
 			JsonNode entry = data.get(i);
 
@@ -116,7 +126,15 @@ public class JsonUtility {
 
 				map.put(key, keysNode.get(j).asText());
 			}
-			map.put("value", valuesNode.get(0).asText());
+
+			Map<String, String> keyValuePairs = new HashMap<String, String>();
+			// List<String> values = new ArrayList<String>(valuesNode.size());
+			for (int k = 0; k < valuesNode.size(); k++) {
+				// values.add(valuesNode.get(k).asText());
+				keyValuePairs.put(contentCodes.get(k), valuesNode.get(k).asText());
+			}
+			map.put("values", keyValuePairs);
+
 			entries.add(map);
 		}
 		return mapper.convertValue(entries, JsonNode.class);

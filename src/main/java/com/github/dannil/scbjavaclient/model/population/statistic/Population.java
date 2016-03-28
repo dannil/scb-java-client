@@ -60,11 +60,12 @@ public class Population extends AbstractRegionYearAndValueModel<String, Integer,
 	 *            the gender
 	 * @param year
 	 *            the year
-	 * @param value
-	 *            the value
+	 * @param values
+	 *            the values
 	 */
-	public Population(String region, String relationshipStatus, String age, Integer gender, Integer year, Long value) {
-		super(region, year, value);
+	public Population(String region, String relationshipStatus, String age, Integer gender, Integer year,
+			List<Long> values) {
+		super(region, year, values);
 		this.relationshipStatus = relationshipStatus;
 		this.age = age;
 		this.gender = gender;
@@ -165,7 +166,7 @@ public class Population extends AbstractRegionYearAndValueModel<String, Integer,
 		builder.append(", year=");
 		builder.append(super.year);
 		builder.append(", value=");
-		builder.append(super.value);
+		builder.append(super.values);
 		builder.append(']');
 
 		return builder.toString();
