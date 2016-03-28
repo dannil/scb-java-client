@@ -16,6 +16,7 @@
 
 package com.github.dannil.scbjavaclient.client.population.demography;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -26,7 +27,6 @@ import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.model.population.demography.FertilityRate;
 import com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstChild;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
-import com.github.dannil.scbjavaclient.utility.ListUtility;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
@@ -116,7 +116,7 @@ public class PopulationDemographyClient extends AbstractClient {
 	public List<FertilityRate> getFertilityRate(Collection<String> regions, Collection<Integer> genders,
 			Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
-		mappings.put("ContentsCode", ListUtility.toList("BE0701AA"));
+		mappings.put("ContentsCode", Arrays.asList("BE0701AA"));
 		mappings.put("Region", regions);
 		mappings.put("Kon", genders);
 		mappings.put("Tid", years);
@@ -155,7 +155,7 @@ public class PopulationDemographyClient extends AbstractClient {
 	public List<MeanAgeFirstChild> getMeanAgeFirstChild(Collection<String> regions, Collection<Integer> genders,
 			Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
-		mappings.put("ContentsCode", ListUtility.toList("BE0701AB"));
+		mappings.put("ContentsCode", Arrays.asList("BE0701AB"));
 		mappings.put("Region", regions);
 		mappings.put("Kon", genders);
 		mappings.put("Tid", years);
