@@ -30,7 +30,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.MissingNode;
 import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
 import com.github.dannil.scbjavaclient.model.population.statistic.Population;
 
@@ -77,7 +76,7 @@ public class JsonUtility_UnitTest {
 		assertEquals(convertedPopulations, staticPopulations);
 	}
 
-	@Test
+	@Test(expected = SCBClientParsingException.class)
 	public void jsonToListOfInvalidJson() {
 		JsonNode node = JsonUtility.getNode(this.json);
 
@@ -90,7 +89,7 @@ public class JsonUtility_UnitTest {
 	public void getNodeInvalidJson() {
 		JsonNode node = JsonUtility.getNode("hello world");
 
-		assertEquals(MissingNode.getInstance(), node);
+		assertNull(node);
 	}
 
 }
