@@ -104,8 +104,6 @@ public class JsonUtility {
 			}
 		}
 
-		// System.out.println(contentCodes);
-
 		List<Map<String, Object>> entries = new ArrayList<Map<String, Object>>();
 		for (int i = 0; i < data.size(); i++) {
 			Map<String, Object> map = new HashMap<String, Object>();
@@ -127,13 +125,13 @@ public class JsonUtility {
 				map.put(key, keysNode.get(j).asText());
 			}
 
-			Map<String, String> keyValuePairs = new HashMap<String, String>();
+			Map<String, String> valuePairs = new HashMap<String, String>();
 			// List<String> values = new ArrayList<String>(valuesNode.size());
 			for (int k = 0; k < valuesNode.size(); k++) {
 				// values.add(valuesNode.get(k).asText());
-				keyValuePairs.put(contentCodes.get(k), valuesNode.get(k).asText());
+				valuePairs.put(contentCodes.get(k), valuesNode.get(k).asText());
 			}
-			map.put("values", keyValuePairs);
+			map.put("values", valuePairs);
 
 			entries.add(map);
 		}

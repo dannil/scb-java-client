@@ -16,31 +16,31 @@
 
 package com.github.dannil.scbjavaclient.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * Abstract model which holds the value of the Client response.
+ * Abstract model which holds the values of the client response.
  * 
  * @author Daniel Nilsson
  *
  * @param <V>
- *            the value
+ *            the values
  */
 public abstract class AbstractValueModel<V> {
 
 	@JsonProperty("values")
-	protected List<V> values;
+	protected Map<String, V> values;
 
 	/**
 	 * Default constructor.
 	 */
 	protected AbstractValueModel() {
 		// To enable derived classes to use their default constructor
-		this.values = new ArrayList<V>();
+		this.values = new HashMap<String, V>();
 	}
 
 	/**
@@ -49,7 +49,7 @@ public abstract class AbstractValueModel<V> {
 	 * @param values
 	 *            the values
 	 */
-	protected AbstractValueModel(List<V> values) {
+	protected AbstractValueModel(Map<String, V> values) {
 		this.values = values;
 	}
 
@@ -58,7 +58,7 @@ public abstract class AbstractValueModel<V> {
 	 * 
 	 * @return the values
 	 */
-	public List<V> getValues() {
+	public Map<String, V> getValues() {
 		return this.values;
 	}
 
@@ -68,7 +68,7 @@ public abstract class AbstractValueModel<V> {
 	 * @param values
 	 *            the values
 	 */
-	public void setValues(List<V> values) {
+	public void setValues(HashMap<String, V> values) {
 		this.values = values;
 	}
 

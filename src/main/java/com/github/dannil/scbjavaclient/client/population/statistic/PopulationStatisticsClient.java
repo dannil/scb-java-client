@@ -16,6 +16,7 @@
 
 package com.github.dannil.scbjavaclient.client.population.statistic;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -186,7 +187,7 @@ public class PopulationStatisticsClient extends AbstractClient {
 	public List<Population> getPopulation(Collection<String> regions, Collection<String> relationshipStatuses,
 			Collection<String> ages, Collection<Integer> genders, Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
-		mappings.put("ContentsCode", ListUtility.toList("BE0101N1"));
+		mappings.put("ContentsCode", Arrays.asList("BE0101N1", "BE0101N2"));
 		mappings.put("Region", regions);
 		mappings.put("Civilstand", relationshipStatuses);
 		mappings.put("Alder", ages);
@@ -194,6 +195,8 @@ public class PopulationStatisticsClient extends AbstractClient {
 		mappings.put("Tid", years);
 
 		String response = super.post("BE/BE0101/BE0101A/BefolkningNy", QueryBuilder.build(mappings));
+		System.out.println("RESPONSE");
+		// System.out.println(response);
 
 		return JsonUtility.jsonToListOf(response, Population.class);
 	}

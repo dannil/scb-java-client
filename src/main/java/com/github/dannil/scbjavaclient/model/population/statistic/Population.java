@@ -17,6 +17,7 @@
 package com.github.dannil.scbjavaclient.model.population.statistic;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -29,7 +30,7 @@ import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
  * 
  * @author Daniel Nilsson
  */
-public class Population extends AbstractRegionYearAndValueModel<String, Integer, Long> {
+public class Population extends AbstractRegionYearAndValueModel<String, Integer, String> {
 
 	@JsonProperty("civilstand")
 	private String relationshipStatus;
@@ -64,7 +65,7 @@ public class Population extends AbstractRegionYearAndValueModel<String, Integer,
 	 *            the values
 	 */
 	public Population(String region, String relationshipStatus, String age, Integer gender, Integer year,
-			List<Long> values) {
+			Map<String, String> values) {
 		super(region, year, values);
 		this.relationshipStatus = relationshipStatus;
 		this.age = age;
