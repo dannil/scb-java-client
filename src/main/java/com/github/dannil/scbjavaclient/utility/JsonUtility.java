@@ -25,7 +25,7 @@ import java.util.Map;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.MissingNode;
+import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
 
 /**
  * Utility class for converting JSON to Java objects
@@ -73,9 +73,8 @@ public class JsonUtility {
 			}
 			return node;
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new SCBClientParsingException(e);
 		}
-		return MissingNode.getInstance();
 	}
 
 	/**
@@ -159,9 +158,8 @@ public class JsonUtility {
 
 			return mapper.readValue(toConventionalJson(json).toString(), type);
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new SCBClientParsingException(e);
 		}
-		return null;
 	}
 
 	// /**
