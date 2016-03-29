@@ -33,7 +33,7 @@ libraryDependencies += "com.github.dannil" % "scb-java-client" % "0.0.2"
 
 ## Usage
 
-This demonstarates the typical usage of the client.
+This demonstrates the typical usage of the client.
 
 ```java
 // Create the client
