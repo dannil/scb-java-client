@@ -187,7 +187,7 @@ public class PopulationStatisticsClient extends AbstractClient {
 	public List<Population> getPopulation(Collection<String> regions, Collection<String> relationshipStatuses,
 			Collection<String> ages, Collection<Integer> genders, Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
-		mappings.put("ContentsCode", Arrays.asList("BE0101N1", "BE0101N2"));
+		mappings.put("ContentsCode", Arrays.asList("BE0101N1"));
 		mappings.put("Region", regions);
 		mappings.put("Civilstand", relationshipStatuses);
 		mappings.put("Alder", ages);
