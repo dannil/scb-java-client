@@ -57,7 +57,7 @@ public abstract class AbstractYearAndValueModel<Y, V> extends AbstractValueModel
 	}
 
 	/**
-	 * Getter for year
+	 * Getter for year.
 	 * 
 	 * @return the year
 	 */
@@ -66,7 +66,7 @@ public abstract class AbstractYearAndValueModel<Y, V> extends AbstractValueModel
 	}
 
 	/**
-	 * Setter for year
+	 * Setter for year.
 	 * 
 	 * @param year
 	 *            the year

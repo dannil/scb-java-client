@@ -37,10 +37,16 @@ public class RequesterSingletonFactory {
 		requesters.put(RequestMethod.POST, POSTHolder.INSTANCE);
 	}
 
+	/**
+	 * Singleton holder for GET requester
+	 */
 	private static class GETHolder {
 		private static final AbstractRequester INSTANCE = new GETRequester(StandardCharsets.UTF_8);
 	}
 
+	/**
+	 * Singleton holder for POST requester
+	 */
 	private static class POSTHolder {
 		private static final AbstractRequester INSTANCE = new POSTRequester(StandardCharsets.UTF_8);
 	}

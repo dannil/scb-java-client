@@ -21,7 +21,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * Abstract model which holds the value of the Client response.
+ * Abstract model which holds the value of the client response.
  * 
  * @author Daniel Nilsson
  *
