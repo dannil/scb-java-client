@@ -34,10 +34,6 @@ public class AbstractYearAndValueModel_UnitTest {
 			super();
 		}
 
-		public DummyClass(Integer year, Long value) {
-			super(year, value);
-		}
-
 		@Override
 		public String toString() {
 			return "Dummy";

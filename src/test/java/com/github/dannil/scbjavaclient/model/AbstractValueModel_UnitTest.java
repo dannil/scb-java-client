@@ -34,10 +34,6 @@ public class AbstractValueModel_UnitTest {
 
 		}
 
-		public DummyClass(Long value) {
-			super(value);
-		}
-
 		@Override
 		public String toString() {
 			return "Dummy";

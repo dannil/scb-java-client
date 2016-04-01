@@ -34,10 +34,6 @@ public class AbstractRegionYearAndValueModel_UnitTest {
 			super();
 		}
 
-		public DummyClass(String region, Integer year, Long value) {
-			super(region, year, value);
-		}
-
 		@Override
 		public String toString() {
 			return "Dummy";
