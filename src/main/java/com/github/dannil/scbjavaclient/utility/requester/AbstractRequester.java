@@ -62,6 +62,9 @@ public abstract class AbstractRequester {
 		}
 	}
 
+	/**
+	 * Default constructor. Loads the request properties and other data needed for the requesters.
+	 */
 	protected AbstractRequester() {
 		this.client = HttpClientBuilder.create().build();
 
@@ -69,12 +72,12 @@ public abstract class AbstractRequester {
 
 		this.requestProperties = new HashMap<String, String>();
 
+		this.requestProperties.put("Accept", "application/json");
+		this.requestProperties.put("Content-Type", "application/json; charset=" + this.charset.name().toLowerCase());
+
 		String artifactId = properties.getProperty("artifactId");
 		String version = properties.getProperty("version");
 		String url = properties.getProperty("url");
-
-		this.requestProperties.put("Accept", "application/json");
-		this.requestProperties.put("Content-Type", "application/json; charset=" + this.charset.name().toLowerCase());
 
 		StringBuilder builder = new StringBuilder(64);
 		builder.append(artifactId);

@@ -66,7 +66,7 @@ public abstract class AbstractRegionYearAndValueModel<R, Y, V> extends AbstractV
 	}
 
 	/**
-	 * Getter for region
+	 * Getter for region.
 	 * 
 	 * @return the region
 	 */
@@ -75,7 +75,7 @@ public abstract class AbstractRegionYearAndValueModel<R, Y, V> extends AbstractV
 	}
 
 	/**
-	 * Setter for
+	 * Setter for region.
 	 * 
 	 * @param region
 	 *            the region
@@ -85,7 +85,7 @@ public abstract class AbstractRegionYearAndValueModel<R, Y, V> extends AbstractV
 	}
 
 	/**
-	 * Getter for year
+	 * Getter for year.
 	 * 
 	 * @return the year
 	 */
@@ -94,7 +94,7 @@ public abstract class AbstractRegionYearAndValueModel<R, Y, V> extends AbstractV
 	}
 
 	/**
-	 * Setter for year
+	 * Setter for year.
 	 * 
 	 * @param year
 	 *            the year

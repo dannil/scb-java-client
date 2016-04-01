@@ -45,6 +45,9 @@ public abstract class AbstractClient {
 
 	protected Localization localization;
 
+	/**
+	 * Default constructor.
+	 */
 	protected AbstractClient() {
 		this.locale = Locale.getDefault();
 
@@ -52,7 +55,7 @@ public abstract class AbstractClient {
 	}
 
 	/**
-	 * Overloaded constructor
+	 * Overloaded constructor.
 	 * 
 	 * @param locale
 	 *            the locale for this client
@@ -65,9 +68,9 @@ public abstract class AbstractClient {
 	}
 
 	/**
-	 * Retrieves the language for this Client instance.
+	 * Retrieves the language for this client instance.
 	 * 
-	 * @return the language for this Client instance
+	 * @return the language for this client instance
 	 */
 	public Locale getLocale() {
 		return this.locale;
