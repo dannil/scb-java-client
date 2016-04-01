@@ -17,6 +17,7 @@
 package com.github.dannil.scbjavaclient.model.population.demography;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -50,11 +51,11 @@ public class FertilityRate extends AbstractRegionYearAndValueModel<String, Integ
 	 *            the gender
 	 * @param year
 	 *            the year
-	 * @param value
-	 *            the value
+	 * @param values
+	 *            the values
 	 */
-	public FertilityRate(String region, Integer gender, Integer year, Double value) {
-		super(region, year, value);
+	public FertilityRate(String region, Integer gender, Integer year, Map<String, Double> values) {
+		super(region, year, values);
 		this.gender = gender;
 	}
 
@@ -109,8 +110,8 @@ public class FertilityRate extends AbstractRegionYearAndValueModel<String, Integ
 		builder.append(super.region);
 		builder.append(", year=");
 		builder.append(super.year);
-		builder.append(", value=");
-		builder.append(super.value);
+		builder.append(", values=");
+		builder.append(super.values);
 		builder.append(']');
 
 		return builder.toString();

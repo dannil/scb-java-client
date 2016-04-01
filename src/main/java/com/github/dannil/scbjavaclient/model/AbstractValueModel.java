@@ -50,7 +50,7 @@ public abstract class AbstractValueModel<V> {
 	 *            the values
 	 */
 	protected AbstractValueModel(Map<String, V> values) {
-		this.values = values;
+		this.values = new HashMap<String, V>(values);
 	}
 
 	/**
@@ -68,8 +68,31 @@ public abstract class AbstractValueModel<V> {
 	 * @param values
 	 *            the values
 	 */
-	public void setValues(HashMap<String, V> values) {
-		this.values = values;
+	public void setValues(Map<String, V> values) {
+		this.values = new HashMap<String, V>(values);
+	}
+
+	/**
+	 * Get the value for a specific contents code.
+	 * 
+	 * @param key
+	 *            the contents code to get the value for
+	 * @return the value
+	 */
+	public V getValue(String key) {
+		return this.values.get(key);
+	}
+
+	/**
+	 * Set the value for a specific contents code.
+	 * 
+	 * @param key
+	 *            the contents code to set the value for
+	 * @param value
+	 *            the value
+	 */
+	public void setValue(String key, V value) {
+		this.values.put(key, value);
 	}
 
 	@Override
