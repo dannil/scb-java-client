@@ -42,13 +42,13 @@ import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
  */
 public abstract class AbstractRequester {
 
+	private static Properties properties;
+
 	protected Charset charset;
 
 	protected HttpClient client;
 
 	protected Map<String, String> requestProperties;
-
-	private static Properties properties;
 
 	static {
 		properties = new Properties();
