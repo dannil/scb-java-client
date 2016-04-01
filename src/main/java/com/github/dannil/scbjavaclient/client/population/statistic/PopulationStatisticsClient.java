@@ -195,8 +195,6 @@ public class PopulationStatisticsClient extends AbstractClient {
 		mappings.put("Tid", years);
 
 		String response = super.post("BE/BE0101/BE0101A/BefolkningNy", QueryBuilder.build(mappings));
-		System.out.println("RESPONSE");
-		// System.out.println(response);
 
 		return JsonUtility.jsonToListOf(response, Population.class);
 	}
