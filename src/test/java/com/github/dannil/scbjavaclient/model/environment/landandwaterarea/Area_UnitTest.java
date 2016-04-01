@@ -24,8 +24,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area;
-
 @RunWith(JUnit4.class)
 public class Area_UnitTest {
 
@@ -161,51 +159,11 @@ public class Area_UnitTest {
 	}
 
 	@Test
-	public void notEqualsOnFirstNullRegion() {
-		Area area = new Area("1267", "01", 2009, 200d);
-		area.setRegion(null);
-
-		Area area2 = new Area("1267", "01", 2009, 200d);
-
-		assertNotEquals(area, area2);
-	}
-
-	@Test
-	public void notEqualsOnSecondNullRegion() {
-		Area area = new Area("1267", "01", 2009, 200d);
-
-		Area area2 = new Area("1267", "01", 2009, 200d);
-		area2.setRegion(null);
-
-		assertNotEquals(area, area2);
-	}
-
-	@Test
 	public void notEqualsOnType() {
 		Area area = new Area("1267", "01", 2009, 200d);
 
 		Area area2 = new Area("1267", "01", 2009, 200d);
 		area2.setType("02");
-
-		assertNotEquals(area, area2);
-	}
-
-	@Test
-	public void notEqualsOnFirstNullType() {
-		Area area = new Area("1267", "01", 2009, 200d);
-		area.setType(null);
-
-		Area area2 = new Area("1267", "01", 2009, 200d);
-
-		assertNotEquals(area, area2);
-	}
-
-	@Test
-	public void notEqualsOnSecondNullType() {
-		Area area = new Area("1267", "01", 2009, 200d);
-
-		Area area2 = new Area("1267", "01", 2009, 200d);
-		area2.setType(null);
 
 		assertNotEquals(area, area2);
 	}
@@ -221,51 +179,11 @@ public class Area_UnitTest {
 	}
 
 	@Test
-	public void notEqualsOnFirstNullYear() {
-		Area area = new Area("1267", "01", 2009, 200d);
-		area.setYear(null);
-
-		Area area2 = new Area("1267", "01", 2009, 200d);
-
-		assertNotEquals(area, area2);
-	}
-
-	@Test
-	public void notEqualsOnSecondNullYear() {
-		Area area = new Area("1267", "01", 2009, 200d);
-
-		Area area2 = new Area("1267", "01", 2009, 200d);
-		area2.setYear(null);
-
-		assertNotEquals(area, area2);
-	}
-
-	@Test
 	public void notEqualsOnValue() {
 		Area area = new Area("1267", "01", 2009, 200d);
 
 		Area area2 = new Area("1267", "01", 2009, 200d);
 		area2.setValue(300d);
-
-		assertNotEquals(area, area2);
-	}
-
-	@Test
-	public void notEqualsOnFirstNullValue() {
-		Area area = new Area("1267", "01", 2009, 200d);
-		area.setValue(null);
-
-		Area area2 = new Area("1267", "01", 2009, 200d);
-
-		assertNotEquals(area, area2);
-	}
-
-	@Test
-	public void notEqualsOnSecondNullValue() {
-		Area area = new Area("1267", "01", 2009, 200d);
-
-		Area area2 = new Area("1267", "01", 2009, 200d);
-		area2.setValue(null);
 
 		assertNotEquals(area, area2);
 	}

@@ -24,8 +24,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import com.github.dannil.scbjavaclient.model.population.statistic.Population;
-
 @RunWith(JUnit4.class)
 public class Population_UnitTest {
 
@@ -197,51 +195,11 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public void notEqualsOnFirstNullRegion() {
-		Population population = new Population("1267", "G", "20", 1, 2011, 12345L);
-		population.setRegion(null);
-
-		Population population2 = new Population("1267", "G", "20", 1, 2011, 12345L);
-
-		assertNotEquals(population, population2);
-	}
-
-	@Test
-	public void notEqualsOnSecondNullRegion() {
-		Population population = new Population("1267", "G", "20", 1, 2011, 12345L);
-
-		Population population2 = new Population("1267", "G", "20", 1, 2011, 12345L);
-		population2.setRegion(null);
-
-		assertNotEquals(population, population2);
-	}
-
-	@Test
 	public void notEqualsOnRelationshipStatus() {
 		Population population = new Population("1267", "G", "20", 1, 2011, 12345L);
 
 		Population population2 = new Population("1267", "G", "20", 1, 2011, 12345L);
 		population2.setRelationshipStatus("SK");
-
-		assertNotEquals(population, population2);
-	}
-
-	@Test
-	public void notEqualsOnFirstNullRelationshipStatus() {
-		Population population = new Population("1267", "G", "20", 1, 2011, 12345L);
-		population.setRelationshipStatus(null);
-
-		Population population2 = new Population("1267", "G", "20", 1, 2011, 12345L);
-
-		assertNotEquals(population, population2);
-	}
-
-	@Test
-	public void notEqualsOnSecondNullRelationshipStatus() {
-		Population population = new Population("1267", "G", "20", 1, 2011, 12345L);
-
-		Population population2 = new Population("1267", "G", "20", 1, 2011, 12345L);
-		population2.setRelationshipStatus(null);
 
 		assertNotEquals(population, population2);
 	}
@@ -257,51 +215,11 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public void notEqualsOnFirstNullAge() {
-		Population population = new Population("1267", "G", "20", 1, 2011, 12345L);
-		population.setAge(null);
-
-		Population population2 = new Population("1267", "G", "20", 1, 2011, 12345L);
-
-		assertNotEquals(population, population2);
-	}
-
-	@Test
-	public void notEqualsOnSecondNullAge() {
-		Population population = new Population("1267", "G", "20", 1, 2011, 12345L);
-
-		Population population2 = new Population("1267", "G", "20", 1, 2011, 12345L);
-		population2.setAge(null);
-
-		assertNotEquals(population, population2);
-	}
-
-	@Test
 	public void notEqualsOnGender() {
 		Population population = new Population("1267", "G", "20", 1, 2011, 12345L);
 
 		Population population2 = new Population("1267", "G", "20", 1, 2011, 12345L);
 		population2.setGender(2);
-
-		assertNotEquals(population, population2);
-	}
-
-	@Test
-	public void notEqualsOnFirstNullGender() {
-		Population population = new Population("1267", "G", "20", 1, 2011, 12345L);
-		population.setGender(null);
-
-		Population population2 = new Population("1267", "G", "20", 1, 2011, 12345L);
-
-		assertNotEquals(population, population2);
-	}
-
-	@Test
-	public void notEqualsOnSecondNullGender() {
-		Population population = new Population("1267", "G", "20", 1, 2011, 12345L);
-
-		Population population2 = new Population("1267", "G", "20", 1, 2011, 12345L);
-		population2.setGender(null);
 
 		assertNotEquals(population, population2);
 	}
@@ -317,51 +235,11 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public void notEqualsOnFirstNullYear() {
-		Population population = new Population("1267", "G", "20", 1, 2011, 12345L);
-		population.setYear(null);
-
-		Population population2 = new Population("1267", "G", "20", 1, 2011, 12345L);
-
-		assertNotEquals(population, population2);
-	}
-
-	@Test
-	public void notEqualsOnSecondNullYear() {
-		Population population = new Population("1267", "G", "20", 1, 2011, 12345L);
-
-		Population population2 = new Population("1267", "G", "20", 1, 2011, 12345L);
-		population2.setYear(null);
-
-		assertNotEquals(population, population2);
-	}
-
-	@Test
 	public void notEqualsOnValue() {
 		Population population = new Population("1267", "G", "20", 1, 2011, 12345L);
 
 		Population population2 = new Population("1267", "G", "20", 1, 2011, 12345L);
 		population2.setValue(54321L);
-
-		assertNotEquals(population, population2);
-	}
-
-	@Test
-	public void notEqualsOnFirstNullValue() {
-		Population population = new Population("1267", "G", "20", 1, 2011, 12345L);
-		population.setValue(null);
-
-		Population population2 = new Population("1267", "G", "20", 1, 2011, 12345L);
-
-		assertNotEquals(population, population2);
-	}
-
-	@Test
-	public void notEqualsOnSecondNullValue() {
-		Population population = new Population("1267", "G", "20", 1, 2011, 12345L);
-
-		Population population2 = new Population("1267", "G", "20", 1, 2011, 12345L);
-		population2.setValue(null);
 
 		assertNotEquals(population, population2);
 	}
