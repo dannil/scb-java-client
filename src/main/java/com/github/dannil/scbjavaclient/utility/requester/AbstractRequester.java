@@ -147,17 +147,17 @@ public abstract class AbstractRequester {
 	 */
 	public static String getCodes(String table) {
 		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
-		return get.getResponseBody("http://api.scb.se/OV0104/v1/doris/sv/ssd/" + table);
+		return get.getBody("http://api.scb.se/OV0104/v1/doris/sv/ssd/" + table);
 	}
 
 	/**
-	 * Returns the response as a string.
+	 * Returns the HTTP response from the specified URL as a string.
 	 * 
 	 * @param url
 	 *            the URL to get the response from
 	 * @return the response
 	 */
-	public abstract String getResponseBody(String url);
+	public abstract String getBody(String url);
 
 	/**
 	 * Getter for charset.
