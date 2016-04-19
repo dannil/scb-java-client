@@ -31,6 +31,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
 import com.github.dannil.scbjavaclient.utility.ListUtility;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
@@ -103,7 +104,7 @@ public class AbstractClient_IntegrationTest {
 		assertFalse(regions.isEmpty());
 	}
 
-	@Test(expected = UnsupportedOperationException.class)
+	@Test(expected = SCBClientUrlNotFoundException.class)
 	public void getRegionsInvalidTable() {
 		DummyClient client = new DummyClient();
 
