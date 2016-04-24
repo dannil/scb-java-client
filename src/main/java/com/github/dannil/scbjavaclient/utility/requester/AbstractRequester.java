@@ -93,7 +93,8 @@ public abstract class AbstractRequester {
 	}
 
 	/**
-	 * Performs a request with the specified HttpRequest and retrieves the response as a HttpResonse
+	 * Performs a request with the specified HttpRequest and retrieves the response as a
+	 * HttpResonse.
 	 * 
 	 * @param request
 	 *            the request
