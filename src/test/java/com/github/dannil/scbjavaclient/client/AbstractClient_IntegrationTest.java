@@ -104,11 +104,11 @@ public class AbstractClient_IntegrationTest {
 		assertFalse(regions.isEmpty());
 	}
 
-	@Test(expected = SCBClientUrlNotFoundException.class)
+	@Test(expected = UnsupportedOperationException.class)
 	public void getRegionsInvalidTable() {
 		DummyClient client = new DummyClient();
 
-		List<String> regions = client.getRegions("BE/BE0401/BE0401A/BefolkprognRev2015");
+		List<String> regions = client.getRegions("BE/BE0401/BE0401A/BefolkprognRev2016");
 
 		assertNull(regions);
 	}
