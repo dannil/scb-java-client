@@ -138,8 +138,6 @@ public abstract class AbstractRequester {
 				// Handle UTF-8 byte order mark (BOM)
 				br.mark(4);
 
-				System.out.println(bom.hasBOM());
-
 				// Checks if the stream contains a BOM. If it doesn't, reset the
 				// stream pointer to the location specified by br.mark()
 				if (bom.hasBOM()) {
