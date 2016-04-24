@@ -27,7 +27,7 @@ import java.util.Map;
  * 
  * @author Daniel Nilsson
  */
-public class RequesterSingletonFactory {
+public final class RequesterSingletonFactory {
 
 	private static Map<RequestMethod, AbstractRequester> requesters;
 

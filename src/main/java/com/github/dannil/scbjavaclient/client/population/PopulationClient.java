@@ -31,7 +31,9 @@ import com.github.dannil.scbjavaclient.client.population.statistic.PopulationSta
 public class PopulationClient extends AbstractContainerClient {
 
 	private PopulationDemographyClient populationDemographyClient;
+
 	private PopulationNameStatisticsClient populationNameStatisticsClient;
+
 	private PopulationStatisticsClient populationStatisticsClient;
 
 	/**

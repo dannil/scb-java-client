@@ -53,6 +53,7 @@ public final class URLUtility {
 	 *            the URL to edit
 	 * @param fallback
 	 *            the fallback locale to use
+	 * @return the modified URL
 	 */
 	public static String changeLanguageForUrl(String url, Locale fallback) {
 		String startPoint = "doris";

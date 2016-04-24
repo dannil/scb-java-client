@@ -151,9 +151,10 @@ public abstract class AbstractRequester {
 					builder.append(line);
 				}
 			}
-		} catch (IOException e1) {
-			throw new SCBClientException(e1);
+		} catch (IOException e) {
+			throw new SCBClientException(e);
 		}
+
 		return builder.toString();
 
 		// try (BufferedReader br = new BufferedReader(new

@@ -154,9 +154,9 @@ public abstract class AbstractClient {
 	 * 
 	 * @param url
 	 *            the URL to retrieve the regions from
+	 * @return a list of the available regions for the given URL
 	 * @throws UnsupportedOperationException
 	 *             if the specified URL doesn't supply a regions table
-	 * @return a list of the available regions for the given URL
 	 */
 	public List<String> getRegions(String url) {
 		String content = get(url);

@@ -30,7 +30,7 @@ import java.util.Objects;
  * @author Daniel Nilsson
  *
  */
-public class QueryBuilder {
+public final class QueryBuilder {
 
 	/**
 	 * Private constructor to prevent instantiation.

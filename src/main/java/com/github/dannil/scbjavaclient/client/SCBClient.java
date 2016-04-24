@@ -37,6 +37,7 @@ import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 public class SCBClient extends AbstractContainerClient {
 
 	private PopulationClient populationClient;
+
 	private EnvironmentClient environmentClient;
 
 	/**
