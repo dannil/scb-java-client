@@ -26,6 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+import org.apache.commons.io.input.BOMInputStream;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpRequestBase;
@@ -91,6 +92,13 @@ public abstract class AbstractRequester {
 		this.requestProperties.put("User-Agent", builder.toString());
 	}
 
+	/**
+	 * Performs a request with the specified HttpRequest and retrieves the response as a HttpResonse
+	 * 
+	 * @param request
+	 *            the request
+	 * @return the response
+	 */
 	protected HttpResponse getResponse(HttpRequestBase request) {
 		try {
 			HttpResponse response = this.client.execute(request);
@@ -124,25 +132,50 @@ public abstract class AbstractRequester {
 	 */
 	protected String getBody(HttpResponse response) {
 		StringBuilder builder = new StringBuilder(64);
-		try (BufferedReader br = new BufferedReader(new InputStreamReader(response.getEntity().getContent(),
-				this.charset.name()))) {
-			// Handle UTF-8 byte order mark (BOM)
-			br.mark(4);
 
-			// Checks if the stream contains a BOM. If it doesn't, reset the
-			// stream pointer to the location specified by br.mark()
-			if ('\uFEFF' != br.read()) {
-				br.reset();
-			}
+		try (BOMInputStream bom = new BOMInputStream(response.getEntity().getContent())) {
+			try (BufferedReader br = new BufferedReader(new InputStreamReader(bom, this.charset.name()))) {
+				// Handle UTF-8 byte order mark (BOM)
+				br.mark(4);
 
-			String line;
-			while ((line = br.readLine()) != null) {
-				builder.append(line);
+				System.out.println(bom.hasBOM());
+
+				// Checks if the stream contains a BOM. If it doesn't, reset the
+				// stream pointer to the location specified by br.mark()
+				if (bom.hasBOM()) {
+					br.reset();
+				}
+
+				String line;
+				while ((line = br.readLine()) != null) {
+					builder.append(line);
+				}
 			}
-		} catch (IOException e) {
-			throw new SCBClientException(e);
+		} catch (IOException e1) {
+			throw new SCBClientException(e1);
 		}
 		return builder.toString();
+
+		// try (BufferedReader br = new BufferedReader(new
+		// InputStreamReader(response.getEntity().getContent(),
+		// this.charset.name()))) {
+		// // Handle UTF-8 byte order mark (BOM)
+		// br.mark(4);
+		//
+		// // Checks if the stream contains a BOM. If it doesn't, reset the
+		// // stream pointer to the location specified by br.mark()
+		// if ('\uFEFF' != br.read()) {
+		// br.reset();
+		// }
+		//
+		// String line;
+		// while ((line = br.readLine()) != null) {
+		// builder.append(line);
+		// }
+		// } catch (IOException e) {
+		// throw new SCBClientException(e);
+		// }
+		// return builder.toString();
 	}
 
 	/**
