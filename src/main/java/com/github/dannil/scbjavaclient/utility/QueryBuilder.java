@@ -32,6 +32,9 @@ import java.util.Objects;
  */
 public class QueryBuilder {
 
+	/**
+	 * Private constructor to prevent instantiation.
+	 */
 	private QueryBuilder() {
 
 	}

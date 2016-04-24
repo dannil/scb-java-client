@@ -26,6 +26,9 @@ import java.nio.charset.StandardCharsets;
  */
 public class RequesterFactory {
 
+	/**
+	 * Private constructor to prevent instantiation.
+	 */
 	private RequesterFactory() {
 
 	}

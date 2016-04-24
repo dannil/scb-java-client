@@ -68,7 +68,7 @@ public class Area extends AbstractRegionYearAndValueModel<String, Integer, Doubl
 	}
 
 	/**
-	 * Setter for type
+	 * Setter for type.
 	 * 
 	 * @param type
 	 *            the type

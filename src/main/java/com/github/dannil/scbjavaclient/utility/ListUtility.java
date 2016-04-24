@@ -27,8 +27,11 @@ import java.util.List;
  * @param <E>
  *            data type of the list
  */
-public class ListUtility<E> {
+public final class ListUtility<E> {
 
+	/**
+	 * Private constructor to prevent instantiation.
+	 */
 	private ListUtility() {
 
 	}

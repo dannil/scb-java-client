@@ -23,8 +23,11 @@ import java.util.Locale;
  * 
  * @author Daniel Nilsson
  */
-public class URLUtility {
+public final class URLUtility {
 
+	/**
+	 * Private constructor to prevent instantiation.
+	 */
 	private URLUtility() {
 
 	}
@@ -50,7 +53,6 @@ public class URLUtility {
 	 *            the URL to edit
 	 * @param fallback
 	 *            the fallback locale to use
-	 * @return the modified URL
 	 */
 	public static String changeLanguageForUrl(String url, Locale fallback) {
 		String startPoint = "doris";

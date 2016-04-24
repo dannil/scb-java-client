@@ -115,6 +115,13 @@ public abstract class AbstractRequester {
 		}
 	}
 
+	/**
+	 * Extracts the response body from the HTTP response.
+	 * 
+	 * @param response
+	 *            the response to extract the body from
+	 * @return the body as a string
+	 */
 	protected String getBody(HttpResponse response) {
 		StringBuilder builder = new StringBuilder(64);
 		try (BufferedReader br = new BufferedReader(new InputStreamReader(response.getEntity().getContent(),
@@ -147,7 +154,7 @@ public abstract class AbstractRequester {
 	 */
 	public static String getCodes(String table) {
 		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
-		return get.getBody("http://api.scb.se/OV0104/v1/doris/sv/ssd/" + table);
+		return get.getBodyAsString("http://api.scb.se/OV0104/v1/doris/sv/ssd/" + table);
 	}
 
 	/**
@@ -157,7 +164,7 @@ public abstract class AbstractRequester {
 	 *            the URL to get the response from
 	 * @return the response
 	 */
-	public abstract String getBody(String url);
+	public abstract String getBodyAsString(String url);
 
 	/**
 	 * Getter for charset.

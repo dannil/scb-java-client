@@ -48,7 +48,7 @@ public class POSTRequester_UnitTest {
 	public void doRequestIllegalStateNullPayload() throws IOException {
 		POSTRequester post = (POSTRequester) RequesterFactory.getRequester(RequestMethod.POST);
 
-		String response = post.getBody("http://api.scb.se/OV0104/v1/doris/en/ssd/BE/BE0701/MedelAlderNY");
+		String response = post.getBodyAsString("http://api.scb.se/OV0104/v1/doris/en/ssd/BE/BE0701/MedelAlderNY");
 
 		assertNull(response);
 	}

@@ -38,19 +38,8 @@ public class RequesterSingletonFactory {
 	}
 
 	/**
-	 * Singleton holder for GET requester
+	 * Private constructor to prevent instantiation.
 	 */
-	private static class GETHolder {
-		private static final AbstractRequester INSTANCE = new GETRequester(StandardCharsets.UTF_8);
-	}
-
-	/**
-	 * Singleton holder for POST requester
-	 */
-	private static class POSTHolder {
-		private static final AbstractRequester INSTANCE = new POSTRequester(StandardCharsets.UTF_8);
-	}
-
 	private RequesterSingletonFactory() {
 
 	}
@@ -84,6 +73,20 @@ public class RequesterSingletonFactory {
 		AbstractRequester abs = requesters.get(method);
 		abs.setCharset(charset);
 		return abs;
+	}
+
+	/**
+	 * Singleton holder for GET requester.
+	 */
+	private static class GETHolder {
+		private static final AbstractRequester INSTANCE = new GETRequester(StandardCharsets.UTF_8);
+	}
+
+	/**
+	 * Singleton holder for POST requester.
+	 */
+	private static class POSTHolder {
+		private static final AbstractRequester INSTANCE = new POSTRequester(StandardCharsets.UTF_8);
 	}
 
 }

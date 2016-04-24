@@ -120,10 +120,10 @@ public abstract class AbstractClient {
 	protected String get(String url) {
 		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
 		try {
-			return get.getBody(getBaseUrl() + url);
+			return get.getBodyAsString(getBaseUrl() + url);
 		} catch (SCBClientUrlNotFoundException e) {
 			// 404, call the client again with the fallback language
-			return get.getBody(URLUtility.changeLanguageForUrl(getBaseUrl() + url));
+			return get.getBodyAsString(URLUtility.changeLanguageForUrl(getBaseUrl() + url));
 		}
 	}
 
@@ -140,12 +140,12 @@ public abstract class AbstractClient {
 		POSTRequester post = (POSTRequester) RequesterFactory.getRequester(RequestMethod.POST);
 		post.setQuery(query);
 		try {
-			String response = post.getBody(getBaseUrl() + url);
+			String response = post.getBodyAsString(getBaseUrl() + url);
 			LOGGER.log(Level.INFO, query);
 			return response;
 		} catch (SCBClientUrlNotFoundException e) {
 			// 404, call the client again with the fallback language
-			return post.getBody(URLUtility.changeLanguageForUrl(getBaseUrl() + url));
+			return post.getBodyAsString(URLUtility.changeLanguageForUrl(getBaseUrl() + url));
 		}
 	}
 
@@ -187,9 +187,9 @@ public abstract class AbstractClient {
 	 * 
 	 * @param url
 	 *            the URL to retrieve the years from
+	 * @return a list of the available years for the given URL
 	 * @throws UnsupportedOperationException
 	 *             if the specified URL doesn't supply a years table
-	 * @return a list of the available years for the given URL
 	 */
 	protected List<String> getYears(String url) {
 		String content = get(url);

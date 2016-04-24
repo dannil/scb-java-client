@@ -28,11 +28,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
 
 /**
- * Utility class for converting JSON to Java objects
+ * Utility class for converting JSON to Java objects.
  * 
  * @author Daniel Nilsson
  */
-public class JsonUtility {
+public final class JsonUtility {
 
 	private static ObjectMapper mapper;
 
@@ -40,6 +40,9 @@ public class JsonUtility {
 		mapper = new ObjectMapper();
 	}
 
+	/**
+	 * Private constructor to prevent instantiation.
+	 */
 	private JsonUtility() {
 
 	}
@@ -110,7 +113,7 @@ public class JsonUtility {
 				String key = codes.get(j);
 
 				// Lowercase first letter of key
-				char c[] = key.toCharArray();
+				char[] c = key.toCharArray();
 				c[0] = Character.toLowerCase(c[0]);
 				key = new String(c);
 
