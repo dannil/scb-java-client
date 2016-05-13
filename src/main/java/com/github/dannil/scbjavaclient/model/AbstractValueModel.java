@@ -73,17 +73,17 @@ public abstract class AbstractValueModel<V> {
 	}
 
 	/**
-	 * Get the value for a specific contents code.
+	 * Get the value node for a specific contents code.
 	 *
 	 * @param key
-	 *            the contents code to get the value for
-	 * @return the value
+	 *            the contents code to get the value node for
+	 * @return the value node
 	 */
-	public V getValue(String key) {
+	public Value<V> getValue(String key) {
 		for (int i = 0; i < this.values.size(); i++) {
 			Value<V> v = this.values.get(i);
 			if (v.getCode().equals(key)) {
-				return v.getValue();
+				return v;
 			}
 		}
 		return null;
