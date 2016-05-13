@@ -16,8 +16,8 @@
 
 package com.github.dannil.scbjavaclient.model;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -33,14 +33,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public abstract class AbstractValueModel<V> {
 
 	@JsonProperty("values")
-	protected Map<String, V> values;
+	protected List<Value<V>> values;
 
 	/**
 	 * Default constructor.
 	 */
 	protected AbstractValueModel() {
 		// To enable derived classes to use their default constructor
-		this.values = new HashMap<String, V>();
+		this.values = new ArrayList<Value<V>>();
 	}
 
 	/**
@@ -49,8 +49,8 @@ public abstract class AbstractValueModel<V> {
 	 * @param values
 	 *            the values
 	 */
-	protected AbstractValueModel(Map<String, V> values) {
-		this.values = new HashMap<String, V>(values);
+	protected AbstractValueModel(List<Value<V>> values) {
+		this.values = new ArrayList<Value<V>>(values);
 	}
 
 	/**
@@ -58,7 +58,7 @@ public abstract class AbstractValueModel<V> {
 	 * 
 	 * @return the values
 	 */
-	public Map<String, V> getValues() {
+	public List<Value<V>> getValues() {
 		return this.values;
 	}
 
@@ -68,32 +68,38 @@ public abstract class AbstractValueModel<V> {
 	 * @param values
 	 *            the values
 	 */
-	public void setValues(Map<String, V> values) {
-		this.values = new HashMap<String, V>(values);
+	public void setValues(List<Value<V>> values) {
+		this.values = new ArrayList<Value<V>>(values);
 	}
 
 	/**
 	 * Get the value for a specific contents code.
-	 * 
+	 *
 	 * @param key
 	 *            the contents code to get the value for
 	 * @return the value
 	 */
 	public V getValue(String key) {
-		return this.values.get(key);
+		for (int i = 0; i < this.values.size(); i++) {
+			Value<V> v = this.values.get(i);
+			if (v.getCode().equals(key)) {
+				return v.getValue();
+			}
+		}
+		return null;
 	}
 
-	/**
-	 * Set the value for a specific contents code.
-	 * 
-	 * @param key
-	 *            the contents code to set the value for
-	 * @param value
-	 *            the value
-	 */
-	public void setValue(String key, V value) {
-		this.values.put(key, value);
-	}
+	// /**
+	// * Set the value for a specific contents code.
+	// *
+	// * @param key
+	// * the contents code to set the value for
+	// * @param value
+	// * the value
+	// */
+	// public void setValue(String key, V value) {
+	// this.values.put(key, value);
+	// }
 
 	@Override
 	public int hashCode() {

@@ -16,7 +16,7 @@
 
 package com.github.dannil.scbjavaclient.model;
 
-import java.util.Map;
+import java.util.List;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -52,7 +52,7 @@ public abstract class AbstractYearAndValueModel<Y, V> extends AbstractValueModel
 	 * @param values
 	 *            the values
 	 */
-	public AbstractYearAndValueModel(Y year, Map<String, V> values) {
+	public AbstractYearAndValueModel(Y year, List<Value<V>> values) {
 		super(values);
 		this.year = year;
 	}
