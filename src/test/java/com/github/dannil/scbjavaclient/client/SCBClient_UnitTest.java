@@ -17,6 +17,7 @@
 package com.github.dannil.scbjavaclient.client;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
@@ -82,6 +83,22 @@ public class SCBClient_UnitTest {
 		client.setLocalizationLanguage(localizationLocale);
 
 		assertEquals(localizationLocale, client.localization.getLanguage());
+	}
+
+	@Test
+	public void supportedLocale() {
+		Locale locale = new Locale("sv", "SE");
+		SCBClient client = new SCBClient(locale);
+
+		assertTrue(client.isSupportedLocale(locale));
+	}
+
+	@Test
+	public void unsupportedLocale() {
+		Locale locale = new Locale("fr", "CA");
+		SCBClient client = new SCBClient(locale);
+
+		assertFalse(client.isSupportedLocale(locale));
 	}
 
 }
