@@ -212,6 +212,23 @@ public abstract class AbstractClient {
 		return years;
 	}
 
+	/**
+	 * Checks if the specified locale is supported by the SCB API.
+	 * 
+	 * @param locale
+	 *            the locale to check
+	 * @return true if the locale is supported, otherwise false
+	 */
+	public boolean isSupportedLocale(Locale locale) {
+		String url = URLUtility.changeLanguageForUrl(getBaseUrl(), locale);
+		try {
+			get(url);
+			return true;
+		} catch (SCBClientUrlNotFoundException e) {
+			return false;
+		}
+	}
+
 	// /**
 	// * Returns the URL endpoint which this client represents.
 	// *
