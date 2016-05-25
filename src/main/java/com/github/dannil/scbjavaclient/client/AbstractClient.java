@@ -221,8 +221,10 @@ public abstract class AbstractClient {
 	 */
 	public boolean isSupportedLocale(Locale locale) {
 		String url = URLUtility.changeLanguageForUrl(getBaseUrl(), locale);
+
+		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
 		try {
-			get(url);
+			get.getBodyAsString(url);
 			return true;
 		} catch (SCBClientUrlNotFoundException e) {
 			return false;
