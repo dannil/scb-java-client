@@ -173,8 +173,10 @@ public abstract class AbstractClient {
 
 		int position = codes.indexOf("Region");
 		if (position < 0) {
-			throw new UnsupportedOperationException(
-					this.localization.getString("regions_is_not_supported_for_url", url));
+			Object[] variables = new Object[] { url };
+
+			throw new UnsupportedOperationException(this.localization.getString("regions_is_not_supported_for_url",
+					variables));
 		}
 
 		JsonNode jsonRegions = values.get(position);
@@ -206,7 +208,10 @@ public abstract class AbstractClient {
 
 		int position = codes.indexOf("Tid");
 		if (position < 0) {
-			throw new UnsupportedOperationException(this.localization.getString("years_is_not_supported_for_url", url));
+			Object[] variables = new Object[] { url };
+
+			throw new UnsupportedOperationException(this.localization.getString("years_is_not_supported_for_url",
+					variables));
 		}
 
 		JsonNode jsonYears = values.get(position);

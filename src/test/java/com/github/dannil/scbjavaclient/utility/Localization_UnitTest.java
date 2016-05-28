@@ -25,8 +25,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import com.github.dannil.scbjavaclient.utility.Localization;
-
 @RunWith(JUnit4.class)
 public class Localization_UnitTest {
 
@@ -72,10 +70,11 @@ public class Localization_UnitTest {
 	public void getStringFormat() {
 		Localization localization = new Localization(new Locale("en", "US"));
 
-		String url = "http://www.abc.com";
-		String translation = localization.getString("regions_is_not_supported_for_url", url);
+		Object[] variables = new Object[] { "http://www.abc.com" };
 
-		assertEquals("Regions is not supported for URL " + url, translation);
+		String translation = localization.getString("regions_is_not_supported_for_url", variables);
+
+		assertEquals("Regions is not supported for URL " + variables[0], translation);
 	}
 
 	@Test

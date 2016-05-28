@@ -16,6 +16,7 @@
 
 package com.github.dannil.scbjavaclient.utility;
 
+import java.text.MessageFormat;
 import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
@@ -87,12 +88,19 @@ public class Localization {
 	 * 
 	 * @param key
 	 *            the key to get the translation for
-	 * @param args
-	 *            the formatting which shall be inserted into the translation
+	 * @param variables
+	 *            the variables which shall be inserted into the translation
 	 * @return the translated string
 	 */
-	public String getString(String key, Object... args) {
-		return String.format(getString(key), args);
+	public String getString(String key, Object[] variables) {
+		MessageFormat formatter = new MessageFormat("");
+		formatter.setLocale(getLanguage());
+
+		formatter.applyPattern(getString(key));
+		String output = formatter.format(variables);
+
+		return output;
+
 		// return s;
 	}
 
