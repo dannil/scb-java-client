@@ -23,7 +23,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.github.dannil.scbjavaclient.exception.SCBClientException;
 import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.Localization;
@@ -245,11 +244,11 @@ public abstract class AbstractClient {
 		}
 	}
 
-	private void validateLocale() {
-		if (!isSupportedLocale(this.locale)) {
-			throw new SCBClientException("Locale " + this.locale + " is not supported by the API");
-		}
-	}
+	// private void validateLocale() {
+	// if (!isSupportedLocale(this.locale)) {
+	// throw new SCBClientException("Locale " + this.locale + " is not supported by the API");
+	// }
+	// }
 
 	// /**
 	// * Returns the URL endpoint which this client represents.
