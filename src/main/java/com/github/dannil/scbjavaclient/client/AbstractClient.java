@@ -145,8 +145,8 @@ public abstract class AbstractClient {
 		POSTRequester post = (POSTRequester) RequesterFactory.getRequester(RequestMethod.POST);
 		post.setQuery(query);
 		try {
-			String response = post.getBodyAsString(getBaseUrl() + url);
 			LOGGER.log(Level.INFO, query);
+			String response = post.getBodyAsString(getBaseUrl() + url);
 			return response;
 		} catch (SCBClientUrlNotFoundException e) {
 			// 404, call the client again with the fallback language
