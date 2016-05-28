@@ -52,7 +52,7 @@ public abstract class AbstractClient {
 	protected AbstractClient() {
 		this.locale = Locale.getDefault();
 
-		validateLocale();
+		// validateLocale();
 
 		this.localization = new Localization(this.locale);
 	}
@@ -67,7 +67,7 @@ public abstract class AbstractClient {
 		this();
 		this.locale = locale;
 
-		validateLocale();
+		// validateLocale();
 
 		this.localization.setLanguage(this.locale);
 	}
@@ -90,7 +90,7 @@ public abstract class AbstractClient {
 	public void setLocale(Locale locale) {
 		this.locale = locale;
 
-		validateLocale();
+		// validateLocale();
 
 		// this.localization.setLanguage(locale);
 	}
