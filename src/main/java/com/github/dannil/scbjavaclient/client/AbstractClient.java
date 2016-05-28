@@ -196,7 +196,7 @@ public abstract class AbstractClient {
 	 * @throws UnsupportedOperationException
 	 *             if the specified URL doesn't supply a years table
 	 */
-	protected List<String> getYears(String url) {
+	public List<String> getYears(String url) {
 		String content = get(url);
 
 		JsonNode contentAsJsonNode = JsonUtility.getNode(content);
