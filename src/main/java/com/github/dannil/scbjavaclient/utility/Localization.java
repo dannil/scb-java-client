@@ -16,9 +16,15 @@
 
 package com.github.dannil.scbjavaclient.utility;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.text.MessageFormat;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 import java.util.MissingResourceException;
+import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
 /**
@@ -31,6 +37,11 @@ public class Localization {
 	private Locale fallbackLocale;
 
 	private ResourceBundle bundle;
+	private ResourceBundleEncodingControl encodingControl;
+
+	private Localization() {
+		this.encodingControl = new ResourceBundleEncodingControl("UTF-8");
+	}
 
 	/**
 	 * Overloaded constructor.
@@ -39,9 +50,10 @@ public class Localization {
 	 *            the locale for this localization instance
 	 */
 	public Localization(Locale locale) {
+		this();
 		this.fallbackLocale = new Locale("en", "US");
 
-		this.bundle = ResourceBundle.getBundle("language", locale);
+		this.bundle = ResourceBundle.getBundle("language", locale, this.encodingControl);
 	}
 
 	/**
@@ -61,7 +73,7 @@ public class Localization {
 	 *            the locale
 	 */
 	public void setLanguage(Locale locale) {
-		this.bundle = ResourceBundle.getBundle("language", locale);
+		this.bundle = ResourceBundle.getBundle("language", locale, this.encodingControl);
 	}
 
 	/**
@@ -94,14 +106,64 @@ public class Localization {
 	 */
 	public String getString(String key, Object[] variables) {
 		MessageFormat formatter = new MessageFormat("");
-		formatter.setLocale(getLanguage());
+
+		if (!getLanguage().equals(this.fallbackLocale)) {
+			formatter.setLocale(getLanguage());
+		} else {
+			formatter.setLocale(this.fallbackLocale);
+		}
 
 		formatter.applyPattern(getString(key));
-		String output = formatter.format(variables);
+		return formatter.format(variables);
+	}
 
-		return output;
+	public class ResourceBundleEncodingControl extends ResourceBundle.Control {
 
-		// return s;
+		private String encoding;
+
+		public ResourceBundleEncodingControl(String encoding) {
+			this.encoding = encoding;
+		}
+
+		@Override
+		public List<String> getFormats(String basename) {
+			if (basename == null) {
+				throw new NullPointerException();
+			}
+			return Arrays.asList("properties");
+		}
+
+		@Override
+		public ResourceBundle newBundle(String baseName, Locale locale, String format, ClassLoader loader,
+				boolean reload) {
+
+			if (baseName == null || locale == null || format == null || loader == null) {
+				throw new NullPointerException();
+			}
+
+			ResourceBundle bundle = null;
+
+			if (format.equals("properties")) {
+
+				String bundleName = toBundleName(baseName, locale);
+				String resourceName = toResourceName(bundleName, format);
+				InputStream stream = null;
+
+				try {
+					stream = loader.getResourceAsStream(resourceName);
+
+					if (stream != null) {
+						try (InputStreamReader is2 = new InputStreamReader(stream, this.encoding)) {
+							bundle = new PropertyResourceBundle(is2);
+						}
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+
+			return bundle;
+		}
 	}
 
 }
