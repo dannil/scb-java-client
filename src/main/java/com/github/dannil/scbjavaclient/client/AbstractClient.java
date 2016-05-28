@@ -23,6 +23,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.github.dannil.scbjavaclient.exception.SCBClientException;
 import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.Localization;
@@ -51,6 +52,8 @@ public abstract class AbstractClient {
 	protected AbstractClient() {
 		this.locale = Locale.getDefault();
 
+		validateLocale();
+
 		this.localization = new Localization(this.locale);
 	}
 
@@ -63,6 +66,8 @@ public abstract class AbstractClient {
 	protected AbstractClient(Locale locale) {
 		this();
 		this.locale = locale;
+
+		validateLocale();
 
 		this.localization.setLanguage(this.locale);
 	}
@@ -84,6 +89,8 @@ public abstract class AbstractClient {
 	 */
 	public void setLocale(Locale locale) {
 		this.locale = locale;
+
+		validateLocale();
 
 		// this.localization.setLanguage(locale);
 	}
@@ -228,6 +235,12 @@ public abstract class AbstractClient {
 			return true;
 		} catch (SCBClientUrlNotFoundException e) {
 			return false;
+		}
+	}
+
+	private void validateLocale() {
+		if (!isSupportedLocale(this.locale)) {
+			throw new SCBClientException("Locale " + this.locale + " is not supported by the API");
 		}
 	}
 
