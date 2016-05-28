@@ -42,6 +42,8 @@ public abstract class AbstractClient {
 
 	private static final Logger LOGGER = Logger.getLogger(AbstractClient.class.getName());
 
+	private static final String ROOT_URL = "http://api.scb.se/OV0104/v1/doris/";
+
 	protected Locale locale;
 
 	protected Localization localization;
@@ -112,7 +114,7 @@ public abstract class AbstractClient {
 	 * @return the URL representing the entry point for the API.
 	 */
 	protected String getBaseUrl() {
-		return "http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/";
+		return ROOT_URL + this.locale.getLanguage() + "/ssd/";
 	}
 
 	/**
