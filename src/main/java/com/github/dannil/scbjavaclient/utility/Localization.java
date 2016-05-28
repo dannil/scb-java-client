@@ -37,8 +37,12 @@ public class Localization {
 	private Locale fallbackLocale;
 
 	private ResourceBundle bundle;
+
 	private ResourceBundleEncodingControl encodingControl;
 
+	/**
+	 * Private constructor. Initializes encoding control for the resource bundles.
+	 */
 	private Localization() {
 		this.encodingControl = new ResourceBundleEncodingControl("UTF-8");
 	}
@@ -104,23 +108,26 @@ public class Localization {
 	 *            the variables which shall be inserted into the translation
 	 * @return the translated string
 	 */
-	public String getString(String key, Object[] variables) {
+	public String getString(String key, Object... variables) {
 		MessageFormat formatter = new MessageFormat("");
 
-		if (!getLanguage().equals(this.fallbackLocale)) {
-			formatter.setLocale(getLanguage());
-		} else {
-			formatter.setLocale(this.fallbackLocale);
-		}
+		Locale locale = (getLanguage().equals(this.fallbackLocale) ? this.fallbackLocale : getLanguage());
+		formatter.setLocale(locale);
 
 		formatter.applyPattern(getString(key));
 		return formatter.format(variables);
 	}
 
-	public class ResourceBundleEncodingControl extends ResourceBundle.Control {
+	private class ResourceBundleEncodingControl extends ResourceBundle.Control {
 
 		private String encoding;
 
+		/**
+		 * Overloaded constructor.
+		 * 
+		 * @param encoding
+		 *            the encoding to use (i.e. UTF-8)
+		 */
 		public ResourceBundleEncodingControl(String encoding) {
 			this.encoding = encoding;
 		}
