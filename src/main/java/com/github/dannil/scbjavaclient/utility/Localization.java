@@ -141,7 +141,7 @@ public class Localization {
 		@Override
 		public List<String> getFormats(String baseName) {
 			if (baseName == null) {
-				throw new NullPointerException();
+				throw new IllegalArgumentException();
 			}
 			return Arrays.asList("properties");
 		}
@@ -151,7 +151,7 @@ public class Localization {
 				boolean reload) {
 
 			if (baseName == null || locale == null || format == null || loader == null) {
-				throw new NullPointerException();
+				throw new IllegalArgumentException();
 			}
 
 			if (format.equals("properties")) {
