@@ -88,17 +88,15 @@ public class SCBClient_UnitTest {
 	@Test
 	public void supportedLocale() {
 		Locale locale = new Locale("sv", "SE");
-		SCBClient client = new SCBClient(locale);
 
-		assertTrue(client.isSupportedLocale(locale));
+		assertTrue(SCBClient.isSupportedLocale(locale));
 	}
 
 	@Test
 	public void unsupportedLocale() {
 		Locale locale = new Locale("fr", "CA");
-		SCBClient client = new SCBClient(locale);
 
-		assertFalse(client.isSupportedLocale(locale));
+		assertFalse(SCBClient.isSupportedLocale(locale));
 	}
 
 }
