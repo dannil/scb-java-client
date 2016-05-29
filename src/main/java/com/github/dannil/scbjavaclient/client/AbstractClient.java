@@ -83,7 +83,9 @@ public abstract class AbstractClient {
 	}
 
 	/**
-	 * Sets the language for this client instance.
+	 * Sets the language for this client instance. Note that doing this after a call to
+	 * {@link #setLocalizationLanguage(Locale)} overwrites the localization language with the input
+	 * of this method.
 	 * 
 	 * @param locale
 	 *            the language for this client
@@ -93,7 +95,7 @@ public abstract class AbstractClient {
 
 		// validateLocale();
 
-		// this.localization.setLanguage(locale);
+		this.localization.setLanguage(locale);
 	}
 
 	/**
