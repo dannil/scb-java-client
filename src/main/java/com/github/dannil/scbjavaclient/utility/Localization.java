@@ -135,6 +135,7 @@ public class Localization {
 		 *            the encoding to use (i.e. UTF-8)
 		 */
 		protected ResourceBundleEncodingControl(String encoding) {
+			super();
 			this.encoding = encoding;
 		}
 
