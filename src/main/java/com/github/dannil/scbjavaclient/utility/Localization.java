@@ -111,13 +111,19 @@ public class Localization {
 	public String getString(String key, Object... variables) {
 		MessageFormat formatter = new MessageFormat("");
 
-		Locale locale = (getLanguage().equals(this.fallbackLocale) ? this.fallbackLocale : getLanguage());
+		Locale locale = getLanguage().equals(this.fallbackLocale) ? this.fallbackLocale : getLanguage();
 		formatter.setLocale(locale);
 
 		formatter.applyPattern(getString(key));
 		return formatter.format(variables);
 	}
 
+	/**
+	 * Class to handle non-ASCII encodings for {@link java.util.ResourceBundle ResourceBundle}, such
+	 * as UTF-8.
+	 * 
+	 * @author Daniel Nilsson
+	 */
 	private class ResourceBundleEncodingControl extends ResourceBundle.Control {
 
 		private String encoding;
@@ -128,13 +134,13 @@ public class Localization {
 		 * @param encoding
 		 *            the encoding to use (i.e. UTF-8)
 		 */
-		public ResourceBundleEncodingControl(String encoding) {
+		protected ResourceBundleEncodingControl(String encoding) {
 			this.encoding = encoding;
 		}
 
 		@Override
-		public List<String> getFormats(String basename) {
-			if (basename == null) {
+		public List<String> getFormats(String baseName) {
+			if (baseName == null) {
 				throw new NullPointerException();
 			}
 			return Arrays.asList("properties");
@@ -148,10 +154,7 @@ public class Localization {
 				throw new NullPointerException();
 			}
 
-			ResourceBundle bundle = null;
-
 			if (format.equals("properties")) {
-
 				String bundleName = toBundleName(baseName, locale);
 				String resourceName = toResourceName(bundleName, format);
 				InputStream stream = null;
@@ -161,15 +164,15 @@ public class Localization {
 
 					if (stream != null) {
 						try (InputStreamReader is2 = new InputStreamReader(stream, this.encoding)) {
-							bundle = new PropertyResourceBundle(is2);
+							ResourceBundle bundle = new PropertyResourceBundle(is2);
+							return bundle;
 						}
 					}
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 			}
-
-			return bundle;
+			return null;
 		}
 	}
 
