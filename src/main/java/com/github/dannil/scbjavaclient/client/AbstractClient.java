@@ -41,7 +41,7 @@ public abstract class AbstractClient {
 
 	private static final Logger LOGGER = Logger.getLogger(AbstractClient.class.getName());
 
-	private static final String ROOT_URL = "http://api.scb.se/OV0104/v1/doris/";
+	protected static final String ROOT_URL = "http://api.scb.se/OV0104/v1/doris/";
 
 	protected Locale locale;
 
@@ -225,25 +225,6 @@ public abstract class AbstractClient {
 		}
 
 		return years;
-	}
-
-	/**
-	 * Checks if the specified locale is supported by the SCB API.
-	 * 
-	 * @param locale
-	 *            the locale to check
-	 * @return true if the locale is supported, otherwise false
-	 */
-	public boolean isSupportedLocale(Locale locale) {
-		String url = URLUtility.changeLanguageForUrl(getBaseUrl(), locale);
-
-		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
-		try {
-			get.getBodyAsString(url);
-			return true;
-		} catch (SCBClientUrlNotFoundException e) {
-			return false;
-		}
 	}
 
 	// private void validateLocale() {

@@ -26,8 +26,13 @@ import java.util.Map;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.dannil.scbjavaclient.client.environment.EnvironmentClient;
 import com.github.dannil.scbjavaclient.client.population.PopulationClient;
+import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
+import com.github.dannil.scbjavaclient.utility.URLUtility;
+import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
+import com.github.dannil.scbjavaclient.utility.requester.RequestMethod;
+import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
 
 /**
  * Root client for the client hierarchy.
@@ -131,6 +136,25 @@ public class SCBClient extends AbstractContainerClient {
 	 */
 	public String getRawData(String table, Map<String, Collection<?>> query) {
 		return super.post(table, QueryBuilder.build(query));
+	}
+
+	/**
+	 * Checks if the specified locale is supported by the SCB API.
+	 * 
+	 * @param locale
+	 *            the locale to check
+	 * @return true if the locale is supported, otherwise false
+	 */
+	public static boolean isSupportedLocale(Locale locale) {
+		String url = URLUtility.changeLanguageForUrl(ROOT_URL + locale.getLanguage(), locale);
+
+		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
+		try {
+			get.getBodyAsString(url);
+			return true;
+		} catch (SCBClientUrlNotFoundException e) {
+			return false;
+		}
 	}
 
 }
