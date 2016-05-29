@@ -154,7 +154,7 @@ public class Localization {
 				throw new IllegalArgumentException();
 			}
 
-			if (format.equals("properties")) {
+			if ("properties".equals(format)) {
 				String bundleName = toBundleName(baseName, locale);
 				String resourceName = toResourceName(bundleName, format);
 				InputStream stream = null;
