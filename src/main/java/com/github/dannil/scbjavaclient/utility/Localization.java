@@ -111,8 +111,7 @@ public class Localization {
 	public String getString(String key, Object... variables) {
 		MessageFormat formatter = new MessageFormat("");
 
-		Locale locale = getLanguage().equals(this.fallbackLocale) ? this.fallbackLocale : getLanguage();
-		formatter.setLocale(locale);
+		formatter.setLocale(getLanguage());
 
 		formatter.applyPattern(getString(key));
 		return formatter.format(variables);
