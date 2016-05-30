@@ -32,7 +32,7 @@ public class Localization_UnitTest {
 	public void createWithConstructor() {
 		Localization localization = new Localization(new Locale("sv", "SE"));
 
-		assertEquals(new Locale("sv", "SE"), localization.getLanguage());
+		assertEquals(new Locale("sv", "SE"), localization.getLocale());
 	}
 
 	// @Test(expected = NullPointerException.class)
@@ -62,7 +62,7 @@ public class Localization_UnitTest {
 	public void getStringFallback() {
 		Localization localization = new Localization(new Locale("sv", "SE"));
 
-		assertNotEquals(new Locale("en", "US"), localization.getLanguage());
+		assertNotEquals(new Locale("en", "US"), localization.getLocale());
 		assertEquals("UniqueEnglish", localization.getString("unique"));
 	}
 
@@ -82,7 +82,7 @@ public class Localization_UnitTest {
 		Localization localization = new Localization(new Locale("sv", "SE"));
 
 		assertEquals("TestSvenska", localization.getString("test"));
-		localization.setLanguage(new Locale("en", "US"));
+		localization.setLocale(new Locale("en", "US"));
 		assertEquals("TestEnglish", localization.getString("test"));
 	}
 

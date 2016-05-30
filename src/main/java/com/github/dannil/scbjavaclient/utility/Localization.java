@@ -61,22 +61,21 @@ public class Localization {
 	}
 
 	/**
-	 * Getter for the language for this localization instance. This is the same as the locale
-	 * specified in {@link Localization#getLanguage() getLanguage()}.
+	 * Getter for the locale of this localization instance.
 	 * 
 	 * @return the language for this localization instance.
 	 */
-	public Locale getLanguage() {
+	public Locale getLocale() {
 		return this.bundle.getLocale();
 	}
 
 	/**
-	 * Setter for the language for this localization instance.
+	 * Setter for the locale for this localization instance.
 	 * 
 	 * @param locale
 	 *            the locale
 	 */
-	public void setLanguage(Locale locale) {
+	public void setLocale(Locale locale) {
 		this.bundle = ResourceBundle.getBundle("language", locale, this.encodingControl);
 	}
 
@@ -111,7 +110,7 @@ public class Localization {
 	public String getString(String key, Object... variables) {
 		MessageFormat formatter = new MessageFormat("");
 
-		formatter.setLocale(getLanguage());
+		formatter.setLocale(getLocale());
 
 		formatter.applyPattern(getString(key));
 		return formatter.format(variables);
