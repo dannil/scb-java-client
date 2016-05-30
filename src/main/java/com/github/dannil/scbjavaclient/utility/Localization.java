@@ -89,13 +89,11 @@ public class Localization {
 	 * @return the translated string
 	 */
 	public String getString(String key) {
-		String s;
 		try {
-			s = this.bundle.getString(key);
+			return this.bundle.getString(key);
 		} catch (MissingResourceException e2) {
-			s = ResourceBundle.getBundle("language", this.fallbackLocale, this.encodingControl).getString(key);
+			return ResourceBundle.getBundle("language", this.fallbackLocale, this.encodingControl).getString(key);
 		}
-		return s;
 	}
 
 	/**
