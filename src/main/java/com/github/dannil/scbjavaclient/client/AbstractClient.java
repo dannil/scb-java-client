@@ -39,9 +39,9 @@ import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
  */
 public abstract class AbstractClient {
 
-	private static final Logger LOGGER = Logger.getLogger(AbstractClient.class.getName());
-
 	protected static final String ROOT_URL = "http://api.scb.se/OV0104/v1/doris/";
+
+	private static final Logger LOGGER = Logger.getLogger(AbstractClient.class.getName());
 
 	protected Locale locale;
 
