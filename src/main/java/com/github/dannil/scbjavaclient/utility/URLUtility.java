@@ -34,7 +34,7 @@ public final class URLUtility {
 
 	/**
 	 * Generates a new URL to the API by replacing the current locale in the URL with the default
-	 * fallback locale's language (swedish).
+	 * fallback locale's language (Swedish).
 	 *
 	 * @param url
 	 *            the URL to edit
