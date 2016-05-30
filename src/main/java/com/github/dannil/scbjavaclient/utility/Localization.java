@@ -94,7 +94,7 @@ public class Localization {
 		try {
 			s = this.bundle.getString(key);
 		} catch (MissingResourceException e2) {
-			s = ResourceBundle.getBundle("language", this.fallbackLocale).getString(key);
+			s = ResourceBundle.getBundle("language", this.fallbackLocale, this.encodingControl).getString(key);
 		}
 		return s;
 	}
