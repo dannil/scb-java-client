@@ -107,7 +107,7 @@ public class AbstractClient_IntegrationTest {
 	public void getRegionsInvalidTable() {
 		DummyClient client = new DummyClient();
 
-		List<String> regions = client.getRegions("BE/BE0401/BE0401A/BefolkprognRev2016");
+		List<String> regions = client.getRegions("BE/BE0001/BE0001T04Ar");
 
 		assertNull(regions);
 	}
