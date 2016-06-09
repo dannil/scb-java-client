@@ -16,14 +16,11 @@
 
 package com.github.dannil.scbjavaclient.client;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.github.dannil.scbjavaclient.client.environment.EnvironmentClient;
 import com.github.dannil.scbjavaclient.client.population.PopulationClient;
 import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
@@ -103,24 +100,16 @@ public class SCBClient extends AbstractContainerClient {
 	 * @param table
 	 *            the table to fetch data from
 	 * @return a JSON string containing all available data in the specified table
+	 * 
+	 * @see {@link com.github.dannil.scbjavaclient.utility.JsonUtility#getContentsCodes(String)
+	 *      JsonUtility#getContentsCodes(String) }
 	 */
 	public String getRawData(String table) {
 		String json = super.get(table);
 
 		Map<String, Collection<?>> inputs = new HashMap<String, Collection<?>>();
-		JsonNode node = JsonUtility.getNode(json, "variables");
-		for (int i = 0; i < node.size(); i++) {
-			JsonNode child = node.get(i);
-			if (child.get("code").asText().equals("ContentsCode")) {
-				JsonNode values = child.get("values");
-				List<String> valueTexts = new ArrayList<String>(values.size());
-				for (int j = 0; j < values.size(); j++) {
-					valueTexts.add(values.get(j).asText());
-				}
-				inputs.put("ContentsCode", valueTexts);
-				break;
-			}
-		}
+		inputs.put("ContentsCode", JsonUtility.getContentsCodes(json));
+
 		return getRawData(table, inputs);
 	}
 

@@ -81,6 +81,30 @@ public final class JsonUtility {
 	}
 
 	/**
+	 * Retrieves the contents codes from the specified JSON.
+	 * 
+	 * @param json
+	 *            the json to retrieve the contents codes from
+	 * @return a list of the available contents codes
+	 */
+	public static List<String> getContentsCodes(String json) {
+		List<String> valueTexts = new ArrayList<String>();
+
+		JsonNode node = JsonUtility.getNode(json, "variables");
+		for (int i = 0; i < node.size(); i++) {
+			JsonNode child = node.get(i);
+			if (child.get("code").asText().equals("ContentsCode")) {
+				JsonNode values = child.get("values");
+				for (int j = 0; j < values.size(); j++) {
+					valueTexts.add(values.get(j).asText());
+				}
+				break;
+			}
+		}
+		return valueTexts;
+	}
+
+	/**
 	 * Converts the non-conventional JSON response from the SCB API into a more conventional format,
 	 * wrapped in a {@link JsonNode}.
 	 * 
