@@ -171,8 +171,6 @@ public abstract class AbstractRequester {
 				while ((line = br.readLine()) != null) {
 					builder.append(line);
 				}
-
-				System.out.println(builder);
 			}
 		} catch (IOException e) {
 			throw new SCBClientException(e);
