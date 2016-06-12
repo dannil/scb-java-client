@@ -137,12 +137,19 @@ public abstract class AbstractRequester {
 
 		try (BOMInputStream bis = new BOMInputStream(response.getEntity().getContent())) {
 			try (BufferedReader br = new BufferedReader(new InputStreamReader(bis, this.charset.name()))) {
+
+				// Not all tables seems to have a byte order mark (BOM) but they need to be handled
+				// for the tables that do, or else the parsing will fail as the parsing architecture
+				// will try to convert the string containing the BOM as valid JSON
+
 				if (bis.hasBOM()) {
-					// Handle UTF-8 byte order mark (BOM)
 					ByteOrderMark bom = bis.getBOM();
 
-					// Mark where the BOM ends, so subsequent calls to reset
-					// effectively jumps over the BOM
+					// Handle UTF BOM. Since we inspect the number of bytes the BOM consists of,
+					// this method should be valid for both UTF-8, UTF-16, UTF-32 and all the
+					// combinations of Little Endian or Big Endian. By marking the place where
+					// the BOM ends, the subsequent call to reset will make the reader skip (or
+					// "jump over") the BOM entirely
 					br.mark(bom.getBytes().length);
 
 					// Jump to where the BOM ends
@@ -164,33 +171,14 @@ public abstract class AbstractRequester {
 				while ((line = br.readLine()) != null) {
 					builder.append(line);
 				}
+
+				System.out.println(builder);
 			}
 		} catch (IOException e) {
 			throw new SCBClientException(e);
 		}
 
 		return builder.toString();
-
-		// try (BufferedReader br = new BufferedReader(new
-		// InputStreamReader(response.getEntity().getContent(),
-		// this.charset.name()))) {
-		// // Handle UTF-8 byte order mark (BOM)
-		// br.mark(4);
-		//
-		// // Checks if the stream contains a BOM. If it doesn't, reset the
-		// // stream pointer to the location specified by br.mark()
-		// if ('\uFEFF' != br.read()) {
-		// br.reset();
-		// }
-		//
-		// String line;
-		// while ((line = br.readLine()) != null) {
-		// builder.append(line);
-		// }
-		// } catch (IOException e) {
-		// throw new SCBClientException(e);
-		// }
-		// return builder.toString();
 	}
 
 	/**
