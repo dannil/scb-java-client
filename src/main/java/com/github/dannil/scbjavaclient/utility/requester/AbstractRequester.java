@@ -26,7 +26,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-import org.apache.commons.io.ByteOrderMark;
 import org.apache.commons.io.input.BOMInputStream;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -142,19 +141,19 @@ public abstract class AbstractRequester {
 				// for the tables that do, or else the parsing will fail as the parsing architecture
 				// will try to convert the string containing the BOM as valid JSON
 
-				if (bis.hasBOM()) {
-					ByteOrderMark bom = bis.getBOM();
-
-					// Handle UTF BOM. Since we inspect the number of bytes the BOM consists of,
-					// this method should be valid for both UTF-8, UTF-16, UTF-32 and all the
-					// combinations of Little Endian or Big Endian. By marking the place where
-					// the BOM ends, the subsequent call to reset will make the reader skip (or
-					// "jump over") the BOM entirely
-					br.mark(bom.getBytes().length);
-
-					// Jump to where the BOM ends
-					br.reset();
-				}
+				// if (bis.hasBOM()) {
+				// ByteOrderMark bom = bis.getBOM();
+				//
+				// // Handle UTF BOM. Since we inspect the number of bytes the BOM consists of,
+				// // this method should be valid for both UTF-8, UTF-16, UTF-32 and all the
+				// // combinations of Little Endian or Big Endian. By marking the place where
+				// // the BOM ends, the subsequent call to reset will make the reader skip (or
+				// // "jump over") the BOM entirely
+				// br.mark(bom.getBytes().length);
+				//
+				// // Jump to where the BOM ends
+				// br.reset();
+				// }
 
 				// // Handle UTF-8 byte order mark (BOM)
 				// br.mark(4);
