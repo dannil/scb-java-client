@@ -1,6 +1,9 @@
 # scb-java-client
 
-[![Build Status](https://travis-ci.org/dannil/scb-java-client.svg?branch=dev)](https://travis-ci.org/dannil/scb-java-client)
+[![Build Status](https://img.shields.io/travis/dannil/scb-java-client/dev.svg)](https://travis-ci.org/dannil/scb-java-client)
+
+https://img.shields.io/codacy/grade/af5b976ee2f94fd4b25ef1ae991d7993.svg
+https://img.shields.io/codacy/coverage/af5b976ee2f94fd4b25ef1ae991d7993.svg
 [![Codacy Grade Badge](https://api.codacy.com/project/badge/grade/af5b976ee2f94fd4b25ef1ae991d7993)](https://www.codacy.com/app/dannil/scb-java-client)
 [![Codacy Coverage Badge](https://api.codacy.com/project/badge/coverage/af5b976ee2f94fd4b25ef1ae991d7993)](https://www.codacy.com/app/dannil/scb-java-client)
 [![Dependency Status](https://www.versioneye.com/user/projects/56d19801157a69002ea956d6/badge.svg?style=flat)](https://www.versioneye.com/user/projects/56d19801157a69002ea956d6)
