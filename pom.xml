@@ -52,12 +52,12 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-core</artifactId>
-			<version>2.7.4</version>
+			<version>2.7.5</version>
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>2.7.4</version>
+			<version>2.7.5</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
@@ -76,6 +76,7 @@
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
 			<scope>test</scope>
+			<optional>true</optional>
 		</dependency>
 	</dependencies>
 
@@ -174,7 +175,7 @@
 				<version>2.5.3</version>
 				<configuration>
 					<arguments>-Dgpg.passphrase=${gpg.passphrase}</arguments>
-					<scmCommentPrefix>Release: </scmCommentPrefix>
+					<scmCommentPrefix>[release]</scmCommentPrefix>
 				</configuration>
 			</plugin>
 			<plugin>
