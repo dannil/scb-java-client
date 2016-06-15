@@ -8,7 +8,6 @@ branches:
   only:
   - master
   - dev
-  - coverity_scan
   
 sudo: required
   
