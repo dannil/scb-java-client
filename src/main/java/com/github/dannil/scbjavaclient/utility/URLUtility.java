@@ -70,6 +70,8 @@ public final class URLUtility {
 	 * @return the modified URL
 	 */
 	public static String changeLanguageForUrl(String url, String language) {
+		// Specify the starting point. For this implementation, the starting point is the segment
+		// preceding the language tag segment in the URL
 		String startPoint = "doris";
 
 		// Find the index where the language tag starts
