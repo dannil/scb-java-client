@@ -46,23 +46,38 @@ public final class URLUtility {
 	}
 
 	/**
-	 * Generates a new URL to the API by replacing the current locale in the URL with the specified
-	 * fallback locale.
+	 * Generates a new URL to the API by replacing the current language tag in the URL with
+	 * the specified language.
+	 * 
+	 * @param url
+	 *            the URL to edit
+	 * @param language
+	 *            the language to use
+	 * @return the modified URL
+	 */
+	public static String changeLanguageForUrl(String url, String language) {
+		Locale locale = new Locale(language);
+		return changeLanguageForUrl(url, locale);
+	}
+
+	/**
+	 * Generates a new URL to the API by replacing the current language tag in the URL with
+	 * the specified locale's language tag.
 	 *
 	 * @param url
 	 *            the URL to edit
-	 * @param fallback
-	 *            the fallback locale to use
+	 * @param locale
+	 *            the locale to use
 	 * @return the modified URL
 	 */
-	public static String changeLanguageForUrl(String url, Locale fallback) {
+	public static String changeLanguageForUrl(String url, Locale locale) {
 		String startPoint = "doris";
 
 		int start = url.indexOf(startPoint) + startPoint.length() + 1;
 		int end = start + url.substring(start).indexOf('/');
 
 		StringBuilder builder = new StringBuilder(url);
-		builder.replace(start, end, fallback.getLanguage());
+		builder.replace(start, end, locale.getLanguage());
 
 		return builder.toString();
 	}
