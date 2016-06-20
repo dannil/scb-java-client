@@ -47,21 +47,6 @@ public final class URLUtility {
 
 	/**
 	 * Generates a new URL to the API by replacing the current language tag in the URL with
-	 * the specified language.
-	 * 
-	 * @param url
-	 *            the URL to edit
-	 * @param language
-	 *            the language to use
-	 * @return the modified URL
-	 */
-	public static String changeLanguageForUrl(String url, String language) {
-		Locale locale = new Locale(language);
-		return changeLanguageForUrl(url, locale);
-	}
-
-	/**
-	 * Generates a new URL to the API by replacing the current language tag in the URL with
 	 * the specified locale's language tag.
 	 *
 	 * @param url
@@ -71,15 +56,42 @@ public final class URLUtility {
 	 * @return the modified URL
 	 */
 	public static String changeLanguageForUrl(String url, Locale locale) {
+		return changeLanguageForUrl(url, locale.getLanguage());
+
+		// String startPoint = "doris";
+		//
+		// int start = url.indexOf(startPoint) + startPoint.length() + 1;
+		// int end = start + url.substring(start).indexOf('/');
+		//
+		// StringBuilder builder = new StringBuilder(url);
+		// builder.replace(start, end, locale.getLanguage());
+		//
+		// return builder.toString();
+	}
+
+	/**
+	 * Generates a new URL to the API by replacing the current language tag in the URL with
+	 * the specified language.
+	 * 
+	 * @param url
+	 *            the URL to edit
+	 * @param language
+	 *            the language to use
+	 * @return the modified URL
+	 */
+	public static String changeLanguageForUrl(String url, String language) {
 		String startPoint = "doris";
 
 		int start = url.indexOf(startPoint) + startPoint.length() + 1;
 		int end = start + url.substring(start).indexOf('/');
 
 		StringBuilder builder = new StringBuilder(url);
-		builder.replace(start, end, locale.getLanguage());
+		builder.replace(start, end, language);
 
 		return builder.toString();
+
+		// Locale locale = new Locale(language);
+		// return changeLanguageForUrl(url, locale);
 	}
 
 }
