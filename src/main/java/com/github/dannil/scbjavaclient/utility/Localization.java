@@ -63,7 +63,7 @@ public class Localization {
 	/**
 	 * Getter for the locale of this localization instance.
 	 * 
-	 * @return the language for this localization instance.
+	 * @return the locale for this localization instance.
 	 */
 	public Locale getLocale() {
 		return this.bundle.getLocale();
