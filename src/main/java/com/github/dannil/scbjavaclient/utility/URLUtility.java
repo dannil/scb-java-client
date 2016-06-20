@@ -75,7 +75,7 @@ public final class URLUtility {
 		// Find the index where the language tag starts
 		int start = url.indexOf(startPoint) + startPoint.length() + 1;
 		// Find the index where the language tag ends
-		int end = start + url.substring(start).indexOf('/');
+		int end = start + language.length();
 
 		// Replace the contents between start and end index with our new language tag
 		StringBuilder builder = new StringBuilder(url);
@@ -83,5 +83,4 @@ public final class URLUtility {
 
 		return builder.toString();
 	}
-
 }
