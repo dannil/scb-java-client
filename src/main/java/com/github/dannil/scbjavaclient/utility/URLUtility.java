@@ -57,16 +57,6 @@ public final class URLUtility {
 	 */
 	public static String changeLanguageForUrl(String url, Locale locale) {
 		return changeLanguageForUrl(url, locale.getLanguage());
-
-		// String startPoint = "doris";
-		//
-		// int start = url.indexOf(startPoint) + startPoint.length() + 1;
-		// int end = start + url.substring(start).indexOf('/');
-		//
-		// StringBuilder builder = new StringBuilder(url);
-		// builder.replace(start, end, locale.getLanguage());
-		//
-		// return builder.toString();
 	}
 
 	/**
@@ -82,16 +72,16 @@ public final class URLUtility {
 	public static String changeLanguageForUrl(String url, String language) {
 		String startPoint = "doris";
 
+		// Find the index where the language tag starts
 		int start = url.indexOf(startPoint) + startPoint.length() + 1;
+		// Find the index where the language tag ends
 		int end = start + url.substring(start).indexOf('/');
 
+		// Replace the contents between start and end index with our new language tag
 		StringBuilder builder = new StringBuilder(url);
 		builder.replace(start, end, language);
 
 		return builder.toString();
-
-		// Locale locale = new Locale(language);
-		// return changeLanguageForUrl(url, locale);
 	}
 
 }
