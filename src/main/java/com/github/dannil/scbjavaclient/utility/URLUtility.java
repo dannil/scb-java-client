@@ -63,6 +63,18 @@ public final class URLUtility {
 	 * Generates a new URL to the API by replacing the current language tag in the URL with
 	 * the specified language.
 	 * 
+	 * <ol>
+	 * <li>Specifies the segment right before the language tag segment in the URL.</li>
+	 * <li>Finds the length of the language tag by finding the next forward slash following the
+	 * start segment, as this is an indicator that the segment has ended.</li>
+	 * <li>Replaces the content between the start and the end of the segment with the new language
+	 * tag.</li>
+	 * </ol>
+	 * 
+	 * Due to speed efficiency, this method does not perform any validity check on the specified
+	 * URL. Calling this method without a valid URL for the API may (and probably will) result in
+	 * unexpected behavior.
+	 * 
 	 * @param url
 	 *            the URL to edit
 	 * @param language
@@ -77,9 +89,9 @@ public final class URLUtility {
 		// Find the index where the language tag starts
 		int start = url.indexOf(startPoint) + startPoint.length() + 1;
 		// Find the index where the language tag ends
-		int end = start + language.length();
+		int end = start + url.substring(start).indexOf('/');
 
-		// Replace the contents between start and end index with our new language tag
+		// Replace the contents between the start and end index with our new language tag
 		StringBuilder builder = new StringBuilder(url);
 		builder.replace(start, end, language);
 
