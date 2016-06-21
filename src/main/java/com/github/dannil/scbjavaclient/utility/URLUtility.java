@@ -65,7 +65,10 @@ public final class URLUtility {
 	 * specified language tag.
 	 * </p>
 	 * 
-	 * The method performs these few concise steps to figure out what needs to be replaced:
+	 * <p>
+	 * This method performs a few but important steps to figure out what needs to be replaced:
+	 * </p>
+	 * 
 	 * <ol>
 	 * <li>Specifies the <b>start segment</b> as the segment preceding the <b>language tag
 	 * segment</b> in the URL.</li>
