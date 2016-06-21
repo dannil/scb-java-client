@@ -60,8 +60,10 @@ public final class URLUtility {
 	}
 
 	/**
-	 * Generates a new URL to the API by replacing the current language tag in the URL with
-	 * the specified language.
+	 * <p>
+	 * Generates a new URL to the API by replacing the current language tag in the URL with the
+	 * specified language tag.
+	 * </p>
 	 * 
 	 * <ol>
 	 * <li>Specifies the segment right before the language tag segment in the URL.</li>
@@ -71,9 +73,11 @@ public final class URLUtility {
 	 * tag.</li>
 	 * </ol>
 	 * 
+	 * <p>
 	 * Due to speed efficiency, this method does not perform any validity check on the specified
 	 * URL. Calling this method without a valid URL for the API may (and probably will) result in
 	 * unexpected behavior.
+	 * </p>
 	 * 
 	 * @param url
 	 *            the URL to edit
