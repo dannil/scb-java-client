@@ -41,7 +41,7 @@ public final class URLUtility {
 	 * @return the modified URL
 	 */
 	public static String changeLanguageForUrl(String url) {
-		Locale fallback = new Locale("sv", "SE");
+		Locale fallback = new Locale("sv");
 		return changeLanguageForUrl(url, fallback);
 	}
 
