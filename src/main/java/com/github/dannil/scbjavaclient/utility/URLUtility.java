@@ -65,12 +65,14 @@ public final class URLUtility {
 	 * specified language tag.
 	 * </p>
 	 * 
+	 * The method performs these few concise steps to figure out what needs to be replaced:
 	 * <ol>
-	 * <li>Specifies the segment right before the language tag segment in the URL.</li>
-	 * <li>Finds the length of the language tag by finding the next forward slash following the
-	 * start segment, as this is an indicator that the segment has ended.</li>
-	 * <li>Replaces the content between the start and the end of the segment with the new language
-	 * tag.</li>
+	 * <li>Specifies the <b>start segment</b> as the segment preceding the <b>language tag
+	 * segment</b> in the URL.</li>
+	 * <li>Finds the length of the <b>language tag segment</b> by finding the next forward slash
+	 * following the <b>start segment</b>, as this indicates that the segment has ended.</li>
+	 * <li>Replaces the content between the start and end of the segment (forward slashes excluded)
+	 * with the new language tag.</li>
 	 * </ol>
 	 * 
 	 * <p>
