@@ -88,10 +88,10 @@ public final class URLUtility {
 	public static String changeLanguageForUrl(String url, String language) {
 		// Specify the starting point. For this implementation, the starting point is the segment
 		// preceding the language tag segment in the URL
-		String startPoint = "doris";
+		String startSegment = "doris";
 
 		// Find the index where the language tag starts
-		int start = url.indexOf(startPoint) + startPoint.length() + 1;
+		int start = url.indexOf(startSegment) + startSegment.length() + 1;
 		// Find the index where the language tag ends
 		int end = start + url.substring(start).indexOf('/');
 
