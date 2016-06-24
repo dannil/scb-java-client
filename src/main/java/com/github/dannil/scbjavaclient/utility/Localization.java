@@ -27,6 +27,8 @@ import java.util.MissingResourceException;
 import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
+import com.github.dannil.scbjavaclient.constants.ClientConstants;
+
 /**
  * Class for handling localization for the clients.
  * 

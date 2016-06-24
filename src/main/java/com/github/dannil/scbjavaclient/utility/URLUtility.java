@@ -18,6 +18,8 @@ package com.github.dannil.scbjavaclient.utility;
 
 import java.util.Locale;
 
+import com.github.dannil.scbjavaclient.constants.APIConstants;
+
 /**
  * Utility class which handles URL operations.
  * 
@@ -34,7 +36,7 @@ public final class URLUtility {
 
 	/**
 	 * Generates a new URL to the API using the fallback locale
-	 * {@link com.github.dannil.scbjavaclient.utility.APIConstants#FALLBACK_LOCALE FALLBACK_LOCALE}.
+	 * {@link com.github.dannil.scbjavaclient.constants.APIConstants#FALLBACK_LOCALE FALLBACK_LOCALE}.
 	 * See {@link #changeLanguageForUrl(String, String) } for implementation details.
 	 *
 	 * @param url

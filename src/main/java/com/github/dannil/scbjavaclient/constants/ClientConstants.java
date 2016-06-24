@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.utility;
+package com.github.dannil.scbjavaclient.constants;
 
 import java.util.Locale;
 
