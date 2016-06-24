@@ -23,7 +23,7 @@ import java.util.Locale;
  * 
  * @author Daniel Nilsson
  */
-public class ClientConstants {
+public final class ClientConstants {
 
 	/**
 	 * The localization locale to use if a translation lookup fails (en, US).
