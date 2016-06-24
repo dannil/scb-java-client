@@ -101,7 +101,7 @@ public final class QueryBuilder {
 			}
 		}
 
-		// Approximate a good initial capacity for the string buffer
+		// Approximate a good initial capacity for the string builder
 		int size = Math.max(44 + (80 * filteredMap.size()), 256);
 		StringBuilder builder = new StringBuilder(size);
 
