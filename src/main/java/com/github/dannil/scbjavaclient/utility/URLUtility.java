@@ -66,7 +66,7 @@ public final class URLUtility {
 	 * </p>
 	 * 
 	 * <p>
-	 * This method performs a few but important steps to figure out what needs to be replaced:
+	 * This method performs these steps to figure out what needs to be replaced:
 	 * </p>
 	 * 
 	 * <ol>
