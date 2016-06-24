@@ -34,8 +34,6 @@ import java.util.ResourceBundle;
  */
 public class Localization {
 
-	private Locale fallbackLocale;
-
 	private ResourceBundle bundle;
 
 	private ResourceBundleEncodingControl encodingControl;
@@ -55,8 +53,6 @@ public class Localization {
 	 */
 	public Localization(Locale locale) {
 		this();
-		this.fallbackLocale = new Locale("en", "US");
-
 		this.bundle = ResourceBundle.getBundle("language", locale, this.encodingControl);
 	}
 
@@ -92,7 +88,8 @@ public class Localization {
 		try {
 			return this.bundle.getString(key);
 		} catch (MissingResourceException e2) {
-			return ResourceBundle.getBundle("language", this.fallbackLocale, this.encodingControl).getString(key);
+			return ResourceBundle.getBundle("language", ClientConstants.LOCALIZATION_FALLBACK_LOCALE,
+					this.encodingControl).getString(key);
 		}
 	}
 

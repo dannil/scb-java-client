@@ -33,16 +33,16 @@ public final class URLUtility {
 	}
 
 	/**
-	 * Generates a new URL to the API using the fallback locale (Swedish). See
-	 * {@link #changeLanguageForUrl(String, String) } for implementation details.
+	 * Generates a new URL to the API using the fallback locale
+	 * {@link com.github.dannil.scbjavaclient.utility.APIConstants#FALLBACK_LOCALE FALLBACK_LOCALE}.
+	 * See {@link #changeLanguageForUrl(String, String) } for implementation details.
 	 *
 	 * @param url
 	 *            the URL to edit
 	 * @return the modified URL
 	 */
 	public static String changeLanguageForUrl(String url) {
-		Locale fallback = new Locale("sv");
-		return changeLanguageForUrl(url, fallback);
+		return changeLanguageForUrl(url, APIConstants.FALLBACK_LOCALE);
 	}
 
 	/**
