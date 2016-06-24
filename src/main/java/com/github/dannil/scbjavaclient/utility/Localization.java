@@ -55,7 +55,8 @@ public class Localization {
 	 */
 	public Localization(Locale locale) {
 		this();
-		this.bundle = ResourceBundle.getBundle("language", locale, this.encodingControl);
+		this.bundle = ResourceBundle.getBundle(ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX, locale,
+				this.encodingControl);
 	}
 
 	/**
@@ -74,7 +75,8 @@ public class Localization {
 	 *            the locale
 	 */
 	public void setLocale(Locale locale) {
-		this.bundle = ResourceBundle.getBundle("language", locale, this.encodingControl);
+		this.bundle = ResourceBundle.getBundle(ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX, locale,
+				this.encodingControl);
 	}
 
 	/**
@@ -90,8 +92,8 @@ public class Localization {
 		try {
 			return this.bundle.getString(key);
 		} catch (MissingResourceException e2) {
-			return ResourceBundle.getBundle("language", ClientConstants.LOCALIZATION_FALLBACK_LOCALE,
-					this.encodingControl).getString(key);
+			return ResourceBundle.getBundle(ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX,
+					ClientConstants.LOCALIZATION_FALLBACK_LOCALE, this.encodingControl).getString(key);
 		}
 	}
 

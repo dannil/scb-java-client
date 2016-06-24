@@ -30,4 +30,9 @@ public final class ClientConstants {
 	 */
 	public static final Locale LOCALIZATION_FALLBACK_LOCALE = new Locale("en", "US");
 
+	/**
+	 * The prefix for the translation files.
+	 */
+	public static final String LOCALIZATION_TRANSLATION_FILE_PREFIX = "language";
+
 }
