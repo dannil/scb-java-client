@@ -35,4 +35,11 @@ public final class ClientConstants {
 	 */
 	public static final String LOCALIZATION_TRANSLATION_FILE_PREFIX = "language";
 
+	/**
+	 * Private constructor to prevent instantiation.
+	 */
+	private ClientConstants() {
+
+	}
+
 }

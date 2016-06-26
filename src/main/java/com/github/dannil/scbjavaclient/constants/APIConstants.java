@@ -30,4 +30,11 @@ public final class APIConstants {
 	 **/
 	public static final Locale FALLBACK_LOCALE = new Locale("sv", "SE");
 
+	/**
+	 * Private constructor to prevent instantiation.
+	 */
+	private APIConstants() {
+
+	}
+
 }
