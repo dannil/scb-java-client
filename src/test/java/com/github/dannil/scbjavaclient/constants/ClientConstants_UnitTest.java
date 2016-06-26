@@ -16,12 +16,11 @@
 
 package com.github.dannil.scbjavaclient.constants;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.util.Locale;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -43,13 +42,12 @@ public class ClientConstants_UnitTest {
 
 	@Test
 	public void localizationFallbackLocaleNotNull() {
-		Locale fallback = new Locale("en", "US");
-		assertEquals(fallback, ClientConstants.LOCALIZATION_FALLBACK_LOCALE);
+		assertNotNull(ClientConstants.LOCALIZATION_FALLBACK_LOCALE);
 	}
 
 	@Test
 	public void localizationTranslationFilePrefixNotNull() {
-		assertEquals("language", ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX);
+		assertNotNull(ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX);
 	}
 
 }

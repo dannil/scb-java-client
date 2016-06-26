@@ -16,12 +16,11 @@
 
 package com.github.dannil.scbjavaclient.constants;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.util.Locale;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -43,8 +42,7 @@ public class APIConstants_UnitTest {
 
 	@Test
 	public void fallbackLocaleNotNull() {
-		Locale fallback = new Locale("sv", "SE");
-		assertEquals(fallback, APIConstants.FALLBACK_LOCALE);
+		assertNotNull(APIConstants.FALLBACK_LOCALE);
 	}
 
 }
