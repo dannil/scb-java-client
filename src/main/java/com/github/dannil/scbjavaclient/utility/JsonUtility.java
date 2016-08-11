@@ -55,8 +55,8 @@ public final class JsonUtility {
 	 * 
 	 * @return a {@link JsonNode} object
 	 */
-	public static JsonNode getNode(String json) {
-		return getNode(json, null);
+	public static JsonNode toNode(String json) {
+		return toNode(json, null);
 	}
 
 	/**
@@ -68,7 +68,7 @@ public final class JsonUtility {
 	 *            the field in the JSON to become the root
 	 * @return a {@link JsonNode} object with the specified field as root.
 	 */
-	public static JsonNode getNode(String json, String field) {
+	public static JsonNode toNode(String json, String field) {
 		try {
 			JsonNode node = mapper.readTree(json);
 			if (field != null) {
@@ -90,7 +90,7 @@ public final class JsonUtility {
 	public static List<String> getContentsCodes(String json) {
 		List<String> valueTexts = new ArrayList<String>();
 
-		JsonNode node = JsonUtility.getNode(json, "variables");
+		JsonNode node = JsonUtility.toNode(json, "variables");
 		for (int i = 0; i < node.size(); i++) {
 			JsonNode child = node.get(i);
 			if (child.get("code").asText().equals("ContentsCode")) {
@@ -113,7 +113,7 @@ public final class JsonUtility {
 	 * @return the formatted json
 	 */
 	public static JsonNode toConventionalJson(String json) {
-		JsonNode node = getNode(json);
+		JsonNode node = toNode(json);
 		if (!node.has("columns")) {
 			return node;
 		}
@@ -263,7 +263,7 @@ public final class JsonUtility {
 	 * @return a list of codes for the input
 	 */
 	public static List<String> getCodes(String content) {
-		JsonNode data = getNode(content);
+		JsonNode data = toNode(content);
 		List<String> codes = data.findValuesAsText("code");
 
 		return codes;

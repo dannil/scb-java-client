@@ -169,7 +169,7 @@ public abstract class AbstractClient {
 	public List<String> getRegions(String url) {
 		String content = get(url);
 
-		JsonNode contentAsJsonNode = JsonUtility.getNode(content);
+		JsonNode contentAsJsonNode = JsonUtility.toNode(content);
 
 		List<String> codes = contentAsJsonNode.findValuesAsText("code");
 		List<JsonNode> values = contentAsJsonNode.findValues("values");
@@ -204,7 +204,7 @@ public abstract class AbstractClient {
 	public List<String> getYears(String url) {
 		String content = get(url);
 
-		JsonNode contentAsJsonNode = JsonUtility.getNode(content);
+		JsonNode contentAsJsonNode = JsonUtility.toNode(content);
 
 		List<String> codes = contentAsJsonNode.findValuesAsText("code");
 		List<JsonNode> values = contentAsJsonNode.findValues("values");

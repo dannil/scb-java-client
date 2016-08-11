@@ -55,7 +55,7 @@ public class JsonUtility_UnitTest {
 
 	@Test
 	public void getNodeField() {
-		JsonNode node = JsonUtility.getNode(this.json, "query");
+		JsonNode node = JsonUtility.toNode(this.json, "query");
 
 		String comparison = "[{\"code\": \"ContentsCode\",\"selection\": {\"filter\": \"item\",\"values\": [\"MI0802AA\"]}}]";
 
@@ -66,7 +66,7 @@ public class JsonUtility_UnitTest {
 	public void jsonToListNonConventionalJson() {
 		String nonConventionalJson = "{\"columns\":[{\"code\":\"Region\",\"text\":\"region\",\"type\":\"d\"},{\"code\":\"Civilstand\",\"text\":\"maritalstatus\",\"type\":\"d\"},{\"code\":\"Alder\",\"text\":\"age\",\"type\":\"d\"},{\"code\":\"Tid\",\"text\":\"year\",\"type\":\"t\"},{\"code\":\"BE0101N1\",\"text\":\"Population\",\"type\":\"c\"}],\"comments\":[],\"data\":[{\"key\":[\"00\",\"OG\",\"45\",\"2011\"],\"values\":[\"48403\"]}]}";
 
-		JsonNode node = JsonUtility.getNode(nonConventionalJson);
+		JsonNode node = JsonUtility.toNode(nonConventionalJson);
 
 		List<Population> convertedPopulations = JsonUtility.jsonToListOf(node, Population.class);
 
@@ -78,7 +78,7 @@ public class JsonUtility_UnitTest {
 
 	@Test(expected = SCBClientParsingException.class)
 	public void jsonToListOfInvalidJson() {
-		JsonNode node = JsonUtility.getNode(this.json);
+		JsonNode node = JsonUtility.toNode(this.json);
 
 		List<Population> populations = JsonUtility.jsonToListOf(node, Population.class);
 
@@ -87,7 +87,7 @@ public class JsonUtility_UnitTest {
 
 	@Test(expected = SCBClientParsingException.class)
 	public void getNodeInvalidJson() {
-		JsonNode node = JsonUtility.getNode("hello world");
+		JsonNode node = JsonUtility.toNode("hello world");
 
 		assertNull(node);
 	}
