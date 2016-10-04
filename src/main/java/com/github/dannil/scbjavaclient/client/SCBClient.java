@@ -128,7 +128,7 @@ public class SCBClient extends AbstractContainerClient {
 	}
 
 	/**
-	 * Checks if the specified locale is supported by the SCB API.
+	 * Checks if the specified locale is supported by the API.
 	 * 
 	 * @param locale
 	 *            the locale to check
