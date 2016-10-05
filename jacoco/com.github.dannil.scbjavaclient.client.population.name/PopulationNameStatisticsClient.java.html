@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PopulationNameStatisticsClient.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.client.population.name</a> &gt; <span class="el_source">PopulationNameStatisticsClient.java</span></div><h1>PopulationNameStatisticsClient.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2016 Daniel Nilsson
+ * 
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package com.github.dannil.scbjavaclient.client.population.name;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+
+import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.model.population.NumberOfChildrenBornWithFirstName;
+import com.github.dannil.scbjavaclient.utility.JsonUtility;
+import com.github.dannil.scbjavaclient.utility.QueryBuilder;
+
+/**
+ * Client which handles population name statistics data fetching.
+ * 
+ * @author Daniel Nilsson
+ */
+public class PopulationNameStatisticsClient extends AbstractClient {
+
+	/**
+	 * Default constructor.
+	 */
+	public PopulationNameStatisticsClient() {
+<span class="fc" id="L42">		super();</span>
+<span class="fc" id="L43">	}</span>
+
+	/**
+	 * Overloaded constructor.
+	 * 
+	 * @param locale
+	 *            the locale for this client
+	 */
+	public PopulationNameStatisticsClient(Locale locale) {
+<span class="fc" id="L52">		super(locale);</span>
+<span class="fc" id="L53">	}</span>
+
+	/**
+	 * Fetch all number of children born with first name data.
+	 * 
+	 * @return the number of children born with first name data wrapped in a list of
+	 *         {@link com.github.dannil.scbjavaclient.model.population.NumberOfChildrenBornWithFirstName
+	 *         NumberOfChildrenBornWithFirstName} objects
+	 * 
+	 * @see PopulationNameStatisticsClient#getNumberOfChildrenBornWithFirstName(Collection,
+	 *      Collection)
+	 */
+	public List&lt;NumberOfChildrenBornWithFirstName&gt; getNumberOfChildrenBornWithFirstName() {
+<span class="fc" id="L66">		return this.getNumberOfChildrenBornWithFirstName(null, null);</span>
+	}
+
+	/**
+	 * Fetch number of children born with first name data which match the input constraints.
+	 * 
+	 * @param firstnames
+	 *            the firstnames to fetch data for
+	 * @param years
+	 *            the years to fetch data for
+	 * @return the number of children born with first name data wrapped in a list of
+	 *         {@link com.github.dannil.scbjavaclient.model.population.NumberOfChildrenBornWithFirstName
+	 *         NumberOfChildrenBornWithFirstName} objects
+	 */
+	public List&lt;NumberOfChildrenBornWithFirstName&gt; getNumberOfChildrenBornWithFirstName(Collection&lt;String&gt; firstnames,
+			Collection&lt;Integer&gt; years) {
+<span class="fc" id="L82">		Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;String, Collection&lt;?&gt;&gt;();</span>
+<span class="fc" id="L83">		mappings.put(&quot;ContentsCode&quot;, Arrays.asList(&quot;BE0001AH&quot;));</span>
+<span class="fc" id="L84">		mappings.put(&quot;Tilltalsnamn&quot;, firstnames);</span>
+<span class="fc" id="L85">		mappings.put(&quot;Tid&quot;, years);</span>
+
+<span class="fc" id="L87">		String response = super.post(&quot;BE/BE0001/BE0001T04Ar&quot;, QueryBuilder.build(mappings));</span>
+
+<span class="fc" id="L89">		return JsonUtility.jsonToListOf(response, NumberOfChildrenBornWithFirstName.class);</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

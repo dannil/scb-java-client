@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>JsonUtility.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.utility</a> &gt; <span class="el_source">JsonUtility.java</span></div><h1>JsonUtility.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2014 Daniel Nilsson
+ * 
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package com.github.dannil.scbjavaclient.utility;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.fasterxml.jackson.databind.JavaType;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
+
+/**
+ * Utility class for converting JSON to Java objects.
+ * 
+ * @author Daniel Nilsson
+ */
+public final class JsonUtility {
+
+	private static ObjectMapper mapper;
+
+	static {
+<span class="fc" id="L40">		mapper = new ObjectMapper();</span>
+<span class="fc" id="L41">	}</span>
+
+	/**
+	 * Private constructor to prevent instantiation.
+	 */
+<span class="fc" id="L46">	private JsonUtility() {</span>
+
+<span class="fc" id="L48">	}</span>
+
+	/**
+	 * Parse the JSON string into a {@link JsonNode} object.
+	 * 
+	 * @param json
+	 *            the JSON content
+	 * 
+	 * @return a {@link JsonNode} object
+	 */
+	public static JsonNode toNode(String json) {
+<span class="fc" id="L59">		return toNode(json, null);</span>
+	}
+
+	/**
+	 * Parse the JSON string into a {@link JsonNode} object with the specified field as root field.
+	 * 
+	 * @param json
+	 *            the JSON content
+	 * @param field
+	 *            the field in the JSON to become the root
+	 * @return a {@link JsonNode} object with the specified field as root.
+	 */
+	public static JsonNode toNode(String json, String field) {
+		try {
+<span class="fc" id="L73">			JsonNode node = mapper.readTree(json);</span>
+<span class="fc bfc" id="L74" title="All 2 branches covered.">			if (field != null) {</span>
+<span class="fc" id="L75">				return node.get(field);</span>
+			}
+<span class="fc" id="L77">			return node;</span>
+<span class="fc" id="L78">		} catch (IOException e) {</span>
+<span class="fc" id="L79">			throw new SCBClientParsingException(e);</span>
+		}
+	}
+
+	/**
+	 * Retrieves the contents codes from the specified JSON.
+	 * 
+	 * @param json
+	 *            the json to retrieve the contents codes from
+	 * @return a list of the available contents codes
+	 */
+	public static List&lt;String&gt; getContentsCodes(String json) {
+<span class="fc" id="L91">		List&lt;String&gt; valueTexts = new ArrayList&lt;String&gt;();</span>
+
+<span class="fc" id="L93">		JsonNode node = JsonUtility.toNode(json, &quot;variables&quot;);</span>
+<span class="pc bpc" id="L94" title="1 of 2 branches missed.">		for (int i = 0; i &lt; node.size(); i++) {</span>
+<span class="fc" id="L95">			JsonNode child = node.get(i);</span>
+<span class="fc bfc" id="L96" title="All 2 branches covered.">			if (child.get(&quot;code&quot;).asText().equals(&quot;ContentsCode&quot;)) {</span>
+<span class="fc" id="L97">				JsonNode values = child.get(&quot;values&quot;);</span>
+<span class="fc bfc" id="L98" title="All 2 branches covered.">				for (int j = 0; j &lt; values.size(); j++) {</span>
+<span class="fc" id="L99">					valueTexts.add(values.get(j).asText());</span>
+				}
+<span class="fc" id="L101">				break;</span>
+			}
+		}
+<span class="fc" id="L104">		return valueTexts;</span>
+	}
+
+	/**
+	 * Converts the non-conventional JSON response from the SCB API into a more conventional format,
+	 * wrapped in a {@link JsonNode}.
+	 * 
+	 * @param json
+	 *            the json to format
+	 * @return the formatted json
+	 */
+	public static JsonNode toConventionalJson(String json) {
+<span class="fc" id="L116">		JsonNode node = toNode(json);</span>
+<span class="fc bfc" id="L117" title="All 2 branches covered.">		if (!node.has(&quot;columns&quot;)) {</span>
+<span class="fc" id="L118">			return node;</span>
+		}
+
+<span class="fc" id="L121">		JsonNode columns = node.get(&quot;columns&quot;);</span>
+<span class="fc" id="L122">		JsonNode data = node.get(&quot;data&quot;);</span>
+
+<span class="fc" id="L124">		List&lt;String&gt; codes = columns.findValuesAsText(&quot;code&quot;);</span>
+
+<span class="fc" id="L126">		List&lt;Map&lt;String, String&gt;&gt; entries = new ArrayList&lt;Map&lt;String, String&gt;&gt;();</span>
+<span class="fc bfc" id="L127" title="All 2 branches covered.">		for (int i = 0; i &lt; data.size(); i++) {</span>
+<span class="fc" id="L128">			Map&lt;String, String&gt; map = new HashMap&lt;String, String&gt;();</span>
+
+<span class="fc" id="L130">			JsonNode entry = data.get(i);</span>
+
+			// Get the key values and the value
+<span class="fc" id="L133">			JsonNode keysNode = entry.get(&quot;key&quot;);</span>
+<span class="fc" id="L134">			JsonNode valuesNode = entry.get(&quot;values&quot;);</span>
+
+<span class="fc bfc" id="L136" title="All 2 branches covered.">			for (int j = 0; j &lt; keysNode.size(); j++) {</span>
+<span class="fc" id="L137">				String key = codes.get(j);</span>
+
+				// Lowercase first letter of key
+<span class="fc" id="L140">				char[] c = key.toCharArray();</span>
+<span class="fc" id="L141">				c[0] = Character.toLowerCase(c[0]);</span>
+<span class="fc" id="L142">				key = new String(c);</span>
+
+<span class="fc" id="L144">				map.put(key, keysNode.get(j).asText());</span>
+			}
+<span class="fc" id="L146">			map.put(&quot;value&quot;, valuesNode.get(0).asText());</span>
+<span class="fc" id="L147">			entries.add(map);</span>
+		}
+<span class="fc" id="L149">		return mapper.convertValue(entries, JsonNode.class);</span>
+	}
+
+	/**
+	 * Converts the {@link JsonNode} into a list of the specified class.
+	 * 
+	 * @param node
+	 *            the node to process
+	 * @param clazz
+	 *            the class to convert each JSON entry to
+	 * 
+	 * @param &lt;T&gt;
+	 *            the data type of the list
+	 * @return a list of elements, which type is the specified class. Each element represents the
+	 *         corresponding entry in the {@link JsonNode}
+	 */
+	public static &lt;T&gt; List&lt;T&gt; jsonToListOf(JsonNode node, Class&lt;T&gt; clazz) {
+<span class="fc" id="L166">		return jsonToListOf(node.toString(), clazz);</span>
+	}
+
+	/**
+	 * Converts the JSON string into a list of the specified class.
+	 * 
+	 * @param json
+	 *            the json to process
+	 * @param clazz
+	 *            the class to convert each JSON entry to
+	 * 
+	 * @param &lt;T&gt;
+	 *            the data type of the list
+	 * @return a list of elements, which type is the specified class. Each element represents the
+	 *         corresponding entry in the JSON
+	 */
+	public static &lt;T&gt; List&lt;T&gt; jsonToListOf(String json, Class&lt;T&gt; clazz) {
+		try {
+<span class="fc" id="L184">			JavaType type = mapper.getTypeFactory().constructCollectionType(List.class, clazz);</span>
+
+<span class="fc" id="L186">			return mapper.readValue(toConventionalJson(json).toString(), type);</span>
+<span class="fc" id="L187">		} catch (IOException e) {</span>
+<span class="fc" id="L188">			throw new SCBClientParsingException(e);</span>
+		}
+	}
+
+	// /**
+	// * Parses the {@link JsonNode} into a list of keys and values with the help of the code input.
+	// *
+	// * @param node
+	// * the node to parse
+	// * @param codes
+	// * the codes which should be parsed
+	// * @return a list which contains the matching keys and values
+	// */
+	// private static List&lt;Map&lt;String, String&gt;&gt; genericParse(JsonNode node, List&lt;String&gt; codes) {
+	// JsonNode columns = node.get(&quot;columns&quot;);
+	// if (columns == null) {
+	// throw new IllegalArgumentException(&quot;Non-existing element in JSON payload: \&quot;columns\&quot;&quot;);
+	// }
+	//
+	// Map&lt;String, Integer&gt; mappings = generateMappings(columns.findValuesAsText(&quot;code&quot;), codes);
+	//
+	// JsonNode data = node.get(&quot;data&quot;);
+	//
+	// List&lt;JsonNode&gt; keys = data.findValues(&quot;key&quot;);
+	// List&lt;JsonNode&gt; values = data.findValues(&quot;values&quot;);
+	//
+	// List&lt;Map&lt;String, String&gt;&gt; contents = new ArrayList&lt;Map&lt;String, String&gt;&gt;();
+	// for (int j = 0; j &lt; keys.size(); j++) {
+	// JsonNode keyAtPosition = keys.get(j);
+	//
+	// Map&lt;String, String&gt; keyContents = new HashMap&lt;String, String&gt;();
+	// for (String code : codes) {
+	// if (mappings.containsKey(code)) {
+	// keyContents.put(code, keyAtPosition.get(mappings.get(code)).asText());
+	// }
+	// }
+	//
+	// JsonNode valueAtPosition = values.get(j);
+	// String value = valueAtPosition.get(0).asText();
+	// keyContents.put(&quot;Value&quot;, value);
+	//
+	// contents.add(keyContents);
+	// }
+	// return contents;
+	// }
+
+	// /**
+	// * Generates the position for the input codes. Used by
+	// * {@link JsonUtility#genericParse(JsonNode, List) genericParse(JsonNode, List)} to figure out
+	// * the position for every key.
+	// *
+	// * @param inputCodes
+	// * the input codes to calculated indexes for
+	// * @param storedCodes
+	// * the stored codes to match against the input codes
+	// * @return a map which specifies what position (0-indexed) every key resides at
+	// */
+	// private static Map&lt;String, Integer&gt; generateMappings(List&lt;String&gt; inputCodes, List&lt;String&gt;
+	// storedCodes) {
+	// Map&lt;String, Integer&gt; mappings = new HashMap&lt;String, Integer&gt;();
+	// int i = 0;
+	// for (String input : inputCodes) {
+	// if (storedCodes.contains(input)) {
+	// mappings.put(input, i);
+	// i++;
+	// }
+	// }
+	// return mappings;
+	// }
+
+	/**
+	 * Extracts the codes from the input.
+	 *
+	 * @param content
+	 *            the input which should be parsed
+	 * @return a list of codes for the input
+	 */
+	public static List&lt;String&gt; getCodes(String content) {
+<span class="fc" id="L266">		JsonNode data = toNode(content);</span>
+<span class="fc" id="L267">		List&lt;String&gt; codes = data.findValuesAsText(&quot;code&quot;);</span>
+
+<span class="fc" id="L269">		return codes;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

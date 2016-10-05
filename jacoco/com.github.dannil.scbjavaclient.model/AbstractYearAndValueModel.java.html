@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AbstractYearAndValueModel.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.model</a> &gt; <span class="el_source">AbstractYearAndValueModel.java</span></div><h1>AbstractYearAndValueModel.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2016 Daniel Nilsson
+ * 
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package com.github.dannil.scbjavaclient.model;
+
+import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+/**
+ * Abstract model which handles year and value.
+ * 
+ * @author Daniel Nilsson
+ *
+ * @param &lt;Y&gt;
+ *            the year
+ * @param &lt;V&gt;
+ *            the value
+ */
+public abstract class AbstractYearAndValueModel&lt;Y, V&gt; extends AbstractValueModel&lt;V&gt; {
+
+	@JsonProperty(&quot;tid&quot;)
+	protected Y year;
+
+	/**
+	 * Default constructor.
+	 */
+	public AbstractYearAndValueModel() {
+		// To enable derived classes to use their default constructor
+<span class="fc" id="L43">		super();</span>
+<span class="fc" id="L44">	}</span>
+
+	/**
+	 * Overloaded constructor.
+	 * 
+	 * @param year
+	 *            the year
+	 * @param value
+	 *            the value
+	 */
+	public AbstractYearAndValueModel(Y year, V value) {
+<span class="fc" id="L55">		super(value);</span>
+<span class="fc" id="L56">		this.year = year;</span>
+<span class="fc" id="L57">	}</span>
+
+	/**
+	 * Getter for year.
+	 * 
+	 * @return the year
+	 */
+	public Y getYear() {
+<span class="fc" id="L65">		return this.year;</span>
+	}
+
+	/**
+	 * Setter for year.
+	 * 
+	 * @param year
+	 *            the year
+	 */
+	public void setYear(Y year) {
+<span class="fc" id="L75">		this.year = year;</span>
+<span class="fc" id="L76">	}</span>
+
+	@Override
+	public int hashCode() {
+<span class="fc" id="L80">		return Objects.hash(super.hashCode(), this.year);</span>
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+<span class="fc bfc" id="L85" title="All 2 branches covered.">		if (this == obj) {</span>
+<span class="fc" id="L86">			return true;</span>
+		}
+<span class="fc bfc" id="L88" title="All 2 branches covered.">		if (obj == null) {</span>
+<span class="fc" id="L89">			return false;</span>
+		}
+<span class="fc bfc" id="L91" title="All 2 branches covered.">		if (!(obj instanceof AbstractYearAndValueModel&lt;?, ?&gt;)) {</span>
+<span class="fc" id="L92">			return false;</span>
+		}
+
+<span class="fc" id="L95">		AbstractYearAndValueModel&lt;?, ?&gt; other = (AbstractYearAndValueModel&lt;?, ?&gt;) obj;</span>
+<span class="fc bfc" id="L96" title="All 4 branches covered.">		return super.equals(other) &amp;&amp; Objects.equals(this.year, other.year);</span>
+	}
+
+	@Override
+	public abstract String toString();
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FertilityRate.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.model.population.demography</a> &gt; <span class="el_source">FertilityRate.java</span></div><h1>FertilityRate.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2016 Daniel Nilsson
+ * 
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package com.github.dannil.scbjavaclient.model.population.demography;
+
+import java.util.List;
+import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.github.dannil.scbjavaclient.model.AbstractRegionYearAndValueModel;
+import com.github.dannil.scbjavaclient.utility.JsonUtility;
+import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
+
+/**
+ * Model for fertility rate.
+ * 
+ * @author Daniel Nilsson
+ */
+public class FertilityRate extends AbstractRegionYearAndValueModel&lt;String, Integer, Double&gt; {
+
+	@JsonProperty(&quot;kon&quot;)
+	private Integer gender;
+
+	/**
+	 * Default constructor.
+	 */
+	public FertilityRate() {
+<span class="fc" id="L41">		super();</span>
+<span class="fc" id="L42">	}</span>
+
+	/**
+	 * Overloaded constructor.
+	 * 
+	 * @param region
+	 *            the region
+	 * @param gender
+	 *            the gender
+	 * @param year
+	 *            the year
+	 * @param value
+	 *            the value
+	 */
+	public FertilityRate(String region, Integer gender, Integer year, Double value) {
+<span class="fc" id="L57">		super(region, year, value);</span>
+<span class="fc" id="L58">		this.gender = gender;</span>
+<span class="fc" id="L59">	}</span>
+
+	/**
+	 * Getter for gender.
+	 * 
+	 * @return the gender
+	 */
+	public Integer getGender() {
+<span class="fc" id="L67">		return this.gender;</span>
+	}
+
+	/**
+	 * Setter for gender.
+	 * 
+	 * @param gender
+	 *            the gender
+	 */
+	public void setGender(Integer gender) {
+<span class="fc" id="L77">		this.gender = gender;</span>
+<span class="fc" id="L78">	}</span>
+
+	@Override
+	public int hashCode() {
+<span class="fc" id="L82">		return Objects.hash(super.hashCode(), this.gender);</span>
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+<span class="fc bfc" id="L87" title="All 2 branches covered.">		if (this == obj) {</span>
+<span class="fc" id="L88">			return true;</span>
+		}
+<span class="fc bfc" id="L90" title="All 2 branches covered.">		if (obj == null) {</span>
+<span class="fc" id="L91">			return false;</span>
+		}
+<span class="fc bfc" id="L93" title="All 2 branches covered.">		if (!(obj instanceof FertilityRate)) {</span>
+<span class="fc" id="L94">			return false;</span>
+		}
+
+<span class="fc" id="L97">		FertilityRate other = (FertilityRate) obj;</span>
+<span class="fc bfc" id="L98" title="All 4 branches covered.">		return super.equals(other) &amp;&amp; Objects.equals(this.gender, other.gender);</span>
+	}
+
+	@Override
+	public String toString() {
+<span class="fc" id="L103">		StringBuilder builder = new StringBuilder(128);</span>
+
+<span class="fc" id="L105">		builder.append(this.getClass().getSimpleName());</span>
+<span class="fc" id="L106">		builder.append(&quot; [gender=&quot;);</span>
+<span class="fc" id="L107">		builder.append(this.gender);</span>
+<span class="fc" id="L108">		builder.append(&quot;, region=&quot;);</span>
+<span class="fc" id="L109">		builder.append(super.region);</span>
+<span class="fc" id="L110">		builder.append(&quot;, year=&quot;);</span>
+<span class="fc" id="L111">		builder.append(super.year);</span>
+<span class="fc" id="L112">		builder.append(&quot;, value=&quot;);</span>
+<span class="fc" id="L113">		builder.append(super.value);</span>
+<span class="fc" id="L114">		builder.append(']');</span>
+
+<span class="fc" id="L116">		return builder.toString();</span>
+	}
+
+	/**
+	 * Get the codes for the fertility rate from the API.
+	 * 
+	 * @return a list of codes that is used by the API to index the values
+	 */
+	public static List&lt;String&gt; getCodes() {
+<span class="fc" id="L125">		return JsonUtility.getCodes(AbstractRequester.getCodes(&quot;BE/BE0701/FruktsamhetSumNy&quot;));</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>
