@@ -166,8 +166,7 @@ public abstract class AbstractRequester {
 				// br.reset();
 				// }
 
-				String line;
-				while ((line = br.readLine()) != null) {
+				for (String line = br.readLine(); line != null; line = br.readLine()) {
 					builder.append(line);
 				}
 			}
