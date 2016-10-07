@@ -136,36 +136,6 @@ public abstract class AbstractRequester {
 
 		try (BOMInputStream bis = new BOMInputStream(response.getEntity().getContent())) {
 			try (BufferedReader br = new BufferedReader(new InputStreamReader(bis, this.charset.name()))) {
-
-				// Not all tables seems to have a byte order mark (BOM) but they need to be handled
-				// for the tables that do, or else the parsing will fail as the parsing architecture
-				// will try to convert the string containing the BOM as valid JSON
-
-				// if (bis.hasBOM()) {
-				// ByteOrderMark bom = bis.getBOM();
-				//
-				// // Handle UTF BOM. Since we inspect the number of bytes the BOM consists of,
-				// // this method should be valid for both UTF-8, UTF-16, UTF-32 and all the
-				// // combinations of Little Endian or Big Endian. By marking the place where
-				// // the BOM ends, the subsequent call to reset will make the reader skip (or
-				// // "jump over") the BOM entirely
-				// br.mark(bom.getBytes().length);
-				//
-				// // Jump to where the BOM ends
-				// br.reset();
-				// }
-
-				// // Handle UTF-8 byte order mark (BOM)
-				// br.mark(4);
-				//
-				// // Checks if the stream contains a BOM. If it does, reset the
-				// // stream pointer to the location specified by br.mark(). This
-				// // results in the reader skipping the number of characters specified
-				// // in br.mark(), effectively "jumping over" the BOM.
-				// if (bom.hasBOM()) {
-				// br.reset();
-				// }
-
 				for (String line = br.readLine(); line != null; line = br.readLine()) {
 					builder.append(line);
 				}
