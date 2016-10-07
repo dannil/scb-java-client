@@ -56,7 +56,6 @@ public abstract class AbstractRequester {
 		InputStream input = null;
 		try {
 			input = AbstractRequester.class.getClassLoader().getResourceAsStream("project.properties");
-
 			properties.load(input);
 		} catch (IOException ex) {
 			ex.printStackTrace();
@@ -68,11 +67,9 @@ public abstract class AbstractRequester {
 	 */
 	protected AbstractRequester() {
 		this.client = HttpClientBuilder.create().build();
-
 		this.charset = StandardCharsets.UTF_8;
 
 		this.requestProperties = new HashMap<String, String>();
-
 		this.requestProperties.put("Accept", "application/json");
 		this.requestProperties.put("Content-Type", "application/json; charset=" + this.charset.name().toLowerCase());
 
@@ -133,7 +130,6 @@ public abstract class AbstractRequester {
 	 */
 	protected String getBody(HttpResponse response) {
 		StringBuilder builder = new StringBuilder(64);
-
 		try (BOMInputStream bis = new BOMInputStream(response.getEntity().getContent())) {
 			try (BufferedReader br = new BufferedReader(new InputStreamReader(bis, this.charset.name()))) {
 				for (String line = br.readLine(); line != null; line = br.readLine()) {
@@ -143,7 +139,6 @@ public abstract class AbstractRequester {
 		} catch (IOException e) {
 			throw new SCBClientException(e);
 		}
-
 		return builder.toString();
 	}
 
