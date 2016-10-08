@@ -42,6 +42,10 @@
 		<system>GitHub</system>
 		<url>https://github.com/dannil/scb-java-client/issues</url>
 	</issueManagement>
+	<ciManagement>
+		<system>Travis CI</system>
+		<url>https://travis-ci.org/dannil/scb-java-client</url>
+	</ciManagement>
 
 	<properties>
 		<!-- General configuration -->
