@@ -11,6 +11,7 @@ branches:
 sudo: required
 after_success:
 - mvn com.gavinmogan:codacy-maven-plugin:coverage -DcoverageReportFile=target/site/jacoco/jacoco.xml -DprojectToken=$CODACY_PROJECT_TOKEN -DapiToken=$CODACY_API_TOKEN -DcodacyApiBaseUrl=https://api.codacy.com
+- mvn org.codehaus.mojo:versions-maven-plugin:display-dependency-updates
 env:
   global:
   - secure: "pGOIwU6iPPqITnQ1WRfnPWBDFEtsploCRUsvkqppb/kOJrIB/jj89k35nPsbl1oPGaMrH+kQ5ezTAcQXY9OivuyO0OuliSnrV8vr6rp7mncm1uDO9gHNQM5UcV0JMbHgpL/ZKx8e/mmSjeWhm4lg1e+EH85rHu7eAVrUpgvAbb0="
