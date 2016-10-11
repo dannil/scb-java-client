@@ -36,14 +36,14 @@ public class Population_UnitTest {
 
 	private String testContentsCode;
 
-	private List<Value<Long>> values;
+	private List<Value<String>> values;
 
 	@Before
 	public void setup() {
 		this.testContentsCode = "TESTCONTENTSCODE";
-		this.values = new ArrayList<Value<Long>>();
+		this.values = new ArrayList<Value<String>>();
 
-		Value<Long> value = new Value<Long>(12345L, "TESTCONTENTSCODE", "Test contents code");
+		Value<String> value = new Value<String>("12345", "TESTCONTENTSCODE", "Test contents code");
 		this.values.add(value);
 	}
 
@@ -348,7 +348,7 @@ public class Population_UnitTest {
 	public void notEqualsOnValues() {
 		Population population = new Population("1267", "G", "20", 1, 2011, this.values);
 		Population population2 = new Population("1267", "G", "20", 1, 2011, this.values);
-		population2.setValue(this.testContentsCode, 54321L);
+		population2.setValue(this.testContentsCode, "54321");
 
 		assertNotEquals(population, population2);
 	}
