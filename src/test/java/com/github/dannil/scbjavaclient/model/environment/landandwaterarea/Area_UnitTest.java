@@ -20,25 +20,30 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+
+import com.github.dannil.scbjavaclient.model.Value;
 
 @RunWith(JUnit4.class)
 public class Area_UnitTest {
 
 	private String testContentsCode;
 
-	private Map<String, Double> values;
+	private List<Value<Double>> values;
 
-	public Area_UnitTest() {
+	@Before
+	public void setup() {
 		this.testContentsCode = "TESTCONTENTSCODE";
+		this.values = new ArrayList<Value<Double>>();
 
-		this.values = new HashMap<String, Double>();
-		this.values.put(this.testContentsCode, 143d);
+		Value<Double> value = new Value<Double>(143d, "TESTCONTENTSCODE", "Test contents code");
+		this.values.add(value);
 	}
 
 	@Test
@@ -103,7 +108,7 @@ public class Area_UnitTest {
 	}
 
 	@Test
-	public void setValue() {
+	public void setValues() {
 		Area area = new Area();
 
 		area.setValues(this.values);
@@ -112,7 +117,7 @@ public class Area_UnitTest {
 	}
 
 	@Test
-	public void getValue() {
+	public void getValues() {
 		Area area = new Area();
 
 		area.setValues(this.values);

@@ -21,9 +21,28 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Before;
 import org.junit.Test;
 
+import com.github.dannil.scbjavaclient.model.Value;
+
 public class AverageAge_UnitTest {
+
+	private String testContentsCode;
+
+	private List<Value<Double>> values;
+
+	@Before
+	public void setup() {
+		this.testContentsCode = "TESTCONTENTSCODE";
+		this.values = new ArrayList<Value<Double>>();
+
+		Value<Double> value = new Value<Double>(34.56d, "TESTCONTENTSCODE", "Test contents code");
+		this.values.add(value);
+	}
 
 	@Test
 	public final void createWithDefaultConstructor() {
@@ -60,12 +79,12 @@ public class AverageAge_UnitTest {
 	}
 
 	@Test
-	public void setValue() {
+	public void setValues() {
 		AverageAge avg = new AverageAge();
 
-		avg.setValue(34.56);
+		avg.setValues(this.values);
 
-		assertEquals(Double.valueOf(34.56), avg.getValue());
+		assertNotNull(avg.getValues());
 	}
 
 	@Test
@@ -90,8 +109,8 @@ public class AverageAge_UnitTest {
 
 	@Test
 	public void equalsItselfWithValues() {
-		AverageAge avg = new AverageAge("1263", "2", 1996, 34.56);
-		AverageAge avg2 = new AverageAge("1263", "2", 1996, 34.56);
+		AverageAge avg = new AverageAge("1263", "2", 1996, this.values);
+		AverageAge avg2 = new AverageAge("1263", "2", 1996, this.values);
 
 		assertEquals(avg, avg2);
 	}
@@ -112,40 +131,41 @@ public class AverageAge_UnitTest {
 
 	@Test
 	public void notEqualsRegion() {
-		AverageAge avg = new AverageAge("1263", "2", 1996, 34.56);
-		AverageAge avg2 = new AverageAge("1267", "2", 1996, 34.56);
+		AverageAge avg = new AverageAge("1263", "2", 1996, this.values);
+		AverageAge avg2 = new AverageAge("1267", "2", 1996, this.values);
 
 		assertNotEquals(avg, avg2);
 	}
 
 	@Test
 	public void notEqualsGender() {
-		AverageAge avg = new AverageAge("1263", "2", 1996, 34.56);
-		AverageAge avg2 = new AverageAge("1263", "1", 1996, 34.56);
+		AverageAge avg = new AverageAge("1263", "2", 1996, this.values);
+		AverageAge avg2 = new AverageAge("1263", "1", 1996, this.values);
 
 		assertNotEquals(avg, avg2);
 	}
 
 	@Test
 	public void notEqualsYear() {
-		AverageAge avg = new AverageAge("1263", "2", 1996, 34.56);
-		AverageAge avg2 = new AverageAge("1263", "2", 2002, 34.56);
+		AverageAge avg = new AverageAge("1263", "2", 1996, this.values);
+		AverageAge avg2 = new AverageAge("1263", "2", 2002, this.values);
 
 		assertNotEquals(avg, avg2);
 	}
 
 	@Test
-	public void notEqualsValue() {
-		AverageAge avg = new AverageAge("1263", "2", 1996, 34.56);
-		AverageAge avg2 = new AverageAge("1263", "2", 1996, 65.43);
+	public void notEqualsValues() {
+		AverageAge avg = new AverageAge("1263", "2", 1996, this.values);
+		AverageAge avg2 = new AverageAge("1263", "2", 1996, this.values);
+		avg2.setValue(this.testContentsCode, 65.43d);
 
 		assertNotEquals(avg, avg2);
 	}
 
 	@Test
 	public void equalsHashCode() {
-		AverageAge avg = new AverageAge("1263", "2", 1996, 34.56);
-		AverageAge avg2 = new AverageAge("1263", "2", 1996, 34.56);
+		AverageAge avg = new AverageAge("1263", "2", 1996, this.values);
+		AverageAge avg2 = new AverageAge("1263", "2", 1996, this.values);
 
 		assertEquals(avg.hashCode(), avg2.hashCode());
 	}
@@ -167,7 +187,7 @@ public class AverageAge_UnitTest {
 
 	@Test
 	public void convertToString() {
-		AverageAge avg = new AverageAge("1263", "2", 1996, 34.56);
+		AverageAge avg = new AverageAge("1263", "2", 1996, this.values);
 
 		assertTrue(avg.toString().contains("1263"));
 		assertTrue(avg.toString().contains("2"));

@@ -17,11 +17,11 @@
 package com.github.dannil.scbjavaclient.model.population;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.dannil.scbjavaclient.model.AbstractYearAndValueModel;
+import com.github.dannil.scbjavaclient.model.Value;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
 
@@ -52,7 +52,7 @@ public class NumberOfChildrenBornWithFirstName extends AbstractYearAndValueModel
 	 * @param values
 	 *            the values
 	 */
-	public NumberOfChildrenBornWithFirstName(String firstname, Integer year, Map<String, String> values) {
+	public NumberOfChildrenBornWithFirstName(String firstname, Integer year, List<Value<String>> values) {
 		super(year, values);
 		this.firstname = firstname;
 	}

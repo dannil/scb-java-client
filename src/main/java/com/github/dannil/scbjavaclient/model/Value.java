@@ -20,16 +20,29 @@ import java.util.Objects;
 
 public class Value<V> {
 
-	private String code;
 	private V value;
+
+	private String code;
 	private String text;
 
 	public Value() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Value(V value) {
+	public Value(V value, String code, String text) {
 		this.value = value;
+		this.code = code;
+		this.text = text;
+	}
+
+	/**
+	 * Copy constructor.
+	 * 
+	 * @param value
+	 *            the value to copy
+	 */
+	public Value(Value<V> value) {
+		this(value.value, value.code, value.text);
 	}
 
 	public String getCode() {
@@ -82,7 +95,8 @@ public class Value<V> {
 	public String toString() {
 		StringBuilder builder = new StringBuilder(128);
 
-		builder.append("Value [code=");
+		// builder.append("Value [code=");
+		builder.append("code=");
 		builder.append(this.code);
 		builder.append(", value=");
 		builder.append(this.value);

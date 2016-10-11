@@ -17,11 +17,11 @@
 package com.github.dannil.scbjavaclient.model.population.statistic;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.dannil.scbjavaclient.model.AbstractRegionYearAndValueModel;
+import com.github.dannil.scbjavaclient.model.Value;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
 
@@ -54,7 +54,7 @@ public class AverageAge extends AbstractRegionYearAndValueModel<String, Integer,
 	 * @param values
 	 *            the values
 	 */
-	public AverageAge(String region, String gender, Integer year, Map<String, Double> values) {
+	public AverageAge(String region, String gender, Integer year, List<Value<Double>> values) {
 		super(region, year, values);
 		this.gender = gender;
 	}

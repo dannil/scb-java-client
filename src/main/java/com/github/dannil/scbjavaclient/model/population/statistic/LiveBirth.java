@@ -17,11 +17,11 @@
 package com.github.dannil.scbjavaclient.model.population.statistic;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.dannil.scbjavaclient.model.AbstractRegionYearAndValueModel;
+import com.github.dannil.scbjavaclient.model.Value;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
 
@@ -59,7 +59,7 @@ public class LiveBirth extends AbstractRegionYearAndValueModel<String, Integer, 
 	 * @param values
 	 *            the values
 	 */
-	public LiveBirth(String region, String motherAge, Integer gender, Integer year, Map<String, Long> values) {
+	public LiveBirth(String region, String motherAge, Integer gender, Integer year, List<Value<Long>> values) {
 		super(region, year, values);
 		this.motherAge = motherAge;
 		this.gender = gender;

@@ -50,7 +50,12 @@ public abstract class AbstractValueModel<V> {
 	 *            the values
 	 */
 	protected AbstractValueModel(List<Value<V>> values) {
-		this.values = new ArrayList<Value<V>>(values);
+		this.values = new ArrayList<Value<V>>();
+
+		for (Value<V> value : values) {
+			Value<V> v2 = new Value<V>(value.getValue(), value.getCode(), value.getText());
+			this.values.add(v2);
+		}
 	}
 
 	/**
@@ -89,17 +94,22 @@ public abstract class AbstractValueModel<V> {
 		return null;
 	}
 
-	// /**
-	// * Set the value for a specific contents code.
-	// *
-	// * @param key
-	// * the contents code to set the value for
-	// * @param value
-	// * the value
-	// */
-	// public void setValue(String key, V value) {
-	// this.values.put(key, value);
-	// }
+	/**
+	 * Set the value for a specific contents code.
+	 *
+	 * @param key
+	 *            the contents code to set the value for
+	 * @param value
+	 *            the value
+	 */
+	public void setValue(String key, V value) {
+		for (int i = 0; i < this.values.size(); i++) {
+			Value<V> v = this.values.get(i);
+			if (v.getCode().equals(key)) {
+				v.setValue(value);
+			}
+		}
+	}
 
 	@Override
 	public int hashCode() {
