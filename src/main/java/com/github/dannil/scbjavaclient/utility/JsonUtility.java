@@ -86,6 +86,8 @@ public class JsonUtility {
 	 * @return the formatted json
 	 */
 	public static JsonNode toConventionalJson(String json) {
+		System.out.println(json);
+
 		JsonNode node = getNode(json);
 		if (!node.has("columns")) {
 			return node;

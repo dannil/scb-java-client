@@ -67,15 +67,15 @@ public class JsonUtility_UnitTest {
 
 	@Test
 	public void jsonToListNonConventionalJson() {
-		String nonConventionalJson = "{\"columns\":[{\"code\":\"Region\",\"text\":\"region\",\"type\":\"d\"},{\"code\":\"Civilstand\",\"text\":\"maritalstatus\",\"type\":\"d\"},{\"code\":\"Alder\",\"text\":\"age\",\"type\":\"d\"},{\"code\":\"Tid\",\"text\":\"year\",\"type\":\"t\"},{\"code\":\"BE0101N1\",\"text\":\"Population\",\"type\":\"c\"}],\"comments\":[],\"data\":[{\"key\":[\"00\",\"OG\",\"45\",\"2011\"],\"values\":[\"48403\"]}]}";
+		String nonConventionalJson = "{\"columns\":[{\"code\":\"Region\",\"text\":\"region\",\"type\":\"d\"},{\"code\":\"Civilstand\",\"text\":\"marital status\",\"type\":\"d\"},{\"code\":\"Alder\",\"text\":\"age\",\"type\":\"d\"},{\"code\":\"Tid\",\"text\":\"year\",\"type\":\"t\"},{\"code\":\"BE0101N1\",\"text\":\"Population\",\"comment\":\"The tables show the conditions on December 31st for each respective year according to administrative subdivisions of January 1st of the following year\\r\\n\",\"type\":\"c\"},{\"code\":\"BE0101N2\",\"text\":\"Population growth\",\"comment\":\"Population growth is defined as the difference between the population at the beginning of the year and at the end of the year.\\r\\n\",\"type\":\"c\"}],\"comments\":[],\"data\":[{\"key\":[\"00\",\"OG\",\"45\",\"2011\"],\"values\":[\"48403\",\"1007\"]}]}";
 
 		JsonNode node = JsonUtility.getNode(nonConventionalJson);
 
 		List<Population> convertedPopulations = JsonUtility.jsonToListOf(node, Population.class);
 
-		List<Value<Long>> values = new ArrayList<Value<Long>>();
+		List<Value<String>> values = new ArrayList<Value<String>>();
 
-		Value<Long> value = new Value<Long>(12345L, "TESTCONTENTSCODE", "Test contents code");
+		Value<String> value = new Value<String>("12345", "TESTCONTENTSCODE", "Test contents code");
 		values.add(value);
 
 		Population p = new Population("00", "OG", "45", null, 2011, values);
