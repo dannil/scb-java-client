@@ -29,6 +29,16 @@ public class Value<V> {
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * Overloaded constructor.
+	 * 
+	 * @param value
+	 *            the value
+	 * @param code
+	 *            the code
+	 * @param text
+	 *            the text
+	 */
 	public Value(V value, String code, String text) {
 		this.value = value;
 		this.code = code;

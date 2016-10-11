@@ -18,13 +18,21 @@ package com.github.dannil.scbjavaclient.model;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
 public class AbstractValueModel_UnitTest {
+
+	private List<Value<Long>> values;
 
 	// Dummy class which doesn't override the equals
 	// method. This enables us to thoroughly test the equals method.
@@ -34,11 +42,57 @@ public class AbstractValueModel_UnitTest {
 
 		}
 
+		public DummyClass(List<Value<Long>> values) {
+			super(values);
+		}
+
 		@Override
 		public String toString() {
 			return "Dummy";
 		}
 
+	}
+
+	@Before
+	public void setup() {
+		this.values = new ArrayList<Value<Long>>();
+
+		Value<Long> value1 = new Value<Long>(12345L, "TESTCODE", "TESTTEXT");
+		Value<Long> value2 = new Value<Long>(54321L, "ANOTHERTESTCODE", "ANOTHERTESTTEXT");
+		this.values.add(value1);
+		this.values.add(value2);
+	}
+
+	@Test
+	public void getValue() {
+		DummyClass dm = new DummyClass(this.values);
+
+		assertNotNull(dm.getValue("TESTCODE"));
+	}
+
+	@Test
+	public void getValueNoMatchingKey() {
+		DummyClass dm = new DummyClass(this.values);
+
+		assertNull(dm.getValue("THISTESTCODEDOESNTEXIST"));
+	}
+
+	@Test
+	public void setValue() {
+		DummyClass dm = new DummyClass(this.values);
+
+		dm.setValue("TESTCODE", 98765L);
+
+		assertEquals(Long.valueOf(98765L), dm.getValue("TESTCODE").getValue());
+	}
+
+	@Test
+	public void setValueNoMatchingKey() {
+		DummyClass dm = new DummyClass(this.values);
+
+		dm.setValue("THISTESTCODEDOESNTEXIST", 56789L);
+
+		assertEquals(dm.getValues(), this.values);
 	}
 
 	// Tests the superclass

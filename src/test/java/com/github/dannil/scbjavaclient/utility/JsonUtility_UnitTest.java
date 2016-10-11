@@ -74,8 +74,11 @@ public class JsonUtility_UnitTest {
 
 		List<Value<String>> values = new ArrayList<Value<String>>();
 
-		Value<String> value = new Value<String>("12345", "TESTCONTENTSCODE", "Test contents code");
-		values.add(value);
+		Value<String> value1 = new Value<String>("48403", "BE0101N1", "Population");
+		values.add(value1);
+
+		Value<String> value2 = new Value<String>("1007", "BE0101N2", "Population growth");
+		values.add(value2);
 
 		Population p = new Population("00", "OG", "45", null, 2011, values);
 		List<Population> staticPopulations = Arrays.asList(p);

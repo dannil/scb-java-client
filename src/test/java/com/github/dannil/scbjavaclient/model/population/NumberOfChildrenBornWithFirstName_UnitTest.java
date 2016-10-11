@@ -182,8 +182,6 @@ public class NumberOfChildrenBornWithFirstName_UnitTest {
 		NumberOfChildrenBornWithFirstName nbrChildren = new NumberOfChildrenBornWithFirstName("Adrian", 2010,
 				this.values);
 
-		System.out.println(nbrChildren);
-
 		assertTrue(nbrChildren.toString().contains("Adrian"));
 		assertTrue(nbrChildren.toString().contains("2010"));
 		assertTrue(nbrChildren.toString().contains("15"));
