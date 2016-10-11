@@ -19,7 +19,6 @@ package com.github.dannil.scbjavaclient.utility;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -81,8 +80,7 @@ public class JsonUtility_UnitTest {
 		Population p = new Population("00", "OG", "45", null, 2011, values);
 		List<Population> staticPopulations = Arrays.asList(p);
 
-		// assertEquals(convertedPopulations, staticPopulations);
-		assertTrue(true);
+		assertEquals(convertedPopulations, staticPopulations);
 	}
 
 	@Test(expected = SCBClientParsingException.class)
