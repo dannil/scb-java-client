@@ -79,14 +79,14 @@ public final class RequesterSingletonFactory {
 	 * Singleton holder for GET requester.
 	 */
 	private static class GETHolder {
-		static final AbstractRequester INSTANCE = new GETRequester(StandardCharsets.UTF_8);
+		protected static final AbstractRequester INSTANCE = new GETRequester(StandardCharsets.UTF_8);
 	}
 
 	/**
 	 * Singleton holder for POST requester.
 	 */
 	private static class POSTHolder {
-		static final AbstractRequester INSTANCE = new POSTRequester(StandardCharsets.UTF_8);
+		protected static final AbstractRequester INSTANCE = new POSTRequester(StandardCharsets.UTF_8);
 	}
 
 }
