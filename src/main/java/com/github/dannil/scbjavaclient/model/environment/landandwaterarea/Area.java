@@ -21,7 +21,7 @@ import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.dannil.scbjavaclient.model.AbstractRegionYearAndValueModel;
-import com.github.dannil.scbjavaclient.model.Value;
+import com.github.dannil.scbjavaclient.model.ValueNode;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
 
@@ -54,7 +54,7 @@ public class Area extends AbstractRegionYearAndValueModel<String, Integer, Doubl
 	 * @param values
 	 *            the values
 	 */
-	public Area(String region, String type, Integer year, List<Value<Double>> values) {
+	public Area(String region, String type, Integer year, List<ValueNode<Double>> values) {
 		super(region, year, values);
 		this.type = type;
 	}
@@ -111,7 +111,7 @@ public class Area extends AbstractRegionYearAndValueModel<String, Integer, Doubl
 		builder.append(", year=");
 		builder.append(super.year);
 		builder.append(", values=");
-		builder.append(super.values);
+		builder.append(super.valueNodes);
 		builder.append(']');
 
 		return builder.toString();

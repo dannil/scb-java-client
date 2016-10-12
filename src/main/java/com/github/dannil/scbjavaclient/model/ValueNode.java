@@ -18,15 +18,25 @@ package com.github.dannil.scbjavaclient.model;
 
 import java.util.Objects;
 
-public class Value<V> {
+/**
+ * Class which holds all data for a specific value.
+ * 
+ * @author Daniel Nilsson
+ *
+ * @param <V>
+ *            the data type of the value
+ */
+public class ValueNode<V> {
 
 	private V value;
-
 	private String code;
 	private String text;
 
-	public Value() {
-		// TODO Auto-generated constructor stub
+	/**
+	 * Default constructor.
+	 */
+	public ValueNode() {
+
 	}
 
 	/**
@@ -39,7 +49,7 @@ public class Value<V> {
 	 * @param text
 	 *            the text
 	 */
-	public Value(V value, String code, String text) {
+	public ValueNode(V value, String code, String text) {
 		this.value = value;
 		this.code = code;
 		this.text = text;
@@ -51,18 +61,15 @@ public class Value<V> {
 	 * @param value
 	 *            the value to copy
 	 */
-	public Value(Value<V> value) {
+	public ValueNode(ValueNode<V> value) {
 		this(value.value, value.code, value.text);
 	}
 
-	public String getCode() {
-		return this.code;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
-	}
-
+	/**
+	 * Getter for value.
+	 * 
+	 * @return the value
+	 */
 	public V getValue() {
 		return this.value;
 	}
@@ -71,10 +78,40 @@ public class Value<V> {
 		this.value = value;
 	}
 
+	/**
+	 * Getter for code.
+	 * 
+	 * @return the code
+	 */
+	public String getCode() {
+		return this.code;
+	}
+
+	/**
+	 * Setter for code.
+	 * 
+	 * @param code
+	 *            the code
+	 */
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	/**
+	 * Getter for text.
+	 * 
+	 * @return the text
+	 */
 	public String getText() {
 		return this.text;
 	}
 
+	/**
+	 * Setter for text.
+	 * 
+	 * @param text
+	 *            the text
+	 */
 	public void setText(String text) {
 		this.text = text;
 	}
@@ -92,11 +129,11 @@ public class Value<V> {
 		if (obj == null) {
 			return false;
 		}
-		if (!(obj instanceof Value<?>)) {
+		if (!(obj instanceof ValueNode<?>)) {
 			return false;
 		}
 
-		Value<?> other = (Value<?>) obj;
+		ValueNode<?> other = (ValueNode<?>) obj;
 		return Objects.equals(this.code, other.code) && Objects.equals(this.value, other.value)
 				&& Objects.equals(this.text, other.text);
 	}
@@ -112,7 +149,7 @@ public class Value<V> {
 		builder.append(this.value);
 		builder.append(", text=");
 		builder.append(this.text);
-		builder.append("]");
+		builder.append(']');
 
 		return builder.toString();
 	}

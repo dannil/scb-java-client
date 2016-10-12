@@ -29,22 +29,22 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import com.github.dannil.scbjavaclient.model.Value;
+import com.github.dannil.scbjavaclient.model.ValueNode;
 
 @RunWith(JUnit4.class)
 public class Population_UnitTest {
 
 	private String testContentsCode;
 
-	private List<Value<String>> values;
+	private List<ValueNode<String>> valueNodes;
 
 	@Before
 	public void setup() {
 		this.testContentsCode = "TESTCONTENTSCODE";
-		this.values = new ArrayList<Value<String>>();
+		this.valueNodes = new ArrayList<ValueNode<String>>();
 
-		Value<String> value = new Value<String>("12345", "TESTCONTENTSCODE", "Test contents code");
-		this.values.add(value);
+		ValueNode<String> value = new ValueNode<String>("12345", "TESTCONTENTSCODE", "Test contents code");
+		this.valueNodes.add(value);
 	}
 
 	@Test
@@ -148,7 +148,7 @@ public class Population_UnitTest {
 	public void setValues() {
 		Population population = new Population();
 
-		population.setValues(this.values);
+		population.setValues(this.valueNodes);
 
 		assertNotNull(population.getValues());
 	}
@@ -157,9 +157,9 @@ public class Population_UnitTest {
 	public void getValues() {
 		Population population = new Population();
 
-		population.setValues(this.values);
+		population.setValues(this.valueNodes);
 
-		assertEquals(this.values, population.getValues());
+		assertEquals(this.valueNodes, population.getValues());
 	}
 
 	@Test
@@ -198,35 +198,35 @@ public class Population_UnitTest {
 
 	@Test
 	public void equalsItselfWithValues() {
-		Population population = new Population("1267", "G", "20", 1, 2011, this.values);
-		Population population2 = new Population("1267", "G", "20", 1, 2011, this.values);
+		Population population = new Population("1267", "G", "20", 1, 2011, this.valueNodes);
+		Population population2 = new Population("1267", "G", "20", 1, 2011, this.valueNodes);
 
 		assertEquals(population, population2);
 	}
 
 	@Test
 	public void notEqualsOnRegion() {
-		Population population = new Population("1267", "G", "20", 1, 2011, this.values);
-		Population population2 = new Population("1452", "G", "20", 1, 2011, this.values);
+		Population population = new Population("1267", "G", "20", 1, 2011, this.valueNodes);
+		Population population2 = new Population("1452", "G", "20", 1, 2011, this.valueNodes);
 
 		assertNotEquals(population, population2);
 	}
 
 	@Test
 	public void notEqualsOnFirstNullRegion() {
-		Population population = new Population("1267", "G", "20", 1, 2011, this.values);
+		Population population = new Population("1267", "G", "20", 1, 2011, this.valueNodes);
 		population.setRegion(null);
 
-		Population population2 = new Population("1267", "G", "20", 1, 2011, this.values);
+		Population population2 = new Population("1267", "G", "20", 1, 2011, this.valueNodes);
 
 		assertNotEquals(population, population2);
 	}
 
 	@Test
 	public void notEqualsOnSecondNullRegion() {
-		Population population = new Population("1267", "G", "20", 1, 2011, this.values);
+		Population population = new Population("1267", "G", "20", 1, 2011, this.valueNodes);
 
-		Population population2 = new Population("1267", "G", "20", 1, 2011, this.values);
+		Population population2 = new Population("1267", "G", "20", 1, 2011, this.valueNodes);
 		population2.setRegion(null);
 
 		assertNotEquals(population, population2);
@@ -234,27 +234,27 @@ public class Population_UnitTest {
 
 	@Test
 	public void notEqualsOnRelationshipStatus() {
-		Population population = new Population("1267", "G", "20", 1, 2011, this.values);
-		Population population2 = new Population("1267", "SK", "20", 1, 2011, this.values);
+		Population population = new Population("1267", "G", "20", 1, 2011, this.valueNodes);
+		Population population2 = new Population("1267", "SK", "20", 1, 2011, this.valueNodes);
 
 		assertNotEquals(population, population2);
 	}
 
 	@Test
 	public void notEqualsOnFirstNullRelationshipStatus() {
-		Population population = new Population("1267", "G", "20", 1, 2011, this.values);
+		Population population = new Population("1267", "G", "20", 1, 2011, this.valueNodes);
 		population.setRelationshipStatus(null);
 
-		Population population2 = new Population("1267", "G", "20", 1, 2011, this.values);
+		Population population2 = new Population("1267", "G", "20", 1, 2011, this.valueNodes);
 
 		assertNotEquals(population, population2);
 	}
 
 	@Test
 	public void notEqualsOnSecondNullRelationshipStatus() {
-		Population population = new Population("1267", "G", "20", 1, 2011, this.values);
+		Population population = new Population("1267", "G", "20", 1, 2011, this.valueNodes);
 
-		Population population2 = new Population("1267", "G", "20", 1, 2011, this.values);
+		Population population2 = new Population("1267", "G", "20", 1, 2011, this.valueNodes);
 		population2.setRelationshipStatus(null);
 
 		assertNotEquals(population, population2);
@@ -262,27 +262,27 @@ public class Population_UnitTest {
 
 	@Test
 	public void notEqualsOnAge() {
-		Population population = new Population("1267", "G", "20", 1, 2011, this.values);
-		Population population2 = new Population("1267", "G", "56", 1, 2011, this.values);
+		Population population = new Population("1267", "G", "20", 1, 2011, this.valueNodes);
+		Population population2 = new Population("1267", "G", "56", 1, 2011, this.valueNodes);
 
 		assertNotEquals(population, population2);
 	}
 
 	@Test
 	public void notEqualsOnFirstNullAge() {
-		Population population = new Population("1267", "G", "20", 1, 2011, this.values);
+		Population population = new Population("1267", "G", "20", 1, 2011, this.valueNodes);
 		population.setAge(null);
 
-		Population population2 = new Population("1267", "G", "20", 1, 2011, this.values);
+		Population population2 = new Population("1267", "G", "20", 1, 2011, this.valueNodes);
 
 		assertNotEquals(population, population2);
 	}
 
 	@Test
 	public void notEqualsOnSecondNullAge() {
-		Population population = new Population("1267", "G", "20", 1, 2011, this.values);
+		Population population = new Population("1267", "G", "20", 1, 2011, this.valueNodes);
 
-		Population population2 = new Population("1267", "G", "20", 1, 2011, this.values);
+		Population population2 = new Population("1267", "G", "20", 1, 2011, this.valueNodes);
 		population2.setAge(null);
 
 		assertNotEquals(population, population2);
@@ -290,27 +290,27 @@ public class Population_UnitTest {
 
 	@Test
 	public void notEqualsOnGender() {
-		Population population = new Population("1267", "G", "20", 1, 2011, this.values);
-		Population population2 = new Population("1267", "G", "20", 2, 2011, this.values);
+		Population population = new Population("1267", "G", "20", 1, 2011, this.valueNodes);
+		Population population2 = new Population("1267", "G", "20", 2, 2011, this.valueNodes);
 
 		assertNotEquals(population, population2);
 	}
 
 	@Test
 	public void notEqualsOnFirstNullGender() {
-		Population population = new Population("1267", "G", "20", 1, 2011, this.values);
+		Population population = new Population("1267", "G", "20", 1, 2011, this.valueNodes);
 		population.setGender(null);
 
-		Population population2 = new Population("1267", "G", "20", 1, 2011, this.values);
+		Population population2 = new Population("1267", "G", "20", 1, 2011, this.valueNodes);
 
 		assertNotEquals(population, population2);
 	}
 
 	@Test
 	public void notEqualsOnSecondNullGender() {
-		Population population = new Population("1267", "G", "20", 1, 2011, this.values);
+		Population population = new Population("1267", "G", "20", 1, 2011, this.valueNodes);
 
-		Population population2 = new Population("1267", "G", "20", 1, 2011, this.values);
+		Population population2 = new Population("1267", "G", "20", 1, 2011, this.valueNodes);
 		population2.setGender(null);
 
 		assertNotEquals(population, population2);
@@ -318,27 +318,27 @@ public class Population_UnitTest {
 
 	@Test
 	public void notEqualsOnYear() {
-		Population population = new Population("1267", "G", "20", 1, 2011, this.values);
-		Population population2 = new Population("1267", "G", "20", 1, 1999, this.values);
+		Population population = new Population("1267", "G", "20", 1, 2011, this.valueNodes);
+		Population population2 = new Population("1267", "G", "20", 1, 1999, this.valueNodes);
 
 		assertNotEquals(population, population2);
 	}
 
 	@Test
 	public void notEqualsOnFirstNullYear() {
-		Population population = new Population("1267", "G", "20", 1, 2011, this.values);
+		Population population = new Population("1267", "G", "20", 1, 2011, this.valueNodes);
 		population.setYear(null);
 
-		Population population2 = new Population("1267", "G", "20", 1, 2011, this.values);
+		Population population2 = new Population("1267", "G", "20", 1, 2011, this.valueNodes);
 
 		assertNotEquals(population, population2);
 	}
 
 	@Test
 	public void notEqualsOnSecondNullYear() {
-		Population population = new Population("1267", "G", "20", 1, 2011, this.values);
+		Population population = new Population("1267", "G", "20", 1, 2011, this.valueNodes);
 
-		Population population2 = new Population("1267", "G", "20", 1, 2011, this.values);
+		Population population2 = new Population("1267", "G", "20", 1, 2011, this.valueNodes);
 		population2.setYear(null);
 
 		assertNotEquals(population, population2);
@@ -346,8 +346,8 @@ public class Population_UnitTest {
 
 	@Test
 	public void notEqualsOnValues() {
-		Population population = new Population("1267", "G", "20", 1, 2011, this.values);
-		Population population2 = new Population("1267", "G", "20", 1, 2011, this.values);
+		Population population = new Population("1267", "G", "20", 1, 2011, this.valueNodes);
+		Population population2 = new Population("1267", "G", "20", 1, 2011, this.valueNodes);
 		population2.setValue(this.testContentsCode, "54321");
 
 		assertNotEquals(population, population2);
@@ -355,8 +355,8 @@ public class Population_UnitTest {
 
 	@Test
 	public void equalsHashCode() {
-		Population population = new Population("1267", "G", "20", 1, 2011, this.values);
-		Population population2 = new Population("1267", "G", "20", 1, 2011, this.values);
+		Population population = new Population("1267", "G", "20", 1, 2011, this.valueNodes);
+		Population population2 = new Population("1267", "G", "20", 1, 2011, this.valueNodes);
 
 		assertEquals(population.hashCode(), population2.hashCode());
 	}
@@ -378,7 +378,7 @@ public class Population_UnitTest {
 
 	@Test
 	public void convertToString() {
-		Population population = new Population("1267", "G", "20", 1, 2011, this.values);
+		Population population = new Population("1267", "G", "20", 1, 2011, this.valueNodes);
 
 		assertTrue(population.toString().contains("1267"));
 		assertTrue(population.toString().contains("G"));

@@ -21,7 +21,7 @@ import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.dannil.scbjavaclient.model.AbstractYearAndValueModel;
-import com.github.dannil.scbjavaclient.model.Value;
+import com.github.dannil.scbjavaclient.model.ValueNode;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
 
@@ -52,7 +52,7 @@ public class NumberOfChildrenBornWithFirstName extends AbstractYearAndValueModel
 	 * @param values
 	 *            the values
 	 */
-	public NumberOfChildrenBornWithFirstName(String firstname, Integer year, List<Value<String>> values) {
+	public NumberOfChildrenBornWithFirstName(String firstname, Integer year, List<ValueNode<String>> values) {
 		super(year, values);
 		this.firstname = firstname;
 	}
@@ -107,7 +107,7 @@ public class NumberOfChildrenBornWithFirstName extends AbstractYearAndValueModel
 		builder.append(", year=");
 		builder.append(super.year);
 		builder.append(", values=");
-		builder.append(super.values);
+		builder.append(super.valueNodes);
 		builder.append(']');
 
 		return builder.toString();

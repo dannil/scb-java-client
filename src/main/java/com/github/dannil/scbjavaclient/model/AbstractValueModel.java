@@ -33,14 +33,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public abstract class AbstractValueModel<V> {
 
 	@JsonProperty("values")
-	protected List<Value<V>> values;
+	protected List<ValueNode<V>> valueNodes;
 
 	/**
 	 * Default constructor.
 	 */
 	protected AbstractValueModel() {
 		// To enable derived classes to use their default constructor
-		this.values = new ArrayList<Value<V>>();
+		this.valueNodes = new ArrayList<ValueNode<V>>();
 	}
 
 	/**
@@ -49,12 +49,12 @@ public abstract class AbstractValueModel<V> {
 	 * @param values
 	 *            the values
 	 */
-	protected AbstractValueModel(List<Value<V>> values) {
-		this.values = new ArrayList<Value<V>>();
+	protected AbstractValueModel(List<ValueNode<V>> values) {
+		this.valueNodes = new ArrayList<ValueNode<V>>();
 
-		for (Value<V> value : values) {
-			Value<V> v2 = new Value<V>(value.getValue(), value.getCode(), value.getText());
-			this.values.add(v2);
+		for (ValueNode<V> value : values) {
+			ValueNode<V> v2 = new ValueNode<V>(value.getValue(), value.getCode(), value.getText());
+			this.valueNodes.add(v2);
 		}
 	}
 
@@ -63,8 +63,8 @@ public abstract class AbstractValueModel<V> {
 	 * 
 	 * @return the values
 	 */
-	public List<Value<V>> getValues() {
-		return this.values;
+	public List<ValueNode<V>> getValues() {
+		return this.valueNodes;
 	}
 
 	/**
@@ -73,8 +73,8 @@ public abstract class AbstractValueModel<V> {
 	 * @param values
 	 *            the values
 	 */
-	public void setValues(List<Value<V>> values) {
-		this.values = new ArrayList<Value<V>>(values);
+	public void setValues(List<ValueNode<V>> values) {
+		this.valueNodes = new ArrayList<ValueNode<V>>(values);
 	}
 
 	/**
@@ -84,9 +84,9 @@ public abstract class AbstractValueModel<V> {
 	 *            the contents code to get the value node for
 	 * @return the value node
 	 */
-	public Value<V> getValue(String key) {
-		for (int i = 0; i < this.values.size(); i++) {
-			Value<V> v = this.values.get(i);
+	public ValueNode<V> getValue(String key) {
+		for (int i = 0; i < this.valueNodes.size(); i++) {
+			ValueNode<V> v = this.valueNodes.get(i);
 			if (v.getCode().equals(key)) {
 				return v;
 			}
@@ -103,8 +103,8 @@ public abstract class AbstractValueModel<V> {
 	 *            the value
 	 */
 	public void setValue(String key, V value) {
-		for (int i = 0; i < this.values.size(); i++) {
-			Value<V> v = this.values.get(i);
+		for (int i = 0; i < this.valueNodes.size(); i++) {
+			ValueNode<V> v = this.valueNodes.get(i);
 			if (v.getCode().equals(key)) {
 				v.setValue(value);
 			}
@@ -113,7 +113,7 @@ public abstract class AbstractValueModel<V> {
 
 	@Override
 	public int hashCode() {
-		return Objects.hashCode(this.values);
+		return Objects.hashCode(this.valueNodes);
 	}
 
 	@Override
@@ -129,7 +129,7 @@ public abstract class AbstractValueModel<V> {
 		}
 
 		AbstractValueModel<?> other = (AbstractValueModel<?>) obj;
-		return Objects.equals(this.values, other.values);
+		return Objects.equals(this.valueNodes, other.valueNodes);
 	}
 
 	@Override

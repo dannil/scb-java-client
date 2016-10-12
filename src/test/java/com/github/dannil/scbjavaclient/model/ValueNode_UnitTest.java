@@ -26,26 +26,26 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class Value_UnitTest {
+public class ValueNode_UnitTest {
 
 	@Test
 	public void equalsCopyConstructor() {
-		Value<Double> value1 = new Value<Double>(11.22d, "TESTCODE", "TESTTEXT");
-		Value<Double> value2 = new Value<Double>(value1);
+		ValueNode<Double> value1 = new ValueNode<Double>(11.22d, "TESTCODE", "TESTTEXT");
+		ValueNode<Double> value2 = new ValueNode<Double>(value1);
 
 		assertEquals(value1, value2);
 	}
 
 	@Test
 	public final void createWithDefaultConstructor() {
-		Value<Double> value = new Value<Double>();
+		ValueNode<Double> value = new ValueNode<Double>();
 
 		assertNotNull(value);
 	}
 
 	@Test
 	public void setValue() {
-		Value<Double> value = new Value<Double>();
+		ValueNode<Double> value = new ValueNode<Double>();
 
 		value.setValue(11.22d);
 
@@ -54,7 +54,7 @@ public class Value_UnitTest {
 
 	@Test
 	public void setCode() {
-		Value<Double> value = new Value<Double>();
+		ValueNode<Double> value = new ValueNode<Double>();
 
 		value.setCode("TESTCODE");
 
@@ -63,7 +63,7 @@ public class Value_UnitTest {
 
 	@Test
 	public void setText() {
-		Value<Double> value = new Value<Double>();
+		ValueNode<Double> value = new ValueNode<Double>();
 
 		value.setText("TESTTEXT");
 
@@ -72,91 +72,91 @@ public class Value_UnitTest {
 
 	@Test
 	public void equals() {
-		Value<Double> value = new Value<Double>();
-		Value<Double> value2 = new Value<Double>();
+		ValueNode<Double> value = new ValueNode<Double>();
+		ValueNode<Double> value2 = new ValueNode<Double>();
 
 		assertEquals(value, value2);
 	}
 
 	@Test
 	public void equalsItself() {
-		Value<Double> value = new Value<Double>();
+		ValueNode<Double> value = new ValueNode<Double>();
 
 		assertEquals(value, value);
 	}
 
 	@Test
 	public void equalsItselfWithValues() {
-		Value<Double> value = new Value<Double>(11.22d, "TESTCODE", "TESTTEXT");
-		Value<Double> value2 = new Value<Double>(11.22d, "TESTCODE", "TESTTEXT");
+		ValueNode<Double> value = new ValueNode<Double>(11.22d, "TESTCODE", "TESTTEXT");
+		ValueNode<Double> value2 = new ValueNode<Double>(11.22d, "TESTCODE", "TESTTEXT");
 
 		assertEquals(value, value2);
 	}
 
 	@Test
 	public void notEqualsNull() {
-		Value<Double> value = new Value<Double>();
+		ValueNode<Double> value = new ValueNode<Double>();
 
 		assertNotEquals(value, null);
 	}
 
 	@Test
 	public void notEqualsIncompatibleObject() {
-		Value<Double> value = new Value<Double>();
+		ValueNode<Double> value = new ValueNode<Double>();
 
 		assertNotEquals(value, new Object());
 	}
 
 	@Test
 	public void notEqualsValue() {
-		Value<Double> value = new Value<Double>(11.22d, "TESTCODE", "TESTTEXT");
-		Value<Double> value2 = new Value<Double>(55.66d, "TESTCODE", "TESTTEXT");
+		ValueNode<Double> value = new ValueNode<Double>(11.22d, "TESTCODE", "TESTTEXT");
+		ValueNode<Double> value2 = new ValueNode<Double>(55.66d, "TESTCODE", "TESTTEXT");
 
 		assertNotEquals(value, value2);
 	}
 
 	@Test
 	public void notEqualsCode() {
-		Value<Double> value = new Value<Double>(11.22d, "TESTCODE", "TESTTEXT");
-		Value<Double> value2 = new Value<Double>(11.22d, "ANOTHERTESTCODENOTEQUAL", "TESTTEXT");
+		ValueNode<Double> value = new ValueNode<Double>(11.22d, "TESTCODE", "TESTTEXT");
+		ValueNode<Double> value2 = new ValueNode<Double>(11.22d, "ANOTHERTESTCODENOTEQUAL", "TESTTEXT");
 
 		assertNotEquals(value, value2);
 	}
 
 	@Test
 	public void notEqualsText() {
-		Value<Double> value = new Value<Double>(11.22d, "TESTCODE", "TESTTEXT");
-		Value<Double> value2 = new Value<Double>(11.22d, "TESTCODE", "ANOTHERTESTTEXTNOTEQUAL");
+		ValueNode<Double> value = new ValueNode<Double>(11.22d, "TESTCODE", "TESTTEXT");
+		ValueNode<Double> value2 = new ValueNode<Double>(11.22d, "TESTCODE", "ANOTHERTESTTEXTNOTEQUAL");
 
 		assertNotEquals(value, value2);
 	}
 
 	@Test
 	public void equalsHashCode() {
-		Value<Double> value = new Value<Double>(11.22d, "TESTCODE", "TESTTEXT");
-		Value<Double> value2 = new Value<Double>(11.22d, "TESTCODE", "TESTTEXT");
+		ValueNode<Double> value = new ValueNode<Double>(11.22d, "TESTCODE", "TESTTEXT");
+		ValueNode<Double> value2 = new ValueNode<Double>(11.22d, "TESTCODE", "TESTTEXT");
 
 		assertEquals(value.hashCode(), value2.hashCode());
 	}
 
 	@Test
 	public void equalsHashCodeNullValues() {
-		Value<Double> value = new Value<Double>();
-		Value<Double> value2 = new Value<Double>();
+		ValueNode<Double> value = new ValueNode<Double>();
+		ValueNode<Double> value2 = new ValueNode<Double>();
 
 		assertEquals(value.hashCode(), value2.hashCode());
 	}
 
 	@Test
 	public void convertToStringNullValues() {
-		Value<Double> value = new Value<Double>();
+		ValueNode<Double> value = new ValueNode<Double>();
 
 		assertNotNull(value.toString());
 	}
 
 	@Test
 	public void convertToString() {
-		Value<Double> value = new Value<Double>(11.22d, "TESTCODE", "TESTTEXT");
+		ValueNode<Double> value = new ValueNode<Double>(11.22d, "TESTCODE", "TESTTEXT");
 
 		assertTrue(value.toString().contains("11.22"));
 		assertTrue(value.toString().contains("TESTCODE"));

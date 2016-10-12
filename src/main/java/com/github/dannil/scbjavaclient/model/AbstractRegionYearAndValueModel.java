@@ -57,10 +57,10 @@ public abstract class AbstractRegionYearAndValueModel<R, Y, V> extends AbstractV
 	 *            the region
 	 * @param year
 	 *            the year
-	 * @param value
-	 *            the value
+	 * @param values
+	 *            the values
 	 */
-	protected AbstractRegionYearAndValueModel(R region, Y year, List<Value<V>> values) {
+	protected AbstractRegionYearAndValueModel(R region, Y year, List<ValueNode<V>> values) {
 		super(values);
 		this.region = region;
 		this.year = year;

@@ -27,21 +27,21 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.github.dannil.scbjavaclient.model.Value;
+import com.github.dannil.scbjavaclient.model.ValueNode;
 
 public class FertilityRate_UnitTest {
 
 	private String testContentsCode;
 
-	private List<Value<Double>> values;
+	private List<ValueNode<Double>> valueNodes;
 
 	@Before
 	public void setup() {
 		this.testContentsCode = "TESTCONTENTSCODE";
-		this.values = new ArrayList<Value<Double>>();
+		this.valueNodes = new ArrayList<ValueNode<Double>>();
 
-		Value<Double> value = new Value<Double>(34.56d, "TESTCONTENTSCODE", "Test contents code");
-		this.values.add(value);
+		ValueNode<Double> value = new ValueNode<Double>(34.56d, "TESTCONTENTSCODE", "Test contents code");
+		this.valueNodes.add(value);
 	}
 
 	@Test
@@ -82,7 +82,7 @@ public class FertilityRate_UnitTest {
 	public void setValues() {
 		FertilityRate rate = new FertilityRate();
 
-		rate.setValues(this.values);
+		rate.setValues(this.valueNodes);
 
 		assertNotNull(rate.getValues());
 	}
@@ -109,8 +109,8 @@ public class FertilityRate_UnitTest {
 
 	@Test
 	public void equalsItselfWithValues() {
-		FertilityRate rate = new FertilityRate("1263", 2, 1996, this.values);
-		FertilityRate rate2 = new FertilityRate("1263", 2, 1996, this.values);
+		FertilityRate rate = new FertilityRate("1263", 2, 1996, this.valueNodes);
+		FertilityRate rate2 = new FertilityRate("1263", 2, 1996, this.valueNodes);
 
 		assertEquals(rate, rate2);
 	}
@@ -131,32 +131,32 @@ public class FertilityRate_UnitTest {
 
 	@Test
 	public void notEqualsRegion() {
-		FertilityRate rate = new FertilityRate("1263", 2, 1996, this.values);
-		FertilityRate rate2 = new FertilityRate("1267", 2, 1996, this.values);
+		FertilityRate rate = new FertilityRate("1263", 2, 1996, this.valueNodes);
+		FertilityRate rate2 = new FertilityRate("1267", 2, 1996, this.valueNodes);
 
 		assertNotEquals(rate, rate2);
 	}
 
 	@Test
 	public void notEqualsGender() {
-		FertilityRate rate = new FertilityRate("1263", 2, 1996, this.values);
-		FertilityRate rate2 = new FertilityRate("1263", 1, 1996, this.values);
+		FertilityRate rate = new FertilityRate("1263", 2, 1996, this.valueNodes);
+		FertilityRate rate2 = new FertilityRate("1263", 1, 1996, this.valueNodes);
 
 		assertNotEquals(rate, rate2);
 	}
 
 	@Test
 	public void notEqualsYear() {
-		FertilityRate rate = new FertilityRate("1263", 2, 1996, this.values);
-		FertilityRate rate2 = new FertilityRate("1263", 2, 2002, this.values);
+		FertilityRate rate = new FertilityRate("1263", 2, 1996, this.valueNodes);
+		FertilityRate rate2 = new FertilityRate("1263", 2, 2002, this.valueNodes);
 
 		assertNotEquals(rate, rate2);
 	}
 
 	@Test
 	public void notEqualsValues() {
-		FertilityRate rate = new FertilityRate("1263", 2, 1996, this.values);
-		FertilityRate rate2 = new FertilityRate("1263", 2, 1996, this.values);
+		FertilityRate rate = new FertilityRate("1263", 2, 1996, this.valueNodes);
+		FertilityRate rate2 = new FertilityRate("1263", 2, 1996, this.valueNodes);
 		rate2.setValue(this.testContentsCode, 65.43d);
 
 		assertNotEquals(rate, rate2);
@@ -164,8 +164,8 @@ public class FertilityRate_UnitTest {
 
 	@Test
 	public void equalsHashCode() {
-		FertilityRate rate = new FertilityRate("1263", 2, 1996, this.values);
-		FertilityRate rate2 = new FertilityRate("1263", 2, 1996, this.values);
+		FertilityRate rate = new FertilityRate("1263", 2, 1996, this.valueNodes);
+		FertilityRate rate2 = new FertilityRate("1263", 2, 1996, this.valueNodes);
 
 		assertEquals(rate.hashCode(), rate2.hashCode());
 	}
@@ -187,7 +187,7 @@ public class FertilityRate_UnitTest {
 
 	@Test
 	public void convertToString() {
-		FertilityRate rate = new FertilityRate("1263", 2, 1996, this.values);
+		FertilityRate rate = new FertilityRate("1263", 2, 1996, this.valueNodes);
 
 		assertTrue(rate.toString().contains("1263"));
 		assertTrue(rate.toString().contains("2"));

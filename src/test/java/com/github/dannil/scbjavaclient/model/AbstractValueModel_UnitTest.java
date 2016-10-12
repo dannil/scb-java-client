@@ -32,7 +32,7 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class AbstractValueModel_UnitTest {
 
-	private List<Value<Long>> values;
+	private List<ValueNode<Long>> valueNodes;
 
 	// Dummy class which doesn't override the equals
 	// method. This enables us to thoroughly test the equals method.
@@ -42,7 +42,7 @@ public class AbstractValueModel_UnitTest {
 
 		}
 
-		public DummyClass(List<Value<Long>> values) {
+		public DummyClass(List<ValueNode<Long>> values) {
 			super(values);
 		}
 
@@ -55,31 +55,31 @@ public class AbstractValueModel_UnitTest {
 
 	@Before
 	public void setup() {
-		this.values = new ArrayList<Value<Long>>();
+		this.valueNodes = new ArrayList<ValueNode<Long>>();
 
-		Value<Long> value1 = new Value<Long>(12345L, "TESTCODE", "TESTTEXT");
-		Value<Long> value2 = new Value<Long>(54321L, "ANOTHERTESTCODE", "ANOTHERTESTTEXT");
-		this.values.add(value1);
-		this.values.add(value2);
+		ValueNode<Long> value1 = new ValueNode<Long>(12345L, "TESTCODE", "TESTTEXT");
+		ValueNode<Long> value2 = new ValueNode<Long>(54321L, "ANOTHERTESTCODE", "ANOTHERTESTTEXT");
+		this.valueNodes.add(value1);
+		this.valueNodes.add(value2);
 	}
 
 	@Test
 	public void getValue() {
-		DummyClass dm = new DummyClass(this.values);
+		DummyClass dm = new DummyClass(this.valueNodes);
 
 		assertNotNull(dm.getValue("TESTCODE"));
 	}
 
 	@Test
 	public void getValueNoMatchingKey() {
-		DummyClass dm = new DummyClass(this.values);
+		DummyClass dm = new DummyClass(this.valueNodes);
 
 		assertNull(dm.getValue("THISTESTCODEDOESNTEXIST"));
 	}
 
 	@Test
 	public void setValue() {
-		DummyClass dm = new DummyClass(this.values);
+		DummyClass dm = new DummyClass(this.valueNodes);
 
 		dm.setValue("TESTCODE", 98765L);
 
@@ -88,11 +88,11 @@ public class AbstractValueModel_UnitTest {
 
 	@Test
 	public void setValueNoMatchingKey() {
-		DummyClass dm = new DummyClass(this.values);
+		DummyClass dm = new DummyClass(this.valueNodes);
 
 		dm.setValue("THISTESTCODEDOESNTEXIST", 56789L);
 
-		assertEquals(dm.getValues(), this.values);
+		assertEquals(dm.getValues(), this.valueNodes);
 	}
 
 	// Tests the superclass

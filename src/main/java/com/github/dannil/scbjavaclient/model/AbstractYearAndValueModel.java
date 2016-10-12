@@ -52,7 +52,7 @@ public abstract class AbstractYearAndValueModel<Y, V> extends AbstractValueModel
 	 * @param values
 	 *            the values
 	 */
-	public AbstractYearAndValueModel(Y year, List<Value<V>> values) {
+	public AbstractYearAndValueModel(Y year, List<ValueNode<V>> values) {
 		super(values);
 		this.year = year;
 	}

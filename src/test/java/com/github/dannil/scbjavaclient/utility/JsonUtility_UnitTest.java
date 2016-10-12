@@ -32,7 +32,7 @@ import org.junit.runners.JUnit4;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
-import com.github.dannil.scbjavaclient.model.Value;
+import com.github.dannil.scbjavaclient.model.ValueNode;
 import com.github.dannil.scbjavaclient.model.population.statistic.Population;
 
 @RunWith(JUnit4.class)
@@ -72,12 +72,12 @@ public class JsonUtility_UnitTest {
 
 		List<Population> convertedPopulations = JsonUtility.jsonToListOf(node, Population.class);
 
-		List<Value<String>> values = new ArrayList<Value<String>>();
+		List<ValueNode<String>> values = new ArrayList<ValueNode<String>>();
 
-		Value<String> value1 = new Value<String>("48403", "BE0101N1", "Population");
+		ValueNode<String> value1 = new ValueNode<String>("48403", "BE0101N1", "Population");
 		values.add(value1);
 
-		Value<String> value2 = new Value<String>("1007", "BE0101N2", "Population growth");
+		ValueNode<String> value2 = new ValueNode<String>("1007", "BE0101N2", "Population growth");
 		values.add(value2);
 
 		Population p = new Population("00", "OG", "45", null, 2011, values);
