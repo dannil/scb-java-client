@@ -32,7 +32,7 @@ public class ClientConstants_UnitTest {
 	@Test
 	public void callPrivateConstructor() throws InstantiationException, IllegalAccessException,
 			IllegalArgumentException, InvocationTargetException {
-		Constructor<?>[] cons = ClientConstants_UnitTest.class.getDeclaredConstructors();
+		Constructor<?>[] cons = ClientConstants.class.getDeclaredConstructors();
 		cons[0].setAccessible(true);
 		cons[0].newInstance();
 		cons[0].setAccessible(false);
