@@ -81,30 +81,6 @@ public final class JsonUtility {
 	}
 
 	/**
-	 * Retrieves the contents codes from the specified JSON.
-	 * 
-	 * @param json
-	 *            the json to retrieve the contents codes from
-	 * @return a list of the available contents codes
-	 */
-	public static List<String> getContentsCodes(String json) {
-		List<String> valueTexts = new ArrayList<String>();
-
-		JsonNode node = JsonUtility.toNode(json, "variables");
-		for (int i = 0; i < node.size(); i++) {
-			JsonNode child = node.get(i);
-			if (child.get("code").asText().equals("ContentsCode")) {
-				JsonNode values = child.get("values");
-				for (int j = 0; j < values.size(); j++) {
-					valueTexts.add(values.get(j).asText());
-				}
-				break;
-			}
-		}
-		return valueTexts;
-	}
-
-	/**
 	 * Converts the non-conventional JSON response from the SCB API into a more conventional format,
 	 * wrapped in a {@link JsonNode}.
 	 * 
@@ -141,7 +117,7 @@ public final class JsonUtility {
 				String key = codes.get(j);
 
 				// Lowercase first letter of key
-				char c[] = key.toCharArray();
+				char[] c = key.toCharArray();
 				c[0] = Character.toLowerCase(c[0]);
 				key = new String(c);
 
@@ -157,14 +133,6 @@ public final class JsonUtility {
 				}
 			}
 
-			// Map<String, String> valuePairs = new HashMap<String, String>();
-			// // List<String> values = new ArrayList<String>(valuesNode.size());
-			// for (int k = 0; k < valuesNode.size(); k++) {
-			// // values.add(valuesNode.get(k).asText());
-			// valuePairs.put(contentCodes.get(k), valuesNode.get(k).asText());
-			// }
-			// map.put("values", valuePairs);
-
 			List<Map<String, String>> values = new ArrayList<Map<String, String>>(valuesNode.size());
 			for (int k = 0; k < valuesNode.size(); k++) {
 				Map<String, String> contents = new HashMap<String, String>();
@@ -179,7 +147,6 @@ public final class JsonUtility {
 
 			entries.add(map);
 		}
-
 		return mapper.convertValue(entries, JsonNode.class);
 	}
 
@@ -223,72 +190,6 @@ public final class JsonUtility {
 		}
 	}
 
-	// /**
-	// * Parses the {@link JsonNode} into a list of keys and values with the help of the code input.
-	// *
-	// * @param node
-	// * the node to parse
-	// * @param codes
-	// * the codes which should be parsed
-	// * @return a list which contains the matching keys and values
-	// */
-	// private static List<Map<String, String>> genericParse(JsonNode node, List<String> codes) {
-	// JsonNode columns = node.get("columns");
-	// if (columns == null) {
-	// throw new IllegalArgumentException("Non-existing element in JSON payload: \"columns\"");
-	// }
-	//
-	// Map<String, Integer> mappings = generateMappings(columns.findValuesAsText("code"), codes);
-	//
-	// JsonNode data = node.get("data");
-	//
-	// List<JsonNode> keys = data.findValues("key");
-	// List<JsonNode> values = data.findValues("values");
-	//
-	// List<Map<String, String>> contents = new ArrayList<Map<String, String>>();
-	// for (int j = 0; j < keys.size(); j++) {
-	// JsonNode keyAtPosition = keys.get(j);
-	//
-	// Map<String, String> keyContents = new HashMap<String, String>();
-	// for (String code : codes) {
-	// if (mappings.containsKey(code)) {
-	// keyContents.put(code, keyAtPosition.get(mappings.get(code)).asText());
-	// }
-	// }
-	//
-	// JsonNode valueAtPosition = values.get(j);
-	// String value = valueAtPosition.get(0).asText();
-	// keyContents.put("Value", value);
-	//
-	// contents.add(keyContents);
-	// }
-	// return contents;
-	// }
-
-	// /**
-	// * Generates the position for the input codes. Used by
-	// * {@link JsonUtility#genericParse(JsonNode, List) genericParse(JsonNode, List)} to figure out
-	// * the position for every key.
-	// *
-	// * @param inputCodes
-	// * the input codes to calculated indexes for
-	// * @param storedCodes
-	// * the stored codes to match against the input codes
-	// * @return a map which specifies what position (0-indexed) every key resides at
-	// */
-	// private static Map<String, Integer> generateMappings(List<String> inputCodes, List<String>
-	// storedCodes) {
-	// Map<String, Integer> mappings = new HashMap<String, Integer>();
-	// int i = 0;
-	// for (String input : inputCodes) {
-	// if (storedCodes.contains(input)) {
-	// mappings.put(input, i);
-	// i++;
-	// }
-	// }
-	// return mappings;
-	// }
-
 	/**
 	 * Extracts the codes from the input.
 	 *
@@ -298,8 +199,31 @@ public final class JsonUtility {
 	 */
 	public static List<String> getCodes(String content) {
 		JsonNode data = toNode(content);
-		List<String> codes = data.findValuesAsText("code");
-
-		return codes;
+		return data.findValuesAsText("code");
 	}
+
+	/**
+	 * Retrieves the contents codes from the specified JSON.
+	 * 
+	 * @param json
+	 *            the json to retrieve the contents codes from
+	 * @return a list of the available contents codes
+	 */
+	public static List<String> getContentCodes(String json) {
+		List<String> valueTexts = new ArrayList<String>();
+
+		JsonNode node = JsonUtility.toNode(json, "variables");
+		for (int i = 0; i < node.size(); i++) {
+			JsonNode child = node.get(i);
+			if (child.get("code").asText().equals("ContentsCode")) {
+				JsonNode values = child.get("values");
+				for (int j = 0; j < values.size(); j++) {
+					valueTexts.add(values.get(j).asText());
+				}
+				break;
+			}
+		}
+		return valueTexts;
+	}
+
 }
