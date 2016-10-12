@@ -1,9 +1,10 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.github.dannil</groupId>
 	<artifactId>scb-java-client</artifactId>
-	<version>0.0.3-SNAPSHOT</version>
+	<version>0.0.4-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>scb-java-client</name>
@@ -14,7 +15,7 @@
 		<developer>
 			<id>dannil</id>
 			<name>Daniel Nilsson</name>
-			<email>daniel.nilsson@dannils.se</email>
+			<email>daniel.nilsson94@outlook.com</email>
 			<roles>
 				<role>architect</role>
 				<role>developer</role>
@@ -22,6 +23,10 @@
 			<timezone>Europe/Stockholm</timezone>
 		</developer>
 	</developers>
+	
+	<prerequisites>
+		<maven>3.0</maven>
+	</prerequisites>
 
 	<licenses>
 		<license>
@@ -32,28 +37,24 @@
 	</licenses>
 
 	<scm>
-		<connection>scm:git:git@github.com:dannil/scb-java-client.git</connection>
+		<url>https://github.com/dannil/scb-java-client</url>
+		<connection>scm:git:git://github.com/dannil/scb-java-client.git</connection>
 		<developerConnection>scm:git:git@github.com:dannil/scb-java-client.git</developerConnection>
-		<url>git@github.com:dannil/scb-java-client.git</url>
 		<tag>HEAD</tag>
 	</scm>
 	<issueManagement>
 		<system>GitHub</system>
 		<url>https://github.com/dannil/scb-java-client/issues</url>
 	</issueManagement>
+	<ciManagement>
+		<system>Travis CI</system>
+		<url>https://travis-ci.org/dannil/scb-java-client</url>
+	</ciManagement>
 
 	<properties>
 		<!-- General configuration -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-		<!-- Core dependencies -->
-		<jackson-core.version>2.7.3</jackson-core.version>
-		<jackson-databind.version>2.7.3</jackson-databind.version>
-
-		<!-- Test dependencies -->
-		<junit.version>4.12</junit.version>
-		<jacoco-maven-plugin.version>0.7.6.201602180812</jacoco-maven-plugin.version>
 	</properties>
 
 	<dependencies>
@@ -61,26 +62,31 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-core</artifactId>
-			<version>${jackson-core.version}</version>
+			<version>2.8.1</version>
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>${jackson-databind.version}</version>
+			<version>2.8.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
 			<version>4.5.2</version>
 		</dependency>
-
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.5</version>
+		</dependency>
 
 		<!-- Test dependencies -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
+			<version>4.12</version>
 			<scope>test</scope>
+			<optional>true</optional>
 		</dependency>
 	</dependencies>
 
@@ -150,7 +156,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
-				<version>3.0.0</version>
+				<version>3.0.1</version>
 				<executions>
 					<execution>
 						<id>attach-sources</id>
@@ -163,7 +169,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.10.3</version>
+				<version>2.10.4</version>
 				<executions>
 					<execution>
 						<id>attach-javadocs</id>
@@ -177,15 +183,11 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
 				<version>2.5.3</version>
-				<configuration>
-					<arguments>-Dgpg.passphrase=${gpg.passphrase}</arguments>
-					<scmCommentPrefix>Release: </scmCommentPrefix>
-				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>${jacoco-maven-plugin.version}</version>
+				<version>0.7.7.201606060606</version>
 				<executions>
 					<execution>
 						<goals>
@@ -200,21 +202,6 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
-			<plugin>
-				<artifactId>maven-clean-plugin</artifactId>
-				<version>3.0.0</version>
-				<configuration>
-					<filesets>
-						<fileset>
-							<directory>${basedir}</directory>
-							<includes>
-								<include>**/cov-int/**</include>
-							</includes>
-							<followSymlinks>false</followSymlinks>
-						</fileset>
-					</filesets>
-				</configuration>
 			</plugin>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>

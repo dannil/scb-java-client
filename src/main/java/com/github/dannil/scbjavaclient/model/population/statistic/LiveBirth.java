@@ -26,7 +26,7 @@ import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
 
 /**
- * Model for live births data
+ * Model for live births data.
  * 
  * @author Daniel Nilsson
  */

@@ -24,8 +24,11 @@ import java.nio.charset.StandardCharsets;
  * 
  * @author Daniel Nilsson
  */
-public class RequesterFactory {
+public final class RequesterFactory {
 
+	/**
+	 * Private constructor to prevent instantiation.
+	 */
 	private RequesterFactory() {
 
 	}

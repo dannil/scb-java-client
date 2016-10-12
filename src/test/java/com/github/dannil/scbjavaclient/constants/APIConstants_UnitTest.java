@@ -14,27 +14,35 @@
  * limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.population.statistic;
+package com.github.dannil.scbjavaclient.constants;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 
-import java.util.Locale;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import com.github.dannil.scbjavaclient.client.population.statistic.PopulationStatisticsClient;
-
 @RunWith(JUnit4.class)
-public class PopulationStatisticsClient_UnitTest {
+public class APIConstants_UnitTest {
 
 	@Test
-	public void createWithLocaleConstructor() {
-		Locale locale = new Locale("sv", "SE");
-		PopulationStatisticsClient client = new PopulationStatisticsClient(locale);
+	public void callPrivateConstructor() throws InstantiationException, IllegalAccessException,
+			IllegalArgumentException, InvocationTargetException {
+		Constructor<?>[] cons = APIConstants.class.getDeclaredConstructors();
+		cons[0].setAccessible(true);
+		cons[0].newInstance();
+		cons[0].setAccessible(false);
 
-		assertEquals(locale, client.getLocale());
+		assertFalse(cons[0].isAccessible());
+	}
+
+	@Test
+	public void fallbackLocaleNotNull() {
+		assertNotNull(APIConstants.FALLBACK_LOCALE);
 	}
 
 }

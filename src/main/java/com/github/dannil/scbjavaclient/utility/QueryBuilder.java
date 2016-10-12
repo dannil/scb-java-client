@@ -30,8 +30,11 @@ import java.util.Objects;
  * @author Daniel Nilsson
  *
  */
-public class QueryBuilder {
+public final class QueryBuilder {
 
+	/**
+	 * Private constructor to prevent instantiation.
+	 */
 	private QueryBuilder() {
 
 	}
@@ -98,7 +101,7 @@ public class QueryBuilder {
 			}
 		}
 
-		// Approximate a good initial capacity for the string buffer
+		// Approximate a good initial capacity for the string builder
 		int size = Math.max(44 + (80 * filteredMap.size()), 256);
 		StringBuilder builder = new StringBuilder(size);
 

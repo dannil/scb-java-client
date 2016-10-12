@@ -31,7 +31,9 @@ import com.github.dannil.scbjavaclient.client.population.statistic.PopulationSta
 public class PopulationClient extends AbstractContainerClient {
 
 	private PopulationDemographyClient populationDemographyClient;
+
 	private PopulationNameStatisticsClient populationNameStatisticsClient;
+
 	private PopulationStatisticsClient populationStatisticsClient;
 
 	/**
@@ -51,7 +53,7 @@ public class PopulationClient extends AbstractContainerClient {
 	}
 
 	/**
-	 * Overloaded constructor
+	 * Overloaded constructor.
 	 * 
 	 * @param locale
 	 *            the locale for this client

@@ -14,27 +14,27 @@
  * limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.population.statistic;
-
-import static org.junit.Assert.assertEquals;
+package com.github.dannil.scbjavaclient.constants;
 
 import java.util.Locale;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+/**
+ * Constants which hold values for using the API.
+ * 
+ * @author Daniel Nilsson
+ */
+public final class APIConstants {
 
-import com.github.dannil.scbjavaclient.client.population.statistic.PopulationStatisticsClient;
+	/**
+	 * The default locale of the API (sv, SE).
+	 **/
+	public static final Locale FALLBACK_LOCALE = new Locale("sv", "SE");
 
-@RunWith(JUnit4.class)
-public class PopulationStatisticsClient_UnitTest {
+	/**
+	 * Private constructor to prevent instantiation.
+	 */
+	private APIConstants() {
 
-	@Test
-	public void createWithLocaleConstructor() {
-		Locale locale = new Locale("sv", "SE");
-		PopulationStatisticsClient client = new PopulationStatisticsClient(locale);
-
-		assertEquals(locale, client.getLocale());
 	}
 
 }

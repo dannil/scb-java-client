@@ -14,27 +14,32 @@
  * limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.population.statistic;
-
-import static org.junit.Assert.assertEquals;
+package com.github.dannil.scbjavaclient.constants;
 
 import java.util.Locale;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+/**
+ * Constants which hold specific values for use by the client.
+ * 
+ * @author Daniel Nilsson
+ */
+public final class ClientConstants {
 
-import com.github.dannil.scbjavaclient.client.population.statistic.PopulationStatisticsClient;
+	/**
+	 * The localization locale to use if a translation lookup fails (en, US).
+	 */
+	public static final Locale LOCALIZATION_FALLBACK_LOCALE = new Locale("en", "US");
 
-@RunWith(JUnit4.class)
-public class PopulationStatisticsClient_UnitTest {
+	/**
+	 * The prefix for the translation files.
+	 */
+	public static final String LOCALIZATION_TRANSLATION_FILE_PREFIX = "language";
 
-	@Test
-	public void createWithLocaleConstructor() {
-		Locale locale = new Locale("sv", "SE");
-		PopulationStatisticsClient client = new PopulationStatisticsClient(locale);
+	/**
+	 * Private constructor to prevent instantiation.
+	 */
+	private ClientConstants() {
 
-		assertEquals(locale, client.getLocale());
 	}
 
 }

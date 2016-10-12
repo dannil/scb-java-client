@@ -14,8 +14,8 @@ public final class Config {
 	static {
 		try {
 			AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
-			String response = get.getResponseBody("http://api.scb.se/OV0104/v1/doris/en/ssd/?config");
-			JsonNode node = JsonUtility.getNode(response);
+			String response = get.getBodyAsString("http://api.scb.se/OV0104/v1/doris/en/ssd/?config");
+			JsonNode node = JsonUtility.toNode(response);
 
 			int maxCalls = node.get("maxCalls").asInt();
 			int timeWindow = node.get("timeWindow").asInt();

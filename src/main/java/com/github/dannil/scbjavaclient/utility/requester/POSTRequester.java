@@ -72,7 +72,7 @@ public class POSTRequester extends AbstractRequester {
 	}
 
 	@Override
-	public String getResponseBody(String url) {
+	public String getBodyAsString(String url) {
 		if (this.query == null) {
 			throw new IllegalStateException("Payload is null");
 		}

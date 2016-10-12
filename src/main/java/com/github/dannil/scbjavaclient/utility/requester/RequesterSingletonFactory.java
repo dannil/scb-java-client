@@ -27,7 +27,7 @@ import java.util.Map;
  * 
  * @author Daniel Nilsson
  */
-public class RequesterSingletonFactory {
+public final class RequesterSingletonFactory {
 
 	private static Map<RequestMethod, AbstractRequester> requesters;
 
@@ -37,14 +37,9 @@ public class RequesterSingletonFactory {
 		requesters.put(RequestMethod.POST, POSTHolder.INSTANCE);
 	}
 
-	private static class GETHolder {
-		private static final AbstractRequester INSTANCE = new GETRequester(StandardCharsets.UTF_8);
-	}
-
-	private static class POSTHolder {
-		private static final AbstractRequester INSTANCE = new POSTRequester(StandardCharsets.UTF_8);
-	}
-
+	/**
+	 * Private constructor to prevent instantiation.
+	 */
 	private RequesterSingletonFactory() {
 
 	}
@@ -78,6 +73,20 @@ public class RequesterSingletonFactory {
 		AbstractRequester abs = requesters.get(method);
 		abs.setCharset(charset);
 		return abs;
+	}
+
+	/**
+	 * Singleton holder for GET requester.
+	 */
+	private static class GETHolder {
+		protected static final AbstractRequester INSTANCE = new GETRequester(StandardCharsets.UTF_8);
+	}
+
+	/**
+	 * Singleton holder for POST requester.
+	 */
+	private static class POSTHolder {
+		protected static final AbstractRequester INSTANCE = new POSTRequester(StandardCharsets.UTF_8);
 	}
 
 }

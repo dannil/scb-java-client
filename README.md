@@ -1,9 +1,8 @@
 # scb-java-client
 
-[![Build Status](https://travis-ci.org/dannil/scb-java-client.svg?branch=dev)](https://travis-ci.org/dannil/scb-java-client)
-[![Codacy Grade Badge](https://api.codacy.com/project/badge/grade/af5b976ee2f94fd4b25ef1ae991d7993)](https://www.codacy.com/app/dannil/scb-java-client)
-[![Codacy Coverage Badge](https://api.codacy.com/project/badge/coverage/af5b976ee2f94fd4b25ef1ae991d7993)](https://www.codacy.com/app/dannil/scb-java-client)
-[![Dependency Status](https://www.versioneye.com/user/projects/56d19801157a69002ea956d6/badge.svg?style=flat)](https://www.versioneye.com/user/projects/56d19801157a69002ea956d6)
+[![Build Status](https://img.shields.io/travis/dannil/scb-java-client/dev.svg)](https://travis-ci.org/dannil/scb-java-client)
+[![Codacy Grade Badge](https://img.shields.io/codacy/grade/af5b976ee2f94fd4b25ef1ae991d7993.svg)](https://www.codacy.com/app/dannil/scb-java-client)
+[![Codacy Coverage Badge](https://img.shields.io/codacy/coverage/af5b976ee2f94fd4b25ef1ae991d7993.svg)](https://www.codacy.com/app/dannil/scb-java-client)
 
 Java client for the SCB (Statistiska centralbyrån) API.
 
@@ -17,23 +16,23 @@ If you have an improvement, feel free to make a pull request or start an issue i
 <dependency>
   <groupId>com.github.dannil</groupId>
   <artifactId>scb-java-client</artifactId>
-  <version>0.0.2</version>
+  <version>0.0.3</version>
 </dependency>
 ```
 
 ### Gradle
 ```xml
-'com.github.dannil:scb-java-client:0.0.2'
+'com.github.dannil:scb-java-client:0.0.3'
 ```
 
 ### SBT
 ```xml
-libraryDependencies += "com.github.dannil" % "scb-java-client" % "0.0.2"
+libraryDependencies += "com.github.dannil" % "scb-java-client" % "0.0.3"
 ```
 
 ## Usage
 
-This demonstarates the typical usage of the client.
+This demonstrates the typical usage of the client.
 
 ```java
 // Create the client

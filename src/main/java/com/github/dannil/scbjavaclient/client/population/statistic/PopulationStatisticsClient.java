@@ -28,7 +28,6 @@ import com.github.dannil.scbjavaclient.model.population.statistic.AverageAge;
 import com.github.dannil.scbjavaclient.model.population.statistic.LiveBirth;
 import com.github.dannil.scbjavaclient.model.population.statistic.Population;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
-import com.github.dannil.scbjavaclient.utility.ListUtility;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
@@ -99,7 +98,7 @@ public class PopulationStatisticsClient extends AbstractClient {
 	public List<AverageAge> getAverageAge(Collection<String> regions, Collection<String> genders,
 			Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
-		mappings.put("ContentsCode", ListUtility.toList("BE0101G9"));
+		mappings.put("ContentsCode", Arrays.asList("BE0101G9"));
 		mappings.put("Region", regions);
 		mappings.put("Kon", genders);
 		mappings.put("Tid", years);
@@ -141,7 +140,7 @@ public class PopulationStatisticsClient extends AbstractClient {
 	public List<LiveBirth> getLiveBirths(Collection<String> regions, Collection<String> motherAges,
 			Collection<Integer> genders, Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
-		mappings.put("ContentsCode", ListUtility.toList("BE0101E2"));
+		mappings.put("ContentsCode", Arrays.asList("BE0101E2"));
 		mappings.put("Region", regions);
 		mappings.put("AlderModer", motherAges);
 		mappings.put("Kon", genders);

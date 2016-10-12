@@ -41,7 +41,7 @@ public class EnvironmentClient extends AbstractContainerClient {
 	}
 
 	/**
-	 * Overloaded constructor
+	 * Overloaded constructor.
 	 * 
 	 * @param locale
 	 *            the locale for this client

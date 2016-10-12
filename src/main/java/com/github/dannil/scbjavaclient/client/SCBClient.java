@@ -16,18 +16,20 @@
 
 package com.github.dannil.scbjavaclient.client;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.github.dannil.scbjavaclient.client.environment.EnvironmentClient;
 import com.github.dannil.scbjavaclient.client.population.PopulationClient;
+import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
+import com.github.dannil.scbjavaclient.utility.URLUtility;
+import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
+import com.github.dannil.scbjavaclient.utility.requester.RequestMethod;
+import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
 
 /**
  * Root client for the client hierarchy.
@@ -37,6 +39,7 @@ import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 public class SCBClient extends AbstractContainerClient {
 
 	private PopulationClient populationClient;
+
 	private EnvironmentClient environmentClient;
 
 	/**
@@ -97,24 +100,16 @@ public class SCBClient extends AbstractContainerClient {
 	 * @param table
 	 *            the table to fetch data from
 	 * @return a JSON string containing all available data in the specified table
+	 * 
+	 * @see com.github.dannil.scbjavaclient.utility.JsonUtility#getContentsCodes(String)
+	 *      JsonUtility#getContentsCodes(String)
 	 */
 	public String getRawData(String table) {
 		String json = super.get(table);
 
 		Map<String, Collection<?>> inputs = new HashMap<String, Collection<?>>();
-		JsonNode node = JsonUtility.getNode(json, "variables");
-		for (int i = 0; i < node.size(); i++) {
-			JsonNode child = node.get(i);
-			if (child.get("code").asText().equals("ContentsCode")) {
-				JsonNode values = child.get("values");
-				List<String> valueTexts = new ArrayList<String>(values.size());
-				for (int j = 0; j < values.size(); j++) {
-					valueTexts.add(values.get(j).asText());
-				}
-				inputs.put("ContentsCode", valueTexts);
-				break;
-			}
-		}
+		inputs.put("ContentsCode", JsonUtility.getContentsCodes(json));
+
 		return getRawData(table, inputs);
 	}
 
@@ -130,6 +125,25 @@ public class SCBClient extends AbstractContainerClient {
 	 */
 	public String getRawData(String table, Map<String, Collection<?>> query) {
 		return super.post(table, QueryBuilder.build(query));
+	}
+
+	/**
+	 * Checks if the specified locale is supported by the API.
+	 * 
+	 * @param locale
+	 *            the locale to check
+	 * @return true if the locale is supported, otherwise false
+	 */
+	public static boolean isSupportedLocale(Locale locale) {
+		String url = URLUtility.changeLanguageForUrl(ROOT_URL + locale.getLanguage() + '/', locale);
+
+		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
+		try {
+			get.getBodyAsString(url);
+			return true;
+		} catch (SCBClientUrlNotFoundException e) {
+			return false;
+		}
 	}
 
 }

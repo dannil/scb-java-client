@@ -26,6 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+import org.apache.commons.io.input.BOMInputStream;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpRequestBase;
@@ -42,39 +43,39 @@ import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
  */
 public abstract class AbstractRequester {
 
+	private static Properties properties;
+
 	protected Charset charset;
 
 	protected HttpClient client;
 
 	protected Map<String, String> requestProperties;
 
-	private static Properties properties;
-
 	static {
 		properties = new Properties();
 		InputStream input = null;
 		try {
 			input = AbstractRequester.class.getClassLoader().getResourceAsStream("project.properties");
-
 			properties.load(input);
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
 	}
 
+	/**
+	 * Default constructor. Loads the request properties and other data needed for the requesters.
+	 */
 	protected AbstractRequester() {
 		this.client = HttpClientBuilder.create().build();
-
 		this.charset = StandardCharsets.UTF_8;
 
 		this.requestProperties = new HashMap<String, String>();
+		this.requestProperties.put("Accept", "application/json");
+		this.requestProperties.put("Content-Type", "application/json; charset=" + this.charset.name().toLowerCase());
 
 		String artifactId = properties.getProperty("artifactId");
 		String version = properties.getProperty("version");
 		String url = properties.getProperty("url");
-
-		this.requestProperties.put("Accept", "application/json");
-		this.requestProperties.put("Content-Type", "application/json; charset=" + this.charset.name().toLowerCase());
 
 		StringBuilder builder = new StringBuilder(64);
 		builder.append(artifactId);
@@ -88,6 +89,14 @@ public abstract class AbstractRequester {
 		this.requestProperties.put("User-Agent", builder.toString());
 	}
 
+	/**
+	 * Performs a request with the specified HttpRequest and retrieves the response as a
+	 * HttpResonse.
+	 * 
+	 * @param request
+	 *            the request
+	 * @return the response
+	 */
 	protected HttpResponse getResponse(HttpRequestBase request) {
 		try {
 			HttpResponse response = this.client.execute(request);
@@ -112,22 +121,20 @@ public abstract class AbstractRequester {
 		}
 	}
 
+	/**
+	 * Extracts the response body from the HTTP response.
+	 * 
+	 * @param response
+	 *            the response to extract the body from
+	 * @return the body as a string
+	 */
 	protected String getBody(HttpResponse response) {
 		StringBuilder builder = new StringBuilder(64);
-		try (BufferedReader br = new BufferedReader(new InputStreamReader(response.getEntity().getContent(),
-				this.charset.name()))) {
-			// Handle UTF-8 byte order mark (BOM)
-			br.mark(4);
-
-			// Checks if the stream contains a BOM. If it doesn't, reset the
-			// stream pointer to the location specified by br.mark()
-			if ('\uFEFF' != br.read()) {
-				br.reset();
-			}
-
-			String line;
-			while ((line = br.readLine()) != null) {
-				builder.append(line);
+		try (BOMInputStream bis = new BOMInputStream(response.getEntity().getContent())) {
+			try (BufferedReader br = new BufferedReader(new InputStreamReader(bis, this.charset.name()))) {
+				for (String line = br.readLine(); line != null; line = br.readLine()) {
+					builder.append(line);
+				}
 			}
 		} catch (IOException e) {
 			throw new SCBClientException(e);
@@ -144,17 +151,17 @@ public abstract class AbstractRequester {
 	 */
 	public static String getCodes(String table) {
 		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
-		return get.getResponseBody("http://api.scb.se/OV0104/v1/doris/sv/ssd/" + table);
+		return get.getBodyAsString("http://api.scb.se/OV0104/v1/doris/sv/ssd/" + table);
 	}
 
 	/**
-	 * Returns the response as a string.
+	 * Returns the HTTP response from the specified URL as a string.
 	 * 
 	 * @param url
 	 *            the URL to get the response from
 	 * @return the response
 	 */
-	public abstract String getResponseBody(String url);
+	public abstract String getBodyAsString(String url);
 
 	/**
 	 * Getter for charset.

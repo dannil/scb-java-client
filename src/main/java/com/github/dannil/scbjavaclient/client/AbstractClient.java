@@ -39,20 +39,27 @@ import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
  */
 public abstract class AbstractClient {
 
+	protected static final String ROOT_URL = "http://api.scb.se/OV0104/v1/doris/";
+
 	private static final Logger LOGGER = Logger.getLogger(AbstractClient.class.getName());
 
 	protected Locale locale;
 
 	protected Localization localization;
 
+	/**
+	 * Default constructor.
+	 */
 	protected AbstractClient() {
 		this.locale = Locale.getDefault();
+
+		// validateLocale();
 
 		this.localization = new Localization(this.locale);
 	}
 
 	/**
-	 * Overloaded constructor
+	 * Overloaded constructor.
 	 * 
 	 * @param locale
 	 *            the locale for this client
@@ -61,13 +68,15 @@ public abstract class AbstractClient {
 		this();
 		this.locale = locale;
 
-		this.localization.setLanguage(this.locale);
+		// validateLocale();
+
+		this.localization.setLocale(this.locale);
 	}
 
 	/**
-	 * Retrieves the language for this Client instance.
+	 * Retrieves the language for this client instance.
 	 * 
-	 * @return the language for this Client instance
+	 * @return the language for this client instance
 	 */
 	public Locale getLocale() {
 		return this.locale;
@@ -84,7 +93,9 @@ public abstract class AbstractClient {
 	public void setLocale(Locale locale) {
 		this.locale = locale;
 
-		this.localization.setLanguage(locale);
+		// validateLocale();
+
+		this.localization.setLocale(locale);
 	}
 
 	/**
@@ -95,7 +106,7 @@ public abstract class AbstractClient {
 	 *            the language for the localization
 	 */
 	public void setLocalizationLanguage(Locale locale) {
-		this.localization.setLanguage(locale);
+		this.localization.setLocale(locale);
 	}
 
 	/**
@@ -104,7 +115,7 @@ public abstract class AbstractClient {
 	 * @return the URL representing the entry point for the API.
 	 */
 	protected String getBaseUrl() {
-		return "http://api.scb.se/OV0104/v1/doris/" + this.locale.getLanguage() + "/ssd/";
+		return ROOT_URL + this.locale.getLanguage() + "/ssd/";
 	}
 
 	/**
@@ -117,10 +128,10 @@ public abstract class AbstractClient {
 	protected String get(String url) {
 		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
 		try {
-			return get.getResponseBody(getBaseUrl() + url);
+			return get.getBodyAsString(getBaseUrl() + url);
 		} catch (SCBClientUrlNotFoundException e) {
 			// 404, call the client again with the fallback language
-			return get.getResponseBody(URLUtility.changeLanguageForUrl(getBaseUrl() + url));
+			return get.getBodyAsString(URLUtility.changeLanguageForUrl(getBaseUrl() + url));
 		}
 	}
 
@@ -137,12 +148,12 @@ public abstract class AbstractClient {
 		POSTRequester post = (POSTRequester) RequesterFactory.getRequester(RequestMethod.POST);
 		post.setQuery(query);
 		try {
-			String response = post.getResponseBody(getBaseUrl() + url);
 			LOGGER.log(Level.INFO, query);
+			String response = post.getBodyAsString(getBaseUrl() + url);
 			return response;
 		} catch (SCBClientUrlNotFoundException e) {
 			// 404, call the client again with the fallback language
-			return post.getResponseBody(URLUtility.changeLanguageForUrl(getBaseUrl() + url));
+			return post.getBodyAsString(URLUtility.changeLanguageForUrl(getBaseUrl() + url));
 		}
 	}
 
@@ -151,22 +162,24 @@ public abstract class AbstractClient {
 	 * 
 	 * @param url
 	 *            the URL to retrieve the regions from
+	 * @return a list of the available regions for the given URL
 	 * @throws UnsupportedOperationException
 	 *             if the specified URL doesn't supply a regions table
-	 * @return a list of the available regions for the given URL
 	 */
 	public List<String> getRegions(String url) {
 		String content = get(url);
 
-		JsonNode contentAsJsonNode = JsonUtility.getNode(content);
+		JsonNode contentAsJsonNode = JsonUtility.toNode(content);
 
 		List<String> codes = contentAsJsonNode.findValuesAsText("code");
 		List<JsonNode> values = contentAsJsonNode.findValues("values");
 
 		int position = codes.indexOf("Region");
 		if (position < 0) {
-			throw new UnsupportedOperationException(
-					this.localization.getString("regions_is_not_supported_for_url", url));
+			Object[] variables = new Object[] { url };
+
+			throw new UnsupportedOperationException(this.localization.getString("regions_is_not_supported_for_url",
+					variables));
 		}
 
 		JsonNode jsonRegions = values.get(position);
@@ -184,21 +197,24 @@ public abstract class AbstractClient {
 	 * 
 	 * @param url
 	 *            the URL to retrieve the years from
+	 * @return a list of the available years for the given URL
 	 * @throws UnsupportedOperationException
 	 *             if the specified URL doesn't supply a years table
-	 * @return a list of the available years for the given URL
 	 */
-	protected List<String> getYears(String url) {
+	public List<String> getYears(String url) {
 		String content = get(url);
 
-		JsonNode contentAsJsonNode = JsonUtility.getNode(content);
+		JsonNode contentAsJsonNode = JsonUtility.toNode(content);
 
 		List<String> codes = contentAsJsonNode.findValuesAsText("code");
 		List<JsonNode> values = contentAsJsonNode.findValues("values");
 
 		int position = codes.indexOf("Tid");
 		if (position < 0) {
-			throw new UnsupportedOperationException(this.localization.getString("years_is_not_supported_for_url", url));
+			Object[] variables = new Object[] { url };
+
+			throw new UnsupportedOperationException(this.localization.getString("years_is_not_supported_for_url",
+					variables));
 		}
 
 		JsonNode jsonYears = values.get(position);
@@ -210,6 +226,12 @@ public abstract class AbstractClient {
 
 		return years;
 	}
+
+	// private void validateLocale() {
+	// if (!isSupportedLocale(this.locale)) {
+	// throw new SCBClientException("Locale " + this.locale + " is not supported by the API");
+	// }
+	// }
 
 	// /**
 	// * Returns the URL endpoint which this client represents.

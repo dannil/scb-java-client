@@ -16,9 +16,18 @@
 
 package com.github.dannil.scbjavaclient.utility;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.text.MessageFormat;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 import java.util.MissingResourceException;
+import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
+
+import com.github.dannil.scbjavaclient.constants.ClientConstants;
 
 /**
  * Class for handling localization for the clients.
@@ -27,9 +36,16 @@ import java.util.ResourceBundle;
  */
 public class Localization {
 
-	private Locale fallbackLocale;
-
 	private ResourceBundle bundle;
+
+	private ResourceBundleEncodingControl encodingControl;
+
+	/**
+	 * Private constructor. Initializes encoding control for the resource bundles.
+	 */
+	private Localization() {
+		this.encodingControl = new ResourceBundleEncodingControl("UTF-8");
+	}
 
 	/**
 	 * Overloaded constructor.
@@ -38,29 +54,29 @@ public class Localization {
 	 *            the locale for this localization instance
 	 */
 	public Localization(Locale locale) {
-		this.fallbackLocale = new Locale("en", "US");
-
-		this.bundle = ResourceBundle.getBundle("language", locale);
+		this();
+		this.bundle = ResourceBundle.getBundle(ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX, locale,
+				this.encodingControl);
 	}
 
 	/**
-	 * Getter for the language for this localization instance. This is the same as the locale
-	 * specified in {@link Localization#getLanguage() getLanguage()}.
+	 * Getter for the locale of this localization instance.
 	 * 
-	 * @return the language for this localization instance.
+	 * @return the locale for this localization instance.
 	 */
-	public Locale getLanguage() {
+	public Locale getLocale() {
 		return this.bundle.getLocale();
 	}
 
 	/**
-	 * Setter for the language for this localization instance.
+	 * Setter for the locale for this localization instance.
 	 * 
 	 * @param locale
 	 *            the locale
 	 */
-	public void setLanguage(Locale locale) {
-		this.bundle = ResourceBundle.getBundle("language", locale);
+	public void setLocale(Locale locale) {
+		this.bundle = ResourceBundle.getBundle(ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX, locale,
+				this.encodingControl);
 	}
 
 	/**
@@ -73,13 +89,12 @@ public class Localization {
 	 * @return the translated string
 	 */
 	public String getString(String key) {
-		String s;
 		try {
-			s = this.bundle.getString(key);
+			return this.bundle.getString(key);
 		} catch (MissingResourceException e2) {
-			s = ResourceBundle.getBundle("language", this.fallbackLocale).getString(key);
+			return ResourceBundle.getBundle(ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX,
+					ClientConstants.LOCALIZATION_FALLBACK_LOCALE, this.encodingControl).getString(key);
 		}
-		return s;
 	}
 
 	/**
@@ -87,13 +102,76 @@ public class Localization {
 	 * 
 	 * @param key
 	 *            the key to get the translation for
-	 * @param args
-	 *            the formatting which shall be inserted into the translation
+	 * @param variables
+	 *            the variables which shall be inserted into the translation
 	 * @return the translated string
 	 */
-	public String getString(String key, Object... args) {
-		return String.format(getString(key), args);
-		// return s;
+	public String getString(String key, Object... variables) {
+		MessageFormat formatter = new MessageFormat("");
+
+		formatter.setLocale(getLocale());
+
+		formatter.applyPattern(getString(key));
+		return formatter.format(variables);
+	}
+
+	/**
+	 * Class to handle non-ASCII encodings for {@link java.util.ResourceBundle ResourceBundle}, such
+	 * as UTF-8.
+	 * 
+	 * @author Daniel Nilsson
+	 */
+	private class ResourceBundleEncodingControl extends ResourceBundle.Control {
+
+		private String encoding;
+
+		/**
+		 * Overloaded constructor.
+		 * 
+		 * @param encoding
+		 *            the encoding to use (i.e. UTF-8)
+		 */
+		protected ResourceBundleEncodingControl(String encoding) {
+			super();
+			this.encoding = encoding;
+		}
+
+		@Override
+		public List<String> getFormats(String baseName) {
+			if (baseName == null) {
+				throw new IllegalArgumentException();
+			}
+			return Arrays.asList("properties");
+		}
+
+		@Override
+		public ResourceBundle newBundle(String baseName, Locale locale, String format, ClassLoader loader,
+				boolean reload) {
+
+			if (baseName == null || locale == null || format == null || loader == null) {
+				throw new IllegalArgumentException();
+			}
+
+			if ("properties".equals(format)) {
+				String bundleName = toBundleName(baseName, locale);
+				String resourceName = toResourceName(bundleName, format);
+				InputStream stream = null;
+
+				try {
+					stream = loader.getResourceAsStream(resourceName);
+
+					if (stream != null) {
+						try (InputStreamReader is2 = new InputStreamReader(stream, this.encoding)) {
+							ResourceBundle bundle = new PropertyResourceBundle(is2);
+							return bundle;
+						}
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			return null;
+		}
 	}
 
 }

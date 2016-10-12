@@ -28,11 +28,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
 
 /**
- * Utility class for converting JSON to Java objects
+ * Utility class for converting JSON to Java objects.
  * 
  * @author Daniel Nilsson
  */
-public class JsonUtility {
+public final class JsonUtility {
 
 	private static ObjectMapper mapper;
 
@@ -40,6 +40,9 @@ public class JsonUtility {
 		mapper = new ObjectMapper();
 	}
 
+	/**
+	 * Private constructor to prevent instantiation.
+	 */
 	private JsonUtility() {
 
 	}
@@ -52,8 +55,8 @@ public class JsonUtility {
 	 * 
 	 * @return a {@link JsonNode} object
 	 */
-	public static JsonNode getNode(String json) {
-		return getNode(json, null);
+	public static JsonNode toNode(String json) {
+		return toNode(json, null);
 	}
 
 	/**
@@ -65,7 +68,7 @@ public class JsonUtility {
 	 *            the field in the JSON to become the root
 	 * @return a {@link JsonNode} object with the specified field as root.
 	 */
-	public static JsonNode getNode(String json, String field) {
+	public static JsonNode toNode(String json, String field) {
 		try {
 			JsonNode node = mapper.readTree(json);
 			if (field != null) {
@@ -78,6 +81,30 @@ public class JsonUtility {
 	}
 
 	/**
+	 * Retrieves the contents codes from the specified JSON.
+	 * 
+	 * @param json
+	 *            the json to retrieve the contents codes from
+	 * @return a list of the available contents codes
+	 */
+	public static List<String> getContentsCodes(String json) {
+		List<String> valueTexts = new ArrayList<String>();
+
+		JsonNode node = JsonUtility.toNode(json, "variables");
+		for (int i = 0; i < node.size(); i++) {
+			JsonNode child = node.get(i);
+			if (child.get("code").asText().equals("ContentsCode")) {
+				JsonNode values = child.get("values");
+				for (int j = 0; j < values.size(); j++) {
+					valueTexts.add(values.get(j).asText());
+				}
+				break;
+			}
+		}
+		return valueTexts;
+	}
+
+	/**
 	 * Converts the non-conventional JSON response from the SCB API into a more conventional format,
 	 * wrapped in a {@link JsonNode}.
 	 * 
@@ -86,7 +113,7 @@ public class JsonUtility {
 	 * @return the formatted json
 	 */
 	public static JsonNode toConventionalJson(String json) {
-		JsonNode node = getNode(json);
+		JsonNode node = toNode(json);
 		if (!node.has("columns")) {
 			return node;
 		}
@@ -152,7 +179,6 @@ public class JsonUtility {
 
 			entries.add(map);
 		}
-		// System.out.println(mapper.convertValue(entries, JsonNode.class).toString());
 
 		return mapper.convertValue(entries, JsonNode.class);
 	}
@@ -271,7 +297,7 @@ public class JsonUtility {
 	 * @return a list of codes for the input
 	 */
 	public static List<String> getCodes(String content) {
-		JsonNode data = getNode(content);
+		JsonNode data = toNode(content);
 		List<String> codes = data.findValuesAsText("code");
 
 		return codes;

@@ -47,4 +47,12 @@ public class URLUtility_UnitTest {
 
 		assertEquals("http://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0101/BE0101A/BefolkningNy", url);
 	}
+
+	@Test
+	public void changeUrlLanguageWithThreeCharacters() {
+		String url = "http://api.scb.se/OV0104/v1/doris/sv/ssd/";
+
+		assertEquals("http://api.scb.se/OV0104/v1/doris/ger/ssd/", URLUtility.changeLanguageForUrl(url, "ger"));
+	}
+
 }
