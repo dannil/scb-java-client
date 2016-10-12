@@ -74,6 +74,12 @@ public class ValueNode<V> {
 		return this.value;
 	}
 
+	/**
+	 * Setter for value.
+	 * 
+	 * @param value
+	 *            the value
+	 */
 	public void setValue(V value) {
 		this.value = value;
 	}
