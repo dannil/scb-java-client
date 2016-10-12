@@ -22,6 +22,7 @@ import static org.junit.Assert.assertNull;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -31,6 +32,7 @@ import org.junit.runners.JUnit4;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
+import com.github.dannil.scbjavaclient.model.ValueNode;
 import com.github.dannil.scbjavaclient.model.population.statistic.Population;
 
 @RunWith(JUnit4.class)
@@ -64,13 +66,21 @@ public class JsonUtility_UnitTest {
 
 	@Test
 	public void jsonToListNonConventionalJson() {
-		String nonConventionalJson = "{\"columns\":[{\"code\":\"Region\",\"text\":\"region\",\"type\":\"d\"},{\"code\":\"Civilstand\",\"text\":\"maritalstatus\",\"type\":\"d\"},{\"code\":\"Alder\",\"text\":\"age\",\"type\":\"d\"},{\"code\":\"Tid\",\"text\":\"year\",\"type\":\"t\"},{\"code\":\"BE0101N1\",\"text\":\"Population\",\"type\":\"c\"}],\"comments\":[],\"data\":[{\"key\":[\"00\",\"OG\",\"45\",\"2011\"],\"values\":[\"48403\"]}]}";
+		String nonConventionalJson = "{\"columns\":[{\"code\":\"Region\",\"text\":\"region\",\"type\":\"d\"},{\"code\":\"Civilstand\",\"text\":\"marital status\",\"type\":\"d\"},{\"code\":\"Alder\",\"text\":\"age\",\"type\":\"d\"},{\"code\":\"Tid\",\"text\":\"year\",\"type\":\"t\"},{\"code\":\"BE0101N1\",\"text\":\"Population\",\"comment\":\"The tables show the conditions on December 31st for each respective year according to administrative subdivisions of January 1st of the following year\\r\\n\",\"type\":\"c\"},{\"code\":\"BE0101N2\",\"text\":\"Population growth\",\"comment\":\"Population growth is defined as the difference between the population at the beginning of the year and at the end of the year.\\r\\n\",\"type\":\"c\"}],\"comments\":[],\"data\":[{\"key\":[\"00\",\"OG\",\"45\",\"2011\"],\"values\":[\"48403\",\"1007\"]}]}";
 
 		JsonNode node = JsonUtility.toNode(nonConventionalJson);
 
 		List<Population> convertedPopulations = JsonUtility.jsonToListOf(node, Population.class);
 
-		Population p = new Population("00", "OG", "45", null, 2011, Long.valueOf(48403));
+		List<ValueNode<String>> values = new ArrayList<ValueNode<String>>();
+
+		ValueNode<String> value1 = new ValueNode<String>("48403", "BE0101N1", "Population");
+		values.add(value1);
+
+		ValueNode<String> value2 = new ValueNode<String>("1007", "BE0101N2", "Population growth");
+		values.add(value2);
+
+		Population p = new Population("00", "OG", "45", null, 2011, values);
 		List<Population> staticPopulations = Arrays.asList(p);
 
 		assertEquals(convertedPopulations, staticPopulations);

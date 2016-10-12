@@ -121,11 +121,15 @@ public final class JsonUtility {
 		JsonNode columns = node.get("columns");
 		JsonNode data = node.get("data");
 
-		List<String> codes = columns.findValuesAsText("code");
+		List<String> contentCodes = new ArrayList<String>();
+		List<String> contentCodesTexts = new ArrayList<String>();
 
-		List<Map<String, String>> entries = new ArrayList<Map<String, String>>();
+		List<String> codes = columns.findValuesAsText("code");
+		List<String> texts = columns.findValuesAsText("text");
+
+		List<Map<String, Object>> entries = new ArrayList<Map<String, Object>>();
 		for (int i = 0; i < data.size(); i++) {
-			Map<String, String> map = new HashMap<String, String>();
+			Map<String, Object> map = new HashMap<String, Object>();
 
 			JsonNode entry = data.get(i);
 
@@ -137,15 +141,45 @@ public final class JsonUtility {
 				String key = codes.get(j);
 
 				// Lowercase first letter of key
-				char[] c = key.toCharArray();
+				char c[] = key.toCharArray();
 				c[0] = Character.toLowerCase(c[0]);
 				key = new String(c);
 
 				map.put(key, keysNode.get(j).asText());
 			}
-			map.put("value", valuesNode.get(0).asText());
+
+			// Sort out the content codes
+			List<String> types = columns.findValuesAsText("type");
+			for (int l = 0; l < codes.size(); l++) {
+				if (types.get(l).equals("c")) {
+					contentCodes.add(codes.get(l));
+					contentCodesTexts.add(texts.get(l));
+				}
+			}
+
+			// Map<String, String> valuePairs = new HashMap<String, String>();
+			// // List<String> values = new ArrayList<String>(valuesNode.size());
+			// for (int k = 0; k < valuesNode.size(); k++) {
+			// // values.add(valuesNode.get(k).asText());
+			// valuePairs.put(contentCodes.get(k), valuesNode.get(k).asText());
+			// }
+			// map.put("values", valuePairs);
+
+			List<Map<String, String>> values = new ArrayList<Map<String, String>>(valuesNode.size());
+			for (int k = 0; k < valuesNode.size(); k++) {
+				Map<String, String> contents = new HashMap<String, String>();
+
+				contents.put("value", valuesNode.get(k).asText());
+				contents.put("code", contentCodes.get(k));
+				contents.put("text", contentCodesTexts.get(k));
+
+				values.add(contents);
+			}
+			map.put("values", values);
+
 			entries.add(map);
 		}
+
 		return mapper.convertValue(entries, JsonNode.class);
 	}
 

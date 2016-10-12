@@ -16,6 +16,7 @@
 
 package com.github.dannil.scbjavaclient.model;
 
+import java.util.List;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -56,11 +57,11 @@ public abstract class AbstractRegionYearAndValueModel<R, Y, V> extends AbstractV
 	 *            the region
 	 * @param year
 	 *            the year
-	 * @param value
-	 *            the value
+	 * @param values
+	 *            the values
 	 */
-	protected AbstractRegionYearAndValueModel(R region, Y year, V value) {
-		super(value);
+	protected AbstractRegionYearAndValueModel(R region, Y year, List<ValueNode<V>> values) {
+		super(values);
 		this.region = region;
 		this.year = year;
 	}

@@ -18,13 +18,21 @@ package com.github.dannil.scbjavaclient.model;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
 public class AbstractValueModel_UnitTest {
+
+	private List<ValueNode<Long>> valueNodes;
 
 	// Dummy class which doesn't override the equals
 	// method. This enables us to thoroughly test the equals method.
@@ -34,8 +42,8 @@ public class AbstractValueModel_UnitTest {
 
 		}
 
-		public DummyClass(Long value) {
-			super(value);
+		public DummyClass(List<ValueNode<Long>> values) {
+			super(values);
 		}
 
 		@Override
@@ -43,6 +51,48 @@ public class AbstractValueModel_UnitTest {
 			return "Dummy";
 		}
 
+	}
+
+	@Before
+	public void setup() {
+		this.valueNodes = new ArrayList<ValueNode<Long>>();
+
+		ValueNode<Long> value1 = new ValueNode<Long>(12345L, "TESTCODE", "TESTTEXT");
+		ValueNode<Long> value2 = new ValueNode<Long>(54321L, "ANOTHERTESTCODE", "ANOTHERTESTTEXT");
+		this.valueNodes.add(value1);
+		this.valueNodes.add(value2);
+	}
+
+	@Test
+	public void getValue() {
+		DummyClass dm = new DummyClass(this.valueNodes);
+
+		assertNotNull(dm.getValue("TESTCODE"));
+	}
+
+	@Test
+	public void getValueNoMatchingKey() {
+		DummyClass dm = new DummyClass(this.valueNodes);
+
+		assertNull(dm.getValue("THISTESTCODEDOESNTEXIST"));
+	}
+
+	@Test
+	public void setValue() {
+		DummyClass dm = new DummyClass(this.valueNodes);
+
+		dm.setValue("TESTCODE", 98765L);
+
+		assertEquals(Long.valueOf(98765L), dm.getValue("TESTCODE").getValue());
+	}
+
+	@Test
+	public void setValueNoMatchingKey() {
+		DummyClass dm = new DummyClass(this.valueNodes);
+
+		dm.setValue("THISTESTCODEDOESNTEXIST", 56789L);
+
+		assertEquals(dm.getValues(), this.valueNodes);
 	}
 
 	// Tests the superclass

@@ -21,14 +21,31 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import com.github.dannil.scbjavaclient.model.population.statistic.LiveBirth;
+import com.github.dannil.scbjavaclient.model.ValueNode;
 
 @RunWith(JUnit4.class)
 public class LiveBirth_UnitTest {
+
+	private String testContentsCode;
+
+	private List<ValueNode<Long>> valueNodes;
+
+	@Before
+	public void setup() {
+		this.testContentsCode = "TESTCONTENTSCODE";
+		this.valueNodes = new ArrayList<ValueNode<Long>>();
+
+		ValueNode<Long> value = new ValueNode<Long>(12345L, "TESTCONTENTSCODE", "Test contents code");
+		this.valueNodes.add(value);
+	}
 
 	@Test
 	public final void createWithDefaultConstructor() {
@@ -74,12 +91,12 @@ public class LiveBirth_UnitTest {
 	}
 
 	@Test
-	public void setValue() {
+	public void setValues() {
 		LiveBirth liveBirth = new LiveBirth();
 
-		liveBirth.setValue(12345L);
+		liveBirth.setValues(this.valueNodes);
 
-		assertEquals(Long.valueOf(12345L), liveBirth.getValue());
+		assertNotNull(liveBirth.getValues());
 	}
 
 	@Test
@@ -104,8 +121,8 @@ public class LiveBirth_UnitTest {
 
 	@Test
 	public void equalsItselfWithValues() {
-		LiveBirth liveBirth = new LiveBirth("1263", "tot", 1, 2002, 12345L);
-		LiveBirth liveBirth2 = new LiveBirth("1263", "tot", 1, 2002, 12345L);
+		LiveBirth liveBirth = new LiveBirth("1263", "tot", 1, 2002, this.valueNodes);
+		LiveBirth liveBirth2 = new LiveBirth("1263", "tot", 1, 2002, this.valueNodes);
 
 		assertEquals(liveBirth, liveBirth2);
 	}
@@ -126,48 +143,49 @@ public class LiveBirth_UnitTest {
 
 	@Test
 	public void notEqualsRegion() {
-		LiveBirth liveBirth = new LiveBirth("1263", "21", 1, 2002, 12345L);
-		LiveBirth liveBirth2 = new LiveBirth("1267", "21", 1, 2002, 12345L);
+		LiveBirth liveBirth = new LiveBirth("1263", "tot", 1, 2002, this.valueNodes);
+		LiveBirth liveBirth2 = new LiveBirth("1267", "tot", 1, 2002, this.valueNodes);
 
 		assertNotEquals(liveBirth, liveBirth2);
 	}
 
 	@Test
 	public void notEqualsMotherAge() {
-		LiveBirth liveBirth = new LiveBirth("1263", "21", 1, 2002, 12345L);
-		LiveBirth liveBirth2 = new LiveBirth("1263", "tot", 1, 2002, 12345L);
+		LiveBirth liveBirth = new LiveBirth("1263", "tot", 1, 2002, this.valueNodes);
+		LiveBirth liveBirth2 = new LiveBirth("1263", "21", 1, 2002, this.valueNodes);
 
 		assertNotEquals(liveBirth, liveBirth2);
 	}
 
 	@Test
 	public void notEqualsGender() {
-		LiveBirth liveBirth = new LiveBirth("1263", "tot", 1, 2002, 12345L);
-		LiveBirth liveBirth2 = new LiveBirth("1263", "tot", 2, 2002, 12345L);
+		LiveBirth liveBirth = new LiveBirth("1263", "tot", 1, 2002, this.valueNodes);
+		LiveBirth liveBirth2 = new LiveBirth("1263", "tot", 2, 2002, this.valueNodes);
 
 		assertNotEquals(liveBirth, liveBirth2);
 	}
 
 	@Test
 	public void notEqualsYear() {
-		LiveBirth liveBirth = new LiveBirth("1263", "21", 1, 1996, 12345L);
-		LiveBirth liveBirth2 = new LiveBirth("1263", "21", 1, 2002, 12345L);
+		LiveBirth liveBirth = new LiveBirth("1263", "tot", 1, 2002, this.valueNodes);
+		LiveBirth liveBirth2 = new LiveBirth("1263", "tot", 1, 1996, this.valueNodes);
 
 		assertNotEquals(liveBirth, liveBirth2);
 	}
 
 	@Test
 	public void notEqualsAmount() {
-		LiveBirth liveBirth = new LiveBirth("1263", "tot", 1, 2002, 12345L);
-		LiveBirth liveBirth2 = new LiveBirth("1263", "tot", 1, 2002, 54321L);
+		LiveBirth liveBirth = new LiveBirth("1263", "tot", 1, 2002, this.valueNodes);
+		LiveBirth liveBirth2 = new LiveBirth("1263", "tot", 1, 2002, this.valueNodes);
+		liveBirth2.setValue(this.testContentsCode, 54321L);
 
 		assertNotEquals(liveBirth, liveBirth2);
 	}
 
 	@Test
 	public void equalsHashCode() {
-		LiveBirth liveBirth = new LiveBirth("1263", "tot", 1, 2002, 12345L);
-		LiveBirth liveBirth2 = new LiveBirth("1263", "tot", 1, 2002, 12345L);
+		LiveBirth liveBirth = new LiveBirth("1263", "tot", 1, 2002, this.valueNodes);
+		LiveBirth liveBirth2 = new LiveBirth("1263", "tot", 1, 2002, this.valueNodes);
 
 		assertEquals(liveBirth.hashCode(), liveBirth2.hashCode());
 	}
@@ -189,7 +207,7 @@ public class LiveBirth_UnitTest {
 
 	@Test
 	public void convertToString() {
-		LiveBirth liveBirth = new LiveBirth("1263", "tot", 1, 2002, 12345L);
+		LiveBirth liveBirth = new LiveBirth("1263", "tot", 1, 2002, this.valueNodes);
 
 		assertTrue(liveBirth.toString().contains("1263"));
 		assertTrue(liveBirth.toString().contains("tot"));

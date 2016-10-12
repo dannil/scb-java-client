@@ -20,12 +20,31 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import com.github.dannil.scbjavaclient.model.ValueNode;
+
 @RunWith(JUnit4.class)
 public class Area_UnitTest {
+
+	private String testContentsCode;
+
+	private List<ValueNode<Double>> valueNodes;
+
+	@Before
+	public void setup() {
+		this.testContentsCode = "TESTCONTENTSCODE";
+		this.valueNodes = new ArrayList<ValueNode<Double>>();
+
+		ValueNode<Double> value = new ValueNode<Double>(143d, "TESTCONTENTSCODE", "Test contents code");
+		this.valueNodes.add(value);
+	}
 
 	@Test
 	public void createWithDefaultConstructor() {
@@ -89,21 +108,21 @@ public class Area_UnitTest {
 	}
 
 	@Test
-	public void setValue() {
+	public void setValues() {
 		Area area = new Area();
 
-		area.setValue(143d);
+		area.setValues(this.valueNodes);
 
-		assertNotNull(area.getValue());
+		assertNotNull(area.getValues());
 	}
 
 	@Test
-	public void getValue() {
+	public void getValues() {
 		Area area = new Area();
 
-		area.setValue(143d);
+		area.setValues(this.valueNodes);
 
-		assertEquals(Double.valueOf(143d), area.getValue());
+		assertEquals(this.valueNodes, area.getValues());
 	}
 
 	@Test
@@ -142,17 +161,17 @@ public class Area_UnitTest {
 
 	@Test
 	public void equalsItselfWithValues() {
-		Area area = new Area("1267", "01", 2009, 200d);
-		Area area2 = new Area("1267", "01", 2009, 200d);
+		Area area = new Area("1267", "01", 2009, this.valueNodes);
+		Area area2 = new Area("1267", "01", 2009, this.valueNodes);
 
 		assertEquals(area, area2);
 	}
 
 	@Test
 	public void notEqualsOnRegion() {
-		Area area = new Area("1267", "01", 2009, 200d);
+		Area area = new Area("1267", "01", 2009, this.valueNodes);
 
-		Area area2 = new Area("1267", "01", 2009, 200d);
+		Area area2 = new Area("1267", "01", 2009, this.valueNodes);
 		area2.setRegion("1263");
 
 		assertNotEquals(area, area2);
@@ -160,9 +179,9 @@ public class Area_UnitTest {
 
 	@Test
 	public void notEqualsOnType() {
-		Area area = new Area("1267", "01", 2009, 200d);
+		Area area = new Area("1267", "01", 2009, this.valueNodes);
 
-		Area area2 = new Area("1267", "01", 2009, 200d);
+		Area area2 = new Area("1267", "01", 2009, this.valueNodes);
 		area2.setType("02");
 
 		assertNotEquals(area, area2);
@@ -170,9 +189,9 @@ public class Area_UnitTest {
 
 	@Test
 	public void notEqualsOnYear() {
-		Area area = new Area("1267", "01", 2009, 200d);
+		Area area = new Area("1267", "01", 2009, this.valueNodes);
 
-		Area area2 = new Area("1267", "01", 2009, 200d);
+		Area area2 = new Area("1267", "01", 2009, this.valueNodes);
 		area2.setYear(2011);
 
 		assertNotEquals(area, area2);
@@ -180,18 +199,18 @@ public class Area_UnitTest {
 
 	@Test
 	public void notEqualsOnValue() {
-		Area area = new Area("1267", "01", 2009, 200d);
+		Area area = new Area("1267", "01", 2009, this.valueNodes);
 
-		Area area2 = new Area("1267", "01", 2009, 200d);
-		area2.setValue(300d);
+		Area area2 = new Area("1267", "01", 2009, this.valueNodes);
+		area2.setValue(this.testContentsCode, 300d);
 
 		assertNotEquals(area, area2);
 	}
 
 	@Test
 	public void equalsHashCode() {
-		Area area = new Area("1267", "01", 2009, 200d);
-		Area area2 = new Area("1267", "01", 2009, 200d);
+		Area area = new Area("1267", "01", 2009, this.valueNodes);
+		Area area2 = new Area("1267", "01", 2009, this.valueNodes);
 
 		assertEquals(area.hashCode(), area2.hashCode());
 	}
@@ -206,7 +225,7 @@ public class Area_UnitTest {
 
 	@Test
 	public void convertToString() {
-		Area area = new Area("1267", "01", 2009, 200d);
+		Area area = new Area("1267", "01", 2009, this.valueNodes);
 
 		assertNotNull(area.toString());
 	}

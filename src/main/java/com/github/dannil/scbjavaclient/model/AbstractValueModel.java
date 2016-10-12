@@ -16,62 +16,104 @@
 
 package com.github.dannil.scbjavaclient.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * Abstract model which holds the value of the client response.
+ * Abstract model which holds the values of the client response.
  * 
  * @author Daniel Nilsson
  *
  * @param <V>
- *            the value
+ *            the values
  */
 public abstract class AbstractValueModel<V> {
 
-	@JsonProperty("value")
-	protected V value;
+	@JsonProperty("values")
+	protected List<ValueNode<V>> valueNodes;
 
 	/**
 	 * Default constructor.
 	 */
 	protected AbstractValueModel() {
 		// To enable derived classes to use their default constructor
+		this.valueNodes = new ArrayList<ValueNode<V>>();
 	}
 
 	/**
 	 * Overloaded constructor.
 	 * 
-	 * @param value
-	 *            the value
+	 * @param values
+	 *            the values
 	 */
-	protected AbstractValueModel(V value) {
-		this.value = value;
+	protected AbstractValueModel(List<ValueNode<V>> values) {
+		this.valueNodes = new ArrayList<ValueNode<V>>();
+
+		for (ValueNode<V> value : values) {
+			ValueNode<V> v2 = new ValueNode<V>(value.getValue(), value.getCode(), value.getText());
+			this.valueNodes.add(v2);
+		}
 	}
 
 	/**
-	 * Getter for value.
+	 * Getter for values.
 	 * 
-	 * @return the value
+	 * @return the values
 	 */
-	public V getValue() {
-		return this.value;
+	public List<ValueNode<V>> getValues() {
+		return this.valueNodes;
 	}
 
 	/**
-	 * Setter for value.
+	 * Setter for values.
 	 * 
+	 * @param values
+	 *            the values
+	 */
+	public void setValues(List<ValueNode<V>> values) {
+		this.valueNodes = new ArrayList<ValueNode<V>>(values);
+	}
+
+	/**
+	 * Get the value node for a specific contents code.
+	 *
+	 * @param key
+	 *            the contents code to get the value node for
+	 * @return the value node
+	 */
+	public ValueNode<V> getValue(String key) {
+		for (int i = 0; i < this.valueNodes.size(); i++) {
+			ValueNode<V> v = this.valueNodes.get(i);
+			if (v.getCode().equals(key)) {
+				return v;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Set the value for a specific contents code.
+	 *
+	 * @param key
+	 *            the contents code to set the value for
 	 * @param value
 	 *            the value
 	 */
-	public void setValue(V value) {
-		this.value = value;
+	public void setValue(String key, V value) {
+		for (int i = 0; i < this.valueNodes.size(); i++) {
+			ValueNode<V> v = this.valueNodes.get(i);
+			if (v.getCode().equals(key)) {
+				v.setValue(value);
+			}
+		}
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hashCode(this.value);
+		return Objects.hashCode(this.valueNodes);
 	}
 
 	@Override
@@ -87,7 +129,7 @@ public abstract class AbstractValueModel<V> {
 		}
 
 		AbstractValueModel<?> other = (AbstractValueModel<?>) obj;
-		return Objects.equals(this.value, other.value);
+		return Objects.equals(this.valueNodes, other.valueNodes);
 	}
 
 	@Override

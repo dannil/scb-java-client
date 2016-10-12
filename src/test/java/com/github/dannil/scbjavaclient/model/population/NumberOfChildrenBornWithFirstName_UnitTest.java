@@ -21,9 +21,28 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Before;
 import org.junit.Test;
 
+import com.github.dannil.scbjavaclient.model.ValueNode;
+
 public class NumberOfChildrenBornWithFirstName_UnitTest {
+
+	private String testContentsCode;
+
+	private List<ValueNode<String>> valueNodes;
+
+	@Before
+	public void setup() {
+		this.testContentsCode = "TESTCONTENTSCODE";
+		this.valueNodes = new ArrayList<ValueNode<String>>();
+
+		ValueNode<String> value = new ValueNode<String>("15", "TESTCONTENTSCODE", "Test contents code");
+		this.valueNodes.add(value);
+	}
 
 	@Test
 	public final void createWithDefaultConstructor() {
@@ -51,12 +70,12 @@ public class NumberOfChildrenBornWithFirstName_UnitTest {
 	}
 
 	@Test
-	public void setValue() {
+	public void setValues() {
 		NumberOfChildrenBornWithFirstName nbrChildren = new NumberOfChildrenBornWithFirstName();
 
-		nbrChildren.setValue("15");
+		nbrChildren.setValues(this.valueNodes);
 
-		assertEquals("15", nbrChildren.getValue());
+		assertNotNull(nbrChildren.getValues());
 	}
 
 	@Test
@@ -81,8 +100,10 @@ public class NumberOfChildrenBornWithFirstName_UnitTest {
 
 	@Test
 	public void equalsItselfWithValues() {
-		NumberOfChildrenBornWithFirstName nbrChildren = new NumberOfChildrenBornWithFirstName("Adrian", 2010, "15");
-		NumberOfChildrenBornWithFirstName nbrChildren2 = new NumberOfChildrenBornWithFirstName("Adrian", 2010, "15");
+		NumberOfChildrenBornWithFirstName nbrChildren = new NumberOfChildrenBornWithFirstName("Adrian", 2010,
+				this.valueNodes);
+		NumberOfChildrenBornWithFirstName nbrChildren2 = new NumberOfChildrenBornWithFirstName("Adrian", 2010,
+				this.valueNodes);
 
 		assertEquals(nbrChildren, nbrChildren2);
 	}
@@ -103,32 +124,40 @@ public class NumberOfChildrenBornWithFirstName_UnitTest {
 
 	@Test
 	public void notEqualsFirstname() {
-		NumberOfChildrenBornWithFirstName nbrChildren = new NumberOfChildrenBornWithFirstName("Adrian", 2010, "15");
-		NumberOfChildrenBornWithFirstName nbrChildren2 = new NumberOfChildrenBornWithFirstName("Bob", 2010, "15");
+		NumberOfChildrenBornWithFirstName nbrChildren = new NumberOfChildrenBornWithFirstName("Adrian", 2010,
+				this.valueNodes);
+		NumberOfChildrenBornWithFirstName nbrChildren2 = new NumberOfChildrenBornWithFirstName("Bob", 2010, this.valueNodes);
 
 		assertNotEquals(nbrChildren, nbrChildren2);
 	}
 
 	@Test
 	public void notEqualsYear() {
-		NumberOfChildrenBornWithFirstName nbrChildren = new NumberOfChildrenBornWithFirstName("Adrian", 2010, "15");
-		NumberOfChildrenBornWithFirstName nbrChildren2 = new NumberOfChildrenBornWithFirstName("Adrian", 2005, "15");
+		NumberOfChildrenBornWithFirstName nbrChildren = new NumberOfChildrenBornWithFirstName("Adrian", 2010,
+				this.valueNodes);
+		NumberOfChildrenBornWithFirstName nbrChildren2 = new NumberOfChildrenBornWithFirstName("Adrian", 2005,
+				this.valueNodes);
 
 		assertNotEquals(nbrChildren, nbrChildren2);
 	}
 
 	@Test
-	public void notEqualsValue() {
-		NumberOfChildrenBornWithFirstName nbrChildren = new NumberOfChildrenBornWithFirstName("Adrian", 2010, "15");
-		NumberOfChildrenBornWithFirstName nbrChildren2 = new NumberOfChildrenBornWithFirstName("Adrian", 2010, "30");
+	public void notEqualsValues() {
+		NumberOfChildrenBornWithFirstName nbrChildren = new NumberOfChildrenBornWithFirstName("Adrian", 2010,
+				this.valueNodes);
+		NumberOfChildrenBornWithFirstName nbrChildren2 = new NumberOfChildrenBornWithFirstName("Adrian", 2010,
+				this.valueNodes);
+		nbrChildren2.setValue(this.testContentsCode, "30");
 
 		assertNotEquals(nbrChildren, nbrChildren2);
 	}
 
 	@Test
 	public void equalsHashCode() {
-		NumberOfChildrenBornWithFirstName nbrChildren = new NumberOfChildrenBornWithFirstName("Adrian", 2010, "15");
-		NumberOfChildrenBornWithFirstName nbrChildren2 = new NumberOfChildrenBornWithFirstName("Adrian", 2010, "15");
+		NumberOfChildrenBornWithFirstName nbrChildren = new NumberOfChildrenBornWithFirstName("Adrian", 2010,
+				this.valueNodes);
+		NumberOfChildrenBornWithFirstName nbrChildren2 = new NumberOfChildrenBornWithFirstName("Adrian", 2010,
+				this.valueNodes);
 
 		assertEquals(nbrChildren.hashCode(), nbrChildren2.hashCode());
 	}
@@ -150,7 +179,8 @@ public class NumberOfChildrenBornWithFirstName_UnitTest {
 
 	@Test
 	public void convertToString() {
-		NumberOfChildrenBornWithFirstName nbrChildren = new NumberOfChildrenBornWithFirstName("Adrian", 2010, "15");
+		NumberOfChildrenBornWithFirstName nbrChildren = new NumberOfChildrenBornWithFirstName("Adrian", 2010,
+				this.valueNodes);
 
 		assertTrue(nbrChildren.toString().contains("Adrian"));
 		assertTrue(nbrChildren.toString().contains("2010"));

@@ -21,6 +21,7 @@ import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.dannil.scbjavaclient.model.AbstractRegionYearAndValueModel;
+import com.github.dannil.scbjavaclient.model.ValueNode;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
 
@@ -29,7 +30,7 @@ import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
  * 
  * @author Daniel Nilsson
  */
-public class Population extends AbstractRegionYearAndValueModel<String, Integer, Long> {
+public class Population extends AbstractRegionYearAndValueModel<String, Integer, String> {
 
 	@JsonProperty("civilstand")
 	private String relationshipStatus;
@@ -60,11 +61,12 @@ public class Population extends AbstractRegionYearAndValueModel<String, Integer,
 	 *            the gender
 	 * @param year
 	 *            the year
-	 * @param value
-	 *            the value
+	 * @param values
+	 *            the values
 	 */
-	public Population(String region, String relationshipStatus, String age, Integer gender, Integer year, Long value) {
-		super(region, year, value);
+	public Population(String region, String relationshipStatus, String age, Integer gender, Integer year,
+			List<ValueNode<String>> values) {
+		super(region, year, values);
 		this.relationshipStatus = relationshipStatus;
 		this.age = age;
 		this.gender = gender;
@@ -164,8 +166,8 @@ public class Population extends AbstractRegionYearAndValueModel<String, Integer,
 		builder.append(super.region);
 		builder.append(", year=");
 		builder.append(super.year);
-		builder.append(", value=");
-		builder.append(super.value);
+		builder.append(", values=");
+		builder.append(super.valueNodes);
 		builder.append(']');
 
 		return builder.toString();
