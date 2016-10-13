@@ -34,13 +34,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @param <V>
  *            the value
  */
-public abstract class AbstractRegionYearAndValueModel<R, Y, V> extends AbstractValueModel<V> {
+public abstract class AbstractRegionYearAndValueModel<R, Y, V> extends AbstractYearAndValueModel<Y, V> {
 
 	@JsonProperty("region")
 	protected R region;
-
-	@JsonProperty("tid")
-	protected Y year;
 
 	/**
 	 * Default constructor.
@@ -61,9 +58,8 @@ public abstract class AbstractRegionYearAndValueModel<R, Y, V> extends AbstractV
 	 *            the values
 	 */
 	protected AbstractRegionYearAndValueModel(R region, Y year, List<ValueNode<V>> values) {
-		super(values);
+		super(year, values);
 		this.region = region;
-		this.year = year;
 	}
 
 	/**
@@ -85,28 +81,9 @@ public abstract class AbstractRegionYearAndValueModel<R, Y, V> extends AbstractV
 		this.region = region;
 	}
 
-	/**
-	 * Getter for year.
-	 * 
-	 * @return the year
-	 */
-	public Y getYear() {
-		return this.year;
-	}
-
-	/**
-	 * Setter for year.
-	 * 
-	 * @param year
-	 *            the year
-	 */
-	public void setYear(Y year) {
-		this.year = year;
-	}
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(super.hashCode(), this.region, this.year);
+		return Objects.hash(super.hashCode(), this.region);
 	}
 
 	@Override
@@ -122,8 +99,7 @@ public abstract class AbstractRegionYearAndValueModel<R, Y, V> extends AbstractV
 		}
 
 		AbstractRegionYearAndValueModel<?, ?, ?> other = (AbstractRegionYearAndValueModel<?, ?, ?>) obj;
-		return super.equals(other) && Objects.equals(this.region, other.region)
-				&& Objects.equals(this.year, other.year);
+		return super.equals(other) && Objects.equals(this.region, other.region);
 	}
 
 	@Override
