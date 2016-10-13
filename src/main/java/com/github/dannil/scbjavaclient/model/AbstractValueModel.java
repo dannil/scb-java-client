@@ -50,11 +50,11 @@ public abstract class AbstractValueModel<V> {
 	 *            the values
 	 */
 	protected AbstractValueModel(List<ValueNode<V>> values) {
-		this.valueNodes = new ArrayList<ValueNode<V>>();
+		this();
 
 		for (ValueNode<V> value : values) {
-			ValueNode<V> v2 = new ValueNode<V>(value.getValue(), value.getCode(), value.getText());
-			this.valueNodes.add(v2);
+			ValueNode<V> v = new ValueNode<V>(value.getValue(), value.getCode(), value.getText());
+			this.valueNodes.add(v);
 		}
 	}
 
