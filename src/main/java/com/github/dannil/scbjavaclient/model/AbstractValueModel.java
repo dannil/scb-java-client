@@ -85,8 +85,7 @@ public abstract class AbstractValueModel<V> {
 	 * @return the value node
 	 */
 	public ValueNode<V> getValue(String key) {
-		for (int i = 0; i < this.valueNodes.size(); i++) {
-			ValueNode<V> v = this.valueNodes.get(i);
+		for (ValueNode<V> v : this.valueNodes) {
 			if (v.getCode().equals(key)) {
 				return v;
 			}
@@ -103,8 +102,7 @@ public abstract class AbstractValueModel<V> {
 	 *            the value
 	 */
 	public void setValue(String key, V value) {
-		for (int i = 0; i < this.valueNodes.size(); i++) {
-			ValueNode<V> v = this.valueNodes.get(i);
+		for (ValueNode<V> v : this.valueNodes) {
 			if (v.getCode().equals(key)) {
 				v.setValue(value);
 			}
