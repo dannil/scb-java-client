@@ -4,7 +4,9 @@
 [![Codacy Grade Badge](https://img.shields.io/codacy/grade/af5b976ee2f94fd4b25ef1ae991d7993.svg)](https://www.codacy.com/app/dannil/scb-java-client)
 [![Codacy Coverage Badge](https://img.shields.io/codacy/coverage/af5b976ee2f94fd4b25ef1ae991d7993.svg)](https://www.codacy.com/app/dannil/scb-java-client)
 
-Java client for the SCB (Statistiska centralbyrån) API.
+Java client for the SCB (Swedish: Statistiska centralbyrån, English: Statistics Sweden) API. The goal of this projects is 
+to provide an easy and intuitive way for Java applications to interface with the API without having to know the intricate 
+workings or writing own logic to handle the process. 
 
 If you have an improvement, feel free to make a pull request or start an issue if you'd like feedback.
 
@@ -36,17 +38,20 @@ This demonstrates the typical usage of the client.
 
 ```java
 // Create the client
-SCBClient baseClient = new SCBClient();
+SCBClient client = new SCBClient();
+
+// Retrieve some clients matching the table you want to fetch information from
+PopulationDemographyClient populationDemographyClient = client.population().demography();
+PopulationStatisticsClient populationStatisticsClient = client.population().statistics();
 
 // Retrieve all population statistics
-List<Population> population = baseClient.population().statistic().getPopulation();
-
-// Perform operations with the PopulationDemographyClient
-PopulationDemographyClient populationDemographyClient = baseClient.population().demography();
+List<Population> population = populationStatisticsClient.getPopulation();
 
 // Retrieve all mean age for first child birth statistics 
-// using the PopulationDemographyClient
 List<MeanAgeFirstChild> firstChild = populationDemographyClient.getMeanAgeFirstChild();
+
+// You may also want to skip the explicit creation of the matching client and fetch data 
+// directly from the root client.
 ```
 
 The client also supports selecting specific values directly from the SCB API.
@@ -72,16 +77,17 @@ List<String> types = Arrays.asList("01", "02");
 List<Integer> years = null;
 
 // Retrieve all area statistics using the selected values
-List<Area> areas = baseClient.environment().landAndWaterArea().getArea(regions, types, years);
+List<Area> areas = client.environment().landAndWaterArea().getArea(regions, types, years);
 ```
 
 If you know the required inputs and you're only interested in the JSON data, you may use the 
 method getRawData() to specify the table and the inputs. The required inputs can be viewed in 
-plaintext from the URL endpoint of the table.
+plaintext from the URL endpoint of the table. The feature of retrieving the inputs through the 
+client will be implemented in the future.
 ```java
 // Specifies the criterion for the information we want to retrieve, in this case:
-// 		The contents code (so the API know what information we want for the response)
-//		The regions 00, 01 and 0114
+// 		The contents code BE0101N1 (the total population, so the API knows what information we want)
+//		The regions 00 (whole country), 01 (Stockholm County) and 0114 (Upplands Väsby)
 //		The relationship statuses OG (unmarried) and G (married)
 //		The ages 45 and 50
 //		The genders are null; we want to retrieve information for all genders
@@ -96,4 +102,4 @@ inputs.put("Tid", Arrays.asList(2011, 2012));
 
 // Specify the table to retrieve from and our inputs to this table. The response will be a JSON
 // string containing the information that matched our criterion.
-String json = baseClient.getRawData("BE/BE0101/BE0101A/BefolkningNy", inputs);
+String json = client.getRawData("BE/BE0101/BE0101A/BefolkningNy", inputs);
