@@ -40,7 +40,7 @@ This demonstrates the typical usage of the client.
 // Create the client
 SCBClient client = new SCBClient();
 
-// Retrieve some clients matching the table you want to fetch information from
+// Retrieve some client(s) matching the table(s) you want to fetch information from
 PopulationDemographyClient populationDemographyClient = client.population().demography();
 PopulationStatisticsClient populationStatisticsClient = client.population().statistics();
 
