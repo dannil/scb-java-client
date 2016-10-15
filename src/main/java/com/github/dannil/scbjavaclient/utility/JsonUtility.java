@@ -146,13 +146,19 @@ public final class JsonUtility {
 		return mapper.convertValue(entries, JsonNode.class);
 	}
 
+	/**
+	 * Checks if the node is formatted as the specified conventional format.
+	 * 
+	 * @param node
+	 *            the node to check
+	 * @return true if conventional format; otherwise false
+	 */
 	public static boolean isConventionalJson(JsonNode node) {
 		// Check if the node is correctly formatted
 		if (node.has("columns") || node.has("data") || node.has("comments")) {
-			return false;
-		}
-		if (!node.isArray()) {
-			return false;
+			if (!node.isArray()) {
+				return false;
+			}
 		}
 		// JsonNode e = node.get(0);
 		// if (e != null) {
@@ -161,6 +167,13 @@ public final class JsonUtility {
 		return true;
 	}
 
+	/**
+	 * Checks if the node is a query.
+	 * 
+	 * @param node
+	 *            the node to check
+	 * @return true if a query; otherwise false
+	 */
 	public static boolean isQuery(JsonNode node) {
 		// Check if the node is actually a query
 		if (node.has("query")) {

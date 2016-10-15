@@ -21,7 +21,7 @@ package com.github.dannil.scbjavaclient.utility;
  * 
  * @author Daniel Nilsson
  */
-public class StringUtility {
+public final class StringUtility {
 
 	/**
 	 * Private constructor to prevent instantiation.
@@ -31,7 +31,7 @@ public class StringUtility {
 	}
 
 	/**
-	 * Converts the first character in the <code>String<code> to its lower case equivalent.
+	 * Converts the first character in the <code>String</code> to its lower case equivalent.
 	 * 
 	 * @param str
 	 *            the <code>String</code> to convert
