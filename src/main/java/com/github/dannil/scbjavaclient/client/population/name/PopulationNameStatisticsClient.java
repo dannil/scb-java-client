@@ -24,7 +24,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
-import com.github.dannil.scbjavaclient.model.population.NumberOfChildrenBornWithFirstName;
+import com.github.dannil.scbjavaclient.model.population.name.NumberOfChildrenBornWithFirstName;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
@@ -56,7 +56,7 @@ public class PopulationNameStatisticsClient extends AbstractClient {
 	 * Fetch all number of children born with first name data.
 	 * 
 	 * @return the number of children born with first name data wrapped in a list of
-	 *         {@link com.github.dannil.scbjavaclient.model.population.NumberOfChildrenBornWithFirstName
+	 *         {@link com.github.dannil.scbjavaclient.model.population.name.NumberOfChildrenBornWithFirstName
 	 *         NumberOfChildrenBornWithFirstName} objects
 	 * 
 	 * @see PopulationNameStatisticsClient#getNumberOfChildrenBornWithFirstName(Collection,
@@ -74,7 +74,7 @@ public class PopulationNameStatisticsClient extends AbstractClient {
 	 * @param years
 	 *            the years to fetch data for
 	 * @return the number of children born with first name data wrapped in a list of
-	 *         {@link com.github.dannil.scbjavaclient.model.population.NumberOfChildrenBornWithFirstName
+	 *         {@link com.github.dannil.scbjavaclient.model.population.name.NumberOfChildrenBornWithFirstName
 	 *         NumberOfChildrenBornWithFirstName} objects
 	 */
 	public List<NumberOfChildrenBornWithFirstName> getNumberOfChildrenBornWithFirstName(Collection<String> firstnames,

@@ -28,6 +28,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.github.dannil.scbjavaclient.model.ValueNode;
+import com.github.dannil.scbjavaclient.model.population.name.NumberOfChildrenBornWithFirstName;
 
 public class NumberOfChildrenBornWithFirstName_UnitTest {
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.model.population;
+package com.github.dannil.scbjavaclient.model.population.name;
 
 import java.util.List;
 import java.util.Objects;
