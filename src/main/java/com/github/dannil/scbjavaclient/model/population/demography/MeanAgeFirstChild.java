@@ -118,7 +118,7 @@ public class MeanAgeFirstChild extends AbstractRegionYearAndValueModel<String, I
 	}
 
 	/**
-	 * Get the codes for the mean age first child model from the API.
+	 * Get the codes for the mean age first child from the API.
 	 *
 	 * @return a list of codes that is used by the API to index the values
 	 */

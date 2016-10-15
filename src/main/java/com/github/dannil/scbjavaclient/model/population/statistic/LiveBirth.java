@@ -146,7 +146,7 @@ public class LiveBirth extends AbstractRegionYearAndValueModel<String, Integer, 
 	}
 
 	/**
-	 * Get the codes for the live births from the API.
+	 * Get the codes for the live births model from the API.
 	 * 
 	 * @return a list of codes that is used by the API to index the values
 	 */
