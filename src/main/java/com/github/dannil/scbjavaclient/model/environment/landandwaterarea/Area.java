@@ -17,6 +17,7 @@
 package com.github.dannil.scbjavaclient.model.environment.landandwaterarea;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -124,9 +125,9 @@ public class Area extends AbstractRegionYearAndValueModel<String, Integer, Doubl
 	 *
 	 * @return a list of codes that is used by the API to index the values
 	 */
-	public static List<String> getCodes() {
+	public static Map<String, List<String>> getInputs() {
 		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
-		return JsonUtility.getCodes(get.getBodyAsStringFromTable("MI/MI0802/Areal2012"));
+		return JsonUtility.getInputs(get.getBodyAsStringFromTable("MI/MI0802/Areal2012"));
 	}
 
 }
