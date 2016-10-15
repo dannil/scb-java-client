@@ -223,41 +223,12 @@ public final class JsonUtility {
 	}
 
 	/**
-	 * Extracts the codes from the input.
-	 *
-	 * @param content
-	 *            the input which should be parsed
-	 * @return a list of codes for the input
-	 */
-	public static List<String> getCodes(String content) {
-		JsonNode data = toNode(content);
-		return data.findValuesAsText("code");
-	}
-
-	/**
-	 * Retrieves the contents codes from the specified JSON.
+	 * Extracts all the codes and their respective available inputs from the input.
 	 * 
 	 * @param json
-	 *            the json to retrieve the contents codes from
-	 * @return a list of the available contents codes
+	 *            the json which should be parsed
+	 * @return a collection of all codes and their respective inputs
 	 */
-	public static List<String> getContentCodes(String json) {
-		List<String> valueTexts = new ArrayList<String>();
-
-		JsonNode node = JsonUtility.toNode(json, "variables");
-		for (int i = 0; i < node.size(); i++) {
-			JsonNode child = node.get(i);
-			if (child.get("code").asText().equals("ContentsCode")) {
-				JsonNode values = child.get("values");
-				for (int j = 0; j < values.size(); j++) {
-					valueTexts.add(values.get(j).asText());
-				}
-				break;
-			}
-		}
-		return valueTexts;
-	}
-
 	public static Map<String, List<String>> getInputs(String json) {
 		Map<String, List<String>> inputs = new HashMap<String, List<String>>();
 
@@ -272,5 +243,46 @@ public final class JsonUtility {
 			inputs.put(child.get("code").asText(), values);
 		}
 		return inputs;
+	}
+
+	/**
+	 * Extracts the codes from the input.
+	 *
+	 * @param json
+	 *            the json which should be parsed
+	 * @return a list of codes
+	 */
+	public static List<String> getCodes(String json) {
+		List<String> codes = new ArrayList<String>(getInputs(json).keySet());
+		return codes;
+
+		// return getInputs(json).keySet().;
+		// JsonNode data = toNode(content);
+		// return data.findValuesAsText("code");
+	}
+
+	/**
+	 * Extracts the contents codes from the input.
+	 * 
+	 * @param json
+	 *            the json which should be parsed
+	 * @return a list of contents codes
+	 */
+	public static List<String> getContentsCodes(String json) {
+		// List<String> valueTexts = new ArrayList<String>();
+		//
+		// JsonNode node = JsonUtility.toNode(json, "variables");
+		// for (int i = 0; i < node.size(); i++) {
+		// JsonNode child = node.get(i);
+		// if (child.get("code").asText().equals("ContentsCode")) {
+		// JsonNode values = child.get("values");
+		// for (int j = 0; j < values.size(); j++) {
+		// valueTexts.add(values.get(j).asText());
+		// }
+		// break;
+		// }
+		// }
+		// return valueTexts;
+		return getInputs(json).get("ContentsCode");
 	}
 }
