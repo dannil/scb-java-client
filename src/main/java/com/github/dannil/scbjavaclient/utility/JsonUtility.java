@@ -90,7 +90,9 @@ public final class JsonUtility {
 	 */
 	public static JsonNode toConventionalJson(String json) {
 		JsonNode node = toNode(json);
-		if (!node.has("columns")) {
+
+		// Make sure the input is in the standardized non-conventional format
+		if (isConventionalJson(node) || isQuery(node)) {
 			return node;
 		}
 
@@ -148,6 +150,29 @@ public final class JsonUtility {
 			entries.add(map);
 		}
 		return mapper.convertValue(entries, JsonNode.class);
+	}
+
+	public static boolean isConventionalJson(JsonNode node) {
+		// Checki if the node is correctly formatted
+		if (node.has("columns") || node.has("data") || node.has("comments")) {
+			return false;
+		}
+		if (!node.isArray()) {
+			return false;
+		}
+		// JsonNode e = node.get(0);
+		// if (e != null) {
+		// return e.has("values");
+		// }
+		return true;
+	}
+
+	public static boolean isQuery(JsonNode node) {
+		// Check if input node is actually a query
+		if (node.has("query")) {
+			return true;
+		}
+		return false;
 	}
 
 	/**
