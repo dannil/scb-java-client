@@ -119,7 +119,7 @@ public class NumberOfChildrenBornWithFirstName extends AbstractYearAndValueModel
 	 * @return a list of codes that is used by the API to index the values
 	 */
 	public static List<String> getCodes() {
-		return JsonUtility.getCodes(AbstractRequester.getCodes("BE/BE0001/BE0001T04Ar"));
+		return JsonUtility.getCodes(AbstractRequester.getBodyAsStringFromTable("BE/BE0001/BE0001T04Ar"));
 	}
 
 }

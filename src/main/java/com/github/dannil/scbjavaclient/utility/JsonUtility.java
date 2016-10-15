@@ -258,4 +258,21 @@ public final class JsonUtility {
 		return valueTexts;
 	}
 
+	public static Map<String, List<String>> getInputs(String json) {
+		Map<String, List<String>> inputs = new HashMap<String, List<String>>();
+
+		JsonNode node = JsonUtility.toNode(json, "variables");
+		for (int i = 0; i < node.size(); i++) {
+			JsonNode child = node.get(i);
+
+			List<String> values = new ArrayList<String>();
+			JsonNode valuesNode = child.get("values");
+			for (int j = 0; j < valuesNode.size(); j++) {
+				values.add(valuesNode.get(j).asText());
+			}
+
+			inputs.put(child.get("code").asText(), values);
+		}
+		return inputs;
+	}
 }

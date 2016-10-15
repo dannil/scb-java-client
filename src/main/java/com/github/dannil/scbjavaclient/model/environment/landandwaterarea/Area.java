@@ -24,6 +24,8 @@ import com.github.dannil.scbjavaclient.model.AbstractRegionYearAndValueModel;
 import com.github.dannil.scbjavaclient.model.ValueNode;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
+import com.github.dannil.scbjavaclient.utility.requester.RequestMethod;
+import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
 
 /**
  * Model for area data.
@@ -123,7 +125,8 @@ public class Area extends AbstractRegionYearAndValueModel<String, Integer, Doubl
 	 * @return a list of codes that is used by the API to index the values
 	 */
 	public static List<String> getCodes() {
-		return JsonUtility.getCodes(AbstractRequester.getCodes("MI/MI0802/Areal2012"));
+		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
+		return JsonUtility.getCodes(get.getBodyAsStringFromTable("MI/MI0802/Areal2012"));
 	}
 
 }

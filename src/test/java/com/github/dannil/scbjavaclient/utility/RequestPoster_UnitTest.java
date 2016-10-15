@@ -41,7 +41,7 @@ public class RequestPoster_UnitTest {
 
 	@Test(expected = SCBClientUrlNotFoundException.class)
 	public void getCodesInvalidTable() {
-		String response = AbstractRequester.getCodes("ABCABCABC");
+		String response = AbstractRequester.getBodyAsStringFromTable("ABCABCABC");
 
 		assertNull(response);
 	}

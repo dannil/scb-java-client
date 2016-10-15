@@ -88,8 +88,8 @@ public class AverageAge_UnitTest {
 	}
 
 	@Test
-	public void getCodes() {
-		assertNotNull(AverageAge.getCodes());
+	public void getInputs() {
+		assertNotNull(AverageAge.getInputs());
 	}
 
 	@Test

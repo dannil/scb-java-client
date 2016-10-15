@@ -143,15 +143,14 @@ public abstract class AbstractRequester {
 	}
 
 	/**
-	 * Return the available codes from the specified table.
+	 * Return the content from the specified table.
 	 *
 	 * @param table
-	 *            the table to fetch the codes from
-	 * @return the available codes from the specified table
+	 *            the table to fetch the content from
+	 * @return the content of the table
 	 */
-	public static String getCodes(String table) {
-		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
-		return get.getBodyAsString("http://api.scb.se/OV0104/v1/doris/sv/ssd/" + table);
+	public String getBodyAsStringFromTable(String table) {
+		return getBodyAsString("http://api.scb.se/OV0104/v1/doris/sv/ssd/" + table);
 	}
 
 	/**
