@@ -24,6 +24,13 @@ package com.github.dannil.scbjavaclient.utility;
 public class StringUtility {
 
 	/**
+	 * Private constructor to prevent instantiation.
+	 */
+	private StringUtility() {
+
+	}
+
+	/**
 	 * Converts the first character in the <code>String<code> to its lower case equivalent.
 	 * 
 	 * @param str
