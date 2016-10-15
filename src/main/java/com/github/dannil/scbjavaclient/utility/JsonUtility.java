@@ -116,13 +116,7 @@ public final class JsonUtility {
 			JsonNode valuesNode = entry.get("values");
 
 			for (int j = 0; j < keysNode.size(); j++) {
-				String key = codes.get(j);
-
-				// Lowercase first letter of key
-				char[] c = key.toCharArray();
-				c[0] = Character.toLowerCase(c[0]);
-				key = new String(c);
-
+				String key = StringUtility.lowerCaseFirstLetter(codes.get(j));
 				map.put(key, keysNode.get(j).asText());
 			}
 
@@ -153,7 +147,7 @@ public final class JsonUtility {
 	}
 
 	public static boolean isConventionalJson(JsonNode node) {
-		// Checki if the node is correctly formatted
+		// Check if the node is correctly formatted
 		if (node.has("columns") || node.has("data") || node.has("comments")) {
 			return false;
 		}
@@ -168,7 +162,7 @@ public final class JsonUtility {
 	}
 
 	public static boolean isQuery(JsonNode node) {
-		// Check if input node is actually a query
+		// Check if the node is actually a query
 		if (node.has("query")) {
 			return true;
 		}
