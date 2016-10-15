@@ -39,4 +39,11 @@ public class StringUtility_UnitTest {
 		assertEquals("test", StringUtility.lowerCaseFirstLetter(str));
 	}
 
+	@Test
+	public void lowerCaseFirstLetterNumbers() {
+		String str = "0";
+
+		assertEquals("0", StringUtility.lowerCaseFirstLetter(str));
+	}
+
 }

@@ -19,6 +19,7 @@ package com.github.dannil.scbjavaclient.utility;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -26,6 +27,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -40,7 +42,8 @@ public class JsonUtility_UnitTest {
 
 	private String json;
 
-	public JsonUtility_UnitTest() {
+	@Before
+	public void setup() {
 		this.json = "{\"query\": [{\"code\": \"ContentsCode\",\"selection\": {\"filter\": \"item\",\"values\": [\"MI0802AA\"]}}],\"response\": {\"format\": \"json\"}}";
 	}
 
@@ -100,6 +103,22 @@ public class JsonUtility_UnitTest {
 		JsonNode node = JsonUtility.toNode("hello world");
 
 		assertNull(node);
+	}
+
+	@Test
+	public void isQuery() {
+		JsonNode node = JsonUtility.toNode(this.json);
+
+		assertTrue(JsonUtility.isQuery(node));
+	}
+
+	@Test
+	public void isConventionalJson() {
+		String nonConventionalJson = "{\"columns\":[{\"code\":\"Region\",\"text\":\"region\",\"type\":\"d\"},{\"code\":\"Civilstand\",\"text\":\"marital status\",\"type\":\"d\"},{\"code\":\"Alder\",\"text\":\"age\",\"type\":\"d\"},{\"code\":\"Tid\",\"text\":\"year\",\"type\":\"t\"},{\"code\":\"BE0101N1\",\"text\":\"Population\",\"comment\":\"The tables show the conditions on December 31st for each respective year according to administrative subdivisions of January 1st of the following year\\r\\n\",\"type\":\"c\"},{\"code\":\"BE0101N2\",\"text\":\"Population growth\",\"comment\":\"Population growth is defined as the difference between the population at the beginning of the year and at the end of the year.\\r\\n\",\"type\":\"c\"}],\"comments\":[],\"data\":[{\"key\":[\"00\",\"OG\",\"45\",\"2011\"],\"values\":[\"48403\",\"1007\"]}]}";
+
+		JsonNode conventionalJson = JsonUtility.toConventionalJson(nonConventionalJson);
+
+		assertTrue(JsonUtility.isConventionalJson(conventionalJson));
 	}
 
 }
