@@ -155,14 +155,7 @@ public final class JsonUtility {
 	 */
 	public static boolean isConventionalJson(JsonNode node) {
 		// Check if the node is correctly formatted
-		if (node.has("columns") || node.has("data") || node.has("comments") || !node.isArray()) {
-			return false;
-		}
-		// JsonNode e = node.get(0);
-		// if (e != null) {
-		// return e.has("values");
-		// }
-		return true;
+		return !(node.has("columns") || node.has("data") || node.has("comments") || !node.isArray());
 	}
 
 	/**
