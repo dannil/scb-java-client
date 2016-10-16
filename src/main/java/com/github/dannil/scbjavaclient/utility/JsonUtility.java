@@ -155,10 +155,8 @@ public final class JsonUtility {
 	 */
 	public static boolean isConventionalJson(JsonNode node) {
 		// Check if the node is correctly formatted
-		if (node.has("columns") || node.has("data") || node.has("comments")) {
-			if (!node.isArray()) {
-				return false;
-			}
+		if (node.has("columns") || node.has("data") || node.has("comments") || !node.isArray()) {
+			return false;
 		}
 		// JsonNode e = node.get(0);
 		// if (e != null) {
@@ -176,10 +174,7 @@ public final class JsonUtility {
 	 */
 	public static boolean isQuery(JsonNode node) {
 		// Check if the node is actually a query
-		if (node.has("query")) {
-			return true;
-		}
-		return false;
+		return node.has("query");
 	}
 
 	/**
