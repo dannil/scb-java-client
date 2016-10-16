@@ -123,7 +123,7 @@ public class Area extends AbstractRegionYearAndValueModel<String, Integer, Doubl
 	/**
 	 * Get the available inputs for the area data from the API.
 	 *
-	 * @return a list of codes that is used by the API to index the values
+	 * @return a list of the available codes and their inputs
 	 */
 	public static Map<String, List<String>> getInputs() {
 		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
