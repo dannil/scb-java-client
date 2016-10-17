@@ -198,4 +198,9 @@ public class PopulationStatisticsClient extends AbstractClient {
 		return JsonUtility.jsonToListOf(response, Population.class);
 	}
 
+	@Override
+	public String getUrl() {
+		return super.getUrl() + "BE/BE0101/";
+	}
+
 }

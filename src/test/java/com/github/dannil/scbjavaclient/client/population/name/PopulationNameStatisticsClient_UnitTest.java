@@ -19,4 +19,12 @@ public class PopulationNameStatisticsClient_UnitTest {
 		assertEquals(locale, client.getLocale());
 	}
 
+	@Test
+	public void getUrl() {
+		Locale locale = new Locale("sv", "SE");
+		PopulationNameStatisticsClient client = new PopulationNameStatisticsClient(locale);
+
+		assertEquals("http://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0001/", client.getUrl());
+	}
+
 }

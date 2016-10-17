@@ -24,8 +24,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.EnvironmentLandAndWaterAreaClient;
-
 @RunWith(JUnit4.class)
 public class EnvironmentLandAndWaterAreaClient_UnitTest {
 
@@ -35,6 +33,14 @@ public class EnvironmentLandAndWaterAreaClient_UnitTest {
 		EnvironmentLandAndWaterAreaClient client = new EnvironmentLandAndWaterAreaClient(locale);
 
 		assertEquals(locale, client.getLocale());
+	}
+
+	@Test
+	public void getUrl() {
+		Locale locale = new Locale("sv", "SE");
+		EnvironmentLandAndWaterAreaClient client = new EnvironmentLandAndWaterAreaClient(locale);
+
+		assertEquals("http://api.scb.se/OV0104/v1/doris/sv/ssd/MI/MI0802/", client.getUrl());
 	}
 
 }

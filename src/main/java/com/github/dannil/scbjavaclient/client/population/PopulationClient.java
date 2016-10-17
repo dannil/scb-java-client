@@ -91,4 +91,9 @@ public class PopulationClient extends AbstractContainerClient {
 		return this.populationNameStatisticsClient;
 	}
 
+	@Override
+	public String getUrl() {
+		return super.getUrl() + "BE/";
+	}
+
 }

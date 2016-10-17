@@ -89,4 +89,9 @@ public class PopulationNameStatisticsClient extends AbstractClient {
 		return JsonUtility.jsonToListOf(response, NumberOfChildrenBornWithFirstName.class);
 	}
 
+	@Override
+	public String getUrl() {
+		return super.getUrl() + "BE/BE0001/";
+	}
+
 }

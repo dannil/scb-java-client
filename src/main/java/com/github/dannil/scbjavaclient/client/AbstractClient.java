@@ -233,11 +233,13 @@ public abstract class AbstractClient {
 	// }
 	// }
 
-	// /**
-	// * Returns the URL endpoint which this client represents.
-	// *
-	// * @return the URL endpoint for this client
-	// */
-	// protected abstract String getUrl();
+	/**
+	 * Returns the URL endpoint which this client represents.
+	 *
+	 * @return the URL endpoint for this client
+	 */
+	public String getUrl() {
+		return getBaseUrl();
+	}
 
 }

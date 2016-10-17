@@ -104,4 +104,8 @@ public class EnvironmentLandAndWaterAreaClient extends AbstractClient {
 		return JsonUtility.jsonToListOf(response, Area.class);
 	}
 
+	@Override
+	public String getUrl() {
+		return super.getUrl() + "MI/MI0802/";
+	}
 }
