@@ -8,6 +8,8 @@ Java client for the SCB (Swedish: Statistiska centralbyrån, English: Statistics
 to provide an easy and intuitive way for Java applications to interface with the API without having to know the intricate 
 workings or writing own logic to handle the process. 
 
+Do note that this project is currently in major version zero (0.y.z) and the public API may therefore change at any time. 
+
 If you have an improvement, feel free to make a pull request or start an issue if you'd like feedback.
 
 ## Installation
