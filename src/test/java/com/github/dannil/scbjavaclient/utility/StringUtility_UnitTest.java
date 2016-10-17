@@ -32,7 +32,7 @@ public class StringUtility_UnitTest {
 	@Test
 	public void callPrivateConstructor() throws InstantiationException, IllegalAccessException,
 			IllegalArgumentException, InvocationTargetException {
-		Constructor<?>[] cons = JsonUtility.class.getDeclaredConstructors();
+		Constructor<?>[] cons = StringUtility.class.getDeclaredConstructors();
 		cons[0].setAccessible(true);
 		cons[0].newInstance();
 		cons[0].setAccessible(false);
