@@ -223,11 +223,11 @@ public final class JsonUtility {
 	}
 
 	/**
-	 * Extracts all the codes and their respective available inputs from the input.
+	 * Extracts the codes and their respective values from the JSON.
 	 * 
 	 * @param json
-	 *            the json which should be parsed
-	 * @return a collection of all codes and their respective inputs
+	 *            the JSON which should be parsed
+	 * @return a collection of all codes and their respective values
 	 */
 	public static Map<String, List<String>> getInputs(String json) {
 		Map<String, List<String>> inputs = new HashMap<String, List<String>>();
@@ -265,7 +265,7 @@ public final class JsonUtility {
 	}
 
 	/**
-	 * Extracts the codes from the input.
+	 * Extracts the codes from the JSON.
 	 *
 	 * @param json
 	 *            the json which should be parsed
@@ -280,28 +280,28 @@ public final class JsonUtility {
 		// return data.findValuesAsText("code");
 	}
 
-	/**
-	 * Extracts the contents codes from the input.
-	 * 
-	 * @param json
-	 *            the json which should be parsed
-	 * @return a list of contents codes
-	 */
-	public static List<String> getContentsCodes(String json) {
-		// List<String> valueTexts = new ArrayList<String>();
-		//
-		// JsonNode node = JsonUtility.toNode(json, "variables");
-		// for (int i = 0; i < node.size(); i++) {
-		// JsonNode child = node.get(i);
-		// if (child.get("code").asText().equals("ContentsCode")) {
-		// JsonNode values = child.get("values");
-		// for (int j = 0; j < values.size(); j++) {
-		// valueTexts.add(values.get(j).asText());
-		// }
-		// break;
-		// }
-		// }
-		// return valueTexts;
-		return getInputs(json).get("ContentsCode");
-	}
+	// /**
+	// * Extracts the contents codes from the input.
+	// *
+	// * @param json
+	// * the json which should be parsed
+	// * @return a list of contents codes
+	// */
+	// public static List<String> getContentsCodes(String json) {
+	// // List<String> valueTexts = new ArrayList<String>();
+	// //
+	// // JsonNode node = JsonUtility.toNode(json, "variables");
+	// // for (int i = 0; i < node.size(); i++) {
+	// // JsonNode child = node.get(i);
+	// // if (child.get("code").asText().equals("ContentsCode")) {
+	// // JsonNode values = child.get("values");
+	// // for (int j = 0; j < values.size(); j++) {
+	// // valueTexts.add(values.get(j).asText());
+	// // }
+	// // break;
+	// // }
+	// // }
+	// // return valueTexts;
+	// return getInputs(json).get("ContentsCode");
+	// }
 }
