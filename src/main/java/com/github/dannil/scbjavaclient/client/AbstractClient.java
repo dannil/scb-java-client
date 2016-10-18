@@ -19,8 +19,9 @@ package com.github.dannil.scbjavaclient.client;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
@@ -41,7 +42,7 @@ public abstract class AbstractClient {
 
 	protected static final String ROOT_URL = "http://api.scb.se/OV0104/v1/doris/";
 
-	private static final Logger LOGGER = Logger.getLogger(AbstractClient.class.getName());
+	private static final Logger LOGGER = LogManager.getLogger(AbstractClient.class);
 
 	protected Locale locale;
 
@@ -148,7 +149,7 @@ public abstract class AbstractClient {
 		POSTRequester post = (POSTRequester) RequesterFactory.getRequester(RequestMethod.POST);
 		post.setQuery(query);
 		try {
-			LOGGER.log(Level.INFO, query);
+			LOGGER.info(query);
 			String response = post.getBodyAsString(getBaseUrl() + url);
 			return response;
 		} catch (SCBClientUrlNotFoundException e) {
