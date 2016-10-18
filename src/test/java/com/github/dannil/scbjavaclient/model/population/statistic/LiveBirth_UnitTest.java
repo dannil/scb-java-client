@@ -48,7 +48,7 @@ public class LiveBirth_UnitTest {
 	}
 
 	@Test
-	public final void createWithDefaultConstructor() {
+	public  void createWithDefaultConstructor() {
 		LiveBirth liveBirth = new LiveBirth();
 
 		assertNotNull(liveBirth);

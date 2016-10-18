@@ -42,12 +42,12 @@ public class PopulationStatisticsClient_IntegrationTest extends RemoteIntegratio
 	// TODO Enable tests in the future
 
 	// @Test
-	// public final void getRegions() {
+	// public  void getRegions() {
 	// assertNotEquals(0, this.statisticsClient.getRegions().size());
 	// }
 
 	// @Test
-	// public final void getYears() {
+	// public  void getYears() {
 	// assertNotEquals(0, this.statisticsClient.getYears().size());
 	// }
 
