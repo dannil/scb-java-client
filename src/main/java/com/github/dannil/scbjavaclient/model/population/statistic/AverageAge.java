@@ -121,9 +121,9 @@ public class AverageAge extends AbstractRegionYearAndValueModel<String, Integer,
 	}
 
 	/**
-	 * Get the available inputs for the average age data from the API.
+	 * Get the available codes and their respective values for the average age data from the API.
 	 * 
-	 * @return a list of the available codes and their inputs
+	 * @return a list of the available codes and their values
 	 */
 	public static Map<String, List<String>> getInputs() {
 		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
