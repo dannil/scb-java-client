@@ -128,14 +128,12 @@ public abstract class AbstractClient {
 	 */
 	protected String get(String url) {
 		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
-		String response = null;
 		try {
-			response = get.getBodyAsString(getBaseUrl() + url);
+			return get.getBodyAsString(getBaseUrl() + url);
 		} catch (SCBClientUrlNotFoundException e) {
 			// 404, call the client again with the fallback language
-			response = get.getBodyAsString(URLUtility.changeLanguageForUrl(getBaseUrl() + url));
+			return get.getBodyAsString(URLUtility.changeLanguageForUrl(getBaseUrl() + url));
 		}
-		return response;
 	}
 
 	/**
@@ -150,16 +148,14 @@ public abstract class AbstractClient {
 	protected String post(String url, String query) {
 		POSTRequester post = (POSTRequester) RequesterFactory.getRequester(RequestMethod.POST);
 		post.setQuery(query);
-		String response = null;
 		try {
 			LOGGER.info(query);
-			response = post.getBodyAsString(getBaseUrl() + url);
+			String response = post.getBodyAsString(getBaseUrl() + url);
+			return response;
 		} catch (SCBClientUrlNotFoundException e) {
 			// 404, call the client again with the fallback language
-			response = post.getBodyAsString(URLUtility.changeLanguageForUrl(getBaseUrl() + url));
+			return post.getBodyAsString(URLUtility.changeLanguageForUrl(getBaseUrl() + url));
 		}
-		LOGGER.info(response);
-		return response;
 	}
 
 	/**
