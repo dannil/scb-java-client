@@ -17,6 +17,7 @@
 package com.github.dannil.scbjavaclient.model.population.demography;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -24,6 +25,8 @@ import com.github.dannil.scbjavaclient.model.AbstractRegionYearAndValueModel;
 import com.github.dannil.scbjavaclient.model.ValueNode;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
+import com.github.dannil.scbjavaclient.utility.requester.RequestMethod;
+import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
 
 /**
  * Model for mean age first child data.
@@ -122,8 +125,9 @@ public class MeanAgeFirstChild extends AbstractRegionYearAndValueModel<String, I
 	 *
 	 * @return a list of codes that is used by the API to index the values
 	 */
-	public static List<String> getCodes() {
-		return JsonUtility.getCodes(AbstractRequester.getBodyAsStringFromTable("BE/BE0701/MedelAlderNY"));
+	public static Map<String, List<String>> getCodes() {
+		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
+		return JsonUtility.getInputs(get.getBodyAsStringFromTable("BE/BE0701/MedelAlderNY"));
 	}
 
 }
