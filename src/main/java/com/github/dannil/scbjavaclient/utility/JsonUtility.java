@@ -246,6 +246,25 @@ public final class JsonUtility {
 	}
 
 	/**
+	 * Extracts the values for a code from the JSON.
+	 * 
+	 * @param json
+	 *            the json
+	 * @param code
+	 *            the code
+	 * @return a list of values
+	 * @throws IllegalArgumentException
+	 *             if the JSON doesn't contain the code
+	 */
+	public static List<String> getValues(String json, String code) throws IllegalArgumentException {
+		Map<String, List<String>> inputs = getInputs(json);
+		if (!inputs.containsKey(code)) {
+			throw new IllegalArgumentException();
+		}
+		return inputs.get(code);
+	}
+
+	/**
 	 * Extracts the codes from the input.
 	 *
 	 * @param json

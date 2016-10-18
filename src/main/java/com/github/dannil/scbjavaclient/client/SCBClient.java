@@ -101,14 +101,14 @@ public class SCBClient extends AbstractContainerClient {
 	 *            the table to fetch data from
 	 * @return a JSON string containing all available data in the specified table
 	 * 
-	 * @see com.github.dannil.scbjavaclient.utility.JsonUtility#getContentsCodes(String)
-	 *      JsonUtility#getContentsCodes(String)
+	 * @see com.github.dannil.scbjavaclient.utility.JsonUtility#getValues(String, String)
+	 *      JsonUtility#getValues(String, String)
 	 */
 	public String getRawData(String table) {
 		String json = super.get(table);
 
 		Map<String, Collection<?>> inputs = new HashMap<String, Collection<?>>();
-		inputs.put("ContentsCode", JsonUtility.getContentsCodes(json));
+		inputs.put("ContentsCode", JsonUtility.getValues(json, "ContentsCode"));
 
 		return getRawData(table, inputs);
 	}

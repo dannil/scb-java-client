@@ -24,9 +24,11 @@ import org.junit.runners.JUnit4;
 
 import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
 import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
+import com.github.dannil.scbjavaclient.utility.requester.RequestMethod;
+import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
 
 @RunWith(JUnit4.class)
-public class RequestPoster_UnitTest {
+public class AbstractRequester_UnitTest {
 
 	// @Test
 	// public void callPrivateConstructor() throws InstantiationException, IllegalAccessException,
@@ -40,8 +42,9 @@ public class RequestPoster_UnitTest {
 	// }
 
 	@Test(expected = SCBClientUrlNotFoundException.class)
-	public void getCodesInvalidTable() {
-		String response = AbstractRequester.getBodyAsStringFromTable("ABCABCABC");
+	public void getBodyAsStringFromTableInvalidTable() {
+		AbstractRequester requester = RequesterFactory.getRequester(RequestMethod.GET);
+		String response = requester.getBodyAsStringFromTable("ABCABCABC");
 
 		assertNull(response);
 	}
