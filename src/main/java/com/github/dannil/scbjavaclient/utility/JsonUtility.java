@@ -233,6 +233,9 @@ public final class JsonUtility {
 		Map<String, List<String>> inputs = new HashMap<String, List<String>>();
 
 		JsonNode node = JsonUtility.toNode(json, "variables");
+		if (node == null) {
+			throw new SCBClientParsingException();
+		}
 		for (int i = 0; i < node.size(); i++) {
 			JsonNode child = node.get(i);
 			List<String> values = new ArrayList<String>();
