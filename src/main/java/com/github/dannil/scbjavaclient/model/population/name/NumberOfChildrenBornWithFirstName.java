@@ -117,9 +117,10 @@ public class NumberOfChildrenBornWithFirstName extends AbstractYearAndValueModel
 	}
 
 	/**
-	 * Get the codes for the number of children born with first name from the API.
-	 * 
-	 * @return a list of codes that is used by the API to index the values
+	 * Get the available codes and their respective values for the number of children born with
+	 * first name data from the API.
+	 *
+	 * @return a list of the available codes and their values
 	 */
 	public static Map<String, List<String>> getCodes() {
 		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);

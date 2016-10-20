@@ -149,9 +149,9 @@ public class LiveBirth extends AbstractRegionYearAndValueModel<String, Integer, 
 	}
 
 	/**
-	 * Get the codes for the live births model from the API.
-	 * 
-	 * @return a list of codes that is used by the API to index the values
+	 * Get the available codes and their respective values for the live birth data from the API.
+	 *
+	 * @return a list of the available codes and their values
 	 */
 	public static Map<String, List<String>> getCodes() {
 		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);

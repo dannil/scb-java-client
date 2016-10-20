@@ -177,9 +177,9 @@ public class Population extends AbstractRegionYearAndValueModel<String, Integer,
 	}
 
 	/**
-	 * Get the codes for the population model from the API.
-	 * 
-	 * @return a list of codes that is used by the API to index the values
+	 * Get the available codes and their respective values for the population data from the API.
+	 *
+	 * @return a list of the available codes and their values
 	 */
 	public static Map<String, List<String>> getCodes() {
 		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);

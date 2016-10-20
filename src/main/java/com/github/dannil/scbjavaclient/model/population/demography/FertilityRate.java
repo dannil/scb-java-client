@@ -121,9 +121,9 @@ public class FertilityRate extends AbstractRegionYearAndValueModel<String, Integ
 	}
 
 	/**
-	 * Get the codes for the fertility rate from the API.
-	 * 
-	 * @return a list of codes that is used by the API to index the values
+	 * Get the available codes and their respective values for the fertility rate data from the API.
+	 *
+	 * @return a list of the available codes and their values
 	 */
 	public static Map<String, List<String>> getInputs() {
 		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);

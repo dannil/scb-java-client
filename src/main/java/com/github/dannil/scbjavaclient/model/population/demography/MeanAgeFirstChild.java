@@ -121,9 +121,10 @@ public class MeanAgeFirstChild extends AbstractRegionYearAndValueModel<String, I
 	}
 
 	/**
-	 * Get the codes for the mean age first child from the API.
+	 * Get the available codes and their respective values for the mean age first child data from
+	 * the API.
 	 *
-	 * @return a list of codes that is used by the API to index the values
+	 * @return a list of the available codes and their values
 	 */
 	public static Map<String, List<String>> getCodes() {
 		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
