@@ -1,6 +1,7 @@
 # scb-java-client
 
 [![Build Status](https://img.shields.io/travis/dannil/scb-java-client/dev.svg)](https://travis-ci.org/dannil/scb-java-client)
+[![Javadoc](https://javadoc-emblem.rhcloud.com/doc/com.github.dannil/scb-java-client/badge.svg)](http://www.javadoc.io/doc/com.github.dannil/scb-java-client)
 [![Codacy Grade Badge](https://img.shields.io/codacy/grade/af5b976ee2f94fd4b25ef1ae991d7993.svg)](https://www.codacy.com/app/dannil/scb-java-client)
 [![Codacy Coverage Badge](https://img.shields.io/codacy/coverage/af5b976ee2f94fd4b25ef1ae991d7993.svg)](https://www.codacy.com/app/dannil/scb-java-client)
 
