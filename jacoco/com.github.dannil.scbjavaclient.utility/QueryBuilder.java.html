@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>QueryBuilder.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.utility</a> &gt; <span class="el_source">QueryBuilder.java</span></div><h1>QueryBuilder.java</h1><pre class="source lang-java linenums">/*
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>QueryBuilder.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.utility</a> &gt; <span class="el_source">QueryBuilder.java</span></div><h1>QueryBuilder.java</h1><pre class="source lang-java linenums">/*
  * Copyright 2014 Daniel Nilsson
  * 
  * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
@@ -54,7 +54,7 @@ public final class QueryBuilder {
 <span class="fc bfc" id="L54" title="All 2 branches covered.">			if (!Objects.equals(o, value)) {</span>
 <span class="fc" id="L55">				filteredValues.add(o);</span>
 			}
-<span class="fc" id="L57">		}</span>
+		}
 <span class="fc" id="L58">		return filteredValues;</span>
 	}
 
@@ -99,9 +99,9 @@ public final class QueryBuilder {
 				// }
 <span class="fc" id="L100">				filteredMap.put(entry.getKey(), filterValue(entry.getValue(), null));</span>
 			}
-<span class="fc" id="L102">		}</span>
+		}
 
-		// Approximate a good initial capacity for the string buffer
+		// Approximate a good initial capacity for the string builder
 <span class="fc" id="L105">		int size = Math.max(44 + (80 * filteredMap.size()), 256);</span>
 <span class="fc" id="L106">		StringBuilder builder = new StringBuilder(size);</span>
 
@@ -122,10 +122,10 @@ public final class QueryBuilder {
 <span class="fc" id="L122">				builder.append(',');</span>
 			}
 <span class="fc" id="L124">			i++;</span>
-<span class="fc" id="L125">		}</span>
+		}
 <span class="fc" id="L126">		builder.append(&quot;],\&quot;response\&quot;: {\&quot;format\&quot;: \&quot;json\&quot;}}&quot;);</span>
 
 <span class="fc" id="L128">		return builder.toString();</span>
 	}
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

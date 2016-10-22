@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>JsonUtility.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.utility</a> &gt; <span class="el_source">JsonUtility.java</span></div><h1>JsonUtility.java</h1><pre class="source lang-java linenums">/*
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>JsonUtility.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.utility</a> &gt; <span class="el_source">JsonUtility.java</span></div><h1>JsonUtility.java</h1><pre class="source lang-java linenums">/*
  * Copyright 2014 Daniel Nilsson
  * 
  * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
@@ -55,8 +55,8 @@ public final class JsonUtility {
 	 * 
 	 * @return a {@link JsonNode} object
 	 */
-	public static JsonNode getNode(String json) {
-<span class="fc" id="L59">		return getNode(json, null);</span>
+	public static JsonNode toNode(String json) {
+<span class="fc" id="L59">		return toNode(json, null);</span>
 	}
 
 	/**
@@ -68,7 +68,7 @@ public final class JsonUtility {
 	 *            the field in the JSON to become the root
 	 * @return a {@link JsonNode} object with the specified field as root.
 	 */
-	public static JsonNode getNode(String json, String field) {
+	public static JsonNode toNode(String json, String field) {
 		try {
 <span class="fc" id="L73">			JsonNode node = mapper.readTree(json);</span>
 <span class="fc bfc" id="L74" title="All 2 branches covered.">			if (field != null) {</span>
@@ -81,30 +81,6 @@ public final class JsonUtility {
 	}
 
 	/**
-	 * Retrieves the contents codes from the specified JSON.
-	 * 
-	 * @param json
-	 *            the json to retrieve the contents codes from
-	 * @return a list of the available contents codes
-	 */
-	public static List&lt;String&gt; getContentsCodes(String json) {
-<span class="fc" id="L91">		List&lt;String&gt; valueTexts = new ArrayList&lt;String&gt;();</span>
-
-<span class="fc" id="L93">		JsonNode node = JsonUtility.getNode(json, &quot;variables&quot;);</span>
-<span class="pc bpc" id="L94" title="1 of 2 branches missed.">		for (int i = 0; i &lt; node.size(); i++) {</span>
-<span class="fc" id="L95">			JsonNode child = node.get(i);</span>
-<span class="fc bfc" id="L96" title="All 2 branches covered.">			if (child.get(&quot;code&quot;).asText().equals(&quot;ContentsCode&quot;)) {</span>
-<span class="fc" id="L97">				JsonNode values = child.get(&quot;values&quot;);</span>
-<span class="fc bfc" id="L98" title="All 2 branches covered.">				for (int j = 0; j &lt; values.size(); j++) {</span>
-<span class="fc" id="L99">					valueTexts.add(values.get(j).asText());</span>
-				}
-<span class="fc" id="L101">				break;</span>
-			}
-		}
-<span class="fc" id="L104">		return valueTexts;</span>
-	}
-
-	/**
 	 * Converts the non-conventional JSON response from the SCB API into a more conventional format,
 	 * wrapped in a {@link JsonNode}.
 	 * 
@@ -113,40 +89,85 @@ public final class JsonUtility {
 	 * @return the formatted json
 	 */
 	public static JsonNode toConventionalJson(String json) {
-<span class="fc" id="L116">		JsonNode node = getNode(json);</span>
-<span class="fc bfc" id="L117" title="All 2 branches covered.">		if (!node.has(&quot;columns&quot;)) {</span>
-<span class="fc" id="L118">			return node;</span>
+<span class="fc" id="L92">		JsonNode node = toNode(json);</span>
+
+		// Make sure the input is in the standardized non-conventional format
+<span class="pc bpc" id="L95" title="1 of 4 branches missed.">		if (isConventionalJson(node) || isQuery(node)) {</span>
+<span class="fc" id="L96">			return node;</span>
 		}
 
-<span class="fc" id="L121">		JsonNode columns = node.get(&quot;columns&quot;);</span>
-<span class="fc" id="L122">		JsonNode data = node.get(&quot;data&quot;);</span>
+<span class="fc" id="L99">		JsonNode columns = node.get(&quot;columns&quot;);</span>
+<span class="fc" id="L100">		JsonNode data = node.get(&quot;data&quot;);</span>
 
-<span class="fc" id="L124">		List&lt;String&gt; codes = columns.findValuesAsText(&quot;code&quot;);</span>
+<span class="fc" id="L102">		List&lt;String&gt; contentCodes = new ArrayList&lt;String&gt;();</span>
+<span class="fc" id="L103">		List&lt;String&gt; contentCodesTexts = new ArrayList&lt;String&gt;();</span>
 
-<span class="fc" id="L126">		List&lt;Map&lt;String, String&gt;&gt; entries = new ArrayList&lt;Map&lt;String, String&gt;&gt;();</span>
-<span class="fc bfc" id="L127" title="All 2 branches covered.">		for (int i = 0; i &lt; data.size(); i++) {</span>
-<span class="fc" id="L128">			Map&lt;String, String&gt; map = new HashMap&lt;String, String&gt;();</span>
+<span class="fc" id="L105">		List&lt;String&gt; codes = columns.findValuesAsText(&quot;code&quot;);</span>
+<span class="fc" id="L106">		List&lt;String&gt; texts = columns.findValuesAsText(&quot;text&quot;);</span>
 
-<span class="fc" id="L130">			JsonNode entry = data.get(i);</span>
+<span class="fc" id="L108">		List&lt;Map&lt;String, Object&gt;&gt; entries = new ArrayList&lt;Map&lt;String, Object&gt;&gt;();</span>
+<span class="fc bfc" id="L109" title="All 2 branches covered.">		for (int i = 0; i &lt; data.size(); i++) {</span>
+<span class="fc" id="L110">			Map&lt;String, Object&gt; map = new HashMap&lt;String, Object&gt;();</span>
+
+<span class="fc" id="L112">			JsonNode entry = data.get(i);</span>
 
 			// Get the key values and the value
-<span class="fc" id="L133">			JsonNode keysNode = entry.get(&quot;key&quot;);</span>
-<span class="fc" id="L134">			JsonNode valuesNode = entry.get(&quot;values&quot;);</span>
+<span class="fc" id="L115">			JsonNode keysNode = entry.get(&quot;key&quot;);</span>
+<span class="fc" id="L116">			JsonNode valuesNode = entry.get(&quot;values&quot;);</span>
 
-<span class="fc bfc" id="L136" title="All 2 branches covered.">			for (int j = 0; j &lt; keysNode.size(); j++) {</span>
-<span class="fc" id="L137">				String key = codes.get(j);</span>
-
-				// Lowercase first letter of key
-<span class="fc" id="L140">				char[] c = key.toCharArray();</span>
-<span class="fc" id="L141">				c[0] = Character.toLowerCase(c[0]);</span>
-<span class="fc" id="L142">				key = new String(c);</span>
-
-<span class="fc" id="L144">				map.put(key, keysNode.get(j).asText());</span>
+<span class="fc bfc" id="L118" title="All 2 branches covered.">			for (int j = 0; j &lt; keysNode.size(); j++) {</span>
+<span class="fc" id="L119">				String key = StringUtility.lowerCaseFirstLetter(codes.get(j));</span>
+<span class="fc" id="L120">				map.put(key, keysNode.get(j).asText());</span>
 			}
-<span class="fc" id="L146">			map.put(&quot;value&quot;, valuesNode.get(0).asText());</span>
-<span class="fc" id="L147">			entries.add(map);</span>
+
+			// Sort out the content codes
+<span class="fc" id="L124">			List&lt;String&gt; types = columns.findValuesAsText(&quot;type&quot;);</span>
+<span class="fc bfc" id="L125" title="All 2 branches covered.">			for (int l = 0; l &lt; codes.size(); l++) {</span>
+<span class="fc bfc" id="L126" title="All 2 branches covered.">				if (types.get(l).equals(&quot;c&quot;)) {</span>
+<span class="fc" id="L127">					contentCodes.add(codes.get(l));</span>
+<span class="fc" id="L128">					contentCodesTexts.add(texts.get(l));</span>
+				}
+			}
+
+<span class="fc" id="L132">			List&lt;Map&lt;String, String&gt;&gt; values = new ArrayList&lt;Map&lt;String, String&gt;&gt;(valuesNode.size());</span>
+<span class="fc bfc" id="L133" title="All 2 branches covered.">			for (int k = 0; k &lt; valuesNode.size(); k++) {</span>
+<span class="fc" id="L134">				Map&lt;String, String&gt; contents = new HashMap&lt;String, String&gt;();</span>
+
+<span class="fc" id="L136">				contents.put(&quot;value&quot;, valuesNode.get(k).asText());</span>
+<span class="fc" id="L137">				contents.put(&quot;code&quot;, contentCodes.get(k));</span>
+<span class="fc" id="L138">				contents.put(&quot;text&quot;, contentCodesTexts.get(k));</span>
+
+<span class="fc" id="L140">				values.add(contents);</span>
+			}
+<span class="fc" id="L142">			map.put(&quot;values&quot;, values);</span>
+
+<span class="fc" id="L144">			entries.add(map);</span>
 		}
-<span class="fc" id="L149">		return mapper.convertValue(entries, JsonNode.class);</span>
+<span class="fc" id="L146">		return mapper.convertValue(entries, JsonNode.class);</span>
+	}
+
+	/**
+	 * Checks if the node is formatted as the specified conventional format.
+	 * 
+	 * @param node
+	 *            the node to check
+	 * @return true if conventional format; otherwise false
+	 */
+	public static boolean isConventionalJson(JsonNode node) {
+		// Check if the node is correctly formatted
+<span class="pc bpc" id="L158" title="2 of 8 branches missed.">		return !(node.has(&quot;columns&quot;) || node.has(&quot;data&quot;) || node.has(&quot;comments&quot;) || !node.isArray());</span>
+	}
+
+	/**
+	 * Checks if the node is a query.
+	 * 
+	 * @param node
+	 *            the node to check
+	 * @return true if a query; otherwise false
+	 */
+	public static boolean isQuery(JsonNode node) {
+		// Check if the node is actually a query
+<span class="fc" id="L170">		return node.has(&quot;query&quot;);</span>
 	}
 
 	/**
@@ -163,7 +184,7 @@ public final class JsonUtility {
 	 *         corresponding entry in the {@link JsonNode}
 	 */
 	public static &lt;T&gt; List&lt;T&gt; jsonToListOf(JsonNode node, Class&lt;T&gt; clazz) {
-<span class="fc" id="L166">		return jsonToListOf(node.toString(), clazz);</span>
+<span class="fc" id="L187">		return jsonToListOf(node.toString(), clazz);</span>
 	}
 
 	/**
@@ -181,79 +202,13 @@ public final class JsonUtility {
 	 */
 	public static &lt;T&gt; List&lt;T&gt; jsonToListOf(String json, Class&lt;T&gt; clazz) {
 		try {
-<span class="fc" id="L184">			JavaType type = mapper.getTypeFactory().constructCollectionType(List.class, clazz);</span>
+<span class="fc" id="L205">			JavaType type = mapper.getTypeFactory().constructCollectionType(List.class, clazz);</span>
 
-<span class="fc" id="L186">			return mapper.readValue(toConventionalJson(json).toString(), type);</span>
-<span class="fc" id="L187">		} catch (IOException e) {</span>
-<span class="fc" id="L188">			throw new SCBClientParsingException(e);</span>
+<span class="fc" id="L207">			return mapper.readValue(toConventionalJson(json).toString(), type);</span>
+<span class="fc" id="L208">		} catch (IOException e) {</span>
+<span class="fc" id="L209">			throw new SCBClientParsingException(e);</span>
 		}
 	}
-
-	// /**
-	// * Parses the {@link JsonNode} into a list of keys and values with the help of the code input.
-	// *
-	// * @param node
-	// * the node to parse
-	// * @param codes
-	// * the codes which should be parsed
-	// * @return a list which contains the matching keys and values
-	// */
-	// private static List&lt;Map&lt;String, String&gt;&gt; genericParse(JsonNode node, List&lt;String&gt; codes) {
-	// JsonNode columns = node.get(&quot;columns&quot;);
-	// if (columns == null) {
-	// throw new IllegalArgumentException(&quot;Non-existing element in JSON payload: \&quot;columns\&quot;&quot;);
-	// }
-	//
-	// Map&lt;String, Integer&gt; mappings = generateMappings(columns.findValuesAsText(&quot;code&quot;), codes);
-	//
-	// JsonNode data = node.get(&quot;data&quot;);
-	//
-	// List&lt;JsonNode&gt; keys = data.findValues(&quot;key&quot;);
-	// List&lt;JsonNode&gt; values = data.findValues(&quot;values&quot;);
-	//
-	// List&lt;Map&lt;String, String&gt;&gt; contents = new ArrayList&lt;Map&lt;String, String&gt;&gt;();
-	// for (int j = 0; j &lt; keys.size(); j++) {
-	// JsonNode keyAtPosition = keys.get(j);
-	//
-	// Map&lt;String, String&gt; keyContents = new HashMap&lt;String, String&gt;();
-	// for (String code : codes) {
-	// if (mappings.containsKey(code)) {
-	// keyContents.put(code, keyAtPosition.get(mappings.get(code)).asText());
-	// }
-	// }
-	//
-	// JsonNode valueAtPosition = values.get(j);
-	// String value = valueAtPosition.get(0).asText();
-	// keyContents.put(&quot;Value&quot;, value);
-	//
-	// contents.add(keyContents);
-	// }
-	// return contents;
-	// }
-
-	// /**
-	// * Generates the position for the input codes. Used by
-	// * {@link JsonUtility#genericParse(JsonNode, List) genericParse(JsonNode, List)} to figure out
-	// * the position for every key.
-	// *
-	// * @param inputCodes
-	// * the input codes to calculated indexes for
-	// * @param storedCodes
-	// * the stored codes to match against the input codes
-	// * @return a map which specifies what position (0-indexed) every key resides at
-	// */
-	// private static Map&lt;String, Integer&gt; generateMappings(List&lt;String&gt; inputCodes, List&lt;String&gt;
-	// storedCodes) {
-	// Map&lt;String, Integer&gt; mappings = new HashMap&lt;String, Integer&gt;();
-	// int i = 0;
-	// for (String input : inputCodes) {
-	// if (storedCodes.contains(input)) {
-	// mappings.put(input, i);
-	// i++;
-	// }
-	// }
-	// return mappings;
-	// }
 
 	/**
 	 * Extracts the codes from the input.
@@ -263,10 +218,33 @@ public final class JsonUtility {
 	 * @return a list of codes for the input
 	 */
 	public static List&lt;String&gt; getCodes(String content) {
-<span class="fc" id="L266">		JsonNode data = getNode(content);</span>
-<span class="fc" id="L267">		List&lt;String&gt; codes = data.findValuesAsText(&quot;code&quot;);</span>
-
-<span class="fc" id="L269">		return codes;</span>
+<span class="fc" id="L221">		JsonNode data = toNode(content);</span>
+<span class="fc" id="L222">		return data.findValuesAsText(&quot;code&quot;);</span>
 	}
+
+	/**
+	 * Retrieves the contents codes from the specified JSON.
+	 * 
+	 * @param json
+	 *            the json to retrieve the contents codes from
+	 * @return a list of the available contents codes
+	 */
+	public static List&lt;String&gt; getContentCodes(String json) {
+<span class="fc" id="L233">		List&lt;String&gt; valueTexts = new ArrayList&lt;String&gt;();</span>
+
+<span class="fc" id="L235">		JsonNode node = JsonUtility.toNode(json, &quot;variables&quot;);</span>
+<span class="pc bpc" id="L236" title="1 of 2 branches missed.">		for (int i = 0; i &lt; node.size(); i++) {</span>
+<span class="fc" id="L237">			JsonNode child = node.get(i);</span>
+<span class="fc bfc" id="L238" title="All 2 branches covered.">			if (child.get(&quot;code&quot;).asText().equals(&quot;ContentsCode&quot;)) {</span>
+<span class="fc" id="L239">				JsonNode values = child.get(&quot;values&quot;);</span>
+<span class="fc bfc" id="L240" title="All 2 branches covered.">				for (int j = 0; j &lt; values.size(); j++) {</span>
+<span class="fc" id="L241">					valueTexts.add(values.get(j).asText());</span>
+				}
+<span class="fc" id="L243">				break;</span>
+			}
+		}
+<span class="fc" id="L246">		return valueTexts;</span>
+	}
+
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

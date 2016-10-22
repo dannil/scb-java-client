@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>AbstractClient.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.client</a> &gt; <span class="el_source">AbstractClient.java</span></div><h1>AbstractClient.java</h1><pre class="source lang-java linenums">/*
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AbstractClient.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.client</a> &gt; <span class="el_source">AbstractClient.java</span></div><h1>AbstractClient.java</h1><pre class="source lang-java linenums">/*
  * Copyright 2014 Daniel Nilsson
  * 
  * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
@@ -19,8 +19,9 @@ package com.github.dannil.scbjavaclient.client;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
@@ -41,7 +42,7 @@ public abstract class AbstractClient {
 
 	protected static final String ROOT_URL = &quot;http://api.scb.se/OV0104/v1/doris/&quot;;
 
-<span class="fc" id="L44">	private static final Logger LOGGER = Logger.getLogger(AbstractClient.class.getName());</span>
+<span class="fc" id="L45">	private static final Logger LOGGER = LogManager.getLogger(AbstractClient.class);</span>
 
 	protected Locale locale;
 
@@ -50,13 +51,13 @@ public abstract class AbstractClient {
 	/**
 	 * Default constructor.
 	 */
-<span class="fc" id="L53">	protected AbstractClient() {</span>
-<span class="fc" id="L54">		this.locale = Locale.getDefault();</span>
+<span class="fc" id="L54">	protected AbstractClient() {</span>
+<span class="fc" id="L55">		this.locale = Locale.getDefault();</span>
 
 		// validateLocale();
 
-<span class="fc" id="L58">		this.localization = new Localization(this.locale);</span>
-<span class="fc" id="L59">	}</span>
+<span class="fc" id="L59">		this.localization = new Localization(this.locale);</span>
+<span class="fc" id="L60">	}</span>
 
 	/**
 	 * Overloaded constructor.
@@ -65,13 +66,13 @@ public abstract class AbstractClient {
 	 *            the locale for this client
 	 */
 	protected AbstractClient(Locale locale) {
-<span class="fc" id="L68">		this();</span>
-<span class="fc" id="L69">		this.locale = locale;</span>
+<span class="fc" id="L69">		this();</span>
+<span class="fc" id="L70">		this.locale = locale;</span>
 
 		// validateLocale();
 
-<span class="fc" id="L73">		this.localization.setLocale(this.locale);</span>
-<span class="fc" id="L74">	}</span>
+<span class="fc" id="L74">		this.localization.setLocale(this.locale);</span>
+<span class="fc" id="L75">	}</span>
 
 	/**
 	 * Retrieves the language for this client instance.
@@ -79,7 +80,7 @@ public abstract class AbstractClient {
 	 * @return the language for this client instance
 	 */
 	public Locale getLocale() {
-<span class="fc" id="L82">		return this.locale;</span>
+<span class="fc" id="L83">		return this.locale;</span>
 	}
 
 	/**
@@ -91,12 +92,12 @@ public abstract class AbstractClient {
 	 *            the language for this client
 	 */
 	public void setLocale(Locale locale) {
-<span class="fc" id="L94">		this.locale = locale;</span>
+<span class="fc" id="L95">		this.locale = locale;</span>
 
 		// validateLocale();
 
-<span class="fc" id="L98">		this.localization.setLocale(locale);</span>
-<span class="fc" id="L99">	}</span>
+<span class="fc" id="L99">		this.localization.setLocale(locale);</span>
+<span class="fc" id="L100">	}</span>
 
 	/**
 	 * Changes the language used for the localization. Useful if the client needs to be in a
@@ -106,8 +107,8 @@ public abstract class AbstractClient {
 	 *            the language for the localization
 	 */
 	public void setLocalizationLanguage(Locale locale) {
-<span class="fc" id="L109">		this.localization.setLocale(locale);</span>
-<span class="fc" id="L110">	}</span>
+<span class="fc" id="L110">		this.localization.setLocale(locale);</span>
+<span class="fc" id="L111">	}</span>
 
 	/**
 	 * Determines the base URL for the API based on the current locale.
@@ -115,7 +116,7 @@ public abstract class AbstractClient {
 	 * @return the URL representing the entry point for the API.
 	 */
 	protected String getBaseUrl() {
-<span class="fc" id="L118">		return ROOT_URL + this.locale.getLanguage() + &quot;/ssd/&quot;;</span>
+<span class="fc" id="L119">		return ROOT_URL + this.locale.getLanguage() + &quot;/ssd/&quot;;</span>
 	}
 
 	/**
@@ -126,12 +127,12 @@ public abstract class AbstractClient {
 	 * @return a string representation of the API's response
 	 */
 	protected String get(String url) {
-<span class="fc" id="L129">		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);</span>
+<span class="fc" id="L130">		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);</span>
 		try {
-<span class="fc" id="L131">			return get.getBodyAsString(getBaseUrl() + url);</span>
-<span class="fc" id="L132">		} catch (SCBClientUrlNotFoundException e) {</span>
+<span class="fc" id="L132">			return get.getBodyAsString(getBaseUrl() + url);</span>
+<span class="fc" id="L133">		} catch (SCBClientUrlNotFoundException e) {</span>
 			// 404, call the client again with the fallback language
-<span class="fc" id="L134">			return get.getBodyAsString(URLUtility.changeLanguageForUrl(getBaseUrl() + url));</span>
+<span class="fc" id="L135">			return get.getBodyAsString(URLUtility.changeLanguageForUrl(getBaseUrl() + url));</span>
 		}
 	}
 
@@ -145,15 +146,15 @@ public abstract class AbstractClient {
 	 * @return a string representation of the API's response
 	 */
 	protected String post(String url, String query) {
-<span class="fc" id="L148">		POSTRequester post = (POSTRequester) RequesterFactory.getRequester(RequestMethod.POST);</span>
-<span class="fc" id="L149">		post.setQuery(query);</span>
+<span class="fc" id="L149">		POSTRequester post = (POSTRequester) RequesterFactory.getRequester(RequestMethod.POST);</span>
+<span class="fc" id="L150">		post.setQuery(query);</span>
 		try {
-<span class="fc" id="L151">			LOGGER.log(Level.INFO, query);</span>
-<span class="fc" id="L152">			String response = post.getBodyAsString(getBaseUrl() + url);</span>
-<span class="fc" id="L153">			return response;</span>
-<span class="fc" id="L154">		} catch (SCBClientUrlNotFoundException e) {</span>
+<span class="fc" id="L152">			LOGGER.info(query);</span>
+<span class="fc" id="L153">			String response = post.getBodyAsString(getBaseUrl() + url);</span>
+<span class="fc" id="L154">			return response;</span>
+<span class="fc" id="L155">		} catch (SCBClientUrlNotFoundException e) {</span>
 			// 404, call the client again with the fallback language
-<span class="fc" id="L156">			return post.getBodyAsString(URLUtility.changeLanguageForUrl(getBaseUrl() + url));</span>
+<span class="fc" id="L157">			return post.getBodyAsString(URLUtility.changeLanguageForUrl(getBaseUrl() + url));</span>
 		}
 	}
 
@@ -167,29 +168,29 @@ public abstract class AbstractClient {
 	 *             if the specified URL doesn't supply a regions table
 	 */
 	public List&lt;String&gt; getRegions(String url) {
-<span class="fc" id="L170">		String content = get(url);</span>
+<span class="fc" id="L171">		String content = get(url);</span>
 
-<span class="fc" id="L172">		JsonNode contentAsJsonNode = JsonUtility.getNode(content);</span>
+<span class="fc" id="L173">		JsonNode contentAsJsonNode = JsonUtility.toNode(content);</span>
 
-<span class="fc" id="L174">		List&lt;String&gt; codes = contentAsJsonNode.findValuesAsText(&quot;code&quot;);</span>
-<span class="fc" id="L175">		List&lt;JsonNode&gt; values = contentAsJsonNode.findValues(&quot;values&quot;);</span>
+<span class="fc" id="L175">		List&lt;String&gt; codes = contentAsJsonNode.findValuesAsText(&quot;code&quot;);</span>
+<span class="fc" id="L176">		List&lt;JsonNode&gt; values = contentAsJsonNode.findValues(&quot;values&quot;);</span>
 
-<span class="fc" id="L177">		int position = codes.indexOf(&quot;Region&quot;);</span>
-<span class="fc bfc" id="L178" title="All 2 branches covered.">		if (position &lt; 0) {</span>
-<span class="fc" id="L179">			Object[] variables = new Object[] { url };</span>
+<span class="fc" id="L178">		int position = codes.indexOf(&quot;Region&quot;);</span>
+<span class="fc bfc" id="L179" title="All 2 branches covered.">		if (position &lt; 0) {</span>
+<span class="fc" id="L180">			Object[] variables = new Object[] { url };</span>
 
-<span class="fc" id="L181">			throw new UnsupportedOperationException(this.localization.getString(&quot;regions_is_not_supported_for_url&quot;,</span>
-					variables));
+<span class="fc" id="L182">			throw new UnsupportedOperationException(this.localization.getString(&quot;regions_is_not_supported_for_url&quot;,</span>
+<span class="fc" id="L183">					variables));</span>
 		}
 
-<span class="fc" id="L185">		JsonNode jsonRegions = values.get(position);</span>
+<span class="fc" id="L186">		JsonNode jsonRegions = values.get(position);</span>
 
-<span class="fc" id="L187">		List&lt;String&gt; regions = new ArrayList&lt;String&gt;(jsonRegions.size());</span>
-<span class="fc bfc" id="L188" title="All 2 branches covered.">		for (int j = 0; j &lt; jsonRegions.size(); j++) {</span>
-<span class="fc" id="L189">			regions.add(jsonRegions.get(j).asText());</span>
+<span class="fc" id="L188">		List&lt;String&gt; regions = new ArrayList&lt;String&gt;(jsonRegions.size());</span>
+<span class="fc bfc" id="L189" title="All 2 branches covered.">		for (int j = 0; j &lt; jsonRegions.size(); j++) {</span>
+<span class="fc" id="L190">			regions.add(jsonRegions.get(j).asText());</span>
 		}
 
-<span class="fc" id="L192">		return regions;</span>
+<span class="fc" id="L193">		return regions;</span>
 	}
 
 	/**
@@ -202,29 +203,29 @@ public abstract class AbstractClient {
 	 *             if the specified URL doesn't supply a years table
 	 */
 	public List&lt;String&gt; getYears(String url) {
-<span class="fc" id="L205">		String content = get(url);</span>
+<span class="fc" id="L206">		String content = get(url);</span>
 
-<span class="fc" id="L207">		JsonNode contentAsJsonNode = JsonUtility.getNode(content);</span>
+<span class="fc" id="L208">		JsonNode contentAsJsonNode = JsonUtility.toNode(content);</span>
 
-<span class="fc" id="L209">		List&lt;String&gt; codes = contentAsJsonNode.findValuesAsText(&quot;code&quot;);</span>
-<span class="fc" id="L210">		List&lt;JsonNode&gt; values = contentAsJsonNode.findValues(&quot;values&quot;);</span>
+<span class="fc" id="L210">		List&lt;String&gt; codes = contentAsJsonNode.findValuesAsText(&quot;code&quot;);</span>
+<span class="fc" id="L211">		List&lt;JsonNode&gt; values = contentAsJsonNode.findValues(&quot;values&quot;);</span>
 
-<span class="fc" id="L212">		int position = codes.indexOf(&quot;Tid&quot;);</span>
-<span class="fc bfc" id="L213" title="All 2 branches covered.">		if (position &lt; 0) {</span>
-<span class="fc" id="L214">			Object[] variables = new Object[] { url };</span>
+<span class="fc" id="L213">		int position = codes.indexOf(&quot;Tid&quot;);</span>
+<span class="fc bfc" id="L214" title="All 2 branches covered.">		if (position &lt; 0) {</span>
+<span class="fc" id="L215">			Object[] variables = new Object[] { url };</span>
 
-<span class="fc" id="L216">			throw new UnsupportedOperationException(this.localization.getString(&quot;years_is_not_supported_for_url&quot;,</span>
-					variables));
+<span class="fc" id="L217">			throw new UnsupportedOperationException(this.localization.getString(&quot;years_is_not_supported_for_url&quot;,</span>
+<span class="fc" id="L218">					variables));</span>
 		}
 
-<span class="fc" id="L220">		JsonNode jsonYears = values.get(position);</span>
+<span class="fc" id="L221">		JsonNode jsonYears = values.get(position);</span>
 
-<span class="fc" id="L222">		List&lt;String&gt; years = new ArrayList&lt;String&gt;(jsonYears.size());</span>
-<span class="fc bfc" id="L223" title="All 2 branches covered.">		for (int j = 0; j &lt; jsonYears.size(); j++) {</span>
-<span class="fc" id="L224">			years.add(jsonYears.get(j).asText());</span>
+<span class="fc" id="L223">		List&lt;String&gt; years = new ArrayList&lt;String&gt;(jsonYears.size());</span>
+<span class="fc bfc" id="L224" title="All 2 branches covered.">		for (int j = 0; j &lt; jsonYears.size(); j++) {</span>
+<span class="fc" id="L225">			years.add(jsonYears.get(j).asText());</span>
 		}
 
-<span class="fc" id="L227">		return years;</span>
+<span class="fc" id="L228">		return years;</span>
 	}
 
 	// private void validateLocale() {
@@ -233,12 +234,14 @@ public abstract class AbstractClient {
 	// }
 	// }
 
-	// /**
-	// * Returns the URL endpoint which this client represents.
-	// *
-	// * @return the URL endpoint for this client
-	// */
-	// protected abstract String getUrl();
+	/**
+	 * Returns the URL endpoint which this client represents.
+	 *
+	 * @return the URL endpoint for this client
+	 */
+	public String getUrl() {
+<span class="fc" id="L243">		return getBaseUrl();</span>
+	}
 
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

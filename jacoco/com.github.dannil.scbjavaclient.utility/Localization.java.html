@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Localization.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.utility</a> &gt; <span class="el_source">Localization.java</span></div><h1>Localization.java</h1><pre class="source lang-java linenums">/*
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="sv"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Localization.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.utility</a> &gt; <span class="el_source">Localization.java</span></div><h1>Localization.java</h1><pre class="source lang-java linenums">/*
  * Copyright 2016 Daniel Nilsson
  * 
  * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
@@ -27,14 +27,14 @@ import java.util.MissingResourceException;
 import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
+import com.github.dannil.scbjavaclient.constants.ClientConstants;
+
 /**
  * Class for handling localization for the clients.
  * 
  * @author Daniel Nilsson
  */
 public class Localization {
-
-	private Locale fallbackLocale;
 
 	private ResourceBundle bundle;
 
@@ -55,18 +55,17 @@ public class Localization {
 	 */
 	public Localization(Locale locale) {
 <span class="fc" id="L57">		this();</span>
-<span class="fc" id="L58">		this.fallbackLocale = new Locale(&quot;en&quot;, &quot;US&quot;);</span>
-
-<span class="fc" id="L60">		this.bundle = ResourceBundle.getBundle(&quot;language&quot;, locale, this.encodingControl);</span>
-<span class="fc" id="L61">	}</span>
+<span class="fc" id="L58">		this.bundle = ResourceBundle.getBundle(ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX, locale,</span>
+<span class="fc" id="L59">				this.encodingControl);</span>
+<span class="fc" id="L60">	}</span>
 
 	/**
 	 * Getter for the locale of this localization instance.
 	 * 
-	 * @return the language for this localization instance.
+	 * @return the locale for this localization instance.
 	 */
 	public Locale getLocale() {
-<span class="fc" id="L69">		return this.bundle.getLocale();</span>
+<span class="fc" id="L68">		return this.bundle.getLocale();</span>
 	}
 
 	/**
@@ -76,7 +75,8 @@ public class Localization {
 	 *            the locale
 	 */
 	public void setLocale(Locale locale) {
-<span class="fc" id="L79">		this.bundle = ResourceBundle.getBundle(&quot;language&quot;, locale, this.encodingControl);</span>
+<span class="fc" id="L78">		this.bundle = ResourceBundle.getBundle(ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX, locale,</span>
+<span class="fc" id="L79">				this.encodingControl);</span>
 <span class="fc" id="L80">	}</span>
 
 	/**
@@ -92,7 +92,8 @@ public class Localization {
 		try {
 <span class="fc" id="L93">			return this.bundle.getString(key);</span>
 <span class="fc" id="L94">		} catch (MissingResourceException e2) {</span>
-<span class="fc" id="L95">			return ResourceBundle.getBundle(&quot;language&quot;, this.fallbackLocale, this.encodingControl).getString(key);</span>
+<span class="fc" id="L95">			return ResourceBundle.getBundle(ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX,</span>
+<span class="fc" id="L96">					ClientConstants.LOCALIZATION_FALLBACK_LOCALE, this.encodingControl).getString(key);</span>
 		}
 	}
 
@@ -106,12 +107,12 @@ public class Localization {
 	 * @return the translated string
 	 */
 	public String getString(String key, Object... variables) {
-<span class="fc" id="L109">		MessageFormat formatter = new MessageFormat(&quot;&quot;);</span>
+<span class="fc" id="L110">		MessageFormat formatter = new MessageFormat(&quot;&quot;);</span>
 
-<span class="fc" id="L111">		formatter.setLocale(getLocale());</span>
+<span class="fc" id="L112">		formatter.setLocale(getLocale());</span>
 
-<span class="fc" id="L113">		formatter.applyPattern(getString(key));</span>
-<span class="fc" id="L114">		return formatter.format(variables);</span>
+<span class="fc" id="L114">		formatter.applyPattern(getString(key));</span>
+<span class="fc" id="L115">		return formatter.format(variables);</span>
 	}
 
 	/**
@@ -130,48 +131,48 @@ public class Localization {
 		 * @param encoding
 		 *            the encoding to use (i.e. UTF-8)
 		 */
-<span class="fc" id="L133">		protected ResourceBundleEncodingControl(String encoding) {</span>
-<span class="fc" id="L134">			super();</span>
-<span class="fc" id="L135">			this.encoding = encoding;</span>
-<span class="fc" id="L136">		}</span>
+<span class="fc" id="L134">		protected ResourceBundleEncodingControl(String encoding) {</span>
+<span class="fc" id="L135">			super();</span>
+<span class="fc" id="L136">			this.encoding = encoding;</span>
+<span class="fc" id="L137">		}</span>
 
 		@Override
 		public List&lt;String&gt; getFormats(String baseName) {
-<span class="pc bpc" id="L140" title="1 of 2 branches missed.">			if (baseName == null) {</span>
-<span class="nc" id="L141">				throw new IllegalArgumentException();</span>
+<span class="pc bpc" id="L141" title="1 of 2 branches missed.">			if (baseName == null) {</span>
+<span class="nc" id="L142">				throw new IllegalArgumentException();</span>
 			}
-<span class="fc" id="L143">			return Arrays.asList(&quot;properties&quot;);</span>
+<span class="fc" id="L144">			return Arrays.asList(&quot;properties&quot;);</span>
 		}
 
 		@Override
 		public ResourceBundle newBundle(String baseName, Locale locale, String format, ClassLoader loader,
 				boolean reload) {
 
-<span class="pc bpc" id="L150" title="4 of 8 branches missed.">			if (baseName == null || locale == null || format == null || loader == null) {</span>
-<span class="nc" id="L151">				throw new IllegalArgumentException();</span>
+<span class="pc bpc" id="L151" title="4 of 8 branches missed.">			if (baseName == null || locale == null || format == null || loader == null) {</span>
+<span class="nc" id="L152">				throw new IllegalArgumentException();</span>
 			}
 
-<span class="pc bpc" id="L154" title="1 of 2 branches missed.">			if (&quot;properties&quot;.equals(format)) {</span>
-<span class="fc" id="L155">				String bundleName = toBundleName(baseName, locale);</span>
-<span class="fc" id="L156">				String resourceName = toResourceName(bundleName, format);</span>
-<span class="fc" id="L157">				InputStream stream = null;</span>
+<span class="pc bpc" id="L155" title="1 of 2 branches missed.">			if (&quot;properties&quot;.equals(format)) {</span>
+<span class="fc" id="L156">				String bundleName = toBundleName(baseName, locale);</span>
+<span class="fc" id="L157">				String resourceName = toResourceName(bundleName, format);</span>
+<span class="fc" id="L158">				InputStream stream = null;</span>
 
 				try {
-<span class="fc" id="L160">					stream = loader.getResourceAsStream(resourceName);</span>
+<span class="fc" id="L161">					stream = loader.getResourceAsStream(resourceName);</span>
 
-<span class="fc bfc" id="L162" title="All 2 branches covered.">					if (stream != null) {</span>
-<span class="pc" id="L163">						try (InputStreamReader is2 = new InputStreamReader(stream, this.encoding)) {</span>
-<span class="fc" id="L164">							ResourceBundle bundle = new PropertyResourceBundle(is2);</span>
-<span class="fc" id="L165">							return bundle;</span>
-<span class="pc bpc" id="L166" title="6 of 8 branches missed.">						}</span>
+<span class="fc bfc" id="L163" title="All 2 branches covered.">					if (stream != null) {</span>
+<span class="fc" id="L164">						try (InputStreamReader is2 = new InputStreamReader(stream, this.encoding)) {</span>
+<span class="fc" id="L165">							ResourceBundle bundle = new PropertyResourceBundle(is2);</span>
+<span class="pc" id="L166">							return bundle;</span>
+<span class="pc bpc" id="L167" title="7 of 8 branches missed.">						}</span>
 					}
-<span class="nc" id="L168">				} catch (IOException e) {</span>
-<span class="nc" id="L169">					e.printStackTrace();</span>
-<span class="fc" id="L170">				}</span>
+<span class="nc" id="L169">				} catch (IOException e) {</span>
+<span class="nc" id="L170">					e.printStackTrace();</span>
+				}
 			}
-<span class="fc" id="L172">			return null;</span>
+<span class="fc" id="L173">			return null;</span>
 		}
 	}
 
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>
