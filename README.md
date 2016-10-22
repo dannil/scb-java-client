@@ -27,7 +27,7 @@ If you have an improvement, feel free to make a pull request or start an issue i
 
 ### Gradle
 ```xml
-'com.github.dannil:scb-java-client:0.0.3'
+compile 'com.github.dannil:scb-java-client:0.0.3'
 ```
 
 ### SBT
