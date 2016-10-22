@@ -55,7 +55,7 @@ List<MeanAgeFirstChild> firstChild = populationDemographyClient.getMeanAgeFirstC
 
 // You may also want to skip the explicit creation of the matching client and fetch data 
 // directly from the method calls.
-List<AverageAge> = client.population().statistics().getAverageAge();
+List<AverageAge> averageAges = client.population().statistics().getAverageAge();
 ```
 
 The client also supports selecting specific values directly from the SCB API.
