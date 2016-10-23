@@ -16,14 +16,12 @@
 
 package com.github.dannil.scbjavaclient.client;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.Localization;
@@ -164,33 +162,54 @@ public abstract class AbstractClient {
 	 * @param url
 	 *            the URL to retrieve the regions from
 	 * @return a list of the available regions for the given URL
-	 * @throws UnsupportedOperationException
+	 * @throws IllegalArgumentException
 	 *             if the specified URL doesn't supply a regions table
 	 */
 	public List<String> getRegions(String url) {
-		String content = get(url);
-
-		JsonNode contentAsJsonNode = JsonUtility.toNode(content);
-
-		List<String> codes = contentAsJsonNode.findValuesAsText("code");
-		List<JsonNode> values = contentAsJsonNode.findValues("values");
-
-		int position = codes.indexOf("Region");
-		if (position < 0) {
-			Object[] variables = new Object[] { url };
-
-			throw new UnsupportedOperationException(this.localization.getString("regions_is_not_supported_for_url",
-					variables));
+		String json = get(url);
+		String code = "Region";
+		try {
+			List<String> values = JsonUtility.getValues(json, code);
+			return values;
+		} catch (IllegalArgumentException e) {
+			Object[] variables = new Object[] { code, url };
+			throw new IllegalArgumentException(this.localization.getString("code_is_not_supported_for_url", variables),
+					e);
 		}
 
-		JsonNode jsonRegions = values.get(position);
+		// if (!inputs.containsKey("Region")) {
+		// Object[] variables = new Object[] { url };
+		//
+		// throw new
+		// UnsupportedOperationException(this.localization.getString("regions_is_not_supported_for_url",
+		// variables));
+		// }
+		// return inputs.get("Region");
 
-		List<String> regions = new ArrayList<String>(jsonRegions.size());
-		for (int j = 0; j < jsonRegions.size(); j++) {
-			regions.add(jsonRegions.get(j).asText());
-		}
-
-		return regions;
+		// String content = get(url);
+		//
+		// JsonNode contentAsJsonNode = JsonUtility.toNode(content);
+		//
+		// List<String> codes = contentAsJsonNode.findValuesAsText("code");
+		// List<JsonNode> values = contentAsJsonNode.findValues("values");
+		//
+		// int position = codes.indexOf("Region");
+		// if (position < 0) {
+		// Object[] variables = new Object[] { url };
+		//
+		// throw new
+		// UnsupportedOperationException(this.localization.getString("regions_is_not_supported_for_url",
+		// variables));
+		// }
+		//
+		// JsonNode jsonRegions = values.get(position);
+		//
+		// List<String> regions = new ArrayList<String>(jsonRegions.size());
+		// for (int j = 0; j < jsonRegions.size(); j++) {
+		// regions.add(jsonRegions.get(j).asText());
+		// }
+		//
+		// return regions;
 	}
 
 	/**
@@ -203,29 +222,41 @@ public abstract class AbstractClient {
 	 *             if the specified URL doesn't supply a years table
 	 */
 	public List<String> getYears(String url) {
-		String content = get(url);
-
-		JsonNode contentAsJsonNode = JsonUtility.toNode(content);
-
-		List<String> codes = contentAsJsonNode.findValuesAsText("code");
-		List<JsonNode> values = contentAsJsonNode.findValues("values");
-
-		int position = codes.indexOf("Tid");
-		if (position < 0) {
-			Object[] variables = new Object[] { url };
-
-			throw new UnsupportedOperationException(this.localization.getString("years_is_not_supported_for_url",
-					variables));
+		String json = get(url);
+		String code = "Tid";
+		try {
+			List<String> values = JsonUtility.getValues(json, code);
+			return values;
+		} catch (IllegalArgumentException e) {
+			Object[] variables = new Object[] { code, url };
+			throw new IllegalArgumentException(this.localization.getString("code_is_not_supported_for_url", variables),
+					e);
 		}
-
-		JsonNode jsonYears = values.get(position);
-
-		List<String> years = new ArrayList<String>(jsonYears.size());
-		for (int j = 0; j < jsonYears.size(); j++) {
-			years.add(jsonYears.get(j).asText());
-		}
-
-		return years;
+		//
+		// String content = get(url);
+		//
+		// JsonNode contentAsJsonNode = JsonUtility.toNode(content);
+		//
+		// List<String> codes = contentAsJsonNode.findValuesAsText("code");
+		// List<JsonNode> values = contentAsJsonNode.findValues("values");
+		//
+		// int position = codes.indexOf("Tid");
+		// if (position < 0) {
+		// Object[] variables = new Object[] { url };
+		//
+		// throw new
+		// UnsupportedOperationException(this.localization.getString("years_is_not_supported_for_url",
+		// variables));
+		// }
+		//
+		// JsonNode jsonYears = values.get(position);
+		//
+		// List<String> years = new ArrayList<String>(jsonYears.size());
+		// for (int j = 0; j < jsonYears.size(); j++) {
+		// years.add(jsonYears.get(j).asText());
+		// }
+		//
+		// return years;
 	}
 
 	// private void validateLocale() {

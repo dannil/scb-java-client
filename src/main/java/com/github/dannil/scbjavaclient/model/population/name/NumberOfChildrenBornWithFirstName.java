@@ -17,6 +17,7 @@
 package com.github.dannil.scbjavaclient.model.population.name;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -24,6 +25,8 @@ import com.github.dannil.scbjavaclient.model.AbstractYearAndValueModel;
 import com.github.dannil.scbjavaclient.model.ValueNode;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
+import com.github.dannil.scbjavaclient.utility.requester.RequestMethod;
+import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
 
 /**
  * Model for number of children born with first name.
@@ -114,12 +117,14 @@ public class NumberOfChildrenBornWithFirstName extends AbstractYearAndValueModel
 	}
 
 	/**
-	 * Get the codes for the number of children born with first name from the API.
-	 * 
-	 * @return a list of codes that is used by the API to index the values
+	 * Get the available codes and their respective values for the number of children born with
+	 * first name data from the API.
+	 *
+	 * @return a list of the available codes and their values
 	 */
-	public static List<String> getCodes() {
-		return JsonUtility.getCodes(AbstractRequester.getCodes("BE/BE0001/BE0001T04Ar"));
+	public static Map<String, List<String>> getCodes() {
+		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
+		return JsonUtility.getInputs(get.getBodyAsStringFromTable("BE/BE0001/BE0001T04Ar"));
 	}
 
 }

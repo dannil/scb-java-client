@@ -88,8 +88,8 @@ public class FertilityRate_UnitTest {
 	}
 
 	@Test
-	public void getCodes() {
-		assertNotNull(FertilityRate.getCodes());
+	public void getInputs() {
+		assertNotNull(FertilityRate.getInputs());
 	}
 
 	@Test

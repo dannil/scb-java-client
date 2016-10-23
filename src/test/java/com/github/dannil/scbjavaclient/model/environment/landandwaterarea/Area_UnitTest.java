@@ -126,8 +126,8 @@ public class Area_UnitTest {
 	}
 
 	@Test
-	public void getCodes() {
-		assertNotNull(Area.getCodes());
+	public void getInputs() {
+		assertNotNull(Area.getInputs());
 	}
 
 	@Test

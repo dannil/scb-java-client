@@ -17,6 +17,7 @@
 package com.github.dannil.scbjavaclient.model.population.statistic;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -24,6 +25,8 @@ import com.github.dannil.scbjavaclient.model.AbstractRegionYearAndValueModel;
 import com.github.dannil.scbjavaclient.model.ValueNode;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
+import com.github.dannil.scbjavaclient.utility.requester.RequestMethod;
+import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
 
 /**
  * Model for live births data.
@@ -146,12 +149,13 @@ public class LiveBirth extends AbstractRegionYearAndValueModel<String, Integer, 
 	}
 
 	/**
-	 * Get the codes for the live births from the API.
-	 * 
-	 * @return a list of codes that is used by the API to index the values
+	 * Get the available codes and their respective values for the live birth data from the API.
+	 *
+	 * @return a list of the available codes and their values
 	 */
-	public static List<String> getCodes() {
-		return JsonUtility.getCodes(AbstractRequester.getCodes("BE/BE0101/BE0101H/FoddaK"));
+	public static Map<String, List<String>> getCodes() {
+		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
+		return JsonUtility.getInputs(get.getBodyAsStringFromTable("BE/BE0101/BE0101H/FoddaK"));
 	}
 
 }
