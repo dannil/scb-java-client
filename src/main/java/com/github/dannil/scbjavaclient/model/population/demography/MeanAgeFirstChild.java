@@ -16,6 +16,7 @@
 
 package com.github.dannil.scbjavaclient.model.population.demography;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -126,7 +127,7 @@ public class MeanAgeFirstChild extends AbstractRegionYearAndValueModel<String, I
 	 *
 	 * @return a list of the available codes and their values
 	 */
-	public static Map<String, List<String>> getCodes() {
+	public static Map<String, Collection<String>> getCodes() {
 		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
 		return JsonUtility.getInputs(get.getBodyAsStringFromTable("BE/BE0701/MedelAlderNY"));
 	}
