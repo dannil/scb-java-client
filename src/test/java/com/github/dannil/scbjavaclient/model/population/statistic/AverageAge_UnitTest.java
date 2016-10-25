@@ -45,7 +45,7 @@ public class AverageAge_UnitTest {
 	}
 
 	@Test
-	public final void createWithDefaultConstructor() {
+	public  void createWithDefaultConstructor() {
 		AverageAge avg = new AverageAge();
 
 		assertNotNull(avg);

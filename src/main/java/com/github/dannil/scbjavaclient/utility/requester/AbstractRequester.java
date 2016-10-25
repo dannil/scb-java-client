@@ -33,6 +33,7 @@ import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.impl.client.HttpClientBuilder;
 
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
+import com.github.dannil.scbjavaclient.exception.SCBClientForbiddenException;
 import com.github.dannil.scbjavaclient.exception.SCBClientTooManyRequestsException;
 import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
 
@@ -91,7 +92,7 @@ public abstract class AbstractRequester {
 
 	/**
 	 * Performs a request with the specified HttpRequest and retrieves the response as a
-	 * HttpResonse.
+	 * HttpResponse.
 	 * 
 	 * @param request
 	 *            the request
@@ -105,6 +106,9 @@ public abstract class AbstractRequester {
 			switch (statusCode) {
 				case 200:
 					break;
+
+				case 403:
+					throw new SCBClientForbiddenException(request.getURI().toString());
 
 				case 404:
 					throw new SCBClientUrlNotFoundException(request.getURI().toString());

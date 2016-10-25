@@ -46,7 +46,7 @@ public class NumberOfChildrenBornWithFirstName_UnitTest {
 	}
 
 	@Test
-	public final void createWithDefaultConstructor() {
+	public  void createWithDefaultConstructor() {
 		NumberOfChildrenBornWithFirstName nbrChildren = new NumberOfChildrenBornWithFirstName();
 
 		assertNotNull(nbrChildren);

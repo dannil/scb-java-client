@@ -32,7 +32,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
+import com.github.dannil.scbjavaclient.exception.SCBClientForbiddenException;
+import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 @RunWith(JUnit4.class)
@@ -105,7 +106,7 @@ public class AbstractClient_IntegrationTest {
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void getRegionsInvalidTable() {
+	public void getRegionsMissingCodeInTable() {
 		DummyClient client = new DummyClient();
 
 		List<String> regions = client.getRegions("BE/BE0001/BE0001T04Ar");
@@ -123,13 +124,35 @@ public class AbstractClient_IntegrationTest {
 		assertFalse(years.isEmpty());
 	}
 
-	@Test(expected = SCBClientParsingException.class)
-	public void getYearsInvalidTable() {
+	// TODO Fix test
+	// @Test(expected = IllegalArgumentException.class)
+	// public void getYearsMissingCodeInTable() {
+	// DummyClient client = new DummyClient();
+	//
+	// List<String> years = client.getYears("NR/NR0105/NR0105A");
+	//
+	// assertNull(years);
+	// }
+
+	@Test(expected = SCBClientUrlNotFoundException.class)
+	public void urlNotFoundException() {
 		DummyClient client = new DummyClient();
 
-		List<String> years = client.getYears("NR/NR0105/NR0105A");
+		String response = client.get("ABC/ABC/ABC");
 
-		assertNull(years);
+		assertNull(response);
+	}
+
+	@Test(expected = SCBClientForbiddenException.class)
+	public void forbiddenException() {
+		// Need to use SCBClient here instead of DummyClient to reach getRawData(String)-method
+		SCBClient client = new SCBClient();
+
+		// This call will result in a HTTP 403 response (forbidden) since the response from this
+		// table is larger than the API allows (given all the available inputs)
+		String response = client.getRawData("NV/NV0119/IVPKNLonAr");
+
+		assertNull(response);
 	}
 
 }

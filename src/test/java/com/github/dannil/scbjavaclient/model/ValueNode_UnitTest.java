@@ -37,7 +37,7 @@ public class ValueNode_UnitTest {
 	}
 
 	@Test
-	public final void createWithDefaultConstructor() {
+	public void createWithDefaultConstructor() {
 		ValueNode<Double> value = new ValueNode<Double>();
 
 		assertNotNull(value);

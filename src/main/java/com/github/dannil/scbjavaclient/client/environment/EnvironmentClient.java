@@ -61,4 +61,9 @@ public class EnvironmentClient extends AbstractContainerClient {
 		return this.environmentLandAndWaterAreaClient;
 	}
 
+	@Override
+	public String getUrl() {
+		return super.getUrl() + "MI/";
+	}
+
 }

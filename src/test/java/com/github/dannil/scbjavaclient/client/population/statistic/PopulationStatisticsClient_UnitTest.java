@@ -24,8 +24,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import com.github.dannil.scbjavaclient.client.population.statistic.PopulationStatisticsClient;
-
 @RunWith(JUnit4.class)
 public class PopulationStatisticsClient_UnitTest {
 
@@ -35,6 +33,14 @@ public class PopulationStatisticsClient_UnitTest {
 		PopulationStatisticsClient client = new PopulationStatisticsClient(locale);
 
 		assertEquals(locale, client.getLocale());
+	}
+
+	@Test
+	public void getUrl() {
+		Locale locale = new Locale("sv", "SE");
+		PopulationStatisticsClient client = new PopulationStatisticsClient(locale);
+
+		assertEquals("http://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0101/", client.getUrl());
 	}
 
 }

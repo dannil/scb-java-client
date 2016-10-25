@@ -165,4 +165,9 @@ public class PopulationDemographyClient extends AbstractClient {
 		return JsonUtility.jsonToListOf(response, MeanAgeFirstChild.class);
 	}
 
+	@Override
+	public String getUrl() {
+		return super.getUrl() + "BE/BE0701/";
+	}
+
 }

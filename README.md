@@ -1,12 +1,15 @@
 # scb-java-client
 
 [![Build Status](https://img.shields.io/travis/dannil/scb-java-client/dev.svg)](https://travis-ci.org/dannil/scb-java-client)
+[![Javadoc](https://javadoc-emblem.rhcloud.com/doc/com.github.dannil/scb-java-client/badge.svg)](http://www.javadoc.io/doc/com.github.dannil/scb-java-client)
 [![Codacy Grade Badge](https://img.shields.io/codacy/grade/af5b976ee2f94fd4b25ef1ae991d7993.svg)](https://www.codacy.com/app/dannil/scb-java-client)
 [![Codacy Coverage Badge](https://img.shields.io/codacy/coverage/af5b976ee2f94fd4b25ef1ae991d7993.svg)](https://www.codacy.com/app/dannil/scb-java-client)
 
-Java client for the SCB (Swedish: Statistiska centralbyrån, English: Statistics Sweden) API. The goal of this projects is 
-to provide an easy and intuitive way for Java applications to interface with the API without having to know the intricate 
+Java client for the SCB (Swedish: [Statistiska centralbyrån](http://www.scb.se/sv_/), English: [Statistics Sweden](http://www.scb.se/en_/)) API. 
+The goal of this projects is to provide an easy and intuitive way for Java applications to interface with the API without having to know the intricate 
 workings or writing own logic to handle the process. 
+
+Do note that this project is currently in major version zero (0.y.z) and the public API may therefore change at any time. 
 
 If you have an improvement, feel free to make a pull request or start an issue if you'd like feedback.
 
@@ -18,18 +21,18 @@ If you have an improvement, feel free to make a pull request or start an issue i
 <dependency>
   <groupId>com.github.dannil</groupId>
   <artifactId>scb-java-client</artifactId>
-  <version>0.0.3</version>
+  <version>0.0.4</version>
 </dependency>
 ```
 
 ### Gradle
 ```xml
-'com.github.dannil:scb-java-client:0.0.3'
+compile 'com.github.dannil:scb-java-client:0.0.4'
 ```
 
 ### SBT
 ```xml
-libraryDependencies += "com.github.dannil" % "scb-java-client" % "0.0.3"
+libraryDependencies += "com.github.dannil" % "scb-java-client" % "0.0.4"
 ```
 
 ## Usage
@@ -52,7 +55,7 @@ List<MeanAgeFirstChild> firstChild = populationDemographyClient.getMeanAgeFirstC
 
 // You may also want to skip the explicit creation of the matching client and fetch data 
 // directly from the method calls.
-List<AverageAge> = client.population().statistics().getAverageAge();
+List<AverageAge> averageAges = client.population().statistics().getAverageAge();
 ```
 
 The client also supports selecting specific values directly from the SCB API.

@@ -45,7 +45,7 @@ public class MeanAgeFirstChild_UnitTest {
 	}
 
 	@Test
-	public final void createWithDefaultConstructor() {
+	public  void createWithDefaultConstructor() {
 		MeanAgeFirstChild mean = new MeanAgeFirstChild();
 
 		assertNotNull(mean);

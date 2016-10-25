@@ -42,12 +42,12 @@ public class EnvironmentLandAndWaterAreaClient_IntegrationTest extends RemoteInt
 	// TODO Enable tests in the future
 
 	// @Test
-	// public final void getRegions() {
+	// public  void getRegions() {
 	// assertNotEquals(0, this.landAndWaterAreaClient.getRegions().size());
 	// }
 	//
 	// @Test
-	// public final void getYears() {
+	// public  void getYears() {
 	// assertNotEquals(0, this.landAndWaterAreaClient.getYears().size());
 	// }
 
