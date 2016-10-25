@@ -49,9 +49,17 @@ public class RequesterSingletonFactory_UnitTest {
 		Constructor<?> enclosingConstructor = enclosingClass.getDeclaredConstructor();
 		enclosingConstructor.setAccessible(true);
 
-		Class<?> innerClass = RequesterSingletonFactory.class.getDeclaredClasses()[0];
 		// Make sure we instantiate the correct inner class
-		assertTrue(innerClass.toString().contains("GETHolder"));
+		String innerClassName = "GETHolder";
+		Class<?> innerClass = null;
+		Class<?>[] innerClasses = RequesterSingletonFactory.class.getDeclaredClasses();
+		for (int i = 0; i < innerClasses.length; i++) {
+			if (innerClasses[i].toString().contains(innerClassName)) {
+				// We found the correct class!
+				innerClass = innerClasses[i];
+			}
+		}
+		assertTrue(innerClass.toString().contains(innerClassName));
 
 		Constructor<?> innerConstructor = innerClass.getDeclaredConstructors()[0];
 
@@ -71,9 +79,17 @@ public class RequesterSingletonFactory_UnitTest {
 		Constructor<?> enclosingConstructor = enclosingClass.getDeclaredConstructor();
 		enclosingConstructor.setAccessible(true);
 
-		Class<?> innerClass = RequesterSingletonFactory.class.getDeclaredClasses()[1];
 		// Make sure we instantiate the correct inner class
-		assertTrue(innerClass.toString().contains("POSTHolder"));
+		String innerClassName = "POSTHolder";
+		Class<?> innerClass = null;
+		Class<?>[] innerClasses = RequesterSingletonFactory.class.getDeclaredClasses();
+		for (int i = 0; i < innerClasses.length; i++) {
+			if (innerClasses[i].toString().contains(innerClassName)) {
+				// We found the correct class!
+				innerClass = innerClasses[i];
+			}
+		}
+		assertTrue(innerClass.toString().contains(innerClassName));
 
 		Constructor<?> innerConstructor = innerClass.getDeclaredConstructors()[0];
 
