@@ -32,6 +32,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import com.github.dannil.scbjavaclient.exception.SCBClientForbiddenException;
+import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 @RunWith(JUnit4.class)
@@ -131,5 +133,26 @@ public class AbstractClient_IntegrationTest {
 	//
 	// assertNull(years);
 	// }
+
+	@Test(expected = SCBClientUrlNotFoundException.class)
+	public void urlNotFoundException() {
+		DummyClient client = new DummyClient();
+
+		String response = client.get("ABC/ABC/ABC");
+
+		assertNull(response);
+	}
+
+	@Test(expected = SCBClientForbiddenException.class)
+	public void forbiddenException() {
+		// Need to use SCBClient here instead of DummyClient to reach getRawData(String)-method
+		SCBClient client = new SCBClient();
+
+		// This call will result in a HTTP 403 response (forbidden) since the response from this
+		// table is larger than the API allows (given all the available inputs)
+		String response = client.getRawData("NV/NV0119/IVPKNLonAr");
+
+		assertNull(response);
+	}
 
 }
