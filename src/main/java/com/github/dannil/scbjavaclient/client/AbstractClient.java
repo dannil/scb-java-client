@@ -218,7 +218,7 @@ public abstract class AbstractClient {
 	 * @param url
 	 *            the URL to retrieve the years from
 	 * @return a list of the available years for the given URL
-	 * @throws UnsupportedOperationException
+	 * @throws IllegalArgumentException
 	 *             if the specified URL doesn't supply a years table
 	 */
 	public List<String> getYears(String url) {

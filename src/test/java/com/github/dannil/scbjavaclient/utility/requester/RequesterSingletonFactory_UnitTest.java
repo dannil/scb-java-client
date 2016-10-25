@@ -19,6 +19,7 @@ package com.github.dannil.scbjavaclient.utility.requester;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -37,6 +38,50 @@ public class RequesterSingletonFactory_UnitTest {
 		cons[0].setAccessible(false);
 
 		assertFalse(cons[0].isAccessible());
+	}
+
+	@Test
+	public void callPrivateConstructorGETHolder() throws NoSuchMethodException, SecurityException,
+			InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+
+		// Ridiculous code to instantiate private static class inside a private class
+		Class<?> enclosingClass = RequesterSingletonFactory.class;
+		Constructor<?> enclosingConstructor = enclosingClass.getDeclaredConstructor();
+		enclosingConstructor.setAccessible(true);
+
+		Class<?> innerClass = RequesterSingletonFactory.class.getDeclaredClasses()[0];
+		// Make sure we instantiate the correct inner class
+		assertTrue(innerClass.toString().contains("GETHolder"));
+
+		Constructor<?> innerConstructor = innerClass.getDeclaredConstructors()[0];
+
+		innerConstructor.setAccessible(true);
+		innerConstructor.newInstance();
+		innerConstructor.setAccessible(false);
+
+		assertFalse(innerConstructor.isAccessible());
+	}
+
+	@Test
+	public void callPrivateConstructorPOSTHolder() throws NoSuchMethodException, SecurityException,
+			InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+
+		// Ridiculous code to instantiate private static class inside a private class
+		Class<?> enclosingClass = RequesterSingletonFactory.class;
+		Constructor<?> enclosingConstructor = enclosingClass.getDeclaredConstructor();
+		enclosingConstructor.setAccessible(true);
+
+		Class<?> innerClass = RequesterSingletonFactory.class.getDeclaredClasses()[1];
+		// Make sure we instantiate the correct inner class
+		assertTrue(innerClass.toString().contains("POSTHolder"));
+
+		Constructor<?> innerConstructor = innerClass.getDeclaredConstructors()[0];
+
+		innerConstructor.setAccessible(true);
+		innerConstructor.newInstance();
+		innerConstructor.setAccessible(false);
+
+		assertFalse(innerConstructor.isAccessible());
 	}
 
 	@Test
