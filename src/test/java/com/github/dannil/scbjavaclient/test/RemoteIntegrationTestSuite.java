@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.test.model;
+package com.github.dannil.scbjavaclient.test;
 
 import org.junit.Before;
 

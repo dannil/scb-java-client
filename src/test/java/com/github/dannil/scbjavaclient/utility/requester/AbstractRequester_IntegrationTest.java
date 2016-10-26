@@ -26,7 +26,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
-import com.github.dannil.scbjavaclient.test.model.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.RemoteIntegrationTestSuite;
 
 @RunWith(JUnit4.class)
 public class AbstractRequester_IntegrationTest extends RemoteIntegrationTestSuite {

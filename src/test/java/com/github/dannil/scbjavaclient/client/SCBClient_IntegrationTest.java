@@ -29,7 +29,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import com.github.dannil.scbjavaclient.test.model.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.RemoteIntegrationTestSuite;
 
 @RunWith(JUnit4.class)
 public class SCBClient_IntegrationTest extends RemoteIntegrationTestSuite {
