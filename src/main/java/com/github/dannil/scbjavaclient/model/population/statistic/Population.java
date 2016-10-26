@@ -16,6 +16,7 @@
 
 package com.github.dannil.scbjavaclient.model.population.statistic;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -67,8 +68,7 @@ public class Population extends AbstractRegionYearAndValueModel<String, Integer,
 	 * @param values
 	 *            the values
 	 */
-	public Population(String region, String relationshipStatus, String age, Integer gender, Integer year,
-			List<ValueNode<String>> values) {
+	public Population(String region, String relationshipStatus, String age, Integer gender, Integer year, List<ValueNode<String>> values) {
 		super(region, year, values);
 		this.relationshipStatus = relationshipStatus;
 		this.age = age;
@@ -150,8 +150,8 @@ public class Population extends AbstractRegionYearAndValueModel<String, Integer,
 		}
 
 		Population other = (Population) obj;
-		return super.equals(other) && Objects.equals(this.relationshipStatus, other.relationshipStatus)
-				&& Objects.equals(this.age, other.age) && Objects.equals(this.gender, other.gender);
+		return super.equals(other) && Objects.equals(this.relationshipStatus, other.relationshipStatus) && Objects.equals(this.age, other.age)
+				&& Objects.equals(this.gender, other.gender);
 	}
 
 	@Override
@@ -181,7 +181,7 @@ public class Population extends AbstractRegionYearAndValueModel<String, Integer,
 	 *
 	 * @return a list of the available codes and their values
 	 */
-	public static Map<String, List<String>> getCodes() {
+	public static Map<String, Collection<String>> getInputs() {
 		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
 		return JsonUtility.getInputs(get.getBodyAsStringFromTable("BE/BE0101/BE0101A/BefolkningNy"));
 	}

@@ -48,7 +48,7 @@ public class LiveBirth_UnitTest {
 	}
 
 	@Test
-	public  void createWithDefaultConstructor() {
+	public void createWithDefaultConstructor() {
 		LiveBirth liveBirth = new LiveBirth();
 
 		assertNotNull(liveBirth);
@@ -100,8 +100,8 @@ public class LiveBirth_UnitTest {
 	}
 
 	@Test
-	public void getCodes() {
-		assertNotNull(LiveBirth.getCodes());
+	public void getInputs() {
+		assertNotNull(LiveBirth.getInputs());
 	}
 
 	@Test
