@@ -18,6 +18,7 @@ package com.github.dannil.scbjavaclient.utility;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -217,8 +218,8 @@ public final class JsonUtility {
 	 *            the JSON which should be parsed
 	 * @return a collection of all codes and their respective values
 	 */
-	public static Map<String, List<String>> getInputs(String json) {
-		Map<String, List<String>> inputs = new HashMap<String, List<String>>();
+	public static Map<String, Collection<String>> getInputs(String json) {
+		Map<String, Collection<String>> inputs = new HashMap<String, Collection<String>>();
 
 		JsonNode node = JsonUtility.toNode(json, "variables");
 		if (node == null) {
@@ -248,11 +249,11 @@ public final class JsonUtility {
 	 *             if the JSON doesn't contain the code
 	 */
 	public static List<String> getValues(String json, String code) throws IllegalArgumentException {
-		Map<String, List<String>> inputs = getInputs(json);
+		Map<String, Collection<String>> inputs = getInputs(json);
 		if (!inputs.containsKey(code)) {
 			throw new IllegalArgumentException();
 		}
-		return inputs.get(code);
+		return new ArrayList<String>(inputs.get(code));
 	}
 
 	/**

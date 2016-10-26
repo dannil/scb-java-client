@@ -87,6 +87,24 @@ public class SCBClient extends AbstractContainerClient {
 
 	/**
 	 * <p>
+	 * Fetches all the inputs for a given table from the API.
+	 * <p>
+	 * 
+	 * @param table
+	 *            the table to fetch the inputs from
+	 * @return a collection of all codes and their respective values
+	 * 
+	 * @see com.github.dannil.scbjavaclient.utility.JsonUtility#getInputs(String)
+	 *      JsonUtility#getInputs(String)
+	 */
+	public Map<String, Collection<?>> getInputs(String table) {
+		String json = get(table);
+
+		return QueryBuilder.generalizeInputs(JsonUtility.getInputs(json));
+	}
+
+	/**
+	 * <p>
 	 * Fetch the JSON response from the specified table. As opposed to
 	 * {@link #getRawData(String, Map)}, this method fetches all available data and therefore
 	 * doesn't support selecting specific values before calling the API.

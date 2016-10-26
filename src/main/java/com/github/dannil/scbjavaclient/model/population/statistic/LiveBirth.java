@@ -16,6 +16,7 @@
 
 package com.github.dannil.scbjavaclient.model.population.statistic;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -24,6 +25,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.dannil.scbjavaclient.model.AbstractRegionYearAndValueModel;
 import com.github.dannil.scbjavaclient.model.ValueNode;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
+import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
 import com.github.dannil.scbjavaclient.utility.requester.RequestMethod;
 import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
@@ -124,8 +126,7 @@ public class LiveBirth extends AbstractRegionYearAndValueModel<String, Integer, 
 		}
 
 		LiveBirth other = (LiveBirth) obj;
-		return super.equals(other) && Objects.equals(this.motherAge, other.motherAge)
-				&& Objects.equals(this.gender, other.gender);
+		return super.equals(other) && Objects.equals(this.motherAge, other.motherAge) && Objects.equals(this.gender, other.gender);
 	}
 
 	@Override
@@ -153,9 +154,9 @@ public class LiveBirth extends AbstractRegionYearAndValueModel<String, Integer, 
 	 *
 	 * @return a list of the available codes and their values
 	 */
-	public static Map<String, List<String>> getCodes() {
+	public static Map<String, Collection<?>> getInputs() {
 		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
-		return JsonUtility.getInputs(get.getBodyAsStringFromTable("BE/BE0101/BE0101H/FoddaK"));
+		return QueryBuilder.generalizeInputs(JsonUtility.getInputs(get.getBodyAsStringFromTable("BE/BE0101/BE0101H/FoddaK")));
 	}
 
 }
