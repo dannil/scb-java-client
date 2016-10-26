@@ -129,8 +129,7 @@ public class AverageAge extends AbstractRegionYearAndValueModel<String, Integer,
 	 */
 	public static Map<String, Collection<?>> getInputs() {
 		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
-		return QueryBuilder.generalizeInputs(JsonUtility.getInputs(get
-				.getBodyAsStringFromTable("BE/BE0101/BE0101B/BefolkningMedelAlder")));
+		return QueryBuilder.generalizeInputs(JsonUtility.getInputs(get.getBodyAsStringFromTable("BE/BE0101/BE0101B/BefolkningMedelAlder")));
 	}
 
 }

@@ -126,8 +126,7 @@ public class LiveBirth extends AbstractRegionYearAndValueModel<String, Integer, 
 		}
 
 		LiveBirth other = (LiveBirth) obj;
-		return super.equals(other) && Objects.equals(this.motherAge, other.motherAge)
-				&& Objects.equals(this.gender, other.gender);
+		return super.equals(other) && Objects.equals(this.motherAge, other.motherAge) && Objects.equals(this.gender, other.gender);
 	}
 
 	@Override
@@ -157,8 +156,7 @@ public class LiveBirth extends AbstractRegionYearAndValueModel<String, Integer, 
 	 */
 	public static Map<String, Collection<?>> getInputs() {
 		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
-		return QueryBuilder.generalizeInputs(JsonUtility.getInputs(get
-				.getBodyAsStringFromTable("BE/BE0101/BE0101H/FoddaK")));
+		return QueryBuilder.generalizeInputs(JsonUtility.getInputs(get.getBodyAsStringFromTable("BE/BE0101/BE0101H/FoddaK")));
 	}
 
 }

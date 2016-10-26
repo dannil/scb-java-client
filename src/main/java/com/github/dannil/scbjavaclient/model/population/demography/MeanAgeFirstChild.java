@@ -130,8 +130,7 @@ public class MeanAgeFirstChild extends AbstractRegionYearAndValueModel<String, I
 	 */
 	public static Map<String, Collection<?>> getInputs() {
 		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
-		return QueryBuilder.generalizeInputs(JsonUtility.getInputs(get
-				.getBodyAsStringFromTable("BE/BE0701/MedelAlderNY")));
+		return QueryBuilder.generalizeInputs(JsonUtility.getInputs(get.getBodyAsStringFromTable("BE/BE0701/MedelAlderNY")));
 	}
 
 }
