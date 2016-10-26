@@ -25,6 +25,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.dannil.scbjavaclient.model.AbstractRegionYearAndValueModel;
 import com.github.dannil.scbjavaclient.model.ValueNode;
 import com.github.dannil.scbjavaclient.utility.JsonUtility;
+import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
 import com.github.dannil.scbjavaclient.utility.requester.RequestMethod;
 import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
@@ -182,9 +183,10 @@ public class Population extends AbstractRegionYearAndValueModel<String, Integer,
 	 *
 	 * @return a list of the available codes and their values
 	 */
-	public static Map<String, Collection<String>> getCodes() {
+	public static Map<String, Collection<?>> getInputs() {
 		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
-		return JsonUtility.getInputs(get.getBodyAsStringFromTable("BE/BE0101/BE0101A/BefolkningNy"));
+		return QueryBuilder.generalizeInputs(JsonUtility.getInputs(get
+				.getBodyAsStringFromTable("BE/BE0101/BE0101A/BefolkningNy")));
 	}
 
 }

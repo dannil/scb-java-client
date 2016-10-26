@@ -20,7 +20,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import com.github.dannil.scbjavaclient.client.environment.EnvironmentClient;
 import com.github.dannil.scbjavaclient.client.population.PopulationClient;
@@ -99,28 +98,9 @@ public class SCBClient extends AbstractContainerClient {
 	 *      JsonUtility#getInputs(String)
 	 */
 	public Map<String, Collection<?>> getInputs(String table) {
-		String json = super.get(table);
+		String json = get(table);
 
-		// TODO DO NOT REMOVE Investigate if this can be done better DO NOT REMOVE
-		//
-		// All the input methods in clients are defined as generic as possible with the help of
-		// the question mark (such as Collection<?> ages since some tables has ages formatted as a
-		// string, not an integer). This gives flexibility compared to if every input was defined as
-		// Collection<String>, having the user to convert all the data to strings before-hand
-		// instead of delegating this to the client.
-		//
-		// This gives the consequence of having to convert the output from getInputs in JsonUtility
-		// (which has to be a Collection<String> for every code, anything else doesn't make sense,
-		// even the question mark is not suitable) if we want to reuse the returned variable of this
-		// method in SCBClient#getRawData(String, Map<String, Collection<?>>). This feature NEEDS to
-		// work to make the client consistent and enable interoperability with itself.
-		Map<String, Collection<?>> convertedInputs = new HashMap<String, Collection<?>>();
-
-		Map<String, Collection<String>> inputs = JsonUtility.getInputs(json);
-		for (Entry<String, Collection<String>> entry : inputs.entrySet()) {
-			convertedInputs.put(entry.getKey(), entry.getValue());
-		}
-		return convertedInputs;
+		return QueryBuilder.generalizeInputs(JsonUtility.getInputs(json));
 	}
 
 	/**

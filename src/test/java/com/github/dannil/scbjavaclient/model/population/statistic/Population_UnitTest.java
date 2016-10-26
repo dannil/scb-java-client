@@ -163,8 +163,8 @@ public class Population_UnitTest {
 	}
 
 	@Test
-	public void getCodes() {
-		assertNotNull(Population.getCodes());
+	public void getInputs() {
+		assertNotNull(Population.getInputs());
 	}
 
 	@Test
