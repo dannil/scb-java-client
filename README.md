@@ -7,19 +7,19 @@
 [![Codacy Coverage Badge](https://img.shields.io/codacy/coverage/af5b976ee2f94fd4b25ef1ae991d7993.svg)](https://www.codacy.com/app/dannil/scb-java-client)
 
 Java client for the SCB (Swedish: [Statistiska centralbyrån](http://www.scb.se/sv_/), English: [Statistics Sweden](http://www.scb.se/en_/)) API. 
-The goal of this projects is to provide an easy and intuitive way for Java applications to interface with the API without having to know the intricate 
-workings or writing own logic to handle the process. 
+The goal of this project is to provide an easy and intuitive way for developers to interface their applications with the API without having to 
+know the intricate workings or writing own logic to handle the process. 
 
 Do note that this project is currently in major version zero (0.y.z) and the public API may therefore change at any time. 
 
 If you have an improvement, feel free to make a pull request or start an issue if you'd like feedback.
 
-## Installation
-
-### Requirements
+## Requirements
 
 * Java 7 or newer
 * Maven 3.0.0 or newer
+
+## Installation
 
 ### Maven
 
