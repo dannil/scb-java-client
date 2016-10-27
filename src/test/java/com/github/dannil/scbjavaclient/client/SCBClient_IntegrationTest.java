@@ -16,6 +16,7 @@
 
 package com.github.dannil.scbjavaclient.client;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -33,6 +34,25 @@ import com.github.dannil.scbjavaclient.test.RemoteIntegrationTestSuite;
 
 @RunWith(JUnit4.class)
 public class SCBClient_IntegrationTest extends RemoteIntegrationTestSuite {
+
+	@Test
+	public void getInputs() {
+		Locale locale = new Locale("sv", "SE");
+		SCBClient client = new SCBClient(locale);
+
+		Map<String, Collection<String>> inputs = client.getInputs("UF/UF0104/SamAntSkol");
+
+		Map<String, Collection<String>> staticInputs = new HashMap<String, Collection<String>>();
+		Collection<String> staticInputsArsKurs = Arrays.asList("10", "11", "12", "13", "14", "15", "16");
+		Collection<String> staticInputsContentsCode = Arrays.asList("UF0104L1");
+		Collection<String> staticInputsTid = Arrays.asList("1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006");
+
+		staticInputs.put("ArsKurs", staticInputsArsKurs);
+		staticInputs.put("ContentsCode", staticInputsContentsCode);
+		staticInputs.put("Tid", staticInputsTid);
+
+		assertEquals(staticInputs, inputs);
+	}
 
 	@Test
 	public void getRawData() {

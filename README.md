@@ -16,6 +16,11 @@ If you have an improvement, feel free to make a pull request or start an issue i
 
 ## Installation
 
+### Requirements
+
+* Java 7 or newer
+* Maven 3.0.0 or newer
+
 ### Maven
 
 ```xml
