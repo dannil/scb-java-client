@@ -29,7 +29,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
 
 /**
+ * <p>
  * Utility class for converting JSON to Java objects.
+ * </p>
  * 
  * @author Daniel Nilsson
  */
@@ -42,14 +44,18 @@ public final class JsonUtility {
 	}
 
 	/**
+	 * <p>
 	 * Private constructor to prevent instantiation.
+	 * </p>
 	 */
 	private JsonUtility() {
 
 	}
 
 	/**
+	 * <p>
 	 * Parse the JSON string into a {@link JsonNode} object.
+	 * </p>
 	 * 
 	 * @param json
 	 *            the JSON content
@@ -61,7 +67,9 @@ public final class JsonUtility {
 	}
 
 	/**
+	 * <p>
 	 * Parse the JSON string into a {@link JsonNode} object with the specified field as root field.
+	 * </p>
 	 * 
 	 * @param json
 	 *            the JSON content
@@ -82,8 +90,10 @@ public final class JsonUtility {
 	}
 
 	/**
+	 * <p>
 	 * Converts the non-conventional JSON response from the SCB API into a more conventional format,
 	 * wrapped in a {@link JsonNode}.
+	 * </p>
 	 * 
 	 * @param json
 	 *            the json to format
@@ -148,11 +158,13 @@ public final class JsonUtility {
 	}
 
 	/**
+	 * <p>
 	 * Checks if the node is formatted as the specified conventional format.
+	 * </p>
 	 * 
 	 * @param node
 	 *            the node to check
-	 * @return true if conventional format; otherwise false
+	 * @return true if the node is formatted as conventional format
 	 */
 	public static boolean isConventionalJson(JsonNode node) {
 		// Check if the node is correctly formatted
@@ -160,11 +172,13 @@ public final class JsonUtility {
 	}
 
 	/**
+	 * <p>
 	 * Checks if the node is a query.
+	 * </p>
 	 * 
 	 * @param node
 	 *            the node to check
-	 * @return true if a query; otherwise false
+	 * @return true if the node is a query
 	 */
 	public static boolean isQuery(JsonNode node) {
 		// Check if the node is actually a query
@@ -172,7 +186,9 @@ public final class JsonUtility {
 	}
 
 	/**
+	 * <p>
 	 * Converts the {@link JsonNode} into a list of the specified class.
+	 * </p>
 	 * 
 	 * @param node
 	 *            the node to process
@@ -189,7 +205,9 @@ public final class JsonUtility {
 	}
 
 	/**
+	 * <p>
 	 * Converts the JSON string into a list of the specified class.
+	 * </p>
 	 * 
 	 * @param json
 	 *            the json to process
@@ -212,7 +230,9 @@ public final class JsonUtility {
 	}
 
 	/**
+	 * <p>
 	 * Extracts the codes and their respective values from the JSON.
+	 * </p>
 	 * 
 	 * @param json
 	 *            the JSON which should be parsed
@@ -238,7 +258,9 @@ public final class JsonUtility {
 	}
 
 	/**
+	 * <p>
 	 * Extracts the values for a code from the JSON.
+	 * </p>
 	 * 
 	 * @param json
 	 *            the json
@@ -257,7 +279,9 @@ public final class JsonUtility {
 	}
 
 	/**
+	 * <p>
 	 * Extracts the codes from the JSON.
+	 * </p>
 	 *
 	 * @param json
 	 *            the json which should be parsed
@@ -265,34 +289,6 @@ public final class JsonUtility {
 	 */
 	public static List<String> getCodes(String json) {
 		return new ArrayList<String>(getInputs(json).keySet());
-
-		// return getInputs(json).keySet().;
-		// JsonNode data = toNode(content);
-		// return data.findValuesAsText("code");
 	}
 
-	// /**
-	// * Extracts the contents codes from the input.
-	// *
-	// * @param json
-	// * the json which should be parsed
-	// * @return a list of contents codes
-	// */
-	// public static List<String> getContentsCodes(String json) {
-	// // List<String> valueTexts = new ArrayList<String>();
-	// //
-	// // JsonNode node = JsonUtility.toNode(json, "variables");
-	// // for (int i = 0; i < node.size(); i++) {
-	// // JsonNode child = node.get(i);
-	// // if (child.get("code").asText().equals("ContentsCode")) {
-	// // JsonNode values = child.get("values");
-	// // for (int j = 0; j < values.size(); j++) {
-	// // valueTexts.add(values.get(j).asText());
-	// // }
-	// // break;
-	// // }
-	// // }
-	// // return valueTexts;
-	// return getInputs(json).get("ContentsCode");
-	// }
 }

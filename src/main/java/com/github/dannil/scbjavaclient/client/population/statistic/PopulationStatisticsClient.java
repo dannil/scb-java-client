@@ -31,24 +31,30 @@ import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
+ * <p>
  * Client which handles population statistics data fetching.
+ * </p>
  * 
  * @author Daniel Nilsson
  */
 public class PopulationStatisticsClient extends AbstractClient {
 
 	/**
+	 * <p>
 	 * Default constructor.
+	 * </p>
 	 */
 	public PopulationStatisticsClient() {
 		super();
 	}
 
 	/**
+	 * <p>
 	 * Overloaded constructor.
+	 * </p>
 	 * 
 	 * @param locale
-	 *            the locale for this client
+	 *            the <code>Locale</code> for this client
 	 */
 	public PopulationStatisticsClient(Locale locale) {
 		super(locale);
@@ -69,7 +75,9 @@ public class PopulationStatisticsClient extends AbstractClient {
 	// }
 
 	/**
+	 * <p>
 	 * Fetch all average age data.
+	 * </p>
 	 * 
 	 * @return the average age data wrapped in a list of
 	 *         {@link com.github.dannil.scbjavaclient.model.population.statistic.AverageAge
@@ -78,11 +86,13 @@ public class PopulationStatisticsClient extends AbstractClient {
 	 * @see PopulationStatisticsClient#getAverageAge(Collection, Collection, Collection)
 	 */
 	public List<AverageAge> getAverageAge() {
-		return this.getAverageAge(null, null, null);
+		return getAverageAge(null, null, null);
 	}
 
 	/**
+	 * <p>
 	 * Fetch all average age data which match the input constraints.
+	 * </p>
 	 * 
 	 * @param regions
 	 *            the regions to fetch data for
@@ -95,8 +105,7 @@ public class PopulationStatisticsClient extends AbstractClient {
 	 *         {@link com.github.dannil.scbjavaclient.model.population.statistic.AverageAge
 	 *         AverageAge} objects
 	 */
-	public List<AverageAge> getAverageAge(Collection<String> regions, Collection<String> genders,
-			Collection<Integer> years) {
+	public List<AverageAge> getAverageAge(Collection<String> regions, Collection<String> genders, Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
 		mappings.put("ContentsCode", Arrays.asList("BE0101G9"));
 		mappings.put("Region", regions);
@@ -109,7 +118,9 @@ public class PopulationStatisticsClient extends AbstractClient {
 	}
 
 	/**
+	 * <p>
 	 * Fetch all live births data.
+	 * </p>
 	 * 
 	 * @return the live births data wrapped in a list of
 	 *         {@link com.github.dannil.scbjavaclient.model.population.statistic.LiveBirth
@@ -118,11 +129,13 @@ public class PopulationStatisticsClient extends AbstractClient {
 	 * @see PopulationStatisticsClient#getLiveBirths(Collection, Collection, Collection, Collection)
 	 */
 	public List<LiveBirth> getLiveBirths() {
-		return this.getLiveBirths(null, null, null, null);
+		return getLiveBirths(null, null, null, null);
 	}
 
 	/**
+	 * <p>
 	 * Fetch all live births data which match the input constraints.
+	 * </p>
 	 * 
 	 * @param regions
 	 *            the regions to fetch data for
@@ -137,8 +150,7 @@ public class PopulationStatisticsClient extends AbstractClient {
 	 *         {@link com.github.dannil.scbjavaclient.model.population.statistic.LiveBirth
 	 *         LiveBirth} objects
 	 */
-	public List<LiveBirth> getLiveBirths(Collection<String> regions, Collection<String> motherAges,
-			Collection<Integer> genders, Collection<Integer> years) {
+	public List<LiveBirth> getLiveBirths(Collection<String> regions, Collection<String> motherAges, Collection<Integer> genders, Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
 		mappings.put("ContentsCode", Arrays.asList("BE0101E2"));
 		mappings.put("Region", regions);
@@ -152,7 +164,9 @@ public class PopulationStatisticsClient extends AbstractClient {
 	}
 
 	/**
-	 * Fetch all population data data.
+	 * <p>
+	 * Fetch all population data.
+	 * </p>
 	 * 
 	 * @return the population data wrapped in a list of
 	 *         {@link com.github.dannil.scbjavaclient.model.population.statistic.Population
@@ -162,11 +176,13 @@ public class PopulationStatisticsClient extends AbstractClient {
 	 *      Collection)
 	 */
 	public List<Population> getPopulation() {
-		return this.getPopulation(null, null, null, null, null);
+		return getPopulation(null, null, null, null, null);
 	}
 
 	/**
+	 * <p>
 	 * Fetch all population data which match the input constraints.
+	 * </p>
 	 * 
 	 * @param regions
 	 *            the regions to fetch data for
@@ -183,8 +199,8 @@ public class PopulationStatisticsClient extends AbstractClient {
 	 *         {@link com.github.dannil.scbjavaclient.model.population.statistic.Population
 	 *         Population} objects
 	 */
-	public List<Population> getPopulation(Collection<String> regions, Collection<String> relationshipStatuses,
-			Collection<String> ages, Collection<Integer> genders, Collection<Integer> years) {
+	public List<Population> getPopulation(Collection<String> regions, Collection<String> relationshipStatuses, Collection<String> ages,
+			Collection<Integer> genders, Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
 		mappings.put("ContentsCode", Arrays.asList("BE0101N1", "BE0101N2"));
 		mappings.put("Region", regions);

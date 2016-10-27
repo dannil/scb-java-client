@@ -22,7 +22,9 @@ import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.EnvironmentLandAndWaterAreaClient;
 
 /**
+ * <p>
  * Client which handles environment data fetching.
+ * </p>
  * 
  * @author Daniel Nilsson
  */
@@ -31,7 +33,9 @@ public class EnvironmentClient extends AbstractContainerClient {
 	private EnvironmentLandAndWaterAreaClient environmentLandAndWaterAreaClient;
 
 	/**
+	 * <p>
 	 * Default constructor. Initializes values and creates sub-clients.
+	 * </p>
 	 */
 	public EnvironmentClient() {
 		super();
@@ -41,10 +45,12 @@ public class EnvironmentClient extends AbstractContainerClient {
 	}
 
 	/**
+	 * <p>
 	 * Overloaded constructor.
+	 * </p>
 	 * 
 	 * @param locale
-	 *            the locale for this client
+	 *            the <code>Locale</code> for this client
 	 */
 	public EnvironmentClient(Locale locale) {
 		this();
@@ -53,7 +59,9 @@ public class EnvironmentClient extends AbstractContainerClient {
 	}
 
 	/**
+	 * <p>
 	 * Retrieve the client for interacting with environment land and water area data.
+	 * </p>
 	 * 
 	 * @return a client for environment land and water area data
 	 */

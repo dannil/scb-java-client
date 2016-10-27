@@ -21,23 +21,32 @@ import java.util.Locale;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 
 /**
+ * <p>
  * Utility class which handles URL operations.
+ * </p>
  * 
  * @author Daniel Nilsson
  */
 public final class URLUtility {
 
 	/**
+	 * <p>
 	 * Private constructor to prevent instantiation.
+	 * </p>
 	 */
 	private URLUtility() {
 
 	}
 
 	/**
-	 * Generates a new URL to the API using the fallback locale
-	 * {@link com.github.dannil.scbjavaclient.constants.APIConstants#FALLBACK_LOCALE FALLBACK_LOCALE}.
+	 * <p>
+	 * Generates a new URL to the API using the fallback <code>Locale</code>
+	 * {@link com.github.dannil.scbjavaclient.constants.APIConstants#FALLBACK_LOCALE
+	 * FALLBACK_LOCALE}.
+	 * </p>
+	 * <p>
 	 * See {@link #changeLanguageForUrl(String, String) } for implementation details.
+	 * </p>
 	 *
 	 * @param url
 	 *            the URL to edit
@@ -48,8 +57,12 @@ public final class URLUtility {
 	}
 
 	/**
-	 * Generates a new URL to the API using the specified locale. See
-	 * {@link #changeLanguageForUrl(String, String) } for implementation details.
+	 * <p>
+	 * Generates a new URL to the API using the specified locale.
+	 * </p>
+	 * <p>
+	 * See {@link #changeLanguageForUrl(String, String) } for implementation details.
+	 * </p>
 	 *
 	 * @param url
 	 *            the URL to edit

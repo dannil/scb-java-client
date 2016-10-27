@@ -25,7 +25,9 @@ import java.util.Map.Entry;
 import java.util.Objects;
 
 /**
+ * <p>
  * Class which is responsible for constructing the query which should be sent to the SCB API.
+ * </p>
  * 
  * @author Daniel Nilsson
  *
@@ -33,20 +35,24 @@ import java.util.Objects;
 public final class QueryBuilder {
 
 	/**
+	 * <p>
 	 * Private constructor to prevent instantiation.
+	 * </p>
 	 */
 	private QueryBuilder() {
 
 	}
 
 	/**
+	 * <p>
 	 * Filter out the specified value from the input collection.
+	 * </p>
 	 * 
 	 * @param collection
-	 *            the collection to filter
+	 *            the <code>Collection</code> to filter
 	 * @param value
-	 *            the value to remove from the collection
-	 * @return a collection with the specified value removed
+	 *            the value to remove from the <code>Collection</code>
+	 * @return a <code>Collection</code> with the specified value removed
 	 */
 	private static List<?> filterValue(Collection<?> collection, Object value) {
 		List<Object> filteredValues = new ArrayList<Object>();

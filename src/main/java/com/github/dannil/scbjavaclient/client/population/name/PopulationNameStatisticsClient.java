@@ -29,31 +29,39 @@ import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
+ * <p>
  * Client which handles population name statistics data fetching.
+ * </p>
  * 
  * @author Daniel Nilsson
  */
 public class PopulationNameStatisticsClient extends AbstractClient {
 
 	/**
+	 * <p>
 	 * Default constructor.
+	 * </p>
 	 */
 	public PopulationNameStatisticsClient() {
 		super();
 	}
 
 	/**
+	 * <p>
 	 * Overloaded constructor.
+	 * </p>
 	 * 
 	 * @param locale
-	 *            the locale for this client
+	 *            the <code>Locale</code> for this client
 	 */
 	public PopulationNameStatisticsClient(Locale locale) {
 		super(locale);
 	}
 
 	/**
+	 * <p>
 	 * Fetch all number of children born with first name data.
+	 * </p>
 	 * 
 	 * @return the number of children born with first name data wrapped in a list of
 	 *         {@link com.github.dannil.scbjavaclient.model.population.name.NumberOfChildrenBornWithFirstName
@@ -63,11 +71,13 @@ public class PopulationNameStatisticsClient extends AbstractClient {
 	 *      Collection)
 	 */
 	public List<NumberOfChildrenBornWithFirstName> getNumberOfChildrenBornWithFirstName() {
-		return this.getNumberOfChildrenBornWithFirstName(null, null);
+		return getNumberOfChildrenBornWithFirstName(null, null);
 	}
 
 	/**
+	 * <p>
 	 * Fetch number of children born with first name data which match the input constraints.
+	 * </p>
 	 * 
 	 * @param firstnames
 	 *            the firstnames to fetch data for
@@ -77,8 +87,7 @@ public class PopulationNameStatisticsClient extends AbstractClient {
 	 *         {@link com.github.dannil.scbjavaclient.model.population.name.NumberOfChildrenBornWithFirstName
 	 *         NumberOfChildrenBornWithFirstName} objects
 	 */
-	public List<NumberOfChildrenBornWithFirstName> getNumberOfChildrenBornWithFirstName(Collection<String> firstnames,
-			Collection<Integer> years) {
+	public List<NumberOfChildrenBornWithFirstName> getNumberOfChildrenBornWithFirstName(Collection<String> firstnames, Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
 		mappings.put("ContentsCode", Arrays.asList("BE0001AH"));
 		mappings.put("Tilltalsnamn", firstnames);

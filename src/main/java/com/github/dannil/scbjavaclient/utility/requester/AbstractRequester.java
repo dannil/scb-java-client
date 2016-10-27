@@ -38,7 +38,9 @@ import com.github.dannil.scbjavaclient.exception.SCBClientTooManyRequestsExcepti
 import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
 
 /**
+ * <p>
  * Class which contains the logic for sending URL requests to a specified address.
+ * </p>
  * 
  * @author Daniel Nilsson
  */
@@ -64,7 +66,9 @@ public abstract class AbstractRequester {
 	}
 
 	/**
+	 * <p>
 	 * Default constructor. Loads the request properties and other data needed for the requesters.
+	 * </p>
 	 */
 	protected AbstractRequester() {
 		this.client = HttpClientBuilder.create().build();
@@ -91,8 +95,10 @@ public abstract class AbstractRequester {
 	}
 
 	/**
-	 * Performs a request with the specified HttpRequest and retrieves the response as a
-	 * HttpResponse.
+	 * <p>
+	 * Performs a request with the specified <code>HttpRequest</code> and retrieves the response as
+	 * a <code>HttpResponse</code>.
+	 * </p>
 	 * 
 	 * @param request
 	 *            the request
@@ -126,7 +132,9 @@ public abstract class AbstractRequester {
 	}
 
 	/**
-	 * Extracts the response body from the HTTP response.
+	 * <p>
+	 * Extracts the response body from the <code>HttpResponse</code>.
+	 * </p>
 	 * 
 	 * @param response
 	 *            the response to extract the body from
@@ -147,7 +155,9 @@ public abstract class AbstractRequester {
 	}
 
 	/**
+	 * <p>
 	 * Return the content from the specified table.
+	 * </p>
 	 *
 	 * @param table
 	 *            the table to fetch the content from
@@ -158,7 +168,9 @@ public abstract class AbstractRequester {
 	}
 
 	/**
-	 * Returns the HTTP response from the specified URL as a string.
+	 * <p>
+	 * Returns the response from the specified URL as a string.
+	 * </p>
 	 * 
 	 * @param url
 	 *            the URL to get the response from
@@ -167,7 +179,9 @@ public abstract class AbstractRequester {
 	public abstract String getBodyAsString(String url);
 
 	/**
+	 * <p>
 	 * Getter for charset.
+	 * </p>
 	 * 
 	 * @return the charset
 	 */
@@ -176,7 +190,9 @@ public abstract class AbstractRequester {
 	}
 
 	/**
+	 * <p>
 	 * Setter for charset. Also updates the request properties with the new charset.
+	 * </p>
 	 * 
 	 * @param charset
 	 *            the charset

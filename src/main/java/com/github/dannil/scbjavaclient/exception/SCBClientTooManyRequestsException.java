@@ -17,7 +17,9 @@
 package com.github.dannil.scbjavaclient.exception;
 
 /**
+ * <p>
  * Exception for when the client performed too many requests to the API.
+ * </p>
  * 
  * @author Daniel Nilsson
  */
@@ -26,14 +28,18 @@ public class SCBClientTooManyRequestsException extends SCBClientException {
 	private static final long serialVersionUID = -7761485153313257674L;
 
 	/**
+	 * <p>
 	 * Default constructor.
+	 * </p>
 	 */
 	public SCBClientTooManyRequestsException() {
 		super();
 	}
 
 	/**
+	 * <p>
 	 * Overloaded constructor.
+	 * </p>
 	 * 
 	 * @param message
 	 *            the message
@@ -43,7 +49,9 @@ public class SCBClientTooManyRequestsException extends SCBClientException {
 	}
 
 	/**
+	 * <p>
 	 * Overloaded constructor.
+	 * </p>
 	 * 
 	 * @param message
 	 *            the message
@@ -55,7 +63,9 @@ public class SCBClientTooManyRequestsException extends SCBClientException {
 	}
 
 	/**
+	 * <p>
 	 * Overloaded constructor.
+	 * </p>
 	 * 
 	 * @param cause
 	 *            the cause

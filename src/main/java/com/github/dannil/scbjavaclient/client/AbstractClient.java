@@ -32,7 +32,9 @@ import com.github.dannil.scbjavaclient.utility.requester.RequestMethod;
 import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
 
 /**
+ * <p>
  * Abstract class which specifies how clients should operate.
+ * </p>
  * 
  * @author Daniel Nilsson
  */
@@ -47,7 +49,9 @@ public abstract class AbstractClient {
 	protected Localization localization;
 
 	/**
+	 * <p>
 	 * Default constructor.
+	 * </p>
 	 */
 	protected AbstractClient() {
 		this.locale = Locale.getDefault();
@@ -58,7 +62,9 @@ public abstract class AbstractClient {
 	}
 
 	/**
+	 * <p>
 	 * Overloaded constructor.
+	 * </p>
 	 * 
 	 * @param locale
 	 *            the locale for this client
@@ -73,7 +79,9 @@ public abstract class AbstractClient {
 	}
 
 	/**
+	 * <p>
 	 * Retrieves the language for this client instance.
+	 * </p>
 	 * 
 	 * @return the language for this client instance
 	 */
@@ -82,9 +90,11 @@ public abstract class AbstractClient {
 	}
 
 	/**
+	 * <p>
 	 * Sets the language for this client instance. Note that doing this after a call to
 	 * {@link #setLocalizationLanguage(Locale)} overwrites the localization language with the input
 	 * of this method.
+	 * </p>
 	 * 
 	 * @param locale
 	 *            the language for this client
@@ -98,8 +108,10 @@ public abstract class AbstractClient {
 	}
 
 	/**
+	 * <p>
 	 * Changes the language used for the localization. Useful if the client needs to be in a
 	 * different language than the error messages.
+	 * </p>
 	 * 
 	 * @param locale
 	 *            the language for the localization
@@ -109,7 +121,9 @@ public abstract class AbstractClient {
 	}
 
 	/**
-	 * Determines the base URL for the API based on the current locale.
+	 * <p>
+	 * Determines the base URL for the API based on the current <code>Locale</code>.
+	 * </p>
 	 * 
 	 * @return the URL representing the entry point for the API.
 	 */
@@ -118,7 +132,9 @@ public abstract class AbstractClient {
 	}
 
 	/**
+	 * <p>
 	 * Performs a GET request to the specified URL.
+	 * </p>
 	 * 
 	 * @param url
 	 *            the URL which will be sent a GET request
@@ -135,7 +151,9 @@ public abstract class AbstractClient {
 	}
 
 	/**
+	 * <p>
 	 * Performs a POST request to the specified URL.
+	 * </p>
 	 * 
 	 * @param url
 	 *            the URL which will be sent a POST request
@@ -157,13 +175,15 @@ public abstract class AbstractClient {
 	}
 
 	/**
+	 * <p>
 	 * Returns the list of the available regions for a given URL.
+	 * </p>
 	 * 
 	 * @param url
 	 *            the URL to retrieve the regions from
 	 * @return a list of the available regions for the given URL
 	 * @throws IllegalArgumentException
-	 *             if the specified URL doesn't supply a regions table
+	 *             if the specified URL doesn't supply a regions code
 	 */
 	public List<String> getRegions(String url) {
 		String json = get(url);
@@ -173,8 +193,7 @@ public abstract class AbstractClient {
 			return values;
 		} catch (IllegalArgumentException e) {
 			Object[] variables = new Object[] { code, url };
-			throw new IllegalArgumentException(this.localization.getString("code_is_not_supported_for_url", variables),
-					e);
+			throw new IllegalArgumentException(this.localization.getString("code_is_not_supported_for_url", variables), e);
 		}
 
 		// if (!inputs.containsKey("Region")) {
@@ -213,13 +232,15 @@ public abstract class AbstractClient {
 	}
 
 	/**
+	 * <p>
 	 * Returns the list of the available years for a given URL.
+	 * </p>
 	 * 
 	 * @param url
 	 *            the URL to retrieve the years from
 	 * @return a list of the available years for the given URL
 	 * @throws IllegalArgumentException
-	 *             if the specified URL doesn't supply a years table
+	 *             if the specified URL doesn't supply a years code
 	 */
 	public List<String> getYears(String url) {
 		String json = get(url);
@@ -229,8 +250,7 @@ public abstract class AbstractClient {
 			return values;
 		} catch (IllegalArgumentException e) {
 			Object[] variables = new Object[] { code, url };
-			throw new IllegalArgumentException(this.localization.getString("code_is_not_supported_for_url", variables),
-					e);
+			throw new IllegalArgumentException(this.localization.getString("code_is_not_supported_for_url", variables), e);
 		}
 		//
 		// String content = get(url);
@@ -266,7 +286,9 @@ public abstract class AbstractClient {
 	// }
 
 	/**
+	 * <p>
 	 * Returns the URL endpoint which this client represents.
+	 * </p>
 	 *
 	 * @return the URL endpoint for this client
 	 */

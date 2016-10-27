@@ -17,7 +17,9 @@
 package com.github.dannil.scbjavaclient.exception;
 
 /**
+ * <p>
  * Base exception for all client exceptions.
+ * </p>
  * 
  * @author Daniel Nilsson
  */
@@ -26,14 +28,18 @@ public class SCBClientException extends RuntimeException {
 	private static final long serialVersionUID = -2428718528932238427L;
 
 	/**
+	 * <p>
 	 * Default constructor.
+	 * </p>
 	 */
 	public SCBClientException() {
 		super();
 	}
 
 	/**
+	 * <p>
 	 * Overloaded constructor.
+	 * </p>
 	 * 
 	 * @param message
 	 *            the message
@@ -43,7 +49,9 @@ public class SCBClientException extends RuntimeException {
 	}
 
 	/**
+	 * <p>
 	 * Overloaded constructor.
+	 * </p>
 	 * 
 	 * @param message
 	 *            the message
@@ -55,7 +63,9 @@ public class SCBClientException extends RuntimeException {
 	}
 
 	/**
+	 * <p>
 	 * Overloaded constructor.
+	 * </p>
 	 * 
 	 * @param cause
 	 *            the cause

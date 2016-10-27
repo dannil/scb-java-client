@@ -88,7 +88,7 @@ public class SCBClient extends AbstractContainerClient {
 	/**
 	 * <p>
 	 * Fetches all the inputs for a given table from the API.
-	 * <p>
+	 * </p>
 	 * 
 	 * @param table
 	 *            the table to fetch the inputs from
@@ -132,8 +132,10 @@ public class SCBClient extends AbstractContainerClient {
 	}
 
 	/**
+	 * <p>
 	 * Fetch the JSON response from the specified table. Useful if you're only interested in the raw
 	 * JSON data.
+	 * </p>
 	 * 
 	 * @param table
 	 *            the table to fetch data from
@@ -146,7 +148,9 @@ public class SCBClient extends AbstractContainerClient {
 	}
 
 	/**
+	 * <p>
 	 * Checks if the specified locale is supported by the API.
+	 * </p>
 	 * 
 	 * @param locale
 	 *            the locale to check

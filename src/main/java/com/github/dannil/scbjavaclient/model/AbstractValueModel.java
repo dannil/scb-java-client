@@ -23,7 +23,9 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
+ * <p>
  * Abstract model which holds the values of the client response.
+ * </p>
  * 
  * @author Daniel Nilsson
  *
@@ -36,7 +38,9 @@ public abstract class AbstractValueModel<V> {
 	protected List<ValueNode<V>> valueNodes;
 
 	/**
+	 * <p>
 	 * Default constructor.
+	 * </p>
 	 */
 	protected AbstractValueModel() {
 		// To enable derived classes to use their default constructor
@@ -44,7 +48,9 @@ public abstract class AbstractValueModel<V> {
 	}
 
 	/**
+	 * <p>
 	 * Overloaded constructor.
+	 * </p>
 	 * 
 	 * @param values
 	 *            the values
@@ -52,6 +58,7 @@ public abstract class AbstractValueModel<V> {
 	protected AbstractValueModel(List<ValueNode<V>> values) {
 		this();
 
+		// Perform deep copy on all the value nodes
 		for (ValueNode<V> value : values) {
 			ValueNode<V> v = new ValueNode<V>(value.getValue(), value.getCode(), value.getText());
 			this.valueNodes.add(v);
@@ -59,7 +66,9 @@ public abstract class AbstractValueModel<V> {
 	}
 
 	/**
+	 * <p>
 	 * Getter for values.
+	 * </p>
 	 * 
 	 * @return the values
 	 */
@@ -68,7 +77,9 @@ public abstract class AbstractValueModel<V> {
 	}
 
 	/**
+	 * <p>
 	 * Setter for values.
+	 * </p>
 	 * 
 	 * @param values
 	 *            the values
@@ -78,11 +89,13 @@ public abstract class AbstractValueModel<V> {
 	}
 
 	/**
+	 * <p>
 	 * Get the value node for a specific contents code.
+	 * </p>
 	 *
 	 * @param key
-	 *            the contents code to get the value node for
-	 * @return the value node
+	 *            the contents code to get the {@link ValueNode ValueNode} for
+	 * @return the {@link ValueNode ValueNode} containing the contents code
 	 */
 	public ValueNode<V> getValue(String key) {
 		for (ValueNode<V> v : this.valueNodes) {
@@ -94,7 +107,9 @@ public abstract class AbstractValueModel<V> {
 	}
 
 	/**
+	 * <p>
 	 * Set the value for a specific contents code.
+	 * </p>
 	 *
 	 * @param key
 	 *            the contents code to set the value for

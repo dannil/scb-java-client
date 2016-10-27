@@ -19,7 +19,9 @@ package com.github.dannil.scbjavaclient.model;
 import java.util.Objects;
 
 /**
+ * <p>
  * Class which holds all data for a specific value.
+ * </p>
  * 
  * @author Daniel Nilsson
  *
@@ -33,14 +35,18 @@ public class ValueNode<V> {
 	private String text;
 
 	/**
+	 * <p>
 	 * Default constructor.
+	 * </p>
 	 */
 	public ValueNode() {
 
 	}
 
 	/**
+	 * <p>
 	 * Overloaded constructor.
+	 * </p>
 	 * 
 	 * @param value
 	 *            the value
@@ -56,17 +62,21 @@ public class ValueNode<V> {
 	}
 
 	/**
+	 * <p>
 	 * Copy constructor.
+	 * </p>
 	 * 
 	 * @param value
-	 *            the value to copy
+	 *            the {@link ValueNode ValueNode} to copy
 	 */
 	public ValueNode(ValueNode<V> value) {
 		this(value.value, value.code, value.text);
 	}
 
 	/**
+	 * <p>
 	 * Getter for value.
+	 * </p>
 	 * 
 	 * @return the value
 	 */
@@ -75,7 +85,9 @@ public class ValueNode<V> {
 	}
 
 	/**
+	 * <p>
 	 * Setter for value.
+	 * </p>
 	 * 
 	 * @param value
 	 *            the value
@@ -85,7 +97,9 @@ public class ValueNode<V> {
 	}
 
 	/**
+	 * <p>
 	 * Getter for code.
+	 * </p>
 	 * 
 	 * @return the code
 	 */
@@ -94,7 +108,9 @@ public class ValueNode<V> {
 	}
 
 	/**
+	 * <p>
 	 * Setter for code.
+	 * </p>
 	 * 
 	 * @param code
 	 *            the code
@@ -104,7 +120,9 @@ public class ValueNode<V> {
 	}
 
 	/**
+	 * <p>
 	 * Getter for text.
+	 * </p>
 	 * 
 	 * @return the text
 	 */
@@ -113,7 +131,9 @@ public class ValueNode<V> {
 	}
 
 	/**
+	 * <p>
 	 * Setter for text.
+	 * </p>
 	 * 
 	 * @param text
 	 *            the text
@@ -140,8 +160,7 @@ public class ValueNode<V> {
 		}
 
 		ValueNode<?> other = (ValueNode<?>) obj;
-		return Objects.equals(this.code, other.code) && Objects.equals(this.value, other.value)
-				&& Objects.equals(this.text, other.text);
+		return Objects.equals(this.code, other.code) && Objects.equals(this.value, other.value) && Objects.equals(this.text, other.text);
 	}
 
 	@Override

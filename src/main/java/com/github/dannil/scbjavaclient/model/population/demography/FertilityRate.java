@@ -30,7 +30,9 @@ import com.github.dannil.scbjavaclient.utility.requester.RequestMethod;
 import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
 
 /**
+ * <p>
  * Model for fertility rate.
+ * </p>
  * 
  * @author Daniel Nilsson
  */
@@ -40,14 +42,18 @@ public class FertilityRate extends AbstractRegionYearAndValueModel<String, Integ
 	private Integer gender;
 
 	/**
+	 * <p>
 	 * Default constructor.
+	 * </p>
 	 */
 	public FertilityRate() {
 		super();
 	}
 
 	/**
+	 * <p>
 	 * Overloaded constructor.
+	 * </p>
 	 * 
 	 * @param region
 	 *            the region
@@ -64,7 +70,9 @@ public class FertilityRate extends AbstractRegionYearAndValueModel<String, Integ
 	}
 
 	/**
+	 * <p>
 	 * Getter for gender.
+	 * </p>
 	 * 
 	 * @return the gender
 	 */
@@ -73,7 +81,9 @@ public class FertilityRate extends AbstractRegionYearAndValueModel<String, Integ
 	}
 
 	/**
+	 * <p>
 	 * Setter for gender.
+	 * </p>
 	 * 
 	 * @param gender
 	 *            the gender
@@ -122,7 +132,9 @@ public class FertilityRate extends AbstractRegionYearAndValueModel<String, Integ
 	}
 
 	/**
+	 * <p>
 	 * Get the available codes and their respective values for the fertility rate data from the API.
+	 * </p>
 	 *
 	 * @return a list of the available codes and their values
 	 */

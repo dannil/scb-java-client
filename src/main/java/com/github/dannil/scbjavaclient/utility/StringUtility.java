@@ -17,21 +17,27 @@
 package com.github.dannil.scbjavaclient.utility;
 
 /**
+ * <p>
  * Utility class for manipulation on <code>String</code> objects.
+ * </p>
  * 
  * @author Daniel Nilsson
  */
 public final class StringUtility {
 
 	/**
+	 * <p>
 	 * Private constructor to prevent instantiation.
+	 * </p>
 	 */
 	private StringUtility() {
 
 	}
 
 	/**
+	 * <p>
 	 * Converts the first character in the <code>String</code> to its lower case equivalent.
+	 * </p>
 	 * 
 	 * @param str
 	 *            the <code>String</code> to convert

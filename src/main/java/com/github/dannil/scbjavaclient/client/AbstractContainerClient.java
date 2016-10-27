@@ -21,8 +21,10 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- * Abstract class which specifies how methods by container clients (a client that has
- * sub-clients) should operate.
+ * <p>
+ * Abstract class which specifies how methods by container clients (a client that has sub-clients)
+ * should operate.
+ * </p>
  * 
  * @author Daniel Nilsson
  */
@@ -31,7 +33,9 @@ public abstract class AbstractContainerClient extends AbstractClient {
 	protected List<AbstractClient> clients;
 
 	/**
+	 * <p>
 	 * Default constructor.
+	 * </p>
 	 */
 	protected AbstractContainerClient() {
 		super();
@@ -40,7 +44,9 @@ public abstract class AbstractContainerClient extends AbstractClient {
 	}
 
 	/**
+	 * <p>
 	 * Set the locale for all sub-clients.
+	 * </p>
 	 */
 	@Override
 	public void setLocale(Locale locale) {

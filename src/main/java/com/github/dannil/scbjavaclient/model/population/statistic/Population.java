@@ -30,7 +30,9 @@ import com.github.dannil.scbjavaclient.utility.requester.RequestMethod;
 import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
 
 /**
+ * <p>
  * Model for population data.
+ * </p>
  * 
  * @author Daniel Nilsson
  */
@@ -46,14 +48,18 @@ public class Population extends AbstractRegionYearAndValueModel<String, Integer,
 	private Integer gender;
 
 	/**
+	 * <p>
 	 * Default constructor.
+	 * </p>
 	 */
 	public Population() {
 		super();
 	}
 
 	/**
+	 * <p>
 	 * Overloaded constructor.
+	 * </p>
 	 * 
 	 * @param region
 	 *            the region
@@ -76,7 +82,9 @@ public class Population extends AbstractRegionYearAndValueModel<String, Integer,
 	}
 
 	/**
+	 * <p>
 	 * Getter for relationship status.
+	 * </p>
 	 * 
 	 * @return the relationship status
 	 */
@@ -85,7 +93,9 @@ public class Population extends AbstractRegionYearAndValueModel<String, Integer,
 	}
 
 	/**
+	 * <p>
 	 * Setter for relationship status.
+	 * </p>
 	 * 
 	 * @param relationshipStatus
 	 *            the relationship status
@@ -95,7 +105,9 @@ public class Population extends AbstractRegionYearAndValueModel<String, Integer,
 	}
 
 	/**
+	 * <p>
 	 * Getter for age.
+	 * </p>
 	 * 
 	 * @return the age
 	 */
@@ -104,7 +116,9 @@ public class Population extends AbstractRegionYearAndValueModel<String, Integer,
 	}
 
 	/**
+	 * <p>
 	 * Setter for age.
+	 * </p>
 	 * 
 	 * @param age
 	 *            the age
@@ -114,7 +128,9 @@ public class Population extends AbstractRegionYearAndValueModel<String, Integer,
 	}
 
 	/**
+	 * <p>
 	 * Getter for gender.
+	 * </p>
 	 * 
 	 * @return the gender
 	 */
@@ -123,7 +139,9 @@ public class Population extends AbstractRegionYearAndValueModel<String, Integer,
 	}
 
 	/**
+	 * <p>
 	 * Setter for gender.
+	 * </p>
 	 * 
 	 * @param gender
 	 *            the gender
@@ -177,7 +195,9 @@ public class Population extends AbstractRegionYearAndValueModel<String, Integer,
 	}
 
 	/**
+	 * <p>
 	 * Get the available codes and their respective values for the population data from the API.
+	 * </p>
 	 *
 	 * @return a list of the available codes and their values
 	 */

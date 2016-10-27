@@ -30,7 +30,9 @@ import com.github.dannil.scbjavaclient.utility.requester.RequestMethod;
 import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
 
 /**
+ * <p>
  * Model for average age.
+ * </p>
  * 
  * @author Daniel Nilsson
  */
@@ -40,14 +42,18 @@ public class AverageAge extends AbstractRegionYearAndValueModel<String, Integer,
 	private String gender;
 
 	/**
+	 * <p>
 	 * Default constructor.
+	 * </p>
 	 */
 	public AverageAge() {
 		super();
 	}
 
 	/**
+	 * <p>
 	 * Overloaded constructor.
+	 * </p>
 	 * 
 	 * @param region
 	 *            the region
@@ -64,7 +70,9 @@ public class AverageAge extends AbstractRegionYearAndValueModel<String, Integer,
 	}
 
 	/**
+	 * <p>
 	 * Getter for gender.
+	 * </p>
 	 * 
 	 * @return the gender
 	 */
@@ -73,7 +81,9 @@ public class AverageAge extends AbstractRegionYearAndValueModel<String, Integer,
 	}
 
 	/**
+	 * <p>
 	 * Setter for gender.
+	 * </p>
 	 * 
 	 * @param gender
 	 *            the gender
@@ -122,7 +132,9 @@ public class AverageAge extends AbstractRegionYearAndValueModel<String, Integer,
 	}
 
 	/**
+	 * <p>
 	 * Get the available codes and their respective values for the average age data from the API.
+	 * </p>
 	 * 
 	 * @return a list of the available codes and their values
 	 */

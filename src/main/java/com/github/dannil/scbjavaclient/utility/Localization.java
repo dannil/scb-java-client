@@ -30,7 +30,9 @@ import java.util.ResourceBundle;
 import com.github.dannil.scbjavaclient.constants.ClientConstants;
 
 /**
+ * <p>
  * Class for handling localization for the clients.
+ * </p>
  * 
  * @author Daniel Nilsson
  */
@@ -41,48 +43,56 @@ public class Localization {
 	private ResourceBundleEncodingControl encodingControl;
 
 	/**
+	 * <p>
 	 * Private constructor. Initializes encoding control for the resource bundles.
+	 * </p>
 	 */
 	private Localization() {
 		this.encodingControl = new ResourceBundleEncodingControl("UTF-8");
 	}
 
 	/**
+	 * <p>
 	 * Overloaded constructor.
+	 * </p>
 	 * 
 	 * @param locale
-	 *            the locale for this localization instance
+	 *            the <code>Locale</code> for this localization instance
 	 */
 	public Localization(Locale locale) {
 		this();
-		this.bundle = ResourceBundle.getBundle(ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX, locale,
-				this.encodingControl);
+		this.bundle = ResourceBundle.getBundle(ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX, locale, this.encodingControl);
 	}
 
 	/**
-	 * Getter for the locale of this localization instance.
+	 * <p>
+	 * Getter for the <code>Locale</code> of this localization instance.
+	 * <p>
 	 * 
-	 * @return the locale for this localization instance.
+	 * @return the <code>Locale</code> for this localization instance.
 	 */
 	public Locale getLocale() {
 		return this.bundle.getLocale();
 	}
 
 	/**
-	 * Setter for the locale for this localization instance.
+	 * <p>
+	 * Setter for the <code>Locale</code> for this localization instance.
+	 * </p>
 	 * 
 	 * @param locale
-	 *            the locale
+	 *            the <code>Locale</code>
 	 */
 	public void setLocale(Locale locale) {
-		this.bundle = ResourceBundle.getBundle(ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX, locale,
-				this.encodingControl);
+		this.bundle = ResourceBundle.getBundle(ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX, locale, this.encodingControl);
 	}
 
 	/**
+	 * <p>
 	 * Returns the translation for the specified key. If it can't find the key in the current
-	 * specified language's localization file, it attempts to use the fallback locale's localization
-	 * file as the translation source.
+	 * specified language's localization file, it attempts to use the fallback <code>Locale</code>'s
+	 * localization file as the translation source.
+	 * </p>
 	 * 
 	 * @param key
 	 *            the key to get the translation for
@@ -92,13 +102,15 @@ public class Localization {
 		try {
 			return this.bundle.getString(key);
 		} catch (MissingResourceException e2) {
-			return ResourceBundle.getBundle(ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX,
-					ClientConstants.LOCALIZATION_FALLBACK_LOCALE, this.encodingControl).getString(key);
+			return ResourceBundle.getBundle(ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX, ClientConstants.LOCALIZATION_FALLBACK_LOCALE,
+					this.encodingControl).getString(key);
 		}
 	}
 
 	/**
+	 * <p>
 	 * Returns a formatted translation for the specified key.
+	 * </p>
 	 * 
 	 * @param key
 	 *            the key to get the translation for
@@ -116,8 +128,10 @@ public class Localization {
 	}
 
 	/**
+	 * <p>
 	 * Class to handle non-ASCII encodings for {@link java.util.ResourceBundle ResourceBundle}, such
 	 * as UTF-8.
+	 * </p>
 	 * 
 	 * @author Daniel Nilsson
 	 */
@@ -126,7 +140,9 @@ public class Localization {
 		private String encoding;
 
 		/**
+		 * <p>
 		 * Overloaded constructor.
+		 * </p>
 		 * 
 		 * @param encoding
 		 *            the encoding to use (i.e. UTF-8)
@@ -145,8 +161,7 @@ public class Localization {
 		}
 
 		@Override
-		public ResourceBundle newBundle(String baseName, Locale locale, String format, ClassLoader loader,
-				boolean reload) {
+		public ResourceBundle newBundle(String baseName, Locale locale, String format, ClassLoader loader, boolean reload) {
 
 			if (baseName == null || locale == null || format == null || loader == null) {
 				throw new IllegalArgumentException();
