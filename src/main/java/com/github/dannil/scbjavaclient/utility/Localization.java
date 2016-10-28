@@ -27,6 +27,9 @@ import java.util.MissingResourceException;
 import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.github.dannil.scbjavaclient.constants.ClientConstants;
 
 /**
@@ -135,7 +138,9 @@ public class Localization {
 	 * 
 	 * @author Daniel Nilsson
 	 */
-	private class ResourceBundleEncodingControl extends ResourceBundle.Control {
+	private static class ResourceBundleEncodingControl extends ResourceBundle.Control {
+
+		private static final Logger LOGGER = LogManager.getLogger(ResourceBundleEncodingControl.class);
 
 		private String encoding;
 
@@ -162,7 +167,6 @@ public class Localization {
 
 		@Override
 		public ResourceBundle newBundle(String baseName, Locale locale, String format, ClassLoader loader, boolean reload) {
-
 			if (baseName == null || locale == null || format == null || loader == null) {
 				throw new IllegalArgumentException();
 			}
@@ -170,19 +174,14 @@ public class Localization {
 			if ("properties".equals(format)) {
 				String bundleName = toBundleName(baseName, locale);
 				String resourceName = toResourceName(bundleName, format);
-				InputStream stream = null;
 
-				try {
-					stream = loader.getResourceAsStream(resourceName);
-
-					if (stream != null) {
-						try (InputStreamReader is2 = new InputStreamReader(stream, this.encoding)) {
-							ResourceBundle bundle = new PropertyResourceBundle(is2);
-							return bundle;
-						}
+				try (InputStream stream = loader.getResourceAsStream(resourceName)) {
+					try (InputStreamReader streamReader = new InputStreamReader(stream, this.encoding)) {
+						ResourceBundle bundle = new PropertyResourceBundle(streamReader);
+						return bundle;
 					}
 				} catch (IOException e) {
-					e.printStackTrace();
+					LOGGER.error(e);
 				}
 			}
 			return null;

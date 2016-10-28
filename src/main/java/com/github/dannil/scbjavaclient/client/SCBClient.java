@@ -168,9 +168,10 @@ public class SCBClient extends AbstractContainerClient {
 		}
 	}
 
-	@Override
-	public String getUrl() {
-		return super.getUrl();
-	}
+	// Unecessary
+	// @Override
+	// public String getUrl() {
+	// return super.getUrl();
+	// }
 
 }

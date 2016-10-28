@@ -239,12 +239,12 @@ public final class JsonUtility {
 	 * @return a collection of all codes and their respective values
 	 */
 	public static Map<String, Collection<String>> getInputs(String json) {
-		Map<String, Collection<String>> inputs = new HashMap<String, Collection<String>>();
-
 		JsonNode node = JsonUtility.toNode(json, "variables");
 		if (node == null) {
 			throw new SCBClientParsingException();
 		}
+
+		Map<String, Collection<String>> inputs = new HashMap<String, Collection<String>>();
 		for (int i = 0; i < node.size(); i++) {
 			JsonNode child = node.get(i);
 			List<String> values = new ArrayList<String>();

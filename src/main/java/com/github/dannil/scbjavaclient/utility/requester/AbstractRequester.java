@@ -56,7 +56,7 @@ public abstract class AbstractRequester {
 
 	static {
 		properties = new Properties();
-		try (InputStream input = AbstractRequester.class.getClassLoader().getResourceAsStream("project.properties")) {
+		try (InputStream input = Thread.currentThread().getContextClassLoader().getResourceAsStream("project.properties")) {
 			properties.load(input);
 		} catch (IOException e) {
 			throw new SCBClientException(e);
@@ -84,10 +84,12 @@ public abstract class AbstractRequester {
 		builder.append(artifactId);
 		builder.append('/');
 		builder.append(version);
-		builder.append(' ');
-		builder.append("(" + url + ")");
-		builder.append(", ");
+		builder.append(" (");
+		builder.append(url);
+		builder.append("), ");
 		builder.append(System.getProperty("os.name"));
+
+		System.out.println(builder.toString());
 
 		this.requestProperties.put("User-Agent", builder.toString());
 	}
