@@ -40,7 +40,7 @@ public class ValueNode<V> {
 	 * </p>
 	 */
 	public ValueNode() {
-
+		// Constructor to use when some of the values are missing, such as text
 	}
 
 	/**

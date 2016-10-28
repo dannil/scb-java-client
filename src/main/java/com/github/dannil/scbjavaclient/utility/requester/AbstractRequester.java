@@ -89,8 +89,6 @@ public abstract class AbstractRequester {
 		builder.append("), ");
 		builder.append(System.getProperty("os.name"));
 
-		System.out.println(builder.toString());
-
 		this.requestProperties.put("User-Agent", builder.toString());
 	}
 
