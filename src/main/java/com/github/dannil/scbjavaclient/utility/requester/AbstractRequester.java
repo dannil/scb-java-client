@@ -56,12 +56,10 @@ public abstract class AbstractRequester {
 
 	static {
 		properties = new Properties();
-		InputStream input = null;
-		try {
-			input = AbstractRequester.class.getClassLoader().getResourceAsStream("project.properties");
+		try (InputStream input = AbstractRequester.class.getClassLoader().getResourceAsStream("project.properties")) {
 			properties.load(input);
-		} catch (IOException ex) {
-			ex.printStackTrace();
+		} catch (IOException e) {
+			throw new SCBClientException(e);
 		}
 	}
 
