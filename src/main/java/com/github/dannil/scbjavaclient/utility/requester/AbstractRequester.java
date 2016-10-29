@@ -20,6 +20,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URI;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
@@ -33,9 +34,7 @@ import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.impl.client.HttpClientBuilder;
 
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
-import com.github.dannil.scbjavaclient.exception.SCBClientForbiddenException;
-import com.github.dannil.scbjavaclient.exception.SCBClientTooManyRequestsException;
-import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
+import com.github.dannil.scbjavaclient.utility.HttpUtility;
 
 /**
  * <p>
@@ -105,24 +104,9 @@ public abstract class AbstractRequester {
 	protected HttpResponse getResponse(HttpRequestBase request) {
 		try {
 			HttpResponse response = this.client.execute(request);
-
+			URI uri = request.getURI();
 			int statusCode = response.getStatusLine().getStatusCode();
-			switch (statusCode) {
-				case 200:
-					break;
-
-				case 403:
-					throw new SCBClientForbiddenException(request.getURI().toString());
-
-				case 404:
-					throw new SCBClientUrlNotFoundException(request.getURI().toString());
-
-				case 429:
-					throw new SCBClientTooManyRequestsException(request.getURI().toString());
-
-				default:
-					throw new SCBClientException("Unhandled HTTP status code " + statusCode);
-			}
+			HttpUtility.validateStatusCode(uri, statusCode);
 			return response;
 		} catch (IOException e) {
 			throw new SCBClientException(e);
