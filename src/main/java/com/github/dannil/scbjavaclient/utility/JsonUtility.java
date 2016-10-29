@@ -274,7 +274,7 @@ public final class JsonUtility {
 		if (!inputs.containsKey(code)) {
 			throw new IllegalArgumentException();
 		}
-		return (List<String>) inputs.get(code);
+		return new ArrayList<String>(inputs.get(code));
 	}
 
 	/**
