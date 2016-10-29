@@ -27,10 +27,13 @@ import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
+import com.github.dannil.scbjavaclient.model.ValueNode;
+import com.github.dannil.scbjavaclient.model.VariableNode;
 
 /**
  * <p>
- * Utility class for converting JSON to Java objects.
+ * Utility class for converting JSON to Java objects and vice versa. Also
+ * contains operations to retrieve values from the JSON.
  * </p>
  * 
  * @author Daniel Nilsson
@@ -68,7 +71,8 @@ public final class JsonUtility {
 
 	/**
 	 * <p>
-	 * Parse the JSON string into a {@link JsonNode} object with the specified field as root field.
+	 * Parse the JSON string into a {@link JsonNode} object with the specified
+	 * field as root field.
 	 * </p>
 	 * 
 	 * @param json
@@ -91,8 +95,8 @@ public final class JsonUtility {
 
 	/**
 	 * <p>
-	 * Converts the non-conventional JSON response from the SCB API into a more conventional format,
-	 * wrapped in a {@link JsonNode}.
+	 * Converts the non-conventional JSON response from the SCB API into a more
+	 * conventional format, wrapped in a {@link JsonNode}.
 	 * </p>
 	 * 
 	 * @param json
@@ -110,11 +114,13 @@ public final class JsonUtility {
 		JsonNode columns = node.get("columns");
 		JsonNode data = node.get("data");
 
-		List<String> contentCodes = new ArrayList<String>();
-		List<String> contentCodesTexts = new ArrayList<String>();
+//		List<String> contentCodes = new ArrayList<String>();
+//		List<String> contentCodesTexts = new ArrayList<String>();
 
 		List<String> codes = columns.findValuesAsText("code");
 		List<String> texts = columns.findValuesAsText("text");
+		
+		List<VariableNode> variableNodes = getVariableNodes(json);
 
 		List<Map<String, Object>> entries = new ArrayList<Map<String, Object>>();
 		for (int i = 0; i < data.size(); i++) {
@@ -122,6 +128,17 @@ public final class JsonUtility {
 
 			JsonNode entry = data.get(i);
 
+			// Sort out the content codes
+//			List<String> types = columns.findValuesAsText("type");
+//			for (int l = 0; l < codes.size(); l++) {
+//				if (types.get(l).equals("c")) {
+//					contentCodes.add(codes.get(l));
+//					contentCodesTexts.add(texts.get(l));
+//				}
+//			}
+			
+			
+			
 			// Get the key values and the value
 			JsonNode keysNode = entry.get("key");
 			JsonNode valuesNode = entry.get("values");
@@ -131,22 +148,19 @@ public final class JsonUtility {
 				map.put(key, keysNode.get(j).asText());
 			}
 
-			// Sort out the content codes
-			List<String> types = columns.findValuesAsText("type");
-			for (int l = 0; l < codes.size(); l++) {
-				if (types.get(l).equals("c")) {
-					contentCodes.add(codes.get(l));
-					contentCodesTexts.add(texts.get(l));
-				}
-			}
-
 			List<Map<String, String>> values = new ArrayList<Map<String, String>>(valuesNode.size());
 			for (int k = 0; k < valuesNode.size(); k++) {
 				Map<String, String> contents = new HashMap<String, String>();
 
+				VariableNode variableNode = variableNodes.get(k);
+				
 				contents.put("value", valuesNode.get(k).asText());
-				contents.put("code", contentCodes.get(k));
-				contents.put("text", contentCodesTexts.get(k));
+				contents.put("code", variableNode.getCode());
+				contents.put("text", variableNode.getText());
+				
+//				contents.put("value", valuesNode.get(k).asText());
+//				contents.put("code", contentCodes.get(k));
+//				contents.put("text", contentCodesTexts.get(k));
 
 				values.add(contents);
 			}
@@ -154,6 +168,8 @@ public final class JsonUtility {
 
 			entries.add(map);
 		}
+		System.out.println(entries);
+		
 		return mapper.convertValue(entries, JsonNode.class);
 	}
 
@@ -197,8 +213,9 @@ public final class JsonUtility {
 	 * 
 	 * @param <T>
 	 *            the data type of the list
-	 * @return a list of elements, which type is the specified class. Each element represents the
-	 *         corresponding entry in the {@link JsonNode}
+	 * @return a list of elements, which type is the specified class. Each
+	 *         element represents the corresponding entry in the
+	 *         {@link JsonNode}
 	 */
 	public static <T> List<T> jsonToListOf(JsonNode node, Class<T> clazz) {
 		return jsonToListOf(node.toString(), clazz);
@@ -216,8 +233,8 @@ public final class JsonUtility {
 	 * 
 	 * @param <T>
 	 *            the data type of the list
-	 * @return a list of elements, which type is the specified class. Each element represents the
-	 *         corresponding entry in the JSON
+	 * @return a list of elements, which type is the specified class. Each
+	 *         element represents the corresponding entry in the JSON
 	 */
 	public static <T> List<T> jsonToListOf(String json, Class<T> clazz) {
 		try {
@@ -255,6 +272,36 @@ public final class JsonUtility {
 			inputs.put(child.get("code").asText(), values);
 		}
 		return inputs;
+	}
+	
+	public static List<VariableNode> getVariableNodes(String json) {
+		JsonNode node = JsonUtility.toNode(json, "variables");
+		if (node == null) {
+			throw new SCBClientParsingException();
+		}
+
+		List<VariableNode> variableNodes = new ArrayList<VariableNode>(node.size());
+		for (int i = 0; i < node.size(); i++) {
+			JsonNode entry = node.get(i);
+			
+//			List<String> values = new ArrayList<String>();
+//			List<String> valueTexts = new ArrayList<String>();
+			
+			String code = entry.get("code").asText();
+			String text = entry.get("text").asText();
+			List<String> values = entry.findValuesAsText("values");
+			List<String> valueTexts = entry.findValuesAsText("valueTexts");
+			
+//			JsonNode valuesNode = entry.get("values");
+//			JsonNode valueTextsNode = entry.get("valueTexts");
+			
+			VariableNode variableNode = new VariableNode(code, text, values, valueTexts);
+			variableNodes.add(variableNode);
+			
+			System.out.println(variableNode);
+		}
+		return variableNodes;
+		
 	}
 
 	/**
