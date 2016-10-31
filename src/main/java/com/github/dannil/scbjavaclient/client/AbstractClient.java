@@ -23,7 +23,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
-import com.github.dannil.scbjavaclient.utility.JsonUtility;
+import com.github.dannil.scbjavaclient.format.JsonConventionalFormat;
+import com.github.dannil.scbjavaclient.format.JsonFormat;
 import com.github.dannil.scbjavaclient.utility.Localization;
 import com.github.dannil.scbjavaclient.utility.URLUtility;
 import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
@@ -189,7 +190,8 @@ public abstract class AbstractClient {
 		String json = get(url);
 		String code = "Region";
 		try {
-			List<String> values = JsonUtility.getValues(json, code);
+			JsonFormat format = new JsonConventionalFormat(json);
+			List<String> values = format.getValues(code);
 			return values;
 		} catch (IllegalArgumentException e) {
 			Object[] variables = new Object[] { code, url };
@@ -246,8 +248,8 @@ public abstract class AbstractClient {
 		String json = get(url);
 		String code = "Tid";
 		try {
-			List<String> values = JsonUtility.getValues(json, code);
-			return values;
+			JsonFormat format = new JsonConventionalFormat(json);
+			return format.getValues(code);
 		} catch (IllegalArgumentException e) {
 			Object[] variables = new Object[] { code, url };
 			throw new IllegalArgumentException(this.localization.getString("code_is_not_supported_for_url", variables), e);

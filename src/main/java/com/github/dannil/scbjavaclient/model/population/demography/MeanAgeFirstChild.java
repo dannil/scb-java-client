@@ -22,9 +22,9 @@ import java.util.Map;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.github.dannil.scbjavaclient.format.JsonConventionalFormat;
 import com.github.dannil.scbjavaclient.model.AbstractRegionYearAndValueModel;
 import com.github.dannil.scbjavaclient.model.ValueNode;
-import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
 import com.github.dannil.scbjavaclient.utility.requester.RequestMethod;
 import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
@@ -141,7 +141,7 @@ public class MeanAgeFirstChild extends AbstractRegionYearAndValueModel<String, I
 	 */
 	public static Map<String, Collection<String>> getInputs() {
 		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
-		return JsonUtility.getInputs(get.getBodyAsStringFromTable("BE/BE0701/MedelAlderNY"));
+		return JsonConventionalFormat.getInputs(get.getBodyAsStringFromTable("BE/BE0701/MedelAlderNY"));
 	}
 
 }

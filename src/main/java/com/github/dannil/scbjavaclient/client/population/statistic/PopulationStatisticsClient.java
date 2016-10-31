@@ -24,10 +24,10 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.format.JsonConventionalFormat;
 import com.github.dannil.scbjavaclient.model.population.statistic.AverageAge;
 import com.github.dannil.scbjavaclient.model.population.statistic.LiveBirth;
 import com.github.dannil.scbjavaclient.model.population.statistic.Population;
-import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
@@ -114,7 +114,7 @@ public class PopulationStatisticsClient extends AbstractClient {
 
 		String response = super.post("BE/BE0101/BE0101B/BefolkningMedelAlder", QueryBuilder.build(mappings));
 
-		return JsonUtility.jsonToListOf(response, AverageAge.class);
+		return JsonConventionalFormat.toListOf(response, AverageAge.class);
 	}
 
 	/**
@@ -160,7 +160,7 @@ public class PopulationStatisticsClient extends AbstractClient {
 
 		String response = super.post("BE/BE0101/BE0101H/FoddaK", QueryBuilder.build(mappings));
 
-		return JsonUtility.jsonToListOf(response, LiveBirth.class);
+		return JsonConventionalFormat.toListOf(response, LiveBirth.class);
 	}
 
 	/**
@@ -211,7 +211,7 @@ public class PopulationStatisticsClient extends AbstractClient {
 
 		String response = super.post("BE/BE0101/BE0101A/BefolkningNy", QueryBuilder.build(mappings));
 
-		return JsonUtility.jsonToListOf(response, Population.class);
+		return JsonConventionalFormat.toListOf(response, Population.class);
 	}
 
 	@Override

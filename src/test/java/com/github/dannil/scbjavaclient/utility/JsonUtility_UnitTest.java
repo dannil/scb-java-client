@@ -34,6 +34,7 @@ import org.junit.runners.JUnit4;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
+import com.github.dannil.scbjavaclient.format.JsonConventionalFormat;
 import com.github.dannil.scbjavaclient.model.ValueNode;
 import com.github.dannil.scbjavaclient.model.population.statistic.Population;
 
@@ -50,7 +51,7 @@ public class JsonUtility_UnitTest {
 	@Test
 	public void callPrivateConstructor() throws InstantiationException, IllegalAccessException,
 			IllegalArgumentException, InvocationTargetException {
-		Constructor<?>[] cons = JsonUtility.class.getDeclaredConstructors();
+		Constructor<?>[] cons = JsonConventionalFormat.class.getDeclaredConstructors();
 		cons[0].setAccessible(true);
 		cons[0].newInstance();
 		cons[0].setAccessible(false);
@@ -60,7 +61,7 @@ public class JsonUtility_UnitTest {
 
 	@Test
 	public void getNodeField() {
-		JsonNode node = JsonUtility.toNode(this.json, "query");
+		JsonNode node = JsonConventionalFormat.toNode(this.json, "query");
 
 		String comparison = "[{\"code\": \"ContentsCode\",\"selection\": {\"filter\": \"item\",\"values\": [\"MI0802AA\"]}}]";
 
@@ -71,9 +72,9 @@ public class JsonUtility_UnitTest {
 	public void jsonToListNonConventionalJson() {
 		String nonConventionalJson = "{\"columns\":[{\"code\":\"Region\",\"text\":\"region\",\"type\":\"d\"},{\"code\":\"Civilstand\",\"text\":\"marital status\",\"type\":\"d\"},{\"code\":\"Alder\",\"text\":\"age\",\"type\":\"d\"},{\"code\":\"Tid\",\"text\":\"year\",\"type\":\"t\"},{\"code\":\"BE0101N1\",\"text\":\"Population\",\"comment\":\"The tables show the conditions on December 31st for each respective year according to administrative subdivisions of January 1st of the following year\\r\\n\",\"type\":\"c\"},{\"code\":\"BE0101N2\",\"text\":\"Population growth\",\"comment\":\"Population growth is defined as the difference between the population at the beginning of the year and at the end of the year.\\r\\n\",\"type\":\"c\"}],\"comments\":[],\"data\":[{\"key\":[\"00\",\"OG\",\"45\",\"2011\"],\"values\":[\"48403\",\"1007\"]}]}";
 
-		JsonNode node = JsonUtility.toNode(nonConventionalJson);
+		JsonNode node = JsonConventionalFormat.toNode(nonConventionalJson);
 
-		List<Population> convertedPopulations = JsonUtility.jsonToListOf(node, Population.class);
+		List<Population> convertedPopulations = JsonConventionalFormat.jsonToListOf(node, Population.class);
 
 		List<ValueNode<String>> values = new ArrayList<ValueNode<String>>();
 
@@ -91,41 +92,41 @@ public class JsonUtility_UnitTest {
 
 	@Test(expected = SCBClientParsingException.class)
 	public void jsonToListOfInvalidJson() {
-		JsonNode node = JsonUtility.toNode(this.json);
+		JsonNode node = JsonConventionalFormat.toNode(this.json);
 
-		List<Population> populations = JsonUtility.jsonToListOf(node, Population.class);
+		List<Population> populations = JsonConventionalFormat.jsonToListOf(node, Population.class);
 
 		assertNull(populations);
 	}
 
 	@Test(expected = SCBClientParsingException.class)
 	public void getNodeInvalidJson() {
-		JsonNode node = JsonUtility.toNode("hello world");
+		JsonNode node = JsonConventionalFormat.toNode("hello world");
 
 		assertNull(node);
 	}
 
 	@Test
 	public void isQuery() {
-		JsonNode node = JsonUtility.toNode(this.json);
+		JsonNode node = JsonConventionalFormat.toNode(this.json);
 
-		assertTrue(JsonUtility.isQuery(node));
+		assertTrue(JsonConventionalFormat.isQuery(node));
 	}
 
 	@Test
 	public void isConventionalJson() {
 		String nonConventionalJson = "{\"columns\":[{\"code\":\"Region\",\"text\":\"region\",\"type\":\"d\"},{\"code\":\"Civilstand\",\"text\":\"marital status\",\"type\":\"d\"},{\"code\":\"Alder\",\"text\":\"age\",\"type\":\"d\"},{\"code\":\"Tid\",\"text\":\"year\",\"type\":\"t\"},{\"code\":\"BE0101N1\",\"text\":\"Population\",\"comment\":\"The tables show the conditions on December 31st for each respective year according to administrative subdivisions of January 1st of the following year\\r\\n\",\"type\":\"c\"},{\"code\":\"BE0101N2\",\"text\":\"Population growth\",\"comment\":\"Population growth is defined as the difference between the population at the beginning of the year and at the end of the year.\\r\\n\",\"type\":\"c\"}],\"comments\":[],\"data\":[{\"key\":[\"00\",\"OG\",\"45\",\"2011\"],\"values\":[\"48403\",\"1007\"]}]}";
 
-		JsonNode conventionalJson = JsonUtility.toConventionalJson(nonConventionalJson);
+		JsonNode conventionalJson = JsonConventionalFormat.toConventionalJson(nonConventionalJson);
 
-		assertTrue(JsonUtility.isConventionalJson(conventionalJson));
+		assertTrue(JsonConventionalFormat.isConventionalJson(conventionalJson));
 	}
 
 	@Test
 	public void getCodes() {
 		String json = "{\"title\":\"Folkmängdenefterregion,civilstånd,ålder,kön,tabellinnehållochår\",\"variables\":[{\"code\":\"Region\",\"text\":\"region\",\"values\":[\"00\",\"01\",\"0114\"],\"valueTexts\":[\"Riket\",\"Stockholmslän\",\"UpplandsVäsby\"]},{\"code\":\"Civilstand\",\"text\":\"civilstånd\",\"values\":[\"OG\",\"G\",\"SK\",\"ÄNKL\"],\"valueTexts\":[\"ogifta\",\"gifta\",\"skilda\",\"änkor/änklingar\"],\"elimination\":true},{\"code\":\"Alder\",\"text\":\"ålder\",\"values\":[\"0\",\"1\"],\"valueTexts\":[\"0år\",\"1år\"],\"elimination\":true},{\"code\":\"Kon\",\"text\":\"kön\",\"values\":[\"1\",\"2\"],\"valueTexts\":[\"män\",\"kvinnor\"],\"elimination\":true},{\"code\":\"ContentsCode\",\"text\":\"tabellinnehåll\",\"values\":[\"BE0101N1\",\"BE0101N2\"],\"valueTexts\":[\"Folkmängd\",\"Folkökning\"]},{\"code\":\"Tid\",\"text\":\"år\",\"values\":[\"1968\",\"1969\"],\"valueTexts\":[\"1968\",\"1969\"],\"time\":true}]}";
 
-		List<String> extractedCodes = JsonUtility.getCodes(json);
+		List<String> extractedCodes = JsonConventionalFormat.getCodes(json);
 		List<String> staticCodes = Arrays.asList("Region", "Civilstand", "Alder", "Kon", "ContentsCode", "Tid");
 
 		assertTrue(extractedCodes.containsAll(staticCodes));
