@@ -23,8 +23,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
-import com.github.dannil.scbjavaclient.format.JsonConventionalFormat;
-import com.github.dannil.scbjavaclient.format.JsonFormat;
+import com.github.dannil.scbjavaclient.format.JsonAPITableFormat;
 import com.github.dannil.scbjavaclient.utility.Localization;
 import com.github.dannil.scbjavaclient.utility.URLUtility;
 import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
@@ -190,7 +189,7 @@ public abstract class AbstractClient {
 		String json = get(url);
 		String code = "Region";
 		try {
-			JsonFormat format = new JsonConventionalFormat(json);
+			JsonAPITableFormat format = new JsonAPITableFormat(json);
 			List<String> values = format.getValues(code);
 			return values;
 		} catch (IllegalArgumentException e) {
@@ -248,7 +247,7 @@ public abstract class AbstractClient {
 		String json = get(url);
 		String code = "Tid";
 		try {
-			JsonFormat format = new JsonConventionalFormat(json);
+			JsonAPITableFormat format = new JsonAPITableFormat(json);
 			return format.getValues(code);
 		} catch (IllegalArgumentException e) {
 			Object[] variables = new Object[] { code, url };

@@ -24,7 +24,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
-import com.github.dannil.scbjavaclient.format.JsonConventionalFormat;
+import com.github.dannil.scbjavaclient.format.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.model.population.name.NumberOfChildrenBornWithFirstName;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
@@ -95,7 +95,8 @@ public class PopulationNameStatisticsClient extends AbstractClient {
 
 		String response = super.post("BE/BE0001/BE0001T04Ar", QueryBuilder.build(mappings));
 
-		return JsonConventionalFormat.toListOf(response, NumberOfChildrenBornWithFirstName.class);
+		JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
+		return format.toListOf(NumberOfChildrenBornWithFirstName.class);
 	}
 
 	@Override

@@ -24,7 +24,7 @@ import java.util.Map;
 import com.github.dannil.scbjavaclient.client.environment.EnvironmentClient;
 import com.github.dannil.scbjavaclient.client.population.PopulationClient;
 import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
-import com.github.dannil.scbjavaclient.format.JsonConventionalFormat;
+import com.github.dannil.scbjavaclient.format.JsonAPITableFormat;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 import com.github.dannil.scbjavaclient.utility.URLUtility;
 import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
@@ -94,13 +94,13 @@ public class SCBClient extends AbstractContainerClient {
 	 *            the table to fetch the inputs from
 	 * @return a collection of all codes and their respective values
 	 * 
-	 * @see com.github.dannil.scbjavaclient.format.JsonConventionalFormat#getInputs(String)
-	 *      JsonUtility#getInputs(String)
+	 * @see com.github.dannil.scbjavaclient.format.JsonAPITableFormat#getInputs()
+	 *      JsonAPITableFormat#getInputs()
 	 */
 	public Map<String, Collection<String>> getInputs(String table) {
 		String json = super.get(table);
 
-		return new JsonConventionalFormat(json).getInputs();
+		return new JsonAPITableFormat(json).getInputs();
 	}
 
 	/**
@@ -119,14 +119,14 @@ public class SCBClient extends AbstractContainerClient {
 	 *            the table to fetch data from
 	 * @return a JSON string containing all available data in the specified table
 	 * 
-	 * @see com.github.dannil.scbjavaclient.format.JsonConventionalFormat#getValues(String, String)
-	 *      JsonUtility#getValues(String, String)
+	 * @see com.github.dannil.scbjavaclient.format.JsonAPITableFormat#getValues(String)
+	 *      JsonAPITableFormat#getValues(String)
 	 */
 	public String getRawData(String table) {
 		String json = super.get(table);
 
 		Map<String, Collection<?>> inputs = new HashMap<String, Collection<?>>();
-		inputs.put("ContentsCode", new JsonConventionalFormat(json).getValues("ContentsCode"));
+		inputs.put("ContentsCode", new JsonAPITableFormat(json).getValues("ContentsCode"));
 
 		return getRawData(table, inputs);
 	}

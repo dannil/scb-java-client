@@ -22,7 +22,7 @@ import java.util.Map;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.github.dannil.scbjavaclient.format.JsonConventionalFormat;
+import com.github.dannil.scbjavaclient.format.JsonAPITableFormat;
 import com.github.dannil.scbjavaclient.model.AbstractRegionYearAndValueModel;
 import com.github.dannil.scbjavaclient.model.ValueNode;
 import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
@@ -140,7 +140,10 @@ public class FertilityRate extends AbstractRegionYearAndValueModel<String, Integ
 	 */
 	public static Map<String, Collection<String>> getInputs() {
 		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
-		return JsonConventionalFormat.getInputs(get.getBodyAsStringFromTable("BE/BE0701/FruktsamhetSumNy"));
+		String response = get.getBodyAsStringFromTable("BE/BE0701/FruktsamhetSumNy");
+
+		JsonAPITableFormat format = new JsonAPITableFormat(response);
+		return format.getInputs();
 	}
 
 }

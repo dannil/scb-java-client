@@ -1,29 +1,19 @@
 package com.github.dannil.scbjavaclient.format;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
-import com.fasterxml.jackson.databind.JsonNode;
-
-// TODO Add docs here
-public interface JsonFormat {
+public interface IJsonTableFormat {
 
 	/**
 	 * <p>
-	 * Formats the JSON according to the specified implementing format.
+	 * Extracts the codes and their respective values from the JSON.
 	 * </p>
 	 * 
-	 * @return a formatted {@link com.fasterxml.jackson.databind.JsonNode JsonNode}
+	 * @return a collection of all codes and their respective values
 	 */
-	JsonNode format();
-
-	/**
-	 * <p>
-	 * Checks if the JSON is formatted as the specified format.
-	 * </p>
-	 * 
-	 * @return true if the JSON is formatted as the implementing format
-	 */
-	boolean isFormatted();
+	Map<String, Collection<String>> getInputs();
 
 	/**
 	 * <p>

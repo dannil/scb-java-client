@@ -22,7 +22,7 @@ import java.util.Map;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.github.dannil.scbjavaclient.format.JsonConventionalFormat;
+import com.github.dannil.scbjavaclient.format.JsonAPITableFormat;
 import com.github.dannil.scbjavaclient.model.AbstractYearAndValueModel;
 import com.github.dannil.scbjavaclient.model.ValueNode;
 import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
@@ -137,7 +137,10 @@ public class NumberOfChildrenBornWithFirstName extends AbstractYearAndValueModel
 	 */
 	public static Map<String, Collection<String>> getInputs() {
 		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
-		return JsonConventionalFormat.getInputs(get.getBodyAsStringFromTable("BE/BE0001/BE0001T04Ar"));
+		String response = get.getBodyAsStringFromTable("BE/BE0001/BE0001T04Ar");
+
+		JsonAPITableFormat format = new JsonAPITableFormat(response);
+		return format.getInputs();
 	}
 
 }

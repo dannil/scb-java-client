@@ -18,7 +18,6 @@ package com.github.dannil.scbjavaclient.format;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,7 +35,7 @@ import com.github.dannil.scbjavaclient.utility.StringUtility;
 // *
 // * @author Daniel Nilsson
 // */
-public final class JsonConventionalFormat implements JsonFormat {
+public final class JsonCustomResponseFormat implements IJsonResponseFormat {
 
 	private JsonConverter converter;
 
@@ -50,7 +49,7 @@ public final class JsonConventionalFormat implements JsonFormat {
 	 * @param json
 	 *            the json to format
 	 */
-	public JsonConventionalFormat(String json) {
+	public JsonCustomResponseFormat(String json) {
 		this.converter = new JsonConverter();
 		this.json = this.converter.toNode(json);
 		this.json = format();
@@ -232,9 +231,6 @@ public final class JsonConventionalFormat implements JsonFormat {
 	 * Converts the JSON string into a list of the specified class.
 	 * </p>
 	 * 
-	 * // * @param json
-	 * // * the json to process
-	 * 
 	 * @param clazz
 	 *            the class to convert each JSON entry to
 	 * 
@@ -251,49 +247,6 @@ public final class JsonConventionalFormat implements JsonFormat {
 		} catch (IOException e) {
 			throw new SCBClientParsingException(e);
 		}
-	}
-
-	/**
-	 * <p>
-	 * Extracts the codes and their respective values from the JSON.
-	 * </p>
-	 * 
-	 * @return a collection of all codes and their respective values
-	 */
-	public Map<String, Collection<String>> getInputs() {
-		if (this.json == null) {
-			throw new SCBClientParsingException();
-		}
-
-		Map<String, Collection<String>> inputs = new HashMap<String, Collection<String>>();
-		for (int i = 0; i < this.json.size(); i++) {
-			JsonNode child = this.json.get(i);
-			List<String> values = new ArrayList<String>();
-			JsonNode valuesNode = child.get("values");
-			for (int j = 0; j < valuesNode.size(); j++) {
-				values.add(valuesNode.get(j).asText());
-			}
-			inputs.put(child.get("code").asText(), values);
-		}
-		return inputs;
-	}
-
-	@Override
-	public List<String> getValues(String code) throws IllegalArgumentException {
-		Map<String, Collection<String>> inputs = getInputs();
-		if (!inputs.containsKey(code)) {
-			throw new IllegalArgumentException();
-		}
-		return new ArrayList<String>(inputs.get(code));
-	}
-
-	@Override
-	public List<String> getCodes() throws IllegalArgumentException {
-		List<String> codes = new ArrayList<String>(getInputs().keySet());
-		if (codes.size() == 0) {
-			throw new IllegalArgumentException();
-		}
-		return codes;
 	}
 
 	// public JsonNode getJson() {
