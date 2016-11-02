@@ -28,8 +28,10 @@ import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
 import com.github.dannil.scbjavaclient.utility.StringUtility;
 
 /**
+ * <p>
  * Class which encapsulates behavior for the custom JSON response format. Note that this class is
  * immutable; to change the containing JSON, a new class needs to be instantiated.
+ * </p>
  * 
  * @author Daniel Nilsson
  */

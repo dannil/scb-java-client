@@ -22,20 +22,31 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
 
+/**
+ * <p>
+ * Class which encapsulates methods for converting JSON.
+ * </p>
+ * 
+ * @author Daniel Nilsson
+ */
 public class JsonConverter {
 
 	private ObjectMapper mapper;
 
 	/**
+	 * <p>
 	 * Default constructor. Initializes the {@link com.fasterxml.jackson.databind.ObjectMapper
 	 * ObjectMapper} needed for converting objects.
+	 * </p>
 	 */
 	public JsonConverter() {
 		this.mapper = new ObjectMapper();
 	}
 
 	/**
+	 * <p>
 	 * Getter for mapper.
+	 * </p>
 	 * 
 	 * @return the mapper
 	 */

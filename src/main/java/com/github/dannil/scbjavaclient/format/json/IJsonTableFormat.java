@@ -21,8 +21,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * <p>
  * Interface for JSON table format. All implementing classes should specify an instance variable
  * which contains the JSON which should be operated on by the methods.
+ * </p>
  * 
  * @author Daniel Nilsson
  */
