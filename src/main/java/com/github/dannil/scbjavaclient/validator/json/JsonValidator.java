@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.JsonNode;
  * 
  * @author Daniel Nilsson
  */
-public class JsonValidator {
+public final class JsonValidator {
 
 	/**
 	 * <p>
