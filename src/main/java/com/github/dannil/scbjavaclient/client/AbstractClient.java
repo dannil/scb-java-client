@@ -23,7 +23,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
-import com.github.dannil.scbjavaclient.format.JsonAPITableFormat;
+import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
 import com.github.dannil.scbjavaclient.utility.Localization;
 import com.github.dannil.scbjavaclient.utility.URLUtility;
 import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;

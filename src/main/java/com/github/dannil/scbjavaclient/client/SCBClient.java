@@ -24,7 +24,7 @@ import java.util.Map;
 import com.github.dannil.scbjavaclient.client.environment.EnvironmentClient;
 import com.github.dannil.scbjavaclient.client.population.PopulationClient;
 import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
-import com.github.dannil.scbjavaclient.format.JsonAPITableFormat;
+import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 import com.github.dannil.scbjavaclient.utility.URLUtility;
 import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
@@ -94,7 +94,7 @@ public class SCBClient extends AbstractContainerClient {
 	 *            the table to fetch the inputs from
 	 * @return a collection of all codes and their respective values
 	 * 
-	 * @see com.github.dannil.scbjavaclient.format.JsonAPITableFormat#getInputs()
+	 * @see com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat#getInputs()
 	 *      JsonAPITableFormat#getInputs()
 	 */
 	public Map<String, Collection<String>> getInputs(String table) {
@@ -119,7 +119,7 @@ public class SCBClient extends AbstractContainerClient {
 	 *            the table to fetch data from
 	 * @return a JSON string containing all available data in the specified table
 	 * 
-	 * @see com.github.dannil.scbjavaclient.format.JsonAPITableFormat#getValues(String)
+	 * @see com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat#getValues(String)
 	 *      JsonAPITableFormat#getValues(String)
 	 */
 	public String getRawData(String table) {

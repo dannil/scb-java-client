@@ -14,8 +14,10 @@
  * limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.format;
+package com.github.dannil.scbjavaclient.format.json;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
@@ -42,90 +44,6 @@ public class JsonAPITableFormat_UnitTest {
 		this.json = "{\"title\":\"Folkmängdenefterregion,civilstånd,ålder,kön,tabellinnehållochår\",\"variables\":[{\"code\":\"Region\",\"text\":\"region\",\"values\":[\"00\",\"01\",\"0114\"],\"valueTexts\":[\"Riket\",\"Stockholmslän\",\"UpplandsVäsby\"]},{\"code\":\"Civilstand\",\"text\":\"civilstånd\",\"values\":[\"OG\",\"G\",\"SK\",\"ÄNKL\"],\"valueTexts\":[\"ogifta\",\"gifta\",\"skilda\",\"änkor/änklingar\"],\"elimination\":true},{\"code\":\"Alder\",\"text\":\"ålder\",\"values\":[\"0\",\"1\"],\"valueTexts\":[\"0år\",\"1år\"],\"elimination\":true},{\"code\":\"Kon\",\"text\":\"kön\",\"values\":[\"1\",\"2\"],\"valueTexts\":[\"män\",\"kvinnor\"],\"elimination\":true},{\"code\":\"ContentsCode\",\"text\":\"tabellinnehåll\",\"values\":[\"BE0101N1\",\"BE0101N2\"],\"valueTexts\":[\"Folkmängd\",\"Folkökning\"]},{\"code\":\"Tid\",\"text\":\"år\",\"values\":[\"1968\",\"1969\"],\"valueTexts\":[\"1968\",\"1969\"],\"time\":true}]}";
 		this.format = new JsonAPITableFormat(this.json);
 	}
-
-	// @Test
-	// public void callPrivateConstructor() throws InstantiationException, IllegalAccessException,
-	// IllegalArgumentException, InvocationTargetException {
-	// Constructor<?>[] cons = JsonConventionalFormat.class.getDeclaredConstructors();
-	// cons[0].setAccessible(true);
-	// cons[0].newInstance();
-	// cons[0].setAccessible(false);
-	//
-	// assertFalse(cons[0].isAccessible());
-	// }
-
-	// @Test
-	// public void toListNonConventionalJson() {
-	// String nonConventionalJson =
-	// "{\"columns\":[{\"code\":\"Region\",\"text\":\"region\",\"type\":\"d\"},{\"code\":\"Civilstand\",\"text\":\"marital status\",\"type\":\"d\"},{\"code\":\"Alder\",\"text\":\"age\",\"type\":\"d\"},{\"code\":\"Tid\",\"text\":\"year\",\"type\":\"t\"},{\"code\":\"BE0101N1\",\"text\":\"Population\",\"comment\":\"The tables show the conditions on December 31st for each respective year according to administrative subdivisions of January 1st of the following year\\r\\n\",\"type\":\"c\"},{\"code\":\"BE0101N2\",\"text\":\"Population growth\",\"comment\":\"Population growth is defined as the difference between the population at the beginning of the year and at the end of the year.\\r\\n\",\"type\":\"c\"}],\"comments\":[],\"data\":[{\"key\":[\"00\",\"OG\",\"45\",\"2011\"],\"values\":[\"48403\",\"1007\"]}]}";
-	//
-	// JsonCustomResponseFormat format = new JsonCustomResponseFormat(nonConventionalJson);
-	// List<Population> convertedPopulations = format.toListOf(Population.class);
-	//
-	// List<ValueNode<String>> values = new ArrayList<ValueNode<String>>();
-	//
-	// ValueNode<String> value1 = new ValueNode<String>("48403", "BE0101N1", "Population");
-	// values.add(value1);
-	//
-	// ValueNode<String> value2 = new ValueNode<String>("1007", "BE0101N2", "Population growth");
-	// values.add(value2);
-	//
-	// Population p = new Population("00", "OG", "45", null, 2011, values);
-	// List<Population> staticPopulations = Arrays.asList(p);
-	//
-	// assertEquals(convertedPopulations, staticPopulations);
-	//
-	// // JsonNode node = JsonConventionalFormat.toNode(nonConventionalJson);
-	// //
-	// // List<Population> convertedPopulations = JsonConventionalFormat.jsonToListOf(node,
-	// // Population.class);
-	// //
-	// // List<ValueNode<String>> values = new ArrayList<ValueNode<String>>();
-	// //
-	// // ValueNode<String> value1 = new ValueNode<String>("48403", "BE0101N1", "Population");
-	// // values.add(value1);
-	// //
-	// // ValueNode<String> value2 = new ValueNode<String>("1007", "BE0101N2",
-	// // "Population growth");
-	// // values.add(value2);
-	// //
-	// // Population p = new Population("00", "OG", "45", null, 2011, values);
-	// // List<Population> staticPopulations = Arrays.asList(p);
-	// //
-	// // assertEquals(convertedPopulations, staticPopulations);
-	// }
-	//
-	// @Test(expected = SCBClientParsingException.class)
-	// public void toListOfInvalidJson() {
-	// JsonCustomResponseFormat format = new JsonCustomResponseFormat(this.json);
-	//
-	// // JsonNode node = JsonConventionalFormat.toNode(this.json);
-	//
-	// List<Population> populations = format.toListOf(Population.class);
-	//
-	// assertNull(populations);
-	// }
-
-	// @Test
-	// public void isQuery() {
-	// JsonNode node = JsonConventionalFormat.toNode(this.json);
-	//
-	// assertTrue(JsonConventionalFormat.isQuery(node));
-	// }
-
-	// @Test
-	// public void isFormatted() {
-	// String nonConventionalJson =
-	// "{\"columns\":[{\"code\":\"Region\",\"text\":\"region\",\"type\":\"d\"},{\"code\":\"Civilstand\",\"text\":\"marital status\",\"type\":\"d\"},{\"code\":\"Alder\",\"text\":\"age\",\"type\":\"d\"},{\"code\":\"Tid\",\"text\":\"year\",\"type\":\"t\"},{\"code\":\"BE0101N1\",\"text\":\"Population\",\"comment\":\"The tables show the conditions on December 31st for each respective year according to administrative subdivisions of January 1st of the following year\\r\\n\",\"type\":\"c\"},{\"code\":\"BE0101N2\",\"text\":\"Population growth\",\"comment\":\"Population growth is defined as the difference between the population at the beginning of the year and at the end of the year.\\r\\n\",\"type\":\"c\"}],\"comments\":[],\"data\":[{\"key\":[\"00\",\"OG\",\"45\",\"2011\"],\"values\":[\"48403\",\"1007\"]}]}";
-	// JsonCustomResponseFormat format = new JsonCustomResponseFormat(nonConventionalJson);
-	//
-	// assertTrue(format.isFormatted());
-	//
-	// // JsonNode conventionalJson =
-	// // JsonConventionalFormat.toConventionalJson(nonConventionalJson);
-	// //
-	// // assertTrue(JsonConventionalFormat.isConventionalJson(conventionalJson));
-	// }
 
 	@Test
 	public void getInputs() {
@@ -183,6 +101,25 @@ public class JsonAPITableFormat_UnitTest {
 	}
 
 	@Test
+	public void getCodes() {
+		List<String> extractedCodes = this.format.getCodes();
+		List<String> staticCodes = Arrays.asList("Region", "Civilstand", "Alder", "Kon", "ContentsCode", "Tid");
+
+		assertTrue(extractedCodes.containsAll(staticCodes));
+		assertTrue(staticCodes.containsAll(extractedCodes));
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void getCodesEmpty() {
+		String json = "{\"title\":\"Folkmängdenefterregion,civilstånd,ålder,kön,tabellinnehållochår\",\"variables\":[]}";
+
+		JsonAPITableFormat format = new JsonAPITableFormat(json);
+		List<String> codes = format.getCodes();
+
+		assertNull(codes);
+	}
+
+	@Test
 	public void getValues() {
 		List<String> extractedCodes = this.format.getCodes();
 
@@ -201,13 +138,23 @@ public class JsonAPITableFormat_UnitTest {
 		}
 	}
 
-	@Test
-	public void getCodes() {
-		List<String> extractedCodes = this.format.getCodes();
-		List<String> staticCodes = Arrays.asList("Region", "Civilstand", "Alder", "Kon", "ContentsCode", "Tid");
+	@Test(expected = IllegalArgumentException.class)
+	public void getValuesEmptyForCode() {
+		List<String> values = this.format.getValues("THIS_CODE_DOES_NOT_EXIST_HOPEFULLY");
 
-		assertTrue(extractedCodes.containsAll(staticCodes));
-		assertTrue(staticCodes.containsAll(extractedCodes));
+		assertNull(values);
+	}
+
+	@Test
+	public void toStringEquals() {
+		String expected = this.json;
+		String toString = this.format.toString();
+
+		// Remove whitespace for easier comparison; JSON is still valid
+		expected = expected.replace(" ", "");
+		toString = expected.replace(" ", "");
+
+		assertEquals(expected, toString);
 	}
 
 }

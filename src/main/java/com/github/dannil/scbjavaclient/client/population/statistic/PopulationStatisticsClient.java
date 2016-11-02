@@ -24,7 +24,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
-import com.github.dannil.scbjavaclient.format.JsonCustomResponseFormat;
+import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.model.population.statistic.AverageAge;
 import com.github.dannil.scbjavaclient.model.population.statistic.LiveBirth;
 import com.github.dannil.scbjavaclient.model.population.statistic.Population;

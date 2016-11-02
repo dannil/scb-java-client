@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.format;
+package com.github.dannil.scbjavaclient.format.json;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -42,22 +42,9 @@ public class JsonCustomResponseFormat_UnitTest {
 
 	@Before
 	public void setup() {
-		// this.json =
-		// "{\"query\": [{\"code\": \"ContentsCode\",\"selection\": {\"filter\": \"item\",\"values\": [\"MI0802AA\"]}}],\"response\": {\"format\": \"json\"}}";
 		this.json = "{\"columns\":[{\"code\":\"Region\",\"text\":\"region\",\"type\":\"d\"},{\"code\":\"Civilstand\",\"text\":\"marital status\",\"type\":\"d\"},{\"code\":\"Alder\",\"text\":\"age\",\"type\":\"d\"},{\"code\":\"Tid\",\"text\":\"year\",\"type\":\"t\"},{\"code\":\"BE0101N1\",\"text\":\"Population\",\"comment\":\"The tables show the conditions on December 31st for each respective year according to administrative subdivisions of January 1st of the following year\\r\\n\",\"type\":\"c\"},{\"code\":\"BE0101N2\",\"text\":\"Population growth\",\"comment\":\"Population growth is defined as the difference between the population at the beginning of the year and at the end of the year.\\r\\n\",\"type\":\"c\"}],\"comments\":[],\"data\":[{\"key\":[\"00\",\"OG\",\"45\",\"2011\"],\"values\":[\"48403\",\"1007\"]}]}";
 		this.format = new JsonCustomResponseFormat(this.json);
 	}
-
-	// @Test
-	// public void callPrivateConstructor() throws InstantiationException, IllegalAccessException,
-	// IllegalArgumentException, InvocationTargetException {
-	// Constructor<?>[] cons = JsonConventionalFormat.class.getDeclaredConstructors();
-	// cons[0].setAccessible(true);
-	// cons[0].newInstance();
-	// cons[0].setAccessible(false);
-	//
-	// assertFalse(cons[0].isAccessible());
-	// }
 
 	@Test
 	public void toListNonConventionalJson() {
@@ -75,25 +62,6 @@ public class JsonCustomResponseFormat_UnitTest {
 		List<Population> staticPopulations = Arrays.asList(p);
 
 		assertEquals(convertedPopulations, staticPopulations);
-
-		// JsonNode node = JsonConventionalFormat.toNode(nonConventionalJson);
-		//
-		// List<Population> convertedPopulations = JsonConventionalFormat.jsonToListOf(node,
-		// Population.class);
-		//
-		// List<ValueNode<String>> values = new ArrayList<ValueNode<String>>();
-		//
-		// ValueNode<String> value1 = new ValueNode<String>("48403", "BE0101N1", "Population");
-		// values.add(value1);
-		//
-		// ValueNode<String> value2 = new ValueNode<String>("1007", "BE0101N2",
-		// "Population growth");
-		// values.add(value2);
-		//
-		// Population p = new Population("00", "OG", "45", null, 2011, values);
-		// List<Population> staticPopulations = Arrays.asList(p);
-		//
-		// assertEquals(convertedPopulations, staticPopulations);
 	}
 
 	@Test(expected = SCBClientParsingException.class)
@@ -104,24 +72,27 @@ public class JsonCustomResponseFormat_UnitTest {
 		assertNull(populations);
 	}
 
-	// @Test
-	// public void isQuery() {
-	// JsonNode node = JsonConventionalFormat.toNode(this.json);
-	//
-	// assertTrue(JsonConventionalFormat.isQuery(node));
-	// }
-
 	@Test
 	public void isFormatted() {
 		String nonConventionalJson = "{\"columns\":[{\"code\":\"Region\",\"text\":\"region\",\"type\":\"d\"},{\"code\":\"Civilstand\",\"text\":\"marital status\",\"type\":\"d\"},{\"code\":\"Alder\",\"text\":\"age\",\"type\":\"d\"},{\"code\":\"Tid\",\"text\":\"year\",\"type\":\"t\"},{\"code\":\"BE0101N1\",\"text\":\"Population\",\"comment\":\"The tables show the conditions on December 31st for each respective year according to administrative subdivisions of January 1st of the following year\\r\\n\",\"type\":\"c\"},{\"code\":\"BE0101N2\",\"text\":\"Population growth\",\"comment\":\"Population growth is defined as the difference between the population at the beginning of the year and at the end of the year.\\r\\n\",\"type\":\"c\"}],\"comments\":[],\"data\":[{\"key\":[\"00\",\"OG\",\"45\",\"2011\"],\"values\":[\"48403\",\"1007\"]}]}";
 		JsonCustomResponseFormat format = new JsonCustomResponseFormat(nonConventionalJson);
 
 		assertTrue(format.isFormatted());
-
-		// JsonNode conventionalJson =
-		// JsonConventionalFormat.toConventionalJson(nonConventionalJson);
-		//
-		// assertTrue(JsonConventionalFormat.isConventionalJson(conventionalJson));
 	}
 
+	@Test
+	public void toStringEquals() {
+		String input = "{\"columns\":[{\"code\":\"Region\",\"text\":\"region\",\"type\":\"d\"},{\"code\":\"Civilstand\",\"text\":\"marital status\",\"type\":\"d\"},{\"code\":\"Alder\",\"text\":\"age\",\"type\":\"d\"},{\"code\":\"Tid\",\"text\":\"year\",\"type\":\"t\"},{\"code\":\"BE0101N1\",\"text\":\"Population\",\"comment\":\"The tables show the conditions on December 31st for each respective year according to administrative subdivisions of January 1st of the following year\\r\\n\",\"type\":\"c\"},{\"code\":\"BE0101N2\",\"text\":\"Population growth\",\"comment\":\"Population growth is defined as the difference between the population at the beginning of the year and at the end of the year.\\r\\n\",\"type\":\"c\"}],\"comments\":[],\"data\":[{\"key\":[\"00\",\"OG\",\"45\",\"2011\"],\"values\":[\"48403\",\"1007\"]}]}";
+
+		JsonCustomResponseFormat format = new JsonCustomResponseFormat(input);
+
+		String expected = "[{\"region\": \"00\",\"values\":[{\"text\": \"Population\",\"value\": \"48403\",\"code\":\"BE0101N1\"},{\"text\":\"Population growth\",\"value\":\"1007\",\"code\":\"BE0101N2\"}],\"alder\":\"45\",\"tid\":\"2011\",\"civilstand\":\"OG\"}]";
+		String toString = format.toString();
+
+		// Remove whitespace for easier comparison; JSON is still valid
+		expected = expected.replace(" ", "");
+		toString = expected.replace(" ", "");
+
+		assertEquals(expected, toString);
+	}
 }

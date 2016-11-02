@@ -1,4 +1,20 @@
-package com.github.dannil.scbjavaclient.format;
+/*
+ * Copyright 2016 Daniel Nilsson
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package com.github.dannil.scbjavaclient.format.json;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -8,9 +24,13 @@ import java.util.Map;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
+/**
+ * Class which encapsulates behavior for the JSON API table format. Note that this class is
+ * immutable; to change the containing JSON, a new class needs to be instantiated.
+ * 
+ * @author Daniel Nilsson
+ */
 public class JsonAPITableFormat implements IJsonTableFormat {
-
-	private JsonConverter converter;
 
 	private JsonNode json;
 
@@ -23,8 +43,7 @@ public class JsonAPITableFormat implements IJsonTableFormat {
 	 *            the json to format
 	 */
 	public JsonAPITableFormat(String json) {
-		this.converter = new JsonConverter();
-		this.json = this.converter.toNode(json);
+		this.json = new JsonConverter().toNode(json);
 	}
 
 	@Override
@@ -55,7 +74,7 @@ public class JsonAPITableFormat implements IJsonTableFormat {
 	public List<String> getCodes() throws IllegalArgumentException {
 		List<String> codes = new ArrayList<String>(getInputs().keySet());
 		if (codes.isEmpty()) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("JSON does not contain codes");
 		}
 		return codes;
 	}
@@ -64,9 +83,14 @@ public class JsonAPITableFormat implements IJsonTableFormat {
 	public List<String> getValues(String code) throws IllegalArgumentException {
 		Map<String, Collection<String>> inputs = getInputs();
 		if (!inputs.containsKey(code)) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("JSON does not contain code " + code);
 		}
 		return new ArrayList<String>(inputs.get(code));
+	}
+
+	@Override
+	public String toString() {
+		return this.json.toString();
 	}
 
 }
