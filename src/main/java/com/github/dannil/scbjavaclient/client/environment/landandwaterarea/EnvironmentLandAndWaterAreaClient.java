@@ -24,8 +24,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area;
-import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
@@ -111,7 +111,8 @@ public class EnvironmentLandAndWaterAreaClient extends AbstractClient {
 
 		String response = super.post("MI/MI0802/Areal2012", QueryBuilder.build(mappings));
 
-		return JsonUtility.jsonToListOf(response, Area.class);
+		JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
+		return format.toListOf(Area.class);
 	}
 
 	@Override

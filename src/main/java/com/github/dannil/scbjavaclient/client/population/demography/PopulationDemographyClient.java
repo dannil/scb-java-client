@@ -24,9 +24,9 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.model.population.demography.FertilityRate;
 import com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstChild;
-import com.github.dannil.scbjavaclient.utility.JsonUtility;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
@@ -132,7 +132,8 @@ public class PopulationDemographyClient extends AbstractClient {
 
 		String response = super.post("BE/BE0701/FruktsamhetSumNy", QueryBuilder.build(mappings));
 
-		return JsonUtility.jsonToListOf(response, FertilityRate.class);
+		JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
+		return format.toListOf(FertilityRate.class);
 	}
 
 	/**
@@ -174,7 +175,8 @@ public class PopulationDemographyClient extends AbstractClient {
 
 		String response = super.post("BE/BE0701/MedelAlderNY", QueryBuilder.build(mappings));
 
-		return JsonUtility.jsonToListOf(response, MeanAgeFirstChild.class);
+		JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
+		return format.toListOf(MeanAgeFirstChild.class);
 	}
 
 	@Override
