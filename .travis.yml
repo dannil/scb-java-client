@@ -15,7 +15,7 @@ before_install:
 install:
 - mvn dependency:resolve
 script:
-- mvn install -Dmaven.javadoc.skip=true -B -V
+- mvn install -Dmaven.javadoc.skip=true -B
 after_success:
 - mvn com.gavinmogan:codacy-maven-plugin:coverage -DcoverageReportFile=target/site/jacoco/jacoco.xml -DprojectToken=$CODACY_PROJECT_TOKEN -DapiToken=$CODACY_API_TOKEN -DcodacyApiBaseUrl=https://api.codacy.com
 env:
