@@ -12,6 +12,10 @@ sudo: required
 before_install:
 - mvn org.codehaus.mojo:versions-maven-plugin:display-dependency-updates
 - mvn org.codehaus.mojo:versions-maven-plugin:display-plugin-updates
+install:
+- mvn dependency:resolve dependency:resolve-plugins
+script:
+- mvn install -Dmaven.javadoc.skip=true -B -V
 after_success:
 - mvn com.gavinmogan:codacy-maven-plugin:coverage -DcoverageReportFile=target/site/jacoco/jacoco.xml -DprojectToken=$CODACY_PROJECT_TOKEN -DapiToken=$CODACY_API_TOKEN -DcodacyApiBaseUrl=https://api.codacy.com
 env:
