@@ -20,6 +20,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
@@ -38,6 +39,27 @@ public class PopulationAverageAgeClient extends AbstractClient {
 
 	/**
 	 * <p>
+	 * Default constructor.
+	 * </p>
+	 */
+	public PopulationAverageAgeClient() {
+		super();
+	}
+
+	/**
+	 * <p>
+	 * Overloaded constructor.
+	 * </p>
+	 * 
+	 * @param locale
+	 *            the <code>Locale</code> for this client
+	 */
+	public PopulationAverageAgeClient(Locale locale) {
+		super(locale);
+	}
+
+	/**
+	 * <p>
 	 * Fetch all average age data.
 	 * </p>
 	 * 
@@ -45,7 +67,7 @@ public class PopulationAverageAgeClient extends AbstractClient {
 	 *         {@link com.github.dannil.scbjavaclient.model.population.averageage.AverageAge
 	 *         AverageAge} objects
 	 * 
-	 * @see getAverageAge(Collection, Collection, Collection)
+	 * @see #getAverageAge(Collection, Collection, Collection)
 	 */
 	public List<AverageAge> getAverageAge() {
 		return getAverageAge(null, null, null);

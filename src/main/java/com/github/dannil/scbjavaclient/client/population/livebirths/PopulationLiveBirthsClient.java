@@ -45,7 +45,7 @@ public class PopulationLiveBirthsClient extends AbstractClient {
 	 *         {@link com.github.dannil.scbjavaclient.model.population.livebirths.LiveBirth
 	 *         LiveBirth} objects
 	 * 
-	 * @see getLiveBirths(Collection, Collection, Collection, Collection)
+	 * @see #getLiveBirths(Collection, Collection, Collection, Collection)
 	 */
 	public List<LiveBirth> getLiveBirths() {
 		return getLiveBirths(null, null, null, null);
