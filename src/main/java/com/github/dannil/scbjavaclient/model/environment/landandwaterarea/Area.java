@@ -133,7 +133,8 @@ public class Area extends AbstractRegionYearAndValueModel<String, Integer, Doubl
 
 	/**
 	 * <p>
-	 * Get the available codes and their respective values for the area data from the API.
+	 * Get the available codes and their respective values for the area data
+	 * from the API.
 	 * </p>
 	 *
 	 * @return a list of the available codes and their values

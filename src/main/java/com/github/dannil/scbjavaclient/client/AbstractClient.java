@@ -91,9 +91,9 @@ public abstract class AbstractClient {
 
 	/**
 	 * <p>
-	 * Sets the language for this client instance. Note that doing this after a call to
-	 * {@link #setLocalizationLanguage(Locale)} overwrites the localization language with the input
-	 * of this method.
+	 * Sets the language for this client instance. Note that doing this after a
+	 * call to {@link #setLocalizationLanguage(Locale)} overwrites the
+	 * localization language with the input of this method.
 	 * </p>
 	 * 
 	 * @param locale
@@ -109,8 +109,8 @@ public abstract class AbstractClient {
 
 	/**
 	 * <p>
-	 * Changes the language used for the localization. Useful if the client needs to be in a
-	 * different language than the error messages.
+	 * Changes the language used for the localization. Useful if the client
+	 * needs to be in a different language than the error messages.
 	 * </p>
 	 * 
 	 * @param locale
@@ -122,7 +122,8 @@ public abstract class AbstractClient {
 
 	/**
 	 * <p>
-	 * Determines the base URL for the API based on the current <code>Locale</code>.
+	 * Determines the base URL for the API based on the current
+	 * <code>Locale</code>.
 	 * </p>
 	 * 
 	 * @return the URL representing the entry point for the API.
@@ -282,7 +283,8 @@ public abstract class AbstractClient {
 
 	// private void validateLocale() {
 	// if (!isSupportedLocale(this.locale)) {
-	// throw new SCBClientException("Locale " + this.locale + " is not supported by the API");
+	// throw new SCBClientException("Locale " + this.locale + " is not supported
+	// by the API");
 	// }
 	// }
 

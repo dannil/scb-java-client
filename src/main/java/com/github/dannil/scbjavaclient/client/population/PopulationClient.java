@@ -19,9 +19,12 @@ package com.github.dannil.scbjavaclient.client.population;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
+import com.github.dannil.scbjavaclient.client.population.amount.PopulationAmountClient;
+import com.github.dannil.scbjavaclient.client.population.averageage.PopulationAverageAgeClient;
 import com.github.dannil.scbjavaclient.client.population.demography.PopulationDemographyClient;
+import com.github.dannil.scbjavaclient.client.population.density.PopulationDensityClient;
+import com.github.dannil.scbjavaclient.client.population.livebirths.PopulationLiveBirthsClient;
 import com.github.dannil.scbjavaclient.client.population.name.PopulationNameStatisticsClient;
-import com.github.dannil.scbjavaclient.client.population.statistic.PopulationStatisticsClient;
 
 /**
  * <p>
@@ -32,11 +35,17 @@ import com.github.dannil.scbjavaclient.client.population.statistic.PopulationSta
  */
 public class PopulationClient extends AbstractContainerClient {
 
+	private PopulationAmountClient populationAmountClient;
+
+	private PopulationAverageAgeClient populationAverageAgeClient;
+
 	private PopulationDemographyClient populationDemographyClient;
 
-	private PopulationNameStatisticsClient populationNameStatisticsClient;
+	private PopulationDensityClient populationDensityClient;
 
-	private PopulationStatisticsClient populationStatisticsClient;
+	private PopulationLiveBirthsClient populationLiveBirthsClient;
+
+	private PopulationNameStatisticsClient populationNameStatisticsClient;
 
 	/**
 	 * <p>
@@ -46,11 +55,20 @@ public class PopulationClient extends AbstractContainerClient {
 	public PopulationClient() {
 		super();
 
+		this.populationAmountClient = new PopulationAmountClient();
+		super.clients.add(this.populationAmountClient);
+
+		this.populationAverageAgeClient = new PopulationAverageAgeClient();
+		super.clients.add(this.populationAverageAgeClient);
+
 		this.populationDemographyClient = new PopulationDemographyClient();
 		super.clients.add(this.populationDemographyClient);
 
-		this.populationStatisticsClient = new PopulationStatisticsClient();
-		super.clients.add(this.populationStatisticsClient);
+		this.populationDensityClient = new PopulationDensityClient();
+		super.clients.add(this.populationDensityClient);
+
+		this.populationLiveBirthsClient = new PopulationLiveBirthsClient();
+		super.clients.add(populationLiveBirthsClient);
 
 		this.populationNameStatisticsClient = new PopulationNameStatisticsClient();
 		super.clients.add(this.populationNameStatisticsClient);
@@ -72,6 +90,28 @@ public class PopulationClient extends AbstractContainerClient {
 
 	/**
 	 * <p>
+	 * Retrieve the client for interacting with population amount data.
+	 * </p>
+	 * 
+	 * @return a client for population amount data
+	 */
+	public PopulationAmountClient amount() {
+		return this.populationAmountClient;
+	}
+
+	/**
+	 * <p>
+	 * Retrieve the client for interacting with population average age data.
+	 * </p>
+	 * 
+	 * @return a client for population amount data
+	 */
+	public PopulationAverageAgeClient averageAge() {
+		return this.populationAverageAgeClient;
+	}
+
+	/**
+	 * <p>
 	 * Retrieve the client for interacting with population demography data.
 	 * </p>
 	 * 
@@ -83,13 +123,24 @@ public class PopulationClient extends AbstractContainerClient {
 
 	/**
 	 * <p>
-	 * Retrieve the client for interacting with population statistic data.
+	 * Retrieve the client for interacting with population density data.
 	 * </p>
 	 * 
-	 * @return a client for population statistics data
+	 * @return a client for population density data
 	 */
-	public PopulationStatisticsClient statistics() {
-		return this.populationStatisticsClient;
+	public PopulationDensityClient density() {
+		return this.populationDensityClient;
+	}
+
+	/**
+	 * <p>
+	 * Retrieve the client for interacting with population density data.
+	 * </p>
+	 * 
+	 * @return a client for population density data
+	 */
+	public PopulationLiveBirthsClient liveBirths() {
+		return this.populationLiveBirthsClient;
 	}
 
 	/**

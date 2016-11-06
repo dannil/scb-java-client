@@ -65,7 +65,8 @@ public class EnvironmentLandAndWaterAreaClient extends AbstractClient {
 	// public Collection<Integer> getYears() {
 	// Collection<String> fetchedYears = super.getYears(getUrl());
 	//
-	// Collection<Integer> years = new ArrayCollection<Integer>(fetchedYears.size());
+	// Collection<Integer> years = new
+	// ArrayCollection<Integer>(fetchedYears.size());
 	// for (String fetchedYear : fetchedYears) {
 	// years.add(Integer.valueOf(fetchedYear));
 	// }
@@ -78,10 +79,11 @@ public class EnvironmentLandAndWaterAreaClient extends AbstractClient {
 	 * </p>
 	 * 
 	 * @return the area data wrapped in a list of
-	 *         {@link com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area Area}
-	 *         objects
+	 *         {@link com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area
+	 *         Area} objects
 	 * 
-	 * @see EnvironmentLandAndWaterAreaClient#getArea(Collection, Collection, Collection)
+	 * @see EnvironmentLandAndWaterAreaClient#getArea(Collection, Collection,
+	 *      Collection)
 	 */
 	public List<Area> getArea() {
 		return getArea(null, null, null);
@@ -99,8 +101,8 @@ public class EnvironmentLandAndWaterAreaClient extends AbstractClient {
 	 * @param years
 	 *            the years to fetch data for
 	 * @return the area data wrapped in a list of
-	 *         {@link com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area Area}
-	 *         objects
+	 *         {@link com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area
+	 *         Area} objects
 	 */
 	public List<Area> getArea(Collection<String> regions, Collection<String> types, Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();

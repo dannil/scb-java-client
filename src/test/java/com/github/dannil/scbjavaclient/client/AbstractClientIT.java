@@ -57,7 +57,8 @@ public class AbstractClientIT {
 
 		String url = "HE/HE0103/HE0103B/BefolkningAlder";
 
-		// This request is performed by a dummy Client which is set to English (as
+		// This request is performed by a dummy Client which is set to English
+		// (as
 		// specified in the setup method.
 		// This means that if we receive a response with Swedish text, we've
 		// used the fallback url.
@@ -83,7 +84,8 @@ public class AbstractClientIT {
 		map.put("Boendeform", Arrays.asList("SMAG"));
 		map.put("Tid", Arrays.asList("2012"));
 
-		// This request is performed by a dummy client which is set to English (as
+		// This request is performed by a dummy client which is set to English
+		// (as
 		// specified in the setup method.
 		// This means that if we receive a response with Swedish text, we've
 		// used the fallback url.
@@ -145,10 +147,12 @@ public class AbstractClientIT {
 
 	@Test(expected = SCBClientForbiddenException.class)
 	public void forbiddenException() {
-		// Need to use SCBClient here instead of DummyClient to reach getRawData(String)-method
+		// Need to use SCBClient here instead of DummyClient to reach
+		// getRawData(String)-method
 		SCBClient client = new SCBClient();
 
-		// This call will result in a HTTP 403 response (forbidden) since the response from this
+		// This call will result in a HTTP 403 response (forbidden) since the
+		// response from this
 		// table is larger than the API allows (given all the available inputs)
 		String response = client.getRawData("NV/NV0119/IVPKNLonAr");
 

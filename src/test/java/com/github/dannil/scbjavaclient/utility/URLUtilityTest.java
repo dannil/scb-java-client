@@ -30,8 +30,7 @@ import org.junit.runners.JUnit4;
 public class URLUtilityTest {
 
 	@Test
-	public void callPrivateConstructor() throws InstantiationException, IllegalAccessException,
-			IllegalArgumentException, InvocationTargetException {
+	public void callPrivateConstructor() throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		Constructor<?>[] cons = URLUtility.class.getDeclaredConstructors();
 		cons[0].setAccessible(true);
 		cons[0].newInstance();
@@ -42,8 +41,7 @@ public class URLUtilityTest {
 
 	@Test
 	public void changeUrlLocale() {
-		String url = URLUtility
-				.changeLanguageForUrl("http://api.scb.se/OV0104/v1/doris/en/ssd/BE/BE0101/BE0101A/BefolkningNy");
+		String url = URLUtility.changeLanguageForUrl("http://api.scb.se/OV0104/v1/doris/en/ssd/BE/BE0101/BE0101A/BefolkningNy");
 
 		assertEquals("http://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0101/BE0101A/BefolkningNy", url);
 	}

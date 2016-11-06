@@ -42,12 +42,12 @@ public class EnvironmentLandAndWaterAreaClientIT extends RemoteIntegrationTestSu
 	// TODO Enable tests in the future
 
 	// @Test
-	// public  void getRegions() {
+	// public void getRegions() {
 	// assertNotEquals(0, this.landAndWaterAreaClient.getRegions().size());
 	// }
 	//
 	// @Test
-	// public  void getYears() {
+	// public void getYears() {
 	// assertNotEquals(0, this.landAndWaterAreaClient.getYears().size());
 	// }
 

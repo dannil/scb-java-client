@@ -42,7 +42,7 @@ public class PopulationClientTest {
 		PopulationClient client = new PopulationClient();
 
 		assertEquals(client.demography().getLocale(), locale);
-		assertEquals(client.statistics().getLocale(), locale);
+		assertEquals(client.amount().getLocale(), locale);
 	}
 
 	@Test

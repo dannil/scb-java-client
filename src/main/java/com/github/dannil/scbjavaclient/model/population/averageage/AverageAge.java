@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.model.population.statistic;
+package com.github.dannil.scbjavaclient.model.population.averageage;
 
 import java.util.Collection;
 import java.util.List;
@@ -133,7 +133,8 @@ public class AverageAge extends AbstractRegionYearAndValueModel<String, Integer,
 
 	/**
 	 * <p>
-	 * Get the available codes and their respective values for the average age data from the API.
+	 * Get the available codes and their respective values for the average age
+	 * data from the API.
 	 * </p>
 	 * 
 	 * @return a list of the available codes and their values

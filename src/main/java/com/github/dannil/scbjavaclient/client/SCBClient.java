@@ -106,18 +106,21 @@ public class SCBClient extends AbstractContainerClient {
 	/**
 	 * <p>
 	 * Fetch the JSON response from the specified table. As opposed to
-	 * {@link #getRawData(String, Map)}, this method fetches all available data and therefore
-	 * doesn't support selecting specific values before calling the API.
+	 * {@link #getRawData(String, Map)}, this method fetches all available data
+	 * and therefore doesn't support selecting specific values before calling
+	 * the API.
 	 * </p>
 	 * 
 	 * <p>
-	 * Do note: as this method matches all content codes available on the API, the response is
-	 * likely to be several times larger than the response when selecting values.
+	 * Do note: as this method matches all content codes available on the API,
+	 * the response is likely to be several times larger than the response when
+	 * selecting values.
 	 * </p>
 	 * 
 	 * @param table
 	 *            the table to fetch data from
-	 * @return a JSON string containing all available data in the specified table
+	 * @return a JSON string containing all available data in the specified
+	 *         table
 	 * 
 	 * @see com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat#getValues(String)
 	 *      JsonAPITableFormat#getValues(String)
@@ -133,8 +136,8 @@ public class SCBClient extends AbstractContainerClient {
 
 	/**
 	 * <p>
-	 * Fetch the JSON response from the specified table. Useful if you're only interested in the raw
-	 * JSON data.
+	 * Fetch the JSON response from the specified table. Useful if you're only
+	 * interested in the raw JSON data.
 	 * </p>
 	 * 
 	 * @param table

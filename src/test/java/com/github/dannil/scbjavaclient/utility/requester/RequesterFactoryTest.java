@@ -29,8 +29,7 @@ import org.junit.runners.JUnit4;
 public class RequesterFactoryTest {
 
 	@Test
-	public void callPrivateConstructor() throws InstantiationException, IllegalAccessException,
-			IllegalArgumentException, InvocationTargetException {
+	public void callPrivateConstructor() throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		Constructor<?>[] cons = RequesterFactory.class.getDeclaredConstructors();
 		cons[0].setAccessible(true);
 		cons[0].newInstance();
@@ -39,7 +38,8 @@ public class RequesterFactoryTest {
 		assertFalse(cons[0].isAccessible());
 	}
 
-	// TODO Investigate if this test is needed since the properties of enumerable effectively stops
+	// TODO Investigate if this test is needed since the properties of
+	// enumerable effectively stops
 	// an illegal argument
 	// @Test(expected = IllegalArgumentException.class)
 	// public void getRequesterIllegalArgument() {

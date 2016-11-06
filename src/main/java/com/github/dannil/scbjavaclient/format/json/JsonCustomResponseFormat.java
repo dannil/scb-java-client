@@ -30,8 +30,9 @@ import com.github.dannil.scbjavaclient.validator.json.JsonValidator;
 
 /**
  * <p>
- * Class which encapsulates behavior for the custom JSON response format. Note that this class is
- * immutable; to change the containing JSON, a new class needs to be instantiated.
+ * Class which encapsulates behavior for the custom JSON response format. Note
+ * that this class is immutable; to change the containing JSON, a new class
+ * needs to be instantiated.
  * </p>
  * 
  * @author Daniel Nilsson

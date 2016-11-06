@@ -38,7 +38,8 @@ import com.github.dannil.scbjavaclient.utility.HttpUtility;
 
 /**
  * <p>
- * Class which contains the logic for sending URL requests to a specified address.
+ * Class which contains the logic for sending URL requests to a specified
+ * address.
  * </p>
  * 
  * @author Daniel Nilsson
@@ -64,7 +65,8 @@ public abstract class AbstractRequester {
 
 	/**
 	 * <p>
-	 * Default constructor. Loads the request properties and other data needed for the requesters.
+	 * Default constructor. Loads the request properties and other data needed
+	 * for the requesters.
 	 * </p>
 	 */
 	protected AbstractRequester() {
@@ -93,8 +95,8 @@ public abstract class AbstractRequester {
 
 	/**
 	 * <p>
-	 * Performs a request with the specified <code>HttpRequest</code> and retrieves the response as
-	 * a <code>HttpResponse</code>.
+	 * Performs a request with the specified <code>HttpRequest</code> and
+	 * retrieves the response as a <code>HttpResponse</code>.
 	 * </p>
 	 * 
 	 * @param request
@@ -173,7 +175,8 @@ public abstract class AbstractRequester {
 
 	/**
 	 * <p>
-	 * Setter for charset. Also updates the request properties with the new charset.
+	 * Setter for charset. Also updates the request properties with the new
+	 * charset.
 	 * </p>
 	 * 
 	 * @param charset

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.model.population.statistic;
+package com.github.dannil.scbjavaclient.model.population.amount;
 
 import java.util.Collection;
 import java.util.List;
@@ -196,7 +196,8 @@ public class Population extends AbstractRegionYearAndValueModel<String, Integer,
 
 	/**
 	 * <p>
-	 * Get the available codes and their respective values for the population data from the API.
+	 * Get the available codes and their respective values for the population
+	 * data from the API.
 	 * </p>
 	 *
 	 * @return a list of the available codes and their values

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.model.population.statistic;
+package com.github.dannil.scbjavaclient.model.population.livebirths;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
@@ -30,6 +30,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import com.github.dannil.scbjavaclient.model.ValueNode;
+import com.github.dannil.scbjavaclient.model.population.livebirths.LiveBirth;
 
 @RunWith(JUnit4.class)
 public class LiveBirthTest {

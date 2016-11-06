@@ -35,8 +35,9 @@ public class JsonConverter {
 
 	/**
 	 * <p>
-	 * Default constructor. Initializes the {@link com.fasterxml.jackson.databind.ObjectMapper
-	 * ObjectMapper} needed for converting objects.
+	 * Default constructor. Initializes the
+	 * {@link com.fasterxml.jackson.databind.ObjectMapper ObjectMapper} needed
+	 * for converting objects.
 	 * </p>
 	 */
 	public JsonConverter() {
@@ -70,7 +71,8 @@ public class JsonConverter {
 
 	/**
 	 * <p>
-	 * Parse the JSON string into a {@link JsonNode} object with the specified field as root field.
+	 * Parse the JSON string into a {@link JsonNode} object with the specified
+	 * field as root field.
 	 * </p>
 	 * 
 	 * @param json

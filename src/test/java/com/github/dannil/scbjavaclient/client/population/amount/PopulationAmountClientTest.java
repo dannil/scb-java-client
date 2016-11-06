@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.population.statistic;
+package com.github.dannil.scbjavaclient.client.population.amount;
 
 import static org.junit.Assert.assertEquals;
 
@@ -25,12 +25,12 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class PopulationStatisticsClientTest {
+public class PopulationAmountClientTest {
 
 	@Test
 	public void createWithLocaleConstructor() {
 		Locale locale = new Locale("sv", "SE");
-		PopulationStatisticsClient client = new PopulationStatisticsClient(locale);
+		PopulationAmountClient client = new PopulationAmountClient(locale);
 
 		assertEquals(locale, client.getLocale());
 	}
@@ -38,9 +38,9 @@ public class PopulationStatisticsClientTest {
 	@Test
 	public void getUrl() {
 		Locale locale = new Locale("sv", "SE");
-		PopulationStatisticsClient client = new PopulationStatisticsClient(locale);
+		PopulationAmountClient client = new PopulationAmountClient(locale);
 
-		assertEquals("http://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0101/", client.getUrl());
+		assertEquals("http://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0101/BE0101A/", client.getUrl());
 	}
 
 }

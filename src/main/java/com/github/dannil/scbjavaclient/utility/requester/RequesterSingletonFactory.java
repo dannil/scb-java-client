@@ -23,8 +23,9 @@ import java.util.Map;
 
 /**
  * <p>
- * Factory for returning singleton requesters. The regular {@link RequesterFactory} is recommended
- * instead of this class; this class should only be used if you really need a singleton.
+ * Factory for returning singleton requesters. The regular
+ * {@link RequesterFactory} is recommended instead of this class; this class
+ * should only be used if you really need a singleton.
  * </p>
  * 
  * @author Daniel Nilsson
@@ -50,8 +51,8 @@ public final class RequesterSingletonFactory {
 
 	/**
 	 * <p>
-	 * Returns a singleton requester which matches the method. All responses are read as UTF-8
-	 * character encoding.
+	 * Returns a singleton requester which matches the method. All responses are
+	 * read as UTF-8 character encoding.
 	 * </p>
 	 * 
 	 * @param method
@@ -64,8 +65,8 @@ public final class RequesterSingletonFactory {
 
 	/**
 	 * <p>
-	 * Returns a singleton requester which matches the method. All responses are read as to match
-	 * the character encoding.
+	 * Returns a singleton requester which matches the method. All responses are
+	 * read as to match the character encoding.
 	 * </p>
 	 * 
 	 * @param method

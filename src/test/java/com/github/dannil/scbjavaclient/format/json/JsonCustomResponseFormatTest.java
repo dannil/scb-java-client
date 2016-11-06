@@ -31,7 +31,7 @@ import org.junit.runners.JUnit4;
 
 import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
 import com.github.dannil.scbjavaclient.model.ValueNode;
-import com.github.dannil.scbjavaclient.model.population.statistic.Population;
+import com.github.dannil.scbjavaclient.model.population.amount.Population;
 
 @RunWith(JUnit4.class)
 public class JsonCustomResponseFormatTest {

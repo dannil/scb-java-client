@@ -86,7 +86,8 @@ public class PopulationDemographyClient extends AbstractClient {
 	// public Collection<Integer> getYears() {
 	// Collection<String> fetchedYears = super.getYears(getUrl());
 	//
-	// Collection<Integer> years = new ArrayCollection<Integer>(fetchedYears.size());
+	// Collection<Integer> years = new
+	// ArrayCollection<Integer>(fetchedYears.size());
 	// for (String fetchedYear : fetchedYears) {
 	// years.add(Integer.valueOf(fetchedYear));
 	// }
@@ -102,7 +103,8 @@ public class PopulationDemographyClient extends AbstractClient {
 	 *         {@link com.github.dannil.scbjavaclient.model.population.demography.FertilityRate
 	 *         FertilityRate} objects
 	 * 
-	 * @see PopulationDemographyClient#getFertilityRate(Collection, Collection, Collection)
+	 * @see PopulationDemographyClient#getFertilityRate(Collection, Collection,
+	 *      Collection)
 	 */
 	public List<FertilityRate> getFertilityRate() {
 		return getFertilityRate(null, null, null);
@@ -145,7 +147,8 @@ public class PopulationDemographyClient extends AbstractClient {
 	 *         {@link com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstChild
 	 *         MeanAgeFirstChild} objects
 	 * 
-	 * @see PopulationDemographyClient#getMeanAgeFirstChild(Collection, Collection, Collection)
+	 * @see PopulationDemographyClient#getMeanAgeFirstChild(Collection,
+	 *      Collection, Collection)
 	 */
 	public List<MeanAgeFirstChild> getMeanAgeFirstChild() {
 		return getMeanAgeFirstChild(null, null, null);
@@ -153,7 +156,8 @@ public class PopulationDemographyClient extends AbstractClient {
 
 	/**
 	 * <p>
-	 * Fetch all mean age for the first child data which match the input constraints.
+	 * Fetch all mean age for the first child data which match the input
+	 * constraints.
 	 * </p>
 	 * 
 	 * @param regions
