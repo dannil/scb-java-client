@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.model.population.statistic;
+package com.github.dannil.scbjavaclient.model.population.livebirths;
 
 import java.util.Collection;
 import java.util.List;
@@ -135,7 +135,8 @@ public class LiveBirth extends AbstractRegionYearAndValueModel<String, Integer, 
 		}
 
 		LiveBirth other = (LiveBirth) obj;
-		return super.equals(other) && Objects.equals(this.motherAge, other.motherAge) && Objects.equals(this.gender, other.gender);
+		return super.equals(other) && Objects.equals(this.motherAge, other.motherAge)
+				&& Objects.equals(this.gender, other.gender);
 	}
 
 	@Override
@@ -160,7 +161,8 @@ public class LiveBirth extends AbstractRegionYearAndValueModel<String, Integer, 
 
 	/**
 	 * <p>
-	 * Get the available codes and their respective values for the live birth data from the API.
+	 * Get the available codes and their respective values for the live birth
+	 * data from the API.
 	 * </p>
 	 *
 	 * @return a list of the available codes and their values

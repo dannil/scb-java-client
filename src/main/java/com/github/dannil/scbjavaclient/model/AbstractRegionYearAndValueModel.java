@@ -23,8 +23,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * <p>
- * Abstract model which handles region, year and value. Since these values are used by almost every
- * single client response, this class will be extended by a majority of the implemented models.
+ * Abstract model which handles region, year and value. Since these values are
+ * used by almost every single client response, this class will be extended by a
+ * majority of the implemented models.
  * </p>
  * 
  * @author Daniel Nilsson

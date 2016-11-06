@@ -30,7 +30,8 @@ import com.github.dannil.scbjavaclient.format.json.JsonConverter;
 public class JsonValidatorTest {
 
 	@Test
-	public void callPrivateConstructor() throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+	public void callPrivateConstructor()
+			throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		Constructor<?>[] cons = JsonValidator.class.getDeclaredConstructors();
 		cons[0].setAccessible(true);
 		cons[0].newInstance();

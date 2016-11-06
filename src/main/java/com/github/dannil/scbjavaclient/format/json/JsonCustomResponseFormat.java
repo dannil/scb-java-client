@@ -30,8 +30,9 @@ import com.github.dannil.scbjavaclient.validator.json.JsonValidator;
 
 /**
  * <p>
- * Class which encapsulates behavior for the custom JSON response format. Note that this class is
- * immutable; to change the containing JSON, a new class needs to be instantiated.
+ * Class which encapsulates behavior for the custom JSON response format. Note
+ * that this class is immutable; to change the containing JSON, a new class
+ * needs to be instantiated.
  * </p>
  * 
  * @author Daniel Nilsson
@@ -114,7 +115,8 @@ public final class JsonCustomResponseFormat implements IJsonResponseFormat {
 	@Override
 	public boolean isFormatted() {
 		// Check if the node is correctly formatted
-		return !(this.json.has("columns") || this.json.has("data") || this.json.has("comments") || !this.json.isArray());
+		return !(this.json.has("columns") || this.json.has("data") || this.json.has("comments")
+				|| !this.json.isArray());
 	}
 
 	/**

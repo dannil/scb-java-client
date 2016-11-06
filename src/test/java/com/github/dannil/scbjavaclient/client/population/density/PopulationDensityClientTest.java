@@ -14,33 +14,31 @@
  * limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.population.statistic;
+package com.github.dannil.scbjavaclient.client.population.density;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.Locale;
-
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import com.github.dannil.scbjavaclient.client.SCBClient;
+
 @RunWith(JUnit4.class)
-public class PopulationStatisticsClientTest {
+public class PopulationDensityClientTest {
 
-	@Test
-	public void createWithLocaleConstructor() {
-		Locale locale = new Locale("sv", "SE");
-		PopulationStatisticsClient client = new PopulationStatisticsClient(locale);
+	private PopulationDensityClient populationDensityClient;
 
-		assertEquals(locale, client.getLocale());
+	@Before
+	public void setup() {
+		this.populationDensityClient = new SCBClient().population().density();
 	}
 
 	@Test
 	public void getUrl() {
-		Locale locale = new Locale("sv", "SE");
-		PopulationStatisticsClient client = new PopulationStatisticsClient(locale);
-
-		assertEquals("http://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0101/", client.getUrl());
+		assertEquals("http://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0101/BE0101C/",
+				this.populationDensityClient.getUrl());
 	}
 
 }

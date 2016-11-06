@@ -36,12 +36,14 @@ public final class StringUtility {
 
 	/**
 	 * <p>
-	 * Converts the first character in the <code>String</code> to its lower case equivalent.
+	 * Converts the first character in the <code>String</code> to its lower case
+	 * equivalent.
 	 * </p>
 	 * 
 	 * @param str
 	 *            the <code>String</code> to convert
-	 * @return a <code>String</code> object with the first character as lower case
+	 * @return a <code>String</code> object with the first character as lower
+	 *         case
 	 */
 	public static String lowerCaseFirstLetter(String str) {
 		char[] c = str.toCharArray();

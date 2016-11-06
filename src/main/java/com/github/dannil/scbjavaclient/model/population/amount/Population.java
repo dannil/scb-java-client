@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.model.population.statistic;
+package com.github.dannil.scbjavaclient.model.population.amount;
 
 import java.util.Collection;
 import java.util.List;
@@ -74,7 +74,8 @@ public class Population extends AbstractRegionYearAndValueModel<String, Integer,
 	 * @param values
 	 *            the values
 	 */
-	public Population(String region, String relationshipStatus, String age, Integer gender, Integer year, List<ValueNode<String>> values) {
+	public Population(String region, String relationshipStatus, String age, Integer gender, Integer year,
+			List<ValueNode<String>> values) {
 		super(region, year, values);
 		this.relationshipStatus = relationshipStatus;
 		this.age = age;
@@ -168,8 +169,8 @@ public class Population extends AbstractRegionYearAndValueModel<String, Integer,
 		}
 
 		Population other = (Population) obj;
-		return super.equals(other) && Objects.equals(this.relationshipStatus, other.relationshipStatus) && Objects.equals(this.age, other.age)
-				&& Objects.equals(this.gender, other.gender);
+		return super.equals(other) && Objects.equals(this.relationshipStatus, other.relationshipStatus)
+				&& Objects.equals(this.age, other.age) && Objects.equals(this.gender, other.gender);
 	}
 
 	@Override
@@ -196,7 +197,8 @@ public class Population extends AbstractRegionYearAndValueModel<String, Integer,
 
 	/**
 	 * <p>
-	 * Get the available codes and their respective values for the population data from the API.
+	 * Get the available codes and their respective values for the population
+	 * data from the API.
 	 * </p>
 	 *
 	 * @return a list of the available codes and their values

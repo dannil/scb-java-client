@@ -133,7 +133,8 @@ public class FertilityRate extends AbstractRegionYearAndValueModel<String, Integ
 
 	/**
 	 * <p>
-	 * Get the available codes and their respective values for the fertility rate data from the API.
+	 * Get the available codes and their respective values for the fertility
+	 * rate data from the API.
 	 * </p>
 	 *
 	 * @return a list of the available codes and their values

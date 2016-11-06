@@ -86,7 +86,8 @@ public class PopulationDemographyClient extends AbstractClient {
 	// public Collection<Integer> getYears() {
 	// Collection<String> fetchedYears = super.getYears(getUrl());
 	//
-	// Collection<Integer> years = new ArrayCollection<Integer>(fetchedYears.size());
+	// Collection<Integer> years = new
+	// ArrayCollection<Integer>(fetchedYears.size());
 	// for (String fetchedYear : fetchedYears) {
 	// years.add(Integer.valueOf(fetchedYear));
 	// }
@@ -102,7 +103,8 @@ public class PopulationDemographyClient extends AbstractClient {
 	 *         {@link com.github.dannil.scbjavaclient.model.population.demography.FertilityRate
 	 *         FertilityRate} objects
 	 * 
-	 * @see PopulationDemographyClient#getFertilityRate(Collection, Collection, Collection)
+	 * @see PopulationDemographyClient#getFertilityRate(Collection, Collection,
+	 *      Collection)
 	 */
 	public List<FertilityRate> getFertilityRate() {
 		return getFertilityRate(null, null, null);
@@ -123,7 +125,8 @@ public class PopulationDemographyClient extends AbstractClient {
 	 *         {@link com.github.dannil.scbjavaclient.model.population.demography.FertilityRate
 	 *         FertilityRate} objects
 	 */
-	public List<FertilityRate> getFertilityRate(Collection<String> regions, Collection<Integer> genders, Collection<Integer> years) {
+	public List<FertilityRate> getFertilityRate(Collection<String> regions, Collection<Integer> genders,
+			Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
 		mappings.put("ContentsCode", Arrays.asList("BE0701AA"));
 		mappings.put("Region", regions);
@@ -145,7 +148,8 @@ public class PopulationDemographyClient extends AbstractClient {
 	 *         {@link com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstChild
 	 *         MeanAgeFirstChild} objects
 	 * 
-	 * @see PopulationDemographyClient#getMeanAgeFirstChild(Collection, Collection, Collection)
+	 * @see PopulationDemographyClient#getMeanAgeFirstChild(Collection,
+	 *      Collection, Collection)
 	 */
 	public List<MeanAgeFirstChild> getMeanAgeFirstChild() {
 		return getMeanAgeFirstChild(null, null, null);
@@ -153,7 +157,8 @@ public class PopulationDemographyClient extends AbstractClient {
 
 	/**
 	 * <p>
-	 * Fetch all mean age for the first child data which match the input constraints.
+	 * Fetch all mean age for the first child data which match the input
+	 * constraints.
 	 * </p>
 	 * 
 	 * @param regions
@@ -166,7 +171,8 @@ public class PopulationDemographyClient extends AbstractClient {
 	 *         {@link com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstChild
 	 *         MeanAgeFirstChild} objects
 	 */
-	public List<MeanAgeFirstChild> getMeanAgeFirstChild(Collection<String> regions, Collection<Integer> genders, Collection<Integer> years) {
+	public List<MeanAgeFirstChild> getMeanAgeFirstChild(Collection<String> regions, Collection<Integer> genders,
+			Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
 		mappings.put("ContentsCode", Arrays.asList("BE0701AB"));
 		mappings.put("Region", regions);

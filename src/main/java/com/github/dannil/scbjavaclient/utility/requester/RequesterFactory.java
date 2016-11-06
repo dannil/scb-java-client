@@ -39,8 +39,8 @@ public final class RequesterFactory {
 
 	/**
 	 * <p>
-	 * Returns a regular (non-singleton) requester which matches the method. All responses are read
-	 * as UTF-8 character encoding.
+	 * Returns a regular (non-singleton) requester which matches the method. All
+	 * responses are read as UTF-8 character encoding.
 	 * </p>
 	 * 
 	 * @param method
@@ -53,8 +53,8 @@ public final class RequesterFactory {
 
 	/**
 	 * <p>
-	 * Returns a regular (non-singleton) requester which matches the method. All responses are read
-	 * as to match the character encoding.
+	 * Returns a regular (non-singleton) requester which matches the method. All
+	 * responses are read as to match the character encoding.
 	 * </p>
 	 * 
 	 * @param method
@@ -68,14 +68,14 @@ public final class RequesterFactory {
 		// abs.setCharset(charset);
 		// return abs;
 		switch (method) {
-			case GET:
-				return new GETRequester(charset);
+		case GET:
+			return new GETRequester(charset);
 
-			case POST:
-				return new POSTRequester(charset);
+		case POST:
+			return new POSTRequester(charset);
 
-			default:
-				throw new IllegalArgumentException(method + " is not a valid method");
+		default:
+			throw new IllegalArgumentException(method + " is not a valid method");
 		}
 	}
 

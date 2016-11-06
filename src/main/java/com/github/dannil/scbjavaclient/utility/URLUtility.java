@@ -45,7 +45,8 @@ public final class URLUtility {
 	 * FALLBACK_LOCALE}.
 	 * </p>
 	 * <p>
-	 * See {@link #changeLanguageForUrl(String, String) } for implementation details.
+	 * See {@link #changeLanguageForUrl(String, String) } for implementation
+	 * details.
 	 * </p>
 	 *
 	 * @param url
@@ -61,7 +62,8 @@ public final class URLUtility {
 	 * Generates a new URL to the API using the specified locale.
 	 * </p>
 	 * <p>
-	 * See {@link #changeLanguageForUrl(String, String) } for implementation details.
+	 * See {@link #changeLanguageForUrl(String, String) } for implementation
+	 * details.
 	 * </p>
 	 *
 	 * @param url
@@ -76,8 +78,8 @@ public final class URLUtility {
 
 	/**
 	 * <p>
-	 * Generates a new URL to the API by replacing the current language tag in the URL with the
-	 * specified language tag.
+	 * Generates a new URL to the API by replacing the current language tag in
+	 * the URL with the specified language tag.
 	 * </p>
 	 * 
 	 * <p>
@@ -85,18 +87,19 @@ public final class URLUtility {
 	 * </p>
 	 * 
 	 * <ol>
-	 * <li>Specifies the <b>start segment</b> as the segment preceding the <b>language tag
-	 * segment</b> in the URL.</li>
-	 * <li>Finds the length of the <b>language tag segment</b> by finding the next forward slash
-	 * following the <b>start segment</b>, as this indicates that the segment has ended.</li>
-	 * <li>Replaces the content between the start and end of the segment (forward slashes excluded)
-	 * with the new language tag.</li>
+	 * <li>Specifies the <b>start segment</b> as the segment preceding the
+	 * <b>language tag segment</b> in the URL.</li>
+	 * <li>Finds the length of the <b>language tag segment</b> by finding the
+	 * next forward slash following the <b>start segment</b>, as this indicates
+	 * that the segment has ended.</li>
+	 * <li>Replaces the content between the start and end of the segment
+	 * (forward slashes excluded) with the new language tag.</li>
 	 * </ol>
 	 * 
 	 * <p>
-	 * Due to speed efficiency, this method does not perform any validity check on the specified
-	 * URL. Calling this method without a valid URL for the API may (and probably will) result in
-	 * unexpected behavior.
+	 * Due to speed efficiency, this method does not perform any validity check
+	 * on the specified URL. Calling this method without a valid URL for the API
+	 * may (and probably will) result in unexpected behavior.
 	 * </p>
 	 * 
 	 * @param url
@@ -106,7 +109,8 @@ public final class URLUtility {
 	 * @return the modified URL
 	 */
 	public static String changeLanguageForUrl(String url, String language) {
-		// Specify the starting point. For this implementation, the starting point is the segment
+		// Specify the starting point. For this implementation, the starting
+		// point is the segment
 		// preceding the language tag segment in the URL
 		String startSegment = "doris";
 
@@ -115,7 +119,8 @@ public final class URLUtility {
 		// Find the index where the language tag ends
 		int end = start + url.substring(start).indexOf('/');
 
-		// Replace the contents between the start and end index with our new language tag
+		// Replace the contents between the start and end index with our new
+		// language tag
 		StringBuilder builder = new StringBuilder(url);
 		builder.replace(start, end, language);
 

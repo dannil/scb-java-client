@@ -30,8 +30,8 @@ import org.junit.runners.JUnit4;
 public class URLUtilityTest {
 
 	@Test
-	public void callPrivateConstructor() throws InstantiationException, IllegalAccessException,
-			IllegalArgumentException, InvocationTargetException {
+	public void callPrivateConstructor()
+			throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		Constructor<?>[] cons = URLUtility.class.getDeclaredConstructors();
 		cons[0].setAccessible(true);
 		cons[0].newInstance();

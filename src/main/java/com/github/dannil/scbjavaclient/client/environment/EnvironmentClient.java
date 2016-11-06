@@ -60,7 +60,8 @@ public class EnvironmentClient extends AbstractContainerClient {
 
 	/**
 	 * <p>
-	 * Retrieve the client for interacting with environment land and water area data.
+	 * Retrieve the client for interacting with environment land and water area
+	 * data.
 	 * </p>
 	 * 
 	 * @return a client for environment land and water area data

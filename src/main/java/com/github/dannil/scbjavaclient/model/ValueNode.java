@@ -160,7 +160,8 @@ public class ValueNode<V> {
 		}
 
 		ValueNode<?> other = (ValueNode<?>) obj;
-		return Objects.equals(this.code, other.code) && Objects.equals(this.value, other.value) && Objects.equals(this.text, other.text);
+		return Objects.equals(this.code, other.code) && Objects.equals(this.value, other.value)
+				&& Objects.equals(this.text, other.text);
 	}
 
 	@Override

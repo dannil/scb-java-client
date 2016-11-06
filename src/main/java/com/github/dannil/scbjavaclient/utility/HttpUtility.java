@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-
 package com.github.dannil.scbjavaclient.utility;
 
 import java.net.URI;
@@ -42,8 +41,8 @@ public final class HttpUtility {
 
 	/**
 	 * <p>
-	 * Validates if the status code is a valid HTTP code. The <code>URI</code> parameter is used to
-	 * specify which address returned the status code.
+	 * Validates if the status code is a valid HTTP code. The <code>URI</code>
+	 * parameter is used to specify which address returned the status code.
 	 * </p>
 	 * 
 	 * @param uri
@@ -53,20 +52,20 @@ public final class HttpUtility {
 	 */
 	public static void validateStatusCode(URI uri, int statusCode) {
 		switch (statusCode) {
-			case 200:
-				break;
+		case 200:
+			break;
 
-			case 403:
-				throw new SCBClientForbiddenException(uri.toString());
+		case 403:
+			throw new SCBClientForbiddenException(uri.toString());
 
-			case 404:
-				throw new SCBClientUrlNotFoundException(uri.toString());
+		case 404:
+			throw new SCBClientUrlNotFoundException(uri.toString());
 
-			case 429:
-				throw new SCBClientTooManyRequestsException(uri.toString());
+		case 429:
+			throw new SCBClientTooManyRequestsException(uri.toString());
 
-			default:
-				throw new SCBClientException("Unhandled HTTP status code " + statusCode);
+		default:
+			throw new SCBClientException("Unhandled HTTP status code " + statusCode);
 		}
 	}
 

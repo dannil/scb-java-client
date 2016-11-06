@@ -47,7 +47,8 @@ public class Localization {
 
 	/**
 	 * <p>
-	 * Private constructor. Initializes encoding control for the resource bundles.
+	 * Private constructor. Initializes encoding control for the resource
+	 * bundles.
 	 * </p>
 	 */
 	private Localization() {
@@ -64,7 +65,8 @@ public class Localization {
 	 */
 	public Localization(Locale locale) {
 		this();
-		this.bundle = ResourceBundle.getBundle(ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX, locale, this.encodingControl);
+		this.bundle = ResourceBundle.getBundle(ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX, locale,
+				this.encodingControl);
 	}
 
 	/**
@@ -87,14 +89,16 @@ public class Localization {
 	 *            the <code>Locale</code>
 	 */
 	public void setLocale(Locale locale) {
-		this.bundle = ResourceBundle.getBundle(ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX, locale, this.encodingControl);
+		this.bundle = ResourceBundle.getBundle(ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX, locale,
+				this.encodingControl);
 	}
 
 	/**
 	 * <p>
-	 * Returns the translation for the specified key. If it can't find the key in the current
-	 * specified language's localization file, it attempts to use the fallback <code>Locale</code>'s
-	 * localization file as the translation source.
+	 * Returns the translation for the specified key. If it can't find the key
+	 * in the current specified language's localization file, it attempts to use
+	 * the fallback <code>Locale</code>'s localization file as the translation
+	 * source.
 	 * </p>
 	 * 
 	 * @param key
@@ -105,8 +109,8 @@ public class Localization {
 		try {
 			return this.bundle.getString(key);
 		} catch (MissingResourceException e2) {
-			return ResourceBundle.getBundle(ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX, ClientConstants.LOCALIZATION_FALLBACK_LOCALE,
-					this.encodingControl).getString(key);
+			return ResourceBundle.getBundle(ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX,
+					ClientConstants.LOCALIZATION_FALLBACK_LOCALE, this.encodingControl).getString(key);
 		}
 	}
 
@@ -132,8 +136,8 @@ public class Localization {
 
 	/**
 	 * <p>
-	 * Class to handle non-ASCII encodings for {@link java.util.ResourceBundle ResourceBundle}, such
-	 * as UTF-8.
+	 * Class to handle non-ASCII encodings for {@link java.util.ResourceBundle
+	 * ResourceBundle}, such as UTF-8.
 	 * </p>
 	 * 
 	 * @author Daniel Nilsson
@@ -166,7 +170,8 @@ public class Localization {
 		}
 
 		@Override
-		public ResourceBundle newBundle(String baseName, Locale locale, String format, ClassLoader loader, boolean reload) {
+		public ResourceBundle newBundle(String baseName, Locale locale, String format, ClassLoader loader,
+				boolean reload) {
 			if (baseName == null || locale == null || format == null || loader == null) {
 				throw new IllegalArgumentException();
 			}

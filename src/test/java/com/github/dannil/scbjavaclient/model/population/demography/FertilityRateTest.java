@@ -45,7 +45,7 @@ public class FertilityRateTest {
 	}
 
 	@Test
-	public  void createWithDefaultConstructor() {
+	public void createWithDefaultConstructor() {
 		FertilityRate rate = new FertilityRate();
 
 		assertNotNull(rate);

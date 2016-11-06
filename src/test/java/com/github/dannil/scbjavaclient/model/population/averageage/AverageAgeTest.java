@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.model.population.statistic;
+package com.github.dannil.scbjavaclient.model.population.averageage;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
@@ -28,6 +28,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.github.dannil.scbjavaclient.model.ValueNode;
+import com.github.dannil.scbjavaclient.model.population.averageage.AverageAge;
 
 public class AverageAgeTest {
 
@@ -45,7 +46,7 @@ public class AverageAgeTest {
 	}
 
 	@Test
-	public  void createWithDefaultConstructor() {
+	public void createWithDefaultConstructor() {
 		AverageAge avg = new AverageAge();
 
 		assertNotNull(avg);

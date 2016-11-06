@@ -129,8 +129,8 @@ public class NumberOfChildrenBornWithFirstName extends AbstractYearAndValueModel
 
 	/**
 	 * <p>
-	 * Get the available codes and their respective values for the number of children born with
-	 * first name data from the API.
+	 * Get the available codes and their respective values for the number of
+	 * children born with first name data from the API.
 	 * </p>
 	 *
 	 * @return a list of the available codes and their values
