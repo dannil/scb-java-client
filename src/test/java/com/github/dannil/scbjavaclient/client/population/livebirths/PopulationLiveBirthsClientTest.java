@@ -18,6 +18,8 @@ package com.github.dannil.scbjavaclient.client.population.livebirths;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.Locale;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,7 +34,8 @@ public class PopulationLiveBirthsClientTest {
 
 	@Before
 	public void setup() {
-		this.populationLiveBirthsClient = new SCBClient().population().liveBirths();
+		Locale locale = new Locale("sv", "SE");
+		this.populationLiveBirthsClient = new SCBClient(locale).population().liveBirths();
 	}
 
 	@Test

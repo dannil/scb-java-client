@@ -18,6 +18,8 @@ package com.github.dannil.scbjavaclient.client.population.density;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.Locale;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,7 +34,8 @@ public class PopulationDensityClientTest {
 
 	@Before
 	public void setup() {
-		this.populationDensityClient = new SCBClient().population().density();
+		Locale locale = new Locale("sv", "SE");
+		this.populationDensityClient = new SCBClient(locale).population().density();
 	}
 
 	@Test
