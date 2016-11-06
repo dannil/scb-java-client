@@ -99,6 +99,13 @@ public class PopulationClient extends AbstractContainerClient {
 		return this.populationAmountClient;
 	}
 
+	/**
+	 * <p>
+	 * Retrieve the client for interacting with population average age data.
+	 * </p>
+	 * 
+	 * @return a client for population amount data
+	 */
 	public PopulationAverageAgeClient averageAge() {
 		return this.populationAverageAgeClient;
 	}

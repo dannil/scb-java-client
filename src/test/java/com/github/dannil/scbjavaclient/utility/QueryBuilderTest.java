@@ -34,8 +34,7 @@ import org.junit.runners.JUnit4;
 public class QueryBuilderTest {
 
 	@Test
-	public void callPrivateConstructor()
-			throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+	public void callPrivateConstructor() throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		Constructor<?>[] cons = QueryBuilder.class.getDeclaredConstructors();
 		cons[0].setAccessible(true);
 		cons[0].newInstance();
@@ -51,8 +50,7 @@ public class QueryBuilderTest {
 
 		String query = QueryBuilder.build(inputMap);
 
-		assertEquals(
-				"{\"query\": [{\"code\": \"Tid\", \"selection\": {\"filter\": \"item\", \"values\": [\"2012\"]}}],\"response\": {\"format\": \"json\"}}",
+		assertEquals("{\"query\": [{\"code\": \"Tid\", \"selection\": {\"filter\": \"item\", \"values\": [\"2012\"]}}],\"response\": {\"format\": \"json\"}}",
 				query);
 	}
 

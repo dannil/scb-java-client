@@ -65,8 +65,7 @@ public class Localization {
 	 */
 	public Localization(Locale locale) {
 		this();
-		this.bundle = ResourceBundle.getBundle(ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX, locale,
-				this.encodingControl);
+		this.bundle = ResourceBundle.getBundle(ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX, locale, this.encodingControl);
 	}
 
 	/**
@@ -89,8 +88,7 @@ public class Localization {
 	 *            the <code>Locale</code>
 	 */
 	public void setLocale(Locale locale) {
-		this.bundle = ResourceBundle.getBundle(ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX, locale,
-				this.encodingControl);
+		this.bundle = ResourceBundle.getBundle(ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX, locale, this.encodingControl);
 	}
 
 	/**
@@ -109,8 +107,9 @@ public class Localization {
 		try {
 			return this.bundle.getString(key);
 		} catch (MissingResourceException e2) {
-			return ResourceBundle.getBundle(ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX,
-					ClientConstants.LOCALIZATION_FALLBACK_LOCALE, this.encodingControl).getString(key);
+			return ResourceBundle
+					.getBundle(ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX, ClientConstants.LOCALIZATION_FALLBACK_LOCALE, this.encodingControl)
+					.getString(key);
 		}
 	}
 
@@ -170,8 +169,7 @@ public class Localization {
 		}
 
 		@Override
-		public ResourceBundle newBundle(String baseName, Locale locale, String format, ClassLoader loader,
-				boolean reload) {
+		public ResourceBundle newBundle(String baseName, Locale locale, String format, ClassLoader loader, boolean reload) {
 			if (baseName == null || locale == null || format == null || loader == null) {
 				throw new IllegalArgumentException();
 			}

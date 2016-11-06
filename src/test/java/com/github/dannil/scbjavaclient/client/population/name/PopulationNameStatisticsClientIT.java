@@ -48,8 +48,7 @@ public class PopulationNameStatisticsClientIT {
 		List<String> firstnames = Arrays.asList("AdinaK");
 		List<Integer> years = Arrays.asList(2002);
 
-		assertNotEquals(0,
-				this.populationNameStatisticsClient.getNumberOfChildrenBornWithFirstName(firstnames, years).size());
+		assertNotEquals(0, this.populationNameStatisticsClient.getNumberOfChildrenBornWithFirstName(firstnames, years).size());
 	}
 
 }

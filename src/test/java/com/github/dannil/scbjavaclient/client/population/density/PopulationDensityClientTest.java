@@ -40,8 +40,7 @@ public class PopulationDensityClientTest {
 
 	@Test
 	public void getUrl() {
-		assertEquals("http://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0101/BE0101C/",
-				this.populationDensityClient.getUrl());
+		assertEquals("http://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0101/BE0101C/", this.populationDensityClient.getUrl());
 	}
 
 }

@@ -108,8 +108,8 @@ public class PopulationAmountClient extends AbstractClient {
 	 *         {@link com.github.dannil.scbjavaclient.model.population.amount.Population
 	 *         Population} objects
 	 */
-	public List<Population> getPopulation(Collection<String> regions, Collection<String> relationshipStatuses,
-			Collection<String> ages, Collection<Integer> genders, Collection<Integer> years) {
+	public List<Population> getPopulation(Collection<String> regions, Collection<String> relationshipStatuses, Collection<String> ages,
+			Collection<Integer> genders, Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
 		mappings.put("ContentsCode", Arrays.asList("BE0101N1", "BE0101N2"));
 		mappings.put("Region", regions);

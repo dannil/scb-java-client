@@ -115,8 +115,7 @@ public final class JsonCustomResponseFormat implements IJsonResponseFormat {
 	@Override
 	public boolean isFormatted() {
 		// Check if the node is correctly formatted
-		return !(this.json.has("columns") || this.json.has("data") || this.json.has("comments")
-				|| !this.json.isArray());
+		return !(this.json.has("columns") || this.json.has("data") || this.json.has("comments") || !this.json.isArray());
 	}
 
 	/**

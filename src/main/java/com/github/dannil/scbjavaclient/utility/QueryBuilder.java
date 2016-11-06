@@ -121,8 +121,7 @@ public final class QueryBuilder {
 		builder.append("{\"query\": [");
 		int i = 0;
 		for (Entry<String, List<?>> entry : filteredMap.entrySet()) {
-			builder.append(
-					"{\"code\": \"" + entry.getKey() + "\", \"selection\": {\"filter\": \"item\", \"values\": [");
+			builder.append("{\"code\": \"" + entry.getKey() + "\", \"selection\": {\"filter\": \"item\", \"values\": [");
 			List<?> values = entry.getValue();
 			for (int j = 0; j < values.size(); j++) {
 				builder.append("\"" + values.get(j) + "\"");

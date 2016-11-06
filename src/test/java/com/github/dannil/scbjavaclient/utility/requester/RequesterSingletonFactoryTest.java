@@ -30,8 +30,7 @@ import org.junit.Test;
 public class RequesterSingletonFactoryTest {
 
 	@Test
-	public void callPrivateConstructor()
-			throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+	public void callPrivateConstructor() throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		Constructor<?>[] cons = RequesterSingletonFactory.class.getDeclaredConstructors();
 		cons[0].setAccessible(true);
 		cons[0].newInstance();
@@ -41,8 +40,8 @@ public class RequesterSingletonFactoryTest {
 	}
 
 	@Test
-	public void callPrivateConstructorGETHolder() throws NoSuchMethodException, SecurityException,
-			InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+	public void callPrivateConstructorGETHolder() throws NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException,
+			IllegalArgumentException, InvocationTargetException {
 
 		// Ridiculous code to instantiate private static class inside a private
 		// class
@@ -72,8 +71,8 @@ public class RequesterSingletonFactoryTest {
 	}
 
 	@Test
-	public void callPrivateConstructorPOSTHolder() throws NoSuchMethodException, SecurityException,
-			InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+	public void callPrivateConstructorPOSTHolder() throws NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException,
+			IllegalArgumentException, InvocationTargetException {
 
 		// Ridiculous code to instantiate private static class inside a private
 		// class

@@ -195,8 +195,7 @@ public abstract class AbstractClient {
 			return values;
 		} catch (IllegalArgumentException e) {
 			Object[] variables = new Object[] { code, url };
-			throw new IllegalArgumentException(this.localization.getString("code_is_not_supported_for_url", variables),
-					e);
+			throw new IllegalArgumentException(this.localization.getString("code_is_not_supported_for_url", variables), e);
 		}
 
 		// if (!inputs.containsKey("Region")) {
@@ -253,8 +252,7 @@ public abstract class AbstractClient {
 			return format.getValues(code);
 		} catch (IllegalArgumentException e) {
 			Object[] variables = new Object[] { code, url };
-			throw new IllegalArgumentException(this.localization.getString("code_is_not_supported_for_url", variables),
-					e);
+			throw new IllegalArgumentException(this.localization.getString("code_is_not_supported_for_url", variables), e);
 		}
 		//
 		// String content = get(url);
@@ -290,6 +288,13 @@ public abstract class AbstractClient {
 	// }
 	// }
 
+	/**
+	 * <p>
+	 * Returns the URL endpoint which this client represents.
+	 * </p>
+	 *
+	 * @return the URL endpoint for this client
+	 */
 	public String getUrl() {
 		return getBaseUrl();
 	}

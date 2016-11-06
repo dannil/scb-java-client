@@ -69,8 +69,7 @@ public class PopulationLiveBirthsClient extends AbstractClient {
 	 *         {@link com.github.dannil.scbjavaclient.model.population.livebirths.LiveBirth
 	 *         LiveBirth} objects
 	 */
-	public List<LiveBirth> getLiveBirths(Collection<String> regions, Collection<String> motherAges,
-			Collection<Integer> genders, Collection<Integer> years) {
+	public List<LiveBirth> getLiveBirths(Collection<String> regions, Collection<String> motherAges, Collection<Integer> genders, Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
 		mappings.put("ContentsCode", Arrays.asList("BE0101E2"));
 		mappings.put("Region", regions);

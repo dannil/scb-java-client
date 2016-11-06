@@ -20,6 +20,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
@@ -36,10 +37,58 @@ import com.github.dannil.scbjavaclient.utility.QueryBuilder;
  */
 public class PopulationDensityClient extends AbstractClient {
 
+	/**
+	 * <p>
+	 * Default constructor.
+	 * </p>
+	 */
+	public PopulationDensityClient() {
+		super();
+	}
+
+	/**
+	 * <p>
+	 * Overloaded constructor.
+	 * </p>
+	 * 
+	 * @param locale
+	 *            the <code>Locale</code> for this client
+	 */
+	public PopulationDensityClient(Locale locale) {
+		super(locale);
+	}
+
+	/**
+	 * <p>
+	 * Fetch all density data.
+	 * </p>
+	 * 
+	 * @return the density data wrapped in a list of
+	 *         {@link com.github.dannil.scbjavaclient.model.population.density.Density
+	 *         Density} objects
+	 * 
+	 * @see #getDensity(Collection, Collection, Collection)
+	 */
 	public List<Density> getDensity() {
 		return getDensity(null, null, null);
 	}
 
+	/**
+	 * <p>
+	 * Fetch all density data which match the input constraints.
+	 * </p>
+	 * 
+	 * @param regions
+	 *            the regions to fetch data for
+	 * @param sexes
+	 *            the sexes to fetch data for
+	 * @param years
+	 *            the years to fetch data for
+	 * 
+	 * @return the density data wrapped in a list of
+	 *         {@link com.github.dannil.scbjavaclient.model.population.density.Density
+	 *         Density} objects
+	 */
 	public List<Density> getDensity(Collection<String> regions, Collection<String> sexes, Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
 		mappings.put("ContentsCode", Arrays.asList("BE0101U1", "BE0101U2", "BE0101U3"));

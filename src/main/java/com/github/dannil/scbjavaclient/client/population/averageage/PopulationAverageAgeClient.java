@@ -89,8 +89,7 @@ public class PopulationAverageAgeClient extends AbstractClient {
 	 *         {@link com.github.dannil.scbjavaclient.model.population.averageage.AverageAge
 	 *         AverageAge} objects
 	 */
-	public List<AverageAge> getAverageAge(Collection<String> regions, Collection<String> genders,
-			Collection<Integer> years) {
+	public List<AverageAge> getAverageAge(Collection<String> regions, Collection<String> genders, Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
 		mappings.put("ContentsCode", Arrays.asList("BE0101G9"));
 		mappings.put("Region", regions);

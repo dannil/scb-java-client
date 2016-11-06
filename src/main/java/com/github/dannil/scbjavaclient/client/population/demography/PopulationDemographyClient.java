@@ -125,8 +125,7 @@ public class PopulationDemographyClient extends AbstractClient {
 	 *         {@link com.github.dannil.scbjavaclient.model.population.demography.FertilityRate
 	 *         FertilityRate} objects
 	 */
-	public List<FertilityRate> getFertilityRate(Collection<String> regions, Collection<Integer> genders,
-			Collection<Integer> years) {
+	public List<FertilityRate> getFertilityRate(Collection<String> regions, Collection<Integer> genders, Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
 		mappings.put("ContentsCode", Arrays.asList("BE0701AA"));
 		mappings.put("Region", regions);
@@ -171,8 +170,7 @@ public class PopulationDemographyClient extends AbstractClient {
 	 *         {@link com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstChild
 	 *         MeanAgeFirstChild} objects
 	 */
-	public List<MeanAgeFirstChild> getMeanAgeFirstChild(Collection<String> regions, Collection<Integer> genders,
-			Collection<Integer> years) {
+	public List<MeanAgeFirstChild> getMeanAgeFirstChild(Collection<String> regions, Collection<Integer> genders, Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
 		mappings.put("ContentsCode", Arrays.asList("BE0701AB"));
 		mappings.put("Region", regions);

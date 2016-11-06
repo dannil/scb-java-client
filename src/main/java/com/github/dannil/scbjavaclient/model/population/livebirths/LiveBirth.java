@@ -135,8 +135,7 @@ public class LiveBirth extends AbstractRegionYearAndValueModel<String, Integer, 
 		}
 
 		LiveBirth other = (LiveBirth) obj;
-		return super.equals(other) && Objects.equals(this.motherAge, other.motherAge)
-				&& Objects.equals(this.gender, other.gender);
+		return super.equals(other) && Objects.equals(this.motherAge, other.motherAge) && Objects.equals(this.gender, other.gender);
 	}
 
 	@Override
