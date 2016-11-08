@@ -50,17 +50,17 @@ SCBClient client = new SCBClient();
 
 // Retrieve some client(s) matching the table(s) you want to fetch information from
 PopulationDemographyClient populationDemographyClient = client.population().demography();
-PopulationStatisticsClient populationStatisticsClient = client.population().statistics();
+PopulationAmountClient populationAmountClient = client.population().amount();
 
 // Retrieve all population statistics
-List<Population> population = populationStatisticsClient.getPopulation();
+List<Population> populationData = populationAmountClient.getPopulation();
 
-// Retrieve all mean age for first child birth statistics 
-List<MeanAgeFirstChild> firstChild = populationDemographyClient.getMeanAgeFirstChild();
+// Retrieve all mean age for first child birth statistics
+List<MeanAgeFirstChild> firstChildData = populationDemographyClient.getMeanAgeFirstChild();
 
 // You may also want to skip the explicit creation of the matching client and fetch data 
 // directly from the method calls.
-List<AverageAge> averageAges = client.population().statistics().getAverageAge();
+List<Density> densityData = client.population().density().getDensity();
 ```
 
 The client also supports selecting specific values directly from the SCB API.
