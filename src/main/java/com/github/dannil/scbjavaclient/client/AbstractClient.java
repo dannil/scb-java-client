@@ -176,40 +176,6 @@ public abstract class AbstractClient {
 			Object[] variables = new Object[] { code, url };
 			throw new IllegalArgumentException(this.localization.getString("code_is_not_supported_for_url", variables), e);
 		}
-
-		// if (!inputs.containsKey("Region")) {
-		// Object[] variables = new Object[] { url };
-		//
-		// throw new
-		// UnsupportedOperationException(this.localization.getString("regions_is_not_supported_for_url",
-		// variables));
-		// }
-		// return inputs.get("Region");
-
-		// String content = get(url);
-		//
-		// JsonNode contentAsJsonNode = JsonUtility.toNode(content);
-		//
-		// List<String> codes = contentAsJsonNode.findValuesAsText("code");
-		// List<JsonNode> values = contentAsJsonNode.findValues("values");
-		//
-		// int position = codes.indexOf("Region");
-		// if (position < 0) {
-		// Object[] variables = new Object[] { url };
-		//
-		// throw new
-		// UnsupportedOperationException(this.localization.getString("regions_is_not_supported_for_url",
-		// variables));
-		// }
-		//
-		// JsonNode jsonRegions = values.get(position);
-		//
-		// List<String> regions = new ArrayList<String>(jsonRegions.size());
-		// for (int j = 0; j < jsonRegions.size(); j++) {
-		// regions.add(jsonRegions.get(j).asText());
-		// }
-		//
-		// return regions;
 	}
 
 	/**
@@ -231,31 +197,6 @@ public abstract class AbstractClient {
 			Object[] variables = new Object[] { code, url };
 			throw new IllegalArgumentException(this.localization.getString("code_is_not_supported_for_url", variables), e);
 		}
-		//
-		// String content = get(url);
-		//
-		// JsonNode contentAsJsonNode = JsonUtility.toNode(content);
-		//
-		// List<String> codes = contentAsJsonNode.findValuesAsText("code");
-		// List<JsonNode> values = contentAsJsonNode.findValues("values");
-		//
-		// int position = codes.indexOf("Tid");
-		// if (position < 0) {
-		// Object[] variables = new Object[] { url };
-		//
-		// throw new
-		// UnsupportedOperationException(this.localization.getString("years_is_not_supported_for_url",
-		// variables));
-		// }
-		//
-		// JsonNode jsonYears = values.get(position);
-		//
-		// List<String> years = new ArrayList<String>(jsonYears.size());
-		// for (int j = 0; j < jsonYears.size(); j++) {
-		// years.add(jsonYears.get(j).asText());
-		// }
-		//
-		// return years;
 	}
 
 	// private void validateLocale() {

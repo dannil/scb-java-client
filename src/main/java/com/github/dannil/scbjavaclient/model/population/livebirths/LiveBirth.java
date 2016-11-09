@@ -30,7 +30,7 @@ import com.github.dannil.scbjavaclient.utility.requester.RequestMethod;
 import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
 
 /**
- * Model for live births data.
+ * <p>Model for live births data.</p>
  * 
  * @author Daniel Nilsson
  */

@@ -52,20 +52,6 @@ public class PopulationAmountClient extends AbstractClient {
 		super(locale);
 	}
 
-	// public List<String> getRegions() {
-	// return super.getRegions(getUrl());
-	// }
-
-	// public List<Integer> getYears() {
-	// List<String> fetchedYears = super.getYears(getUrl());
-	//
-	// List<Integer> years = new ArrayList<Integer>(fetchedYears.size());
-	// for (String fetchedYear : fetchedYears) {
-	// years.add(Integer.valueOf(fetchedYear));
-	// }
-	// return years;
-	// }
-
 	/**
 	 * <p>Fetch all population data.</p>
 	 * 
@@ -73,8 +59,7 @@ public class PopulationAmountClient extends AbstractClient {
 	 *         {@link com.github.dannil.scbjavaclient.model.population.amount.Population Population}
 	 *         objects
 	 * 
-	 * @see PopulationAmountClient#getPopulation(Collection, Collection, Collection, Collection,
-	 *      Collection)
+	 * @see #getPopulation(Collection, Collection, Collection, Collection, Collection)
 	 */
 	public List<Population> getPopulation() {
 		return getPopulation(null, null, null, null, null);
@@ -93,7 +78,6 @@ public class PopulationAmountClient extends AbstractClient {
 	 *            the genders to fetch data for
 	 * @param years
 	 *            the years to fetch data for
-	 * 
 	 * @return the population data wrapped in a list of
 	 *         {@link com.github.dannil.scbjavaclient.model.population.amount.Population Population}
 	 *         objects

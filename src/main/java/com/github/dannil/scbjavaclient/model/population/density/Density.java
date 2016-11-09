@@ -30,7 +30,7 @@ import com.github.dannil.scbjavaclient.utility.requester.RequestMethod;
 import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
 
 /**
- * Model for density data.
+ * <p>Model for density data.</p>
  * 
  * @author Daniel Nilsson
  */

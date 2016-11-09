@@ -53,41 +53,6 @@ public class PopulationDemographyClient extends AbstractClient {
 		super(locale);
 	}
 
-	// public Collection<String> getRegions() {
-	// return super.getRegions(getUrl());
-	// }
-	//
-	// public Collection<Integer> getGenders() {
-	// String response = AbstractRequester.doGet(getUrl());
-	//
-	// ObjectMapper mapper = new ObjectMapper();
-	// try {
-	// JsonNode node = mapper.readTree(response);
-	// Collection<JsonNode> nodes = node.findValues("values");
-	// node = nodes.get(1);
-	//
-	// Collection<Integer> genders = new ArrayCollection<Integer>(node.size());
-	// for (int i = 0; i < node.size(); i++) {
-	// genders.add(node.get(i).asInt());
-	// }
-	// return genders;
-	// } catch (IOException e) {
-	// e.printStackTrace();
-	// }
-	// return null;
-	// }
-	//
-	// public Collection<Integer> getYears() {
-	// Collection<String> fetchedYears = super.getYears(getUrl());
-	//
-	// Collection<Integer> years = new
-	// ArrayCollection<Integer>(fetchedYears.size());
-	// for (String fetchedYear : fetchedYears) {
-	// years.add(Integer.valueOf(fetchedYear));
-	// }
-	// return years;
-	// }
-
 	/**
 	 * <p>Fetch all fertility rate data.</p>
 	 * 
@@ -134,7 +99,7 @@ public class PopulationDemographyClient extends AbstractClient {
 	 *         {@link com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstChild
 	 *         MeanAgeFirstChild} objects
 	 * 
-	 * @see PopulationDemographyClient#getMeanAgeFirstChild(Collection, Collection, Collection)
+	 * @see #getMeanAgeFirstChild(Collection, Collection, Collection)
 	 */
 	public List<MeanAgeFirstChild> getMeanAgeFirstChild() {
 		return getMeanAgeFirstChild(null, null, null);

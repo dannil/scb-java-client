@@ -74,7 +74,6 @@ public class PopulationDensityClient extends AbstractClient {
 	 *            the sexes to fetch data for
 	 * @param years
 	 *            the years to fetch data for
-	 * 
 	 * @return the density data wrapped in a list of
 	 *         {@link com.github.dannil.scbjavaclient.model.population.density.Density Density}
 	 *         objects

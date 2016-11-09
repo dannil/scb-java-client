@@ -58,7 +58,6 @@ public class PopulationLiveBirthsClient extends AbstractClient {
 	 *            the genders to fetch data for
 	 * @param years
 	 *            the years to fetch data for
-	 * 
 	 * @return the live births data wrapped in a list of
 	 *         {@link com.github.dannil.scbjavaclient.model.population.livebirths.LiveBirth
 	 *         LiveBirth} objects

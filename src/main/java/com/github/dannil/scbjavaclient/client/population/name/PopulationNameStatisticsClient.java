@@ -59,8 +59,7 @@ public class PopulationNameStatisticsClient extends AbstractClient {
 	 *         {@link com.github.dannil.scbjavaclient.model.population.name.NumberOfChildrenBornWithFirstName
 	 *         NumberOfChildrenBornWithFirstName} objects
 	 * 
-	 * @see PopulationNameStatisticsClient#getNumberOfChildrenBornWithFirstName(Collection,
-	 *      Collection)
+	 * @see #getNumberOfChildrenBornWithFirstName(Collection, Collection)
 	 */
 	public List<NumberOfChildrenBornWithFirstName> getNumberOfChildrenBornWithFirstName() {
 		return getNumberOfChildrenBornWithFirstName(null, null);

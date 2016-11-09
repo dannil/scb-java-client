@@ -52,21 +52,6 @@ public class EnvironmentLandAndWaterAreaClient extends AbstractClient {
 		super(locale);
 	}
 
-	// public Collection<String> getRegions() {
-	// return super.getRegions(getUrl());
-	// }
-	//
-	// public Collection<Integer> getYears() {
-	// Collection<String> fetchedYears = super.getYears(getUrl());
-	//
-	// Collection<Integer> years = new
-	// ArrayCollection<Integer>(fetchedYears.size());
-	// for (String fetchedYear : fetchedYears) {
-	// years.add(Integer.valueOf(fetchedYear));
-	// }
-	// return years;
-	// }
-
 	/**
 	 * <p>Fetch all area data.</p>
 	 * 
@@ -74,7 +59,7 @@ public class EnvironmentLandAndWaterAreaClient extends AbstractClient {
 	 *         {@link com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area Area}
 	 *         objects
 	 * 
-	 * @see EnvironmentLandAndWaterAreaClient#getArea(Collection, Collection, Collection)
+	 * @see #getArea(Collection, Collection, Collection)
 	 */
 	public List<Area> getArea() {
 		return getArea(null, null, null);

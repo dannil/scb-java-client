@@ -37,8 +37,9 @@ public final class URLUtility {
 	/**
 	 * <p>Generates a new URL to the API using the fallback <code>Locale</code>
 	 * {@link com.github.dannil.scbjavaclient.constants.APIConstants#FALLBACK_LOCALE
-	 * FALLBACK_LOCALE}.</p> <p>See {@link #changeLanguageForUrl(String, String) } for
-	 * implementation details.</p>
+	 * FALLBACK_LOCALE}.</p>
+	 * 
+	 * <p>See {@link #changeLanguageForUrl(String, String)} for implementation details.</p>
 	 *
 	 * @param url
 	 *            the URL to edit
@@ -49,8 +50,9 @@ public final class URLUtility {
 	}
 
 	/**
-	 * <p>Generates a new URL to the API using the specified locale.</p> <p> See
-	 * {@link #changeLanguageForUrl(String, String) } for implementation details.</p>
+	 * <p>Generates a new URL to the API using the specified locale.</p>
+	 * 
+	 * <p>See {@link #changeLanguageForUrl(String, String)} for implementation details.</p>
 	 *
 	 * @param url
 	 *            the URL to edit
@@ -69,10 +71,13 @@ public final class URLUtility {
 	 * <p>This method performs these steps to figure out what needs to be replaced:</p>
 	 * 
 	 * <ol> <li>Specifies the <b>start segment</b> as the segment preceding the <b>language tag
-	 * segment</b> in the URL.</li> <li>Finds the length of the <b>language tag segment</b> by
-	 * finding the next forward slash following the <b>start segment</b>, as this indicates that the
-	 * segment has ended.</li> <li>Replaces the content between the start and end of the segment
-	 * (forward slashes excluded) with the new language tag.</li> </ol>
+	 * segment</b> in the URL.</li>
+	 * 
+	 * <li>Finds the length of the <b>language tag segment</b> by finding the next forward slash
+	 * following the <b>start segment</b>, as this indicates that the segment has ended.</li>
+	 * 
+	 * <li>Replaces the content between the start and end of the segment (forward slashes excluded)
+	 * with the new language tag.</li> </ol>
 	 * 
 	 * <p>Due to speed efficiency, this method does not perform any validity check on the specified
 	 * URL. Calling this method without a valid URL for the API may (and probably will) result in

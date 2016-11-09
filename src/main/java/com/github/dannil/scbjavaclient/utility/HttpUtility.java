@@ -24,7 +24,7 @@ import com.github.dannil.scbjavaclient.exception.SCBClientTooManyRequestsExcepti
 import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
 
 /**
- * Utility class for various HTTP operations.
+ * <p>Utility class for various HTTP operations.</p>
  * 
  * @author Daniel Nilsson
  */

@@ -133,7 +133,7 @@ public class SCBClient extends AbstractContainerClient {
 	 *            the table to fetch data from
 	 * @param query
 	 *            the selected values
-	 * @return a JSON string
+	 * @return a response from the API formatted as JSON
 	 */
 	public String getRawData(String table, Map<String, Collection<?>> query) {
 		return super.post(table, QueryBuilder.build(query));

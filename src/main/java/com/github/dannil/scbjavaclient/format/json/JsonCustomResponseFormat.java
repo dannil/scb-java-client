@@ -118,7 +118,6 @@ public final class JsonCustomResponseFormat implements IJsonResponseFormat {
 	 * 
 	 * @param clazz
 	 *            the class to convert each JSON entry to
-	 * 
 	 * @param <T>
 	 *            the data type of the list
 	 * @return a list of elements, which type is the specified class. Each element represents the
