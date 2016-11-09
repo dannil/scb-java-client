@@ -19,9 +19,7 @@ package com.github.dannil.scbjavaclient.model;
 import java.util.Objects;
 
 /**
- * <p>
- * Class which holds all data for a specific value.
- * </p>
+ * <p>Class which holds all data for a specific value.</p>
  * 
  * @author Daniel Nilsson
  *
@@ -35,18 +33,14 @@ public class ValueNode<V> {
 	private String text;
 
 	/**
-	 * <p>
-	 * Default constructor.
-	 * </p>
+	 * <p>Default constructor.</p>
 	 */
 	public ValueNode() {
 		// Constructor to use when some of the values are missing, such as text
 	}
 
 	/**
-	 * <p>
-	 * Overloaded constructor.
-	 * </p>
+	 * <p>Overloaded constructor.</p>
 	 * 
 	 * @param value
 	 *            the value
@@ -62,9 +56,7 @@ public class ValueNode<V> {
 	}
 
 	/**
-	 * <p>
-	 * Copy constructor.
-	 * </p>
+	 * <p>Copy constructor.</p>
 	 * 
 	 * @param value
 	 *            the {@link ValueNode ValueNode} to copy
@@ -74,9 +66,7 @@ public class ValueNode<V> {
 	}
 
 	/**
-	 * <p>
-	 * Getter for value.
-	 * </p>
+	 * <p>Getter for value.</p>
 	 * 
 	 * @return the value
 	 */
@@ -85,9 +75,7 @@ public class ValueNode<V> {
 	}
 
 	/**
-	 * <p>
-	 * Setter for value.
-	 * </p>
+	 * <p>Setter for value.</p>
 	 * 
 	 * @param value
 	 *            the value
@@ -97,9 +85,7 @@ public class ValueNode<V> {
 	}
 
 	/**
-	 * <p>
-	 * Getter for code.
-	 * </p>
+	 * <p>Getter for code.</p>
 	 * 
 	 * @return the code
 	 */
@@ -108,9 +94,7 @@ public class ValueNode<V> {
 	}
 
 	/**
-	 * <p>
-	 * Setter for code.
-	 * </p>
+	 * <p>Setter for code.</p>
 	 * 
 	 * @param code
 	 *            the code
@@ -120,9 +104,7 @@ public class ValueNode<V> {
 	}
 
 	/**
-	 * <p>
-	 * Getter for text.
-	 * </p>
+	 * <p>Getter for text.</p>
 	 * 
 	 * @return the text
 	 */
@@ -131,9 +113,7 @@ public class ValueNode<V> {
 	}
 
 	/**
-	 * <p>
-	 * Setter for text.
-	 * </p>
+	 * <p>Setter for text.</p>
 	 * 
 	 * @param text
 	 *            the text

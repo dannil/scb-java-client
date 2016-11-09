@@ -17,25 +17,19 @@
 package com.github.dannil.scbjavaclient.utility.requester;
 
 /**
- * <p>
- * Enumerable which contains the HTTP methods supported by the API.
- * </p>
+ * <p>Enumerable which contains the HTTP methods supported by the API.</p>
  * 
  * @author Daniel Nilsson
  */
 public enum RequestMethod {
 
 	/**
-	 * <p>
-	 * Enumerable for HTTP method GET.
-	 * </p>
+	 * <p>Enumerable for HTTP method GET.</p>
 	 */
 	GET,
 
 	/**
-	 * <p>
-	 * Enumerable for HTTP method POST.
-	 * </p>
+	 * <p>Enumerable for HTTP method POST.</p>
 	 */
 	POST
 

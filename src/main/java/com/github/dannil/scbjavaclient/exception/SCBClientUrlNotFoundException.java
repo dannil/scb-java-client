@@ -17,9 +17,7 @@
 package com.github.dannil.scbjavaclient.exception;
 
 /**
- * <p>
- * Exception for when the client couldn't find the requested URL.
- * </p>
+ * <p>Exception for when the client couldn't find the requested URL.</p>
  * 
  * @author Daniel Nilsson
  */
@@ -28,18 +26,14 @@ public class SCBClientUrlNotFoundException extends SCBClientException {
 	private static final long serialVersionUID = 1779756868616751298L;
 
 	/**
-	 * <p>
-	 * Default constructor.
-	 * </p>
+	 * <p>Default constructor.</p>
 	 */
 	public SCBClientUrlNotFoundException() {
 		super();
 	}
 
 	/**
-	 * <p>
-	 * Overloaded constructor.
-	 * </p>
+	 * <p>Overloaded constructor.</p>
 	 * 
 	 * @param message
 	 *            the message
@@ -49,9 +43,7 @@ public class SCBClientUrlNotFoundException extends SCBClientException {
 	}
 
 	/**
-	 * <p>
-	 * Overloaded constructor.
-	 * </p>
+	 * <p>Overloaded constructor.</p>
 	 * 
 	 * @param message
 	 *            the message
@@ -63,9 +55,7 @@ public class SCBClientUrlNotFoundException extends SCBClientException {
 	}
 
 	/**
-	 * <p>
-	 * Overloaded constructor.
-	 * </p>
+	 * <p>Overloaded constructor.</p>
 	 * 
 	 * @param cause
 	 *            the cause

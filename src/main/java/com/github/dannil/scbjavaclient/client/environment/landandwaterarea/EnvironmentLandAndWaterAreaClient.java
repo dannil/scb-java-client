@@ -29,27 +29,21 @@ import com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
- * <p>
- * Client which handles environment land and water area data fetching.
- * </p>
+ * <p>Client which handles environment land and water area data fetching.</p>
  * 
  * @author Daniel Nilsson
  */
 public class EnvironmentLandAndWaterAreaClient extends AbstractClient {
 
 	/**
-	 * <p>
-	 * Default constructor.
-	 * </p>
+	 * <p>Default constructor.</p>
 	 */
 	public EnvironmentLandAndWaterAreaClient() {
 		super();
 	}
 
 	/**
-	 * <p>
-	 * Overloaded constructor.
-	 * </p>
+	 * <p>Overloaded constructor.</p>
 	 * 
 	 * @param locale
 	 *            the <code>Locale</code> for this client
@@ -74,25 +68,20 @@ public class EnvironmentLandAndWaterAreaClient extends AbstractClient {
 	// }
 
 	/**
-	 * <p>
-	 * Fetch all area data.
-	 * </p>
+	 * <p>Fetch all area data.</p>
 	 * 
 	 * @return the area data wrapped in a list of
-	 *         {@link com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area
-	 *         Area} objects
+	 *         {@link com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area Area}
+	 *         objects
 	 * 
-	 * @see EnvironmentLandAndWaterAreaClient#getArea(Collection, Collection,
-	 *      Collection)
+	 * @see EnvironmentLandAndWaterAreaClient#getArea(Collection, Collection, Collection)
 	 */
 	public List<Area> getArea() {
 		return getArea(null, null, null);
 	}
 
 	/**
-	 * <p>
-	 * Fetch all area data which match the input constraints.
-	 * </p>
+	 * <p>Fetch all area data which match the input constraints.</p>
 	 * 
 	 * @param regions
 	 *            the regions to fetch data for
@@ -101,8 +90,8 @@ public class EnvironmentLandAndWaterAreaClient extends AbstractClient {
 	 * @param years
 	 *            the years to fetch data for
 	 * @return the area data wrapped in a list of
-	 *         {@link com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area
-	 *         Area} objects
+	 *         {@link com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area Area}
+	 *         objects
 	 */
 	public List<Area> getArea(Collection<String> regions, Collection<String> types, Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();

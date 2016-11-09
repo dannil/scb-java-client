@@ -43,9 +43,7 @@ public class LiveBirth extends AbstractRegionYearAndValueModel<String, Integer, 
 	private Integer gender;
 
 	/**
-	 * <p>
-	 * Default constructor.
-	 * </p>
+	 * <p>Default constructor.</p>
 	 */
 	public LiveBirth() {
 		super();
@@ -72,9 +70,7 @@ public class LiveBirth extends AbstractRegionYearAndValueModel<String, Integer, 
 	}
 
 	/**
-	 * <p>
-	 * Getter for mother's age.
-	 * </p>
+	 * <p>Getter for mother's age.</p>
 	 * 
 	 * @return the mother's age.
 	 */
@@ -83,9 +79,7 @@ public class LiveBirth extends AbstractRegionYearAndValueModel<String, Integer, 
 	}
 
 	/**
-	 * <p>
-	 * Setter for mother's age.
-	 * </p>
+	 * <p>Setter for mother's age.</p>
 	 * 
 	 * @param motherAge
 	 *            the mother's age
@@ -95,9 +89,7 @@ public class LiveBirth extends AbstractRegionYearAndValueModel<String, Integer, 
 	}
 
 	/**
-	 * <p>
-	 * Getter for gender.
-	 * </p>
+	 * <p>Getter for gender.</p>
 	 * 
 	 * @return the gender
 	 */
@@ -106,9 +98,7 @@ public class LiveBirth extends AbstractRegionYearAndValueModel<String, Integer, 
 	}
 
 	/**
-	 * <p>
-	 * Setter for gender.
-	 * </p>
+	 * <p>Setter for gender.</p>
 	 * 
 	 * @param gender
 	 *            the gender
@@ -159,10 +149,8 @@ public class LiveBirth extends AbstractRegionYearAndValueModel<String, Integer, 
 	}
 
 	/**
-	 * <p>
-	 * Get the available codes and their respective values for the live birth
-	 * data from the API.
-	 * </p>
+	 * <p>Get the available codes and their respective values for the live birth data from the
+	 * API.</p>
 	 *
 	 * @return a list of the available codes and their values
 	 */

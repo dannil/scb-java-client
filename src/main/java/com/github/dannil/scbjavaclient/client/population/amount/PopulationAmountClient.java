@@ -29,27 +29,21 @@ import com.github.dannil.scbjavaclient.model.population.amount.Population;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
- * <p>
- * Client which handles population amount data fetching.
- * </p>
+ * <p>Client which handles population amount data fetching.</p>
  * 
  * @author Daniel Nilsson
  */
 public class PopulationAmountClient extends AbstractClient {
 
 	/**
-	 * <p>
-	 * Default constructor.
-	 * </p>
+	 * <p>Default constructor.</p>
 	 */
 	public PopulationAmountClient() {
 		super();
 	}
 
 	/**
-	 * <p>
-	 * Overloaded constructor.
-	 * </p>
+	 * <p>Overloaded constructor.</p>
 	 * 
 	 * @param locale
 	 *            the <code>Locale</code> for this client
@@ -73,25 +67,21 @@ public class PopulationAmountClient extends AbstractClient {
 	// }
 
 	/**
-	 * <p>
-	 * Fetch all population data.
-	 * </p>
+	 * <p>Fetch all population data.</p>
 	 * 
 	 * @return the population data wrapped in a list of
-	 *         {@link com.github.dannil.scbjavaclient.model.population.amount.Population
-	 *         Population} objects
+	 *         {@link com.github.dannil.scbjavaclient.model.population.amount.Population Population}
+	 *         objects
 	 * 
-	 * @see PopulationAmountClient#getPopulation(Collection, Collection,
-	 *      Collection, Collection, Collection)
+	 * @see PopulationAmountClient#getPopulation(Collection, Collection, Collection, Collection,
+	 *      Collection)
 	 */
 	public List<Population> getPopulation() {
 		return getPopulation(null, null, null, null, null);
 	}
 
 	/**
-	 * <p>
-	 * Fetch all population data which match the input constraints.
-	 * </p>
+	 * <p>Fetch all population data which match the input constraints.</p>
 	 * 
 	 * @param regions
 	 *            the regions to fetch data for
@@ -105,8 +95,8 @@ public class PopulationAmountClient extends AbstractClient {
 	 *            the years to fetch data for
 	 * 
 	 * @return the population data wrapped in a list of
-	 *         {@link com.github.dannil.scbjavaclient.model.population.amount.Population
-	 *         Population} objects
+	 *         {@link com.github.dannil.scbjavaclient.model.population.amount.Population Population}
+	 *         objects
 	 */
 	public List<Population> getPopulation(Collection<String> regions, Collection<String> relationshipStatuses, Collection<String> ages,
 			Collection<Integer> genders, Collection<Integer> years) {

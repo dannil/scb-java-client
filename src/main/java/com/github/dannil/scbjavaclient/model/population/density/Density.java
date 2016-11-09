@@ -40,9 +40,7 @@ public class Density extends AbstractRegionYearAndValueModel<String, Integer, Do
 	private String sex;
 
 	/**
-	 * <p>
-	 * Default constructor.
-	 * </p>
+	 * <p>Default constructor.</p>
 	 */
 	public Density() {
 		super();
@@ -66,9 +64,7 @@ public class Density extends AbstractRegionYearAndValueModel<String, Integer, Do
 	}
 
 	/**
-	 * <p>
-	 * Getter for sex.
-	 * </p>
+	 * <p>Getter for sex.</p>
 	 * 
 	 * @return the sex.
 	 */
@@ -77,9 +73,7 @@ public class Density extends AbstractRegionYearAndValueModel<String, Integer, Do
 	}
 
 	/**
-	 * <p>
-	 * Setter for sex.
-	 * </p>
+	 * <p>Setter for sex.</p>
 	 * 
 	 * @param sex
 	 *            the sex
@@ -128,10 +122,7 @@ public class Density extends AbstractRegionYearAndValueModel<String, Integer, Do
 	}
 
 	/**
-	 * <p>
-	 * Get the available codes and their respective values for the density data
-	 * from the API.
-	 * </p>
+	 * <p>Get the available codes and their respective values for the density data from the API.</p>
 	 *
 	 * @return a list of the available codes and their values
 	 */

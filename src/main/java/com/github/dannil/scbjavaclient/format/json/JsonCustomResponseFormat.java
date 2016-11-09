@@ -29,11 +29,8 @@ import com.github.dannil.scbjavaclient.utility.StringUtility;
 import com.github.dannil.scbjavaclient.validator.json.JsonValidator;
 
 /**
- * <p>
- * Class which encapsulates behavior for the custom JSON response format. Note
- * that this class is immutable; to change the containing JSON, a new class
- * needs to be instantiated.
- * </p>
+ * <p>Class which encapsulates behavior for the custom JSON response format. Note that this class is
+ * immutable; to change the containing JSON, a new class needs to be instantiated.</p>
  * 
  * @author Daniel Nilsson
  */
@@ -44,9 +41,7 @@ public final class JsonCustomResponseFormat implements IJsonResponseFormat {
 	private JsonNode json;
 
 	/**
-	 * <p>
-	 * Default constructor.
-	 * </p>
+	 * <p>Default constructor.</p>
 	 * 
 	 * @param json
 	 *            the json to format
@@ -119,17 +114,15 @@ public final class JsonCustomResponseFormat implements IJsonResponseFormat {
 	}
 
 	/**
-	 * <p>
-	 * Converts the JSON string into a list of the specified class.
-	 * </p>
+	 * <p>Converts the JSON string into a list of the specified class.</p>
 	 * 
 	 * @param clazz
 	 *            the class to convert each JSON entry to
 	 * 
 	 * @param <T>
 	 *            the data type of the list
-	 * @return a list of elements, which type is the specified class. Each
-	 *         element represents the corresponding entry in the JSON
+	 * @return a list of elements, which type is the specified class. Each element represents the
+	 *         corresponding entry in the JSON
 	 */
 	public <T> List<T> toListOf(Class<T> clazz) {
 		try {

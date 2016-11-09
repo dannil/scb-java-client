@@ -19,25 +19,19 @@ package com.github.dannil.scbjavaclient.constants;
 import java.util.Locale;
 
 /**
- * <p>
- * Constants which hold values for using the API.
- * </p>
+ * <p>Constants which hold values for using the API.</p>
  * 
  * @author Daniel Nilsson
  */
 public final class APIConstants {
 
 	/**
-	 * <p>
-	 * The default locale of the API (sv, SE).
-	 * </p>
+	 * <p>The default locale of the API (sv, SE).</p>
 	 **/
 	public static final Locale FALLBACK_LOCALE = new Locale("sv", "SE");
 
 	/**
-	 * <p>
-	 * Private constructor to prevent instantiation.
-	 * </p>
+	 * <p>Private constructor to prevent instantiation.</p>
 	 */
 	private APIConstants() {
 

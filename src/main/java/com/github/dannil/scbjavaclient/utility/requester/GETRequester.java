@@ -23,18 +23,14 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 
 /**
- * <p>
- * HTTP requester for GET requests.
- * </p>
+ * <p>HTTP requester for GET requests.</p>
  * 
  * @author Daniel Nilsson
  */
 public class GETRequester extends AbstractRequester {
 
 	/**
-	 * <p>
-	 * Default constructor.
-	 * </p>
+	 * <p>Default constructor.</p>
 	 */
 	public GETRequester() {
 		super();
@@ -42,9 +38,7 @@ public class GETRequester extends AbstractRequester {
 	}
 
 	/**
-	 * <p>
-	 * Overloaded constructor.
-	 * </p>
+	 * <p>Overloaded constructor.</p>
 	 * 
 	 * @param charset
 	 *            the charset

@@ -29,27 +29,21 @@ import com.github.dannil.scbjavaclient.model.population.density.Density;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
- * <p>
- * Client which handles population density data fetching.
- * </p>
+ * <p>Client which handles population density data fetching.</p>
  * 
  * @author Daniel Nilsson
  */
 public class PopulationDensityClient extends AbstractClient {
 
 	/**
-	 * <p>
-	 * Default constructor.
-	 * </p>
+	 * <p>Default constructor.</p>
 	 */
 	public PopulationDensityClient() {
 		super();
 	}
 
 	/**
-	 * <p>
-	 * Overloaded constructor.
-	 * </p>
+	 * <p>Overloaded constructor.</p>
 	 * 
 	 * @param locale
 	 *            the <code>Locale</code> for this client
@@ -59,13 +53,11 @@ public class PopulationDensityClient extends AbstractClient {
 	}
 
 	/**
-	 * <p>
-	 * Fetch all density data.
-	 * </p>
+	 * <p>Fetch all density data.</p>
 	 * 
 	 * @return the density data wrapped in a list of
-	 *         {@link com.github.dannil.scbjavaclient.model.population.density.Density
-	 *         Density} objects
+	 *         {@link com.github.dannil.scbjavaclient.model.population.density.Density Density}
+	 *         objects
 	 * 
 	 * @see #getDensity(Collection, Collection, Collection)
 	 */
@@ -74,9 +66,7 @@ public class PopulationDensityClient extends AbstractClient {
 	}
 
 	/**
-	 * <p>
-	 * Fetch all density data which match the input constraints.
-	 * </p>
+	 * <p>Fetch all density data which match the input constraints.</p>
 	 * 
 	 * @param regions
 	 *            the regions to fetch data for
@@ -86,8 +76,8 @@ public class PopulationDensityClient extends AbstractClient {
 	 *            the years to fetch data for
 	 * 
 	 * @return the density data wrapped in a list of
-	 *         {@link com.github.dannil.scbjavaclient.model.population.density.Density
-	 *         Density} objects
+	 *         {@link com.github.dannil.scbjavaclient.model.population.density.Density Density}
+	 *         objects
 	 */
 	public List<Density> getDensity(Collection<String> regions, Collection<String> sexes, Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();

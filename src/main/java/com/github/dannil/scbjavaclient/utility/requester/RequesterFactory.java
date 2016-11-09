@@ -20,28 +20,22 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
 /**
- * <p>
- * Factory for returning regular (non-singleton) requesters.
- * </p>
+ * <p>Factory for returning regular (non-singleton) requesters.</p>
  * 
  * @author Daniel Nilsson
  */
 public final class RequesterFactory {
 
 	/**
-	 * <p>
-	 * Private constructor to prevent instantiation.
-	 * </p>
+	 * <p>Private constructor to prevent instantiation.</p>
 	 */
 	private RequesterFactory() {
 
 	}
 
 	/**
-	 * <p>
-	 * Returns a regular (non-singleton) requester which matches the method. All
-	 * responses are read as UTF-8 character encoding.
-	 * </p>
+	 * <p>Returns a regular (non-singleton) requester which matches the method. All responses are
+	 * read as UTF-8 character encoding.</p>
 	 * 
 	 * @param method
 	 *            the method (i.e. GET or POST)
@@ -52,10 +46,8 @@ public final class RequesterFactory {
 	}
 
 	/**
-	 * <p>
-	 * Returns a regular (non-singleton) requester which matches the method. All
-	 * responses are read as to match the character encoding.
-	 * </p>
+	 * <p>Returns a regular (non-singleton) requester which matches the method. All responses are
+	 * read as to match the character encoding.</p>
 	 * 
 	 * @param method
 	 *            the method (i.e. GET or POST)

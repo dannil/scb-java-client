@@ -30,9 +30,7 @@ import com.github.dannil.scbjavaclient.utility.requester.RequestMethod;
 import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
 
 /**
- * <p>
- * Model for number of children born with first name.
- * </p>
+ * <p>Model for number of children born with first name.</p>
  * 
  * @author Daniel Nilsson
  */
@@ -42,18 +40,14 @@ public class NumberOfChildrenBornWithFirstName extends AbstractYearAndValueModel
 	private String firstname;
 
 	/**
-	 * <p>
-	 * Default constructor.
-	 * </p>
+	 * <p>Default constructor.</p>
 	 */
 	public NumberOfChildrenBornWithFirstName() {
 		super();
 	}
 
 	/**
-	 * <p>
-	 * Overloaded constructor.
-	 * </p>
+	 * <p>Overloaded constructor.</p>
 	 * 
 	 * @param firstname
 	 *            the firstname
@@ -68,9 +62,7 @@ public class NumberOfChildrenBornWithFirstName extends AbstractYearAndValueModel
 	}
 
 	/**
-	 * <p>
-	 * Getter for firstname.
-	 * </p>
+	 * <p>Getter for firstname.</p>
 	 * 
 	 * @return the firstname
 	 */
@@ -79,9 +71,7 @@ public class NumberOfChildrenBornWithFirstName extends AbstractYearAndValueModel
 	}
 
 	/**
-	 * <p>
-	 * Setter for firstname.
-	 * </p>
+	 * <p>Setter for firstname.</p>
 	 * 
 	 * @param firstname
 	 *            the firstname
@@ -128,10 +118,8 @@ public class NumberOfChildrenBornWithFirstName extends AbstractYearAndValueModel
 	}
 
 	/**
-	 * <p>
-	 * Get the available codes and their respective values for the number of
-	 * children born with first name data from the API.
-	 * </p>
+	 * <p>Get the available codes and their respective values for the number of children born with
+	 * first name data from the API.</p>
 	 *
 	 * @return a list of the available codes and their values
 	 */

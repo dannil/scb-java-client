@@ -23,9 +23,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * <p>
- * Abstract model which holds the values of the client response.
- * </p>
+ * <p>Abstract model which holds the values of the client response.</p>
  * 
  * @author Daniel Nilsson
  *
@@ -38,9 +36,7 @@ public abstract class AbstractValueModel<V> {
 	protected List<ValueNode<V>> valueNodes;
 
 	/**
-	 * <p>
-	 * Default constructor.
-	 * </p>
+	 * <p>Default constructor.</p>
 	 */
 	protected AbstractValueModel() {
 		// To enable derived classes to use their default constructor
@@ -48,9 +44,7 @@ public abstract class AbstractValueModel<V> {
 	}
 
 	/**
-	 * <p>
-	 * Overloaded constructor.
-	 * </p>
+	 * <p>Overloaded constructor.</p>
 	 * 
 	 * @param values
 	 *            the values
@@ -66,9 +60,7 @@ public abstract class AbstractValueModel<V> {
 	}
 
 	/**
-	 * <p>
-	 * Getter for values.
-	 * </p>
+	 * <p>Getter for values.</p>
 	 * 
 	 * @return the values
 	 */
@@ -77,9 +69,7 @@ public abstract class AbstractValueModel<V> {
 	}
 
 	/**
-	 * <p>
-	 * Setter for values.
-	 * </p>
+	 * <p>Setter for values.</p>
 	 * 
 	 * @param values
 	 *            the values
@@ -89,9 +79,7 @@ public abstract class AbstractValueModel<V> {
 	}
 
 	/**
-	 * <p>
-	 * Get the value node for a specific contents code.
-	 * </p>
+	 * <p>Get the value node for a specific contents code.</p>
 	 *
 	 * @param key
 	 *            the contents code to get the {@link ValueNode ValueNode} for
@@ -107,9 +95,7 @@ public abstract class AbstractValueModel<V> {
 	}
 
 	/**
-	 * <p>
-	 * Set the value for a specific contents code.
-	 * </p>
+	 * <p>Set the value for a specific contents code.</p>
 	 *
 	 * @param key
 	 *            the contents code to set the value for

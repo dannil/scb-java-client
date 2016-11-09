@@ -22,9 +22,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * <p>
- * Abstract model which handles year and value.
- * </p>
+ * <p>Abstract model which handles year and value.</p>
  * 
  * @author Daniel Nilsson
  *
@@ -39,9 +37,7 @@ public abstract class AbstractYearAndValueModel<Y, V> extends AbstractValueModel
 	protected Y year;
 
 	/**
-	 * <p>
-	 * Default constructor.
-	 * </p>
+	 * <p>Default constructor.</p>
 	 */
 	public AbstractYearAndValueModel() {
 		// To enable derived classes to use their default constructor
@@ -49,9 +45,7 @@ public abstract class AbstractYearAndValueModel<Y, V> extends AbstractValueModel
 	}
 
 	/**
-	 * <p>
-	 * Overloaded constructor.
-	 * </p>
+	 * <p>Overloaded constructor.</p>
 	 * 
 	 * @param year
 	 *            the year
@@ -64,9 +58,7 @@ public abstract class AbstractYearAndValueModel<Y, V> extends AbstractValueModel
 	}
 
 	/**
-	 * <p>
-	 * Getter for year.
-	 * </p>
+	 * <p>Getter for year.</p>
 	 * 
 	 * @return the year
 	 */
@@ -75,9 +67,7 @@ public abstract class AbstractYearAndValueModel<Y, V> extends AbstractValueModel
 	}
 
 	/**
-	 * <p>
-	 * Setter for year.
-	 * </p>
+	 * <p>Setter for year.</p>
 	 * 
 	 * @param year
 	 *            the year

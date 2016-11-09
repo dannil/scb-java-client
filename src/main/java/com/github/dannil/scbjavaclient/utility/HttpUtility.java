@@ -31,19 +31,15 @@ import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
 public final class HttpUtility {
 
 	/**
-	 * <p>
-	 * Private constructor to prevent instantiation.
-	 * </p>
+	 * <p>Private constructor to prevent instantiation.</p>
 	 */
 	private HttpUtility() {
 
 	}
 
 	/**
-	 * <p>
-	 * Validates if the status code is a valid HTTP code. The <code>URI</code>
-	 * parameter is used to specify which address returned the status code.
-	 * </p>
+	 * <p>Validates if the status code is a valid HTTP code. The <code>URI</code> parameter is used
+	 * to specify which address returned the status code.</p>
 	 * 
 	 * @param uri
 	 *            the <code>URI</code>

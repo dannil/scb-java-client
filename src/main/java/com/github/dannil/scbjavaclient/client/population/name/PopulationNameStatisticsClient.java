@@ -29,27 +29,21 @@ import com.github.dannil.scbjavaclient.model.population.name.NumberOfChildrenBor
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
- * <p>
- * Client which handles population name statistics data fetching.
- * </p>
+ * <p>Client which handles population name statistics data fetching.</p>
  * 
  * @author Daniel Nilsson
  */
 public class PopulationNameStatisticsClient extends AbstractClient {
 
 	/**
-	 * <p>
-	 * Default constructor.
-	 * </p>
+	 * <p>Default constructor.</p>
 	 */
 	public PopulationNameStatisticsClient() {
 		super();
 	}
 
 	/**
-	 * <p>
-	 * Overloaded constructor.
-	 * </p>
+	 * <p>Overloaded constructor.</p>
 	 * 
 	 * @param locale
 	 *            the <code>Locale</code> for this client
@@ -59,12 +53,9 @@ public class PopulationNameStatisticsClient extends AbstractClient {
 	}
 
 	/**
-	 * <p>
-	 * Fetch all number of children born with first name data.
-	 * </p>
+	 * <p>Fetch all number of children born with first name data.</p>
 	 * 
-	 * @return the number of children born with first name data wrapped in a
-	 *         list of
+	 * @return the number of children born with first name data wrapped in a list of
 	 *         {@link com.github.dannil.scbjavaclient.model.population.name.NumberOfChildrenBornWithFirstName
 	 *         NumberOfChildrenBornWithFirstName} objects
 	 * 
@@ -76,17 +67,13 @@ public class PopulationNameStatisticsClient extends AbstractClient {
 	}
 
 	/**
-	 * <p>
-	 * Fetch number of children born with first name data which match the input
-	 * constraints.
-	 * </p>
+	 * <p>Fetch number of children born with first name data which match the input constraints.</p>
 	 * 
 	 * @param firstnames
 	 *            the firstnames to fetch data for
 	 * @param years
 	 *            the years to fetch data for
-	 * @return the number of children born with first name data wrapped in a
-	 *         list of
+	 * @return the number of children born with first name data wrapped in a list of
 	 *         {@link com.github.dannil.scbjavaclient.model.population.name.NumberOfChildrenBornWithFirstName
 	 *         NumberOfChildrenBornWithFirstName} objects
 	 */

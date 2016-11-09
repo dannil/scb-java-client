@@ -22,11 +22,9 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * <p>
- * Abstract model which handles region, year and value. Since these values are
- * used by almost every single client response, this class will be extended by a
- * majority of the implemented models.
- * </p>
+ * <p>Abstract model which handles region, year and value. Since these values are used by almost
+ * every single client response, this class will be extended by a majority of the implemented
+ * models.</p>
  * 
  * @author Daniel Nilsson
  *
@@ -43,9 +41,7 @@ public abstract class AbstractRegionYearAndValueModel<R, Y, V> extends AbstractY
 	protected R region;
 
 	/**
-	 * <p>
-	 * Default constructor.
-	 * </p>
+	 * <p>Default constructor.</p>
 	 */
 	protected AbstractRegionYearAndValueModel() {
 		// To enable derived classes to use their default constructor
@@ -53,9 +49,7 @@ public abstract class AbstractRegionYearAndValueModel<R, Y, V> extends AbstractY
 	}
 
 	/**
-	 * <p>
-	 * Overloaded constructor.
-	 * </p>
+	 * <p>Overloaded constructor.</p>
 	 * 
 	 * @param region
 	 *            the region
@@ -70,9 +64,7 @@ public abstract class AbstractRegionYearAndValueModel<R, Y, V> extends AbstractY
 	}
 
 	/**
-	 * <p>
-	 * Getter for region.
-	 * </p>
+	 * <p>Getter for region.</p>
 	 * 
 	 * @return the region
 	 */
@@ -81,9 +73,7 @@ public abstract class AbstractRegionYearAndValueModel<R, Y, V> extends AbstractY
 	}
 
 	/**
-	 * <p>
-	 * Setter for region.
-	 * </p>
+	 * <p>Setter for region.</p>
 	 * 
 	 * @param region
 	 *            the region

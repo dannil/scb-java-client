@@ -25,11 +25,8 @@ import java.util.Map;
 import com.fasterxml.jackson.databind.JsonNode;
 
 /**
- * <p>
- * Class which encapsulates behavior for the JSON API table format. Note that
- * this class is immutable; to change the containing JSON, a new class needs to
- * be instantiated.
- * </p>
+ * <p>Class which encapsulates behavior for the JSON API table format. Note that this class is
+ * immutable; to change the containing JSON, a new class needs to be instantiated.</p>
  * 
  * @author Daniel Nilsson
  */
@@ -40,9 +37,7 @@ public class JsonAPITableFormat implements IJsonTableFormat {
 	private Map<String, Collection<String>> inputs;
 
 	/**
-	 * <p>
-	 * Default constructor.
-	 * </p>
+	 * <p>Default constructor.</p>
 	 * 
 	 * @param json
 	 *            the json to format

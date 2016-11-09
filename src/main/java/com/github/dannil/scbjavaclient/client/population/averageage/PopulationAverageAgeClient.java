@@ -29,27 +29,21 @@ import com.github.dannil.scbjavaclient.model.population.averageage.AverageAge;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
- * <p>
- * Client which handles population average age data fetching.
- * </p>
+ * <p>Client which handles population average age data fetching.</p>
  * 
  * @author Daniel Nilsson
  */
 public class PopulationAverageAgeClient extends AbstractClient {
 
 	/**
-	 * <p>
-	 * Default constructor.
-	 * </p>
+	 * <p>Default constructor.</p>
 	 */
 	public PopulationAverageAgeClient() {
 		super();
 	}
 
 	/**
-	 * <p>
-	 * Overloaded constructor.
-	 * </p>
+	 * <p>Overloaded constructor.</p>
 	 * 
 	 * @param locale
 	 *            the <code>Locale</code> for this client
@@ -59,9 +53,7 @@ public class PopulationAverageAgeClient extends AbstractClient {
 	}
 
 	/**
-	 * <p>
-	 * Fetch all average age data.
-	 * </p>
+	 * <p>Fetch all average age data.</p>
 	 * 
 	 * @return the average age data wrapped in a list of
 	 *         {@link com.github.dannil.scbjavaclient.model.population.averageage.AverageAge
@@ -74,9 +66,7 @@ public class PopulationAverageAgeClient extends AbstractClient {
 	}
 
 	/**
-	 * <p>
-	 * Fetch all average age data which match the input constraints.
-	 * </p>
+	 * <p>Fetch all average age data which match the input constraints.</p>
 	 * 
 	 * @param regions
 	 *            the regions to fetch data for

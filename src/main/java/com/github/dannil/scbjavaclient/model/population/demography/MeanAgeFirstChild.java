@@ -30,9 +30,7 @@ import com.github.dannil.scbjavaclient.utility.requester.RequestMethod;
 import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
 
 /**
- * <p>
- * Model for mean age first child data.
- * </p>
+ * <p>Model for mean age first child data.</p>
  * 
  * @author Daniel Nilsson
  */
@@ -42,18 +40,14 @@ public class MeanAgeFirstChild extends AbstractRegionYearAndValueModel<String, I
 	private Integer gender;
 
 	/**
-	 * <p>
-	 * Default constructor.
-	 * </p>
+	 * <p>Default constructor.</p>
 	 */
 	public MeanAgeFirstChild() {
 		super();
 	}
 
 	/**
-	 * <p>
-	 * Overloaded constructor.
-	 * </p>
+	 * <p>Overloaded constructor.</p>
 	 * 
 	 * @param region
 	 *            the region
@@ -70,9 +64,7 @@ public class MeanAgeFirstChild extends AbstractRegionYearAndValueModel<String, I
 	}
 
 	/**
-	 * <p>
-	 * Getter for gender.
-	 * </p>
+	 * <p>Getter for gender.</p>
 	 * 
 	 * @return the gender
 	 */
@@ -81,9 +73,7 @@ public class MeanAgeFirstChild extends AbstractRegionYearAndValueModel<String, I
 	}
 
 	/**
-	 * <p>
-	 * Setter for gender.
-	 * </p>
+	 * <p>Setter for gender.</p>
 	 * 
 	 * @param gender
 	 *            the gender
@@ -132,10 +122,8 @@ public class MeanAgeFirstChild extends AbstractRegionYearAndValueModel<String, I
 	}
 
 	/**
-	 * <p>
-	 * Get the available codes and their respective values for the mean age
-	 * first child data from the API.
-	 * </p>
+	 * <p>Get the available codes and their respective values for the mean age first child data from
+	 * the API.</p>
 	 *
 	 * @return a list of the available codes and their values
 	 */

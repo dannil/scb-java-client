@@ -23,9 +23,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
 
 /**
- * <p>
- * Class which encapsulates methods for converting JSON.
- * </p>
+ * <p>Class which encapsulates methods for converting JSON.</p>
  * 
  * @author Daniel Nilsson
  */
@@ -34,20 +32,15 @@ public class JsonConverter {
 	private ObjectMapper mapper;
 
 	/**
-	 * <p>
-	 * Default constructor. Initializes the
-	 * {@link com.fasterxml.jackson.databind.ObjectMapper ObjectMapper} needed
-	 * for converting objects.
-	 * </p>
+	 * <p>Default constructor. Initializes the {@link com.fasterxml.jackson.databind.ObjectMapper
+	 * ObjectMapper} needed for converting objects.</p>
 	 */
 	public JsonConverter() {
 		this.mapper = new ObjectMapper();
 	}
 
 	/**
-	 * <p>
-	 * Getter for mapper.
-	 * </p>
+	 * <p>Getter for mapper.</p>
 	 * 
 	 * @return the mapper
 	 */
@@ -56,9 +49,7 @@ public class JsonConverter {
 	}
 
 	/**
-	 * <p>
-	 * Parse the JSON string into a {@link JsonNode} object.
-	 * </p>
+	 * <p>Parse the JSON string into a {@link JsonNode} object.</p>
 	 * 
 	 * @param json
 	 *            the JSON content
@@ -70,10 +61,8 @@ public class JsonConverter {
 	}
 
 	/**
-	 * <p>
-	 * Parse the JSON string into a {@link JsonNode} object with the specified
-	 * field as root field.
-	 * </p>
+	 * <p>Parse the JSON string into a {@link JsonNode} object with the specified field as root
+	 * field.</p>
 	 * 
 	 * @param json
 	 *            the JSON content

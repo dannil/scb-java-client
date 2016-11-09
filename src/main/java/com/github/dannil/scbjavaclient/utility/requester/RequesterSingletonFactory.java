@@ -22,11 +22,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * <p>
- * Factory for returning singleton requesters. The regular
- * {@link RequesterFactory} is recommended instead of this class; this class
- * should only be used if you really need a singleton.
- * </p>
+ * <p>Factory for returning singleton requesters. The regular {@link RequesterFactory} is
+ * recommended instead of this class; this class should only be used if you really need a
+ * singleton.</p>
  * 
  * @author Daniel Nilsson
  */
@@ -41,19 +39,15 @@ public final class RequesterSingletonFactory {
 	}
 
 	/**
-	 * <p>
-	 * Private constructor to prevent instantiation.
-	 * </p>
+	 * <p>Private constructor to prevent instantiation.</p>
 	 */
 	private RequesterSingletonFactory() {
 
 	}
 
 	/**
-	 * <p>
-	 * Returns a singleton requester which matches the method. All responses are
-	 * read as UTF-8 character encoding.
-	 * </p>
+	 * <p>Returns a singleton requester which matches the method. All responses are read as UTF-8
+	 * character encoding.</p>
 	 * 
 	 * @param method
 	 *            the method (i.e. GET or POST)
@@ -64,10 +58,8 @@ public final class RequesterSingletonFactory {
 	}
 
 	/**
-	 * <p>
-	 * Returns a singleton requester which matches the method. All responses are
-	 * read as to match the character encoding.
-	 * </p>
+	 * <p>Returns a singleton requester which matches the method. All responses are read as to match
+	 * the character encoding.</p>
 	 * 
 	 * @param method
 	 *            the method (i.e. GET or POST)
@@ -85,18 +77,14 @@ public final class RequesterSingletonFactory {
 	}
 
 	/**
-	 * <p>
-	 * Singleton holder for GET requester.
-	 * </p>
+	 * <p>Singleton holder for GET requester.</p>
 	 */
 	private static class GETHolder {
 		protected static final AbstractRequester INSTANCE = new GETRequester(StandardCharsets.UTF_8);
 	}
 
 	/**
-	 * <p>
-	 * Singleton holder for POST requester.
-	 * </p>
+	 * <p>Singleton holder for POST requester.</p>
 	 */
 	private static class POSTHolder {
 		protected static final AbstractRequester INSTANCE = new POSTRequester(StandardCharsets.UTF_8);

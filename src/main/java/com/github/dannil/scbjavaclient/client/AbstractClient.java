@@ -32,9 +32,7 @@ import com.github.dannil.scbjavaclient.utility.requester.RequestMethod;
 import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
 
 /**
- * <p>
- * Abstract class which specifies how clients should operate.
- * </p>
+ * <p>Abstract class which specifies how clients should operate.</p>
  * 
  * @author Daniel Nilsson
  */
@@ -49,9 +47,7 @@ public abstract class AbstractClient {
 	protected Localization localization;
 
 	/**
-	 * <p>
-	 * Default constructor.
-	 * </p>
+	 * <p>Default constructor.</p>
 	 */
 	protected AbstractClient() {
 		this.locale = Locale.getDefault();
@@ -62,9 +58,7 @@ public abstract class AbstractClient {
 	}
 
 	/**
-	 * <p>
-	 * Overloaded constructor.
-	 * </p>
+	 * <p>Overloaded constructor.</p>
 	 * 
 	 * @param locale
 	 *            the locale for this client
@@ -79,9 +73,7 @@ public abstract class AbstractClient {
 	}
 
 	/**
-	 * <p>
-	 * Retrieves the language for this client instance.
-	 * </p>
+	 * <p>Retrieves the language for this client instance.</p>
 	 * 
 	 * @return the language for this client instance
 	 */
@@ -90,11 +82,9 @@ public abstract class AbstractClient {
 	}
 
 	/**
-	 * <p>
-	 * Sets the language for this client instance. Note that doing this after a
-	 * call to {@link #setLocalizationLanguage(Locale)} overwrites the
-	 * localization language with the input of this method.
-	 * </p>
+	 * <p>Sets the language for this client instance. Note that doing this after a call to
+	 * {@link #setLocalizationLanguage(Locale)} overwrites the localization language with the input
+	 * of this method.</p>
 	 * 
 	 * @param locale
 	 *            the language for this client
@@ -108,10 +98,8 @@ public abstract class AbstractClient {
 	}
 
 	/**
-	 * <p>
-	 * Changes the language used for the localization. Useful if the client
-	 * needs to be in a different language than the error messages.
-	 * </p>
+	 * <p>Changes the language used for the localization. Useful if the client needs to be in a
+	 * different language than the error messages.</p>
 	 * 
 	 * @param locale
 	 *            the language for the localization
@@ -121,10 +109,7 @@ public abstract class AbstractClient {
 	}
 
 	/**
-	 * <p>
-	 * Determines the base URL for the API based on the current
-	 * <code>Locale</code>.
-	 * </p>
+	 * <p>Determines the base URL for the API based on the current <code>Locale</code>.</p>
 	 * 
 	 * @return the URL representing the entry point for the API.
 	 */
@@ -133,9 +118,7 @@ public abstract class AbstractClient {
 	}
 
 	/**
-	 * <p>
-	 * Performs a GET request to the specified URL.
-	 * </p>
+	 * <p>Performs a GET request to the specified URL.</p>
 	 * 
 	 * @param url
 	 *            the URL which will be sent a GET request
@@ -152,9 +135,7 @@ public abstract class AbstractClient {
 	}
 
 	/**
-	 * <p>
-	 * Performs a POST request to the specified URL.
-	 * </p>
+	 * <p>Performs a POST request to the specified URL.</p>
 	 * 
 	 * @param url
 	 *            the URL which will be sent a POST request
@@ -176,9 +157,7 @@ public abstract class AbstractClient {
 	}
 
 	/**
-	 * <p>
-	 * Returns the list of the available regions for a given URL.
-	 * </p>
+	 * <p>Returns the list of the available regions for a given URL.</p>
 	 * 
 	 * @param url
 	 *            the URL to retrieve the regions from
@@ -234,9 +213,7 @@ public abstract class AbstractClient {
 	}
 
 	/**
-	 * <p>
-	 * Returns the list of the available years for a given URL.
-	 * </p>
+	 * <p>Returns the list of the available years for a given URL.</p>
 	 * 
 	 * @param url
 	 *            the URL to retrieve the years from
@@ -289,9 +266,7 @@ public abstract class AbstractClient {
 	// }
 
 	/**
-	 * <p>
-	 * Returns the URL endpoint which this client represents.
-	 * </p>
+	 * <p>Returns the URL endpoint which this client represents.</p>
 	 *
 	 * @return the URL endpoint for this client
 	 */

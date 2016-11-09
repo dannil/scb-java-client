@@ -32,7 +32,7 @@ import com.github.dannil.scbjavaclient.utility.requester.RequestMethod;
 import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
 
 /**
- * Root client for the client hierarchy.
+ * <p>Root client for the client hierarchy.</p>
  * 
  * @author Daniel Nilsson
  */
@@ -43,7 +43,7 @@ public class SCBClient extends AbstractContainerClient {
 	private EnvironmentClient environmentClient;
 
 	/**
-	 * Default constructor. Initializes values and creates sub-clients.
+	 * <p>Default constructor. Initializes values and creates sub-clients.</p>
 	 */
 	public SCBClient() {
 		super();
@@ -56,7 +56,7 @@ public class SCBClient extends AbstractContainerClient {
 	}
 
 	/**
-	 * Overloaded constructor.
+	 * <p>Overloaded constructor.</p>
 	 * 
 	 * @param locale
 	 *            the locale for this client
@@ -68,7 +68,7 @@ public class SCBClient extends AbstractContainerClient {
 	}
 
 	/**
-	 * Retrieve the client for interacting with environment data.
+	 * <p>Retrieve the client for interacting with environment data.</p>
 	 * 
 	 * @return a client for environment data
 	 */
@@ -77,7 +77,7 @@ public class SCBClient extends AbstractContainerClient {
 	}
 
 	/**
-	 * Retrieve the client for interacting with population data.
+	 * <p>Retrieve the client for interacting with population data.</p>
 	 * 
 	 * @return a client for population data
 	 */
@@ -86,9 +86,7 @@ public class SCBClient extends AbstractContainerClient {
 	}
 
 	/**
-	 * <p>
-	 * Fetches all the inputs for a given table from the API.
-	 * </p>
+	 * <p>Fetches all the inputs for a given table from the API.</p>
 	 * 
 	 * @param table
 	 *            the table to fetch the inputs from
@@ -104,23 +102,16 @@ public class SCBClient extends AbstractContainerClient {
 	}
 
 	/**
-	 * <p>
-	 * Fetch the JSON response from the specified table. As opposed to
-	 * {@link #getRawData(String, Map)}, this method fetches all available data
-	 * and therefore doesn't support selecting specific values before calling
-	 * the API.
-	 * </p>
+	 * <p>Fetch the JSON response from the specified table. As opposed to
+	 * {@link #getRawData(String, Map)}, this method fetches all available data and therefore
+	 * doesn't support selecting specific values before calling the API.</p>
 	 * 
-	 * <p>
-	 * Do note: as this method matches all content codes available on the API,
-	 * the response is likely to be several times larger than the response when
-	 * selecting values.
-	 * </p>
+	 * <p>Do note: as this method matches all content codes available on the API, the response is
+	 * likely to be several times larger than the response when selecting values.</p>
 	 * 
 	 * @param table
 	 *            the table to fetch data from
-	 * @return a JSON string containing all available data in the specified
-	 *         table
+	 * @return a JSON string containing all available data in the specified table
 	 * 
 	 * @see com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat#getValues(String)
 	 *      JsonAPITableFormat#getValues(String)
@@ -135,10 +126,8 @@ public class SCBClient extends AbstractContainerClient {
 	}
 
 	/**
-	 * <p>
-	 * Fetch the JSON response from the specified table. Useful if you're only
-	 * interested in the raw JSON data.
-	 * </p>
+	 * <p>Fetch the JSON response from the specified table. Useful if you're only interested in the
+	 * raw JSON data.</p>
 	 * 
 	 * @param table
 	 *            the table to fetch data from
@@ -151,9 +140,9 @@ public class SCBClient extends AbstractContainerClient {
 	}
 
 	/**
-	 * <p>
-	 * Checks if the specified locale is supported by the API.
-	 * </p>
+	 * <p>Checks if the specified <code>Locale</code> is supported by the API. The method performs a
+	 * request to the API using the <code>Locale</code>'s language and checks if a HTTP resource
+	 * exists matching the language.</p>
 	 * 
 	 * @param locale
 	 *            the locale to check
@@ -171,7 +160,7 @@ public class SCBClient extends AbstractContainerClient {
 		}
 	}
 
-	// Unecessary
+	// Unnecessary
 	// @Override
 	// public String getUrl() {
 	// return super.getUrl();

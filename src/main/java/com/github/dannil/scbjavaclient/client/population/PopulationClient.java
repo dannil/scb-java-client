@@ -27,9 +27,7 @@ import com.github.dannil.scbjavaclient.client.population.livebirths.PopulationLi
 import com.github.dannil.scbjavaclient.client.population.name.PopulationNameStatisticsClient;
 
 /**
- * <p>
- * Client which handles population data fetching.
- * </p>
+ * <p>Client which handles population data fetching.</p>
  * 
  * @author Daniel Nilsson
  */
@@ -48,9 +46,7 @@ public class PopulationClient extends AbstractContainerClient {
 	private PopulationNameStatisticsClient populationNameStatisticsClient;
 
 	/**
-	 * <p>
-	 * Default constructor. Initializes values and creates sub-clients.
-	 * </p>
+	 * <p>Default constructor. Initializes values and creates sub-clients.</p>
 	 */
 	public PopulationClient() {
 		super();
@@ -75,9 +71,7 @@ public class PopulationClient extends AbstractContainerClient {
 	}
 
 	/**
-	 * <p>
-	 * Overloaded constructor.
-	 * </p>
+	 * <p>Overloaded constructor.</p>
 	 * 
 	 * @param locale
 	 *            the <code>Locale</code> for this client
@@ -89,9 +83,7 @@ public class PopulationClient extends AbstractContainerClient {
 	}
 
 	/**
-	 * <p>
-	 * Retrieve the client for interacting with population amount data.
-	 * </p>
+	 * <p>Retrieve the client for interacting with population amount data.</p>
 	 * 
 	 * @return a client for population amount data
 	 */
@@ -100,9 +92,7 @@ public class PopulationClient extends AbstractContainerClient {
 	}
 
 	/**
-	 * <p>
-	 * Retrieve the client for interacting with population average age data.
-	 * </p>
+	 * <p>Retrieve the client for interacting with population average age data. </p>
 	 * 
 	 * @return a client for population amount data
 	 */
@@ -111,9 +101,7 @@ public class PopulationClient extends AbstractContainerClient {
 	}
 
 	/**
-	 * <p>
-	 * Retrieve the client for interacting with population demography data.
-	 * </p>
+	 * <p>Retrieve the client for interacting with population demography data. </p>
 	 * 
 	 * @return a client for population demography data
 	 */
@@ -122,9 +110,7 @@ public class PopulationClient extends AbstractContainerClient {
 	}
 
 	/**
-	 * <p>
-	 * Retrieve the client for interacting with population density data.
-	 * </p>
+	 * <p>Retrieve the client for interacting with population density data. </p>
 	 * 
 	 * @return a client for population density data
 	 */
@@ -133,9 +119,7 @@ public class PopulationClient extends AbstractContainerClient {
 	}
 
 	/**
-	 * <p>
-	 * Retrieve the client for interacting with population density data.
-	 * </p>
+	 * <p>Retrieve the client for interacting with population density data. </p>
 	 * 
 	 * @return a client for population density data
 	 */
@@ -144,11 +128,9 @@ public class PopulationClient extends AbstractContainerClient {
 	}
 
 	/**
-	 * <p>
-	 * Retrieve the client for interacting with population name statistic data.
-	 * </p>
+	 * <p>Retrieve the client for interacting with population name statistic data.</p>
 	 * 
-	 * @return a client for population statistic data
+	 * @return a client for population name statistic data
 	 */
 	public PopulationNameStatisticsClient nameStatistics() {
 		return this.populationNameStatisticsClient;

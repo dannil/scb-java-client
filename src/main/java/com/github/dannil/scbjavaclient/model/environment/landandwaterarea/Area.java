@@ -30,9 +30,7 @@ import com.github.dannil.scbjavaclient.utility.requester.RequestMethod;
 import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
 
 /**
- * <p>
- * Model for area data.
- * </p>
+ * <p>Model for area data.</p>
  * 
  * @author Daniel Nilsson
  */
@@ -42,18 +40,14 @@ public class Area extends AbstractRegionYearAndValueModel<String, Integer, Doubl
 	private String type;
 
 	/**
-	 * <p>
-	 * Default constructor.
-	 * </p>
+	 * <p>Default constructor.</p>
 	 */
 	public Area() {
 		super();
 	}
 
 	/**
-	 * <p>
-	 * Overloaded constructor.
-	 * </p>
+	 * <p>Overloaded constructor.</p>
 	 * 
 	 * @param region
 	 *            the region
@@ -70,9 +64,7 @@ public class Area extends AbstractRegionYearAndValueModel<String, Integer, Doubl
 	}
 
 	/**
-	 * <p>
-	 * Getter for type.
-	 * </p>
+	 * <p>Getter for type.</p>
 	 * 
 	 * @return the type
 	 */
@@ -81,9 +73,7 @@ public class Area extends AbstractRegionYearAndValueModel<String, Integer, Doubl
 	}
 
 	/**
-	 * <p>
-	 * Setter for type.
-	 * </p>
+	 * <p>Setter for type.</p>
 	 * 
 	 * @param type
 	 *            the type
@@ -132,10 +122,7 @@ public class Area extends AbstractRegionYearAndValueModel<String, Integer, Doubl
 	}
 
 	/**
-	 * <p>
-	 * Get the available codes and their respective values for the area data
-	 * from the API.
-	 * </p>
+	 * <p>Get the available codes and their respective values for the area data from the API.</p>
 	 *
 	 * @return a list of the available codes and their values
 	 */

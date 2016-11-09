@@ -25,9 +25,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ByteArrayEntity;
 
 /**
- * <p>
- * HTTP requester for POST requests.
- * </p>
+ * <p>HTTP requester for POST requests.</p>
  * 
  * @author Daniel Nilsson
  */
@@ -36,9 +34,7 @@ public class POSTRequester extends AbstractRequester {
 	private String query;
 
 	/**
-	 * <p>
-	 * Default constructor.
-	 * </p>
+	 * <p>Default constructor.</p>
 	 */
 	public POSTRequester() {
 		super();
@@ -46,9 +42,7 @@ public class POSTRequester extends AbstractRequester {
 	}
 
 	/**
-	 * <p>
-	 * Overloaded constructor.
-	 * </p>
+	 * <p>Overloaded constructor.</p>
 	 * 
 	 * @param charset
 	 *            the charset
@@ -59,9 +53,7 @@ public class POSTRequester extends AbstractRequester {
 	}
 
 	/**
-	 * <p>
-	 * Getter for query.
-	 * </p>
+	 * <p>Getter for query.</p>
 	 * 
 	 * @return the query
 	 */
@@ -70,9 +62,7 @@ public class POSTRequester extends AbstractRequester {
 	}
 
 	/**
-	 * <p>
-	 * Setter for query.
-	 * </p>
+	 * <p>Setter for query.</p>
 	 * 
 	 * @param query
 	 *            the query

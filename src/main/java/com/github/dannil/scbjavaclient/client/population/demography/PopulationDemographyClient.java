@@ -30,27 +30,21 @@ import com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstC
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
- * <p>
- * Client which handles population demography data fetching.
- * </p>
+ * <p>Client which handles population demography data fetching.</p>
  * 
  * @author Daniel Nilsson
  */
 public class PopulationDemographyClient extends AbstractClient {
 
 	/**
-	 * <p>
-	 * Default constructor.
-	 * </p>
+	 * <p>Default constructor.</p>
 	 */
 	public PopulationDemographyClient() {
 		super();
 	}
 
 	/**
-	 * <p>
-	 * Overloaded constructor.
-	 * </p>
+	 * <p>Overloaded constructor.</p>
 	 * 
 	 * @param locale
 	 *            the <code>Locale</code> for this client
@@ -95,25 +89,20 @@ public class PopulationDemographyClient extends AbstractClient {
 	// }
 
 	/**
-	 * <p>
-	 * Fetch all fertility rate data.
-	 * </p>
+	 * <p>Fetch all fertility rate data.</p>
 	 * 
 	 * @return the fertility rate data wrapped in a list of
 	 *         {@link com.github.dannil.scbjavaclient.model.population.demography.FertilityRate
 	 *         FertilityRate} objects
 	 * 
-	 * @see PopulationDemographyClient#getFertilityRate(Collection, Collection,
-	 *      Collection)
+	 * @see PopulationDemographyClient#getFertilityRate(Collection, Collection, Collection)
 	 */
 	public List<FertilityRate> getFertilityRate() {
 		return getFertilityRate(null, null, null);
 	}
 
 	/**
-	 * <p>
-	 * Fetch all fertility rate data which match the input constraints.
-	 * </p>
+	 * <p>Fetch all fertility rate data which match the input constraints.</p>
 	 * 
 	 * @param regions
 	 *            the regions to fetch data for
@@ -139,26 +128,20 @@ public class PopulationDemographyClient extends AbstractClient {
 	}
 
 	/**
-	 * <p>
-	 * Fetch all mean age for the first child data.
-	 * </p>
+	 * <p>Fetch all mean age for the first child data.</p>
 	 * 
 	 * @return the mean age for the first child data wrapped in a list of
 	 *         {@link com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstChild
 	 *         MeanAgeFirstChild} objects
 	 * 
-	 * @see PopulationDemographyClient#getMeanAgeFirstChild(Collection,
-	 *      Collection, Collection)
+	 * @see PopulationDemographyClient#getMeanAgeFirstChild(Collection, Collection, Collection)
 	 */
 	public List<MeanAgeFirstChild> getMeanAgeFirstChild() {
 		return getMeanAgeFirstChild(null, null, null);
 	}
 
 	/**
-	 * <p>
-	 * Fetch all mean age for the first child data which match the input
-	 * constraints.
-	 * </p>
+	 * <p>Fetch all mean age for the first child data which match the input constraints.</p>
 	 * 
 	 * @param regions
 	 *            the regions to fetch data for

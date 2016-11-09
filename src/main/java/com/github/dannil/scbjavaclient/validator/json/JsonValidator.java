@@ -3,27 +3,21 @@ package com.github.dannil.scbjavaclient.validator.json;
 import com.fasterxml.jackson.databind.JsonNode;
 
 /**
- * <p>
- * Class which contains operations for validating and confirming JSON.
- * </p>
+ * <p>Class which contains operations for validating and confirming JSON.</p>
  * 
  * @author Daniel Nilsson
  */
 public final class JsonValidator {
 
 	/**
-	 * <p>
-	 * Private constructor to prevent instantiation.
-	 * </p>
+	 * <p>Private constructor to prevent instantiation.</p>
 	 */
 	private JsonValidator() {
 
 	}
 
 	/**
-	 * <p>
-	 * Checks if the JSON is a query.
-	 * </p>
+	 * <p>Checks if the JSON is a query.</p>
 	 * 
 	 * @param node
 	 *            the node to check

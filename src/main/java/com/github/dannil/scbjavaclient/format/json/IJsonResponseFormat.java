@@ -19,30 +19,22 @@ package com.github.dannil.scbjavaclient.format.json;
 import com.fasterxml.jackson.databind.JsonNode;
 
 /**
- * <p>
- * Interface for JSON response format. All implementing classes should specify
- * an instance variable which contains the JSON which should be operated on by
- * the methods.
- * </p>
+ * <p>Interface for JSON response format. All implementing classes should specify an instance
+ * variable which contains the JSON which should be operated on by the methods.</p>
  * 
  * @author Daniel Nilsson
  */
 public interface IJsonResponseFormat {
 
 	/**
-	 * <p>
-	 * Formats the JSON according to the specified implementing format.
-	 * </p>
+	 * <p>Formats the JSON according to the specified implementing format.</p>
 	 * 
-	 * @return a formatted {@link com.fasterxml.jackson.databind.JsonNode
-	 *         JsonNode}
+	 * @return a formatted {@link com.fasterxml.jackson.databind.JsonNode JsonNode}
 	 */
 	JsonNode format();
 
 	/**
-	 * <p>
-	 * Checks if the JSON is formatted as the specified format.
-	 * </p>
+	 * <p>Checks if the JSON is formatted as the specified format.</p>
 	 * 
 	 * @return true if the JSON is formatted as the implementing format
 	 */

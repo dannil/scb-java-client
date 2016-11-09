@@ -28,18 +28,14 @@ import com.github.dannil.scbjavaclient.model.population.livebirths.LiveBirth;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
- * <p>
- * Client which handles population live births data fetching.
- * </p>
+ * <p>Client which handles population live births data fetching.</p>
  * 
  * @author Daniel Nilsson
  */
 public class PopulationLiveBirthsClient extends AbstractClient {
 
 	/**
-	 * <p>
-	 * Fetch all live births data.
-	 * </p>
+	 * <p>Fetch all live births data.</p>
 	 * 
 	 * @return the live births data wrapped in a list of
 	 *         {@link com.github.dannil.scbjavaclient.model.population.livebirths.LiveBirth
@@ -52,9 +48,7 @@ public class PopulationLiveBirthsClient extends AbstractClient {
 	}
 
 	/**
-	 * <p>
-	 * Fetch all live births data which match the input constraints.
-	 * </p>
+	 * <p>Fetch all live births data which match the input constraints.</p>
 	 * 
 	 * @param regions
 	 *            the regions to fetch data for
