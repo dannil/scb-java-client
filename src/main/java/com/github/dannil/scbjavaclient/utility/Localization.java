@@ -39,6 +39,9 @@ import com.github.dannil.scbjavaclient.constants.ClientConstants;
  */
 public class Localization {
 
+	private String baseName;
+	private Locale fallbackLocale;
+
 	private ResourceBundle bundle;
 
 	private ResourceBundleEncodingControl encodingControl;
@@ -47,6 +50,9 @@ public class Localization {
 	 * <p>Private constructor. Initializes encoding control for the resource bundles.</p>
 	 */
 	private Localization() {
+		this.baseName = ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX;
+		this.fallbackLocale = ClientConstants.LOCALIZATION_FALLBACK_LOCALE;
+
 		this.encodingControl = new ResourceBundleEncodingControl("UTF-8");
 	}
 
@@ -58,11 +64,11 @@ public class Localization {
 	 */
 	public Localization(Locale locale) {
 		this();
-		this.bundle = ResourceBundle.getBundle(ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX, locale, this.encodingControl);
+		this.bundle = ResourceBundle.getBundle(this.baseName, locale, this.encodingControl);
 	}
 
 	/**
-	 * <p>Getter for the <code>Locale</code> of this localization instance. <p>
+	 * <p>Getter for the <code>Locale</code> of this localization instance.</p>
 	 * 
 	 * @return the <code>Locale</code> for this localization instance.
 	 */
@@ -71,13 +77,13 @@ public class Localization {
 	}
 
 	/**
-	 * <p>Setter for the <code>Locale</code> for this localization instance. </p>
+	 * <p>Setter for the <code>Locale</code> for this localization instance.</p>
 	 * 
 	 * @param locale
 	 *            the <code>Locale</code>
 	 */
 	public void setLocale(Locale locale) {
-		this.bundle = ResourceBundle.getBundle(ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX, locale, this.encodingControl);
+		this.bundle = ResourceBundle.getBundle(this.baseName, locale, this.encodingControl);
 	}
 
 	/**
@@ -93,9 +99,7 @@ public class Localization {
 		try {
 			return this.bundle.getString(key);
 		} catch (MissingResourceException e2) {
-			return ResourceBundle
-					.getBundle(ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX, ClientConstants.LOCALIZATION_FALLBACK_LOCALE, this.encodingControl)
-					.getString(key);
+			return ResourceBundle.getBundle(this.baseName, this.fallbackLocale, this.encodingControl).getString(key);
 		}
 	}
 
