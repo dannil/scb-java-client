@@ -35,15 +35,22 @@ public class AreaTest {
 
 	private String testContentsCode;
 
-	private List<ValueNode<Double>> valueNodes;
+	private List<ValueNode<Double>> values;
+	private List<ValueNode<Double>> values2;
 
 	@Before
 	public void setup() {
 		this.testContentsCode = "TESTCONTENTSCODE";
-		this.valueNodes = new ArrayList<ValueNode<Double>>();
 
-		ValueNode<Double> value = new ValueNode<Double>(143d, "TESTCONTENTSCODE", "Test contents code");
-		this.valueNodes.add(value);
+		this.values = new ArrayList<ValueNode<Double>>();
+		this.values2 = new ArrayList<ValueNode<Double>>();
+
+		ValueNode<Double> value = new ValueNode<Double>(143d, this.testContentsCode, "Test contents code");
+		this.values.add(value);
+
+		// Copy previous value node into new object
+		ValueNode<Double> value2 = new ValueNode<Double>(value.getValue(), value.getCode(), value.getText());
+		this.values2.add(value2);
 	}
 
 	@Test
@@ -111,7 +118,7 @@ public class AreaTest {
 	public void setValues() {
 		Area area = new Area();
 
-		area.setValues(this.valueNodes);
+		area.setValues(this.values);
 
 		assertNotNull(area.getValues());
 	}
@@ -120,9 +127,9 @@ public class AreaTest {
 	public void getValues() {
 		Area area = new Area();
 
-		area.setValues(this.valueNodes);
+		area.setValues(this.values);
 
-		assertEquals(this.valueNodes, area.getValues());
+		assertEquals(this.values, area.getValues());
 	}
 
 	@Test
@@ -161,17 +168,17 @@ public class AreaTest {
 
 	@Test
 	public void equalsItselfWithValues() {
-		Area area = new Area("1267", "01", 2009, this.valueNodes);
-		Area area2 = new Area("1267", "01", 2009, this.valueNodes);
+		Area area = new Area("1267", "01", 2009, this.values);
+		Area area2 = new Area("1267", "01", 2009, this.values2);
 
 		assertEquals(area, area2);
 	}
 
 	@Test
 	public void notEqualsOnRegion() {
-		Area area = new Area("1267", "01", 2009, this.valueNodes);
+		Area area = new Area("1267", "01", 2009, this.values);
 
-		Area area2 = new Area("1267", "01", 2009, this.valueNodes);
+		Area area2 = new Area("1267", "01", 2009, this.values2);
 		area2.setRegion("1263");
 
 		assertNotEquals(area, area2);
@@ -179,9 +186,9 @@ public class AreaTest {
 
 	@Test
 	public void notEqualsOnType() {
-		Area area = new Area("1267", "01", 2009, this.valueNodes);
+		Area area = new Area("1267", "01", 2009, this.values);
 
-		Area area2 = new Area("1267", "01", 2009, this.valueNodes);
+		Area area2 = new Area("1267", "01", 2009, this.values2);
 		area2.setType("02");
 
 		assertNotEquals(area, area2);
@@ -189,9 +196,9 @@ public class AreaTest {
 
 	@Test
 	public void notEqualsOnYear() {
-		Area area = new Area("1267", "01", 2009, this.valueNodes);
+		Area area = new Area("1267", "01", 2009, this.values);
 
-		Area area2 = new Area("1267", "01", 2009, this.valueNodes);
+		Area area2 = new Area("1267", "01", 2009, this.values2);
 		area2.setYear(2011);
 
 		assertNotEquals(area, area2);
@@ -199,9 +206,9 @@ public class AreaTest {
 
 	@Test
 	public void notEqualsOnValue() {
-		Area area = new Area("1267", "01", 2009, this.valueNodes);
+		Area area = new Area("1267", "01", 2009, this.values);
 
-		Area area2 = new Area("1267", "01", 2009, this.valueNodes);
+		Area area2 = new Area("1267", "01", 2009, this.values2);
 		area2.setValue(this.testContentsCode, 300d);
 
 		assertNotEquals(area, area2);
@@ -209,8 +216,8 @@ public class AreaTest {
 
 	@Test
 	public void equalsHashCode() {
-		Area area = new Area("1267", "01", 2009, this.valueNodes);
-		Area area2 = new Area("1267", "01", 2009, this.valueNodes);
+		Area area = new Area("1267", "01", 2009, this.values);
+		Area area2 = new Area("1267", "01", 2009, this.values2);
 
 		assertEquals(area.hashCode(), area2.hashCode());
 	}
@@ -225,7 +232,7 @@ public class AreaTest {
 
 	@Test
 	public void convertToString() {
-		Area area = new Area("1267", "01", 2009, this.valueNodes);
+		Area area = new Area("1267", "01", 2009, this.values);
 
 		assertNotNull(area.toString());
 	}

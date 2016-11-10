@@ -56,16 +56,6 @@ public class ValueNode<V> {
 	}
 
 	/**
-	 * <p>Copy constructor.</p>
-	 * 
-	 * @param value
-	 *            the {@link ValueNode ValueNode} to copy
-	 */
-	public ValueNode(ValueNode<V> value) {
-		this(value.value, value.code, value.text);
-	}
-
-	/**
 	 * <p>Getter for value.</p>
 	 * 
 	 * @return the value

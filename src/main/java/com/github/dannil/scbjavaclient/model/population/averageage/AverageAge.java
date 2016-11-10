@@ -115,7 +115,7 @@ public class AverageAge extends AbstractRegionYearAndValueModel<String, Integer,
 		builder.append(", year=");
 		builder.append(super.year);
 		builder.append(", values=");
-		builder.append(super.valueNodes);
+		builder.append(super.values);
 		builder.append(']');
 
 		return builder.toString();

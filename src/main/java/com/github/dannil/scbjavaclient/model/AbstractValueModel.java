@@ -33,14 +33,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public abstract class AbstractValueModel<V> {
 
 	@JsonProperty("values")
-	protected List<ValueNode<V>> valueNodes;
+	protected List<ValueNode<V>> values;
 
 	/**
 	 * <p>Default constructor.</p>
 	 */
 	protected AbstractValueModel() {
 		// To enable derived classes to use their default constructor
-		this.valueNodes = new ArrayList<ValueNode<V>>();
+		this.values = new ArrayList<ValueNode<V>>();
 	}
 
 	/**
@@ -51,12 +51,7 @@ public abstract class AbstractValueModel<V> {
 	 */
 	protected AbstractValueModel(List<ValueNode<V>> values) {
 		this();
-
-		// Perform deep copy on all the value nodes
-		for (ValueNode<V> value : values) {
-			ValueNode<V> v = new ValueNode<V>(value.getValue(), value.getCode(), value.getText());
-			this.valueNodes.add(v);
-		}
+		this.values = values;
 	}
 
 	/**
@@ -65,7 +60,7 @@ public abstract class AbstractValueModel<V> {
 	 * @return the values
 	 */
 	public List<ValueNode<V>> getValues() {
-		return this.valueNodes;
+		return this.values;
 	}
 
 	/**
@@ -75,7 +70,7 @@ public abstract class AbstractValueModel<V> {
 	 *            the values
 	 */
 	public void setValues(List<ValueNode<V>> values) {
-		this.valueNodes = new ArrayList<ValueNode<V>>(values);
+		this.values = new ArrayList<ValueNode<V>>(values);
 	}
 
 	/**
@@ -86,7 +81,7 @@ public abstract class AbstractValueModel<V> {
 	 * @return the {@link ValueNode ValueNode} containing the contents code
 	 */
 	public ValueNode<V> getValue(String key) {
-		for (ValueNode<V> v : this.valueNodes) {
+		for (ValueNode<V> v : this.values) {
 			if (v.getCode().equals(key)) {
 				return v;
 			}
@@ -103,7 +98,7 @@ public abstract class AbstractValueModel<V> {
 	 *            the value
 	 */
 	public void setValue(String key, V value) {
-		for (ValueNode<V> v : this.valueNodes) {
+		for (ValueNode<V> v : this.values) {
 			if (v.getCode().equals(key)) {
 				v.setValue(value);
 			}
@@ -112,7 +107,7 @@ public abstract class AbstractValueModel<V> {
 
 	@Override
 	public int hashCode() {
-		return Objects.hashCode(this.valueNodes);
+		return Objects.hashCode(this.values);
 	}
 
 	@Override
@@ -128,7 +123,7 @@ public abstract class AbstractValueModel<V> {
 		}
 
 		AbstractValueModel<?> other = (AbstractValueModel<?>) obj;
-		return Objects.equals(this.valueNodes, other.valueNodes);
+		return Objects.equals(this.values, other.values);
 	}
 
 	@Override

@@ -33,15 +33,22 @@ public class DensityTest {
 
 	private String testContentsCode;
 
-	private List<ValueNode<Double>> valueNodes;
+	private List<ValueNode<Double>> values;
+	private List<ValueNode<Double>> values2;
 
 	@Before
 	public void setup() {
 		this.testContentsCode = "TESTCONTENTSCODE";
-		this.valueNodes = new ArrayList<ValueNode<Double>>();
 
-		ValueNode<Double> value = new ValueNode<Double>(123.45d, "TESTCONTENTSCODE", "Test contents code");
-		this.valueNodes.add(value);
+		this.values = new ArrayList<ValueNode<Double>>();
+		this.values2 = new ArrayList<ValueNode<Double>>();
+
+		ValueNode<Double> value = new ValueNode<Double>(123.45d, this.testContentsCode, "Test contents code");
+		this.values.add(value);
+
+		// Copy previous value node into new object
+		ValueNode<Double> value2 = new ValueNode<Double>(value.getValue(), value.getCode(), value.getText());
+		this.values2.add(value2);
 	}
 
 	@Test
@@ -82,7 +89,7 @@ public class DensityTest {
 	public void setValues() {
 		Density density = new Density();
 
-		density.setValues(this.valueNodes);
+		density.setValues(this.values);
 
 		assertNotNull(density.getValues());
 	}
@@ -109,8 +116,8 @@ public class DensityTest {
 
 	@Test
 	public void equalsItselfWithValues() {
-		Density density = new Density("1263", "2", 1996, this.valueNodes);
-		Density density2 = new Density("1263", "2", 1996, this.valueNodes);
+		Density density = new Density("1263", "2", 1996, this.values);
+		Density density2 = new Density("1263", "2", 1996, this.values2);
 
 		assertEquals(density, density2);
 	}
@@ -131,32 +138,32 @@ public class DensityTest {
 
 	@Test
 	public void notEqualsRegion() {
-		Density density = new Density("1263", "2", 1996, this.valueNodes);
-		Density density2 = new Density("1267", "2", 1996, this.valueNodes);
+		Density density = new Density("1263", "2", 1996, this.values);
+		Density density2 = new Density("1267", "2", 1996, this.values2);
 
 		assertNotEquals(density, density2);
 	}
 
 	@Test
 	public void notEqualsSex() {
-		Density density = new Density("1263", "2", 1996, this.valueNodes);
-		Density density2 = new Density("1263", "1", 1996, this.valueNodes);
+		Density density = new Density("1263", "2", 1996, this.values);
+		Density density2 = new Density("1263", "1", 1996, this.values2);
 
 		assertNotEquals(density, density2);
 	}
 
 	@Test
 	public void notEqualsYear() {
-		Density density = new Density("1263", "2", 1996, this.valueNodes);
-		Density density2 = new Density("1263", "2", 2002, this.valueNodes);
+		Density density = new Density("1263", "2", 1996, this.values);
+		Density density2 = new Density("1263", "2", 2002, this.values2);
 
 		assertNotEquals(density, density2);
 	}
 
 	@Test
 	public void notEqualsValues() {
-		Density density = new Density("1263", "2", 1996, this.valueNodes);
-		Density density2 = new Density("1263", "2", 1996, this.valueNodes);
+		Density density = new Density("1263", "2", 1996, this.values);
+		Density density2 = new Density("1263", "2", 1996, this.values2);
 		density2.setValue(this.testContentsCode, 18.11d);
 
 		assertNotEquals(density, density2);
@@ -164,8 +171,8 @@ public class DensityTest {
 
 	@Test
 	public void equalsHashCode() {
-		Density density = new Density("1263", "2", 1996, this.valueNodes);
-		Density density2 = new Density("1263", "2", 1996, this.valueNodes);
+		Density density = new Density("1263", "2", 1996, this.values);
+		Density density2 = new Density("1263", "2", 1996, this.values2);
 
 		assertEquals(density.hashCode(), density2.hashCode());
 	}
@@ -187,7 +194,7 @@ public class DensityTest {
 
 	@Test
 	public void convertToString() {
-		Density density = new Density("1263", "2", 1996, this.valueNodes);
+		Density density = new Density("1263", "2", 1996, this.values);
 
 		assertTrue(density.toString().contains("1263"));
 		assertTrue(density.toString().contains("2"));

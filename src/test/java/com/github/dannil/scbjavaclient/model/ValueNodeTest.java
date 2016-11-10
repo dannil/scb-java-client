@@ -29,14 +29,6 @@ import org.junit.runners.JUnit4;
 public class ValueNodeTest {
 
 	@Test
-	public void equalsCopyConstructor() {
-		ValueNode<Double> value1 = new ValueNode<Double>(11.22d, "TESTCODE", "TESTTEXT");
-		ValueNode<Double> value2 = new ValueNode<Double>(value1);
-
-		assertEquals(value1, value2);
-	}
-
-	@Test
 	public void createWithDefaultConstructor() {
 		ValueNode<Double> value = new ValueNode<Double>();
 

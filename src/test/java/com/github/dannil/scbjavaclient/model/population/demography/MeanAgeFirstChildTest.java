@@ -33,15 +33,22 @@ public class MeanAgeFirstChildTest {
 
 	private String testContentsCode;
 
-	private List<ValueNode<Double>> valueNodes;
+	private List<ValueNode<Double>> values;
+	private List<ValueNode<Double>> values2;
 
 	@Before
 	public void setup() {
 		this.testContentsCode = "TESTCONTENTSCODE";
-		this.valueNodes = new ArrayList<ValueNode<Double>>();
 
-		ValueNode<Double> value = new ValueNode<Double>(34.56d, "TESTCONTENTSCODE", "Test contents code");
-		this.valueNodes.add(value);
+		this.values = new ArrayList<ValueNode<Double>>();
+		this.values2 = new ArrayList<ValueNode<Double>>();
+
+		ValueNode<Double> value = new ValueNode<Double>(34.56d, this.testContentsCode, "Test contents code");
+		this.values.add(value);
+
+		// Copy previous value node into new object
+		ValueNode<Double> value2 = new ValueNode<Double>(value.getValue(), value.getCode(), value.getText());
+		this.values2.add(value2);
 	}
 
 	@Test
@@ -82,7 +89,7 @@ public class MeanAgeFirstChildTest {
 	public void setValues() {
 		MeanAgeFirstChild mean = new MeanAgeFirstChild();
 
-		mean.setValues(this.valueNodes);
+		mean.setValues(this.values);
 
 		assertNotNull(mean.getValues());
 	}
@@ -109,8 +116,8 @@ public class MeanAgeFirstChildTest {
 
 	@Test
 	public void equalsItselfWithValues() {
-		MeanAgeFirstChild mean = new MeanAgeFirstChild("1263", 2, 1996, this.valueNodes);
-		MeanAgeFirstChild mean2 = new MeanAgeFirstChild("1263", 2, 1996, this.valueNodes);
+		MeanAgeFirstChild mean = new MeanAgeFirstChild("1263", 2, 1996, this.values);
+		MeanAgeFirstChild mean2 = new MeanAgeFirstChild("1263", 2, 1996, this.values2);
 
 		assertEquals(mean, mean2);
 	}
@@ -131,32 +138,32 @@ public class MeanAgeFirstChildTest {
 
 	@Test
 	public void notEqualsRegion() {
-		MeanAgeFirstChild mean = new MeanAgeFirstChild("1263", 2, 1996, this.valueNodes);
-		MeanAgeFirstChild mean2 = new MeanAgeFirstChild("1267", 2, 1996, this.valueNodes);
+		MeanAgeFirstChild mean = new MeanAgeFirstChild("1263", 2, 1996, this.values);
+		MeanAgeFirstChild mean2 = new MeanAgeFirstChild("1267", 2, 1996, this.values2);
 
 		assertNotEquals(mean, mean2);
 	}
 
 	@Test
 	public void notEqualsGender() {
-		MeanAgeFirstChild mean = new MeanAgeFirstChild("1263", 2, 1996, this.valueNodes);
-		MeanAgeFirstChild mean2 = new MeanAgeFirstChild("1263", 1, 1996, this.valueNodes);
+		MeanAgeFirstChild mean = new MeanAgeFirstChild("1263", 2, 1996, this.values);
+		MeanAgeFirstChild mean2 = new MeanAgeFirstChild("1263", 1, 1996, this.values2);
 
 		assertNotEquals(mean, mean2);
 	}
 
 	@Test
 	public void notEqualsYear() {
-		MeanAgeFirstChild mean = new MeanAgeFirstChild("1263", 2, 1996, this.valueNodes);
-		MeanAgeFirstChild mean2 = new MeanAgeFirstChild("1263", 2, 2002, this.valueNodes);
+		MeanAgeFirstChild mean = new MeanAgeFirstChild("1263", 2, 1996, this.values);
+		MeanAgeFirstChild mean2 = new MeanAgeFirstChild("1263", 2, 2002, this.values2);
 
 		assertNotEquals(mean, mean2);
 	}
 
 	@Test
 	public void notEqualsValues() {
-		MeanAgeFirstChild mean = new MeanAgeFirstChild("1263", 2, 1996, this.valueNodes);
-		MeanAgeFirstChild mean2 = new MeanAgeFirstChild("1263", 2, 1996, this.valueNodes);
+		MeanAgeFirstChild mean = new MeanAgeFirstChild("1263", 2, 1996, this.values);
+		MeanAgeFirstChild mean2 = new MeanAgeFirstChild("1263", 2, 1996, this.values2);
 		mean2.setValue(this.testContentsCode, 65.43d);
 
 		assertNotEquals(mean, mean2);
@@ -164,8 +171,8 @@ public class MeanAgeFirstChildTest {
 
 	@Test
 	public void equalsHashCode() {
-		MeanAgeFirstChild mean = new MeanAgeFirstChild("1263", 2, 1996, this.valueNodes);
-		MeanAgeFirstChild mean2 = new MeanAgeFirstChild("1263", 2, 1996, this.valueNodes);
+		MeanAgeFirstChild mean = new MeanAgeFirstChild("1263", 2, 1996, this.values);
+		MeanAgeFirstChild mean2 = new MeanAgeFirstChild("1263", 2, 1996, this.values2);
 
 		assertEquals(mean.hashCode(), mean2.hashCode());
 	}
@@ -187,7 +194,7 @@ public class MeanAgeFirstChildTest {
 
 	@Test
 	public void convertToString() {
-		MeanAgeFirstChild mean = new MeanAgeFirstChild("1263", 2, 1996, this.valueNodes);
+		MeanAgeFirstChild mean = new MeanAgeFirstChild("1263", 2, 1996, this.values);
 
 		assertTrue(mean.toString().contains("1263"));
 		assertTrue(mean.toString().contains("2"));
