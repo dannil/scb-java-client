@@ -1,7 +1,7 @@
 language: java
 jdk:
-- oraclejdk8
 - oraclejdk7
+- oraclejdk8
 os:
 - linux
 branches:
@@ -20,5 +20,5 @@ after_success:
 - mvn com.gavinmogan:codacy-maven-plugin:coverage -DcoverageReportFile=target/site/jacoco/jacoco.xml -DprojectToken=$CODACY_PROJECT_TOKEN -DapiToken=$CODACY_API_TOKEN -DcodacyApiBaseUrl=https://api.codacy.com
 env:
   global:
-  - secure: "pGOIwU6iPPqITnQ1WRfnPWBDFEtsploCRUsvkqppb/kOJrIB/jj89k35nPsbl1oPGaMrH+kQ5ezTAcQXY9OivuyO0OuliSnrV8vr6rp7mncm1uDO9gHNQM5UcV0JMbHgpL/ZKx8e/mmSjeWhm4lg1e+EH85rHu7eAVrUpgvAbb0="
-  - secure: "Mzovf0Rm4TCwj4LWNt7S81GxoC0q1HnyOp5hMhkMrptQ8XOHsEv/BLXG8I0qQSWIYdQNTlqHbNajBxL1JpDgVN5plYWUv1A5vlyDoWzy5fPvsg0UEa5kN8mxEJtlY7qLMo3d3BXwSajThrHpS8BH05x4WInwhX3P2U3KBmhHsow="
+  - secure: jP+6no77LmkNsx9/ih/q4fECS+6g2HxXcmLk3kEw309BTfmi270578YTFrhquwnXO4iRWG02Uza3Qs7lwLLlUIz+KRhBgDG1kcLa/juJEqxBfJ9nsbxbBU6ncnSHvOGWh3dYXWGjXzWKACSb0tGF+BL4RG8aq4/9k60++/11zM8=
+  - secure: p4TxOFCOSPKKb6g3ZlDeJFuUQ35wKKT+5Ae5ugDORnh09RXzwLRSglItEY29s2mK/lnAyn77U3HZQiXPGkLiZK5w8Vzb6KFr8NYbMvwz53MIMyZlKEg6nJEddk998vwNdB06tJ0qjmZYK1aGJx53oPm90drF00uLmOk65WRk2P0=
