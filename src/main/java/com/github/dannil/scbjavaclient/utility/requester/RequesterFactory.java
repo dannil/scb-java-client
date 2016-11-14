@@ -60,14 +60,14 @@ public final class RequesterFactory {
 		// abs.setCharset(charset);
 		// return abs;
 		switch (method) {
-		case GET:
-			return new GETRequester(charset);
+			case GET:
+				return new GETRequester(charset);
 
-		case POST:
-			return new POSTRequester(charset);
+			case POST:
+				return new POSTRequester(charset);
 
-		default:
-			throw new IllegalArgumentException(method + " is not a valid method");
+			default:
+				throw new IllegalArgumentException(method + " is not a valid method");
 		}
 	}
 
