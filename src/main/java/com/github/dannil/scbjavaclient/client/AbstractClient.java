@@ -38,7 +38,7 @@ import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
  */
 public abstract class AbstractClient {
 
-	protected static final String ROOT_URL = "http://api.scb.se/OV0104/v1/doris/";
+	protected static final String ROOT_URL = "https://api.scb.se/OV0104/v1/doris/";
 
 	private static final Logger LOGGER = LogManager.getLogger(AbstractClient.class);
 
@@ -83,8 +83,7 @@ public abstract class AbstractClient {
 
 	/**
 	 * <p>Sets the language for this client instance. Note that doing this after a call to
-	 * {@link #setLocalizationLanguage(Locale)} overwrites the localization language with the input
-	 * of this method.</p>
+	 * {@link #setLocalizationLanguage(Locale)} overwrites the localization language with the input of this method.</p>
 	 * 
 	 * @param locale
 	 *            the language for this client
@@ -98,8 +97,8 @@ public abstract class AbstractClient {
 	}
 
 	/**
-	 * <p>Changes the language used for the localization. Useful if the client needs to be in a
-	 * different language than the error messages.</p>
+	 * <p>Changes the language used for the localization. Useful if the client needs to be in a different language than
+	 * the error messages.</p>
 	 * 
 	 * @param locale
 	 *            the language for the localization
@@ -174,7 +173,8 @@ public abstract class AbstractClient {
 			return values;
 		} catch (IllegalArgumentException e) {
 			Object[] variables = new Object[] { code, url };
-			throw new IllegalArgumentException(this.localization.getString("code_is_not_supported_for_url", variables), e);
+			throw new IllegalArgumentException(this.localization.getString("code_is_not_supported_for_url", variables),
+					e);
 		}
 	}
 
@@ -195,7 +195,8 @@ public abstract class AbstractClient {
 			return format.getValues(code);
 		} catch (IllegalArgumentException e) {
 			Object[] variables = new Object[] { code, url };
-			throw new IllegalArgumentException(this.localization.getString("code_is_not_supported_for_url", variables), e);
+			throw new IllegalArgumentException(this.localization.getString("code_is_not_supported_for_url", variables),
+					e);
 		}
 	}
 
