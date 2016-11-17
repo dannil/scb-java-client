@@ -17,18 +17,18 @@
 package com.github.dannil.scbjavaclient.client;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 import java.util.Locale;
 
 /**
- * <p>Abstract class which specifies how methods by container clients (a client that has
- * sub-clients) should operate.</p>
+ * <p>Abstract class which specifies how methods by container clients (a client that has sub-clients) should
+ * operate.</p>
  * 
  * @author Daniel Nilsson
  */
 public abstract class AbstractContainerClient extends AbstractClient {
 
-	protected List<AbstractClient> clients;
+	protected Collection<AbstractClient> clients;
 
 	/**
 	 * <p>Default constructor.</p>
