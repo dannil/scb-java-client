@@ -40,7 +40,7 @@ public class PopulationAmountClientTest {
 		Locale locale = new Locale("sv", "SE");
 		PopulationAmountClient client = new PopulationAmountClient(locale);
 
-		assertEquals("http://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0101/BE0101A/", client.getUrl());
+		assertEquals("https://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0101/BE0101A/", client.getUrl());
 	}
 
 }

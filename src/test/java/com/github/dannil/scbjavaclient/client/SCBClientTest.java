@@ -51,7 +51,7 @@ public class SCBClientTest {
 		Locale locale = new Locale("sv", "SE");
 		SCBClient client = new SCBClient(locale);
 
-		assertEquals("http://api.scb.se/OV0104/v1/doris/sv/ssd/", client.getUrl());
+		assertEquals("https://api.scb.se/OV0104/v1/doris/sv/ssd/", client.getUrl());
 	}
 
 }

@@ -50,7 +50,7 @@ public class PopulationDemographyClientTest {
 		Locale locale = new Locale("sv", "SE");
 		PopulationDemographyClient populationDemographyClient = new PopulationDemographyClient(locale);
 
-		assertEquals("http://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0701/", populationDemographyClient.getUrl());
+		assertEquals("https://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0701/", populationDemographyClient.getUrl());
 	}
 
 }

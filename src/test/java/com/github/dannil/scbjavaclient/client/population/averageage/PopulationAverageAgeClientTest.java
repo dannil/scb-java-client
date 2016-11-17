@@ -40,7 +40,7 @@ public class PopulationAverageAgeClientTest {
 		Locale locale = new Locale("sv", "SE");
 		PopulationAverageAgeClient client = new PopulationAverageAgeClient(locale);
 
-		assertEquals("http://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0101/BE0101B/", client.getUrl());
+		assertEquals("https://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0101/BE0101B/", client.getUrl());
 	}
 
 }

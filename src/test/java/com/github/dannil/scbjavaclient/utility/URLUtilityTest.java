@@ -41,16 +41,16 @@ public class URLUtilityTest {
 
 	@Test
 	public void changeUrlLocale() {
-		String url = URLUtility.changeLanguageForUrl("http://api.scb.se/OV0104/v1/doris/en/ssd/BE/BE0101/BE0101A/BefolkningNy");
+		String url = URLUtility.changeLanguageForUrl("https://api.scb.se/OV0104/v1/doris/en/ssd/BE/BE0101/BE0101A/BefolkningNy");
 
-		assertEquals("http://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0101/BE0101A/BefolkningNy", url);
+		assertEquals("https://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0101/BE0101A/BefolkningNy", url);
 	}
 
 	@Test
 	public void changeUrlLanguageWithThreeCharacters() {
-		String url = "http://api.scb.se/OV0104/v1/doris/sv/ssd/";
+		String url = "https://api.scb.se/OV0104/v1/doris/sv/ssd/";
 
-		assertEquals("http://api.scb.se/OV0104/v1/doris/ger/ssd/", URLUtility.changeLanguageForUrl(url, "ger"));
+		assertEquals("https://api.scb.se/OV0104/v1/doris/ger/ssd/", URLUtility.changeLanguageForUrl(url, "ger"));
 	}
 
 }

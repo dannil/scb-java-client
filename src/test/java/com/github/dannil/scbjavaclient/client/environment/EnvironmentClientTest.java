@@ -48,7 +48,7 @@ public class EnvironmentClientTest {
 		Locale locale = new Locale("sv", "SE");
 		EnvironmentClient envClient = new EnvironmentClient(locale);
 
-		assertEquals("http://api.scb.se/OV0104/v1/doris/sv/ssd/MI/", envClient.getUrl());
+		assertEquals("https://api.scb.se/OV0104/v1/doris/sv/ssd/MI/", envClient.getUrl());
 	}
 
 }

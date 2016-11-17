@@ -40,7 +40,7 @@ public class EnvironmentLandAndWaterAreaClientTest {
 		Locale locale = new Locale("sv", "SE");
 		EnvironmentLandAndWaterAreaClient client = new EnvironmentLandAndWaterAreaClient(locale);
 
-		assertEquals("http://api.scb.se/OV0104/v1/doris/sv/ssd/MI/MI0802/", client.getUrl());
+		assertEquals("https://api.scb.se/OV0104/v1/doris/sv/ssd/MI/MI0802/", client.getUrl());
 	}
 
 }

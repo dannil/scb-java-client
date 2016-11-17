@@ -40,7 +40,7 @@ public class PopulationNameStatisticsClientTest {
 		Locale locale = new Locale("sv", "SE");
 		PopulationNameStatisticsClient client = new PopulationNameStatisticsClient(locale);
 
-		assertEquals("http://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0001/", client.getUrl());
+		assertEquals("https://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0001/", client.getUrl());
 	}
 
 }

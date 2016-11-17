@@ -30,7 +30,7 @@ public final class Config {
 	static {
 		try {
 			AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
-			String response = get.getBodyAsString("http://api.scb.se/OV0104/v1/doris/en/ssd/?config");
+			String response = get.getBodyAsString("https://api.scb.se/OV0104/v1/doris/en/ssd/?config");
 
 			JsonConverter converter = new JsonConverter();
 			JsonNode node = converter.toNode(response);

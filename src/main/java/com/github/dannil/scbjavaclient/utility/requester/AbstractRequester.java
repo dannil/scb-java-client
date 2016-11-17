@@ -137,7 +137,7 @@ public abstract class AbstractRequester {
 	 * @return the content of the table
 	 */
 	public String getBodyAsStringFromTable(String table) {
-		return getBodyAsString("http://api.scb.se/OV0104/v1/doris/sv/ssd/" + table);
+		return getBodyAsString("https://api.scb.se/OV0104/v1/doris/sv/ssd/" + table);
 	}
 
 	/**

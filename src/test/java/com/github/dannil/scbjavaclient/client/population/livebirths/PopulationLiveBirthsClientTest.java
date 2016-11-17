@@ -40,7 +40,7 @@ public class PopulationLiveBirthsClientTest {
 
 	@Test
 	public void getUrl() {
-		assertEquals("http://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0101/BE0101H/", this.populationLiveBirthsClient.getUrl());
+		assertEquals("https://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0101/BE0101H/", this.populationLiveBirthsClient.getUrl());
 	}
 
 }
