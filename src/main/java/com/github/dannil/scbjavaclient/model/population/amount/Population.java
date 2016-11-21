@@ -1,17 +1,15 @@
 /*
  * Copyright 2014 Daniel Nilsson
  * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
  * 
  * http://www.apache.org/licenses/LICENSE-2.0
  * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
  */
 
 package com.github.dannil.scbjavaclient.model.population.amount;
@@ -68,7 +66,8 @@ public class Population extends AbstractRegionYearAndValueModel<String, Integer,
 	 * @param values
 	 *            the values
 	 */
-	public Population(String region, String relationshipStatus, String age, Integer gender, Integer year, List<ValueNode<String>> values) {
+	public Population(String region, String relationshipStatus, String age, Integer gender, Integer year,
+			List<ValueNode<String>> values) {
 		super(region, year, values);
 		this.relationshipStatus = relationshipStatus;
 		this.age = age;
@@ -150,8 +149,8 @@ public class Population extends AbstractRegionYearAndValueModel<String, Integer,
 		}
 
 		Population other = (Population) obj;
-		return super.equals(other) && Objects.equals(this.relationshipStatus, other.relationshipStatus) && Objects.equals(this.age, other.age)
-				&& Objects.equals(this.gender, other.gender);
+		return super.equals(other) && Objects.equals(this.relationshipStatus, other.relationshipStatus)
+				&& Objects.equals(this.age, other.age) && Objects.equals(this.gender, other.gender);
 	}
 
 	@Override
@@ -177,8 +176,8 @@ public class Population extends AbstractRegionYearAndValueModel<String, Integer,
 	}
 
 	/**
-	 * <p>Get the available codes and their respective values for the population data from the
-	 * API.</p>
+	 * <p>Get the available codes and their respective values for the population data from
+	 * the API.</p>
 	 *
 	 * @return a list of the available codes and their values
 	 */

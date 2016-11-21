@@ -1,17 +1,15 @@
 /*
  * Copyright 2016 Daniel Nilsson
  * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
  * 
  * http://www.apache.org/licenses/LICENSE-2.0
  * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
  */
 
 package com.github.dannil.scbjavaclient.utility;
@@ -39,7 +37,8 @@ public final class URLUtility {
 	 * {@link com.github.dannil.scbjavaclient.constants.APIConstants#FALLBACK_LOCALE
 	 * FALLBACK_LOCALE}.</p>
 	 * 
-	 * <p>See {@link #changeLanguageForUrl(String, String)} for implementation details.</p>
+	 * <p>See {@link #changeLanguageForUrl(String, String)} for implementation
+	 * details.</p>
 	 *
 	 * @param url
 	 *            the URL to edit
@@ -52,7 +51,8 @@ public final class URLUtility {
 	/**
 	 * <p>Generates a new URL to the API using the specified locale.</p>
 	 * 
-	 * <p>See {@link #changeLanguageForUrl(String, String)} for implementation details.</p>
+	 * <p>See {@link #changeLanguageForUrl(String, String)} for implementation
+	 * details.</p>
 	 *
 	 * @param url
 	 *            the URL to edit
@@ -65,23 +65,24 @@ public final class URLUtility {
 	}
 
 	/**
-	 * <p>Generates a new URL to the API by replacing the current language tag in the URL with the
-	 * specified language tag.</p>
+	 * <p>Generates a new URL to the API by replacing the current language tag in the URL
+	 * with the specified language tag.</p>
 	 * 
 	 * <p>This method performs these steps to figure out what needs to be replaced:</p>
 	 * 
-	 * <ol> <li>Specifies the <b>start segment</b> as the segment preceding the <b>language tag
-	 * segment</b> in the URL.</li>
+	 * <ol> <li>Specifies the <b>start segment</b> as the segment preceding the
+	 * <b>language tag segment</b> in the URL.</li>
 	 * 
-	 * <li>Finds the length of the <b>language tag segment</b> by finding the next forward slash
-	 * following the <b>start segment</b>, as this indicates that the segment has ended.</li>
+	 * <li>Finds the length of the <b>language tag segment</b> by finding the next forward
+	 * slash following the <b>start segment</b>, as this indicates that the segment has
+	 * ended.</li>
 	 * 
-	 * <li>Replaces the content between the start and end of the segment (forward slashes excluded)
-	 * with the new language tag.</li> </ol>
+	 * <li>Replaces the content between the start and end of the segment (forward slashes
+	 * excluded) with the new language tag.</li> </ol>
 	 * 
-	 * <p>Due to speed efficiency, this method does not perform any validity check on the specified
-	 * URL. Calling this method without a valid URL for the API may (and probably will) result in
-	 * unexpected behavior.</p>
+	 * <p>Due to speed efficiency, this method does not perform any validity check on the
+	 * specified URL. Calling this method without a valid URL for the API may (and
+	 * probably will) result in unexpected behavior.</p>
 	 * 
 	 * @param url
 	 *            the URL to edit
@@ -91,8 +92,7 @@ public final class URLUtility {
 	 */
 	public static String changeLanguageForUrl(String url, String language) {
 		// Specify the starting point. For this implementation, the starting
-		// point is the segment
-		// preceding the language tag segment in the URL
+		// point is the segment preceding the language tag segment in the URL
 		String startSegment = "doris";
 
 		// Find the index where the language tag starts

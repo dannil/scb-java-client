@@ -1,17 +1,15 @@
 /*
  * Copyright 2014 Daniel Nilsson
  * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
  * 
  * http://www.apache.org/licenses/LICENSE-2.0
  * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
  */
 
 package com.github.dannil.scbjavaclient.client;
@@ -51,9 +49,6 @@ public abstract class AbstractClient {
 	 */
 	protected AbstractClient() {
 		this.locale = Locale.getDefault();
-
-		// validateLocale();
-
 		this.localization = new Localization(this.locale);
 	}
 
@@ -61,140 +56,136 @@ public abstract class AbstractClient {
 	 * <p>Overloaded constructor.</p>
 	 * 
 	 * @param locale
-	 *            the locale for this client
+	 *            the <code>Locale</code> for this client
 	 */
 	protected AbstractClient(Locale locale) {
 		this();
 		this.locale = locale;
-
-		// validateLocale();
-
 		this.localization.setLocale(this.locale);
 	}
 
 	/**
-	 * <p>Retrieves the language for this client instance.</p>
+	 * <p>Retrieves the <code>Locale</code> for this client instance.</p>
 	 * 
-	 * @return the language for this client instance
+	 * @return the <code>Locale</code> for this client instance
 	 */
 	public Locale getLocale() {
 		return this.locale;
 	}
 
 	/**
-	 * <p>Sets the language for this client instance. Note that doing this after a call to
-	 * {@link #setLocalizationLanguage(Locale)} overwrites the localization language with the input of this method.</p>
+	 * <p>Sets the <code>Locale</code> for this client instance. Note that doing this
+	 * after a call to {@link #setLocalizationLocale(Locale)} overwrites the localization
+	 * language with the input of this method.</p>
 	 * 
 	 * @param locale
-	 *            the language for this client
+	 *            the <code>Locale</code> for this client
 	 */
 	public void setLocale(Locale locale) {
 		this.locale = locale;
-
-		// validateLocale();
-
 		this.localization.setLocale(locale);
 	}
 
 	/**
-	 * <p>Changes the language used for the localization. Useful if the client needs to be in a different language than
-	 * the error messages.</p>
+	 * <p>Changes the <code>Locale</code> used for the localization. Useful if the client
+	 * needs to be in a different language than the error messages.</p>
 	 * 
 	 * @param locale
-	 *            the language for the localization
+	 *            the <code>Locale</code> for the localization
 	 */
-	public void setLocalizationLanguage(Locale locale) {
+	public void setLocalizationLocale(Locale locale) {
 		this.localization.setLocale(locale);
 	}
 
 	/**
-	 * <p>Determines the base URL for the API based on the current <code>Locale</code>.</p>
+	 * <p>Determines the base URL for the API based on the current
+	 * <code>Locale</code>.</p>
 	 * 
-	 * @return the URL representing the entry point for the API.
+	 * @return the URL representing the entry point for the API
 	 */
 	protected String getBaseUrl() {
 		return ROOT_URL + this.locale.getLanguage() + "/ssd/";
 	}
 
 	/**
-	 * <p>Performs a GET request to the specified URL.</p>
+	 * <p>Performs a GET request to the specified table.</p>
 	 * 
-	 * @param url
-	 *            the URL which will be sent a GET request
+	 * @param table
+	 *            the table which will be sent a GET request
 	 * @return a string representation of the API's response
 	 */
-	protected String get(String url) {
+	protected String get(String table) {
 		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
+		String fullUrl = getBaseUrl() + table;
 		try {
-			return get.getBodyAsString(getBaseUrl() + url);
+			return get.getBodyAsString(fullUrl);
 		} catch (SCBClientUrlNotFoundException e) {
-			// 404, call the client again with the fallback language
-			return get.getBodyAsString(URLUtility.changeLanguageForUrl(getBaseUrl() + url));
+			// HTTP code 404, call the API again with the fallback language
+			return get.getBodyAsString(URLUtility.changeLanguageForUrl(fullUrl));
 		}
 	}
 
 	/**
-	 * <p>Performs a POST request to the specified URL.</p>
+	 * <p>Performs a POST request to the specified table.</p>
 	 * 
-	 * @param url
-	 *            the URL which will be sent a POST request
+	 * @param table
+	 *            the table which will be sent a POST request
 	 * @param query
 	 *            the query which the API will process
 	 * @return a string representation of the API's response
 	 */
-	protected String post(String url, String query) {
+	protected String post(String table, String query) {
 		POSTRequester post = (POSTRequester) RequesterFactory.getRequester(RequestMethod.POST);
 		post.setQuery(query);
+		String fullUrl = getBaseUrl() + table;
 		try {
 			LOGGER.info(query);
-			String response = post.getBodyAsString(getBaseUrl() + url);
-			return response;
+			return post.getBodyAsString(fullUrl);
 		} catch (SCBClientUrlNotFoundException e) {
-			// 404, call the client again with the fallback language
-			return post.getBodyAsString(URLUtility.changeLanguageForUrl(getBaseUrl() + url));
+			// HTTP code 404, call the API again with the fallback language
+			return post.getBodyAsString(URLUtility.changeLanguageForUrl(fullUrl));
 		}
 	}
 
 	/**
-	 * <p>Returns the list of the available regions for a given URL.</p>
+	 * <p>Returns the list of the available regions for a given table.</p>
 	 * 
-	 * @param url
-	 *            the URL to retrieve the regions from
-	 * @return a list of the available regions for the given URL
+	 * @param table
+	 *            the table to retrieve the regions from
+	 * @return a list of the available regions for the given table
 	 * @throws IllegalArgumentException
-	 *             if the specified URL doesn't supply a regions code
+	 *             if the specified table doesn't supply a regions code
 	 */
-	public List<String> getRegions(String url) {
-		String json = get(url);
+	public List<String> getRegions(String table) {
+		String json = get(table);
 		String code = "Region";
 		try {
 			JsonAPITableFormat format = new JsonAPITableFormat(json);
-			List<String> values = format.getValues(code);
-			return values;
+			return format.getValues(code);
 		} catch (IllegalArgumentException e) {
-			Object[] variables = new Object[] { code, url };
+			Object[] variables = new Object[] { code, table };
 			throw new IllegalArgumentException(this.localization.getString("code_is_not_supported_for_url", variables),
 					e);
 		}
 	}
 
 	/**
-	 * <p>Returns the list of the available years for a given URL.</p>
+	 * <p>Returns the list of the available years for a given table.</p>
 	 * 
-	 * @param url
-	 *            the URL to retrieve the years from
-	 * @return a list of the available years for the given URL
+	 * @param table
+	 *            the table to retrieve the years from
+	 * @return a list of the available years for the given table
 	 * @throws IllegalArgumentException
-	 *             if the specified URL doesn't supply a years code
+	 *             if the specified table doesn't supply a years code
 	 */
-	public List<String> getYears(String url) {
-		String json = get(url);
+	public List<String> getYears(String table) {
+		String json = get(table);
 		String code = "Tid";
 		try {
 			JsonAPITableFormat format = new JsonAPITableFormat(json);
 			return format.getValues(code);
 		} catch (IllegalArgumentException e) {
-			Object[] variables = new Object[] { code, url };
+			Object[] variables = new Object[] { code, table };
 			throw new IllegalArgumentException(this.localization.getString("code_is_not_supported_for_url", variables),
 					e);
 		}

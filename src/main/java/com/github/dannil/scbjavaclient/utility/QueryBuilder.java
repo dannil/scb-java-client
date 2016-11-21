@@ -1,17 +1,15 @@
 /*
  * Copyright 2014 Daniel Nilsson
  * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
  * 
  * http://www.apache.org/licenses/LICENSE-2.0
  * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
  */
 
 package com.github.dannil.scbjavaclient.utility;
@@ -25,10 +23,10 @@ import java.util.Map.Entry;
 import java.util.Objects;
 
 /**
- * <p>Class which is responsible for constructing the query which should be sent to the SCB API.</p>
+ * <p>Class which is responsible for constructing the query which should be sent to the
+ * SCB API.</p>
  * 
  * @author Daniel Nilsson
- *
  */
 public final class QueryBuilder {
 
@@ -59,27 +57,30 @@ public final class QueryBuilder {
 	}
 
 	/**
-	 * <p>Constructs a query which matches the format the SCB API expects. This method performs two
-	 * distinct steps:</p>
+	 * <p>Constructs a query which matches the format the SCB API expects. This method
+	 * performs two distinct steps:</p>
 	 * 
 	 * <h1>1. Filter out the null keys</h1>
 	 * 
-	 * <p>If a key (such as region or year) is defined and all of this key's values are defined as
-	 * null it means that all data for this key should be fetched (such as fetching the data for all
-	 * available years). By not sending this key at all to the SCB API it recognizes that it should
-	 * respond with all data corresponding to this key.</p>
+	 * <p>If a key (such as region or year) is defined and all of this key's values are
+	 * defined as null it means that all data for this key should be fetched (such as
+	 * fetching the data for all available years). By not sending this key at all to the
+	 * SCB API it recognizes that it should respond with all data corresponding to this
+	 * key.</p>
 	 * 
 	 * <h1>2. Construct the query</h1>
 	 * 
-	 * <p>For every key in the input map, it creates an entry for this key. It then writes all of
-	 * the values corresponding with this key (defined somewhere by using the put-method on the
-	 * input map) into this entry. For example, if the input for the key Tid (Swedish for year)
-	 * contains the years (values) 2011 and 2012, the resulting entry looks like this:</p>
+	 * <p>For every key in the input map, it creates an entry for this key. It then writes
+	 * all of the values corresponding with this key (defined somewhere by using the
+	 * put-method on the input map) into this entry. For example, if the input for the key
+	 * Tid (Swedish for year) contains the years (values) 2011 and 2012, the resulting
+	 * entry looks like this:</p>
 	 * 
-	 * <p>{ "code": "Tid", "selection": { "filter": "item", "values": [ "2011", "2012" ] } }</p>
+	 * <p>{ "code": "Tid", "selection": { "filter": "item", "values": [ "2011", "2012" ] }
+	 * }</p>
 	 * 
-	 * <p>The method works on the principle of pasting all these blocks together in an orderly
-	 * fashion to conform to the SCB API specification.</p>
+	 * <p>The method works on the principle of pasting all these blocks together in an
+	 * orderly fashion to conform to the SCB API specification.</p>
 	 * 
 	 * @param inputMap
 	 *            the input map which contains the keys and the values for every key
@@ -107,7 +108,9 @@ public final class QueryBuilder {
 		builder.append("{\"query\": [");
 		int i = 0;
 		for (Entry<String, List<?>> entry : filteredMap.entrySet()) {
-			builder.append("{\"code\": \"" + entry.getKey() + "\", \"selection\": {\"filter\": \"item\", \"values\": [");
+			builder.append("{\"code\": \"");
+			builder.append(entry.getKey());
+			builder.append("\", \"selection\": {\"filter\": \"item\", \"values\": [");
 			List<?> values = entry.getValue();
 			for (int j = 0; j < values.size(); j++) {
 				builder.append("\"" + values.get(j) + "\"");

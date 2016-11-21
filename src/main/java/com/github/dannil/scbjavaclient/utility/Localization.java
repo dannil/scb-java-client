@@ -1,17 +1,15 @@
 /*
  * Copyright 2016 Daniel Nilsson
  * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
  * 
  * http://www.apache.org/licenses/LICENSE-2.0
  * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
  */
 
 package com.github.dannil.scbjavaclient.utility;
@@ -87,9 +85,9 @@ public class Localization {
 	}
 
 	/**
-	 * <p>Returns the translation for the specified key. If it can't find the key in the current
-	 * specified language's localization file, it attempts to use the fallback <code>Locale</code>'s
-	 * localization file as the translation source.</p>
+	 * <p>Returns the translation for the specified key. If it can't find the key in the
+	 * current specified language's localization file, it attempts to use the fallback
+	 * <code>Locale</code>'s localization file as the translation source.</p>
 	 * 
 	 * @param key
 	 *            the key to get the translation for
@@ -98,7 +96,7 @@ public class Localization {
 	public String getString(String key) {
 		try {
 			return this.bundle.getString(key);
-		} catch (MissingResourceException e2) {
+		} catch (MissingResourceException e) {
 			return ResourceBundle.getBundle(this.baseName, this.fallbackLocale, this.encodingControl).getString(key);
 		}
 	}
@@ -122,8 +120,8 @@ public class Localization {
 	}
 
 	/**
-	 * <p>Class to handle non-ASCII encodings for {@link java.util.ResourceBundle ResourceBundle},
-	 * such as UTF-8.</p>
+	 * <p>Class to handle non-ASCII encodings for {@link java.util.ResourceBundle
+	 * ResourceBundle}, such as UTF-8.</p>
 	 * 
 	 * @author Daniel Nilsson
 	 */
@@ -153,7 +151,8 @@ public class Localization {
 		}
 
 		@Override
-		public ResourceBundle newBundle(String baseName, Locale locale, String format, ClassLoader loader, boolean reload) {
+		public ResourceBundle newBundle(String baseName, Locale locale, String format, ClassLoader loader,
+				boolean reload) {
 			if (baseName == null || locale == null || format == null || loader == null) {
 				throw new IllegalArgumentException();
 			}

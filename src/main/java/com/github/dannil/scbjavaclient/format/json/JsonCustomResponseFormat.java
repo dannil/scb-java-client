@@ -1,17 +1,15 @@
 /*
  * Copyright 2016 Daniel Nilsson
  * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
  * 
  * http://www.apache.org/licenses/LICENSE-2.0
  * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
  */
 
 package com.github.dannil.scbjavaclient.format.json;
@@ -29,8 +27,9 @@ import com.github.dannil.scbjavaclient.utility.StringUtility;
 import com.github.dannil.scbjavaclient.validator.json.JsonValidator;
 
 /**
- * <p>Class which encapsulates behavior for the custom JSON response format. Note that this class is
- * immutable; to change the containing JSON, a new class needs to be instantiated.</p>
+ * <p>Class which encapsulates behavior for the custom JSON response format. Note that
+ * this class is immutable; to change the containing JSON, a new class needs to be
+ * instantiated.</p>
  * 
  * @author Daniel Nilsson
  */
@@ -110,7 +109,8 @@ public final class JsonCustomResponseFormat implements IJsonResponseFormat {
 	@Override
 	public boolean isFormatted() {
 		// Check if the node is correctly formatted
-		return !(this.json.has("columns") || this.json.has("data") || this.json.has("comments") || !this.json.isArray());
+		return !(this.json.has("columns") || this.json.has("data") || this.json.has("comments")
+				|| !this.json.isArray());
 	}
 
 	/**
@@ -120,8 +120,8 @@ public final class JsonCustomResponseFormat implements IJsonResponseFormat {
 	 *            the class to convert each JSON entry to
 	 * @param <T>
 	 *            the data type of the list
-	 * @return a list of elements, which type is the specified class. Each element represents the
-	 *         corresponding entry in the JSON
+	 * @return a list of elements, which type is the specified class. Each element
+	 *         represents the corresponding entry in the JSON
 	 */
 	public <T> List<T> toListOf(Class<T> clazz) {
 		try {

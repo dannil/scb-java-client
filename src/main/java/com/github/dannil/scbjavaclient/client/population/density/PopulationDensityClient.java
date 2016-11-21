@@ -1,17 +1,15 @@
 /*
  * Copyright 2016 Daniel Nilsson
  * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
  * 
  * http://www.apache.org/licenses/LICENSE-2.0
  * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
  */
 
 package com.github.dannil.scbjavaclient.client.population.density;
@@ -56,8 +54,8 @@ public class PopulationDensityClient extends AbstractClient {
 	 * <p>Fetch all density data.</p>
 	 * 
 	 * @return the density data wrapped in a list of
-	 *         {@link com.github.dannil.scbjavaclient.model.population.density.Density Density}
-	 *         objects
+	 *         {@link com.github.dannil.scbjavaclient.model.population.density.Density
+	 *         Density} objects
 	 * 
 	 * @see #getDensity(Collection, Collection, Collection)
 	 */
@@ -75,8 +73,8 @@ public class PopulationDensityClient extends AbstractClient {
 	 * @param years
 	 *            the years to fetch data for
 	 * @return the density data wrapped in a list of
-	 *         {@link com.github.dannil.scbjavaclient.model.population.density.Density Density}
-	 *         objects
+	 *         {@link com.github.dannil.scbjavaclient.model.population.density.Density
+	 *         Density} objects
 	 */
 	public List<Density> getDensity(Collection<String> regions, Collection<String> sexes, Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();

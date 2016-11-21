@@ -1,17 +1,15 @@
 /*
  * Copyright 2014 Daniel Nilsson
  * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
  * 
  * http://www.apache.org/licenses/LICENSE-2.0
  * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
  */
 
 package com.github.dannil.scbjavaclient.client.population.amount;
@@ -56,8 +54,8 @@ public class PopulationAmountClient extends AbstractClient {
 	 * <p>Fetch all population data.</p>
 	 * 
 	 * @return the population data wrapped in a list of
-	 *         {@link com.github.dannil.scbjavaclient.model.population.amount.Population Population}
-	 *         objects
+	 *         {@link com.github.dannil.scbjavaclient.model.population.amount.Population
+	 *         Population} objects
 	 * 
 	 * @see #getPopulation(Collection, Collection, Collection, Collection, Collection)
 	 */
@@ -79,11 +77,11 @@ public class PopulationAmountClient extends AbstractClient {
 	 * @param years
 	 *            the years to fetch data for
 	 * @return the population data wrapped in a list of
-	 *         {@link com.github.dannil.scbjavaclient.model.population.amount.Population Population}
-	 *         objects
+	 *         {@link com.github.dannil.scbjavaclient.model.population.amount.Population
+	 *         Population} objects
 	 */
-	public List<Population> getPopulation(Collection<String> regions, Collection<String> relationshipStatuses, Collection<String> ages,
-			Collection<Integer> genders, Collection<Integer> years) {
+	public List<Population> getPopulation(Collection<String> regions, Collection<String> relationshipStatuses,
+			Collection<String> ages, Collection<Integer> genders, Collection<Integer> years) {
 		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
 		mappings.put("ContentsCode", Arrays.asList("BE0101N1", "BE0101N2"));
 		mappings.put("Region", regions);
