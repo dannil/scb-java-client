@@ -31,7 +31,7 @@ public final class ClientConstants {
 	/**
 	 * <p>The prefix for the translation files.</p>
 	 */
-	public static final String LOCALIZATION_TRANSLATION_FILE_PREFIX = "language";
+	public static final String LOCALIZATION_TRANSLATION_FILE_PREFIX = "languages/language";
 
 	/**
 	 * <p>Private constructor to prevent instantiation.</p>
