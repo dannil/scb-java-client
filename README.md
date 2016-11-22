@@ -89,10 +89,16 @@ List<Integer> years = null;
 List<Area> areas = client.environment().landAndWaterArea().getArea(regions, types, years);
 ```
 
-If you know the required inputs and you're only interested in the JSON data, you may use the 
-method getRawData() to specify the table and the inputs. The required inputs can be viewed in 
-plaintext from the URL endpoint of the table. The feature of retrieving the inputs through the 
-client will be implemented in the future.
+If you're interested in fetching all JSON data from a particular table that hasn't been 
+implemented as a client, you may use the method getRawData().
+```java
+// Specify the table to retrieve from. The response will be a JSON string containing all the
+// available data from our specified table.
+String json = client.getRawData("BE/BE0101/BE0101A/BefolkningNy");
+```
+The method getRawData() also accepts an input which are used to filter what data should be fetched.
+The available inputs can be viewed in plaintext from the URL endpoint of the table. The feature of 
+retrieving the inputs through the client will be implemented in the future.
 ```java
 // Specifies the criterion for the information we want to retrieve, in this case:
 // 		The contents code BE0101N1 (the total population, so the API knows what information we want)
@@ -110,5 +116,5 @@ inputs.put("Kon", null);
 inputs.put("Tid", Arrays.asList(2011, 2012));
 
 // Specify the table to retrieve from and our inputs to this table. The response will be a JSON
-// string containing the information that matched our criterion.
+// string containing the data that matched our criterion.
 String json = client.getRawData("BE/BE0101/BE0101A/BefolkningNy", inputs);
