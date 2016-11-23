@@ -51,9 +51,9 @@ public class PopulationAmountClient extends AbstractClient {
 	}
 
 	/**
-	 * <p>Fetch all population data.</p>
+	 * <p>Fetch all population amount data.</p>
 	 * 
-	 * @return the population data wrapped in a list of
+	 * @return the population amount data wrapped in a list of
 	 *         {@link com.github.dannil.scbjavaclient.model.population.amount.Population
 	 *         Population} objects
 	 * 
@@ -64,7 +64,7 @@ public class PopulationAmountClient extends AbstractClient {
 	}
 
 	/**
-	 * <p>Fetch all population data which match the input constraints.</p>
+	 * <p>Fetch all population amount data which match the input constraints.</p>
 	 * 
 	 * @param regions
 	 *            the regions to fetch data for
@@ -76,7 +76,7 @@ public class PopulationAmountClient extends AbstractClient {
 	 *            the genders to fetch data for
 	 * @param years
 	 *            the years to fetch data for
-	 * @return the population data wrapped in a list of
+	 * @return the population amount data wrapped in a list of
 	 *         {@link com.github.dannil.scbjavaclient.model.population.amount.Population
 	 *         Population} objects
 	 */

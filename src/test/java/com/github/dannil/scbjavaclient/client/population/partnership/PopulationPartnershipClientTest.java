@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.population.density;
+package com.github.dannil.scbjavaclient.client.population.partnership;
 
 import static org.junit.Assert.assertEquals;
 
@@ -23,12 +23,12 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class PopulationDensityClientTest {
+public class PopulationPartnershipClientTest {
 
 	@Test
 	public void createWithLocaleConstructor() {
 		Locale locale = new Locale("sv", "SE");
-		PopulationDensityClient client = new PopulationDensityClient(locale);
+		PopulationPartnershipClient client = new PopulationPartnershipClient(locale);
 
 		assertEquals(locale, client.getLocale());
 	}
@@ -36,9 +36,9 @@ public class PopulationDensityClientTest {
 	@Test
 	public void getUrl() {
 		Locale locale = new Locale("sv", "SE");
-		PopulationDensityClient client = new PopulationDensityClient(locale);
+		PopulationPartnershipClient client = new PopulationPartnershipClient(locale);
 
-		assertEquals("https://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0101/BE0101C/", client.getUrl());
+		assertEquals("https://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0101/BE0101O/", client.getUrl());
 	}
 
 }

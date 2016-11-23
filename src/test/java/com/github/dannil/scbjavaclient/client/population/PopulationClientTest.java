@@ -35,12 +35,16 @@ public class PopulationClientTest {
 
 	@Test
 	public void isSubClientsSameLocale() {
-		Locale locale = Locale.getDefault();
-
 		PopulationClient client = new PopulationClient();
+		Locale locale = client.getLocale();
 
-		assertEquals(client.demography().getLocale(), locale);
+		// Not all sub-clients needs to be here. If one of the asserts fails it
+		// automatically applies to all sub-clients since they share the same logic
 		assertEquals(client.amount().getLocale(), locale);
+		assertEquals(client.demography().getLocale(), locale);
+		assertEquals(client.density().getLocale(), locale);
+		assertEquals(client.liveBirths().getLocale(), locale);
+		assertEquals(client.partnership().getLocale(), locale);
 	}
 
 	@Test

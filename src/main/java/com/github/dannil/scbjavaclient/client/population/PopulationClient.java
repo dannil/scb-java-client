@@ -23,6 +23,7 @@ import com.github.dannil.scbjavaclient.client.population.demography.PopulationDe
 import com.github.dannil.scbjavaclient.client.population.density.PopulationDensityClient;
 import com.github.dannil.scbjavaclient.client.population.livebirths.PopulationLiveBirthsClient;
 import com.github.dannil.scbjavaclient.client.population.name.PopulationNameStatisticsClient;
+import com.github.dannil.scbjavaclient.client.population.partnership.PopulationPartnershipClient;
 
 /**
  * <p>Client which handles population data fetching.</p>
@@ -42,6 +43,8 @@ public class PopulationClient extends AbstractContainerClient {
 	private PopulationLiveBirthsClient populationLiveBirthsClient;
 
 	private PopulationNameStatisticsClient populationNameStatisticsClient;
+
+	private PopulationPartnershipClient populationPartnershipClient;
 
 	/**
 	 * <p>Default constructor. Initializes values and creates sub-clients.</p>
@@ -66,6 +69,9 @@ public class PopulationClient extends AbstractContainerClient {
 
 		this.populationNameStatisticsClient = new PopulationNameStatisticsClient();
 		super.clients.add(this.populationNameStatisticsClient);
+
+		this.populationPartnershipClient = new PopulationPartnershipClient();
+		super.clients.add(this.populationPartnershipClient);
 	}
 
 	/**
@@ -132,6 +138,15 @@ public class PopulationClient extends AbstractContainerClient {
 	 */
 	public PopulationNameStatisticsClient nameStatistics() {
 		return this.populationNameStatisticsClient;
+	}
+
+	/**
+	 * <p>Retrieve the client for interacting with population partnership data.</p>
+	 * 
+	 * @return a client for population name statistic data
+	 */
+	public PopulationPartnershipClient partnership() {
+		return this.populationPartnershipClient;
 	}
 
 	@Override

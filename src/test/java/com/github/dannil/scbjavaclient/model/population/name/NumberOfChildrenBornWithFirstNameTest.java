@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.model.population;
+package com.github.dannil.scbjavaclient.model.population.name;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
