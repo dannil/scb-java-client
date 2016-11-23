@@ -24,7 +24,6 @@ import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
 import com.github.dannil.scbjavaclient.utility.StringUtility;
-import com.github.dannil.scbjavaclient.validator.json.JsonValidator;
 
 /**
  * <p>Class which encapsulates behavior for the custom JSON response format. Note that
@@ -54,7 +53,7 @@ public final class JsonCustomResponseFormat implements IJsonResponseFormat {
 	@Override
 	public JsonNode format() {
 		// Make sure the input is in the standardized non-conventional format
-		if (isFormatted() || JsonValidator.isQuery(this.json)) {
+		if (isFormatted()) {
 			return this.json;
 		}
 
