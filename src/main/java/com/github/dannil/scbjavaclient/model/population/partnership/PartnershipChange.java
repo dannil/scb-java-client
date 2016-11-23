@@ -71,7 +71,7 @@ public class PartnershipChange extends AbstractRegionYearAndValueModel<String, I
 	/**
 	 * <p>Getter for marital status.</p>
 	 * 
-	 * @return the sex.
+	 * @return the marital status.
 	 */
 	public String getMaritalStatus() {
 		return this.maritalStatus;
@@ -80,8 +80,8 @@ public class PartnershipChange extends AbstractRegionYearAndValueModel<String, I
 	/**
 	 * <p>Setter for marital status.</p>
 	 * 
-	 * @param sex
-	 *            the sex
+	 * @param maritalStatus
+	 *            the marital status
 	 */
 	public void setMaritalStatus(String maritalStatus) {
 		this.maritalStatus = maritalStatus;
