@@ -22,6 +22,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import com.github.dannil.scbjavaclient.utility.URLUtility;
+
 @RunWith(JUnit4.class)
 public class EnvironmentLandAndWaterAreaClientTest {
 
@@ -38,7 +40,7 @@ public class EnvironmentLandAndWaterAreaClientTest {
 		Locale locale = new Locale("sv", "SE");
 		EnvironmentLandAndWaterAreaClient client = new EnvironmentLandAndWaterAreaClient(locale);
 
-		assertEquals("https://api.scb.se/OV0104/v1/doris/sv/ssd/MI/MI0802/", client.getUrl());
+		assertEquals(URLUtility.getRootUrl(locale) + "MI/MI0802/", client.getUrl());
 	}
 
 }

@@ -15,6 +15,7 @@
 package com.github.dannil.scbjavaclient.utility.requester;
 
 import java.nio.charset.Charset;
+import java.util.Locale;
 import java.util.Map.Entry;
 
 import org.apache.http.HttpEntity;
@@ -36,18 +37,20 @@ public class POSTRequester extends AbstractRequester {
 	 */
 	public POSTRequester() {
 		super();
-		super.requestProperties.put("Request-Method", "GET");
+		super.requestProperties.put("Request-Method", "POST");
 	}
 
 	/**
 	 * <p>Overloaded constructor.</p>
 	 * 
+	 * @param locale
+	 *            the <code>Locale</code>
 	 * @param charset
 	 *            the charset
 	 */
-	public POSTRequester(Charset charset) {
-		this();
-		super.charset = charset;
+	public POSTRequester(Locale locale, Charset charset) {
+		super(locale, charset);
+		super.requestProperties.put("Request-Method", "POST");
 	}
 
 	/**

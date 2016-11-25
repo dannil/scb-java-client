@@ -22,6 +22,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import com.github.dannil.scbjavaclient.utility.URLUtility;
+
 @RunWith(JUnit4.class)
 public class PopulationAverageAgeClientTest {
 
@@ -38,7 +40,7 @@ public class PopulationAverageAgeClientTest {
 		Locale locale = new Locale("sv", "SE");
 		PopulationAverageAgeClient client = new PopulationAverageAgeClient(locale);
 
-		assertEquals("https://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0101/BE0101B/", client.getUrl());
+		assertEquals(URLUtility.getRootUrl(locale) + "BE/BE0101/BE0101B/", client.getUrl());
 	}
 
 }

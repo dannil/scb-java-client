@@ -33,6 +33,29 @@ public final class URLUtility {
 	}
 
 	/**
+	 * <p>Returns the root URL for the API.</p>
+	 * 
+	 * @return the {@link com.github.dannil.scbjavaclient.constants.APIConstants#ROOT_URL
+	 *         ROOT_URL}
+	 */
+	public static String getRootUrl() {
+		return APIConstants.ROOT_URL;
+	}
+
+	/**
+	 * <p>Returns the root URL for the API for a specific <code>Locale<code></p>
+	 * 
+	 * @param locale
+	 *            the <code>Locale</code>
+	 * @return the {@link com.github.dannil.scbjavaclient.constants.APIConstants#ROOT_URL
+	 *         ROOT_URL} with a converted language tag segment to match the specified
+	 *         <code>Locale</code>
+	 */
+	public static String getRootUrl(Locale locale) {
+		return changeLanguageForUrl(APIConstants.ROOT_URL, locale);
+	}
+
+	/**
 	 * <p>Generates a new URL to the API using the fallback <code>Locale</code>
 	 * {@link com.github.dannil.scbjavaclient.constants.APIConstants#FALLBACK_LOCALE
 	 * FALLBACK_LOCALE}.</p>

@@ -16,6 +16,9 @@ package com.github.dannil.scbjavaclient.utility.requester;
 
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.util.Locale;
+
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 
 /**
  * <p>Factory for returning regular (non-singleton) requesters.</p>
@@ -33,36 +36,42 @@ public final class RequesterFactory {
 
 	/**
 	 * <p>Returns a regular (non-singleton) requester which matches the method. All
-	 * responses are read as UTF-8 character encoding.</p>
+	 * requests are routed to match the
+	 * {@link com.github.dannil.scbjavaclient.constants.APIConstants#FALLBACK_LOCALE
+	 * FALLBACK_LOCALE} and responses are read as UTF-8 character encoding.</p>
 	 * 
 	 * @param method
 	 *            the method (i.e. GET or POST)
 	 * @return a regular (non-singleton) requester which matches the method.
 	 */
 	public static AbstractRequester getRequester(RequestMethod method) {
-		return getRequester(method, StandardCharsets.UTF_8);
+		return getRequester(method, APIConstants.FALLBACK_LOCALE, StandardCharsets.UTF_8);
+	}
+
+	public static AbstractRequester getRequester(RequestMethod method, Locale locale) {
+		return getRequester(method, locale, StandardCharsets.UTF_8);
 	}
 
 	/**
 	 * <p>Returns a regular (non-singleton) requester which matches the method. All
-	 * responses are read as to match the character encoding.</p>
+	 * requests are routed to match the specified <code>Locale</code> and responses are
+	 * read as to match the character encoding.</p>
 	 * 
 	 * @param method
 	 *            the method (i.e. GET or POST)
+	 * @param locale
+	 *            the <code>Locale</code> to use for the request
 	 * @param charset
 	 *            the character encoding to use
 	 * @return a regular (non-singleton) requester which matches the method.
 	 */
-	public static AbstractRequester getRequester(RequestMethod method, Charset charset) {
-		// AbstractRequester abs = getRequester(method);
-		// abs.setCharset(charset);
-		// return abs;
+	public static AbstractRequester getRequester(RequestMethod method, Locale locale, Charset charset) {
 		switch (method) {
 			case GET:
-				return new GETRequester(charset);
+				return new GETRequester(locale, charset);
 
 			case POST:
-				return new POSTRequester(charset);
+				return new POSTRequester(locale, charset);
 		}
 		throw new IllegalArgumentException(method + " is not a valid method");
 	}

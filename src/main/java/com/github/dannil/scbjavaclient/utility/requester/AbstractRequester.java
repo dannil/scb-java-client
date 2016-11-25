@@ -22,6 +22,7 @@ import java.net.URI;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
 
@@ -31,8 +32,10 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.impl.client.HttpClientBuilder;
 
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
 import com.github.dannil.scbjavaclient.utility.HttpUtility;
+import com.github.dannil.scbjavaclient.utility.URLUtility;
 
 /**
  * <p>Class which contains the logic for sending URL requests to a specified address.</p>
@@ -42,6 +45,8 @@ import com.github.dannil.scbjavaclient.utility.HttpUtility;
 public abstract class AbstractRequester {
 
 	private static Properties properties;
+
+	protected Locale locale;
 
 	protected Charset charset;
 
@@ -64,8 +69,14 @@ public abstract class AbstractRequester {
 	 * requesters.</p>
 	 */
 	protected AbstractRequester() {
+		this(APIConstants.FALLBACK_LOCALE, StandardCharsets.UTF_8);
+	}
+
+	protected AbstractRequester(Locale locale, Charset charset) {
+		this.locale = locale;
+		this.charset = charset;
+
 		this.client = HttpClientBuilder.create().build();
-		this.charset = StandardCharsets.UTF_8;
 
 		this.requestProperties = new HashMap<String, String>();
 		this.requestProperties.put("Accept", "application/json");
@@ -136,7 +147,7 @@ public abstract class AbstractRequester {
 	 * @return the content of the table
 	 */
 	public String getBodyAsStringFromTable(String table) {
-		return getBodyAsString("https://api.scb.se/OV0104/v1/doris/sv/ssd/" + table);
+		return getBodyAsString(URLUtility.getRootUrl(this.locale) + table);
 	}
 
 	/**
@@ -147,6 +158,25 @@ public abstract class AbstractRequester {
 	 * @return the response
 	 */
 	public abstract String getBodyAsString(String url);
+
+	/**
+	 * <p>Getter for locale.</p>
+	 * 
+	 * @return the <code>Locale</code>
+	 */
+	public Locale getLocale() {
+		return locale;
+	}
+
+	/**
+	 * <p>Setter for <code>Locale</code>.
+	 * 
+	 * @param locale
+	 *            the locale
+	 */
+	public void setLocale(Locale locale) {
+		this.locale = locale;
+	}
 
 	/**
 	 * <p>Getter for charset.</p>

@@ -17,7 +17,10 @@ package com.github.dannil.scbjavaclient.utility.requester;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
+
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 
 /**
  * <p>Factory for returning singleton requesters. The regular {@link RequesterFactory} is
@@ -44,15 +47,21 @@ public final class RequesterSingletonFactory {
 	}
 
 	/**
-	 * <p>Returns a singleton requester which matches the method. All responses are read
-	 * as UTF-8 character encoding.</p>
+	 * <p>Returns a singleton requester which matches the method. All requests are routed
+	 * to match the
+	 * {@link com.github.dannil.scbjavaclient.constants.APIConstants#FALLBACK_LOCALE
+	 * FALLBACK_LOCALE} and responses are read as UTF-8 character encoding.</p>
 	 * 
 	 * @param method
 	 *            the method (i.e. GET or POST)
 	 * @return a singleton requester which matches the method.
 	 */
 	public static AbstractRequester getRequester(RequestMethod method) {
-		return getRequester(method, StandardCharsets.UTF_8);
+		return getRequester(method, APIConstants.FALLBACK_LOCALE, StandardCharsets.UTF_8);
+	}
+
+	public static AbstractRequester getRequester(RequestMethod method, Locale locale) {
+		return getRequester(method, locale, StandardCharsets.UTF_8);
 	}
 
 	/**
@@ -61,16 +70,19 @@ public final class RequesterSingletonFactory {
 	 * 
 	 * @param method
 	 *            the method (i.e. GET or POST)
+	 * @param locale
+	 *            the <code>Locale</code>
 	 * @param charset
 	 *            the character encoding to use
 	 * @return a singleton requester which matches the method.
 	 */
-	public static AbstractRequester getRequester(RequestMethod method, Charset charset) {
+	public static AbstractRequester getRequester(RequestMethod method, Locale locale, Charset charset) {
 		if (!requesters.containsKey(method)) {
 			throw new IllegalArgumentException(method + " is not a valid method");
 		}
 		AbstractRequester abs = requesters.get(method);
 		abs.setCharset(charset);
+		abs.setLocale(locale);
 		return abs;
 	}
 
@@ -78,14 +90,16 @@ public final class RequesterSingletonFactory {
 	 * <p>Singleton holder for GET requester.</p>
 	 */
 	private static class GETHolder {
-		protected static final AbstractRequester INSTANCE = new GETRequester(StandardCharsets.UTF_8);
+		protected static final AbstractRequester INSTANCE = new GETRequester(APIConstants.FALLBACK_LOCALE,
+				StandardCharsets.UTF_8);
 	}
 
 	/**
 	 * <p>Singleton holder for POST requester.</p>
 	 */
 	private static class POSTHolder {
-		protected static final AbstractRequester INSTANCE = new POSTRequester(StandardCharsets.UTF_8);
+		protected static final AbstractRequester INSTANCE = new POSTRequester(APIConstants.FALLBACK_LOCALE,
+				StandardCharsets.UTF_8);
 	}
 
 }
