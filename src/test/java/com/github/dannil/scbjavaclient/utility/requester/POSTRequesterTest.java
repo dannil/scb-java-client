@@ -20,7 +20,6 @@ import static org.junit.Assert.assertNull;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.util.Locale;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,10 +34,10 @@ public class POSTRequesterTest {
 	public void createWithDefaultConstructor() {
 		POSTRequester post = new POSTRequester();
 
-		Locale locale = new Locale("sv", "SE");
+		// Locale locale = new Locale("sv", "SE");
 		Charset charset = StandardCharsets.UTF_8;
 
-		assertEquals(locale, post.getLocale());
+		// assertEquals(locale, post.getLocale());
 		assertEquals(charset, post.getCharset());
 	}
 
@@ -49,13 +48,14 @@ public class POSTRequesterTest {
 		assertEquals(StandardCharsets.UTF_8, post.getCharset());
 	}
 
-	@Test
-	public void getLocale() {
-		Locale locale = new Locale("sv", "SE");
-		POSTRequester post = (POSTRequester) RequesterFactory.getRequester(RequestMethod.POST, locale);
-
-		assertEquals(locale, post.getLocale());
-	}
+	// @Test
+	// public void getLocale() {
+	// Locale locale = new Locale("sv", "SE");
+	// POSTRequester post = (POSTRequester)
+	// RequesterFactory.getRequester(RequestMethod.POST, locale);
+	//
+	// assertEquals(locale, post.getLocale());
+	// }
 
 	@Test
 	public void getPayload() {

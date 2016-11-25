@@ -150,7 +150,7 @@ public class SCBClient extends AbstractContainerClient {
 	public static boolean isSupportedLocale(Locale locale) {
 		String url = URLUtility.getRootUrl(locale);
 
-		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET, locale);
+		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
 		try {
 			get.getBodyAsString(url);
 			return true;

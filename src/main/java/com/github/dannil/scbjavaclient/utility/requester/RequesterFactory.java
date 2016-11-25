@@ -16,9 +16,6 @@ package com.github.dannil.scbjavaclient.utility.requester;
 
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.util.Locale;
-
-import com.github.dannil.scbjavaclient.constants.APIConstants;
 
 /**
  * <p>Factory for returning regular (non-singleton) requesters.</p>
@@ -45,12 +42,12 @@ public final class RequesterFactory {
 	 * @return a regular (non-singleton) requester which matches the method.
 	 */
 	public static AbstractRequester getRequester(RequestMethod method) {
-		return getRequester(method, APIConstants.FALLBACK_LOCALE, StandardCharsets.UTF_8);
+		return getRequester(method, StandardCharsets.UTF_8);
 	}
 
-	public static AbstractRequester getRequester(RequestMethod method, Locale locale) {
-		return getRequester(method, locale, StandardCharsets.UTF_8);
-	}
+	// public static AbstractRequester getRequester(RequestMethod method, Locale locale) {
+	// return getRequester(method, locale, StandardCharsets.UTF_8);
+	// }
 
 	/**
 	 * <p>Returns a regular (non-singleton) requester which matches the method. All
@@ -65,13 +62,13 @@ public final class RequesterFactory {
 	 *            the character encoding to use
 	 * @return a regular (non-singleton) requester which matches the method.
 	 */
-	public static AbstractRequester getRequester(RequestMethod method, Locale locale, Charset charset) {
+	public static AbstractRequester getRequester(RequestMethod method, Charset charset) {
 		switch (method) {
 			case GET:
-				return new GETRequester(locale, charset);
+				return new GETRequester(charset);
 
 			case POST:
-				return new POSTRequester(locale, charset);
+				return new POSTRequester(charset);
 		}
 		throw new IllegalArgumentException(method + " is not a valid method");
 	}

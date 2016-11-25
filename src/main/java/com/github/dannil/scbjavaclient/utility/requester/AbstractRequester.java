@@ -22,7 +22,6 @@ import java.net.URI;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
 
@@ -32,7 +31,6 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.impl.client.HttpClientBuilder;
 
-import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
 import com.github.dannil.scbjavaclient.utility.HttpUtility;
 import com.github.dannil.scbjavaclient.utility.URLUtility;
@@ -45,8 +43,6 @@ import com.github.dannil.scbjavaclient.utility.URLUtility;
 public abstract class AbstractRequester {
 
 	private static Properties properties;
-
-	protected Locale locale;
 
 	protected Charset charset;
 
@@ -69,11 +65,10 @@ public abstract class AbstractRequester {
 	 * requesters.</p>
 	 */
 	protected AbstractRequester() {
-		this(APIConstants.FALLBACK_LOCALE, StandardCharsets.UTF_8);
+		this(StandardCharsets.UTF_8);
 	}
 
-	protected AbstractRequester(Locale locale, Charset charset) {
-		this.locale = locale;
+	protected AbstractRequester(Charset charset) {
 		this.charset = charset;
 
 		this.client = HttpClientBuilder.create().build();
@@ -147,7 +142,21 @@ public abstract class AbstractRequester {
 	 * @return the content of the table
 	 */
 	public String getBodyAsStringFromTable(String table) {
-		return getBodyAsString(URLUtility.getRootUrl(this.locale) + table);
+		// TODO Read comments!
+		//
+		// This needs to be rewritten to handle different locale. A good solution is hard
+		// to find right now since this class should not need to worry about the current
+		// locale, as methods calling this method (getBodyAsStringFromTable) should really
+		// convert the input language. This solution isn't really implementable right
+		// now as the only method calling this method is getInputs() in the model.
+		// However, the model doesn't (and should NOT) have any idea about the locale.
+		//
+		// A solution to this is to implement issue #12 on GitHub
+		// (https://github.com/dannil/scb-java-client/issues/12) which transfers the
+		// responsibility to a client. The client knows what locale is currently in use
+		// and the method can therefore be rewritten to either accept the locale as a
+		// parameter or the input URL is converted before calling this method.
+		return getBodyAsString(URLUtility.getRootUrl() + table);
 	}
 
 	/**
@@ -158,25 +167,6 @@ public abstract class AbstractRequester {
 	 * @return the response
 	 */
 	public abstract String getBodyAsString(String url);
-
-	/**
-	 * <p>Getter for locale.</p>
-	 * 
-	 * @return the <code>Locale</code>
-	 */
-	public Locale getLocale() {
-		return locale;
-	}
-
-	/**
-	 * <p>Setter for <code>Locale</code>.
-	 * 
-	 * @param locale
-	 *            the locale
-	 */
-	public void setLocale(Locale locale) {
-		this.locale = locale;
-	}
 
 	/**
 	 * <p>Getter for charset.</p>

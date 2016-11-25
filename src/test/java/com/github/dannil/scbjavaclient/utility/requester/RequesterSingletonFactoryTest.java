@@ -115,14 +115,15 @@ public class RequesterSingletonFactoryTest {
 		assertNull(abs);
 	}
 
-	@Test
-	public void getRequesterMethodLocale() {
-		Locale locale = new Locale("sv", "SE");
-		AbstractRequester abs = RequesterSingletonFactory.getRequester(RequestMethod.GET, locale);
-
-		assertTrue(abs instanceof GETRequester);
-		assertEquals(abs.getLocale(), locale);
-	}
+	// @Test
+	// public void getRequesterLocale() {
+	// Locale locale = new Locale("sv", "SE");
+	// AbstractRequester abs = RequesterSingletonFactory.getRequester(RequestMethod.GET,
+	// locale);
+	//
+	// assertTrue(abs instanceof GETRequester);
+	// assertEquals(abs.getLocale(), locale);
+	// }
 
 	@Test
 	public void requesterIsSingleton() {

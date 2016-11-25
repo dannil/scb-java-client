@@ -116,7 +116,7 @@ public abstract class AbstractClient {
 	protected String get(String table) {
 		String url = getBaseUrl() + table;
 
-		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET, this.locale);
+		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
 		try {
 			return get.getBodyAsString(url);
 		} catch (SCBClientUrlNotFoundException e) {
@@ -137,7 +137,7 @@ public abstract class AbstractClient {
 	protected String post(String table, String query) {
 		String url = getBaseUrl() + table;
 
-		POSTRequester post = (POSTRequester) RequesterFactory.getRequester(RequestMethod.POST, this.locale);
+		POSTRequester post = (POSTRequester) RequesterFactory.getRequester(RequestMethod.POST);
 		post.setQuery(query);
 		try {
 			LOGGER.info(query);
