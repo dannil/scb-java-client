@@ -18,6 +18,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
@@ -31,6 +32,23 @@ import com.github.dannil.scbjavaclient.utility.QueryBuilder;
  * @author Daniel Nilsson
  */
 public class PopulationLiveBirthsClient extends AbstractClient {
+
+	/**
+	 * <p>Default constructor.</p>
+	 */
+	public PopulationLiveBirthsClient() {
+		super();
+	}
+
+	/**
+	 * <p>Overloaded constructor.</p>
+	 * 
+	 * @param locale
+	 *            the <code>Locale</code> for this client
+	 */
+	public PopulationLiveBirthsClient(Locale locale) {
+		super(locale);
+	}
 
 	/**
 	 * <p>Fetch all live births data.</p>
