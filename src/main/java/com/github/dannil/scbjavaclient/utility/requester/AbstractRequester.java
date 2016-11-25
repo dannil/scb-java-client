@@ -61,13 +61,19 @@ public abstract class AbstractRequester {
 	}
 
 	/**
-	 * <p>Default constructor. Loads the request properties and other data needed for the
-	 * requesters.</p>
+	 * <p>Default constructor. Specifies the charset to be used for requests as UTF-8.</p>
 	 */
 	protected AbstractRequester() {
 		this(StandardCharsets.UTF_8);
 	}
 
+	/**
+	 * <p>Overloaded constructor. Loads the request properties and other data needed for
+	 * the requesters.</p>
+	 * 
+	 * @param charset
+	 *            the charset to use when doing a request
+	 */
 	protected AbstractRequester(Charset charset) {
 		this.charset = charset;
 

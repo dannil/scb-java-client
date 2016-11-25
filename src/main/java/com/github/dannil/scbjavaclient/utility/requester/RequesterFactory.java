@@ -56,8 +56,6 @@ public final class RequesterFactory {
 	 * 
 	 * @param method
 	 *            the method (i.e. GET or POST)
-	 * @param locale
-	 *            the <code>Locale</code> to use for the request
 	 * @param charset
 	 *            the character encoding to use
 	 * @return a regular (non-singleton) requester which matches the method.
