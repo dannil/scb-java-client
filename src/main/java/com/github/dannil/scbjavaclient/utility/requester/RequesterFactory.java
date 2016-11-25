@@ -63,6 +63,9 @@ public final class RequesterFactory {
 
 			case POST:
 				return new POSTRequester(charset);
+
+			// Do nothing, fall through to the exception
+			default:
 		}
 		throw new IllegalArgumentException(method + " is not a valid method");
 	}
