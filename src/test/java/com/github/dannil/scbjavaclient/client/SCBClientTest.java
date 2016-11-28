@@ -22,6 +22,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import com.github.dannil.scbjavaclient.utility.URLUtility;
+
 @RunWith(JUnit4.class)
 public class SCBClientTest {
 
@@ -49,7 +51,7 @@ public class SCBClientTest {
 		Locale locale = new Locale("sv", "SE");
 		SCBClient client = new SCBClient(locale);
 
-		assertEquals("https://api.scb.se/OV0104/v1/doris/sv/ssd/", client.getUrl());
+		assertEquals(URLUtility.getRootUrl(locale), client.getUrl());
 	}
 
 }

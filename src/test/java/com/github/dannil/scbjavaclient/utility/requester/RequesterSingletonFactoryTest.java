@@ -22,6 +22,7 @@ import static org.junit.Assert.assertTrue;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.StandardCharsets;
+import java.util.Locale;
 
 import org.junit.Test;
 
@@ -114,10 +115,24 @@ public class RequesterSingletonFactoryTest {
 		assertNull(abs);
 	}
 
+	// @Test
+	// public void getRequesterLocale() {
+	// Locale locale = new Locale("sv", "SE");
+	// AbstractRequester abs = RequesterSingletonFactory.getRequester(RequestMethod.GET,
+	// locale);
+	//
+	// assertTrue(abs instanceof GETRequester);
+	// assertEquals(abs.getLocale(), locale);
+	// }
+
 	@Test
 	public void requesterIsSingleton() {
-		AbstractRequester abs1 = RequesterSingletonFactory.getRequester(RequestMethod.GET, StandardCharsets.UTF_8);
-		AbstractRequester abs2 = RequesterSingletonFactory.getRequester(RequestMethod.GET, StandardCharsets.US_ASCII);
+		Locale locale = new Locale("sv", "SE");
+
+		AbstractRequester abs1 = RequesterSingletonFactory.getRequester(RequestMethod.GET, locale,
+				StandardCharsets.UTF_8);
+		AbstractRequester abs2 = RequesterSingletonFactory.getRequester(RequestMethod.GET, locale,
+				StandardCharsets.US_ASCII);
 
 		assertEquals(StandardCharsets.US_ASCII, abs1.getCharset());
 		assertEquals(abs1.getCharset(), abs2.getCharset());

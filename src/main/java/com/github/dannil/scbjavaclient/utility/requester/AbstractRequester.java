@@ -33,6 +33,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
 import com.github.dannil.scbjavaclient.utility.HttpUtility;
+import com.github.dannil.scbjavaclient.utility.URLUtility;
 
 /**
  * <p>Class which contains the logic for sending URL requests to a specified address.</p>
@@ -60,12 +61,23 @@ public abstract class AbstractRequester {
 	}
 
 	/**
-	 * <p>Default constructor. Loads the request properties and other data needed for the
-	 * requesters.</p>
+	 * <p>Default constructor. Specifies the charset to be used for requests as UTF-8.</p>
 	 */
 	protected AbstractRequester() {
+		this(StandardCharsets.UTF_8);
+	}
+
+	/**
+	 * <p>Overloaded constructor. Loads the request properties and other data needed for
+	 * the requesters.</p>
+	 * 
+	 * @param charset
+	 *            the charset to use when doing a request
+	 */
+	protected AbstractRequester(Charset charset) {
+		this.charset = charset;
+
 		this.client = HttpClientBuilder.create().build();
-		this.charset = StandardCharsets.UTF_8;
 
 		this.requestProperties = new HashMap<String, String>();
 		this.requestProperties.put("Accept", "application/json");
@@ -136,7 +148,21 @@ public abstract class AbstractRequester {
 	 * @return the content of the table
 	 */
 	public String getBodyAsStringFromTable(String table) {
-		return getBodyAsString("https://api.scb.se/OV0104/v1/doris/sv/ssd/" + table);
+		// TODO Read comments!
+		//
+		// This needs to be rewritten to handle different locale. A good solution is hard
+		// to find right now since this class should not need to worry about the current
+		// locale, as methods calling this method (getBodyAsStringFromTable) should really
+		// convert the input language. This solution isn't really implementable right
+		// now as the only method calling this method is getInputs() in the model.
+		// However, the model doesn't (and should NOT) have any idea about the locale.
+		//
+		// A solution to this is to implement issue #12 on GitHub
+		// (https://github.com/dannil/scb-java-client/issues/12) which transfers the
+		// responsibility to a client. The client knows what locale is currently in use
+		// and the method can therefore be rewritten to either accept the locale as a
+		// parameter or the input URL is converted before calling this method.
+		return getBodyAsString(URLUtility.getRootUrl() + table);
 	}
 
 	/**

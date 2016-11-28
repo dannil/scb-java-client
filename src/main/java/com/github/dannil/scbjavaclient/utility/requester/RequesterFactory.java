@@ -33,7 +33,9 @@ public final class RequesterFactory {
 
 	/**
 	 * <p>Returns a regular (non-singleton) requester which matches the method. All
-	 * responses are read as UTF-8 character encoding.</p>
+	 * requests are routed to match the
+	 * {@link com.github.dannil.scbjavaclient.constants.APIConstants#FALLBACK_LOCALE
+	 * FALLBACK_LOCALE} and responses are read as UTF-8 character encoding.</p>
 	 * 
 	 * @param method
 	 *            the method (i.e. GET or POST)
@@ -43,9 +45,14 @@ public final class RequesterFactory {
 		return getRequester(method, StandardCharsets.UTF_8);
 	}
 
+	// public static AbstractRequester getRequester(RequestMethod method, Locale locale) {
+	// return getRequester(method, locale, StandardCharsets.UTF_8);
+	// }
+
 	/**
 	 * <p>Returns a regular (non-singleton) requester which matches the method. All
-	 * responses are read as to match the character encoding.</p>
+	 * requests are routed to match the specified <code>Locale</code> and responses are
+	 * read as to match the character encoding.</p>
 	 * 
 	 * @param method
 	 *            the method (i.e. GET or POST)
@@ -54,9 +61,6 @@ public final class RequesterFactory {
 	 * @return a regular (non-singleton) requester which matches the method.
 	 */
 	public static AbstractRequester getRequester(RequestMethod method, Charset charset) {
-		// AbstractRequester abs = getRequester(method);
-		// abs.setCharset(charset);
-		// return abs;
 		switch (method) {
 			case GET:
 				return new GETRequester(charset);

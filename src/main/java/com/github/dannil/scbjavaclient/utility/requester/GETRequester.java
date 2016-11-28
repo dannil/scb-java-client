@@ -42,8 +42,8 @@ public class GETRequester extends AbstractRequester {
 	 *            the charset
 	 */
 	public GETRequester(Charset charset) {
-		this();
-		super.charset = charset;
+		super(charset);
+		super.requestProperties.put("Request-Method", "GET");
 	}
 
 	@Override

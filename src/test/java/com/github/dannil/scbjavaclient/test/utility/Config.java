@@ -17,6 +17,7 @@ package com.github.dannil.scbjavaclient.test.utility;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
 import com.github.dannil.scbjavaclient.format.json.JsonConverter;
+import com.github.dannil.scbjavaclient.utility.URLUtility;
 import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
 import com.github.dannil.scbjavaclient.utility.requester.RequestMethod;
 import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
@@ -28,7 +29,7 @@ public final class Config {
 	static {
 		try {
 			AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
-			String response = get.getBodyAsString("https://api.scb.se/OV0104/v1/doris/en/ssd/?config");
+			String response = get.getBodyAsString(URLUtility.getRootUrl() + "?config");
 
 			JsonConverter converter = new JsonConverter();
 			JsonNode node = converter.toNode(response);

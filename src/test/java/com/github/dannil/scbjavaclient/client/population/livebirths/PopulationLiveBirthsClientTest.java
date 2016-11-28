@@ -18,28 +18,29 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.utility.URLUtility;
 
 @RunWith(JUnit4.class)
 public class PopulationLiveBirthsClientTest {
 
-	private PopulationLiveBirthsClient populationLiveBirthsClient;
-
-	@Before
-	public void setup() {
+	@Test
+	public void createWithLocaleConstructor() {
 		Locale locale = new Locale("sv", "SE");
-		this.populationLiveBirthsClient = new SCBClient(locale).population().liveBirths();
+		PopulationLiveBirthsClient client = new PopulationLiveBirthsClient(locale);
+
+		assertEquals(locale, client.getLocale());
 	}
 
 	@Test
 	public void getUrl() {
-		assertEquals("https://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0101/BE0101H/",
-				this.populationLiveBirthsClient.getUrl());
+		Locale locale = new Locale("sv", "SE");
+		PopulationLiveBirthsClient client = new PopulationLiveBirthsClient(locale);
+
+		assertEquals(URLUtility.getRootUrl(locale) + "BE/BE0101/BE0101H/", client.getUrl());
 	}
 
 }

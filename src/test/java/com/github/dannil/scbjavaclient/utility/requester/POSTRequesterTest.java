@@ -18,14 +18,28 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import com.github.dannil.scbjavaclient.utility.URLUtility;
+
 @RunWith(JUnit4.class)
 public class POSTRequesterTest {
+
+	@Test
+	public void createWithDefaultConstructor() {
+		POSTRequester post = new POSTRequester();
+
+		// Locale locale = new Locale("sv", "SE");
+		Charset charset = StandardCharsets.UTF_8;
+
+		// assertEquals(locale, post.getLocale());
+		assertEquals(charset, post.getCharset());
+	}
 
 	@Test
 	public void getCharset() {
@@ -33,6 +47,15 @@ public class POSTRequesterTest {
 
 		assertEquals(StandardCharsets.UTF_8, post.getCharset());
 	}
+
+	// @Test
+	// public void getLocale() {
+	// Locale locale = new Locale("sv", "SE");
+	// POSTRequester post = (POSTRequester)
+	// RequesterFactory.getRequester(RequestMethod.POST, locale);
+	//
+	// assertEquals(locale, post.getLocale());
+	// }
 
 	@Test
 	public void getPayload() {
@@ -46,7 +69,7 @@ public class POSTRequesterTest {
 	public void doRequestIllegalStateNullPayload() throws IOException {
 		POSTRequester post = (POSTRequester) RequesterFactory.getRequester(RequestMethod.POST);
 
-		String response = post.getBodyAsString("https://api.scb.se/OV0104/v1/doris/en/ssd/BE/BE0701/MedelAlderNY");
+		String response = post.getBodyAsString(URLUtility.getRootUrl() + "BE/BE0701/MedelAlderNY");
 
 		assertNull(response);
 	}

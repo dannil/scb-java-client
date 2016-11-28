@@ -19,6 +19,7 @@ import static org.junit.Assert.assertFalse;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Locale;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -43,12 +44,14 @@ public class URLUtilityTest {
 		String url = URLUtility
 				.changeLanguageForUrl("https://api.scb.se/OV0104/v1/doris/en/ssd/BE/BE0101/BE0101A/BefolkningNy");
 
-		assertEquals("https://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0101/BE0101A/BefolkningNy", url);
+		Locale locale = new Locale("sv", "SE");
+		assertEquals(URLUtility.getRootUrl(locale) + "BE/BE0101/BE0101A/BefolkningNy", url);
 	}
 
 	@Test
 	public void changeUrlLanguageWithThreeCharacters() {
-		String url = "https://api.scb.se/OV0104/v1/doris/sv/ssd/";
+		Locale locale = new Locale("sv", "SE");
+		String url = URLUtility.getRootUrl(locale);
 
 		assertEquals("https://api.scb.se/OV0104/v1/doris/ger/ssd/", URLUtility.changeLanguageForUrl(url, "ger"));
 	}
