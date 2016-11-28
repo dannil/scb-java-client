@@ -19,6 +19,12 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import java.io.File;
+import java.lang.reflect.Constructor;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
@@ -26,6 +32,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import org.apache.commons.io.FilenameUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -155,6 +162,64 @@ public class AbstractClientIT {
 		String response = client.getRawData("NV/NV0119/IVPKNLonAr");
 
 		assertNull(response);
+	}
+
+	@Test
+	public void checkForLocaleConstructor() throws ClassNotFoundException, MalformedURLException {
+		String execPath = System.getProperty("user.dir");
+
+		// Find files matching the wildcard pattern
+		List<File> files = findFiles(execPath + "/src/main/java/com/github/dannil/scbjavaclient/client",
+				"*Client.java");
+
+		for (File file : files) {
+			// Filter out AbstractContainerClient, since it doesn't need to declare a
+			// Locale constructor
+			if (file.getName().contains("AbstractContainerClient")) {
+				continue;
+			}
+
+			// Convert path into binary name
+			String path = file.getAbsolutePath();
+			path = FilenameUtils.removeExtension(path);
+			path = path.substring(path.indexOf("com"));
+
+			// Handle both UNIX and Windows separators
+			String binaryName = path.replace('/', '.');
+			binaryName = binaryName.replace('\\', '.');
+
+			// Reflect the binary name into a concrete Java class
+			URLClassLoader classLoader = new URLClassLoader(new URL[] { file.toURI().toURL() });
+			Class<?> clazz = classLoader.loadClass(binaryName);
+			try {
+				// Does the current Java class declare a Locale constructor?
+				Constructor<?> con = clazz.getDeclaredConstructor(Locale.class);
+			} catch (NoSuchMethodException e) {
+				// Nope! Locale constructor not found
+				assertTrue("Class " + clazz.getName() + " doesn't declare a Locale constructor", false);
+			}
+		}
+	}
+
+	public List<File> findFiles(String path, String partOfFile) {
+		List<File> lstFiles = new ArrayList<File>();
+
+		File dir = new File(path);
+		File[] files = dir.listFiles();
+		for (int i = 0; i < files.length; i++) {
+			File file = files[i];
+
+			if (file.isDirectory()) {
+				lstFiles.addAll(findFiles(file.getAbsolutePath(), partOfFile));
+			} else {
+				String partOfFileToRegex = ".*?" + partOfFile.replace("*", ".*?") + ".*?";
+				if (file.getAbsolutePath().matches(partOfFileToRegex)) {
+					lstFiles.add(file);
+				}
+				// System.out.println(files[i]);
+			}
+		}
+		return lstFiles;
 	}
 
 }
