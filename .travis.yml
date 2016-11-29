@@ -4,6 +4,12 @@ jdk:
 - oraclejdk8
 os:
 - linux
+- osx
+  osx_image: xcode6.4
+- osx
+  osx_image: xcode7.2
+- osx
+  osx_image: xcode8.1
 branches:
   only:
   - master
