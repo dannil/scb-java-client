@@ -43,7 +43,7 @@ public final class URLUtility {
 	}
 
 	/**
-	 * <p>Returns the root URL for the API for a specific <code>Locale</code></p>.
+	 * <p>Returns the root URL for the API for a specific <code>Locale</code>.</p>
 	 * 
 	 * @param locale
 	 *            the <code>Locale</code>

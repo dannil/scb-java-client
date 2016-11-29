@@ -90,7 +90,8 @@ List<Area> areas = client.environment().landAndWaterArea().getArea(regions, type
 ```
 
 If you're interested in fetching all JSON data from a particular table that hasn't been 
-implemented as a client, you may use the method getRawData().
+implemented as a client or if you want the response to be the original unformatted JSON, 
+you may use the method getRawData().
 ```java
 // Specify the table to retrieve from. The response will be a JSON string containing all the
 // available data from our specified table.
