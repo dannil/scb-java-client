@@ -1,30 +1,45 @@
 language: java
-jdk:
-- oraclejdk7
-- oraclejdk8
-os:
-- linux
-- osx
-  - osx_image: xcode6.4
-- osx
-  - osx_image: xcode7.2
-- osx
-  - osx_image: xcode8.1
-branches:
-  only:
-  - master
-  - dev
+
 sudo: required
-before_install:
-- mvn org.codehaus.mojo:versions-maven-plugin:display-dependency-updates
-- mvn org.codehaus.mojo:versions-maven-plugin:display-plugin-updates
-install:
-- mvn dependency:resolve dependency:resolve-plugins
-script:
-- mvn install -Dmaven.javadoc.skip=true -B -V
-after_success:
-- mvn com.gavinmogan:codacy-maven-plugin:coverage -DcoverageReportFile=target/site/jacoco/jacoco.xml -DprojectToken=$CODACY_PROJECT_TOKEN -DapiToken=$CODACY_API_TOKEN
+
+os:
+  - linux
+  - osx
+
 env:
   global:
   - secure: jP+6no77LmkNsx9/ih/q4fECS+6g2HxXcmLk3kEw309BTfmi270578YTFrhquwnXO4iRWG02Uza3Qs7lwLLlUIz+KRhBgDG1kcLa/juJEqxBfJ9nsbxbBU6ncnSHvOGWh3dYXWGjXzWKACSb0tGF+BL4RG8aq4/9k60++/11zM8=
   - secure: p4TxOFCOSPKKb6g3ZlDeJFuUQ35wKKT+5Ae5ugDORnh09RXzwLRSglItEY29s2mK/lnAyn77U3HZQiXPGkLiZK5w8Vzb6KFr8NYbMvwz53MIMyZlKEg6nJEddk998vwNdB06tJ0qjmZYK1aGJx53oPm90drF00uLmOk65WRk2P0=
+  matrix:
+    - CUSTOM_JDK="default"
+    - CUSTOM_JDK="oraclejdk7"
+    - CUSTOM_JDK="oraclejdk8"
+
+matrix:
+  exclude:
+     # On OSX, run with default JDK only.
+     - os: osx
+       env: CUSTOM_JDK="oraclejdk7"
+     - os: osx
+       env: CUSTOM_JDK="oraclejdk8"
+     # On Linux, run with specific JDKs only.
+     - os: linux
+       env: CUSTOM_JDK="default"
+
+branches:
+  only:
+  - master
+  - dev
+
+before_install:
+- mvn org.codehaus.mojo:versions-maven-plugin:display-dependency-updates
+- mvn org.codehaus.mojo:versions-maven-plugin:display-plugin-updates
+
+install:
+- mvn dependency:resolve dependency:resolve-plugins
+
+script:
+- mvn install -Dmaven.javadoc.skip=true -B -V
+
+after_success:
+- mvn com.gavinmogan:codacy-maven-plugin:coverage -DcoverageReportFile=target/site/jacoco/jacoco.xml -DprojectToken=$CODACY_PROJECT_TOKEN -DapiToken=$CODACY_API_TOKEN
