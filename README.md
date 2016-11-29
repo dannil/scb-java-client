@@ -98,9 +98,16 @@ you may use the method getRawData().
 String json = client.getRawData("BE/BE0101/BE0101A/BefolkningNy");
 ```
 The method getRawData() also accepts an input which are used to filter what data should be fetched.
-The available inputs can be viewed in plaintext from the URL endpoint of the table. The feature of 
-retrieving the inputs through the client will be implemented in the future.
+The available inputs can be viewed in plaintext from the URL endpoint of the table or through the client. 
+The feature of retrieving the inputs through the client is accessible from the SCBClient class as demonstrated
+below.
+
 ```java
+// Fetch all available inputs for a table. Every key in the map corresponds to an available input
+// parameter and the values for a specific key are all the available values for a specific input.
+// The contents of availableInputs can then be analyzed and used for fetching more specific data.
+Map<String, Collection<String>> availableInputs = client.getInputs("BE/BE0101/BE0101A/BefolkningNy");
+
 // Specifies the criterion for the information we want to retrieve, in this case:
 // 		The contents code BE0101N1 (the total population, so the API knows what information we want)
 //		The regions 00 (whole country), 01 (Stockholm County) and 0114 (Upplands Väsby)
