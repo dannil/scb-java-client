@@ -32,6 +32,8 @@ branches:
   - dev
 
 before_install:
+- if [ "$TRAVIS_OS_NAME" == "osx" ]; then export JAVA_HOME=$(/usr/libexec/java_home); fi
+- if [ "$TRAVIS_OS_NAME" == "linux" ]; then jdk_switcher use "$CUSTOM_JDK"; fi
 - mvn org.codehaus.mojo:versions-maven-plugin:display-dependency-updates
 - mvn org.codehaus.mojo:versions-maven-plugin:display-plugin-updates
 
