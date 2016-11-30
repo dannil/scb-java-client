@@ -22,8 +22,9 @@ matrix:
     - os: osx
       osx_image: xcode8.1
 
-before_install:
+install:
 - mvn clean -V
+- mvn install
 
 after_success:
 - mvn com.gavinmogan:codacy-maven-plugin:coverage -DcoverageReportFile=target/site/jacoco/jacoco.xml -DprojectToken=$CODACY_PROJECT_TOKEN -DapiToken=$CODACY_API_TOKEN
