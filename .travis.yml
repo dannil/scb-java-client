@@ -2,9 +2,6 @@ language: java
 
 sudo: required
 
-os:
-  - osx
-
 branches:
   except:
   - gh-pages
@@ -20,6 +17,8 @@ matrix:
       jdk: oraclejdk7
     - os: linux
       jdk: oraclejdk8
+    - os: osx
+      osx_image: xcode8.1
 
 before_install:
 - if [ "$TRAVIS_OS_NAME" == "osx" ]; then export JAVA_HOME=$(/usr/libexec/java_home); fi
