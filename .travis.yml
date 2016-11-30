@@ -3,7 +3,6 @@ language: java
 sudo: required
 
 os:
-  - linux
   - osx
 
 branches:
@@ -14,24 +13,13 @@ env:
   global:
   - secure: jP+6no77LmkNsx9/ih/q4fECS+6g2HxXcmLk3kEw309BTfmi270578YTFrhquwnXO4iRWG02Uza3Qs7lwLLlUIz+KRhBgDG1kcLa/juJEqxBfJ9nsbxbBU6ncnSHvOGWh3dYXWGjXzWKACSb0tGF+BL4RG8aq4/9k60++/11zM8=
   - secure: p4TxOFCOSPKKb6g3ZlDeJFuUQ35wKKT+5Ae5ugDORnh09RXzwLRSglItEY29s2mK/lnAyn77U3HZQiXPGkLiZK5w8Vzb6KFr8NYbMvwz53MIMyZlKEg6nJEddk998vwNdB06tJ0qjmZYK1aGJx53oPm90drF00uLmOk65WRk2P0=
-  matrix:
-    - JDK="default"
-    - JDK="oraclejdk7"
-    - JDK="oraclejdk8"
-    include:
-      - java: $JDK
 
 matrix:
-
-  exclude:
-     # On OSX, run with default JDK only.
-     - os: osx
-       env: JDK="oraclejdk7"
-     - os: osx
-       env: JDK="oraclejdk8"
-     # On Linux, run with specific JDKs only.
-     - os: linux
-       env: JDK="default"
+  include:
+    - os: linux
+      jdk: oraclejdk7
+    - os: linux
+      jdk: oraclejdk8
 
 before_install:
 - if [ "$TRAVIS_OS_NAME" == "osx" ]; then export JAVA_HOME=$(/usr/libexec/java_home); fi
