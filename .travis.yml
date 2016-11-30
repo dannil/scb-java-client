@@ -24,14 +24,7 @@ matrix:
     - os: osx
       osx_image: xcode8.1
 
-before_install:
-- mvn org.codehaus.mojo:versions-maven-plugin:display-dependency-updates
-- mvn org.codehaus.mojo:versions-maven-plugin:display-plugin-updates
-
 install:
-- mvn dependency:resolve dependency:resolve-plugins
-
-script:
 - mvn install -Dmaven.javadoc.skip=true -B -V
 
 after_success:
