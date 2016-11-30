@@ -18,10 +18,10 @@ env:
     - JDK="default"
     - JDK="oraclejdk7"
     - JDK="oraclejdk8"
+    include:
+      - java: $JDK
 
 matrix:
-  include:
-    - java: $JDK
 
   exclude:
      # On OSX, run with default JDK only.
