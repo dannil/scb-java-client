@@ -173,12 +173,6 @@ public class AbstractClientIT {
 				"*Client.java");
 
 		for (File file : files) {
-			// Filter out AbstractContainerClient, since it doesn't need to declare a
-			// Locale constructor
-			if (file.getName().contains("AbstractContainerClient")) {
-				continue;
-			}
-
 			// Convert path into binary name
 			String path = file.getAbsolutePath();
 			path = FilenameUtils.removeExtension(path);

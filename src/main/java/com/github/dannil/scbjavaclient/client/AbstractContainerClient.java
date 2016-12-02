@@ -36,9 +36,21 @@ public abstract class AbstractContainerClient extends AbstractClient {
 
 		this.clients = new ArrayList<AbstractClient>();
 	}
+	
+	/**
+	 * <p>Overloaded constructor.</p>
+	 * 
+	 * @param locale
+	 *            the <code>Locale</code> for this client
+	 */
+	protected AbstractContainerClient(Locale locale) {
+		this();
+		
+		super.setLocale(locale);
+	}
 
 	/**
-	 * <p>Set the locale for all sub-clients.</p>
+	 * <p>Set the <code>Locale</code> for all sub-clients.</p>
 	 */
 	@Override
 	public void setLocale(Locale locale) {
