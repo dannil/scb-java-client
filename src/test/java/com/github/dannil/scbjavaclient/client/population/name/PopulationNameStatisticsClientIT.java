@@ -29,16 +29,16 @@ import com.github.dannil.scbjavaclient.client.SCBClient;
 @RunWith(JUnit4.class)
 public class PopulationNameStatisticsClientIT {
 
-	private PopulationNameStatisticsClient populationNameStatisticsClient;
+	private PopulationNameStatisticsClient client;
 
 	@Before
 	public void setup() {
-		this.populationNameStatisticsClient = new SCBClient().population().nameStatistics();
+		this.client = new SCBClient().population().nameStatistics();
 	}
 
 	@Test
 	public void getNumberOfChildrenBornWithFirstName() {
-		assertNotEquals(0, this.populationNameStatisticsClient.getNumberOfChildrenBornWithFirstName().size());
+		assertNotEquals(0, this.client.getNumberOfChildrenBornWithFirstName().size());
 	}
 
 	@Test
@@ -46,8 +46,7 @@ public class PopulationNameStatisticsClientIT {
 		List<String> firstnames = Arrays.asList("AdinaK");
 		List<Integer> years = Arrays.asList(2002);
 
-		assertNotEquals(0,
-				this.populationNameStatisticsClient.getNumberOfChildrenBornWithFirstName(firstnames, years).size());
+		assertNotEquals(0, this.client.getNumberOfChildrenBornWithFirstName(firstnames, years).size());
 	}
 
 }

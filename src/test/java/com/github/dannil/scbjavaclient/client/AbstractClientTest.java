@@ -10,13 +10,13 @@ import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
 public class AbstractClientTest {
-	
+
 	private static class DummyContainerClient extends AbstractContainerClient {
-		
+
 		public DummyContainerClient(Locale locale) {
 			super(locale);
 		}
-		
+
 	}
 
 	@Test
@@ -26,5 +26,5 @@ public class AbstractClientTest {
 
 		assertEquals(locale, client.getLocale());
 	}
-	
+
 }

@@ -36,7 +36,7 @@ public abstract class AbstractContainerClient extends AbstractClient {
 
 		this.clients = new ArrayList<AbstractClient>();
 	}
-	
+
 	/**
 	 * <p>Overloaded constructor.</p>
 	 * 
@@ -45,7 +45,7 @@ public abstract class AbstractContainerClient extends AbstractClient {
 	 */
 	protected AbstractContainerClient(Locale locale) {
 		this();
-		
+
 		super.setLocale(locale);
 	}
 

@@ -164,8 +164,8 @@ public class AbstractClientIT {
 		String execPath = System.getProperty("user.dir");
 
 		// Find files matching the wildcard pattern
-		List<File> files = findFiles(execPath + "/src/main/java/com/github/dannil/scbjavaclient/client",
-				"*Client.java");
+		List<File> files = findFiles(execPath
+				+ "/src/main/java/com/github/dannil/scbjavaclient/client", "*Client.java");
 
 		for (File file : files) {
 			// Convert path into binary name
