@@ -98,7 +98,7 @@ public class PopulationClient extends AbstractContainerClient {
 	/**
 	 * <p>Retrieve the client for interacting with population average age data. </p>
 	 * 
-	 * @return a client for population amount data
+	 * @return a client for population average age data
 	 */
 	public PopulationAverageAgeClient averageAge() {
 		return this.populationAverageAgeClient;
@@ -123,9 +123,9 @@ public class PopulationClient extends AbstractContainerClient {
 	}
 
 	/**
-	 * <p>Retrieve the client for interacting with population density data. </p>
+	 * <p>Retrieve the client for interacting with population live births data. </p>
 	 * 
-	 * @return a client for population density data
+	 * @return a client for population live births data
 	 */
 	public PopulationLiveBirthsClient liveBirths() {
 		return this.populationLiveBirthsClient;
@@ -143,7 +143,7 @@ public class PopulationClient extends AbstractContainerClient {
 	/**
 	 * <p>Retrieve the client for interacting with population partnership data.</p>
 	 * 
-	 * @return a client for population name statistic data
+	 * @return a client for population partnership data
 	 */
 	public PopulationPartnershipClient partnership() {
 		return this.populationPartnershipClient;
