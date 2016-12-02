@@ -20,7 +20,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
-import java.lang.reflect.Constructor;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -167,7 +167,7 @@ public class AbstractClientIT {
 	@Test
 	public void checkForLocaleConstructor() throws ClassNotFoundException, MalformedURLException {
 		String execPath = System.getProperty("user.dir");
-
+		
 		// Find files matching the wildcard pattern
 		List<File> files = findFiles(execPath + "/src/main/java/com/github/dannil/scbjavaclient/client",
 				"*Client.java");
@@ -188,21 +188,31 @@ public class AbstractClientIT {
 			String binaryName = path.replace('/', '.');
 			binaryName = binaryName.replace('\\', '.');
 
-			// Reflect the binary name into a concrete Java class
-			URLClassLoader classLoader = new URLClassLoader(new URL[] { file.toURI().toURL() });
-			Class<?> clazz = classLoader.loadClass(binaryName);
+			// Reflect the binary name into a concrete Java class			
+			URLClassLoader loader = null;
+			Class<?> clazz = null;
 			try {
-				// Does the current Java class declare a Locale constructor?
-				Constructor<?> con = clazz.getDeclaredConstructor(Locale.class);
+				loader = new URLClassLoader(new URL[] { file.toURI().toURL() });
+				clazz = loader.loadClass(binaryName);
+				
+				clazz.getDeclaredConstructor(Locale.class);
 			} catch (NoSuchMethodException e) {
 				// Nope! Locale constructor not found
 				assertTrue("Class " + clazz.getName() + " doesn't declare a Locale constructor", false);
+			} finally {
+				try {
+					// Close class loader
+					loader.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+					assertTrue(e.getMessage(), false);
+				}
 			}
 		}
 	}
 
 	public List<File> findFiles(String path, String partOfFile) {
-		List<File> lstFiles = new ArrayList<File>();
+		List<File> allFiles = new ArrayList<File>();
 
 		File dir = new File(path);
 		File[] files = dir.listFiles();
@@ -210,16 +220,15 @@ public class AbstractClientIT {
 			File file = files[i];
 
 			if (file.isDirectory()) {
-				lstFiles.addAll(findFiles(file.getAbsolutePath(), partOfFile));
+				allFiles.addAll(findFiles(file.getAbsolutePath(), partOfFile));
 			} else {
 				String partOfFileToRegex = ".*?" + partOfFile.replace("*", ".*?") + ".*?";
 				if (file.getAbsolutePath().matches(partOfFileToRegex)) {
-					lstFiles.add(file);
+					allFiles.add(file);
 				}
-				// System.out.println(files[i]);
 			}
 		}
-		return lstFiles;
+		return allFiles;
 	}
 
 }
