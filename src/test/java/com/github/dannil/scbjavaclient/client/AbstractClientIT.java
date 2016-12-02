@@ -90,10 +90,8 @@ public class AbstractClientIT {
 		map.put("Tid", Arrays.asList("2012"));
 
 		// This request is performed by a dummy client which is set to English
-		// (as
-		// specified in the setup method.
-		// This means that if we receive a response with Swedish text, we've
-		// used the fallback url.
+		// (as specified above when creating the client). This means that if we receive a
+		// response with Swedish text, we've used the fallback url.
 		String response = client.post(url, QueryBuilder.build(map));
 
 		assertTrue(response.contains("ålder"));
@@ -112,7 +110,6 @@ public class AbstractClientIT {
 		assertFalse(regions.isEmpty());
 	}
 
-	@Test(expected = IllegalArgumentException.class)
 	public void getRegionsMissingCodeInTable() {
 		DummyClient client = new DummyClient();
 
@@ -131,15 +128,13 @@ public class AbstractClientIT {
 		assertFalse(years.isEmpty());
 	}
 
-	// TODO Fix test
-	// @Test(expected = IllegalArgumentException.class)
-	// public void getYearsMissingCodeInTable() {
-	// DummyClient client = new DummyClient();
-	//
-	// List<String> years = client.getYears("NR/NR0105/NR0105A");
-	//
-	// assertNull(years);
-	// }
+	public void getYearsMissingCodeInTable() {
+		DummyClient client = new DummyClient();
+
+		List<String> years = client.getYears("NR/NR0105/NR0105A");
+
+		assertNull(years);
+	}
 
 	@Test(expected = SCBClientUrlNotFoundException.class)
 	public void urlNotFoundException() {
@@ -167,7 +162,7 @@ public class AbstractClientIT {
 	@Test
 	public void checkForLocaleConstructor() throws ClassNotFoundException, MalformedURLException {
 		String execPath = System.getProperty("user.dir");
-		
+
 		// Find files matching the wildcard pattern
 		List<File> files = findFiles(execPath + "/src/main/java/com/github/dannil/scbjavaclient/client",
 				"*Client.java");
@@ -182,13 +177,13 @@ public class AbstractClientIT {
 			String binaryName = path.replace('/', '.');
 			binaryName = binaryName.replace('\\', '.');
 
-			// Reflect the binary name into a concrete Java class			
+			// Reflect the binary name into a concrete Java class
 			URLClassLoader loader = null;
 			Class<?> clazz = null;
 			try {
 				loader = new URLClassLoader(new URL[] { file.toURI().toURL() });
 				clazz = loader.loadClass(binaryName);
-				
+
 				clazz.getDeclaredConstructor(Locale.class);
 			} catch (NoSuchMethodException e) {
 				// Nope! Locale constructor not found

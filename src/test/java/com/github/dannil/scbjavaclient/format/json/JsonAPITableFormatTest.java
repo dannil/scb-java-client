@@ -107,7 +107,7 @@ public class JsonAPITableFormatTest {
 		assertTrue(staticCodes.containsAll(extractedCodes));
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test
 	public void getCodesEmpty() {
 		String json = "{\"title\":\"Folkmängdenefterregion,civilstånd,ålder,kön,tabellinnehållochår\",\"variables\":[]}";
 
@@ -136,7 +136,7 @@ public class JsonAPITableFormatTest {
 		}
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test
 	public void getValuesEmptyForCode() {
 		List<String> values = this.format.getValues("THIS_CODE_DOES_NOT_EXIST_HOPEFULLY");
 

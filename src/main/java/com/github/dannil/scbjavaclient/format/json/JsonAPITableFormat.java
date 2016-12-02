@@ -70,21 +70,21 @@ public class JsonAPITableFormat implements IJsonTableFormat {
 	}
 
 	@Override
-	public List<String> getCodes() throws IllegalArgumentException {
+	public List<String> getCodes() {
 		List<String> codes = new ArrayList<String>(getInputs().keySet());
-		if (codes.isEmpty()) {
-			throw new IllegalArgumentException("JSON does not contain codes");
+		if (!codes.isEmpty()) {
+			return codes;
 		}
-		return codes;
+		return null;
 	}
 
 	@Override
-	public List<String> getValues(String code) throws IllegalArgumentException {
+	public List<String> getValues(String code) {
 		Map<String, Collection<String>> inputs = getInputs();
-		if (!inputs.containsKey(code)) {
-			throw new IllegalArgumentException("JSON does not contain code " + code);
+		if (inputs.containsKey(code)) {
+			return new ArrayList<String>(inputs.get(code));
 		}
-		return new ArrayList<String>(inputs.get(code));
+		return null;
 	}
 
 	@Override

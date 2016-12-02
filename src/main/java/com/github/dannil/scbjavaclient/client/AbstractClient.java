@@ -153,21 +153,29 @@ public abstract class AbstractClient {
 	 * 
 	 * @param table
 	 *            the table to retrieve the regions from
-	 * @return a list of the available regions for the given table
-	 * @throws IllegalArgumentException
-	 *             if the specified table doesn't supply a regions code
+	 * @return a list of the available regions for the given table or null if the table
+	 *         doesn't have regions
 	 */
 	public List<String> getRegions(String table) {
 		String json = get(table);
 		String code = "Region";
-		try {
-			JsonAPITableFormat format = new JsonAPITableFormat(json);
-			return format.getValues(code);
-		} catch (IllegalArgumentException e) {
-			Object[] variables = new Object[] { code, table };
-			throw new IllegalArgumentException(this.localization.getString("code_is_not_supported_for_url", variables),
-					e);
-		}
+
+		JsonAPITableFormat format = new JsonAPITableFormat(json);
+		return format.getValues(code);
+
+		// String json = get(table);
+		// String code = "Region";
+		// try {
+		// JsonAPITableFormat format = new JsonAPITableFormat(json);
+		// System.out.println(format);
+		// return format.getValues(code);
+		// } catch (IllegalArgumentException e) {
+		// Object[] variables = new Object[] { code, table };
+		// throw new
+		// IllegalArgumentException(this.localization.getString("code_is_not_supported_for_url",
+		// variables),
+		// e);
+		// }
 	}
 
 	/**
@@ -175,21 +183,28 @@ public abstract class AbstractClient {
 	 * 
 	 * @param table
 	 *            the table to retrieve the years from
-	 * @return a list of the available years for the given table
-	 * @throws IllegalArgumentException
-	 *             if the specified table doesn't supply a years code
+	 * @return a list of the available years for the given table or null if the table
+	 *         doesn't have years
 	 */
 	public List<String> getYears(String table) {
 		String json = get(table);
 		String code = "Tid";
-		try {
-			JsonAPITableFormat format = new JsonAPITableFormat(json);
-			return format.getValues(code);
-		} catch (IllegalArgumentException e) {
-			Object[] variables = new Object[] { code, table };
-			throw new IllegalArgumentException(this.localization.getString("code_is_not_supported_for_url", variables),
-					e);
-		}
+
+		JsonAPITableFormat format = new JsonAPITableFormat(json);
+		return format.getValues(code);
+
+		// String json = get(table);
+		// String code = "Tid";
+		// try {
+		// JsonAPITableFormat format = new JsonAPITableFormat(json);
+		// return format.getValues(code);
+		// } catch (IllegalArgumentException e) {
+		// Object[] variables = new Object[] { code, table };
+		// throw new
+		// IllegalArgumentException(this.localization.getString("code_is_not_supported_for_url",
+		// variables),
+		// e);
+		// }
 	}
 
 	// private void validateLocale() {

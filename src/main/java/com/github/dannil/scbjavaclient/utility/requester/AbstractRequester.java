@@ -52,8 +52,7 @@ public abstract class AbstractRequester {
 
 	static {
 		properties = new Properties();
-		try (InputStream input = Thread.currentThread().getContextClassLoader()
-				.getResourceAsStream("project.properties")) {
+		try (InputStream input = Thread.currentThread().getContextClassLoader().getResourceAsStream("project.properties")) {
 			properties.load(input);
 		} catch (IOException e) {
 			throw new SCBClientException(e);
