@@ -59,10 +59,6 @@ public final class RequesterSingletonFactory {
 	public static AbstractRequester getRequester(RequestMethod method) {
 		return getRequester(method, APIConstants.FALLBACK_LOCALE, StandardCharsets.UTF_8);
 	}
-	//
-	// public static AbstractRequester getRequester(RequestMethod method, Locale locale) {
-	// return getRequester(method, locale, StandardCharsets.UTF_8);
-	// }
 
 	/**
 	 * <p>Returns a singleton requester which matches the method. All responses are read
@@ -82,7 +78,6 @@ public final class RequesterSingletonFactory {
 		}
 		AbstractRequester abs = requesters.get(method);
 		abs.setCharset(charset);
-		// abs.setLocale(locale);
 		return abs;
 	}
 

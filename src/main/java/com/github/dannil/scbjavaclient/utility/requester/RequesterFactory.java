@@ -45,10 +45,6 @@ public final class RequesterFactory {
 		return getRequester(method, StandardCharsets.UTF_8);
 	}
 
-	// public static AbstractRequester getRequester(RequestMethod method, Locale locale) {
-	// return getRequester(method, locale, StandardCharsets.UTF_8);
-	// }
-
 	/**
 	 * <p>Returns a regular (non-singleton) requester which matches the method. All
 	 * requests are routed to match the specified <code>Locale</code> and responses are
