@@ -36,9 +36,9 @@ import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
  */
 public class SCBClient extends AbstractContainerClient {
 
-	private PopulationClient populationClient;
-
-	private EnvironmentClient environmentClient;
+	// private PopulationClient populationClient;
+	//
+	// private EnvironmentClient environmentClient;
 
 	/**
 	 * <p>Default constructor. Initializes values and creates sub-clients.</p>
@@ -46,11 +46,8 @@ public class SCBClient extends AbstractContainerClient {
 	public SCBClient() {
 		super();
 
-		this.populationClient = new PopulationClient();
-		super.clients.add(this.populationClient);
-
-		this.environmentClient = new EnvironmentClient();
-		super.clients.add(this.environmentClient);
+		super.clients.put("environment", new EnvironmentClient());
+		super.clients.put("population", new PopulationClient());
 	}
 
 	/**
@@ -71,7 +68,7 @@ public class SCBClient extends AbstractContainerClient {
 	 * @return a client for environment data
 	 */
 	public EnvironmentClient environment() {
-		return this.environmentClient;
+		return (EnvironmentClient) this.clients.get("environment");
 	}
 
 	/**
@@ -80,7 +77,7 @@ public class SCBClient extends AbstractContainerClient {
 	 * @return a client for population data
 	 */
 	public PopulationClient population() {
-		return this.populationClient;
+		return (PopulationClient) this.clients.get("population");
 	}
 
 	/**

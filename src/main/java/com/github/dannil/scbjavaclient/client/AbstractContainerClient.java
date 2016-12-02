@@ -14,9 +14,9 @@
 
 package com.github.dannil.scbjavaclient.client;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 /**
  * <p>Abstract class which specifies how methods by container clients (a client that has
@@ -26,7 +26,7 @@ import java.util.Locale;
  */
 public abstract class AbstractContainerClient extends AbstractClient {
 
-	protected Collection<AbstractClient> clients;
+	protected Map<String, AbstractClient> clients;
 
 	/**
 	 * <p>Default constructor.</p>
@@ -34,9 +34,9 @@ public abstract class AbstractContainerClient extends AbstractClient {
 	protected AbstractContainerClient() {
 		super();
 
-		this.clients = new ArrayList<AbstractClient>();
+		this.clients = new HashMap<String, AbstractClient>();
 	}
-	
+
 	/**
 	 * <p>Overloaded constructor.</p>
 	 * 
@@ -45,7 +45,7 @@ public abstract class AbstractContainerClient extends AbstractClient {
 	 */
 	protected AbstractContainerClient(Locale locale) {
 		this();
-		
+
 		super.setLocale(locale);
 	}
 
@@ -56,7 +56,7 @@ public abstract class AbstractContainerClient extends AbstractClient {
 	public void setLocale(Locale locale) {
 		super.setLocale(locale);
 
-		for (AbstractClient client : this.clients) {
+		for (AbstractClient client : this.clients.values()) {
 			client.setLocale(super.locale);
 		}
 	}
