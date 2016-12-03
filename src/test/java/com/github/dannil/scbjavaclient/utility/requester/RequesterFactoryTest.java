@@ -37,14 +37,4 @@ public class RequesterFactoryTest {
 		assertFalse(cons[0].isAccessible());
 	}
 
-	// TODO Investigate if this test is needed since the properties of
-	// enumerable effectively stops
-	// an illegal argument
-	// @Test(expected = IllegalArgumentException.class)
-	// public void getRequesterIllegalArgument() {
-	// AbstractRequester abs = RequesterFactory.getRequester(null);
-	//
-	// assertNull(abs);
-	// }
-
 }

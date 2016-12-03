@@ -37,18 +37,6 @@ public class EnvironmentLandAndWaterAreaClientIT extends RemoteIntegrationTestSu
 		this.environmentLandAndWaterAreaClient = new SCBClient().environment().landAndWaterArea();
 	}
 
-	// TODO Enable tests in the future
-
-	// @Test
-	// public void getRegions() {
-	// assertNotEquals(0, this.landAndWaterAreaClient.getRegions().size());
-	// }
-	//
-	// @Test
-	// public void getYears() {
-	// assertNotEquals(0, this.landAndWaterAreaClient.getYears().size());
-	// }
-
 	@Test
 	public void getArea() {
 		assertNotEquals(0, this.environmentLandAndWaterAreaClient.getArea().size());
