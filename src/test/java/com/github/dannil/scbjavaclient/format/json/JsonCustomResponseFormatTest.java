@@ -27,6 +27,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
 import com.github.dannil.scbjavaclient.model.ValueNode;
 import com.github.dannil.scbjavaclient.model.population.amount.Population;
@@ -76,6 +77,17 @@ public class JsonCustomResponseFormatTest {
 		JsonCustomResponseFormat format = new JsonCustomResponseFormat(nonConventionalJson);
 
 		assertTrue(format.isFormatted());
+	}
+
+	@Test
+	public void isFormattedCache() {
+		String nonConventionalJson = "{\"columns\":[{\"code\":\"Region\",\"text\":\"region\",\"type\":\"d\"},{\"code\":\"Civilstand\",\"text\":\"marital status\",\"type\":\"d\"},{\"code\":\"Alder\",\"text\":\"age\",\"type\":\"d\"},{\"code\":\"Tid\",\"text\":\"year\",\"type\":\"t\"},{\"code\":\"BE0101N1\",\"text\":\"Population\",\"comment\":\"The tables show the conditions on December 31st for each respective year according to administrative subdivisions of January 1st of the following year\\r\\n\",\"type\":\"c\"},{\"code\":\"BE0101N2\",\"text\":\"Population growth\",\"comment\":\"Population growth is defined as the difference between the population at the beginning of the year and at the end of the year.\\r\\n\",\"type\":\"c\"}],\"comments\":[],\"data\":[{\"key\":[\"00\",\"OG\",\"45\",\"2011\"],\"values\":[\"48403\",\"1007\"]}]}";
+		JsonCustomResponseFormat format = new JsonCustomResponseFormat(nonConventionalJson);
+
+		// A second call to format() triggers the return of the cache
+		JsonNode node = format.format();
+
+		assertEquals(node.toString(), format.toString());
 	}
 
 	@Test
