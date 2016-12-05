@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.client.Client;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.model.population.averageage.AverageAge;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
@@ -31,7 +31,7 @@ import com.github.dannil.scbjavaclient.utility.QueryBuilder;
  * 
  * @author Daniel Nilsson
  */
-public class PopulationAverageAgeClient extends AbstractClient {
+public class PopulationAverageAgeClient extends Client {
 
 	/**
 	 * <p>Default constructor.</p>

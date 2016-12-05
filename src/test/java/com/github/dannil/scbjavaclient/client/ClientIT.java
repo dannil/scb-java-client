@@ -42,9 +42,9 @@ import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 @RunWith(JUnit4.class)
-public class AbstractClientIT {
+public class ClientIT {
 
-	private class DummyClient extends AbstractClient {
+	private class DummyClient extends Client {
 
 		protected DummyClient() {
 			super();

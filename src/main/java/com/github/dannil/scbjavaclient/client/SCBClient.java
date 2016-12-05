@@ -34,7 +34,7 @@ import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
  * 
  * @author Daniel Nilsson
  */
-public class SCBClient extends AbstractContainerClient {
+public class SCBClient extends ContainerClient {
 
 	private PopulationClient populationClient;
 
@@ -47,10 +47,10 @@ public class SCBClient extends AbstractContainerClient {
 		super();
 
 		this.populationClient = new PopulationClient();
-		super.clients.add(this.populationClient);
+		this.clients.add(this.populationClient);
 
 		this.environmentClient = new EnvironmentClient();
-		super.clients.add(this.environmentClient);
+		this.clients.add(this.environmentClient);
 	}
 
 	/**
@@ -62,7 +62,7 @@ public class SCBClient extends AbstractContainerClient {
 	public SCBClient(Locale locale) {
 		this();
 
-		super.setLocale(locale);
+		this.setLocale(locale);
 	}
 
 	/**

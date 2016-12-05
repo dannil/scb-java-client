@@ -19,22 +19,22 @@ import java.util.Collection;
 import java.util.Locale;
 
 /**
- * <p>Abstract class which specifies how methods by container clients (a client that has
+ * <p>Class which specifies how methods by container clients (a client that has
  * sub-clients) should operate.</p>
  * 
  * @author Daniel Nilsson
  */
-public abstract class AbstractContainerClient extends AbstractClient {
+public class ContainerClient extends Client {
 
-	protected Collection<AbstractClient> clients;
+	protected Collection<Client> clients;
 
 	/**
 	 * <p>Default constructor.</p>
 	 */
-	protected AbstractContainerClient() {
+	protected ContainerClient() {
 		super();
 
-		this.clients = new ArrayList<AbstractClient>();
+		this.clients = new ArrayList<Client>();
 	}
 
 	/**
@@ -43,10 +43,10 @@ public abstract class AbstractContainerClient extends AbstractClient {
 	 * @param locale
 	 *            the <code>Locale</code> for this client
 	 */
-	protected AbstractContainerClient(Locale locale) {
+	protected ContainerClient(Locale locale) {
 		this();
 
-		super.setLocale(locale);
+		this.setLocale(locale);
 	}
 
 	/**
@@ -56,8 +56,8 @@ public abstract class AbstractContainerClient extends AbstractClient {
 	public void setLocale(Locale locale) {
 		super.setLocale(locale);
 
-		for (AbstractClient client : this.clients) {
-			client.setLocale(super.locale);
+		for (Client client : this.clients) {
+			client.setLocale(this.locale);
 		}
 	}
 

@@ -30,13 +30,13 @@ import com.github.dannil.scbjavaclient.utility.requester.RequestMethod;
 import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
 
 /**
- * <p>Abstract class which specifies how clients should operate.</p>
+ * <p>Class which specifies how clients should operate.</p>
  * 
  * @author Daniel Nilsson
  */
-public abstract class AbstractClient {
+public class Client {
 
-	private static final Logger LOGGER = LogManager.getLogger(AbstractClient.class);
+	private static final Logger LOGGER = LogManager.getLogger(Client.class);
 
 	protected Locale locale;
 
@@ -45,7 +45,7 @@ public abstract class AbstractClient {
 	/**
 	 * <p>Default constructor.</p>
 	 */
-	protected AbstractClient() {
+	protected Client() {
 		this.locale = Locale.getDefault();
 		this.localization = new Localization(this.locale);
 	}
@@ -56,7 +56,7 @@ public abstract class AbstractClient {
 	 * @param locale
 	 *            the <code>Locale</code> for this client
 	 */
-	protected AbstractClient(Locale locale) {
+	protected Client(Locale locale) {
 		this();
 		this.locale = locale;
 		this.localization.setLocale(this.locale);
