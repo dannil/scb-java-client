@@ -53,7 +53,7 @@ public class ContainerClient extends Client {
 	 * <p>Set the <code>Locale</code> for all sub-clients.</p>
 	 */
 	@Override
-	public void setLocale(Locale locale) {
+	public final void setLocale(Locale locale) {
 		super.setLocale(locale);
 
 		for (Client client : this.clients) {
