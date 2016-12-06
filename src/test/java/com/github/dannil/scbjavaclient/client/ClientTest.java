@@ -9,9 +9,9 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class AbstractClientTest {
+public class ClientTest {
 
-	private static class DummyContainerClient extends AbstractContainerClient {
+	private static class DummyContainerClient extends ContainerClient {
 
 		public DummyContainerClient(Locale locale) {
 			super(locale);
@@ -22,7 +22,7 @@ public class AbstractClientTest {
 	@Test
 	public void createWithLocaleConstructor() {
 		Locale locale = new Locale("sv", "SE");
-		AbstractContainerClient client = new DummyContainerClient(locale);
+		ContainerClient client = new DummyContainerClient(locale);
 
 		assertEquals(locale, client.getLocale());
 	}

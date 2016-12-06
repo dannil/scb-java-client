@@ -16,7 +16,7 @@ package com.github.dannil.scbjavaclient.client.environment;
 
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
+import com.github.dannil.scbjavaclient.client.ContainerClient;
 import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.EnvironmentLandAndWaterAreaClient;
 
 /**
@@ -24,7 +24,7 @@ import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.Envir
  * 
  * @author Daniel Nilsson
  */
-public class EnvironmentClient extends AbstractContainerClient {
+public class EnvironmentClient extends ContainerClient {
 
 	private EnvironmentLandAndWaterAreaClient environmentLandAndWaterAreaClient;
 
@@ -35,7 +35,7 @@ public class EnvironmentClient extends AbstractContainerClient {
 		super();
 
 		this.environmentLandAndWaterAreaClient = new EnvironmentLandAndWaterAreaClient();
-		super.clients.add(this.environmentLandAndWaterAreaClient);
+		this.clients.add(this.environmentLandAndWaterAreaClient);
 	}
 
 	/**
@@ -47,7 +47,7 @@ public class EnvironmentClient extends AbstractContainerClient {
 	public EnvironmentClient(Locale locale) {
 		this();
 
-		super.setLocale(locale);
+		this.setLocale(locale);
 	}
 
 	/**

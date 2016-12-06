@@ -16,7 +16,7 @@ package com.github.dannil.scbjavaclient.client.population;
 
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
+import com.github.dannil.scbjavaclient.client.ContainerClient;
 import com.github.dannil.scbjavaclient.client.population.amount.PopulationAmountClient;
 import com.github.dannil.scbjavaclient.client.population.averageage.PopulationAverageAgeClient;
 import com.github.dannil.scbjavaclient.client.population.demography.PopulationDemographyClient;
@@ -30,7 +30,7 @@ import com.github.dannil.scbjavaclient.client.population.partnership.PopulationP
  * 
  * @author Daniel Nilsson
  */
-public class PopulationClient extends AbstractContainerClient {
+public class PopulationClient extends ContainerClient {
 
 	private PopulationAmountClient populationAmountClient;
 
@@ -53,25 +53,25 @@ public class PopulationClient extends AbstractContainerClient {
 		super();
 
 		this.populationAmountClient = new PopulationAmountClient();
-		super.clients.add(this.populationAmountClient);
+		this.clients.add(this.populationAmountClient);
 
 		this.populationAverageAgeClient = new PopulationAverageAgeClient();
-		super.clients.add(this.populationAverageAgeClient);
+		this.clients.add(this.populationAverageAgeClient);
 
 		this.populationDemographyClient = new PopulationDemographyClient();
-		super.clients.add(this.populationDemographyClient);
+		this.clients.add(this.populationDemographyClient);
 
 		this.populationDensityClient = new PopulationDensityClient();
-		super.clients.add(this.populationDensityClient);
+		this.clients.add(this.populationDensityClient);
 
 		this.populationLiveBirthsClient = new PopulationLiveBirthsClient();
-		super.clients.add(populationLiveBirthsClient);
+		this.clients.add(populationLiveBirthsClient);
 
 		this.populationNameStatisticsClient = new PopulationNameStatisticsClient();
-		super.clients.add(this.populationNameStatisticsClient);
+		this.clients.add(this.populationNameStatisticsClient);
 
 		this.populationPartnershipClient = new PopulationPartnershipClient();
-		super.clients.add(this.populationPartnershipClient);
+		this.clients.add(this.populationPartnershipClient);
 	}
 
 	/**
@@ -83,7 +83,7 @@ public class PopulationClient extends AbstractContainerClient {
 	public PopulationClient(Locale locale) {
 		this();
 
-		super.setLocale(locale);
+		this.setLocale(locale);
 	}
 
 	/**
