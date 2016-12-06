@@ -4,6 +4,14 @@ branches:
   except:
   - gh-pages
 
+addons:
+  sonarqube:
+    token:
+      secure: mwugMNp171gblyUdKxcg6KvCqbcw3Tuuv8robPYKkNOBYsV7IoQ6+vKWkBSwlEbuVY2I80coMss/sRE+JnGq5/bONqNWenE2/AXJw42l/dVgAxtaCcGuxObRk2xbswq9Bxofrht4++Eo/4T3rTCn4OmPzg5Gu+VlyrR95FOtsfs=
+  branches:
+    - dev
+    - master
+
 env:
   global:
   - secure: jP+6no77LmkNsx9/ih/q4fECS+6g2HxXcmLk3kEw309BTfmi270578YTFrhquwnXO4iRWG02Uza3Qs7lwLLlUIz+KRhBgDG1kcLa/juJEqxBfJ9nsbxbBU6ncnSHvOGWh3dYXWGjXzWKACSb0tGF+BL4RG8aq4/9k60++/11zM8=
@@ -23,6 +31,7 @@ install:
 
 script:
 - mvn install -Dmaven.javadoc.skip=true -B -V
+- mvn sonar:sonar
 
 after_success:
 - mvn com.gavinmogan:codacy-maven-plugin:coverage -DcoverageReportFile=target/site/jacoco/jacoco.xml -DprojectToken=$CODACY_PROJECT_TOKEN -DapiToken=$CODACY_API_TOKEN
