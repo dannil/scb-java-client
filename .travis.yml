@@ -15,13 +15,13 @@ matrix:
       jdk: oraclejdk7
     - os: linux
       jdk: oraclejdk8
+      # SonarQube addon needs to run with at least Java 8
       addons:
         sonarqube:
           token:
             secure: mwugMNp171gblyUdKxcg6KvCqbcw3Tuuv8robPYKkNOBYsV7IoQ6+vKWkBSwlEbuVY2I80coMss/sRE+JnGq5/bONqNWenE2/AXJw42l/dVgAxtaCcGuxObRk2xbswq9Bxofrht4++Eo/4T3rTCn4OmPzg5Gu+VlyrR95FOtsfs=
         branches:
           - dev
-
       install:
         - true
       script:
