@@ -147,8 +147,6 @@ public abstract class AbstractRequester {
 	 * @return the content of the table
 	 */
 	public String getBodyAsStringFromTable(String table) {
-		// TODO Read comments!
-		//
 		// This needs to be rewritten to handle different locale. A good solution is hard
 		// to find right now since this class should not need to worry about the current
 		// locale, as methods calling this method (getBodyAsStringFromTable) should really

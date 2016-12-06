@@ -16,6 +16,7 @@ package com.github.dannil.scbjavaclient.format.json;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,7 +54,7 @@ public class JsonAPITableFormat implements IJsonTableFormat {
 
 		JsonNode variables = this.json.get("variables");
 
-		Map<String, Collection<String>> inputs = new HashMap<String, Collection<String>>();
+		Map<String, Collection<String>> fetchedInputs = new HashMap<String, Collection<String>>();
 		for (int i = 0; i < variables.size(); i++) {
 			JsonNode entry = variables.get(i);
 			List<String> values = new ArrayList<String>();
@@ -61,12 +62,12 @@ public class JsonAPITableFormat implements IJsonTableFormat {
 			for (int j = 0; j < valuesNode.size(); j++) {
 				values.add(valuesNode.get(j).asText());
 			}
-			inputs.put(entry.get("code").asText(), values);
+			fetchedInputs.put(entry.get("code").asText(), values);
 		}
 
-		this.inputs = inputs;
+		this.inputs = fetchedInputs;
 
-		return inputs;
+		return fetchedInputs;
 	}
 
 	@Override
@@ -75,16 +76,16 @@ public class JsonAPITableFormat implements IJsonTableFormat {
 		if (!codes.isEmpty()) {
 			return codes;
 		}
-		return null;
+		return Collections.emptyList();
 	}
 
 	@Override
 	public List<String> getValues(String code) {
-		Map<String, Collection<String>> inputs = getInputs();
-		if (inputs.containsKey(code)) {
-			return new ArrayList<String>(inputs.get(code));
+		Map<String, Collection<String>> fetchedInputs = getInputs();
+		if (fetchedInputs.containsKey(code)) {
+			return new ArrayList<String>(fetchedInputs.get(code));
 		}
-		return null;
+		return Collections.emptyList();
 	}
 
 	@Override

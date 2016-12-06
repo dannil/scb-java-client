@@ -15,7 +15,6 @@
 package com.github.dannil.scbjavaclient.format.json;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
@@ -114,7 +113,7 @@ public class JsonAPITableFormatTest {
 		JsonAPITableFormat format = new JsonAPITableFormat(json);
 		List<String> codes = format.getCodes();
 
-		assertNull(codes);
+		assertEquals(0, codes.size());
 	}
 
 	@Test
@@ -140,7 +139,7 @@ public class JsonAPITableFormatTest {
 	public void getValuesEmptyForCode() {
 		List<String> values = this.format.getValues("THIS_CODE_DOES_NOT_EXIST_HOPEFULLY");
 
-		assertNull(values);
+		assertEquals(0, values.size());
 	}
 
 	@Test

@@ -102,7 +102,6 @@ public abstract class AbstractClient {
 	 * @return the URL representing the entry point for the API
 	 */
 	protected String getBaseUrl() {
-		// return ROOT_URL + this.locale.getLanguage() + "/ssd/";
 		return URLUtility.getRootUrl(this.locale);
 	}
 
@@ -162,20 +161,6 @@ public abstract class AbstractClient {
 
 		JsonAPITableFormat format = new JsonAPITableFormat(json);
 		return format.getValues(code);
-
-		// String json = get(table);
-		// String code = "Region";
-		// try {
-		// JsonAPITableFormat format = new JsonAPITableFormat(json);
-		// System.out.println(format);
-		// return format.getValues(code);
-		// } catch (IllegalArgumentException e) {
-		// Object[] variables = new Object[] { code, table };
-		// throw new
-		// IllegalArgumentException(this.localization.getString("code_is_not_supported_for_url",
-		// variables),
-		// e);
-		// }
 	}
 
 	/**
@@ -192,27 +177,7 @@ public abstract class AbstractClient {
 
 		JsonAPITableFormat format = new JsonAPITableFormat(json);
 		return format.getValues(code);
-
-		// String json = get(table);
-		// String code = "Tid";
-		// try {
-		// JsonAPITableFormat format = new JsonAPITableFormat(json);
-		// return format.getValues(code);
-		// } catch (IllegalArgumentException e) {
-		// Object[] variables = new Object[] { code, table };
-		// throw new
-		// IllegalArgumentException(this.localization.getString("code_is_not_supported_for_url",
-		// variables),
-		// e);
-		// }
 	}
-
-	// private void validateLocale() {
-	// if (!isSupportedLocale(this.locale)) {
-	// throw new SCBClientException("Locale " + this.locale + " is not supported
-	// by the API");
-	// }
-	// }
 
 	/**
 	 * <p>Returns the URL endpoint which this client represents.</p>

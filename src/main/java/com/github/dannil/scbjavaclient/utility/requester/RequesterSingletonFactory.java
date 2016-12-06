@@ -16,11 +16,8 @@ package com.github.dannil.scbjavaclient.utility.requester;
 
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
-import java.util.Locale;
+import java.util.EnumMap;
 import java.util.Map;
-
-import com.github.dannil.scbjavaclient.constants.APIConstants;
 
 /**
  * <p>Factory for returning singleton requesters. The regular {@link RequesterFactory} is
@@ -34,7 +31,7 @@ public final class RequesterSingletonFactory {
 	private static Map<RequestMethod, AbstractRequester> requesters;
 
 	static {
-		requesters = new HashMap<RequestMethod, AbstractRequester>();
+		requesters = new EnumMap<RequestMethod, AbstractRequester>(RequestMethod.class);
 		requesters.put(RequestMethod.GET, GETHolder.INSTANCE);
 		requesters.put(RequestMethod.POST, POSTHolder.INSTANCE);
 	}
@@ -57,7 +54,7 @@ public final class RequesterSingletonFactory {
 	 * @return a singleton requester which matches the method.
 	 */
 	public static AbstractRequester getRequester(RequestMethod method) {
-		return getRequester(method, APIConstants.FALLBACK_LOCALE, StandardCharsets.UTF_8);
+		return getRequester(method, StandardCharsets.UTF_8);
 	}
 
 	/**
@@ -66,13 +63,11 @@ public final class RequesterSingletonFactory {
 	 * 
 	 * @param method
 	 *            the method (i.e. GET or POST)
-	 * @param locale
-	 *            the <code>Locale</code>
 	 * @param charset
 	 *            the character encoding to use
 	 * @return a singleton requester which matches the method.
 	 */
-	public static AbstractRequester getRequester(RequestMethod method, Locale locale, Charset charset) {
+	public static AbstractRequester getRequester(RequestMethod method, Charset charset) {
 		if (!requesters.containsKey(method)) {
 			throw new IllegalArgumentException(method + " is not a valid method");
 		}
@@ -85,14 +80,26 @@ public final class RequesterSingletonFactory {
 	 * <p>Singleton holder for GET requester.</p>
 	 */
 	private static class GETHolder {
+
 		protected static final AbstractRequester INSTANCE = new GETRequester(StandardCharsets.UTF_8);
+
+		private GETHolder() {
+			// To avoid initialization outside this class
+		}
+
 	}
 
 	/**
 	 * <p>Singleton holder for POST requester.</p>
 	 */
 	private static class POSTHolder {
+
 		protected static final AbstractRequester INSTANCE = new POSTRequester(StandardCharsets.UTF_8);
+
+		private POSTHolder() {
+			// To avoid initialization outside this class
+		}
+
 	}
 
 }

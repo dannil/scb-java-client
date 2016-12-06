@@ -136,7 +136,6 @@ public class ValueNode<V> {
 	public String toString() {
 		StringBuilder builder = new StringBuilder(128);
 
-		// builder.append("Value [code=");
 		builder.append("code=");
 		builder.append(this.code);
 		builder.append(", value=");

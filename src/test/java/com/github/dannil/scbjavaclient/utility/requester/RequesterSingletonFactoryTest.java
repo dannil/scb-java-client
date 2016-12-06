@@ -129,8 +129,8 @@ public class RequesterSingletonFactoryTest {
 	public void requesterIsSingleton() {
 		Locale locale = new Locale("sv", "SE");
 
-		AbstractRequester abs1 = RequesterSingletonFactory.getRequester(RequestMethod.GET, locale, StandardCharsets.UTF_8);
-		AbstractRequester abs2 = RequesterSingletonFactory.getRequester(RequestMethod.GET, locale, StandardCharsets.US_ASCII);
+		AbstractRequester abs1 = RequesterSingletonFactory.getRequester(RequestMethod.GET, StandardCharsets.UTF_8);
+		AbstractRequester abs2 = RequesterSingletonFactory.getRequester(RequestMethod.GET, StandardCharsets.US_ASCII);
 
 		assertEquals(StandardCharsets.US_ASCII, abs1.getCharset());
 		assertEquals(abs1.getCharset(), abs2.getCharset());

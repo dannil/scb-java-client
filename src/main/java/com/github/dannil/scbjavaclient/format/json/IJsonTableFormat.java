@@ -39,18 +39,14 @@ public interface IJsonTableFormat {
 	 * @param code
 	 *            the code
 	 * @return a list of values
-	 * @throws IllegalArgumentException
-	 *             if the JSON doesn't contain the code
 	 */
-	List<String> getValues(String code) throws IllegalArgumentException;
+	List<String> getValues(String code);
 
 	/**
 	 * <p>Extracts the codes from the JSON.</p>
 	 * 
 	 * @return a list of codes
-	 * @throws IllegalArgumentException
-	 *             if the JSON doesn't contain codes
 	 */
-	List<String> getCodes() throws IllegalArgumentException;
+	List<String> getCodes();
 
 }

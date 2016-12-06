@@ -75,7 +75,7 @@ public final class JsonCustomResponseFormat implements IJsonResponseFormat {
 			// Sort out the content codes
 			List<String> types = columns.findValuesAsText("type");
 			for (int l = 0; l < codes.size(); l++) {
-				if (types.get(l).equals("c")) {
+				if ("c".equals(types.get(l))) {
 					contentCodes.add(codes.get(l));
 					contentCodesTexts.add(texts.get(l));
 				}
