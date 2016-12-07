@@ -79,7 +79,7 @@ public final class RequesterSingletonFactory {
 	/**
 	 * <p>Singleton holder for GET requester.</p>
 	 */
-	private final static class GETHolder {
+	private static final class GETHolder {
 
 		protected static final AbstractRequester INSTANCE = new GETRequester(StandardCharsets.UTF_8);
 
@@ -95,13 +95,13 @@ public final class RequesterSingletonFactory {
 	/**
 	 * <p>Singleton holder for POST requester.</p>
 	 */
-	private final static class POSTHolder {
+	private static final class POSTHolder {
+
+		protected static final AbstractRequester INSTANCE = new POSTRequester(StandardCharsets.UTF_8);
 
 		/**
 		 * Private constructor.
 		 */
-		protected static final AbstractRequester INSTANCE = new POSTRequester(StandardCharsets.UTF_8);
-
 		private POSTHolder() {
 			// To avoid initialization outside this class
 		}
