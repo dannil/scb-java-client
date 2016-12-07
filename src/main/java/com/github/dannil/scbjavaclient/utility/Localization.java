@@ -37,8 +37,6 @@ import com.github.dannil.scbjavaclient.constants.ClientConstants;
  */
 public class Localization {
 
-	private static final Logger LOGGER = LogManager.getLogger(Localization.class);
-
 	private String baseName;
 	private Locale fallbackLocale;
 
@@ -99,7 +97,6 @@ public class Localization {
 		try {
 			return this.bundle.getString(key);
 		} catch (MissingResourceException e) {
-			LOGGER.info("Couldn't find string " + key + " for locale " + getLocale(), e.getCause());
 			return ResourceBundle.getBundle(this.baseName, this.fallbackLocale, this.encodingControl).getString(key);
 		}
 	}

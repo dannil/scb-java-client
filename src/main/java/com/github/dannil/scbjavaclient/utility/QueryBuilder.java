@@ -92,10 +92,6 @@ public final class QueryBuilder {
 
 		for (Entry<String, Collection<?>> entry : inputMap.entrySet()) {
 			if (entry.getValue() != null) {
-				// if (new ArrayList<Object>(entry.getValue()).get(0) != null) {
-				// filteredMap.put(entry.getKey(), filterValue(entry.getValue(),
-				// null));
-				// }
 				filteredMap.put(entry.getKey(), filterValue(entry.getValue(), null));
 			}
 		}

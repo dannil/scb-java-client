@@ -19,9 +19,6 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import com.github.dannil.scbjavaclient.client.environment.EnvironmentClient;
 import com.github.dannil.scbjavaclient.client.population.PopulationClient;
 import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
@@ -38,8 +35,6 @@ import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
  * @author Daniel Nilsson
  */
 public class SCBClient extends AbstractContainerClient {
-
-	private static final Logger LOGGER = LogManager.getLogger(AbstractClient.class);
 
 	private PopulationClient populationClient;
 
@@ -160,7 +155,6 @@ public class SCBClient extends AbstractContainerClient {
 			get.getBodyAsString(url);
 			return true;
 		} catch (SCBClientUrlNotFoundException e) {
-			LOGGER.info("Locale " + locale + " is not supported by the API", e.getCause());
 			return false;
 		}
 	}
