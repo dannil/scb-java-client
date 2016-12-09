@@ -24,7 +24,8 @@ import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
 
 public final class Config {
 
-	private static int timerMs;
+	private static int timeWindow;
+	private static int maxCalls;
 
 	static {
 		try {
@@ -34,18 +35,18 @@ public final class Config {
 			JsonConverter converter = new JsonConverter();
 			JsonNode node = converter.toNode(response);
 
-			int maxCalls = node.get("maxCalls").asInt();
-			int timeWindow = node.get("timeWindow").asInt();
-
-			// 10000 10
-			timerMs = (int) (((timeWindow * 1000.0) / timeWindow) * (maxCalls / 100.0 + 0.9));
-			// System.out.println("timerMs: " + timerMs);
+			maxCalls = node.get("maxCalls").asInt();
+			timeWindow = node.get("timeWindow").asInt();
 		} catch (SCBClientException e) {
 			throw e;
 		}
 	}
 
-	public static int getTimerMs() {
-		return timerMs;
+	public static long getTimeBetweenCallsAsMilliSeconds() {
+		// Time window as returned by the SCB API is specified in milliseconds. The
+		// returned value is the time window divided by the number of allowed calls in a
+		// time window
+		double timeBetweenCalls = (double) timeWindow / maxCalls;
+		return (long) (timeBetweenCalls * 1000);
 	}
 }
