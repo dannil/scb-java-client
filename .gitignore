@@ -1,0 +1,53 @@
+######################
+# Directories and files
+######################
+jacoco*/
+
+######################
+# Eclipse
+######################
+*.pydevproject
+.project
+.metadata
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+#.classpath
+.settings/
+.loadpath
+.buildpath
+
+######################
+# Java
+######################
+*.class
+*.jar
+*.war
+*.ear
+.classpath
+
+######################
+# Windows
+######################
+Thumbs.db
+Desktop.ini
+
+######################
+# OSX
+######################
+.DS_Store
+.svn
+._*
+.Spotlight-V100
+.Trashes
+
+######################
+# Other
+######################
+*.db
+/project.properties
