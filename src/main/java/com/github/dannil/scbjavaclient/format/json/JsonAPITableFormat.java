@@ -54,10 +54,10 @@ public class JsonAPITableFormat implements IJsonTableFormat {
 
 		JsonNode variables = this.json.get("variables");
 
-		Map<String, Collection<String>> fetchedInputs = new HashMap<String, Collection<String>>();
+		Map<String, Collection<String>> fetchedInputs = new HashMap<>();
 		for (int i = 0; i < variables.size(); i++) {
 			JsonNode entry = variables.get(i);
-			List<String> values = new ArrayList<String>();
+			List<String> values = new ArrayList<>();
 			JsonNode valuesNode = entry.get("values");
 			for (int j = 0; j < valuesNode.size(); j++) {
 				values.add(valuesNode.get(j).asText());
@@ -72,7 +72,7 @@ public class JsonAPITableFormat implements IJsonTableFormat {
 
 	@Override
 	public List<String> getCodes() {
-		List<String> codes = new ArrayList<String>(getInputs().keySet());
+		List<String> codes = new ArrayList<>(getInputs().keySet());
 		if (!codes.isEmpty()) {
 			return codes;
 		}
@@ -83,7 +83,7 @@ public class JsonAPITableFormat implements IJsonTableFormat {
 	public List<String> getValues(String code) {
 		Map<String, Collection<String>> fetchedInputs = getInputs();
 		if (fetchedInputs.containsKey(code)) {
-			return new ArrayList<String>(fetchedInputs.get(code));
+			return new ArrayList<>(fetchedInputs.get(code));
 		}
 		return Collections.emptyList();
 	}

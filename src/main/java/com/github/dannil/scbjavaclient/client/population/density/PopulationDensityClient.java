@@ -77,7 +77,7 @@ public class PopulationDensityClient extends AbstractClient {
 	 *         Density} objects
 	 */
 	public List<Density> getDensity(Collection<String> regions, Collection<String> sexes, Collection<Integer> years) {
-		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
+		Map<String, Collection<?>> mappings = new HashMap<>();
 		mappings.put("ContentsCode", Arrays.asList("BE0101U1", "BE0101U2", "BE0101U3"));
 		mappings.put("Region", regions);
 		mappings.put("Kon", sexes);

@@ -77,7 +77,7 @@ public class PopulationNameStatisticsClient extends AbstractClient {
 	 */
 	public List<NumberOfChildrenBornWithFirstName> getNumberOfChildrenBornWithFirstName(Collection<String> firstnames,
 			Collection<Integer> years) {
-		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
+		Map<String, Collection<?>> mappings = new HashMap<>();
 		mappings.put("ContentsCode", Arrays.asList("BE0001AH"));
 		mappings.put("Tilltalsnamn", firstnames);
 		mappings.put("Tid", years);

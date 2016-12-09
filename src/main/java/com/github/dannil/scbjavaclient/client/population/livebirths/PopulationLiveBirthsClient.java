@@ -80,7 +80,7 @@ public class PopulationLiveBirthsClient extends AbstractClient {
 	 */
 	public List<LiveBirth> getLiveBirths(Collection<String> regions, Collection<String> motherAges,
 			Collection<Integer> genders, Collection<Integer> years) {
-		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
+		Map<String, Collection<?>> mappings = new HashMap<>();
 		mappings.put("ContentsCode", Arrays.asList("BE0101E2"));
 		mappings.put("Region", regions);
 		mappings.put("AlderModer", motherAges);

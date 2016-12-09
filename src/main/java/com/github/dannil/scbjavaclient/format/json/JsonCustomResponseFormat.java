@@ -60,15 +60,15 @@ public final class JsonCustomResponseFormat implements IJsonResponseFormat {
 		JsonNode columns = this.json.get("columns");
 		JsonNode data = this.json.get("data");
 
-		List<String> contentCodes = new ArrayList<String>();
-		List<String> contentCodesTexts = new ArrayList<String>();
+		List<String> contentCodes = new ArrayList<>();
+		List<String> contentCodesTexts = new ArrayList<>();
 
 		List<String> codes = columns.findValuesAsText("code");
 		List<String> texts = columns.findValuesAsText("text");
 
-		List<Map<String, Object>> entries = new ArrayList<Map<String, Object>>();
+		List<Map<String, Object>> entries = new ArrayList<>();
 		for (int i = 0; i < data.size(); i++) {
-			Map<String, Object> map = new HashMap<String, Object>();
+			Map<String, Object> map = new HashMap<>();
 
 			JsonNode entry = data.get(i);
 
@@ -90,9 +90,9 @@ public final class JsonCustomResponseFormat implements IJsonResponseFormat {
 				map.put(key, keysNode.get(j).asText());
 			}
 
-			List<Map<String, String>> values = new ArrayList<Map<String, String>>(valuesNode.size());
+			List<Map<String, String>> values = new ArrayList<>(valuesNode.size());
 			for (int k = 0; k < valuesNode.size(); k++) {
-				Map<String, String> contents = new HashMap<String, String>();
+				Map<String, String> contents = new HashMap<>();
 				contents.put("value", valuesNode.get(k).asText());
 				contents.put("code", contentCodes.get(k));
 				contents.put("text", contentCodesTexts.get(k));

@@ -47,7 +47,7 @@ public final class QueryBuilder {
 	 * @return a <code>Collection</code> with the specified value removed
 	 */
 	private static List<?> filterValue(Collection<?> collection, Object value) {
-		List<Object> filteredValues = new ArrayList<Object>();
+		List<Object> filteredValues = new ArrayList<>();
 		for (Object o : collection) {
 			if (!Objects.equals(o, value)) {
 				filteredValues.add(o);
@@ -88,7 +88,7 @@ public final class QueryBuilder {
 	 */
 	public static String build(Map<String, Collection<?>> inputMap) {
 		// 1: Filter out null values
-		Map<String, List<?>> filteredMap = new HashMap<String, List<?>>();
+		Map<String, List<?>> filteredMap = new HashMap<>();
 
 		for (Entry<String, Collection<?>> entry : inputMap.entrySet()) {
 			if (entry.getValue() != null) {

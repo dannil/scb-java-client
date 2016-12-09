@@ -118,7 +118,7 @@ public class SCBClient extends AbstractContainerClient {
 	public String getRawData(String table) {
 		String json = super.get(table);
 
-		Map<String, Collection<?>> inputs = new HashMap<String, Collection<?>>();
+		Map<String, Collection<?>> inputs = new HashMap<>();
 		inputs.put("ContentsCode", new JsonAPITableFormat(json).getValues("ContentsCode"));
 
 		return getRawData(table, inputs);

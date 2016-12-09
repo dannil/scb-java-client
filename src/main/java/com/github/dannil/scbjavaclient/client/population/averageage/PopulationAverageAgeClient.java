@@ -78,7 +78,7 @@ public class PopulationAverageAgeClient extends AbstractClient {
 	 */
 	public List<AverageAge> getAverageAge(Collection<String> regions, Collection<String> genders,
 			Collection<Integer> years) {
-		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
+		Map<String, Collection<?>> mappings = new HashMap<>();
 		mappings.put("ContentsCode", Arrays.asList("BE0101G9"));
 		mappings.put("Region", regions);
 		mappings.put("Kon", genders);

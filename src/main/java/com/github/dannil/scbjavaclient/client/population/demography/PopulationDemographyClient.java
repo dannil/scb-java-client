@@ -80,7 +80,7 @@ public class PopulationDemographyClient extends AbstractClient {
 	 */
 	public List<FertilityRate> getFertilityRate(Collection<String> regions, Collection<Integer> genders,
 			Collection<Integer> years) {
-		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
+		Map<String, Collection<?>> mappings = new HashMap<>();
 		mappings.put("ContentsCode", Arrays.asList("BE0701AA"));
 		mappings.put("Region", regions);
 		mappings.put("Kon", genders);
@@ -121,7 +121,7 @@ public class PopulationDemographyClient extends AbstractClient {
 	 */
 	public List<MeanAgeFirstChild> getMeanAgeFirstChild(Collection<String> regions, Collection<Integer> genders,
 			Collection<Integer> years) {
-		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
+		Map<String, Collection<?>> mappings = new HashMap<>();
 		mappings.put("ContentsCode", Arrays.asList("BE0701AB"));
 		mappings.put("Region", regions);
 		mappings.put("Kon", genders);

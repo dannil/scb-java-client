@@ -77,7 +77,7 @@ public class EnvironmentLandAndWaterAreaClient extends AbstractClient {
 	 *         Area} objects
 	 */
 	public List<Area> getArea(Collection<String> regions, Collection<String> types, Collection<Integer> years) {
-		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
+		Map<String, Collection<?>> mappings = new HashMap<>();
 		mappings.put("ContentsCode", Arrays.asList("MI0802AA"));
 		mappings.put("Region", regions);
 		mappings.put("ArealTyp", types);

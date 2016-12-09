@@ -78,7 +78,7 @@ public abstract class AbstractRequester {
 
 		this.client = HttpClientBuilder.create().build();
 
-		this.requestProperties = new HashMap<String, String>();
+		this.requestProperties = new HashMap<>();
 		this.requestProperties.put("Accept", "application/json");
 		this.requestProperties.put("Content-Type", "application/json; charset=" + this.charset.name().toLowerCase());
 
