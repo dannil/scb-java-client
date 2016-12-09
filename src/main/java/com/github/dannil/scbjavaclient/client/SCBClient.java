@@ -22,6 +22,7 @@ import java.util.Map;
 import com.github.dannil.scbjavaclient.client.environment.EnvironmentClient;
 import com.github.dannil.scbjavaclient.client.population.PopulationClient;
 import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
+import com.github.dannil.scbjavaclient.format.json.JsonAPIConfigTableFormat;
 import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 import com.github.dannil.scbjavaclient.utility.URLUtility;
@@ -97,6 +98,20 @@ public class SCBClient extends AbstractContainerClient {
 		String json = super.get(table);
 
 		return new JsonAPITableFormat(json).getInputs();
+	}
+
+	// /**
+	// * <p>Fetches
+	// *
+	// * @param code
+	// * @return
+	// */
+	public String getConfigValue(String code) {
+		String json = super.get("?config");
+
+		return new JsonAPIConfigTableFormat(json).getValues(code).get(0);
+
+		// return new JsonConverter().toNode(json).get(code).asText();
 	}
 
 	/**
