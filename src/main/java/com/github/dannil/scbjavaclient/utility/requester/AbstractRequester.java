@@ -38,7 +38,7 @@ import com.github.dannil.scbjavaclient.utility.URLUtility;
 /**
  * <p>Class which contains the logic for sending URL requests to a specified address.</p>
  * 
- * @author Daniel Nilsson
+ * @since 0.0.2
  */
 public abstract class AbstractRequester {
 

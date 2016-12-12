@@ -24,7 +24,7 @@ import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
 /**
  * <p>Utility class for various HTTP operations.</p>
  * 
- * @author Daniel Nilsson
+ * @since 0.1.0
  */
 public final class HttpUtility {
 

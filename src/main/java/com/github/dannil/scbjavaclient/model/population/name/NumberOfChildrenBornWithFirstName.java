@@ -30,7 +30,7 @@ import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
 /**
  * <p>Model for number of children born with first name.</p>
  * 
- * @author Daniel Nilsson
+ * @since 0.1.0
  */
 public class NumberOfChildrenBornWithFirstName extends AbstractYearAndValueModel<Integer, String> {
 

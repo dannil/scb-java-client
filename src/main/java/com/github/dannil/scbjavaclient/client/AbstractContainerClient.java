@@ -22,7 +22,7 @@ import java.util.Locale;
  * <p>Abstract class which specifies how methods by container clients (a client that has
  * sub-clients) should operate.</p>
  * 
- * @author Daniel Nilsson
+ * @since 0.0.2
  */
 public abstract class AbstractContainerClient extends AbstractClient {
 

@@ -28,7 +28,7 @@ import com.github.dannil.scbjavaclient.client.population.partnership.PopulationP
 /**
  * <p>Client which handles population data fetching.</p>
  * 
- * @author Daniel Nilsson
+ * @since 0.0.2
  */
 public class PopulationClient extends AbstractContainerClient {
 

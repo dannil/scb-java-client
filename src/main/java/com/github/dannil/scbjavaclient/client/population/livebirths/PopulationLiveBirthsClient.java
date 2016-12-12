@@ -29,7 +29,7 @@ import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 /**
  * <p>Client which handles population live births data fetching.</p>
  * 
- * @author Daniel Nilsson
+ * @since 0.1.0
  */
 public class PopulationLiveBirthsClient extends AbstractClient {
 

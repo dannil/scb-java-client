@@ -30,7 +30,7 @@ import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
 /**
  * <p>Model for live births data.</p>
  * 
- * @author Daniel Nilsson
+ * @since 0.1.0
  */
 public class LiveBirth extends AbstractRegionYearAndValueModel<String, Integer, Long> {
 

@@ -30,7 +30,7 @@ import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
 /**
  * <p>Model for partnership data.</p>
  * 
- * @author Daniel Nilsson
+ * @since 0.1.0
  */
 public class Partnership extends AbstractRegionYearAndValueModel<String, Integer, Integer> {
 

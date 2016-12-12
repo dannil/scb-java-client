@@ -19,7 +19,7 @@ package com.github.dannil.scbjavaclient.exception;
  * perform any further requests. Can occur if your request to the API or the resulting
  * response from a request to the API exceeds the maximum limit.</p>
  * 
- * @author Daniel Nilsson
+ * @since 0.1.0
  */
 public class SCBClientForbiddenException extends SCBClientException {
 

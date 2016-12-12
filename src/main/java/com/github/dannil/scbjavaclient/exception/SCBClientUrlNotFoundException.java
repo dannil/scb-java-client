@@ -17,7 +17,7 @@ package com.github.dannil.scbjavaclient.exception;
 /**
  * <p>Exception for when the client couldn't find the requested URL.</p>
  * 
- * @author Daniel Nilsson
+ * @since 0.0.2
  */
 public class SCBClientUrlNotFoundException extends SCBClientException {
 

@@ -21,13 +21,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * <p>Abstract model which handles year and value.</p>
- * 
- * @author Daniel Nilsson
  *
  * @param <Y>
  *            the year
  * @param <V>
  *            the value
+ * @since 0.0.2
  */
 public abstract class AbstractYearAndValueModel<Y, V> extends AbstractValueModel<V> {
 

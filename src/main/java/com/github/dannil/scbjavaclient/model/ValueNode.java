@@ -18,11 +18,10 @@ import java.util.Objects;
 
 /**
  * <p>Class which holds all data for a specific value.</p>
- * 
- * @author Daniel Nilsson
  *
  * @param <V>
  *            the data type of the value
+ * @since 0.0.4
  */
 public class ValueNode<V> {
 

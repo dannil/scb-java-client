@@ -17,7 +17,7 @@ package com.github.dannil.scbjavaclient.exception;
 /**
  * <p>Exception for when the client was unable to parse information.</p>
  * 
- * @author Daniel Nilsson
+ * @since 0.0.2
  */
 public class SCBClientParsingException extends SCBClientException {
 

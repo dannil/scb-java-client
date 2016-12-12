@@ -23,7 +23,7 @@ import org.apache.http.client.methods.HttpGet;
 /**
  * <p>HTTP requester for GET requests.</p>
  * 
- * @author Daniel Nilsson
+ * @since 0.0.2
  */
 public class GETRequester extends AbstractRequester {
 

@@ -23,7 +23,7 @@ import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
 /**
  * <p>Class which encapsulates methods for converting JSON.</p>
  * 
- * @author Daniel Nilsson
+ * @since 0.1.0
  */
 public class JsonConverter {
 

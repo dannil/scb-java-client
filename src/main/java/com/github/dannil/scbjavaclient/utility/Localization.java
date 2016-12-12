@@ -33,7 +33,7 @@ import com.github.dannil.scbjavaclient.constants.ClientConstants;
 /**
  * <p>Class for handling localization for the clients.</p>
  * 
- * @author Daniel Nilsson
+ * @since 0.0.1
  */
 public class Localization {
 

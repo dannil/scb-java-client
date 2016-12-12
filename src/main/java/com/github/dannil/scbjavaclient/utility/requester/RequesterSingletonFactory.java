@@ -24,7 +24,7 @@ import java.util.Map;
  * recommended instead of this class; this class should only be used if you really need a
  * singleton.</p>
  * 
- * @author Daniel Nilsson
+ * @since 0.0.2
  */
 public final class RequesterSingletonFactory {
 

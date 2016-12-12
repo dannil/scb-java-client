@@ -21,7 +21,7 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 /**
  * <p>Utility class which handles URL operations.</p>
  * 
- * @author Daniel Nilsson
+ * @since 0.0.2
  */
 public final class URLUtility {
 

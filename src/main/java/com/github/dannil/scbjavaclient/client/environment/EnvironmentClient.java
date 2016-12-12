@@ -22,7 +22,7 @@ import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.Envir
 /**
  * <p>Client which handles environment data fetching.</p>
  * 
- * @author Daniel Nilsson
+ * @since 0.0.2
  */
 public class EnvironmentClient extends AbstractContainerClient {
 

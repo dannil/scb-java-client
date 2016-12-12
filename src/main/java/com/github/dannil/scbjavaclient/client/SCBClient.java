@@ -32,7 +32,7 @@ import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
 /**
  * <p>Root client for the client hierarchy.</p>
  * 
- * @author Daniel Nilsson
+ * @since 0.0.2
  */
 public class SCBClient extends AbstractContainerClient {
 

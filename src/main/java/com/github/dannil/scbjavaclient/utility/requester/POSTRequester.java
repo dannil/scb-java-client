@@ -25,7 +25,7 @@ import org.apache.http.entity.ByteArrayEntity;
 /**
  * <p>HTTP requester for POST requests.</p>
  * 
- * @author Daniel Nilsson
+ * @since 0.0.2
  */
 public class POSTRequester extends AbstractRequester {
 

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 /**
  * <p>Class which contains operations for validating and confirming JSON.</p>
  * 
- * @author Daniel Nilsson
+ * @since 0.1.0
  */
 public final class JsonValidator {
 

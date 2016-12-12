@@ -32,7 +32,7 @@ import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
 /**
  * <p>Abstract class which specifies how clients should operate.</p>
  * 
- * @author Daniel Nilsson
+ * @since 0.0.2
  */
 public abstract class AbstractClient {
 

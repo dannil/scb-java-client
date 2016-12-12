@@ -28,7 +28,7 @@ import com.fasterxml.jackson.databind.JsonNode;
  * class is immutable; to change the containing JSON, a new class needs to be
  * instantiated.</p>
  * 
- * @author Daniel Nilsson
+ * @since 0.1.0
  */
 public class JsonAPITableFormat implements IJsonTableFormat {
 

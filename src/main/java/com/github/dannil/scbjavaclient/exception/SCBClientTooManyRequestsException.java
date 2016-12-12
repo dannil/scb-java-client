@@ -17,7 +17,7 @@ package com.github.dannil.scbjavaclient.exception;
 /**
  * <p>Exception for when the client performed too many requests to the API. </p>
  * 
- * @author Daniel Nilsson
+ * @since 0.0.2
  */
 public class SCBClientTooManyRequestsException extends SCBClientException {
 

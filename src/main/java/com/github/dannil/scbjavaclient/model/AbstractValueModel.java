@@ -22,11 +22,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * <p>Abstract model which holds the values of the client response.</p>
- * 
- * @author Daniel Nilsson
  *
  * @param <V>
  *            the values
+ * @since 0.0.1
  */
 public abstract class AbstractValueModel<V> {
 

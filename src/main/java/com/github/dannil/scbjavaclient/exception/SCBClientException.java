@@ -17,7 +17,7 @@ package com.github.dannil.scbjavaclient.exception;
 /**
  * <p>Base exception for all client exceptions.</p>
  * 
- * @author Daniel Nilsson
+ * @since 0.0.2
  */
 public class SCBClientException extends RuntimeException {
 

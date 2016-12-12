@@ -30,7 +30,7 @@ import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 /**
  * <p>Client which handles population demography data fetching.</p>
  * 
- * @author Daniel Nilsson
+ * @since 0.0.2
  */
 public class PopulationDemographyClient extends AbstractClient {
 

@@ -29,7 +29,7 @@ import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 /**
  * <p>Client which handles environment land and water area data fetching.</p>
  * 
- * @author Daniel Nilsson
+ * @since 0.0.2
  */
 public class EnvironmentLandAndWaterAreaClient extends AbstractClient {
 

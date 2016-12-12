@@ -19,7 +19,7 @@ import java.util.Locale;
 /**
  * <p>Constants which hold specific values for use by the client.</p>
  * 
- * @author Daniel Nilsson
+ * @since 0.0.4
  */
 public final class ClientConstants {
 

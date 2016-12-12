@@ -20,7 +20,7 @@ import java.nio.charset.StandardCharsets;
 /**
  * <p>Factory for returning regular (non-singleton) requesters.</p>
  * 
- * @author Daniel Nilsson
+ * @since 0.0.2
  */
 public final class RequesterFactory {
 

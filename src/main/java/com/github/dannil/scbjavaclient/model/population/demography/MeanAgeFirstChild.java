@@ -30,7 +30,7 @@ import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
 /**
  * <p>Model for mean age first child data.</p>
  * 
- * @author Daniel Nilsson
+ * @since 0.0.1
  */
 public class MeanAgeFirstChild extends AbstractRegionYearAndValueModel<String, Integer, Double> {
 

@@ -21,7 +21,7 @@ import com.fasterxml.jackson.databind.JsonNode;
  * instance variable which contains the JSON which should be operated on by the
  * methods.</p>
  * 
- * @author Daniel Nilsson
+ * @since 0.1.0
  */
 public interface IJsonResponseFormat {
 

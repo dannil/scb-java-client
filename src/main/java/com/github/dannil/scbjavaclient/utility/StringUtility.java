@@ -17,7 +17,7 @@ package com.github.dannil.scbjavaclient.utility;
 /**
  * <p>Utility class for manipulation on <code>String</code> objects.</p>
  * 
- * @author Daniel Nilsson
+ * @since 0.0.4
  */
 public final class StringUtility {
 
