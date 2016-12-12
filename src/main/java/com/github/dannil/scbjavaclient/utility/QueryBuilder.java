@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Objects;
@@ -27,7 +26,7 @@ import java.util.Objects;
  * <p>Class which is responsible for constructing the query which should be sent to the
  * SCB API.</p>
  * 
- * @author Daniel Nilsson
+ * @since 0.0.1
  */
 public final class QueryBuilder {
 
@@ -47,11 +46,11 @@ public final class QueryBuilder {
 	 *            the value to remove from the <code>Collection</code>
 	 * @return a <code>Collection</code> with the specified value removed
 	 */
-	private static <T> List<T> filterValue(Collection<T> collection, T value) {
-		List<T> filteredValues = new ArrayList<>();
-		for (T entry : collection) {
-			if (!Objects.equals(entry, value)) {
-				filteredValues.add(entry);
+	private static Collection<?> filterValue(Collection<?> collection, Object value) {
+		Collection<Object> filteredValues = new ArrayList<Object>();
+		for (Object o : collection) {
+			if (!Objects.equals(o, value)) {
+				filteredValues.add(o);
 			}
 		}
 		return filteredValues;
@@ -89,7 +88,7 @@ public final class QueryBuilder {
 	 */
 	public static String build(Map<String, Collection<?>> inputMap) {
 		// 1: Filter out null values
-		Map<String, List<?>> filteredMap = new HashMap<>();
+		Map<String, Collection<?>> filteredMap = new HashMap<>();
 
 		for (Entry<String, Collection<?>> entry : inputMap.entrySet()) {
 			if (entry.getValue() != null) {
@@ -103,15 +102,14 @@ public final class QueryBuilder {
 
 		// 2: Construct the query
 		builder.append("{\"query\": [");
-		for (Iterator<Entry<String, List<?>>> entries = filteredMap.entrySet().iterator(); entries.hasNext();) {
-			Entry<String, List<?>> entry = entries.next();
+		for (Iterator<Entry<String, Collection<?>>> entries = filteredMap.entrySet().iterator(); entries.hasNext();) {
+			Entry<String, Collection<?>> entry = entries.next();
 			builder.append("{\"code\": \"");
 			builder.append(entry.getKey());
 			builder.append("\", \"selection\": {\"filter\": \"item\", \"values\": [");
-			List<?> values = entry.getValue();
-			for (int j = 0; j < values.size(); j++) {
-				builder.append("\"" + values.get(j) + "\"");
-				if (j != values.size() - 1) {
+			for (Iterator<?> values = entry.getValue().iterator(); values.hasNext();) {
+				builder.append("\"" + values.next() + "\"");
+				if (values.hasNext()) {
 					builder.append(',');
 				}
 			}
