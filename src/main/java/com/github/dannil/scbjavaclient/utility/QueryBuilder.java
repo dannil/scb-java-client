@@ -17,6 +17,7 @@ package com.github.dannil.scbjavaclient.utility;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -46,11 +47,11 @@ public final class QueryBuilder {
 	 *            the value to remove from the <code>Collection</code>
 	 * @return a <code>Collection</code> with the specified value removed
 	 */
-	private static List<?> filterValue(Collection<?> collection, Object value) {
-		List<Object> filteredValues = new ArrayList<>();
-		for (Object o : collection) {
-			if (!Objects.equals(o, value)) {
-				filteredValues.add(o);
+	private static <T> List<T> filterValue(Collection<T> collection, T value) {
+		List<T> filteredValues = new ArrayList<>();
+		for (T entry : collection) {
+			if (!Objects.equals(entry, value)) {
+				filteredValues.add(entry);
 			}
 		}
 		return filteredValues;
@@ -102,8 +103,8 @@ public final class QueryBuilder {
 
 		// 2: Construct the query
 		builder.append("{\"query\": [");
-		int i = 0;
-		for (Entry<String, List<?>> entry : filteredMap.entrySet()) {
+		for (Iterator<Entry<String, List<?>>> entries = filteredMap.entrySet().iterator(); entries.hasNext();) {
+			Entry<String, List<?>> entry = entries.next();
 			builder.append("{\"code\": \"");
 			builder.append(entry.getKey());
 			builder.append("\", \"selection\": {\"filter\": \"item\", \"values\": [");
@@ -115,13 +116,13 @@ public final class QueryBuilder {
 				}
 			}
 			builder.append("]}}");
-			if (i != filteredMap.size() - 1) {
+			if (entries.hasNext()) {
 				builder.append(',');
 			}
-			i++;
 		}
 		builder.append("],\"response\": {\"format\": \"json\"}}");
 
 		return builder.toString();
 	}
+
 }
