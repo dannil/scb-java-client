@@ -47,7 +47,7 @@ public final class QueryBuilder {
 	 * @return a <code>Collection</code> with the specified value removed
 	 */
 	private static Collection<?> filterValue(Collection<?> collection, Object value) {
-		Collection<Object> filteredValues = new ArrayList<Object>();
+		Collection<Object> filteredValues = new ArrayList<>();
 		for (Object o : collection) {
 			if (!Objects.equals(o, value)) {
 				filteredValues.add(o);
@@ -91,7 +91,7 @@ public final class QueryBuilder {
 		Map<String, Collection<?>> filteredMap = new HashMap<>();
 
 		for (Entry<String, Collection<?>> entry : inputMap.entrySet()) {
-			if (entry.getValue() != null) {
+			if (entry.getKey() != null && entry.getValue() != null) {
 				filteredMap.put(entry.getKey(), filterValue(entry.getValue(), null));
 			}
 		}
@@ -104,6 +104,7 @@ public final class QueryBuilder {
 		builder.append("{\"query\": [");
 		for (Iterator<Entry<String, Collection<?>>> entries = filteredMap.entrySet().iterator(); entries.hasNext();) {
 			Entry<String, Collection<?>> entry = entries.next();
+			System.out.println(entry);
 			builder.append("{\"code\": \"");
 			builder.append(entry.getKey());
 			builder.append("\", \"selection\": {\"filter\": \"item\", \"values\": [");

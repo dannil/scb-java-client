@@ -43,7 +43,18 @@ public class QueryBuilderTest {
 	}
 
 	@Test
-	public void filterValueRemoveNull() {
+	public void filterValueRemoveNullKey() {
+		Map<String, Collection<?>> inputMap = new HashMap<String, Collection<?>>();
+		inputMap.put(null, Arrays.asList("abc"));
+
+		String query = QueryBuilder.build(inputMap);
+
+		assertFalse(query.contains("null"));
+		assertFalse(query.contains("abc"));
+	}
+
+	@Test
+	public void filterValueRemoveNullValue() {
 		Map<String, Collection<?>> inputMap = new HashMap<String, Collection<?>>();
 		inputMap.put("Tid", Arrays.asList(2012, null));
 
