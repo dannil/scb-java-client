@@ -63,10 +63,8 @@ public class AbstractClientIT {
 		String url = "HE/HE0103/HE0103B/BefolkningAlder";
 
 		// This request is performed by a dummy Client which is set to English
-		// (as
-		// specified in the setup method.
-		// This means that if we receive a response with Swedish text, we've
-		// used the fallback url.
+		// (as specified in the setup method). This means that if we receive a response
+		// with Swedish text, we've used the fallback url.
 		String response = client.get(url);
 
 		assertTrue(response.contains("ålder"));

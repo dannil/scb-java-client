@@ -104,7 +104,6 @@ public final class QueryBuilder {
 		builder.append("{\"query\": [");
 		for (Iterator<Entry<String, Collection<?>>> entries = filteredMap.entrySet().iterator(); entries.hasNext();) {
 			Entry<String, Collection<?>> entry = entries.next();
-			System.out.println(entry);
 			builder.append("{\"code\": \"");
 			builder.append(entry.getKey());
 			builder.append("\", \"selection\": {\"filter\": \"item\", \"values\": [");
