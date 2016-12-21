@@ -31,7 +31,7 @@ public final class RequesterSingletonFactory {
 	private static Map<RequestMethod, AbstractRequester> requesters;
 
 	static {
-		requesters = new EnumMap<RequestMethod, AbstractRequester>(RequestMethod.class);
+		requesters = new EnumMap<>(RequestMethod.class);
 		requesters.put(RequestMethod.GET, GETHolder.INSTANCE);
 		requesters.put(RequestMethod.POST, POSTHolder.INSTANCE);
 	}

@@ -37,7 +37,7 @@ public abstract class AbstractValueModel<V> {
 	 */
 	protected AbstractValueModel() {
 		// To enable derived classes to use their default constructor
-		this.values = new ArrayList<ValueNode<V>>();
+		this.values = new ArrayList<>();
 	}
 
 	/**
@@ -67,7 +67,7 @@ public abstract class AbstractValueModel<V> {
 	 *            the values
 	 */
 	public void setValues(List<ValueNode<V>> values) {
-		this.values = new ArrayList<ValueNode<V>>(values);
+		this.values = new ArrayList<>(values);
 	}
 
 	/**

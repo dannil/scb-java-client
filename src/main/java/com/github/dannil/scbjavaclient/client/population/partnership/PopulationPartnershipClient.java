@@ -125,7 +125,7 @@ public class PopulationPartnershipClient extends AbstractClient {
 	 */
 	public List<PartnershipChange> getPartnershipChange(Collection<String> regions, Collection<String> maritalStatuses,
 			Collection<Integer> sexes, Collection<Integer> years) {
-		Map<String, Collection<?>> mappings = new HashMap<String, Collection<?>>();
+		Map<String, Collection<?>> mappings = new HashMap<>();
 		mappings.put("ContentsCode", Arrays.asList("BE0101XX"));
 		mappings.put("Region", regions);
 		mappings.put("Civilstand", maritalStatuses);

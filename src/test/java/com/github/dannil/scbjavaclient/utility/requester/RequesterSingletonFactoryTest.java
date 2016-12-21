@@ -22,7 +22,6 @@ import static org.junit.Assert.assertTrue;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.StandardCharsets;
-import java.util.Locale;
 
 import org.junit.Test;
 
@@ -127,8 +126,6 @@ public class RequesterSingletonFactoryTest {
 
 	@Test
 	public void requesterIsSingleton() {
-		Locale locale = new Locale("sv", "SE");
-
 		AbstractRequester abs1 = RequesterSingletonFactory.getRequester(RequestMethod.GET, StandardCharsets.UTF_8);
 		AbstractRequester abs2 = RequesterSingletonFactory.getRequester(RequestMethod.GET, StandardCharsets.US_ASCII);
 
