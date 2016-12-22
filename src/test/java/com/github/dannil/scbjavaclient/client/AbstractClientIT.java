@@ -44,7 +44,7 @@ import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 @RunWith(JUnit4.class)
 public class AbstractClientIT {
 
-	private class DummyClient extends AbstractClient {
+	private static class DummyClient extends AbstractClient {
 
 		protected DummyClient() {
 			super();
@@ -162,8 +162,7 @@ public class AbstractClientIT {
 		String execPath = System.getProperty("user.dir");
 
 		// Find files matching the wildcard pattern
-		List<File> files = findFiles(execPath
-				+ "/src/main/java/com/github/dannil/scbjavaclient/client", "*Client.java");
+		List<File> files = findFiles(execPath.concat("/src/main/java/com/github/dannil/scbjavaclient/client"), "*Client.java");
 
 		for (File file : files) {
 			// Convert path into binary name
