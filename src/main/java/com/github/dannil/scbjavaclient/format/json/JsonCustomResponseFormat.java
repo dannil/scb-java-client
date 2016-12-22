@@ -39,13 +39,20 @@ public final class JsonCustomResponseFormat implements IJsonResponseFormat {
 	private JsonNode json;
 
 	/**
+	 * Private constructor.
+	 */
+	private JsonCustomResponseFormat() {
+		this.converter = new JsonConverter();
+	}
+
+	/**
 	 * <p>Default constructor.</p>
 	 * 
 	 * @param json
-	 *            the json to format
+	 *            the JSON to format
 	 */
 	public JsonCustomResponseFormat(String json) {
-		this.converter = new JsonConverter();
+		this();
 		this.json = this.converter.toNode(json);
 		this.json = format();
 	}
