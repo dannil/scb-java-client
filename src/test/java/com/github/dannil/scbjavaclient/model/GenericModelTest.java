@@ -46,6 +46,14 @@ public class GenericModelTest {
 
 		GenericModel m = new GenericModel(response);
 		System.out.println(m);
+		System.out.println(m.getEntries("alder", "45"));
+
+		System.out.println("-------");
+
+		Map<String, String> mp = new HashMap<>();
+		mp.put("alder", "45");
+		mp.put("civilstand", "OG");
+		System.out.println(m.getEntries(mp));
 	}
 
 }
