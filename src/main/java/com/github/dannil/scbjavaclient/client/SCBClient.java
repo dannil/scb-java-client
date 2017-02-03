@@ -23,7 +23,6 @@ import com.github.dannil.scbjavaclient.client.environment.EnvironmentClient;
 import com.github.dannil.scbjavaclient.client.population.PopulationClient;
 import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
 import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
-import com.github.dannil.scbjavaclient.model.GenericModel;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 import com.github.dannil.scbjavaclient.utility.URLUtility;
 import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
@@ -139,13 +138,14 @@ public class SCBClient extends AbstractContainerClient {
 		return super.post(table, QueryBuilder.build(query));
 	}
 
-	public GenericModel getGenericData(String table) {
-		return new GenericModel(getRawData(table));
-	}
-
-	public GenericModel getGenericData(String table, Map<String, Collection<?>> query) {
-		return new GenericModel(getRawData(table, query));
-	}
+	// public GenericModel getGenericData(String table) {
+	// return new GenericModel(getRawData(table));
+	// }
+	//
+	// public GenericModel getGenericData(String table, Map<String, Collection<?>> query)
+	// {
+	// return new GenericModel(getRawData(table, query));
+	// }
 
 	/**
 	 * <p>Checks if the specified <code>Locale</code> is supported by the API. The method
