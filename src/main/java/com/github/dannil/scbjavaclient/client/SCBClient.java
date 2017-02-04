@@ -138,15 +138,6 @@ public class SCBClient extends AbstractContainerClient {
 		return super.post(table, QueryBuilder.build(query));
 	}
 
-	// public GenericModel getGenericData(String table) {
-	// return new GenericModel(getRawData(table));
-	// }
-	//
-	// public GenericModel getGenericData(String table, Map<String, Collection<?>> query)
-	// {
-	// return new GenericModel(getRawData(table, query));
-	// }
-
 	/**
 	 * <p>Checks if the specified <code>Locale</code> is supported by the API. The method
 	 * performs a request to the API using the <code>Locale</code>'s language and checks
