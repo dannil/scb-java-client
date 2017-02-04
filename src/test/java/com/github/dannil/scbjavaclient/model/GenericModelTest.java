@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Daniel Nilsson
+ * Copyright 2017 Daniel Nilsson
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
@@ -16,6 +16,7 @@ package com.github.dannil.scbjavaclient.model;
 
 import static org.junit.Assert.assertTrue;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -55,17 +56,19 @@ public class GenericModelTest {
 	public void getEntriesFiltered() {
 		GenericModel model = new GenericModel(this.json);
 
-		Map<String, String> inputs = new HashMap<>();
-		inputs.put("region", "01");
-		inputs.put("alder", "50");
+		Map<String, Collection<String>> inputs = new HashMap<>();
+		inputs.put("region", Arrays.asList("01", "0114"));
+		inputs.put("alder", Arrays.asList("50"));
 
 		Collection<Map<String, Object>> entries = model.getEntries(inputs);
+		System.out.println(entries);
 
 		for (Map<String, Object> entry : entries) {
 			String toString = entry.toString();
+			System.out.println(toString);
 
 			assertTrue(toString.contains("region"));
-			assertTrue(toString.contains("01"));
+			assertTrue(toString.contains("01") || toString.contains("0114"));
 			assertTrue(toString.contains("alder"));
 			assertTrue(toString.contains("50"));
 			assertTrue(toString.contains("civilstand"));
