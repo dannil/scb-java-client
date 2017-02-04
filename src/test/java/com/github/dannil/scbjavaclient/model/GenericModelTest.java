@@ -61,11 +61,9 @@ public class GenericModelTest {
 		inputs.put("alder", Arrays.asList("50"));
 
 		Collection<Map<String, Object>> entries = model.getEntries(inputs);
-		System.out.println(entries);
 
 		for (Map<String, Object> entry : entries) {
 			String toString = entry.toString();
-			System.out.println(toString);
 
 			assertTrue(toString.contains("region"));
 			assertTrue(toString.contains("01") || toString.contains("0114"));
