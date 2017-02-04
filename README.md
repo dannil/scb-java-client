@@ -143,8 +143,8 @@ Collection<Map<String, Object>> entries = m.getEntries();
 // Retrieve all the entries having the code "alder" with either value 45 or 50 and the code 
 // "region" with value 01.
 Map<String, Collection<String>> inputs = new HashMap<>();
-inputs.put("region", Arrays.asList("01", "0114"));
-inputs.put("alder", Arrays.asList("50"));
+inputs.put("alder", Arrays.asList("45", "50"));
+inputs.put("region", Arrays.asList("01"));
 
 entries = m.getEntries(inputs);
 
