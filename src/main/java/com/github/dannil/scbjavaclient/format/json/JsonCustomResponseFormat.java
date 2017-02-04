@@ -34,6 +34,8 @@ import com.github.dannil.scbjavaclient.utility.StringUtility;
  */
 public final class JsonCustomResponseFormat implements IJsonResponseFormat {
 
+	private List<Map<String, Object>> entries;
+
 	private JsonConverter converter;
 
 	private JsonNode json;
@@ -57,11 +59,9 @@ public final class JsonCustomResponseFormat implements IJsonResponseFormat {
 		this.json = format();
 	}
 
-	@Override
-	public JsonNode format() {
-		// Make sure the input is in the standardized non-conventional format
-		if (isFormatted()) {
-			return this.json;
+	public List<Map<String, Object>> getEntries() {
+		if (this.entries != null) {
+			return this.entries;
 		}
 
 		JsonNode columns = this.json.get("columns");
@@ -73,7 +73,7 @@ public final class JsonCustomResponseFormat implements IJsonResponseFormat {
 		List<String> codes = columns.findValuesAsText("code");
 		List<String> texts = columns.findValuesAsText("text");
 
-		List<Map<String, Object>> entries = new ArrayList<>();
+		this.entries = new ArrayList<>();
 		for (int i = 0; i < data.size(); i++) {
 			Map<String, Object> map = new HashMap<>();
 
@@ -107,9 +107,18 @@ public final class JsonCustomResponseFormat implements IJsonResponseFormat {
 			}
 			map.put("values", values);
 
-			entries.add(map);
+			this.entries.add(map);
 		}
-		return this.converter.getMapper().convertValue(entries, JsonNode.class);
+		return this.entries;
+	}
+
+	@Override
+	public JsonNode format() {
+		// Make sure the input is in the standardized non-conventional format
+		if (isFormatted()) {
+			return this.json;
+		}
+		return this.converter.getMapper().convertValue(getEntries(), JsonNode.class);
 	}
 
 	@Override
