@@ -2,6 +2,7 @@
 # Directories and files
 ######################
 jacoco*/
+target/
 
 ######################
 # Eclipse
