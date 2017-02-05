@@ -30,6 +30,9 @@ import java.util.Objects;
  */
 public final class QueryBuilder {
 
+    private static final int APPROXIMATE_OFFSET_CHARS = 44;
+    private static final int APPROXIMATE_ENTRY_CHARS = 80;
+
     /**
      * <p>Private constructor to prevent instantiation.</p>
      */
@@ -97,9 +100,7 @@ public final class QueryBuilder {
         }
 
         // Approximate a good initial capacity for the string builder
-        int approximateOffsetChars = 44;
-        int approximateEntryChars = 80;
-        int size = approximateOffsetChars + (approximateEntryChars * filteredMap.size());
+        int size = APPROXIMATE_OFFSET_CHARS + (APPROXIMATE_ENTRY_CHARS * filteredMap.size());
         StringBuilder builder = new StringBuilder(size);
 
         // 2: Construct the query

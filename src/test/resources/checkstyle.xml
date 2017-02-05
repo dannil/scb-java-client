@@ -46,12 +46,12 @@
 	<!-- See http://checkstyle.sf.net/config_header.html -->
 	<module name="Header">
 		<property name="fileExtensions" value="java" />
-		<property name="ignoreLines" value="1"/>
+		<property name="ignoreLines" value="1" />
 		<property name="header" value=" * Copyright" />
 	</module>
 
 	<module name="TreeWalker">
-	
+
 		<!-- Checks for Javadoc comments. -->
 		<!-- See http://checkstyle.sf.net/config_javadoc.html -->
 		<module name="JavadocMethod" />
@@ -118,8 +118,8 @@
 		<module name="EmptyStatement" />
 		<module name="EqualsHashCode" />
 		<module name="HiddenField">
-			<property name="ignoreConstructorParameter" value="true"/>
-			<property name="ignoreSetter" value="true"/>
+			<property name="ignoreConstructorParameter" value="true" />
+			<property name="ignoreSetter" value="true" />
 		</module>
 		<module name="IllegalInstantiation" />
 		<module name="InnerAssignment" />
