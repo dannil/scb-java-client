@@ -288,9 +288,8 @@
 							<goal>check</goal>
 						</goals>
 						<configuration>
-							<configLocation>src/main/resources/checkstyle.xml</configLocation>
+							<configLocation>src/test/resources/checkstyle.xml</configLocation>
 							<failOnViolation>true</failOnViolation>
-							<consoleOutput>true</consoleOutput>
 						</configuration>
 					</execution>
 				</executions>
