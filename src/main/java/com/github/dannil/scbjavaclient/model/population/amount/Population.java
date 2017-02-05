@@ -1,11 +1,11 @@
 /*
  * Copyright 2014 Daniel Nilsson
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under
  * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied. See the License for the specific language governing
@@ -29,7 +29,7 @@ import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
 
 /**
  * <p>Model for population data.</p>
- * 
+ *
  * @since 0.1.0
  */
 public class Population extends AbstractRegionYearAndValueModel<String, Integer, String> {
@@ -52,7 +52,7 @@ public class Population extends AbstractRegionYearAndValueModel<String, Integer,
 
     /**
      * <p>Overloaded constructor.</p>
-     * 
+     *
      * @param region
      *            the region
      * @param relationshipStatus
@@ -76,7 +76,7 @@ public class Population extends AbstractRegionYearAndValueModel<String, Integer,
 
     /**
      * <p>Getter for relationship status.</p>
-     * 
+     *
      * @return the relationship status
      */
     public String getRelationshipStatus() {
@@ -85,7 +85,7 @@ public class Population extends AbstractRegionYearAndValueModel<String, Integer,
 
     /**
      * <p>Setter for relationship status.</p>
-     * 
+     *
      * @param relationshipStatus
      *            the relationship status
      */
@@ -95,7 +95,7 @@ public class Population extends AbstractRegionYearAndValueModel<String, Integer,
 
     /**
      * <p>Getter for age.</p>
-     * 
+     *
      * @return the age
      */
     public String getAge() {
@@ -104,7 +104,7 @@ public class Population extends AbstractRegionYearAndValueModel<String, Integer,
 
     /**
      * <p>Setter for age.</p>
-     * 
+     *
      * @param age
      *            the age
      */
@@ -114,7 +114,7 @@ public class Population extends AbstractRegionYearAndValueModel<String, Integer,
 
     /**
      * <p>Getter for gender.</p>
-     * 
+     *
      * @return the gender
      */
     public Integer getGender() {
@@ -123,7 +123,7 @@ public class Population extends AbstractRegionYearAndValueModel<String, Integer,
 
     /**
      * <p>Setter for gender.</p>
-     * 
+     *
      * @param gender
      *            the gender
      */

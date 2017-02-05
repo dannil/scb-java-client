@@ -1,11 +1,11 @@
 /*
  * Copyright 2014 Daniel Nilsson
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under
  * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied. See the License for the specific language governing
@@ -21,7 +21,7 @@ import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.Envir
 
 /**
  * <p>Client which handles environment data fetching.</p>
- * 
+ *
  * @since 0.0.2
  */
 public class EnvironmentClient extends AbstractContainerClient {
@@ -40,7 +40,7 @@ public class EnvironmentClient extends AbstractContainerClient {
 
     /**
      * <p>Overloaded constructor.</p>
-     * 
+     *
      * @param locale
      *            the <code>Locale</code> for this client
      */
@@ -53,7 +53,7 @@ public class EnvironmentClient extends AbstractContainerClient {
     /**
      * <p>Retrieve the client for interacting with environment land and water area
      * data.</p>
-     * 
+     *
      * @return a client for environment land and water area data
      */
     public EnvironmentLandAndWaterAreaClient landAndWaterArea() {

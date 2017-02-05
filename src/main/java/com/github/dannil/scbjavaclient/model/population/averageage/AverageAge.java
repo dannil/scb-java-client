@@ -1,11 +1,11 @@
 /*
  * Copyright 2016 Daniel Nilsson
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under
  * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied. See the License for the specific language governing
@@ -29,7 +29,7 @@ import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
 
 /**
  * <p>Model for average age.</p>
- * 
+ *
  * @since 0.1.0
  */
 public class AverageAge extends AbstractRegionYearAndValueModel<String, Integer, Double> {
@@ -46,7 +46,7 @@ public class AverageAge extends AbstractRegionYearAndValueModel<String, Integer,
 
     /**
      * <p>Overloaded constructor.</p>
-     * 
+     *
      * @param region
      *            the region
      * @param gender
@@ -63,7 +63,7 @@ public class AverageAge extends AbstractRegionYearAndValueModel<String, Integer,
 
     /**
      * <p>Getter for gender.</p>
-     * 
+     *
      * @return the gender
      */
     public String getGender() {
@@ -72,7 +72,7 @@ public class AverageAge extends AbstractRegionYearAndValueModel<String, Integer,
 
     /**
      * <p>Setter for gender.</p>
-     * 
+     *
      * @param gender
      *            the gender
      */
@@ -122,7 +122,7 @@ public class AverageAge extends AbstractRegionYearAndValueModel<String, Integer,
     /**
      * <p>Get the available codes and their respective values for the average age data
      * from the API.</p>
-     * 
+     *
      * @return a list of the available codes and their values
      */
     public static Map<String, Collection<String>> getInputs() {

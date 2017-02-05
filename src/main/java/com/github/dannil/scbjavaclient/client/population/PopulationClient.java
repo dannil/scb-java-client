@@ -1,11 +1,11 @@
 /*
  * Copyright 2014 Daniel Nilsson
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under
  * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied. See the License for the specific language governing
@@ -27,7 +27,7 @@ import com.github.dannil.scbjavaclient.client.population.partnership.PopulationP
 
 /**
  * <p>Client which handles population data fetching.</p>
- * 
+ *
  * @since 0.0.2
  */
 public class PopulationClient extends AbstractContainerClient {
@@ -76,7 +76,7 @@ public class PopulationClient extends AbstractContainerClient {
 
     /**
      * <p>Overloaded constructor.</p>
-     * 
+     *
      * @param locale
      *            the <code>Locale</code> for this client
      */
@@ -88,7 +88,7 @@ public class PopulationClient extends AbstractContainerClient {
 
     /**
      * <p>Retrieve the client for interacting with population amount data.</p>
-     * 
+     *
      * @return a client for population amount data
      */
     public PopulationAmountClient amount() {
@@ -97,7 +97,7 @@ public class PopulationClient extends AbstractContainerClient {
 
     /**
      * <p>Retrieve the client for interacting with population average age data. </p>
-     * 
+     *
      * @return a client for population average age data
      */
     public PopulationAverageAgeClient averageAge() {
@@ -106,7 +106,7 @@ public class PopulationClient extends AbstractContainerClient {
 
     /**
      * <p>Retrieve the client for interacting with population demography data. </p>
-     * 
+     *
      * @return a client for population demography data
      */
     public PopulationDemographyClient demography() {
@@ -115,7 +115,7 @@ public class PopulationClient extends AbstractContainerClient {
 
     /**
      * <p>Retrieve the client for interacting with population density data. </p>
-     * 
+     *
      * @return a client for population density data
      */
     public PopulationDensityClient density() {
@@ -124,7 +124,7 @@ public class PopulationClient extends AbstractContainerClient {
 
     /**
      * <p>Retrieve the client for interacting with population live births data. </p>
-     * 
+     *
      * @return a client for population live births data
      */
     public PopulationLiveBirthsClient liveBirths() {
@@ -133,7 +133,7 @@ public class PopulationClient extends AbstractContainerClient {
 
     /**
      * <p>Retrieve the client for interacting with population name statistic data.</p>
-     * 
+     *
      * @return a client for population name statistic data
      */
     public PopulationNameStatisticsClient nameStatistics() {
@@ -142,7 +142,7 @@ public class PopulationClient extends AbstractContainerClient {
 
     /**
      * <p>Retrieve the client for interacting with population partnership data.</p>
-     * 
+     *
      * @return a client for population partnership data
      */
     public PopulationPartnershipClient partnership() {

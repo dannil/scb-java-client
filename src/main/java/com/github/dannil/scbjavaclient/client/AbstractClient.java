@@ -1,11 +1,11 @@
 /*
  * Copyright 2014 Daniel Nilsson
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under
  * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied. See the License for the specific language governing
@@ -31,7 +31,7 @@ import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
 
 /**
  * <p>Abstract class which specifies how clients should operate.</p>
- * 
+ *
  * @since 0.0.2
  */
 public abstract class AbstractClient {
@@ -52,7 +52,7 @@ public abstract class AbstractClient {
 
     /**
      * <p>Overloaded constructor.</p>
-     * 
+     *
      * @param locale
      *            the <code>Locale</code> for this client
      */
@@ -64,7 +64,7 @@ public abstract class AbstractClient {
 
     /**
      * <p>Retrieves the <code>Locale</code> for this client instance.</p>
-     * 
+     *
      * @return the <code>Locale</code> for this client instance
      */
     public Locale getLocale() {
@@ -75,7 +75,7 @@ public abstract class AbstractClient {
      * <p>Sets the <code>Locale</code> for this client instance. Note that doing this
      * after a call to {@link #setLocalizationLocale(Locale)} overwrites the localization
      * language with the input of this method.</p>
-     * 
+     *
      * @param locale
      *            the <code>Locale</code> for this client
      */
@@ -87,7 +87,7 @@ public abstract class AbstractClient {
     /**
      * <p>Changes the <code>Locale</code> used for the localization. Useful if the client
      * needs to be in a different language than the error messages.</p>
-     * 
+     *
      * @param locale
      *            the <code>Locale</code> for the localization
      */
@@ -98,7 +98,7 @@ public abstract class AbstractClient {
     /**
      * <p>Determines the base URL for the API based on the current
      * <code>Locale</code>.</p>
-     * 
+     *
      * @return the URL representing the entry point for the API
      */
     protected String getBaseUrl() {
@@ -107,7 +107,7 @@ public abstract class AbstractClient {
 
     /**
      * <p>Performs a GET request to the specified table.</p>
-     * 
+     *
      * @param table
      *            the table which will be sent a GET request
      * @return a string representation of the API's response
@@ -126,7 +126,7 @@ public abstract class AbstractClient {
 
     /**
      * <p>Performs a POST request to the specified table.</p>
-     * 
+     *
      * @param table
      *            the table which will be sent a POST request
      * @param query
@@ -149,7 +149,7 @@ public abstract class AbstractClient {
 
     /**
      * <p>Returns the list of the available regions for a given table.</p>
-     * 
+     *
      * @param table
      *            the table to retrieve the regions from
      * @return a list of the available regions for the given table
@@ -164,7 +164,7 @@ public abstract class AbstractClient {
 
     /**
      * <p>Returns the list of the available years for a given table.</p>
-     * 
+     *
      * @param table
      *            the table to retrieve the years from
      * @return a list of the available years for the given table

@@ -1,11 +1,11 @@
 /*
  * Copyright 2016 Daniel Nilsson
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under
  * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied. See the License for the specific language governing
@@ -32,7 +32,7 @@ import com.github.dannil.scbjavaclient.constants.ClientConstants;
 
 /**
  * <p>Class for handling localization for the clients.</p>
- * 
+ *
  * @since 0.0.1
  */
 public class Localization {
@@ -56,7 +56,7 @@ public class Localization {
 
     /**
      * <p>Overloaded constructor.</p>
-     * 
+     *
      * @param locale
      *            the <code>Locale</code> for this localization instance
      */
@@ -67,7 +67,7 @@ public class Localization {
 
     /**
      * <p>Getter for the <code>Locale</code> of this localization instance.</p>
-     * 
+     *
      * @return the <code>Locale</code> for this localization instance.
      */
     public Locale getLocale() {
@@ -76,7 +76,7 @@ public class Localization {
 
     /**
      * <p>Setter for the <code>Locale</code> for this localization instance.</p>
-     * 
+     *
      * @param locale
      *            the <code>Locale</code>
      */
@@ -88,7 +88,7 @@ public class Localization {
      * <p>Returns the translation for the specified key. If it can't find the key in the
      * current specified language's localization file, it attempts to use the fallback
      * <code>Locale</code>'s localization file as the translation source.</p>
-     * 
+     *
      * @param key
      *            the key to get the translation for
      * @return the translated string
@@ -103,7 +103,7 @@ public class Localization {
 
     /**
      * <p>Returns a formatted translation for the specified key.</p>
-     * 
+     *
      * @param key
      *            the key to get the translation for
      * @param variables
@@ -122,7 +122,7 @@ public class Localization {
     /**
      * <p>Class to handle non-ASCII encodings for {@link java.util.ResourceBundle
      * ResourceBundle}, such as UTF-8.</p>
-     * 
+     *
      * @author Daniel Nilsson
      */
     private static class ResourceBundleEncodingControl extends ResourceBundle.Control {
@@ -133,7 +133,7 @@ public class Localization {
 
         /**
          * <p>Overloaded constructor.</p>
-         * 
+         *
          * @param encoding
          *            the encoding to use (i.e. UTF-8)
          */

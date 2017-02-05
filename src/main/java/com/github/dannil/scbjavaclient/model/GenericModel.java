@@ -1,11 +1,11 @@
 /*
  * Copyright 2017 Daniel Nilsson
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under
  * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied. See the License for the specific language governing
@@ -25,7 +25,7 @@ import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 /**
  * Generic model which tries to convert a raw JSON string to classes which can be operated
  * upon.
- * 
+ *
  * @since 0.1.1
  */
 public class GenericModel {
@@ -41,7 +41,7 @@ public class GenericModel {
 
     /**
      * <p>Default constructor.</p>
-     * 
+     *
      * @param json
      *            the JSON to format
      */
@@ -52,7 +52,7 @@ public class GenericModel {
 
     /**
      * Retrieves all the entries.
-     * 
+     *
      * @return all the entries
      */
     public Collection<Map<String, Object>> getEntries() {
@@ -61,7 +61,7 @@ public class GenericModel {
 
     /**
      * Retrieves all the entries matching the input criterion.
-     * 
+     *
      * @param inputs
      *            the input criterion
      * @return the entries matching the input criterion
@@ -84,7 +84,7 @@ public class GenericModel {
 
     /**
      * Retrieves all the entries matching the input criterion.
-     * 
+     *
      * @param key
      *            the key
      * @param value

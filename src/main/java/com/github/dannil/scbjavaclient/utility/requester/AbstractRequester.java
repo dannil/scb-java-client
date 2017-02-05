@@ -1,11 +1,11 @@
 /*
  * Copyright 2016 Daniel Nilsson
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under
  * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied. See the License for the specific language governing
@@ -37,7 +37,7 @@ import com.github.dannil.scbjavaclient.utility.URLUtility;
 
 /**
  * <p>Class which contains the logic for sending URL requests to a specified address.</p>
- * 
+ *
  * @since 0.0.2
  */
 public abstract class AbstractRequester {
@@ -69,7 +69,7 @@ public abstract class AbstractRequester {
     /**
      * <p>Overloaded constructor. Loads the request properties and other data needed for
      * the requesters.</p>
-     * 
+     *
      * @param charset
      *            the charset to use when doing a request
      */
@@ -101,7 +101,7 @@ public abstract class AbstractRequester {
     /**
      * <p>Performs a request with the specified <code>HttpRequest</code> and retrieves the
      * response as a <code>HttpResponse</code>.</p>
-     * 
+     *
      * @param request
      *            the request
      * @return the response
@@ -120,7 +120,7 @@ public abstract class AbstractRequester {
 
     /**
      * <p>Extracts the response body from the <code>HttpResponse</code>.</p>
-     * 
+     *
      * @param response
      *            the response to extract the body from
      * @return the body as a string
@@ -164,7 +164,7 @@ public abstract class AbstractRequester {
 
     /**
      * <p>Returns the response from the specified URL as a string.</p>
-     * 
+     *
      * @param url
      *            the URL to get the response from
      * @return the response
@@ -173,7 +173,7 @@ public abstract class AbstractRequester {
 
     /**
      * <p>Getter for charset.</p>
-     * 
+     *
      * @return the charset
      */
     public Charset getCharset() {
@@ -183,7 +183,7 @@ public abstract class AbstractRequester {
     /**
      * <p>Setter for charset. Also updates the request properties with the new
      * charset.</p>
-     * 
+     *
      * @param charset
      *            the charset
      */

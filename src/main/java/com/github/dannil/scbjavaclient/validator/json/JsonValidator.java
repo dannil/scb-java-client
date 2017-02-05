@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 /**
  * <p>Class which contains operations for validating and confirming JSON.</p>
- * 
+ *
  * @since 0.1.0
  */
 public final class JsonValidator {
@@ -18,7 +18,7 @@ public final class JsonValidator {
 
     /**
      * <p>Checks if the JSON is a query.</p>
-     * 
+     *
      * @param node
      *            the node to check
      * @return true if the node is a query

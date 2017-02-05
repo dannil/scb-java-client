@@ -1,11 +1,11 @@
 /*
  * Copyright 2016 Daniel Nilsson
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under
  * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied. See the License for the specific language governing
@@ -29,7 +29,7 @@ import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
  * <p>Client which handles population partnership data fetching.</p>
- * 
+ *
  * @since 0.1.0
  */
 public class PopulationPartnershipClient extends AbstractClient {
@@ -43,7 +43,7 @@ public class PopulationPartnershipClient extends AbstractClient {
 
     /**
      * <p>Overloaded constructor.</p>
-     * 
+     *
      * @param locale
      *            the <code>Locale</code> for this client
      */
@@ -53,11 +53,11 @@ public class PopulationPartnershipClient extends AbstractClient {
 
     /**
      * <p>Fetch all population partnership data.</p>
-     * 
+     *
      * @return the population partnership data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.population.partnership.Partnership
      *         Partnership} objects
-     * 
+     *
      * @see #getPartnership(Collection, Collection, Collection, Collection)
      */
     public List<Partnership> getPartnership() {
@@ -66,7 +66,7 @@ public class PopulationPartnershipClient extends AbstractClient {
 
     /**
      * <p>Fetch all population partnership data which match the input constraints.</p>
-     * 
+     *
      * @param regions
      *            the regions to fetch data for
      * @param maritalStatuses
@@ -96,11 +96,11 @@ public class PopulationPartnershipClient extends AbstractClient {
 
     /**
      * <p>Fetch all population partnership change data.</p>
-     * 
+     *
      * @return the population partnership change data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.population.partnership.PartnershipChange
      *         PartnershipChange} objects
-     * 
+     *
      * @see #getPartnershipChange(Collection, Collection, Collection, Collection)
      */
     public List<PartnershipChange> getPartnershipChange() {
@@ -110,7 +110,7 @@ public class PopulationPartnershipClient extends AbstractClient {
     /**
      * <p>Fetch all population partnership change data which match the input
      * constraints.</p>
-     * 
+     *
      * @param regions
      *            the regions to fetch data for
      * @param maritalStatuses
