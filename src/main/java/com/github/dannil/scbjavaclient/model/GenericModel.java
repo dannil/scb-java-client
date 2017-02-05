@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
+import java.util.Map.Entry;
 
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 
@@ -36,7 +36,7 @@ public class GenericModel {
 	 * <p>Private constructor.</p>
 	 */
 	private GenericModel() {
-		// TODO Auto-generated constructor stub
+
 	}
 
 	/**
@@ -68,12 +68,13 @@ public class GenericModel {
 	 */
 	public Collection<Map<String, Object>> getEntries(Map<String, Collection<String>> inputs) {
 		Collection<Map<String, Object>> lst = new ArrayList<>();
-		for (Map<String, Object> mp : this.format.getEntries()) {
-			Set<String> mpKeys = mp.keySet();
-			lst.add(mp);
-			for (String key : inputs.keySet()) {
-				if (!mpKeys.contains(key) || !inputs.get(key).contains(mp.get(key))) {
-					lst.remove(mp);
+		for (Map<String, Object> entry : this.format.getEntries()) {
+			lst.add(entry);
+			for (Entry<String, Collection<String>> input : inputs.entrySet()) {
+				String key = input.getKey();
+				Collection<String> value = input.getValue();
+				if (!entry.containsKey(key) || !value.contains(entry.get(key))) {
+					lst.remove(entry);
 					break;
 				}
 			}

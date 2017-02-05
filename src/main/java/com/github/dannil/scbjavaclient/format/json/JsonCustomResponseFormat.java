@@ -59,6 +59,11 @@ public final class JsonCustomResponseFormat implements IJsonResponseFormat {
 		this.json = format();
 	}
 
+	/**
+	 * Retrieves all the entries.
+	 * 
+	 * @return all the entries
+	 */
 	public List<Map<String, Object>> getEntries() {
 		if (this.entries != null) {
 			return this.entries;
