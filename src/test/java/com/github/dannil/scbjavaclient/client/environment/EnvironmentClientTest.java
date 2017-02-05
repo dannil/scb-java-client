@@ -28,27 +28,27 @@ import com.github.dannil.scbjavaclient.utility.URLUtility;
 @RunWith(JUnit4.class)
 public class EnvironmentClientTest {
 
-	@Test
-	public void createWithLocaleConstructor() {
-		Locale locale = new Locale("sv", "SE");
-		EnvironmentClient envClient = new EnvironmentClient(locale);
+    @Test
+    public void createWithLocaleConstructor() {
+        Locale locale = new Locale("sv", "SE");
+        EnvironmentClient envClient = new EnvironmentClient(locale);
 
-		assertEquals(locale, envClient.getLocale());
-	}
+        assertEquals(locale, envClient.getLocale());
+    }
 
-	@Test
-	public void landAndWaterAreaClient() {
-		EnvironmentClient envClient = new EnvironmentClient();
+    @Test
+    public void landAndWaterAreaClient() {
+        EnvironmentClient envClient = new EnvironmentClient();
 
-		assertNotNull(envClient.landAndWaterArea());
-	}
+        assertNotNull(envClient.landAndWaterArea());
+    }
 
-	@Test
-	public void getUrl() {
-		Locale locale = new Locale("sv", "SE");
-		EnvironmentClient envClient = new EnvironmentClient(locale);
+    @Test
+    public void getUrl() {
+        Locale locale = new Locale("sv", "SE");
+        EnvironmentClient envClient = new EnvironmentClient(locale);
 
-		assertEquals(URLUtility.getRootUrl(locale) + "MI/", envClient.getUrl());
-	}
+        assertEquals(URLUtility.getRootUrl(locale) + "MI/", envClient.getUrl());
+    }
 
 }

@@ -27,34 +27,34 @@ import com.github.dannil.scbjavaclient.format.json.JsonConverter;
 
 public class JsonValidatorTest {
 
-	@Test
-	public void callPrivateConstructor()
-			throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-		Constructor<?>[] cons = JsonValidator.class.getDeclaredConstructors();
-		cons[0].setAccessible(true);
-		cons[0].newInstance();
-		cons[0].setAccessible(false);
+    @Test
+    public void callPrivateConstructor()
+            throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        Constructor<?>[] cons = JsonValidator.class.getDeclaredConstructors();
+        cons[0].setAccessible(true);
+        cons[0].newInstance();
+        cons[0].setAccessible(false);
 
-		assertFalse(cons[0].isAccessible());
-	}
+        assertFalse(cons[0].isAccessible());
+    }
 
-	@Test
-	public void isQuery() {
-		String json = "{\"query\": [{\"code\": \"ContentsCode\",\"selection\": {\"filter\": \"item\",\"values\": [\"MI0802AA\"]}}],\"response\": {\"format\": \"json\"}}";
+    @Test
+    public void isQuery() {
+        String json = "{\"query\": [{\"code\": \"ContentsCode\",\"selection\": {\"filter\": \"item\",\"values\": [\"MI0802AA\"]}}],\"response\": {\"format\": \"json\"}}";
 
-		JsonConverter converter = new JsonConverter();
-		JsonNode node = converter.toNode(json);
+        JsonConverter converter = new JsonConverter();
+        JsonNode node = converter.toNode(json);
 
-		assertTrue(JsonValidator.isQuery(node));
-	}
+        assertTrue(JsonValidator.isQuery(node));
+    }
 
-	@Test
-	public void isNotQuery() {
-		String json = "[{\"code\": \"ContentsCode\",\"selection\": {\"filter\": \"item\",\"values\": [\"MI0802AA\"]}}]";
+    @Test
+    public void isNotQuery() {
+        String json = "[{\"code\": \"ContentsCode\",\"selection\": {\"filter\": \"item\",\"values\": [\"MI0802AA\"]}}]";
 
-		JsonConverter converter = new JsonConverter();
-		JsonNode node = converter.toNode(json);
+        JsonConverter converter = new JsonConverter();
+        JsonNode node = converter.toNode(json);
 
-		assertFalse(JsonValidator.isQuery(node));
-	}
+        assertFalse(JsonValidator.isQuery(node));
+    }
 }

@@ -25,125 +25,125 @@ import java.util.Objects;
  */
 public class ValueNode<V> {
 
-	private V value;
-	private String code;
-	private String text;
+    private V value;
+    private String code;
+    private String text;
 
-	/**
-	 * <p>Default constructor.</p>
-	 */
-	public ValueNode() {
-		// Constructor to use when some of the values are missing, such as text
-	}
+    /**
+     * <p>Default constructor.</p>
+     */
+    public ValueNode() {
+        // Constructor to use when some of the values are missing, such as text
+    }
 
-	/**
-	 * <p>Overloaded constructor.</p>
-	 * 
-	 * @param value
-	 *            the value
-	 * @param code
-	 *            the code
-	 * @param text
-	 *            the text
-	 */
-	public ValueNode(V value, String code, String text) {
-		this.value = value;
-		this.code = code;
-		this.text = text;
-	}
+    /**
+     * <p>Overloaded constructor.</p>
+     * 
+     * @param value
+     *            the value
+     * @param code
+     *            the code
+     * @param text
+     *            the text
+     */
+    public ValueNode(V value, String code, String text) {
+        this.value = value;
+        this.code = code;
+        this.text = text;
+    }
 
-	/**
-	 * <p>Getter for value.</p>
-	 * 
-	 * @return the value
-	 */
-	public V getValue() {
-		return this.value;
-	}
+    /**
+     * <p>Getter for value.</p>
+     * 
+     * @return the value
+     */
+    public V getValue() {
+        return this.value;
+    }
 
-	/**
-	 * <p>Setter for value.</p>
-	 * 
-	 * @param value
-	 *            the value
-	 */
-	public void setValue(V value) {
-		this.value = value;
-	}
+    /**
+     * <p>Setter for value.</p>
+     * 
+     * @param value
+     *            the value
+     */
+    public void setValue(V value) {
+        this.value = value;
+    }
 
-	/**
-	 * <p>Getter for code.</p>
-	 * 
-	 * @return the code
-	 */
-	public String getCode() {
-		return this.code;
-	}
+    /**
+     * <p>Getter for code.</p>
+     * 
+     * @return the code
+     */
+    public String getCode() {
+        return this.code;
+    }
 
-	/**
-	 * <p>Setter for code.</p>
-	 * 
-	 * @param code
-	 *            the code
-	 */
-	public void setCode(String code) {
-		this.code = code;
-	}
+    /**
+     * <p>Setter for code.</p>
+     * 
+     * @param code
+     *            the code
+     */
+    public void setCode(String code) {
+        this.code = code;
+    }
 
-	/**
-	 * <p>Getter for text.</p>
-	 * 
-	 * @return the text
-	 */
-	public String getText() {
-		return this.text;
-	}
+    /**
+     * <p>Getter for text.</p>
+     * 
+     * @return the text
+     */
+    public String getText() {
+        return this.text;
+    }
 
-	/**
-	 * <p>Setter for text.</p>
-	 * 
-	 * @param text
-	 *            the text
-	 */
-	public void setText(String text) {
-		this.text = text;
-	}
+    /**
+     * <p>Setter for text.</p>
+     * 
+     * @param text
+     *            the text
+     */
+    public void setText(String text) {
+        this.text = text;
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(this.code, this.value, this.text);
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.code, this.value, this.text);
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (!(obj instanceof ValueNode<?>)) {
-			return false;
-		}
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof ValueNode<?>)) {
+            return false;
+        }
 
-		ValueNode<?> other = (ValueNode<?>) obj;
-		return Objects.equals(this.code, other.code) && Objects.equals(this.value, other.value)
-				&& Objects.equals(this.text, other.text);
-	}
+        ValueNode<?> other = (ValueNode<?>) obj;
+        return Objects.equals(this.code, other.code) && Objects.equals(this.value, other.value)
+                && Objects.equals(this.text, other.text);
+    }
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder(128);
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder(128);
 
-		builder.append("code=");
-		builder.append(this.code);
-		builder.append(", value=");
-		builder.append(this.value);
-		builder.append(", text=");
-		builder.append(this.text);
-		builder.append(']');
+        builder.append("code=");
+        builder.append(this.code);
+        builder.append(", value=");
+        builder.append(this.value);
+        builder.append(", text=");
+        builder.append(this.text);
+        builder.append(']');
 
-		return builder.toString();
-	}
+        return builder.toString();
+    }
 
 }

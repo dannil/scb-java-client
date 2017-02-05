@@ -35,74 +35,74 @@ import com.github.dannil.scbjavaclient.model.population.amount.Population;
 @RunWith(JUnit4.class)
 public class JsonCustomResponseFormatTest {
 
-	private String json;
+    private String json;
 
-	private JsonCustomResponseFormat format;
+    private JsonCustomResponseFormat format;
 
-	@Before
-	public void setup() {
-		this.json = "{\"columns\":[{\"code\":\"Region\",\"text\":\"region\",\"type\":\"d\"},{\"code\":\"Civilstand\",\"text\":\"marital status\",\"type\":\"d\"},{\"code\":\"Alder\",\"text\":\"age\",\"type\":\"d\"},{\"code\":\"Tid\",\"text\":\"year\",\"type\":\"t\"},{\"code\":\"BE0101N1\",\"text\":\"Population\",\"comment\":\"The tables show the conditions on December 31st for each respective year according to administrative subdivisions of January 1st of the following year\\r\\n\",\"type\":\"c\"},{\"code\":\"BE0101N2\",\"text\":\"Population growth\",\"comment\":\"Population growth is defined as the difference between the population at the beginning of the year and at the end of the year.\\r\\n\",\"type\":\"c\"}],\"comments\":[],\"data\":[{\"key\":[\"00\",\"OG\",\"45\",\"2011\"],\"values\":[\"48403\",\"1007\"]}]}";
-		this.format = new JsonCustomResponseFormat(this.json);
-	}
+    @Before
+    public void setup() {
+        this.json = "{\"columns\":[{\"code\":\"Region\",\"text\":\"region\",\"type\":\"d\"},{\"code\":\"Civilstand\",\"text\":\"marital status\",\"type\":\"d\"},{\"code\":\"Alder\",\"text\":\"age\",\"type\":\"d\"},{\"code\":\"Tid\",\"text\":\"year\",\"type\":\"t\"},{\"code\":\"BE0101N1\",\"text\":\"Population\",\"comment\":\"The tables show the conditions on December 31st for each respective year according to administrative subdivisions of January 1st of the following year\\r\\n\",\"type\":\"c\"},{\"code\":\"BE0101N2\",\"text\":\"Population growth\",\"comment\":\"Population growth is defined as the difference between the population at the beginning of the year and at the end of the year.\\r\\n\",\"type\":\"c\"}],\"comments\":[],\"data\":[{\"key\":[\"00\",\"OG\",\"45\",\"2011\"],\"values\":[\"48403\",\"1007\"]}]}";
+        this.format = new JsonCustomResponseFormat(this.json);
+    }
 
-	@Test
-	public void toListNonConventionalJson() {
-		List<Population> convertedPopulations = this.format.toListOf(Population.class);
+    @Test
+    public void toListNonConventionalJson() {
+        List<Population> convertedPopulations = this.format.toListOf(Population.class);
 
-		List<ValueNode<String>> values = new ArrayList<ValueNode<String>>();
+        List<ValueNode<String>> values = new ArrayList<ValueNode<String>>();
 
-		ValueNode<String> value1 = new ValueNode<String>("48403", "BE0101N1", "Population");
-		values.add(value1);
+        ValueNode<String> value1 = new ValueNode<String>("48403", "BE0101N1", "Population");
+        values.add(value1);
 
-		ValueNode<String> value2 = new ValueNode<String>("1007", "BE0101N2", "Population growth");
-		values.add(value2);
+        ValueNode<String> value2 = new ValueNode<String>("1007", "BE0101N2", "Population growth");
+        values.add(value2);
 
-		Population p = new Population("00", "OG", "45", null, 2011, values);
-		List<Population> staticPopulations = Arrays.asList(p);
+        Population p = new Population("00", "OG", "45", null, 2011, values);
+        List<Population> staticPopulations = Arrays.asList(p);
 
-		assertEquals(convertedPopulations, staticPopulations);
-	}
+        assertEquals(convertedPopulations, staticPopulations);
+    }
 
-	@Test(expected = SCBClientParsingException.class)
-	public void toListOfInvalidJson() {
-		JsonCustomResponseFormat format = new JsonCustomResponseFormat("dadawdawgnjhgggggggggggggggggggggggg");
-		List<Population> populations = format.toListOf(Population.class);
+    @Test(expected = SCBClientParsingException.class)
+    public void toListOfInvalidJson() {
+        JsonCustomResponseFormat format = new JsonCustomResponseFormat("dadawdawgnjhgggggggggggggggggggggggg");
+        List<Population> populations = format.toListOf(Population.class);
 
-		assertNull(populations);
-	}
+        assertNull(populations);
+    }
 
-	@Test
-	public void isFormatted() {
-		String nonConventionalJson = "{\"columns\":[{\"code\":\"Region\",\"text\":\"region\",\"type\":\"d\"},{\"code\":\"Civilstand\",\"text\":\"marital status\",\"type\":\"d\"},{\"code\":\"Alder\",\"text\":\"age\",\"type\":\"d\"},{\"code\":\"Tid\",\"text\":\"year\",\"type\":\"t\"},{\"code\":\"BE0101N1\",\"text\":\"Population\",\"comment\":\"The tables show the conditions on December 31st for each respective year according to administrative subdivisions of January 1st of the following year\\r\\n\",\"type\":\"c\"},{\"code\":\"BE0101N2\",\"text\":\"Population growth\",\"comment\":\"Population growth is defined as the difference between the population at the beginning of the year and at the end of the year.\\r\\n\",\"type\":\"c\"}],\"comments\":[],\"data\":[{\"key\":[\"00\",\"OG\",\"45\",\"2011\"],\"values\":[\"48403\",\"1007\"]}]}";
-		JsonCustomResponseFormat format = new JsonCustomResponseFormat(nonConventionalJson);
+    @Test
+    public void isFormatted() {
+        String nonConventionalJson = "{\"columns\":[{\"code\":\"Region\",\"text\":\"region\",\"type\":\"d\"},{\"code\":\"Civilstand\",\"text\":\"marital status\",\"type\":\"d\"},{\"code\":\"Alder\",\"text\":\"age\",\"type\":\"d\"},{\"code\":\"Tid\",\"text\":\"year\",\"type\":\"t\"},{\"code\":\"BE0101N1\",\"text\":\"Population\",\"comment\":\"The tables show the conditions on December 31st for each respective year according to administrative subdivisions of January 1st of the following year\\r\\n\",\"type\":\"c\"},{\"code\":\"BE0101N2\",\"text\":\"Population growth\",\"comment\":\"Population growth is defined as the difference between the population at the beginning of the year and at the end of the year.\\r\\n\",\"type\":\"c\"}],\"comments\":[],\"data\":[{\"key\":[\"00\",\"OG\",\"45\",\"2011\"],\"values\":[\"48403\",\"1007\"]}]}";
+        JsonCustomResponseFormat format = new JsonCustomResponseFormat(nonConventionalJson);
 
-		assertTrue(format.isFormatted());
-	}
+        assertTrue(format.isFormatted());
+    }
 
-	@Test
-	public void isFormattedCache() {
-		String nonConventionalJson = "{\"columns\":[{\"code\":\"Region\",\"text\":\"region\",\"type\":\"d\"},{\"code\":\"Civilstand\",\"text\":\"marital status\",\"type\":\"d\"},{\"code\":\"Alder\",\"text\":\"age\",\"type\":\"d\"},{\"code\":\"Tid\",\"text\":\"year\",\"type\":\"t\"},{\"code\":\"BE0101N1\",\"text\":\"Population\",\"comment\":\"The tables show the conditions on December 31st for each respective year according to administrative subdivisions of January 1st of the following year\\r\\n\",\"type\":\"c\"},{\"code\":\"BE0101N2\",\"text\":\"Population growth\",\"comment\":\"Population growth is defined as the difference between the population at the beginning of the year and at the end of the year.\\r\\n\",\"type\":\"c\"}],\"comments\":[],\"data\":[{\"key\":[\"00\",\"OG\",\"45\",\"2011\"],\"values\":[\"48403\",\"1007\"]}]}";
-		JsonCustomResponseFormat format = new JsonCustomResponseFormat(nonConventionalJson);
+    @Test
+    public void isFormattedCache() {
+        String nonConventionalJson = "{\"columns\":[{\"code\":\"Region\",\"text\":\"region\",\"type\":\"d\"},{\"code\":\"Civilstand\",\"text\":\"marital status\",\"type\":\"d\"},{\"code\":\"Alder\",\"text\":\"age\",\"type\":\"d\"},{\"code\":\"Tid\",\"text\":\"year\",\"type\":\"t\"},{\"code\":\"BE0101N1\",\"text\":\"Population\",\"comment\":\"The tables show the conditions on December 31st for each respective year according to administrative subdivisions of January 1st of the following year\\r\\n\",\"type\":\"c\"},{\"code\":\"BE0101N2\",\"text\":\"Population growth\",\"comment\":\"Population growth is defined as the difference between the population at the beginning of the year and at the end of the year.\\r\\n\",\"type\":\"c\"}],\"comments\":[],\"data\":[{\"key\":[\"00\",\"OG\",\"45\",\"2011\"],\"values\":[\"48403\",\"1007\"]}]}";
+        JsonCustomResponseFormat format = new JsonCustomResponseFormat(nonConventionalJson);
 
-		// A second call to format() triggers the return of the cache
-		JsonNode node = format.format();
+        // A second call to format() triggers the return of the cache
+        JsonNode node = format.format();
 
-		assertEquals(node.toString(), format.toString());
-	}
+        assertEquals(node.toString(), format.toString());
+    }
 
-	@Test
-	public void toStringEquals() {
-		String input = "{\"columns\":[{\"code\":\"Region\",\"text\":\"region\",\"type\":\"d\"},{\"code\":\"Civilstand\",\"text\":\"marital status\",\"type\":\"d\"},{\"code\":\"Alder\",\"text\":\"age\",\"type\":\"d\"},{\"code\":\"Tid\",\"text\":\"year\",\"type\":\"t\"},{\"code\":\"BE0101N1\",\"text\":\"Population\",\"comment\":\"The tables show the conditions on December 31st for each respective year according to administrative subdivisions of January 1st of the following year\\r\\n\",\"type\":\"c\"},{\"code\":\"BE0101N2\",\"text\":\"Population growth\",\"comment\":\"Population growth is defined as the difference between the population at the beginning of the year and at the end of the year.\\r\\n\",\"type\":\"c\"}],\"comments\":[],\"data\":[{\"key\":[\"00\",\"OG\",\"45\",\"2011\"],\"values\":[\"48403\",\"1007\"]}]}";
+    @Test
+    public void toStringEquals() {
+        String input = "{\"columns\":[{\"code\":\"Region\",\"text\":\"region\",\"type\":\"d\"},{\"code\":\"Civilstand\",\"text\":\"marital status\",\"type\":\"d\"},{\"code\":\"Alder\",\"text\":\"age\",\"type\":\"d\"},{\"code\":\"Tid\",\"text\":\"year\",\"type\":\"t\"},{\"code\":\"BE0101N1\",\"text\":\"Population\",\"comment\":\"The tables show the conditions on December 31st for each respective year according to administrative subdivisions of January 1st of the following year\\r\\n\",\"type\":\"c\"},{\"code\":\"BE0101N2\",\"text\":\"Population growth\",\"comment\":\"Population growth is defined as the difference between the population at the beginning of the year and at the end of the year.\\r\\n\",\"type\":\"c\"}],\"comments\":[],\"data\":[{\"key\":[\"00\",\"OG\",\"45\",\"2011\"],\"values\":[\"48403\",\"1007\"]}]}";
 
-		JsonCustomResponseFormat format = new JsonCustomResponseFormat(input);
+        JsonCustomResponseFormat format = new JsonCustomResponseFormat(input);
 
-		String expected = "[{\"region\": \"00\",\"values\":[{\"text\": \"Population\",\"value\": \"48403\",\"code\":\"BE0101N1\"},{\"text\":\"Population growth\",\"value\":\"1007\",\"code\":\"BE0101N2\"}],\"alder\":\"45\",\"tid\":\"2011\",\"civilstand\":\"OG\"}]";
-		String toString = format.toString();
+        String expected = "[{\"region\": \"00\",\"values\":[{\"text\": \"Population\",\"value\": \"48403\",\"code\":\"BE0101N1\"},{\"text\":\"Population growth\",\"value\":\"1007\",\"code\":\"BE0101N2\"}],\"alder\":\"45\",\"tid\":\"2011\",\"civilstand\":\"OG\"}]";
+        String toString = format.toString();
 
-		// Remove whitespace for easier comparison; JSON is still valid
-		expected = expected.replace(" ", "");
-		toString = expected.replace(" ", "");
+        // Remove whitespace for easier comparison; JSON is still valid
+        expected = expected.replace(" ", "");
+        toString = expected.replace(" ", "");
 
-		assertEquals(expected, toString);
-	}
+        assertEquals(expected, toString);
+    }
 }

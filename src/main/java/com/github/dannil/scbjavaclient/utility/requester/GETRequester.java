@@ -27,34 +27,34 @@ import org.apache.http.client.methods.HttpGet;
  */
 public class GETRequester extends AbstractRequester {
 
-	/**
-	 * <p>Default constructor.</p>
-	 */
-	public GETRequester() {
-		super();
-		super.requestProperties.put("Request-Method", "GET");
-	}
+    /**
+     * <p>Default constructor.</p>
+     */
+    public GETRequester() {
+        super();
+        super.requestProperties.put("Request-Method", "GET");
+    }
 
-	/**
-	 * <p>Overloaded constructor.</p>
-	 * 
-	 * @param charset
-	 *            the charset
-	 */
-	public GETRequester(Charset charset) {
-		super(charset);
-		super.requestProperties.put("Request-Method", "GET");
-	}
+    /**
+     * <p>Overloaded constructor.</p>
+     * 
+     * @param charset
+     *            the charset
+     */
+    public GETRequester(Charset charset) {
+        super(charset);
+        super.requestProperties.put("Request-Method", "GET");
+    }
 
-	@Override
-	public String getBodyAsString(String url) {
-		HttpGet request = new HttpGet(url);
-		for (Entry<String, String> entry : super.requestProperties.entrySet()) {
-			request.addHeader(entry.getKey(), entry.getValue());
-		}
+    @Override
+    public String getBodyAsString(String url) {
+        HttpGet request = new HttpGet(url);
+        for (Entry<String, String> entry : super.requestProperties.entrySet()) {
+            request.addHeader(entry.getKey(), entry.getValue());
+        }
 
-		HttpResponse response = super.getResponse(request);
-		return super.getBody(response);
-	}
+        HttpResponse response = super.getResponse(request);
+        return super.getBody(response);
+    }
 
 }

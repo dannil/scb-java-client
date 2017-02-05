@@ -34,73 +34,73 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public abstract class AbstractRegionYearAndValueModel<R, Y, V> extends AbstractYearAndValueModel<Y, V> {
 
-	@JsonProperty("region")
-	protected R region;
+    @JsonProperty("region")
+    protected R region;
 
-	/**
-	 * <p>Default constructor.</p>
-	 */
-	protected AbstractRegionYearAndValueModel() {
-		// To enable derived classes to use their default constructor
-		super();
-	}
+    /**
+     * <p>Default constructor.</p>
+     */
+    protected AbstractRegionYearAndValueModel() {
+        // To enable derived classes to use their default constructor
+        super();
+    }
 
-	/**
-	 * <p>Overloaded constructor.</p>
-	 * 
-	 * @param region
-	 *            the region
-	 * @param year
-	 *            the year
-	 * @param values
-	 *            the values
-	 */
-	protected AbstractRegionYearAndValueModel(R region, Y year, List<ValueNode<V>> values) {
-		super(year, values);
-		this.region = region;
-	}
+    /**
+     * <p>Overloaded constructor.</p>
+     * 
+     * @param region
+     *            the region
+     * @param year
+     *            the year
+     * @param values
+     *            the values
+     */
+    protected AbstractRegionYearAndValueModel(R region, Y year, List<ValueNode<V>> values) {
+        super(year, values);
+        this.region = region;
+    }
 
-	/**
-	 * <p>Getter for region.</p>
-	 * 
-	 * @return the region
-	 */
-	public R getRegion() {
-		return this.region;
-	}
+    /**
+     * <p>Getter for region.</p>
+     * 
+     * @return the region
+     */
+    public R getRegion() {
+        return this.region;
+    }
 
-	/**
-	 * <p>Setter for region.</p>
-	 * 
-	 * @param region
-	 *            the region
-	 */
-	public void setRegion(R region) {
-		this.region = region;
-	}
+    /**
+     * <p>Setter for region.</p>
+     * 
+     * @param region
+     *            the region
+     */
+    public void setRegion(R region) {
+        this.region = region;
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(super.hashCode(), this.region);
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), this.region);
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (!(obj instanceof AbstractRegionYearAndValueModel<?, ?, ?>)) {
-			return false;
-		}
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof AbstractRegionYearAndValueModel<?, ?, ?>)) {
+            return false;
+        }
 
-		AbstractRegionYearAndValueModel<?, ?, ?> other = (AbstractRegionYearAndValueModel<?, ?, ?>) obj;
-		return super.equals(other) && Objects.equals(this.region, other.region);
-	}
+        AbstractRegionYearAndValueModel<?, ?, ?> other = (AbstractRegionYearAndValueModel<?, ?, ?>) obj;
+        return super.equals(other) && Objects.equals(this.region, other.region);
+    }
 
-	@Override
-	public abstract String toString();
+    @Override
+    public abstract String toString();
 
 }

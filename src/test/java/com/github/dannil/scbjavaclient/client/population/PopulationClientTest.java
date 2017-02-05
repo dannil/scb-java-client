@@ -27,34 +27,34 @@ import com.github.dannil.scbjavaclient.utility.URLUtility;
 @RunWith(JUnit4.class)
 public class PopulationClientTest {
 
-	@Test
-	public void createWithLocaleConstructor() {
-		Locale locale = new Locale("sv", "SE");
-		PopulationClient client = new PopulationClient(locale);
+    @Test
+    public void createWithLocaleConstructor() {
+        Locale locale = new Locale("sv", "SE");
+        PopulationClient client = new PopulationClient(locale);
 
-		assertEquals(locale, client.getLocale());
-	}
+        assertEquals(locale, client.getLocale());
+    }
 
-	@Test
-	public void isSubClientsSameLocale() {
-		PopulationClient client = new PopulationClient();
-		Locale locale = client.getLocale();
+    @Test
+    public void isSubClientsSameLocale() {
+        PopulationClient client = new PopulationClient();
+        Locale locale = client.getLocale();
 
-		// Not all sub-clients needs to be here. If one of the asserts fails it
-		// automatically applies to all sub-clients since they share the same logic
-		assertEquals(client.amount().getLocale(), locale);
-		assertEquals(client.demography().getLocale(), locale);
-		assertEquals(client.density().getLocale(), locale);
-		assertEquals(client.liveBirths().getLocale(), locale);
-		assertEquals(client.partnership().getLocale(), locale);
-	}
+        // Not all sub-clients needs to be here. If one of the asserts fails it
+        // automatically applies to all sub-clients since they share the same logic
+        assertEquals(client.amount().getLocale(), locale);
+        assertEquals(client.demography().getLocale(), locale);
+        assertEquals(client.density().getLocale(), locale);
+        assertEquals(client.liveBirths().getLocale(), locale);
+        assertEquals(client.partnership().getLocale(), locale);
+    }
 
-	@Test
-	public void getUrl() {
-		Locale locale = new Locale("sv", "SE");
-		PopulationClient client = new PopulationClient(locale);
+    @Test
+    public void getUrl() {
+        Locale locale = new Locale("sv", "SE");
+        PopulationClient client = new PopulationClient(locale);
 
-		assertEquals(URLUtility.getRootUrl(locale) + "BE/", client.getUrl());
-	}
+        assertEquals(URLUtility.getRootUrl(locale) + "BE/", client.getUrl());
+    }
 
 }

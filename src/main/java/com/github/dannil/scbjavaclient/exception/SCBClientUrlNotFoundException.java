@@ -21,45 +21,45 @@ package com.github.dannil.scbjavaclient.exception;
  */
 public class SCBClientUrlNotFoundException extends SCBClientException {
 
-	private static final long serialVersionUID = 1779756868616751298L;
+    private static final long serialVersionUID = 1779756868616751298L;
 
-	/**
-	 * <p>Default constructor.</p>
-	 */
-	public SCBClientUrlNotFoundException() {
-		super();
-	}
+    /**
+     * <p>Default constructor.</p>
+     */
+    public SCBClientUrlNotFoundException() {
+        super();
+    }
 
-	/**
-	 * <p>Overloaded constructor.</p>
-	 * 
-	 * @param message
-	 *            the message
-	 */
-	public SCBClientUrlNotFoundException(String message) {
-		super(message);
-	}
+    /**
+     * <p>Overloaded constructor.</p>
+     * 
+     * @param message
+     *            the message
+     */
+    public SCBClientUrlNotFoundException(String message) {
+        super(message);
+    }
 
-	/**
-	 * <p>Overloaded constructor.</p>
-	 * 
-	 * @param message
-	 *            the message
-	 * @param cause
-	 *            the cause
-	 */
-	public SCBClientUrlNotFoundException(String message, Throwable cause) {
-		super(message, cause);
-	}
+    /**
+     * <p>Overloaded constructor.</p>
+     * 
+     * @param message
+     *            the message
+     * @param cause
+     *            the cause
+     */
+    public SCBClientUrlNotFoundException(String message, Throwable cause) {
+        super(message, cause);
+    }
 
-	/**
-	 * <p>Overloaded constructor.</p>
-	 * 
-	 * @param cause
-	 *            the cause
-	 */
-	public SCBClientUrlNotFoundException(Throwable cause) {
-		super(cause);
-	}
+    /**
+     * <p>Overloaded constructor.</p>
+     * 
+     * @param cause
+     *            the cause
+     */
+    public SCBClientUrlNotFoundException(Throwable cause) {
+        super(cause);
+    }
 
 }

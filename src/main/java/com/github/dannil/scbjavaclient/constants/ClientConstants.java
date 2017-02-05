@@ -23,21 +23,21 @@ import java.util.Locale;
  */
 public final class ClientConstants {
 
-	/**
-	 * <p>The localization locale to use if a translation lookup fails (en, US).</p>
-	 */
-	public static final Locale LOCALIZATION_FALLBACK_LOCALE = new Locale("en", "US");
+    /**
+     * <p>The localization locale to use if a translation lookup fails (en, US).</p>
+     */
+    public static final Locale LOCALIZATION_FALLBACK_LOCALE = new Locale("en", "US");
 
-	/**
-	 * <p>The prefix for the translation files.</p>
-	 */
-	public static final String LOCALIZATION_TRANSLATION_FILE_PREFIX = "languages/language";
+    /**
+     * <p>The prefix for the translation files.</p>
+     */
+    public static final String LOCALIZATION_TRANSLATION_FILE_PREFIX = "languages/language";
 
-	/**
-	 * <p>Private constructor to prevent instantiation.</p>
-	 */
-	private ClientConstants() {
+    /**
+     * <p>Private constructor to prevent instantiation.</p>
+     */
+    private ClientConstants() {
 
-	}
+    }
 
 }

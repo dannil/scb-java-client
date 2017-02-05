@@ -23,44 +23,44 @@ package com.github.dannil.scbjavaclient.exception;
  */
 public class SCBClientForbiddenException extends SCBClientException {
 
-	private static final long serialVersionUID = 2445143839207212787L;
+    private static final long serialVersionUID = 2445143839207212787L;
 
-	/**
-	 * <p>Default constructor.</p>
-	 */
-	public SCBClientForbiddenException() {
-		super();
-	}
+    /**
+     * <p>Default constructor.</p>
+     */
+    public SCBClientForbiddenException() {
+        super();
+    }
 
-	/**
-	 * <p>Overloaded constructor.</p>
-	 * 
-	 * @param message
-	 *            the message
-	 */
-	public SCBClientForbiddenException(String message) {
-		super(message);
-	}
+    /**
+     * <p>Overloaded constructor.</p>
+     * 
+     * @param message
+     *            the message
+     */
+    public SCBClientForbiddenException(String message) {
+        super(message);
+    }
 
-	/**
-	 * <p>Overloaded constructor.</p>
-	 * 
-	 * @param message
-	 *            the message
-	 * @param cause
-	 *            the cause
-	 */
-	public SCBClientForbiddenException(String message, Throwable cause) {
-		super(message, cause);
-	}
+    /**
+     * <p>Overloaded constructor.</p>
+     * 
+     * @param message
+     *            the message
+     * @param cause
+     *            the cause
+     */
+    public SCBClientForbiddenException(String message, Throwable cause) {
+        super(message, cause);
+    }
 
-	/**
-	 * <p>Overloaded constructor.</p>
-	 * 
-	 * @param cause
-	 *            the cause
-	 */
-	public SCBClientForbiddenException(Throwable cause) {
-		super(cause);
-	}
+    /**
+     * <p>Overloaded constructor.</p>
+     * 
+     * @param cause
+     *            the cause
+     */
+    public SCBClientForbiddenException(Throwable cause) {
+        super(cause);
+    }
 }

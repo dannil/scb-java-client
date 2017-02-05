@@ -24,43 +24,43 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class AbstractRegionYearAndValueModelTest {
 
-	// Dummy class which doesn't override the equals
-	// method. This enables us to thoroughly test the equals method.
-	public class DummyClass extends AbstractRegionYearAndValueModel<String, Integer, Long> {
+    // Dummy class which doesn't override the equals
+    // method. This enables us to thoroughly test the equals method.
+    public class DummyClass extends AbstractRegionYearAndValueModel<String, Integer, Long> {
 
-		public DummyClass() {
-			super();
-		}
+        public DummyClass() {
+            super();
+        }
 
-		@Override
-		public String toString() {
-			return "Dummy";
-		}
+        @Override
+        public String toString() {
+            return "Dummy";
+        }
 
-	}
+    }
 
-	// Tests the superclass
-	@Test
-	public void superEqualsItself() {
-		AbstractRegionYearAndValueModel<String, Integer, Long> dummy = new DummyClass();
+    // Tests the superclass
+    @Test
+    public void superEqualsItself() {
+        AbstractRegionYearAndValueModel<String, Integer, Long> dummy = new DummyClass();
 
-		assertEquals(dummy, dummy);
-	}
+        assertEquals(dummy, dummy);
+    }
 
-	// Tests the superclass
-	@Test
-	public void superNotEqualsNull() {
-		AbstractRegionYearAndValueModel<String, Integer, Long> dummy = new DummyClass();
+    // Tests the superclass
+    @Test
+    public void superNotEqualsNull() {
+        AbstractRegionYearAndValueModel<String, Integer, Long> dummy = new DummyClass();
 
-		assertNotEquals(dummy, null);
-	}
+        assertNotEquals(dummy, null);
+    }
 
-	// Tests the superclass
-	@Test
-	public void superNotEqualsIncompatibleObject() {
-		AbstractRegionYearAndValueModel<String, Integer, Long> dummy = new DummyClass();
+    // Tests the superclass
+    @Test
+    public void superNotEqualsIncompatibleObject() {
+        AbstractRegionYearAndValueModel<String, Integer, Long> dummy = new DummyClass();
 
-		assertNotEquals(dummy, new Object());
-	}
+        assertNotEquals(dummy, new Object());
+    }
 
 }

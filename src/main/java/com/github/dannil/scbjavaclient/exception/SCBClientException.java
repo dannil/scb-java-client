@@ -21,45 +21,45 @@ package com.github.dannil.scbjavaclient.exception;
  */
 public class SCBClientException extends RuntimeException {
 
-	private static final long serialVersionUID = -2428718528932238427L;
+    private static final long serialVersionUID = -2428718528932238427L;
 
-	/**
-	 * <p>Default constructor.</p>
-	 */
-	public SCBClientException() {
-		super();
-	}
+    /**
+     * <p>Default constructor.</p>
+     */
+    public SCBClientException() {
+        super();
+    }
 
-	/**
-	 * <p>Overloaded constructor.</p>
-	 * 
-	 * @param message
-	 *            the message
-	 */
-	public SCBClientException(String message) {
-		super(message);
-	}
+    /**
+     * <p>Overloaded constructor.</p>
+     * 
+     * @param message
+     *            the message
+     */
+    public SCBClientException(String message) {
+        super(message);
+    }
 
-	/**
-	 * <p>Overloaded constructor.</p>
-	 * 
-	 * @param message
-	 *            the message
-	 * @param cause
-	 *            the cause
-	 */
-	public SCBClientException(String message, Throwable cause) {
-		super(message, cause);
-	}
+    /**
+     * <p>Overloaded constructor.</p>
+     * 
+     * @param message
+     *            the message
+     * @param cause
+     *            the cause
+     */
+    public SCBClientException(String message, Throwable cause) {
+        super(message, cause);
+    }
 
-	/**
-	 * <p>Overloaded constructor.</p>
-	 * 
-	 * @param cause
-	 *            the cause
-	 */
-	public SCBClientException(Throwable cause) {
-		super(cause);
-	}
+    /**
+     * <p>Overloaded constructor.</p>
+     * 
+     * @param cause
+     *            the cause
+     */
+    public SCBClientException(Throwable cause) {
+        super(cause);
+    }
 
 }

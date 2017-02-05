@@ -34,103 +34,103 @@ import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
  */
 public class Area extends AbstractRegionYearAndValueModel<String, Integer, Double> {
 
-	@JsonProperty("arealTyp")
-	private String type;
+    @JsonProperty("arealTyp")
+    private String type;
 
-	/**
-	 * <p>Default constructor.</p>
-	 */
-	public Area() {
-		super();
-	}
+    /**
+     * <p>Default constructor.</p>
+     */
+    public Area() {
+        super();
+    }
 
-	/**
-	 * <p>Overloaded constructor.</p>
-	 * 
-	 * @param region
-	 *            the region
-	 * @param type
-	 *            the type
-	 * @param year
-	 *            the year
-	 * @param values
-	 *            the values
-	 */
-	public Area(String region, String type, Integer year, List<ValueNode<Double>> values) {
-		super(region, year, values);
-		this.type = type;
-	}
+    /**
+     * <p>Overloaded constructor.</p>
+     * 
+     * @param region
+     *            the region
+     * @param type
+     *            the type
+     * @param year
+     *            the year
+     * @param values
+     *            the values
+     */
+    public Area(String region, String type, Integer year, List<ValueNode<Double>> values) {
+        super(region, year, values);
+        this.type = type;
+    }
 
-	/**
-	 * <p>Getter for type.</p>
-	 * 
-	 * @return the type
-	 */
-	public String getType() {
-		return this.type;
-	}
+    /**
+     * <p>Getter for type.</p>
+     * 
+     * @return the type
+     */
+    public String getType() {
+        return this.type;
+    }
 
-	/**
-	 * <p>Setter for type.</p>
-	 * 
-	 * @param type
-	 *            the type
-	 */
-	public void setType(String type) {
-		this.type = type;
-	}
+    /**
+     * <p>Setter for type.</p>
+     * 
+     * @param type
+     *            the type
+     */
+    public void setType(String type) {
+        this.type = type;
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(super.hashCode(), this.type);
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), this.type);
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (!(obj instanceof Area)) {
-			return false;
-		}
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof Area)) {
+            return false;
+        }
 
-		Area other = (Area) obj;
-		return super.equals(obj) && Objects.equals(this.type, other.type);
-	}
+        Area other = (Area) obj;
+        return super.equals(obj) && Objects.equals(this.type, other.type);
+    }
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder(128);
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder(128);
 
-		builder.append(this.getClass().getSimpleName());
-		builder.append(" [type=");
-		builder.append(this.type);
-		builder.append(", region=");
-		builder.append(super.region);
-		builder.append(", year=");
-		builder.append(super.year);
-		builder.append(", values=");
-		builder.append(super.values);
-		builder.append(']');
+        builder.append(this.getClass().getSimpleName());
+        builder.append(" [type=");
+        builder.append(this.type);
+        builder.append(", region=");
+        builder.append(super.region);
+        builder.append(", year=");
+        builder.append(super.year);
+        builder.append(", values=");
+        builder.append(super.values);
+        builder.append(']');
 
-		return builder.toString();
-	}
+        return builder.toString();
+    }
 
-	/**
-	 * <p>Get the available codes and their respective values for the area data from the
-	 * API.</p>
-	 *
-	 * @return a list of the available codes and their values
-	 */
-	public static Map<String, Collection<String>> getInputs() {
-		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
-		String response = get.getBodyAsStringFromTable("MI/MI0802/Areal2012");
+    /**
+     * <p>Get the available codes and their respective values for the area data from the
+     * API.</p>
+     *
+     * @return a list of the available codes and their values
+     */
+    public static Map<String, Collection<String>> getInputs() {
+        AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
+        String response = get.getBodyAsStringFromTable("MI/MI0802/Areal2012");
 
-		JsonAPITableFormat format = new JsonAPITableFormat(response);
-		return format.getInputs();
-	}
+        JsonAPITableFormat format = new JsonAPITableFormat(response);
+        return format.getInputs();
+    }
 
 }

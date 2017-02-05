@@ -34,103 +34,103 @@ import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
  */
 public class FertilityRate extends AbstractRegionYearAndValueModel<String, Integer, Double> {
 
-	@JsonProperty("kon")
-	private Integer gender;
+    @JsonProperty("kon")
+    private Integer gender;
 
-	/**
-	 * <p>Default constructor.</p>
-	 */
-	public FertilityRate() {
-		super();
-	}
+    /**
+     * <p>Default constructor.</p>
+     */
+    public FertilityRate() {
+        super();
+    }
 
-	/**
-	 * <p>Overloaded constructor.</p>
-	 * 
-	 * @param region
-	 *            the region
-	 * @param gender
-	 *            the gender
-	 * @param year
-	 *            the year
-	 * @param values
-	 *            the values
-	 */
-	public FertilityRate(String region, Integer gender, Integer year, List<ValueNode<Double>> values) {
-		super(region, year, values);
-		this.gender = gender;
-	}
+    /**
+     * <p>Overloaded constructor.</p>
+     * 
+     * @param region
+     *            the region
+     * @param gender
+     *            the gender
+     * @param year
+     *            the year
+     * @param values
+     *            the values
+     */
+    public FertilityRate(String region, Integer gender, Integer year, List<ValueNode<Double>> values) {
+        super(region, year, values);
+        this.gender = gender;
+    }
 
-	/**
-	 * <p>Getter for gender.</p>
-	 * 
-	 * @return the gender
-	 */
-	public Integer getGender() {
-		return this.gender;
-	}
+    /**
+     * <p>Getter for gender.</p>
+     * 
+     * @return the gender
+     */
+    public Integer getGender() {
+        return this.gender;
+    }
 
-	/**
-	 * <p>Setter for gender.</p>
-	 * 
-	 * @param gender
-	 *            the gender
-	 */
-	public void setGender(Integer gender) {
-		this.gender = gender;
-	}
+    /**
+     * <p>Setter for gender.</p>
+     * 
+     * @param gender
+     *            the gender
+     */
+    public void setGender(Integer gender) {
+        this.gender = gender;
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(super.hashCode(), this.gender);
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), this.gender);
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (!(obj instanceof FertilityRate)) {
-			return false;
-		}
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof FertilityRate)) {
+            return false;
+        }
 
-		FertilityRate other = (FertilityRate) obj;
-		return super.equals(other) && Objects.equals(this.gender, other.gender);
-	}
+        FertilityRate other = (FertilityRate) obj;
+        return super.equals(other) && Objects.equals(this.gender, other.gender);
+    }
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder(128);
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder(128);
 
-		builder.append(this.getClass().getSimpleName());
-		builder.append(" [gender=");
-		builder.append(this.gender);
-		builder.append(", region=");
-		builder.append(super.region);
-		builder.append(", year=");
-		builder.append(super.year);
-		builder.append(", values=");
-		builder.append(super.values);
-		builder.append(']');
+        builder.append(this.getClass().getSimpleName());
+        builder.append(" [gender=");
+        builder.append(this.gender);
+        builder.append(", region=");
+        builder.append(super.region);
+        builder.append(", year=");
+        builder.append(super.year);
+        builder.append(", values=");
+        builder.append(super.values);
+        builder.append(']');
 
-		return builder.toString();
-	}
+        return builder.toString();
+    }
 
-	/**
-	 * <p>Get the available codes and their respective values for the fertility rate data
-	 * from the API.</p>
-	 *
-	 * @return a list of the available codes and their values
-	 */
-	public static Map<String, Collection<String>> getInputs() {
-		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
-		String response = get.getBodyAsStringFromTable("BE/BE0701/FruktsamhetSumNy");
+    /**
+     * <p>Get the available codes and their respective values for the fertility rate data
+     * from the API.</p>
+     *
+     * @return a list of the available codes and their values
+     */
+    public static Map<String, Collection<String>> getInputs() {
+        AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
+        String response = get.getBodyAsStringFromTable("BE/BE0701/FruktsamhetSumNy");
 
-		JsonAPITableFormat format = new JsonAPITableFormat(response);
-		return format.getInputs();
-	}
+        JsonAPITableFormat format = new JsonAPITableFormat(response);
+        return format.getInputs();
+    }
 
 }

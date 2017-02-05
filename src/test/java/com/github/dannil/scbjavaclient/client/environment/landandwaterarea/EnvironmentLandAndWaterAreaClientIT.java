@@ -30,25 +30,25 @@ import com.github.dannil.scbjavaclient.test.RemoteIntegrationTestSuite;
 @RunWith(JUnit4.class)
 public class EnvironmentLandAndWaterAreaClientIT extends RemoteIntegrationTestSuite {
 
-	private EnvironmentLandAndWaterAreaClient environmentLandAndWaterAreaClient;
+    private EnvironmentLandAndWaterAreaClient environmentLandAndWaterAreaClient;
 
-	@Before
-	public void setup() {
-		this.environmentLandAndWaterAreaClient = new SCBClient().environment().landAndWaterArea();
-	}
+    @Before
+    public void setup() {
+        this.environmentLandAndWaterAreaClient = new SCBClient().environment().landAndWaterArea();
+    }
 
-	@Test
-	public void getArea() {
-		assertNotEquals(0, this.environmentLandAndWaterAreaClient.getArea().size());
-	}
+    @Test
+    public void getArea() {
+        assertNotEquals(0, this.environmentLandAndWaterAreaClient.getArea().size());
+    }
 
-	@Test
-	public void getAreaWithParameters() {
-		List<String> regions = Arrays.asList("1263");
-		List<String> types = Arrays.asList("01", "02", "03", "04");
-		List<Integer> years = Arrays.asList(2012);
+    @Test
+    public void getAreaWithParameters() {
+        List<String> regions = Arrays.asList("1263");
+        List<String> types = Arrays.asList("01", "02", "03", "04");
+        List<Integer> years = Arrays.asList(2012);
 
-		assertNotEquals(0, this.environmentLandAndWaterAreaClient.getArea(regions, types, years).size());
-	}
+        assertNotEquals(0, this.environmentLandAndWaterAreaClient.getArea(regions, types, years).size());
+    }
 
 }

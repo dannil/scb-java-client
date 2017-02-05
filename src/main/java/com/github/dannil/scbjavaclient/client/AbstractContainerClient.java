@@ -26,39 +26,39 @@ import java.util.Locale;
  */
 public abstract class AbstractContainerClient extends AbstractClient {
 
-	protected Collection<AbstractClient> clients;
+    protected Collection<AbstractClient> clients;
 
-	/**
-	 * <p>Default constructor.</p>
-	 */
-	protected AbstractContainerClient() {
-		super();
+    /**
+     * <p>Default constructor.</p>
+     */
+    protected AbstractContainerClient() {
+        super();
 
-		this.clients = new ArrayList<>();
-	}
+        this.clients = new ArrayList<>();
+    }
 
-	/**
-	 * <p>Overloaded constructor.</p>
-	 * 
-	 * @param locale
-	 *            the <code>Locale</code> for this client
-	 */
-	protected AbstractContainerClient(Locale locale) {
-		this();
+    /**
+     * <p>Overloaded constructor.</p>
+     * 
+     * @param locale
+     *            the <code>Locale</code> for this client
+     */
+    protected AbstractContainerClient(Locale locale) {
+        this();
 
-		this.setLocale(locale);
-	}
+        this.setLocale(locale);
+    }
 
-	/**
-	 * <p>Set the <code>Locale</code> for all sub-clients.</p>
-	 */
-	@Override
-	public final void setLocale(Locale locale) {
-		super.setLocale(locale);
+    /**
+     * <p>Set the <code>Locale</code> for all sub-clients.</p>
+     */
+    @Override
+    public final void setLocale(Locale locale) {
+        super.setLocale(locale);
 
-		for (AbstractClient client : this.clients) {
-			client.setLocale(super.locale);
-		}
-	}
+        for (AbstractClient client : this.clients) {
+            client.setLocale(super.locale);
+        }
+    }
 
 }

@@ -32,126 +32,126 @@ import com.github.dannil.scbjavaclient.client.population.partnership.PopulationP
  */
 public class PopulationClient extends AbstractContainerClient {
 
-	private PopulationAmountClient populationAmountClient;
+    private PopulationAmountClient populationAmountClient;
 
-	private PopulationAverageAgeClient populationAverageAgeClient;
+    private PopulationAverageAgeClient populationAverageAgeClient;
 
-	private PopulationDemographyClient populationDemographyClient;
+    private PopulationDemographyClient populationDemographyClient;
 
-	private PopulationDensityClient populationDensityClient;
+    private PopulationDensityClient populationDensityClient;
 
-	private PopulationLiveBirthsClient populationLiveBirthsClient;
+    private PopulationLiveBirthsClient populationLiveBirthsClient;
 
-	private PopulationNameStatisticsClient populationNameStatisticsClient;
+    private PopulationNameStatisticsClient populationNameStatisticsClient;
 
-	private PopulationPartnershipClient populationPartnershipClient;
+    private PopulationPartnershipClient populationPartnershipClient;
 
-	/**
-	 * <p>Default constructor. Initializes values and creates sub-clients.</p>
-	 */
-	public PopulationClient() {
-		super();
+    /**
+     * <p>Default constructor. Initializes values and creates sub-clients.</p>
+     */
+    public PopulationClient() {
+        super();
 
-		this.populationAmountClient = new PopulationAmountClient();
-		this.clients.add(this.populationAmountClient);
+        this.populationAmountClient = new PopulationAmountClient();
+        this.clients.add(this.populationAmountClient);
 
-		this.populationAverageAgeClient = new PopulationAverageAgeClient();
-		this.clients.add(this.populationAverageAgeClient);
+        this.populationAverageAgeClient = new PopulationAverageAgeClient();
+        this.clients.add(this.populationAverageAgeClient);
 
-		this.populationDemographyClient = new PopulationDemographyClient();
-		this.clients.add(this.populationDemographyClient);
+        this.populationDemographyClient = new PopulationDemographyClient();
+        this.clients.add(this.populationDemographyClient);
 
-		this.populationDensityClient = new PopulationDensityClient();
-		this.clients.add(this.populationDensityClient);
+        this.populationDensityClient = new PopulationDensityClient();
+        this.clients.add(this.populationDensityClient);
 
-		this.populationLiveBirthsClient = new PopulationLiveBirthsClient();
-		this.clients.add(populationLiveBirthsClient);
+        this.populationLiveBirthsClient = new PopulationLiveBirthsClient();
+        this.clients.add(populationLiveBirthsClient);
 
-		this.populationNameStatisticsClient = new PopulationNameStatisticsClient();
-		this.clients.add(this.populationNameStatisticsClient);
+        this.populationNameStatisticsClient = new PopulationNameStatisticsClient();
+        this.clients.add(this.populationNameStatisticsClient);
 
-		this.populationPartnershipClient = new PopulationPartnershipClient();
-		this.clients.add(this.populationPartnershipClient);
-	}
+        this.populationPartnershipClient = new PopulationPartnershipClient();
+        this.clients.add(this.populationPartnershipClient);
+    }
 
-	/**
-	 * <p>Overloaded constructor.</p>
-	 * 
-	 * @param locale
-	 *            the <code>Locale</code> for this client
-	 */
-	public PopulationClient(Locale locale) {
-		this();
+    /**
+     * <p>Overloaded constructor.</p>
+     * 
+     * @param locale
+     *            the <code>Locale</code> for this client
+     */
+    public PopulationClient(Locale locale) {
+        this();
 
-		this.setLocale(locale);
-	}
+        this.setLocale(locale);
+    }
 
-	/**
-	 * <p>Retrieve the client for interacting with population amount data.</p>
-	 * 
-	 * @return a client for population amount data
-	 */
-	public PopulationAmountClient amount() {
-		return this.populationAmountClient;
-	}
+    /**
+     * <p>Retrieve the client for interacting with population amount data.</p>
+     * 
+     * @return a client for population amount data
+     */
+    public PopulationAmountClient amount() {
+        return this.populationAmountClient;
+    }
 
-	/**
-	 * <p>Retrieve the client for interacting with population average age data. </p>
-	 * 
-	 * @return a client for population average age data
-	 */
-	public PopulationAverageAgeClient averageAge() {
-		return this.populationAverageAgeClient;
-	}
+    /**
+     * <p>Retrieve the client for interacting with population average age data. </p>
+     * 
+     * @return a client for population average age data
+     */
+    public PopulationAverageAgeClient averageAge() {
+        return this.populationAverageAgeClient;
+    }
 
-	/**
-	 * <p>Retrieve the client for interacting with population demography data. </p>
-	 * 
-	 * @return a client for population demography data
-	 */
-	public PopulationDemographyClient demography() {
-		return this.populationDemographyClient;
-	}
+    /**
+     * <p>Retrieve the client for interacting with population demography data. </p>
+     * 
+     * @return a client for population demography data
+     */
+    public PopulationDemographyClient demography() {
+        return this.populationDemographyClient;
+    }
 
-	/**
-	 * <p>Retrieve the client for interacting with population density data. </p>
-	 * 
-	 * @return a client for population density data
-	 */
-	public PopulationDensityClient density() {
-		return this.populationDensityClient;
-	}
+    /**
+     * <p>Retrieve the client for interacting with population density data. </p>
+     * 
+     * @return a client for population density data
+     */
+    public PopulationDensityClient density() {
+        return this.populationDensityClient;
+    }
 
-	/**
-	 * <p>Retrieve the client for interacting with population live births data. </p>
-	 * 
-	 * @return a client for population live births data
-	 */
-	public PopulationLiveBirthsClient liveBirths() {
-		return this.populationLiveBirthsClient;
-	}
+    /**
+     * <p>Retrieve the client for interacting with population live births data. </p>
+     * 
+     * @return a client for population live births data
+     */
+    public PopulationLiveBirthsClient liveBirths() {
+        return this.populationLiveBirthsClient;
+    }
 
-	/**
-	 * <p>Retrieve the client for interacting with population name statistic data.</p>
-	 * 
-	 * @return a client for population name statistic data
-	 */
-	public PopulationNameStatisticsClient nameStatistics() {
-		return this.populationNameStatisticsClient;
-	}
+    /**
+     * <p>Retrieve the client for interacting with population name statistic data.</p>
+     * 
+     * @return a client for population name statistic data
+     */
+    public PopulationNameStatisticsClient nameStatistics() {
+        return this.populationNameStatisticsClient;
+    }
 
-	/**
-	 * <p>Retrieve the client for interacting with population partnership data.</p>
-	 * 
-	 * @return a client for population partnership data
-	 */
-	public PopulationPartnershipClient partnership() {
-		return this.populationPartnershipClient;
-	}
+    /**
+     * <p>Retrieve the client for interacting with population partnership data.</p>
+     * 
+     * @return a client for population partnership data
+     */
+    public PopulationPartnershipClient partnership() {
+        return this.populationPartnershipClient;
+    }
 
-	@Override
-	public String getUrl() {
-		return super.getUrl() + "BE/";
-	}
+    @Override
+    public String getUrl() {
+        return super.getUrl() + "BE/";
+    }
 
 }

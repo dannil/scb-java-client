@@ -24,49 +24,49 @@ import java.nio.charset.StandardCharsets;
  */
 public final class RequesterFactory {
 
-	/**
-	 * <p>Private constructor to prevent instantiation.</p>
-	 */
-	private RequesterFactory() {
+    /**
+     * <p>Private constructor to prevent instantiation.</p>
+     */
+    private RequesterFactory() {
 
-	}
+    }
 
-	/**
-	 * <p>Returns a regular (non-singleton) requester which matches the method. All
-	 * requests are routed to match the
-	 * {@link com.github.dannil.scbjavaclient.constants.APIConstants#FALLBACK_LOCALE
-	 * FALLBACK_LOCALE} and responses are read as UTF-8 character encoding.</p>
-	 * 
-	 * @param method
-	 *            the method (i.e. GET or POST)
-	 * @return a regular (non-singleton) requester which matches the method.
-	 */
-	public static AbstractRequester getRequester(RequestMethod method) {
-		return getRequester(method, StandardCharsets.UTF_8);
-	}
+    /**
+     * <p>Returns a regular (non-singleton) requester which matches the method. All
+     * requests are routed to match the
+     * {@link com.github.dannil.scbjavaclient.constants.APIConstants#FALLBACK_LOCALE
+     * FALLBACK_LOCALE} and responses are read as UTF-8 character encoding.</p>
+     * 
+     * @param method
+     *            the method (i.e. GET or POST)
+     * @return a regular (non-singleton) requester which matches the method.
+     */
+    public static AbstractRequester getRequester(RequestMethod method) {
+        return getRequester(method, StandardCharsets.UTF_8);
+    }
 
-	/**
-	 * <p>Returns a regular (non-singleton) requester which matches the method. All
-	 * requests are routed to match the specified <code>Locale</code> and responses are
-	 * read as to match the character encoding.</p>
-	 * 
-	 * @param method
-	 *            the method (i.e. GET or POST)
-	 * @param charset
-	 *            the character encoding to use
-	 * @return a regular (non-singleton) requester which matches the method.
-	 */
-	public static AbstractRequester getRequester(RequestMethod method, Charset charset) {
-		switch (method) {
-			case GET:
-				return new GETRequester(charset);
+    /**
+     * <p>Returns a regular (non-singleton) requester which matches the method. All
+     * requests are routed to match the specified <code>Locale</code> and responses are
+     * read as to match the character encoding.</p>
+     * 
+     * @param method
+     *            the method (i.e. GET or POST)
+     * @param charset
+     *            the character encoding to use
+     * @return a regular (non-singleton) requester which matches the method.
+     */
+    public static AbstractRequester getRequester(RequestMethod method, Charset charset) {
+        switch (method) {
+            case GET:
+                return new GETRequester(charset);
 
-			case POST:
-				return new POSTRequester(charset);
+            case POST:
+                return new POSTRequester(charset);
 
-			default:
-				throw new IllegalArgumentException(method + " is not a valid method");
-		}
-	}
+            default:
+                throw new IllegalArgumentException(method + " is not a valid method");
+        }
+    }
 
 }

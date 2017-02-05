@@ -33,70 +33,70 @@ import com.github.dannil.scbjavaclient.test.RemoteIntegrationTestSuite;
 @RunWith(JUnit4.class)
 public class SCBClientIT extends RemoteIntegrationTestSuite {
 
-	@Test
-	public void getInputs() {
-		Locale locale = new Locale("sv", "SE");
-		SCBClient client = new SCBClient(locale);
+    @Test
+    public void getInputs() {
+        Locale locale = new Locale("sv", "SE");
+        SCBClient client = new SCBClient(locale);
 
-		Map<String, Collection<String>> inputs = client.getInputs("UF/UF0104/SamAntSkol");
+        Map<String, Collection<String>> inputs = client.getInputs("UF/UF0104/SamAntSkol");
 
-		Map<String, Collection<String>> staticInputs = new HashMap<String, Collection<String>>();
-		Collection<String> staticInputsArsKurs = Arrays.asList("10", "11", "12", "13", "14", "15", "16");
-		Collection<String> staticInputsContentsCode = Arrays.asList("UF0104L1");
-		Collection<String> staticInputsTid = Arrays.asList("1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006");
+        Map<String, Collection<String>> staticInputs = new HashMap<String, Collection<String>>();
+        Collection<String> staticInputsArsKurs = Arrays.asList("10", "11", "12", "13", "14", "15", "16");
+        Collection<String> staticInputsContentsCode = Arrays.asList("UF0104L1");
+        Collection<String> staticInputsTid = Arrays.asList("1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006");
 
-		staticInputs.put("ArsKurs", staticInputsArsKurs);
-		staticInputs.put("ContentsCode", staticInputsContentsCode);
-		staticInputs.put("Tid", staticInputsTid);
+        staticInputs.put("ArsKurs", staticInputsArsKurs);
+        staticInputs.put("ContentsCode", staticInputsContentsCode);
+        staticInputs.put("Tid", staticInputsTid);
 
-		assertEquals(staticInputs, inputs);
-	}
+        assertEquals(staticInputs, inputs);
+    }
 
-	@Test
-	public void getRawData() {
-		Locale locale = new Locale("sv", "SE");
-		SCBClient client = new SCBClient(locale);
+    @Test
+    public void getRawData() {
+        Locale locale = new Locale("sv", "SE");
+        SCBClient client = new SCBClient(locale);
 
-		String response = client.getRawData("BE/BE0101/BE0101A/BefolkningNy");
+        String response = client.getRawData("BE/BE0101/BE0101A/BefolkningNy");
 
-		assertTrue(response.contains("BE0101N1"));
-		assertTrue(response.contains("BE0101N2"));
-		assertTrue(response.contains("Region"));
-		assertTrue(response.contains("Tid"));
-	}
+        assertTrue(response.contains("BE0101N1"));
+        assertTrue(response.contains("BE0101N2"));
+        assertTrue(response.contains("Region"));
+        assertTrue(response.contains("Tid"));
+    }
 
-	@Test
-	public void getRawDataInputs() {
-		Locale locale = new Locale("sv", "SE");
-		SCBClient client = new SCBClient(locale);
+    @Test
+    public void getRawDataInputs() {
+        Locale locale = new Locale("sv", "SE");
+        SCBClient client = new SCBClient(locale);
 
-		Map<String, Collection<?>> payload = new HashMap<String, Collection<?>>();
-		payload.put("ContentsCode", Arrays.asList("BE0101N1"));
-		payload.put("Region", Arrays.asList("00", "01", "0114"));
-		payload.put("Civilstand", Arrays.asList("OG", "G"));
-		payload.put("Alder", Arrays.asList(45, 50));
-		payload.put("Tid", Arrays.asList(2011, 2012));
+        Map<String, Collection<?>> payload = new HashMap<String, Collection<?>>();
+        payload.put("ContentsCode", Arrays.asList("BE0101N1"));
+        payload.put("Region", Arrays.asList("00", "01", "0114"));
+        payload.put("Civilstand", Arrays.asList("OG", "G"));
+        payload.put("Alder", Arrays.asList(45, 50));
+        payload.put("Tid", Arrays.asList(2011, 2012));
 
-		String response = client.getRawData("BE/BE0101/BE0101A/BefolkningNy", payload);
+        String response = client.getRawData("BE/BE0101/BE0101A/BefolkningNy", payload);
 
-		assertTrue(response.contains("Region"));
-		assertTrue(response.contains("Civilstand"));
-		assertTrue(response.contains("Alder"));
-		assertTrue(response.contains("Tid"));
-	}
+        assertTrue(response.contains("Region"));
+        assertTrue(response.contains("Civilstand"));
+        assertTrue(response.contains("Alder"));
+        assertTrue(response.contains("Tid"));
+    }
 
-	@Test
-	public void supportedLocale() {
-		Locale locale = new Locale("sv", "SE");
+    @Test
+    public void supportedLocale() {
+        Locale locale = new Locale("sv", "SE");
 
-		assertTrue(SCBClient.isSupportedLocale(locale));
-	}
+        assertTrue(SCBClient.isSupportedLocale(locale));
+    }
 
-	@Test
-	public void unsupportedLocale() {
-		Locale locale = new Locale("fr", "CA");
+    @Test
+    public void unsupportedLocale() {
+        Locale locale = new Locale("fr", "CA");
 
-		assertFalse(SCBClient.isSupportedLocale(locale));
-	}
+        assertFalse(SCBClient.isSupportedLocale(locale));
+    }
 
 }

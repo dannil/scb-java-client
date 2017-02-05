@@ -31,25 +31,25 @@ import com.github.dannil.scbjavaclient.test.RemoteIntegrationTestSuite;
 @RunWith(JUnit4.class)
 public class PopulationDensityClientIT extends RemoteIntegrationTestSuite {
 
-	private PopulationDensityClient populationDensityClient;
+    private PopulationDensityClient populationDensityClient;
 
-	@Before
-	public void setup() {
-		this.populationDensityClient = new SCBClient().population().density();
-	}
+    @Before
+    public void setup() {
+        this.populationDensityClient = new SCBClient().population().density();
+    }
 
-	@Test
-	public void getDensity() {
-		assertNotEquals(0, this.populationDensityClient.getDensity().size());
-	}
+    @Test
+    public void getDensity() {
+        assertNotEquals(0, this.populationDensityClient.getDensity().size());
+    }
 
-	@Test
-	public void getDensityWithParameters() {
-		List<String> regions = Arrays.asList("1263");
-		List<String> sexes = Arrays.asList("1", "2", "1+2");
-		List<Integer> years = Arrays.asList(1996);
+    @Test
+    public void getDensityWithParameters() {
+        List<String> regions = Arrays.asList("1263");
+        List<String> sexes = Arrays.asList("1", "2", "1+2");
+        List<Integer> years = Arrays.asList(1996);
 
-		assertNotEquals(0, this.populationDensityClient.getDensity(regions, sexes, years).size());
-	}
+        assertNotEquals(0, this.populationDensityClient.getDensity(regions, sexes, years).size());
+    }
 
 }

@@ -31,24 +31,24 @@ import com.github.dannil.scbjavaclient.test.RemoteIntegrationTestSuite;
 @RunWith(JUnit4.class)
 public class PopulationAverageAgeClientIT extends RemoteIntegrationTestSuite {
 
-	private PopulationAverageAgeClient populationAverageAgeClient;
+    private PopulationAverageAgeClient populationAverageAgeClient;
 
-	@Before
-	public void setup() {
-		this.populationAverageAgeClient = new SCBClient().population().averageAge();
-	}
+    @Before
+    public void setup() {
+        this.populationAverageAgeClient = new SCBClient().population().averageAge();
+    }
 
-	@Test
-	public void getAverageAge() {
-		assertNotEquals(0, this.populationAverageAgeClient.getAverageAge().size());
-	}
+    @Test
+    public void getAverageAge() {
+        assertNotEquals(0, this.populationAverageAgeClient.getAverageAge().size());
+    }
 
-	@Test
-	public void getAverageAgeWithParameters() {
-		List<String> regions = Arrays.asList("1263");
-		List<String> genders = Arrays.asList("1", "2", "1+2");
-		List<Integer> years = Arrays.asList(2002);
+    @Test
+    public void getAverageAgeWithParameters() {
+        List<String> regions = Arrays.asList("1263");
+        List<String> genders = Arrays.asList("1", "2", "1+2");
+        List<Integer> years = Arrays.asList(2002);
 
-		assertNotEquals(0, this.populationAverageAgeClient.getAverageAge(regions, genders, years).size());
-	}
+        assertNotEquals(0, this.populationAverageAgeClient.getAverageAge(regions, genders, years).size());
+    }
 }

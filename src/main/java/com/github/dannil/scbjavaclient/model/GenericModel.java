@@ -30,81 +30,81 @@ import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
  */
 public class GenericModel {
 
-	private JsonCustomResponseFormat format;
+    private JsonCustomResponseFormat format;
 
-	/**
-	 * <p>Private constructor.</p>
-	 */
-	private GenericModel() {
+    /**
+     * <p>Private constructor.</p>
+     */
+    private GenericModel() {
 
-	}
+    }
 
-	/**
-	 * <p>Default constructor.</p>
-	 * 
-	 * @param json
-	 *            the JSON to format
-	 */
-	public GenericModel(String json) {
-		this();
-		this.format = new JsonCustomResponseFormat(json);
-	}
+    /**
+     * <p>Default constructor.</p>
+     * 
+     * @param json
+     *            the JSON to format
+     */
+    public GenericModel(String json) {
+        this();
+        this.format = new JsonCustomResponseFormat(json);
+    }
 
-	/**
-	 * Retrieves all the entries.
-	 * 
-	 * @return all the entries
-	 */
-	public Collection<Map<String, Object>> getEntries() {
-		return this.format.getEntries();
-	}
+    /**
+     * Retrieves all the entries.
+     * 
+     * @return all the entries
+     */
+    public Collection<Map<String, Object>> getEntries() {
+        return this.format.getEntries();
+    }
 
-	/**
-	 * Retrieves all the entries matching the input criterion.
-	 * 
-	 * @param inputs
-	 *            the input criterion
-	 * @return the entries matching the input criterion
-	 */
-	public Collection<Map<String, Object>> getEntries(Map<String, Collection<String>> inputs) {
-		Collection<Map<String, Object>> lst = new ArrayList<>();
-		for (Map<String, Object> entry : this.format.getEntries()) {
-			lst.add(entry);
-			for (Entry<String, Collection<String>> input : inputs.entrySet()) {
-				String key = input.getKey();
-				Collection<String> value = input.getValue();
-				if (!entry.containsKey(key) || !value.contains(entry.get(key))) {
-					lst.remove(entry);
-					break;
-				}
-			}
-		}
-		return lst;
-	}
+    /**
+     * Retrieves all the entries matching the input criterion.
+     * 
+     * @param inputs
+     *            the input criterion
+     * @return the entries matching the input criterion
+     */
+    public Collection<Map<String, Object>> getEntries(Map<String, Collection<String>> inputs) {
+        Collection<Map<String, Object>> lst = new ArrayList<>();
+        for (Map<String, Object> entry : this.format.getEntries()) {
+            lst.add(entry);
+            for (Entry<String, Collection<String>> input : inputs.entrySet()) {
+                String key = input.getKey();
+                Collection<String> value = input.getValue();
+                if (!entry.containsKey(key) || !value.contains(entry.get(key))) {
+                    lst.remove(entry);
+                    break;
+                }
+            }
+        }
+        return lst;
+    }
 
-	/**
-	 * Retrieves all the entries matching the input criterion.
-	 * 
-	 * @param key
-	 *            the key
-	 * @param value
-	 *            the value
-	 * @return the entries matching the input criterion
-	 */
-	public Collection<Map<String, Object>> getEntries(String key, String value) {
-		Map<String, Collection<String>> mp = new HashMap<>();
+    /**
+     * Retrieves all the entries matching the input criterion.
+     * 
+     * @param key
+     *            the key
+     * @param value
+     *            the value
+     * @return the entries matching the input criterion
+     */
+    public Collection<Map<String, Object>> getEntries(String key, String value) {
+        Map<String, Collection<String>> mp = new HashMap<>();
 
-		Collection<String> lst = new ArrayList<>();
-		lst.add(value);
+        Collection<String> lst = new ArrayList<>();
+        lst.add(value);
 
-		mp.put(key, lst);
+        mp.put(key, lst);
 
-		return getEntries(mp);
-	}
+        return getEntries(mp);
+    }
 
-	@Override
-	public String toString() {
-		return this.format.toString();
-	}
+    @Override
+    public String toString() {
+        return this.format.toString();
+    }
 
 }

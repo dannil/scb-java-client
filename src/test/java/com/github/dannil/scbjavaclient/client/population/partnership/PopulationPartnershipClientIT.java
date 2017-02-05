@@ -30,41 +30,41 @@ import com.github.dannil.scbjavaclient.test.RemoteIntegrationTestSuite;
 @RunWith(JUnit4.class)
 public class PopulationPartnershipClientIT extends RemoteIntegrationTestSuite {
 
-	private PopulationPartnershipClient client;
+    private PopulationPartnershipClient client;
 
-	@Before
-	public void setup() {
-		this.client = new SCBClient().population().partnership();
-	}
+    @Before
+    public void setup() {
+        this.client = new SCBClient().population().partnership();
+    }
 
-	@Test
-	public void getPartnership() {
-		assertNotEquals(0, this.client.getPartnership().size());
-	}
+    @Test
+    public void getPartnership() {
+        assertNotEquals(0, this.client.getPartnership().size());
+    }
 
-	@Test
-	public void getPartnershipWithParameters() {
-		List<String> regions = Arrays.asList("12");
-		List<String> statuses = Arrays.asList("RP", "SP", "EP");
-		List<Integer> sexes = Arrays.asList(1, 2);
-		List<Integer> years = Arrays.asList(2000, 2002);
+    @Test
+    public void getPartnershipWithParameters() {
+        List<String> regions = Arrays.asList("12");
+        List<String> statuses = Arrays.asList("RP", "SP", "EP");
+        List<Integer> sexes = Arrays.asList(1, 2);
+        List<Integer> years = Arrays.asList(2000, 2002);
 
-		assertNotEquals(0, this.client.getPartnership(regions, statuses, sexes, years).size());
-	}
+        assertNotEquals(0, this.client.getPartnership(regions, statuses, sexes, years).size());
+    }
 
-	@Test
-	public void getPartnershipChange() {
-		assertNotEquals(0, this.client.getPartnershipChange().size());
-	}
+    @Test
+    public void getPartnershipChange() {
+        assertNotEquals(0, this.client.getPartnershipChange().size());
+    }
 
-	@Test
-	public void getPartnershipChangeWithParameters() {
-		List<String> regions = Arrays.asList("122");
-		List<String> statuses = Arrays.asList("RP", "SP", "EP");
-		List<Integer> sexes = Arrays.asList(1, 2);
-		List<Integer> years = Arrays.asList(2001, 2003);
+    @Test
+    public void getPartnershipChangeWithParameters() {
+        List<String> regions = Arrays.asList("122");
+        List<String> statuses = Arrays.asList("RP", "SP", "EP");
+        List<Integer> sexes = Arrays.asList(1, 2);
+        List<Integer> years = Arrays.asList(2001, 2003);
 
-		assertNotEquals(0, this.client.getPartnershipChange(regions, statuses, sexes, years).size());
-	}
+        assertNotEquals(0, this.client.getPartnershipChange(regions, statuses, sexes, years).size());
+    }
 
 }

@@ -27,36 +27,36 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class StringUtilityTest {
 
-	@Test
-	public void callPrivateConstructor()
-			throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-		Constructor<?>[] cons = StringUtility.class.getDeclaredConstructors();
-		cons[0].setAccessible(true);
-		cons[0].newInstance();
-		cons[0].setAccessible(false);
+    @Test
+    public void callPrivateConstructor()
+            throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        Constructor<?>[] cons = StringUtility.class.getDeclaredConstructors();
+        cons[0].setAccessible(true);
+        cons[0].newInstance();
+        cons[0].setAccessible(false);
 
-		assertFalse(cons[0].isAccessible());
-	}
+        assertFalse(cons[0].isAccessible());
+    }
 
-	@Test
-	public void lowerCaseFirstLetterAllUpperCase() {
-		String str = "TEST";
+    @Test
+    public void lowerCaseFirstLetterAllUpperCase() {
+        String str = "TEST";
 
-		assertEquals("tEST", StringUtility.lowerCaseFirstLetter(str));
-	}
+        assertEquals("tEST", StringUtility.lowerCaseFirstLetter(str));
+    }
 
-	@Test
-	public void lowerCaseFirstLetterAllLowerCase() {
-		String str = "test";
+    @Test
+    public void lowerCaseFirstLetterAllLowerCase() {
+        String str = "test";
 
-		assertEquals("test", StringUtility.lowerCaseFirstLetter(str));
-	}
+        assertEquals("test", StringUtility.lowerCaseFirstLetter(str));
+    }
 
-	@Test
-	public void lowerCaseFirstLetterNumbers() {
-		String str = "0";
+    @Test
+    public void lowerCaseFirstLetterNumbers() {
+        String str = "0";
 
-		assertEquals("0", StringUtility.lowerCaseFirstLetter(str));
-	}
+        assertEquals("0", StringUtility.lowerCaseFirstLetter(str));
+    }
 
 }

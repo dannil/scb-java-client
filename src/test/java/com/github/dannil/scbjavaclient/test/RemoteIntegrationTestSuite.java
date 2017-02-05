@@ -22,15 +22,15 @@ import com.github.dannil.scbjavaclient.test.utility.Config;
 
 public abstract class RemoteIntegrationTestSuite {
 
-	protected RemoteIntegrationTestSuite() {
+    protected RemoteIntegrationTestSuite() {
 
-	}
+    }
 
-	@Before
-	public void setupTimer() throws InterruptedException {
-		// Due to constraints set by the SCB API, we can only do 10 calls every 10
-		// seconds, so we need an artificial timer which handles this.
-		TimeUnit.MILLISECONDS.sleep(Config.getTimeBetweenCallsAsMilliSeconds());
-	}
+    @Before
+    public void setupTimer() throws InterruptedException {
+        // Due to constraints set by the SCB API, we can only do 10 calls every 10
+        // seconds, so we need an artificial timer which handles this.
+        TimeUnit.MILLISECONDS.sleep(Config.getTimeBetweenCallsAsMilliSeconds());
+    }
 
 }

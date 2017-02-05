@@ -28,84 +28,84 @@ import java.util.Map;
  */
 public final class RequesterSingletonFactory {
 
-	private static Map<RequestMethod, AbstractRequester> requesters;
+    private static Map<RequestMethod, AbstractRequester> requesters;
 
-	static {
-		requesters = new EnumMap<>(RequestMethod.class);
-		requesters.put(RequestMethod.GET, GETHolder.INSTANCE);
-		requesters.put(RequestMethod.POST, POSTHolder.INSTANCE);
-	}
+    static {
+        requesters = new EnumMap<>(RequestMethod.class);
+        requesters.put(RequestMethod.GET, GETHolder.INSTANCE);
+        requesters.put(RequestMethod.POST, POSTHolder.INSTANCE);
+    }
 
-	/**
-	 * <p>Private constructor to prevent instantiation.</p>
-	 */
-	private RequesterSingletonFactory() {
+    /**
+     * <p>Private constructor to prevent instantiation.</p>
+     */
+    private RequesterSingletonFactory() {
 
-	}
+    }
 
-	/**
-	 * <p>Returns a singleton requester which matches the method. All requests are routed
-	 * to match the
-	 * {@link com.github.dannil.scbjavaclient.constants.APIConstants#FALLBACK_LOCALE
-	 * FALLBACK_LOCALE} and responses are read as UTF-8 character encoding.</p>
-	 * 
-	 * @param method
-	 *            the method (i.e. GET or POST)
-	 * @return a singleton requester which matches the method.
-	 */
-	public static AbstractRequester getRequester(RequestMethod method) {
-		return getRequester(method, StandardCharsets.UTF_8);
-	}
+    /**
+     * <p>Returns a singleton requester which matches the method. All requests are routed
+     * to match the
+     * {@link com.github.dannil.scbjavaclient.constants.APIConstants#FALLBACK_LOCALE
+     * FALLBACK_LOCALE} and responses are read as UTF-8 character encoding.</p>
+     * 
+     * @param method
+     *            the method (i.e. GET or POST)
+     * @return a singleton requester which matches the method.
+     */
+    public static AbstractRequester getRequester(RequestMethod method) {
+        return getRequester(method, StandardCharsets.UTF_8);
+    }
 
-	/**
-	 * <p>Returns a singleton requester which matches the method. All responses are read
-	 * as to match the character encoding.</p>
-	 * 
-	 * @param method
-	 *            the method (i.e. GET or POST)
-	 * @param charset
-	 *            the character encoding to use
-	 * @return a singleton requester which matches the method.
-	 */
-	public static AbstractRequester getRequester(RequestMethod method, Charset charset) {
-		if (!requesters.containsKey(method)) {
-			throw new IllegalArgumentException(method + " is not a valid method");
-		}
-		AbstractRequester abs = requesters.get(method);
-		abs.setCharset(charset);
-		return abs;
-	}
+    /**
+     * <p>Returns a singleton requester which matches the method. All responses are read
+     * as to match the character encoding.</p>
+     * 
+     * @param method
+     *            the method (i.e. GET or POST)
+     * @param charset
+     *            the character encoding to use
+     * @return a singleton requester which matches the method.
+     */
+    public static AbstractRequester getRequester(RequestMethod method, Charset charset) {
+        if (!requesters.containsKey(method)) {
+            throw new IllegalArgumentException(method + " is not a valid method");
+        }
+        AbstractRequester abs = requesters.get(method);
+        abs.setCharset(charset);
+        return abs;
+    }
 
-	/**
-	 * <p>Singleton holder for GET requester.</p>
-	 */
-	private static final class GETHolder {
+    /**
+     * <p>Singleton holder for GET requester.</p>
+     */
+    private static final class GETHolder {
 
-		protected static final AbstractRequester INSTANCE = new GETRequester(StandardCharsets.UTF_8);
+        protected static final AbstractRequester INSTANCE = new GETRequester(StandardCharsets.UTF_8);
 
-		/**
-		 * Private constructor.
-		 */
-		private GETHolder() {
-			// To avoid initialization outside this class
-		}
+        /**
+         * Private constructor.
+         */
+        private GETHolder() {
+            // To avoid initialization outside this class
+        }
 
-	}
+    }
 
-	/**
-	 * <p>Singleton holder for POST requester.</p>
-	 */
-	private static final class POSTHolder {
+    /**
+     * <p>Singleton holder for POST requester.</p>
+     */
+    private static final class POSTHolder {
 
-		protected static final AbstractRequester INSTANCE = new POSTRequester(StandardCharsets.UTF_8);
+        protected static final AbstractRequester INSTANCE = new POSTRequester(StandardCharsets.UTF_8);
 
-		/**
-		 * Private constructor.
-		 */
-		private POSTHolder() {
-			// To avoid initialization outside this class
-		}
+        /**
+         * Private constructor.
+         */
+        private POSTHolder() {
+            // To avoid initialization outside this class
+        }
 
-	}
+    }
 
 }

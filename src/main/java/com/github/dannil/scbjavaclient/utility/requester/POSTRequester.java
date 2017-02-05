@@ -29,61 +29,61 @@ import org.apache.http.entity.ByteArrayEntity;
  */
 public class POSTRequester extends AbstractRequester {
 
-	private String query;
+    private String query;
 
-	/**
-	 * <p>Default constructor.</p>
-	 */
-	public POSTRequester() {
-		super();
-		super.requestProperties.put("Request-Method", "POST");
-	}
+    /**
+     * <p>Default constructor.</p>
+     */
+    public POSTRequester() {
+        super();
+        super.requestProperties.put("Request-Method", "POST");
+    }
 
-	/**
-	 * <p>Overloaded constructor.</p>
-	 * 
-	 * @param charset
-	 *            the charset
-	 */
-	public POSTRequester(Charset charset) {
-		super(charset);
-		super.requestProperties.put("Request-Method", "POST");
-	}
+    /**
+     * <p>Overloaded constructor.</p>
+     * 
+     * @param charset
+     *            the charset
+     */
+    public POSTRequester(Charset charset) {
+        super(charset);
+        super.requestProperties.put("Request-Method", "POST");
+    }
 
-	/**
-	 * <p>Getter for query.</p>
-	 * 
-	 * @return the query
-	 */
-	public String getQuery() {
-		return this.query;
-	}
+    /**
+     * <p>Getter for query.</p>
+     * 
+     * @return the query
+     */
+    public String getQuery() {
+        return this.query;
+    }
 
-	/**
-	 * <p>Setter for query.</p>
-	 * 
-	 * @param query
-	 *            the query
-	 */
-	public void setQuery(String query) {
-		this.query = query;
-	}
+    /**
+     * <p>Setter for query.</p>
+     * 
+     * @param query
+     *            the query
+     */
+    public void setQuery(String query) {
+        this.query = query;
+    }
 
-	@Override
-	public String getBodyAsString(String url) {
-		if (this.query == null) {
-			throw new IllegalStateException("Payload is null");
-		}
+    @Override
+    public String getBodyAsString(String url) {
+        if (this.query == null) {
+            throw new IllegalStateException("Payload is null");
+        }
 
-		HttpPost request = new HttpPost(url);
-		for (Entry<String, String> entry : super.requestProperties.entrySet()) {
-			request.addHeader(entry.getKey(), entry.getValue());
-		}
+        HttpPost request = new HttpPost(url);
+        for (Entry<String, String> entry : super.requestProperties.entrySet()) {
+            request.addHeader(entry.getKey(), entry.getValue());
+        }
 
-		HttpEntity entity = new ByteArrayEntity(this.query.getBytes(Charset.forName(this.charset.name())));
-		request.setEntity(entity);
+        HttpEntity entity = new ByteArrayEntity(this.query.getBytes(Charset.forName(this.charset.name())));
+        request.setEntity(entity);
 
-		HttpResponse response = super.getResponse(request);
-		return super.getBody(response);
-	}
+        HttpResponse response = super.getResponse(request);
+        return super.getBody(response);
+    }
 }

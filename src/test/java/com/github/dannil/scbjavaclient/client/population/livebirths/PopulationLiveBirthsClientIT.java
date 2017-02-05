@@ -30,26 +30,26 @@ import com.github.dannil.scbjavaclient.test.RemoteIntegrationTestSuite;
 @RunWith(JUnit4.class)
 public class PopulationLiveBirthsClientIT extends RemoteIntegrationTestSuite {
 
-	private PopulationLiveBirthsClient populationLiveBirthsClient;
+    private PopulationLiveBirthsClient populationLiveBirthsClient;
 
-	@Before
-	public void setup() {
-		this.populationLiveBirthsClient = new SCBClient().population().liveBirths();
-	}
+    @Before
+    public void setup() {
+        this.populationLiveBirthsClient = new SCBClient().population().liveBirths();
+    }
 
-	@Test
-	public void getLiveBirths() {
-		assertNotEquals(0, this.populationLiveBirthsClient.getLiveBirths().size());
-	}
+    @Test
+    public void getLiveBirths() {
+        assertNotEquals(0, this.populationLiveBirthsClient.getLiveBirths().size());
+    }
 
-	@Test
-	public void getLiveBirthsWithParameters() {
-		List<String> regions = Arrays.asList("1263");
-		List<String> motherAges = Arrays.asList("tot");
-		List<Integer> genders = Arrays.asList(1, 2);
-		List<Integer> years = Arrays.asList(1996);
+    @Test
+    public void getLiveBirthsWithParameters() {
+        List<String> regions = Arrays.asList("1263");
+        List<String> motherAges = Arrays.asList("tot");
+        List<Integer> genders = Arrays.asList(1, 2);
+        List<Integer> years = Arrays.asList(1996);
 
-		assertNotEquals(0, this.populationLiveBirthsClient.getLiveBirths(regions, motherAges, genders, years).size());
-	}
+        assertNotEquals(0, this.populationLiveBirthsClient.getLiveBirths(regions, motherAges, genders, years).size());
+    }
 
 }

@@ -29,23 +29,23 @@ import com.github.dannil.scbjavaclient.test.RemoteIntegrationTestSuite;
 @RunWith(JUnit4.class)
 public class AbstractRequesterIT extends RemoteIntegrationTestSuite {
 
-	private static class DummyGETRequester extends GETRequester {
+    private static class DummyGETRequester extends GETRequester {
 
-		public DummyGETRequester() {
-			super();
-			super.client = HttpClientBuilder.create().disableRedirectHandling().build();
-		}
+        public DummyGETRequester() {
+            super();
+            super.client = HttpClientBuilder.create().disableRedirectHandling().build();
+        }
 
-	}
+    }
 
-	@Test(expected = SCBClientException.class)
-	public void unhandledHttpStatusCode() {
-		AbstractRequester abs = new DummyGETRequester();
+    @Test(expected = SCBClientException.class)
+    public void unhandledHttpStatusCode() {
+        AbstractRequester abs = new DummyGETRequester();
 
-		HttpGet get = new HttpGet("http://java.net");
-		HttpResponse response = abs.getResponse(get);
+        HttpGet get = new HttpGet("http://java.net");
+        HttpResponse response = abs.getResponse(get);
 
-		assertNull(response);
-	}
+        assertNull(response);
+    }
 
 }

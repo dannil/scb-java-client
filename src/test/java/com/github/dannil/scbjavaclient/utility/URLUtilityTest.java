@@ -28,31 +28,31 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class URLUtilityTest {
 
-	@Test
-	public void callPrivateConstructor()
-			throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-		Constructor<?>[] cons = URLUtility.class.getDeclaredConstructors();
-		cons[0].setAccessible(true);
-		cons[0].newInstance();
-		cons[0].setAccessible(false);
+    @Test
+    public void callPrivateConstructor()
+            throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        Constructor<?>[] cons = URLUtility.class.getDeclaredConstructors();
+        cons[0].setAccessible(true);
+        cons[0].newInstance();
+        cons[0].setAccessible(false);
 
-		assertFalse(cons[0].isAccessible());
-	}
+        assertFalse(cons[0].isAccessible());
+    }
 
-	@Test
-	public void changeUrlLocale() {
-		String url = URLUtility.changeLanguageForUrl("https://api.scb.se/OV0104/v1/doris/en/ssd/BE/BE0101/BE0101A/BefolkningNy");
+    @Test
+    public void changeUrlLocale() {
+        String url = URLUtility.changeLanguageForUrl("https://api.scb.se/OV0104/v1/doris/en/ssd/BE/BE0101/BE0101A/BefolkningNy");
 
-		Locale locale = new Locale("sv", "SE");
-		assertEquals(URLUtility.getRootUrl(locale) + "BE/BE0101/BE0101A/BefolkningNy", url);
-	}
+        Locale locale = new Locale("sv", "SE");
+        assertEquals(URLUtility.getRootUrl(locale) + "BE/BE0101/BE0101A/BefolkningNy", url);
+    }
 
-	@Test
-	public void changeUrlLanguageWithThreeCharacters() {
-		Locale locale = new Locale("sv", "SE");
-		String url = URLUtility.getRootUrl(locale);
+    @Test
+    public void changeUrlLanguageWithThreeCharacters() {
+        Locale locale = new Locale("sv", "SE");
+        String url = URLUtility.getRootUrl(locale);
 
-		assertEquals("https://api.scb.se/OV0104/v1/doris/ger/ssd/", URLUtility.changeLanguageForUrl(url, "ger"));
-	}
+        assertEquals("https://api.scb.se/OV0104/v1/doris/ger/ssd/", URLUtility.changeLanguageForUrl(url, "ger"));
+    }
 
 }

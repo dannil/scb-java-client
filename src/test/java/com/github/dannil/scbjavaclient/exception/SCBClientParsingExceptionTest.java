@@ -23,35 +23,35 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class SCBClientParsingExceptionTest {
 
-	@Test
-	public void constructor() {
-		SCBClientException e = new SCBClientParsingException();
+    @Test
+    public void constructor() {
+        SCBClientException e = new SCBClientParsingException();
 
-		assertEquals(e.getClass().getName(), e.toString());
-	}
+        assertEquals(e.getClass().getName(), e.toString());
+    }
 
-	@Test
-	public void message() {
-		SCBClientException e = new SCBClientParsingException("This is the error message");
+    @Test
+    public void message() {
+        SCBClientException e = new SCBClientParsingException("This is the error message");
 
-		assertEquals("This is the error message", e.getMessage());
-	}
+        assertEquals("This is the error message", e.getMessage());
+    }
 
-	@Test
-	public void messageAndCause() {
-		Throwable c = new Throwable();
-		SCBClientException e = new SCBClientParsingException("This is the error message", c);
+    @Test
+    public void messageAndCause() {
+        Throwable c = new Throwable();
+        SCBClientException e = new SCBClientParsingException("This is the error message", c);
 
-		assertEquals("This is the error message", e.getMessage());
-		assertEquals(c, e.getCause());
-	}
+        assertEquals("This is the error message", e.getMessage());
+        assertEquals(c, e.getCause());
+    }
 
-	@Test
-	public void cause() {
-		Throwable c = new Throwable();
-		SCBClientException e = new SCBClientParsingException(c);
+    @Test
+    public void cause() {
+        Throwable c = new Throwable();
+        SCBClientException e = new SCBClientParsingException(c);
 
-		assertEquals(c, e.getCause());
-	}
+        assertEquals(c, e.getCause());
+    }
 
 }

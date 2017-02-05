@@ -27,20 +27,20 @@ import com.github.dannil.scbjavaclient.utility.URLUtility;
 @RunWith(JUnit4.class)
 public class PopulationAmountClientTest {
 
-	@Test
-	public void createWithLocaleConstructor() {
-		Locale locale = new Locale("sv", "SE");
-		PopulationAmountClient client = new PopulationAmountClient(locale);
+    @Test
+    public void createWithLocaleConstructor() {
+        Locale locale = new Locale("sv", "SE");
+        PopulationAmountClient client = new PopulationAmountClient(locale);
 
-		assertEquals(locale, client.getLocale());
-	}
+        assertEquals(locale, client.getLocale());
+    }
 
-	@Test
-	public void getUrl() {
-		Locale locale = new Locale("sv", "SE");
-		PopulationAmountClient client = new PopulationAmountClient(locale);
+    @Test
+    public void getUrl() {
+        Locale locale = new Locale("sv", "SE");
+        PopulationAmountClient client = new PopulationAmountClient(locale);
 
-		assertEquals(URLUtility.getRootUrl(locale) + "BE/BE0101/BE0101A/", client.getUrl());
-	}
+        assertEquals(URLUtility.getRootUrl(locale) + "BE/BE0101/BE0101A/", client.getUrl());
+    }
 
 }

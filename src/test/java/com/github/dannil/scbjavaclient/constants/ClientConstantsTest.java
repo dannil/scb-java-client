@@ -27,25 +27,25 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class ClientConstantsTest {
 
-	@Test
-	public void callPrivateConstructor()
-			throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-		Constructor<?>[] cons = ClientConstants.class.getDeclaredConstructors();
-		cons[0].setAccessible(true);
-		cons[0].newInstance();
-		cons[0].setAccessible(false);
+    @Test
+    public void callPrivateConstructor()
+            throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        Constructor<?>[] cons = ClientConstants.class.getDeclaredConstructors();
+        cons[0].setAccessible(true);
+        cons[0].newInstance();
+        cons[0].setAccessible(false);
 
-		assertFalse(cons[0].isAccessible());
-	}
+        assertFalse(cons[0].isAccessible());
+    }
 
-	@Test
-	public void localizationFallbackLocaleNotNull() {
-		assertNotNull(ClientConstants.LOCALIZATION_FALLBACK_LOCALE);
-	}
+    @Test
+    public void localizationFallbackLocaleNotNull() {
+        assertNotNull(ClientConstants.LOCALIZATION_FALLBACK_LOCALE);
+    }
 
-	@Test
-	public void localizationTranslationFilePrefixNotNull() {
-		assertNotNull(ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX);
-	}
+    @Test
+    public void localizationTranslationFilePrefixNotNull() {
+        assertNotNull(ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX);
+    }
 
 }

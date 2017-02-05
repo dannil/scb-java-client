@@ -29,193 +29,193 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
 
 public class PartnershipTest {
 
-	private String testContentsCode;
+    private String testContentsCode;
 
-	private List<ValueNode<Integer>> values;
-	private List<ValueNode<Integer>> values2;
+    private List<ValueNode<Integer>> values;
+    private List<ValueNode<Integer>> values2;
 
-	@Before
-	public void setup() {
-		this.testContentsCode = "TESTCONTENTSCODE";
+    @Before
+    public void setup() {
+        this.testContentsCode = "TESTCONTENTSCODE";
 
-		this.values = new ArrayList<ValueNode<Integer>>();
-		this.values2 = new ArrayList<ValueNode<Integer>>();
+        this.values = new ArrayList<ValueNode<Integer>>();
+        this.values2 = new ArrayList<ValueNode<Integer>>();
 
-		ValueNode<Integer> value = new ValueNode<Integer>(144, this.testContentsCode, "Test contents code");
-		this.values.add(value);
+        ValueNode<Integer> value = new ValueNode<Integer>(144, this.testContentsCode, "Test contents code");
+        this.values.add(value);
 
-		// Copy previous value node into new object
-		ValueNode<Integer> value2 = new ValueNode<Integer>(value.getValue(), value.getCode(), value.getText());
-		this.values2.add(value2);
-	}
+        // Copy previous value node into new object
+        ValueNode<Integer> value2 = new ValueNode<Integer>(value.getValue(), value.getCode(), value.getText());
+        this.values2.add(value2);
+    }
 
-	@Test
-	public void createWithDefaultConstructor() {
-		Partnership partner = new Partnership();
+    @Test
+    public void createWithDefaultConstructor() {
+        Partnership partner = new Partnership();
 
-		assertNotNull(partner);
-	}
+        assertNotNull(partner);
+    }
 
-	@Test
-	public void setRegion() {
-		Partnership partner = new Partnership();
+    @Test
+    public void setRegion() {
+        Partnership partner = new Partnership();
 
-		partner.setRegion("1263");
+        partner.setRegion("1263");
 
-		assertEquals("1263", partner.getRegion());
-	}
+        assertEquals("1263", partner.getRegion());
+    }
 
-	@Test
-	public void setMaritalStatus() {
-		Partnership partner = new Partnership();
+    @Test
+    public void setMaritalStatus() {
+        Partnership partner = new Partnership();
 
-		partner.setMaritalStatus("RP");
+        partner.setMaritalStatus("RP");
 
-		assertEquals("RP", partner.getMaritalStatus());
-	}
+        assertEquals("RP", partner.getMaritalStatus());
+    }
 
-	@Test
-	public void setSex() {
-		Partnership partner = new Partnership();
+    @Test
+    public void setSex() {
+        Partnership partner = new Partnership();
 
-		partner.setSex("2");
+        partner.setSex("2");
 
-		assertEquals("2", partner.getSex());
-	}
+        assertEquals("2", partner.getSex());
+    }
 
-	@Test
-	public void setYear() {
-		Partnership partner = new Partnership();
+    @Test
+    public void setYear() {
+        Partnership partner = new Partnership();
 
-		partner.setYear(2002);
+        partner.setYear(2002);
 
-		assertEquals(Integer.valueOf(2002), partner.getYear());
-	}
+        assertEquals(Integer.valueOf(2002), partner.getYear());
+    }
 
-	@Test
-	public void setValues() {
-		Partnership partner = new Partnership();
+    @Test
+    public void setValues() {
+        Partnership partner = new Partnership();
 
-		partner.setValues(this.values);
+        partner.setValues(this.values);
 
-		assertNotNull(partner.getValues());
-	}
+        assertNotNull(partner.getValues());
+    }
 
-	@Test
-	public void getInputs() {
-		assertNotNull(Partnership.getInputs());
-	}
+    @Test
+    public void getInputs() {
+        assertNotNull(Partnership.getInputs());
+    }
 
-	@Test
-	public void equals() {
-		Partnership partner = new Partnership();
-		Partnership partner2 = new Partnership();
+    @Test
+    public void equals() {
+        Partnership partner = new Partnership();
+        Partnership partner2 = new Partnership();
 
-		assertEquals(partner, partner2);
-	}
+        assertEquals(partner, partner2);
+    }
 
-	@Test
-	public void equalsItself() {
-		Partnership partner = new Partnership();
+    @Test
+    public void equalsItself() {
+        Partnership partner = new Partnership();
 
-		assertEquals(partner, partner);
-	}
+        assertEquals(partner, partner);
+    }
 
-	@Test
-	public void equalsItselfWithValues() {
-		Partnership partner = new Partnership("00", "RP", "2", 2002, this.values);
-		Partnership partner2 = new Partnership("00", "RP", "2", 2002, this.values2);
+    @Test
+    public void equalsItselfWithValues() {
+        Partnership partner = new Partnership("00", "RP", "2", 2002, this.values);
+        Partnership partner2 = new Partnership("00", "RP", "2", 2002, this.values2);
 
-		assertEquals(partner, partner2);
-	}
+        assertEquals(partner, partner2);
+    }
 
-	@Test
-	public void notEqualsNull() {
-		Partnership partner = new Partnership();
+    @Test
+    public void notEqualsNull() {
+        Partnership partner = new Partnership();
 
-		assertNotEquals(partner, null);
-	}
+        assertNotEquals(partner, null);
+    }
 
-	@Test
-	public void notEqualsIncompatibleObject() {
-		Partnership partner = new Partnership();
+    @Test
+    public void notEqualsIncompatibleObject() {
+        Partnership partner = new Partnership();
 
-		assertNotEquals(partner, new Object());
-	}
+        assertNotEquals(partner, new Object());
+    }
 
-	@Test
-	public void notEqualsRegion() {
-		Partnership partner = new Partnership("00", "RP", "2", 2002, this.values);
-		Partnership partner2 = new Partnership("02", "RP", "2", 2002, this.values);
+    @Test
+    public void notEqualsRegion() {
+        Partnership partner = new Partnership("00", "RP", "2", 2002, this.values);
+        Partnership partner2 = new Partnership("02", "RP", "2", 2002, this.values);
 
-		assertNotEquals(partner, partner2);
-	}
+        assertNotEquals(partner, partner2);
+    }
 
-	@Test
-	public void notEqualsMaritalStatus() {
-		Partnership partner = new Partnership("00", "RP", "2", 2002, this.values);
-		Partnership partner2 = new Partnership("02", "SP", "2", 2002, this.values);
+    @Test
+    public void notEqualsMaritalStatus() {
+        Partnership partner = new Partnership("00", "RP", "2", 2002, this.values);
+        Partnership partner2 = new Partnership("02", "SP", "2", 2002, this.values);
 
-		assertNotEquals(partner, partner2);
-	}
+        assertNotEquals(partner, partner2);
+    }
 
-	@Test
-	public void notEqualsSex() {
-		Partnership partner = new Partnership("00", "RP", "2", 2002, this.values);
-		Partnership partner2 = new Partnership("02", "RP", "1", 2002, this.values);
+    @Test
+    public void notEqualsSex() {
+        Partnership partner = new Partnership("00", "RP", "2", 2002, this.values);
+        Partnership partner2 = new Partnership("02", "RP", "1", 2002, this.values);
 
-		assertNotEquals(partner, partner2);
-	}
+        assertNotEquals(partner, partner2);
+    }
 
-	@Test
-	public void notEqualsYear() {
-		Partnership partner = new Partnership("00", "RP", "2", 2002, this.values);
-		Partnership partner2 = new Partnership("00", "RP", "2", 2004, this.values2);
+    @Test
+    public void notEqualsYear() {
+        Partnership partner = new Partnership("00", "RP", "2", 2002, this.values);
+        Partnership partner2 = new Partnership("00", "RP", "2", 2004, this.values2);
 
-		assertNotEquals(partner, partner2);
-	}
+        assertNotEquals(partner, partner2);
+    }
 
-	@Test
-	public void notEqualsValues() {
-		Partnership partner = new Partnership("00", "RP", "2", 2002, this.values);
-		Partnership partner2 = new Partnership("00", "RP", "2", 2002, this.values2);
-		partner2.setValue(this.testContentsCode, 99);
+    @Test
+    public void notEqualsValues() {
+        Partnership partner = new Partnership("00", "RP", "2", 2002, this.values);
+        Partnership partner2 = new Partnership("00", "RP", "2", 2002, this.values2);
+        partner2.setValue(this.testContentsCode, 99);
 
-		assertNotEquals(partner, partner2);
-	}
+        assertNotEquals(partner, partner2);
+    }
 
-	@Test
-	public void equalsHashCode() {
-		Partnership partner = new Partnership("00", "RP", "2", 2002, this.values);
-		Partnership partner2 = new Partnership("00", "RP", "2", 2002, this.values);
+    @Test
+    public void equalsHashCode() {
+        Partnership partner = new Partnership("00", "RP", "2", 2002, this.values);
+        Partnership partner2 = new Partnership("00", "RP", "2", 2002, this.values);
 
-		assertEquals(partner.hashCode(), partner2.hashCode());
-	}
+        assertEquals(partner.hashCode(), partner2.hashCode());
+    }
 
-	@Test
-	public void equalsHashCodeNullValues() {
-		Partnership partner = new Partnership();
-		Partnership partner2 = new Partnership();
+    @Test
+    public void equalsHashCodeNullValues() {
+        Partnership partner = new Partnership();
+        Partnership partner2 = new Partnership();
 
-		assertEquals(partner.hashCode(), partner2.hashCode());
-	}
+        assertEquals(partner.hashCode(), partner2.hashCode());
+    }
 
-	@Test
-	public void convertToStringNullValues() {
-		Partnership partner = new Partnership();
+    @Test
+    public void convertToStringNullValues() {
+        Partnership partner = new Partnership();
 
-		assertNotNull(partner.toString());
-	}
+        assertNotNull(partner.toString());
+    }
 
-	@Test
-	public void convertToString() {
-		Partnership partner = new Partnership("00", "RP", "2", 2002, this.values);
+    @Test
+    public void convertToString() {
+        Partnership partner = new Partnership("00", "RP", "2", 2002, this.values);
 
-		assertTrue(partner.toString().contains("00"));
-		assertTrue(partner.toString().contains("RP"));
-		assertTrue(partner.toString().contains("2"));
-		assertTrue(partner.toString().contains("2002"));
-		assertTrue(partner.toString().contains("144"));
-	}
+        assertTrue(partner.toString().contains("00"));
+        assertTrue(partner.toString().contains("RP"));
+        assertTrue(partner.toString().contains("2"));
+        assertTrue(partner.toString().contains("2002"));
+        assertTrue(partner.toString().contains("144"));
+    }
 
 }

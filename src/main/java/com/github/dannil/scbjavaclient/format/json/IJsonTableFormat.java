@@ -26,27 +26,27 @@ import java.util.Map;
  */
 public interface IJsonTableFormat {
 
-	/**
-	 * <p>Extracts the codes and their respective values from the JSON.</p>
-	 * 
-	 * @return a collection of all codes and their respective values
-	 */
-	Map<String, Collection<String>> getInputs();
+    /**
+     * <p>Extracts the codes and their respective values from the JSON.</p>
+     * 
+     * @return a collection of all codes and their respective values
+     */
+    Map<String, Collection<String>> getInputs();
 
-	/**
-	 * <p>Extracts the values for a code from the JSON.</p>
-	 * 
-	 * @param code
-	 *            the code
-	 * @return a list of values
-	 */
-	List<String> getValues(String code);
+    /**
+     * <p>Extracts the values for a code from the JSON.</p>
+     * 
+     * @param code
+     *            the code
+     * @return a list of values
+     */
+    List<String> getValues(String code);
 
-	/**
-	 * <p>Extracts the codes from the JSON.</p>
-	 * 
-	 * @return a list of codes
-	 */
-	List<String> getCodes();
+    /**
+     * <p>Extracts the codes from the JSON.</p>
+     * 
+     * @return a list of codes
+     */
+    List<String> getCodes();
 
 }

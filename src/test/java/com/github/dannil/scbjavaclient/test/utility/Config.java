@@ -24,29 +24,29 @@ import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
 
 public final class Config {
 
-	private static int timeWindow;
-	private static int maxCalls;
+    private static int timeWindow;
+    private static int maxCalls;
 
-	static {
-		try {
-			AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
-			String response = get.getBodyAsString(URLUtility.getRootUrl() + "?config");
+    static {
+        try {
+            AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
+            String response = get.getBodyAsString(URLUtility.getRootUrl() + "?config");
 
-			JsonConverter converter = new JsonConverter();
-			JsonNode node = converter.toNode(response);
+            JsonConverter converter = new JsonConverter();
+            JsonNode node = converter.toNode(response);
 
-			maxCalls = node.get("maxCalls").asInt();
-			timeWindow = node.get("timeWindow").asInt();
-		} catch (SCBClientException e) {
-			throw e;
-		}
-	}
+            maxCalls = node.get("maxCalls").asInt();
+            timeWindow = node.get("timeWindow").asInt();
+        } catch (SCBClientException e) {
+            throw e;
+        }
+    }
 
-	public static long getTimeBetweenCallsAsMilliSeconds() {
-		// Time window as returned by the SCB API is specified in milliseconds. The
-		// returned value is the time window divided by the number of allowed calls in a
-		// time window
-		double timeBetweenCalls = (double) timeWindow / maxCalls;
-		return (long) (timeBetweenCalls * 1000);
-	}
+    public static long getTimeBetweenCallsAsMilliSeconds() {
+        // Time window as returned by the SCB API is specified in milliseconds. The
+        // returned value is the time window divided by the number of allowed calls in a
+        // time window
+        double timeBetweenCalls = (double) timeWindow / maxCalls;
+        return (long) (timeBetweenCalls * 1000);
+    }
 }

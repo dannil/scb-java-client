@@ -27,31 +27,31 @@ import com.github.dannil.scbjavaclient.utility.URLUtility;
 @RunWith(JUnit4.class)
 public class SCBClientTest {
 
-	@Test
-	public void createWithLocaleConstructor() {
-		Locale locale = new Locale("sv", "SE");
-		SCBClient client = new SCBClient(locale);
+    @Test
+    public void createWithLocaleConstructor() {
+        Locale locale = new Locale("sv", "SE");
+        SCBClient client = new SCBClient(locale);
 
-		assertEquals(locale, client.getLocale());
-	}
+        assertEquals(locale, client.getLocale());
+    }
 
-	@Test
-	public void setLocalizationLanguage() {
-		Locale locale = new Locale("sv", "SE");
-		SCBClient client = new SCBClient(locale);
+    @Test
+    public void setLocalizationLanguage() {
+        Locale locale = new Locale("sv", "SE");
+        SCBClient client = new SCBClient(locale);
 
-		Locale localizationLocale = new Locale("en", "US");
-		client.setLocalizationLocale(localizationLocale);
+        Locale localizationLocale = new Locale("en", "US");
+        client.setLocalizationLocale(localizationLocale);
 
-		assertEquals(localizationLocale, client.localization.getLocale());
-	}
+        assertEquals(localizationLocale, client.localization.getLocale());
+    }
 
-	@Test
-	public void getUrl() {
-		Locale locale = new Locale("sv", "SE");
-		SCBClient client = new SCBClient(locale);
+    @Test
+    public void getUrl() {
+        Locale locale = new Locale("sv", "SE");
+        SCBClient client = new SCBClient(locale);
 
-		assertEquals(URLUtility.getRootUrl(locale), client.getUrl());
-	}
+        assertEquals(URLUtility.getRootUrl(locale), client.getUrl());
+    }
 
 }

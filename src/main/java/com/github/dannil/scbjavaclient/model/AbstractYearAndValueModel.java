@@ -30,71 +30,71 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public abstract class AbstractYearAndValueModel<Y, V> extends AbstractValueModel<V> {
 
-	@JsonProperty("tid")
-	protected Y year;
+    @JsonProperty("tid")
+    protected Y year;
 
-	/**
-	 * <p>Default constructor.</p>
-	 */
-	public AbstractYearAndValueModel() {
-		// To enable derived classes to use their default constructor
-		super();
-	}
+    /**
+     * <p>Default constructor.</p>
+     */
+    public AbstractYearAndValueModel() {
+        // To enable derived classes to use their default constructor
+        super();
+    }
 
-	/**
-	 * <p>Overloaded constructor.</p>
-	 * 
-	 * @param year
-	 *            the year
-	 * @param values
-	 *            the values
-	 */
-	public AbstractYearAndValueModel(Y year, List<ValueNode<V>> values) {
-		super(values);
-		this.year = year;
-	}
+    /**
+     * <p>Overloaded constructor.</p>
+     * 
+     * @param year
+     *            the year
+     * @param values
+     *            the values
+     */
+    public AbstractYearAndValueModel(Y year, List<ValueNode<V>> values) {
+        super(values);
+        this.year = year;
+    }
 
-	/**
-	 * <p>Getter for year.</p>
-	 * 
-	 * @return the year
-	 */
-	public Y getYear() {
-		return this.year;
-	}
+    /**
+     * <p>Getter for year.</p>
+     * 
+     * @return the year
+     */
+    public Y getYear() {
+        return this.year;
+    }
 
-	/**
-	 * <p>Setter for year.</p>
-	 * 
-	 * @param year
-	 *            the year
-	 */
-	public void setYear(Y year) {
-		this.year = year;
-	}
+    /**
+     * <p>Setter for year.</p>
+     * 
+     * @param year
+     *            the year
+     */
+    public void setYear(Y year) {
+        this.year = year;
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(super.hashCode(), this.year);
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), this.year);
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (!(obj instanceof AbstractYearAndValueModel<?, ?>)) {
-			return false;
-		}
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof AbstractYearAndValueModel<?, ?>)) {
+            return false;
+        }
 
-		AbstractYearAndValueModel<?, ?> other = (AbstractYearAndValueModel<?, ?>) obj;
-		return super.equals(other) && Objects.equals(this.year, other.year);
-	}
+        AbstractYearAndValueModel<?, ?> other = (AbstractYearAndValueModel<?, ?>) obj;
+        return super.equals(other) && Objects.equals(this.year, other.year);
+    }
 
-	@Override
-	public abstract String toString();
+    @Override
+    public abstract String toString();
 
 }

@@ -34,99 +34,99 @@ import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
  */
 public class NumberOfChildrenBornWithFirstName extends AbstractYearAndValueModel<Integer, String> {
 
-	@JsonProperty("tilltalsnamn")
-	private String firstname;
+    @JsonProperty("tilltalsnamn")
+    private String firstname;
 
-	/**
-	 * <p>Default constructor.</p>
-	 */
-	public NumberOfChildrenBornWithFirstName() {
-		super();
-	}
+    /**
+     * <p>Default constructor.</p>
+     */
+    public NumberOfChildrenBornWithFirstName() {
+        super();
+    }
 
-	/**
-	 * <p>Overloaded constructor.</p>
-	 * 
-	 * @param firstname
-	 *            the firstname
-	 * @param year
-	 *            the year
-	 * @param values
-	 *            the values
-	 */
-	public NumberOfChildrenBornWithFirstName(String firstname, Integer year, List<ValueNode<String>> values) {
-		super(year, values);
-		this.firstname = firstname;
-	}
+    /**
+     * <p>Overloaded constructor.</p>
+     * 
+     * @param firstname
+     *            the firstname
+     * @param year
+     *            the year
+     * @param values
+     *            the values
+     */
+    public NumberOfChildrenBornWithFirstName(String firstname, Integer year, List<ValueNode<String>> values) {
+        super(year, values);
+        this.firstname = firstname;
+    }
 
-	/**
-	 * <p>Getter for firstname.</p>
-	 * 
-	 * @return the firstname
-	 */
-	public String getFirstname() {
-		return this.firstname;
-	}
+    /**
+     * <p>Getter for firstname.</p>
+     * 
+     * @return the firstname
+     */
+    public String getFirstname() {
+        return this.firstname;
+    }
 
-	/**
-	 * <p>Setter for firstname.</p>
-	 * 
-	 * @param firstname
-	 *            the firstname
-	 */
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
-	}
+    /**
+     * <p>Setter for firstname.</p>
+     * 
+     * @param firstname
+     *            the firstname
+     */
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(super.hashCode(), this.firstname);
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), this.firstname);
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (!(obj instanceof NumberOfChildrenBornWithFirstName)) {
-			return false;
-		}
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof NumberOfChildrenBornWithFirstName)) {
+            return false;
+        }
 
-		NumberOfChildrenBornWithFirstName other = (NumberOfChildrenBornWithFirstName) obj;
-		return super.equals(other) && Objects.equals(this.firstname, other.firstname);
-	}
+        NumberOfChildrenBornWithFirstName other = (NumberOfChildrenBornWithFirstName) obj;
+        return super.equals(other) && Objects.equals(this.firstname, other.firstname);
+    }
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder(128);
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder(128);
 
-		builder.append(this.getClass().getSimpleName());
-		builder.append(" [firstname=");
-		builder.append(this.firstname);
-		builder.append(", year=");
-		builder.append(super.year);
-		builder.append(", values=");
-		builder.append(super.values);
-		builder.append(']');
+        builder.append(this.getClass().getSimpleName());
+        builder.append(" [firstname=");
+        builder.append(this.firstname);
+        builder.append(", year=");
+        builder.append(super.year);
+        builder.append(", values=");
+        builder.append(super.values);
+        builder.append(']');
 
-		return builder.toString();
-	}
+        return builder.toString();
+    }
 
-	/**
-	 * <p>Get the available codes and their respective values for the number of children
-	 * born with first name data from the API.</p>
-	 *
-	 * @return a list of the available codes and their values
-	 */
-	public static Map<String, Collection<String>> getInputs() {
-		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
-		String response = get.getBodyAsStringFromTable("BE/BE0001/BE0001T04Ar");
+    /**
+     * <p>Get the available codes and their respective values for the number of children
+     * born with first name data from the API.</p>
+     *
+     * @return a list of the available codes and their values
+     */
+    public static Map<String, Collection<String>> getInputs() {
+        AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
+        String response = get.getBodyAsStringFromTable("BE/BE0001/BE0001T04Ar");
 
-		JsonAPITableFormat format = new JsonAPITableFormat(response);
-		return format.getInputs();
-	}
+        JsonAPITableFormat format = new JsonAPITableFormat(response);
+        return format.getInputs();
+    }
 
 }

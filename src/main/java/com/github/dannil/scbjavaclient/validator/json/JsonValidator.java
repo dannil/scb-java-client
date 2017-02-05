@@ -9,22 +9,22 @@ import com.fasterxml.jackson.databind.JsonNode;
  */
 public final class JsonValidator {
 
-	/**
-	 * <p>Private constructor to prevent instantiation.</p>
-	 */
-	private JsonValidator() {
+    /**
+     * <p>Private constructor to prevent instantiation.</p>
+     */
+    private JsonValidator() {
 
-	}
+    }
 
-	/**
-	 * <p>Checks if the JSON is a query.</p>
-	 * 
-	 * @param node
-	 *            the node to check
-	 * @return true if the node is a query
-	 */
-	public static boolean isQuery(JsonNode node) {
-		// Check if the node is actually a query
-		return node.has("query");
-	}
+    /**
+     * <p>Checks if the JSON is a query.</p>
+     * 
+     * @param node
+     *            the node to check
+     * @return true if the node is a query
+     */
+    public static boolean isQuery(JsonNode node) {
+        // Check if the node is actually a query
+        return node.has("query");
+    }
 }

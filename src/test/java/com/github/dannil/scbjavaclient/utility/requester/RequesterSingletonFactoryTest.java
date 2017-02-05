@@ -27,110 +27,110 @@ import org.junit.Test;
 
 public class RequesterSingletonFactoryTest {
 
-	@Test
-	public void callPrivateConstructor()
-			throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-		Constructor<?>[] cons = RequesterSingletonFactory.class.getDeclaredConstructors();
-		cons[0].setAccessible(true);
-		cons[0].newInstance();
-		cons[0].setAccessible(false);
+    @Test
+    public void callPrivateConstructor()
+            throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        Constructor<?>[] cons = RequesterSingletonFactory.class.getDeclaredConstructors();
+        cons[0].setAccessible(true);
+        cons[0].newInstance();
+        cons[0].setAccessible(false);
 
-		assertFalse(cons[0].isAccessible());
-	}
+        assertFalse(cons[0].isAccessible());
+    }
 
-	@Test
-	public void callPrivateConstructorGETHolder() throws NoSuchMethodException, SecurityException,
-			InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+    @Test
+    public void callPrivateConstructorGETHolder() throws NoSuchMethodException, SecurityException,
+            InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 
-		// Ridiculous code to instantiate private static class inside a private
-		// class
-		Class<?> enclosingClass = RequesterSingletonFactory.class;
-		Constructor<?> enclosingConstructor = enclosingClass.getDeclaredConstructor();
-		enclosingConstructor.setAccessible(true);
+        // Ridiculous code to instantiate private static class inside a private
+        // class
+        Class<?> enclosingClass = RequesterSingletonFactory.class;
+        Constructor<?> enclosingConstructor = enclosingClass.getDeclaredConstructor();
+        enclosingConstructor.setAccessible(true);
 
-		// Make sure we instantiate the correct inner class
-		String innerClassName = "GETHolder";
-		Class<?> innerClass = null;
-		Class<?>[] innerClasses = RequesterSingletonFactory.class.getDeclaredClasses();
-		for (int i = 0; i < innerClasses.length; i++) {
-			if (innerClasses[i].toString().contains(innerClassName)) {
-				// We found the correct class!
-				innerClass = innerClasses[i];
-			}
-		}
-		assertTrue(innerClass.toString().contains(innerClassName));
+        // Make sure we instantiate the correct inner class
+        String innerClassName = "GETHolder";
+        Class<?> innerClass = null;
+        Class<?>[] innerClasses = RequesterSingletonFactory.class.getDeclaredClasses();
+        for (int i = 0; i < innerClasses.length; i++) {
+            if (innerClasses[i].toString().contains(innerClassName)) {
+                // We found the correct class!
+                innerClass = innerClasses[i];
+            }
+        }
+        assertTrue(innerClass.toString().contains(innerClassName));
 
-		Constructor<?> innerConstructor = innerClass.getDeclaredConstructors()[0];
+        Constructor<?> innerConstructor = innerClass.getDeclaredConstructors()[0];
 
-		innerConstructor.setAccessible(true);
-		innerConstructor.newInstance();
-		innerConstructor.setAccessible(false);
+        innerConstructor.setAccessible(true);
+        innerConstructor.newInstance();
+        innerConstructor.setAccessible(false);
 
-		assertFalse(innerConstructor.isAccessible());
-	}
+        assertFalse(innerConstructor.isAccessible());
+    }
 
-	@Test
-	public void callPrivateConstructorPOSTHolder() throws NoSuchMethodException, SecurityException,
-			InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+    @Test
+    public void callPrivateConstructorPOSTHolder() throws NoSuchMethodException, SecurityException,
+            InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 
-		// Ridiculous code to instantiate private static class inside a private
-		// class
-		Class<?> enclosingClass = RequesterSingletonFactory.class;
-		Constructor<?> enclosingConstructor = enclosingClass.getDeclaredConstructor();
-		enclosingConstructor.setAccessible(true);
+        // Ridiculous code to instantiate private static class inside a private
+        // class
+        Class<?> enclosingClass = RequesterSingletonFactory.class;
+        Constructor<?> enclosingConstructor = enclosingClass.getDeclaredConstructor();
+        enclosingConstructor.setAccessible(true);
 
-		// Make sure we instantiate the correct inner class
-		String innerClassName = "POSTHolder";
-		Class<?> innerClass = null;
-		Class<?>[] innerClasses = RequesterSingletonFactory.class.getDeclaredClasses();
-		for (int i = 0; i < innerClasses.length; i++) {
-			if (innerClasses[i].toString().contains(innerClassName)) {
-				// We found the correct class!
-				innerClass = innerClasses[i];
-			}
-		}
-		assertTrue(innerClass.toString().contains(innerClassName));
+        // Make sure we instantiate the correct inner class
+        String innerClassName = "POSTHolder";
+        Class<?> innerClass = null;
+        Class<?>[] innerClasses = RequesterSingletonFactory.class.getDeclaredClasses();
+        for (int i = 0; i < innerClasses.length; i++) {
+            if (innerClasses[i].toString().contains(innerClassName)) {
+                // We found the correct class!
+                innerClass = innerClasses[i];
+            }
+        }
+        assertTrue(innerClass.toString().contains(innerClassName));
 
-		Constructor<?> innerConstructor = innerClass.getDeclaredConstructors()[0];
+        Constructor<?> innerConstructor = innerClass.getDeclaredConstructors()[0];
 
-		innerConstructor.setAccessible(true);
-		innerConstructor.newInstance();
-		innerConstructor.setAccessible(false);
+        innerConstructor.setAccessible(true);
+        innerConstructor.newInstance();
+        innerConstructor.setAccessible(false);
 
-		assertFalse(innerConstructor.isAccessible());
-	}
+        assertFalse(innerConstructor.isAccessible());
+    }
 
-	@Test
-	public void getRequester() {
-		AbstractRequester abs = RequesterSingletonFactory.getRequester(RequestMethod.GET);
+    @Test
+    public void getRequester() {
+        AbstractRequester abs = RequesterSingletonFactory.getRequester(RequestMethod.GET);
 
-		assertEquals(RequesterSingletonFactory.getRequester(RequestMethod.GET), abs);
-	}
+        assertEquals(RequesterSingletonFactory.getRequester(RequestMethod.GET), abs);
+    }
 
-	@Test(expected = IllegalArgumentException.class)
-	public void getRequesterIllegalArgument() {
-		AbstractRequester abs = RequesterSingletonFactory.getRequester(null);
+    @Test(expected = IllegalArgumentException.class)
+    public void getRequesterIllegalArgument() {
+        AbstractRequester abs = RequesterSingletonFactory.getRequester(null);
 
-		assertNull(abs);
-	}
+        assertNull(abs);
+    }
 
-	// @Test
-	// public void getRequesterLocale() {
-	// Locale locale = new Locale("sv", "SE");
-	// AbstractRequester abs = RequesterSingletonFactory.getRequester(RequestMethod.GET,
-	// locale);
-	//
-	// assertTrue(abs instanceof GETRequester);
-	// assertEquals(abs.getLocale(), locale);
-	// }
+    // @Test
+    // public void getRequesterLocale() {
+    // Locale locale = new Locale("sv", "SE");
+    // AbstractRequester abs = RequesterSingletonFactory.getRequester(RequestMethod.GET,
+    // locale);
+    //
+    // assertTrue(abs instanceof GETRequester);
+    // assertEquals(abs.getLocale(), locale);
+    // }
 
-	@Test
-	public void requesterIsSingleton() {
-		AbstractRequester abs1 = RequesterSingletonFactory.getRequester(RequestMethod.GET, StandardCharsets.UTF_8);
-		AbstractRequester abs2 = RequesterSingletonFactory.getRequester(RequestMethod.GET, StandardCharsets.US_ASCII);
+    @Test
+    public void requesterIsSingleton() {
+        AbstractRequester abs1 = RequesterSingletonFactory.getRequester(RequestMethod.GET, StandardCharsets.UTF_8);
+        AbstractRequester abs2 = RequesterSingletonFactory.getRequester(RequestMethod.GET, StandardCharsets.US_ASCII);
 
-		assertEquals(StandardCharsets.US_ASCII, abs1.getCharset());
-		assertEquals(abs1.getCharset(), abs2.getCharset());
-	}
+        assertEquals(StandardCharsets.US_ASCII, abs1.getCharset());
+        assertEquals(abs1.getCharset(), abs2.getCharset());
+    }
 
 }

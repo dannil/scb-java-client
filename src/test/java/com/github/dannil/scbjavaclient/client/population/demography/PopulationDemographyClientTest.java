@@ -27,30 +27,30 @@ import com.github.dannil.scbjavaclient.utility.URLUtility;
 @RunWith(JUnit4.class)
 public class PopulationDemographyClientTest {
 
-	@Test
-	public void createWithLocaleConstructor() {
-		Locale locale = new Locale("sv", "SE");
-		PopulationDemographyClient populationDemographyClient = new PopulationDemographyClient(locale);
+    @Test
+    public void createWithLocaleConstructor() {
+        Locale locale = new Locale("sv", "SE");
+        PopulationDemographyClient populationDemographyClient = new PopulationDemographyClient(locale);
 
-		assertEquals(locale, populationDemographyClient.getLocale());
-	}
+        assertEquals(locale, populationDemographyClient.getLocale());
+    }
 
-	@Test
-	public void setLocale() {
-		Locale locale = new Locale("sv", "SE");
-		PopulationDemographyClient populationDemographyClient = new PopulationDemographyClient();
+    @Test
+    public void setLocale() {
+        Locale locale = new Locale("sv", "SE");
+        PopulationDemographyClient populationDemographyClient = new PopulationDemographyClient();
 
-		populationDemographyClient.setLocale(locale);
+        populationDemographyClient.setLocale(locale);
 
-		assertEquals(locale, populationDemographyClient.getLocale());
-	}
+        assertEquals(locale, populationDemographyClient.getLocale());
+    }
 
-	@Test
-	public void getUrl() {
-		Locale locale = new Locale("sv", "SE");
-		PopulationDemographyClient populationDemographyClient = new PopulationDemographyClient(locale);
+    @Test
+    public void getUrl() {
+        Locale locale = new Locale("sv", "SE");
+        PopulationDemographyClient populationDemographyClient = new PopulationDemographyClient(locale);
 
-		assertEquals(URLUtility.getRootUrl(locale) + "BE/BE0701/", populationDemographyClient.getUrl());
-	}
+        assertEquals(URLUtility.getRootUrl(locale) + "BE/BE0701/", populationDemographyClient.getUrl());
+    }
 
 }

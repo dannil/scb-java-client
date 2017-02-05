@@ -21,45 +21,45 @@ package com.github.dannil.scbjavaclient.exception;
  */
 public class SCBClientTooManyRequestsException extends SCBClientException {
 
-	private static final long serialVersionUID = -7761485153313257674L;
+    private static final long serialVersionUID = -7761485153313257674L;
 
-	/**
-	 * <p>Default constructor.</p>
-	 */
-	public SCBClientTooManyRequestsException() {
-		super();
-	}
+    /**
+     * <p>Default constructor.</p>
+     */
+    public SCBClientTooManyRequestsException() {
+        super();
+    }
 
-	/**
-	 * <p>Overloaded constructor.</p>
-	 * 
-	 * @param message
-	 *            the message
-	 */
-	public SCBClientTooManyRequestsException(String message) {
-		super(message);
-	}
+    /**
+     * <p>Overloaded constructor.</p>
+     * 
+     * @param message
+     *            the message
+     */
+    public SCBClientTooManyRequestsException(String message) {
+        super(message);
+    }
 
-	/**
-	 * <p>Overloaded constructor.</p>
-	 * 
-	 * @param message
-	 *            the message
-	 * @param cause
-	 *            the cause
-	 */
-	public SCBClientTooManyRequestsException(String message, Throwable cause) {
-		super(message, cause);
-	}
+    /**
+     * <p>Overloaded constructor.</p>
+     * 
+     * @param message
+     *            the message
+     * @param cause
+     *            the cause
+     */
+    public SCBClientTooManyRequestsException(String message, Throwable cause) {
+        super(message, cause);
+    }
 
-	/**
-	 * <p>Overloaded constructor.</p>
-	 * 
-	 * @param cause
-	 *            the cause
-	 */
-	public SCBClientTooManyRequestsException(Throwable cause) {
-		super(cause);
-	}
+    /**
+     * <p>Overloaded constructor.</p>
+     * 
+     * @param cause
+     *            the cause
+     */
+    public SCBClientTooManyRequestsException(Throwable cause) {
+        super(cause);
+    }
 
 }

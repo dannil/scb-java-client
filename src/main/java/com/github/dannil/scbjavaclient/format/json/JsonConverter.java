@@ -27,57 +27,57 @@ import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
  */
 public class JsonConverter {
 
-	private ObjectMapper mapper;
+    private ObjectMapper mapper;
 
-	/**
-	 * <p>Default constructor. Initializes the
-	 * {@link com.fasterxml.jackson.databind.ObjectMapper ObjectMapper} needed for
-	 * converting objects.</p>
-	 */
-	public JsonConverter() {
-		this.mapper = new ObjectMapper();
-	}
+    /**
+     * <p>Default constructor. Initializes the
+     * {@link com.fasterxml.jackson.databind.ObjectMapper ObjectMapper} needed for
+     * converting objects.</p>
+     */
+    public JsonConverter() {
+        this.mapper = new ObjectMapper();
+    }
 
-	/**
-	 * <p>Getter for mapper.</p>
-	 * 
-	 * @return the mapper
-	 */
-	public ObjectMapper getMapper() {
-		return this.mapper;
-	}
+    /**
+     * <p>Getter for mapper.</p>
+     * 
+     * @return the mapper
+     */
+    public ObjectMapper getMapper() {
+        return this.mapper;
+    }
 
-	/**
-	 * <p>Parse the JSON string into a {@link JsonNode} object.</p>
-	 * 
-	 * @param json
-	 *            the JSON content
-	 * 
-	 * @return a {@link JsonNode} object
-	 */
-	public JsonNode toNode(String json) {
-		return toNode(json, null);
-	}
+    /**
+     * <p>Parse the JSON string into a {@link JsonNode} object.</p>
+     * 
+     * @param json
+     *            the JSON content
+     * 
+     * @return a {@link JsonNode} object
+     */
+    public JsonNode toNode(String json) {
+        return toNode(json, null);
+    }
 
-	/**
-	 * <p>Parse the JSON string into a {@link JsonNode} object with the specified field as
-	 * root field.</p>
-	 * 
-	 * @param json
-	 *            the JSON content
-	 * @param field
-	 *            the field in the JSON to become the root
-	 * @return a {@link JsonNode} object with the specified field as root.
-	 */
-	public JsonNode toNode(String json, String field) {
-		try {
-			JsonNode node = this.mapper.readTree(json);
-			if (field != null) {
-				return node.get(field);
-			}
-			return node;
-		} catch (IOException e) {
-			throw new SCBClientParsingException(e);
-		}
-	}
+    /**
+     * <p>Parse the JSON string into a {@link JsonNode} object with the specified field as
+     * root field.</p>
+     * 
+     * @param json
+     *            the JSON content
+     * @param field
+     *            the field in the JSON to become the root
+     * @return a {@link JsonNode} object with the specified field as root.
+     */
+    public JsonNode toNode(String json, String field) {
+        try {
+            JsonNode node = this.mapper.readTree(json);
+            if (field != null) {
+                return node.get(field);
+            }
+            return node;
+        } catch (IOException e) {
+            throw new SCBClientParsingException(e);
+        }
+    }
 }

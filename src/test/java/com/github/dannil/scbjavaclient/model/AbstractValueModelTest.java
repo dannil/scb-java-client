@@ -30,91 +30,91 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class AbstractValueModelTest {
 
-	private List<ValueNode<Long>> valueNodes;
+    private List<ValueNode<Long>> valueNodes;
 
-	// Dummy class which doesn't override the equals
-	// method. This enables us to thoroughly test the equals method.
-	public class DummyClass extends AbstractValueModel<Long> {
+    // Dummy class which doesn't override the equals
+    // method. This enables us to thoroughly test the equals method.
+    public class DummyClass extends AbstractValueModel<Long> {
 
-		public DummyClass() {
+        public DummyClass() {
 
-		}
+        }
 
-		public DummyClass(List<ValueNode<Long>> values) {
-			super(values);
-		}
+        public DummyClass(List<ValueNode<Long>> values) {
+            super(values);
+        }
 
-		@Override
-		public String toString() {
-			return "Dummy";
-		}
+        @Override
+        public String toString() {
+            return "Dummy";
+        }
 
-	}
+    }
 
-	@Before
-	public void setup() {
-		this.valueNodes = new ArrayList<ValueNode<Long>>();
+    @Before
+    public void setup() {
+        this.valueNodes = new ArrayList<ValueNode<Long>>();
 
-		ValueNode<Long> value1 = new ValueNode<Long>(12345L, "TESTCODE", "TESTTEXT");
-		ValueNode<Long> value2 = new ValueNode<Long>(54321L, "ANOTHERTESTCODE", "ANOTHERTESTTEXT");
-		this.valueNodes.add(value1);
-		this.valueNodes.add(value2);
-	}
+        ValueNode<Long> value1 = new ValueNode<Long>(12345L, "TESTCODE", "TESTTEXT");
+        ValueNode<Long> value2 = new ValueNode<Long>(54321L, "ANOTHERTESTCODE", "ANOTHERTESTTEXT");
+        this.valueNodes.add(value1);
+        this.valueNodes.add(value2);
+    }
 
-	@Test
-	public void getValue() {
-		DummyClass dm = new DummyClass(this.valueNodes);
+    @Test
+    public void getValue() {
+        DummyClass dm = new DummyClass(this.valueNodes);
 
-		assertNotNull(dm.getValue("TESTCODE"));
-	}
+        assertNotNull(dm.getValue("TESTCODE"));
+    }
 
-	@Test
-	public void getValueNoMatchingKey() {
-		DummyClass dm = new DummyClass(this.valueNodes);
+    @Test
+    public void getValueNoMatchingKey() {
+        DummyClass dm = new DummyClass(this.valueNodes);
 
-		assertNull(dm.getValue("THISTESTCODEDOESNTEXIST"));
-	}
+        assertNull(dm.getValue("THISTESTCODEDOESNTEXIST"));
+    }
 
-	@Test
-	public void setValue() {
-		DummyClass dm = new DummyClass(this.valueNodes);
+    @Test
+    public void setValue() {
+        DummyClass dm = new DummyClass(this.valueNodes);
 
-		dm.setValue("TESTCODE", 98765L);
+        dm.setValue("TESTCODE", 98765L);
 
-		assertEquals(Long.valueOf(98765L), dm.getValue("TESTCODE").getValue());
-	}
+        assertEquals(Long.valueOf(98765L), dm.getValue("TESTCODE").getValue());
+    }
 
-	@Test
-	public void setValueNoMatchingKey() {
-		DummyClass dm = new DummyClass(this.valueNodes);
+    @Test
+    public void setValueNoMatchingKey() {
+        DummyClass dm = new DummyClass(this.valueNodes);
 
-		dm.setValue("THISTESTCODEDOESNTEXIST", 56789L);
+        dm.setValue("THISTESTCODEDOESNTEXIST", 56789L);
 
-		assertEquals(dm.getValues(), this.valueNodes);
-	}
+        assertEquals(dm.getValues(), this.valueNodes);
+    }
 
-	// Tests the superclass
-	@Test
-	public void superEqualsItself() {
-		AbstractValueModel<Long> dummy = new DummyClass();
+    // Tests the superclass
+    @Test
+    public void superEqualsItself() {
+        AbstractValueModel<Long> dummy = new DummyClass();
 
-		assertEquals(dummy, dummy);
-	}
+        assertEquals(dummy, dummy);
+    }
 
-	// Tests the superclass
-	@Test
-	public void superNotEqualsNull() {
-		AbstractValueModel<Long> dummy = new DummyClass();
+    // Tests the superclass
+    @Test
+    public void superNotEqualsNull() {
+        AbstractValueModel<Long> dummy = new DummyClass();
 
-		assertNotEquals(dummy, null);
-	}
+        assertNotEquals(dummy, null);
+    }
 
-	// Tests the superclass
-	@Test
-	public void superNotEqualsIncompatibleObject() {
-		AbstractValueModel<Long> dummy = new DummyClass();
+    // Tests the superclass
+    @Test
+    public void superNotEqualsIncompatibleObject() {
+        AbstractValueModel<Long> dummy = new DummyClass();
 
-		assertNotEquals(dummy, new Object());
-	}
+        assertNotEquals(dummy, new Object());
+    }
 
 }

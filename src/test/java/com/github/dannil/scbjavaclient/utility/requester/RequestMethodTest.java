@@ -24,14 +24,14 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class RequestMethodTest {
 
-	@Test
-	public void valueOf() {
-		assertEquals(RequestMethod.GET, RequestMethod.valueOf("GET"));
-	}
+    @Test
+    public void valueOf() {
+        assertEquals(RequestMethod.GET, RequestMethod.valueOf("GET"));
+    }
 
-	@Test
-	public void values() {
-		assertNotNull(RequestMethod.values());
-	}
+    @Test
+    public void values() {
+        assertNotNull(RequestMethod.values());
+    }
 
 }

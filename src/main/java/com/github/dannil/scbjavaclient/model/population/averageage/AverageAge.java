@@ -34,103 +34,103 @@ import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
  */
 public class AverageAge extends AbstractRegionYearAndValueModel<String, Integer, Double> {
 
-	@JsonProperty("kon")
-	private String gender;
+    @JsonProperty("kon")
+    private String gender;
 
-	/**
-	 * <p>Default constructor.</p>
-	 */
-	public AverageAge() {
-		super();
-	}
+    /**
+     * <p>Default constructor.</p>
+     */
+    public AverageAge() {
+        super();
+    }
 
-	/**
-	 * <p>Overloaded constructor.</p>
-	 * 
-	 * @param region
-	 *            the region
-	 * @param gender
-	 *            the gender
-	 * @param year
-	 *            the year
-	 * @param values
-	 *            the values
-	 */
-	public AverageAge(String region, String gender, Integer year, List<ValueNode<Double>> values) {
-		super(region, year, values);
-		this.gender = gender;
-	}
+    /**
+     * <p>Overloaded constructor.</p>
+     * 
+     * @param region
+     *            the region
+     * @param gender
+     *            the gender
+     * @param year
+     *            the year
+     * @param values
+     *            the values
+     */
+    public AverageAge(String region, String gender, Integer year, List<ValueNode<Double>> values) {
+        super(region, year, values);
+        this.gender = gender;
+    }
 
-	/**
-	 * <p>Getter for gender.</p>
-	 * 
-	 * @return the gender
-	 */
-	public String getGender() {
-		return this.gender;
-	}
+    /**
+     * <p>Getter for gender.</p>
+     * 
+     * @return the gender
+     */
+    public String getGender() {
+        return this.gender;
+    }
 
-	/**
-	 * <p>Setter for gender.</p>
-	 * 
-	 * @param gender
-	 *            the gender
-	 */
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
+    /**
+     * <p>Setter for gender.</p>
+     * 
+     * @param gender
+     *            the gender
+     */
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(super.hashCode(), this.gender);
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), this.gender);
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (!(obj instanceof AverageAge)) {
-			return false;
-		}
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof AverageAge)) {
+            return false;
+        }
 
-		AverageAge other = (AverageAge) obj;
-		return super.equals(other) && Objects.equals(this.gender, other.gender);
-	}
+        AverageAge other = (AverageAge) obj;
+        return super.equals(other) && Objects.equals(this.gender, other.gender);
+    }
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder(128);
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder(128);
 
-		builder.append(this.getClass().getSimpleName());
-		builder.append(" [gender=");
-		builder.append(this.gender);
-		builder.append(", region=");
-		builder.append(super.region);
-		builder.append(", year=");
-		builder.append(super.year);
-		builder.append(", values=");
-		builder.append(super.values);
-		builder.append(']');
+        builder.append(this.getClass().getSimpleName());
+        builder.append(" [gender=");
+        builder.append(this.gender);
+        builder.append(", region=");
+        builder.append(super.region);
+        builder.append(", year=");
+        builder.append(super.year);
+        builder.append(", values=");
+        builder.append(super.values);
+        builder.append(']');
 
-		return builder.toString();
-	}
+        return builder.toString();
+    }
 
-	/**
-	 * <p>Get the available codes and their respective values for the average age data
-	 * from the API.</p>
-	 * 
-	 * @return a list of the available codes and their values
-	 */
-	public static Map<String, Collection<String>> getInputs() {
-		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
-		String response = get.getBodyAsStringFromTable("BE/BE0101/BE0101B/BefolkningMedelAlder");
+    /**
+     * <p>Get the available codes and their respective values for the average age data
+     * from the API.</p>
+     * 
+     * @return a list of the available codes and their values
+     */
+    public static Map<String, Collection<String>> getInputs() {
+        AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
+        String response = get.getBodyAsStringFromTable("BE/BE0101/BE0101B/BefolkningMedelAlder");
 
-		JsonAPITableFormat format = new JsonAPITableFormat(response);
-		return format.getInputs();
-	}
+        JsonAPITableFormat format = new JsonAPITableFormat(response);
+        return format.getInputs();
+    }
 
 }

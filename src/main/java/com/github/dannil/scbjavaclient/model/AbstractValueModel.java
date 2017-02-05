@@ -29,101 +29,101 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public abstract class AbstractValueModel<V> {
 
-	@JsonProperty("values")
-	protected List<ValueNode<V>> values;
+    @JsonProperty("values")
+    protected List<ValueNode<V>> values;
 
-	/**
-	 * <p>Default constructor.</p>
-	 */
-	protected AbstractValueModel() {
-		// To enable derived classes to use their default constructor
-		this.values = new ArrayList<>();
-	}
+    /**
+     * <p>Default constructor.</p>
+     */
+    protected AbstractValueModel() {
+        // To enable derived classes to use their default constructor
+        this.values = new ArrayList<>();
+    }
 
-	/**
-	 * <p>Overloaded constructor.</p>
-	 * 
-	 * @param values
-	 *            the values
-	 */
-	protected AbstractValueModel(List<ValueNode<V>> values) {
-		this();
-		this.values = values;
-	}
+    /**
+     * <p>Overloaded constructor.</p>
+     * 
+     * @param values
+     *            the values
+     */
+    protected AbstractValueModel(List<ValueNode<V>> values) {
+        this();
+        this.values = values;
+    }
 
-	/**
-	 * <p>Getter for values.</p>
-	 * 
-	 * @return the values
-	 */
-	public List<ValueNode<V>> getValues() {
-		return this.values;
-	}
+    /**
+     * <p>Getter for values.</p>
+     * 
+     * @return the values
+     */
+    public List<ValueNode<V>> getValues() {
+        return this.values;
+    }
 
-	/**
-	 * <p>Setter for values.</p>
-	 * 
-	 * @param values
-	 *            the values
-	 */
-	public void setValues(List<ValueNode<V>> values) {
-		this.values = values;
-	}
+    /**
+     * <p>Setter for values.</p>
+     * 
+     * @param values
+     *            the values
+     */
+    public void setValues(List<ValueNode<V>> values) {
+        this.values = values;
+    }
 
-	/**
-	 * <p>Get the value node for a specific contents code.</p>
-	 *
-	 * @param key
-	 *            the contents code to get the {@link ValueNode ValueNode} for
-	 * @return the {@link ValueNode ValueNode} containing the contents code
-	 */
-	public ValueNode<V> getValue(String key) {
-		for (ValueNode<V> v : this.values) {
-			if (Objects.equals(key, v.getCode())) {
-				return v;
-			}
-		}
-		return null;
-	}
+    /**
+     * <p>Get the value node for a specific contents code.</p>
+     *
+     * @param key
+     *            the contents code to get the {@link ValueNode ValueNode} for
+     * @return the {@link ValueNode ValueNode} containing the contents code
+     */
+    public ValueNode<V> getValue(String key) {
+        for (ValueNode<V> v : this.values) {
+            if (Objects.equals(key, v.getCode())) {
+                return v;
+            }
+        }
+        return null;
+    }
 
-	/**
-	 * <p>Set the value for a specific contents code.</p>
-	 *
-	 * @param key
-	 *            the contents code to set the value for
-	 * @param value
-	 *            the value
-	 */
-	public void setValue(String key, V value) {
-		for (ValueNode<V> v : this.values) {
-			if (Objects.equals(key, v.getCode())) {
-				v.setValue(value);
-			}
-		}
-	}
+    /**
+     * <p>Set the value for a specific contents code.</p>
+     *
+     * @param key
+     *            the contents code to set the value for
+     * @param value
+     *            the value
+     */
+    public void setValue(String key, V value) {
+        for (ValueNode<V> v : this.values) {
+            if (Objects.equals(key, v.getCode())) {
+                v.setValue(value);
+            }
+        }
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hashCode(this.values);
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(this.values);
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (!(obj instanceof AbstractValueModel<?>)) {
-			return false;
-		}
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof AbstractValueModel<?>)) {
+            return false;
+        }
 
-		AbstractValueModel<?> other = (AbstractValueModel<?>) obj;
-		return Objects.equals(this.values, other.values);
-	}
+        AbstractValueModel<?> other = (AbstractValueModel<?>) obj;
+        return Objects.equals(this.values, other.values);
+    }
 
-	@Override
-	public abstract String toString();
+    @Override
+    public abstract String toString();
 
 }

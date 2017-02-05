@@ -30,39 +30,39 @@ import com.github.dannil.scbjavaclient.test.RemoteIntegrationTestSuite;
 @RunWith(JUnit4.class)
 public class PopulationDemographyClientIT extends RemoteIntegrationTestSuite {
 
-	private PopulationDemographyClient populationDemographyClient;
+    private PopulationDemographyClient populationDemographyClient;
 
-	@Before
-	public void setup() {
-		this.populationDemographyClient = new SCBClient().population().demography();
-	}
+    @Before
+    public void setup() {
+        this.populationDemographyClient = new SCBClient().population().demography();
+    }
 
-	@Test
-	public void getFertilityRate() {
-		assertNotEquals(0, this.populationDemographyClient.getFertilityRate().size());
-	}
+    @Test
+    public void getFertilityRate() {
+        assertNotEquals(0, this.populationDemographyClient.getFertilityRate().size());
+    }
 
-	@Test
-	public void getFertilityRateWithParameters() {
-		List<String> regions = Arrays.asList("1263");
-		List<Integer> genders = Arrays.asList(1, 2);
-		List<Integer> years = Arrays.asList(2002);
+    @Test
+    public void getFertilityRateWithParameters() {
+        List<String> regions = Arrays.asList("1263");
+        List<Integer> genders = Arrays.asList(1, 2);
+        List<Integer> years = Arrays.asList(2002);
 
-		assertNotEquals(0, this.populationDemographyClient.getFertilityRate(regions, genders, years).size());
-	}
+        assertNotEquals(0, this.populationDemographyClient.getFertilityRate(regions, genders, years).size());
+    }
 
-	@Test
-	public void getMeanAgeFirstChild() {
-		assertNotEquals(0, this.populationDemographyClient.getMeanAgeFirstChild().size());
-	}
+    @Test
+    public void getMeanAgeFirstChild() {
+        assertNotEquals(0, this.populationDemographyClient.getMeanAgeFirstChild().size());
+    }
 
-	@Test
-	public void getMeanAgeFirstChildWithParameters() {
-		List<String> regions = Arrays.asList("1263");
-		List<Integer> genders = Arrays.asList(1, 2);
-		List<Integer> years = Arrays.asList(2002);
+    @Test
+    public void getMeanAgeFirstChildWithParameters() {
+        List<String> regions = Arrays.asList("1263");
+        List<Integer> genders = Arrays.asList(1, 2);
+        List<Integer> years = Arrays.asList(2002);
 
-		assertNotEquals(0, this.populationDemographyClient.getMeanAgeFirstChild(regions, genders, years).size());
-	}
+        assertNotEquals(0, this.populationDemographyClient.getMeanAgeFirstChild(regions, genders, years).size());
+    }
 
 }

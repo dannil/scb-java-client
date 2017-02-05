@@ -27,20 +27,20 @@ import com.github.dannil.scbjavaclient.utility.URLUtility;
 @RunWith(JUnit4.class)
 public class EnvironmentLandAndWaterAreaClientTest {
 
-	@Test
-	public void createWithLocaleConstructor() {
-		Locale locale = new Locale("sv", "SE");
-		EnvironmentLandAndWaterAreaClient client = new EnvironmentLandAndWaterAreaClient(locale);
+    @Test
+    public void createWithLocaleConstructor() {
+        Locale locale = new Locale("sv", "SE");
+        EnvironmentLandAndWaterAreaClient client = new EnvironmentLandAndWaterAreaClient(locale);
 
-		assertEquals(locale, client.getLocale());
-	}
+        assertEquals(locale, client.getLocale());
+    }
 
-	@Test
-	public void getUrl() {
-		Locale locale = new Locale("sv", "SE");
-		EnvironmentLandAndWaterAreaClient client = new EnvironmentLandAndWaterAreaClient(locale);
+    @Test
+    public void getUrl() {
+        Locale locale = new Locale("sv", "SE");
+        EnvironmentLandAndWaterAreaClient client = new EnvironmentLandAndWaterAreaClient(locale);
 
-		assertEquals(URLUtility.getRootUrl(locale) + "MI/MI0802/", client.getUrl());
-	}
+        assertEquals(URLUtility.getRootUrl(locale) + "MI/MI0802/", client.getUrl());
+    }
 
 }

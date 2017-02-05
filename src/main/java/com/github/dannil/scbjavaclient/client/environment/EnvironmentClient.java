@@ -26,43 +26,43 @@ import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.Envir
  */
 public class EnvironmentClient extends AbstractContainerClient {
 
-	private EnvironmentLandAndWaterAreaClient environmentLandAndWaterAreaClient;
+    private EnvironmentLandAndWaterAreaClient environmentLandAndWaterAreaClient;
 
-	/**
-	 * <p>Default constructor. Initializes values and creates sub-clients.</p>
-	 */
-	public EnvironmentClient() {
-		super();
+    /**
+     * <p>Default constructor. Initializes values and creates sub-clients.</p>
+     */
+    public EnvironmentClient() {
+        super();
 
-		this.environmentLandAndWaterAreaClient = new EnvironmentLandAndWaterAreaClient();
-		this.clients.add(this.environmentLandAndWaterAreaClient);
-	}
+        this.environmentLandAndWaterAreaClient = new EnvironmentLandAndWaterAreaClient();
+        this.clients.add(this.environmentLandAndWaterAreaClient);
+    }
 
-	/**
-	 * <p>Overloaded constructor.</p>
-	 * 
-	 * @param locale
-	 *            the <code>Locale</code> for this client
-	 */
-	public EnvironmentClient(Locale locale) {
-		this();
+    /**
+     * <p>Overloaded constructor.</p>
+     * 
+     * @param locale
+     *            the <code>Locale</code> for this client
+     */
+    public EnvironmentClient(Locale locale) {
+        this();
 
-		this.setLocale(locale);
-	}
+        this.setLocale(locale);
+    }
 
-	/**
-	 * <p>Retrieve the client for interacting with environment land and water area
-	 * data.</p>
-	 * 
-	 * @return a client for environment land and water area data
-	 */
-	public EnvironmentLandAndWaterAreaClient landAndWaterArea() {
-		return this.environmentLandAndWaterAreaClient;
-	}
+    /**
+     * <p>Retrieve the client for interacting with environment land and water area
+     * data.</p>
+     * 
+     * @return a client for environment land and water area data
+     */
+    public EnvironmentLandAndWaterAreaClient landAndWaterArea() {
+        return this.environmentLandAndWaterAreaClient;
+    }
 
-	@Override
-	public String getUrl() {
-		return super.getUrl() + "MI/";
-	}
+    @Override
+    public String getUrl() {
+        return super.getUrl() + "MI/";
+    }
 
 }

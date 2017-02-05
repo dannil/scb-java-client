@@ -31,36 +31,36 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class QueryBuilderTest {
 
-	@Test
-	public void callPrivateConstructor()
-			throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-		Constructor<?>[] cons = QueryBuilder.class.getDeclaredConstructors();
-		cons[0].setAccessible(true);
-		cons[0].newInstance();
-		cons[0].setAccessible(false);
+    @Test
+    public void callPrivateConstructor()
+            throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        Constructor<?>[] cons = QueryBuilder.class.getDeclaredConstructors();
+        cons[0].setAccessible(true);
+        cons[0].newInstance();
+        cons[0].setAccessible(false);
 
-		assertFalse(cons[0].isAccessible());
-	}
+        assertFalse(cons[0].isAccessible());
+    }
 
-	@Test
-	public void filterValueRemoveNullKey() {
-		Map<String, Collection<?>> inputMap = new HashMap<String, Collection<?>>();
-		inputMap.put(null, Arrays.asList("abc"));
+    @Test
+    public void filterValueRemoveNullKey() {
+        Map<String, Collection<?>> inputMap = new HashMap<String, Collection<?>>();
+        inputMap.put(null, Arrays.asList("abc"));
 
-		String query = QueryBuilder.build(inputMap);
+        String query = QueryBuilder.build(inputMap);
 
-		assertFalse(query.contains("null"));
-		assertFalse(query.contains("abc"));
-	}
+        assertFalse(query.contains("null"));
+        assertFalse(query.contains("abc"));
+    }
 
-	@Test
-	public void filterValueRemoveNullValue() {
-		Map<String, Collection<?>> inputMap = new HashMap<String, Collection<?>>();
-		inputMap.put("Tid", Arrays.asList(2012, null));
+    @Test
+    public void filterValueRemoveNullValue() {
+        Map<String, Collection<?>> inputMap = new HashMap<String, Collection<?>>();
+        inputMap.put("Tid", Arrays.asList(2012, null));
 
-		String query = QueryBuilder.build(inputMap);
+        String query = QueryBuilder.build(inputMap);
 
-		assertEquals("{\"query\": [{\"code\": \"Tid\", \"selection\": {\"filter\": \"item\", \"values\": [\"2012\"]}}],\"response\": {\"format\": \"json\"}}", query);
-	}
+        assertEquals("{\"query\": [{\"code\": \"Tid\", \"selection\": {\"filter\": \"item\", \"values\": [\"2012\"]}}],\"response\": {\"format\": \"json\"}}", query);
+    }
 
 }

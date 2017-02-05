@@ -30,48 +30,48 @@ import com.github.dannil.scbjavaclient.utility.URLUtility;
 @RunWith(JUnit4.class)
 public class POSTRequesterTest {
 
-	@Test
-	public void createWithDefaultConstructor() {
-		POSTRequester post = new POSTRequester();
+    @Test
+    public void createWithDefaultConstructor() {
+        POSTRequester post = new POSTRequester();
 
-		// Locale locale = new Locale("sv", "SE");
-		Charset charset = StandardCharsets.UTF_8;
+        // Locale locale = new Locale("sv", "SE");
+        Charset charset = StandardCharsets.UTF_8;
 
-		// assertEquals(locale, post.getLocale());
-		assertEquals(charset, post.getCharset());
-	}
+        // assertEquals(locale, post.getLocale());
+        assertEquals(charset, post.getCharset());
+    }
 
-	@Test
-	public void getCharset() {
-		POSTRequester post = (POSTRequester) RequesterFactory.getRequester(RequestMethod.POST);
+    @Test
+    public void getCharset() {
+        POSTRequester post = (POSTRequester) RequesterFactory.getRequester(RequestMethod.POST);
 
-		assertEquals(StandardCharsets.UTF_8, post.getCharset());
-	}
+        assertEquals(StandardCharsets.UTF_8, post.getCharset());
+    }
 
-	// @Test
-	// public void getLocale() {
-	// Locale locale = new Locale("sv", "SE");
-	// POSTRequester post = (POSTRequester)
-	// RequesterFactory.getRequester(RequestMethod.POST, locale);
-	//
-	// assertEquals(locale, post.getLocale());
-	// }
+    // @Test
+    // public void getLocale() {
+    // Locale locale = new Locale("sv", "SE");
+    // POSTRequester post = (POSTRequester)
+    // RequesterFactory.getRequester(RequestMethod.POST, locale);
+    //
+    // assertEquals(locale, post.getLocale());
+    // }
 
-	@Test
-	public void getPayload() {
-		POSTRequester post = (POSTRequester) RequesterFactory.getRequester(RequestMethod.POST);
-		post.setQuery("payload");
+    @Test
+    public void getPayload() {
+        POSTRequester post = (POSTRequester) RequesterFactory.getRequester(RequestMethod.POST);
+        post.setQuery("payload");
 
-		assertEquals("payload", post.getQuery());
-	}
+        assertEquals("payload", post.getQuery());
+    }
 
-	@Test(expected = IllegalStateException.class)
-	public void doRequestIllegalStateNullPayload() throws IOException {
-		POSTRequester post = (POSTRequester) RequesterFactory.getRequester(RequestMethod.POST);
+    @Test(expected = IllegalStateException.class)
+    public void doRequestIllegalStateNullPayload() throws IOException {
+        POSTRequester post = (POSTRequester) RequesterFactory.getRequester(RequestMethod.POST);
 
-		String response = post.getBodyAsString(URLUtility.getRootUrl() + "BE/BE0701/MedelAlderNY");
+        String response = post.getBodyAsString(URLUtility.getRootUrl() + "BE/BE0701/MedelAlderNY");
 
-		assertNull(response);
-	}
+        assertNull(response);
+    }
 
 }

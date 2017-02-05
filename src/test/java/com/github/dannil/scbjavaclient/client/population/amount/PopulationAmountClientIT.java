@@ -31,27 +31,27 @@ import com.github.dannil.scbjavaclient.test.RemoteIntegrationTestSuite;
 @RunWith(JUnit4.class)
 public class PopulationAmountClientIT extends RemoteIntegrationTestSuite {
 
-	private PopulationAmountClient populationAmountClient;
+    private PopulationAmountClient populationAmountClient;
 
-	@Before
-	public void setup() {
-		this.populationAmountClient = new SCBClient().population().amount();
-	}
+    @Before
+    public void setup() {
+        this.populationAmountClient = new SCBClient().population().amount();
+    }
 
-	@Test
-	public void getPopulation() {
-		assertNotEquals(0, this.populationAmountClient.getPopulation().size());
-	}
+    @Test
+    public void getPopulation() {
+        assertNotEquals(0, this.populationAmountClient.getPopulation().size());
+    }
 
-	@Test
-	public void getPopulationWithParameters() {
-		List<String> regions = Arrays.asList("1263");
-		List<String> statuses = Arrays.asList("OG", "G", "SK", "ÄNKL");
-		List<String> ages = Arrays.asList("25");
-		List<Integer> genders = Arrays.asList(1, 2);
-		List<Integer> years = Arrays.asList(1996);
+    @Test
+    public void getPopulationWithParameters() {
+        List<String> regions = Arrays.asList("1263");
+        List<String> statuses = Arrays.asList("OG", "G", "SK", "ÄNKL");
+        List<String> ages = Arrays.asList("25");
+        List<Integer> genders = Arrays.asList(1, 2);
+        List<Integer> years = Arrays.asList(1996);
 
-		assertNotEquals(0, this.populationAmountClient.getPopulation(regions, statuses, ages, genders, years).size());
-	}
+        assertNotEquals(0, this.populationAmountClient.getPopulation(regions, statuses, ages, genders, years).size());
+    }
 
 }

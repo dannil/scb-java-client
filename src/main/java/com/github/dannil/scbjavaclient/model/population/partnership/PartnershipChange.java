@@ -34,132 +34,132 @@ import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
  */
 public class PartnershipChange extends AbstractRegionYearAndValueModel<String, Integer, String> {
 
-	@JsonProperty("civilstand")
-	private String maritalStatus;
+    @JsonProperty("civilstand")
+    private String maritalStatus;
 
-	@JsonProperty("kon")
-	private String sex;
+    @JsonProperty("kon")
+    private String sex;
 
-	/**
-	 * <p>Default constructor.</p>
-	 */
-	public PartnershipChange() {
-		super();
-	}
+    /**
+     * <p>Default constructor.</p>
+     */
+    public PartnershipChange() {
+        super();
+    }
 
-	/**
-	 * Overloaded constructor.
-	 * 
-	 * @param region
-	 *            the region
-	 * @param maritalStatus
-	 *            the marital status
-	 * @param sex
-	 *            the sex
-	 * @param year
-	 *            the year
-	 * @param values
-	 *            the values
-	 */
-	public PartnershipChange(String region, String maritalStatus, String sex, Integer year,
-			List<ValueNode<String>> values) {
-		super(region, year, values);
-		this.maritalStatus = maritalStatus;
-		this.sex = sex;
-	}
+    /**
+     * Overloaded constructor.
+     * 
+     * @param region
+     *            the region
+     * @param maritalStatus
+     *            the marital status
+     * @param sex
+     *            the sex
+     * @param year
+     *            the year
+     * @param values
+     *            the values
+     */
+    public PartnershipChange(String region, String maritalStatus, String sex, Integer year,
+            List<ValueNode<String>> values) {
+        super(region, year, values);
+        this.maritalStatus = maritalStatus;
+        this.sex = sex;
+    }
 
-	/**
-	 * <p>Getter for marital status.</p>
-	 * 
-	 * @return the marital status.
-	 */
-	public String getMaritalStatus() {
-		return this.maritalStatus;
-	}
+    /**
+     * <p>Getter for marital status.</p>
+     * 
+     * @return the marital status.
+     */
+    public String getMaritalStatus() {
+        return this.maritalStatus;
+    }
 
-	/**
-	 * <p>Setter for marital status.</p>
-	 * 
-	 * @param maritalStatus
-	 *            the marital status
-	 */
-	public void setMaritalStatus(String maritalStatus) {
-		this.maritalStatus = maritalStatus;
-	}
+    /**
+     * <p>Setter for marital status.</p>
+     * 
+     * @param maritalStatus
+     *            the marital status
+     */
+    public void setMaritalStatus(String maritalStatus) {
+        this.maritalStatus = maritalStatus;
+    }
 
-	/**
-	 * <p>Getter for sex.</p>
-	 * 
-	 * @return the sex.
-	 */
-	public String getSex() {
-		return this.sex;
-	}
+    /**
+     * <p>Getter for sex.</p>
+     * 
+     * @return the sex.
+     */
+    public String getSex() {
+        return this.sex;
+    }
 
-	/**
-	 * <p>Setter for sex.</p>
-	 * 
-	 * @param sex
-	 *            the sex
-	 */
-	public void setSex(String sex) {
-		this.sex = sex;
-	}
+    /**
+     * <p>Setter for sex.</p>
+     * 
+     * @param sex
+     *            the sex
+     */
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(super.hashCode(), this.maritalStatus, this.sex);
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), this.maritalStatus, this.sex);
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (!(obj instanceof PartnershipChange)) {
-			return false;
-		}
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof PartnershipChange)) {
+            return false;
+        }
 
-		PartnershipChange other = (PartnershipChange) obj;
-		return super.equals(other) && Objects.equals(this.maritalStatus, other.maritalStatus)
-				&& Objects.equals(this.sex, other.sex);
-	}
+        PartnershipChange other = (PartnershipChange) obj;
+        return super.equals(other) && Objects.equals(this.maritalStatus, other.maritalStatus)
+                && Objects.equals(this.sex, other.sex);
+    }
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder(128);
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder(128);
 
-		builder.append(this.getClass().getSimpleName());
-		builder.append(" [maritalStatus=");
-		builder.append(this.maritalStatus);
-		builder.append(", sex=");
-		builder.append(this.sex);
-		builder.append(", region=");
-		builder.append(super.region);
-		builder.append(", year=");
-		builder.append(super.year);
-		builder.append(", values=");
-		builder.append(super.values);
-		builder.append(']');
+        builder.append(this.getClass().getSimpleName());
+        builder.append(" [maritalStatus=");
+        builder.append(this.maritalStatus);
+        builder.append(", sex=");
+        builder.append(this.sex);
+        builder.append(", region=");
+        builder.append(super.region);
+        builder.append(", year=");
+        builder.append(super.year);
+        builder.append(", values=");
+        builder.append(super.values);
+        builder.append(']');
 
-		return builder.toString();
-	}
+        return builder.toString();
+    }
 
-	/**
-	 * <p>Get the available codes and their respective values for the partnership data
-	 * from the API.</p>
-	 *
-	 * @return a list of the available codes and their values
-	 */
-	public static Map<String, Collection<String>> getInputs() {
-		AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
-		String response = get.getBodyAsStringFromTable("BE/BE0101/BE0101O/PartnerskapAndring");
+    /**
+     * <p>Get the available codes and their respective values for the partnership data
+     * from the API.</p>
+     *
+     * @return a list of the available codes and their values
+     */
+    public static Map<String, Collection<String>> getInputs() {
+        AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
+        String response = get.getBodyAsStringFromTable("BE/BE0101/BE0101O/PartnerskapAndring");
 
-		JsonAPITableFormat format = new JsonAPITableFormat(response);
-		return format.getInputs();
-	}
+        JsonAPITableFormat format = new JsonAPITableFormat(response);
+        return format.getInputs();
+    }
 
 }
