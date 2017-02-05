@@ -20,6 +20,7 @@ import java.util.Map;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.github.dannil.scbjavaclient.constants.ModelConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
 import com.github.dannil.scbjavaclient.model.AbstractYearAndValueModel;
 import com.github.dannil.scbjavaclient.model.ValueNode;
@@ -101,7 +102,7 @@ public class NumberOfChildrenBornWithFirstName extends AbstractYearAndValueModel
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder(128);
+        StringBuilder builder = new StringBuilder(ModelConstants.TOSTRING_BUILDER_LENGTH);
 
         builder.append(this.getClass().getSimpleName());
         builder.append(" [firstname=");

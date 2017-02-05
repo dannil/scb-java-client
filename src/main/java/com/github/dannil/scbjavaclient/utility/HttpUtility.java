@@ -28,6 +28,11 @@ import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
  */
 public final class HttpUtility {
 
+    private static final int HTTP_OK = 200;
+    private static final int HTTP_FORBIDDEN = 403;
+    private static final int HTTP_NOTFOUND = 404;
+    private static final int HTTP_TOOMANYREQUESTS = 429;
+
     /**
      * <p>Private constructor to prevent instantiation.</p>
      */
@@ -46,16 +51,16 @@ public final class HttpUtility {
      */
     public static void validateStatusCode(URI uri, int statusCode) {
         switch (statusCode) {
-            case 200:
+            case HTTP_OK:
                 break;
 
-            case 403:
+            case HTTP_FORBIDDEN:
                 throw new SCBClientForbiddenException(uri.toString());
 
-            case 404:
+            case HTTP_NOTFOUND:
                 throw new SCBClientUrlNotFoundException(uri.toString());
 
-            case 429:
+            case HTTP_TOOMANYREQUESTS:
                 throw new SCBClientTooManyRequestsException(uri.toString());
 
             default:

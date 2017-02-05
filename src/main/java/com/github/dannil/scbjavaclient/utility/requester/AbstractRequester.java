@@ -52,7 +52,8 @@ public abstract class AbstractRequester {
 
     static {
         properties = new Properties();
-        try (InputStream input = Thread.currentThread().getContextClassLoader().getResourceAsStream("project.properties")) {
+        ClassLoader loader = Thread.currentThread().getContextClassLoader();
+        try (InputStream input = loader.getResourceAsStream("project.properties")) {
             properties.load(input);
         } catch (IOException e) {
             throw new SCBClientException(e);
@@ -86,7 +87,7 @@ public abstract class AbstractRequester {
         String version = properties.getProperty("version");
         String url = properties.getProperty("url");
 
-        StringBuilder builder = new StringBuilder(64);
+        StringBuilder builder = new StringBuilder();
         builder.append(artifactId);
         builder.append('/');
         builder.append(version);
@@ -126,7 +127,7 @@ public abstract class AbstractRequester {
      * @return the body as a string
      */
     protected String getBody(HttpResponse response) {
-        StringBuilder builder = new StringBuilder(64);
+        StringBuilder builder = new StringBuilder();
         try (BOMInputStream bis = new BOMInputStream(response.getEntity().getContent())) {
             try (BufferedReader br = new BufferedReader(new InputStreamReader(bis, this.charset.name()))) {
                 for (String line = br.readLine(); line != null; line = br.readLine()) {

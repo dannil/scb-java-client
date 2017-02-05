@@ -20,6 +20,7 @@ import java.util.Map;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.github.dannil.scbjavaclient.constants.ModelConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
 import com.github.dannil.scbjavaclient.model.AbstractRegionYearAndValueModel;
 import com.github.dannil.scbjavaclient.model.ValueNode;
@@ -103,7 +104,7 @@ public class MeanAgeFirstChild extends AbstractRegionYearAndValueModel<String, I
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder(128);
+        StringBuilder builder = new StringBuilder(ModelConstants.TOSTRING_BUILDER_LENGTH);
 
         builder.append(this.getClass().getSimpleName());
         builder.append(" [gender=");
