@@ -97,9 +97,9 @@ public final class QueryBuilder {
         }
 
         // Approximate a good initial capacity for the string builder
-        final int apxOffsetChars = 44;
-        final int apxEntryChars = 80;
-        int size = apxOffsetChars + (apxEntryChars * filteredMap.size());
+        int approximateOffsetChars = 44;
+        int approximateEntryChars = 80;
+        int size = approximateOffsetChars + (approximateEntryChars * filteredMap.size());
         StringBuilder builder = new StringBuilder(size);
 
         // 2: Construct the query

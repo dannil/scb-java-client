@@ -16,6 +16,8 @@ package com.github.dannil.scbjavaclient.model;
 
 import java.util.Objects;
 
+import com.github.dannil.scbjavaclient.constants.ModelConstants;
+
 /**
  * <p>Class which holds all data for a specific value.</p>
  *
@@ -133,7 +135,7 @@ public class ValueNode<V> {
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder();
+        StringBuilder builder = new StringBuilder(ModelConstants.TOSTRING_BUILDER_LENGTH);
 
         builder.append("code=");
         builder.append(this.code);

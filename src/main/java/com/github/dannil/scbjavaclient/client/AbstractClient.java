@@ -88,11 +88,11 @@ public abstract class AbstractClient {
      * <p>Changes the <code>Locale</code> used for the localization. Useful if the client
      * needs to be in a different language than the error messages.</p>
      *
-     * @param inLocale
+     * @param loc
      *            the <code>Locale</code> for the localization
      */
-    public void setLocalizationLocale(Locale inLocale) {
-        this.localization.setLocale(inLocale);
+    public void setLocalizationLocale(Locale loc) {
+        this.localization.setLocale(loc);
     }
 
     /**
