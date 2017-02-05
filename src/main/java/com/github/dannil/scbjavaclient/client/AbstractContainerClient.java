@@ -26,7 +26,7 @@ import java.util.Locale;
  */
 public abstract class AbstractContainerClient extends AbstractClient {
 
-    protected Collection<AbstractClient> clients;
+    private Collection<AbstractClient> clients;
 
     /**
      * <p>Default constructor.</p>
@@ -57,8 +57,18 @@ public abstract class AbstractContainerClient extends AbstractClient {
         super.setLocale(locale);
 
         for (AbstractClient client : this.clients) {
-            client.setLocale(super.locale);
+            client.setLocale(super.getLocale());
         }
+    }
+
+    /**
+     * <p>Add a sub-client to this client.<p>
+     *
+     * @param client
+     *            the client
+     */
+    public final void add(AbstractClient client) {
+        this.clients.add(client);
     }
 
 }

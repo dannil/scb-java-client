@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public abstract class AbstractYearAndValueModel<Y, V> extends AbstractValueModel<V> {
 
     @JsonProperty("tid")
-    protected Y year;
+    private Y year;
 
     /**
      * <p>Default constructor.</p>

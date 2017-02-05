@@ -35,7 +35,7 @@ public class EnvironmentClient extends AbstractContainerClient {
         super();
 
         this.environmentLandAndWaterAreaClient = new EnvironmentLandAndWaterAreaClient();
-        this.clients.add(this.environmentLandAndWaterAreaClient);
+        this.add(this.environmentLandAndWaterAreaClient);
     }
 
     /**

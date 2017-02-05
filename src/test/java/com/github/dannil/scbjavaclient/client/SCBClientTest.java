@@ -43,7 +43,7 @@ public class SCBClientTest {
         Locale localizationLocale = new Locale("en", "US");
         client.setLocalizationLocale(localizationLocale);
 
-        assertEquals(localizationLocale, client.localization.getLocale());
+        assertEquals(localizationLocale, client.getLocalizationLocale());
     }
 
     @Test

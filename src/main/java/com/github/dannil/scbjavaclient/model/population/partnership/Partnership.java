@@ -137,11 +137,11 @@ public class Partnership extends AbstractRegionYearAndValueModel<String, Integer
         builder.append(", sex=");
         builder.append(this.sex);
         builder.append(", region=");
-        builder.append(super.region);
+        builder.append(super.getRegion());
         builder.append(", year=");
-        builder.append(super.year);
+        builder.append(super.getYear());
         builder.append(", values=");
-        builder.append(super.values);
+        builder.append(super.getValues());
         builder.append(']');
 
         return builder.toString();

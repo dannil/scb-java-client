@@ -36,7 +36,7 @@ public class POSTRequester extends AbstractRequester {
      */
     public POSTRequester() {
         super();
-        super.requestProperties.put("Request-Method", "POST");
+        super.getRequestProperties().put("Request-Method", "POST");
     }
 
     /**
@@ -47,7 +47,7 @@ public class POSTRequester extends AbstractRequester {
      */
     public POSTRequester(Charset charset) {
         super(charset);
-        super.requestProperties.put("Request-Method", "POST");
+        super.getRequestProperties().put("Request-Method", "POST");
     }
 
     /**
@@ -76,11 +76,11 @@ public class POSTRequester extends AbstractRequester {
         }
 
         HttpPost request = new HttpPost(url);
-        for (Entry<String, String> entry : super.requestProperties.entrySet()) {
+        for (Entry<String, String> entry : super.getRequestProperties().entrySet()) {
             request.addHeader(entry.getKey(), entry.getValue());
         }
 
-        HttpEntity entity = new ByteArrayEntity(this.query.getBytes(Charset.forName(this.charset.name())));
+        HttpEntity entity = new ByteArrayEntity(this.query.getBytes(Charset.forName(super.getCharset().name())));
         request.setEntity(entity);
 
         HttpResponse response = super.getResponse(request);

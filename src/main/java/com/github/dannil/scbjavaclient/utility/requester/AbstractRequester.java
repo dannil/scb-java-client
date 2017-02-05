@@ -44,11 +44,11 @@ public abstract class AbstractRequester {
 
     private static Properties properties;
 
-    protected Charset charset;
+    private Charset charset;
 
-    protected HttpClient client;
+    private HttpClient client;
 
-    protected Map<String, String> requestProperties;
+    private Map<String, String> requestProperties;
 
     static {
         properties = new Properties();
@@ -170,6 +170,15 @@ public abstract class AbstractRequester {
      * @return the response
      */
     public abstract String getBodyAsString(String url);
+
+    /**
+     * <p>Getter for request properties.</p>
+     *
+     * @return the request properties
+     */
+    public Map<String, String> getRequestProperties() {
+        return requestProperties;
+    }
 
     /**
      * <p>Getter for charset.</p>

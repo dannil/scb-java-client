@@ -133,7 +133,7 @@ public class ValueNode<V> {
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder(128);
+        StringBuilder builder = new StringBuilder();
 
         builder.append("code=");
         builder.append(this.code);

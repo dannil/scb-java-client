@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public abstract class AbstractValueModel<V> {
 
     @JsonProperty("values")
-    protected List<ValueNode<V>> values;
+    private List<ValueNode<V>> values;
 
     /**
      * <p>Default constructor.</p>

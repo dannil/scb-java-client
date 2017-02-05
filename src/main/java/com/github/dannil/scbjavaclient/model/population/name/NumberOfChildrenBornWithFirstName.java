@@ -107,9 +107,9 @@ public class NumberOfChildrenBornWithFirstName extends AbstractYearAndValueModel
         builder.append(" [firstname=");
         builder.append(this.firstname);
         builder.append(", year=");
-        builder.append(super.year);
+        builder.append(super.getYear());
         builder.append(", values=");
-        builder.append(super.values);
+        builder.append(super.getValues());
         builder.append(']');
 
         return builder.toString();

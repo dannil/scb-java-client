@@ -38,9 +38,9 @@ public abstract class AbstractClient {
 
     private static final Logger LOGGER = LogManager.getLogger(AbstractClient.class);
 
-    protected Locale locale;
+    private Locale locale;
 
-    protected Localization localization;
+    private Localization localization;
 
     /**
      * <p>Default constructor.</p>
@@ -93,6 +93,15 @@ public abstract class AbstractClient {
      */
     public void setLocalizationLocale(Locale locale) {
         this.localization.setLocale(locale);
+    }
+
+    /**
+     * <p>Returns the <code>Locale</code> used for the localization.</p>
+     *
+     * @return locale the <code>Locale</code> for the localization
+     */
+    public Locale getLocalizationLocale() {
+        return this.localization.getLocale();
     }
 
     /**

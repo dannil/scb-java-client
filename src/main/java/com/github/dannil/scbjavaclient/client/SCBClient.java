@@ -47,10 +47,10 @@ public class SCBClient extends AbstractContainerClient {
         super();
 
         this.populationClient = new PopulationClient();
-        this.clients.add(this.populationClient);
+        this.add(this.populationClient);
 
         this.environmentClient = new EnvironmentClient();
-        this.clients.add(this.environmentClient);
+        this.add(this.environmentClient);
     }
 
     /**

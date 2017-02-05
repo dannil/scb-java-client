@@ -53,25 +53,25 @@ public class PopulationClient extends AbstractContainerClient {
         super();
 
         this.populationAmountClient = new PopulationAmountClient();
-        this.clients.add(this.populationAmountClient);
+        this.add(this.populationAmountClient);
 
         this.populationAverageAgeClient = new PopulationAverageAgeClient();
-        this.clients.add(this.populationAverageAgeClient);
+        this.add(this.populationAverageAgeClient);
 
         this.populationDemographyClient = new PopulationDemographyClient();
-        this.clients.add(this.populationDemographyClient);
+        this.add(this.populationDemographyClient);
 
         this.populationDensityClient = new PopulationDensityClient();
-        this.clients.add(this.populationDensityClient);
+        this.add(this.populationDensityClient);
 
         this.populationLiveBirthsClient = new PopulationLiveBirthsClient();
-        this.clients.add(populationLiveBirthsClient);
+        this.add(populationLiveBirthsClient);
 
         this.populationNameStatisticsClient = new PopulationNameStatisticsClient();
-        this.clients.add(this.populationNameStatisticsClient);
+        this.add(this.populationNameStatisticsClient);
 
         this.populationPartnershipClient = new PopulationPartnershipClient();
-        this.clients.add(this.populationPartnershipClient);
+        this.add(this.populationPartnershipClient);
     }
 
     /**
