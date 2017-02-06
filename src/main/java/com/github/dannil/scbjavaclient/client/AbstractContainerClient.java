@@ -62,7 +62,7 @@ public abstract class AbstractContainerClient extends AbstractClient {
     }
 
     /**
-     * <p>Add a sub-client to this client.<p>
+     * <p>Add a sub-client to this client.</p>
      *
      * @param client
      *            the client

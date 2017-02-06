@@ -38,6 +38,7 @@ import com.github.dannil.scbjavaclient.constants.ClientConstants;
 public class Localization {
 
     private String baseName;
+
     private Locale fallbackLocale;
 
     private ResourceBundle bundle;

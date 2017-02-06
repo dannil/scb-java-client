@@ -180,7 +180,7 @@ public abstract class AbstractRequester {
      * @return the request properties
      */
     public Map<String, String> getRequestProperties() {
-        return requestProperties;
+        return this.requestProperties;
     }
 
     /**

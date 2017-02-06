@@ -65,7 +65,7 @@ public class PopulationClient extends AbstractContainerClient {
         this.add(this.populationDensityClient);
 
         this.populationLiveBirthsClient = new PopulationLiveBirthsClient();
-        this.add(populationLiveBirthsClient);
+        this.add(this.populationLiveBirthsClient);
 
         this.populationNameStatisticsClient = new PopulationNameStatisticsClient();
         this.add(this.populationNameStatisticsClient);

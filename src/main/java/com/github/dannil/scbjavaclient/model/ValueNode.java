@@ -28,7 +28,9 @@ import com.github.dannil.scbjavaclient.constants.ModelConstants;
 public class ValueNode<V> {
 
     private V value;
+
     private String code;
+
     private String text;
 
     /**

@@ -31,6 +31,7 @@ import java.util.Objects;
 public final class QueryBuilder {
 
     private static final int APPROXIMATE_OFFSET_CHARS = 44;
+
     private static final int APPROXIMATE_ENTRY_CHARS = 80;
 
     /**
