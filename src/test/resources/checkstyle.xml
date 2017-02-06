@@ -110,7 +110,7 @@
 		<module name="IllegalToken">
 			<property name="tokens" value="LITERAL_NATIVE" />
 		</module>
-		<!-- <module name="IllegalTokenText" /> -->
+		<module name="IllegalTokenText" />
 		<module name="IllegalType" />
 		<module name="InnerAssignment" />
 		<module name="MagicNumber" />
@@ -146,7 +146,12 @@
 		<!-- See http://checkstyle.sf.net/config_import.html -->
 		<module name="AvoidStarImport" />
 		<module name="AvoidStaticImport" />
-		<!-- <module name="CustomImportOrder" /> -->
+		<module name="CustomImportOrder">
+			<property name="specialImportsRegExp" value="gov." />
+			<property name="sortImportsInGroupAlphabetically" value="true" />
+			<property name="customImportOrderRules"
+				value="STATIC###SPECIAL_IMPORTS###STANDARD_JAVA_PACKAGE###THIRD_PARTY_PACKAGE" />
+		</module>
 		<module name="IllegalImport" /> <!-- defaults to sun.* packages -->
 		<!-- <module name="ImportControl" /> -->
 		<!-- <module name="ImportOrder" /> -->
@@ -203,7 +208,7 @@
 		<!-- <property name="allowedAbbreviationLength" value="4" /> -->
 		<!-- </module> -->
 		<module name="AbstractClassName" />
-		<!-- <module name="CatchParameterName" /> -->
+		<module name="CatchParameterName" />
 		<module name="ClassTypeParameterName" />
 		<module name="ConstantName" />
 		<module name="InterfaceTypeParameterName" />
@@ -242,7 +247,7 @@
 		<module name="OperatorWrap" />
 		<module name="ParenPad" />
 		<module name="SeparatorWrap" />
-		<!-- <module name="SingleSpaceSeparator" /> -->
+		<module name="SingleSpaceSeparator" />
 		<module name="TypecastParenPad" />
 		<module name="WhitespaceAfter" />
 		<module name="WhitespaceAround" />
