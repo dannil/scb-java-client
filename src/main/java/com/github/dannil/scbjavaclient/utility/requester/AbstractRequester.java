@@ -25,15 +25,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
+import com.github.dannil.scbjavaclient.exception.SCBClientException;
+import com.github.dannil.scbjavaclient.utility.HttpUtility;
+import com.github.dannil.scbjavaclient.utility.URLUtility;
+
 import org.apache.commons.io.input.BOMInputStream;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.impl.client.HttpClientBuilder;
-
-import com.github.dannil.scbjavaclient.exception.SCBClientException;
-import com.github.dannil.scbjavaclient.utility.HttpUtility;
-import com.github.dannil.scbjavaclient.utility.URLUtility;
 
 /**
  * <p>Class which contains the logic for sending URL requests to a specified address.</p>
