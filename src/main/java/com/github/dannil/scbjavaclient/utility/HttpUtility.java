@@ -17,9 +17,9 @@ package com.github.dannil.scbjavaclient.utility;
 import java.net.URI;
 
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
-import com.github.dannil.scbjavaclient.exception.SCBClientForbiddenException;
-import com.github.dannil.scbjavaclient.exception.SCBClientTooManyRequestsException;
-import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
+import com.github.dannil.scbjavaclient.exception.SCBClientHttpForbiddenException;
+import com.github.dannil.scbjavaclient.exception.SCBClientHttpTooManyRequestsException;
+import com.github.dannil.scbjavaclient.exception.SCBClientHttpUrlNotFoundException;
 
 /**
  * <p>Utility class for various HTTP operations.</p>
@@ -58,13 +58,13 @@ public final class HttpUtility {
                 break;
 
             case HTTP_FORBIDDEN:
-                throw new SCBClientForbiddenException(uri.toString());
+                throw new SCBClientHttpForbiddenException(uri.toString());
 
             case HTTP_NOTFOUND:
-                throw new SCBClientUrlNotFoundException(uri.toString());
+                throw new SCBClientHttpUrlNotFoundException(uri.toString());
 
             case HTTP_TOO_MANY_REQUESTS:
-                throw new SCBClientTooManyRequestsException(uri.toString());
+                throw new SCBClientHttpTooManyRequestsException(uri.toString());
 
             default:
                 throw new SCBClientException("Unhandled HTTP status code " + statusCode);

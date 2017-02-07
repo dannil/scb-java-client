@@ -32,14 +32,14 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import com.github.dannil.scbjavaclient.exception.SCBClientHttpForbiddenException;
+import com.github.dannil.scbjavaclient.exception.SCBClientHttpUrlNotFoundException;
+import com.github.dannil.scbjavaclient.utility.QueryBuilder;
+
 import org.apache.commons.io.FilenameUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-
-import com.github.dannil.scbjavaclient.exception.SCBClientForbiddenException;
-import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
-import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 @RunWith(JUnit4.class)
 public class AbstractClientIT {
@@ -134,7 +134,7 @@ public class AbstractClientIT {
         assertNull(years);
     }
 
-    @Test(expected = SCBClientUrlNotFoundException.class)
+    @Test(expected = SCBClientHttpUrlNotFoundException.class)
     public void urlNotFoundException() {
         DummyClient client = new DummyClient();
 
@@ -143,7 +143,7 @@ public class AbstractClientIT {
         assertNull(response);
     }
 
-    @Test(expected = SCBClientForbiddenException.class)
+    @Test(expected = SCBClientHttpForbiddenException.class)
     public void forbiddenException() {
         // Need to use SCBClient here instead of DummyClient to reach
         // getRawData(String)-method

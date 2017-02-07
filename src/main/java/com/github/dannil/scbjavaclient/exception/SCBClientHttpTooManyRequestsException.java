@@ -15,18 +15,18 @@
 package com.github.dannil.scbjavaclient.exception;
 
 /**
- * <p>Exception for when the client couldn't find the requested URL.</p>
+ * <p>Exception for when the client performed too many requests to the API. </p>
  *
- * @since 0.0.2
+ * @since 0.2.0
  */
-public class SCBClientUrlNotFoundException extends SCBClientException {
+public class SCBClientHttpTooManyRequestsException extends SCBClientHttpException {
 
-    private static final long serialVersionUID = 1779756868616751298L;
+    private static final long serialVersionUID = -7761485153313257674L;
 
     /**
      * <p>Default constructor.</p>
      */
-    public SCBClientUrlNotFoundException() {
+    public SCBClientHttpTooManyRequestsException() {
         super();
     }
 
@@ -36,7 +36,7 @@ public class SCBClientUrlNotFoundException extends SCBClientException {
      * @param message
      *            the message
      */
-    public SCBClientUrlNotFoundException(String message) {
+    public SCBClientHttpTooManyRequestsException(String message) {
         super(message);
     }
 
@@ -48,7 +48,7 @@ public class SCBClientUrlNotFoundException extends SCBClientException {
      * @param cause
      *            the cause
      */
-    public SCBClientUrlNotFoundException(String message, Throwable cause) {
+    public SCBClientHttpTooManyRequestsException(String message, Throwable cause) {
         super(message, cause);
     }
 
@@ -58,7 +58,7 @@ public class SCBClientUrlNotFoundException extends SCBClientException {
      * @param cause
      *            the cause
      */
-    public SCBClientUrlNotFoundException(Throwable cause) {
+    public SCBClientHttpTooManyRequestsException(Throwable cause) {
         super(cause);
     }
 
