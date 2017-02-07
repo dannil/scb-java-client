@@ -188,8 +188,8 @@
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>0.7.9</version>
 				<executions>
-					<!-- Prepares the property pointing to the JaCoCo runtime agent which 
-						is passed as VM argument when Maven the Surefire plugin is executed. -->
+					<!-- Prepares the property pointing to the JaCoCo runtime agent which -->
+					<!-- is passed as a VM argument when maven-failsafe-plugin is executed. -->
 					<execution>
 						<id>pre-unit-test</id>
 						<goals>
@@ -219,8 +219,8 @@
 						</configuration>
 					</execution>
 					<!-- The Executions required by unit tests are omitted. -->
-					<!-- Prepares the property pointing to the JaCoCo runtime agent which 
-						is passed as VM argument when Maven the Failsafe plugin is executed. -->
+					<!-- Prepares the property pointing to the JaCoCo runtime agent which -->
+					<!-- is passed as a VM argument when maven-failsafe-plugin is executed. -->
 					<execution>
 						<id>pre-integration-test</id>
 						<phase>pre-integration-test</phase>
