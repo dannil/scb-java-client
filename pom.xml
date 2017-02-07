@@ -182,7 +182,7 @@
 				<version>0.7.9</version>
 				<executions>
 					<!-- Prepares the property pointing to the JaCoCo runtime agent which -->
-					<!-- is passed as a VM argument when maven-failsafe-plugin is executed. -->
+					<!-- is passed as a VM argument when maven-surefire-plugin is executed. -->
 					<execution>
 						<id>pre-unit-test</id>
 						<goals>
@@ -191,13 +191,13 @@
 						<configuration>
 							<!-- Sets the path to the file which contains the execution data. -->
 							<destFile>${project.build.directory}/jacoco-unit.exec</destFile>
-							<!-- Sets the name of the property containing the settings for JaCoCo 
-								runtime agent. -->
+							<!-- Sets the name of the property containing the settings for JaCoCo -->
+							<!-- runtime agent. -->
 							<propertyName>surefireArgLine</propertyName>
 						</configuration>
 					</execution>
-					<!-- Ensures that the code coverage report for unit tests is created 
-						after unit tests have been run. -->
+					<!-- Ensures that the code coverage report for unit tests is created -->
+					<!-- after unit tests have been run. -->
 					<execution>
 						<id>post-unit-test</id>
 						<phase>test</phase>
@@ -223,13 +223,13 @@
 						<configuration>
 							<!-- Sets the path to the file which contains the execution data. -->
 							<destFile>${project.build.directory}/jacoco-integration.exec</destFile>
-							<!-- Sets the name of the property containing the settings for JaCoCo 
-								runtime agent. -->
+							<!-- Sets the name of the property containing the settings for JaCoCo -->
+							<!-- runtime agent. -->
 							<propertyName>failsafeArgLine</propertyName>
 						</configuration>
 					</execution>
-					<!-- Ensures that the code coverage report for integration tests after 
-						integration tests have been run. -->
+					<!-- Ensures that the code coverage report for integration tests after -->
+					<!-- integration tests have been run. -->
 					<execution>
 						<id>post-integration-test</id>
 						<phase>post-integration-test</phase>
