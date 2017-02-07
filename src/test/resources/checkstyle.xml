@@ -222,6 +222,13 @@
 		<module name="StaticVariableName" />
 		<module name="TypeName" />
 
+
+		<!-- Checks for regular expressions. -->
+		<!-- See http://checkstyle.sf.net/config_regexp.html -->
+		<module name="Regexp">
+			<property name="format" value="^\s*\*\s+@since\s+\S+" />
+		</module>
+
 		<!-- Checks for Size Violations. -->
 		<!-- See http://checkstyle.sf.net/config_sizes.html -->
 		<module name="AnonInnerLength" />

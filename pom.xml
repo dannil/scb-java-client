@@ -290,6 +290,7 @@
 						</goals>
 						<configuration>
 							<configLocation>src/test/resources/checkstyle.xml</configLocation>
+							<suppressionsLocation>src/test/resources/checkstyle-suppressions.xml</suppressionsLocation>
 							<failOnViolation>true</failOnViolation>
 						</configuration>
 					</execution>
