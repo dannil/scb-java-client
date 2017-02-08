@@ -17,7 +17,7 @@ package com.github.dannil.scbjavaclient.client;
 import java.util.List;
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
+import com.github.dannil.scbjavaclient.exception.SCBClientHttpUrlNotFoundException;
 import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
 import com.github.dannil.scbjavaclient.utility.Localization;
 import com.github.dannil.scbjavaclient.utility.URLUtility;
@@ -127,7 +127,7 @@ public abstract class AbstractClient {
         AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
         try {
             return get.getBodyAsString(url);
-        } catch (SCBClientUrlNotFoundException e) {
+        } catch (SCBClientHttpUrlNotFoundException e) {
             // HTTP code 404, call the API again with the fallback language
             return get.getBodyAsString(URLUtility.changeLanguageForUrl(url));
         }
@@ -150,7 +150,7 @@ public abstract class AbstractClient {
         try {
             LOGGER.info(query);
             return post.getBodyAsString(url);
-        } catch (SCBClientUrlNotFoundException e) {
+        } catch (SCBClientHttpUrlNotFoundException e) {
             // HTTP code 404, call the API again with the fallback language
             return post.getBodyAsString(URLUtility.changeLanguageForUrl(url));
         }

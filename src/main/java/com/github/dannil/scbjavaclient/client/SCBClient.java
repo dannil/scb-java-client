@@ -21,7 +21,7 @@ import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.environment.EnvironmentClient;
 import com.github.dannil.scbjavaclient.client.population.PopulationClient;
-import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
+import com.github.dannil.scbjavaclient.exception.SCBClientHttpUrlNotFoundException;
 import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 import com.github.dannil.scbjavaclient.utility.URLUtility;
@@ -154,7 +154,7 @@ public class SCBClient extends AbstractContainerClient {
         try {
             get.getBodyAsString(url);
             return true;
-        } catch (SCBClientUrlNotFoundException e) {
+        } catch (SCBClientHttpUrlNotFoundException e) {
             return false;
         }
     }

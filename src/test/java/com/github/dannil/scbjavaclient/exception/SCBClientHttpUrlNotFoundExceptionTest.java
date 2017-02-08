@@ -21,18 +21,18 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class SCBClientUrlNotFoundExceptionTest {
+public class SCBClientHttpUrlNotFoundExceptionTest {
 
     @Test
     public void constructor() {
-        SCBClientException e = new SCBClientUrlNotFoundException();
+        SCBClientException e = new SCBClientHttpUrlNotFoundException();
 
         assertEquals(e.getClass().getName(), e.toString());
     }
 
     @Test
     public void message() {
-        SCBClientException e = new SCBClientUrlNotFoundException("This is the error message");
+        SCBClientException e = new SCBClientHttpUrlNotFoundException("This is the error message");
 
         assertEquals("This is the error message", e.getMessage());
     }
@@ -40,7 +40,7 @@ public class SCBClientUrlNotFoundExceptionTest {
     @Test
     public void messageAndCause() {
         Throwable c = new Throwable();
-        SCBClientException e = new SCBClientUrlNotFoundException("This is the error message", c);
+        SCBClientException e = new SCBClientHttpUrlNotFoundException("This is the error message", c);
 
         assertEquals("This is the error message", e.getMessage());
         assertEquals(c, e.getCause());
@@ -49,7 +49,7 @@ public class SCBClientUrlNotFoundExceptionTest {
     @Test
     public void cause() {
         Throwable c = new Throwable();
-        SCBClientException e = new SCBClientUrlNotFoundException(c);
+        SCBClientException e = new SCBClientHttpUrlNotFoundException(c);
 
         assertEquals(c, e.getCause());
     }

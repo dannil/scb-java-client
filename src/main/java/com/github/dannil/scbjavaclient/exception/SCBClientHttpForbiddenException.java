@@ -19,16 +19,16 @@ package com.github.dannil.scbjavaclient.exception;
  * perform any further requests. Can occur if your request to the API or the resulting
  * response from a request to the API exceeds the maximum limit.</p>
  *
- * @since 0.1.0
+ * @since 0.2.0
  */
-public class SCBClientForbiddenException extends SCBClientException {
+public class SCBClientHttpForbiddenException extends SCBClientHttpException {
 
     private static final long serialVersionUID = 2445143839207212787L;
 
     /**
      * <p>Default constructor.</p>
      */
-    public SCBClientForbiddenException() {
+    public SCBClientHttpForbiddenException() {
         super();
     }
 
@@ -38,7 +38,7 @@ public class SCBClientForbiddenException extends SCBClientException {
      * @param message
      *            the message
      */
-    public SCBClientForbiddenException(String message) {
+    public SCBClientHttpForbiddenException(String message) {
         super(message);
     }
 
@@ -50,7 +50,7 @@ public class SCBClientForbiddenException extends SCBClientException {
      * @param cause
      *            the cause
      */
-    public SCBClientForbiddenException(String message, Throwable cause) {
+    public SCBClientHttpForbiddenException(String message, Throwable cause) {
         super(message, cause);
     }
 
@@ -60,7 +60,7 @@ public class SCBClientForbiddenException extends SCBClientException {
      * @param cause
      *            the cause
      */
-    public SCBClientForbiddenException(Throwable cause) {
+    public SCBClientHttpForbiddenException(Throwable cause) {
         super(cause);
     }
 }

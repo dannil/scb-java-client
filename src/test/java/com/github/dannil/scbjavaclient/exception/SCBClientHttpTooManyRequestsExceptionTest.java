@@ -21,18 +21,18 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class SCBClientExceptionTooManyRequestsTest {
+public class SCBClientHttpTooManyRequestsExceptionTest {
 
     @Test
     public void constructor() {
-        SCBClientException e = new SCBClientTooManyRequestsException();
+        SCBClientException e = new SCBClientHttpTooManyRequestsException();
 
         assertEquals(e.getClass().getName(), e.toString());
     }
 
     @Test
     public void message() {
-        SCBClientException e = new SCBClientTooManyRequestsException("This is the error message");
+        SCBClientException e = new SCBClientHttpTooManyRequestsException("This is the error message");
 
         assertEquals("This is the error message", e.getMessage());
     }
@@ -40,7 +40,7 @@ public class SCBClientExceptionTooManyRequestsTest {
     @Test
     public void messageAndCause() {
         Throwable c = new Throwable();
-        SCBClientException e = new SCBClientTooManyRequestsException("This is the error message", c);
+        SCBClientException e = new SCBClientHttpTooManyRequestsException("This is the error message", c);
 
         assertEquals("This is the error message", e.getMessage());
         assertEquals(c, e.getCause());
@@ -49,7 +49,7 @@ public class SCBClientExceptionTooManyRequestsTest {
     @Test
     public void cause() {
         Throwable c = new Throwable();
-        SCBClientException e = new SCBClientTooManyRequestsException(c);
+        SCBClientException e = new SCBClientHttpTooManyRequestsException(c);
 
         assertEquals(c, e.getCause());
     }
