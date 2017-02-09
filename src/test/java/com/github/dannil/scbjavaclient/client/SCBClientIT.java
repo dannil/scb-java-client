@@ -16,6 +16,7 @@ package com.github.dannil.scbjavaclient.client;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
@@ -23,12 +24,13 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Map.Entry;
+
+import com.github.dannil.scbjavaclient.test.RemoteIntegrationTestSuite;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-
-import com.github.dannil.scbjavaclient.test.RemoteIntegrationTestSuite;
 
 @RunWith(JUnit4.class)
 public class SCBClientIT extends RemoteIntegrationTestSuite {
@@ -83,6 +85,27 @@ public class SCBClientIT extends RemoteIntegrationTestSuite {
         assertTrue(response.contains("Civilstand"));
         assertTrue(response.contains("Alder"));
         assertTrue(response.contains("Tid"));
+    }
+
+    @Test
+    public void getConfig() {
+        Locale locale = new Locale("sv", "SE");
+        SCBClient client = new SCBClient(locale);
+
+        Map<String, String> config = client.getConfig();
+        assertFalse(config.isEmpty());
+        for (Entry<String, String> entry : config.entrySet()) {
+            assertNotNull(entry.getKey());
+            assertNotNull(entry.getValue());
+        }
+    }
+
+    @Test
+    public void getConfigValue() {
+        Locale locale = new Locale("sv", "SE");
+        SCBClient client = new SCBClient(locale);
+
+        assertNotNull(client.getConfigValue("maxCalls"));
     }
 
     @Test
