@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client;
 
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Locale;
 
@@ -22,6 +21,7 @@ import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
 import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
 import com.github.dannil.scbjavaclient.utility.Localization;
 import com.github.dannil.scbjavaclient.utility.URLUtility;
+import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
 import com.github.dannil.scbjavaclient.utility.requester.GETRequester;
 import com.github.dannil.scbjavaclient.utility.requester.POSTRequester;
 
@@ -123,7 +123,7 @@ public abstract class AbstractClient {
     protected String get(String table) {
         String url = getBaseUrl() + table;
 
-        GETRequester get = new GETRequester(StandardCharsets.UTF_8);
+        AbstractRequester get = new GETRequester();
         try {
             return get.getBody(url);
         } catch (SCBClientUrlNotFoundException e) {
@@ -144,9 +144,7 @@ public abstract class AbstractClient {
     protected String post(String table, String query) {
         String url = getBaseUrl() + table;
 
-        // POSTRequester post = (POSTRequester)
-        // RequesterFactory.getRequester(RequestMethod.POST);
-        POSTRequester post = new POSTRequester(StandardCharsets.UTF_8);
+        POSTRequester post = new POSTRequester();
         post.setQuery(query);
         try {
             LOGGER.info(query);
