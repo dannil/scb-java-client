@@ -30,7 +30,7 @@ public final class Config {
     static {
         try {
             AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
-            String response = get.getBodyAsString(URLUtility.getRootUrl() + "?config");
+            String response = get.getBody(URLUtility.getRootUrl() + "?config");
 
             JsonConverter converter = new JsonConverter();
             JsonNode node = converter.toNode(response);

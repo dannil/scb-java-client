@@ -152,7 +152,7 @@ public class SCBClient extends AbstractContainerClient {
 
         AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
         try {
-            get.getBodyAsString(url);
+            get.getBody(url);
             return true;
         } catch (SCBClientUrlNotFoundException e) {
             return false;

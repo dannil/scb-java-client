@@ -156,7 +156,7 @@ public class LiveBirth extends AbstractRegionYearAndValueModel<String, Integer, 
      */
     public static Map<String, Collection<String>> getInputs() {
         AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
-        String response = get.getBodyAsStringFromTable("BE/BE0101/BE0101H/FoddaK");
+        String response = get.getBodyFromTable("BE/BE0101/BE0101H/FoddaK");
 
         JsonAPITableFormat format = new JsonAPITableFormat(response);
         return format.getInputs();

@@ -21,11 +21,11 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
+import com.github.dannil.scbjavaclient.utility.URLUtility;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-
-import com.github.dannil.scbjavaclient.utility.URLUtility;
 
 @RunWith(JUnit4.class)
 public class POSTRequesterTest {
@@ -69,7 +69,7 @@ public class POSTRequesterTest {
     public void doRequestIllegalStateNullPayload() throws IOException {
         POSTRequester post = (POSTRequester) RequesterFactory.getRequester(RequestMethod.POST);
 
-        String response = post.getBodyAsString(URLUtility.getRootUrl() + "BE/BE0701/MedelAlderNY");
+        String response = post.getBody(URLUtility.getRootUrl() + "BE/BE0701/MedelAlderNY");
 
         assertNull(response);
     }

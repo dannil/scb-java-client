@@ -47,7 +47,7 @@ public class GETRequester extends AbstractRequester {
     }
 
     @Override
-    public String getBodyAsString(String url) {
+    public String getBody(String url) {
         HttpGet request = new HttpGet(url);
         for (Entry<String, String> entry : super.getRequestProperties().entrySet()) {
             request.addHeader(entry.getKey(), entry.getValue());

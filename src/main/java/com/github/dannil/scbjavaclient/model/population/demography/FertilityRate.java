@@ -128,7 +128,7 @@ public class FertilityRate extends AbstractRegionYearAndValueModel<String, Integ
      */
     public static Map<String, Collection<String>> getInputs() {
         AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
-        String response = get.getBodyAsStringFromTable("BE/BE0701/FruktsamhetSumNy");
+        String response = get.getBodyFromTable("BE/BE0701/FruktsamhetSumNy");
 
         JsonAPITableFormat format = new JsonAPITableFormat(response);
         return format.getInputs();

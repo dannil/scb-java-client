@@ -124,7 +124,7 @@ public class NumberOfChildrenBornWithFirstName extends AbstractYearAndValueModel
      */
     public static Map<String, Collection<String>> getInputs() {
         AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
-        String response = get.getBodyAsStringFromTable("BE/BE0001/BE0001T04Ar");
+        String response = get.getBodyFromTable("BE/BE0001/BE0001T04Ar");
 
         JsonAPITableFormat format = new JsonAPITableFormat(response);
         return format.getInputs();
