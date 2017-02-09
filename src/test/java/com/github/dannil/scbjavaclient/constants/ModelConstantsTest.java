@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Daniel Nilsson
+ * Copyright 2017 Daniel Nilsson
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
@@ -15,7 +15,7 @@
 package com.github.dannil.scbjavaclient.constants;
 
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNotEquals;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -25,12 +25,12 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class ClientConstantsTest {
+public class ModelConstantsTest {
 
     @Test
     public void callPrivateConstructor()
             throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-        Constructor<?>[] cons = ClientConstants.class.getDeclaredConstructors();
+        Constructor<?>[] cons = ModelConstants.class.getDeclaredConstructors();
         cons[0].setAccessible(true);
         cons[0].newInstance();
         cons[0].setAccessible(false);
@@ -39,13 +39,8 @@ public class ClientConstantsTest {
     }
 
     @Test
-    public void localizationFallbackLocaleNotNull() {
-        assertNotNull(ClientConstants.LOCALIZATION_FALLBACK_LOCALE);
-    }
-
-    @Test
-    public void localizationTranslationFilePrefixNotNull() {
-        assertNotNull(ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX);
+    public void toStringBuilderLengthNotZero() {
+        assertNotEquals(Integer.valueOf(0), Integer.valueOf(ModelConstants.TOSTRING_BUILDER_LENGTH));
     }
 
 }

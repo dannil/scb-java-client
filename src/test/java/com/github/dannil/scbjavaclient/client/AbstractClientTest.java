@@ -11,20 +11,20 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class AbstractClientTest {
 
-	private static class DummyContainerClient extends AbstractContainerClient {
+    private static class DummyContainerClient extends AbstractContainerClient {
 
-		public DummyContainerClient(Locale locale) {
-			super(locale);
-		}
+        public DummyContainerClient(Locale locale) {
+            super(locale);
+        }
 
-	}
+    }
 
-	@Test
-	public void createWithLocaleConstructor() {
-		Locale locale = new Locale("sv", "SE");
-		AbstractContainerClient client = new DummyContainerClient(locale);
+    @Test
+    public void createWithLocaleConstructor() {
+        Locale locale = new Locale("sv", "SE");
+        AbstractContainerClient client = new DummyContainerClient(locale);
 
-		assertEquals(locale, client.getLocale());
-	}
+        assertEquals(locale, client.getLocale());
+    }
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Daniel Nilsson
+ * Copyright 2017 Daniel Nilsson
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
@@ -12,23 +12,26 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.utility.requester;
+package com.github.dannil.scbjavaclient.constants;
 
 /**
- * <p>Enumerable which contains the HTTP methods supported by the API.</p>
+ * <p>Constants which hold specific values for use by the various models.</p>
  *
- * @since 0.0.2
+ * @since 0.2.0
  */
-public enum RequestMethod {
+public final class ModelConstants {
 
     /**
-     * <p>Enumerable for HTTP method GET.</p>
+     * <p>The default number of characters to use for the StringBuilder in the
+     * <code>toString()</code> method.</p>
      */
-    GET,
+    public static final int TOSTRING_BUILDER_LENGTH = 128;
 
     /**
-     * <p>Enumerable for HTTP method POST.</p>
+     * <p>Private constructor to prevent instantiation.</p>
      */
-    POST
+    private ModelConstants() {
+
+    }
 
 }

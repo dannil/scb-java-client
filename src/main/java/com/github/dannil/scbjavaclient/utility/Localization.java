@@ -1,11 +1,11 @@
 /*
  * Copyright 2016 Daniel Nilsson
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under
  * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied. See the License for the specific language governing
@@ -25,152 +25,153 @@ import java.util.MissingResourceException;
 import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
+import com.github.dannil.scbjavaclient.constants.ClientConstants;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.github.dannil.scbjavaclient.constants.ClientConstants;
-
 /**
  * <p>Class for handling localization for the clients.</p>
- * 
- * @author Daniel Nilsson
+ *
+ * @since 0.0.1
  */
 public class Localization {
 
-	private String baseName;
-	private Locale fallbackLocale;
+    private String baseName;
 
-	private ResourceBundle bundle;
+    private Locale fallbackLocale;
 
-	private ResourceBundleEncodingControl encodingControl;
+    private ResourceBundle bundle;
 
-	/**
-	 * <p>Private constructor. Initializes encoding control for the resource bundles.</p>
-	 */
-	private Localization() {
-		this.baseName = ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX;
-		this.fallbackLocale = ClientConstants.LOCALIZATION_FALLBACK_LOCALE;
+    private ResourceBundleEncodingControl encodingControl;
 
-		this.encodingControl = new ResourceBundleEncodingControl("UTF-8");
-	}
+    /**
+     * <p>Private constructor. Initializes encoding control for the resource bundles.</p>
+     */
+    private Localization() {
+        this.baseName = ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX;
+        this.fallbackLocale = ClientConstants.LOCALIZATION_FALLBACK_LOCALE;
 
-	/**
-	 * <p>Overloaded constructor.</p>
-	 * 
-	 * @param locale
-	 *            the <code>Locale</code> for this localization instance
-	 */
-	public Localization(Locale locale) {
-		this();
-		this.bundle = ResourceBundle.getBundle(this.baseName, locale, this.encodingControl);
-	}
+        this.encodingControl = new ResourceBundleEncodingControl("UTF-8");
+    }
 
-	/**
-	 * <p>Getter for the <code>Locale</code> of this localization instance.</p>
-	 * 
-	 * @return the <code>Locale</code> for this localization instance.
-	 */
-	public Locale getLocale() {
-		return this.bundle.getLocale();
-	}
+    /**
+     * <p>Overloaded constructor.</p>
+     *
+     * @param locale
+     *            the <code>Locale</code> for this localization instance
+     */
+    public Localization(Locale locale) {
+        this();
+        this.bundle = ResourceBundle.getBundle(this.baseName, locale, this.encodingControl);
+    }
 
-	/**
-	 * <p>Setter for the <code>Locale</code> for this localization instance.</p>
-	 * 
-	 * @param locale
-	 *            the <code>Locale</code>
-	 */
-	public void setLocale(Locale locale) {
-		this.bundle = ResourceBundle.getBundle(this.baseName, locale, this.encodingControl);
-	}
+    /**
+     * <p>Getter for the <code>Locale</code> of this localization instance.</p>
+     *
+     * @return the <code>Locale</code> for this localization instance.
+     */
+    public Locale getLocale() {
+        return this.bundle.getLocale();
+    }
 
-	/**
-	 * <p>Returns the translation for the specified key. If it can't find the key in the
-	 * current specified language's localization file, it attempts to use the fallback
-	 * <code>Locale</code>'s localization file as the translation source.</p>
-	 * 
-	 * @param key
-	 *            the key to get the translation for
-	 * @return the translated string
-	 */
-	public String getString(String key) {
-		try {
-			return this.bundle.getString(key);
-		} catch (MissingResourceException e) {
-			return ResourceBundle.getBundle(this.baseName, this.fallbackLocale, this.encodingControl).getString(key);
-		}
-	}
+    /**
+     * <p>Setter for the <code>Locale</code> for this localization instance.</p>
+     *
+     * @param locale
+     *            the <code>Locale</code>
+     */
+    public void setLocale(Locale locale) {
+        this.bundle = ResourceBundle.getBundle(this.baseName, locale, this.encodingControl);
+    }
 
-	/**
-	 * <p>Returns a formatted translation for the specified key.</p>
-	 * 
-	 * @param key
-	 *            the key to get the translation for
-	 * @param variables
-	 *            the variables which shall be inserted into the translation
-	 * @return the translated string
-	 */
-	public String getString(String key, Object... variables) {
-		MessageFormat formatter = new MessageFormat("");
+    /**
+     * <p>Returns the translation for the specified key. If it can't find the key in the
+     * current specified language's localization file, it attempts to use the fallback
+     * <code>Locale</code>'s localization file as the translation source.</p>
+     *
+     * @param key
+     *            the key to get the translation for
+     * @return the translated string
+     */
+    public String getString(String key) {
+        try {
+            return this.bundle.getString(key);
+        } catch (MissingResourceException e) {
+            return ResourceBundle.getBundle(this.baseName, this.fallbackLocale, this.encodingControl).getString(key);
+        }
+    }
 
-		formatter.setLocale(getLocale());
+    /**
+     * <p>Returns a formatted translation for the specified key.</p>
+     *
+     * @param key
+     *            the key to get the translation for
+     * @param variables
+     *            the variables which shall be inserted into the translation
+     * @return the translated string
+     */
+    public String getString(String key, Object... variables) {
+        MessageFormat formatter = new MessageFormat("");
 
-		formatter.applyPattern(getString(key));
-		return formatter.format(variables);
-	}
+        formatter.setLocale(getLocale());
 
-	/**
-	 * <p>Class to handle non-ASCII encodings for {@link java.util.ResourceBundle
-	 * ResourceBundle}, such as UTF-8.</p>
-	 * 
-	 * @author Daniel Nilsson
-	 */
-	private static class ResourceBundleEncodingControl extends ResourceBundle.Control {
+        formatter.applyPattern(getString(key));
+        return formatter.format(variables);
+    }
 
-		private static final Logger LOGGER = LogManager.getLogger(ResourceBundleEncodingControl.class);
+    /**
+     * <p>Class to handle non-ASCII encodings for {@link java.util.ResourceBundle
+     * ResourceBundle}, such as UTF-8.</p>
+     *
+     * @author Daniel Nilsson
+     */
+    private static class ResourceBundleEncodingControl extends ResourceBundle.Control {
 
-		private String encoding;
+        private static final Logger LOGGER = LogManager.getLogger(ResourceBundleEncodingControl.class);
 
-		/**
-		 * <p>Overloaded constructor.</p>
-		 * 
-		 * @param encoding
-		 *            the encoding to use (i.e. UTF-8)
-		 */
-		protected ResourceBundleEncodingControl(String encoding) {
-			super();
-			this.encoding = encoding;
-		}
+        private String encoding;
 
-		@Override
-		public List<String> getFormats(String baseName) {
-			if (baseName == null) {
-				throw new IllegalArgumentException();
-			}
-			return Arrays.asList("properties");
-		}
+        /**
+         * <p>Overloaded constructor.</p>
+         *
+         * @param encoding
+         *            the encoding to use (i.e. UTF-8)
+         */
+        protected ResourceBundleEncodingControl(String encoding) {
+            super();
+            this.encoding = encoding;
+        }
 
-		@Override
-		public ResourceBundle newBundle(String baseName, Locale locale, String format, ClassLoader loader,
-				boolean reload) {
-			if (baseName == null || locale == null || format == null || loader == null) {
-				throw new IllegalArgumentException();
-			}
+        @Override
+        public List<String> getFormats(String baseName) {
+            if (baseName == null) {
+                throw new IllegalArgumentException();
+            }
+            return Arrays.asList("properties");
+        }
 
-			if ("properties".equals(format)) {
-				String bundleName = toBundleName(baseName, locale);
-				String resourceName = toResourceName(bundleName, format);
+        @Override
+        public ResourceBundle newBundle(String baseName, Locale locale, String format, ClassLoader loader,
+                boolean reload) {
+            if (baseName == null || locale == null || format == null || loader == null) {
+                throw new IllegalArgumentException();
+            }
 
-				try (InputStream stream = loader.getResourceAsStream(resourceName)) {
-					try (InputStreamReader streamReader = new InputStreamReader(stream, this.encoding)) {
-						return new PropertyResourceBundle(streamReader);
-					}
-				} catch (IOException e) {
-					LOGGER.error(e);
-				}
-			}
-			return null;
-		}
-	}
+            if ("properties".equals(format)) {
+                String bundleName = toBundleName(baseName, locale);
+                String resourceName = toResourceName(bundleName, format);
+
+                try (InputStream stream = loader.getResourceAsStream(resourceName)) {
+                    try (InputStreamReader streamReader = new InputStreamReader(stream, this.encoding)) {
+                        return new PropertyResourceBundle(streamReader);
+                    }
+                } catch (IOException e) {
+                    LOGGER.error(e);
+                }
+            }
+            return null;
+        }
+    }
 
 }
