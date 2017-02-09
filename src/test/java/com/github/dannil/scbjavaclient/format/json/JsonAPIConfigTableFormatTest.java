@@ -38,7 +38,6 @@ public class JsonAPIConfigTableFormatTest {
 
     @Before
     public void setup() {
-
         this.json = "{\"maxValues\": 100000,\"maxCalls\": 30,\"timeWindow\": 10,\"CORS\": true}";
         this.format = new JsonAPIConfigTableFormat(this.json);
     }
