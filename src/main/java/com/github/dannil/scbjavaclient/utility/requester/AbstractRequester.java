@@ -141,6 +141,15 @@ public abstract class AbstractRequester {
     }
 
     /**
+     * <p>Extracts the response body from the URL.</p>
+     *
+     * @param url
+     *            the URL to get the response from
+     * @return the response
+     */
+    public abstract String getBody(String url);
+
+    /**
      * <p>Return the content from the specified table.</p>
      *
      * @param table
@@ -164,15 +173,6 @@ public abstract class AbstractRequester {
         // parameter or the input URL is converted before calling this method.
         return getBody(URLUtility.getRootUrl() + table);
     }
-
-    /**
-     * <p>Extracts the response body from the URL.</p>
-     *
-     * @param url
-     *            the URL to get the response from
-     * @return the response
-     */
-    public abstract String getBody(String url);
 
     /**
      * <p>Getter for request properties.</p>

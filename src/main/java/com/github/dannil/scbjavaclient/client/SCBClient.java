@@ -29,8 +29,7 @@ import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 import com.github.dannil.scbjavaclient.utility.URLUtility;
 import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
-import com.github.dannil.scbjavaclient.utility.requester.RequestMethod;
-import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
+import com.github.dannil.scbjavaclient.utility.requester.GETRequester;
 
 /**
  * <p>Root client for the client hierarchy.</p>
@@ -185,7 +184,7 @@ public class SCBClient extends AbstractContainerClient {
     public static boolean isSupportedLocale(Locale locale) {
         String url = URLUtility.getRootUrl(locale);
 
-        AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
+        AbstractRequester get = new GETRequester();
         try {
             get.getBody(url);
             return true;

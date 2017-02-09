@@ -25,8 +25,7 @@ import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
 import com.github.dannil.scbjavaclient.model.AbstractYearAndValueModel;
 import com.github.dannil.scbjavaclient.model.ValueNode;
 import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
-import com.github.dannil.scbjavaclient.utility.requester.RequestMethod;
-import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
+import com.github.dannil.scbjavaclient.utility.requester.GETRequester;
 
 /**
  * <p>Model for number of children born with first name.</p>
@@ -123,7 +122,7 @@ public class NumberOfChildrenBornWithFirstName extends AbstractYearAndValueModel
      * @return a list of the available codes and their values
      */
     public static Map<String, Collection<String>> getInputs() {
-        AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
+        AbstractRequester get = new GETRequester();
         String response = get.getBodyFromTable("BE/BE0001/BE0001T04Ar");
 
         JsonAPITableFormat format = new JsonAPITableFormat(response);
