@@ -14,6 +14,7 @@
 
 package com.github.dannil.scbjavaclient.client;
 
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Locale;
 
@@ -21,10 +22,8 @@ import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
 import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
 import com.github.dannil.scbjavaclient.utility.Localization;
 import com.github.dannil.scbjavaclient.utility.URLUtility;
-import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
+import com.github.dannil.scbjavaclient.utility.requester.GETRequester;
 import com.github.dannil.scbjavaclient.utility.requester.POSTRequester;
-import com.github.dannil.scbjavaclient.utility.requester.RequestMethod;
-import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -124,12 +123,12 @@ public abstract class AbstractClient {
     protected String get(String table) {
         String url = getBaseUrl() + table;
 
-        AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
+        GETRequester get = new GETRequester(StandardCharsets.UTF_8);
         try {
-            return get.getBodyAsString(url);
+            return get.getBody(url);
         } catch (SCBClientUrlNotFoundException e) {
             // HTTP code 404, call the API again with the fallback language
-            return get.getBodyAsString(URLUtility.changeLanguageForUrl(url));
+            return get.getBody(URLUtility.changeLanguageForUrl(url));
         }
     }
 
@@ -145,14 +144,16 @@ public abstract class AbstractClient {
     protected String post(String table, String query) {
         String url = getBaseUrl() + table;
 
-        POSTRequester post = (POSTRequester) RequesterFactory.getRequester(RequestMethod.POST);
+        // POSTRequester post = (POSTRequester)
+        // RequesterFactory.getRequester(RequestMethod.POST);
+        POSTRequester post = new POSTRequester(StandardCharsets.UTF_8);
         post.setQuery(query);
         try {
             LOGGER.info(query);
-            return post.getBodyAsString(url);
+            return post.getBody(url);
         } catch (SCBClientUrlNotFoundException e) {
             // HTTP code 404, call the API again with the fallback language
-            return post.getBodyAsString(URLUtility.changeLanguageForUrl(url));
+            return post.getBody(URLUtility.changeLanguageForUrl(url));
         }
     }
 

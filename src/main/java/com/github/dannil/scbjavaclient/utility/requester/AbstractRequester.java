@@ -147,12 +147,12 @@ public abstract class AbstractRequester {
      *            the table to fetch the content from
      * @return the content of the table
      */
-    public String getBodyAsStringFromTable(String table) {
+    public String getBodyFromTable(String table) {
         // #NOTE#
         //
         // This needs to be rewritten to handle different locale. A good solution is hard
         // to find right now since this class should not need to worry about the current
-        // locale, as methods calling this method (getBodyAsStringFromTable) should really
+        // locale, as methods calling this method (getBodyFromTable) should really
         // convert the input language. This solution isn't really implementable right
         // now as the only method calling this method is getInputs() in the model.
         // However, the model doesn't (and should NOT) have any idea about the locale.
@@ -162,17 +162,17 @@ public abstract class AbstractRequester {
         // responsibility to a client. The client knows what locale is currently in use
         // and the method can therefore be rewritten to either accept the locale as a
         // parameter or the input URL is converted before calling this method.
-        return getBodyAsString(URLUtility.getRootUrl() + table);
+        return getBody(URLUtility.getRootUrl() + table);
     }
 
     /**
-     * <p>Returns the response from the specified URL as a string.</p>
+     * <p>Extracts the response body from the URL.</p>
      *
      * @param url
      *            the URL to get the response from
      * @return the response
      */
-    public abstract String getBodyAsString(String url);
+    public abstract String getBody(String url);
 
     /**
      * <p>Getter for request properties.</p>

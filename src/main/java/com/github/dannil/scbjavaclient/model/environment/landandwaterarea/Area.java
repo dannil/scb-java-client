@@ -128,7 +128,7 @@ public class Area extends AbstractRegionYearAndValueModel<String, Integer, Doubl
      */
     public static Map<String, Collection<String>> getInputs() {
         AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
-        String response = get.getBodyAsStringFromTable("MI/MI0802/Areal2012");
+        String response = get.getBodyFromTable("MI/MI0802/Areal2012");
 
         JsonAPITableFormat format = new JsonAPITableFormat(response);
         return format.getInputs();
