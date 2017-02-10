@@ -28,7 +28,7 @@ public class JsonAPIConfigTableFormat implements IJsonTableFormat {
      * <p>Default constructor.</p>
      *
      * @param json
-     *            the JSON to format
+     *            the json to format
      */
     public JsonAPIConfigTableFormat(String json) {
         this.json = new JsonConverter().toNode(json);
@@ -57,11 +57,7 @@ public class JsonAPIConfigTableFormat implements IJsonTableFormat {
 
     @Override
     public List<String> getCodes() {
-        List<String> codes = new ArrayList<>(getInputs().keySet());
-        if (!codes.isEmpty()) {
-            return codes;
-        }
-        return Collections.emptyList();
+        return new ArrayList<>(getInputs().keySet());
     }
 
     @Override

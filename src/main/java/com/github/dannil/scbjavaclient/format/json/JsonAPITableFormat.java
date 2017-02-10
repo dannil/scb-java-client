@@ -40,7 +40,7 @@ public class JsonAPITableFormat implements IJsonTableFormat {
      * <p>Default constructor.</p>
      *
      * @param json
-     *            the json to format
+     *            the JSON to format
      */
     public JsonAPITableFormat(String json) {
         this.json = new JsonConverter().toNode(json);
@@ -72,11 +72,7 @@ public class JsonAPITableFormat implements IJsonTableFormat {
 
     @Override
     public List<String> getCodes() {
-        List<String> codes = new ArrayList<>(getInputs().keySet());
-        if (!codes.isEmpty()) {
-            return codes;
-        }
-        return Collections.emptyList();
+        return new ArrayList<>(getInputs().keySet());
     }
 
     @Override
