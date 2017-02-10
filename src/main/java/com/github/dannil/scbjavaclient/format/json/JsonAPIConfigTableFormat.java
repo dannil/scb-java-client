@@ -40,7 +40,7 @@ public class JsonAPIConfigTableFormat implements IJsonTableFormat {
             return this.inputs;
         }
 
-        this.inputs = new HashMap<String, Collection<String>>();
+        this.inputs = new HashMap<>();
 
         Iterator<Entry<String, JsonNode>> nodes = this.json.fields();
         while (nodes.hasNext()) {
