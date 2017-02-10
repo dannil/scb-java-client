@@ -50,10 +50,13 @@
 
 	<!-- Checks for Headers -->
 	<!-- See http://checkstyle.sf.net/config_header.html -->
-	<module name="Header">
+	<!-- <module name="Header"> -->
+	<!-- <property name="fileExtensions" value="java" /> -->
+	<!-- <property name="header" value="/*\r\n * Copyright" /> -->
+	<!-- </module> -->
+	<module name="RegexpHeader">
+		<property name="headerFile" value="src/test/resources/java.header" />
 		<property name="fileExtensions" value="java" />
-		<property name="ignoreLines" value="1" />
-		<property name="header" value=" * Copyright" />
 	</module>
 
 	<module name="TreeWalker">
