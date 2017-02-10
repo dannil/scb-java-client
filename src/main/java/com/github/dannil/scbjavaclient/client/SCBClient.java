@@ -16,12 +16,15 @@ package com.github.dannil.scbjavaclient.client;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import com.github.dannil.scbjavaclient.client.environment.EnvironmentClient;
 import com.github.dannil.scbjavaclient.client.population.PopulationClient;
 import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
+import com.github.dannil.scbjavaclient.format.json.JsonAPIConfigTableFormat;
 import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 import com.github.dannil.scbjavaclient.utility.URLUtility;
@@ -96,6 +99,38 @@ public class SCBClient extends AbstractContainerClient {
         String json = super.get(table);
 
         return new JsonAPITableFormat(json).getInputs();
+    }
+
+    /**
+     * <p>Fetches the config from the API. Useful if you for example need to know how
+     * often you're allowed to make calls to the API, or the max size of the response.</p>
+     *
+     * @return the config
+     */
+    public Map<String, String> getConfig() {
+        String json = super.get("?config");
+
+        JsonAPIConfigTableFormat format = new JsonAPIConfigTableFormat(json);
+
+        Map<String, String> config = new HashMap<>();
+        for (Entry<String, Collection<String>> entry : format.getInputs().entrySet()) {
+            Iterator<String> it = entry.getValue().iterator();
+            config.put(entry.getKey(), it.next());
+        }
+        return config;
+    }
+
+    /**
+     * <p>Fetches the specified config value from the API.</p>
+     *
+     * @param code
+     *            the code
+     * @return the value for the specified config value
+     *
+     * @see #getConfig()
+     */
+    public String getConfigValue(String code) {
+        return getConfig().get(code);
     }
 
     /**
