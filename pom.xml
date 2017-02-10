@@ -289,8 +289,8 @@
 							<goal>check</goal>
 						</goals>
 						<configuration>
-							<configLocation>src/test/resources/checkstyle.xml</configLocation>
-							<suppressionsLocation>src/test/resources/checkstyle-suppressions.xml</suppressionsLocation>
+							<configLocation>src/test/resources/checkstyle/checkstyle.xml</configLocation>
+							<suppressionsLocation>src/test/resources/checkstyle/checkstyle-suppressions.xml</suppressionsLocation>
 							<failOnViolation>true</failOnViolation>
 						</configuration>
 					</execution>
