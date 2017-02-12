@@ -17,6 +17,9 @@ package com.github.dannil.scbjavaclient.client;
 import java.util.List;
 import java.util.Locale;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
 import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
 import com.github.dannil.scbjavaclient.utility.Localization;
@@ -24,9 +27,6 @@ import com.github.dannil.scbjavaclient.utility.URLUtility;
 import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
 import com.github.dannil.scbjavaclient.utility.requester.GETRequester;
 import com.github.dannil.scbjavaclient.utility.requester.POSTRequester;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 /**
  * <p>Abstract class which specifies how clients should operate.</p>
@@ -190,8 +190,6 @@ public abstract class AbstractClient {
      *
      * @return the URL endpoint for this client
      */
-    public String getUrl() {
-        return getBaseUrl();
-    }
+    public abstract String getUrl();
 
 }

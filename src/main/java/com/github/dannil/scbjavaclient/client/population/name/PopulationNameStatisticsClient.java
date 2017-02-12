@@ -25,6 +25,7 @@ import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.model.population.name.NumberOfChildrenBornWithFirstName;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
+import com.github.dannil.scbjavaclient.utility.URLUtility;
 
 /**
  * <p>Client which handles population name statistics data fetching.</p>
@@ -90,7 +91,7 @@ public class PopulationNameStatisticsClient extends AbstractClient {
 
     @Override
     public String getUrl() {
-        return super.getUrl() + "BE/BE0001/";
+        return URLUtility.getRootUrl(getLocale()) + "BE/BE0001/";
     }
 
 }

@@ -45,7 +45,9 @@ public class EnvironmentClientTest {
 
     @Test
     public void getUrl() {
-        Locale locale = new Locale("sv", "SE");
+        // Check with a locale that isn't the fallback locale; results in a more specific
+        // test with harder constraints
+        Locale locale = new Locale("en", "US");
         EnvironmentClient envClient = new EnvironmentClient(locale);
 
         assertEquals(URLUtility.getRootUrl(locale) + "MI/", envClient.getUrl());

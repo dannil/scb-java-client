@@ -18,6 +18,7 @@ import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.EnvironmentLandAndWaterAreaClient;
+import com.github.dannil.scbjavaclient.utility.URLUtility;
 
 /**
  * <p>Client which handles environment data fetching.</p>
@@ -62,7 +63,7 @@ public class EnvironmentClient extends AbstractContainerClient {
 
     @Override
     public String getUrl() {
-        return super.getUrl() + "MI/";
+        return URLUtility.getRootUrl(getLocale()) + "MI/";
     }
 
 }

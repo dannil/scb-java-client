@@ -37,7 +37,9 @@ public class PopulationLiveBirthsClientTest {
 
     @Test
     public void getUrl() {
-        Locale locale = new Locale("sv", "SE");
+        // Check with a locale that isn't the fallback locale; results in a more specific
+        // test with harder constraints
+        Locale locale = new Locale("en", "US");
         PopulationLiveBirthsClient client = new PopulationLiveBirthsClient(locale);
 
         assertEquals(URLUtility.getRootUrl(locale) + "BE/BE0101/BE0101H/", client.getUrl());

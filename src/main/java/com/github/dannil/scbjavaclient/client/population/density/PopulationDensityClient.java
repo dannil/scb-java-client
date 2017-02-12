@@ -25,6 +25,7 @@ import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.model.population.density.Density;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
+import com.github.dannil.scbjavaclient.utility.URLUtility;
 
 /**
  * <p>Client which handles population density data fetching.</p>
@@ -91,7 +92,7 @@ public class PopulationDensityClient extends AbstractClient {
 
     @Override
     public String getUrl() {
-        return super.getUrl() + "BE/BE0101/BE0101C/";
+        return URLUtility.getRootUrl(getLocale()) + "BE/BE0101/BE0101C/";
     }
 
 }
