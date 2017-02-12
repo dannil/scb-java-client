@@ -40,6 +40,21 @@ public class URLUtilityTest {
     }
 
     @Test
+    public void getRootUrl() {
+        String url = URLUtility.getRootUrl();
+
+        assertEquals("https://api.scb.se/OV0104/v1/doris/sv/ssd/", url);
+    }
+
+    @Test
+    public void getRootUrlWithLocale() {
+        Locale locale = new Locale("fr", "CA");
+        String url = URLUtility.getRootUrl(locale);
+
+        assertEquals("https://api.scb.se/OV0104/v1/doris/fr/ssd/", url);
+    }
+
+    @Test
     public void changeUrlLocale() {
         String url = URLUtility.changeLanguageForUrl("https://api.scb.se/OV0104/v1/doris/en/ssd/BE/BE0101/BE0101A/BefolkningNy");
 
