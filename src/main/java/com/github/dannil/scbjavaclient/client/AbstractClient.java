@@ -84,6 +84,15 @@ public abstract class AbstractClient {
     }
 
     /**
+     * <p>Returns the <code>Locale</code> used for the localization.</p>
+     *
+     * @return locale the <code>Locale</code> for the localization
+     */
+    public Locale getLocalizationLocale() {
+        return this.localization.getLocale();
+    }
+
+    /**
      * <p>Changes the <code>Locale</code> used for the localization. Useful if the client
      * needs to be in a different language than the error messages.</p>
      *
@@ -92,15 +101,6 @@ public abstract class AbstractClient {
      */
     public void setLocalizationLocale(Locale loc) {
         this.localization.setLocale(loc);
-    }
-
-    /**
-     * <p>Returns the <code>Locale</code> used for the localization.</p>
-     *
-     * @return locale the <code>Locale</code> for the localization
-     */
-    public Locale getLocalizationLocale() {
-        return this.localization.getLocale();
     }
 
     /**
