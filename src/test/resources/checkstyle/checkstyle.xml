@@ -55,7 +55,8 @@
 	<!-- <property name="header" value="/*\r\n * Copyright" /> -->
 	<!-- </module> -->
 	<module name="RegexpHeader">
-		<property name="headerFile" value="src/test/resources/checkstyle/header/java.header" />
+		<property name="headerFile"
+			value="src/test/resources/checkstyle/header/java.header" />
 		<property name="fileExtensions" value="java" />
 	</module>
 
@@ -134,9 +135,9 @@
 		<module name="RequireThis">
 			<property name="checkMethods" value="false" />
 		</module>
-		<!-- <module name="ReturnCount"> -->
-		<!-- <property name="max" value="3"/> -->
-		<!-- </module> -->
+		<module name="ReturnCount">
+			<property name="max" value="3" />
+		</module>
 		<module name="SimplifyBooleanExpression" />
 		<module name="SimplifyBooleanReturn" />
 		<module name="StringLiteralEquality" />
@@ -157,7 +158,13 @@
 		</module>
 		<module name="IllegalImport" /> <!-- defaults to sun.* packages -->
 		<!-- <module name="ImportControl" /> -->
-		<!-- <module name="ImportOrder" /> -->
+		<module name="ImportOrder">
+			<property name="groups" value="/^java\./,javax,com,org" />
+			<property name="ordered" value="true" />
+			<property name="separated" value="true" />
+			<property name="option" value="above" />
+			<property name="sortStaticImportsAlphabetically" value="true" />
+		</module>
 		<module name="RedundantImport" />
 		<module name="UnusedImports" />
 
@@ -207,9 +214,9 @@
 
 		<!-- Checks for Naming Conventions. -->
 		<!-- See http://checkstyle.sf.net/config_naming.html -->
-		<!-- <module name="AbbreviationAsWordInName"> -->
-		<!-- <property name="allowedAbbreviationLength" value="4" /> -->
-		<!-- </module> -->
+		<module name="AbbreviationAsWordInName">
+			<property name="allowedAbbreviationLength" value="4" />
+		</module>
 		<module name="AbstractClassName" />
 		<module name="CatchParameterName" />
 		<module name="ClassTypeParameterName" />
@@ -224,7 +231,6 @@
 		<module name="ParameterName" />
 		<module name="StaticVariableName" />
 		<module name="TypeName" />
-
 
 		<!-- Checks for regular expressions. -->
 		<!-- See http://checkstyle.sf.net/config_regexp.html -->
