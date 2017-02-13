@@ -49,10 +49,10 @@ public class SCBClient extends AbstractContainerClient {
         super();
 
         this.populationClient = new PopulationClient();
-        this.add(this.populationClient);
+        add(this.populationClient);
 
         this.environmentClient = new EnvironmentClient();
-        this.add(this.environmentClient);
+        add(this.environmentClient);
     }
 
     /**
@@ -64,7 +64,7 @@ public class SCBClient extends AbstractContainerClient {
     public SCBClient(Locale locale) {
         this();
 
-        this.setLocale(locale);
+        setLocale(locale);
     }
 
     /**
@@ -96,7 +96,7 @@ public class SCBClient extends AbstractContainerClient {
      *      JsonAPITableFormat#getInputs()
      */
     public Map<String, Collection<String>> getInputs(String table) {
-        String json = super.get(table);
+        String json = get(table);
 
         return new JsonAPITableFormat(json).getInputs();
     }
@@ -108,7 +108,7 @@ public class SCBClient extends AbstractContainerClient {
      * @return the config
      */
     public Map<String, String> getConfig() {
-        String json = super.get("?config");
+        String json = get("?config");
 
         JsonAPIConfigTableFormat format = new JsonAPIConfigTableFormat(json);
 
@@ -150,7 +150,7 @@ public class SCBClient extends AbstractContainerClient {
      *      JsonAPITableFormat#getValues(String)
      */
     public String getRawData(String table) {
-        String json = super.get(table);
+        String json = get(table);
 
         Map<String, Collection<?>> inputs = new HashMap<>();
         inputs.put("ContentsCode", new JsonAPITableFormat(json).getValues("ContentsCode"));
@@ -169,7 +169,7 @@ public class SCBClient extends AbstractContainerClient {
      * @return a response from the API formatted as JSON
      */
     public String getRawData(String table, Map<String, Collection<?>> query) {
-        return super.post(table, QueryBuilder.build(query));
+        return post(table, QueryBuilder.build(query));
     }
 
     /**

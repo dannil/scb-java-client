@@ -54,25 +54,25 @@ public class PopulationClient extends AbstractContainerClient {
         super();
 
         this.populationAmountClient = new PopulationAmountClient();
-        this.add(this.populationAmountClient);
+        add(this.populationAmountClient);
 
         this.populationAverageAgeClient = new PopulationAverageAgeClient();
-        this.add(this.populationAverageAgeClient);
+        add(this.populationAverageAgeClient);
 
         this.populationDemographyClient = new PopulationDemographyClient();
-        this.add(this.populationDemographyClient);
+        add(this.populationDemographyClient);
 
         this.populationDensityClient = new PopulationDensityClient();
-        this.add(this.populationDensityClient);
+        add(this.populationDensityClient);
 
         this.populationLiveBirthsClient = new PopulationLiveBirthsClient();
-        this.add(this.populationLiveBirthsClient);
+        add(this.populationLiveBirthsClient);
 
         this.populationNameStatisticsClient = new PopulationNameStatisticsClient();
-        this.add(this.populationNameStatisticsClient);
+        add(this.populationNameStatisticsClient);
 
         this.populationPartnershipClient = new PopulationPartnershipClient();
-        this.add(this.populationPartnershipClient);
+        add(this.populationPartnershipClient);
     }
 
     /**
@@ -84,7 +84,7 @@ public class PopulationClient extends AbstractContainerClient {
     public PopulationClient(Locale locale) {
         this();
 
-        this.setLocale(locale);
+        setLocale(locale);
     }
 
     /**

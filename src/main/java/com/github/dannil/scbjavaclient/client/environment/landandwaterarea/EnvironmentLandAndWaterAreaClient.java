@@ -84,7 +84,7 @@ public class EnvironmentLandAndWaterAreaClient extends AbstractClient {
         mappings.put("ArealTyp", types);
         mappings.put("Tid", years);
 
-        String response = super.post("MI/MI0802/Areal2012", QueryBuilder.build(mappings));
+        String response = post("MI/MI0802/Areal2012", QueryBuilder.build(mappings));
 
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
         return format.toListOf(Area.class);

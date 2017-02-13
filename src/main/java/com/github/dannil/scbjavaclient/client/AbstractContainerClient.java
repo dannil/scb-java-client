@@ -46,7 +46,7 @@ public abstract class AbstractContainerClient extends AbstractClient {
     protected AbstractContainerClient(Locale locale) {
         this();
 
-        this.setLocale(locale);
+        setLocale(locale);
     }
 
     /**
@@ -57,7 +57,7 @@ public abstract class AbstractContainerClient extends AbstractClient {
         super.setLocale(locale);
 
         for (AbstractClient client : this.clients) {
-            client.setLocale(super.getLocale());
+            client.setLocale(getLocale());
         }
     }
 

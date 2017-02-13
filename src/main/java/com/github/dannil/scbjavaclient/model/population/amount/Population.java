@@ -165,11 +165,11 @@ public class Population extends AbstractRegionYearAndValueModel<String, Integer,
         builder.append(", gender=");
         builder.append(this.gender);
         builder.append(", region=");
-        builder.append(super.getRegion());
+        builder.append(getRegion());
         builder.append(", year=");
-        builder.append(super.getYear());
+        builder.append(getYear());
         builder.append(", values=");
-        builder.append(super.getValues());
+        builder.append(getValues());
         builder.append(']');
 
         return builder.toString();

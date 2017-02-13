@@ -36,7 +36,7 @@ public class EnvironmentClient extends AbstractContainerClient {
         super();
 
         this.environmentLandAndWaterAreaClient = new EnvironmentLandAndWaterAreaClient();
-        this.add(this.environmentLandAndWaterAreaClient);
+        add(this.environmentLandAndWaterAreaClient);
     }
 
     /**
@@ -48,7 +48,7 @@ public class EnvironmentClient extends AbstractContainerClient {
     public EnvironmentClient(Locale locale) {
         this();
 
-        this.setLocale(locale);
+        setLocale(locale);
     }
 
     /**

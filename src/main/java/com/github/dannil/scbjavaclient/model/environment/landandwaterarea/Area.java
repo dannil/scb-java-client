@@ -109,11 +109,11 @@ public class Area extends AbstractRegionYearAndValueModel<String, Integer, Doubl
         builder.append(" [type=");
         builder.append(this.type);
         builder.append(", region=");
-        builder.append(super.getRegion());
+        builder.append(getRegion());
         builder.append(", year=");
-        builder.append(super.getYear());
+        builder.append(getYear());
         builder.append(", values=");
-        builder.append(super.getValues());
+        builder.append(getValues());
         builder.append(']');
 
         return builder.toString();

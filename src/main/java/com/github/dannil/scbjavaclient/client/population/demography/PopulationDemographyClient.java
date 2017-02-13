@@ -87,7 +87,7 @@ public class PopulationDemographyClient extends AbstractClient {
         mappings.put("Kon", genders);
         mappings.put("Tid", years);
 
-        String response = super.post("BE/BE0701/FruktsamhetSumNy", QueryBuilder.build(mappings));
+        String response = post("BE/BE0701/FruktsamhetSumNy", QueryBuilder.build(mappings));
 
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
         return format.toListOf(FertilityRate.class);
@@ -128,7 +128,7 @@ public class PopulationDemographyClient extends AbstractClient {
         mappings.put("Kon", genders);
         mappings.put("Tid", years);
 
-        String response = super.post("BE/BE0701/MedelAlderNY", QueryBuilder.build(mappings));
+        String response = post("BE/BE0701/MedelAlderNY", QueryBuilder.build(mappings));
 
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
         return format.toListOf(MeanAgeFirstChild.class);

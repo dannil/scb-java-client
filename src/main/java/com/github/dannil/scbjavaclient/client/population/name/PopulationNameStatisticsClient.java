@@ -83,7 +83,7 @@ public class PopulationNameStatisticsClient extends AbstractClient {
         mappings.put("Tilltalsnamn", firstnames);
         mappings.put("Tid", years);
 
-        String response = super.post("BE/BE0001/BE0001T04Ar", QueryBuilder.build(mappings));
+        String response = post("BE/BE0001/BE0001T04Ar", QueryBuilder.build(mappings));
 
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
         return format.toListOf(NumberOfChildrenBornWithFirstName.class);

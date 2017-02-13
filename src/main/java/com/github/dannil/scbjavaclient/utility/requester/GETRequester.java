@@ -32,7 +32,7 @@ public class GETRequester extends AbstractRequester {
      */
     public GETRequester() {
         super();
-        super.getRequestProperties().put("Request-Method", "GET");
+        getRequestProperties().put("Request-Method", "GET");
     }
 
     /**
@@ -43,18 +43,18 @@ public class GETRequester extends AbstractRequester {
      */
     public GETRequester(Charset charset) {
         super(charset);
-        super.getRequestProperties().put("Request-Method", "GET");
+        getRequestProperties().put("Request-Method", "GET");
     }
 
     @Override
     public String getBody(String url) {
         HttpGet request = new HttpGet(url);
-        for (Entry<String, String> entry : super.getRequestProperties().entrySet()) {
+        for (Entry<String, String> entry : getRequestProperties().entrySet()) {
             request.addHeader(entry.getKey(), entry.getValue());
         }
 
-        HttpResponse response = super.getResponse(request);
-        return super.getBody(response);
+        HttpResponse response = getResponse(request);
+        return getBody(response);
     }
 
 }

@@ -64,7 +64,7 @@ public class Density extends AbstractRegionYearAndValueModel<String, Integer, Do
     /**
      * <p>Getter for sex.</p>
      *
-     * @return the sex.
+     * @return the sex
      */
     public String getSex() {
         return this.sex;
@@ -109,11 +109,11 @@ public class Density extends AbstractRegionYearAndValueModel<String, Integer, Do
         builder.append(" [sex=");
         builder.append(this.sex);
         builder.append(", region=");
-        builder.append(super.getRegion());
+        builder.append(getRegion());
         builder.append(", year=");
-        builder.append(super.getYear());
+        builder.append(getYear());
         builder.append(", values=");
-        builder.append(super.getValues());
+        builder.append(getValues());
         builder.append(']');
 
         return builder.toString();

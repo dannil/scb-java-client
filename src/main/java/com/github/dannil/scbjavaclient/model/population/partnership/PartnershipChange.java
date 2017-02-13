@@ -138,11 +138,11 @@ public class PartnershipChange extends AbstractRegionYearAndValueModel<String, I
         builder.append(", sex=");
         builder.append(this.sex);
         builder.append(", region=");
-        builder.append(super.getRegion());
+        builder.append(getRegion());
         builder.append(", year=");
-        builder.append(super.getYear());
+        builder.append(getYear());
         builder.append(", values=");
-        builder.append(super.getValues());
+        builder.append(getValues());
         builder.append(']');
 
         return builder.toString();
