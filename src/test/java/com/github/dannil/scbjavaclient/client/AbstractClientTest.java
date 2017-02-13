@@ -33,4 +33,12 @@ public class AbstractClientTest {
         assertEquals(locale, client.getLocale());
     }
 
+    @Test
+    public void getRootUrl() {
+        Locale locale = new Locale("fr", "CA");
+        AbstractContainerClient client = new DummyContainerClient(locale);
+
+        assertEquals("https://api.scb.se/OV0104/v1/doris/fr/ssd/", client.getRootUrl());
+    }
+
 }

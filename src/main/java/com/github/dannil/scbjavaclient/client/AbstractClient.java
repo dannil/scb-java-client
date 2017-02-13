@@ -104,12 +104,11 @@ public abstract class AbstractClient {
     }
 
     /**
-     * <p>Determines the base URL for the API based on the current
-     * <code>Locale</code>.</p>
+     * <p>Determines the URL for the API based on the current <code>Locale</code>.</p>
      *
      * @return the URL representing the entry point for the API
      */
-    protected String getBaseUrl() {
+    protected String getRootUrl() {
         return URLUtility.getRootUrl(this.locale);
     }
 
@@ -121,7 +120,7 @@ public abstract class AbstractClient {
      * @return a string representation of the API's response
      */
     protected String get(String table) {
-        String url = getBaseUrl() + table;
+        String url = getRootUrl() + table;
 
         AbstractRequester get = new GETRequester();
         try {
@@ -142,7 +141,7 @@ public abstract class AbstractClient {
      * @return a string representation of the API's response
      */
     protected String post(String table, String query) {
-        String url = getBaseUrl() + table;
+        String url = getRootUrl() + table;
 
         POSTRequester post = new POSTRequester();
         post.setQuery(query);
