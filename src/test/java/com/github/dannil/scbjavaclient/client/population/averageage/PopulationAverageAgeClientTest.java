@@ -37,7 +37,9 @@ public class PopulationAverageAgeClientTest {
 
     @Test
     public void getUrl() {
-        Locale locale = new Locale("sv", "SE");
+        // Check with a locale that isn't the fallback locale; results in a more specific
+        // test with harder constraints
+        Locale locale = new Locale("en", "US");
         PopulationAverageAgeClient client = new PopulationAverageAgeClient(locale);
 
         assertEquals(URLUtility.getRootUrl(locale) + "BE/BE0101/BE0101B/", client.getUrl());

@@ -190,8 +190,6 @@ public abstract class AbstractClient {
      *
      * @return the URL endpoint for this client
      */
-    public String getUrl() {
-        return getBaseUrl();
-    }
+    public abstract String getUrl();
 
 }

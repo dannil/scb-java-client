@@ -54,6 +54,12 @@ public class AbstractClientIT {
             super(locale);
         }
 
+        @Override
+        public String getUrl() {
+            // TODO Auto-generated method stub
+            return null;
+        }
+
     }
 
     @Test

@@ -25,6 +25,7 @@ import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.model.population.averageage.AverageAge;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
+import com.github.dannil.scbjavaclient.utility.URLUtility;
 
 /**
  * <p>Client which handles population average age data fetching.</p>
@@ -92,7 +93,7 @@ public class PopulationAverageAgeClient extends AbstractClient {
 
     @Override
     public String getUrl() {
-        return super.getUrl() + "BE/BE0101/BE0101B/";
+        return URLUtility.getRootUrl(getLocale()) + "BE/BE0101/BE0101B/";
     }
 
 }

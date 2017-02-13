@@ -193,4 +193,9 @@ public class SCBClient extends AbstractContainerClient {
         }
     }
 
+    @Override
+    public String getUrl() {
+        return getBaseUrl();
+    }
+
 }
