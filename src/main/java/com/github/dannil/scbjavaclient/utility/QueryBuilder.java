@@ -95,7 +95,7 @@ public final class QueryBuilder {
         Map<String, Collection<?>> filteredMap = new HashMap<>();
 
         for (Entry<String, Collection<?>> entry : inputMap.entrySet()) {
-            if (entry.getKey() != null && (entry.getValue() != null && entry.getValue().size() != 0)) {
+            if (entry.getKey() != null && (entry.getValue() != null && !entry.getValue().isEmpty())) {
                 filteredMap.put(entry.getKey(), filterValue(entry.getValue(), null));
             }
         }
