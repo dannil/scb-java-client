@@ -21,6 +21,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -61,6 +62,16 @@ public class QueryBuilderTest {
         String query = QueryBuilder.build(inputMap);
 
         assertEquals("{\"query\": [{\"code\": \"Tid\", \"selection\": {\"filter\": \"item\", \"values\": [\"2012\"]}}],\"response\": {\"format\": \"json\"}}", query);
+    }
+
+    @Test
+    public void filterValueRemoveEmptyList() {
+        Map<String, Collection<?>> inputMap = new HashMap<String, Collection<?>>();
+        inputMap.put("Tid", Collections.EMPTY_LIST);
+
+        String query = QueryBuilder.build(inputMap);
+
+        assertEquals("{\"query\": [],\"response\": {\"format\": \"json\"}}", query);
     }
 
 }

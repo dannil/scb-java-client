@@ -17,6 +17,7 @@ package com.github.dannil.scbjavaclient.client.environment.landandwaterarea;
 import static org.junit.Assert.assertNotEquals;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
@@ -49,6 +50,11 @@ public class EnvironmentLandAndWaterAreaClientIT extends RemoteIntegrationTestSu
         List<Integer> years = Arrays.asList(2012);
 
         assertNotEquals(0, this.environmentLandAndWaterAreaClient.getArea(regions, types, years).size());
+    }
+
+    @Test
+    public void getAreaWithParametersEmptyLists() {
+        assertNotEquals(0, this.environmentLandAndWaterAreaClient.getArea(Collections.<String>emptyList(), Collections.<String>emptyList(), Collections.<Integer>emptyList()));
     }
 
 }

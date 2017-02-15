@@ -27,6 +27,7 @@ import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -102,6 +103,23 @@ public class AbstractClientIT {
         assertTrue(response.contains("kön"));
         assertTrue(response.contains("boendeform"));
         assertTrue(response.contains("år"));
+    }
+
+    @Test
+    public void postWithEmptyList() {
+        DummyClient client = new DummyClient(new Locale("sv", "SE"));
+
+        String table = "HE/HE0103/HE0103B/BefolkningAlder";
+
+        Map<String, Collection<?>> inputMap = new HashMap<String, Collection<?>>();
+        inputMap.put("Alder", Collections.EMPTY_LIST);
+
+        String response = client.post(table, QueryBuilder.build(inputMap));
+
+        assertTrue(response.contains("år"));
+        assertFalse(response.contains("ålder"));
+        assertFalse(response.contains("kön"));
+        assertFalse(response.contains("boendeform"));
     }
 
     @Test
