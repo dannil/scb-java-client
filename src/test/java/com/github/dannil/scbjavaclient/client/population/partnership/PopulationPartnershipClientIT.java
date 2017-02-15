@@ -19,13 +19,13 @@ import static org.junit.Assert.assertNotEquals;
 import java.util.Arrays;
 import java.util.List;
 
+import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.RemoteIntegrationTestSuite;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.RemoteIntegrationTestSuite;
 
 @RunWith(JUnit4.class)
 public class PopulationPartnershipClientIT extends RemoteIntegrationTestSuite {

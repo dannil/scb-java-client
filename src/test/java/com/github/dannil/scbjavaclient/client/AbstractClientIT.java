@@ -32,14 +32,14 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import com.github.dannil.scbjavaclient.exception.SCBClientForbiddenException;
+import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
+import com.github.dannil.scbjavaclient.utility.QueryBuilder;
+
 import org.apache.commons.io.FilenameUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-
-import com.github.dannil.scbjavaclient.exception.SCBClientForbiddenException;
-import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
-import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 @RunWith(JUnit4.class)
 public class AbstractClientIT {

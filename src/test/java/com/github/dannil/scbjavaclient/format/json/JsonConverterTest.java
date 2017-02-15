@@ -17,13 +17,13 @@ package com.github.dannil.scbjavaclient.format.json;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-
-import com.fasterxml.jackson.databind.JsonNode;
-import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
 
 @RunWith(JUnit4.class)
 public class JsonConverterTest {

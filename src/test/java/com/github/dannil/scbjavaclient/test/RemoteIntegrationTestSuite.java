@@ -16,9 +16,9 @@ package com.github.dannil.scbjavaclient.test;
 
 import java.util.concurrent.TimeUnit;
 
-import org.junit.Before;
-
 import com.github.dannil.scbjavaclient.test.utility.Config;
+
+import org.junit.Before;
 
 public abstract class RemoteIntegrationTestSuite {
 

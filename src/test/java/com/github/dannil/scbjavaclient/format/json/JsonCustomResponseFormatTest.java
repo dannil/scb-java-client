@@ -22,15 +22,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
 import com.github.dannil.scbjavaclient.model.ValueNode;
 import com.github.dannil.scbjavaclient.model.population.amount.Population;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
 public class JsonCustomResponseFormatTest {

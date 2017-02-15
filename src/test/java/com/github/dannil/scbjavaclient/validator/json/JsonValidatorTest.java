@@ -20,10 +20,10 @@ import static org.junit.Assert.assertTrue;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
-import org.junit.Test;
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.dannil.scbjavaclient.format.json.JsonConverter;
+
+import org.junit.Test;
 
 public class JsonValidatorTest {
 

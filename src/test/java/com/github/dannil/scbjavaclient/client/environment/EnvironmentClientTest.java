@@ -19,11 +19,11 @@ import static org.junit.Assert.assertNotNull;
 
 import java.util.Locale;
 
+import com.github.dannil.scbjavaclient.utility.URLUtility;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-
-import com.github.dannil.scbjavaclient.utility.URLUtility;
 
 @RunWith(JUnit4.class)
 public class EnvironmentClientTest {

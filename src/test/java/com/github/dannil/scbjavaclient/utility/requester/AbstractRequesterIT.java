@@ -16,14 +16,14 @@ package com.github.dannil.scbjavaclient.utility.requester;
 
 import static org.junit.Assert.assertNull;
 
+import com.github.dannil.scbjavaclient.exception.SCBClientException;
+import com.github.dannil.scbjavaclient.test.RemoteIntegrationTestSuite;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-
-import com.github.dannil.scbjavaclient.exception.SCBClientException;
-import com.github.dannil.scbjavaclient.test.RemoteIntegrationTestSuite;
 
 @RunWith(JUnit4.class)
 public class AbstractRequesterIT extends RemoteIntegrationTestSuite {
