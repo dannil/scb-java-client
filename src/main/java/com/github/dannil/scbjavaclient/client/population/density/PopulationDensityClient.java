@@ -92,7 +92,7 @@ public class PopulationDensityClient extends AbstractClient {
 
     @Override
     public String getUrl() {
-        return URLUtility.getRootUrl(getLocale()) + "BE/BE0101/BE0101C/";
+        return getRootUrl() + "BE/BE0101/BE0101C/";
     }
 
 }

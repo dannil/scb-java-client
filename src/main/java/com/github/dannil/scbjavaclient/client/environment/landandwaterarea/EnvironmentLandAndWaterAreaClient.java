@@ -92,6 +92,6 @@ public class EnvironmentLandAndWaterAreaClient extends AbstractClient {
 
     @Override
     public String getUrl() {
-        return URLUtility.getRootUrl(getLocale()) + "MI/MI0802/";
+        return getRootUrl() + "MI/MI0802/";
     }
 }

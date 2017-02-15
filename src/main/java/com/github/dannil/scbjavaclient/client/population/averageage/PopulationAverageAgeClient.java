@@ -93,7 +93,7 @@ public class PopulationAverageAgeClient extends AbstractClient {
 
     @Override
     public String getUrl() {
-        return URLUtility.getRootUrl(getLocale()) + "BE/BE0101/BE0101B/";
+        return getRootUrl() + "BE/BE0101/BE0101B/";
     }
 
 }

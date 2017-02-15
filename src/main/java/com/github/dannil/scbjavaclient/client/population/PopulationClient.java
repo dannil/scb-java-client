@@ -152,7 +152,7 @@ public class PopulationClient extends AbstractContainerClient {
 
     @Override
     public String getUrl() {
-        return URLUtility.getRootUrl(getLocale()) + "BE/";
+        return getRootUrl() + "BE/";
     }
 
 }

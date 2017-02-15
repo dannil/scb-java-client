@@ -136,7 +136,7 @@ public class PopulationDemographyClient extends AbstractClient {
 
     @Override
     public String getUrl() {
-        return URLUtility.getRootUrl(getLocale()) + "BE/BE0701/";
+        return getRootUrl() + "BE/BE0701/";
     }
 
 }

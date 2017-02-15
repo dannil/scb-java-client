@@ -63,7 +63,7 @@ public class EnvironmentClient extends AbstractContainerClient {
 
     @Override
     public String getUrl() {
-        return URLUtility.getRootUrl(getLocale()) + "MI/";
+        return getRootUrl() + "MI/";
     }
 
 }

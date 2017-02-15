@@ -99,7 +99,7 @@ public class PopulationAmountClient extends AbstractClient {
 
     @Override
     public String getUrl() {
-        return URLUtility.getRootUrl(getLocale()) + "BE/BE0101/BE0101A/";
+        return getRootUrl() + "BE/BE0101/BE0101A/";
     }
 
 }

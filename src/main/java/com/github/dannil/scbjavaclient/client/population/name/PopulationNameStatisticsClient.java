@@ -91,7 +91,7 @@ public class PopulationNameStatisticsClient extends AbstractClient {
 
     @Override
     public String getUrl() {
-        return URLUtility.getRootUrl(getLocale()) + "BE/BE0001/";
+        return getRootUrl() + "BE/BE0001/";
     }
 
 }
