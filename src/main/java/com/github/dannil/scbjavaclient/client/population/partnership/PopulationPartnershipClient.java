@@ -26,7 +26,6 @@ import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.model.population.partnership.Partnership;
 import com.github.dannil.scbjavaclient.model.population.partnership.PartnershipChange;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
-import com.github.dannil.scbjavaclient.utility.URLUtility;
 
 /**
  * <p>Client which handles population partnership data fetching.</p>

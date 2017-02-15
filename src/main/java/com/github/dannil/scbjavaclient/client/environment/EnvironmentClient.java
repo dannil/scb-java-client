@@ -18,7 +18,6 @@ import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.EnvironmentLandAndWaterAreaClient;
-import com.github.dannil.scbjavaclient.utility.URLUtility;
 
 /**
  * <p>Client which handles environment data fetching.</p>
