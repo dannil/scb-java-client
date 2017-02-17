@@ -64,13 +64,13 @@ public final class QueryBuilder {
      * <p>Constructs a query which matches the format the SCB API expects. This method
      * performs two distinct steps:</p>
      *
-     * <h1>1. Filter out the null keys</h1>
+     * <h1>1. Filter out the null keys and values</h1>
      *
-     * <p>If a key (such as region or year) is defined and all of this key's values are
-     * defined as null it means that all data for this key should be fetched (such as
-     * fetching the data for all available years). By not sending this key at all to the
-     * SCB API it recognizes that it should respond with all data corresponding to this
-     * key.</p>
+     * <p>If a key (such as region or year) is defined and it's value is either defined as
+     * null or as an empty list it means that all data for this key should be fetched
+     * (such as fetching the data for all available years). By not sending this key at all
+     * to the SCB API it recognizes that it should respond with all data corresponding to
+     * this key.</p>
      *
      * <h1>2. Construct the query</h1>
      *
