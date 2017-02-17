@@ -54,15 +54,15 @@ public final class QueryBuilder {
         Iterator<Entry<String, Collection<?>>> it = inputMap.entrySet().iterator();
         while (it.hasNext()) {
             Entry<String, Collection<?>> entry = it.next();
-            if (entry.getKey() != null && entry.getValue() != null && !entry.getValue().isEmpty()) {
-                Collection<?> filtered = filterValue(entry.getValue(), null);
-                if (!filtered.isEmpty()) {
-                    inputMap.put(entry.getKey(), filtered);
-                } else {
-                    it.remove();
-                }
-            } else {
+            if (entry.getKey() == null || entry.getValue() == null || entry.getValue().isEmpty()) {
                 it.remove();
+            } else {
+                Collection<?> filtered = filterValue(entry.getValue(), value);
+                if (filtered.isEmpty()) {
+                    it.remove();
+                } else {
+                    inputMap.put(entry.getKey(), filtered);
+                }
             }
         }
     }
