@@ -16,6 +16,7 @@ package com.github.dannil.scbjavaclient.utility;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -91,23 +92,21 @@ public final class QueryBuilder {
      */
     public static String build(Map<String, Collection<?>> inputMap) {
         // 1: Filter out null values
-        Iterator<Entry<String, Collection<?>>> it = inputMap.entrySet().iterator();
-        while (it.hasNext()) {
-            Entry<String, Collection<?>> entry = it.next();
-            if (entry.getKey() == null || entry.getValue() == null || entry.getValue().isEmpty()) {
-                it.remove();
-            } else {
-                inputMap.put(entry.getKey(), filterValue(entry.getValue(), null));
+        Map<String, Collection<?>> filteredMap = new HashMap<>();
+
+        for (Entry<String, Collection<?>> entry : inputMap.entrySet()) {
+            if (entry.getKey() != null && entry.getValue() != null) {
+                filteredMap.put(entry.getKey(), filterValue(entry.getValue(), null));
             }
         }
 
         // Approximate a good initial capacity for the string builder
-        int size = APPROXIMATE_OFFSET_CHARS + (APPROXIMATE_ENTRY_CHARS * inputMap.size());
+        int size = APPROXIMATE_OFFSET_CHARS + (APPROXIMATE_ENTRY_CHARS * filteredMap.size());
         StringBuilder builder = new StringBuilder(size);
 
         // 2: Construct the query
         builder.append("{\"query\": [");
-        for (Iterator<Entry<String, Collection<?>>> entries = inputMap.entrySet().iterator(); entries.hasNext();) {
+        for (Iterator<Entry<String, Collection<?>>> entries = filteredMap.entrySet().iterator(); entries.hasNext();) {
             Entry<String, Collection<?>> entry = entries.next();
             builder.append("{\"code\": \"");
             builder.append(entry.getKey());
