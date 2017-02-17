@@ -16,11 +16,13 @@ package com.github.dannil.scbjavaclient.utility;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,6 +45,23 @@ public class QueryBuilderTest {
     }
 
     @Test
+    public void filterValue() {
+        Map<String, Collection<?>> inputMap = new HashMap<String, Collection<?>>();
+        inputMap.put("ContentsCode", Arrays.asList("HE0103D2"));
+        inputMap.put("Alder", Arrays.asList("tot", null));
+        inputMap.put("Kon", Arrays.asList("4"));
+        inputMap.put("Boendeform", Arrays.asList(null, null));
+        inputMap.put("Tid", Arrays.asList("2012"));
+
+        String query = QueryBuilder.build(inputMap);
+
+        assertFalse(query.contains("Boendeform"));
+        assertTrue(query.contains("Alder"));
+        assertTrue(query.contains("Kon"));
+        assertTrue(query.contains("Tid"));
+    }
+
+    @Test
     public void filterValueRemoveNullKey() {
         Map<String, Collection<?>> inputMap = new HashMap<String, Collection<?>>();
         inputMap.put(null, Arrays.asList("abc"));
@@ -61,6 +80,16 @@ public class QueryBuilderTest {
         String query = QueryBuilder.build(inputMap);
 
         assertEquals("{\"query\": [{\"code\": \"Tid\", \"selection\": {\"filter\": \"item\", \"values\": [\"2012\"]}}],\"response\": {\"format\": \"json\"}}", query);
+    }
+
+    @Test
+    public void filterValueRemoveEmptyList() {
+        Map<String, Collection<?>> inputMap = new HashMap<String, Collection<?>>();
+        inputMap.put("Tid", Collections.EMPTY_LIST);
+
+        String query = QueryBuilder.build(inputMap);
+
+        assertEquals("{\"query\": [],\"response\": {\"format\": \"json\"}}", query);
     }
 
 }
