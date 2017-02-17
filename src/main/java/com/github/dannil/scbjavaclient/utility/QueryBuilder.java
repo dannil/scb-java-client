@@ -16,7 +16,6 @@ package com.github.dannil.scbjavaclient.utility;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -39,6 +38,33 @@ public final class QueryBuilder {
      */
     private QueryBuilder() {
 
+    }
+
+    /**
+     * <p>Filter out the specified value from the input map. If a key is found that is
+     * null, all its values are removed as well. The filtering is done in-place on the
+     * input map.</p>
+     *
+     * @param inputMap
+     *            the <code>Map</code> to filter
+     * @param value
+     *            the value to remove from the <code>Map</code>
+     */
+    private static void filterMap(Map<String, Collection<?>> inputMap, Object value) {
+        Iterator<Entry<String, Collection<?>>> it = inputMap.entrySet().iterator();
+        while (it.hasNext()) {
+            Entry<String, Collection<?>> entry = it.next();
+            if (entry.getKey() == null || entry.getValue() == null || entry.getValue().isEmpty()) {
+                it.remove();
+            } else {
+                Collection<?> filtered = filterValue(entry.getValue(), value);
+                if (filtered.isEmpty()) {
+                    it.remove();
+                } else {
+                    inputMap.put(entry.getKey(), filtered);
+                }
+            }
+        }
     }
 
     /**
@@ -92,24 +118,15 @@ public final class QueryBuilder {
      */
     public static String build(Map<String, Collection<?>> inputMap) {
         // 1: Filter out null values
-        Map<String, Collection<?>> filteredMap = new HashMap<>();
-
-        for (Entry<String, Collection<?>> entry : inputMap.entrySet()) {
-            if (entry.getKey() != null && entry.getValue() != null) {
-                Collection<?> filtered = filterValue(entry.getValue(), null);
-                if (!filtered.isEmpty()) {
-                    filteredMap.put(entry.getKey(), filtered);
-                }
-            }
-        }
+        filterMap(inputMap, null);
 
         // Approximate a good initial capacity for the string builder
-        int size = APPROXIMATE_OFFSET_CHARS + (APPROXIMATE_ENTRY_CHARS * filteredMap.size());
+        int size = APPROXIMATE_OFFSET_CHARS + (APPROXIMATE_ENTRY_CHARS * inputMap.size());
         StringBuilder builder = new StringBuilder(size);
 
         // 2: Construct the query
         builder.append("{\"query\": [");
-        for (Iterator<Entry<String, Collection<?>>> entries = filteredMap.entrySet().iterator(); entries.hasNext();) {
+        for (Iterator<Entry<String, Collection<?>>> entries = inputMap.entrySet().iterator(); entries.hasNext();) {
             Entry<String, Collection<?>> entry = entries.next();
             builder.append("{\"code\": \"");
             builder.append(entry.getKey());
