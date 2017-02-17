@@ -41,6 +41,33 @@ public final class QueryBuilder {
     }
 
     /**
+     * <p>Filter out the specified value from the input map. If a key is found that is
+     * null, all its values are removed as well. The filtering is done in-place on the
+     * input map.</p>
+     *
+     * @param inputMap
+     *            the <code>Map</code> to filter
+     * @param value
+     *            the value to remove from the <code>Map</code>
+     */
+    private static void filterMap(Map<String, Collection<?>> inputMap, Object value) {
+        Iterator<Entry<String, Collection<?>>> it = inputMap.entrySet().iterator();
+        while (it.hasNext()) {
+            Entry<String, Collection<?>> entry = it.next();
+            if (entry.getKey() != null && entry.getValue() != null && !entry.getValue().isEmpty()) {
+                Collection<?> filtered = filterValue(entry.getValue(), null);
+                if (!filtered.isEmpty()) {
+                    inputMap.put(entry.getKey(), filtered);
+                } else {
+                    it.remove();
+                }
+            } else {
+                it.remove();
+            }
+        }
+    }
+
+    /**
      * <p>Filter out the specified value from the input collection.</p>
      *
      * @param collection
@@ -91,20 +118,7 @@ public final class QueryBuilder {
      */
     public static String build(Map<String, Collection<?>> inputMap) {
         // 1: Filter out null values
-        Iterator<Entry<String, Collection<?>>> it = inputMap.entrySet().iterator();
-        while (it.hasNext()) {
-            Entry<String, Collection<?>> entry = it.next();
-            if (entry.getKey() != null && entry.getValue() != null && !entry.getValue().isEmpty()) {
-                Collection<?> filtered = filterValue(entry.getValue(), null);
-                if (!filtered.isEmpty()) {
-                    inputMap.put(entry.getKey(), filtered);
-                } else {
-                    it.remove();
-                }
-            } else {
-                it.remove();
-            }
-        }
+        filterMap(inputMap, null);
 
         // Approximate a good initial capacity for the string builder
         int size = APPROXIMATE_OFFSET_CHARS + (APPROXIMATE_ENTRY_CHARS * inputMap.size());
