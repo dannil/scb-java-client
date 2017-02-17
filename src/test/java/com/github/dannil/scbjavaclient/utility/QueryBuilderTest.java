@@ -16,6 +16,7 @@ package com.github.dannil.scbjavaclient.utility;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -41,6 +42,23 @@ public class QueryBuilderTest {
         cons[0].setAccessible(false);
 
         assertFalse(cons[0].isAccessible());
+    }
+
+    @Test
+    public void filterValue() {
+        Map<String, Collection<?>> inputMap = new HashMap<String, Collection<?>>();
+        inputMap.put("ContentsCode", Arrays.asList("HE0103D2"));
+        inputMap.put("Alder", Arrays.asList("tot", null));
+        inputMap.put("Kon", Arrays.asList("4"));
+        inputMap.put("Boendeform", Arrays.asList(null, null));
+        inputMap.put("Tid", Arrays.asList("2012"));
+
+        String query = QueryBuilder.build(inputMap);
+
+        assertFalse(query.contains("Boendeform"));
+        assertTrue(query.contains("Alder"));
+        assertTrue(query.contains("Kon"));
+        assertTrue(query.contains("Tid"));
     }
 
     @Test
