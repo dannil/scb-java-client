@@ -44,17 +44,17 @@ public class EnvironmentLandAndWaterAreaClientIT extends RemoteIntegrationTestSu
     }
 
     @Test
+    public void getAreaWithParametersEmptyLists() {
+        assertNotEquals(0, this.environmentLandAndWaterAreaClient.getArea(Collections.<String>emptyList(), Collections.<String>emptyList(), Collections.<Integer>emptyList()));
+    }
+
+    @Test
     public void getAreaWithParameters() {
         List<String> regions = Arrays.asList("1263");
         List<String> types = Arrays.asList("01", "02", "03", "04");
         List<Integer> years = Arrays.asList(2012);
 
         assertNotEquals(0, this.environmentLandAndWaterAreaClient.getArea(regions, types, years).size());
-    }
-
-    @Test
-    public void getAreaWithParametersEmptyLists() {
-        assertNotEquals(0, this.environmentLandAndWaterAreaClient.getArea(Collections.<String>emptyList(), Collections.<String>emptyList(), Collections.<Integer>emptyList()));
     }
 
 }
