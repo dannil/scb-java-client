@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.utility;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
@@ -41,9 +40,8 @@ public final class QueryBuilder {
     }
 
     /**
-     * <p>Filter out the specified value from the input map. If a key is found that is
-     * null, all its values are removed as well. The filtering is done in-place on the
-     * input map.</p>
+     * <p>Filter out the specified value from the input map, including both keys and their
+     * respective values. The filtering is done in-place on the input map.</p>
      *
      * @param inputMap
      *            the <code>Map</code> to filter
@@ -57,33 +55,30 @@ public final class QueryBuilder {
             if (entry.getKey() == null || entry.getValue() == null || entry.getValue().isEmpty()) {
                 it.remove();
             } else {
-                Collection<?> filtered = filterValue(entry.getValue(), value);
-                if (filtered.isEmpty()) {
+                filterValue(entry.getValue(), value);
+                if (entry.getValue().isEmpty()) {
                     it.remove();
-                } else {
-                    inputMap.put(entry.getKey(), filtered);
                 }
             }
         }
     }
 
     /**
-     * <p>Filter out the specified value from the input collection.</p>
+     * <p>Filter out the specified value from the input collection. The filtering is done
+     * in-place on the input collection.</p>
      *
      * @param collection
      *            the <code>Collection</code> to filter
      * @param value
      *            the value to remove from the <code>Collection</code>
-     * @return a <code>Collection</code> with the specified value removed
      */
-    private static Collection<?> filterValue(Collection<?> collection, Object value) {
-        Collection<Object> filteredValues = new ArrayList<>();
-        for (Object o : collection) {
-            if (!Objects.equals(o, value)) {
-                filteredValues.add(o);
+    private static void filterValue(Collection<?> collection, Object value) {
+        Iterator<?> it = collection.iterator();
+        while (it.hasNext()) {
+            if (Objects.equals(value, it.next())) {
+                it.remove();
             }
         }
-        return filteredValues;
     }
 
     /**
