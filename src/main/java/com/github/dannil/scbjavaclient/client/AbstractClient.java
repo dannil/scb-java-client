@@ -14,11 +14,9 @@
 
 package com.github.dannil.scbjavaclient.client;
 
-import java.util.List;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
-import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
 import com.github.dannil.scbjavaclient.utility.Localization;
 import com.github.dannil.scbjavaclient.utility.URLUtility;
 import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
@@ -152,36 +150,6 @@ public abstract class AbstractClient {
             // HTTP code 404, call the API again with the fallback language
             return post.getBody(URLUtility.changeLanguageForUrl(url));
         }
-    }
-
-    /**
-     * <p>Returns the list of the available regions for a given table.</p>
-     *
-     * @param table
-     *            the table to retrieve the regions from
-     * @return a list of the available regions for the given table
-     */
-    public List<String> getRegions(String table) {
-        String json = get(table);
-        String code = "Region";
-
-        JsonAPITableFormat format = new JsonAPITableFormat(json);
-        return format.getValues(code);
-    }
-
-    /**
-     * <p>Returns the list of the available years for a given table.</p>
-     *
-     * @param table
-     *            the table to retrieve the years from
-     * @return a list of the available years for the given table
-     */
-    public List<String> getYears(String table) {
-        String json = get(table);
-        String code = "Tid";
-
-        JsonAPITableFormat format = new JsonAPITableFormat(json);
-        return format.getValues(code);
     }
 
     /**
