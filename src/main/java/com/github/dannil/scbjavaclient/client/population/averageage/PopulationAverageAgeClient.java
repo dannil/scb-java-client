@@ -84,7 +84,7 @@ public class PopulationAverageAgeClient extends AbstractClient {
         mappings.put("Kon", genders);
         mappings.put("Tid", years);
 
-        String response = post("BE/BE0101/BE0101B/BefolkningMedelAlder", QueryBuilder.build(mappings));
+        String response = post(getUrl() + "BefolkningMedelAlder", QueryBuilder.build(mappings));
 
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
         return format.toListOf(AverageAge.class);

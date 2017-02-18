@@ -88,7 +88,7 @@ public class PopulationPartnershipClient extends AbstractClient {
         mappings.put("Kon", sexes);
         mappings.put("Tid", years);
 
-        String response = post("BE/BE0101/BE0101O/Partnerskap", QueryBuilder.build(mappings));
+        String response = post(getUrl() + "Partnerskap", QueryBuilder.build(mappings));
 
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
         return format.toListOf(Partnership.class);
