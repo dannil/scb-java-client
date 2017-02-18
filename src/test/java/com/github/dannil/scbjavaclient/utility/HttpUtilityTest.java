@@ -22,7 +22,6 @@ public class HttpUtilityTest {
     @Before
     public void setup() throws URISyntaxException {
         this.url = new URI("http://example.com");
-
     }
 
     @Test
@@ -38,22 +37,22 @@ public class HttpUtilityTest {
 
     @Test(expected = SCBClientForbiddenException.class)
     public void httpForbidden() {
-        HttpUtility.validateStatusCode(url, 403);
+        HttpUtility.validateStatusCode(this.url, 403);
     }
 
     @Test(expected = SCBClientUrlNotFoundException.class)
     public void httpNotFound() {
-        HttpUtility.validateStatusCode(url, 404);
+        HttpUtility.validateStatusCode(this.url, 404);
     }
 
     @Test(expected = SCBClientTooManyRequestsException.class)
     public void httpTooManyRequests() {
-        HttpUtility.validateStatusCode(url, 429);
+        HttpUtility.validateStatusCode(this.url, 429);
     }
 
     @Test(expected = SCBClientException.class)
     public void unhandledStatusCode() {
-        HttpUtility.validateStatusCode(url, -1);
+        HttpUtility.validateStatusCode(this.url, -1);
     }
 
 }
