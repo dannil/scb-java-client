@@ -191,19 +191,6 @@ public class SCBClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Fetches the specified config value from the API.</p>
-     *
-     * @param code
-     *            the code
-     * @return the value for the specified config value
-     *
-     * @see #getConfig()
-     */
-    public String getConfigValue(String code) {
-        return getConfig().get(code);
-    }
-
-    /**
      * <p>Checks if the specified <code>Locale</code> is supported by the API. The method
      * performs a request to the API using the <code>Locale</code>'s language and checks
      * if a HTTP resource exists matching the language.</p>

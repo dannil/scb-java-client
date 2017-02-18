@@ -103,14 +103,6 @@ public class SCBClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
-    public void getConfigValue() {
-        Locale locale = new Locale("sv", "SE");
-        SCBClient client = new SCBClient(locale);
-
-        assertNotNull(client.getConfigValue("maxCalls"));
-    }
-
-    @Test
     public void getRegions() {
         SCBClient client = new SCBClient();
 
