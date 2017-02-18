@@ -113,15 +113,13 @@ public abstract class AbstractClient {
     }
 
     /**
-     * <p>Performs a GET request to the specified table.</p>
+     * <p>Performs a GET request to the specified URL.</p>
      *
-     * @param table
-     *            the table which will be sent a GET request
+     * @param url
+     *            the URL which will be sent a GET request
      * @return a string representation of the API's response
      */
-    protected String get(String table) {
-        String url = getRootUrl() + table;
-
+    protected String get(String url) {
         AbstractRequester get = new GETRequester();
         try {
             return get.getBody(url);
@@ -132,17 +130,15 @@ public abstract class AbstractClient {
     }
 
     /**
-     * <p>Performs a POST request to the specified table.</p>
+     * <p>Performs a POST request to the specified URL.</p>
      *
-     * @param table
-     *            the table which will be sent a POST request
+     * @param url
+     *            the URL which will be sent a POST request
      * @param query
      *            the query which the API will process
      * @return a string representation of the API's response
      */
-    protected String post(String table, String query) {
-        String url = getRootUrl() + table;
-
+    protected String post(String url, String query) {
         POSTRequester post = new POSTRequester();
         post.setQuery(query);
         try {
@@ -162,7 +158,8 @@ public abstract class AbstractClient {
      * @return a list of the available regions for the given table
      */
     public List<String> getRegions(String table) {
-        String json = get(table);
+        String url = getRootUrl() + table;
+        String json = get(url);
         String code = "Region";
 
         JsonAPITableFormat format = new JsonAPITableFormat(json);
@@ -177,7 +174,8 @@ public abstract class AbstractClient {
      * @return a list of the available years for the given table
      */
     public List<String> getYears(String table) {
-        String json = get(table);
+        String url = getRootUrl() + table;
+        String json = get(url);
         String code = "Tid";
 
         JsonAPITableFormat format = new JsonAPITableFormat(json);

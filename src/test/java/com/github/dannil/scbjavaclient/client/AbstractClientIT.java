@@ -67,12 +67,12 @@ public class AbstractClientIT {
     public void toFallbackUrlGet() {
         DummyClient client = new DummyClient(new Locale("en", "US"));
 
-        String url = "HE/HE0103/HE0103B/BefolkningAlder";
+        String table = "HE/HE0103/HE0103B/BefolkningAlder";
 
         // This request is performed by a dummy Client which is set to English
         // (as specified in the setup method). This means that if we receive a response
         // with Swedish text, we've used the fallback url.
-        String response = client.get(url);
+        String response = client.get(client.getRootUrl() + table);
 
         assertTrue(response.contains("ålder"));
         assertTrue(response.contains("kön"));
@@ -85,7 +85,7 @@ public class AbstractClientIT {
     public void toFallbackUrlPost() {
         DummyClient client = new DummyClient(new Locale("en", "US"));
 
-        String url = "HE/HE0103/HE0103B/BefolkningAlder";
+        String table = "HE/HE0103/HE0103B/BefolkningAlder";
 
         Map<String, Collection<?>> map = new HashMap<String, Collection<?>>();
         map.put("ContentsCode", Arrays.asList("HE0103D2"));
@@ -97,7 +97,7 @@ public class AbstractClientIT {
         // This request is performed by a dummy client which is set to English
         // (as specified above when creating the client). This means that if we receive a
         // response with Swedish text, we've used the fallback url.
-        String response = client.post(url, QueryBuilder.build(map));
+        String response = client.post(client.getRootUrl() + table, QueryBuilder.build(map));
 
         assertTrue(response.contains("ålder"));
         assertTrue(response.contains("kön"));
@@ -114,7 +114,7 @@ public class AbstractClientIT {
         Map<String, Collection<?>> inputMap = new HashMap<String, Collection<?>>();
         inputMap.put("Alder", Collections.EMPTY_LIST);
 
-        String response = client.post(table, QueryBuilder.build(inputMap));
+        String response = client.post(client.getRootUrl() + table, QueryBuilder.build(inputMap));
 
         assertTrue(response.contains("år"));
         assertFalse(response.contains("ålder"));
@@ -162,7 +162,7 @@ public class AbstractClientIT {
     public void urlNotFoundException() {
         DummyClient client = new DummyClient();
 
-        String response = client.get("ABC/ABC/ABC");
+        String response = client.get(client.getRootUrl() + "ABC/ABC/ABC");
 
         assertNull(response);
     }
