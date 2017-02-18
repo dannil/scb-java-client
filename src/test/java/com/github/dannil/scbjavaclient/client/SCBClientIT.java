@@ -17,11 +17,13 @@ package com.github.dannil.scbjavaclient.client;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -101,11 +103,39 @@ public class SCBClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
-    public void getConfigValue() {
-        Locale locale = new Locale("sv", "SE");
-        SCBClient client = new SCBClient(locale);
+    public void getRegions() {
+        SCBClient client = new SCBClient();
 
-        assertNotNull(client.getConfigValue("maxCalls"));
+        List<String> regions = client.getRegions("BE/BE0101/BE0101A/BefolkningNy");
+
+        assertNotNull(regions);
+        assertFalse(regions.isEmpty());
+    }
+
+    public void getRegionsMissingCodeInTable() {
+        SCBClient client = new SCBClient();
+
+        List<String> regions = client.getRegions("BE/BE0001/BE0001T04Ar");
+
+        assertNull(regions);
+    }
+
+    @Test
+    public void getYears() {
+        SCBClient client = new SCBClient();
+
+        List<String> years = client.getYears("BE/BE0101/BE0101A/BefolkningNy");
+
+        assertNotNull(years);
+        assertFalse(years.isEmpty());
+    }
+
+    public void getYearsMissingCodeInTable() {
+        SCBClient client = new SCBClient();
+
+        List<String> years = client.getYears("NR/NR0105/NR0105A");
+
+        assertNull(years);
     }
 
     @Test

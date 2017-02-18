@@ -15,7 +15,6 @@
 package com.github.dannil.scbjavaclient.client;
 
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
@@ -120,42 +119,6 @@ public class AbstractClientIT {
         assertFalse(response.contains("ålder"));
         assertFalse(response.contains("kön"));
         assertFalse(response.contains("boendeform"));
-    }
-
-    @Test
-    public void getRegions() {
-        DummyClient client = new DummyClient();
-
-        List<String> regions = client.getRegions("BE/BE0101/BE0101A/BefolkningNy");
-
-        assertNotNull(regions);
-        assertFalse(regions.isEmpty());
-    }
-
-    public void getRegionsMissingCodeInTable() {
-        DummyClient client = new DummyClient();
-
-        List<String> regions = client.getRegions("BE/BE0001/BE0001T04Ar");
-
-        assertNull(regions);
-    }
-
-    @Test
-    public void getYears() {
-        DummyClient client = new DummyClient();
-
-        List<String> years = client.getYears("BE/BE0101/BE0101A/BefolkningNy");
-
-        assertNotNull(years);
-        assertFalse(years.isEmpty());
-    }
-
-    public void getYearsMissingCodeInTable() {
-        DummyClient client = new DummyClient();
-
-        List<String> years = client.getYears("NR/NR0105/NR0105A");
-
-        assertNull(years);
     }
 
     @Test(expected = SCBClientUrlNotFoundException.class)

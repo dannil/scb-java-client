@@ -17,6 +17,7 @@ package com.github.dannil.scbjavaclient.client;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -103,36 +104,35 @@ public class SCBClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Fetches the config from the API. Useful if you for example need to know how
-     * often you're allowed to make calls to the API, or the max size of the response.</p>
+     * <p>Returns the list of the available regions for a given table.</p>
      *
-     * @return the config
+     * @param table
+     *            the table to retrieve the regions from
+     * @return a list of the available regions for the given table
      */
-    public Map<String, String> getConfig() {
-        String url = getRootUrl() + "?config";
+    public List<String> getRegions(String table) {
+        String url = getRootUrl() + table;
         String json = get(url);
+        String code = "Region";
 
-        JsonAPIConfigTableFormat format = new JsonAPIConfigTableFormat(json);
-
-        Map<String, String> config = new HashMap<>();
-        for (Entry<String, Collection<String>> entry : format.getInputs().entrySet()) {
-            Iterator<String> it = entry.getValue().iterator();
-            config.put(entry.getKey(), it.next());
-        }
-        return config;
+        JsonAPITableFormat format = new JsonAPITableFormat(json);
+        return format.getValues(code);
     }
 
     /**
-     * <p>Fetches the specified config value from the API.</p>
+     * <p>Returns the list of the available years for a given table.</p>
      *
-     * @param code
-     *            the code
-     * @return the value for the specified config value
-     *
-     * @see #getConfig()
+     * @param table
+     *            the table to retrieve the years from
+     * @return a list of the available years for the given table
      */
-    public String getConfigValue(String code) {
-        return getConfig().get(code);
+    public List<String> getYears(String table) {
+        String url = getRootUrl() + table;
+        String json = get(url);
+        String code = "Tid";
+
+        JsonAPITableFormat format = new JsonAPITableFormat(json);
+        return format.getValues(code);
     }
 
     /**
@@ -173,6 +173,26 @@ public class SCBClient extends AbstractContainerClient {
      */
     public String getRawData(String table, Map<String, Collection<?>> query) {
         return post(getRootUrl() + table, QueryBuilder.build(query));
+    }
+
+    /**
+     * <p>Fetches the config from the API. Useful if you for example need to know how
+     * often you're allowed to make calls to the API, or the max size of the response.</p>
+     *
+     * @return the config
+     */
+    public Map<String, String> getConfig() {
+        String url = getRootUrl() + "?config";
+        String json = get(url);
+
+        JsonAPIConfigTableFormat format = new JsonAPIConfigTableFormat(json);
+
+        Map<String, String> config = new HashMap<>();
+        for (Entry<String, Collection<String>> entry : format.getInputs().entrySet()) {
+            Iterator<String> it = entry.getValue().iterator();
+            config.put(entry.getKey(), it.next());
+        }
+        return config;
     }
 
     /**
