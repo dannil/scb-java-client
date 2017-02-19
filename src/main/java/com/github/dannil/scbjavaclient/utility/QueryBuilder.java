@@ -22,7 +22,7 @@ import java.util.Objects;
 
 /**
  * <p>Class which is responsible for constructing the query which should be sent to the
- * SCB API.</p>
+ * API.</p>
  *
  * @since 0.0.1
  */
@@ -82,16 +82,16 @@ public final class QueryBuilder {
     }
 
     /**
-     * <p>Constructs a query which matches the format the SCB API expects. This method
+     * <p>Constructs a query which matches the format the API expects. This method
      * performs two distinct steps:</p>
      *
      * <h1>1. Filter out the null keys and values</h1>
      *
-     * <p>If a key (such as region or year) is defined and its value is either defined as
+     * <p>If a key (such as region or year) is defined and it's value is either defined as
      * null or as an empty list, it means that all data for this key should be fetched
      * (such as fetching the data for all available years). By not sending this key at all
-     * to the SCB API it recognizes that it should respond with all data corresponding to
-     * this key.</p>
+     * to the API it recognizes that it should respond with all data corresponding to this
+     * key.</p>
      *
      * <h1>2. Construct the query</h1>
      *
@@ -105,11 +105,11 @@ public final class QueryBuilder {
      * }</p>
      *
      * <p>The method works on the principle of pasting all these blocks together in an
-     * orderly fashion to conform to the SCB API specification.</p>
+     * orderly fashion to conform to the API specification.</p>
      *
      * @param inputMap
      *            the input map which contains the keys and the values for every key
-     * @return a string which can be sent as the payload to the SCB API
+     * @return a string which can be sent as the payload to the API
      */
     public static String build(Map<String, Collection<?>> inputMap) {
         // 1: Filter out null values

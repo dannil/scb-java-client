@@ -34,7 +34,7 @@ public final class HttpUtility {
 
     private static final int HTTP_NOTFOUND = 404;
 
-    private static final int HTTP_TOO_MANY_REQUESTS = 429;
+    private static final int HTTP_TOOMANYREQUESTS = 429;
 
     /**
      * <p>Private constructor to prevent instantiation.</p>
@@ -63,7 +63,7 @@ public final class HttpUtility {
             case HTTP_NOTFOUND:
                 throw new SCBClientUrlNotFoundException(uri.toString());
 
-            case HTTP_TOO_MANY_REQUESTS:
+            case HTTP_TOOMANYREQUESTS:
                 throw new SCBClientTooManyRequestsException(uri.toString());
 
             default:

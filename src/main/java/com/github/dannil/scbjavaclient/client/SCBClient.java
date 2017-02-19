@@ -201,8 +201,8 @@ public class SCBClient extends AbstractContainerClient {
      * if a HTTP resource exists matching the language.</p>
      *
      * @param locale
-     *            the locale to check
-     * @return true if the locale is supported, otherwise false
+     *            the <code>Locale</code> to check
+     * @return true if the <code>Locale</code> is supported, otherwise false
      */
     public static boolean isSupportedLocale(Locale locale) {
         String url = URLUtility.getRootUrl(locale);
