@@ -32,19 +32,46 @@ import com.github.dannil.scbjavaclient.client.population.partnership.PopulationP
  */
 public class PopulationClient extends AbstractContainerClient {
 
+    private PopulationAmountClient populationAmountClient;
+
+    private PopulationAverageAgeClient populationAverageAgeClient;
+
+    private PopulationDemographyClient populationDemographyClient;
+
+    private PopulationDensityClient populationDensityClient;
+
+    private PopulationLiveBirthsClient populationLiveBirthsClient;
+
+    private PopulationNameStatisticsClient populationNameStatisticsClient;
+
+    private PopulationPartnershipClient populationPartnershipClient;
+
     /**
      * <p>Default constructor. Initializes values and creates sub-clients.</p>
      */
     public PopulationClient() {
         super();
 
-        addClient("amount", new PopulationAmountClient());
-        addClient("averageage", new PopulationAverageAgeClient());
-        addClient("demography", new PopulationDemographyClient());
-        addClient("density", new PopulationDensityClient());
-        addClient("livebirths", new PopulationLiveBirthsClient());
-        addClient("namestatistics", new PopulationNameStatisticsClient());
-        addClient("partnership", new PopulationPartnershipClient());
+        this.populationAmountClient = new PopulationAmountClient();
+        add(this.populationAmountClient);
+
+        this.populationAverageAgeClient = new PopulationAverageAgeClient();
+        add(this.populationAverageAgeClient);
+
+        this.populationDemographyClient = new PopulationDemographyClient();
+        add(this.populationDemographyClient);
+
+        this.populationDensityClient = new PopulationDensityClient();
+        add(this.populationDensityClient);
+
+        this.populationLiveBirthsClient = new PopulationLiveBirthsClient();
+        add(this.populationLiveBirthsClient);
+
+        this.populationNameStatisticsClient = new PopulationNameStatisticsClient();
+        add(this.populationNameStatisticsClient);
+
+        this.populationPartnershipClient = new PopulationPartnershipClient();
+        add(this.populationPartnershipClient);
     }
 
     /**
@@ -65,16 +92,16 @@ public class PopulationClient extends AbstractContainerClient {
      * @return a client for population amount data
      */
     public PopulationAmountClient amount() {
-        return (PopulationAmountClient) getClient("amount");
+        return this.populationAmountClient;
     }
 
     /**
      * <p>Retrieve the client for interacting with population average age data. </p>
      *
-     * @return a client for population amount data
+     * @return a client for population average age data
      */
     public PopulationAverageAgeClient averageAge() {
-        return (PopulationAverageAgeClient) getClient("averageage");
+        return this.populationAverageAgeClient;
     }
 
     /**
@@ -83,7 +110,7 @@ public class PopulationClient extends AbstractContainerClient {
      * @return a client for population demography data
      */
     public PopulationDemographyClient demography() {
-        return (PopulationDemographyClient) getClient("demography");
+        return this.populationDemographyClient;
     }
 
     /**
@@ -92,16 +119,16 @@ public class PopulationClient extends AbstractContainerClient {
      * @return a client for population density data
      */
     public PopulationDensityClient density() {
-        return (PopulationDensityClient) getClient("density");
+        return this.populationDensityClient;
     }
 
     /**
-     * <p>Retrieve the client for interacting with population density data. </p>
+     * <p>Retrieve the client for interacting with population live births data. </p>
      *
-     * @return a client for population density data
+     * @return a client for population live births data
      */
     public PopulationLiveBirthsClient liveBirths() {
-        return (PopulationLiveBirthsClient) getClient("livebirths");
+        return this.populationLiveBirthsClient;
     }
 
     /**
@@ -110,16 +137,16 @@ public class PopulationClient extends AbstractContainerClient {
      * @return a client for population name statistic data
      */
     public PopulationNameStatisticsClient nameStatistics() {
-        return (PopulationNameStatisticsClient) getClient("namestatistics");
+        return this.populationNameStatisticsClient;
     }
 
     /**
      * <p>Retrieve the client for interacting with population partnership data.</p>
      *
-     * @return a client for population name statistic data
+     * @return a client for population partnership data
      */
     public PopulationPartnershipClient partnership() {
-        return (PopulationPartnershipClient) getClient("partnership");
+        return this.populationPartnershipClient;
     }
 
     @Override

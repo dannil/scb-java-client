@@ -14,9 +14,9 @@
 
 package com.github.dannil.scbjavaclient.client;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Locale;
-import java.util.Map;
 
 /**
  * <p>Abstract class which specifies how methods by container clients (a client that has
@@ -26,7 +26,7 @@ import java.util.Map;
  */
 public abstract class AbstractContainerClient extends AbstractClient {
 
-    private Map<String, AbstractClient> clients;
+    private Collection<AbstractClient> clients;
 
     /**
      * <p>Default constructor.</p>
@@ -34,7 +34,7 @@ public abstract class AbstractContainerClient extends AbstractClient {
     protected AbstractContainerClient() {
         super();
 
-        this.clients = new HashMap<String, AbstractClient>();
+        this.clients = new ArrayList<>();
     }
 
     /**
@@ -56,7 +56,7 @@ public abstract class AbstractContainerClient extends AbstractClient {
     public final void setLocale(Locale locale) {
         super.setLocale(locale);
 
-        for (AbstractClient client : this.clients.values()) {
+        for (AbstractClient client : this.clients) {
             client.setLocale(getLocale());
         }
     }
@@ -64,24 +64,11 @@ public abstract class AbstractContainerClient extends AbstractClient {
     /**
      * <p>Add a sub-client to this client.</p>
      *
-     * @param key
-     *            the key
      * @param client
      *            the client
      */
-    public final void addClient(String key, AbstractClient client) {
-        this.clients.put(key, client);
-    }
-
-    /**
-     * <p>Get a client having the specified key.</p>
-     *
-     * @param key
-     *            the key
-     * @return a client having the specified key
-     */
-    public final AbstractClient getClient(String key) {
-        return this.clients.get(key);
+    public final void add(AbstractClient client) {
+        this.clients.add(client);
     }
 
 }

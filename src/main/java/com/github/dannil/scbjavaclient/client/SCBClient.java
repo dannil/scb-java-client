@@ -39,14 +39,21 @@ import com.github.dannil.scbjavaclient.utility.requester.GETRequester;
  */
 public class SCBClient extends AbstractContainerClient {
 
+    private PopulationClient populationClient;
+
+    private EnvironmentClient environmentClient;
+
     /**
      * <p>Default constructor. Initializes values and creates sub-clients.</p>
      */
     public SCBClient() {
         super();
 
-        addClient("environment", new EnvironmentClient());
-        addClient("population", new PopulationClient());
+        this.populationClient = new PopulationClient();
+        add(this.populationClient);
+
+        this.environmentClient = new EnvironmentClient();
+        add(this.environmentClient);
     }
 
     /**
@@ -67,7 +74,7 @@ public class SCBClient extends AbstractContainerClient {
      * @return a client for environment data
      */
     public EnvironmentClient environment() {
-        return (EnvironmentClient) getClient("environment");
+        return this.environmentClient;
     }
 
     /**
@@ -76,7 +83,7 @@ public class SCBClient extends AbstractContainerClient {
      * @return a client for population data
      */
     public PopulationClient population() {
-        return (PopulationClient) getClient("population");
+        return this.populationClient;
     }
 
     /**
@@ -165,8 +172,7 @@ public class SCBClient extends AbstractContainerClient {
      * @return a response from the API formatted as JSON
      */
     public String getRawData(String table, Map<String, Collection<?>> query) {
-        String url = getUrl() + table;
-        return post(url, QueryBuilder.build(query));
+        return post(getUrl() + table, QueryBuilder.build(query));
     }
 
     /**
@@ -210,11 +216,6 @@ public class SCBClient extends AbstractContainerClient {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * <p>This client's URL is equal to {@link #getRootUrl() getRootUrl()}.</p>
-     */
     @Override
     public String getUrl() {
         return getRootUrl();

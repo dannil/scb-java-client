@@ -26,13 +26,16 @@ import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.Envir
  */
 public class EnvironmentClient extends AbstractContainerClient {
 
+    private EnvironmentLandAndWaterAreaClient environmentLandAndWaterAreaClient;
+
     /**
      * <p>Default constructor. Initializes values and creates sub-clients.</p>
      */
     public EnvironmentClient() {
         super();
 
-        addClient("landandwaterarea", new EnvironmentLandAndWaterAreaClient());
+        this.environmentLandAndWaterAreaClient = new EnvironmentLandAndWaterAreaClient();
+        add(this.environmentLandAndWaterAreaClient);
     }
 
     /**
@@ -54,7 +57,7 @@ public class EnvironmentClient extends AbstractContainerClient {
      * @return a client for environment land and water area data
      */
     public EnvironmentLandAndWaterAreaClient landAndWaterArea() {
-        return (EnvironmentLandAndWaterAreaClient) this.getClient("landandwaterarea");
+        return this.environmentLandAndWaterAreaClient;
     }
 
     @Override
