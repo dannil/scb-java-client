@@ -14,10 +14,9 @@
 
 package com.github.dannil.scbjavaclient.utility.requester;
 
-import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.URI;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -127,17 +126,18 @@ public abstract class AbstractRequester {
      * @return the body as a string
      */
     protected String getBody(HttpResponse response) {
-        StringBuilder builder = new StringBuilder();
         try (BOMInputStream bis = new BOMInputStream(response.getEntity().getContent())) {
-            try (BufferedReader br = new BufferedReader(new InputStreamReader(bis, this.charset.name()))) {
-                for (String line = br.readLine(); line != null; line = br.readLine()) {
-                    builder.append(line);
+            try (ByteArrayOutputStream bos = new ByteArrayOutputStream()) {
+                int result = bis.read();
+                while (result != -1) {
+                    bos.write((byte) result);
+                    result = bis.read();
                 }
+                return bos.toString();
             }
         } catch (IOException e) {
             throw new SCBClientException(e);
         }
-        return builder.toString();
     }
 
     /**
