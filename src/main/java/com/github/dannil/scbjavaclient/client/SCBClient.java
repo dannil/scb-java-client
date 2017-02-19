@@ -97,7 +97,8 @@ public class SCBClient extends AbstractContainerClient {
      *      JsonAPITableFormat#getInputs()
      */
     public Map<String, Collection<String>> getInputs(String table) {
-        String json = get(table);
+        String url = getRootUrl() + table;
+        String json = get(url);
 
         return new JsonAPITableFormat(json).getInputs();
     }
@@ -110,7 +111,8 @@ public class SCBClient extends AbstractContainerClient {
      * @return a list of the available regions for the given table
      */
     public List<String> getRegions(String table) {
-        String json = get(table);
+        String url = getRootUrl() + table;
+        String json = get(url);
         String code = "Region";
 
         JsonAPITableFormat format = new JsonAPITableFormat(json);
@@ -125,7 +127,8 @@ public class SCBClient extends AbstractContainerClient {
      * @return a list of the available years for the given table
      */
     public List<String> getYears(String table) {
-        String json = get(table);
+        String url = getRootUrl() + table;
+        String json = get(url);
         String code = "Tid";
 
         JsonAPITableFormat format = new JsonAPITableFormat(json);
@@ -149,7 +152,8 @@ public class SCBClient extends AbstractContainerClient {
      *      JsonAPITableFormat#getValues(String)
      */
     public String getRawData(String table) {
-        String json = get(table);
+        String url = getRootUrl() + table;
+        String json = get(url);
 
         Map<String, Collection<?>> inputs = new HashMap<>();
         inputs.put("ContentsCode", new JsonAPITableFormat(json).getValues("ContentsCode"));
@@ -168,7 +172,7 @@ public class SCBClient extends AbstractContainerClient {
      * @return a response from the API formatted as JSON
      */
     public String getRawData(String table, Map<String, Collection<?>> query) {
-        return post(table, QueryBuilder.build(query));
+        return post(getRootUrl() + table, QueryBuilder.build(query));
     }
 
     /**
@@ -178,7 +182,8 @@ public class SCBClient extends AbstractContainerClient {
      * @return the config
      */
     public Map<String, String> getConfig() {
-        String json = get("?config");
+        String url = getRootUrl() + "?config";
+        String json = get(url);
 
         JsonAPIConfigTableFormat format = new JsonAPIConfigTableFormat(json);
 

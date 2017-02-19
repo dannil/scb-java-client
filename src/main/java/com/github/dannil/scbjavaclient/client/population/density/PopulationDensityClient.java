@@ -83,7 +83,7 @@ public class PopulationDensityClient extends AbstractClient {
         mappings.put("Kon", sexes);
         mappings.put("Tid", years);
 
-        String response = post("BE/BE0101/BE0101C/BefArealTathetKon", QueryBuilder.build(mappings));
+        String response = post(getUrl() + "BefArealTathetKon", QueryBuilder.build(mappings));
 
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
         return format.toListOf(Density.class);
