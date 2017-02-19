@@ -1,11 +1,11 @@
 /*
  * Copyright 2016 Daniel Nilsson
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under
  * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied. See the License for the specific language governing
@@ -16,11 +16,14 @@ package com.github.dannil.scbjavaclient.utility;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,27 +34,64 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class QueryBuilderTest {
 
-	@Test
-	public void callPrivateConstructor()
-			throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-		Constructor<?>[] cons = QueryBuilder.class.getDeclaredConstructors();
-		cons[0].setAccessible(true);
-		cons[0].newInstance();
-		cons[0].setAccessible(false);
+    @Test
+    public void callPrivateConstructor()
+            throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        Constructor<?>[] cons = QueryBuilder.class.getDeclaredConstructors();
+        cons[0].setAccessible(true);
+        cons[0].newInstance();
+        cons[0].setAccessible(false);
 
-		assertFalse(cons[0].isAccessible());
-	}
+        assertFalse(cons[0].isAccessible());
+    }
 
-	@Test
-	public void filterValueRemoveNull() {
-		Map<String, Collection<?>> inputMap = new HashMap<String, Collection<?>>();
-		inputMap.put("Tid", Arrays.asList(2012, null));
+    @Test
+    public void filterValue() {
+        Map<String, Collection<?>> inputMap = new HashMap<String, Collection<?>>();
+        inputMap.put("ContentsCode", Arrays.asList("HE0103D2"));
+        inputMap.put("Alder", new ArrayList<>(Arrays.asList("tot", null)));
+        inputMap.put("Kon", Arrays.asList("4"));
+        inputMap.put("Boendeform", new ArrayList<>(Arrays.asList(null, null)));
+        inputMap.put("Tid", Arrays.asList("2012"));
 
-		String query = QueryBuilder.build(inputMap);
+        String query = QueryBuilder.build(inputMap);
 
-		assertEquals(
-				"{\"query\": [{\"code\": \"Tid\", \"selection\": {\"filter\": \"item\", \"values\": [\"2012\"]}}],\"response\": {\"format\": \"json\"}}",
-				query);
-	}
+        assertFalse(query.contains("Boendeform"));
+        assertTrue(query.contains("Alder"));
+        assertTrue(query.contains("Kon"));
+        assertTrue(query.contains("Tid"));
+    }
+
+    @Test
+    public void filterValueRemoveNullKey() {
+        Map<String, Collection<?>> inputMap = new HashMap<String, Collection<?>>();
+        inputMap.put(null, Arrays.asList("abc"));
+
+        String query = QueryBuilder.build(inputMap);
+
+        assertFalse(query.contains("null"));
+        assertFalse(query.contains("abc"));
+    }
+
+    @Test
+    public void filterValueRemoveNullValue() {
+        Map<String, Collection<?>> inputMap = new HashMap<String, Collection<?>>();
+
+        inputMap.put("Tid", new ArrayList<>(Arrays.asList(2012, null)));
+
+        String query = QueryBuilder.build(inputMap);
+
+        assertEquals("{\"query\": [{\"code\": \"Tid\", \"selection\": {\"filter\": \"item\", \"values\": [\"2012\"]}}],\"response\": {\"format\": \"json\"}}", query);
+    }
+
+    @Test
+    public void filterValueRemoveEmptyList() {
+        Map<String, Collection<?>> inputMap = new HashMap<String, Collection<?>>();
+        inputMap.put("Tid", Collections.EMPTY_LIST);
+
+        String query = QueryBuilder.build(inputMap);
+
+        assertEquals("{\"query\": [],\"response\": {\"format\": \"json\"}}", query);
+    }
 
 }

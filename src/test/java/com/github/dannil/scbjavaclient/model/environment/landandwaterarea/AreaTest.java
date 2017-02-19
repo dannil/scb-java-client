@@ -1,11 +1,11 @@
 /*
  * Copyright 2014 Daniel Nilsson
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under
  * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied. See the License for the specific language governing
@@ -21,225 +21,225 @@ import static org.junit.Assert.assertNotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.github.dannil.scbjavaclient.model.ValueNode;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import com.github.dannil.scbjavaclient.model.ValueNode;
-
 @RunWith(JUnit4.class)
 public class AreaTest {
 
-	private String testContentsCode;
+    private String testContentsCode;
 
-	private List<ValueNode<Double>> values;
-	private List<ValueNode<Double>> values2;
+    private List<ValueNode<Double>> values;
+    private List<ValueNode<Double>> values2;
 
-	@Before
-	public void setup() {
-		this.testContentsCode = "TESTCONTENTSCODE";
+    @Before
+    public void setup() {
+        this.testContentsCode = "TESTCONTENTSCODE";
 
-		this.values = new ArrayList<ValueNode<Double>>();
-		this.values2 = new ArrayList<ValueNode<Double>>();
+        this.values = new ArrayList<ValueNode<Double>>();
+        this.values2 = new ArrayList<ValueNode<Double>>();
 
-		ValueNode<Double> value = new ValueNode<Double>(143d, this.testContentsCode, "Test contents code");
-		this.values.add(value);
+        ValueNode<Double> value = new ValueNode<Double>(143d, this.testContentsCode, "Test contents code");
+        this.values.add(value);
 
-		// Copy previous value node into new object
-		ValueNode<Double> value2 = new ValueNode<Double>(value.getValue(), value.getCode(), value.getText());
-		this.values2.add(value2);
-	}
+        // Copy previous value node into new object
+        ValueNode<Double> value2 = new ValueNode<Double>(value.getValue(), value.getCode(), value.getText());
+        this.values2.add(value2);
+    }
 
-	@Test
-	public void createWithDefaultConstructor() {
-		Area area = new Area();
+    @Test
+    public void createWithDefaultConstructor() {
+        Area area = new Area();
 
-		assertNotNull(area);
-	}
+        assertNotNull(area);
+    }
 
-	@Test
-	public void setRegion() {
-		Area area = new Area();
+    @Test
+    public void setRegion() {
+        Area area = new Area();
 
-		area.setRegion("1267");
+        area.setRegion("1267");
 
-		assertNotNull(area.getRegion());
-	}
+        assertNotNull(area.getRegion());
+    }
 
-	@Test
-	public void getRegion() {
-		Area area = new Area();
+    @Test
+    public void getRegion() {
+        Area area = new Area();
 
-		area.setRegion("1267");
+        area.setRegion("1267");
 
-		assertEquals("1267", area.getRegion());
-	}
+        assertEquals("1267", area.getRegion());
+    }
 
-	@Test
-	public void setType() {
-		Area area = new Area();
+    @Test
+    public void setType() {
+        Area area = new Area();
 
-		area.setType("01");
+        area.setType("01");
 
-		assertNotNull(area.getType());
-	}
+        assertNotNull(area.getType());
+    }
 
-	@Test
-	public void getType() {
-		Area area = new Area();
+    @Test
+    public void getType() {
+        Area area = new Area();
 
-		area.setType("01");
+        area.setType("01");
 
-		assertEquals("01", area.getType());
-	}
+        assertEquals("01", area.getType());
+    }
 
-	@Test
-	public void setYear() {
-		Area area = new Area();
+    @Test
+    public void setYear() {
+        Area area = new Area();
 
-		area.setYear(2011);
+        area.setYear(2011);
 
-		assertNotNull(area.getYear());
-	}
+        assertNotNull(area.getYear());
+    }
 
-	@Test
-	public void getYear() {
-		Area area = new Area();
+    @Test
+    public void getYear() {
+        Area area = new Area();
 
-		area.setYear(2011);
+        area.setYear(2011);
 
-		assertEquals(Integer.valueOf(2011), area.getYear());
-	}
+        assertEquals(Integer.valueOf(2011), area.getYear());
+    }
 
-	@Test
-	public void setValues() {
-		Area area = new Area();
+    @Test
+    public void setValues() {
+        Area area = new Area();
 
-		area.setValues(this.values);
+        area.setValues(this.values);
 
-		assertNotNull(area.getValues());
-	}
+        assertNotNull(area.getValues());
+    }
 
-	@Test
-	public void getValues() {
-		Area area = new Area();
+    @Test
+    public void getValues() {
+        Area area = new Area();
 
-		area.setValues(this.values);
+        area.setValues(this.values);
 
-		assertEquals(this.values, area.getValues());
-	}
+        assertEquals(this.values, area.getValues());
+    }
 
-	@Test
-	public void getInputs() {
-		assertNotNull(Area.getInputs());
-	}
+    @Test
+    public void getInputs() {
+        assertNotNull(Area.getInputs());
+    }
 
-	@Test
-	public void equals() {
-		Area area = new Area();
-		Area area2 = new Area();
+    @Test
+    public void equals() {
+        Area area = new Area();
+        Area area2 = new Area();
 
-		assertEquals(area, area2);
-	}
+        assertEquals(area, area2);
+    }
 
-	@Test
-	public void equalsItself() {
-		Area area = new Area();
+    @Test
+    public void equalsItself() {
+        Area area = new Area();
 
-		assertEquals(area, area);
-	}
+        assertEquals(area, area);
+    }
 
-	@Test
-	public void notEqualsNull() {
-		Area area = new Area();
+    @Test
+    public void notEqualsNull() {
+        Area area = new Area();
 
-		assertNotEquals(area, null);
-	}
+        assertNotEquals(area, null);
+    }
 
-	@Test
-	public void notEqualsIncompatibleObject() {
-		Area area = new Area();
+    @Test
+    public void notEqualsIncompatibleObject() {
+        Area area = new Area();
 
-		assertNotEquals(area, new Object());
-	}
+        assertNotEquals(area, new Object());
+    }
 
-	@Test
-	public void equalsItselfWithValues() {
-		Area area = new Area("1267", "01", 2009, this.values);
-		Area area2 = new Area("1267", "01", 2009, this.values2);
+    @Test
+    public void equalsItselfWithValues() {
+        Area area = new Area("1267", "01", 2009, this.values);
+        Area area2 = new Area("1267", "01", 2009, this.values2);
 
-		assertEquals(area, area2);
-	}
+        assertEquals(area, area2);
+    }
 
-	@Test
-	public void notEqualsOnRegion() {
-		Area area = new Area("1267", "01", 2009, this.values);
+    @Test
+    public void notEqualsOnRegion() {
+        Area area = new Area("1267", "01", 2009, this.values);
 
-		Area area2 = new Area("1267", "01", 2009, this.values2);
-		area2.setRegion("1263");
+        Area area2 = new Area("1267", "01", 2009, this.values2);
+        area2.setRegion("1263");
 
-		assertNotEquals(area, area2);
-	}
+        assertNotEquals(area, area2);
+    }
 
-	@Test
-	public void notEqualsOnType() {
-		Area area = new Area("1267", "01", 2009, this.values);
+    @Test
+    public void notEqualsOnType() {
+        Area area = new Area("1267", "01", 2009, this.values);
 
-		Area area2 = new Area("1267", "01", 2009, this.values2);
-		area2.setType("02");
+        Area area2 = new Area("1267", "01", 2009, this.values2);
+        area2.setType("02");
 
-		assertNotEquals(area, area2);
-	}
+        assertNotEquals(area, area2);
+    }
 
-	@Test
-	public void notEqualsOnYear() {
-		Area area = new Area("1267", "01", 2009, this.values);
+    @Test
+    public void notEqualsOnYear() {
+        Area area = new Area("1267", "01", 2009, this.values);
 
-		Area area2 = new Area("1267", "01", 2009, this.values2);
-		area2.setYear(2011);
+        Area area2 = new Area("1267", "01", 2009, this.values2);
+        area2.setYear(2011);
 
-		assertNotEquals(area, area2);
-	}
+        assertNotEquals(area, area2);
+    }
 
-	@Test
-	public void notEqualsOnValue() {
-		Area area = new Area("1267", "01", 2009, this.values);
+    @Test
+    public void notEqualsOnValue() {
+        Area area = new Area("1267", "01", 2009, this.values);
 
-		Area area2 = new Area("1267", "01", 2009, this.values2);
-		area2.setValue(this.testContentsCode, 300d);
+        Area area2 = new Area("1267", "01", 2009, this.values2);
+        area2.setValue(this.testContentsCode, 300d);
 
-		assertNotEquals(area, area2);
-	}
+        assertNotEquals(area, area2);
+    }
 
-	@Test
-	public void equalsHashCode() {
-		Area area = new Area("1267", "01", 2009, this.values);
-		Area area2 = new Area("1267", "01", 2009, this.values2);
+    @Test
+    public void equalsHashCode() {
+        Area area = new Area("1267", "01", 2009, this.values);
+        Area area2 = new Area("1267", "01", 2009, this.values2);
 
-		assertEquals(area.hashCode(), area2.hashCode());
-	}
+        assertEquals(area.hashCode(), area2.hashCode());
+    }
 
-	@Test
-	public void equalsHashCodeNullValues() {
-		Area area = new Area();
-		Area area2 = new Area();
+    @Test
+    public void equalsHashCodeNullValues() {
+        Area area = new Area();
+        Area area2 = new Area();
 
-		assertEquals(area.hashCode(), area2.hashCode());
-	}
+        assertEquals(area.hashCode(), area2.hashCode());
+    }
 
-	@Test
-	public void convertToString() {
-		Area area = new Area("1267", "01", 2009, this.values);
+    @Test
+    public void convertToString() {
+        Area area = new Area("1267", "01", 2009, this.values);
 
-		assertNotNull(area.toString());
-	}
+        assertNotNull(area.toString());
+    }
 
-	@Test
-	public void convertToStringNullValues() {
-		Area area = new Area();
+    @Test
+    public void convertToStringNullValues() {
+        Area area = new Area();
 
-		assertNotNull(area.toString());
-	}
+        assertNotNull(area.toString());
+    }
 
 }

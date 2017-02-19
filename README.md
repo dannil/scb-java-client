@@ -3,8 +3,8 @@
 [![Build Status](https://img.shields.io/travis/dannil/scb-java-client/dev.svg)](https://travis-ci.org/dannil/scb-java-client)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.dannil/scb-java-client/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.dannil/scb-java-client/)
 [![Javadoc](https://javadoc-emblem.rhcloud.com/doc/com.github.dannil/scb-java-client/badge.svg)](http://www.javadoc.io/doc/com.github.dannil/scb-java-client)
-[![Codacy Grade Badge](https://img.shields.io/codacy/grade/af5b976ee2f94fd4b25ef1ae991d7993.svg)](https://www.codacy.com/app/dannil/scb-java-client)
-[![Codacy Coverage Badge](https://img.shields.io/codacy/coverage/af5b976ee2f94fd4b25ef1ae991d7993.svg)](https://www.codacy.com/app/dannil/scb-java-client)
+[![SonarQube Coverage](https://img.shields.io/sonar/http/sonarqube.com/com.github.dannil:scb-java-client/coverage.svg)](https://sonarqube.com/dashboard/index?id=com.github.dannil:scb-java-client)
+[![SonarQube Tech Debt](https://img.shields.io/sonar/http/sonarqube.com/com.github.dannil:scb-java-client/tech_debt.svg)](https://sonarqube.com/dashboard/index?id=com.github.dannil:scb-java-client)
 
 Java client for the SCB (Swedish: [Statistiska centralbyrån](http://www.scb.se/sv_/), English: [Statistics Sweden](http://www.scb.se/en_/)) API. 
 The goal of this project is to provide an easy and intuitive way for developers to interface their applications with the SCB API without having to 
@@ -26,18 +26,18 @@ If you have an improvement, feel free to make a pull request or start an issue i
 <dependency>
   <groupId>com.github.dannil</groupId>
   <artifactId>scb-java-client</artifactId>
-  <version>0.0.4</version>
+  <version>0.1.1</version>
 </dependency>
 ```
 
 ### Gradle
 ```xml
-compile 'com.github.dannil:scb-java-client:0.0.4'
+compile 'com.github.dannil:scb-java-client:0.1.1'
 ```
 
 ### SBT
 ```xml
-libraryDependencies += "com.github.dannil" % "scb-java-client" % "0.0.4"
+libraryDependencies += "com.github.dannil" % "scb-java-client" % "0.1.1"
 ```
 
 ## Usage
@@ -97,6 +97,7 @@ you may use the method getRawData().
 // available data from our specified table.
 String json = client.getRawData("BE/BE0101/BE0101A/BefolkningNy");
 ```
+
 The method getRawData() also accepts an input which are used to filter what data should be fetched.
 The available inputs can be viewed in plaintext from the URL endpoint of the table or through the client. 
 The feature of retrieving the inputs through the client is accessible from the SCBClient class as demonstrated
@@ -115,7 +116,7 @@ Map<String, Collection<String>> availableInputs = client.getInputs("BE/BE0101/BE
 //		The ages 45 and 50
 //		The genders are null; we want to retrieve information for all genders
 //		The years 2011 and 2012
-Map<String, Collection<?>> inputs = new HashMap<String, Collection<?>>();
+Map<String, Collection<?>> inputs = new HashMap<>();
 inputs.put("ContentsCode", Arrays.asList("BE0101N1"));
 inputs.put("Region", Arrays.asList("00", "01", "0114"));
 inputs.put("Civilstand", Arrays.asList("OG", "G"));
@@ -126,3 +127,27 @@ inputs.put("Tid", Arrays.asList(2011, 2012));
 // Specify the table to retrieve from and our inputs to this table. The response will be a JSON
 // string containing the data that matched our criterion.
 String json = client.getRawData("BE/BE0101/BE0101A/BefolkningNy", inputs);
+```
+
+Sometimes you may want to convert your raw JSON data to a concrete Java bean. This is possible with the
+GenericModel class, which supplies various methods for retrieving the separate entries from the JSON.
+
+```java
+// Fetch all data from a table and construct a GenericModel using this data.
+String json = client.getRawData("BE/BE0101/BE0101A/BefolkningNy");
+GenericModel m = new GenericModel(json);
+
+// Retrieve all the entries into a collection.
+Collection<Map<String, Object>> entries = m.getEntries();
+
+// Retrieve all the entries having the code "alder" with either value 45 or 50 and the code 
+// "region" with value 01.
+Map<String, Collection<String>> inputs = new HashMap<>();
+inputs.put("alder", Arrays.asList("45", "50"));
+inputs.put("region", Arrays.asList("01"));
+
+entries = m.getEntries(inputs);
+
+// Retrieve all the entries having the code "alder" with value 45.
+entries = m.getEntries("alder", "45");
+```

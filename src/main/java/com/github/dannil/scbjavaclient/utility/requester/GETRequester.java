@@ -1,11 +1,11 @@
 /*
  * Copyright 2016 Daniel Nilsson
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under
  * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied. See the License for the specific language governing
@@ -22,39 +22,39 @@ import org.apache.http.client.methods.HttpGet;
 
 /**
  * <p>HTTP requester for GET requests.</p>
- * 
- * @author Daniel Nilsson
+ *
+ * @since 0.0.2
  */
 public class GETRequester extends AbstractRequester {
 
-	/**
-	 * <p>Default constructor.</p>
-	 */
-	public GETRequester() {
-		super();
-		super.requestProperties.put("Request-Method", "GET");
-	}
+    /**
+     * <p>Default constructor.</p>
+     */
+    public GETRequester() {
+        super();
+        getRequestProperties().put("Request-Method", "GET");
+    }
 
-	/**
-	 * <p>Overloaded constructor.</p>
-	 * 
-	 * @param charset
-	 *            the charset
-	 */
-	public GETRequester(Charset charset) {
-		super(charset);
-		super.requestProperties.put("Request-Method", "GET");
-	}
+    /**
+     * <p>Overloaded constructor.</p>
+     *
+     * @param charset
+     *            the charset
+     */
+    public GETRequester(Charset charset) {
+        super(charset);
+        getRequestProperties().put("Request-Method", "GET");
+    }
 
-	@Override
-	public String getBodyAsString(String url) {
-		HttpGet request = new HttpGet(url);
-		for (Entry<String, String> entry : super.requestProperties.entrySet()) {
-			request.addHeader(entry.getKey(), entry.getValue());
-		}
+    @Override
+    public String getBody(String url) {
+        HttpGet request = new HttpGet(url);
+        for (Entry<String, String> entry : getRequestProperties().entrySet()) {
+            request.addHeader(entry.getKey(), entry.getValue());
+        }
 
-		HttpResponse response = super.getResponse(request);
-		return super.getBody(response);
-	}
+        HttpResponse response = getResponse(request);
+        return getBody(response);
+    }
 
 }

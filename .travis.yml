@@ -6,6 +6,7 @@ branches:
 
 env:
   global:
+  - secure: c6MyQOm1B//KGDpJ+swHWgWJSp/XEkkZ61ZMeF02VxdMM2kJmGAaMfCjIrF3+0wSOKs4V/3LzjHefY4OMTBMuf/snrlXfWRRIymNIvsgEvFPKQHz/YunFdoHmhF54fgRQt+lmeKwKL/p/4PG2hdzo3e0+sufbXAAphQ01Vo8wg0=
   - secure: jP+6no77LmkNsx9/ih/q4fECS+6g2HxXcmLk3kEw309BTfmi270578YTFrhquwnXO4iRWG02Uza3Qs7lwLLlUIz+KRhBgDG1kcLa/juJEqxBfJ9nsbxbBU6ncnSHvOGWh3dYXWGjXzWKACSb0tGF+BL4RG8aq4/9k60++/11zM8=
   - secure: p4TxOFCOSPKKb6g3ZlDeJFuUQ35wKKT+5Ae5ugDORnh09RXzwLRSglItEY29s2mK/lnAyn77U3HZQiXPGkLiZK5w8Vzb6KFr8NYbMvwz53MIMyZlKEg6nJEddk998vwNdB06tJ0qjmZYK1aGJx53oPm90drF00uLmOk65WRk2P0=
 
@@ -15,8 +16,11 @@ matrix:
       jdk: oraclejdk7
     - os: linux
       jdk: oraclejdk8
-    - os: osx
-      osx_image: xcode8.1
+      # SonarQube addon needs to run with at least Java 8
+      script:
+        - mvn install -Dmaven.javadoc.skip=true -B -V
+        # Make sure we are on dev for running SonarQube
+        - if [[ $TRAVIS_BRANCH == dev ]]; then mvn sonar:sonar -Dsonar.host.url=https://sonarqube.com -Dsonar.login=$SONARQUBE_TOKEN; fi
 
 install:
 - true
