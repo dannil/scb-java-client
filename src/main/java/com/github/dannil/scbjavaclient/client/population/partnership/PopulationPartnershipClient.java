@@ -88,7 +88,7 @@ public class PopulationPartnershipClient extends AbstractClient {
         mappings.put("Kon", sexes);
         mappings.put("Tid", years);
 
-        String response = post(getUrl() + "Partnerskap", QueryBuilder.build(mappings));
+        String response = postRequest(getUrl() + "Partnerskap", QueryBuilder.build(mappings));
 
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
         return format.toListOf(Partnership.class);
@@ -132,7 +132,7 @@ public class PopulationPartnershipClient extends AbstractClient {
         mappings.put("Kon", sexes);
         mappings.put("Tid", years);
 
-        String response = post(getUrl() + "PartnerskapAndring", QueryBuilder.build(mappings));
+        String response = postRequest(getUrl() + "PartnerskapAndring", QueryBuilder.build(mappings));
 
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
         return format.toListOf(PartnershipChange.class);

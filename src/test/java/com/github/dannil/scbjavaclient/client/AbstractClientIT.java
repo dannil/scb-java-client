@@ -63,7 +63,7 @@ public class AbstractClientIT {
     }
 
     @Test
-    public void toFallbackUrlGet() {
+    public void toFallbackUrlGetRequest() {
         DummyClient client = new DummyClient(new Locale("en", "US"));
 
         String url = client.getRootUrl() + "HE/HE0103/HE0103B/BefolkningAlder";
@@ -71,7 +71,7 @@ public class AbstractClientIT {
         // This request is performed by a dummy Client which is set to English
         // (as specified in the setup method). This means that if we receive a response
         // with Swedish text, we've used the fallback url.
-        String response = client.get(url);
+        String response = client.getRequest(url);
 
         assertTrue(response.contains("ålder"));
         assertTrue(response.contains("kön"));
@@ -81,7 +81,7 @@ public class AbstractClientIT {
     }
 
     @Test
-    public void toFallbackUrlPost() {
+    public void toFallbackUrlPostRequest() {
         DummyClient client = new DummyClient(new Locale("en", "US"));
 
         String url = client.getRootUrl() + "HE/HE0103/HE0103B/BefolkningAlder";
@@ -96,7 +96,7 @@ public class AbstractClientIT {
         // This request is performed by a dummy client which is set to English
         // (as specified above when creating the client). This means that if we receive a
         // response with Swedish text, we've used the fallback url.
-        String response = client.post(url, QueryBuilder.build(map));
+        String response = client.postRequest(url, QueryBuilder.build(map));
 
         assertTrue(response.contains("ålder"));
         assertTrue(response.contains("kön"));
@@ -105,7 +105,7 @@ public class AbstractClientIT {
     }
 
     @Test
-    public void postWithEmptyList() {
+    public void postRequestWithEmptyList() {
         DummyClient client = new DummyClient(new Locale("sv", "SE"));
 
         String url = client.getRootUrl() + "HE/HE0103/HE0103B/BefolkningAlder";
@@ -113,7 +113,7 @@ public class AbstractClientIT {
         Map<String, Collection<?>> inputMap = new HashMap<String, Collection<?>>();
         inputMap.put("Alder", Collections.EMPTY_LIST);
 
-        String response = client.post(url, QueryBuilder.build(inputMap));
+        String response = client.postRequest(url, QueryBuilder.build(inputMap));
 
         assertTrue(response.contains("år"));
         assertFalse(response.contains("ålder"));

@@ -67,7 +67,7 @@ public abstract class AbstractContainerClient extends AbstractClient {
      * @param client
      *            the client
      */
-    public void add(AbstractClient client) {
+    public void addClient(AbstractClient client) {
         this.clients.add(client);
     }
 
