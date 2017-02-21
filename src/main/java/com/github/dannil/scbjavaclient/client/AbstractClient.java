@@ -123,6 +123,7 @@ public abstract class AbstractClient {
             return get.getBody(url);
         } catch (SCBClientUrlNotFoundException e) {
             // HTTP code 404, call the API again with the fallback language
+            LOGGER.error("HTTP 404: {}", url);
             return get.getBody(URLUtility.changeLanguageForUrl(url));
         }
     }
@@ -144,6 +145,7 @@ public abstract class AbstractClient {
             return post.getBody(url);
         } catch (SCBClientUrlNotFoundException e) {
             // HTTP code 404, call the API again with the fallback language
+            LOGGER.error("HTTP 404: {}", url);
             return post.getBody(URLUtility.changeLanguageForUrl(url));
         }
     }
