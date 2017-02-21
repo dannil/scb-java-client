@@ -120,6 +120,7 @@ public abstract class AbstractClient {
     protected String getRequest(String url) {
         AbstractRequester get = new GETRequester();
         try {
+            LOGGER.info("GET: {}", url);
             return get.getBody(url);
         } catch (SCBClientUrlNotFoundException e) {
             // HTTP code 404, call the API again with the fallback language
@@ -141,7 +142,7 @@ public abstract class AbstractClient {
         POSTRequester post = new POSTRequester();
         post.setQuery(query);
         try {
-            LOGGER.info(query);
+            LOGGER.info("POST: {}, {}", url, query);
             return post.getBody(url);
         } catch (SCBClientUrlNotFoundException e) {
             // HTTP code 404, call the API again with the fallback language
