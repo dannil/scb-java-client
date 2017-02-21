@@ -48,7 +48,7 @@ public final class URLUtility {
      * @param locale
      *            the <code>Locale</code>
      * @return the {@link com.github.dannil.scbjavaclient.constants.APIConstants#ROOT_URL
-     *         ROOT_URL} with a converted language tag segment to match the specified
+     *         ROOT_URL} with a converted language tag segment matching the specified
      *         <code>Locale</code>
      */
     public static String getRootUrl(Locale locale) {
@@ -72,7 +72,7 @@ public final class URLUtility {
     }
 
     /**
-     * <p>Generates a new URL to the API using the specified locale.</p>
+     * <p>Generates a new URL to the API using the specified <code>Locale</code>.</p>
      *
      * <p>See {@link #changeLanguageForUrl(String, String)} for implementation
      * details.</p>
@@ -80,7 +80,7 @@ public final class URLUtility {
      * @param url
      *            the URL to edit
      * @param locale
-     *            the locale to use
+     *            the <code>Locale</code> to use
      * @return the modified URL
      */
     public static String changeLanguageForUrl(String url, Locale locale) {
@@ -103,9 +103,13 @@ public final class URLUtility {
      * <li>Replaces the content between the start and end of the segment (forward slashes
      * excluded) with the new language tag.</li> </ol>
      *
+     * <p>Example: URL input of <b>https://api.scb.se/OV0104/v1/doris/sv/ssd/</b> and
+     * language input of <b>en</b> is converted to
+     * <b>https://api.scb.se/OV0104/v1/doris/en/ssd/</b>.</p>
+     *
      * <p>Due to speed efficiency, this method does not perform any validity check on the
      * specified URL. Calling this method without a valid URL for the API may (and
-     * probably will) result in unexpected behavior.</p>
+     * probably will) result in undefined behavior.</p>
      *
      * @param url
      *            the URL to edit
