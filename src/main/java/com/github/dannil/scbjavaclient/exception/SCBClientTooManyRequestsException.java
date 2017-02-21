@@ -19,7 +19,7 @@ package com.github.dannil.scbjavaclient.exception;
  *
  * @since 0.0.2
  */
-public class SCBClientTooManyRequestsException extends SCBClientException {
+public class SCBClientTooManyRequestsException extends SCBClientException implements IHttpException {
 
     private static final long serialVersionUID = -7761485153313257674L;
 
@@ -61,5 +61,10 @@ public class SCBClientTooManyRequestsException extends SCBClientException {
     public SCBClientTooManyRequestsException(Throwable cause) {
         super(cause);
     }
+
+	@Override
+	public int getStatusCode() {
+		return 429;
+	}
 
 }

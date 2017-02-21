@@ -21,7 +21,7 @@ package com.github.dannil.scbjavaclient.exception;
  *
  * @since 0.1.0
  */
-public class SCBClientForbiddenException extends SCBClientException {
+public class SCBClientForbiddenException extends SCBClientException implements IHttpException {
 
     private static final long serialVersionUID = 2445143839207212787L;
 
@@ -63,4 +63,9 @@ public class SCBClientForbiddenException extends SCBClientException {
     public SCBClientForbiddenException(Throwable cause) {
         super(cause);
     }
+
+	@Override
+	public int getStatusCode() {
+		return 403;
+	}
 }
