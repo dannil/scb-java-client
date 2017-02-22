@@ -66,9 +66,4 @@ public class HttpUtilityTest {
         HttpUtility.validateStatusCode(this.url, 429);
     }
 
-    // @Test(expected = SCBClientException.class)
-    // public void unhandledStatusCode() {
-    // HttpUtility.validateStatusCode(this.url, null);
-    // }
-
 }

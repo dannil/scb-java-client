@@ -36,26 +36,6 @@ public final class APIConstants {
             + "/ssd/";
 
     /**
-     * <p>HTTP status code for OK.</p>
-     */
-    public static final int HTTP_OK = 200;
-
-    /**
-     * <p>HTTP status code for FORBIDDEN.</p>
-     */
-    public static final int HTTP_FORBIDDEN = 403;
-
-    /**
-     * <p>HTTP status code for NOTFOUND.</p>
-     */
-    public static final int HTTP_NOTFOUND = 404;
-
-    /**
-     * <p>HTTP status code for TOOMANYREQUESTS.</p>
-     */
-    public static final int HTTP_TOOMANYREQUESTS = 429;
-
-    /**
      * <p>Private constructor to prevent instantiation.</p>
      */
     private APIConstants() {
