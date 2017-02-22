@@ -17,10 +17,10 @@ package com.github.dannil.scbjavaclient.test.utility;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
 import com.github.dannil.scbjavaclient.format.json.JsonConverter;
+import com.github.dannil.scbjavaclient.http.RequestMethod;
+import com.github.dannil.scbjavaclient.http.requester.AbstractRequester;
+import com.github.dannil.scbjavaclient.http.requester.RequesterFactory;
 import com.github.dannil.scbjavaclient.utility.URLUtility;
-import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
-import com.github.dannil.scbjavaclient.utility.requester.RequestMethod;
-import com.github.dannil.scbjavaclient.utility.requester.RequesterFactory;
 
 public final class Config {
 

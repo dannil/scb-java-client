@@ -27,10 +27,10 @@ import com.github.dannil.scbjavaclient.client.population.PopulationClient;
 import com.github.dannil.scbjavaclient.exception.SCBClientNotFoundException;
 import com.github.dannil.scbjavaclient.format.json.JsonAPIConfigTableFormat;
 import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
+import com.github.dannil.scbjavaclient.http.requester.AbstractRequester;
+import com.github.dannil.scbjavaclient.http.requester.GETRequester;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 import com.github.dannil.scbjavaclient.utility.URLUtility;
-import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
-import com.github.dannil.scbjavaclient.utility.requester.GETRequester;
 
 /**
  * <p>Root client for the client hierarchy.</p>

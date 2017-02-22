@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.utility.requester;
+package com.github.dannil.scbjavaclient.http.requester;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

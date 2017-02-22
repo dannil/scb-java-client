@@ -17,11 +17,11 @@ package com.github.dannil.scbjavaclient.client;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.exception.SCBClientNotFoundException;
+import com.github.dannil.scbjavaclient.http.requester.AbstractRequester;
+import com.github.dannil.scbjavaclient.http.requester.GETRequester;
+import com.github.dannil.scbjavaclient.http.requester.POSTRequester;
 import com.github.dannil.scbjavaclient.utility.Localization;
 import com.github.dannil.scbjavaclient.utility.URLUtility;
-import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
-import com.github.dannil.scbjavaclient.utility.requester.GETRequester;
-import com.github.dannil.scbjavaclient.utility.requester.POSTRequester;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

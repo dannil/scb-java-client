@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.utility.requester;
+package com.github.dannil.scbjavaclient.http.requester;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -21,6 +21,9 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
+import com.github.dannil.scbjavaclient.http.RequestMethod;
+import com.github.dannil.scbjavaclient.http.requester.POSTRequester;
+import com.github.dannil.scbjavaclient.http.requester.RequesterFactory;
 import com.github.dannil.scbjavaclient.utility.URLUtility;
 
 import org.junit.Test;
