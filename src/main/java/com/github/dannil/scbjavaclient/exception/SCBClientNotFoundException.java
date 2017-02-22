@@ -18,18 +18,18 @@ import com.github.dannil.scbjavaclient.http.HttpStatusCode;
 import com.github.dannil.scbjavaclient.http.IHttpStatus;
 
 /**
- * <p>Exception for when the client performed too many requests to the API. </p>
+ * <p>Exception for when the client couldn't find the requested URL.</p>
  *
  * @since 0.0.2
  */
-public class SCBClientTooManyRequestsException extends SCBClientException implements IHttpStatus {
+public class SCBClientNotFoundException extends SCBClientException implements IHttpStatus {
 
-    private static final long serialVersionUID = -7761485153313257674L;
+    private static final long serialVersionUID = 1779756868616751298L;
 
     /**
      * <p>Default constructor.</p>
      */
-    public SCBClientTooManyRequestsException() {
+    public SCBClientNotFoundException() {
         super();
     }
 
@@ -39,7 +39,7 @@ public class SCBClientTooManyRequestsException extends SCBClientException implem
      * @param message
      *            the message
      */
-    public SCBClientTooManyRequestsException(String message) {
+    public SCBClientNotFoundException(String message) {
         super(message);
     }
 
@@ -51,7 +51,7 @@ public class SCBClientTooManyRequestsException extends SCBClientException implem
      * @param cause
      *            the cause
      */
-    public SCBClientTooManyRequestsException(String message, Throwable cause) {
+    public SCBClientNotFoundException(String message, Throwable cause) {
         super(message, cause);
     }
 
@@ -61,13 +61,13 @@ public class SCBClientTooManyRequestsException extends SCBClientException implem
      * @param cause
      *            the cause
      */
-    public SCBClientTooManyRequestsException(Throwable cause) {
+    public SCBClientNotFoundException(Throwable cause) {
         super(cause);
     }
 
     @Override
     public HttpStatusCode getStatusCode() {
-        return HttpStatusCode.TOO_MANY_REQUESTS;
+        return HttpStatusCode.NOT_FOUND;
     }
 
 }

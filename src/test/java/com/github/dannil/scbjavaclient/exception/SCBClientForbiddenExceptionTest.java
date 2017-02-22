@@ -16,6 +16,8 @@ package com.github.dannil.scbjavaclient.exception;
 
 import static org.junit.Assert.assertEquals;
 
+import com.github.dannil.scbjavaclient.http.HttpStatusCode;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -52,6 +54,14 @@ public class SCBClientForbiddenExceptionTest {
         SCBClientException e = new SCBClientForbiddenException(c);
 
         assertEquals(c, e.getCause());
+    }
+
+    @Test
+    public void getStatusCode() {
+        Throwable c = new Throwable();
+        SCBClientForbiddenException e = new SCBClientForbiddenException(c);
+
+        assertEquals(HttpStatusCode.FORBIDDEN, e.getStatusCode());
     }
 
 }

@@ -18,8 +18,9 @@ import java.net.URI;
 
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
 import com.github.dannil.scbjavaclient.exception.SCBClientForbiddenException;
+import com.github.dannil.scbjavaclient.exception.SCBClientNotFoundException;
 import com.github.dannil.scbjavaclient.exception.SCBClientTooManyRequestsException;
-import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
+import com.github.dannil.scbjavaclient.http.HttpStatusCode;
 
 /**
  * <p>Utility class for various HTTP operations.</p>
@@ -27,14 +28,6 @@ import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
  * @since 0.1.0
  */
 public final class HttpUtility {
-
-    private static final int HTTP_OK = 200;
-
-    private static final int HTTP_FORBIDDEN = 403;
-
-    private static final int HTTP_NOTFOUND = 404;
-
-    private static final int HTTP_TOOMANYREQUESTS = 429;
 
     /**
      * <p>Private constructor to prevent instantiation.</p>
@@ -44,30 +37,33 @@ public final class HttpUtility {
     }
 
     /**
-     * <p>Validates if the status code is a valid HTTP code. The <code>URI</code>
+     * <p>Checks if the status code is representing an HTTP OK response. If the status
+     * code is representing any other recognized HTTP status code that the API may return,
+     * an exception is thrown which matches this status code. The <code>URI</code>
      * parameter is used to specify which address returned the status code.</p>
      *
      * @param uri
      *            the <code>URI</code>
-     * @param statusCode
+     * @param code
      *            the status code
      */
-    public static void validateStatusCode(URI uri, int statusCode) {
-        switch (statusCode) {
-            case HTTP_OK:
+    public static void validateStatusCode(URI uri, int code) {
+        HttpStatusCode httpStatusCode = HttpStatusCode.valueOf(code);
+        switch (httpStatusCode) {
+            case OK:
                 break;
 
-            case HTTP_FORBIDDEN:
+            case FORBIDDEN:
                 throw new SCBClientForbiddenException(uri.toString());
 
-            case HTTP_NOTFOUND:
-                throw new SCBClientUrlNotFoundException(uri.toString());
+            case NOT_FOUND:
+                throw new SCBClientNotFoundException(uri.toString());
 
-            case HTTP_TOOMANYREQUESTS:
+            case TOO_MANY_REQUESTS:
                 throw new SCBClientTooManyRequestsException(uri.toString());
 
             default:
-                throw new SCBClientException("Unhandled HTTP status code " + statusCode);
+                throw new SCBClientException("Unhandled HTTP status code " + code);
         }
     }
 

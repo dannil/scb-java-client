@@ -16,6 +16,8 @@ package com.github.dannil.scbjavaclient.exception;
 
 import static org.junit.Assert.assertEquals;
 
+import com.github.dannil.scbjavaclient.http.HttpStatusCode;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -52,6 +54,14 @@ public class SCBClientExceptionTooManyRequestsTest {
         SCBClientException e = new SCBClientTooManyRequestsException(c);
 
         assertEquals(c, e.getCause());
+    }
+
+    @Test
+    public void getStatusCode() {
+        Throwable c = new Throwable();
+        SCBClientTooManyRequestsException e = new SCBClientTooManyRequestsException(c);
+
+        assertEquals(HttpStatusCode.TOO_MANY_REQUESTS, e.getStatusCode());
     }
 
 }

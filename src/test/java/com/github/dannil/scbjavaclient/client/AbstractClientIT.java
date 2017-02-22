@@ -33,7 +33,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.exception.SCBClientForbiddenException;
-import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
+import com.github.dannil.scbjavaclient.exception.SCBClientNotFoundException;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 import org.apache.commons.io.FilenameUtils;
@@ -121,7 +121,7 @@ public class AbstractClientIT {
         assertFalse(response.contains("boendeform"));
     }
 
-    @Test(expected = SCBClientUrlNotFoundException.class)
+    @Test(expected = SCBClientNotFoundException.class)
     public void urlNotFoundException() {
         SCBClient client = new SCBClient();
 
