@@ -26,22 +26,22 @@ public enum HttpStatusCode {
     OK(200, "OK"), FORBIDDEN(403, "Forbidden"), NOT_FOUND(404, "Not Found"), TOO_MANY_REQUESTS(429,
             "Too Many Requests");
 
-    private int statusCode;
+    private int code;
     private String description;
     private String text;
 
     /**
      * <p>Default constructor.</p>
      *
-     * @param statusCode
+     * @param code
      *            the status code
      * @param description
      *            the description
      */
-    HttpStatusCode(int statusCode, String description) {
-        this.statusCode = statusCode;
+    HttpStatusCode(int code, String description) {
+        this.code = code;
         this.description = description;
-        this.text = Integer.toString(statusCode);
+        this.text = Integer.toString(code);
     }
 
     /**
@@ -49,8 +49,8 @@ public enum HttpStatusCode {
      *
      * @return the status code
      */
-    public int getStatusCode() {
-        return this.statusCode;
+    public int getCode() {
+        return this.code;
     }
 
     /**
@@ -75,17 +75,17 @@ public enum HttpStatusCode {
      * <p>Returns a <code>HttpStatusCode</code> which corresponds to the input status
      * code.</p>
      *
-     * @param statusCode
+     * @param code
      *            the status code
      * @return a <code>HttpStatusCode</code>
      */
-    public static HttpStatusCode valueOf(int statusCode) {
+    public static HttpStatusCode valueOf(int code) {
         for (HttpStatusCode h : HttpStatusCode.values()) {
-            if (Objects.equals(h.getStatusCode(), statusCode)) {
+            if (Objects.equals(h.getCode(), code)) {
                 return h;
             }
         }
-        throw new IllegalArgumentException("No HTTP status enum exists for status code " + statusCode);
+        throw new IllegalArgumentException("No HTTP status enum exists for status code " + code);
     }
 
 }

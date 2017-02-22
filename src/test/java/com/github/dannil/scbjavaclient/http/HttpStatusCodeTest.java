@@ -25,10 +25,10 @@ import org.junit.runners.JUnit4;
 public class HttpStatusCodeTest {
 
     @Test
-    public void getStatusCode() {
+    public void getCode() {
         HttpStatusCode httpStatusCode = HttpStatusCode.NOT_FOUND;
 
-        assertEquals(404, httpStatusCode.getStatusCode());
+        assertEquals(404, httpStatusCode.getCode());
     }
 
     @Test
@@ -46,17 +46,17 @@ public class HttpStatusCodeTest {
     }
 
     @Test
-    public void fromStatusCode() {
+    public void valueOf() {
         int code = 404;
         HttpStatusCode httpStatusCode = HttpStatusCode.valueOf(code);
 
-        assertEquals(404, httpStatusCode.getStatusCode());
+        assertEquals(404, httpStatusCode.getCode());
         assertEquals("Not Found", httpStatusCode.getDescription());
         assertEquals("404", httpStatusCode.asText());
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void fromStatusCodeIllegalArgument() {
+    public void valueOfIllegalArgument() {
         int code = -1;
         HttpStatusCode httpStatusCode = HttpStatusCode.valueOf(code);
 
