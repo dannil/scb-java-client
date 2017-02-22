@@ -17,8 +17,6 @@ package com.github.dannil.scbjavaclient.http;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
-import com.github.dannil.scbjavaclient.http.HttpStatusCode;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -50,7 +48,7 @@ public class HttpStatusCodeTest {
     @Test
     public void fromStatusCode() {
         int code = 404;
-        HttpStatusCode httpStatusCode = HttpStatusCode.fromStatusCode(code);
+        HttpStatusCode httpStatusCode = HttpStatusCode.valueOf(code);
 
         assertEquals(404, httpStatusCode.getStatusCode());
         assertEquals("Not Found", httpStatusCode.getDescription());
@@ -60,7 +58,7 @@ public class HttpStatusCodeTest {
     @Test(expected = IllegalArgumentException.class)
     public void fromStatusCodeIllegalArgument() {
         int code = -1;
-        HttpStatusCode httpStatusCode = HttpStatusCode.fromStatusCode(code);
+        HttpStatusCode httpStatusCode = HttpStatusCode.valueOf(code);
 
         assertNull(httpStatusCode);
     }

@@ -79,7 +79,7 @@ public enum HttpStatusCode {
      *            the status code
      * @return a <code>HttpStatusCode</code>
      */
-    public static HttpStatusCode fromStatusCode(int statusCode) {
+    public static HttpStatusCode valueOf(int statusCode) {
         for (HttpStatusCode h : HttpStatusCode.values()) {
             if (Objects.equals(h.getStatusCode(), statusCode)) {
                 return h;

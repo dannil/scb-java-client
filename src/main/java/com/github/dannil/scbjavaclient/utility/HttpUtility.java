@@ -46,7 +46,7 @@ public final class HttpUtility {
      *            the status code
      */
     public static void validateStatusCode(URI uri, int statusCode) {
-        HttpStatusCode httpStatusCode = HttpStatusCode.fromStatusCode(statusCode);
+        HttpStatusCode httpStatusCode = HttpStatusCode.valueOf(statusCode);
         switch (httpStatusCode) {
             case OK:
                 break;
