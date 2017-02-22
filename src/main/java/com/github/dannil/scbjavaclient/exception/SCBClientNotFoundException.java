@@ -14,21 +14,22 @@
 
 package com.github.dannil.scbjavaclient.exception;
 
-import com.github.dannil.scbjavaclient.constants.APIConstants;
+import com.github.dannil.scbjavaclient.http.HttpStatusCode;
+import com.github.dannil.scbjavaclient.http.IHttp;
 
 /**
  * <p>Exception for when the client couldn't find the requested URL.</p>
  *
  * @since 0.0.2
  */
-public class SCBClientUrlNotFoundException extends SCBClientException implements IHttp {
+public class SCBClientNotFoundException extends SCBClientException implements IHttp {
 
     private static final long serialVersionUID = 1779756868616751298L;
 
     /**
      * <p>Default constructor.</p>
      */
-    public SCBClientUrlNotFoundException() {
+    public SCBClientNotFoundException() {
         super();
     }
 
@@ -38,7 +39,7 @@ public class SCBClientUrlNotFoundException extends SCBClientException implements
      * @param message
      *            the message
      */
-    public SCBClientUrlNotFoundException(String message) {
+    public SCBClientNotFoundException(String message) {
         super(message);
     }
 
@@ -50,7 +51,7 @@ public class SCBClientUrlNotFoundException extends SCBClientException implements
      * @param cause
      *            the cause
      */
-    public SCBClientUrlNotFoundException(String message, Throwable cause) {
+    public SCBClientNotFoundException(String message, Throwable cause) {
         super(message, cause);
     }
 
@@ -60,13 +61,13 @@ public class SCBClientUrlNotFoundException extends SCBClientException implements
      * @param cause
      *            the cause
      */
-    public SCBClientUrlNotFoundException(Throwable cause) {
+    public SCBClientNotFoundException(Throwable cause) {
         super(cause);
     }
 
     @Override
-    public int getStatusCode() {
-        return APIConstants.HTTP_NOTFOUND;
+    public HttpStatusCode getStatusCode() {
+        return HttpStatusCode.NOT_FOUND;
     }
 
 }

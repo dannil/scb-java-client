@@ -14,7 +14,8 @@
 
 package com.github.dannil.scbjavaclient.exception;
 
-import com.github.dannil.scbjavaclient.constants.APIConstants;
+import com.github.dannil.scbjavaclient.http.HttpStatusCode;
+import com.github.dannil.scbjavaclient.http.IHttp;
 
 /**
  * <p>Exception for when the client receives a response from the API but it refuses to
@@ -67,7 +68,7 @@ public class SCBClientForbiddenException extends SCBClientException implements I
     }
 
     @Override
-    public int getStatusCode() {
-        return APIConstants.HTTP_FORBIDDEN;
+    public HttpStatusCode getStatusCode() {
+        return HttpStatusCode.FORBIDDEN;
     }
 }

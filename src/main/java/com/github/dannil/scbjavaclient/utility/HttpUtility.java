@@ -16,11 +16,11 @@ package com.github.dannil.scbjavaclient.utility;
 
 import java.net.URI;
 
-import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
 import com.github.dannil.scbjavaclient.exception.SCBClientForbiddenException;
+import com.github.dannil.scbjavaclient.exception.SCBClientNotFoundException;
 import com.github.dannil.scbjavaclient.exception.SCBClientTooManyRequestsException;
-import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
+import com.github.dannil.scbjavaclient.http.HttpStatusCode;
 
 /**
  * <p>Utility class for various HTTP operations.</p>
@@ -46,17 +46,18 @@ public final class HttpUtility {
      *            the status code
      */
     public static void validateStatusCode(URI uri, int statusCode) {
-        switch (statusCode) {
-            case APIConstants.HTTP_OK:
+        HttpStatusCode httpStatusCode = HttpStatusCode.fromStatusCode(statusCode);
+        switch (httpStatusCode) {
+            case OK:
                 break;
 
-            case APIConstants.HTTP_FORBIDDEN:
+            case FORBIDDEN:
                 throw new SCBClientForbiddenException(uri.toString());
 
-            case APIConstants.HTTP_NOTFOUND:
-                throw new SCBClientUrlNotFoundException(uri.toString());
+            case NOT_FOUND:
+                throw new SCBClientNotFoundException(uri.toString());
 
-            case APIConstants.HTTP_TOOMANYREQUESTS:
+            case TOO_MANY_REQUESTS:
                 throw new SCBClientTooManyRequestsException(uri.toString());
 
             default:

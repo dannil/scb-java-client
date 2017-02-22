@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.exception;
+package com.github.dannil.scbjavaclient.http;
 
 /**
  * <p>Interface which has methods relevant for HTTP.</p>
@@ -26,6 +26,6 @@ public interface IHttp {
      *
      * @return the status code
      */
-    int getStatusCode();
+    HttpStatusCode getStatusCode();
 
 }
