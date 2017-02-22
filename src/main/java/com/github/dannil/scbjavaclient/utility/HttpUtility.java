@@ -37,16 +37,18 @@ public final class HttpUtility {
     }
 
     /**
-     * <p>Validates if the status code is a valid HTTP code. The <code>URI</code>
+     * <p>Checks if the status code is representing an HTTP OK response. If the status
+     * code is representing any other recognized HTTP status code that the API may return,
+     * an exception is thrown which matches this status code. The <code>URI</code>
      * parameter is used to specify which address returned the status code.</p>
      *
      * @param uri
      *            the <code>URI</code>
-     * @param statusCode
+     * @param code
      *            the status code
      */
-    public static void validateStatusCode(URI uri, int statusCode) {
-        HttpStatusCode httpStatusCode = HttpStatusCode.valueOf(statusCode);
+    public static void validateStatusCode(URI uri, int code) {
+        HttpStatusCode httpStatusCode = HttpStatusCode.valueOf(code);
         switch (httpStatusCode) {
             case OK:
                 break;
@@ -61,7 +63,7 @@ public final class HttpUtility {
                 throw new SCBClientTooManyRequestsException(uri.toString());
 
             default:
-                throw new SCBClientException("Unhandled HTTP status code " + statusCode);
+                throw new SCBClientException("Unhandled HTTP status code " + code);
         }
     }
 
