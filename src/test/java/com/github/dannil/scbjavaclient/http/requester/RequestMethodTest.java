@@ -12,29 +12,28 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.utility.requester;
+package com.github.dannil.scbjavaclient.http.requester;
 
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
+import com.github.dannil.scbjavaclient.http.RequestMethod;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class RequesterFactoryTest {
+public class RequestMethodTest {
 
     @Test
-    public void callPrivateConstructor()
-            throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-        Constructor<?>[] cons = RequesterFactory.class.getDeclaredConstructors();
-        cons[0].setAccessible(true);
-        cons[0].newInstance();
-        cons[0].setAccessible(false);
+    public void valueOf() {
+        assertEquals(RequestMethod.GET, RequestMethod.valueOf("GET"));
+    }
 
-        assertFalse(cons[0].isAccessible());
+    @Test
+    public void values() {
+        assertNotNull(RequestMethod.values());
     }
 
 }

@@ -22,10 +22,10 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.dannil.scbjavaclient.constants.ModelConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
+import com.github.dannil.scbjavaclient.http.requester.AbstractRequester;
+import com.github.dannil.scbjavaclient.http.requester.GETRequester;
 import com.github.dannil.scbjavaclient.model.AbstractRegionYearAndValueModel;
 import com.github.dannil.scbjavaclient.model.ValueNode;
-import com.github.dannil.scbjavaclient.utility.requester.AbstractRequester;
-import com.github.dannil.scbjavaclient.utility.requester.GETRequester;
 
 /**
  * <p>Model for population data.</p>

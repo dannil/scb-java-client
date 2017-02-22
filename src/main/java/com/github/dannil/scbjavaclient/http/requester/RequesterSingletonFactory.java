@@ -12,12 +12,14 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.utility.requester;
+package com.github.dannil.scbjavaclient.http.requester;
 
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.EnumMap;
 import java.util.Map;
+
+import com.github.dannil.scbjavaclient.http.RequestMethod;
 
 /**
  * <p>Factory for returning singleton requesters. The regular {@link RequesterFactory} is

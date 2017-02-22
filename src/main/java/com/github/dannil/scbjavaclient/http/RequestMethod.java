@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.utility.requester;
+package com.github.dannil.scbjavaclient.http;
 
 /**
  * <p>Enumerable which contains the HTTP methods supported by the API.</p>
