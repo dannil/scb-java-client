@@ -15,7 +15,7 @@
 package com.github.dannil.scbjavaclient.exception;
 
 import com.github.dannil.scbjavaclient.http.HttpStatusCode;
-import com.github.dannil.scbjavaclient.http.IHttp;
+import com.github.dannil.scbjavaclient.http.IHttpStatus;
 
 /**
  * <p>Exception for when the client receives a response from the API but it refuses to
@@ -24,7 +24,7 @@ import com.github.dannil.scbjavaclient.http.IHttp;
  *
  * @since 0.1.0
  */
-public class SCBClientForbiddenException extends SCBClientException implements IHttp {
+public class SCBClientForbiddenException extends SCBClientException implements IHttpStatus {
 
     private static final long serialVersionUID = 2445143839207212787L;
 

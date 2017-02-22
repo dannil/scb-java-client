@@ -15,14 +15,14 @@
 package com.github.dannil.scbjavaclient.exception;
 
 import com.github.dannil.scbjavaclient.http.HttpStatusCode;
-import com.github.dannil.scbjavaclient.http.IHttp;
+import com.github.dannil.scbjavaclient.http.IHttpStatus;
 
 /**
  * <p>Exception for when the client couldn't find the requested URL.</p>
  *
  * @since 0.0.2
  */
-public class SCBClientNotFoundException extends SCBClientException implements IHttp {
+public class SCBClientNotFoundException extends SCBClientException implements IHttpStatus {
 
     private static final long serialVersionUID = 1779756868616751298L;
 

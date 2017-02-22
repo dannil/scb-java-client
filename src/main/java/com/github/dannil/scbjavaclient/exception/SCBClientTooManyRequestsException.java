@@ -15,14 +15,14 @@
 package com.github.dannil.scbjavaclient.exception;
 
 import com.github.dannil.scbjavaclient.http.HttpStatusCode;
-import com.github.dannil.scbjavaclient.http.IHttp;
+import com.github.dannil.scbjavaclient.http.IHttpStatus;
 
 /**
  * <p>Exception for when the client performed too many requests to the API. </p>
  *
  * @since 0.0.2
  */
-public class SCBClientTooManyRequestsException extends SCBClientException implements IHttp {
+public class SCBClientTooManyRequestsException extends SCBClientException implements IHttpStatus {
 
     private static final long serialVersionUID = -7761485153313257674L;
 
