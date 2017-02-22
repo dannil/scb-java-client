@@ -14,6 +14,8 @@
 
 package com.github.dannil.scbjavaclient.exception;
 
+import com.github.dannil.scbjavaclient.constants.APIConstants;
+
 /**
  * <p>Exception for when the client receives a response from the API but it refuses to
  * perform any further requests. Can occur if your request to the API or the resulting
@@ -21,7 +23,7 @@ package com.github.dannil.scbjavaclient.exception;
  *
  * @since 0.1.0
  */
-public class SCBClientForbiddenException extends SCBClientException implements IHttpException {
+public class SCBClientForbiddenException extends SCBClientException implements IHttp {
 
     private static final long serialVersionUID = 2445143839207212787L;
 
@@ -64,8 +66,8 @@ public class SCBClientForbiddenException extends SCBClientException implements I
         super(cause);
     }
 
-	@Override
-	public int getStatusCode() {
-		return 403;
-	}
+    @Override
+    public int getStatusCode() {
+        return APIConstants.HTTP_FORBIDDEN;
+    }
 }

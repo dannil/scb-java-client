@@ -14,12 +14,14 @@
 
 package com.github.dannil.scbjavaclient.exception;
 
+import com.github.dannil.scbjavaclient.constants.APIConstants;
+
 /**
  * <p>Exception for when the client performed too many requests to the API. </p>
  *
  * @since 0.0.2
  */
-public class SCBClientTooManyRequestsException extends SCBClientException implements IHttpException {
+public class SCBClientTooManyRequestsException extends SCBClientException implements IHttp {
 
     private static final long serialVersionUID = -7761485153313257674L;
 
@@ -62,9 +64,9 @@ public class SCBClientTooManyRequestsException extends SCBClientException implem
         super(cause);
     }
 
-	@Override
-	public int getStatusCode() {
-		return 429;
-	}
+    @Override
+    public int getStatusCode() {
+        return APIConstants.HTTP_TOOMANYREQUESTS;
+    }
 
 }

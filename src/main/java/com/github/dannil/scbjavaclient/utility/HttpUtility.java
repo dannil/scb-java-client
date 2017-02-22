@@ -16,6 +16,7 @@ package com.github.dannil.scbjavaclient.utility;
 
 import java.net.URI;
 
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
 import com.github.dannil.scbjavaclient.exception.SCBClientForbiddenException;
 import com.github.dannil.scbjavaclient.exception.SCBClientTooManyRequestsException;
@@ -27,14 +28,6 @@ import com.github.dannil.scbjavaclient.exception.SCBClientUrlNotFoundException;
  * @since 0.1.0
  */
 public final class HttpUtility {
-
-    private static final int HTTP_OK = 200;
-
-    private static final int HTTP_FORBIDDEN = 403;
-
-    private static final int HTTP_NOTFOUND = 404;
-
-    private static final int HTTP_TOOMANYREQUESTS = 429;
 
     /**
      * <p>Private constructor to prevent instantiation.</p>
@@ -54,16 +47,16 @@ public final class HttpUtility {
      */
     public static void validateStatusCode(URI uri, int statusCode) {
         switch (statusCode) {
-            case HTTP_OK:
+            case APIConstants.HTTP_OK:
                 break;
 
-            case HTTP_FORBIDDEN:
+            case APIConstants.HTTP_FORBIDDEN:
                 throw new SCBClientForbiddenException(uri.toString());
 
-            case HTTP_NOTFOUND:
+            case APIConstants.HTTP_NOTFOUND:
                 throw new SCBClientUrlNotFoundException(uri.toString());
 
-            case HTTP_TOOMANYREQUESTS:
+            case APIConstants.HTTP_TOOMANYREQUESTS:
                 throw new SCBClientTooManyRequestsException(uri.toString());
 
             default:

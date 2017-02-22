@@ -14,12 +14,14 @@
 
 package com.github.dannil.scbjavaclient.exception;
 
+import com.github.dannil.scbjavaclient.constants.APIConstants;
+
 /**
  * <p>Exception for when the client couldn't find the requested URL.</p>
  *
  * @since 0.0.2
  */
-public class SCBClientUrlNotFoundException extends SCBClientException implements IHttpException {
+public class SCBClientUrlNotFoundException extends SCBClientException implements IHttp {
 
     private static final long serialVersionUID = 1779756868616751298L;
 
@@ -62,9 +64,9 @@ public class SCBClientUrlNotFoundException extends SCBClientException implements
         super(cause);
     }
 
-	@Override
-	public int getStatusCode() {
-		return 404;
-	}
+    @Override
+    public int getStatusCode() {
+        return APIConstants.HTTP_NOTFOUND;
+    }
 
 }
