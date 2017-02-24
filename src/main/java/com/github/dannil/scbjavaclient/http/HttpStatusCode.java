@@ -28,7 +28,6 @@ public enum HttpStatusCode {
 
     private int code;
     private String description;
-    private String text;
 
     /**
      * <p>Default constructor.</p>
@@ -41,7 +40,6 @@ public enum HttpStatusCode {
     HttpStatusCode(int code, String description) {
         this.code = code;
         this.description = description;
-        this.text = Integer.toString(code);
     }
 
     /**
@@ -59,7 +57,7 @@ public enum HttpStatusCode {
      * @return the description
      */
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
     /**
@@ -68,7 +66,7 @@ public enum HttpStatusCode {
      * @return the status code as a text string
      */
     public String asText() {
-        return this.text;
+        return String.valueOf(this.code);
     }
 
     /**
@@ -85,7 +83,7 @@ public enum HttpStatusCode {
                 return h;
             }
         }
-        throw new IllegalArgumentException("No HTTP status enum exists for status code " + code);
+        throw new IllegalArgumentException("No HTTP status enumerable exists for status code " + code);
     }
 
 }
