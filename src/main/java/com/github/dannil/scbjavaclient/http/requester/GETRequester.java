@@ -32,7 +32,6 @@ public class GETRequester extends AbstractRequester {
      */
     public GETRequester() {
         super();
-        getRequestProperties().put("Request-Method", "GET");
     }
 
     /**
@@ -43,7 +42,6 @@ public class GETRequester extends AbstractRequester {
      */
     public GETRequester(Charset charset) {
         super(charset);
-        getRequestProperties().put("Request-Method", "GET");
     }
 
     @Override

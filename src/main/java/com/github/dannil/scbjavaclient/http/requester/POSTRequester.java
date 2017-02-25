@@ -36,7 +36,6 @@ public class POSTRequester extends AbstractRequester {
      */
     public POSTRequester() {
         super();
-        getRequestProperties().put("Request-Method", "POST");
     }
 
     /**
@@ -47,7 +46,6 @@ public class POSTRequester extends AbstractRequester {
      */
     public POSTRequester(Charset charset) {
         super(charset);
-        getRequestProperties().put("Request-Method", "POST");
     }
 
     /**
