@@ -90,7 +90,7 @@ public class PopulationAmountClient extends AbstractClient {
         mappings.put("Kon", genders);
         mappings.put("Tid", years);
 
-        String response = postRequest(getUrl() + "BefolkningNy", QueryBuilder.build(mappings));
+        String response = doPostRequest(getUrl() + "BefolkningNy", QueryBuilder.build(mappings));
 
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
         return format.toListOf(Population.class);
