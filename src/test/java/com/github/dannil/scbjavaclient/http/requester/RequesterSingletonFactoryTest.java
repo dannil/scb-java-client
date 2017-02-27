@@ -24,8 +24,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.StandardCharsets;
 
 import com.github.dannil.scbjavaclient.http.RequestMethod;
-import com.github.dannil.scbjavaclient.http.requester.AbstractRequester;
-import com.github.dannil.scbjavaclient.http.requester.RequesterSingletonFactory;
 
 import org.junit.Test;
 
@@ -133,7 +131,7 @@ public class RequesterSingletonFactoryTest {
         AbstractRequester abs1 = RequesterSingletonFactory.getRequester(RequestMethod.GET, StandardCharsets.UTF_8);
         AbstractRequester abs2 = RequesterSingletonFactory.getRequester(RequestMethod.GET, StandardCharsets.US_ASCII);
 
-        assertEquals(StandardCharsets.US_ASCII, abs1.getCharset());
+        assertEquals("us-ascii", abs1.getCharset());
         assertEquals(abs1.getCharset(), abs2.getCharset());
     }
 
