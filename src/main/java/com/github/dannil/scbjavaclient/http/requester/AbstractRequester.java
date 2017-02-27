@@ -17,11 +17,14 @@ package com.github.dannil.scbjavaclient.http.requester;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URI;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Properties;
 
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
@@ -29,10 +32,6 @@ import com.github.dannil.scbjavaclient.utility.HttpUtility;
 import com.github.dannil.scbjavaclient.utility.URLUtility;
 
 import org.apache.commons.io.input.BOMInputStream;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpRequestBase;
-import org.apache.http.impl.client.HttpClientBuilder;
 
 /**
  * <p>Class which contains the logic for sending URL requests to a specified address.</p>
@@ -44,8 +43,6 @@ public abstract class AbstractRequester {
     private static Properties properties;
 
     private Charset charset;
-
-    private HttpClient client;
 
     private Map<String, String> requestProperties;
 
@@ -76,57 +73,31 @@ public abstract class AbstractRequester {
     protected AbstractRequester(Charset charset) {
         this.charset = charset;
 
-        this.client = HttpClientBuilder.create().build();
-
         this.requestProperties = new HashMap<>();
         this.requestProperties.put("Accept", "application/json");
+        this.requestProperties.put("Accept-Charset", charset.name());
         this.requestProperties.put("Content-Type", "application/json; charset=" + this.charset.name().toLowerCase());
 
-        String artifactId = properties.getProperty("artifactId");
-        String version = properties.getProperty("version");
-        String url = properties.getProperty("url");
-
-        StringBuilder builder = new StringBuilder();
-        builder.append(artifactId);
-        builder.append('/');
-        builder.append(version);
-        builder.append(" (");
-        builder.append(url);
-        builder.append("), ");
-        builder.append(System.getProperty("os.name"));
-
-        this.requestProperties.put("User-Agent", builder.toString());
+        this.requestProperties.put("User-Agent", createUserAgent());
     }
 
-    /**
-     * <p>Performs a request with the specified <code>HttpRequest</code> and retrieves the
-     * response as a <code>HttpResponse</code>.</p>
-     *
-     * @param request
-     *            the request
-     * @return the response
-     */
-    protected HttpResponse getResponse(HttpRequestBase request) {
-        try {
-            HttpResponse response = this.client.execute(request);
-            URI uri = request.getURI();
-            int statusCode = response.getStatusLine().getStatusCode();
-            HttpUtility.validateStatusCode(uri, statusCode);
-            return response;
-        } catch (IOException e) {
-            throw new SCBClientException(e);
+    protected URLConnection createConnection(String url) throws IOException {
+        URLConnection connection = new URL(url).openConnection();
+        for (Entry<String, String> entry : this.requestProperties.entrySet()) {
+            connection.setRequestProperty(entry.getKey(), entry.getValue());
         }
+        return connection;
     }
 
-    /**
-     * <p>Extracts the response body from the <code>HttpResponse</code>.</p>
-     *
-     * @param response
-     *            the response to extract the body from
-     * @return the body as a string
-     */
-    protected String getBody(HttpResponse response) {
-        try (BOMInputStream bis = new BOMInputStream(response.getEntity().getContent())) {
+    protected InputStream getResponse(URLConnection connection) throws IOException {
+        HttpURLConnection httpConnection = (HttpURLConnection) connection;
+        int statusCode = httpConnection.getResponseCode();
+        HttpUtility.validateStatusCode(httpConnection.getURL(), statusCode);
+        return connection.getInputStream();
+    }
+
+    protected String getBody(InputStream response) {
+        try (BOMInputStream bis = new BOMInputStream(response)) {
             try (ByteArrayOutputStream bos = new ByteArrayOutputStream()) {
                 int result = bis.read();
                 while (result != -1) {
@@ -202,6 +173,23 @@ public abstract class AbstractRequester {
     public void setCharset(Charset charset) {
         this.charset = charset;
         this.requestProperties.put("Content-Type", "application/json; charset=" + this.charset.name().toLowerCase());
+    }
+
+    private String createUserAgent() {
+        String artifactId = properties.getProperty("artifactId");
+        String version = properties.getProperty("version");
+        String url = properties.getProperty("url");
+
+        StringBuilder builder = new StringBuilder();
+        builder.append(artifactId);
+        builder.append('/');
+        builder.append(version);
+        builder.append(" (");
+        builder.append(url);
+        builder.append("), ");
+        builder.append(System.getProperty("os.name"));
+
+        return builder.toString();
     }
 
 }

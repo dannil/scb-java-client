@@ -18,8 +18,8 @@ import static org.junit.Assert.assertFalse;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.net.URI;
-import java.net.URISyntaxException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import com.github.dannil.scbjavaclient.exception.SCBClientForbiddenException;
 import com.github.dannil.scbjavaclient.exception.SCBClientNotFoundException;
@@ -33,11 +33,11 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class HttpUtilityTest {
 
-    private URI url;
+    private URL url;
 
     @Before
-    public void setup() throws URISyntaxException {
-        this.url = new URI("http://example.com");
+    public void setup() throws MalformedURLException {
+        this.url = new URL("http://example.com");
     }
 
     @Test

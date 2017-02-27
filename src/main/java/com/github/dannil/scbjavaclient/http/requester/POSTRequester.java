@@ -14,13 +14,13 @@
 
 package com.github.dannil.scbjavaclient.http.requester;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URLConnection;
 import java.nio.charset.Charset;
-import java.util.Map.Entry;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.ByteArrayEntity;
+import com.github.dannil.scbjavaclient.exception.SCBClientException;
 
 /**
  * <p>HTTP requester for POST requests.</p>
@@ -72,16 +72,16 @@ public class POSTRequester extends AbstractRequester {
         if (this.query == null) {
             throw new IllegalStateException("Payload is null");
         }
-
-        HttpPost request = new HttpPost(url);
-        for (Entry<String, String> entry : getRequestProperties().entrySet()) {
-            request.addHeader(entry.getKey(), entry.getValue());
+        try {
+            URLConnection connection = createConnection(url);
+            connection.setDoOutput(true);
+            try (OutputStream output = connection.getOutputStream()) {
+                output.write(this.query.getBytes(Charset.forName(getCharset().name())));
+            }
+            InputStream response = getResponse(connection);
+            return getBody(response);
+        } catch (IOException e) {
+            throw new SCBClientException(e);
         }
-
-        HttpEntity entity = new ByteArrayEntity(this.query.getBytes(Charset.forName(getCharset().name())));
-        request.setEntity(entity);
-
-        HttpResponse response = getResponse(request);
-        return getBody(response);
     }
 }

@@ -14,11 +14,11 @@
 
 package com.github.dannil.scbjavaclient.http.requester;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.nio.charset.Charset;
-import java.util.Map.Entry;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
+import com.github.dannil.scbjavaclient.exception.SCBClientException;
 
 /**
  * <p>HTTP requester for GET requests.</p>
@@ -46,13 +46,12 @@ public class GETRequester extends AbstractRequester {
 
     @Override
     public String getBody(String url) {
-        HttpGet request = new HttpGet(url);
-        for (Entry<String, String> entry : getRequestProperties().entrySet()) {
-            request.addHeader(entry.getKey(), entry.getValue());
+        try {
+            InputStream response = getResponse(createConnection(url));
+            return getBody(response);
+        } catch (IOException e) {
+            throw new SCBClientException(e);
         }
-
-        HttpResponse response = getResponse(request);
-        return getBody(response);
     }
 
 }
