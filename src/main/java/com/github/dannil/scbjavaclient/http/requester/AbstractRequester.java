@@ -42,8 +42,6 @@ public abstract class AbstractRequester {
 
     private static Properties properties;
 
-    private Charset charset;
-
     private Map<String, String> requestProperties;
 
     static {
@@ -71,12 +69,10 @@ public abstract class AbstractRequester {
      *            the charset to use when doing a request
      */
     protected AbstractRequester(Charset charset) {
-        this.charset = charset;
-
         this.requestProperties = new HashMap<>();
         this.requestProperties.put("Accept", "application/json");
         this.requestProperties.put("Accept-Charset", charset.name());
-        this.requestProperties.put("Content-Type", "application/json; charset=" + this.charset.name().toLowerCase());
+        this.requestProperties.put("Content-Type", "application/json; charset=" + charset.name().toLowerCase());
 
         this.requestProperties.put("User-Agent", createUserAgent());
     }
@@ -96,7 +92,7 @@ public abstract class AbstractRequester {
         return connection.getInputStream();
     }
 
-    protected String getBody(InputStream response) {
+    protected String getBody(InputStream response) throws IOException {
         try (BOMInputStream bis = new BOMInputStream(response)) {
             try (ByteArrayOutputStream bos = new ByteArrayOutputStream()) {
                 int result = bis.read();
@@ -106,8 +102,6 @@ public abstract class AbstractRequester {
                 }
                 return bos.toString();
             }
-        } catch (IOException e) {
-            throw new SCBClientException(e);
         }
     }
 
@@ -146,33 +140,24 @@ public abstract class AbstractRequester {
     }
 
     /**
-     * <p>Getter for request properties.</p>
-     *
-     * @return the request properties
-     */
-    public Map<String, String> getRequestProperties() {
-        return this.requestProperties;
-    }
-
-    /**
      * <p>Getter for charset.</p>
      *
      * @return the charset
      */
-    public Charset getCharset() {
-        return this.charset;
+    public String getCharset() {
+        String contentType = this.requestProperties.get("Content-Type");
+        String charset = contentType.substring(contentType.indexOf("charset=") + "charset=".length());
+        return charset;
     }
 
     /**
-     * <p>Setter for charset. Also updates the request properties with the new
-     * charset.</p>
+     * <p>Setter for charset.</p>
      *
      * @param charset
      *            the charset
      */
     public void setCharset(Charset charset) {
-        this.charset = charset;
-        this.requestProperties.put("Content-Type", "application/json; charset=" + this.charset.name().toLowerCase());
+        this.requestProperties.put("Content-Type", "application/json; charset=" + charset.name().toLowerCase());
     }
 
     private String createUserAgent() {

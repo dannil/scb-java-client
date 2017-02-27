@@ -76,7 +76,7 @@ public class POSTRequester extends AbstractRequester {
             URLConnection connection = createConnection(url);
             connection.setDoOutput(true);
             try (OutputStream output = connection.getOutputStream()) {
-                output.write(this.query.getBytes(Charset.forName(getCharset().name())));
+                output.write(this.query.getBytes(getCharset()));
             }
             InputStream response = getResponse(connection);
             return getBody(response);
