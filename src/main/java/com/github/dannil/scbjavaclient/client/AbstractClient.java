@@ -117,7 +117,7 @@ public abstract class AbstractClient {
      *            the URL which will be sent a GET request
      * @return a string representation of the API's response
      */
-    protected String getRequest(String url) {
+    protected String doGetRequest(String url) {
         AbstractRequester get = new GETRequester();
         try {
             LOGGER.info("GET: {}", url);
@@ -138,7 +138,7 @@ public abstract class AbstractClient {
      *            the query which the API will process
      * @return a string representation of the API's response
      */
-    protected String postRequest(String url, String query) {
+    protected String doPostRequest(String url, String query) {
         POSTRequester post = new POSTRequester();
         post.setQuery(query);
         try {
