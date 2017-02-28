@@ -14,7 +14,7 @@
 
 package com.github.dannil.scbjavaclient.utility;
 
-import java.net.URI;
+import java.net.URL;
 
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
 import com.github.dannil.scbjavaclient.exception.SCBClientForbiddenException;
@@ -39,28 +39,28 @@ public final class HttpUtility {
     /**
      * <p>Checks if the status code is representing an HTTP OK response. If the status
      * code is representing any other recognized HTTP status code that the API may return,
-     * an exception is thrown which matches this status code. The <code>URI</code>
+     * an exception is thrown which matches this status code. The <code>URL</code>
      * parameter is used to specify which address returned the status code.</p>
      *
-     * @param uri
-     *            the <code>URI</code>
+     * @param url
+     *            the <code>URL</code>
      * @param code
      *            the status code
      */
-    public static void validateStatusCode(URI uri, int code) {
+    public static void validateStatusCode(URL url, int code) {
         HttpStatusCode httpStatusCode = HttpStatusCode.valueOf(code);
         switch (httpStatusCode) {
             case OK:
                 break;
 
             case FORBIDDEN:
-                throw new SCBClientForbiddenException(uri.toString());
+                throw new SCBClientForbiddenException(url.toString());
 
             case NOT_FOUND:
-                throw new SCBClientNotFoundException(uri.toString());
+                throw new SCBClientNotFoundException(url.toString());
 
             case TOO_MANY_REQUESTS:
-                throw new SCBClientTooManyRequestsException(uri.toString());
+                throw new SCBClientTooManyRequestsException(url.toString());
 
             default:
                 throw new SCBClientException("Unhandled HTTP status code " + code);
