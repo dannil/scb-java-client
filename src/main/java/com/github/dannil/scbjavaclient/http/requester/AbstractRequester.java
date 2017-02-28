@@ -40,6 +40,14 @@ import org.apache.commons.io.input.BOMInputStream;
  */
 public abstract class AbstractRequester {
 
+    private static String REQUESTPROPERTY_ACCEPT = "Accept";
+
+    private static String REQUESTPROPERTY_ACCEPT_CHARSET = "Accept-Charset";
+
+    private static String REQUESTPROPERTY_CONTENT_TYPE = "Content-Type";
+
+    private static String REQUESTPROPERTY_USER_AGENT = "User-Agent";
+
     private static Properties properties;
 
     private Map<String, String> requestProperties;
@@ -70,10 +78,10 @@ public abstract class AbstractRequester {
      */
     protected AbstractRequester(Charset charset) {
         this.requestProperties = new HashMap<>();
-        this.requestProperties.put("Accept", "application/json");
-        this.requestProperties.put("Accept-Charset", charset.name());
-        this.requestProperties.put("Content-Type", "application/json; charset=" + charset.name().toLowerCase());
-        this.requestProperties.put("User-Agent", createUserAgent());
+        this.requestProperties.put(REQUESTPROPERTY_ACCEPT, "application/json");
+        this.requestProperties.put(REQUESTPROPERTY_ACCEPT_CHARSET, charset.name());
+        this.requestProperties.put(REQUESTPROPERTY_USER_AGENT, createUserAgent());
+        setCharset(charset);
     }
 
     /**
@@ -172,8 +180,7 @@ public abstract class AbstractRequester {
      */
     public String getCharset() {
         String contentType = this.requestProperties.get("Content-Type");
-        String charset = contentType.substring(contentType.indexOf("charset=") + "charset=".length());
-        return charset;
+        return contentType.substring(contentType.indexOf("charset=") + "charset=".length());
     }
 
     /**
@@ -183,7 +190,8 @@ public abstract class AbstractRequester {
      *            the charset
      */
     public void setCharset(Charset charset) {
-        this.requestProperties.put("Content-Type", "application/json; charset=" + charset.name().toLowerCase());
+        this.requestProperties.put(REQUESTPROPERTY_CONTENT_TYPE, "application/json; charset="
+                + charset.name().toLowerCase());
     }
 
     /**
