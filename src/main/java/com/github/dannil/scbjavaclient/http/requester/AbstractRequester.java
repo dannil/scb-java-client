@@ -40,13 +40,13 @@ import org.apache.commons.io.input.BOMInputStream;
  */
 public abstract class AbstractRequester {
 
-    private static String REQUESTPROPERTY_ACCEPT = "Accept";
+    private static final String REQUESTPROPERTY_ACCEPT = "Accept";
 
-    private static String REQUESTPROPERTY_ACCEPT_CHARSET = "Accept-Charset";
+    private static final String REQUESTPROPERTY_ACCEPT_CHARSET = "Accept-Charset";
 
-    private static String REQUESTPROPERTY_CONTENT_TYPE = "Content-Type";
+    private static final String REQUESTPROPERTY_CONTENT_TYPE = "Content-Type";
 
-    private static String REQUESTPROPERTY_USER_AGENT = "User-Agent";
+    private static final String REQUESTPROPERTY_USER_AGENT = "User-Agent";
 
     private static Properties properties;
 
