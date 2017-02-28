@@ -73,10 +73,18 @@ public abstract class AbstractRequester {
         this.requestProperties.put("Accept", "application/json");
         this.requestProperties.put("Accept-Charset", charset.name());
         this.requestProperties.put("Content-Type", "application/json; charset=" + charset.name().toLowerCase());
-
         this.requestProperties.put("User-Agent", createUserAgent());
     }
 
+    /**
+     * <p>Creates the connection which can be used to communicate with the API.</p>
+     *
+     * @param url
+     *            the URL
+     * @return a <code>URLConnection</code>
+     * @throws IOException
+     *             if an exception occurred when creating the <code>URLConnection</code>
+     */
     protected URLConnection createConnection(String url) throws IOException {
         URLConnection connection = new URL(url).openConnection();
         for (Entry<String, String> entry : this.requestProperties.entrySet()) {
@@ -85,6 +93,15 @@ public abstract class AbstractRequester {
         return connection;
     }
 
+    /**
+     * <p>Retrieves the response from the specified <code>URLConnection</code>.</p>
+     *
+     * @param connection
+     *            the <code>URLConnection</code>
+     * @return the response as an <code>InputStream</code>
+     * @throws IOException
+     *             if an exception occurred while retrieving the <code>InputStream</code>
+     */
     protected InputStream getResponse(URLConnection connection) throws IOException {
         HttpURLConnection httpConnection = (HttpURLConnection) connection;
         int statusCode = httpConnection.getResponseCode();
@@ -92,6 +109,15 @@ public abstract class AbstractRequester {
         return connection.getInputStream();
     }
 
+    /**
+     * Retrieves the body from the <code>InputStream</code> response.
+     *
+     * @param response
+     *            the <code>InputStream</code> response
+     * @return the body of the <code>InputStream</code>
+     * @throws IOException
+     *             if an exception occurred while retrieving the body
+     */
     protected String getBody(InputStream response) throws IOException {
         try (BOMInputStream bis = new BOMInputStream(response)) {
             try (ByteArrayOutputStream bos = new ByteArrayOutputStream()) {
@@ -160,6 +186,11 @@ public abstract class AbstractRequester {
         this.requestProperties.put("Content-Type", "application/json; charset=" + charset.name().toLowerCase());
     }
 
+    /**
+     * <p>Creates the user agent string.</p>
+     *
+     * @return the user agent string
+     */
     private String createUserAgent() {
         String artifactId = properties.getProperty("artifactId");
         String version = properties.getProperty("version");
