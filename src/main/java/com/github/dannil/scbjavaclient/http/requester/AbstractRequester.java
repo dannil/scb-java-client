@@ -112,8 +112,7 @@ public abstract class AbstractRequester {
      */
     protected InputStream getResponse(URLConnection connection) throws IOException {
         HttpURLConnection httpConnection = (HttpURLConnection) connection;
-        int statusCode = httpConnection.getResponseCode();
-        HttpUtility.validateStatusCode(httpConnection.getURL(), statusCode);
+        HttpUtility.validateStatusCode(httpConnection.getURL(), httpConnection.getResponseCode());
         return connection.getInputStream();
     }
 
