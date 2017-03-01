@@ -128,10 +128,8 @@ public abstract class AbstractRequester {
     protected String getBody(InputStream response) throws IOException {
         try (BOMInputStream bis = new BOMInputStream(response)) {
             try (ByteArrayOutputStream bos = new ByteArrayOutputStream()) {
-                int result = bis.read();
-                while (result != -1) {
+                for (int result = bis.read(); result != -1; result = bis.read()) {
                     bos.write((byte) result);
-                    result = bis.read();
                 }
                 return bos.toString();
             }
