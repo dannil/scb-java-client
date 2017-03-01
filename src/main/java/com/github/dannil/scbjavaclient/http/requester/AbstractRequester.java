@@ -178,7 +178,7 @@ public abstract class AbstractRequester {
      *
      * @return the charset
      */
-    public String getCharset() {
+    public final String getCharset() {
         String contentType = this.requestProperties.get("Content-Type");
         return contentType.substring(contentType.indexOf("charset=") + "charset=".length());
     }
@@ -189,7 +189,7 @@ public abstract class AbstractRequester {
      * @param charset
      *            the charset
      */
-    public void setCharset(Charset charset) {
+    public final void setCharset(Charset charset) {
         this.requestProperties.put(REQUESTPROPERTY_CONTENT_TYPE, "application/json; charset="
                 + charset.name().toLowerCase());
     }
