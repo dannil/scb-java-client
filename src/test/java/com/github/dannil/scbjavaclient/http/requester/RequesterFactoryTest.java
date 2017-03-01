@@ -19,8 +19,6 @@ import static org.junit.Assert.assertFalse;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
-import com.github.dannil.scbjavaclient.http.requester.RequesterFactory;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;

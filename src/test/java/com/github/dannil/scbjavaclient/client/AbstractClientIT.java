@@ -19,10 +19,6 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -145,7 +141,7 @@ public class AbstractClientIT {
     }
 
     @Test
-    public void checkForLocaleConstructor() throws ClassNotFoundException, MalformedURLException {
+    public void checkForLocaleConstructor() {
         String execPath = System.getProperty("user.dir");
 
         // Find files matching the wildcard pattern
@@ -158,40 +154,31 @@ public class AbstractClientIT {
             path = path.substring(path.indexOf("com"));
 
             // Handle both UNIX and Windows separators
-            String binaryName = path.replace('/', '.');
-            binaryName = binaryName.replace('\\', '.');
+            String binaryName = path.replace('/', '.').replace('\\', '.');
 
             // Reflect the binary name into a concrete Java class
-            URLClassLoader loader = null;
             Class<?> clazz = null;
             try {
-                loader = new URLClassLoader(new URL[] { file.toURI().toURL() });
-                clazz = loader.loadClass(binaryName);
-
+                clazz = Class.forName(binaryName);
                 clazz.getDeclaredConstructor(Locale.class);
+            } catch (ClassNotFoundException e) {
+                // Some error occurred while instantiating the class; respond with an
+                // assertion that'll always fail
+                e.printStackTrace();
+                assertTrue(e.getMessage(), false);
             } catch (NoSuchMethodException e) {
                 // Nope! Locale constructor not found
                 assertTrue("Class " + clazz.getName() + " doesn't declare a Locale constructor", false);
-            } finally {
-                try {
-                    // Close class loader
-                    loader.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    assertTrue(e.getMessage(), false);
-                }
             }
         }
     }
 
-    public List<File> findFiles(String path, String partOfFile) {
+    private List<File> findFiles(String path, String partOfFile) {
         List<File> allFiles = new ArrayList<File>();
-
         File dir = new File(path);
         File[] files = dir.listFiles();
         for (int i = 0; i < files.length; i++) {
             File file = files[i];
-
             if (file.isDirectory()) {
                 allFiles.addAll(findFiles(file.getAbsolutePath(), partOfFile));
             } else {
