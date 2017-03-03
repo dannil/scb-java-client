@@ -73,7 +73,7 @@ public class POSTRequester extends AbstractRequester {
             throw new IllegalStateException("Payload is null");
         }
         try {
-            URLConnection connection = createConnection(url);
+            URLConnection connection = getConnection(url);
             connection.setDoOutput(true);
             try (OutputStream output = connection.getOutputStream()) {
                 output.write(this.query.getBytes(getCharset()));

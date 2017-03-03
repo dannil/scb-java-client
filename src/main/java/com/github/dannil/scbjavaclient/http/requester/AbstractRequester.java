@@ -86,7 +86,9 @@ public abstract class AbstractRequester {
     }
 
     /**
-     * <p>Creates the connection which can be used to communicate with the API.</p>
+     * <p>Retrieves the <code>URLConnection</code> that represents the specified URL. This
+     * method sets the request properties for the <code>URLConnection</code> being
+     * retrieved.</p>
      *
      * @param url
      *            the URL
@@ -94,7 +96,7 @@ public abstract class AbstractRequester {
      * @throws IOException
      *             if an exception occurred when creating the <code>URLConnection</code>
      */
-    protected URLConnection createConnection(String url) throws IOException {
+    protected URLConnection getConnection(String url) throws IOException {
         URLConnection connection = new URL(url).openConnection();
         for (Entry<String, String> entry : this.requestProperties.entrySet()) {
             connection.setRequestProperty(entry.getKey(), entry.getValue());

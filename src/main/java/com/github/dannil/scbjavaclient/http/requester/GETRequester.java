@@ -47,7 +47,7 @@ public class GETRequester extends AbstractRequester {
     @Override
     public String getBody(String url) {
         try {
-            InputStream response = getResponse(createConnection(url));
+            InputStream response = getResponse(getConnection(url));
             return getBody(response);
         } catch (IOException e) {
             throw new SCBClientException(e);
