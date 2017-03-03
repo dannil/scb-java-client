@@ -131,7 +131,7 @@ public class RequesterSingletonFactoryTest {
         AbstractRequester abs1 = RequesterSingletonFactory.getRequester(RequestMethod.GET, StandardCharsets.UTF_8);
         AbstractRequester abs2 = RequesterSingletonFactory.getRequester(RequestMethod.GET, StandardCharsets.US_ASCII);
 
-        assertEquals("us-ascii", abs1.getCharset());
+        assertEquals(StandardCharsets.US_ASCII, abs1.getCharset());
         assertEquals(abs1.getCharset(), abs2.getCharset());
     }
 

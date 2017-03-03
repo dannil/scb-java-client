@@ -18,6 +18,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 import com.github.dannil.scbjavaclient.http.RequestMethod;
 import com.github.dannil.scbjavaclient.utility.URLUtility;
@@ -34,14 +35,14 @@ public class POSTRequesterTest {
         POSTRequester post = new POSTRequester();
 
         // assertEquals(locale, post.getLocale());
-        assertEquals("utf-8", post.getCharset());
+        assertEquals(StandardCharsets.UTF_8, post.getCharset());
     }
 
     @Test
     public void getCharset() {
         POSTRequester post = (POSTRequester) RequesterFactory.getRequester(RequestMethod.POST);
 
-        assertEquals("utf-8", post.getCharset());
+        assertEquals(StandardCharsets.UTF_8, post.getCharset());
     }
 
     // @Test

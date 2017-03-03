@@ -175,9 +175,10 @@ public abstract class AbstractRequester {
      *
      * @return the charset
      */
-    public final String getCharset() {
+    public final Charset getCharset() {
         String contentType = this.requestProperties.get(REQUESTPROPERTY_CONTENT_TYPE);
-        return contentType.substring(contentType.indexOf("charset=") + "charset=".length());
+        String charsetAsString = contentType.substring(contentType.indexOf("charset=") + "charset=".length());
+        return Charset.forName(charsetAsString);
     }
 
     /**
