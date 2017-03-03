@@ -14,8 +14,6 @@
 
 package com.github.dannil.scbjavaclient.http;
 
-import java.util.Objects;
-
 /**
  * <p>Enumerable for the most common HTTP status codes returned by the API.</p>
  *
@@ -79,7 +77,7 @@ public enum HttpStatusCode {
      */
     public static HttpStatusCode valueOf(int code) {
         for (HttpStatusCode h : HttpStatusCode.values()) {
-            if (Objects.equals(h.getCode(), code)) {
+            if (h.getCode() == code) {
                 return h;
             }
         }
