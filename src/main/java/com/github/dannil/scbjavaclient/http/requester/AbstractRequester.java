@@ -50,6 +50,8 @@ public abstract class AbstractRequester {
 
     private static Properties properties;
 
+    private Charset charset;
+
     private Map<String, String> requestProperties;
 
     static {
@@ -79,7 +81,6 @@ public abstract class AbstractRequester {
     protected AbstractRequester(Charset charset) {
         this.requestProperties = new HashMap<>();
         this.requestProperties.put(REQUESTPROPERTY_ACCEPT, "application/json");
-        this.requestProperties.put(REQUESTPROPERTY_ACCEPT_CHARSET, charset.name());
         this.requestProperties.put(REQUESTPROPERTY_USER_AGENT, createUserAgent());
         setCharset(charset);
     }
@@ -176,9 +177,7 @@ public abstract class AbstractRequester {
      * @return the charset
      */
     public final Charset getCharset() {
-        String contentType = this.requestProperties.get(REQUESTPROPERTY_CONTENT_TYPE);
-        String charsetAsString = contentType.substring(contentType.indexOf("charset=") + "charset=".length());
-        return Charset.forName(charsetAsString);
+        return this.charset;
     }
 
     /**
@@ -188,8 +187,10 @@ public abstract class AbstractRequester {
      *            the charset
      */
     public final void setCharset(Charset charset) {
+        this.charset = charset;
+        this.requestProperties.put(REQUESTPROPERTY_ACCEPT_CHARSET, this.charset.name());
         this.requestProperties.put(REQUESTPROPERTY_CONTENT_TYPE, "application/json; charset="
-                + charset.name().toLowerCase());
+                + this.charset.name().toLowerCase());
     }
 
     /**
