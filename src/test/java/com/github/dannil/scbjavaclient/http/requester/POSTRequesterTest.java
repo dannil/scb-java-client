@@ -20,7 +20,6 @@ import static org.junit.Assert.assertNull;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
-import com.github.dannil.scbjavaclient.http.RequestMethod;
 import com.github.dannil.scbjavaclient.utility.URLUtility;
 
 import org.junit.Test;
@@ -40,7 +39,7 @@ public class POSTRequesterTest {
 
     @Test
     public void getCharset() {
-        POSTRequester post = (POSTRequester) RequesterFactory.getRequester(RequestMethod.POST);
+        POSTRequester post = new POSTRequester();
 
         assertEquals(StandardCharsets.UTF_8, post.getCharset());
     }
@@ -56,7 +55,7 @@ public class POSTRequesterTest {
 
     @Test
     public void getPayload() {
-        POSTRequester post = (POSTRequester) RequesterFactory.getRequester(RequestMethod.POST);
+        POSTRequester post = new POSTRequester();
         post.setQuery("payload");
 
         assertEquals("payload", post.getQuery());
@@ -64,7 +63,7 @@ public class POSTRequesterTest {
 
     @Test(expected = IllegalStateException.class)
     public void doRequestIllegalStateNullPayload() throws IOException {
-        POSTRequester post = (POSTRequester) RequesterFactory.getRequester(RequestMethod.POST);
+        POSTRequester post = new POSTRequester();
 
         String response = post.getBody(URLUtility.getRootUrl() + "BE/BE0701/MedelAlderNY");
 
