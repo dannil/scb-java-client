@@ -4,10 +4,6 @@
           "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
 
 <module name="Checker">
-	<!-- If you set the basedir property below, then all reported file names 
-		will be relative to the specified directory. See http://checkstyle.sourceforge.net/5.x/config.html#Checker 
-		<property name="basedir" value="${basedir}"/> -->
-
 	<property name="fileExtensions" value="java, properties, xml" />
 
 	<!-- Checks that a package-info.java file exists for each package. -->
@@ -17,7 +13,7 @@
 	<!-- Checks whether files end with a new line. -->
 	<!-- See http://checkstyle.sf.net/config_misc.html#NewlineAtEndOfFile -->
 	<module name="NewlineAtEndOfFile">
-	   <property name="lineSeparator" value="lf"/>
+		<property name="lineSeparator" value="lf" />
 	</module>
 
 	<!-- Checks that property files contain the same keys. -->
