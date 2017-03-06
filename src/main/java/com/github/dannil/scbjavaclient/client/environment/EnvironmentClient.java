@@ -19,6 +19,7 @@ import java.util.Locale;
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.EnvironmentLandAndWaterAreaClient;
 import com.github.dannil.scbjavaclient.client.environment.packagingandpackagingwaste.EnvironmentPackagingAndPackagingWasteClient;
+import com.github.dannil.scbjavaclient.client.environment.waste.EnvironmentWasteClient;
 
 /**
  * <p>Client which handles environment data fetching.</p>
@@ -31,6 +32,8 @@ public class EnvironmentClient extends AbstractContainerClient {
 
     private EnvironmentPackagingAndPackagingWasteClient environmentPackagingAndPackagingWasteClient;
 
+    private EnvironmentWasteClient environmentWasteClient;
+
     /**
      * <p>Default constructor. Initializes values and creates sub-clients.</p>
      */
@@ -42,6 +45,9 @@ public class EnvironmentClient extends AbstractContainerClient {
 
         this.environmentPackagingAndPackagingWasteClient = new EnvironmentPackagingAndPackagingWasteClient();
         addClient(this.environmentPackagingAndPackagingWasteClient);
+
+        this.environmentWasteClient = new EnvironmentWasteClient();
+        addClient(this.environmentWasteClient);
     }
 
     /**
@@ -74,6 +80,15 @@ public class EnvironmentClient extends AbstractContainerClient {
      */
     public EnvironmentPackagingAndPackagingWasteClient packagingAndPackagingWaste() {
         return this.environmentPackagingAndPackagingWasteClient;
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with environment waste data.</p>
+     *
+     * @return a client for environment waste data
+     */
+    public EnvironmentWasteClient waste() {
+        return this.environmentWasteClient;
     }
 
     @Override
