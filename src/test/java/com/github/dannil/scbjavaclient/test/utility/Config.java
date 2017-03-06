@@ -45,8 +45,8 @@ public final class Config {
     public static long getTimeBetweenCallsAsMilliSeconds() {
         // Time window as returned by the SCB API is specified in milliseconds. The
         // returned value is the time window divided by the number of allowed calls in a
-        // time window
+        // time window. 100 milliseconds is added on afterwards to have some leeway
         double timeBetweenCalls = (double) timeWindow / maxCalls;
-        return (long) (timeBetweenCalls * 1000);
+        return (long) (timeBetweenCalls * 1000) + 100;
     }
 }
