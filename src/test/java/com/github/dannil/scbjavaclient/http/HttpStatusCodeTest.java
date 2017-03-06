@@ -14,6 +14,7 @@
 
 package com.github.dannil.scbjavaclient.http;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
@@ -61,6 +62,22 @@ public class HttpStatusCodeTest {
         HttpStatusCode httpStatusCode = HttpStatusCode.valueOf(code);
 
         assertNull(httpStatusCode);
+    }
+
+    @Test
+    public void valueOfString() {
+        HttpStatusCode httpStatusCode = HttpStatusCode.valueOf("OK");
+
+        assertEquals(200, httpStatusCode.getCode());
+        assertEquals("OK", httpStatusCode.getDescription());
+        assertEquals("200", httpStatusCode.asText());
+    }
+
+    @Test
+    public void values() {
+        HttpStatusCode[] statuses = HttpStatusCode.values();
+
+        assertArrayEquals(HttpStatusCode.values(), statuses);
     }
 
 }
