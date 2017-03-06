@@ -17,6 +17,7 @@ package com.github.dannil.scbjavaclient.client.environment;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
+import com.github.dannil.scbjavaclient.client.environment.industrialwateruse.EnvironmentIndustrialWaterUseClient;
 import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.EnvironmentLandAndWaterAreaClient;
 import com.github.dannil.scbjavaclient.client.environment.packagingandpackagingwaste.EnvironmentPackagingAndPackagingWasteClient;
 import com.github.dannil.scbjavaclient.client.environment.waste.EnvironmentWasteClient;
@@ -27,6 +28,8 @@ import com.github.dannil.scbjavaclient.client.environment.waste.EnvironmentWaste
  * @since 0.0.2
  */
 public class EnvironmentClient extends AbstractContainerClient {
+
+    private EnvironmentIndustrialWaterUseClient environmentIndustrialWaterUseClient;
 
     private EnvironmentLandAndWaterAreaClient environmentLandAndWaterAreaClient;
 
@@ -39,6 +42,9 @@ public class EnvironmentClient extends AbstractContainerClient {
      */
     public EnvironmentClient() {
         super();
+
+        this.environmentIndustrialWaterUseClient = new EnvironmentIndustrialWaterUseClient();
+        addClient(this.environmentIndustrialWaterUseClient);
 
         this.environmentLandAndWaterAreaClient = new EnvironmentLandAndWaterAreaClient();
         addClient(this.environmentLandAndWaterAreaClient);
@@ -60,6 +66,16 @@ public class EnvironmentClient extends AbstractContainerClient {
         this();
 
         setLocale(locale);
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with environment industrial water use
+     * data.</p>
+     *
+     * @return a client for environment industrial water use data
+     */
+    public EnvironmentIndustrialWaterUseClient industrialWaterUse() {
+        return this.environmentIndustrialWaterUseClient;
     }
 
     /**
