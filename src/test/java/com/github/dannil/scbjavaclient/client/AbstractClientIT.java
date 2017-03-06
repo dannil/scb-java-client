@@ -40,27 +40,9 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class AbstractClientIT {
 
-    private static class DummyClient extends AbstractClient {
-
-        protected DummyClient() {
-            super();
-        }
-
-        protected DummyClient(Locale locale) {
-            super(locale);
-        }
-
-        @Override
-        public String getUrl() {
-            // TODO Auto-generated method stub
-            return null;
-        }
-
-    }
-
     @Test
     public void toFallbackUrlDoGetRequest() {
-        DummyClient client = new DummyClient(new Locale("en", "US"));
+        SCBClient client = new SCBClient(new Locale("en", "US"));
 
         String url = client.getRootUrl() + "HE/HE0103/HE0103B/BefolkningAlder";
 
@@ -78,7 +60,7 @@ public class AbstractClientIT {
 
     @Test
     public void toFallbackUrlDoPostRequest() {
-        DummyClient client = new DummyClient(new Locale("en", "US"));
+        SCBClient client = new SCBClient(new Locale("en", "US"));
 
         String url = client.getRootUrl() + "HE/HE0103/HE0103B/BefolkningAlder";
 
@@ -102,7 +84,7 @@ public class AbstractClientIT {
 
     @Test
     public void doPostRequestWithEmptyList() {
-        DummyClient client = new DummyClient(new Locale("sv", "SE"));
+        SCBClient client = new SCBClient(new Locale("sv", "SE"));
 
         String url = client.getRootUrl() + "HE/HE0103/HE0103B/BefolkningAlder";
 
