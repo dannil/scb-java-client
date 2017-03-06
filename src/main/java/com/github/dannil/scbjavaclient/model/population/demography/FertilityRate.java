@@ -34,7 +34,7 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
  */
 public class FertilityRate extends AbstractRegionYearAndValueModel<String, Integer, Double> {
 
-    @JsonProperty("kon")
+    @JsonProperty("Kon")
     private Integer gender;
 
     /**

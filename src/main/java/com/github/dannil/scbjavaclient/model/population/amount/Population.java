@@ -34,13 +34,13 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
  */
 public class Population extends AbstractRegionYearAndValueModel<String, Integer, String> {
 
-    @JsonProperty("civilstand")
+    @JsonProperty("Civilstand")
     private String relationshipStatus;
 
-    @JsonProperty("alder")
+    @JsonProperty("Alder")
     private String age;
 
-    @JsonProperty("kon")
+    @JsonProperty("Kon")
     private Integer gender;
 
     /**

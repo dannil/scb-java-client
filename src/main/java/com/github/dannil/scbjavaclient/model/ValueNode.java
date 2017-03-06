@@ -16,6 +16,7 @@ package com.github.dannil.scbjavaclient.model;
 
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.dannil.scbjavaclient.constants.ModelConstants;
 
 /**
@@ -27,10 +28,13 @@ import com.github.dannil.scbjavaclient.constants.ModelConstants;
  */
 public class ValueNode<V> {
 
+    @JsonProperty("Value")
     private V value;
 
+    @JsonProperty("Code")
     private String code;
 
+    @JsonProperty("Text")
     private String text;
 
     /**

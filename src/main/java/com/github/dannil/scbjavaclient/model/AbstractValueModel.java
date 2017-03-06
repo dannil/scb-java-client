@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public abstract class AbstractValueModel<V> {
 
-    @JsonProperty("values")
+    @JsonProperty("Values")
     private List<ValueNode<V>> values;
 
     /**

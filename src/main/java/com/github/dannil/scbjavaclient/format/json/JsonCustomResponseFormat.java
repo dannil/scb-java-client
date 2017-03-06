@@ -23,7 +23,6 @@ import java.util.Map;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
-import com.github.dannil.scbjavaclient.utility.StringUtility;
 
 /**
  * <p>Class which encapsulates behavior for the custom JSON response format. Note that
@@ -98,19 +97,18 @@ public final class JsonCustomResponseFormat implements IJsonResponseFormat {
             JsonNode valuesNode = entry.get("values");
 
             for (int j = 0; j < keysNode.size(); j++) {
-                String key = StringUtility.lowerCaseFirstLetter(codes.get(j));
-                map.put(key, keysNode.get(j).asText());
+                map.put(codes.get(j), keysNode.get(j).asText());
             }
 
             List<Map<String, String>> values = new ArrayList<>(valuesNode.size());
             for (int k = 0; k < valuesNode.size(); k++) {
                 Map<String, String> contents = new HashMap<>();
-                contents.put("value", valuesNode.get(k).asText());
-                contents.put("code", contentCodes.get(k));
-                contents.put("text", contentCodesTexts.get(k));
+                contents.put("Value", valuesNode.get(k).asText());
+                contents.put("Code", contentCodes.get(k));
+                contents.put("Text", contentCodesTexts.get(k));
                 values.add(contents);
             }
-            map.put("values", values);
+            map.put("Values", values);
 
             this.entries.add(map);
         }

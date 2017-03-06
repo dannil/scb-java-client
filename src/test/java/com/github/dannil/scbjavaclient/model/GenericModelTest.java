@@ -45,10 +45,10 @@ public class GenericModelTest {
         for (Map<String, Object> entry : entries) {
             String toString = entry.toString();
 
-            assertTrue(toString.contains("region"));
-            assertTrue(toString.contains("civilstand"));
-            assertTrue(toString.contains("alder"));
-            assertTrue(toString.contains("tid"));
+            assertTrue(toString.contains("Region"));
+            assertTrue(toString.contains("Civilstand"));
+            assertTrue(toString.contains("Alder"));
+            assertTrue(toString.contains("Tid"));
         }
     }
 
@@ -96,20 +96,20 @@ public class GenericModelTest {
         GenericModel model = new GenericModel(this.json);
         String toString = model.toString();
 
-        assertTrue(toString.contains("region"));
+        assertTrue(toString.contains("Region"));
         assertTrue(toString.contains("00"));
         assertTrue(toString.contains("01"));
         assertTrue(toString.contains("0114"));
 
-        assertTrue(toString.contains("civilstand"));
+        assertTrue(toString.contains("Civilstand"));
         assertTrue(toString.contains("G"));
         assertTrue(toString.contains("OG"));
 
-        assertTrue(toString.contains("alder"));
+        assertTrue(toString.contains("Alder"));
         assertTrue(toString.contains("45"));
         assertTrue(toString.contains("50"));
 
-        assertTrue(toString.contains("tid"));
+        assertTrue(toString.contains("Tid"));
         assertTrue(toString.contains("2011"));
         assertTrue(toString.contains("2012"));
     }

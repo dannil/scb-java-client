@@ -34,7 +34,7 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
  */
 public class NumberOfChildrenBornWithFirstName extends AbstractYearAndValueModel<Integer, String> {
 
-    @JsonProperty("tilltalsnamn")
+    @JsonProperty("Tilltalsnamn")
     private String firstname;
 
     /**

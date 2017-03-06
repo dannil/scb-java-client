@@ -34,7 +34,7 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
  */
 public class Area extends AbstractRegionYearAndValueModel<String, Integer, Double> {
 
-    @JsonProperty("arealTyp")
+    @JsonProperty("ArealTyp")
     private String type;
 
     /**
