@@ -28,7 +28,7 @@ import com.github.dannil.scbjavaclient.model.environment.waste.TreatedWaste;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
- * <p>Client which handles environment land and water area data fetching.</p>
+ * <p>Client which handles environment waste data fetching.</p>
  *
  * @since 0.2.0
  */
