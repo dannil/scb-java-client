@@ -19,6 +19,7 @@ import java.util.Locale;
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.environment.industrialwateruse.EnvironmentIndustrialWaterUseClient;
 import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.EnvironmentLandAndWaterAreaClient;
+import com.github.dannil.scbjavaclient.client.environment.landuse.EnvironmentLandUseClient;
 import com.github.dannil.scbjavaclient.client.environment.packagingandpackagingwaste.EnvironmentPackagingAndPackagingWasteClient;
 import com.github.dannil.scbjavaclient.client.environment.waste.EnvironmentWasteClient;
 
@@ -32,6 +33,8 @@ public class EnvironmentClient extends AbstractContainerClient {
     private EnvironmentIndustrialWaterUseClient environmentIndustrialWaterUseClient;
 
     private EnvironmentLandAndWaterAreaClient environmentLandAndWaterAreaClient;
+
+    private EnvironmentLandUseClient environmentLandUseClient;
 
     private EnvironmentPackagingAndPackagingWasteClient environmentPackagingAndPackagingWasteClient;
 
@@ -48,6 +51,9 @@ public class EnvironmentClient extends AbstractContainerClient {
 
         this.environmentLandAndWaterAreaClient = new EnvironmentLandAndWaterAreaClient();
         addClient(this.environmentLandAndWaterAreaClient);
+
+        this.environmentLandUseClient = new EnvironmentLandUseClient();
+        addClient(this.environmentLandUseClient);
 
         this.environmentPackagingAndPackagingWasteClient = new EnvironmentPackagingAndPackagingWasteClient();
         addClient(this.environmentPackagingAndPackagingWasteClient);
@@ -89,6 +95,15 @@ public class EnvironmentClient extends AbstractContainerClient {
     }
 
     /**
+     * <p>Retrieve the client for interacting with environment land use data.</p>
+     *
+     * @return a client for environment land use data
+     */
+    public EnvironmentLandUseClient landUse() {
+        return this.environmentLandUseClient;
+    }
+
+    /**
      * <p>Retrieve the client for interacting with environment packaging and packaging
      * waste data.</p>
      *
@@ -105,6 +120,15 @@ public class EnvironmentClient extends AbstractContainerClient {
      */
     public EnvironmentWasteClient waste() {
         return this.environmentWasteClient;
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with environment water withdrawal data.</p>
+     *
+     * @return a client for environment water withdrawal data
+     */
+    public EnvironmentWasteClient waterWithdrawal() {
+        return this.waterWithdrawal();
     }
 
     @Override
