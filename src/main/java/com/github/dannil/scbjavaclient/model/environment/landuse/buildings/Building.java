@@ -34,7 +34,7 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
  */
 public class Building extends AbstractRegionYearAndValueModel<String, Integer, String> {
 
-    @JsonProperty("byggnadstyp")
+    @JsonProperty("Byggnadstyp")
     private Integer type;
 
     /**

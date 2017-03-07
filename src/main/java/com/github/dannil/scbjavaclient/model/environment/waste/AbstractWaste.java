@@ -29,7 +29,7 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
  */
 public abstract class AbstractWaste extends AbstractYearAndValueModel<Integer, String> {
 
-    @JsonProperty("avfallsslag")
+    @JsonProperty("Avfallsslag")
     private String wasteCategory;
 
     /**

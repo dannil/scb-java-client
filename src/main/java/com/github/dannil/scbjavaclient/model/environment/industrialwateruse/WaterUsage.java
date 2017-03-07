@@ -29,7 +29,7 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
  */
 public class WaterUsage extends AbstractRegionYearAndValueModel<String, Integer, String> {
 
-    @JsonProperty("vattenTyp")
+    @JsonProperty("VattenTyp")
     private Integer type;
 
     /**

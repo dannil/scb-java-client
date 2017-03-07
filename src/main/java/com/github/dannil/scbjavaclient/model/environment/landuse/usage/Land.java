@@ -35,7 +35,7 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
  */
 public class Land extends AbstractRegionYearAndValueModel<String, Integer, String> {
 
-    @JsonProperty("markanvandningsklass")
+    @JsonProperty("Markanvandningsklass")
     private Integer category;
 
     /**

@@ -34,7 +34,7 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
  */
 public class PackagingAndPackagingWaste extends AbstractYearAndValueModel<Integer, Integer> {
 
-    @JsonProperty("forpackning")
+    @JsonProperty("Forpackning")
     private Integer type;
 
     /**

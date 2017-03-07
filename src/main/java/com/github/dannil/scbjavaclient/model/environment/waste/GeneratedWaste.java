@@ -33,7 +33,7 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
  */
 public class GeneratedWaste extends AbstractWaste {
 
-    @JsonProperty("sNI2007MI")
+    @JsonProperty("SNI2007MI")
     private String industrialClassification;
 
     /**

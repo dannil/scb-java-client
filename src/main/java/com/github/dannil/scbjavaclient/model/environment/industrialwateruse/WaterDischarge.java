@@ -34,7 +34,7 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
  */
 public class WaterDischarge extends AbstractRegionYearAndValueModel<String, Integer, String> {
 
-    @JsonProperty("recipient")
+    @JsonProperty("Recipient")
     private Integer recipient;
 
     /**

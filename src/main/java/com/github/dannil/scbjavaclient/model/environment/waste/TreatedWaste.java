@@ -33,7 +33,7 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
  */
 public class TreatedWaste extends AbstractWaste {
 
-    @JsonProperty("behTyp")
+    @JsonProperty("BehTyp")
     private Integer treatmentCategory;
 
     /**
