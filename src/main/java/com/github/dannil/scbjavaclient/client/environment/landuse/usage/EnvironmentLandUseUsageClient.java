@@ -82,16 +82,7 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
      */
     public List<ArableAndForestLand> getArableAndForestLand(Collection<String> regions, Collection<Integer> categories,
             Collection<Integer> years) {
-        Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("MI0803AI"));
-        mappings.put("Region", regions);
-        mappings.put("Markanvandningsklass", categories);
-        mappings.put("Tid", years);
-
-        String response = doPostRequest(getUrl() + "MarkanvJbSk", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(ArableAndForestLand.class);
+        return generate(Arrays.asList("MI0803AI"), regions, categories, years, "MarkanvJbSk", ArableAndForestLand.class);
     }
 
     /**
@@ -122,16 +113,7 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
      */
     public List<BuiltUpLand> getBuiltUpLand(Collection<String> regions, Collection<Integer> categories,
             Collection<Integer> years) {
-        Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("MI0803AC"));
-        mappings.put("Region", regions);
-        mappings.put("Markanvandningsklass", categories);
-        mappings.put("Tid", years);
-
-        String response = doPostRequest(getUrl() + "MarkanvBebyggdLnKn", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(BuiltUpLand.class);
+        return generate(Arrays.asList("MI0803AC"), regions, categories, years, "MarkanvBebyggdLnKn", BuiltUpLand.class);
     }
 
     /**
@@ -162,16 +144,7 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
      */
     public List<LandUseByCounty> getLandUseByCounty(Collection<String> regions, Collection<Integer> categories,
             Collection<Integer> years) {
-        Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("MI0803AA"));
-        mappings.put("Region", regions);
-        mappings.put("Markanvandningsklass", categories);
-        mappings.put("Tid", years);
-
-        String response = doPostRequest(getUrl() + "MarkanvLan", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(LandUseByCounty.class);
+        return generate(Arrays.asList("MI0803AA"), regions, categories, years, "MarkanvLan", LandUseByCounty.class);
     }
 
     /**
@@ -202,16 +175,38 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
      */
     public List<LandUseByMunicipality> getLandUseByMunicipality(Collection<String> regions,
             Collection<Integer> categories, Collection<Integer> years) {
+        return generate(Arrays.asList("MI0803AB"), regions, categories, years, "MarkanvKn", LandUseByMunicipality.class);
+    }
+
+    /**
+     * <p>Common generator method for the methods in this class.</p>
+     *
+     * @param contentCodes
+     *            the content codes
+     * @param regions
+     *            the regions
+     * @param categories
+     *            the categories
+     * @param years
+     *            the years
+     * @param table
+     *            the table
+     * @param clazz
+     *            the class to convert the generated data to
+     * @return a <code>List</code> of the specified class
+     */
+    private <T> List<T> generate(Collection<String> contentCodes, Collection<String> regions,
+            Collection<Integer> categories, Collection<Integer> years, String table, Class<T> clazz) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("MI0803AB"));
+        mappings.put("ContentsCode", contentCodes);
         mappings.put("Region", regions);
         mappings.put("Markanvandningsklass", categories);
         mappings.put("Tid", years);
 
-        String response = doPostRequest(getUrl() + "MarkanvKn", QueryBuilder.build(mappings));
+        String response = doPostRequest(getUrl() + table, QueryBuilder.build(mappings));
 
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(LandUseByMunicipality.class);
+        return format.toListOf(clazz);
     }
 
     @Override
