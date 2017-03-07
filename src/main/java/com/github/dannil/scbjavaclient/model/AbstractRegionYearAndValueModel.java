@@ -34,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public abstract class AbstractRegionYearAndValueModel<R, Y, V> extends AbstractYearAndValueModel<Y, V> {
 
-    @JsonProperty("region")
+    @JsonProperty("Region")
     private R region;
 
     /**

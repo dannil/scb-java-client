@@ -34,10 +34,10 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
  */
 public class PartnershipChange extends AbstractRegionYearAndValueModel<String, Integer, String> {
 
-    @JsonProperty("civilstand")
+    @JsonProperty("Civilstand")
     private String maritalStatus;
 
-    @JsonProperty("kon")
+    @JsonProperty("Kon")
     private String sex;
 
     /**
@@ -48,7 +48,7 @@ public class PartnershipChange extends AbstractRegionYearAndValueModel<String, I
     }
 
     /**
-     * Overloaded constructor.
+     * <p>Overloaded constructor.</p>
      *
      * @param region
      *            the region

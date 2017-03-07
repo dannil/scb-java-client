@@ -34,10 +34,10 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
  */
 public class LiveBirth extends AbstractRegionYearAndValueModel<String, Integer, Long> {
 
-    @JsonProperty("alderModer")
+    @JsonProperty("AlderModer")
     private String motherAge;
 
-    @JsonProperty("kon")
+    @JsonProperty("Kon")
     private Integer gender;
 
     /**
