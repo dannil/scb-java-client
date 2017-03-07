@@ -24,7 +24,7 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class WasteTest {
 
-    private static class DummyWaste extends Waste {
+    private static class DummyWaste extends AbstractWaste {
 
         @Override
         public String toString() {
@@ -35,29 +35,29 @@ public class WasteTest {
 
     @Test
     public void equals() {
-        Waste waste = new DummyWaste();
-        Waste waste2 = new DummyWaste();
+        AbstractWaste waste = new DummyWaste();
+        AbstractWaste waste2 = new DummyWaste();
 
         assertEquals(waste, waste2);
     }
 
     @Test
     public void equalsItself() {
-        Waste waste = new DummyWaste();
+        AbstractWaste waste = new DummyWaste();
 
         assertEquals(waste, waste);
     }
 
     @Test
     public void notEqualsNull() {
-        Waste waste = new DummyWaste();
+        AbstractWaste waste = new DummyWaste();
 
         assertNotEquals(waste, null);
     }
 
     @Test
     public void notEqualsIncompatibleObject() {
-        Waste waste = new DummyWaste();
+        AbstractWaste waste = new DummyWaste();
 
         assertNotEquals(waste, new Object());
     }

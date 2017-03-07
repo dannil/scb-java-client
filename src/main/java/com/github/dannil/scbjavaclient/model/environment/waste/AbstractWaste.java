@@ -1,3 +1,17 @@
+/*
+ * Copyright 2017 Daniel Nilsson
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
 package com.github.dannil.scbjavaclient.model.environment.waste;
 
 import java.util.List;
@@ -13,7 +27,7 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
  *
  * @since 0.2.0
  */
-public abstract class Waste extends AbstractYearAndValueModel<Integer, String> {
+public abstract class AbstractWaste extends AbstractYearAndValueModel<Integer, String> {
 
     @JsonProperty("avfallsslag")
     private String wasteCategory;
@@ -21,7 +35,7 @@ public abstract class Waste extends AbstractYearAndValueModel<Integer, String> {
     /**
      * <p>Default constructor.</p>
      */
-    public Waste() {
+    public AbstractWaste() {
         super();
     }
 
@@ -35,7 +49,7 @@ public abstract class Waste extends AbstractYearAndValueModel<Integer, String> {
      * @param values
      *            the values
      */
-    public Waste(String wasteCategory, Integer year, List<ValueNode<String>> values) {
+    public AbstractWaste(String wasteCategory, Integer year, List<ValueNode<String>> values) {
         super(year, values);
         this.wasteCategory = wasteCategory;
     }
@@ -72,11 +86,11 @@ public abstract class Waste extends AbstractYearAndValueModel<Integer, String> {
         if (obj == null) {
             return false;
         }
-        if (!(obj instanceof Waste)) {
+        if (!(obj instanceof AbstractWaste)) {
             return false;
         }
 
-        Waste other = (Waste) obj;
+        AbstractWaste other = (AbstractWaste) obj;
         return super.equals(obj) && Objects.equals(this.wasteCategory, other.wasteCategory);
     }
 

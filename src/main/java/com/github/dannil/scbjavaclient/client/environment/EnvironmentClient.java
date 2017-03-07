@@ -122,15 +122,6 @@ public class EnvironmentClient extends AbstractContainerClient {
         return this.environmentWasteClient;
     }
 
-    /**
-     * <p>Retrieve the client for interacting with environment water withdrawal data.</p>
-     *
-     * @return a client for environment water withdrawal data
-     */
-    public EnvironmentWasteClient waterWithdrawal() {
-        return this.waterWithdrawal();
-    }
-
     @Override
     public String getUrl() {
         return getRootUrl() + "MI/";

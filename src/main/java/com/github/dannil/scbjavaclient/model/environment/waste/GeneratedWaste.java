@@ -31,7 +31,7 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
  *
  * @since 0.2.0
  */
-public class GeneratedWaste extends Waste {
+public class GeneratedWaste extends AbstractWaste {
 
     @JsonProperty("sNI2007MI")
     private String industrialClassification;
