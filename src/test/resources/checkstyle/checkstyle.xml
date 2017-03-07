@@ -241,7 +241,7 @@
     <module name="AnonInnerLength" />
     <module name="ExecutableStatementCount" />
     <module name="LineLength">
-      <property name="max" value="120" />
+      <property name="max" value="130" />
     </module>
     <module name="MethodCount" />
     <module name="MethodLength" />

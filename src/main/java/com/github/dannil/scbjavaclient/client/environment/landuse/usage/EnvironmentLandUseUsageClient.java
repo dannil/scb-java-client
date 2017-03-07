@@ -193,6 +193,8 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
      *            the table
      * @param clazz
      *            the class to convert the generated data to
+     * @param <T>
+     *            the data type of the list
      * @return a <code>List</code> of the specified class
      */
     private <T> List<T> generate(Collection<String> contentCodes, Collection<String> regions,
