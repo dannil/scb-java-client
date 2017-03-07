@@ -22,7 +22,7 @@ import com.github.dannil.scbjavaclient.http.requester.AbstractRequester;
 import com.github.dannil.scbjavaclient.http.requester.GETRequester;
 
 /**
- * <p>Model for arable and and forest land data.</p>
+ * <p>Model for arable land and forest land data.</p>
  *
  * @since 0.2.0
  */

@@ -114,7 +114,7 @@ public class EnvironmentIndustrialWaterUseClient extends AbstractClient {
      *            the type to fetch data for
      * @param years
      *            the years to fetch data for
-     * @return the water abstraction data wrapped in a list of
+     * @return the water use data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.environment.industrialwateruse.WaterUse
      *         WaterUse} objects
      */
@@ -134,7 +134,7 @@ public class EnvironmentIndustrialWaterUseClient extends AbstractClient {
     /**
      * <p>Fetch all water discharge data.</p>
      *
-     * @return the water use data wrapped in a list of
+     * @return the water discharge data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.environment.industrialwateruse.WaterDischarge
      *         WaterDischarge} objects
      *

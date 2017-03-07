@@ -48,15 +48,15 @@ public class TreatedWaste extends AbstractWaste {
      *
      * @param treatmentCategory
      *            the treatment category
-     * @param wasteCategory
-     *            the waste category
+     * @param category
+     *            the category
      * @param year
      *            the year
      * @param values
      *            the values
      */
-    public TreatedWaste(Integer treatmentCategory, String wasteCategory, Integer year, List<ValueNode<String>> values) {
-        super(wasteCategory, year, values);
+    public TreatedWaste(Integer treatmentCategory, String category, Integer year, List<ValueNode<String>> values) {
+        super(category, year, values);
         this.treatmentCategory = treatmentCategory;
     }
 

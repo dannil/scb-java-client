@@ -14,22 +14,17 @@
 
 package com.github.dannil.scbjavaclient.model.environment.landuse.usage;
 
-import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.dannil.scbjavaclient.constants.ModelConstants;
-import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
-import com.github.dannil.scbjavaclient.http.requester.AbstractRequester;
-import com.github.dannil.scbjavaclient.http.requester.GETRequester;
 import com.github.dannil.scbjavaclient.model.AbstractRegionYearAndValueModel;
 import com.github.dannil.scbjavaclient.model.ValueNode;
 
 /**
- * <p>Abstract model for land data. Holds data which are common for all classes located in
- * this package.</p>
+ * <p>Model for land data. Holds data which are common for all classes located in this
+ * package.</p>
  *
  * @since 0.2.0
  */
@@ -118,20 +113,6 @@ public class Land extends AbstractRegionYearAndValueModel<String, Integer, Strin
         builder.append(']');
 
         return builder.toString();
-    }
-
-    /**
-     * <p>Get the available codes and their respective values for the arable and and
-     * forest landdata from the API.</p>
-     *
-     * @return a list of the available codes and their values
-     */
-    public static Map<String, Collection<String>> getInputs() {
-        AbstractRequester get = new GETRequester();
-        String response = get.getBodyFromTable("MI/MI0802/Areal2012");
-
-        JsonAPITableFormat format = new JsonAPITableFormat(response);
-        return format.getInputs();
     }
 
 }

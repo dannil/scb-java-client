@@ -48,16 +48,16 @@ public class GeneratedWaste extends AbstractWaste {
      *
      * @param industrialClassification
      *            the industrial classification
-     * @param wasteCategory
-     *            the waste category
+     * @param category
+     *            the category
      * @param year
      *            the year
      * @param values
      *            the values
      */
-    public GeneratedWaste(String industrialClassification, String wasteCategory, Integer year,
+    public GeneratedWaste(String industrialClassification, String category, Integer year,
             List<ValueNode<String>> values) {
-        super(wasteCategory, year, values);
+        super(category, year, values);
         this.industrialClassification = industrialClassification;
     }
 
