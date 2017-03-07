@@ -131,11 +131,6 @@ public class LandTest {
     }
 
     @Test
-    public void getInputs() {
-        assertNotNull(Land.getInputs());
-    }
-
-    @Test
     public void equals() {
         Land land = new Land();
         Land land2 = new Land();
