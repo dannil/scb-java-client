@@ -19,6 +19,7 @@ import java.util.Locale;
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.finance.institutions.FinanceInstitutionsClient;
 import com.github.dannil.scbjavaclient.client.finance.investmentfunds.FinanceInvestmentFundsClient;
+import com.github.dannil.scbjavaclient.client.finance.securities.FinanceSecuritiesClient;
 import com.github.dannil.scbjavaclient.client.finance.shareholders.FinanceShareholdersClient;
 
 /**
@@ -31,6 +32,8 @@ public class FinanceClient extends AbstractContainerClient {
     private FinanceInstitutionsClient financeInstitutionsClient;
 
     private FinanceInvestmentFundsClient financeInvestmentFundsClient;
+
+    private FinanceSecuritiesClient financeSecuritiesClient;
 
     private FinanceShareholdersClient financeShareholdersClient;
 
@@ -45,6 +48,9 @@ public class FinanceClient extends AbstractContainerClient {
 
         this.financeInvestmentFundsClient = new FinanceInvestmentFundsClient();
         addClient(this.financeInvestmentFundsClient);
+
+        this.financeSecuritiesClient = new FinanceSecuritiesClient();
+        addClient(this.financeSecuritiesClient);
 
         this.financeShareholdersClient = new FinanceShareholdersClient();
         addClient(this.financeShareholdersClient);
@@ -78,6 +84,15 @@ public class FinanceClient extends AbstractContainerClient {
      */
     public FinanceInvestmentFundsClient investmentFunds() {
         return this.financeInvestmentFundsClient;
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with finance securities data.</p>
+     *
+     * @return a client for finance securities data
+     */
+    public FinanceSecuritiesClient securities() {
+        return this.financeSecuritiesClient;
     }
 
     /**
