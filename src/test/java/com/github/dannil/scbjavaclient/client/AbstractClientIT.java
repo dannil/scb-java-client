@@ -30,6 +30,7 @@ import java.util.Map;
 
 import com.github.dannil.scbjavaclient.exception.SCBClientForbiddenException;
 import com.github.dannil.scbjavaclient.exception.SCBClientNotFoundException;
+import com.github.dannil.scbjavaclient.test.RemoteIntegrationTestSuite;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 import org.apache.commons.io.FilenameUtils;
@@ -38,7 +39,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class AbstractClientIT {
+public class AbstractClientIT extends RemoteIntegrationTestSuite {
 
     @Test
     public void toFallbackUrlDoGetRequest() {

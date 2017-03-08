@@ -14,6 +14,7 @@
 
 package com.github.dannil.scbjavaclient.model;
 
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
@@ -40,7 +41,9 @@ public class GenericModelTest {
     @Test
     public void getEntries() {
         GenericModel model = new GenericModel(this.json);
+
         Collection<Map<String, Object>> entries = model.getEntries();
+        assertNotEquals(0, entries.size());
 
         for (Map<String, Object> entry : entries) {
             String toString = entry.toString();
@@ -57,20 +60,41 @@ public class GenericModelTest {
         GenericModel model = new GenericModel(this.json);
 
         Map<String, Collection<String>> inputs = new HashMap<>();
-        inputs.put("region", Arrays.asList("01", "0114"));
-        inputs.put("alder", Arrays.asList("50"));
+        inputs.put("Region", Arrays.asList("01", "0114"));
+        inputs.put("Alder", Arrays.asList("50"));
 
         Collection<Map<String, Object>> entries = model.getEntries(inputs);
+        assertNotEquals(0, entries.size());
 
         for (Map<String, Object> entry : entries) {
             String toString = entry.toString();
 
-            assertTrue(toString.contains("region"));
+            assertTrue(toString.contains("Region"));
             assertTrue(toString.contains("01") || toString.contains("0114"));
-            assertTrue(toString.contains("alder"));
+            assertTrue(toString.contains("Alder"));
             assertTrue(toString.contains("50"));
-            assertTrue(toString.contains("civilstand"));
-            assertTrue(toString.contains("tid"));
+            assertTrue(toString.contains("Civilstand"));
+            assertTrue(toString.contains("Tid"));
+        }
+    }
+
+    @Test
+    public void getEntriesEmptyInputs() {
+        GenericModel model = new GenericModel(this.json);
+        Map<String, Collection<String>> inputs = new HashMap<>();
+
+        Collection<Map<String, Object>> entries = model.getEntries(inputs);
+        assertNotEquals(0, entries.size());
+
+        for (Map<String, Object> entry : entries) {
+            String toString = entry.toString();
+
+            assertTrue(toString.contains("Region"));
+            assertTrue(toString.contains("01") || toString.contains("0114"));
+            assertTrue(toString.contains("Alder"));
+            assertTrue(toString.contains("45") || toString.contains("50"));
+            assertTrue(toString.contains("Civilstand"));
+            assertTrue(toString.contains("Tid"));
         }
     }
 
@@ -78,16 +102,17 @@ public class GenericModelTest {
     public void getEntriesKeyAndValue() {
         GenericModel model = new GenericModel(this.json);
 
-        Collection<Map<String, Object>> entries = model.getEntries("civilstand", "OG");
+        Collection<Map<String, Object>> entries = model.getEntries("Civilstand", "OG");
+        assertNotEquals(0, entries.size());
 
         for (Map<String, Object> entry : entries) {
             String toString = entry.toString();
 
-            assertTrue(toString.contains("civilstand"));
+            assertTrue(toString.contains("Civilstand"));
             assertTrue(toString.contains("OG"));
-            assertTrue(toString.contains("region"));
-            assertTrue(toString.contains("alder"));
-            assertTrue(toString.contains("tid"));
+            assertTrue(toString.contains("Region"));
+            assertTrue(toString.contains("Alder"));
+            assertTrue(toString.contains("Tid"));
         }
     }
 
