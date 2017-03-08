@@ -17,6 +17,7 @@ package com.github.dannil.scbjavaclient.client.finance;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
+import com.github.dannil.scbjavaclient.client.finance.institutions.FinanceInstitutionsClient;
 import com.github.dannil.scbjavaclient.client.finance.investmentfunds.FinanceInvestmentFundsClient;
 import com.github.dannil.scbjavaclient.client.finance.shareholders.FinanceShareholdersClient;
 
@@ -27,6 +28,8 @@ import com.github.dannil.scbjavaclient.client.finance.shareholders.FinanceShareh
  */
 public class FinanceClient extends AbstractContainerClient {
 
+    private FinanceInstitutionsClient financeInstitutionsClient;
+
     private FinanceInvestmentFundsClient financeInvestmentFundsClient;
 
     private FinanceShareholdersClient financeShareholdersClient;
@@ -36,6 +39,9 @@ public class FinanceClient extends AbstractContainerClient {
      */
     public FinanceClient() {
         super();
+
+        this.financeInstitutionsClient = new FinanceInstitutionsClient();
+        addClient(this.financeInstitutionsClient);
 
         this.financeInvestmentFundsClient = new FinanceInvestmentFundsClient();
         addClient(this.financeInvestmentFundsClient);
@@ -54,6 +60,15 @@ public class FinanceClient extends AbstractContainerClient {
         this();
 
         setLocale(locale);
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with financial institutions data.</p>
+     *
+     * @return a client for financial institutions data
+     */
+    public FinanceInstitutionsClient institutions() {
+        return this.financeInstitutionsClient;
     }
 
     /**
