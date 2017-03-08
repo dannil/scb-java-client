@@ -50,10 +50,34 @@ public class FinanceInstitutionsClient extends AbstractClient {
         super(locale);
     }
 
+    /**
+     * <p>Fetch all institution data.</p>
+     *
+     * @return the institution data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.finance.institutions.Institution
+     *         Institution} objects
+     *
+     * @see #getInstitutions(Collection, Collection, Collection, Collection)
+     */
     public List<Institution> getInstitutions() {
         return getInstitutions(null, null, null, null);
     }
 
+    /**
+     * <p>Fetch all institution data which match the input constraints.</p>
+     *
+     * @param institutions
+     *            the institutions to fetch data for
+     * @param items
+     *            the items to fetch data for
+     * @param currencies
+     *            the currencies to fetch data for
+     * @param months
+     *            the months to fetch data for
+     * @return the institution data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.finance.institutions.Institution
+     *         Institution} objects
+     */
     public List<Institution> getInstitutions(Collection<String> institutions, Collection<String> items,
             Collection<String> currencies, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();

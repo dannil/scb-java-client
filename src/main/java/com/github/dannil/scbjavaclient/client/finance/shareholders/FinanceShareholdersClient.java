@@ -53,10 +53,30 @@ public class FinanceShareholdersClient extends AbstractClient {
         super(locale);
     }
 
+    /**
+     * <p>Fetch all ownership of shares data.</p>
+     *
+     * @return the ownership of shares data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.finance.shareholders.OwnershipOfShares
+     *         OwnershipOfShares} objects
+     *
+     * @see #getOwnershipOfShares(Collection, Collection)
+     */
     public List<OwnershipOfShares> getOwnershipOfShares() {
         return getOwnershipOfShares(null, null);
     }
 
+    /**
+     * <p>Fetch all ownership of shares data which match the input constraints.</p>
+     *
+     * @param sectors
+     *            the sectors to fetch data for
+     * @param halfYears
+     *            the half years to fetch data for
+     * @return the ownership of shares data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.finance.shareholders.OwnershipOfShares
+     *         OwnershipOfShares} objects
+     */
     public List<OwnershipOfShares> getOwnershipOfShares(Collection<String> sectors, Collection<String> halfYears) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("ContentsCode", Arrays.asList("FM0201A1", "FM0201A2"));
@@ -69,10 +89,33 @@ public class FinanceShareholdersClient extends AbstractClient {
         return format.toListOf(OwnershipOfShares.class);
     }
 
+    /**
+     * <p>Fetch all ownership of shares by marketplace data.</p>
+     *
+     * @return the ownership of shares data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.finance.shareholders.OwnershipOfSharesByMarketplace
+     *         OwnershipOfSharesByMarketplace} objects
+     *
+     * @see #getOwnershipOfSharesByMarketplace(Collection, Collection, Collection)
+     */
     public List<OwnershipOfSharesByMarketplace> getOwnershipOfSharesByMarketplace() {
         return getOwnershipOfSharesByMarketplace(null, null, null);
     }
 
+    /**
+     * <p>Fetch all ownership of shares by marketplace data which match the input
+     * constraints.</p>
+     *
+     * @param sectors
+     *            the sectors to fetch data for
+     * @param halfYears
+     *            the half years to fetch data for
+     * @param marketplaces
+     *            the marketplaces to fetch data for
+     * @return the ownership of shares data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.finance.shareholders.OwnershipOfSharesByMarketplace
+     *         OwnershipOfSharesByMarketplace} objects
+     */
     public List<OwnershipOfSharesByMarketplace> getOwnershipOfSharesByMarketplace(Collection<String> sectors,
             Collection<String> marketplaces, Collection<String> halfYears) {
         Map<String, Collection<?>> mappings = new HashMap<>();
@@ -87,10 +130,33 @@ public class FinanceShareholdersClient extends AbstractClient {
         return format.toListOf(OwnershipOfSharesByMarketplace.class);
     }
 
+    /**
+     * <p>Fetch all ownership of shares by series data.</p>
+     *
+     * @return the ownership of series data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.finance.shareholders.OwnershipOfSharesBySeries
+     *         OwnershipOfSharesBySeries} objects
+     *
+     * @see #getOwnershipOfSharesBySeries(Collection, Collection, Collection)
+     */
     public List<OwnershipOfSharesBySeries> getOwnershipOfSharesBySeries() {
         return getOwnershipOfSharesBySeries(null, null, null);
     }
 
+    /**
+     * <p>Fetch all ownership of shares by series data which match the input
+     * constraints.</p>
+     *
+     * @param sectors
+     *            the sectors to fetch data for
+     * @param halfYears
+     *            the half years to fetch data for
+     * @param series
+     *            the series to fetch data for
+     * @return the ownership of series data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.finance.shareholders.OwnershipOfSharesBySeries
+     *         OwnershipOfSharesBySeries} objects
+     */
     public List<OwnershipOfSharesBySeries> getOwnershipOfSharesBySeries(Collection<String> sectors,
             Collection<String> series, Collection<String> halfYears) {
         Map<String, Collection<?>> mappings = new HashMap<>();
@@ -105,10 +171,31 @@ public class FinanceShareholdersClient extends AbstractClient {
         return format.toListOf(OwnershipOfSharesBySeries.class);
     }
 
+    /**
+     * <p>Fetch all foreign ownership of shares data.</p>
+     *
+     * @return the foreign ownership of shares data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.finance.shareholders.ForeignOwnershipOfShares
+     *         ForeignOwnershipOfShares} objects
+     *
+     * @see #getForeignOwnershipOfShares(Collection, Collection)
+     */
     public List<ForeignOwnershipOfShares> getForeignOwnershipOfShares() {
         return getForeignOwnershipOfShares(null, null);
     }
 
+    /**
+     * <p>Fetch all foreign ownership of shares data which match the input
+     * constraints.</p>
+     *
+     * @param countries
+     *            the countries to fetch data for
+     * @param halfYears
+     *            the half years to fetch data for
+     * @return the foreign ownership of shares data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.finance.shareholders.ForeignOwnershipOfShares
+     *         ForeignOwnershipOfShares} objects
+     */
     public List<ForeignOwnershipOfShares> getForeignOwnershipOfShares(Collection<String> countries,
             Collection<String> halfYears) {
         Map<String, Collection<?>> mappings = new HashMap<>();

@@ -50,10 +50,33 @@ public class FinanceInvestmentFundsClient extends AbstractClient {
         super(locale);
     }
 
+    /**
+     * <p>Fetch all ownership of investment fund shares data.</p>
+     *
+     * @return the ownership of investment fund shares data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.finance.investmentfunds.OwnershipOfInvestmentFundShares
+     *         OwnershipOfInvestmentFundShares} objects
+     *
+     * @see #getOwnershipOfInvestmentFundShares(Collection, Collection, Collection)
+     */
     public List<OwnershipOfInvestmentFundShares> getOwnershipOfInvestmentFundShares() {
         return getOwnershipOfInvestmentFundShares(null, null, null);
     }
 
+    /**
+     * <p>Fetch all ownership of investment fund shares data which match the input
+     * constraints.</p>
+     *
+     * @param types
+     *            the types to fetch data for
+     * @param sectors
+     *            the sectors to fetch data for
+     * @param quarters
+     *            the quarters to fetch data for
+     * @return the ownership of investment fund shares data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.finance.investmentfunds.OwnershipOfInvestmentFundShares
+     *         OwnershipOfInvestmentFundShares} objects
+     */
     public List<OwnershipOfInvestmentFundShares> getOwnershipOfInvestmentFundShares(Collection<String> types,
             Collection<String> sectors, Collection<String> quarters) {
         Map<String, Collection<?>> mappings = new HashMap<>();
