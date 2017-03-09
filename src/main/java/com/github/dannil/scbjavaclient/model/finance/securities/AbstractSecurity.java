@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.github.dannil.scbjavaclient.model.AbstractYearAndValueModel;
+import com.github.dannil.scbjavaclient.model.AbstractTimeAndValueModel;
 import com.github.dannil.scbjavaclient.model.ValueNode;
 
 /**
@@ -29,7 +29,7 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
  *            the value
  * @since 0.2.0
  */
-public abstract class AbstractSecurity<V> extends AbstractYearAndValueModel<String, V> {
+public abstract class AbstractSecurity<V> extends AbstractTimeAndValueModel<String, V> {
 
     @JsonProperty("Sektor")
     private Integer sector;

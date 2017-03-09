@@ -95,21 +95,21 @@ public class LandTest {
     }
 
     @Test
-    public void setYear() {
+    public void setTime() {
         Land land = new Land();
 
-        land.setYear(2011);
+        land.setTime(2011);
 
-        assertNotNull(land.getYear());
+        assertNotNull(land.getTime());
     }
 
     @Test
-    public void getYear() {
+    public void getTime() {
         Land land = new Land();
 
-        land.setYear(2011);
+        land.setTime(2011);
 
-        assertEquals(Integer.valueOf(2011), land.getYear());
+        assertEquals(Integer.valueOf(2011), land.getTime());
     }
 
     @Test
@@ -188,11 +188,11 @@ public class LandTest {
     }
 
     @Test
-    public void notEqualsOnYear() {
+    public void notEqualsOnTime() {
         Land land = new Land("04", 7, 2010, this.values);
 
         Land land2 = new Land("04", 7, 2010, this.values2);
-        land2.setYear(2011);
+        land2.setTime(2011);
 
         assertNotEquals(land, land2);
     }

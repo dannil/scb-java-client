@@ -153,11 +153,11 @@ public class SecurityTest {
     }
 
     @Test
-    public void notEqualsOnYear() {
+    public void notEqualsOnTime() {
         AbstractSecurity<Integer> security = new MaturityStructure(400, "24", "v0", "2005M05", this.values);
 
         AbstractSecurity<Integer> security2 = new MaturityStructure(400, "24", "v0", "2005M05", this.values2);
-        security2.setYear("2002M06");
+        security2.setTime("2002M06");
 
         assertNotEquals(security, security2);
     }

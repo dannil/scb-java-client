@@ -22,11 +22,11 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class AbstractYearAndValueModelTest {
+public class AbstractRegionTimeAndValueModelTest {
 
     // Dummy class which doesn't override the equals
     // method. This enables us to thoroughly test the equals method.
-    public class DummyClass extends AbstractYearAndValueModel<Integer, Long> {
+    public class DummyClass extends AbstractRegionTimeAndValueModel<String, Integer, Long> {
 
         public DummyClass() {
             super();
@@ -42,7 +42,7 @@ public class AbstractYearAndValueModelTest {
     // Tests the superclass
     @Test
     public void superEqualsItself() {
-        AbstractYearAndValueModel<Integer, Long> dummy = new DummyClass();
+        AbstractRegionTimeAndValueModel<String, Integer, Long> dummy = new DummyClass();
 
         assertEquals(dummy, dummy);
     }
@@ -50,7 +50,7 @@ public class AbstractYearAndValueModelTest {
     // Tests the superclass
     @Test
     public void superNotEqualsNull() {
-        AbstractYearAndValueModel<Integer, Long> dummy = new DummyClass();
+        AbstractRegionTimeAndValueModel<String, Integer, Long> dummy = new DummyClass();
 
         assertNotEquals(dummy, null);
     }
@@ -58,7 +58,7 @@ public class AbstractYearAndValueModelTest {
     // Tests the superclass
     @Test
     public void superNotEqualsIncompatibleObject() {
-        AbstractYearAndValueModel<Integer, Long> dummy = new DummyClass();
+        AbstractRegionTimeAndValueModel<String, Integer, Long> dummy = new DummyClass();
 
         assertNotEquals(dummy, new Object());
     }

@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.github.dannil.scbjavaclient.model.AbstractYearAndValueModel;
+import com.github.dannil.scbjavaclient.model.AbstractTimeAndValueModel;
 import com.github.dannil.scbjavaclient.model.ValueNode;
 
 /**
@@ -27,7 +27,7 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
  *
  * @since 0.2.0
  */
-public abstract class AbstractWaste extends AbstractYearAndValueModel<Integer, String> {
+public abstract class AbstractWaste extends AbstractTimeAndValueModel<Integer, String> {
 
     @JsonProperty("Avfallsslag")
     private String wasteCategory;

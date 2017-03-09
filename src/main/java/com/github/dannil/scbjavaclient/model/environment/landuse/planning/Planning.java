@@ -22,7 +22,7 @@ import com.github.dannil.scbjavaclient.constants.ModelConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
 import com.github.dannil.scbjavaclient.http.requester.AbstractRequester;
 import com.github.dannil.scbjavaclient.http.requester.GETRequester;
-import com.github.dannil.scbjavaclient.model.AbstractRegionYearAndValueModel;
+import com.github.dannil.scbjavaclient.model.AbstractRegionTimeAndValueModel;
 import com.github.dannil.scbjavaclient.model.ValueNode;
 
 /**
@@ -30,7 +30,7 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
  *
  * @since 0.2.0
  */
-public class Planning extends AbstractRegionYearAndValueModel<String, Integer, Integer> {
+public class Planning extends AbstractRegionTimeAndValueModel<String, Integer, Integer> {
 
     /**
      * <p>Default constructor.</p>
@@ -60,8 +60,8 @@ public class Planning extends AbstractRegionYearAndValueModel<String, Integer, I
         builder.append(this.getClass().getSimpleName());
         builder.append(" [region=");
         builder.append(getRegion());
-        builder.append(", year=");
-        builder.append(getYear());
+        builder.append(", time=");
+        builder.append(getTime());
         builder.append(", values=");
         builder.append(getValues());
         builder.append(']');

@@ -84,12 +84,12 @@ public class PartnershipTest {
     }
 
     @Test
-    public void setYear() {
+    public void setTime() {
         Partnership partner = new Partnership();
 
-        partner.setYear(2002);
+        partner.setTime(2002);
 
-        assertEquals(Integer.valueOf(2002), partner.getYear());
+        assertEquals(Integer.valueOf(2002), partner.getTime());
     }
 
     @Test
@@ -168,7 +168,7 @@ public class PartnershipTest {
     }
 
     @Test
-    public void notEqualsYear() {
+    public void notEqualsTime() {
         Partnership partner = new Partnership("00", "RP", "2", 2002, this.values);
         Partnership partner2 = new Partnership("00", "RP", "2", 2004, this.values2);
 

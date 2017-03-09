@@ -24,7 +24,7 @@ import com.github.dannil.scbjavaclient.constants.ModelConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
 import com.github.dannil.scbjavaclient.http.requester.AbstractRequester;
 import com.github.dannil.scbjavaclient.http.requester.GETRequester;
-import com.github.dannil.scbjavaclient.model.AbstractYearAndValueModel;
+import com.github.dannil.scbjavaclient.model.AbstractTimeAndValueModel;
 import com.github.dannil.scbjavaclient.model.ValueNode;
 
 /**
@@ -32,7 +32,7 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
  *
  * @since 0.2.0
  */
-public class ForeignOwnershipOfShares extends AbstractYearAndValueModel<String, Double> {
+public class ForeignOwnershipOfShares extends AbstractTimeAndValueModel<String, Double> {
 
     @JsonProperty("Agarland")
     private String country;
@@ -106,8 +106,8 @@ public class ForeignOwnershipOfShares extends AbstractYearAndValueModel<String, 
         builder.append(this.getClass().getSimpleName());
         builder.append(" [country=");
         builder.append(this.country);
-        builder.append(", year=");
-        builder.append(getYear());
+        builder.append(", time=");
+        builder.append(getTime());
         builder.append(", values=");
         builder.append(getValues());
         builder.append(']');

@@ -24,7 +24,7 @@ import com.github.dannil.scbjavaclient.constants.ModelConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
 import com.github.dannil.scbjavaclient.http.requester.AbstractRequester;
 import com.github.dannil.scbjavaclient.http.requester.GETRequester;
-import com.github.dannil.scbjavaclient.model.AbstractYearAndValueModel;
+import com.github.dannil.scbjavaclient.model.AbstractTimeAndValueModel;
 import com.github.dannil.scbjavaclient.model.ValueNode;
 
 /**
@@ -32,7 +32,7 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
  *
  * @since 0.2.0
  */
-public class Institution extends AbstractYearAndValueModel<String, String> {
+public class Institution extends AbstractTimeAndValueModel<String, String> {
 
     @JsonProperty("Institut")
     private String institution;
@@ -161,8 +161,8 @@ public class Institution extends AbstractYearAndValueModel<String, String> {
         builder.append(this.item);
         builder.append(", currency=");
         builder.append(this.currency);
-        builder.append(", year=");
-        builder.append(getYear());
+        builder.append(", time=");
+        builder.append(getTime());
         builder.append(", values=");
         builder.append(getValues());
         builder.append(']');

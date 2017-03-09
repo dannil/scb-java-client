@@ -109,8 +109,8 @@ public class TreatedWaste extends AbstractWaste {
         builder.append(this.treatmentCategory);
         builder.append(", wasteCategory=");
         builder.append(getWasteCategory());
-        builder.append(", year=");
-        builder.append(getYear());
+        builder.append(", time=");
+        builder.append(getTime());
         builder.append(", values=");
         builder.append(getValues());
         builder.append(']');

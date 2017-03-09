@@ -96,21 +96,21 @@ public class OwnershipOfSharesByMarketplaceTest {
     }
 
     @Test
-    public void setYear() {
+    public void setTime() {
         OwnershipOfSharesByMarketplace ownership = new OwnershipOfSharesByMarketplace();
 
-        ownership.setYear("2011M12");
+        ownership.setTime("2011M12");
 
-        assertNotNull(ownership.getYear());
+        assertNotNull(ownership.getTime());
     }
 
     @Test
-    public void getYear() {
+    public void getTime() {
         OwnershipOfSharesByMarketplace ownership = new OwnershipOfSharesByMarketplace();
 
-        ownership.setYear("2011M12");
+        ownership.setTime("2011M12");
 
-        assertEquals("2011M12", ownership.getYear());
+        assertEquals("2011M12", ownership.getTime());
     }
 
     @Test
@@ -188,13 +188,13 @@ public class OwnershipOfSharesByMarketplaceTest {
     }
 
     @Test
-    public void notEqualsOnYear() {
+    public void notEqualsOnTime() {
         OwnershipOfSharesByMarketplace ownership = new OwnershipOfSharesByMarketplace("230", "BORSOMA", "2004M06",
                 this.values);
 
         OwnershipOfSharesByMarketplace ownership2 = new OwnershipOfSharesByMarketplace("230", "BORSOMA", "2004M06",
                 this.values2);
-        ownership2.setYear("2002M06");
+        ownership2.setTime("2002M06");
 
         assertNotEquals(ownership, ownership2);
     }

@@ -87,12 +87,12 @@ public class LiveBirthTest {
     }
 
     @Test
-    public void setYear() {
+    public void setTime() {
         LiveBirth liveBirth = new LiveBirth();
 
-        liveBirth.setYear(1996);
+        liveBirth.setTime(1996);
 
-        assertEquals(Integer.valueOf(1996), liveBirth.getYear());
+        assertEquals(Integer.valueOf(1996), liveBirth.getTime());
     }
 
     @Test
@@ -171,7 +171,7 @@ public class LiveBirthTest {
     }
 
     @Test
-    public void notEqualsYear() {
+    public void notEqualsTime() {
         LiveBirth liveBirth = new LiveBirth("1263", "tot", 1, 2002, this.values);
         LiveBirth liveBirth2 = new LiveBirth("1263", "tot", 1, 1996, this.values2);
 

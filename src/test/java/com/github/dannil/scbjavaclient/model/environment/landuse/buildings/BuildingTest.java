@@ -95,21 +95,21 @@ public class BuildingTest {
     }
 
     @Test
-    public void setYear() {
+    public void setTime() {
         Building b = new Building();
 
-        b.setYear(2011);
+        b.setTime(2011);
 
-        assertNotNull(b.getYear());
+        assertNotNull(b.getTime());
     }
 
     @Test
-    public void getYear() {
+    public void getTime() {
         Building b = new Building();
 
-        b.setYear(2011);
+        b.setTime(2011);
 
-        assertEquals(Integer.valueOf(2011), b.getYear());
+        assertEquals(Integer.valueOf(2011), b.getTime());
     }
 
     @Test
@@ -193,11 +193,11 @@ public class BuildingTest {
     }
 
     @Test
-    public void notEqualsOnYear() {
+    public void notEqualsOnTime() {
         Building b = new Building("0114", 3, 2010, this.values);
 
         Building b2 = new Building("0114", 3, 2010, this.values2);
-        b2.setYear(2011);
+        b2.setTime(2011);
 
         assertNotEquals(b, b2);
     }

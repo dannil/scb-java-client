@@ -24,7 +24,7 @@ import com.github.dannil.scbjavaclient.constants.ModelConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
 import com.github.dannil.scbjavaclient.http.requester.AbstractRequester;
 import com.github.dannil.scbjavaclient.http.requester.GETRequester;
-import com.github.dannil.scbjavaclient.model.AbstractRegionYearAndValueModel;
+import com.github.dannil.scbjavaclient.model.AbstractRegionTimeAndValueModel;
 import com.github.dannil.scbjavaclient.model.ValueNode;
 
 /**
@@ -32,7 +32,7 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
  *
  * @since 0.1.0
  */
-public class LiveBirth extends AbstractRegionYearAndValueModel<String, Integer, Long> {
+public class LiveBirth extends AbstractRegionTimeAndValueModel<String, Integer, Long> {
 
     @JsonProperty("AlderModer")
     private String motherAge;
@@ -138,8 +138,8 @@ public class LiveBirth extends AbstractRegionYearAndValueModel<String, Integer, 
         builder.append(this.gender);
         builder.append(", region=");
         builder.append(getRegion());
-        builder.append(", year=");
-        builder.append(getYear());
+        builder.append(", time=");
+        builder.append(getTime());
         builder.append(", values=");
         builder.append(getValues());
         builder.append(']');

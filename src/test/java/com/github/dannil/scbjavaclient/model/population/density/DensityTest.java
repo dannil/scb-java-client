@@ -75,12 +75,12 @@ public class DensityTest {
     }
 
     @Test
-    public void setYear() {
+    public void setTime() {
         Density density = new Density();
 
-        density.setYear(1996);
+        density.setTime(1996);
 
-        assertEquals(Integer.valueOf(1996), density.getYear());
+        assertEquals(Integer.valueOf(1996), density.getTime());
     }
 
     @Test
@@ -151,7 +151,7 @@ public class DensityTest {
     }
 
     @Test
-    public void notEqualsYear() {
+    public void notEqualsTime() {
         Density density = new Density("1263", "2", 1996, this.values);
         Density density2 = new Density("1263", "2", 2002, this.values2);
 

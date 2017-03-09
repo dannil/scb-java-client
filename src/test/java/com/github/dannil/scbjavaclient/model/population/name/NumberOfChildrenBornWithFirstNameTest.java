@@ -66,12 +66,12 @@ public class NumberOfChildrenBornWithFirstNameTest {
     }
 
     @Test
-    public void setYear() {
+    public void setTime() {
         NumberOfChildrenBornWithFirstName nbrChildren = new NumberOfChildrenBornWithFirstName();
 
-        nbrChildren.setYear(2010);
+        nbrChildren.setTime(2010);
 
-        assertEquals(Integer.valueOf(2010), nbrChildren.getYear());
+        assertEquals(Integer.valueOf(2010), nbrChildren.getTime());
     }
 
     @Test
@@ -138,7 +138,7 @@ public class NumberOfChildrenBornWithFirstNameTest {
     }
 
     @Test
-    public void notEqualsYear() {
+    public void notEqualsTime() {
         NumberOfChildrenBornWithFirstName nbrChildren = new NumberOfChildrenBornWithFirstName("Adrian", 2010,
                 this.values);
         NumberOfChildrenBornWithFirstName nbrChildren2 = new NumberOfChildrenBornWithFirstName("Adrian", 2005,

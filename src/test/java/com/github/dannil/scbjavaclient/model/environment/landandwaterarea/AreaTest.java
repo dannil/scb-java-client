@@ -95,21 +95,21 @@ public class AreaTest {
     }
 
     @Test
-    public void setYear() {
+    public void setTime() {
         Area area = new Area();
 
-        area.setYear(2011);
+        area.setTime(2011);
 
-        assertNotNull(area.getYear());
+        assertNotNull(area.getTime());
     }
 
     @Test
-    public void getYear() {
+    public void getTime() {
         Area area = new Area();
 
-        area.setYear(2011);
+        area.setTime(2011);
 
-        assertEquals(Integer.valueOf(2011), area.getYear());
+        assertEquals(Integer.valueOf(2011), area.getTime());
     }
 
     @Test
@@ -193,11 +193,11 @@ public class AreaTest {
     }
 
     @Test
-    public void notEqualsOnYear() {
+    public void notEqualsOnTime() {
         Area area = new Area("1267", "01", 2009, this.values);
 
         Area area2 = new Area("1267", "01", 2009, this.values2);
-        area2.setYear(2011);
+        area2.setTime(2011);
 
         assertNotEquals(area, area2);
     }

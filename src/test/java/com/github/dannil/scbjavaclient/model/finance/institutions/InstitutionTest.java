@@ -114,21 +114,21 @@ public class InstitutionTest {
     }
 
     @Test
-    public void setYear() {
+    public void setTime() {
         Institution insti = new Institution();
 
-        insti.setYear("2016M03");
+        insti.setTime("2016M03");
 
-        assertNotNull(insti.getYear());
+        assertNotNull(insti.getTime());
     }
 
     @Test
-    public void getYear() {
+    public void getTime() {
         Institution insti = new Institution();
 
-        insti.setYear("2016M03");
+        insti.setTime("2016M03");
 
-        assertEquals("2016M03", insti.getYear());
+        assertEquals("2016M03", insti.getTime());
     }
 
     @Test
@@ -222,11 +222,11 @@ public class InstitutionTest {
     }
 
     @Test
-    public void notEqualsOnYear() {
+    public void notEqualsOnTime() {
         Institution insti = new Institution("11102", "K21600", "v2", "2003M03", this.values);
 
         Institution insti2 = new Institution("11102", "K21600", "v2", "2003M03", this.values2);
-        insti2.setYear("2002M06");
+        insti2.setTime("2002M06");
 
         assertNotEquals(insti, insti2);
     }

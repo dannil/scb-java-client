@@ -95,21 +95,21 @@ public class TreatedWasteTest {
     }
 
     @Test
-    public void setYear() {
+    public void setTime() {
         TreatedWaste waste = new TreatedWaste();
 
-        waste.setYear(2012);
+        waste.setTime(2012);
 
-        assertNotNull(waste.getYear());
+        assertNotNull(waste.getTime());
     }
 
     @Test
-    public void getYear() {
+    public void getTime() {
         TreatedWaste waste = new TreatedWaste();
 
-        waste.setYear(2012);
+        waste.setTime(2012);
 
-        assertEquals(Integer.valueOf(2012), waste.getYear());
+        assertEquals(Integer.valueOf(2012), waste.getTime());
     }
 
     @Test
@@ -193,11 +193,11 @@ public class TreatedWasteTest {
     }
 
     @Test
-    public void notEqualsOnYear() {
+    public void notEqualsOnTime() {
         TreatedWaste waste = new TreatedWaste(40, "05", 2014, this.values);
 
         TreatedWaste waste2 = new TreatedWaste(40, "05", 2014, this.values2);
-        waste2.setYear(2010);
+        waste2.setTime(2010);
 
         assertNotEquals(waste, waste2);
     }
