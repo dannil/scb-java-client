@@ -106,7 +106,7 @@ public class ForeignOwnershipOfShares extends AbstractTimeAndValueModel<String, 
         builder.append(this.getClass().getSimpleName());
         builder.append(" [country=");
         builder.append(this.country);
-        builder.append(", year=");
+        builder.append(", time=");
         builder.append(getTime());
         builder.append(", values=");
         builder.append(getValues());

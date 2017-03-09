@@ -106,7 +106,7 @@ public class OwnershipOfShares extends AbstractTimeAndValueModel<String, Double>
         builder.append(this.getClass().getSimpleName());
         builder.append(" [sector=");
         builder.append(this.sector);
-        builder.append(", year=");
+        builder.append(", time=");
         builder.append(getTime());
         builder.append(", values=");
         builder.append(getValues());

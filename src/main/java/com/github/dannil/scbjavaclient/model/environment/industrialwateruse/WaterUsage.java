@@ -105,7 +105,7 @@ public class WaterUsage extends AbstractRegionTimeAndValueModel<String, Integer,
         builder.append(this.type);
         builder.append(", region=");
         builder.append(getRegion());
-        builder.append(", year=");
+        builder.append(", time=");
         builder.append(getTime());
         builder.append(", values=");
         builder.append(getValues());

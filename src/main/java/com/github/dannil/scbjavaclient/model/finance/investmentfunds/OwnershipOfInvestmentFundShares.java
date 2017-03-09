@@ -134,7 +134,7 @@ public class OwnershipOfInvestmentFundShares extends AbstractTimeAndValueModel<S
         builder.append(this.type);
         builder.append(", sector=");
         builder.append(this.sector);
-        builder.append(", year=");
+        builder.append(", time=");
         builder.append(getTime());
         builder.append(", values=");
         builder.append(getValues());

@@ -106,7 +106,7 @@ public class PackagingAndPackagingWaste extends AbstractTimeAndValueModel<Intege
         builder.append(this.getClass().getSimpleName());
         builder.append(" [type=");
         builder.append(this.type);
-        builder.append(", year=");
+        builder.append(", time=");
         builder.append(getTime());
         builder.append(", values=");
         builder.append(getValues());

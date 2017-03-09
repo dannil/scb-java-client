@@ -110,7 +110,7 @@ public class WaterDischarge extends AbstractRegionTimeAndValueModel<String, Inte
         builder.append(this.recipient);
         builder.append(", region=");
         builder.append(getRegion());
-        builder.append(", year=");
+        builder.append(", time=");
         builder.append(getTime());
         builder.append(", values=");
         builder.append(getValues());

@@ -138,7 +138,7 @@ public class Partnership extends AbstractRegionTimeAndValueModel<String, Integer
         builder.append(this.sex);
         builder.append(", region=");
         builder.append(getRegion());
-        builder.append(", year=");
+        builder.append(", time=");
         builder.append(getTime());
         builder.append(", values=");
         builder.append(getValues());

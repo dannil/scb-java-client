@@ -161,7 +161,7 @@ public class Institution extends AbstractTimeAndValueModel<String, String> {
         builder.append(this.item);
         builder.append(", currency=");
         builder.append(this.currency);
-        builder.append(", year=");
+        builder.append(", time=");
         builder.append(getTime());
         builder.append(", values=");
         builder.append(getValues());

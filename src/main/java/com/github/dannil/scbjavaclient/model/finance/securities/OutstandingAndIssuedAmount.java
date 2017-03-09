@@ -114,7 +114,7 @@ public class OutstandingAndIssuedAmount extends AbstractSecurity<String> {
         builder.append(this.item);
         builder.append(", currency=");
         builder.append(getCurrency());
-        builder.append(", year=");
+        builder.append(", time=");
         builder.append(getTime());
         builder.append(", values=");
         builder.append(getValues());

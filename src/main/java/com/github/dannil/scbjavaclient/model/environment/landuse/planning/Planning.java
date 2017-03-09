@@ -60,7 +60,7 @@ public class Planning extends AbstractRegionTimeAndValueModel<String, Integer, I
         builder.append(this.getClass().getSimpleName());
         builder.append(" [region=");
         builder.append(getRegion());
-        builder.append(", year=");
+        builder.append(", time=");
         builder.append(getTime());
         builder.append(", values=");
         builder.append(getValues());
