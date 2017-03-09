@@ -110,7 +110,7 @@ public class OwnershipOfSharesBySeries extends OwnershipOfShares {
         builder.append(", shareClass=");
         builder.append(this.shareClass);
         builder.append(", year=");
-        builder.append(getYear());
+        builder.append(getTime());
         builder.append(", values=");
         builder.append(getValues());
         builder.append(']');

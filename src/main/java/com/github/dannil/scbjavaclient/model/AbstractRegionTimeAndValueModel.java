@@ -20,23 +20,27 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * <p>Abstract model which handles year and value.</p>
+ * <p>Abstract model which handles region, time and value. Since these values are often
+ * present in client responses, this class will be extended by many implementing
+ * models.</p>
  *
- * @param <Y>
- *            the year
+ * @param <R>
+ *            the region
+ * @param <T>
+ *            the time
  * @param <V>
  *            the value
- * @since 0.0.2
+ * @since 0.0.1
  */
-public abstract class AbstractYearAndValueModel<Y, V> extends AbstractValueModel<V> {
+public abstract class AbstractRegionTimeAndValueModel<R, T, V> extends AbstractTimeAndValueModel<T, V> {
 
-    @JsonProperty("Tid")
-    private Y year;
+    @JsonProperty("Region")
+    private R region;
 
     /**
      * <p>Default constructor.</p>
      */
-    public AbstractYearAndValueModel() {
+    protected AbstractRegionTimeAndValueModel() {
         // To enable derived classes to use their default constructor
         super();
     }
@@ -44,38 +48,40 @@ public abstract class AbstractYearAndValueModel<Y, V> extends AbstractValueModel
     /**
      * <p>Overloaded constructor.</p>
      *
-     * @param year
-     *            the year
+     * @param region
+     *            the region
+     * @param time
+     *            the time
      * @param values
      *            the values
      */
-    public AbstractYearAndValueModel(Y year, List<ValueNode<V>> values) {
-        super(values);
-        this.year = year;
+    protected AbstractRegionTimeAndValueModel(R region, T time, List<ValueNode<V>> values) {
+        super(time, values);
+        this.region = region;
     }
 
     /**
-     * <p>Getter for year.</p>
+     * <p>Getter for region.</p>
      *
-     * @return the year
+     * @return the region
      */
-    public Y getYear() {
-        return this.year;
+    public R getRegion() {
+        return this.region;
     }
 
     /**
-     * <p>Setter for year.</p>
+     * <p>Setter for region.</p>
      *
-     * @param year
-     *            the year
+     * @param region
+     *            the region
      */
-    public void setYear(Y year) {
-        this.year = year;
+    public void setRegion(R region) {
+        this.region = region;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), this.year);
+        return Objects.hash(super.hashCode(), this.region);
     }
 
     @Override
@@ -86,12 +92,11 @@ public abstract class AbstractYearAndValueModel<Y, V> extends AbstractValueModel
         if (obj == null) {
             return false;
         }
-        if (!(obj instanceof AbstractYearAndValueModel<?, ?>)) {
+        if (!(obj instanceof AbstractRegionTimeAndValueModel<?, ?, ?>)) {
             return false;
         }
-
-        AbstractYearAndValueModel<?, ?> other = (AbstractYearAndValueModel<?, ?>) obj;
-        return super.equals(other) && Objects.equals(this.year, other.year);
+        AbstractRegionTimeAndValueModel<?, ?, ?> other = (AbstractRegionTimeAndValueModel<?, ?, ?>) obj;
+        return super.equals(other) && Objects.equals(this.region, other.region);
     }
 
     @Override

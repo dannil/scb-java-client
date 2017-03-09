@@ -77,21 +77,21 @@ public class PackagingAndPackagingWasteTest {
     }
 
     @Test
-    public void setYear() {
+    public void setTime() {
         PackagingAndPackagingWaste packaging = new PackagingAndPackagingWaste();
 
-        packaging.setYear(2014);
+        packaging.setTime(2014);
 
-        assertNotNull(packaging.getYear());
+        assertNotNull(packaging.getTime());
     }
 
     @Test
-    public void getYear() {
+    public void getTime() {
         PackagingAndPackagingWaste packaging = new PackagingAndPackagingWaste();
 
-        packaging.setYear(2014);
+        packaging.setTime(2014);
 
-        assertEquals(Integer.valueOf(2014), packaging.getYear());
+        assertEquals(Integer.valueOf(2014), packaging.getTime());
     }
 
     @Test
@@ -165,11 +165,11 @@ public class PackagingAndPackagingWasteTest {
     }
 
     @Test
-    public void notEqualsOnYear() {
+    public void notEqualsOnTime() {
         PackagingAndPackagingWaste packaging = new PackagingAndPackagingWaste(10, 2015, this.values);
 
         PackagingAndPackagingWaste packaging2 = new PackagingAndPackagingWaste(10, 2015, this.values2);
-        packaging2.setYear(2013);
+        packaging2.setTime(2013);
 
         assertNotEquals(packaging, packaging2);
     }

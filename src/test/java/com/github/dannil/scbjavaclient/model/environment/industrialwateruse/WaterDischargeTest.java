@@ -95,21 +95,21 @@ public class WaterDischargeTest {
     }
 
     @Test
-    public void setYear() {
+    public void setTime() {
         WaterDischarge water = new WaterDischarge();
 
-        water.setYear(2015);
+        water.setTime(2015);
 
-        assertNotNull(water.getYear());
+        assertNotNull(water.getTime());
     }
 
     @Test
-    public void getYear() {
+    public void getTime() {
         WaterDischarge water = new WaterDischarge();
 
-        water.setYear(2015);
+        water.setTime(2015);
 
-        assertEquals(Integer.valueOf(2015), water.getYear());
+        assertEquals(Integer.valueOf(2015), water.getTime());
     }
 
     @Test
@@ -193,11 +193,11 @@ public class WaterDischargeTest {
     }
 
     @Test
-    public void notEqualsOnYear() {
+    public void notEqualsOnTime() {
         WaterDischarge water = new WaterDischarge("07", 160, 2010, this.values);
 
         WaterDischarge water2 = new WaterDischarge("07", 160, 2010, this.values2);
-        water2.setYear(2011);
+        water2.setTime(2011);
 
         assertNotEquals(water, water2);
     }

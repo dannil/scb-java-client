@@ -114,21 +114,21 @@ public class MaturityStructureTest {
     }
 
     @Test
-    public void setYear() {
+    public void setTime() {
         MaturityStructure maturity = new MaturityStructure();
 
-        maturity.setYear("2016M03");
+        maturity.setTime("2016M03");
 
-        assertNotNull(maturity.getYear());
+        assertNotNull(maturity.getTime());
     }
 
     @Test
-    public void getYear() {
+    public void getTime() {
         MaturityStructure maturity = new MaturityStructure();
 
-        maturity.setYear("2016M03");
+        maturity.setTime("2016M03");
 
-        assertEquals("2016M03", maturity.getYear());
+        assertEquals("2016M03", maturity.getTime());
     }
 
     @Test
@@ -224,11 +224,11 @@ public class MaturityStructureTest {
     // }
 
     @Test
-    public void notEqualsOnYear() {
+    public void notEqualsOnTime() {
         MaturityStructure maturity = new MaturityStructure(400, "24", "v0", "2005M05", this.values);
 
         MaturityStructure maturity2 = new MaturityStructure(400, "24", "v0", "2005M05", this.values2);
-        maturity2.setYear("2002M06");
+        maturity2.setTime("2002M06");
 
         assertNotEquals(maturity, maturity2);
     }

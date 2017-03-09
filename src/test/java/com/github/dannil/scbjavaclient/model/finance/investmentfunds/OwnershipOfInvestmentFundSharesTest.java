@@ -96,21 +96,21 @@ public class OwnershipOfInvestmentFundSharesTest {
     }
 
     @Test
-    public void setYear() {
+    public void setTime() {
         OwnershipOfInvestmentFundShares ownership = new OwnershipOfInvestmentFundShares();
 
-        ownership.setYear("2011M12");
+        ownership.setTime("2011M12");
 
-        assertNotNull(ownership.getYear());
+        assertNotNull(ownership.getTime());
     }
 
     @Test
-    public void getYear() {
+    public void getTime() {
         OwnershipOfInvestmentFundShares ownership = new OwnershipOfInvestmentFundShares();
 
-        ownership.setYear("2011M12");
+        ownership.setTime("2011M12");
 
-        assertEquals("2011M12", ownership.getYear());
+        assertEquals("2011M12", ownership.getTime());
     }
 
     @Test
@@ -199,13 +199,13 @@ public class OwnershipOfInvestmentFundSharesTest {
     }
 
     @Test
-    public void notEqualsOnYear() {
+    public void notEqualsOnTime() {
         OwnershipOfInvestmentFundShares ownership = new OwnershipOfInvestmentFundShares("S12354", "S19", "2004K1",
                 this.values);
 
         OwnershipOfInvestmentFundShares ownership2 = new OwnershipOfInvestmentFundShares("S12354", "S19", "2004K1",
                 this.values2);
-        ownership2.setYear("2002M06");
+        ownership2.setTime("2002M06");
 
         assertNotEquals(ownership, ownership2);
     }

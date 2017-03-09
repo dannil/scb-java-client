@@ -19,7 +19,7 @@ import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.dannil.scbjavaclient.constants.ModelConstants;
-import com.github.dannil.scbjavaclient.model.AbstractRegionYearAndValueModel;
+import com.github.dannil.scbjavaclient.model.AbstractRegionTimeAndValueModel;
 import com.github.dannil.scbjavaclient.model.ValueNode;
 
 /**
@@ -27,7 +27,7 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
  *
  * @since 0.2.0
  */
-public class WaterUsage extends AbstractRegionYearAndValueModel<String, Integer, String> {
+public class WaterUsage extends AbstractRegionTimeAndValueModel<String, Integer, String> {
 
     @JsonProperty("VattenTyp")
     private Integer type;
@@ -106,7 +106,7 @@ public class WaterUsage extends AbstractRegionYearAndValueModel<String, Integer,
         builder.append(", region=");
         builder.append(getRegion());
         builder.append(", year=");
-        builder.append(getYear());
+        builder.append(getTime());
         builder.append(", values=");
         builder.append(getValues());
         builder.append(']');

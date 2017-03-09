@@ -121,21 +121,21 @@ public class SCBClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
-    public void getYears() {
+    public void getTimes() {
         SCBClient client = new SCBClient();
 
-        List<String> years = client.getYears("BE/BE0101/BE0101A/BefolkningNy");
+        List<String> times = client.getTimes("BE/BE0101/BE0101A/BefolkningNy");
 
-        assertNotNull(years);
-        assertFalse(years.isEmpty());
+        assertNotNull(times);
+        assertFalse(times.isEmpty());
     }
 
-    public void getYearsMissingCodeInTable() {
+    public void getTimesMissingCodeInTable() {
         SCBClient client = new SCBClient();
 
-        List<String> years = client.getYears("NR/NR0105/NR0105A");
+        List<String> times = client.getTimes("NR/NR0105/NR0105A");
 
-        assertNull(years);
+        assertNull(times);
     }
 
     @Test

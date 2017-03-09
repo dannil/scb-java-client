@@ -95,21 +95,21 @@ public class GeneratedWasteTest {
     }
 
     @Test
-    public void setYear() {
+    public void setTime() {
         GeneratedWaste waste = new GeneratedWaste();
 
-        waste.setYear(2012);
+        waste.setTime(2012);
 
-        assertNotNull(waste.getYear());
+        assertNotNull(waste.getTime());
     }
 
     @Test
-    public void getYear() {
+    public void getTime() {
         GeneratedWaste waste = new GeneratedWaste();
 
-        waste.setYear(2012);
+        waste.setTime(2012);
 
-        assertEquals(Integer.valueOf(2012), waste.getYear());
+        assertEquals(Integer.valueOf(2012), waste.getTime());
     }
 
     @Test
@@ -193,11 +193,11 @@ public class GeneratedWasteTest {
     }
 
     @Test
-    public void notEqualsOnYear() {
+    public void notEqualsOnTime() {
         GeneratedWaste waste = new GeneratedWaste("C10-12", "05", 2014, this.values);
 
         GeneratedWaste waste2 = new GeneratedWaste("C10-12", "05", 2014, this.values2);
-        waste2.setYear(2010);
+        waste2.setTime(2010);
 
         assertNotEquals(waste, waste2);
     }

@@ -115,7 +115,7 @@ public class MaturityStructure extends AbstractSecurity<Integer> {
         builder.append(", currency=");
         builder.append(getCurrency());
         builder.append(", year=");
-        builder.append(getYear());
+        builder.append(getTime());
         builder.append(", values=");
         builder.append(getValues());
         builder.append(']');

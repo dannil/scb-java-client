@@ -75,12 +75,12 @@ public class FertilityRateTest {
     }
 
     @Test
-    public void setYear() {
+    public void setTime() {
         FertilityRate rate = new FertilityRate();
 
-        rate.setYear(1996);
+        rate.setTime(1996);
 
-        assertEquals(Integer.valueOf(1996), rate.getYear());
+        assertEquals(Integer.valueOf(1996), rate.getTime());
     }
 
     @Test
@@ -151,7 +151,7 @@ public class FertilityRateTest {
     }
 
     @Test
-    public void notEqualsYear() {
+    public void notEqualsTime() {
         FertilityRate rate = new FertilityRate("1263", 2, 1996, this.values);
         FertilityRate rate2 = new FertilityRate("1263", 2, 2002, this.values2);
 

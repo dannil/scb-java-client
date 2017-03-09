@@ -78,21 +78,21 @@ public class PlanningTest {
     }
 
     @Test
-    public void setYear() {
+    public void setTime() {
         Planning plan = new Planning();
 
-        plan.setYear(2011);
+        plan.setTime(2011);
 
-        assertNotNull(plan.getYear());
+        assertNotNull(plan.getTime());
     }
 
     @Test
-    public void getYear() {
+    public void getTime() {
         Planning plan = new Planning();
 
-        plan.setYear(2011);
+        plan.setTime(2011);
 
-        assertEquals(Integer.valueOf(2011), plan.getYear());
+        assertEquals(Integer.valueOf(2011), plan.getTime());
     }
 
     @Test
@@ -166,11 +166,11 @@ public class PlanningTest {
     }
 
     @Test
-    public void notEqualsOnYear() {
+    public void notEqualsOnTime() {
         Planning plan = new Planning("0114", 2010, this.values);
 
         Planning plan2 = new Planning("0114", 2010, this.values2);
-        plan2.setYear(2011);
+        plan2.setTime(2011);
 
         assertNotEquals(plan, plan2);
     }

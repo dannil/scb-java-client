@@ -19,7 +19,7 @@ import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.dannil.scbjavaclient.constants.ModelConstants;
-import com.github.dannil.scbjavaclient.model.AbstractRegionYearAndValueModel;
+import com.github.dannil.scbjavaclient.model.AbstractRegionTimeAndValueModel;
 import com.github.dannil.scbjavaclient.model.ValueNode;
 
 /**
@@ -28,7 +28,7 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
  *
  * @since 0.2.0
  */
-public class Land extends AbstractRegionYearAndValueModel<String, Integer, String> {
+public class Land extends AbstractRegionTimeAndValueModel<String, Integer, String> {
 
     @JsonProperty("Markanvandningsklass")
     private Integer category;
@@ -107,7 +107,7 @@ public class Land extends AbstractRegionYearAndValueModel<String, Integer, Strin
         builder.append(", region=");
         builder.append(getRegion());
         builder.append(", year=");
-        builder.append(getYear());
+        builder.append(getTime());
         builder.append(", values=");
         builder.append(getValues());
         builder.append(']');

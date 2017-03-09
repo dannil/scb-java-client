@@ -78,21 +78,21 @@ public class OwnershipOfSharesTest {
     }
 
     @Test
-    public void setYear() {
+    public void setTime() {
         OwnershipOfShares ownership = new OwnershipOfShares();
 
-        ownership.setYear("2011M12");
+        ownership.setTime("2011M12");
 
-        assertNotNull(ownership.getYear());
+        assertNotNull(ownership.getTime());
     }
 
     @Test
-    public void getYear() {
+    public void getTime() {
         OwnershipOfShares ownership = new OwnershipOfShares();
 
-        ownership.setYear("2011M12");
+        ownership.setTime("2011M12");
 
-        assertEquals("2011M12", ownership.getYear());
+        assertEquals("2011M12", ownership.getTime());
     }
 
     @Test
@@ -166,11 +166,11 @@ public class OwnershipOfSharesTest {
     }
 
     @Test
-    public void notEqualsOnYear() {
+    public void notEqualsOnTime() {
         OwnershipOfShares ownership = new OwnershipOfShares("200", "2004M06", this.values);
 
         OwnershipOfShares ownership2 = new OwnershipOfShares("200", "2004M06", this.values2);
-        ownership2.setYear("2002M06");
+        ownership2.setTime("2002M06");
 
         assertNotEquals(ownership, ownership2);
     }

@@ -24,7 +24,7 @@ import com.github.dannil.scbjavaclient.constants.ModelConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
 import com.github.dannil.scbjavaclient.http.requester.AbstractRequester;
 import com.github.dannil.scbjavaclient.http.requester.GETRequester;
-import com.github.dannil.scbjavaclient.model.AbstractYearAndValueModel;
+import com.github.dannil.scbjavaclient.model.AbstractTimeAndValueModel;
 import com.github.dannil.scbjavaclient.model.ValueNode;
 
 /**
@@ -32,7 +32,7 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
  *
  * @since 0.2.0
  */
-public class PackagingAndPackagingWaste extends AbstractYearAndValueModel<Integer, Integer> {
+public class PackagingAndPackagingWaste extends AbstractTimeAndValueModel<Integer, Integer> {
 
     @JsonProperty("Forpackning")
     private Integer type;
@@ -107,7 +107,7 @@ public class PackagingAndPackagingWaste extends AbstractYearAndValueModel<Intege
         builder.append(" [type=");
         builder.append(this.type);
         builder.append(", year=");
-        builder.append(getYear());
+        builder.append(getTime());
         builder.append(", values=");
         builder.append(getValues());
         builder.append(']');

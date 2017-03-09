@@ -111,7 +111,7 @@ public class OwnershipOfSharesByMarketplace extends OwnershipOfShares {
         builder.append(", marketplace=");
         builder.append(this.marketplace);
         builder.append(", year=");
-        builder.append(getYear());
+        builder.append(getTime());
         builder.append(", values=");
         builder.append(getValues());
         builder.append(']');

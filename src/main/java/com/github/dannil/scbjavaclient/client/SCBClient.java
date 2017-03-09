@@ -135,13 +135,13 @@ public class SCBClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Returns the list of the available years for a given table.</p>
+     * <p>Returns the list of the available times for a given table.</p>
      *
      * @param table
-     *            the table to retrieve the years from
-     * @return a list of the available years for the given table
+     *            the table to retrieve the times from
+     * @return a list of the available times for the given table
      */
-    public List<String> getYears(String table) {
+    public List<String> getTimes(String table) {
         String url = getUrl() + table;
         String json = doGetRequest(url);
         String code = "Tid";

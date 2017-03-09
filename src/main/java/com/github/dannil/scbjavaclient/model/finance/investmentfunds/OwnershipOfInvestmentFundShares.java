@@ -24,7 +24,7 @@ import com.github.dannil.scbjavaclient.constants.ModelConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
 import com.github.dannil.scbjavaclient.http.requester.AbstractRequester;
 import com.github.dannil.scbjavaclient.http.requester.GETRequester;
-import com.github.dannil.scbjavaclient.model.AbstractYearAndValueModel;
+import com.github.dannil.scbjavaclient.model.AbstractTimeAndValueModel;
 import com.github.dannil.scbjavaclient.model.ValueNode;
 
 /**
@@ -32,7 +32,7 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
  *
  * @since 0.2.0
  */
-public class OwnershipOfInvestmentFundShares extends AbstractYearAndValueModel<String, Integer> {
+public class OwnershipOfInvestmentFundShares extends AbstractTimeAndValueModel<String, Integer> {
 
     @JsonProperty("Fondtyp")
     private String type;
@@ -135,7 +135,7 @@ public class OwnershipOfInvestmentFundShares extends AbstractYearAndValueModel<S
         builder.append(", sector=");
         builder.append(this.sector);
         builder.append(", year=");
-        builder.append(getYear());
+        builder.append(getTime());
         builder.append(", values=");
         builder.append(getValues());
         builder.append(']');

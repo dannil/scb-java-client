@@ -24,7 +24,7 @@ import com.github.dannil.scbjavaclient.constants.ModelConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
 import com.github.dannil.scbjavaclient.http.requester.AbstractRequester;
 import com.github.dannil.scbjavaclient.http.requester.GETRequester;
-import com.github.dannil.scbjavaclient.model.AbstractRegionYearAndValueModel;
+import com.github.dannil.scbjavaclient.model.AbstractRegionTimeAndValueModel;
 import com.github.dannil.scbjavaclient.model.ValueNode;
 
 /**
@@ -32,7 +32,7 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
  *
  * @since 0.0.1
  */
-public class MeanAgeFirstChild extends AbstractRegionYearAndValueModel<String, Integer, Double> {
+public class MeanAgeFirstChild extends AbstractRegionTimeAndValueModel<String, Integer, Double> {
 
     @JsonProperty("Kon")
     private Integer gender;
@@ -111,7 +111,7 @@ public class MeanAgeFirstChild extends AbstractRegionYearAndValueModel<String, I
         builder.append(", region=");
         builder.append(getRegion());
         builder.append(", year=");
-        builder.append(getYear());
+        builder.append(getTime());
         builder.append(", values=");
         builder.append(getValues());
         builder.append(']');
