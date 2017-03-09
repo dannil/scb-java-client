@@ -27,7 +27,7 @@ import com.github.dannil.scbjavaclient.model.finance.institutions.Institution;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
- * <p>Client which handles finance institutions data fetching.</p>
+ * <p>Client which handles financial institutions data fetching.</p>
  *
  * @since 0.2.0
  */

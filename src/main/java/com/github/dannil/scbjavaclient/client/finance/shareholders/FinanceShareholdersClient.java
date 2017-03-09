@@ -92,7 +92,7 @@ public class FinanceShareholdersClient extends AbstractClient {
     /**
      * <p>Fetch all ownership of shares by marketplace data.</p>
      *
-     * @return the ownership of shares data wrapped in a list of
+     * @return the ownership of shares by marketplace data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.finance.shareholders.OwnershipOfSharesByMarketplace
      *         OwnershipOfSharesByMarketplace} objects
      *
@@ -112,7 +112,7 @@ public class FinanceShareholdersClient extends AbstractClient {
      *            the half years to fetch data for
      * @param marketplaces
      *            the marketplaces to fetch data for
-     * @return the ownership of shares data wrapped in a list of
+     * @return the ownership of shares by marketplace data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.finance.shareholders.OwnershipOfSharesByMarketplace
      *         OwnershipOfSharesByMarketplace} objects
      */
@@ -133,7 +133,7 @@ public class FinanceShareholdersClient extends AbstractClient {
     /**
      * <p>Fetch all ownership of shares by series data.</p>
      *
-     * @return the ownership of series data wrapped in a list of
+     * @return the ownership of of shares by series data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.finance.shareholders.OwnershipOfSharesBySeries
      *         OwnershipOfSharesBySeries} objects
      *
@@ -153,7 +153,7 @@ public class FinanceShareholdersClient extends AbstractClient {
      *            the half years to fetch data for
      * @param series
      *            the series to fetch data for
-     * @return the ownership of series data wrapped in a list of
+     * @return the ownership of shares by series data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.finance.shareholders.OwnershipOfSharesBySeries
      *         OwnershipOfSharesBySeries} objects
      */
