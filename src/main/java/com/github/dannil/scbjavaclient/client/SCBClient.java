@@ -23,6 +23,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import com.github.dannil.scbjavaclient.client.environment.EnvironmentClient;
+import com.github.dannil.scbjavaclient.client.finance.FinanceClient;
 import com.github.dannil.scbjavaclient.client.population.PopulationClient;
 import com.github.dannil.scbjavaclient.exception.SCBClientNotFoundException;
 import com.github.dannil.scbjavaclient.format.json.JsonAPIConfigTableFormat;
@@ -39,9 +40,11 @@ import com.github.dannil.scbjavaclient.utility.URLUtility;
  */
 public class SCBClient extends AbstractContainerClient {
 
-    private PopulationClient populationClient;
-
     private EnvironmentClient environmentClient;
+
+    private FinanceClient financeClient;
+
+    private PopulationClient populationClient;
 
     /**
      * <p>Default constructor. Initializes values and creates sub-clients.</p>
@@ -49,11 +52,14 @@ public class SCBClient extends AbstractContainerClient {
     public SCBClient() {
         super();
 
-        this.populationClient = new PopulationClient();
-        addClient(this.populationClient);
-
         this.environmentClient = new EnvironmentClient();
         addClient(this.environmentClient);
+
+        this.financeClient = new FinanceClient();
+        addClient(financeClient);
+
+        this.populationClient = new PopulationClient();
+        addClient(this.populationClient);
     }
 
     /**
@@ -75,6 +81,15 @@ public class SCBClient extends AbstractContainerClient {
      */
     public EnvironmentClient environment() {
         return this.environmentClient;
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with finance data.</p>
+     *
+     * @return a client for finance data
+     */
+    public FinanceClient finance() {
+        return this.financeClient;
     }
 
     /**
