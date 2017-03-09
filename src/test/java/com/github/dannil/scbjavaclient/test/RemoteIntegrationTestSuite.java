@@ -16,8 +16,6 @@ package com.github.dannil.scbjavaclient.test;
 
 import java.util.concurrent.TimeUnit;
 
-import com.github.dannil.scbjavaclient.test.utility.Config;
-
 import org.junit.Before;
 
 public abstract class RemoteIntegrationTestSuite {
@@ -27,10 +25,10 @@ public abstract class RemoteIntegrationTestSuite {
     }
 
     @Before
-    public void setupTimer() throws InterruptedException {
+    public void sleep() throws InterruptedException {
         // Due to constraints set by the SCB API, we can only do 10 calls every 10
         // seconds, so we need an artificial timer which handles this.
-        TimeUnit.MILLISECONDS.sleep(Config.getTimeBetweenCallsAsMilliSeconds() + 200);
+        TimeUnit.MILLISECONDS.sleep(600);
     }
 
 }
