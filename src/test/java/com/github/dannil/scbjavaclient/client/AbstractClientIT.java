@@ -33,7 +33,6 @@ import com.github.dannil.scbjavaclient.test.utility.Files;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
-import org.apache.commons.io.FilenameUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -132,12 +131,7 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
 
         for (File file : files) {
             // Convert path into binary name
-            String path = file.getAbsolutePath();
-            path = FilenameUtils.removeExtension(path);
-            path = path.substring(path.indexOf("com"));
-
-            // Handle both UNIX and Windows separators
-            String binaryName = path.replace('/', '.').replace('\\', '.');
+            String binaryName = Files.fileToBinaryName(file);
 
             // Reflect the binary name into a concrete Java class
             Class<?> clazz = null;

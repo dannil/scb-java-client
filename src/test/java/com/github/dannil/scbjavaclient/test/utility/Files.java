@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.io.FilenameUtils;
+
 public class Files {
 
     public static List<File> find(String path, String partOfFile) {
@@ -22,6 +24,17 @@ public class Files {
             }
         }
         return allFiles;
+    }
+
+    public static String fileToBinaryName(File file) {
+        // Convert path into binary name
+        String path = file.getAbsolutePath();
+        path = FilenameUtils.removeExtension(path);
+        path = path.substring(path.indexOf("com"));
+
+        // Handle both UNIX and Windows separators
+        String binaryName = path.replace('/', '.').replace('\\', '.');
+        return binaryName;
     }
 
 }
