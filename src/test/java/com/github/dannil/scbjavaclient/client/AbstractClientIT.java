@@ -19,7 +19,6 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -30,7 +29,8 @@ import java.util.Map;
 
 import com.github.dannil.scbjavaclient.exception.SCBClientForbiddenException;
 import com.github.dannil.scbjavaclient.exception.SCBClientNotFoundException;
-import com.github.dannil.scbjavaclient.test.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.utility.Files;
+import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 import org.apache.commons.io.FilenameUtils;
@@ -128,7 +128,7 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
         String execPath = System.getProperty("user.dir");
 
         // Find files matching the wildcard pattern
-        List<File> files = findFiles(execPath.concat("/src/main/java/com/github/dannil/scbjavaclient/client"), "*Client.java");
+        List<File> files = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient", "*Client.java");
 
         for (File file : files) {
             // Convert path into binary name
@@ -145,8 +145,8 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
                 clazz = Class.forName(binaryName);
                 clazz.getDeclaredConstructor(Locale.class);
             } catch (ClassNotFoundException e) {
-                // Some error occurred while instantiating the class; respond with an
-                // assertion that'll always fail
+                // Class could not be created; respond with an assertion that'll always
+                // fail
                 e.printStackTrace();
                 assertTrue(e.getMessage(), false);
             } catch (NoSuchMethodException e) {
@@ -154,24 +154,6 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
                 assertTrue("Class " + clazz.getName() + " doesn't declare a Locale constructor", false);
             }
         }
-    }
-
-    private List<File> findFiles(String path, String partOfFile) {
-        List<File> allFiles = new ArrayList<File>();
-        File dir = new File(path);
-        File[] files = dir.listFiles();
-        for (int i = 0; i < files.length; i++) {
-            File file = files[i];
-            if (file.isDirectory()) {
-                allFiles.addAll(findFiles(file.getAbsolutePath(), partOfFile));
-            } else {
-                String partOfFileToRegex = ".*?" + partOfFile.replace("*", ".*?") + ".*?";
-                if (file.getAbsolutePath().matches(partOfFileToRegex)) {
-                    allFiles.add(file);
-                }
-            }
-        }
-        return allFiles;
     }
 
 }

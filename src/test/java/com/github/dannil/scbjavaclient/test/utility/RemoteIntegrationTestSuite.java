@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.test;
+package com.github.dannil.scbjavaclient.test.utility;
 
 import java.util.concurrent.TimeUnit;
 

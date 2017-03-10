@@ -28,7 +28,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.github.dannil.scbjavaclient.test.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
