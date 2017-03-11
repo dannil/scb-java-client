@@ -119,14 +119,7 @@ public abstract class AbstractClient {
      */
     protected String doGetRequest(String url) {
         AbstractRequester get = new GETRequester();
-        try {
-            LOGGER.info("GET: {}", url);
-            return get.getBody(url);
-        } catch (SCBClientNotFoundException e) {
-            // HTTP code 404, call the API again with the fallback language
-            LOGGER.error("HTTP {}: {}", e.getStatusCode().getCode(), url);
-            return get.getBody(URLUtility.changeLanguageForUrl(url));
-        }
+        return handleRequest(get, url);
     }
 
     /**
@@ -141,13 +134,25 @@ public abstract class AbstractClient {
     protected String doPostRequest(String url, String query) {
         POSTRequester post = new POSTRequester();
         post.setQuery(query);
+        return handleRequest(post, url);
+    }
+
+    /**
+     * <p>Handles the request. This method contains the common logic for handling GET and
+     * POST requests.</p>
+     *
+     * @param requester
+     *            the requester
+     * @param url
+     *            the URL
+     * @return a string representation of the API's response
+     */
+    private String handleRequest(AbstractRequester requester, String url) {
         try {
-            LOGGER.info("POST: {}, {}", url, query);
-            return post.getBody(url);
+            return requester.getBody(url);
         } catch (SCBClientNotFoundException e) {
             // HTTP code 404, call the API again with the fallback language
-            LOGGER.error("HTTP {}: {}", e.getStatusCode().getCode(), url);
-            return post.getBody(URLUtility.changeLanguageForUrl(url));
+            return requester.getBody(URLUtility.changeLanguageForUrl(url));
         }
     }
 

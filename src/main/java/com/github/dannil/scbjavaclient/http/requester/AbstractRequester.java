@@ -32,6 +32,9 @@ import com.github.dannil.scbjavaclient.utility.HttpUtility;
 import com.github.dannil.scbjavaclient.utility.URLUtility;
 
 import org.apache.commons.io.input.BOMInputStream;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * <p>Class which contains the logic for sending URL requests to a specified address.</p>
@@ -39,6 +42,8 @@ import org.apache.commons.io.input.BOMInputStream;
  * @since 0.0.2
  */
 public abstract class AbstractRequester {
+
+    private static final Logger LOGGER = LogManager.getLogger(AbstractRequester.class);
 
     private static final String REQUESTPROPERTY_ACCEPT = "Accept";
 
@@ -115,6 +120,11 @@ public abstract class AbstractRequester {
      */
     protected InputStream getResponse(URLConnection connection) throws IOException {
         HttpURLConnection httpConnection = (HttpURLConnection) connection;
+
+        int statusCode = httpConnection.getResponseCode();
+        Level level = statusCode >= 400 ? Level.ERROR : Level.INFO;
+        LOGGER.log(level, "HTTP {}: {}", statusCode, httpConnection.getURL());
+
         HttpUtility.validateStatusCode(httpConnection.getURL(), httpConnection.getResponseCode());
         return connection.getInputStream();
     }

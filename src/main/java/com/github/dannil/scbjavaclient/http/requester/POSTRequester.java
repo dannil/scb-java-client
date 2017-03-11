@@ -22,12 +22,17 @@ import java.nio.charset.Charset;
 
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * <p>HTTP requester for POST requests.</p>
  *
  * @since 0.0.2
  */
 public class POSTRequester extends AbstractRequester {
+
+    private static final Logger LOGGER = LogManager.getLogger(POSTRequester.class);
 
     private String query;
 
@@ -72,6 +77,7 @@ public class POSTRequester extends AbstractRequester {
         if (this.query == null) {
             throw new IllegalStateException("Payload is null");
         }
+        LOGGER.info("POST: {}, {}", url, query);
         try {
             URLConnection connection = getConnection(url);
             connection.setDoOutput(true);

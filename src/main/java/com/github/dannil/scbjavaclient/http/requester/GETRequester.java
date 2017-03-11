@@ -20,12 +20,17 @@ import java.nio.charset.Charset;
 
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * <p>HTTP requester for GET requests.</p>
  *
  * @since 0.0.2
  */
 public class GETRequester extends AbstractRequester {
+
+    private static final Logger LOGGER = LogManager.getLogger(GETRequester.class);
 
     /**
      * <p>Default constructor.</p>
@@ -46,6 +51,7 @@ public class GETRequester extends AbstractRequester {
 
     @Override
     public String getBody(String url) {
+        LOGGER.info("GET: {}", url);
         try {
             InputStream response = getResponse(getConnection(url));
             return getBody(response);
