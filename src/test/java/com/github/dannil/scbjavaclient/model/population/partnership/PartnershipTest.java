@@ -154,7 +154,7 @@ public class PartnershipTest {
     @Test
     public void notEqualsMaritalStatus() {
         Partnership partner = new Partnership("00", "RP", "2", 2002, this.values);
-        Partnership partner2 = new Partnership("02", "SP", "2", 2002, this.values);
+        Partnership partner2 = new Partnership("00", "SP", "2", 2002, this.values);
 
         assertNotEquals(partner, partner2);
     }
@@ -162,7 +162,7 @@ public class PartnershipTest {
     @Test
     public void notEqualsSex() {
         Partnership partner = new Partnership("00", "RP", "2", 2002, this.values);
-        Partnership partner2 = new Partnership("02", "RP", "1", 2002, this.values);
+        Partnership partner2 = new Partnership("00", "RP", "1", 2002, this.values);
 
         assertNotEquals(partner, partner2);
     }

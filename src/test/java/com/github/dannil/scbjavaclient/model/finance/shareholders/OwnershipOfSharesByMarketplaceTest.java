@@ -188,6 +188,18 @@ public class OwnershipOfSharesByMarketplaceTest {
     }
 
     @Test
+    public void notEqualsOnMarketplace() {
+        OwnershipOfSharesByMarketplace ownership = new OwnershipOfSharesByMarketplace("230", "BORSOMA", "2004M06",
+                this.values);
+
+        OwnershipOfSharesByMarketplace ownership2 = new OwnershipOfSharesByMarketplace("230", "BORSOMA", "2004M06",
+                this.values2);
+        ownership2.setMarketplace("AUKTMPNGMNGM");
+
+        assertNotEquals(ownership, ownership2);
+    }
+
+    @Test
     public void notEqualsOnTime() {
         OwnershipOfSharesByMarketplace ownership = new OwnershipOfSharesByMarketplace("230", "BORSOMA", "2004M06",
                 this.values);

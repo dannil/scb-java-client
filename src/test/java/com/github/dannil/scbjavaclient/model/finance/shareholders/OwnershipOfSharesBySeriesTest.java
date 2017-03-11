@@ -184,6 +184,16 @@ public class OwnershipOfSharesBySeriesTest {
     }
 
     @Test
+    public void notEqualsOnShareClass() {
+        OwnershipOfSharesBySeries ownership = new OwnershipOfSharesBySeries("200", "Noterad", "2004M06", this.values);
+
+        OwnershipOfSharesBySeries ownership2 = new OwnershipOfSharesBySeries("200", "Noterad", "2004M06", this.values2);
+        ownership2.setShareClass("Totalt");
+
+        assertNotEquals(ownership, ownership2);
+    }
+
+    @Test
     public void notEqualsOnTime() {
         OwnershipOfSharesBySeries ownership = new OwnershipOfSharesBySeries("200", "Noterad", "2004M06", this.values);
 

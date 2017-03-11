@@ -14,6 +14,7 @@
 
 package com.github.dannil.scbjavaclient.model;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -35,7 +36,6 @@ public class GenericModelTest {
     @Before
     public void setup() {
         this.json = "{\"columns\":[{\"code\":\"Region\",\"text\":\"region\",\"type\":\"d\"},{\"code\":\"Civilstand\",\"text\":\"civilst\u00E5nd\",\"type\":\"d\"},{\"code\":\"Alder\",\"text\":\"\u00E5lder\",\"type\":\"d\"},{\"code\":\"Tid\",\"text\":\"\u00E5r\",\"type\":\"t\"},{\"code\":\"BE0101N1\",\"text\":\"Folkm\u00E4ngd\",\"type\":\"c\"}],\"comments\":[],\"data\":[{\"key\":[\"00\",\"OG\",\"45\",\"2011\"],\"values\":[\"48403\"]},{\"key\":[\"00\",\"OG\",\"45\",\"2012\"],\"values\":[\"47619\"]},{\"key\":[\"00\",\"OG\",\"50\",\"2011\"],\"values\":[\"34868\"]},{\"key\":[\"00\",\"OG\",\"50\",\"2012\"],\"values\":[\"36454\"]},{\"key\":[\"00\",\"G\",\"45\",\"2011\"],\"values\":[\"68640\"]},{\"key\":[\"00\",\"G\",\"45\",\"2012\"],\"values\":[\"69184\"]},{\"key\":[\"00\",\"G\",\"50\",\"2011\"],\"values\":[\"60262\"]},{\"key\":[\"00\",\"G\",\"50\",\"2012\"],\"values\":[\"61902\"]},{\"key\":[\"01\",\"OG\",\"45\",\"2011\"],\"values\":[\"10833\"]},{\"key\":[\"01\",\"OG\",\"45\",\"2012\"],\"values\":[\"10339\"]},{\"key\":[\"01\",\"OG\",\"50\",\"2011\"],\"values\":[\"7893\"]},{\"key\":[\"01\",\"OG\",\"50\",\"2012\"],\"values\":[\"8255\"]},{\"key\":[\"01\",\"G\",\"45\",\"2011\"],\"values\":[\"16031\"]},{\"key\":[\"01\",\"G\",\"45\",\"2012\"],\"values\":[\"16121\"]},{\"key\":[\"01\",\"G\",\"50\",\"2011\"],\"values\":[\"13103\"]},{\"key\":[\"01\",\"G\",\"50\",\"2012\"],\"values\":[\"13966\"]},{\"key\":[\"0114\",\"OG\",\"45\",\"2011\"],\"values\":[\"227\"]},{\"key\":[\"0114\",\"OG\",\"45\",\"2012\"],\"values\":[\"202\"]},{\"key\":[\"0114\",\"OG\",\"50\",\"2011\"],\"values\":[\"127\"]},{\"key\":[\"0114\",\"OG\",\"50\",\"2012\"],\"values\":[\"139\"]},{\"key\":[\"0114\",\"G\",\"45\",\"2011\"],\"values\":[\"344\"]},{\"key\":[\"0114\",\"G\",\"45\",\"2012\"],\"values\":[\"326\"]},{\"key\":[\"0114\",\"G\",\"50\",\"2011\"],\"values\":[\"265\"]},{\"key\":[\"0114\",\"G\",\"50\",\"2012\"],\"values\":[\"266\"]}]}";
-
     }
 
     @Test
@@ -114,6 +114,30 @@ public class GenericModelTest {
             assertTrue(toString.contains("Alder"));
             assertTrue(toString.contains("Tid"));
         }
+    }
+
+    @Test
+    public void getEntriesNonExistingKey() {
+        GenericModel model = new GenericModel(this.json);
+
+        Map<String, Collection<String>> inputs = new HashMap<>();
+        inputs.put("TESTKEY1", Arrays.asList("-199", "-200"));
+        inputs.put("TESTKEY2", Arrays.asList("-199"));
+
+        Collection<Map<String, Object>> entries = model.getEntries(inputs);
+        assertEquals(0, entries.size());
+    }
+
+    @Test
+    public void getEntriesNonExistingValueForKey() {
+        GenericModel model = new GenericModel(this.json);
+
+        Map<String, Collection<String>> inputs = new HashMap<>();
+        inputs.put("Region", Arrays.asList("-1", "-2"));
+        inputs.put("Alder", Arrays.asList("-1"));
+
+        Collection<Map<String, Object>> entries = model.getEntries(inputs);
+        assertEquals(0, entries.size());
     }
 
     @Test
