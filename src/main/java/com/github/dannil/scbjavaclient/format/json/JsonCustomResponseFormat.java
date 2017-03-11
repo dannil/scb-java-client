@@ -31,7 +31,7 @@ import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
  *
  * @since 0.1.0
  */
-public final class JsonCustomResponseFormat implements IJsonResponseFormat {
+public final class JsonCustomResponseFormat {
 
     private List<Map<String, Object>> entries;
 
@@ -55,11 +55,11 @@ public final class JsonCustomResponseFormat implements IJsonResponseFormat {
     public JsonCustomResponseFormat(String json) {
         this();
         this.json = this.converter.toNode(json);
-        this.json = format();
+        this.json = this.converter.getMapper().convertValue(getEntries(), JsonNode.class);
     }
 
     /**
-     * Retrieves all the entries.
+     * <p>Retrieves all the entries.</p>
      *
      * @return all the entries
      */
@@ -113,22 +113,6 @@ public final class JsonCustomResponseFormat implements IJsonResponseFormat {
             this.entries.add(map);
         }
         return this.entries;
-    }
-
-    @Override
-    public JsonNode format() {
-        // Make sure the input is in the standardized non-conventional format
-        if (isFormatted()) {
-            return this.json;
-        }
-        return this.converter.getMapper().convertValue(getEntries(), JsonNode.class);
-    }
-
-    @Override
-    public boolean isFormatted() {
-        // Check if the node is correctly formatted
-        return !(this.json.has("columns") || this.json.has("data") || this.json.has("comments")
-                || !this.json.isArray());
     }
 
     /**
