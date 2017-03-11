@@ -121,9 +121,9 @@ public abstract class AbstractRequester {
     protected InputStream getResponse(URLConnection connection) throws IOException {
         HttpURLConnection httpConnection = (HttpURLConnection) connection;
 
-        int statusCode = httpConnection.getResponseCode();
-        Level level = statusCode >= 400 ? Level.ERROR : Level.INFO;
-        LOGGER.log(level, "HTTP {}: {}", statusCode, httpConnection.getURL());
+        final int httpStatusCodesErrorsStartCode = 400;
+        Level level = httpConnection.getResponseCode() >= httpStatusCodesErrorsStartCode ? Level.ERROR : Level.INFO;
+        LOGGER.log(level, "HTTP {}: {}", httpConnection.getResponseCode(), httpConnection.getURL());
 
         HttpUtility.validateStatusCode(httpConnection.getURL(), httpConnection.getResponseCode());
         return connection.getInputStream();
