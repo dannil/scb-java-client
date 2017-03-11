@@ -17,6 +17,7 @@ package com.github.dannil.scbjavaclient.test;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
@@ -47,6 +48,7 @@ public class TestIT {
             }
         }
 
+        List<Class<?>> matchedClasses = new ArrayList<Class<?>>();
         for (File file : files) {
             // Convert path into binary name
             String binaryName = Files.fileToBinaryName(file);
@@ -55,7 +57,9 @@ public class TestIT {
             Class<?> clazz = null;
             try {
                 clazz = Class.forName(binaryName);
-                assertTrue(clazz.toString(), RemoteIntegrationTestSuite.class.isAssignableFrom(clazz));
+                if (!RemoteIntegrationTestSuite.class.isAssignableFrom(clazz)) {
+                    matchedClasses.add(clazz);
+                }
             } catch (ClassNotFoundException e) {
                 // Class could not be created; respond with an assertion that'll always
                 // fail
@@ -63,6 +67,8 @@ public class TestIT {
                 assertTrue(e.getMessage(), false);
             }
         }
+        assertTrue("Classes not extending RemoteIntegrationTestSuite: "
+                + matchedClasses.toString(), matchedClasses.isEmpty());
     }
 
 }

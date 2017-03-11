@@ -150,11 +150,6 @@ public class MaturityStructureTest {
     }
 
     @Test
-    public void getInputs() {
-        assertNotNull(MaturityStructure.getInputs());
-    }
-
-    @Test
     public void equals() {
         MaturityStructure maturity = new MaturityStructure();
         MaturityStructure maturity2 = new MaturityStructure();

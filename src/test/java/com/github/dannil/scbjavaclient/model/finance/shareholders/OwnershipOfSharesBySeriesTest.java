@@ -132,11 +132,6 @@ public class OwnershipOfSharesBySeriesTest {
     }
 
     @Test
-    public void getInputs() {
-        assertNotNull(OwnershipOfSharesBySeries.getInputs());
-    }
-
-    @Test
     public void equals() {
         OwnershipOfSharesBySeries ownership = new OwnershipOfSharesBySeries();
         OwnershipOfSharesBySeries ownership2 = new OwnershipOfSharesBySeries();

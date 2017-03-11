@@ -105,11 +105,6 @@ public class LiveBirthTest {
     }
 
     @Test
-    public void getInputs() {
-        assertNotNull(LiveBirth.getInputs());
-    }
-
-    @Test
     public void equals() {
         LiveBirth liveBirth = new LiveBirth();
         LiveBirth liveBirth2 = new LiveBirth();

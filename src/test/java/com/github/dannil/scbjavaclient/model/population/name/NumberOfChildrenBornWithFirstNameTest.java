@@ -26,7 +26,10 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
+@RunWith(JUnit4.class)
 public class NumberOfChildrenBornWithFirstNameTest {
 
     private String testContentsCode;
@@ -81,11 +84,6 @@ public class NumberOfChildrenBornWithFirstNameTest {
         nbrChildren.setValues(this.values);
 
         assertNotNull(nbrChildren.getValues());
-    }
-
-    @Test
-    public void getInputs() {
-        assertNotNull(NumberOfChildrenBornWithFirstName.getInputs());
     }
 
     @Test

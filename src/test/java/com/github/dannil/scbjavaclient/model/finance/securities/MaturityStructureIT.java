@@ -12,22 +12,21 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.model.environment.landuse.usage;
+package com.github.dannil.scbjavaclient.model.finance.securities;
 
 import static org.junit.Assert.assertNotNull;
+
+import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class BuiltUpLandTest {
-
+public class MaturityStructureIT extends RemoteIntegrationTestSuite {
     @Test
-    public void createWithDefaultConstructor() {
-        BuiltUpLand water = new BuiltUpLand();
-
-        assertNotNull(water);
+    public void getInputs() {
+        assertNotNull(MaturityStructure.getInputs());
     }
 
 }

@@ -96,11 +96,6 @@ public class OutstandingAndIssuedAmountTest {
     }
 
     @Test
-    public void getInputs() {
-        assertNotNull(OutstandingAndIssuedAmount.getInputs());
-    }
-
-    @Test
     public void equals() {
         OutstandingAndIssuedAmount amount = new OutstandingAndIssuedAmount();
         OutstandingAndIssuedAmount amount2 = new OutstandingAndIssuedAmount();

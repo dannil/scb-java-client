@@ -131,11 +131,6 @@ public class AreaTest {
     }
 
     @Test
-    public void getInputs() {
-        assertNotNull(Area.getInputs());
-    }
-
-    @Test
     public void equals() {
         Area area = new Area();
         Area area2 = new Area();

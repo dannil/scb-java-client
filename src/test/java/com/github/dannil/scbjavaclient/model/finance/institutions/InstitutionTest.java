@@ -150,11 +150,6 @@ public class InstitutionTest {
     }
 
     @Test
-    public void getInputs() {
-        assertNotNull(Institution.getInputs());
-    }
-
-    @Test
     public void equals() {
         Institution insti = new Institution();
         Institution insti2 = new Institution();

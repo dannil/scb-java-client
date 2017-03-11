@@ -114,11 +114,6 @@ public class ForeignOwnershipOfSharesTest {
     }
 
     @Test
-    public void getInputs() {
-        assertNotNull(ForeignOwnershipOfShares.getInputs());
-    }
-
-    @Test
     public void equals() {
         ForeignOwnershipOfShares ownership = new ForeignOwnershipOfShares();
         ForeignOwnershipOfShares ownership2 = new ForeignOwnershipOfShares();

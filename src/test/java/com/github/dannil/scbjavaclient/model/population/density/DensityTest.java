@@ -26,7 +26,10 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
+@RunWith(JUnit4.class)
 public class DensityTest {
 
     private String testContentsCode;
@@ -90,11 +93,6 @@ public class DensityTest {
         density.setValues(this.values);
 
         assertNotNull(density.getValues());
-    }
-
-    @Test
-    public void getInputs() {
-        assertNotNull(Density.getInputs());
     }
 
     @Test

@@ -114,11 +114,6 @@ public class PlanningTest {
     }
 
     @Test
-    public void getInputs() {
-        assertNotNull(Planning.getInputs());
-    }
-
-    @Test
     public void equals() {
         Planning plan = new Planning();
         Planning plan2 = new Planning();

@@ -26,7 +26,10 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
+@RunWith(JUnit4.class)
 public class AverageAgeTest {
 
     private String testContentsCode;
@@ -90,11 +93,6 @@ public class AverageAgeTest {
         avg.setValues(this.values);
 
         assertNotNull(avg.getValues());
-    }
-
-    @Test
-    public void getInputs() {
-        assertNotNull(AverageAge.getInputs());
     }
 
     @Test

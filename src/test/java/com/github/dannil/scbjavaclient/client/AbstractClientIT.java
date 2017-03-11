@@ -19,6 +19,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -129,6 +130,7 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
         // Find files matching the wildcard pattern
         List<File> files = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient", "*Client.java");
 
+        List<Class<?>> matchedClasses = new ArrayList<Class<?>>();
         for (File file : files) {
             // Convert path into binary name
             String binaryName = Files.fileToBinaryName(file);
@@ -145,9 +147,10 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
                 assertTrue(e.getMessage(), false);
             } catch (NoSuchMethodException e) {
                 // Nope! Locale constructor not found
-                assertTrue("Class " + clazz.getName() + " doesn't declare a Locale constructor", false);
+                matchedClasses.add(clazz);
             }
         }
+        assertTrue("Classes not declaring a Locale constructor: " + matchedClasses.toString(), matchedClasses.isEmpty());
     }
 
 }

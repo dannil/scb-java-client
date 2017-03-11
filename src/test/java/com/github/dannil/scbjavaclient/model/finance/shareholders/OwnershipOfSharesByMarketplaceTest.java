@@ -132,11 +132,6 @@ public class OwnershipOfSharesByMarketplaceTest {
     }
 
     @Test
-    public void getInputs() {
-        assertNotNull(OwnershipOfSharesByMarketplace.getInputs());
-    }
-
-    @Test
     public void equals() {
         OwnershipOfSharesByMarketplace ownership = new OwnershipOfSharesByMarketplace();
         OwnershipOfSharesByMarketplace ownership2 = new OwnershipOfSharesByMarketplace();

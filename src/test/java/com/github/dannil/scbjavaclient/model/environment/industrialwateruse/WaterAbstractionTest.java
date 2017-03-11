@@ -30,9 +30,4 @@ public class WaterAbstractionTest {
         assertNotNull(water);
     }
 
-    @Test
-    public void getInputs() {
-        assertNotNull(WaterAbstraction.getInputs());
-    }
-
 }

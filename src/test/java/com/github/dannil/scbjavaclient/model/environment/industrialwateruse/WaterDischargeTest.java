@@ -131,11 +131,6 @@ public class WaterDischargeTest {
     }
 
     @Test
-    public void getInputs() {
-        assertNotNull(WaterDischarge.getInputs());
-    }
-
-    @Test
     public void equals() {
         WaterDischarge water = new WaterDischarge();
         WaterDischarge water2 = new WaterDischarge();

@@ -30,9 +30,4 @@ public class LandUseByCountyTest {
         assertNotNull(water);
     }
 
-    @Test
-    public void getInputs() {
-        assertNotNull(LandUseByCounty.getInputs());
-    }
-
 }

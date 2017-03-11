@@ -131,11 +131,6 @@ public class GeneratedWasteTest {
     }
 
     @Test
-    public void getInputs() {
-        assertNotNull(GeneratedWaste.getInputs());
-    }
-
-    @Test
     public void equals() {
         GeneratedWaste waste = new GeneratedWaste();
         GeneratedWaste waste2 = new GeneratedWaste();

@@ -167,10 +167,6 @@ public class PopulationTest {
         assertEquals(this.values, population.getValues());
     }
 
-    @Test
-    public void getInputs() {
-        assertNotNull(Population.getInputs());
-    }
 
     @Test
     public void equals() {

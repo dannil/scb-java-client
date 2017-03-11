@@ -30,9 +30,4 @@ public class ArableAndForestLandTest {
         assertNotNull(water);
     }
 
-    @Test
-    public void getInputs() {
-        assertNotNull(ArableAndForestLand.getInputs());
-    }
-
 }

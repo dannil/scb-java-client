@@ -131,11 +131,6 @@ public class TreatedWasteTest {
     }
 
     @Test
-    public void getInputs() {
-        assertNotNull(TreatedWaste.getInputs());
-    }
-
-    @Test
     public void equals() {
         TreatedWaste waste = new TreatedWaste();
         TreatedWaste waste2 = new TreatedWaste();

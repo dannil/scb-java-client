@@ -26,7 +26,10 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
+@RunWith(JUnit4.class)
 public class PartnershipChangeTest {
 
     private String testContentsCode;
@@ -99,11 +102,6 @@ public class PartnershipChangeTest {
         partner.setValues(this.values);
 
         assertNotNull(partner.getValues());
-    }
-
-    @Test
-    public void getInputs() {
-        assertNotNull(PartnershipChange.getInputs());
     }
 
     @Test

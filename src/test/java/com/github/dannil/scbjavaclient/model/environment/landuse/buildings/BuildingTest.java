@@ -53,193 +53,188 @@ public class BuildingTest {
 
     @Test
     public void createWithDefaultConstructor() {
-        Building b = new Building();
+        Building building = new Building();
 
-        assertNotNull(b);
+        assertNotNull(building);
     }
 
     @Test
     public void setRegion() {
-        Building b = new Building();
+        Building building = new Building();
 
-        b.setRegion("1267");
+        building.setRegion("1267");
 
-        assertNotNull(b.getRegion());
+        assertNotNull(building.getRegion());
     }
 
     @Test
     public void getRegion() {
-        Building b = new Building();
+        Building building = new Building();
 
-        b.setRegion("1267");
+        building.setRegion("1267");
 
-        assertEquals("1267", b.getRegion());
+        assertEquals("1267", building.getRegion());
     }
 
     @Test
     public void setType() {
-        Building b = new Building();
+        Building building = new Building();
 
-        b.setType(4);
+        building.setType(4);
 
-        assertNotNull(b.getType());
+        assertNotNull(building.getType());
     }
 
     @Test
     public void getType() {
-        Building b = new Building();
+        Building building = new Building();
 
-        b.setType(4);
+        building.setType(4);
 
-        assertEquals(Integer.valueOf(4), b.getType());
+        assertEquals(Integer.valueOf(4), building.getType());
     }
 
     @Test
     public void setTime() {
-        Building b = new Building();
+        Building building = new Building();
 
-        b.setTime(2011);
+        building.setTime(2011);
 
-        assertNotNull(b.getTime());
+        assertNotNull(building.getTime());
     }
 
     @Test
     public void getTime() {
-        Building b = new Building();
+        Building building = new Building();
 
-        b.setTime(2011);
+        building.setTime(2011);
 
-        assertEquals(Integer.valueOf(2011), b.getTime());
+        assertEquals(Integer.valueOf(2011), building.getTime());
     }
 
     @Test
     public void setValues() {
-        Building b = new Building();
+        Building building = new Building();
 
-        b.setValues(this.values);
+        building.setValues(this.values);
 
-        assertNotNull(b.getValues());
+        assertNotNull(building.getValues());
     }
 
     @Test
     public void getValues() {
-        Building b = new Building();
+        Building building = new Building();
 
-        b.setValues(this.values);
+        building.setValues(this.values);
 
-        assertEquals(this.values, b.getValues());
-    }
-
-    @Test
-    public void getInputs() {
-        assertNotNull(Building.getInputs());
+        assertEquals(this.values, building.getValues());
     }
 
     @Test
     public void equals() {
-        Building b = new Building();
-        Building b2 = new Building();
+        Building building = new Building();
+        Building building2 = new Building();
 
-        assertEquals(b, b2);
+        assertEquals(building, building2);
     }
 
     @Test
     public void equalsItself() {
-        Building b = new Building();
+        Building building = new Building();
 
-        assertEquals(b, b);
+        assertEquals(building, building);
     }
 
     @Test
     public void notEqualsNull() {
-        Building b = new Building();
+        Building building = new Building();
 
-        assertNotEquals(b, null);
+        assertNotEquals(building, null);
     }
 
     @Test
     public void notEqualsIncompatibleObject() {
-        Building b = new Building();
+        Building building = new Building();
 
-        assertNotEquals(b, new Object());
+        assertNotEquals(building, new Object());
     }
 
     @Test
     public void equalsItselfWithValues() {
-        Building b = new Building("0114", 3, 2010, this.values);
-        Building b2 = new Building("0114", 3, 2010, this.values2);
+        Building building = new Building("0114", 3, 2010, this.values);
+        Building building2 = new Building("0114", 3, 2010, this.values2);
 
-        assertEquals(b, b2);
+        assertEquals(building, building2);
     }
 
     @Test
     public void notEqualsOnRegion() {
-        Building b = new Building("0114", 3, 2010, this.values);
+        Building building = new Building("0114", 3, 2010, this.values);
 
-        Building b2 = new Building("0114", 3, 2010, this.values2);
-        b2.setRegion("1263");
+        Building building2 = new Building("0114", 3, 2010, this.values2);
+        building2.setRegion("1263");
 
-        assertNotEquals(b, b2);
+        assertNotEquals(building, building2);
     }
 
     @Test
     public void notEqualsOnType() {
-        Building b = new Building("0114", 3, 2010, this.values);
+        Building building = new Building("0114", 3, 2010, this.values);
 
-        Building b2 = new Building("0114", 3, 2010, this.values2);
-        b2.setType(2);
+        Building building2 = new Building("0114", 3, 2010, this.values2);
+        building2.setType(2);
 
-        assertNotEquals(b, b2);
+        assertNotEquals(building, building2);
     }
 
     @Test
     public void notEqualsOnTime() {
-        Building b = new Building("0114", 3, 2010, this.values);
+        Building building = new Building("0114", 3, 2010, this.values);
 
-        Building b2 = new Building("0114", 3, 2010, this.values2);
-        b2.setTime(2011);
+        Building building2 = new Building("0114", 3, 2010, this.values2);
+        building2.setTime(2011);
 
-        assertNotEquals(b, b2);
+        assertNotEquals(building, building2);
     }
 
     @Test
     public void notEqualsOnValue() {
-        Building b = new Building("0114", 3, 2010, this.values);
+        Building building = new Building("0114", 3, 2010, this.values);
 
-        Building b2 = new Building("0114", 3, 2010, this.values2);
-        b2.setValue(this.testContentsCode, "65432");
+        Building building2 = new Building("0114", 3, 2010, this.values2);
+        building2.setValue(this.testContentsCode, "65432");
 
-        assertNotEquals(b, b2);
+        assertNotEquals(building, building2);
     }
 
     @Test
     public void equalsHashCode() {
-        Building b = new Building("0114", 3, 2010, this.values);
-        Building b2 = new Building("0114", 3, 2010, this.values2);
+        Building building = new Building("0114", 3, 2010, this.values);
+        Building building2 = new Building("0114", 3, 2010, this.values2);
 
-        assertEquals(b.hashCode(), b2.hashCode());
+        assertEquals(building.hashCode(), building2.hashCode());
     }
 
     @Test
     public void equalsHashCodeNullValues() {
-        Building b = new Building();
-        Building b2 = new Building();
+        Building building = new Building();
+        Building building2 = new Building();
 
-        assertEquals(b.hashCode(), b2.hashCode());
+        assertEquals(building.hashCode(), building2.hashCode());
     }
 
     @Test
     public void convertToString() {
-        Building b = new Building("0114", 3, 2010, this.values);
+        Building building = new Building("0114", 3, 2010, this.values);
 
-        assertNotNull(b.toString());
+        assertNotNull(building.toString());
     }
 
     @Test
     public void convertToStringNullValues() {
-        Building b = new Building();
+        Building building = new Building();
 
-        assertNotNull(b.toString());
+        assertNotNull(building.toString());
     }
 
 }

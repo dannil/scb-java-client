@@ -113,11 +113,6 @@ public class PackagingAndPackagingWasteTest {
     }
 
     @Test
-    public void getInputs() {
-        assertNotNull(PackagingAndPackagingWaste.getInputs());
-    }
-
-    @Test
     public void equals() {
         PackagingAndPackagingWaste packaging = new PackagingAndPackagingWaste();
         PackagingAndPackagingWaste packaging2 = new PackagingAndPackagingWaste();
