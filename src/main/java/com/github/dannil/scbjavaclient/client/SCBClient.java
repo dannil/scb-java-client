@@ -25,10 +25,9 @@ import java.util.Map.Entry;
 import com.github.dannil.scbjavaclient.client.environment.EnvironmentClient;
 import com.github.dannil.scbjavaclient.client.finance.FinanceClient;
 import com.github.dannil.scbjavaclient.client.population.PopulationClient;
-import com.github.dannil.scbjavaclient.exception.SCBClientNotFoundException;
 import com.github.dannil.scbjavaclient.format.json.JsonAPIConfigTableFormat;
 import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
-import com.github.dannil.scbjavaclient.http.requester.AbstractRequester;
+import com.github.dannil.scbjavaclient.http.Response;
 import com.github.dannil.scbjavaclient.http.requester.GETRequester;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 import com.github.dannil.scbjavaclient.utility.URLUtility;
@@ -221,14 +220,12 @@ public class SCBClient extends AbstractContainerClient {
      */
     public static boolean isSupportedLocale(Locale locale) {
         String url = URLUtility.getRootUrl(locale);
-
-        AbstractRequester get = new GETRequester();
-        try {
-            get.getBody(url);
-            return true;
-        } catch (SCBClientNotFoundException e) {
+        GETRequester get = new GETRequester();
+        Response response = get.getResponse(url);
+        if (response.getStatus().getCode() == 404) {
             return false;
         }
+        return true;
     }
 
     @Override

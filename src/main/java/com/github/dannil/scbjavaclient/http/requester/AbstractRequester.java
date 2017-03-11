@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.http.requester;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -28,10 +27,9 @@ import java.util.Map.Entry;
 import java.util.Properties;
 
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
-import com.github.dannil.scbjavaclient.utility.HttpUtility;
+import com.github.dannil.scbjavaclient.http.HttpStatusCode;
+import com.github.dannil.scbjavaclient.http.Response;
 import com.github.dannil.scbjavaclient.utility.URLUtility;
-
-import org.apache.commons.io.input.BOMInputStream;
 
 /**
  * <p>Class which contains the logic for sending URL requests to a specified address.</p>
@@ -113,40 +111,19 @@ public abstract class AbstractRequester {
      * @throws IOException
      *             if an exception occurred while retrieving the <code>InputStream</code>
      */
-    protected InputStream getResponse(URLConnection connection) throws IOException {
+    protected Response getResponse(URLConnection connection) throws IOException {
         HttpURLConnection httpConnection = (HttpURLConnection) connection;
-        HttpUtility.validateStatusCode(httpConnection.getURL(), httpConnection.getResponseCode());
-        return connection.getInputStream();
-    }
-
-    /**
-     * Retrieves the body from the <code>InputStream</code> response.
-     *
-     * @param response
-     *            the <code>InputStream</code> response
-     * @return the body of the <code>InputStream</code>
-     * @throws IOException
-     *             if an exception occurred while retrieving the body
-     */
-    protected String getBody(InputStream response) throws IOException {
-        try (BOMInputStream bis = new BOMInputStream(response)) {
-            try (ByteArrayOutputStream bos = new ByteArrayOutputStream()) {
-                for (int result = bis.read(); result != -1; result = bis.read()) {
-                    bos.write((byte) result);
-                }
-                return bos.toString();
-            }
+        HttpStatusCode status = HttpStatusCode.valueOf(httpConnection.getResponseCode());
+        InputStream stream = null;
+        if (status.getCode() < 400) {
+            stream = httpConnection.getInputStream();
+        } else {
+            stream = httpConnection.getErrorStream();
         }
+        return new Response(status, stream);
     }
 
-    /**
-     * <p>Extracts the response body from the URL.</p>
-     *
-     * @param url
-     *            the URL to get the response from
-     * @return the response
-     */
-    public abstract String getBody(String url);
+    public abstract Response getResponse(String url);
 
     /**
      * <p>Return the content from the specified table.</p>
@@ -170,7 +147,7 @@ public abstract class AbstractRequester {
         // responsibility to a client. The client knows what locale is currently in use
         // and the method can therefore be rewritten to either accept the locale as a
         // parameter or the input URL is converted before calling this method.
-        return getBody(URLUtility.getRootUrl() + table);
+        return getResponse(URLUtility.getRootUrl() + table).getBody();
     }
 
     /**

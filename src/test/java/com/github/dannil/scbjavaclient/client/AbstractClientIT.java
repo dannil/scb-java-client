@@ -46,9 +46,8 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
 
         String url = client.getRootUrl() + "HE/HE0103/HE0103B/BefolkningAlder";
 
-        // This request is performed by a dummy Client which is set to English
-        // (as specified in the setup method). This means that if we receive a response
-        // with Swedish text, we've used the fallback url.
+        // This request is performed with the locale set to English. This means that if we
+        // receive a response with Swedish text, we've used the fallback url.
         String response = client.doGetRequest(url);
 
         assertTrue(response.contains("ålder"));
@@ -71,9 +70,8 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
         map.put("Boendeform", Arrays.asList("SMAG"));
         map.put("Tid", Arrays.asList("2012"));
 
-        // This request is performed by a dummy client which is set to English
-        // (as specified above when creating the client). This means that if we receive a
-        // response with Swedish text, we've used the fallback url.
+        // This request is performed with the locale set to English. This means that if we
+        // receive a response with Swedish text, we've used the fallback url.
         String response = client.doPostRequest(url, QueryBuilder.build(map));
 
         assertTrue(response.contains("ålder"));
