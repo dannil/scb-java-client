@@ -23,17 +23,12 @@ import com.github.dannil.scbjavaclient.http.requester.POSTRequester;
 import com.github.dannil.scbjavaclient.utility.Localization;
 import com.github.dannil.scbjavaclient.utility.URLUtility;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 /**
  * <p>Abstract class which specifies how clients should operate.</p>
  *
  * @since 0.0.2
  */
 public abstract class AbstractClient {
-
-    private static final Logger LOGGER = LogManager.getLogger(AbstractClient.class);
 
     private Locale locale;
 
