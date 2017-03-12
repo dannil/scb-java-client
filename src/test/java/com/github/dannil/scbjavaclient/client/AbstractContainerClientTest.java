@@ -73,4 +73,12 @@ public class AbstractContainerClientTest {
         assertEquals("https://api.scb.se/OV0104/v1/doris/fr/ssd/", client.getRootUrl());
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void addClientItself() {
+        Locale locale = new Locale("sv", "SE");
+        AbstractContainerClient client = new DummyContainerClient(locale);
+
+        client.addClient(client);
+    }
+
 }

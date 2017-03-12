@@ -66,8 +66,14 @@ public abstract class AbstractContainerClient extends AbstractClient {
      *
      * @param client
      *            the client
+     * @throws IllegalArgumentException
+     *             if <code>this</code> client adds itself as a sub-client, such that the
+     *             expression <code>this == client</code> is true
      */
     public void addClient(AbstractClient client) {
+        if (this == client) {
+            throw new IllegalArgumentException("Can't add itself as a sub-client.");
+        }
         this.clients.add(client);
     }
 
