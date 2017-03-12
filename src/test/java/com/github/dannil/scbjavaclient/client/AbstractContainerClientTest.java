@@ -23,11 +23,11 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class AbstractClientTest {
+public class AbstractContainerClientTest {
 
-    private static class DummyClient extends AbstractClient {
+    private static class DummyContainerClient extends AbstractContainerClient {
 
-        public DummyClient(Locale locale) {
+        public DummyContainerClient(Locale locale) {
             super(locale);
         }
 
@@ -42,15 +42,33 @@ public class AbstractClientTest {
     @Test
     public void createWithLocaleConstructor() {
         Locale locale = new Locale("sv", "SE");
-        AbstractClient client = new DummyClient(locale);
+        AbstractContainerClient client = new DummyContainerClient(locale);
 
         assertEquals(locale, client.getLocale());
     }
 
     @Test
+    public void setLocale() {
+        Locale locale = new Locale("sv", "SE");
+        AbstractContainerClient client = new DummyContainerClient(locale);
+
+        AbstractClient subClientOne = new DummyContainerClient(locale);
+        AbstractClient subClientTwo = new DummyContainerClient(locale);
+
+        client.addClient(subClientOne);
+        client.addClient(subClientTwo);
+
+        Locale newLocale = new Locale("fr", "CA");
+        client.setLocale(newLocale);
+
+        assertEquals(newLocale, subClientOne.getLocale());
+        assertEquals(newLocale, subClientTwo.getLocale());
+    }
+
+    @Test
     public void getRootUrl() {
         Locale locale = new Locale("fr", "CA");
-        AbstractClient client = new DummyClient(locale);
+        AbstractContainerClient client = new DummyContainerClient(locale);
 
         assertEquals("https://api.scb.se/OV0104/v1/doris/fr/ssd/", client.getRootUrl());
     }
