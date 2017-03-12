@@ -47,9 +47,9 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
 
         String url = client.getRootUrl() + "HE/HE0103/HE0103B/BefolkningAlder";
 
-        // This request is performed by a dummy Client which is set to English
-        // (as specified in the setup method). This means that if we receive a response
-        // with Swedish text, we've used the fallback url.
+        // This request is performed by a client which is set to English (as specified in
+        // the setup method). This means that if we receive a response with Swedish text,
+        // we've used the fallback url.
         String response = client.doGetRequest(url);
 
         assertTrue(response.contains("ålder"));
@@ -72,9 +72,9 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
         map.put("Boendeform", Arrays.asList("SMAG"));
         map.put("Tid", Arrays.asList("2012"));
 
-        // This request is performed by a dummy client which is set to English
-        // (as specified above when creating the client). This means that if we receive a
-        // response with Swedish text, we've used the fallback url.
+        // This request is performed by a client which is set to English (as specified in
+        // the setup method). This means that if we receive a response with Swedish text,
+        // we've used the fallback url.
         String response = client.doPostRequest(url, QueryBuilder.build(map));
 
         assertTrue(response.contains("ålder"));
@@ -111,8 +111,6 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
 
     @Test(expected = SCBClientForbiddenException.class)
     public void forbiddenException() {
-        // Need to use SCBClient here instead of DummyClient to reach
-        // getRawData(String)-method
         SCBClient client = new SCBClient();
 
         // This call will result in a HTTP 403 response (forbidden) since the
@@ -130,7 +128,7 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
         // Find files matching the wildcard pattern
         List<File> files = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient", "*Client.java");
 
-        List<Class<?>> matchedClasses = new ArrayList<Class<?>>();
+        List<Class<?>> matchedClasses = new ArrayList<>();
         for (File file : files) {
             // Convert path into binary name
             String binaryName = Files.fileToBinaryName(file);
@@ -150,7 +148,8 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
                 matchedClasses.add(clazz);
             }
         }
-        assertTrue("Classes not declaring a Locale constructor: " + matchedClasses.toString(), matchedClasses.isEmpty());
+        assertTrue("Classes not declaring a Locale constructor: "
+                + matchedClasses.toString(), matchedClasses.isEmpty());
     }
 
 }

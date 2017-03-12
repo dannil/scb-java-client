@@ -40,10 +40,9 @@ public class TestIT {
         List<File> files = Files.find(execPath + "/src/test/java/com/github/dannil/scbjavaclient", "*IT.java");
 
         // Filter out THIS class from the list
-        String classAsJavaFile = this.getClass().getSimpleName() + ".java";
         Iterator<File> it = files.iterator();
         while (it.hasNext()) {
-            if (Objects.equals(it.next().getName(), classAsJavaFile)) {
+            if (Objects.equals(Files.fileToBinaryName(it.next()), this.getClass().getName())) {
                 it.remove();
             }
         }
@@ -86,14 +85,13 @@ public class TestIT {
         Iterator<File> it = files.iterator();
         while (it.hasNext()) {
             for (Class<?> clazz : filters) {
-                if (Objects.equals(it.next().getName(), clazz.getSimpleName() + ".java")) {
+                if (Objects.equals(Files.fileToBinaryName(it.next()), clazz.getName())) {
                     it.remove();
                 }
             }
-
         }
 
-        List<Class<?>> matchedClasses = new ArrayList<Class<?>>();
+        List<Class<?>> matchedClasses = new ArrayList<>();
         for (File file : files) {
             // Convert path into binary name
             String binaryName = Files.fileToBinaryName(file);
@@ -102,8 +100,7 @@ public class TestIT {
             Class<?> clazz = null;
             try {
                 clazz = Class.forName(binaryName);
-                RunWith r = clazz.getAnnotation(RunWith.class);
-                if (r == null) {
+                if (clazz.getAnnotation(RunWith.class) == null) {
                     matchedClasses.add(clazz);
                 }
             } catch (ClassNotFoundException e) {
