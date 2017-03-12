@@ -84,8 +84,9 @@ public class TestIT {
 
         Iterator<File> it = files.iterator();
         while (it.hasNext()) {
+            File f = it.next();
             for (Class<?> clazz : filters) {
-                if (Objects.equals(Files.fileToBinaryName(it.next()), clazz.getName())) {
+                if (Objects.equals(Files.fileToBinaryName(f), clazz.getName())) {
                     it.remove();
                 }
             }
