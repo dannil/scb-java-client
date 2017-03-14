@@ -81,7 +81,9 @@ public class QueryBuilderTest {
 
         String query = QueryBuilder.build(inputMap);
 
-        assertEquals("{\"query\": [{\"code\": \"Tid\", \"selection\": {\"filter\": \"item\", \"values\": [\"2012\"]}}],\"response\": {\"format\": \"json\"}}", query);
+        assertEquals(
+                "{\"query\": [{\"code\": \"Tid\", \"selection\": {\"filter\": \"item\", \"values\": [\"2012\"]}}],\"response\": {\"format\": \"json\"}}",
+                query);
     }
 
     @Test

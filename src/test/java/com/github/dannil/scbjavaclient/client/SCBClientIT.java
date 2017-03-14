@@ -47,7 +47,8 @@ public class SCBClientIT extends RemoteIntegrationTestSuite {
         Map<String, Collection<String>> staticInputs = new HashMap<String, Collection<String>>();
         Collection<String> staticInputsArsKurs = Arrays.asList("10", "11", "12", "13", "14", "15", "16");
         Collection<String> staticInputsContentsCode = Arrays.asList("UF0104L1");
-        Collection<String> staticInputsTid = Arrays.asList("1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006");
+        Collection<String> staticInputsTid = Arrays.asList("1997", "1998", "1999", "2000", "2001", "2002", "2003",
+                "2004", "2005", "2006");
 
         staticInputs.put("ArsKurs", staticInputsArsKurs);
         staticInputs.put("ContentsCode", staticInputsContentsCode);

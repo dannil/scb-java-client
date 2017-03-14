@@ -45,7 +45,8 @@ public class EnvironmentLandAndWaterAreaClientIT extends RemoteIntegrationTestSu
 
     @Test
     public void getAreaWithParametersEmptyLists() {
-        assertNotEquals(0, this.environmentLandAndWaterAreaClient.getArea(Collections.<String>emptyList(), Collections.<String>emptyList(), Collections.<Integer>emptyList()));
+        assertNotEquals(0, this.environmentLandAndWaterAreaClient.getArea(Collections.<String>emptyList(),
+                Collections.<String>emptyList(), Collections.<Integer>emptyList()));
     }
 
     @Test

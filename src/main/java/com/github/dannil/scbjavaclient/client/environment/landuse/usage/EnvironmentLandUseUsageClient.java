@@ -82,7 +82,8 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
      */
     public List<ArableAndForestLand> getArableAndForestLand(Collection<String> regions, Collection<Integer> categories,
             Collection<Integer> years) {
-        return generate(Arrays.asList("MI0803AI"), regions, categories, years, "MarkanvJbSk", ArableAndForestLand.class);
+        return generate(Arrays.asList("MI0803AI"), regions, categories, years, "MarkanvJbSk",
+                ArableAndForestLand.class);
     }
 
     /**
@@ -175,7 +176,8 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
      */
     public List<LandUseByMunicipality> getLandUseByMunicipality(Collection<String> regions,
             Collection<Integer> categories, Collection<Integer> years) {
-        return generate(Arrays.asList("MI0803AB"), regions, categories, years, "MarkanvKn", LandUseByMunicipality.class);
+        return generate(Arrays.asList("MI0803AB"), regions, categories, years, "MarkanvKn",
+                LandUseByMunicipality.class);
     }
 
     /**

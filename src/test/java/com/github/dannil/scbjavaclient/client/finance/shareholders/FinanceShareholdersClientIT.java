@@ -45,7 +45,8 @@ public class FinanceShareholdersClientIT extends RemoteIntegrationTestSuite {
 
     @Test
     public void getOwnershipOfSharesWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getOwnershipOfShares(Collections.<String>emptyList(), Collections.<String>emptyList()));
+        assertNotEquals(0,
+                this.client.getOwnershipOfShares(Collections.<String>emptyList(), Collections.<String>emptyList()));
     }
 
     @Test
@@ -63,7 +64,8 @@ public class FinanceShareholdersClientIT extends RemoteIntegrationTestSuite {
 
     @Test
     public void getOwnershipOfSharesByMarketplaceWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getOwnershipOfSharesByMarketplace(Collections.<String>emptyList(), Collections.<String>emptyList(), Collections.<String>emptyList()));
+        assertNotEquals(0, this.client.getOwnershipOfSharesByMarketplace(Collections.<String>emptyList(),
+                Collections.<String>emptyList(), Collections.<String>emptyList()));
     }
 
     @Test
@@ -82,7 +84,8 @@ public class FinanceShareholdersClientIT extends RemoteIntegrationTestSuite {
 
     @Test
     public void getOwnershipOfSharesBySeriesWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getOwnershipOfSharesBySeries(Collections.<String>emptyList(), Collections.<String>emptyList(), Collections.<String>emptyList()));
+        assertNotEquals(0, this.client.getOwnershipOfSharesBySeries(Collections.<String>emptyList(),
+                Collections.<String>emptyList(), Collections.<String>emptyList()));
     }
 
     @Test
@@ -101,7 +104,8 @@ public class FinanceShareholdersClientIT extends RemoteIntegrationTestSuite {
 
     @Test
     public void getForeignOwnershipOfSharesWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getForeignOwnershipOfShares(Collections.<String>emptyList(), Collections.<String>emptyList()));
+        assertNotEquals(0, this.client.getForeignOwnershipOfShares(Collections.<String>emptyList(),
+                Collections.<String>emptyList()));
     }
 
     @Test
