@@ -23,7 +23,7 @@ import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
-import com.github.dannil.scbjavaclient.model.finance.institutions.Institution;
+import com.github.dannil.scbjavaclient.model.finance.institutions.MonetaryAssets;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
@@ -51,20 +51,20 @@ public class FinanceInstitutionsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all institution data.</p>
+     * <p>Fetch all institution assets data.</p>
      *
-     * @return the institution data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.finance.institutions.Institution
-     *         Institution} objects
+     * @return the institution assets data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.finance.institutions.MonetaryAssets
+     *         MonetaryAssets} objects
      *
-     * @see #getInstitutions(Collection, Collection, Collection, Collection)
+     * @see #getAssets(Collection, Collection, Collection, Collection)
      */
-    public List<Institution> getInstitutions() {
-        return getInstitutions(null, null, null, null);
+    public List<MonetaryAssets> getAssets() {
+        return getAssets(null, null, null, null);
     }
 
     /**
-     * <p>Fetch all institution data which match the input constraints.</p>
+     * <p>Fetch all institution assets data which match the input constraints.</p>
      *
      * @param institutions
      *            the institutions to fetch data for
@@ -75,10 +75,10 @@ public class FinanceInstitutionsClient extends AbstractClient {
      * @param months
      *            the months to fetch data for
      * @return the institution data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.finance.institutions.Institution
-     *         Institution} objects
+     *         {@link com.github.dannil.scbjavaclient.model.finance.institutions.MonetaryAssets
+     *         MonetaryAssets} objects
      */
-    public List<Institution> getInstitutions(Collection<String> institutions, Collection<String> items,
+    public List<MonetaryAssets> getAssets(Collection<String> institutions, Collection<String> items,
             Collection<String> currencies, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("ContentsCode", Arrays.asList("FM0401XX"));
@@ -90,7 +90,7 @@ public class FinanceInstitutionsClient extends AbstractClient {
         String response = doPostRequest(getUrl() + "MFIM1", QueryBuilder.build(mappings));
 
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(Institution.class);
+        return format.toListOf(MonetaryAssets.class);
     }
 
     @Override

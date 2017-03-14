@@ -39,23 +39,23 @@ public class FinanceInstitutionsClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
-    public void getInstitutions() {
-        assertNotEquals(0, this.client.getInstitutions().size());
+    public void getAssets() {
+        assertNotEquals(0, this.client.getAssets().size());
     }
 
     @Test
-    public void getInstitutionsWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getInstitutions(Collections.<String>emptyList(), Collections.<String>emptyList(), Collections.<String>emptyList(), Collections.<String>emptyList()));
+    public void getAssetsWithParametersEmptyLists() {
+        assertNotEquals(0, this.client.getAssets(Collections.<String>emptyList(), Collections.<String>emptyList(), Collections.<String>emptyList(), Collections.<String>emptyList()));
     }
 
     @Test
-    public void getInstitutionsWithParameters() {
+    public void getAssetsWithParameters() {
         List<String> institutions = Arrays.asList("41140", "11138");
         List<String> items = Arrays.asList("K11600", "K12300");
         List<String> currencies = Arrays.asList("v0", "v1");
         List<String> months = Arrays.asList("2010M03", "2011M03");
 
-        assertNotEquals(0, this.client.getInstitutions(institutions, items, currencies, months).size());
+        assertNotEquals(0, this.client.getAssets(institutions, items, currencies, months).size());
     }
 
 }

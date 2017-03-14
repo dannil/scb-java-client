@@ -23,11 +23,11 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class InstitutionIT extends RemoteIntegrationTestSuite {
+public class MonetaryAssetsIT extends RemoteIntegrationTestSuite {
 
     @Test
     public void getInputs() {
-        assertNotNull(Institution.getInputs());
+        assertNotNull(MonetaryAssets.getInputs());
     }
 
 }

@@ -30,7 +30,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class InstitutionTest {
+public class MonetaryAssetsTest {
 
     private String testContentsCode;
 
@@ -54,14 +54,14 @@ public class InstitutionTest {
 
     @Test
     public void createWithDefaultConstructor() {
-        Institution insti = new Institution();
+        MonetaryAssets insti = new MonetaryAssets();
 
         assertNotNull(insti);
     }
 
     @Test
     public void setInstitution() {
-        Institution insti = new Institution();
+        MonetaryAssets insti = new MonetaryAssets();
 
         insti.setInstitution("41249");
 
@@ -70,7 +70,7 @@ public class InstitutionTest {
 
     @Test
     public void getSector() {
-        Institution insti = new Institution();
+        MonetaryAssets insti = new MonetaryAssets();
 
         insti.setInstitution("41249");
 
@@ -79,7 +79,7 @@ public class InstitutionTest {
 
     @Test
     public void setItem() {
-        Institution insti = new Institution();
+        MonetaryAssets insti = new MonetaryAssets();
 
         insti.setItem("K14100");
 
@@ -88,7 +88,7 @@ public class InstitutionTest {
 
     @Test
     public void getItem() {
-        Institution insti = new Institution();
+        MonetaryAssets insti = new MonetaryAssets();
 
         insti.setItem("K14100");
 
@@ -97,7 +97,7 @@ public class InstitutionTest {
 
     @Test
     public void setCurrency() {
-        Institution insti = new Institution();
+        MonetaryAssets insti = new MonetaryAssets();
 
         insti.setCurrency("v1");
 
@@ -106,7 +106,7 @@ public class InstitutionTest {
 
     @Test
     public void getCurrency() {
-        Institution insti = new Institution();
+        MonetaryAssets insti = new MonetaryAssets();
 
         insti.setCurrency("v1");
 
@@ -115,7 +115,7 @@ public class InstitutionTest {
 
     @Test
     public void setTime() {
-        Institution insti = new Institution();
+        MonetaryAssets insti = new MonetaryAssets();
 
         insti.setTime("2016M03");
 
@@ -124,7 +124,7 @@ public class InstitutionTest {
 
     @Test
     public void getTime() {
-        Institution insti = new Institution();
+        MonetaryAssets insti = new MonetaryAssets();
 
         insti.setTime("2016M03");
 
@@ -133,7 +133,7 @@ public class InstitutionTest {
 
     @Test
     public void setValues() {
-        Institution insti = new Institution();
+        MonetaryAssets insti = new MonetaryAssets();
 
         insti.setValues(this.values);
 
@@ -142,7 +142,7 @@ public class InstitutionTest {
 
     @Test
     public void getValues() {
-        Institution insti = new Institution();
+        MonetaryAssets insti = new MonetaryAssets();
 
         insti.setValues(this.values);
 
@@ -151,46 +151,46 @@ public class InstitutionTest {
 
     @Test
     public void equals() {
-        Institution insti = new Institution();
-        Institution insti2 = new Institution();
+        MonetaryAssets insti = new MonetaryAssets();
+        MonetaryAssets insti2 = new MonetaryAssets();
 
         assertEquals(insti, insti2);
     }
 
     @Test
     public void equalsItself() {
-        Institution insti = new Institution();
+        MonetaryAssets insti = new MonetaryAssets();
 
         assertEquals(insti, insti);
     }
 
     @Test
     public void notEqualsNull() {
-        Institution insti = new Institution();
+        MonetaryAssets insti = new MonetaryAssets();
 
         assertNotEquals(insti, null);
     }
 
     @Test
     public void notEqualsIncompatibleObject() {
-        Institution insti = new Institution();
+        MonetaryAssets insti = new MonetaryAssets();
 
         assertNotEquals(insti, new Object());
     }
 
     @Test
     public void equalsItselfWithValues() {
-        Institution insti = new Institution("11102", "K21600", "v2", "2003M03", this.values);
-        Institution insti2 = new Institution("11102", "K21600", "v2", "2003M03", this.values2);
+        MonetaryAssets insti = new MonetaryAssets("11102", "K21600", "v2", "2003M03", this.values);
+        MonetaryAssets insti2 = new MonetaryAssets("11102", "K21600", "v2", "2003M03", this.values2);
 
         assertEquals(insti, insti2);
     }
 
     @Test
     public void notEqualsOnInstitution() {
-        Institution insti = new Institution("11102", "K21600", "v2", "2003M03", this.values);
+        MonetaryAssets insti = new MonetaryAssets("11102", "K21600", "v2", "2003M03", this.values);
 
-        Institution insti2 = new Institution("11102", "K21600", "v2", "2003M03", this.values2);
+        MonetaryAssets insti2 = new MonetaryAssets("11102", "K21600", "v2", "2003M03", this.values2);
         insti2.setInstitution("32007");
 
         assertNotEquals(insti, insti2);
@@ -198,9 +198,9 @@ public class InstitutionTest {
 
     @Test
     public void notEqualsOnItem() {
-        Institution insti = new Institution("11102", "K21600", "v2", "2003M03", this.values);
+        MonetaryAssets insti = new MonetaryAssets("11102", "K21600", "v2", "2003M03", this.values);
 
-        Institution insti2 = new Institution("11102", "K21600", "v2", "2003M03", this.values2);
+        MonetaryAssets insti2 = new MonetaryAssets("11102", "K21600", "v2", "2003M03", this.values2);
         insti2.setItem("K12000");
 
         assertNotEquals(insti, insti2);
@@ -208,9 +208,9 @@ public class InstitutionTest {
 
     @Test
     public void notEqualsOnCurrency() {
-        Institution insti = new Institution("11102", "K21600", "v2", "2003M03", this.values);
+        MonetaryAssets insti = new MonetaryAssets("11102", "K21600", "v2", "2003M03", this.values);
 
-        Institution insti2 = new Institution("11102", "K21600", "v2", "2003M03", this.values2);
+        MonetaryAssets insti2 = new MonetaryAssets("11102", "K21600", "v2", "2003M03", this.values2);
         insti2.setCurrency("v0");
 
         assertNotEquals(insti, insti2);
@@ -218,9 +218,9 @@ public class InstitutionTest {
 
     @Test
     public void notEqualsOnTime() {
-        Institution insti = new Institution("11102", "K21600", "v2", "2003M03", this.values);
+        MonetaryAssets insti = new MonetaryAssets("11102", "K21600", "v2", "2003M03", this.values);
 
-        Institution insti2 = new Institution("11102", "K21600", "v2", "2003M03", this.values2);
+        MonetaryAssets insti2 = new MonetaryAssets("11102", "K21600", "v2", "2003M03", this.values2);
         insti2.setTime("2002M06");
 
         assertNotEquals(insti, insti2);
@@ -228,9 +228,9 @@ public class InstitutionTest {
 
     @Test
     public void notEqualsOnValue() {
-        Institution insti = new Institution("11102", "K21600", "v2", "2003M03", this.values);
+        MonetaryAssets insti = new MonetaryAssets("11102", "K21600", "v2", "2003M03", this.values);
 
-        Institution insti2 = new Institution("11102", "K21600", "v2", "2003M03", this.values2);
+        MonetaryAssets insti2 = new MonetaryAssets("11102", "K21600", "v2", "2003M03", this.values2);
         insti2.setValue(this.testContentsCode, "99999");
 
         assertNotEquals(insti, insti2);
@@ -238,23 +238,23 @@ public class InstitutionTest {
 
     @Test
     public void equalsHashCode() {
-        Institution insti = new Institution("11102", "K21600", "v2", "2003M03", this.values);
-        Institution insti2 = new Institution("11102", "K21600", "v2", "2003M03", this.values2);
+        MonetaryAssets insti = new MonetaryAssets("11102", "K21600", "v2", "2003M03", this.values);
+        MonetaryAssets insti2 = new MonetaryAssets("11102", "K21600", "v2", "2003M03", this.values2);
 
         assertEquals(insti.hashCode(), insti2.hashCode());
     }
 
     @Test
     public void equalsHashCodeNullValues() {
-        Institution insti = new Institution();
-        Institution insti2 = new Institution();
+        MonetaryAssets insti = new MonetaryAssets();
+        MonetaryAssets insti2 = new MonetaryAssets();
 
         assertEquals(insti.hashCode(), insti2.hashCode());
     }
 
     @Test
     public void convertToString() {
-        Institution insti = new Institution("11102", "K21600", "v2", "2003M03", this.values);
+        MonetaryAssets insti = new MonetaryAssets("11102", "K21600", "v2", "2003M03", this.values);
 
         assertTrue(insti.toString().contains("11102"));
         assertTrue(insti.toString().contains("K21600"));
@@ -264,7 +264,7 @@ public class InstitutionTest {
 
     @Test
     public void convertToStringNullValues() {
-        Institution insti = new Institution();
+        MonetaryAssets insti = new MonetaryAssets();
 
         assertNotNull(insti.toString());
     }

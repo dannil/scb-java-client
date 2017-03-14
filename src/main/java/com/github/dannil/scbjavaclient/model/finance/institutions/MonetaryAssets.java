@@ -28,11 +28,11 @@ import com.github.dannil.scbjavaclient.model.AbstractTimeAndValueModel;
 import com.github.dannil.scbjavaclient.model.ValueNode;
 
 /**
- * <p>Model for financial institution data.</p>
+ * <p>Model for financial institution assets data.</p>
  *
  * @since 0.2.0
  */
-public class Institution extends AbstractTimeAndValueModel<String, String> {
+public class MonetaryAssets extends AbstractTimeAndValueModel<String, String> {
 
     @JsonProperty("Institut")
     private String institution;
@@ -46,7 +46,7 @@ public class Institution extends AbstractTimeAndValueModel<String, String> {
     /**
      * <p>Default constructor.</p>
      */
-    public Institution() {
+    public MonetaryAssets() {
         super();
     }
 
@@ -64,7 +64,8 @@ public class Institution extends AbstractTimeAndValueModel<String, String> {
      * @param values
      *            the values
      */
-    public Institution(String institution, String item, String currency, String month, List<ValueNode<String>> values) {
+    public MonetaryAssets(String institution, String item, String currency, String month,
+            List<ValueNode<String>> values) {
         super(month, values);
         this.institution = institution;
         this.item = item;
@@ -141,11 +142,11 @@ public class Institution extends AbstractTimeAndValueModel<String, String> {
         if (obj == null) {
             return false;
         }
-        if (!(obj instanceof Institution)) {
+        if (!(obj instanceof MonetaryAssets)) {
             return false;
         }
 
-        Institution other = (Institution) obj;
+        MonetaryAssets other = (MonetaryAssets) obj;
         return super.equals(obj) && Objects.equals(this.institution, other.institution)
                 && Objects.equals(this.item, other.item) && Objects.equals(this.currency, other.currency);
     }
@@ -172,7 +173,7 @@ public class Institution extends AbstractTimeAndValueModel<String, String> {
 
     /**
      * <p>Get the available codes and their respective values for the financial
-     * institution data from the API.</p>
+     * institution assets data from the API.</p>
      *
      * @return a list of the available codes and their values
      */
