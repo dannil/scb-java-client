@@ -36,8 +36,8 @@ public class DeliveriesOfOilProducts extends DeliveriesOfFuels {
     }
 
     /**
-     * <p>Get the available codes and their respective values for the energy monthly
-     * statistics deliveries of oil products data from the API.</p>
+     * <p>Get the available codes and their respective values for the deliveries of oil
+     * products data from the API.</p>
      *
      * @return a list of the available codes and their values
      */
