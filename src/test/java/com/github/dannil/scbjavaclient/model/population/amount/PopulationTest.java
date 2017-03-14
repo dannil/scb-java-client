@@ -167,7 +167,6 @@ public class PopulationTest {
         assertEquals(this.values, population.getValues());
     }
 
-
     @Test
     public void equals() {
         Population population = new Population();

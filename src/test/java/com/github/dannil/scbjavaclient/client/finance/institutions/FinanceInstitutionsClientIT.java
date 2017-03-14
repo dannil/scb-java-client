@@ -45,7 +45,8 @@ public class FinanceInstitutionsClientIT extends RemoteIntegrationTestSuite {
 
     @Test
     public void getAssetsWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getAssets(Collections.<String>emptyList(), Collections.<String>emptyList(), Collections.<String>emptyList(), Collections.<String>emptyList()));
+        assertNotEquals(0, this.client.getAssets(Collections.<String>emptyList(), Collections.<String>emptyList(),
+                Collections.<String>emptyList(), Collections.<String>emptyList()));
     }
 
     @Test

@@ -45,7 +45,8 @@ public class EnvironmentIndustrialWaterUseClientIT extends RemoteIntegrationTest
 
     @Test
     public void getWaterAbstractionWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getWaterAbstraction(Collections.<String>emptyList(), Collections.<Integer>emptyList(), Collections.<Integer>emptyList()));
+        assertNotEquals(0, this.client.getWaterAbstraction(Collections.<String>emptyList(),
+                Collections.<Integer>emptyList(), Collections.<Integer>emptyList()));
     }
 
     @Test
@@ -64,7 +65,8 @@ public class EnvironmentIndustrialWaterUseClientIT extends RemoteIntegrationTest
 
     @Test
     public void getWaterUseWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getWaterUse(Collections.<String>emptyList(), Collections.<Integer>emptyList(), Collections.<Integer>emptyList()));
+        assertNotEquals(0, this.client.getWaterUse(Collections.<String>emptyList(), Collections.<Integer>emptyList(),
+                Collections.<Integer>emptyList()));
     }
 
     @Test
@@ -83,7 +85,8 @@ public class EnvironmentIndustrialWaterUseClientIT extends RemoteIntegrationTest
 
     @Test
     public void getWaterDischargeWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getWaterDischarge(Collections.<String>emptyList(), Collections.<Integer>emptyList(), Collections.<Integer>emptyList()));
+        assertNotEquals(0, this.client.getWaterDischarge(Collections.<String>emptyList(),
+                Collections.<Integer>emptyList(), Collections.<Integer>emptyList()));
     }
 
     @Test

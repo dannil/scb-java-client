@@ -45,7 +45,8 @@ public class EnvironmentLandUseUsageClientIT extends RemoteIntegrationTestSuite 
 
     @Test
     public void getArableAndForestLandWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getArableAndForestLand(Collections.<String>emptyList(), Collections.<Integer>emptyList(), Collections.<Integer>emptyList()));
+        assertNotEquals(0, this.client.getArableAndForestLand(Collections.<String>emptyList(),
+                Collections.<Integer>emptyList(), Collections.<Integer>emptyList()));
     }
 
     @Test
@@ -64,7 +65,8 @@ public class EnvironmentLandUseUsageClientIT extends RemoteIntegrationTestSuite 
 
     @Test
     public void getBuiltUpLandWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getBuiltUpLand(Collections.<String>emptyList(), Collections.<Integer>emptyList(), Collections.<Integer>emptyList()));
+        assertNotEquals(0, this.client.getBuiltUpLand(Collections.<String>emptyList(), Collections.<Integer>emptyList(),
+                Collections.<Integer>emptyList()));
     }
 
     @Test
@@ -83,7 +85,8 @@ public class EnvironmentLandUseUsageClientIT extends RemoteIntegrationTestSuite 
 
     @Test
     public void getLandUseByCountyWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getLandUseByCounty(Collections.<String>emptyList(), Collections.<Integer>emptyList(), Collections.<Integer>emptyList()));
+        assertNotEquals(0, this.client.getLandUseByCounty(Collections.<String>emptyList(),
+                Collections.<Integer>emptyList(), Collections.<Integer>emptyList()));
     }
 
     @Test
@@ -102,7 +105,8 @@ public class EnvironmentLandUseUsageClientIT extends RemoteIntegrationTestSuite 
 
     @Test
     public void getLandUseByMunicipalityWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getLandUseByMunicipality(Collections.<String>emptyList(), Collections.<Integer>emptyList(), Collections.<Integer>emptyList()));
+        assertNotEquals(0, this.client.getLandUseByMunicipality(Collections.<String>emptyList(),
+                Collections.<Integer>emptyList(), Collections.<Integer>emptyList()));
     }
 
     @Test

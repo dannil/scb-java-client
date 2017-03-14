@@ -45,7 +45,8 @@ public class EnvironmentLandUseBuildingsClientIT extends RemoteIntegrationTestSu
 
     @Test
     public void getBuildingWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getBuilding(Collections.<String>emptyList(), Collections.<Integer>emptyList(), Collections.<Integer>emptyList()));
+        assertNotEquals(0, this.client.getBuilding(Collections.<String>emptyList(), Collections.<Integer>emptyList(),
+                Collections.<Integer>emptyList()));
     }
 
     @Test

@@ -45,7 +45,8 @@ public class EnvironmentWasteClientIT extends RemoteIntegrationTestSuite {
 
     @Test
     public void getGeneratedWasteWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getGeneratedWaste(Collections.<String>emptyList(), Collections.<String>emptyList(), Collections.<Integer>emptyList()));
+        assertNotEquals(0, this.client.getGeneratedWaste(Collections.<String>emptyList(),
+                Collections.<String>emptyList(), Collections.<Integer>emptyList()));
     }
 
     @Test
@@ -64,7 +65,8 @@ public class EnvironmentWasteClientIT extends RemoteIntegrationTestSuite {
 
     @Test
     public void getTreatedWasteWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getTreatedWaste(Collections.<Integer>emptyList(), Collections.<String>emptyList(), Collections.<Integer>emptyList()));
+        assertNotEquals(0, this.client.getTreatedWaste(Collections.<Integer>emptyList(),
+                Collections.<String>emptyList(), Collections.<Integer>emptyList()));
     }
 
     @Test
