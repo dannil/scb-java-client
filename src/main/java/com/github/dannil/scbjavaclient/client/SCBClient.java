@@ -24,6 +24,7 @@ import java.util.Map.Entry;
 
 import com.github.dannil.scbjavaclient.client.environment.EnvironmentClient;
 import com.github.dannil.scbjavaclient.client.finance.FinanceClient;
+import com.github.dannil.scbjavaclient.client.livingconditions.LivingConditionsClient;
 import com.github.dannil.scbjavaclient.client.population.PopulationClient;
 import com.github.dannil.scbjavaclient.exception.SCBClientNotFoundException;
 import com.github.dannil.scbjavaclient.format.json.JsonAPIConfigTableFormat;
@@ -44,6 +45,8 @@ public class SCBClient extends AbstractContainerClient {
 
     private FinanceClient financeClient;
 
+    private LivingConditionsClient livingConditionsClient;
+
     private PopulationClient populationClient;
 
     /**
@@ -57,6 +60,9 @@ public class SCBClient extends AbstractContainerClient {
 
         this.financeClient = new FinanceClient();
         addClient(financeClient);
+
+        this.livingConditionsClient = new LivingConditionsClient();
+        addClient(this.livingConditionsClient);
 
         this.populationClient = new PopulationClient();
         addClient(this.populationClient);
@@ -90,6 +96,15 @@ public class SCBClient extends AbstractContainerClient {
      */
     public FinanceClient finance() {
         return this.financeClient;
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with living conditions data.</p>
+     *
+     * @return a client for environment data
+     */
+    public LivingConditionsClient livingConditions() {
+        return this.livingConditionsClient;
     }
 
     /**
