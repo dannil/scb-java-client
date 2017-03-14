@@ -17,6 +17,7 @@ package com.github.dannil.scbjavaclient.client.energy;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
+import com.github.dannil.scbjavaclient.client.energy.annualstatistics.EnergyAnnualStatisticsClient;
 import com.github.dannil.scbjavaclient.client.energy.monthlystatistics.EnergyMonthlyStatisticsClient;
 
 /**
@@ -26,6 +27,8 @@ import com.github.dannil.scbjavaclient.client.energy.monthlystatistics.EnergyMon
  */
 public class EnergyClient extends AbstractContainerClient {
 
+    private EnergyAnnualStatisticsClient energyAnnualStatisticsClient;
+
     private EnergyMonthlyStatisticsClient energyMonthlyStatisticsClient;
 
     /**
@@ -33,6 +36,9 @@ public class EnergyClient extends AbstractContainerClient {
      */
     public EnergyClient() {
         super();
+
+        this.energyAnnualStatisticsClient = new EnergyAnnualStatisticsClient();
+        addClient(this.energyAnnualStatisticsClient);
 
         this.energyMonthlyStatisticsClient = new EnergyMonthlyStatisticsClient();
         addClient(this.energyMonthlyStatisticsClient);
@@ -51,9 +57,18 @@ public class EnergyClient extends AbstractContainerClient {
     }
 
     /**
+     * <p>Retrieve the client for interacting with energy annual statistics data.</p>
+     *
+     * @return a client for energy annual statistics data
+     */
+    public EnergyAnnualStatisticsClient annualStatistics() {
+        return this.energyAnnualStatisticsClient;
+    }
+
+    /**
      * <p>Retrieve the client for interacting with energy monthly statistics data.</p>
      *
-     * @return a client for energy monthly statistics water use data
+     * @return a client for energy monthly statistics data
      */
     public EnergyMonthlyStatisticsClient monthlyStatistics() {
         return this.energyMonthlyStatisticsClient;
