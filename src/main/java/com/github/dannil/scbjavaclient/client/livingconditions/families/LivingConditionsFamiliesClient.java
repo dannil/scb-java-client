@@ -17,6 +17,7 @@ package com.github.dannil.scbjavaclient.client.livingconditions.families;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
+import com.github.dannil.scbjavaclient.client.livingconditions.families.adoptions.LivingConditionsFamiliesAdoptionsClient;
 import com.github.dannil.scbjavaclient.client.livingconditions.families.housing.LivingConditionsFamiliesHousingClient;
 import com.github.dannil.scbjavaclient.client.livingconditions.families.legalguardians.LivingConditionsFamiliesLegalGuardiansClient;
 import com.github.dannil.scbjavaclient.client.livingconditions.families.siblings.LivingConditionsFamiliesSiblingsClient;
@@ -27,6 +28,8 @@ import com.github.dannil.scbjavaclient.client.livingconditions.families.siblings
  * @since 0.2.0
  */
 public class LivingConditionsFamiliesClient extends AbstractContainerClient {
+
+    private LivingConditionsFamiliesAdoptionsClient livingConditionsFamiliesAdoptionsClient;
 
     private LivingConditionsFamiliesHousingClient livingConditionsFamiliesHousingClient;
 
@@ -39,6 +42,9 @@ public class LivingConditionsFamiliesClient extends AbstractContainerClient {
      */
     public LivingConditionsFamiliesClient() {
         super();
+
+        this.livingConditionsFamiliesAdoptionsClient = new LivingConditionsFamiliesAdoptionsClient();
+        addClient(this.livingConditionsFamiliesAdoptionsClient);
 
         this.livingConditionsFamiliesHousingClient = new LivingConditionsFamiliesHousingClient();
         addClient(this.livingConditionsFamiliesHousingClient);
@@ -60,6 +66,16 @@ public class LivingConditionsFamiliesClient extends AbstractContainerClient {
         this();
 
         setLocale(locale);
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with living conditions families adoptions
+     * data.</p>
+     *
+     * @return a client for living conditions families adoptions data
+     */
+    public LivingConditionsFamiliesAdoptionsClient adoptions() {
+        return this.livingConditionsFamiliesAdoptionsClient;
     }
 
     /**
