@@ -91,9 +91,9 @@ public class HousingTest {
     public void getAge() {
         Housing housing = new Housing();
 
-        housing.setSex("18-21");
+        housing.setAge("18-21");
 
-        assertEquals("18-21", housing.getSex());
+        assertEquals("18-21", housing.getAge());
     }
 
     @Test
