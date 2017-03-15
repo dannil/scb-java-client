@@ -34,8 +34,8 @@ public class LegalGuardiansTest {
 
     private String testContentsCode;
 
-    private List<ValueNode<String>> values;
-    private List<ValueNode<String>> values2;
+    private List<ValueNode<Integer>> values;
+    private List<ValueNode<Integer>> values2;
 
     @Before
     public void setup() {
@@ -44,11 +44,11 @@ public class LegalGuardiansTest {
         this.values = new ArrayList<>();
         this.values2 = new ArrayList<>();
 
-        ValueNode<String> value = new ValueNode<>("4141414", this.testContentsCode, "Test contents code");
+        ValueNode<Integer> value = new ValueNode<>(7171, this.testContentsCode, "Test contents code");
         this.values.add(value);
 
         // Copy previous value node into new object
-        ValueNode<String> value2 = new ValueNode<>(value.getValue(), value.getCode(), value.getText());
+        ValueNode<Integer> value2 = new ValueNode<>(value.getValue(), value.getCode(), value.getText());
         this.values2.add(value2);
     }
 
@@ -231,7 +231,7 @@ public class LegalGuardiansTest {
         LegalGuardians guardians = new LegalGuardians("5", "VardE2ny", "EnsamFar", 2014, this.values);
 
         LegalGuardians guardians2 = new LegalGuardians("5", "VardE2ny", "EnsamFar", 2014, this.values2);
-        guardians2.setValue(this.testContentsCode, "99999");
+        guardians2.setValue(this.testContentsCode, 888);
 
         assertNotEquals(guardians, guardians2);
     }

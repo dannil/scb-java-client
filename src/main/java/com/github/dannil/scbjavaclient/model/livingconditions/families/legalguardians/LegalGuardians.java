@@ -32,7 +32,7 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
  *
  * @since 0.2.0
  */
-public class LegalGuardians extends AbstractTimeAndValueModel<Integer, String> {
+public class LegalGuardians extends AbstractTimeAndValueModel<Integer, Integer> {
 
     @JsonProperty("Kon")
     private String sex;
@@ -65,7 +65,7 @@ public class LegalGuardians extends AbstractTimeAndValueModel<Integer, String> {
      *            the values
      */
     public LegalGuardians(String sex, String caregiver, String familyType, Integer year,
-            List<ValueNode<String>> values) {
+            List<ValueNode<Integer>> values) {
         super(year, values);
         this.sex = sex;
         this.caregiver = caregiver;
