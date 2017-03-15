@@ -19,6 +19,7 @@ import java.util.Locale;
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.livingconditions.families.housing.LivingConditionsFamiliesHousingClient;
 import com.github.dannil.scbjavaclient.client.livingconditions.families.legalguardians.LivingConditionsFamiliesLegalGuardiansClient;
+import com.github.dannil.scbjavaclient.client.livingconditions.families.siblings.LivingConditionsFamiliesSiblingsClient;
 
 /**
  * <p>Client which handles living conditions families data fetching.</p>
@@ -31,6 +32,8 @@ public class LivingConditionsFamiliesClient extends AbstractContainerClient {
 
     private LivingConditionsFamiliesLegalGuardiansClient livingConditionsFamiliesLegalGuardiansClient;
 
+    private LivingConditionsFamiliesSiblingsClient livingConditionsFamiliesSiblingsClient;
+
     /**
      * <p>Default constructor. Initializes values and creates sub-clients.</p>
      */
@@ -42,6 +45,9 @@ public class LivingConditionsFamiliesClient extends AbstractContainerClient {
 
         this.livingConditionsFamiliesLegalGuardiansClient = new LivingConditionsFamiliesLegalGuardiansClient();
         addClient(this.livingConditionsFamiliesLegalGuardiansClient);
+
+        this.livingConditionsFamiliesSiblingsClient = new LivingConditionsFamiliesSiblingsClient();
+        addClient(this.livingConditionsFamiliesSiblingsClient);
     }
 
     /**
@@ -74,6 +80,16 @@ public class LivingConditionsFamiliesClient extends AbstractContainerClient {
      */
     public LivingConditionsFamiliesLegalGuardiansClient legalGuardians() {
         return this.livingConditionsFamiliesLegalGuardiansClient;
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with living conditions families siblings
+     * data.</p>
+     *
+     * @return a client for living conditions families siblings data
+     */
+    public LivingConditionsFamiliesSiblingsClient siblings() {
+        return this.livingConditionsFamiliesSiblingsClient;
     }
 
     @Override
