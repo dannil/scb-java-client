@@ -23,7 +23,7 @@ import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
-import com.github.dannil.scbjavaclient.model.livingconditons.housing.Housing;
+import com.github.dannil.scbjavaclient.model.livingconditons.families.housing.Housing;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**

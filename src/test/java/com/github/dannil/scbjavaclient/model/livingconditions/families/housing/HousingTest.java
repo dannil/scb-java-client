@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.model.ValueNode;
-import com.github.dannil.scbjavaclient.model.livingconditons.housing.Housing;
+import com.github.dannil.scbjavaclient.model.livingconditons.families.housing.Housing;
 
 import org.junit.Before;
 import org.junit.Test;

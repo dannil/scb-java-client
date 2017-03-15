@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.model.livingconditons.housing;
+package com.github.dannil.scbjavaclient.model.livingconditons.families.housing;
 
 import java.util.Collection;
 import java.util.List;
