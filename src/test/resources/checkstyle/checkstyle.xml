@@ -183,7 +183,7 @@
     <!-- Checks for metrics. -->
     <!-- See http://checkstyle.sf.net/config_metrics.html -->
     <module name="BooleanExpressionComplexity" />
-    <module name="ClassDataAbstractionCoupling" />
+    <!-- <module name="ClassDataAbstractionCoupling" /> -->
     <module name="ClassFanOutComplexity" />
     <module name="CyclomaticComplexity" />
     <module name="JavaNCSS" />
@@ -246,8 +246,8 @@
     <module name="MethodCount" />
     <module name="MethodLength" />
     <module name="OuterTypeNumber" />
-    <module name="ParameterNumber" >
-      <property name="max" value="8"/>
+    <module name="ParameterNumber">
+      <property name="max" value="8" />
     </module>
 
     <!-- Checks for whitespace -->
