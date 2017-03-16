@@ -44,7 +44,7 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
 
     @Override
     public String getUrl() {
-        return getRootUrl() + "LE/LE0101/LE0101H";
+        return getRootUrl() + "LE/LE0101/LE0101H/";
     }
 
 }
