@@ -66,8 +66,8 @@ public class TestIT {
                 assertTrue(e.getMessage(), false);
             }
         }
-        assertTrue("Classes not extending RemoteIntegrationTestSuite: "
-                + matchedClasses.toString(), matchedClasses.isEmpty());
+        assertTrue("Classes not extending RemoteIntegrationTestSuite: " + matchedClasses.toString(),
+                matchedClasses.isEmpty());
     }
 
     @Test

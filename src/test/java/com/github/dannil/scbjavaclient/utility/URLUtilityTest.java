@@ -56,7 +56,8 @@ public class URLUtilityTest {
 
     @Test
     public void changeUrlLocale() {
-        String url = URLUtility.changeLanguageForUrl("https://api.scb.se/OV0104/v1/doris/en/ssd/BE/BE0101/BE0101A/BefolkningNy");
+        String url = URLUtility.changeLanguageForUrl(
+                "https://api.scb.se/OV0104/v1/doris/en/ssd/BE/BE0101/BE0101A/BefolkningNy");
 
         Locale locale = new Locale("sv", "SE");
         assertEquals(URLUtility.getRootUrl(locale) + "BE/BE0101/BE0101A/BefolkningNy", url);

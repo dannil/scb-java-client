@@ -148,8 +148,8 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
                 matchedClasses.add(clazz);
             }
         }
-        assertTrue("Classes not declaring a Locale constructor: "
-                + matchedClasses.toString(), matchedClasses.isEmpty());
+        assertTrue("Classes not declaring a Locale constructor: " + matchedClasses.toString(),
+                matchedClasses.isEmpty());
     }
 
 }

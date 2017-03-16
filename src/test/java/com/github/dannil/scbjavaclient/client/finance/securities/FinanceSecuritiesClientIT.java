@@ -45,7 +45,8 @@ public class FinanceSecuritiesClientIT extends RemoteIntegrationTestSuite {
 
     @Test
     public void getMaturityStructureWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getMaturityStructure(Collections.<Integer>emptyList(), Collections.<String>emptyList(), Collections.<String>emptyList(), Collections.<String>emptyList()));
+        assertNotEquals(0, this.client.getMaturityStructure(Collections.<Integer>emptyList(),
+                Collections.<String>emptyList(), Collections.<String>emptyList(), Collections.<String>emptyList()));
     }
 
     @Test
@@ -65,7 +66,8 @@ public class FinanceSecuritiesClientIT extends RemoteIntegrationTestSuite {
 
     @Test
     public void getOutstandingAndIssuedAmountWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getOutstandingAndIssuedAmount(Collections.<Integer>emptyList(), Collections.<String>emptyList(), Collections.<String>emptyList(), Collections.<String>emptyList()));
+        assertNotEquals(0, this.client.getOutstandingAndIssuedAmount(Collections.<Integer>emptyList(),
+                Collections.<String>emptyList(), Collections.<String>emptyList(), Collections.<String>emptyList()));
     }
 
     @Test

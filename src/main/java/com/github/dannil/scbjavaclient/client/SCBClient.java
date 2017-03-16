@@ -22,6 +22,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.github.dannil.scbjavaclient.client.energy.EnergyClient;
 import com.github.dannil.scbjavaclient.client.environment.EnvironmentClient;
 import com.github.dannil.scbjavaclient.client.finance.FinanceClient;
 import com.github.dannil.scbjavaclient.client.livingconditions.LivingConditionsClient;
@@ -41,6 +42,8 @@ import com.github.dannil.scbjavaclient.utility.URLUtility;
  */
 public class SCBClient extends AbstractContainerClient {
 
+    private EnergyClient energyClient;
+
     private EnvironmentClient environmentClient;
 
     private FinanceClient financeClient;
@@ -54,6 +57,9 @@ public class SCBClient extends AbstractContainerClient {
      */
     public SCBClient() {
         super();
+
+        this.energyClient = new EnergyClient();
+        addClient(this.energyClient);
 
         this.environmentClient = new EnvironmentClient();
         addClient(this.environmentClient);
@@ -78,6 +84,15 @@ public class SCBClient extends AbstractContainerClient {
         this();
 
         setLocale(locale);
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with energy data.</p>
+     *
+     * @return a client for energy data
+     */
+    public EnergyClient energy() {
+        return this.energyClient;
     }
 
     /**

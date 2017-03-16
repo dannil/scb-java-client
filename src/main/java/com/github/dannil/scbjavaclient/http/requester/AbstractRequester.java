@@ -201,8 +201,8 @@ public abstract class AbstractRequester {
     public final void setCharset(Charset charset) {
         this.charset = charset;
         this.requestProperties.put(REQUESTPROPERTY_ACCEPT_CHARSET, this.charset.name());
-        this.requestProperties.put(REQUESTPROPERTY_CONTENT_TYPE, "application/json; charset="
-                + this.charset.name().toLowerCase());
+        this.requestProperties.put(REQUESTPROPERTY_CONTENT_TYPE,
+                "application/json; charset=" + this.charset.name().toLowerCase());
     }
 
     /**
