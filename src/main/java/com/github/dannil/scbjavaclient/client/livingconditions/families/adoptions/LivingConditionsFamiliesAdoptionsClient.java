@@ -50,10 +50,34 @@ public class LivingConditionsFamiliesAdoptionsClient extends AbstractClient {
         super(locale);
     }
 
+    /**
+     * <p>Fetch all child adoptions data.</p>
+     *
+     * @return the child adoptions data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.families.adoptions.ChildAdoption
+     *         ChildAdoption} objects
+     *
+     * @see #getChildAdoptions(Collection, Collection, Collection, Collection)
+     */
     public List<ChildAdoption> getChildAdoptions() {
         return getChildAdoptions(null, null, null, null);
     }
 
+    /**
+     * <p>Fetch all child adoptions data which match the input constraints.</p>
+     *
+     * @param sexes
+     *            the sexes
+     * @param ages
+     *            the ages
+     * @param birthCountries
+     *            the birth countries
+     * @param years
+     *            the years
+     * @return the child adoptions data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.families.adoptions.ChildAdoption
+     *         ChildAdoption} objects
+     */
     public List<ChildAdoption> getChildAdoptions(Collection<String> sexes, Collection<String> ages,
             Collection<String> birthCountries, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();

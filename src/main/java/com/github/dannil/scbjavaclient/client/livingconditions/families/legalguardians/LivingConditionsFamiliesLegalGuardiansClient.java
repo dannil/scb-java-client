@@ -50,10 +50,34 @@ public class LivingConditionsFamiliesLegalGuardiansClient extends AbstractClient
         super(locale);
     }
 
+    /**
+     * <p>Fetch all legal guardians data.</p>
+     *
+     * @return the legal guardians data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.families.legalguardians.LegalGuardians
+     *         LegalGuardians} objects
+     *
+     * @see #getLegalGuardians(Collection, Collection, Collection, Collection)
+     */
     public List<LegalGuardians> getLegalGuardians() {
         return getLegalGuardians(null, null, null, null);
     }
 
+    /**
+     * <p>Fetch all legal guardians data which match the input constraints.</p>
+     *
+     * @param sexes
+     *            the sexes
+     * @param caregivers
+     *            the caregivers
+     * @param familyTypes
+     *            the family types
+     * @param years
+     *            the years
+     * @return the legal guardians data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.families.legalguardians.LegalGuardians
+     *         LegalGuardians} objects
+     */
     public List<LegalGuardians> getLegalGuardians(Collection<String> sexes, Collection<String> caregivers,
             Collection<String> familyTypes, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();

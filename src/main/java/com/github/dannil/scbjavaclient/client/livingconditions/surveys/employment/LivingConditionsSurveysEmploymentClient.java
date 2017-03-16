@@ -44,7 +44,7 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
 
     @Override
     public String getUrl() {
-        return getRootUrl() + "LE/LE0101/LE0101";
+        return getRootUrl() + "LE/LE0101/LE0101S";
     }
 
 }

@@ -50,10 +50,36 @@ public class LivingConditionsFamiliesSiblingsClient extends AbstractClient {
         super(locale);
     }
 
+    /**
+     * <p>Fetch all siblings data.</p>
+     *
+     * @return the housing data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.families.siblings.Siblings
+     *         Siblings} objects
+     *
+     * @see #getSiblings(Collection, Collection, Collection, Collection, Collection)
+     */
     public List<Siblings> getSiblings() {
         return getSiblings(null, null, null, null, null);
     }
 
+    /**
+     * <p>Fetch all siblings data which match the input constraints.</p>
+     *
+     * @param sexes
+     *            the sexes
+     * @param ages
+     *            the ages
+     * @param siblingsLivingAtHome
+     *            the siblings living at home
+     * @param familyTypes
+     *            the family types
+     * @param years
+     *            the years
+     * @return the housing data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.families.siblings.Siblings
+     *         Siblings} objects
+     */
     public List<Siblings> getSiblings(Collection<String> sexes, Collection<String> ages,
             Collection<Integer> siblingsLivingAtHome, Collection<String> familyTypes, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();

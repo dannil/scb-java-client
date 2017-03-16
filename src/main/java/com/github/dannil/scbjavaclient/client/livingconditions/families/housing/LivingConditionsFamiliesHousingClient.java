@@ -23,7 +23,7 @@ import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
-import com.github.dannil.scbjavaclient.model.livingconditons.families.housing.Housing;
+import com.github.dannil.scbjavaclient.model.livingconditions.families.housing.Housing;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
@@ -50,10 +50,41 @@ public class LivingConditionsFamiliesHousingClient extends AbstractClient {
         super(locale);
     }
 
+    /**
+     * <p>Fetch all housing data.</p>
+     *
+     * @return the housing data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.families.housing.Housing
+     *         Housing} objects
+     *
+     * @see #getHousing(Collection, Collection, Collection, Collection, Collection,
+     *      Collection, Collection)
+     */
     public List<Housing> getHousing() {
         return getHousing(null, null, null, null, null, null, null);
     }
 
+    /**
+     * <p>Fetch all housing data which match the input constraints.</p>
+     *
+     * @param sexes
+     *            the sexes
+     * @param ages
+     *            the ages
+     * @param housingTypes
+     *            the housing types
+     * @param familyTypes
+     *            the family types
+     * @param backgrounds
+     *            the backgrounds
+     * @param parentIncomes
+     *            the parent incomes
+     * @param years
+     *            the years
+     * @return the housing data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.families.housing.Housing
+     *         Housing} objects
+     */
     public List<Housing> getHousing(Collection<String> sexes, Collection<String> ages, Collection<String> housingTypes,
             Collection<String> familyTypes, Collection<String> backgrounds, Collection<Integer> parentIncomes,
             Collection<Integer> years) {
