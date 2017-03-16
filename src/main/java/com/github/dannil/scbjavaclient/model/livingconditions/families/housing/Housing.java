@@ -206,7 +206,8 @@ public class Housing extends AbstractTimeAndValueModel<Integer, String> {
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), this.sex, this.age, this.housingType, this.familyType, this.background, this.parentIncome);
+        return Objects.hash(super.hashCode(), this.sex, this.age, this.housingType, this.familyType, this.background,
+                this.parentIncome);
     }
 
     @Override
