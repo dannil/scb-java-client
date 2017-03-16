@@ -129,7 +129,7 @@ public class Siblings extends AbstractTimeAndValueModel<Integer, Integer> {
      * <p>Setter for siblings living at home.</p>
      *
      * @param siblingsLivingAtHome
-     *            siblings living at home
+     *            the siblings living at home
      */
     public void setSiblingsLivingAtHome(Integer siblingsLivingAtHome) {
         this.siblingsLivingAtHome = siblingsLivingAtHome;
@@ -184,11 +184,11 @@ public class Siblings extends AbstractTimeAndValueModel<Integer, Integer> {
         builder.append(this.getClass().getSimpleName());
         builder.append(" [sex=");
         builder.append(this.sex);
-        builder.append(" [age=");
+        builder.append(", age=");
         builder.append(this.age);
-        builder.append(" [siblingsLivingAtHome=");
+        builder.append(", siblingsLivingAtHome=");
         builder.append(this.siblingsLivingAtHome);
-        builder.append(" [familyType=");
+        builder.append(", familyType=");
         builder.append(this.familyType);
         builder.append(", time=");
         builder.append(getTime());

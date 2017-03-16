@@ -206,8 +206,7 @@ public class Housing extends AbstractTimeAndValueModel<Integer, String> {
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), this.sex, this.age, this.housingType, this.familyType, this.background,
-                this.parentIncome);
+        return Objects.hash(super.hashCode(), this.sex, this.age, this.housingType, this.familyType, this.background, this.parentIncome);
     }
 
     @Override
@@ -237,15 +236,15 @@ public class Housing extends AbstractTimeAndValueModel<Integer, String> {
         builder.append(this.getClass().getSimpleName());
         builder.append(" [sex=");
         builder.append(this.sex);
-        builder.append(" [age=");
+        builder.append(", age=");
         builder.append(this.age);
-        builder.append(" [housingType=");
+        builder.append(", housingType=");
         builder.append(this.housingType);
-        builder.append(" [familyType=");
+        builder.append(", familyType=");
         builder.append(this.familyType);
-        builder.append(" [background=");
+        builder.append(", background=");
         builder.append(this.background);
-        builder.append(" [parentIncome=");
+        builder.append(", parentIncome=");
         builder.append(this.parentIncome);
         builder.append(", time=");
         builder.append(getTime());

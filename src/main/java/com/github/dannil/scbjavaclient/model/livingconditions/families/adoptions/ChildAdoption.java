@@ -28,7 +28,7 @@ import com.github.dannil.scbjavaclient.model.AbstractTimeAndValueModel;
 import com.github.dannil.scbjavaclient.model.ValueNode;
 
 /**
- * <p>Model for siblings data.</p>
+ * <p>Model for child adoption data.</p>
  *
  * @since 0.2.0
  */
@@ -157,9 +157,9 @@ public class ChildAdoption extends AbstractTimeAndValueModel<Integer, Integer> {
         builder.append(this.getClass().getSimpleName());
         builder.append(" [sex=");
         builder.append(this.sex);
-        builder.append(" [age=");
+        builder.append(", age=");
         builder.append(this.age);
-        builder.append(" [birthCountry=");
+        builder.append(", birthCountry=");
         builder.append(this.birthCountry);
         builder.append(", time=");
         builder.append(getTime());

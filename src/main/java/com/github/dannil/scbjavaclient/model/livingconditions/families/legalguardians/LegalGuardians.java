@@ -55,10 +55,10 @@ public class LegalGuardians extends AbstractTimeAndValueModel<Integer, Integer> 
      *
      * @param sex
      *            the sex
-     * @param familyType
-     *            the family type
      * @param caregiver
      *            the caregiver
+     * @param familyType
+     *            the family type
      * @param year
      *            the year
      * @param values
@@ -158,9 +158,9 @@ public class LegalGuardians extends AbstractTimeAndValueModel<Integer, Integer> 
         builder.append(this.getClass().getSimpleName());
         builder.append(" [sex=");
         builder.append(this.sex);
-        builder.append(" [caregiver=");
+        builder.append(", caregiver=");
         builder.append(this.caregiver);
-        builder.append(" [familyType=");
+        builder.append(", familyType=");
         builder.append(this.familyType);
         builder.append(", time=");
         builder.append(getTime());

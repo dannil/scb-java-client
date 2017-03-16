@@ -116,7 +116,7 @@ public class SCBClient extends AbstractContainerClient {
     /**
      * <p>Retrieve the client for interacting with living conditions data.</p>
      *
-     * @return a client for environment data
+     * @return a client for living conditions data
      */
     public LivingConditionsClient livingConditions() {
         return this.livingConditionsClient;

@@ -53,7 +53,7 @@ public class LivingConditionsFamiliesSiblingsClient extends AbstractClient {
     /**
      * <p>Fetch all siblings data.</p>
      *
-     * @return the housing data wrapped in a list of
+     * @return the siblings data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.livingconditions.families.siblings.Siblings
      *         Siblings} objects
      *
@@ -76,7 +76,7 @@ public class LivingConditionsFamiliesSiblingsClient extends AbstractClient {
      *            the family types
      * @param years
      *            the years
-     * @return the housing data wrapped in a list of
+     * @return the siblings data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.livingconditions.families.siblings.Siblings
      *         Siblings} objects
      */
