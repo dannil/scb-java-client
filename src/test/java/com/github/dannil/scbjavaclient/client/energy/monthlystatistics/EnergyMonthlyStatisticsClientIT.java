@@ -45,7 +45,8 @@ public class EnergyMonthlyStatisticsClientIT extends RemoteIntegrationTestSuite 
 
     @Test
     public void getDeliveriesOfLiquidFuelsWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getDeliveriesOfLiquidFuels(Collections.<Integer>emptyList(), Collections.<String>emptyList(), Collections.<String>emptyList()));
+        assertNotEquals(0, this.client.getDeliveriesOfLiquidFuels(Collections.<Integer>emptyList(),
+                Collections.<String>emptyList(), Collections.<String>emptyList()));
     }
 
     @Test
@@ -64,7 +65,8 @@ public class EnergyMonthlyStatisticsClientIT extends RemoteIntegrationTestSuite 
 
     @Test
     public void getDeliveriesOfOilProductsWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getDeliveriesOfOilProducts(Collections.<Integer>emptyList(), Collections.<String>emptyList(), Collections.<String>emptyList()));
+        assertNotEquals(0, this.client.getDeliveriesOfOilProducts(Collections.<Integer>emptyList(),
+                Collections.<String>emptyList(), Collections.<String>emptyList()));
     }
 
     @Test
