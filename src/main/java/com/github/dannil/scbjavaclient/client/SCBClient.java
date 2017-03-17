@@ -24,7 +24,7 @@ import java.util.Map.Entry;
 
 import com.github.dannil.scbjavaclient.client.energy.EnergyClient;
 import com.github.dannil.scbjavaclient.client.environment.EnvironmentClient;
-import com.github.dannil.scbjavaclient.client.finance.FinanceClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.FinancialMarketsClient;
 import com.github.dannil.scbjavaclient.client.livingconditions.LivingConditionsClient;
 import com.github.dannil.scbjavaclient.client.population.PopulationClient;
 import com.github.dannil.scbjavaclient.exception.SCBClientNotFoundException;
@@ -46,7 +46,7 @@ public class SCBClient extends AbstractContainerClient {
 
     private EnvironmentClient environmentClient;
 
-    private FinanceClient financeClient;
+    private FinancialMarketsClient financialMarketsClient;
 
     private LivingConditionsClient livingConditionsClient;
 
@@ -64,8 +64,8 @@ public class SCBClient extends AbstractContainerClient {
         this.environmentClient = new EnvironmentClient();
         addClient(this.environmentClient);
 
-        this.financeClient = new FinanceClient();
-        addClient(financeClient);
+        this.financialMarketsClient = new FinancialMarketsClient();
+        addClient(this.financialMarketsClient);
 
         this.livingConditionsClient = new LivingConditionsClient();
         addClient(this.livingConditionsClient);
@@ -105,12 +105,12 @@ public class SCBClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with finance data.</p>
+     * <p>Retrieve the client for interacting with financial markets data.</p>
      *
-     * @return a client for finance data
+     * @return a client for financial markets data
      */
-    public FinanceClient finance() {
-        return this.financeClient;
+    public FinancialMarketsClient financialMarkets() {
+        return this.financialMarketsClient;
     }
 
     /**
