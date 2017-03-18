@@ -45,6 +45,8 @@ public abstract class AbstractRequester {
 
     private static final Logger LOGGER = LogManager.getLogger(AbstractRequester.class);
 
+    private static final int HTTP_STATUS_CODES_ERRORS_START_CODE = 400;
+
     private static final String REQUESTPROPERTY_ACCEPT = "Accept";
 
     private static final String REQUESTPROPERTY_ACCEPT_CHARSET = "Accept-Charset";
@@ -121,8 +123,8 @@ public abstract class AbstractRequester {
     protected InputStream getResponse(URLConnection connection) throws IOException {
         HttpURLConnection httpConnection = (HttpURLConnection) connection;
 
-        final int httpStatusCodesErrorsStartCode = 400;
-        Level level = httpConnection.getResponseCode() >= httpStatusCodesErrorsStartCode ? Level.ERROR : Level.INFO;
+        Level level = httpConnection.getResponseCode() >= HTTP_STATUS_CODES_ERRORS_START_CODE ? Level.ERROR
+                : Level.INFO;
         LOGGER.log(level, "HTTP {}: {}", httpConnection.getResponseCode(), httpConnection.getURL());
 
         HttpUtility.validateStatusCode(httpConnection.getURL(), httpConnection.getResponseCode());
