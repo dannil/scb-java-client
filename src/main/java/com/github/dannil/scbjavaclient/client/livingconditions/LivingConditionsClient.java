@@ -18,7 +18,6 @@ import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.livingconditions.families.LivingConditionsFamiliesClient;
-import com.github.dannil.scbjavaclient.client.livingconditions.surveys.LivingConditionsSurveysClient;
 
 /**
  * <p>Client which handles living conditions data fetching.</p>
@@ -29,8 +28,6 @@ public class LivingConditionsClient extends AbstractContainerClient {
 
     private LivingConditionsFamiliesClient livingConditionsFamiliesClient;
 
-    private LivingConditionsSurveysClient livingConditionsSurveysClient;
-
     /**
      * <p>Default constructor. Initializes values and creates sub-clients.</p>
      */
@@ -39,9 +36,6 @@ public class LivingConditionsClient extends AbstractContainerClient {
 
         this.livingConditionsFamiliesClient = new LivingConditionsFamiliesClient();
         addClient(this.livingConditionsFamiliesClient);
-
-        this.livingConditionsSurveysClient = new LivingConditionsSurveysClient();
-        addClient(this.livingConditionsSurveysClient);
     }
 
     /**
@@ -63,15 +57,6 @@ public class LivingConditionsClient extends AbstractContainerClient {
      */
     public LivingConditionsFamiliesClient families() {
         return this.livingConditionsFamiliesClient;
-    }
-
-    /**
-     * <p>Retrieve the client for interacting with living conditions surveys data.</p>
-     *
-     * @return a client for living conditions surveys data
-     */
-    public LivingConditionsSurveysClient surveys() {
-        return this.livingConditionsSurveysClient;
     }
 
     @Override
