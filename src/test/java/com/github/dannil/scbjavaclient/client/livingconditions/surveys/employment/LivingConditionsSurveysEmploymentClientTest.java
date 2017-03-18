@@ -12,10 +12,9 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.livingconditions;
+package com.github.dannil.scbjavaclient.client.livingconditions.surveys.employment;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 import java.util.Locale;
 
@@ -26,28 +25,14 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class LivingConditionsClientTest {
+public class LivingConditionsSurveysEmploymentClientTest {
 
     @Test
     public void createWithLocaleConstructor() {
         Locale locale = new Locale("sv", "SE");
-        LivingConditionsClient client = new LivingConditionsClient(locale);
+        LivingConditionsSurveysEmploymentClient client = new LivingConditionsSurveysEmploymentClient(locale);
 
         assertEquals(locale, client.getLocale());
-    }
-
-    @Test
-    public void familiesClient() {
-        LivingConditionsClient client = new LivingConditionsClient();
-
-        assertNotNull(client.families());
-    }
-
-    @Test
-    public void surveysClient() {
-        LivingConditionsClient client = new LivingConditionsClient();
-
-        assertNotNull(client.surveys());
     }
 
     @Test
@@ -55,9 +40,9 @@ public class LivingConditionsClientTest {
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints
         Locale locale = new Locale("en", "US");
-        LivingConditionsClient client = new LivingConditionsClient(locale);
+        LivingConditionsSurveysEmploymentClient client = new LivingConditionsSurveysEmploymentClient(locale);
 
-        assertEquals(URLUtility.getRootUrl(locale) + "LE/", client.getUrl());
+        assertEquals(URLUtility.getRootUrl(locale) + "LE/LE0101/LE0101S/", client.getUrl());
     }
 
 }

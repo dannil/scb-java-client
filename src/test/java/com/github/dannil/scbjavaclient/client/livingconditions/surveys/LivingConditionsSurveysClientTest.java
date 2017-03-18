@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.livingconditions;
+package com.github.dannil.scbjavaclient.client.livingconditions.surveys;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -26,28 +26,35 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class LivingConditionsClientTest {
+public class LivingConditionsSurveysClientTest {
 
     @Test
     public void createWithLocaleConstructor() {
         Locale locale = new Locale("sv", "SE");
-        LivingConditionsClient client = new LivingConditionsClient(locale);
+        LivingConditionsSurveysClient client = new LivingConditionsSurveysClient(locale);
 
         assertEquals(locale, client.getLocale());
     }
 
     @Test
-    public void familiesClient() {
-        LivingConditionsClient client = new LivingConditionsClient();
+    public void employmentClient() {
+        LivingConditionsSurveysClient client = new LivingConditionsSurveysClient();
 
-        assertNotNull(client.families());
+        assertNotNull(client.employment());
     }
 
     @Test
-    public void surveysClient() {
-        LivingConditionsClient client = new LivingConditionsClient();
+    public void healthClient() {
+        LivingConditionsSurveysClient client = new LivingConditionsSurveysClient();
 
-        assertNotNull(client.surveys());
+        assertNotNull(client.health());
+    }
+
+    @Test
+    public void leisureClient() {
+        LivingConditionsSurveysClient client = new LivingConditionsSurveysClient();
+
+        assertNotNull(client.leisure());
     }
 
     @Test
@@ -55,9 +62,9 @@ public class LivingConditionsClientTest {
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints
         Locale locale = new Locale("en", "US");
-        LivingConditionsClient client = new LivingConditionsClient(locale);
+        LivingConditionsSurveysClient client = new LivingConditionsSurveysClient(locale);
 
-        assertEquals(URLUtility.getRootUrl(locale) + "LE/", client.getUrl());
+        assertEquals(URLUtility.getRootUrl(locale) + "LE/LE0101/", client.getUrl());
     }
 
 }
