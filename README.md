@@ -2,7 +2,7 @@
 
 [![Build Status](https://img.shields.io/travis/dannil/scb-java-client/dev.svg)](https://travis-ci.org/dannil/scb-java-client)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.dannil/scb-java-client/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.dannil/scb-java-client/)
-[![Javadoc](https://javadoc-emblem.rhcloud.com/doc/com.github.dannil/scb-java-client/badge.svg)](http://www.javadoc.io/doc/com.github.dannil/scb-java-client)
+[![Javadocs](http://www.javadoc.io/badge/com.github.dannil/scb-java-client.svg)](http://www.javadoc.io/doc/com.github.dannil/scb-java-client)
 [![SonarQube Coverage](https://sonarqube.com/api/badges/measure?key=com.github.dannil%3Ascb-java-client&metric=coverage)](https://sonarqube.com/dashboard/index?id=com.github.dannil:scb-java-client)
 [![SonarQube Tech Debt](https://sonarqube.com/api/badges/measure?key=com.github.dannil%3Ascb-java-client&metric=sqale_debt_ratio)](https://sonarqube.com/dashboard/index?id=com.github.dannil:scb-java-client)
 
