@@ -152,7 +152,7 @@
       <property name="specialImportsRegExp" value="gov." />
       <property name="sortImportsInGroupAlphabetically" value="true" />
       <property name="customImportOrderRules"
-        value="STATIC###SPECIAL_IMPORTS###STANDARD_JAVA_PACKAGE###THIRD_PARTY_PACKAGE" />
+        value="STATIC###STANDARD_JAVA_PACKAGE###THIRD_PARTY_PACKAGE" />
     </module>
     <module name="IllegalImport" /> <!-- defaults to sun.* packages -->
     <!-- <module name="ImportControl" /> -->
