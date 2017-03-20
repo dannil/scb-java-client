@@ -29,31 +29,16 @@ import com.github.dannil.scbjavaclient.client.livingconditions.families.siblings
  */
 public class LivingConditionsFamiliesClient extends AbstractContainerClient {
 
-    private LivingConditionsFamiliesAdoptionsClient livingConditionsFamiliesAdoptionsClient;
-
-    private LivingConditionsFamiliesHousingClient livingConditionsFamiliesHousingClient;
-
-    private LivingConditionsFamiliesLegalGuardiansClient livingConditionsFamiliesLegalGuardiansClient;
-
-    private LivingConditionsFamiliesSiblingsClient livingConditionsFamiliesSiblingsClient;
-
     /**
      * <p>Default constructor. Initializes values and creates sub-clients.</p>
      */
     public LivingConditionsFamiliesClient() {
         super();
 
-        this.livingConditionsFamiliesAdoptionsClient = new LivingConditionsFamiliesAdoptionsClient();
-        addClient(this.livingConditionsFamiliesAdoptionsClient);
-
-        this.livingConditionsFamiliesHousingClient = new LivingConditionsFamiliesHousingClient();
-        addClient(this.livingConditionsFamiliesHousingClient);
-
-        this.livingConditionsFamiliesLegalGuardiansClient = new LivingConditionsFamiliesLegalGuardiansClient();
-        addClient(this.livingConditionsFamiliesLegalGuardiansClient);
-
-        this.livingConditionsFamiliesSiblingsClient = new LivingConditionsFamiliesSiblingsClient();
-        addClient(this.livingConditionsFamiliesSiblingsClient);
+        addClient("adoptions", new LivingConditionsFamiliesAdoptionsClient());
+        addClient("housing", new LivingConditionsFamiliesHousingClient());
+        addClient("legalguardians", new LivingConditionsFamiliesLegalGuardiansClient());
+        addClient("siblings", new LivingConditionsFamiliesSiblingsClient());
     }
 
     /**
@@ -75,7 +60,7 @@ public class LivingConditionsFamiliesClient extends AbstractContainerClient {
      * @return a client for living conditions families adoptions data
      */
     public LivingConditionsFamiliesAdoptionsClient adoptions() {
-        return this.livingConditionsFamiliesAdoptionsClient;
+        return (LivingConditionsFamiliesAdoptionsClient) getClient("adoptions");
     }
 
     /**
@@ -85,7 +70,7 @@ public class LivingConditionsFamiliesClient extends AbstractContainerClient {
      * @return a client for living conditions families housing data
      */
     public LivingConditionsFamiliesHousingClient housing() {
-        return this.livingConditionsFamiliesHousingClient;
+        return (LivingConditionsFamiliesHousingClient) getClient("housing");
     }
 
     /**
@@ -95,7 +80,7 @@ public class LivingConditionsFamiliesClient extends AbstractContainerClient {
      * @return a client for living conditions families legal guardians data
      */
     public LivingConditionsFamiliesLegalGuardiansClient legalGuardians() {
-        return this.livingConditionsFamiliesLegalGuardiansClient;
+        return (LivingConditionsFamiliesLegalGuardiansClient) getClient("legalguardians");
     }
 
     /**
@@ -105,7 +90,7 @@ public class LivingConditionsFamiliesClient extends AbstractContainerClient {
      * @return a client for living conditions families siblings data
      */
     public LivingConditionsFamiliesSiblingsClient siblings() {
-        return this.livingConditionsFamiliesSiblingsClient;
+        return (LivingConditionsFamiliesSiblingsClient) getClient("siblings");
     }
 
     @Override

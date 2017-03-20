@@ -28,26 +28,15 @@ import com.github.dannil.scbjavaclient.client.livingconditions.surveys.leisure.L
  */
 public class LivingConditionsSurveysClient extends AbstractContainerClient {
 
-    private LivingConditionsSurveysEmploymentClient livingConditionsSurveysEmploymentClient;
-
-    private LivingConditionsSurveysHealthClient livingConditionsSurveysHealthClient;
-
-    private LivingConditionsSurveysLeisureClient livingConditionsSurveysLeisureClient;
-
     /**
      * <p>Default constructor. Initializes values and creates sub-clients.</p>
      */
     public LivingConditionsSurveysClient() {
         super();
 
-        this.livingConditionsSurveysEmploymentClient = new LivingConditionsSurveysEmploymentClient();
-        addClient(this.livingConditionsSurveysEmploymentClient);
-
-        this.livingConditionsSurveysHealthClient = new LivingConditionsSurveysHealthClient();
-        addClient(this.livingConditionsSurveysHealthClient);
-
-        this.livingConditionsSurveysLeisureClient = new LivingConditionsSurveysLeisureClient();
-        addClient(this.livingConditionsSurveysLeisureClient);
+        addClient("employment", new LivingConditionsSurveysEmploymentClient());
+        addClient("health", new LivingConditionsSurveysHealthClient());
+        addClient("leisure", new LivingConditionsSurveysLeisureClient());
     }
 
     /**
@@ -69,7 +58,7 @@ public class LivingConditionsSurveysClient extends AbstractContainerClient {
      * @return a client for living conditions surveys employment data
      */
     public LivingConditionsSurveysEmploymentClient employment() {
-        return this.livingConditionsSurveysEmploymentClient;
+        return (LivingConditionsSurveysEmploymentClient) getClient("employment");
     }
 
     /**
@@ -79,7 +68,7 @@ public class LivingConditionsSurveysClient extends AbstractContainerClient {
      * @return a client for living conditions surveys health data
      */
     public LivingConditionsSurveysHealthClient health() {
-        return this.livingConditionsSurveysHealthClient;
+        return (LivingConditionsSurveysHealthClient) getClient("health");
     }
 
     /**
@@ -89,7 +78,7 @@ public class LivingConditionsSurveysClient extends AbstractContainerClient {
      * @return a client for living conditions surveys leisure data
      */
     public LivingConditionsSurveysLeisureClient leisure() {
-        return this.livingConditionsSurveysLeisureClient;
+        return (LivingConditionsSurveysLeisureClient) getClient("leisure");
     }
 
     @Override

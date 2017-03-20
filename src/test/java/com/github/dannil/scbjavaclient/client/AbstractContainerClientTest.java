@@ -55,8 +55,8 @@ public class AbstractContainerClientTest {
         AbstractClient subClientOne = new DummyContainerClient(locale);
         AbstractClient subClientTwo = new DummyContainerClient(locale);
 
-        client.addClient(subClientOne);
-        client.addClient(subClientTwo);
+        client.addClient("client1", subClientOne);
+        client.addClient("client2", subClientTwo);
 
         Locale newLocale = new Locale("fr", "CA");
         client.setLocale(newLocale);
@@ -78,7 +78,7 @@ public class AbstractContainerClientTest {
         Locale locale = new Locale("sv", "SE");
         AbstractContainerClient client = new DummyContainerClient(locale);
 
-        client.addClient(client);
+        client.addClient("client", client);
     }
 
 }

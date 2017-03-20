@@ -29,31 +29,16 @@ import com.github.dannil.scbjavaclient.client.financialmarkets.shareholders.Fina
  */
 public class FinancialMarketsClient extends AbstractContainerClient {
 
-    private FinancialMarketsInstitutionsClient financialMarketsInstitutionsClient;
-
-    private FinancialMarketsInvestmentFundsClient financialMarketsInvestmentFundsClient;
-
-    private FinancialMarketsSecuritiesClient financialMarketsSecuritiesClient;
-
-    private FinancialMarketsShareholdersClient financialMarketsShareholdersClient;
-
     /**
      * <p>Default constructor. Initializes values and creates sub-clients.</p>
      */
     public FinancialMarketsClient() {
         super();
 
-        this.financialMarketsInstitutionsClient = new FinancialMarketsInstitutionsClient();
-        addClient(this.financialMarketsInstitutionsClient);
-
-        this.financialMarketsInvestmentFundsClient = new FinancialMarketsInvestmentFundsClient();
-        addClient(this.financialMarketsInvestmentFundsClient);
-
-        this.financialMarketsSecuritiesClient = new FinancialMarketsSecuritiesClient();
-        addClient(this.financialMarketsSecuritiesClient);
-
-        this.financialMarketsShareholdersClient = new FinancialMarketsShareholdersClient();
-        addClient(this.financialMarketsShareholdersClient);
+        addClient("institutions", new FinancialMarketsInstitutionsClient());
+        addClient("investmentfunds", new FinancialMarketsInvestmentFundsClient());
+        addClient("securities", new FinancialMarketsSecuritiesClient());
+        addClient("shareholders", new FinancialMarketsShareholdersClient());
     }
 
     /**
@@ -75,7 +60,7 @@ public class FinancialMarketsClient extends AbstractContainerClient {
      * @return a client for financial markets institutions data
      */
     public FinancialMarketsInstitutionsClient institutions() {
-        return this.financialMarketsInstitutionsClient;
+        return (FinancialMarketsInstitutionsClient) getClient("institutions");
     }
 
     /**
@@ -85,7 +70,7 @@ public class FinancialMarketsClient extends AbstractContainerClient {
      * @return a client for financial markets investment funds data
      */
     public FinancialMarketsInvestmentFundsClient investmentFunds() {
-        return this.financialMarketsInvestmentFundsClient;
+        return (FinancialMarketsInvestmentFundsClient) getClient("investmentfunds");
     }
 
     /**
@@ -94,7 +79,7 @@ public class FinancialMarketsClient extends AbstractContainerClient {
      * @return a client for financial markets securities data
      */
     public FinancialMarketsSecuritiesClient securities() {
-        return this.financialMarketsSecuritiesClient;
+        return (FinancialMarketsSecuritiesClient) getClient("securities");
     }
 
     /**
@@ -104,7 +89,7 @@ public class FinancialMarketsClient extends AbstractContainerClient {
      * @return a client for financial markets shareholders data
      */
     public FinancialMarketsShareholdersClient shareholders() {
-        return this.financialMarketsShareholdersClient;
+        return (FinancialMarketsShareholdersClient) getClient("shareholders");
     }
 
     @Override

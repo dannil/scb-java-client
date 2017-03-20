@@ -30,36 +30,17 @@ import com.github.dannil.scbjavaclient.client.environment.waste.EnvironmentWaste
  */
 public class EnvironmentClient extends AbstractContainerClient {
 
-    private EnvironmentIndustrialWaterUseClient environmentIndustrialWaterUseClient;
-
-    private EnvironmentLandAndWaterAreaClient environmentLandAndWaterAreaClient;
-
-    private EnvironmentLandUseClient environmentLandUseClient;
-
-    private EnvironmentPackagingAndPackagingWasteClient environmentPackagingAndPackagingWasteClient;
-
-    private EnvironmentWasteClient environmentWasteClient;
-
     /**
      * <p>Default constructor. Initializes values and creates sub-clients.</p>
      */
     public EnvironmentClient() {
         super();
 
-        this.environmentIndustrialWaterUseClient = new EnvironmentIndustrialWaterUseClient();
-        addClient(this.environmentIndustrialWaterUseClient);
-
-        this.environmentLandAndWaterAreaClient = new EnvironmentLandAndWaterAreaClient();
-        addClient(this.environmentLandAndWaterAreaClient);
-
-        this.environmentLandUseClient = new EnvironmentLandUseClient();
-        addClient(this.environmentLandUseClient);
-
-        this.environmentPackagingAndPackagingWasteClient = new EnvironmentPackagingAndPackagingWasteClient();
-        addClient(this.environmentPackagingAndPackagingWasteClient);
-
-        this.environmentWasteClient = new EnvironmentWasteClient();
-        addClient(this.environmentWasteClient);
+        addClient("industrialwateruse", new EnvironmentIndustrialWaterUseClient());
+        addClient("landandwaterarea", new EnvironmentLandAndWaterAreaClient());
+        addClient("landuse", new EnvironmentLandUseClient());
+        addClient("packagingandpackagingwaste", new EnvironmentPackagingAndPackagingWasteClient());
+        addClient("waste", new EnvironmentWasteClient());
     }
 
     /**
@@ -81,7 +62,7 @@ public class EnvironmentClient extends AbstractContainerClient {
      * @return a client for environment industrial water use data
      */
     public EnvironmentIndustrialWaterUseClient industrialWaterUse() {
-        return this.environmentIndustrialWaterUseClient;
+        return (EnvironmentIndustrialWaterUseClient) getClient("industrialwateruse");
     }
 
     /**
@@ -91,7 +72,7 @@ public class EnvironmentClient extends AbstractContainerClient {
      * @return a client for environment land and water area data
      */
     public EnvironmentLandAndWaterAreaClient landAndWaterArea() {
-        return this.environmentLandAndWaterAreaClient;
+        return (EnvironmentLandAndWaterAreaClient) getClient("landandwaterarea");
     }
 
     /**
@@ -100,7 +81,7 @@ public class EnvironmentClient extends AbstractContainerClient {
      * @return a client for environment land use data
      */
     public EnvironmentLandUseClient landUse() {
-        return this.environmentLandUseClient;
+        return (EnvironmentLandUseClient) getClient("landuse");
     }
 
     /**
@@ -110,7 +91,7 @@ public class EnvironmentClient extends AbstractContainerClient {
      * @return a client for environment packaging and packaging waste data
      */
     public EnvironmentPackagingAndPackagingWasteClient packagingAndPackagingWaste() {
-        return this.environmentPackagingAndPackagingWasteClient;
+        return (EnvironmentPackagingAndPackagingWasteClient) getClient("packagingandpackagingwaste");
     }
 
     /**
@@ -119,7 +100,7 @@ public class EnvironmentClient extends AbstractContainerClient {
      * @return a client for environment waste data
      */
     public EnvironmentWasteClient waste() {
-        return this.environmentWasteClient;
+        return (EnvironmentWasteClient) getClient("waste");
     }
 
     @Override
