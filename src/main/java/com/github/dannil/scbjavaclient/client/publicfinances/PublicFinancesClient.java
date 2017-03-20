@@ -17,6 +17,9 @@ package com.github.dannil.scbjavaclient.client.publicfinances;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
+import com.github.dannil.scbjavaclient.client.publicfinances.governmentdebt.PublicFinancesGovernmentDebtClient;
+import com.github.dannil.scbjavaclient.client.publicfinances.localtaxes.PublicFinancesLocalTaxesClient;
+import com.github.dannil.scbjavaclient.client.publicfinances.taxassessment.PublicFinancesTaxAssessmentClient;
 
 /**
  * <p>Client which handles public finances data fetching.</p>
@@ -25,11 +28,11 @@ import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
  */
 public class PublicFinancesClient extends AbstractContainerClient {
 
-    // private PublicFinancesGovernmentDebtClient publicFinancesGovernmentDebtClient;
-    //
-    // private PublicFinancesLocalTaxesClient publicFinancesLocalTaxesClient;
-    //
-    // private PublicFinancesTaxAssessmentClient publicFinancesTaxAssessmentClient;
+    private PublicFinancesGovernmentDebtClient publicFinancesGovernmentDebtClient;
+
+    private PublicFinancesLocalTaxesClient publicFinancesLocalTaxesClient;
+
+    private PublicFinancesTaxAssessmentClient publicFinancesTaxAssessmentClient;
 
     /**
      * <p>Default constructor. Initializes values and creates sub-clients.</p>
@@ -37,16 +40,14 @@ public class PublicFinancesClient extends AbstractContainerClient {
     public PublicFinancesClient() {
         super();
 
-        // this.publicFinancesGovernmentDebtClient = new
-        // PublicFinancesGovernmentDebtClient();
-        // addClient(this.publicFinancesGovernmentDebtClient);
-        //
-        // this.publicFinancesLocalTaxesClient = new PublicFinancesLocalTaxesClient();
-        // addClient(this.publicFinancesLocalTaxesClient);
-        //
-        // this.publicFinancesTaxAssessmentClient = new
-        // PublicFinancesTaxAssessmentClient();
-        // addClient(this.publicFinancesTaxAssessmentClient);
+        this.publicFinancesGovernmentDebtClient = new PublicFinancesGovernmentDebtClient();
+        addClient(this.publicFinancesGovernmentDebtClient);
+
+        this.publicFinancesLocalTaxesClient = new PublicFinancesLocalTaxesClient();
+        addClient(this.publicFinancesLocalTaxesClient);
+
+        this.publicFinancesTaxAssessmentClient = new PublicFinancesTaxAssessmentClient();
+        addClient(this.publicFinancesTaxAssessmentClient);
     }
 
     /**
@@ -61,34 +62,34 @@ public class PublicFinancesClient extends AbstractContainerClient {
         setLocale(locale);
     }
 
-    // /**
-    // * <p>Retrieve the client for interacting with public finances government debt
-    // * data.</p>
-    // *
-    // * @return a client for public finances government debt data
-    // */
-    // public PublicFinancesGovernmentDebtClient governmentDebt() {
-    // return this.publicFinancesGovernmentDebtClient;
-    // }
-    //
-    // /**
-    // * <p>Retrieve the client for interacting with public finances local taxes data.</p>
-    // *
-    // * @return a client for public finances local taxes data
-    // */
-    // public PublicFinancesLocalTaxesClient localTaxes() {
-    // return this.publicFinancesLocalTaxesClient;
-    // }
-    //
-    // /**
-    // * <p>Retrieve the client for interacting with public finances tax assessment
-    // * data.</p>
-    // *
-    // * @return a client for public finances tax assessment data
-    // */
-    // public PublicFinancesTaxAssessmentClient taxAssessment() {
-    // return this.publicFinancesTaxAssessmentClient;
-    // }
+    /**
+     * <p>Retrieve the client for interacting with public finances government debt
+     * data.</p>
+     *
+     * @return a client for public finances government debt data
+     */
+    public PublicFinancesGovernmentDebtClient governmentDebt() {
+        return this.publicFinancesGovernmentDebtClient;
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with public finances local taxes data.</p>
+     *
+     * @return a client for public finances local taxes data
+     */
+    public PublicFinancesLocalTaxesClient localTaxes() {
+        return this.publicFinancesLocalTaxesClient;
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with public finances tax assessment
+     * data.</p>
+     *
+     * @return a client for public finances tax assessment data
+     */
+    public PublicFinancesTaxAssessmentClient taxAssessment() {
+        return this.publicFinancesTaxAssessmentClient;
+    }
 
     @Override
     public String getUrl() {
