@@ -14,14 +14,23 @@
 
 package com.github.dannil.scbjavaclient.client.publicfinances.governmentdebt;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
+import com.github.dannil.scbjavaclient.model.publicfinances.governmentdebt.GovernmentDebt;
+import com.github.dannil.scbjavaclient.model.publicfinances.localtaxes.LocalTaxRate;
+import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
  * <p>Client which handles public finances government debt data fetching.</p>
  *
- * @since 0.2.0
+ * @since 0.2.1
  */
 public class PublicFinancesGovernmentDebtClient extends AbstractClient {
 
@@ -41,10 +50,26 @@ public class PublicFinancesGovernmentDebtClient extends AbstractClient {
     public PublicFinancesGovernmentDebtClient(Locale locale) {
         super(locale);
     }
+    
+    public List<GovernmentDebt> getGovernmentDebt() {
+        return getGovernmentDebt(null, null);
+    }
+    
+    public List<GovernmentDebt> getGovernmentDebt(Collection<String> items, Collection<String> months) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("ContentsCode", Arrays.asList("OE0202A1"));
+        mappings.put("Kontopost", items);
+        mappings.put("Tid", months);
+
+        String response = doPostRequest(getUrl() + "Statsskuld", QueryBuilder.build(mappings));
+
+        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
+        return format.toListOf(GovernmentDebt.class);
+    }
 
     @Override
     public String getUrl() {
-        return getRootUrl() + "OE/OE0202";
+        return getRootUrl() + "OE/OE0202/";
     }
 
 }

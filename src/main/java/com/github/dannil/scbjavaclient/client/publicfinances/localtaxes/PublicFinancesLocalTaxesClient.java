@@ -14,14 +14,23 @@
 
 package com.github.dannil.scbjavaclient.client.publicfinances.localtaxes;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
+import com.github.dannil.scbjavaclient.model.population.partnership.Partnership;
+import com.github.dannil.scbjavaclient.model.publicfinances.localtaxes.LocalTaxRate;
+import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
  * <p>Client which handles public finances local taxes data fetching.</p>
  *
- * @since 0.2.0
+ * @since 0.2.1
  */
 public class PublicFinancesLocalTaxesClient extends AbstractClient {
 
@@ -41,10 +50,26 @@ public class PublicFinancesLocalTaxesClient extends AbstractClient {
     public PublicFinancesLocalTaxesClient(Locale locale) {
         super(locale);
     }
+    
+    public List<LocalTaxRate> getLocalTaxRates() {
+        return getLocalTaxRates(null, null);
+    }
+    
+    public List<LocalTaxRate> getLocalTaxRates(Collection<String> regions, Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("ContentsCode", Arrays.asList("OE0101D1", "OE0101D2", "OE0101D3"));
+        mappings.put("Region", regions);
+        mappings.put("Tid", years);
+
+        String response = doPostRequest(getUrl() + "Kommunalskatter2000", QueryBuilder.build(mappings));
+
+        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
+        return format.toListOf(LocalTaxRate.class);
+    }
 
     @Override
     public String getUrl() {
-        return getRootUrl() + "OE/OE0101";
+        return getRootUrl() + "OE/OE0101/";
     }
 
 }

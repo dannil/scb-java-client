@@ -24,7 +24,7 @@ import com.github.dannil.scbjavaclient.client.publicfinances.taxassessment.Publi
 /**
  * <p>Client which handles public finances data fetching.</p>
  *
- * @since 0.2.0
+ * @since 0.2.1
  */
 public class PublicFinancesClient extends AbstractContainerClient {
 
