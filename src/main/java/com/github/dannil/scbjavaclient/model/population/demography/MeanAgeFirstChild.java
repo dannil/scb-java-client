@@ -15,12 +15,12 @@
 package com.github.dannil.scbjavaclient.model.population.demography;
 
 import java.util.Collection;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.github.dannil.scbjavaclient.constants.ModelConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
 import com.github.dannil.scbjavaclient.http.requester.AbstractRequester;
 import com.github.dannil.scbjavaclient.http.requester.GETRequester;
@@ -103,20 +103,9 @@ public class MeanAgeFirstChild extends AbstractRegionTimeAndValueModel<String, I
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder(ModelConstants.TOSTRING_BUILDER_LENGTH);
-
-        builder.append(this.getClass().getSimpleName());
-        builder.append(" [gender=");
-        builder.append(this.gender);
-        builder.append(", region=");
-        builder.append(getRegion());
-        builder.append(", time=");
-        builder.append(getTime());
-        builder.append(", values=");
-        builder.append(getValues());
-        builder.append(']');
-
-        return builder.toString();
+        Map<String, Object> variables = new LinkedHashMap<>();
+        variables.put("gender", this.gender);
+        return super.buildToString(variables);
     }
 
     /**

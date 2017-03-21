@@ -15,12 +15,12 @@
 package com.github.dannil.scbjavaclient.model.financialmarkets.institutions;
 
 import java.util.Collection;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.github.dannil.scbjavaclient.constants.ModelConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
 import com.github.dannil.scbjavaclient.http.requester.AbstractRequester;
 import com.github.dannil.scbjavaclient.http.requester.GETRequester;
@@ -153,22 +153,11 @@ public class MonetaryAssets extends AbstractTimeAndValueModel<String, String> {
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder(ModelConstants.TOSTRING_BUILDER_LENGTH);
-
-        builder.append(this.getClass().getSimpleName());
-        builder.append(" [institution=");
-        builder.append(this.institution);
-        builder.append(", item=");
-        builder.append(this.item);
-        builder.append(", currency=");
-        builder.append(this.currency);
-        builder.append(", time=");
-        builder.append(getTime());
-        builder.append(", values=");
-        builder.append(getValues());
-        builder.append(']');
-
-        return builder.toString();
+        Map<String, Object> variables = new LinkedHashMap<>();
+        variables.put("institution", this.institution);
+        variables.put("item", this.item);
+        variables.put("currency", this.currency);
+        return super.buildToString(variables);
     }
 
     /**

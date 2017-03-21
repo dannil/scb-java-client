@@ -15,12 +15,12 @@
 package com.github.dannil.scbjavaclient.model.livingconditions.families.housing;
 
 import java.util.Collection;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.github.dannil.scbjavaclient.constants.ModelConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
 import com.github.dannil.scbjavaclient.http.requester.AbstractRequester;
 import com.github.dannil.scbjavaclient.http.requester.GETRequester;
@@ -232,28 +232,14 @@ public class Housing extends AbstractTimeAndValueModel<Integer, String> {
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder(ModelConstants.TOSTRING_BUILDER_LENGTH);
-
-        builder.append(this.getClass().getSimpleName());
-        builder.append(" [sex=");
-        builder.append(this.sex);
-        builder.append(", age=");
-        builder.append(this.age);
-        builder.append(", housingType=");
-        builder.append(this.housingType);
-        builder.append(", familyType=");
-        builder.append(this.familyType);
-        builder.append(", background=");
-        builder.append(this.background);
-        builder.append(", parentIncome=");
-        builder.append(this.parentIncome);
-        builder.append(", time=");
-        builder.append(getTime());
-        builder.append(", values=");
-        builder.append(getValues());
-        builder.append(']');
-
-        return builder.toString();
+        Map<String, Object> variables = new LinkedHashMap<>();
+        variables.put("sex", this.sex);
+        variables.put("age", this.age);
+        variables.put("housingType", this.housingType);
+        variables.put("familyType", this.familyType);
+        variables.put("background", this.background);
+        variables.put("parentIncome", this.parentIncome);
+        return super.buildToString(variables);
     }
 
     /**
