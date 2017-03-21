@@ -15,10 +15,14 @@
 package com.github.dannil.scbjavaclient.model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.github.dannil.scbjavaclient.constants.ModelConstants;
 
 /**
  * <p>Abstract model which holds the values of the client response.</p>
@@ -118,9 +122,49 @@ public abstract class AbstractValueModel<V> {
         if (!(obj instanceof AbstractValueModel<?>)) {
             return false;
         }
-
         AbstractValueModel<?> other = (AbstractValueModel<?>) obj;
         return Objects.equals(this.values, other.values);
+    }
+
+    /**
+     * <p>Builds a string which can be used for outputting the values for the variables of
+     * the calling class.</p>
+     *
+     * <p>Every key-value pair in the input map <code>variables</code> is appended (equal
+     * signs-separated) to a string and separated from the other key-value pairs by a
+     * comma.</p>
+     *
+     * <p>Example: given the key-value pairs name=John, age=20, and this method called
+     * from a class named HelloWorld, the result would be:
+     *
+     * <p><b>HelloWorld [name=John, age=20, values=[...]]</b></p> <p>with appropriate
+     * values also appended in the same fashion.</p>
+     *
+     * <p>Subclasses are expected to override this method and add its own variables,
+     * thereby creating a chain where every subclass is only responsible for it's own
+     * variables.</p>
+     *
+     * @param variables
+     *            the variables to print
+     * @return a string representation of the variables
+     */
+    public String buildToString(Map<String, Object> variables) {
+        variables.put("values", this.values);
+
+        StringBuilder builder = new StringBuilder(ModelConstants.TOSTRING_BUILDER_LENGTH);
+        builder.append(this.getClass().getSimpleName());
+        builder.append(" [");
+        for (Iterator<Entry<String, Object>> entries = variables.entrySet().iterator(); entries.hasNext();) {
+            Entry<String, Object> entry = entries.next();
+            builder.append(entry.getKey());
+            builder.append('=');
+            builder.append(entry.getValue());
+            if (entries.hasNext()) {
+                builder.append(", ");
+            }
+        }
+        builder.append("]");
+        return builder.toString();
     }
 
     @Override
