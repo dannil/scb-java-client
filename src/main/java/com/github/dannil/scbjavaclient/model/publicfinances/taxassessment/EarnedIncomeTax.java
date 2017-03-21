@@ -22,7 +22,7 @@ import com.github.dannil.scbjavaclient.http.requester.AbstractRequester;
 import com.github.dannil.scbjavaclient.http.requester.GETRequester;
 
 /**
- * <p>Model for earned income tax rate data.</p>
+ * <p>Model for earned income tax data.</p>
  *
  * @since 0.2.1
  */
