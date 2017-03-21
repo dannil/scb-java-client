@@ -45,7 +45,8 @@ public class PublicFinancesLocalTaxesClientIT extends RemoteIntegrationTestSuite
 
     @Test
     public void getLocalTaxRatesWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getLocalTaxRates(Collections.<String>emptyList(), Collections.<Integer>emptyList()));
+        assertNotEquals(0,
+                this.client.getLocalTaxRates(Collections.<String>emptyList(), Collections.<Integer>emptyList()));
     }
 
     @Test

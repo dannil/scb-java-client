@@ -23,7 +23,6 @@ import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
-import com.github.dannil.scbjavaclient.model.population.partnership.Partnership;
 import com.github.dannil.scbjavaclient.model.publicfinances.localtaxes.LocalTaxRate;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
@@ -50,11 +49,31 @@ public class PublicFinancesLocalTaxesClient extends AbstractClient {
     public PublicFinancesLocalTaxesClient(Locale locale) {
         super(locale);
     }
-    
+
+    /**
+     * <p>Fetch all local tax rates data.</p>
+     *
+     * @return the local tax rates data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.publicfinances.localtaxes.LocalTaxRate
+     *         LocalTaxRate} objects
+     *
+     * @see #getLocalTaxRates(Collection, Collection)
+     */
     public List<LocalTaxRate> getLocalTaxRates() {
         return getLocalTaxRates(null, null);
     }
-    
+
+    /**
+     * <p>Fetch all local tax rates data which match the input constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param years
+     *            the years
+     * @return the local tax rates data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.publicfinances.localtaxes.LocalTaxRate
+     *         LocalTaxRate} objects
+     */
     public List<LocalTaxRate> getLocalTaxRates(Collection<String> regions, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("ContentsCode", Arrays.asList("OE0101D1", "OE0101D2", "OE0101D3"));

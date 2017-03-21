@@ -68,9 +68,10 @@ public class LocalTaxRate extends AbstractRegionTimeAndValueModel<String, Intege
 
         return builder.toString();
     }
-    
+
     /**
-     * <p>Get the available codes and their respective values for the local tax rate data from the API.</p>
+     * <p>Get the available codes and their respective values for the local tax rate data
+     * from the API.</p>
      *
      * @return a list of the available codes and their values
      */

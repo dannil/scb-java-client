@@ -50,12 +50,34 @@ public class PublicFinancesTaxAssessmentClient extends AbstractClient {
     public PublicFinancesTaxAssessmentClient(Locale locale) {
         super(locale);
     }
-    
+
+    /**
+     * <p>Fetch all assessed and taxable earned income data.</p>
+     *
+     * @return the assessed and taxable earned income data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.publicfinances.taxassessment.EarnedIncomeTax
+     *         EarnedIncomeTax} objects
+     *
+     * @see #getAssessedAndTaxableEarnedIncome(Collection, Collection)
+     */
     public List<EarnedIncomeTax> getAssessedAndTaxableEarnedIncome() {
         return getAssessedAndTaxableEarnedIncome(null, null);
     }
-    
-    public List<EarnedIncomeTax> getAssessedAndTaxableEarnedIncome(Collection<String> regions, Collection<Integer> years) {
+
+    /**
+     * <p>Fetch all assessed and taxable earned income data which match the input
+     * constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param years
+     *            the years
+     * @return the assessed and taxable earned income data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.publicfinances.taxassessment.EarnedIncomeTax
+     *         EarnedIncomeTax} objects
+     */
+    public List<EarnedIncomeTax> getAssessedAndTaxableEarnedIncome(Collection<String> regions,
+            Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("ContentsCode", Arrays.asList("OE0701AA", "OE0701AB", "OE0701AC", "OE0701AD", "OE0701AE"));
         mappings.put("Region", regions);
@@ -66,14 +88,37 @@ public class PublicFinancesTaxAssessmentClient extends AbstractClient {
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
         return format.toListOf(EarnedIncomeTax.class);
     }
-    
+
+    /**
+     * <p>Fetch all assessment for national capital income tax data.</p>
+     *
+     * @return the assessment for national capital income tax data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.publicfinances.taxassessment.CapitalIncomeTax
+     *         CapitalIncomeTax} objects
+     *
+     * @see #getAssessmentForNationalCapitalIncomeTax(Collection, Collection)
+     */
     public List<CapitalIncomeTax> getAssessmentForNationalCapitalIncomeTax() {
         return getAssessmentForNationalCapitalIncomeTax(null, null);
     }
-    
-    public List<CapitalIncomeTax> getAssessmentForNationalCapitalIncomeTax(Collection<String> regions, Collection<Integer> years) {
+
+    /**
+     * <p>Fetch all assessment for national capital income tax data which match the input
+     * constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param years
+     *            the years
+     * @return the assessment for national capital income tax data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.publicfinances.taxassessment.CapitalIncomeTax
+     *         CapitalIncomeTax} objects
+     */
+    public List<CapitalIncomeTax> getAssessmentForNationalCapitalIncomeTax(Collection<String> regions,
+            Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("OE0701CA", "OE0701CB", "OE0701CC", "OE0701CD", "OE0701CE", "OE0701CF"));
+        mappings.put("ContentsCode",
+                Arrays.asList("OE0701CA", "OE0701CB", "OE0701CC", "OE0701CD", "OE0701CE", "OE0701CF"));
         mappings.put("Region", regions);
         mappings.put("Tid", years);
 

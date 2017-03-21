@@ -58,7 +58,7 @@ public class GovernmentDebtTest {
 
         assertNotNull(debt);
     }
-    
+
     @Test
     public void setItem() {
         GovernmentDebt debt = new GovernmentDebt();

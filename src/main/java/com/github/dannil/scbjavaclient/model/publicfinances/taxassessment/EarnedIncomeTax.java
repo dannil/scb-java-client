@@ -36,7 +36,8 @@ public class EarnedIncomeTax extends IncomeTax {
     }
 
     /**
-     * <p>Get the available codes and their respective values for the earned income tax data from the API.</p>
+     * <p>Get the available codes and their respective values for the earned income tax
+     * data from the API.</p>
      *
      * @return a list of the available codes and their values
      */
@@ -47,5 +48,5 @@ public class EarnedIncomeTax extends IncomeTax {
         JsonAPITableFormat format = new JsonAPITableFormat(response);
         return format.getInputs();
     }
-    
+
 }

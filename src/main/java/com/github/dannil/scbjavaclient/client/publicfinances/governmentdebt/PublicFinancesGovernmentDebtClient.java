@@ -24,7 +24,6 @@ import java.util.Map;
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.model.publicfinances.governmentdebt.GovernmentDebt;
-import com.github.dannil.scbjavaclient.model.publicfinances.localtaxes.LocalTaxRate;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
@@ -50,11 +49,31 @@ public class PublicFinancesGovernmentDebtClient extends AbstractClient {
     public PublicFinancesGovernmentDebtClient(Locale locale) {
         super(locale);
     }
-    
+
+    /**
+     * <p>Fetch all government debt data.</p>
+     *
+     * @return the government debt data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.publicfinances.governmentdebt.GovernmentDebt
+     *         GovernmentDebt} objects
+     *
+     * @see #getGovernmentDebt(Collection, Collection)
+     */
     public List<GovernmentDebt> getGovernmentDebt() {
         return getGovernmentDebt(null, null);
     }
-    
+
+    /**
+     * <p>Fetch all government debt data which match the input constraints.</p>
+     *
+     * @param items
+     *            the items
+     * @param months
+     *            the months
+     * @return the government debt data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.publicfinances.governmentdebt.GovernmentDebt
+     *         GovernmentDebt} objects
+     */
     public List<GovernmentDebt> getGovernmentDebt(Collection<String> items, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("ContentsCode", Arrays.asList("OE0202A1"));

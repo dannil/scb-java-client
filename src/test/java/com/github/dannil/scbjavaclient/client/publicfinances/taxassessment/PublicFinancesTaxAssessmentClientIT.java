@@ -45,7 +45,8 @@ public class PublicFinancesTaxAssessmentClientIT extends RemoteIntegrationTestSu
 
     @Test
     public void getAssessedAndTaxableEarnedIncomeWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getAssessedAndTaxableEarnedIncome(Collections.<String>emptyList(), Collections.<Integer>emptyList()));
+        assertNotEquals(0, this.client.getAssessedAndTaxableEarnedIncome(Collections.<String>emptyList(),
+                Collections.<Integer>emptyList()));
     }
 
     @Test
@@ -55,7 +56,7 @@ public class PublicFinancesTaxAssessmentClientIT extends RemoteIntegrationTestSu
 
         assertNotEquals(0, this.client.getAssessedAndTaxableEarnedIncome(regions, years).size());
     }
-    
+
     @Test
     public void getAssessmentForNationalCapitalIncomeTax() {
         assertNotEquals(0, this.client.getAssessmentForNationalCapitalIncomeTax().size());
@@ -63,7 +64,8 @@ public class PublicFinancesTaxAssessmentClientIT extends RemoteIntegrationTestSu
 
     @Test
     public void getAssessmentForNationalCapitalIncomeTaxWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getAssessedAndTaxableEarnedIncome(Collections.<String>emptyList(), Collections.<Integer>emptyList()));
+        assertNotEquals(0, this.client.getAssessedAndTaxableEarnedIncome(Collections.<String>emptyList(),
+                Collections.<Integer>emptyList()));
     }
 
     @Test

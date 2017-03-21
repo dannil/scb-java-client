@@ -42,14 +42,14 @@ public class PublicFinancesClientTest {
 
         assertNotNull(client.governmentDebt());
     }
-    
+
     @Test
     public void localTaxesClient() {
         PublicFinancesClient client = new PublicFinancesClient();
 
         assertNotNull(client.localTaxes());
     }
-    
+
     @Test
     public void taxAssessmentClient() {
         PublicFinancesClient client = new PublicFinancesClient();

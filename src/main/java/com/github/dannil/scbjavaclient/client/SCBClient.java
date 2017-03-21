@@ -52,7 +52,7 @@ public class SCBClient extends AbstractContainerClient {
     private LivingConditionsClient livingConditionsClient;
 
     private PopulationClient populationClient;
-    
+
     private PublicFinancesClient publicFinancesClient;
 
     /**
@@ -75,7 +75,7 @@ public class SCBClient extends AbstractContainerClient {
 
         this.populationClient = new PopulationClient();
         addClient(this.populationClient);
-        
+
         this.publicFinancesClient = new PublicFinancesClient();
         addClient(this.publicFinancesClient);
     }
@@ -146,7 +146,6 @@ public class SCBClient extends AbstractContainerClient {
         return this.publicFinancesClient;
     }
 
-    
     /**
      * <p>Fetches all the inputs for a given table from the API.</p>
      *
