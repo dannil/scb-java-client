@@ -14,11 +14,12 @@
 
 package com.github.dannil.scbjavaclient.model.energy.monthlystatistics;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.github.dannil.scbjavaclient.constants.ModelConstants;
 import com.github.dannil.scbjavaclient.model.AbstractTimeAndValueModel;
 import com.github.dannil.scbjavaclient.model.ValueNode;
 
@@ -122,20 +123,10 @@ public class DeliveriesOfFuels extends AbstractTimeAndValueModel<String, String>
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder(ModelConstants.TOSTRING_BUILDER_LENGTH);
-
-        builder.append(this.getClass().getSimpleName());
-        builder.append(" [commodity=");
-        builder.append(this.commodity);
-        builder.append(", userCategory=");
-        builder.append(this.userCategory);
-        builder.append(", time=");
-        builder.append(getTime());
-        builder.append(", values=");
-        builder.append(getValues());
-        builder.append(']');
-
-        return builder.toString();
+        Map<String, Object> variables = new LinkedHashMap<>();
+        variables.put("commodity", this.commodity);
+        variables.put("userCategory", this.userCategory);
+        return super.buildToString(variables);
     }
 
 }

@@ -15,6 +15,7 @@
 package com.github.dannil.scbjavaclient.model;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -97,6 +98,12 @@ public abstract class AbstractRegionTimeAndValueModel<R, T, V> extends AbstractT
         }
         AbstractRegionTimeAndValueModel<?, ?, ?> other = (AbstractRegionTimeAndValueModel<?, ?, ?>) obj;
         return super.equals(other) && Objects.equals(this.region, other.region);
+    }
+
+    @Override
+    public String buildToString(Map<String, Object> variables) {
+        variables.put("region", this.region);
+        return super.buildToString(variables);
     }
 
     @Override

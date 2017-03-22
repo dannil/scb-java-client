@@ -27,6 +27,7 @@ import com.github.dannil.scbjavaclient.client.environment.EnvironmentClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.FinancialMarketsClient;
 import com.github.dannil.scbjavaclient.client.livingconditions.LivingConditionsClient;
 import com.github.dannil.scbjavaclient.client.population.PopulationClient;
+import com.github.dannil.scbjavaclient.client.publicfinances.PublicFinancesClient;
 import com.github.dannil.scbjavaclient.exception.SCBClientNotFoundException;
 import com.github.dannil.scbjavaclient.format.json.JsonAPIConfigTableFormat;
 import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
@@ -110,6 +111,15 @@ public class SCBClient extends AbstractContainerClient {
      */
     public PopulationClient population() {
         return (PopulationClient) getClient("population");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with public finances data.</p>
+     *
+     * @return a client for public finances data
+     */
+    public PublicFinancesClient publicFinances() {
+        return this.publicFinancesClient;
     }
 
     /**
