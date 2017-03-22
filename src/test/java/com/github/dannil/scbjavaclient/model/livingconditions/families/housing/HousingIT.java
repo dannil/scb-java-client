@@ -16,7 +16,6 @@ package com.github.dannil.scbjavaclient.model.livingconditions.families.housing;
 
 import static org.junit.Assert.assertNotNull;
 
-import com.github.dannil.scbjavaclient.model.livingconditions.families.housing.Housing;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Test;

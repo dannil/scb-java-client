@@ -16,7 +16,6 @@ package com.github.dannil.scbjavaclient.model.financialmarkets.investmentfunds;
 
 import static org.junit.Assert.assertNotNull;
 
-import com.github.dannil.scbjavaclient.model.financialmarkets.investmentfunds.OwnershipOfInvestmentFundShares;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Test;
