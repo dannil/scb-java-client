@@ -22,6 +22,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.model.financialmarkets.investmentfunds.OwnershipOfInvestmentFundShares;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
@@ -80,10 +81,10 @@ public class FinancialMarketsInvestmentFundsClient extends AbstractClient {
     public List<OwnershipOfInvestmentFundShares> getOwnershipOfInvestmentFundShares(Collection<String> types,
             Collection<String> sectors, Collection<String> quarters) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("FM0403I1", "FM0403I2", "FM0403I3", "FM0403I4"));
+        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("FM0403I1", "FM0403I2", "FM0403I3", "FM0403I4"));
         mappings.put("Fondtyp", types);
         mappings.put("Sektor", sectors);
-        mappings.put("Tid", quarters);
+        mappings.put(APIConstants.TIME_CODE, quarters);
 
         String response = doPostRequest(getUrl() + "VPfondKv", QueryBuilder.build(mappings));
 

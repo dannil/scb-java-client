@@ -22,6 +22,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.model.livingconditions.families.adoptions.ChildAdoption;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
@@ -81,11 +82,11 @@ public class LivingConditionsFamiliesAdoptionsClient extends AbstractClient {
     public List<ChildAdoption> getChildAdoptions(Collection<String> sexes, Collection<String> ages,
             Collection<String> birthCountries, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("LE0102H2"));
+        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("LE0102H2"));
         mappings.put("Kon", sexes);
         mappings.put("Alder", ages);
         mappings.put("Fodelseland", birthCountries);
-        mappings.put("Tid", years);
+        mappings.put(APIConstants.TIME_CODE, years);
 
         String response = doPostRequest(getUrl() + "BarnAdoption", QueryBuilder.build(mappings));
 

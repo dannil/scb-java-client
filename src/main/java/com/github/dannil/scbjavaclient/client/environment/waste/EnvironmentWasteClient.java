@@ -22,6 +22,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.model.environment.waste.GeneratedWaste;
 import com.github.dannil.scbjavaclient.model.environment.waste.TreatedWaste;
@@ -80,10 +81,10 @@ public class EnvironmentWasteClient extends AbstractClient {
     public List<GeneratedWaste> getGeneratedWaste(Collection<String> industrialClassification,
             Collection<String> wasteCategories, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("MI0305AA", "MI0305AO"));
+        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("MI0305AA", "MI0305AO"));
         mappings.put("SNI2007MI", industrialClassification);
         mappings.put("Avfallsslag", wasteCategories);
-        mappings.put("Tid", years);
+        mappings.put(APIConstants.TIME_CODE, years);
 
         String response = doPostRequest(getUrl() + "MI0305T01", QueryBuilder.build(mappings));
 
@@ -120,10 +121,10 @@ public class EnvironmentWasteClient extends AbstractClient {
     public List<TreatedWaste> getTreatedWaste(Collection<Integer> treatmentCategories,
             Collection<String> wasteCategories, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("MI0305AQ", "MI0305AR"));
+        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("MI0305AQ", "MI0305AR"));
         mappings.put("BehTyp", treatmentCategories);
         mappings.put("Avfallsslag", wasteCategories);
-        mappings.put("Tid", years);
+        mappings.put(APIConstants.TIME_CODE, years);
 
         String response = doPostRequest(getUrl() + "MI0305T02", QueryBuilder.build(mappings));
 

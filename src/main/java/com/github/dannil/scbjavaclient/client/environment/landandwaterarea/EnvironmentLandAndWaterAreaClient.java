@@ -22,6 +22,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
@@ -78,10 +79,10 @@ public class EnvironmentLandAndWaterAreaClient extends AbstractClient {
      */
     public List<Area> getArea(Collection<String> regions, Collection<String> types, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("MI0802AA"));
-        mappings.put("Region", regions);
+        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("MI0802AA"));
+        mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("ArealTyp", types);
-        mappings.put("Tid", years);
+        mappings.put(APIConstants.TIME_CODE, years);
 
         String response = doPostRequest(getUrl() + "Areal2012", QueryBuilder.build(mappings));
 

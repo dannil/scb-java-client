@@ -22,6 +22,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.model.publicfinances.taxassessment.CapitalIncomeTax;
 import com.github.dannil.scbjavaclient.model.publicfinances.taxassessment.EarnedIncomeTax;
@@ -79,9 +80,10 @@ public class PublicFinancesTaxAssessmentClient extends AbstractClient {
     public List<EarnedIncomeTax> getAssessedAndTaxableEarnedIncome(Collection<String> regions,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("OE0701AA", "OE0701AB", "OE0701AC", "OE0701AD", "OE0701AE"));
-        mappings.put("Region", regions);
-        mappings.put("Tid", years);
+        mappings.put(APIConstants.CONTENTSCODE_CODE,
+                Arrays.asList("OE0701AA", "OE0701AB", "OE0701AC", "OE0701AD", "OE0701AE"));
+        mappings.put(APIConstants.REGION_CODE, regions);
+        mappings.put(APIConstants.TIME_CODE, years);
 
         String response = doPostRequest(getUrl() + "ForvInkomsterA", QueryBuilder.build(mappings));
 
@@ -117,10 +119,10 @@ public class PublicFinancesTaxAssessmentClient extends AbstractClient {
     public List<CapitalIncomeTax> getAssessmentForNationalCapitalIncomeTax(Collection<String> regions,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode",
+        mappings.put(APIConstants.CONTENTSCODE_CODE,
                 Arrays.asList("OE0701CA", "OE0701CB", "OE0701CC", "OE0701CD", "OE0701CE", "OE0701CF"));
-        mappings.put("Region", regions);
-        mappings.put("Tid", years);
+        mappings.put(APIConstants.REGION_CODE, regions);
+        mappings.put(APIConstants.TIME_CODE, years);
 
         String response = doPostRequest(getUrl() + "KapInkomsterA", QueryBuilder.build(mappings));
 
