@@ -14,9 +14,10 @@
 
 package com.github.dannil.scbjavaclient.model.publicfinances.taxassessment;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
-import com.github.dannil.scbjavaclient.constants.ModelConstants;
 import com.github.dannil.scbjavaclient.model.AbstractRegionTimeAndValueModel;
 import com.github.dannil.scbjavaclient.model.ValueNode;
 
@@ -50,18 +51,8 @@ public class IncomeTax extends AbstractRegionTimeAndValueModel<String, Integer, 
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder(ModelConstants.TOSTRING_BUILDER_LENGTH);
-
-        builder.append(this.getClass().getSimpleName());
-        builder.append(" [region=");
-        builder.append(getRegion());
-        builder.append(", time=");
-        builder.append(getTime());
-        builder.append(", values=");
-        builder.append(getValues());
-        builder.append(']');
-
-        return builder.toString();
+        Map<String, Object> variables = new LinkedHashMap<>();
+        return super.buildToString(variables);
     }
 
 }
