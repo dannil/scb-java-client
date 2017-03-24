@@ -46,6 +46,11 @@ public final class APIConstants {
     public static final String REGION_CODE = "Region";
 
     /**
+     * <p>Constant for sector code.</p>
+     */
+    public static final String SECTOR_CODE = "Sektor";
+
+    /**
      * <p>Constant for time code.</p>
      */
     public static final String TIME_CODE = "Tid";
