@@ -22,6 +22,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.model.energy.monthlystatistics.DeliveriesOfLiquidFuels;
 import com.github.dannil.scbjavaclient.model.energy.monthlystatistics.DeliveriesOfOilProducts;
@@ -137,10 +138,10 @@ public class EnergyMonthlyStatisticsClient extends AbstractClient {
     private <T> List<T> generate(Collection<String> contentCodes, Collection<Integer> commodities,
             Collection<String> userCategories, Collection<String> months, String table, Class<T> clazz) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", contentCodes);
+        mappings.put(APIConstants.CONTENTSCODE_CODE, contentCodes);
         mappings.put("Varuslag", commodities);
         mappings.put("Forbrukarkat", userCategories);
-        mappings.put("Tid", months);
+        mappings.put(APIConstants.TIME_CODE, months);
 
         String response = doPostRequest(getUrl() + table, QueryBuilder.build(mappings));
 

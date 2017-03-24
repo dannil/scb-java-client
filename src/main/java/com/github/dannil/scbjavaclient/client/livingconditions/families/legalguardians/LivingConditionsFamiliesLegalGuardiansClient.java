@@ -22,6 +22,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.model.livingconditions.families.legalguardians.LegalGuardians;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
@@ -81,11 +82,11 @@ public class LivingConditionsFamiliesLegalGuardiansClient extends AbstractClient
     public List<LegalGuardians> getLegalGuardians(Collection<String> sexes, Collection<String> caregivers,
             Collection<String> familyTypes, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("000000T0"));
+        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("000000T0"));
         mappings.put("Kon", sexes);
         mappings.put("Vardnadshavare", caregivers);
         mappings.put("Familjetyp", familyTypes);
-        mappings.put("Tid", years);
+        mappings.put(APIConstants.TIME_CODE, years);
 
         String response = doPostRequest(getUrl() + "LE0102T28", QueryBuilder.build(mappings));
 

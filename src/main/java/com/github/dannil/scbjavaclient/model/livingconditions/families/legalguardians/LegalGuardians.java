@@ -15,12 +15,12 @@
 package com.github.dannil.scbjavaclient.model.livingconditions.families.legalguardians;
 
 import java.util.Collection;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.github.dannil.scbjavaclient.constants.ModelConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
 import com.github.dannil.scbjavaclient.http.requester.AbstractRequester;
 import com.github.dannil.scbjavaclient.http.requester.GETRequester;
@@ -153,22 +153,11 @@ public class LegalGuardians extends AbstractTimeAndValueModel<Integer, Integer> 
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder(ModelConstants.TOSTRING_BUILDER_LENGTH);
-
-        builder.append(this.getClass().getSimpleName());
-        builder.append(" [sex=");
-        builder.append(this.sex);
-        builder.append(", caregiver=");
-        builder.append(this.caregiver);
-        builder.append(", familyType=");
-        builder.append(this.familyType);
-        builder.append(", time=");
-        builder.append(getTime());
-        builder.append(", values=");
-        builder.append(getValues());
-        builder.append(']');
-
-        return builder.toString();
+        Map<String, Object> variables = new LinkedHashMap<>();
+        variables.put("sex", this.sex);
+        variables.put("caregiver", this.caregiver);
+        variables.put("familyType", this.familyType);
+        return super.buildToString(variables);
     }
 
     /**

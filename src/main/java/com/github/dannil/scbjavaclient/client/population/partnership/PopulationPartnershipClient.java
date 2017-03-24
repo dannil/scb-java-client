@@ -22,6 +22,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.model.population.partnership.Partnership;
 import com.github.dannil.scbjavaclient.model.population.partnership.PartnershipChange;
@@ -82,11 +83,11 @@ public class PopulationPartnershipClient extends AbstractClient {
     public List<Partnership> getPartnership(Collection<String> regions, Collection<String> maritalStatuses,
             Collection<Integer> sexes, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("BE0101P1"));
-        mappings.put("Region", regions);
+        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("BE0101P1"));
+        mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("Civilstand", maritalStatuses);
         mappings.put("Kon", sexes);
-        mappings.put("Tid", years);
+        mappings.put(APIConstants.TIME_CODE, years);
 
         String response = doPostRequest(getUrl() + "Partnerskap", QueryBuilder.build(mappings));
 
@@ -126,11 +127,11 @@ public class PopulationPartnershipClient extends AbstractClient {
     public List<PartnershipChange> getPartnershipChange(Collection<String> regions, Collection<String> maritalStatuses,
             Collection<Integer> sexes, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("BE0101XX"));
-        mappings.put("Region", regions);
+        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("BE0101XX"));
+        mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("Civilstand", maritalStatuses);
         mappings.put("Kon", sexes);
-        mappings.put("Tid", years);
+        mappings.put(APIConstants.TIME_CODE, years);
 
         String response = doPostRequest(getUrl() + "PartnerskapAndring", QueryBuilder.build(mappings));
 

@@ -22,6 +22,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.model.population.livebirths.LiveBirth;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
@@ -81,11 +82,11 @@ public class PopulationLiveBirthsClient extends AbstractClient {
     public List<LiveBirth> getLiveBirths(Collection<String> regions, Collection<String> motherAges,
             Collection<Integer> genders, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("BE0101E2"));
-        mappings.put("Region", regions);
+        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("BE0101E2"));
+        mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("AlderModer", motherAges);
         mappings.put("Kon", genders);
-        mappings.put("Tid", years);
+        mappings.put(APIConstants.TIME_CODE, years);
 
         String response = doPostRequest(getUrl() + "FoddaK", QueryBuilder.build(mappings));
 

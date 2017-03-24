@@ -69,7 +69,7 @@ public class MonetaryAssetsTest {
     }
 
     @Test
-    public void getSector() {
+    public void getInstitution() {
         MonetaryAssets assets = new MonetaryAssets();
 
         assets.setInstitution("41249");

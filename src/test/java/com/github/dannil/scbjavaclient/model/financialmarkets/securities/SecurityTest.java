@@ -22,8 +22,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.model.ValueNode;
-import com.github.dannil.scbjavaclient.model.financialmarkets.securities.AbstractSecurity;
-import com.github.dannil.scbjavaclient.model.financialmarkets.securities.MaturityStructure;
 
 import org.junit.Before;
 import org.junit.Test;

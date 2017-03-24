@@ -23,6 +23,7 @@ import java.net.URLConnection;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Properties;
@@ -204,7 +205,7 @@ public abstract class AbstractRequester {
         this.charset = charset;
         this.requestProperties.put(REQUESTPROPERTY_ACCEPT_CHARSET, this.charset.name());
         this.requestProperties.put(REQUESTPROPERTY_CONTENT_TYPE,
-                "application/json; charset=" + this.charset.name().toLowerCase());
+                "application/json; charset=" + this.charset.name().toLowerCase(Locale.getDefault()));
     }
 
     /**

@@ -15,6 +15,7 @@
 package com.github.dannil.scbjavaclient.model;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -91,6 +92,12 @@ public abstract class AbstractTimeAndValueModel<T, V> extends AbstractValueModel
         }
         AbstractTimeAndValueModel<?, ?> other = (AbstractTimeAndValueModel<?, ?>) obj;
         return super.equals(other) && Objects.equals(this.time, other.time);
+    }
+
+    @Override
+    public String buildToString(Map<String, Object> variables) {
+        variables.put("time", this.time);
+        return super.buildToString(variables);
     }
 
     @Override

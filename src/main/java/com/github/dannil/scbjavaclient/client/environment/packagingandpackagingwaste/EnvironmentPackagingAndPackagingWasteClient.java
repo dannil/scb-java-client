@@ -22,6 +22,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.model.environment.packagingandpackagingwaste.PackagingAndPackagingWaste;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
@@ -78,9 +79,9 @@ public class EnvironmentPackagingAndPackagingWasteClient extends AbstractClient 
     public List<PackagingAndPackagingWaste> getPackagingAndPackagingWaste(Collection<Integer> types,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("000000XV", "000000V9", "000000VA"));
+        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("000000XV", "000000V9", "000000VA"));
         mappings.put("Forpackning", types);
-        mappings.put("Tid", years);
+        mappings.put(APIConstants.TIME_CODE, years);
 
         String response = doPostRequest(getUrl() + "MI0307T1", QueryBuilder.build(mappings));
 

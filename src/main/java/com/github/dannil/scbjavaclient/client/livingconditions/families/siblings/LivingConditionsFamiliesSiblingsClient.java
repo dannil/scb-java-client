@@ -22,6 +22,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.model.livingconditions.families.siblings.Siblings;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
@@ -83,12 +84,12 @@ public class LivingConditionsFamiliesSiblingsClient extends AbstractClient {
     public List<Siblings> getSiblings(Collection<String> sexes, Collection<String> ages,
             Collection<Integer> siblingsLivingAtHome, Collection<String> familyTypes, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("000000SV"));
+        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("000000SV"));
         mappings.put("Kon", sexes);
         mappings.put("Alder", ages);
         mappings.put("SyskonHembo", siblingsLivingAtHome);
         mappings.put("Familjetyp", familyTypes);
-        mappings.put("Tid", years);
+        mappings.put(APIConstants.TIME_CODE, years);
 
         String response = doPostRequest(getUrl() + "LE0102T22", QueryBuilder.build(mappings));
 

@@ -22,6 +22,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.model.financialmarkets.institutions.MonetaryAssets;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
@@ -81,11 +82,11 @@ public class FinancialMarketsInstitutionsClient extends AbstractClient {
     public List<MonetaryAssets> getAssets(Collection<String> institutions, Collection<String> items,
             Collection<String> currencies, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("FM0401XX"));
+        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("FM0401XX"));
         mappings.put("Institut", institutions);
         mappings.put("Kontopost", items);
         mappings.put("Valuta", currencies);
-        mappings.put("Tid", months);
+        mappings.put(APIConstants.TIME_CODE, months);
 
         String response = doPostRequest(getUrl() + "MFIM1", QueryBuilder.build(mappings));
 

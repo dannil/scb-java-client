@@ -22,6 +22,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.model.environment.landuse.usage.ArableAndForestLand;
 import com.github.dannil.scbjavaclient.model.environment.landuse.usage.BuiltUpLand;
@@ -202,10 +203,10 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
     private <T> List<T> generate(Collection<String> contentCodes, Collection<String> regions,
             Collection<Integer> categories, Collection<Integer> years, String table, Class<T> clazz) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", contentCodes);
-        mappings.put("Region", regions);
+        mappings.put(APIConstants.CONTENTSCODE_CODE, contentCodes);
+        mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("Markanvandningsklass", categories);
-        mappings.put("Tid", years);
+        mappings.put(APIConstants.TIME_CODE, years);
 
         String response = doPostRequest(getUrl() + table, QueryBuilder.build(mappings));
 
