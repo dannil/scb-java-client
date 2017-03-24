@@ -35,10 +35,19 @@ public final class APIConstants {
     public static final String ROOT_URL = "https://api.scb.se/OV0104/v1/doris/" + FALLBACK_LOCALE.getLanguage()
             + "/ssd/";
 
+    /**
+     * <p>Constant for contents code.</p>
+     */
     public static final String CONTENTSCODE_CODE = "ContentsCode";
 
+    /*
+     * <p>Constant for region code.</p>
+     */
     public static final String REGION_CODE = "Region";
 
+    /**
+     * <p>Constant for time code.</p>
+     */
     public static final String TIME_CODE = "Tid";
 
     /**
