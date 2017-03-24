@@ -36,6 +36,21 @@ public final class APIConstants {
             + "/ssd/";
 
     /**
+     * <p>Constant for contents code.</p>
+     */
+    public static final String CONTENTSCODE_CODE = "ContentsCode";
+
+    /**
+     * <p>Constant for region code.</p>
+     */
+    public static final String REGION_CODE = "Region";
+
+    /**
+     * <p>Constant for time code.</p>
+     */
+    public static final String TIME_CODE = "Tid";
+
+    /**
      * <p>Private constructor to prevent instantiation.</p>
      */
     private APIConstants() {

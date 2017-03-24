@@ -22,6 +22,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.model.financialmarkets.securities.MaturityStructure;
 import com.github.dannil.scbjavaclient.model.financialmarkets.securities.OutstandingAndIssuedAmount;
@@ -82,11 +83,11 @@ public class FinancialMarketsSecuritiesClient extends AbstractClient {
     public List<MaturityStructure> getMaturityStructure(Collection<Integer> sectors, Collection<String> maturities,
             Collection<String> currencies, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("FM9998AA"));
+        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("FM9998AA"));
         mappings.put("Sektor", sectors);
         mappings.put("Forfall", maturities);
         mappings.put("Valuta", currencies);
-        mappings.put("Tid", months);
+        mappings.put(APIConstants.TIME_CODE, months);
 
         String response = doPostRequest(getUrl() + "FM9998T02", QueryBuilder.build(mappings));
 
@@ -126,11 +127,12 @@ public class FinancialMarketsSecuritiesClient extends AbstractClient {
     public List<OutstandingAndIssuedAmount> getOutstandingAndIssuedAmount(Collection<Integer> sectors,
             Collection<String> items, Collection<String> currencies, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("FM9998AC", "FM9998AJ", "FM9998AD", "FM9998AE", "FM9998AF"));
+        mappings.put(APIConstants.CONTENTSCODE_CODE,
+                Arrays.asList("FM9998AC", "FM9998AJ", "FM9998AD", "FM9998AE", "FM9998AF"));
         mappings.put("Sektor", sectors);
         mappings.put("Kontopost", items);
         mappings.put("Valuta", currencies);
-        mappings.put("Tid", months);
+        mappings.put(APIConstants.TIME_CODE, months);
 
         String response = doPostRequest(getUrl() + "FM9998T01", QueryBuilder.build(mappings));
 

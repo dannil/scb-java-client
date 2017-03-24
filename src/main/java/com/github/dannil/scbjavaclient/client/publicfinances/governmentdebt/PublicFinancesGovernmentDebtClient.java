@@ -22,6 +22,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.model.publicfinances.governmentdebt.GovernmentDebt;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
@@ -76,9 +77,9 @@ public class PublicFinancesGovernmentDebtClient extends AbstractClient {
      */
     public List<GovernmentDebt> getGovernmentDebt(Collection<String> items, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("OE0202A1"));
+        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("OE0202A1"));
         mappings.put("Kontopost", items);
-        mappings.put("Tid", months);
+        mappings.put(APIConstants.TIME_CODE, months);
 
         String response = doPostRequest(getUrl() + "Statsskuld", QueryBuilder.build(mappings));
 

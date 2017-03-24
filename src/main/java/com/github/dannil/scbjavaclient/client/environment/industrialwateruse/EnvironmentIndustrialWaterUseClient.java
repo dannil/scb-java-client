@@ -22,6 +22,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.model.environment.industrialwateruse.WaterAbstraction;
 import com.github.dannil.scbjavaclient.model.environment.industrialwateruse.WaterDischarge;
@@ -81,10 +82,10 @@ public class EnvironmentIndustrialWaterUseClient extends AbstractClient {
     public List<WaterAbstraction> getWaterAbstraction(Collection<String> regions, Collection<Integer> type,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("0000011J"));
-        mappings.put("Region", regions);
+        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("0000011J"));
+        mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("VattenTyp", type);
-        mappings.put("Tid", years);
+        mappings.put(APIConstants.TIME_CODE, years);
 
         String response = doPostRequest(getUrl() + "UttagVatten", QueryBuilder.build(mappings));
 
@@ -120,10 +121,10 @@ public class EnvironmentIndustrialWaterUseClient extends AbstractClient {
      */
     public List<WaterUse> getWaterUse(Collection<String> regions, Collection<Integer> type, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("00000121"));
-        mappings.put("Region", regions);
+        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("00000121"));
+        mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("VattenTyp", type);
-        mappings.put("Tid", years);
+        mappings.put(APIConstants.TIME_CODE, years);
 
         String response = doPostRequest(getUrl() + "VattenAnv", QueryBuilder.build(mappings));
 
@@ -160,10 +161,10 @@ public class EnvironmentIndustrialWaterUseClient extends AbstractClient {
     public List<WaterDischarge> getWaterDischarge(Collection<String> regions, Collection<Integer> type,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("0000011K"));
-        mappings.put("Region", regions);
+        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("0000011K"));
+        mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("Recipient", type);
-        mappings.put("Tid", years);
+        mappings.put(APIConstants.TIME_CODE, years);
 
         String response = doPostRequest(getUrl() + "UtslappVatten", QueryBuilder.build(mappings));
 

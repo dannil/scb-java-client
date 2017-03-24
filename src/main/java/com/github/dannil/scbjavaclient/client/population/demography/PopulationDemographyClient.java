@@ -22,6 +22,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.model.population.demography.FertilityRate;
 import com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstChild;
@@ -81,10 +82,10 @@ public class PopulationDemographyClient extends AbstractClient {
     public List<FertilityRate> getFertilityRate(Collection<String> regions, Collection<Integer> genders,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("BE0701AA"));
-        mappings.put("Region", regions);
+        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("BE0701AA"));
+        mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("Kon", genders);
-        mappings.put("Tid", years);
+        mappings.put(APIConstants.TIME_CODE, years);
 
         String response = doPostRequest(getUrl() + "FruktsamhetSumNy", QueryBuilder.build(mappings));
 
@@ -122,10 +123,10 @@ public class PopulationDemographyClient extends AbstractClient {
     public List<MeanAgeFirstChild> getMeanAgeFirstChild(Collection<String> regions, Collection<Integer> genders,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("BE0701AB"));
-        mappings.put("Region", regions);
+        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("BE0701AB"));
+        mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("Kon", genders);
-        mappings.put("Tid", years);
+        mappings.put(APIConstants.TIME_CODE, years);
 
         String response = doPostRequest(getUrl() + "MedelAlderNY", QueryBuilder.build(mappings));
 

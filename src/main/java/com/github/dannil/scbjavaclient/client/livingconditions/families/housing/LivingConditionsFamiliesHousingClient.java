@@ -22,6 +22,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.model.livingconditions.families.housing.Housing;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
@@ -89,14 +90,14 @@ public class LivingConditionsFamiliesHousingClient extends AbstractClient {
             Collection<String> familyTypes, Collection<String> backgrounds, Collection<Integer> parentIncomes,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("000000UY", "000000UZ"));
+        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("000000UY", "000000UZ"));
         mappings.put("Kon", sexes);
         mappings.put("Alder", ages);
         mappings.put("Boendeform", housingTypes);
         mappings.put("Familjetyp", familyTypes);
         mappings.put("UtlBakgrund", backgrounds);
         mappings.put("Foraldrarinkniv", parentIncomes);
-        mappings.put("Tid", years);
+        mappings.put(APIConstants.TIME_CODE, years);
 
         String response = doPostRequest(getUrl() + "LE0102T34", QueryBuilder.build(mappings));
 

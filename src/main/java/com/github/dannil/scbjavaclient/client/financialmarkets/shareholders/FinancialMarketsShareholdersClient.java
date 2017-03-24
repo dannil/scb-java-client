@@ -22,6 +22,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.model.financialmarkets.shareholders.ForeignOwnershipOfShares;
 import com.github.dannil.scbjavaclient.model.financialmarkets.shareholders.OwnershipOfShares;
@@ -79,9 +80,9 @@ public class FinancialMarketsShareholdersClient extends AbstractClient {
      */
     public List<OwnershipOfShares> getOwnershipOfShares(Collection<String> sectors, Collection<String> halfYears) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("FM0201A1", "FM0201A2"));
+        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("FM0201A1", "FM0201A2"));
         mappings.put("Sektor", sectors);
-        mappings.put("Tid", halfYears);
+        mappings.put(APIConstants.TIME_CODE, halfYears);
 
         String response = doPostRequest(getUrl() + "AktieAgarAr", QueryBuilder.build(mappings));
 
@@ -119,10 +120,10 @@ public class FinancialMarketsShareholdersClient extends AbstractClient {
     public List<OwnershipOfSharesByMarketplace> getOwnershipOfSharesByMarketplace(Collection<String> sectors,
             Collection<String> marketplaces, Collection<String> halfYears) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("FM0201C1", "FM0201C2"));
+        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("FM0201C1", "FM0201C2"));
         mappings.put("Sektor", sectors);
         mappings.put("Marknadsplats", marketplaces);
-        mappings.put("Tid", halfYears);
+        mappings.put(APIConstants.TIME_CODE, halfYears);
 
         String response = doPostRequest(getUrl() + "AktieAgarMarknad", QueryBuilder.build(mappings));
 
@@ -160,10 +161,10 @@ public class FinancialMarketsShareholdersClient extends AbstractClient {
     public List<OwnershipOfSharesBySeries> getOwnershipOfSharesBySeries(Collection<String> sectors,
             Collection<String> series, Collection<String> halfYears) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("FM0201B1", "FM0201B2", "FM0201B3"));
+        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("FM0201B1", "FM0201B2", "FM0201B3"));
         mappings.put("Sektor", sectors);
         mappings.put("Aktieserie", series);
-        mappings.put("Tid", halfYears);
+        mappings.put(APIConstants.TIME_CODE, halfYears);
 
         String response = doPostRequest(getUrl() + "AktieAgarSerie", QueryBuilder.build(mappings));
 
@@ -199,9 +200,9 @@ public class FinancialMarketsShareholdersClient extends AbstractClient {
     public List<ForeignOwnershipOfShares> getForeignOwnershipOfShares(Collection<String> countries,
             Collection<String> halfYears) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("FM0201D1", "FM0201D2"));
+        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("FM0201D1", "FM0201D2"));
         mappings.put("Agarland", countries);
-        mappings.put("Tid", halfYears);
+        mappings.put(APIConstants.TIME_CODE, halfYears);
 
         String response = doPostRequest(getUrl() + "AktieAgarUtland", QueryBuilder.build(mappings));
 
