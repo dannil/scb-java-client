@@ -40,7 +40,7 @@ public final class APIConstants {
      */
     public static final String CONTENTSCODE_CODE = "ContentsCode";
 
-    /*
+    /**
      * <p>Constant for region code.</p>
      */
     public static final String REGION_CODE = "Region";
