@@ -135,7 +135,7 @@ public abstract class AbstractValueModel<V> {
      * comma.</p>
      *
      * <p>Example: given the key-value pairs name=John, age=20, and this method called
-     * from a class named HelloWorld, the result would be:
+     * from a class named HelloWorld, the result would be:</p>
      *
      * <p><b>HelloWorld [name=John, age=20, values=[...]]</b></p> <p>with appropriate
      * values also appended in the same fashion.</p>
@@ -163,7 +163,7 @@ public abstract class AbstractValueModel<V> {
                 builder.append(", ");
             }
         }
-        builder.append("]");
+        builder.append(']');
         return builder.toString();
     }
 
