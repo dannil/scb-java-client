@@ -14,6 +14,7 @@
 
 package com.github.dannil.scbjavaclient.client.livingconditions.surveys.employment;
 
+import java.util.Collection;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
@@ -40,6 +41,38 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
      */
     public LivingConditionsSurveysEmploymentClient(Locale locale) {
         super(locale);
+    }
+    
+    public List<?> getMainActivity() {
+        LE01012013S01
+    }
+    
+    public List<?> getMainActivity(Collection<String> activities, Collection<String> ages, Collection<Integer> sexes, Collection<String> periods) {
+        LE01012013S01
+    }
+    
+    public List<?> getGainfullyEmployedPersons() {
+        LE01012013S07
+    }
+    
+    public List<?> getGainfullyEmployedPersons(Collection<String> fullAndPartTimes, Collection<String> ages, Collection<Integer> sexes, Collection<String> periods) {
+        LE01012013S07
+    }
+    
+    public List<?> getTypeOfEmployment() {
+        LE01012013S19
+    }
+    
+    public List<?> getTypeOfEmployment(Collection<String> types, Collection<String> ages, Collection<Integer> sexes, Collection<String> periods) {
+        LE01012013S19
+    }
+    
+    public List<?> getDistributionOfWorkingHoursForEmployees() {
+        LE01012013A19
+    }
+    
+    public List<?> getDistributionOfWorkingHoursForEmployees(Collection<String> indicators, Collection<String> ages, Collection<Integer> sexes, Collection<String> periods) {
+        LE01012013A19
     }
 
     @Override

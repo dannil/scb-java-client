@@ -41,6 +41,30 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
     public LivingConditionsSurveysHealthClient(Locale locale) {
         super(locale);
     }
+    
+    public List<?> getPhysicalAndMentalHealth() {
+        LE0101H01
+    }
+    
+    public List<?> getLongTermIllness() {
+        LE0101H07
+    }
+    
+    public List<?> getDisabilities() {
+        LE0101H13
+    }
+    
+    public List<?> getDoctorAndDentistAppointments () {
+        LE0101H19
+    }
+    
+    public List<?> getTobaccoHabits () {
+        LE0101H25
+    }
+    
+    public List<?> getBodyMassIndex () {
+        LE0101BMI01
+    }
 
     @Override
     public String getUrl() {

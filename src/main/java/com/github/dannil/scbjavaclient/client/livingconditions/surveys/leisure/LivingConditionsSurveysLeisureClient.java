@@ -30,8 +30,6 @@ public class LivingConditionsSurveysLeisureClient extends AbstractClient {
      */
     public LivingConditionsSurveysLeisureClient() {
         super();
-
-        //
     }
 
     /**
@@ -42,6 +40,34 @@ public class LivingConditionsSurveysLeisureClient extends AbstractClient {
      */
     public LivingConditionsSurveysLeisureClient(Locale locale) {
         super(locale);
+    }
+    
+    public List<?> getHolidayTravelAndHolidayHomes() {
+        LE0101F01
+    }
+    
+    public List<?> getOutdoorExerciseAndCulturalActivities() {
+        LE0101F30
+    }
+    
+    public List<?> getExerciseByHowOften() {
+        LE0101F40
+    }
+    
+    public List<?> getBeenToALivePerformance() {
+        LE0101F81
+    }
+    
+    public List<?> getReadingBooksInLeisureTime() {
+        LE0101F50
+    }
+    
+    public List<?> getComputerUseInLeisureTime() {
+        LE0101F60
+    }
+    
+    public List<?> getInternetUseInLeisureTime() {
+        LE0101F70
     }
 
     @Override
