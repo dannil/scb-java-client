@@ -43,7 +43,7 @@ public class DistributionOfWorkingHours extends AbstractEmployment {
      * @param values
      *            the values
      */
-    public DistributionOfWorkingHours(String indicator, String age, String sex, String period,
+    public DistributionOfWorkingHours(String indicator, String age, Integer sex, String period,
             List<ValueNode<Double>> values) {
         super(age, sex, period, values);
         this.indicator = indicator;

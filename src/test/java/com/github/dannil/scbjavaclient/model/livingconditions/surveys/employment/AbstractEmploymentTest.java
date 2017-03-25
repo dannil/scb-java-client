@@ -89,7 +89,7 @@ public class AbstractEmploymentTest {
     public void setSex() {
         AbstractEmployment employment = new DummyEmployment();
 
-        employment.setSex("1");
+        employment.setSex(1);
 
         assertNotNull(employment.getSex());
     }
@@ -98,9 +98,9 @@ public class AbstractEmploymentTest {
     public void getSex() {
         AbstractEmployment employment = new DummyEmployment();
 
-        employment.setSex("1");
+        employment.setSex(1);
 
-        assertEquals("1", employment.getSex());
+        assertEquals(Integer.valueOf(1), employment.getSex());
     }
 
     @Test
@@ -170,9 +170,9 @@ public class AbstractEmploymentTest {
 
     @Test
     public void notEqualsOnAge() {
-        AbstractEmployment employment = new GainfullyEmployedPersons("S240", "25-34", "2", "2008-2009", this.values);
+        AbstractEmployment employment = new GainfullyEmployedPersons("S240", "25-34", 2, "2008-2009", this.values);
 
-        AbstractEmployment employment2 = new GainfullyEmployedPersons("S240", "25-34", "2", "2008-2009", this.values2);
+        AbstractEmployment employment2 = new GainfullyEmployedPersons("S240", "25-34", 2, "2008-2009", this.values2);
         employment2.setAge("45-54");
 
         assertNotEquals(employment, employment2);
@@ -180,19 +180,19 @@ public class AbstractEmploymentTest {
 
     @Test
     public void notEqualsOnSex() {
-        AbstractEmployment employment = new GainfullyEmployedPersons("S240", "25-34", "2", "2008-2009", this.values);
+        AbstractEmployment employment = new GainfullyEmployedPersons("S240", "25-34", 2, "2008-2009", this.values);
 
-        AbstractEmployment employment2 = new GainfullyEmployedPersons("S240", "25-34", "2", "2008-2009", this.values2);
-        employment2.setSex("1");
+        AbstractEmployment employment2 = new GainfullyEmployedPersons("S240", "25-34", 2, "2008-2009", this.values2);
+        employment2.setSex(1);
 
         assertNotEquals(employment, employment2);
     }
 
     @Test
     public void notEqualsOnTime() {
-        AbstractEmployment employment = new GainfullyEmployedPersons("S240", "25-34", "2", "2008-2009", this.values);
+        AbstractEmployment employment = new GainfullyEmployedPersons("S240", "25-34", 2, "2008-2009", this.values);
 
-        AbstractEmployment employment2 = new GainfullyEmployedPersons("S240", "25-34", "2", "2008-2009", this.values2);
+        AbstractEmployment employment2 = new GainfullyEmployedPersons("S240", "25-34", 2, "2008-2009", this.values2);
         employment2.setTime("2010-2011");
 
         assertNotEquals(employment, employment2);
@@ -200,9 +200,9 @@ public class AbstractEmploymentTest {
 
     @Test
     public void notEqualsOnValue() {
-        AbstractEmployment employment = new GainfullyEmployedPersons("S240", "25-34", "2", "2008-2009", this.values);
+        AbstractEmployment employment = new GainfullyEmployedPersons("S240", "25-34", 2, "2008-2009", this.values);
 
-        AbstractEmployment employment2 = new GainfullyEmployedPersons("S240", "25-34", "2", "2008-2009", this.values2);
+        AbstractEmployment employment2 = new GainfullyEmployedPersons("S240", "25-34", 2, "2008-2009", this.values2);
         employment2.setValue(this.testContentsCode, 65.65);
 
         assertNotEquals(employment, employment2);
@@ -210,8 +210,8 @@ public class AbstractEmploymentTest {
 
     @Test
     public void equalsHashCode() {
-        AbstractEmployment employment = new GainfullyEmployedPersons("S240", "25-34", "2", "2008-2009", this.values);
-        AbstractEmployment employment2 = new GainfullyEmployedPersons("S240", "25-34", "2", "2008-2009", this.values2);
+        AbstractEmployment employment = new GainfullyEmployedPersons("S240", "25-34", 2, "2008-2009", this.values);
+        AbstractEmployment employment2 = new GainfullyEmployedPersons("S240", "25-34", 2, "2008-2009", this.values2);
 
         assertEquals(employment.hashCode(), employment2.hashCode());
     }

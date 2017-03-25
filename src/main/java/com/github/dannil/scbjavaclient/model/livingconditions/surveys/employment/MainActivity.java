@@ -43,7 +43,7 @@ public class MainActivity extends AbstractEmployment {
      * @param values
      *            the values
      */
-    public MainActivity(String activity, String age, String sex, String period, List<ValueNode<Double>> values) {
+    public MainActivity(String activity, String age, Integer sex, String period, List<ValueNode<Double>> values) {
         super(age, sex, period, values);
         this.activity = activity;
     }

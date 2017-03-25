@@ -99,7 +99,7 @@ public class TypeOfEmploymentTest {
     public void setSex() {
         TypeOfEmployment type = new TypeOfEmployment();
 
-        type.setSex("1");
+        type.setSex(1);
 
         assertNotNull(type.getSex());
     }
@@ -108,9 +108,9 @@ public class TypeOfEmploymentTest {
     public void getSex() {
         TypeOfEmployment type = new TypeOfEmployment();
 
-        type.setSex("1");
+        type.setSex(1);
 
-        assertEquals("1", type.getSex());
+        assertEquals(Integer.valueOf(1), type.getSex());
     }
 
     @Test
@@ -180,17 +180,17 @@ public class TypeOfEmploymentTest {
 
     @Test
     public void equalsItselfWithValues() {
-        TypeOfEmployment type = new TypeOfEmployment("S365", "25-34", "2", "2008-2009", this.values);
-        TypeOfEmployment type2 = new TypeOfEmployment("S365", "25-34", "2", "2008-2009", this.values2);
+        TypeOfEmployment type = new TypeOfEmployment("S365", "25-34", 2, "2008-2009", this.values);
+        TypeOfEmployment type2 = new TypeOfEmployment("S365", "25-34", 2, "2008-2009", this.values2);
 
         assertEquals(type, type2);
     }
 
     @Test
     public void notEqualsOnType() {
-        TypeOfEmployment type = new TypeOfEmployment("S365", "25-34", "2", "2008-2009", this.values);
+        TypeOfEmployment type = new TypeOfEmployment("S365", "25-34", 2, "2008-2009", this.values);
 
-        TypeOfEmployment type2 = new TypeOfEmployment("S365", "25-34", "2", "2008-2009", this.values2);
+        TypeOfEmployment type2 = new TypeOfEmployment("S365", "25-34", 2, "2008-2009", this.values2);
         type2.setType("S260");
 
         assertNotEquals(type, type2);
@@ -198,9 +198,9 @@ public class TypeOfEmploymentTest {
 
     @Test
     public void notEqualsOnAge() {
-        TypeOfEmployment type = new TypeOfEmployment("S365", "25-34", "2", "2008-2009", this.values);
+        TypeOfEmployment type = new TypeOfEmployment("S365", "25-34", 2, "2008-2009", this.values);
 
-        TypeOfEmployment type2 = new TypeOfEmployment("S365", "25-34", "2", "2008-2009", this.values2);
+        TypeOfEmployment type2 = new TypeOfEmployment("S365", "25-34", 2, "2008-2009", this.values2);
         type2.setAge("45-54");
 
         assertNotEquals(type, type2);
@@ -208,19 +208,19 @@ public class TypeOfEmploymentTest {
 
     @Test
     public void notEqualsOnSex() {
-        TypeOfEmployment type = new TypeOfEmployment("S365", "25-34", "2", "2008-2009", this.values);
+        TypeOfEmployment type = new TypeOfEmployment("S365", "25-34", 2, "2008-2009", this.values);
 
-        TypeOfEmployment type2 = new TypeOfEmployment("S365", "25-34", "2", "2008-2009", this.values2);
-        type2.setSex("1");
+        TypeOfEmployment type2 = new TypeOfEmployment("S365", "25-34", 2, "2008-2009", this.values2);
+        type2.setSex(1);
 
         assertNotEquals(type, type2);
     }
 
     @Test
     public void notEqualsOnTime() {
-        TypeOfEmployment type = new TypeOfEmployment("S365", "25-34", "2", "2008-2009", this.values);
+        TypeOfEmployment type = new TypeOfEmployment("S365", "25-34", 2, "2008-2009", this.values);
 
-        TypeOfEmployment type2 = new TypeOfEmployment("S365", "25-34", "2", "2008-2009", this.values2);
+        TypeOfEmployment type2 = new TypeOfEmployment("S365", "25-34", 2, "2008-2009", this.values2);
         type2.setTime("2010-2011");
 
         assertNotEquals(type, type2);
@@ -228,9 +228,9 @@ public class TypeOfEmploymentTest {
 
     @Test
     public void notEqualsOnValue() {
-        TypeOfEmployment type = new TypeOfEmployment("S365", "25-34", "2", "2008-2009", this.values);
+        TypeOfEmployment type = new TypeOfEmployment("S365", "25-34", 2, "2008-2009", this.values);
 
-        TypeOfEmployment type2 = new TypeOfEmployment("S365", "25-34", "2", "2008-2009", this.values2);
+        TypeOfEmployment type2 = new TypeOfEmployment("S365", "25-34", 2, "2008-2009", this.values2);
         type2.setValue(this.testContentsCode, 65.65);
 
         assertNotEquals(type, type2);
@@ -238,8 +238,8 @@ public class TypeOfEmploymentTest {
 
     @Test
     public void equalsHashCode() {
-        TypeOfEmployment type = new TypeOfEmployment("S365", "25-34", "2", "2008-2009", this.values);
-        TypeOfEmployment type2 = new TypeOfEmployment("S365", "25-34", "2", "2008-2009", this.values2);
+        TypeOfEmployment type = new TypeOfEmployment("S365", "25-34", 2, "2008-2009", this.values);
+        TypeOfEmployment type2 = new TypeOfEmployment("S365", "25-34", 2, "2008-2009", this.values2);
 
         assertEquals(type.hashCode(), type2.hashCode());
     }
@@ -254,7 +254,7 @@ public class TypeOfEmploymentTest {
 
     @Test
     public void convertToString() {
-        TypeOfEmployment type = new TypeOfEmployment("S365", "25-34", "2", "2008-2009", this.values);
+        TypeOfEmployment type = new TypeOfEmployment("S365", "25-34", 2, "2008-2009", this.values);
 
         assertTrue(type.toString().contains("S365"));
         assertTrue(type.toString().contains("25-34"));

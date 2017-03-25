@@ -99,7 +99,7 @@ public class DistributionOfWorkingHoursTest {
     public void setSex() {
         DistributionOfWorkingHours distribution = new DistributionOfWorkingHours();
 
-        distribution.setSex("1");
+        distribution.setSex(1);
 
         assertNotNull(distribution.getSex());
     }
@@ -108,9 +108,9 @@ public class DistributionOfWorkingHoursTest {
     public void getSex() {
         DistributionOfWorkingHours distribution = new DistributionOfWorkingHours();
 
-        distribution.setSex("1");
+        distribution.setSex(1);
 
-        assertEquals("1", distribution.getSex());
+        assertEquals(Integer.valueOf(1), distribution.getSex());
     }
 
     @Test
@@ -180,9 +180,9 @@ public class DistributionOfWorkingHoursTest {
 
     @Test
     public void equalsItselfWithValues() {
-        DistributionOfWorkingHours distribution = new DistributionOfWorkingHours("A435", "25-34", "2", "2008-2009",
+        DistributionOfWorkingHours distribution = new DistributionOfWorkingHours("A435", "25-34", 2, "2008-2009",
                 this.values);
-        DistributionOfWorkingHours distribution2 = new DistributionOfWorkingHours("A435", "25-34", "2", "2008-2009",
+        DistributionOfWorkingHours distribution2 = new DistributionOfWorkingHours("A435", "25-34", 2, "2008-2009",
                 this.values2);
 
         assertEquals(distribution, distribution2);
@@ -190,10 +190,10 @@ public class DistributionOfWorkingHoursTest {
 
     @Test
     public void notEqualsOnIndicator() {
-        DistributionOfWorkingHours distribution = new DistributionOfWorkingHours("A435", "25-34", "2", "2008-2009",
+        DistributionOfWorkingHours distribution = new DistributionOfWorkingHours("A435", "25-34", 2, "2008-2009",
                 this.values);
 
-        DistributionOfWorkingHours distribution2 = new DistributionOfWorkingHours("A435", "25-34", "2", "2008-2009",
+        DistributionOfWorkingHours distribution2 = new DistributionOfWorkingHours("A435", "25-34", 2, "2008-2009",
                 this.values2);
         distribution2.setIndicator("A440");
 
@@ -202,10 +202,10 @@ public class DistributionOfWorkingHoursTest {
 
     @Test
     public void notEqualsOnAge() {
-        DistributionOfWorkingHours distribution = new DistributionOfWorkingHours("A435", "25-34", "2", "2008-2009",
+        DistributionOfWorkingHours distribution = new DistributionOfWorkingHours("A435", "25-34", 2, "2008-2009",
                 this.values);
 
-        DistributionOfWorkingHours distribution2 = new DistributionOfWorkingHours("A435", "25-34", "2", "2008-2009",
+        DistributionOfWorkingHours distribution2 = new DistributionOfWorkingHours("A435", "25-34", 2, "2008-2009",
                 this.values2);
         distribution2.setAge("45-54");
 
@@ -214,22 +214,22 @@ public class DistributionOfWorkingHoursTest {
 
     @Test
     public void notEqualsOnSex() {
-        DistributionOfWorkingHours distribution = new DistributionOfWorkingHours("A435", "25-34", "2", "2008-2009",
+        DistributionOfWorkingHours distribution = new DistributionOfWorkingHours("A435", "25-34", 2, "2008-2009",
                 this.values);
 
-        DistributionOfWorkingHours distribution2 = new DistributionOfWorkingHours("A435", "25-34", "2", "2008-2009",
+        DistributionOfWorkingHours distribution2 = new DistributionOfWorkingHours("A435", "25-34", 2, "2008-2009",
                 this.values2);
-        distribution2.setSex("1");
+        distribution2.setSex(1);
 
         assertNotEquals(distribution, distribution2);
     }
 
     @Test
     public void notEqualsOnTime() {
-        DistributionOfWorkingHours distribution = new DistributionOfWorkingHours("A435", "25-34", "2", "2008-2009",
+        DistributionOfWorkingHours distribution = new DistributionOfWorkingHours("A435", "25-34", 2, "2008-2009",
                 this.values);
 
-        DistributionOfWorkingHours distribution2 = new DistributionOfWorkingHours("A435", "25-34", "2", "2008-2009",
+        DistributionOfWorkingHours distribution2 = new DistributionOfWorkingHours("A435", "25-34", 2, "2008-2009",
                 this.values2);
         distribution2.setTime("2010-2011");
 
@@ -238,10 +238,10 @@ public class DistributionOfWorkingHoursTest {
 
     @Test
     public void notEqualsOnValue() {
-        DistributionOfWorkingHours distribution = new DistributionOfWorkingHours("A435", "25-34", "2", "2008-2009",
+        DistributionOfWorkingHours distribution = new DistributionOfWorkingHours("A435", "25-34", 2, "2008-2009",
                 this.values);
 
-        DistributionOfWorkingHours distribution2 = new DistributionOfWorkingHours("A435", "25-34", "2", "2008-2009",
+        DistributionOfWorkingHours distribution2 = new DistributionOfWorkingHours("A435", "25-34", 2, "2008-2009",
                 this.values2);
         distribution2.setValue(this.testContentsCode, 65.65);
 
@@ -250,9 +250,9 @@ public class DistributionOfWorkingHoursTest {
 
     @Test
     public void equalsHashCode() {
-        DistributionOfWorkingHours distribution = new DistributionOfWorkingHours("A435", "25-34", "2", "2008-2009",
+        DistributionOfWorkingHours distribution = new DistributionOfWorkingHours("A435", "25-34", 2, "2008-2009",
                 this.values);
-        DistributionOfWorkingHours distribution2 = new DistributionOfWorkingHours("A435", "25-34", "2", "2008-2009",
+        DistributionOfWorkingHours distribution2 = new DistributionOfWorkingHours("A435", "25-34", 2, "2008-2009",
                 this.values2);
 
         assertEquals(distribution.hashCode(), distribution2.hashCode());
@@ -268,7 +268,7 @@ public class DistributionOfWorkingHoursTest {
 
     @Test
     public void convertToString() {
-        DistributionOfWorkingHours distribution = new DistributionOfWorkingHours("A435", "25-34", "2", "2008-2009",
+        DistributionOfWorkingHours distribution = new DistributionOfWorkingHours("A435", "25-34", 2, "2008-2009",
                 this.values);
 
         assertTrue(distribution.toString().contains("A435"));

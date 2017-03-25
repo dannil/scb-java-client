@@ -34,7 +34,7 @@ public abstract class AbstractEmployment extends AbstractTimeAndValueModel<Strin
     private String age;
 
     @JsonProperty("Kon")
-    private String sex;
+    private Integer sex;
 
     /**
      * <p>Default constructor.</p>
@@ -55,7 +55,7 @@ public abstract class AbstractEmployment extends AbstractTimeAndValueModel<Strin
      * @param values
      *            the values
      */
-    public AbstractEmployment(String age, String sex, String period, List<ValueNode<Double>> values) {
+    public AbstractEmployment(String age, Integer sex, String period, List<ValueNode<Double>> values) {
         super(period, values);
         this.age = age;
         this.sex = sex;
@@ -85,7 +85,7 @@ public abstract class AbstractEmployment extends AbstractTimeAndValueModel<Strin
      *
      * @return the sex
      */
-    public String getSex() {
+    public Integer getSex() {
         return this.sex;
     }
 
@@ -95,7 +95,7 @@ public abstract class AbstractEmployment extends AbstractTimeAndValueModel<Strin
      * @param sex
      *            the sex
      */
-    public void setSex(String sex) {
+    public void setSex(Integer sex) {
         this.sex = sex;
     }
 

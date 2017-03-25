@@ -43,7 +43,7 @@ public class TypeOfEmployment extends AbstractEmployment {
      * @param values
      *            the values
      */
-    public TypeOfEmployment(String type, String age, String sex, String period, List<ValueNode<Double>> values) {
+    public TypeOfEmployment(String type, String age, Integer sex, String period, List<ValueNode<Double>> values) {
         super(age, sex, period, values);
         this.type = type;
     }

@@ -99,7 +99,7 @@ public class GainfullyEmployedPersonsTest {
     public void setSex() {
         GainfullyEmployedPersons employed = new GainfullyEmployedPersons();
 
-        employed.setSex("1");
+        employed.setSex(1);
 
         assertNotNull(employed.getSex());
     }
@@ -108,9 +108,9 @@ public class GainfullyEmployedPersonsTest {
     public void getSex() {
         GainfullyEmployedPersons employed = new GainfullyEmployedPersons();
 
-        employed.setSex("1");
+        employed.setSex(1);
 
-        assertEquals("1", employed.getSex());
+        assertEquals(Integer.valueOf(1), employed.getSex());
     }
 
     @Test
@@ -180,9 +180,8 @@ public class GainfullyEmployedPersonsTest {
 
     @Test
     public void equalsItselfWithValues() {
-        GainfullyEmployedPersons employed = new GainfullyEmployedPersons("S240", "25-34", "2", "2008-2009",
-                this.values);
-        GainfullyEmployedPersons employed2 = new GainfullyEmployedPersons("S240", "25-34", "2", "2008-2009",
+        GainfullyEmployedPersons employed = new GainfullyEmployedPersons("S240", "25-34", 2, "2008-2009", this.values);
+        GainfullyEmployedPersons employed2 = new GainfullyEmployedPersons("S240", "25-34", 2, "2008-2009",
                 this.values2);
 
         assertEquals(employed, employed2);
@@ -190,10 +189,9 @@ public class GainfullyEmployedPersonsTest {
 
     @Test
     public void notEqualsOnFullAndPartTime() {
-        GainfullyEmployedPersons employed = new GainfullyEmployedPersons("S240", "25-34", "2", "2008-2009",
-                this.values);
+        GainfullyEmployedPersons employed = new GainfullyEmployedPersons("S240", "25-34", 2, "2008-2009", this.values);
 
-        GainfullyEmployedPersons employed2 = new GainfullyEmployedPersons("S240", "25-34", "2", "2008-2009",
+        GainfullyEmployedPersons employed2 = new GainfullyEmployedPersons("S240", "25-34", 2, "2008-2009",
                 this.values2);
         employed2.setFullAndPartTime("S237");
 
@@ -202,10 +200,9 @@ public class GainfullyEmployedPersonsTest {
 
     @Test
     public void notEqualsOnAge() {
-        GainfullyEmployedPersons employed = new GainfullyEmployedPersons("S240", "25-34", "2", "2008-2009",
-                this.values);
+        GainfullyEmployedPersons employed = new GainfullyEmployedPersons("S240", "25-34", 2, "2008-2009", this.values);
 
-        GainfullyEmployedPersons employed2 = new GainfullyEmployedPersons("S240", "25-34", "2", "2008-2009",
+        GainfullyEmployedPersons employed2 = new GainfullyEmployedPersons("S240", "25-34", 2, "2008-2009",
                 this.values2);
         employed2.setAge("45-54");
 
@@ -214,22 +211,20 @@ public class GainfullyEmployedPersonsTest {
 
     @Test
     public void notEqualsOnSex() {
-        GainfullyEmployedPersons employed = new GainfullyEmployedPersons("S240", "25-34", "2", "2008-2009",
-                this.values);
+        GainfullyEmployedPersons employed = new GainfullyEmployedPersons("S240", "25-34", 2, "2008-2009", this.values);
 
-        GainfullyEmployedPersons employed2 = new GainfullyEmployedPersons("S240", "25-34", "2", "2008-2009",
+        GainfullyEmployedPersons employed2 = new GainfullyEmployedPersons("S240", "25-34", 2, "2008-2009",
                 this.values2);
-        employed2.setSex("1");
+        employed2.setSex(1);
 
         assertNotEquals(employed, employed2);
     }
 
     @Test
     public void notEqualsOnTime() {
-        GainfullyEmployedPersons employed = new GainfullyEmployedPersons("S240", "25-34", "2", "2008-2009",
-                this.values);
+        GainfullyEmployedPersons employed = new GainfullyEmployedPersons("S240", "25-34", 2, "2008-2009", this.values);
 
-        GainfullyEmployedPersons employed2 = new GainfullyEmployedPersons("S240", "25-34", "2", "2008-2009",
+        GainfullyEmployedPersons employed2 = new GainfullyEmployedPersons("S240", "25-34", 2, "2008-2009",
                 this.values2);
         employed2.setTime("2010-2011");
 
@@ -238,10 +233,9 @@ public class GainfullyEmployedPersonsTest {
 
     @Test
     public void notEqualsOnValue() {
-        GainfullyEmployedPersons employed = new GainfullyEmployedPersons("S240", "25-34", "2", "2008-2009",
-                this.values);
+        GainfullyEmployedPersons employed = new GainfullyEmployedPersons("S240", "25-34", 2, "2008-2009", this.values);
 
-        GainfullyEmployedPersons employed2 = new GainfullyEmployedPersons("S240", "25-34", "2", "2008-2009",
+        GainfullyEmployedPersons employed2 = new GainfullyEmployedPersons("S240", "25-34", 2, "2008-2009",
                 this.values2);
         employed2.setValue(this.testContentsCode, 65.65);
 
@@ -250,9 +244,8 @@ public class GainfullyEmployedPersonsTest {
 
     @Test
     public void equalsHashCode() {
-        GainfullyEmployedPersons employed = new GainfullyEmployedPersons("S240", "25-34", "2", "2008-2009",
-                this.values);
-        GainfullyEmployedPersons employed2 = new GainfullyEmployedPersons("S240", "25-34", "2", "2008-2009",
+        GainfullyEmployedPersons employed = new GainfullyEmployedPersons("S240", "25-34", 2, "2008-2009", this.values);
+        GainfullyEmployedPersons employed2 = new GainfullyEmployedPersons("S240", "25-34", 2, "2008-2009",
                 this.values2);
 
         assertEquals(employed.hashCode(), employed2.hashCode());
@@ -268,8 +261,7 @@ public class GainfullyEmployedPersonsTest {
 
     @Test
     public void convertToString() {
-        GainfullyEmployedPersons employed = new GainfullyEmployedPersons("S240", "25-34", "2", "2008-2009",
-                this.values);
+        GainfullyEmployedPersons employed = new GainfullyEmployedPersons("S240", "25-34", 2, "2008-2009", this.values);
 
         assertTrue(employed.toString().contains("S240"));
         assertTrue(employed.toString().contains("25-34"));

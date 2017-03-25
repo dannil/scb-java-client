@@ -99,7 +99,7 @@ public class MainActivityTest {
     public void setSex() {
         MainActivity activity = new MainActivity();
 
-        activity.setSex("1");
+        activity.setSex(1);
 
         assertNotNull(activity.getSex());
     }
@@ -108,9 +108,9 @@ public class MainActivityTest {
     public void getSex() {
         MainActivity activity = new MainActivity();
 
-        activity.setSex("1");
+        activity.setSex(1);
 
-        assertEquals("1", activity.getSex());
+        assertEquals(Integer.valueOf(1), activity.getSex());
     }
 
     @Test
@@ -180,17 +180,17 @@ public class MainActivityTest {
 
     @Test
     public void equalsItselfWithValues() {
-        MainActivity activity = new MainActivity("S200", "25-34", "2", "2008-2009", this.values);
-        MainActivity activity2 = new MainActivity("S200", "25-34", "2", "2008-2009", this.values2);
+        MainActivity activity = new MainActivity("S200", "25-34", 2, "2008-2009", this.values);
+        MainActivity activity2 = new MainActivity("S200", "25-34", 2, "2008-2009", this.values2);
 
         assertEquals(activity, activity2);
     }
 
     @Test
     public void notEqualsOnActivity() {
-        MainActivity activity = new MainActivity("S200", "25-34", "2", "2008-2009", this.values);
+        MainActivity activity = new MainActivity("S200", "25-34", 2, "2008-2009", this.values);
 
-        MainActivity activity2 = new MainActivity("S200", "25-34", "2", "2008-2009", this.values2);
+        MainActivity activity2 = new MainActivity("S200", "25-34", 2, "2008-2009", this.values2);
         activity2.setActivity("S335");
 
         assertNotEquals(activity, activity2);
@@ -198,9 +198,9 @@ public class MainActivityTest {
 
     @Test
     public void notEqualsOnAge() {
-        MainActivity activity = new MainActivity("S200", "25-34", "2", "2008-2009", this.values);
+        MainActivity activity = new MainActivity("S200", "25-34", 2, "2008-2009", this.values);
 
-        MainActivity activity2 = new MainActivity("S200", "25-34", "2", "2008-2009", this.values2);
+        MainActivity activity2 = new MainActivity("S200", "25-34", 2, "2008-2009", this.values2);
         activity2.setAge("45-54");
 
         assertNotEquals(activity, activity2);
@@ -208,19 +208,19 @@ public class MainActivityTest {
 
     @Test
     public void notEqualsOnSex() {
-        MainActivity activity = new MainActivity("S200", "25-34", "2", "2008-2009", this.values);
+        MainActivity activity = new MainActivity("S200", "25-34", 2, "2008-2009", this.values);
 
-        MainActivity activity2 = new MainActivity("S200", "25-34", "2", "2008-2009", this.values2);
-        activity2.setSex("1");
+        MainActivity activity2 = new MainActivity("S200", "25-34", 2, "2008-2009", this.values2);
+        activity2.setSex(1);
 
         assertNotEquals(activity, activity2);
     }
 
     @Test
     public void notEqualsOnTime() {
-        MainActivity activity = new MainActivity("S200", "25-34", "2", "2008-2009", this.values);
+        MainActivity activity = new MainActivity("S200", "25-34", 2, "2008-2009", this.values);
 
-        MainActivity activity2 = new MainActivity("S200", "25-34", "2", "2008-2009", this.values2);
+        MainActivity activity2 = new MainActivity("S200", "25-34", 2, "2008-2009", this.values2);
         activity2.setTime("2010-2011");
 
         assertNotEquals(activity, activity2);
@@ -228,9 +228,9 @@ public class MainActivityTest {
 
     @Test
     public void notEqualsOnValue() {
-        MainActivity activity = new MainActivity("S200", "25-34", "2", "2008-2009", this.values);
+        MainActivity activity = new MainActivity("S200", "25-34", 2, "2008-2009", this.values);
 
-        MainActivity activity2 = new MainActivity("S200", "25-34", "2", "2008-2009", this.values2);
+        MainActivity activity2 = new MainActivity("S200", "25-34", 2, "2008-2009", this.values2);
         activity2.setValue(this.testContentsCode, 65.65);
 
         assertNotEquals(activity, activity2);
@@ -238,8 +238,8 @@ public class MainActivityTest {
 
     @Test
     public void equalsHashCode() {
-        MainActivity activity = new MainActivity("S200", "25-34", "2", "2008-2009", this.values);
-        MainActivity activity2 = new MainActivity("S200", "25-34", "2", "2008-2009", this.values2);
+        MainActivity activity = new MainActivity("S200", "25-34", 2, "2008-2009", this.values);
+        MainActivity activity2 = new MainActivity("S200", "25-34", 2, "2008-2009", this.values2);
 
         assertEquals(activity.hashCode(), activity2.hashCode());
     }
@@ -254,7 +254,7 @@ public class MainActivityTest {
 
     @Test
     public void convertToString() {
-        MainActivity activity = new MainActivity("S200", "25-34", "2", "2008-2009", this.values);
+        MainActivity activity = new MainActivity("S200", "25-34", 2, "2008-2009", this.values);
 
         assertTrue(activity.toString().contains("S200"));
         assertTrue(activity.toString().contains("25-34"));

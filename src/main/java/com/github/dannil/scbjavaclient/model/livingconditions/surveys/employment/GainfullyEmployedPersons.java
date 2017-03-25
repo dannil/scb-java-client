@@ -43,7 +43,7 @@ public class GainfullyEmployedPersons extends AbstractEmployment {
      * @param values
      *            the values
      */
-    public GainfullyEmployedPersons(String fullAndPartTime, String age, String sex, String period,
+    public GainfullyEmployedPersons(String fullAndPartTime, String age, Integer sex, String period,
             List<ValueNode<Double>> values) {
         super(age, sex, period, values);
         this.fullAndPartTime = fullAndPartTime;
