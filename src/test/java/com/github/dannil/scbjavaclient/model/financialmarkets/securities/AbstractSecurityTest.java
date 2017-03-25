@@ -29,7 +29,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class SecurityTest {
+public class AbstractSecurityTest {
 
     private static class DummySecurity extends AbstractSecurity<Integer> {
 
