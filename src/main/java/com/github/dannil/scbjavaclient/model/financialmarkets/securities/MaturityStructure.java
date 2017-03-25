@@ -106,9 +106,7 @@ public class MaturityStructure extends AbstractSecurity<Integer> {
     @Override
     public String toString() {
         Map<String, Object> variables = new LinkedHashMap<>();
-        variables.put("sector", getSector());
         variables.put("maturity", this.maturity);
-        variables.put("currency", getCurrency());
         return super.buildToString(variables);
     }
 

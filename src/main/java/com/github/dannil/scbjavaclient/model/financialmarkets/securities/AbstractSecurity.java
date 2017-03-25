@@ -14,7 +14,9 @@
 
 package com.github.dannil.scbjavaclient.model.financialmarkets.securities;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -120,6 +122,14 @@ public abstract class AbstractSecurity<V> extends AbstractTimeAndValueModel<Stri
         AbstractSecurity<?> other = (AbstractSecurity<?>) obj;
         return super.equals(obj) && Objects.equals(this.sector, other.sector)
                 && Objects.equals(this.currency, other.currency);
+    }
+
+    @Override
+    public String toString() {
+        Map<String, Object> variables = new LinkedHashMap<>();
+        variables.put("sector", this.sector);
+        variables.put("currency", this.currency);
+        return super.buildToString(variables);
     }
 
 }
