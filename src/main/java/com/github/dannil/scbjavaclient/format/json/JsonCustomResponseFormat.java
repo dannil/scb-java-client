@@ -56,6 +56,8 @@ public final class JsonCustomResponseFormat {
         this();
         this.json = this.converter.toNode(json);
         this.json = this.converter.getMapper().convertValue(getEntries(), JsonNode.class);
+
+        // System.out.println(this.json);
     }
 
     /**
@@ -96,17 +98,21 @@ public final class JsonCustomResponseFormat {
             JsonNode keysNode = entry.get("key");
             JsonNode valuesNode = entry.get("values");
 
+            Map<String, String> keys = new HashMap<>(keysNode.size());
+            // Map<String, String> keysContents = new HashMap<>();
             for (int j = 0; j < keysNode.size(); j++) {
-                map.put(codes.get(j), keysNode.get(j).asText());
+                keys.put(codes.get(j), keysNode.get(j).asText());
             }
+            // keys.add(keysContents);
+            map.put("Keys", keys);
 
             List<Map<String, String>> values = new ArrayList<>(valuesNode.size());
             for (int k = 0; k < valuesNode.size(); k++) {
-                Map<String, String> contents = new HashMap<>();
-                contents.put("Value", valuesNode.get(k).asText());
-                contents.put("Code", contentCodes.get(k));
-                contents.put("Text", contentCodesTexts.get(k));
-                values.add(contents);
+                Map<String, String> valuesContents = new HashMap<>();
+                valuesContents.put("Value", valuesNode.get(k).asText());
+                valuesContents.put("Code", contentCodes.get(k));
+                valuesContents.put("Text", contentCodesTexts.get(k));
+                values.add(valuesContents);
             }
             map.put("Values", values);
 
