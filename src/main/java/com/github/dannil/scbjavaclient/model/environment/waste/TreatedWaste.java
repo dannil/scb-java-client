@@ -104,7 +104,6 @@ public class TreatedWaste extends AbstractWaste {
     public String toString() {
         Map<String, Object> variables = new LinkedHashMap<>();
         variables.put("treatmentCategory", this.treatmentCategory);
-        variables.put("wasteCategory", getWasteCategory());
         return super.buildToString(variables);
     }
 

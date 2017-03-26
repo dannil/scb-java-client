@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.model.financialmarkets.securities;
+package com.github.dannil.scbjavaclient.model.livingconditions.surveys.employment;
 
 import java.util.Collection;
 import java.util.LinkedHashMap;
@@ -27,64 +27,63 @@ import com.github.dannil.scbjavaclient.http.requester.GETRequester;
 import com.github.dannil.scbjavaclient.model.ValueNode;
 
 /**
- * <p>Model for maturity structure data.</p>
+ * <p>Model for type of employment data.</p>
  *
- * @since 0.2.0
+ * @since 0.2.1
  */
-public class MaturityStructure extends AbstractSecurity<Integer> {
+public class TypeOfEmployment extends AbstractEmployment {
 
-    @JsonProperty("Forfall")
-    private String maturity;
+    @JsonProperty("AnstTyp")
+    private String type;
 
     /**
      * <p>Default constructor.</p>
      */
-    public MaturityStructure() {
+    public TypeOfEmployment() {
         super();
     }
 
     /**
      * <p>Overloaded constructor.</p>
      *
-     * @param sector
-     *            the sector
-     * @param maturity
-     *            the maturity
-     * @param currency
-     *            the currency
-     * @param month
-     *            the month
+     * @param type
+     *            the type
+     * @param age
+     *            the age
+     * @param sex
+     *            the sex
+     * @param period
+     *            the period
      * @param values
      *            the values
      */
-    public MaturityStructure(Integer sector, String maturity, String currency, String month,
-            List<ValueNode<Integer>> values) {
-        super(sector, currency, month, values);
-        this.maturity = maturity;
+    public TypeOfEmployment(String type, String age, Integer sex, String period, List<ValueNode<Double>> values) {
+        super(age, sex, period, values);
+        this.type = type;
     }
 
     /**
-     * <p>Getter for maturity.</p>
+     * <p>Getter for type.</p>
      *
-     * @return the maturity
+     * @return the type
      */
-    public String getMaturity() {
-        return this.maturity;
+    public String getType() {
+        return this.type;
     }
 
     /**
-     * <p>Setter for maturity.</p>
+     * <p>Setter for type.</p>
      *
-     * @param maturity
-     *            the maturity
+     * @param type
+     *            the type
      */
-    public void setMaturity(String maturity) {
-        this.maturity = maturity;
+    public void setType(String type) {
+        this.type = type;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), this.maturity);
+        return Objects.hash(super.hashCode(), this.type);
     }
 
     @Override
@@ -95,30 +94,29 @@ public class MaturityStructure extends AbstractSecurity<Integer> {
         if (obj == null) {
             return false;
         }
-        if (!(obj instanceof MaturityStructure)) {
+        if (!(obj instanceof TypeOfEmployment)) {
             return false;
         }
-
-        MaturityStructure other = (MaturityStructure) obj;
-        return super.equals(obj) && Objects.equals(this.maturity, other.maturity);
+        TypeOfEmployment other = (TypeOfEmployment) obj;
+        return super.equals(obj) && Objects.equals(this.type, other.type);
     }
 
     @Override
     public String toString() {
         Map<String, Object> variables = new LinkedHashMap<>();
-        variables.put("maturity", this.maturity);
+        variables.put("type", this.type);
         return super.buildToString(variables);
     }
 
     /**
-     * <p>Get the available codes and their respective values for the maturity structure
+     * <p>Get the available codes and their respective values for the type of employment
      * data from the API.</p>
      *
      * @return a list of the available codes and their values
      */
     public static Map<String, Collection<String>> getInputs() {
         AbstractRequester get = new GETRequester();
-        String response = get.getBodyFromTable("FM/FM9998/FM9998T02");
+        String response = get.getBodyFromTable("LE/LE0101/LE0101S/LE01012013S19");
 
         JsonAPITableFormat format = new JsonAPITableFormat(response);
         return format.getInputs();

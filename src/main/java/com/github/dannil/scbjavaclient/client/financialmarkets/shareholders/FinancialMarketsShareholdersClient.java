@@ -81,7 +81,7 @@ public class FinancialMarketsShareholdersClient extends AbstractClient {
     public List<OwnershipOfShares> getOwnershipOfShares(Collection<String> sectors, Collection<String> halfYears) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("FM0201A1", "FM0201A2"));
-        mappings.put("Sektor", sectors);
+        mappings.put(APIConstants.SECTOR_CODE, sectors);
         mappings.put(APIConstants.TIME_CODE, halfYears);
 
         String response = doPostRequest(getUrl() + "AktieAgarAr", QueryBuilder.build(mappings));
@@ -121,7 +121,7 @@ public class FinancialMarketsShareholdersClient extends AbstractClient {
             Collection<String> marketplaces, Collection<String> halfYears) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("FM0201C1", "FM0201C2"));
-        mappings.put("Sektor", sectors);
+        mappings.put(APIConstants.SECTOR_CODE, sectors);
         mappings.put("Marknadsplats", marketplaces);
         mappings.put(APIConstants.TIME_CODE, halfYears);
 
@@ -162,7 +162,7 @@ public class FinancialMarketsShareholdersClient extends AbstractClient {
             Collection<String> series, Collection<String> halfYears) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("FM0201B1", "FM0201B2", "FM0201B3"));
-        mappings.put("Sektor", sectors);
+        mappings.put(APIConstants.SECTOR_CODE, sectors);
         mappings.put("Aktieserie", series);
         mappings.put(APIConstants.TIME_CODE, halfYears);
 

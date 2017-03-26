@@ -128,7 +128,7 @@ public abstract class AbstractValueModel<V> {
 
     /**
      * <p>Builds a string which can be used for outputting the values for the variables of
-     * the calling class.</p>
+     * the calling object.</p>
      *
      * <p>Every key-value pair in the input map <code>variables</code> is appended (equal
      * signs-separated) to a string and separated from the other key-value pairs by a
@@ -138,7 +138,9 @@ public abstract class AbstractValueModel<V> {
      * from a class named HelloWorld, the result would be:</p>
      *
      * <p><b>HelloWorld [name=John, age=20, values=[...]]</b></p> <p>with appropriate
-     * values also appended in the same fashion.</p>
+     * values also appended in the same fashion. Unless the parameter
+     * <code>variables</code> is an instance of a <code>Map</code> which handles ordering,
+     * the output ordering of the variables aren't guaranteed.</p>
      *
      * <p>Subclasses are expected to override this method and add its own variables,
      * thereby creating a chain where every subclass is only responsible for it's own
@@ -152,7 +154,7 @@ public abstract class AbstractValueModel<V> {
         variables.put("values", this.values);
 
         StringBuilder builder = new StringBuilder(ModelConstants.TOSTRING_BUILDER_LENGTH);
-        builder.append(this.getClass().getSimpleName());
+        builder.append(getClass().getSimpleName());
         builder.append(" [");
         for (Iterator<Entry<String, Object>> entries = variables.entrySet().iterator(); entries.hasNext();) {
             Entry<String, Object> entry = entries.next();

@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.model.financialmarkets.securities;
+package com.github.dannil.scbjavaclient.model.livingconditions.surveys.employment;
 
 import java.util.Collection;
 import java.util.LinkedHashMap;
@@ -27,64 +27,64 @@ import com.github.dannil.scbjavaclient.http.requester.GETRequester;
 import com.github.dannil.scbjavaclient.model.ValueNode;
 
 /**
- * <p>Model for maturity structure data.</p>
+ * <p>Model for gainfully employed persons data.</p>
  *
- * @since 0.2.0
+ * @since 0.2.1
  */
-public class MaturityStructure extends AbstractSecurity<Integer> {
+public class GainfullyEmployedPersons extends AbstractEmployment {
 
-    @JsonProperty("Forfall")
-    private String maturity;
+    @JsonProperty("Heltiddeltid")
+    private String fullAndPartTime;
 
     /**
      * <p>Default constructor.</p>
      */
-    public MaturityStructure() {
+    public GainfullyEmployedPersons() {
         super();
     }
 
     /**
      * <p>Overloaded constructor.</p>
      *
-     * @param sector
-     *            the sector
-     * @param maturity
-     *            the maturity
-     * @param currency
-     *            the currency
-     * @param month
-     *            the month
+     * @param fullAndPartTime
+     *            the full and part time
+     * @param age
+     *            the age
+     * @param sex
+     *            the sex
+     * @param period
+     *            the period
      * @param values
      *            the values
      */
-    public MaturityStructure(Integer sector, String maturity, String currency, String month,
-            List<ValueNode<Integer>> values) {
-        super(sector, currency, month, values);
-        this.maturity = maturity;
+    public GainfullyEmployedPersons(String fullAndPartTime, String age, Integer sex, String period,
+            List<ValueNode<Double>> values) {
+        super(age, sex, period, values);
+        this.fullAndPartTime = fullAndPartTime;
     }
 
     /**
-     * <p>Getter for maturity.</p>
+     * <p>Getter for full and part time.</p>
      *
-     * @return the maturity
+     * @return the full and part time
      */
-    public String getMaturity() {
-        return this.maturity;
+    public String getFullAndPartTime() {
+        return this.fullAndPartTime;
     }
 
     /**
-     * <p>Setter for maturity.</p>
+     * <p>Setter for full and part time.</p>
      *
-     * @param maturity
-     *            the maturity
+     * @param fullAndPartTime
+     *            the full and part time
      */
-    public void setMaturity(String maturity) {
-        this.maturity = maturity;
+    public void setFullAndPartTime(String fullAndPartTime) {
+        this.fullAndPartTime = fullAndPartTime;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), this.maturity);
+        return Objects.hash(super.hashCode(), this.fullAndPartTime);
     }
 
     @Override
@@ -95,30 +95,29 @@ public class MaturityStructure extends AbstractSecurity<Integer> {
         if (obj == null) {
             return false;
         }
-        if (!(obj instanceof MaturityStructure)) {
+        if (!(obj instanceof GainfullyEmployedPersons)) {
             return false;
         }
-
-        MaturityStructure other = (MaturityStructure) obj;
-        return super.equals(obj) && Objects.equals(this.maturity, other.maturity);
+        GainfullyEmployedPersons other = (GainfullyEmployedPersons) obj;
+        return super.equals(obj) && Objects.equals(this.fullAndPartTime, other.fullAndPartTime);
     }
 
     @Override
     public String toString() {
         Map<String, Object> variables = new LinkedHashMap<>();
-        variables.put("maturity", this.maturity);
+        variables.put("fullAndPartTime", this.fullAndPartTime);
         return super.buildToString(variables);
     }
 
     /**
-     * <p>Get the available codes and their respective values for the maturity structure
-     * data from the API.</p>
+     * <p>Get the available codes and their respective values for the gainfully employed
+     * persons data from the API.</p>
      *
      * @return a list of the available codes and their values
      */
     public static Map<String, Collection<String>> getInputs() {
         AbstractRequester get = new GETRequester();
-        String response = get.getBodyFromTable("FM/FM9998/FM9998T02");
+        String response = get.getBodyFromTable("LE/LE0101/LE0101S/LE01012013S07");
 
         JsonAPITableFormat format = new JsonAPITableFormat(response);
         return format.getInputs();
