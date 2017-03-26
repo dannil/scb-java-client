@@ -93,7 +93,7 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
     /**
      * <p>Fetch all long term illness data.</p>
      *
-     * @return the physical and mental health data wrapped in a list of
+     * @return the long term illness data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.livingconditions.surveys.health.LongTermIllness
      *         LongTermIllness} objects
      *
@@ -114,7 +114,7 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
      *            the sexes
      * @param periods
      *            the periods
-     * @return the physical and mental health data wrapped in a list of
+     * @return the long term illness data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.livingconditions.surveys.health.LongTermIllness
      *         LongTermIllness} objects
      */

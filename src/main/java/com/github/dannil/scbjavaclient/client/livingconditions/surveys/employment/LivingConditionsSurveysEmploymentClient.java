@@ -99,7 +99,7 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
     /**
      * <p>Fetch all gainfully employed persons data.</p>
      *
-     * @return the gainfully employed persons wrapped in a list of
+     * @return the gainfully employed persons data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.livingconditions.surveys.employment.GainfullyEmployedPersons
      *         GainfullyEmployedPersons} objects
      */
@@ -179,7 +179,7 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
     /**
      * <p>Fetch all distribution of working hours for employees data.</p>
      *
-     * @return the type of employment data wrapped in a list of
+     * @return the distribution of working hours data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.livingconditions.surveys.employment.DistributionOfWorkingHours
      *         DistributionOfWorkingHours} objects
      */
@@ -199,7 +199,7 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
      *            the sexes
      * @param periods
      *            the periods
-     * @return the type of employment data wrapped in a list of
+     * @return the distribution of working hours data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.livingconditions.surveys.employment.DistributionOfWorkingHours
      *         DistributionOfWorkingHours} objects
      */
