@@ -24,7 +24,7 @@ import java.util.Map;
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
-import com.github.dannil.scbjavaclient.model.population.amount.Population;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
@@ -54,13 +54,13 @@ public class PopulationAmountClient extends AbstractClient {
     /**
      * <p>Fetch all population amount data.</p>
      *
-     * @return the population amount data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.population.amount.Population
-     *         Population} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getPopulation(Collection, Collection, Collection, Collection, Collection)
      */
-    public List<Population> getPopulation() {
+    public List<ResponseModel> getPopulation() {
         return getPopulation(null, null, null, null, null);
     }
 
@@ -77,11 +77,11 @@ public class PopulationAmountClient extends AbstractClient {
      *            the genders to fetch data for
      * @param years
      *            the years to fetch data for
-     * @return the population amount data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.population.amount.Population
-     *         Population} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<Population> getPopulation(Collection<String> regions, Collection<String> relationshipStatuses,
+    public List<ResponseModel> getPopulation(Collection<String> regions, Collection<String> relationshipStatuses,
             Collection<String> ages, Collection<Integer> genders, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("BE0101N1", "BE0101N2"));
@@ -94,7 +94,7 @@ public class PopulationAmountClient extends AbstractClient {
         String response = doPostRequest(getUrl() + "BefolkningNy", QueryBuilder.build(mappings));
 
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(Population.class);
+        return format.toListOf(ResponseModel.class);
     }
 
     @Override

@@ -24,7 +24,7 @@ import java.util.Map;
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
-import com.github.dannil.scbjavaclient.model.financialmarkets.investmentfunds.OwnershipOfInvestmentFundShares;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
@@ -54,13 +54,13 @@ public class FinancialMarketsInvestmentFundsClient extends AbstractClient {
     /**
      * <p>Fetch all ownership of investment fund shares data.</p>
      *
-     * @return the ownership of investment fund shares data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.financialmarkets.investmentfunds.OwnershipOfInvestmentFundShares
-     *         OwnershipOfInvestmentFundShares} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getOwnershipOfInvestmentFundShares(Collection, Collection, Collection)
      */
-    public List<OwnershipOfInvestmentFundShares> getOwnershipOfInvestmentFundShares() {
+    public List<ResponseModel> getOwnershipOfInvestmentFundShares() {
         return getOwnershipOfInvestmentFundShares(null, null, null);
     }
 
@@ -74,12 +74,12 @@ public class FinancialMarketsInvestmentFundsClient extends AbstractClient {
      *            the sectors to fetch data for
      * @param quarters
      *            the quarters to fetch data for
-     * @return the ownership of investment fund shares data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.financialmarkets.investmentfunds.OwnershipOfInvestmentFundShares
-     *         OwnershipOfInvestmentFundShares} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<OwnershipOfInvestmentFundShares> getOwnershipOfInvestmentFundShares(Collection<String> types,
-            Collection<String> sectors, Collection<String> quarters) {
+    public List<ResponseModel> getOwnershipOfInvestmentFundShares(Collection<String> types, Collection<String> sectors,
+            Collection<String> quarters) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("FM0403I1", "FM0403I2", "FM0403I3", "FM0403I4"));
         mappings.put("Fondtyp", types);
@@ -89,7 +89,7 @@ public class FinancialMarketsInvestmentFundsClient extends AbstractClient {
         String response = doPostRequest(getUrl() + "VPfondKv", QueryBuilder.build(mappings));
 
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(OwnershipOfInvestmentFundShares.class);
+        return format.toListOf(ResponseModel.class);
     }
 
     @Override

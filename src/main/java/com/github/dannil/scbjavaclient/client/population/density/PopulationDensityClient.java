@@ -24,7 +24,7 @@ import java.util.Map;
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
-import com.github.dannil.scbjavaclient.model.population.density.Density;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
@@ -54,13 +54,13 @@ public class PopulationDensityClient extends AbstractClient {
     /**
      * <p>Fetch all density data.</p>
      *
-     * @return the density data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.population.density.Density
-     *         Density} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getDensity(Collection, Collection, Collection)
      */
-    public List<Density> getDensity() {
+    public List<ResponseModel> getDensity() {
         return getDensity(null, null, null);
     }
 
@@ -73,11 +73,12 @@ public class PopulationDensityClient extends AbstractClient {
      *            the sexes to fetch data for
      * @param years
      *            the years to fetch data for
-     * @return the density data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.population.density.Density
-     *         Density} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<Density> getDensity(Collection<String> regions, Collection<String> sexes, Collection<Integer> years) {
+    public List<ResponseModel> getDensity(Collection<String> regions, Collection<String> sexes,
+            Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("BE0101U1", "BE0101U2", "BE0101U3"));
         mappings.put(APIConstants.REGION_CODE, regions);
@@ -87,7 +88,7 @@ public class PopulationDensityClient extends AbstractClient {
         String response = doPostRequest(getUrl() + "BefArealTathetKon", QueryBuilder.build(mappings));
 
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(Density.class);
+        return format.toListOf(ResponseModel.class);
     }
 
     @Override

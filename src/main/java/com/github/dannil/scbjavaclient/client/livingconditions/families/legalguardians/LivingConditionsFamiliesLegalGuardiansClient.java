@@ -24,7 +24,7 @@ import java.util.Map;
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
-import com.github.dannil.scbjavaclient.model.livingconditions.families.legalguardians.LegalGuardians;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
@@ -54,13 +54,13 @@ public class LivingConditionsFamiliesLegalGuardiansClient extends AbstractClient
     /**
      * <p>Fetch all legal guardians data.</p>
      *
-     * @return the legal guardians data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.families.legalguardians.LegalGuardians
-     *         LegalGuardians} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getLegalGuardians(Collection, Collection, Collection, Collection)
      */
-    public List<LegalGuardians> getLegalGuardians() {
+    public List<ResponseModel> getLegalGuardians() {
         return getLegalGuardians(null, null, null, null);
     }
 
@@ -75,11 +75,11 @@ public class LivingConditionsFamiliesLegalGuardiansClient extends AbstractClient
      *            the family types
      * @param years
      *            the years
-     * @return the legal guardians data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.families.legalguardians.LegalGuardians
-     *         LegalGuardians} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<LegalGuardians> getLegalGuardians(Collection<String> sexes, Collection<String> caregivers,
+    public List<ResponseModel> getLegalGuardians(Collection<String> sexes, Collection<String> caregivers,
             Collection<String> familyTypes, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("000000T0"));
@@ -91,7 +91,7 @@ public class LivingConditionsFamiliesLegalGuardiansClient extends AbstractClient
         String response = doPostRequest(getUrl() + "LE0102T28", QueryBuilder.build(mappings));
 
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(LegalGuardians.class);
+        return format.toListOf(ResponseModel.class);
     }
 
     @Override

@@ -24,13 +24,13 @@ import java.util.Map;
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
-import com.github.dannil.scbjavaclient.model.publicfinances.localtaxes.LocalTaxRate;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
  * <p>Client which handles public finances local taxes data fetching.</p>
  *
-* @since 0.3.0
+ * @since 0.3.0
  */
 public class PublicFinancesLocalTaxesClient extends AbstractClient {
 
@@ -54,13 +54,13 @@ public class PublicFinancesLocalTaxesClient extends AbstractClient {
     /**
      * <p>Fetch all local tax rates data.</p>
      *
-     * @return the local tax rates data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.publicfinances.localtaxes.LocalTaxRate
-     *         LocalTaxRate} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getLocalTaxRates(Collection, Collection)
      */
-    public List<LocalTaxRate> getLocalTaxRates() {
+    public List<ResponseModel> getLocalTaxRates() {
         return getLocalTaxRates(null, null);
     }
 
@@ -71,11 +71,11 @@ public class PublicFinancesLocalTaxesClient extends AbstractClient {
      *            the regions
      * @param years
      *            the years
-     * @return the local tax rates data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.publicfinances.localtaxes.LocalTaxRate
-     *         LocalTaxRate} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<LocalTaxRate> getLocalTaxRates(Collection<String> regions, Collection<Integer> years) {
+    public List<ResponseModel> getLocalTaxRates(Collection<String> regions, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("OE0101D1", "OE0101D2", "OE0101D3"));
         mappings.put(APIConstants.REGION_CODE, regions);
@@ -84,7 +84,7 @@ public class PublicFinancesLocalTaxesClient extends AbstractClient {
         String response = doPostRequest(getUrl() + "Kommunalskatter2000", QueryBuilder.build(mappings));
 
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(LocalTaxRate.class);
+        return format.toListOf(ResponseModel.class);
     }
 
     @Override

@@ -74,8 +74,6 @@ public class EnergyAnnualStatisticsClientIT extends RemoteIntegrationTestSuite {
         List<String> powerPlants = Arrays.asList("Kraftvi", "Vind");
         List<Integer> years = Arrays.asList(1997, 1999);
 
-        System.out.println(this.client.getElectricitySupply(powerPlants, years));
-
         assertNotEquals(0, this.client.getElectricitySupply(powerPlants, years).size());
     }
 

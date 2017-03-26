@@ -24,8 +24,7 @@ import java.util.Map;
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
-import com.github.dannil.scbjavaclient.model.financialmarkets.securities.MaturityStructure;
-import com.github.dannil.scbjavaclient.model.financialmarkets.securities.OutstandingAndIssuedAmount;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
@@ -55,13 +54,13 @@ public class FinancialMarketsSecuritiesClient extends AbstractClient {
     /**
      * <p>Fetch all maturity structure data.</p>
      *
-     * @return the maturity structure data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.financialmarkets.securities.MaturityStructure
-     *         MaturityStructure} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getMaturityStructure(Collection, Collection, Collection, Collection)
      */
-    public List<MaturityStructure> getMaturityStructure() {
+    public List<ResponseModel> getMaturityStructure() {
         return getMaturityStructure(null, null, null, null);
     }
 
@@ -76,11 +75,11 @@ public class FinancialMarketsSecuritiesClient extends AbstractClient {
      *            the currencies to fetch data for
      * @param months
      *            the months to fetch data for
-     * @return the maturity structure data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.financialmarkets.securities.MaturityStructure
-     *         MaturityStructure} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<MaturityStructure> getMaturityStructure(Collection<Integer> sectors, Collection<String> maturities,
+    public List<ResponseModel> getMaturityStructure(Collection<Integer> sectors, Collection<String> maturities,
             Collection<String> currencies, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("FM9998AA"));
@@ -92,19 +91,19 @@ public class FinancialMarketsSecuritiesClient extends AbstractClient {
         String response = doPostRequest(getUrl() + "FM9998T02", QueryBuilder.build(mappings));
 
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(MaturityStructure.class);
+        return format.toListOf(ResponseModel.class);
     }
 
     /**
      * <p>Fetch all outstanding and issued amount data.</p>
      *
-     * @return the outstanding and issued amount data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.financialmarkets.securities.OutstandingAndIssuedAmount
-     *         OutstandingAndIssuedAmount} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getOutstandingAndIssuedAmount(Collection, Collection, Collection, Collection)
      */
-    public List<OutstandingAndIssuedAmount> getOutstandingAndIssuedAmount() {
+    public List<ResponseModel> getOutstandingAndIssuedAmount() {
         return getOutstandingAndIssuedAmount(null, null, null, null);
     }
 
@@ -120,12 +119,12 @@ public class FinancialMarketsSecuritiesClient extends AbstractClient {
      *            the currencies to fetch data for
      * @param months
      *            the months to fetch data for
-     * @return the outstanding and issued amount data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.financialmarkets.securities.OutstandingAndIssuedAmount
-     *         OutstandingAndIssuedAmount} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<OutstandingAndIssuedAmount> getOutstandingAndIssuedAmount(Collection<Integer> sectors,
-            Collection<String> items, Collection<String> currencies, Collection<String> months) {
+    public List<ResponseModel> getOutstandingAndIssuedAmount(Collection<Integer> sectors, Collection<String> items,
+            Collection<String> currencies, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.CONTENTSCODE_CODE,
                 Arrays.asList("FM9998AC", "FM9998AJ", "FM9998AD", "FM9998AE", "FM9998AF"));
@@ -137,7 +136,7 @@ public class FinancialMarketsSecuritiesClient extends AbstractClient {
         String response = doPostRequest(getUrl() + "FM9998T01", QueryBuilder.build(mappings));
 
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(OutstandingAndIssuedAmount.class);
+        return format.toListOf(ResponseModel.class);
     }
 
     @Override

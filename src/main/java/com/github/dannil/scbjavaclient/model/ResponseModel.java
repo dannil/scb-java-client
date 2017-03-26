@@ -20,7 +20,7 @@ public class ResponseModel {
     private List<ValueNode<String>> values;
 
     public ResponseModel() {
-        this.keys = new LinkedHashMap<String, String>();
+        this.keys = new LinkedHashMap<>();
         this.values = new ArrayList<>();
     }
 
@@ -38,10 +38,21 @@ public class ResponseModel {
         this.values = values;
     }
 
+    /**
+     * <p>Getter for keys.</p>
+     *
+     * @return the keys
+     */
     public Map<String, String> getKeys() {
         return this.keys;
     }
 
+    /**
+     * <p>Setter for keys.</p>
+     *
+     * @param keys
+     *            the keys
+     */
     public void setKeys(Map<String, String> keys) {
         this.keys = keys;
     }
@@ -99,7 +110,7 @@ public class ResponseModel {
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), this.keys, this.values);
+        return Objects.hash(this.keys, this.values);
     }
 
     @Override
@@ -114,7 +125,7 @@ public class ResponseModel {
             return false;
         }
         ResponseModel other = (ResponseModel) obj;
-        return super.equals(obj) && Objects.equals(this.keys, other.keys) && Objects.equals(this.values, other.values);
+        return Objects.equals(this.keys, other.keys) && Objects.equals(this.values, other.values);
     }
 
     @Override
@@ -127,11 +138,9 @@ public class ResponseModel {
             builder.append(entry.getKey());
             builder.append('=');
             builder.append(entry.getValue());
-            if (entries.hasNext()) {
-                builder.append(", ");
-            }
+            builder.append(", ");
         }
-        builder.append(", values=");
+        builder.append("values=");
         builder.append(this.values);
         builder.append(']');
         return builder.toString();

@@ -19,12 +19,14 @@ import static org.junit.Assert.assertNull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.model.ValueNode;
-import com.github.dannil.scbjavaclient.model.population.amount.Population;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -46,7 +48,14 @@ public class JsonCustomResponseFormatTest {
 
     @Test
     public void toListNonConventionalJson() {
-        List<Population> convertedPopulations = this.format.toListOf(Population.class);
+        List<ResponseModel> convertedPopulations = this.format.toListOf(ResponseModel.class);
+
+        Map<String, String> keys = new HashMap<String, String>();
+        keys.put("Region", "00");
+        keys.put("Civilstand", "OG");
+        keys.put("Alder", "45");
+        // keys.put("Kon", "null");
+        keys.put("Tid", "2011");
 
         List<ValueNode<String>> values = new ArrayList<ValueNode<String>>();
 
@@ -56,8 +65,8 @@ public class JsonCustomResponseFormatTest {
         ValueNode<String> value2 = new ValueNode<String>("1007", "BE0101N2", "Population growth");
         values.add(value2);
 
-        Population p = new Population("00", "OG", "45", null, 2011, values);
-        List<Population> staticPopulations = Arrays.asList(p);
+        ResponseModel p = new ResponseModel(keys, values);
+        List<ResponseModel> staticPopulations = Arrays.asList(p);
 
         assertEquals(convertedPopulations, staticPopulations);
     }
@@ -65,7 +74,7 @@ public class JsonCustomResponseFormatTest {
     @Test(expected = SCBClientParsingException.class)
     public void toListOfInvalidJson() {
         JsonCustomResponseFormat format = new JsonCustomResponseFormat("dadawdawgnjhgggggggggggggggggggggggg");
-        List<Population> populations = format.toListOf(Population.class);
+        List<ResponseModel> populations = format.toListOf(ResponseModel.class);
 
         assertNull(populations);
     }

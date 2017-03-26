@@ -24,10 +24,7 @@ import java.util.Map;
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
-import com.github.dannil.scbjavaclient.model.environment.landuse.usage.ArableAndForestLand;
-import com.github.dannil.scbjavaclient.model.environment.landuse.usage.BuiltUpLand;
-import com.github.dannil.scbjavaclient.model.environment.landuse.usage.LandUseByCounty;
-import com.github.dannil.scbjavaclient.model.environment.landuse.usage.LandUseByMunicipality;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
@@ -57,13 +54,13 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
     /**
      * <p>Fetch all arable land and forest land data.</p>
      *
-     * @return the arable land and forest land data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.environment.landuse.usage.ArableAndForestLand
-     *         ArableAndForestLand} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getArableAndForestLand(Collection, Collection, Collection)
      */
-    public List<ArableAndForestLand> getArableAndForestLand() {
+    public List<ResponseModel> getArableAndForestLand() {
         return getArableAndForestLand(null, null, null);
     }
 
@@ -77,26 +74,25 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
      *            the categories to fetch data for
      * @param years
      *            the years to fetch data for
-     * @return the arable land and forest land data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.environment.landuse.usage.ArableAndForestLand
-     *         ArableAndForestLand} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<ArableAndForestLand> getArableAndForestLand(Collection<String> regions, Collection<Integer> categories,
+    public List<ResponseModel> getArableAndForestLand(Collection<String> regions, Collection<Integer> categories,
             Collection<Integer> years) {
-        return generate(Arrays.asList("MI0803AI"), regions, categories, years, "MarkanvJbSk",
-                ArableAndForestLand.class);
+        return generate(Arrays.asList("MI0803AI"), regions, categories, years, "MarkanvJbSk");
     }
 
     /**
      * <p>Fetch all built up land data.</p>
      *
-     * @return the built up land data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.environment.landuse.usage.BuiltUpLand
-     *         BuiltUpLand} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getBuiltUpLand(Collection, Collection, Collection)
      */
-    public List<BuiltUpLand> getBuiltUpLand() {
+    public List<ResponseModel> getBuiltUpLand() {
         return getBuiltUpLand(null, null, null);
     }
 
@@ -109,25 +105,25 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
      *            the categories to fetch data for
      * @param years
      *            the years to fetch data for
-     * @return the built up land data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.environment.landuse.usage.BuiltUpLand
-     *         BuiltUpLand} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<BuiltUpLand> getBuiltUpLand(Collection<String> regions, Collection<Integer> categories,
+    public List<ResponseModel> getBuiltUpLand(Collection<String> regions, Collection<Integer> categories,
             Collection<Integer> years) {
-        return generate(Arrays.asList("MI0803AC"), regions, categories, years, "MarkanvBebyggdLnKn", BuiltUpLand.class);
+        return generate(Arrays.asList("MI0803AC"), regions, categories, years, "MarkanvBebyggdLnKn");
     }
 
     /**
      * <p>Fetch all land use by county data.</p>
      *
-     * @return the land use by county data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.environment.landuse.usage.LandUseByCounty
-     *         LandUseByCounty} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getLandUseByCounty(Collection, Collection, Collection)
      */
-    public List<LandUseByCounty> getLandUseByCounty() {
+    public List<ResponseModel> getLandUseByCounty() {
         return getLandUseByCounty(null, null, null);
     }
 
@@ -140,25 +136,25 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
      *            the categories to fetch data for
      * @param years
      *            the years to fetch data for
-     * @return the land use by county data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.environment.landuse.usage.LandUseByCounty
-     *         LandUseByCounty} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<LandUseByCounty> getLandUseByCounty(Collection<String> regions, Collection<Integer> categories,
+    public List<ResponseModel> getLandUseByCounty(Collection<String> regions, Collection<Integer> categories,
             Collection<Integer> years) {
-        return generate(Arrays.asList("MI0803AA"), regions, categories, years, "MarkanvLan", LandUseByCounty.class);
+        return generate(Arrays.asList("MI0803AA"), regions, categories, years, "MarkanvLan");
     }
 
     /**
      * <p>Fetch all land use by municipality data.</p>
      *
-     * @return the land use by municipality data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.environment.landuse.usage.LandUseByMunicipality
-     *         LandUseByMunicipality} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getLandUseByMunicipality(Collection, Collection, Collection)
      */
-    public List<LandUseByMunicipality> getLandUseByMunicipality() {
+    public List<ResponseModel> getLandUseByMunicipality() {
         return getLandUseByMunicipality(null, null, null);
     }
 
@@ -171,14 +167,13 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
      *            the categories to fetch data for
      * @param years
      *            the years to fetch data for
-     * @return the land use by municipality data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.environment.landuse.usage.LandUseByMunicipality
-     *         LandUseByMunicipality} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<LandUseByMunicipality> getLandUseByMunicipality(Collection<String> regions,
-            Collection<Integer> categories, Collection<Integer> years) {
-        return generate(Arrays.asList("MI0803AB"), regions, categories, years, "MarkanvKn",
-                LandUseByMunicipality.class);
+    public List<ResponseModel> getLandUseByMunicipality(Collection<String> regions, Collection<Integer> categories,
+            Collection<Integer> years) {
+        return generate(Arrays.asList("MI0803AB"), regions, categories, years, "MarkanvKn");
     }
 
     /**
@@ -194,14 +189,10 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
      *            the years
      * @param table
      *            the table
-     * @param clazz
-     *            the class to convert the generated data to
-     * @param <T>
-     *            the data type of the list
      * @return a <code>List</code> of the specified class
      */
-    private <T> List<T> generate(Collection<String> contentCodes, Collection<String> regions,
-            Collection<Integer> categories, Collection<Integer> years, String table, Class<T> clazz) {
+    private List<ResponseModel> generate(Collection<String> contentCodes, Collection<String> regions,
+            Collection<Integer> categories, Collection<Integer> years, String table) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.CONTENTSCODE_CODE, contentCodes);
         mappings.put(APIConstants.REGION_CODE, regions);
@@ -211,7 +202,7 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
         String response = doPostRequest(getUrl() + table, QueryBuilder.build(mappings));
 
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(clazz);
+        return format.toListOf(ResponseModel.class);
     }
 
     @Override

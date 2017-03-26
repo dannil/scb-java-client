@@ -24,10 +24,7 @@ import java.util.Map;
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
-import com.github.dannil.scbjavaclient.model.livingconditions.surveys.employment.DistributionOfWorkingHours;
-import com.github.dannil.scbjavaclient.model.livingconditions.surveys.employment.GainfullyEmployedPersons;
-import com.github.dannil.scbjavaclient.model.livingconditions.surveys.employment.MainActivity;
-import com.github.dannil.scbjavaclient.model.livingconditions.surveys.employment.TypeOfEmployment;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
@@ -57,13 +54,13 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
     /**
      * <p>Fetch all main activity data.</p>
      *
-     * @return the main activity data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.surveys.employment.MainActivity
-     *         MainActivity} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getMainActivity(Collection, Collection, Collection, Collection)
      */
-    public List<MainActivity> getMainActivity() {
+    public List<ResponseModel> getMainActivity() {
         return getMainActivity(null, null, null, null);
     }
 
@@ -78,11 +75,11 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
      *            the sexes
      * @param periods
      *            the periods
-     * @return the main activity data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.surveys.employment.MainActivity
-     *         MainActivity} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<MainActivity> getMainActivity(Collection<String> activities, Collection<String> ages,
+    public List<ResponseModel> getMainActivity(Collection<String> activities, Collection<String> ages,
             Collection<Integer> sexes, Collection<String> periods) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("LE0101XF", "LE0101XG", "LE0101XH", "LE0101XI"));
@@ -94,17 +91,17 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
         String response = doPostRequest(getUrl() + "LE01012013S01", QueryBuilder.build(mappings));
 
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(MainActivity.class);
+        return format.toListOf(ResponseModel.class);
     }
 
     /**
      * <p>Fetch all gainfully employed persons data.</p>
      *
-     * @return the gainfully employed persons data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.surveys.employment.GainfullyEmployedPersons
-     *         GainfullyEmployedPersons} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<GainfullyEmployedPersons> getGainfullyEmployedPersons() {
+    public List<ResponseModel> getGainfullyEmployedPersons() {
         return getGainfullyEmployedPersons(null, null, null, null);
     }
 
@@ -119,12 +116,12 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
      *            the sexes
      * @param periods
      *            the periods
-     * @return the gainfully employed persons data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.surveys.employment.GainfullyEmployedPersons
-     *         GainfullyEmployedPersons} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<GainfullyEmployedPersons> getGainfullyEmployedPersons(Collection<String> fullAndPartTimes,
-            Collection<String> ages, Collection<Integer> sexes, Collection<String> periods) {
+    public List<ResponseModel> getGainfullyEmployedPersons(Collection<String> fullAndPartTimes, Collection<String> ages,
+            Collection<Integer> sexes, Collection<String> periods) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("LE0101XL", "LE0101XM", "LE0101XP", "LE0101XQ"));
         mappings.put("Heltiddeltid", fullAndPartTimes);
@@ -135,17 +132,17 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
         String response = doPostRequest(getUrl() + "LE01012013S07", QueryBuilder.build(mappings));
 
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(GainfullyEmployedPersons.class);
+        return format.toListOf(ResponseModel.class);
     }
 
     /**
      * <p>Fetch all type of employment data.</p>
      *
-     * @return the type of employment data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.surveys.employment.TypeOfEmployment
-     *         TypeOfEmployment} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<TypeOfEmployment> getTypeOfEmployment() {
+    public List<ResponseModel> getTypeOfEmployment() {
         return getTypeOfEmployment(null, null, null, null);
     }
 
@@ -160,11 +157,11 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
      *            the sexes
      * @param periods
      *            the periods
-     * @return the type of employment data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.surveys.employment.TypeOfEmployment
-     *         TypeOfEmployment} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<TypeOfEmployment> getTypeOfEmployment(Collection<String> types, Collection<String> ages,
+    public List<ResponseModel> getTypeOfEmployment(Collection<String> types, Collection<String> ages,
             Collection<Integer> sexes, Collection<String> periods) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("LE0101YB", "LE0101YC", "LE0101YD", "LE0101YE"));
@@ -176,17 +173,17 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
         String response = doPostRequest(getUrl() + "LE01012013S19", QueryBuilder.build(mappings));
 
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(TypeOfEmployment.class);
+        return format.toListOf(ResponseModel.class);
     }
 
     /**
      * <p>Fetch all distribution of working hours for employees data.</p>
      *
-     * @return the distribution of working hours data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.surveys.employment.DistributionOfWorkingHours
-     *         DistributionOfWorkingHours} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<DistributionOfWorkingHours> getDistributionOfWorkingHoursForEmployees() {
+    public List<ResponseModel> getDistributionOfWorkingHoursForEmployees() {
         return getDistributionOfWorkingHoursForEmployees(null, null, null, null);
     }
 
@@ -202,11 +199,11 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
      *            the sexes
      * @param periods
      *            the periods
-     * @return the distribution of working hours data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.surveys.employment.DistributionOfWorkingHours
-     *         DistributionOfWorkingHours} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<DistributionOfWorkingHours> getDistributionOfWorkingHoursForEmployees(Collection<String> indicators,
+    public List<ResponseModel> getDistributionOfWorkingHoursForEmployees(Collection<String> indicators,
             Collection<String> ages, Collection<Integer> sexes, Collection<String> periods) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("LE0101YN", "LE0101YO", "LE0101YP", "LE0101YQ"));
@@ -218,7 +215,7 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
         String response = doPostRequest(getUrl() + "LE01012013A19", QueryBuilder.build(mappings));
 
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(DistributionOfWorkingHours.class);
+        return format.toListOf(ResponseModel.class);
     }
 
     @Override
