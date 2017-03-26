@@ -26,7 +26,7 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
 /**
  * <p>Model for health data.</p>
  *
- * @since 0.2.1
+* @since 0.3.0
  */
 public class Health extends AbstractTimeAndValueModel<String, String> {
 

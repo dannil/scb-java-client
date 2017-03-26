@@ -30,7 +30,7 @@ import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 /**
  * <p>Client which handles public finances local taxes data fetching.</p>
  *
- * @since 0.2.1
+* @since 0.3.0
  */
 public class PublicFinancesLocalTaxesClient extends AbstractClient {
 

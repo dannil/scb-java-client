@@ -24,7 +24,7 @@ import com.github.dannil.scbjavaclient.http.requester.GETRequester;
 /**
  * <p>Model for body mass index data.</p>
  *
- * @since 0.2.1
+* @since 0.3.0
  */
 public class BodyMassIndex extends Health {
 

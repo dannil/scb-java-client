@@ -31,7 +31,7 @@ import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 /**
  * <p>Client which handles public finances tax assessment data fetching.</p>
  *
- * @since 0.2.1
+* @since 0.3.0
  */
 public class PublicFinancesTaxAssessmentClient extends AbstractClient {
 

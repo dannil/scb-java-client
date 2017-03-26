@@ -29,7 +29,7 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
 /**
  * <p>Model for main activity data.</p>
  *
- * @since 0.2.1
+* @since 0.3.0
  */
 public class MainActivity extends AbstractEmployment {
 

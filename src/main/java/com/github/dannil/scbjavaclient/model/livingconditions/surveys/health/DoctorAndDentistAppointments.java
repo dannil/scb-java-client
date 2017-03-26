@@ -24,7 +24,7 @@ import com.github.dannil.scbjavaclient.http.requester.GETRequester;
 /**
  * <p>Model for doctor and dentist appointments data.</p>
  *
- * @since 0.2.1
+* @since 0.3.0
  */
 public class DoctorAndDentistAppointments extends Health {
 
