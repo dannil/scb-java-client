@@ -15,6 +15,7 @@
 package com.github.dannil.scbjavaclient.model.financialmarkets.securities;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -120,6 +121,13 @@ public abstract class AbstractSecurity<V> extends AbstractTimeAndValueModel<Stri
         AbstractSecurity<?> other = (AbstractSecurity<?>) obj;
         return super.equals(obj) && Objects.equals(this.sector, other.sector)
                 && Objects.equals(this.currency, other.currency);
+    }
+
+    @Override
+    public String buildToString(Map<String, Object> variables) {
+        variables.put("sector", this.sector);
+        variables.put("currency", this.currency);
+        return super.buildToString(variables);
     }
 
 }

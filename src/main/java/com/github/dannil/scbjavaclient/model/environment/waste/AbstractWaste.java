@@ -15,6 +15,7 @@
 package com.github.dannil.scbjavaclient.model.environment.waste;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -92,6 +93,12 @@ public abstract class AbstractWaste extends AbstractTimeAndValueModel<Integer, S
 
         AbstractWaste other = (AbstractWaste) obj;
         return super.equals(obj) && Objects.equals(this.wasteCategory, other.wasteCategory);
+    }
+
+    @Override
+    public String buildToString(Map<String, Object> variables) {
+        variables.put("wasteCategory", this.wasteCategory);
+        return super.buildToString(variables);
     }
 
 }

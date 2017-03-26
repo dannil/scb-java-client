@@ -105,7 +105,6 @@ public class GeneratedWaste extends AbstractWaste {
     public String toString() {
         Map<String, Object> variables = new LinkedHashMap<>();
         variables.put("industrialClassification", this.industrialClassification);
-        variables.put("wasteCategory", getWasteCategory());
         return super.buildToString(variables);
     }
 

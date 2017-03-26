@@ -106,9 +106,7 @@ public class OutstandingAndIssuedAmount extends AbstractSecurity<String> {
     @Override
     public String toString() {
         Map<String, Object> variables = new LinkedHashMap<>();
-        variables.put("sector", getSector());
         variables.put("item", this.item);
-        variables.put("currency", getCurrency());
         return super.buildToString(variables);
     }
 
