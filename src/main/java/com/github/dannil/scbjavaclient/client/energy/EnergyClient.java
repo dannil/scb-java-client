@@ -27,21 +27,14 @@ import com.github.dannil.scbjavaclient.client.energy.monthlystatistics.EnergyMon
  */
 public class EnergyClient extends AbstractContainerClient {
 
-    private EnergyAnnualStatisticsClient energyAnnualStatisticsClient;
-
-    private EnergyMonthlyStatisticsClient energyMonthlyStatisticsClient;
-
     /**
      * <p>Default constructor. Initializes values and creates sub-clients.</p>
      */
     public EnergyClient() {
         super();
 
-        this.energyAnnualStatisticsClient = new EnergyAnnualStatisticsClient();
-        addClient(this.energyAnnualStatisticsClient);
-
-        this.energyMonthlyStatisticsClient = new EnergyMonthlyStatisticsClient();
-        addClient(this.energyMonthlyStatisticsClient);
+        addClient("annualstatistics", new EnergyAnnualStatisticsClient());
+        addClient("monthlystatistics", new EnergyMonthlyStatisticsClient());
     }
 
     /**
@@ -62,7 +55,7 @@ public class EnergyClient extends AbstractContainerClient {
      * @return a client for energy annual statistics data
      */
     public EnergyAnnualStatisticsClient annualStatistics() {
-        return this.energyAnnualStatisticsClient;
+        return (EnergyAnnualStatisticsClient) getClient("annualstatistics");
     }
 
     /**
@@ -71,7 +64,7 @@ public class EnergyClient extends AbstractContainerClient {
      * @return a client for energy monthly statistics data
      */
     public EnergyMonthlyStatisticsClient monthlyStatistics() {
-        return this.energyMonthlyStatisticsClient;
+        return (EnergyMonthlyStatisticsClient) getClient("monthlystatistics");
     }
 
     @Override

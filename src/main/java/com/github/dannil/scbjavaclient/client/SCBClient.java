@@ -43,41 +43,18 @@ import com.github.dannil.scbjavaclient.utility.URLUtility;
  */
 public class SCBClient extends AbstractContainerClient {
 
-    private EnergyClient energyClient;
-
-    private EnvironmentClient environmentClient;
-
-    private FinancialMarketsClient financialMarketsClient;
-
-    private LivingConditionsClient livingConditionsClient;
-
-    private PopulationClient populationClient;
-
-    private PublicFinancesClient publicFinancesClient;
-
     /**
      * <p>Default constructor. Initializes values and creates sub-clients.</p>
      */
     public SCBClient() {
         super();
 
-        this.energyClient = new EnergyClient();
-        addClient(this.energyClient);
-
-        this.environmentClient = new EnvironmentClient();
-        addClient(this.environmentClient);
-
-        this.financialMarketsClient = new FinancialMarketsClient();
-        addClient(this.financialMarketsClient);
-
-        this.livingConditionsClient = new LivingConditionsClient();
-        addClient(this.livingConditionsClient);
-
-        this.populationClient = new PopulationClient();
-        addClient(this.populationClient);
-
-        this.publicFinancesClient = new PublicFinancesClient();
-        addClient(this.publicFinancesClient);
+        addClient("energy", new EnergyClient());
+        addClient("environment", new EnvironmentClient());
+        addClient("financialmarkets", new FinancialMarketsClient());
+        addClient("livingconditions", new LivingConditionsClient());
+        addClient("population", new PopulationClient());
+        addClient("publicfinances", new PublicFinancesClient());
     }
 
     /**
@@ -98,7 +75,7 @@ public class SCBClient extends AbstractContainerClient {
      * @return a client for energy data
      */
     public EnergyClient energy() {
-        return this.energyClient;
+        return (EnergyClient) getClient("energy");
     }
 
     /**
@@ -107,7 +84,7 @@ public class SCBClient extends AbstractContainerClient {
      * @return a client for environment data
      */
     public EnvironmentClient environment() {
-        return this.environmentClient;
+        return (EnvironmentClient) getClient("environment");
     }
 
     /**
@@ -116,7 +93,7 @@ public class SCBClient extends AbstractContainerClient {
      * @return a client for financial markets data
      */
     public FinancialMarketsClient financialMarkets() {
-        return this.financialMarketsClient;
+        return (FinancialMarketsClient) getClient("financialmarkets");
     }
 
     /**
@@ -125,7 +102,7 @@ public class SCBClient extends AbstractContainerClient {
      * @return a client for living conditions data
      */
     public LivingConditionsClient livingConditions() {
-        return this.livingConditionsClient;
+        return (LivingConditionsClient) getClient("livingconditions");
     }
 
     /**
@@ -134,7 +111,7 @@ public class SCBClient extends AbstractContainerClient {
      * @return a client for population data
      */
     public PopulationClient population() {
-        return this.populationClient;
+        return (PopulationClient) getClient("population");
     }
 
     /**
@@ -143,7 +120,7 @@ public class SCBClient extends AbstractContainerClient {
      * @return a client for public finances data
      */
     public PublicFinancesClient publicFinances() {
-        return this.publicFinancesClient;
+        return (PublicFinancesClient) getClient("publicfinances");
     }
 
     /**

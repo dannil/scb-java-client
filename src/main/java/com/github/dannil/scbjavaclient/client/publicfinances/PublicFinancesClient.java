@@ -28,26 +28,15 @@ import com.github.dannil.scbjavaclient.client.publicfinances.taxassessment.Publi
  */
 public class PublicFinancesClient extends AbstractContainerClient {
 
-    private PublicFinancesGovernmentDebtClient publicFinancesGovernmentDebtClient;
-
-    private PublicFinancesLocalTaxesClient publicFinancesLocalTaxesClient;
-
-    private PublicFinancesTaxAssessmentClient publicFinancesTaxAssessmentClient;
-
     /**
      * <p>Default constructor. Initializes values and creates sub-clients.</p>
      */
     public PublicFinancesClient() {
         super();
 
-        this.publicFinancesGovernmentDebtClient = new PublicFinancesGovernmentDebtClient();
-        addClient(this.publicFinancesGovernmentDebtClient);
-
-        this.publicFinancesLocalTaxesClient = new PublicFinancesLocalTaxesClient();
-        addClient(this.publicFinancesLocalTaxesClient);
-
-        this.publicFinancesTaxAssessmentClient = new PublicFinancesTaxAssessmentClient();
-        addClient(this.publicFinancesTaxAssessmentClient);
+        addClient("governmentdebt", new PublicFinancesGovernmentDebtClient());
+        addClient("localtaxes", new PublicFinancesLocalTaxesClient());
+        addClient("taxassessment", new PublicFinancesTaxAssessmentClient());
     }
 
     /**
@@ -69,7 +58,7 @@ public class PublicFinancesClient extends AbstractContainerClient {
      * @return a client for public finances government debt data
      */
     public PublicFinancesGovernmentDebtClient governmentDebt() {
-        return this.publicFinancesGovernmentDebtClient;
+        return (PublicFinancesGovernmentDebtClient) getClient("governmentdebt");
     }
 
     /**
@@ -78,7 +67,7 @@ public class PublicFinancesClient extends AbstractContainerClient {
      * @return a client for public finances local taxes data
      */
     public PublicFinancesLocalTaxesClient localTaxes() {
-        return this.publicFinancesLocalTaxesClient;
+        return (PublicFinancesLocalTaxesClient) getClient("localtaxes");
     }
 
     /**
@@ -88,7 +77,7 @@ public class PublicFinancesClient extends AbstractContainerClient {
      * @return a client for public finances tax assessment data
      */
     public PublicFinancesTaxAssessmentClient taxAssessment() {
-        return this.publicFinancesTaxAssessmentClient;
+        return (PublicFinancesTaxAssessmentClient) getClient("taxassessment");
     }
 
     @Override

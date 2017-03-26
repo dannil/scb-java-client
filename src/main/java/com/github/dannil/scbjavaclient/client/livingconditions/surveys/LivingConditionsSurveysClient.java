@@ -27,21 +27,14 @@ import com.github.dannil.scbjavaclient.client.livingconditions.surveys.health.Li
  */
 public class LivingConditionsSurveysClient extends AbstractContainerClient {
 
-    private LivingConditionsSurveysEmploymentClient livingConditionsSurveysEmploymentClient;
-
-    private LivingConditionsSurveysHealthClient livingConditionsSurveysHealthClient;
-
     /**
      * <p>Default constructor. Initializes values and creates sub-clients.</p>
      */
     public LivingConditionsSurveysClient() {
         super();
 
-        this.livingConditionsSurveysEmploymentClient = new LivingConditionsSurveysEmploymentClient();
-        addClient(this.livingConditionsSurveysEmploymentClient);
-
-        this.livingConditionsSurveysHealthClient = new LivingConditionsSurveysHealthClient();
-        addClient(this.livingConditionsSurveysHealthClient);
+        addClient("employment", new LivingConditionsSurveysEmploymentClient());
+        addClient("health", new LivingConditionsSurveysHealthClient());
     }
 
     /**
@@ -63,7 +56,7 @@ public class LivingConditionsSurveysClient extends AbstractContainerClient {
      * @return a client for living conditions surveys employment data
      */
     public LivingConditionsSurveysEmploymentClient employment() {
-        return this.livingConditionsSurveysEmploymentClient;
+        return (LivingConditionsSurveysEmploymentClient) getClient("employment");
     }
 
     /**
@@ -73,7 +66,7 @@ public class LivingConditionsSurveysClient extends AbstractContainerClient {
      * @return a client for living conditions surveys health data
      */
     public LivingConditionsSurveysHealthClient health() {
-        return this.livingConditionsSurveysHealthClient;
+        return (LivingConditionsSurveysHealthClient) getClient("health");
     }
 
     @Override
