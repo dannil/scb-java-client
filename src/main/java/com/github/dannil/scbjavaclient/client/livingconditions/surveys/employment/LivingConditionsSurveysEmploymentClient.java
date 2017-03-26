@@ -54,10 +54,34 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
         super(locale);
     }
 
+    /**
+     * <p>Fetch all main activity data.</p>
+     *
+     * @return the main activity data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.surveys.employment.MainActivity
+     *         MainActivity} objects
+     *
+     * @see #getMainActivity(Collection, Collection, Collection, Collection)
+     */
     public List<MainActivity> getMainActivity() {
         return getMainActivity(null, null, null, null);
     }
 
+    /**
+     * <p>Fetch all main activity data which match the input constraints.</p>
+     *
+     * @param activities
+     *            the activities
+     * @param ages
+     *            the ages
+     * @param sexes
+     *            the sexes
+     * @param periods
+     *            the periods
+     * @return the main activity data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.surveys.employment.MainActivity
+     *         MainActivity} objects
+     */
     public List<MainActivity> getMainActivity(Collection<String> activities, Collection<String> ages,
             Collection<Integer> sexes, Collection<String> periods) {
         Map<String, Collection<?>> mappings = new HashMap<>();
@@ -72,10 +96,32 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
         return format.toListOf(MainActivity.class);
     }
 
+    /**
+     * <p>Fetch all gainfully employed persons data.</p>
+     *
+     * @return the gainfully employed persons wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.surveys.employment.GainfullyEmployedPersons
+     *         GainfullyEmployedPersons} objects
+     */
     public List<GainfullyEmployedPersons> getGainfullyEmployedPersons() {
         return getGainfullyEmployedPersons(null, null, null, null);
     }
 
+    /**
+     * <p>Fetch all gainfully employed persons data which match the input constraints.</p>
+     *
+     * @param fullAndPartTimes
+     *            the full and part times
+     * @param ages
+     *            the ages
+     * @param sexes
+     *            the sexes
+     * @param periods
+     *            the periods
+     * @return the gainfully employed persons data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.surveys.employment.GainfullyEmployedPersons
+     *         GainfullyEmployedPersons} objects
+     */
     public List<GainfullyEmployedPersons> getGainfullyEmployedPersons(Collection<String> fullAndPartTimes,
             Collection<String> ages, Collection<Integer> sexes, Collection<String> periods) {
         Map<String, Collection<?>> mappings = new HashMap<>();
@@ -90,10 +136,32 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
         return format.toListOf(GainfullyEmployedPersons.class);
     }
 
+    /**
+     * <p>Fetch all type of employment data.</p>
+     *
+     * @return the type of employment data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.surveys.employment.TypeOfEmployment
+     *         TypeOfEmployment} objects
+     */
     public List<TypeOfEmployment> getTypeOfEmployment() {
         return getTypeOfEmployment(null, null, null, null);
     }
 
+    /**
+     * <p>Fetch all type of employment data which match the input constraints.</p>
+     *
+     * @param types
+     *            the types
+     * @param ages
+     *            the ages
+     * @param sexes
+     *            the sexes
+     * @param periods
+     *            the periods
+     * @return the type of employment data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.surveys.employment.TypeOfEmployment
+     *         TypeOfEmployment} objects
+     */
     public List<TypeOfEmployment> getTypeOfEmployment(Collection<String> types, Collection<String> ages,
             Collection<Integer> sexes, Collection<String> periods) {
         Map<String, Collection<?>> mappings = new HashMap<>();
@@ -108,10 +176,33 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
         return format.toListOf(TypeOfEmployment.class);
     }
 
+    /**
+     * <p>Fetch all distribution of working hours for employees data.</p>
+     *
+     * @return the type of employment data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.surveys.employment.DistributionOfWorkingHours
+     *         DistributionOfWorkingHours} objects
+     */
     public List<DistributionOfWorkingHours> getDistributionOfWorkingHoursForEmployees() {
         return getDistributionOfWorkingHoursForEmployees(null, null, null, null);
     }
 
+    /**
+     * <p>Fetch all distribution of working hours for employees data which match the input
+     * constraints.</p>
+     *
+     * @param indicators
+     *            the indicators
+     * @param ages
+     *            the ages
+     * @param sexes
+     *            the sexes
+     * @param periods
+     *            the periods
+     * @return the type of employment data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.surveys.employment.DistributionOfWorkingHours
+     *         DistributionOfWorkingHours} objects
+     */
     public List<DistributionOfWorkingHours> getDistributionOfWorkingHoursForEmployees(Collection<String> indicators,
             Collection<String> ages, Collection<Integer> sexes, Collection<String> periods) {
         Map<String, Collection<?>> mappings = new HashMap<>();

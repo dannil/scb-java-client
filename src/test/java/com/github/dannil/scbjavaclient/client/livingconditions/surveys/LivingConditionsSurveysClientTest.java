@@ -51,13 +51,6 @@ public class LivingConditionsSurveysClientTest {
     }
 
     @Test
-    public void leisureClient() {
-        LivingConditionsSurveysClient client = new LivingConditionsSurveysClient();
-
-        assertNotNull(client.leisure());
-    }
-
-    @Test
     public void getUrl() {
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints
