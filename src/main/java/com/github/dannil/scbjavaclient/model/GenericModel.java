@@ -73,7 +73,9 @@ public class GenericModel {
             for (Entry<String, Collection<String>> input : inputs.entrySet()) {
                 String key = input.getKey();
                 Collection<String> value = input.getValue();
-                if (!entry.containsKey(key) || !value.contains(entry.get(key))) {
+                @SuppressWarnings("unchecked")
+                Map<String, String> keysInEntry = (Map<String, String>) entry.get("Keys");
+                if (!keysInEntry.containsKey(key) || !value.contains(keysInEntry.get(key))) {
                     lst.remove(entry);
                     break;
                 }
