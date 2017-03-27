@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.environment.industrialwateruse;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -82,7 +81,6 @@ public class EnvironmentIndustrialWaterUseClient extends AbstractClient {
     public List<WaterAbstraction> getWaterAbstraction(Collection<String> regions, Collection<Integer> type,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("0000011J"));
         mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("VattenTyp", type);
         mappings.put(APIConstants.TIME_CODE, years);
@@ -121,7 +119,6 @@ public class EnvironmentIndustrialWaterUseClient extends AbstractClient {
      */
     public List<WaterUse> getWaterUse(Collection<String> regions, Collection<Integer> type, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("00000121"));
         mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("VattenTyp", type);
         mappings.put(APIConstants.TIME_CODE, years);
@@ -161,7 +158,6 @@ public class EnvironmentIndustrialWaterUseClient extends AbstractClient {
     public List<WaterDischarge> getWaterDischarge(Collection<String> regions, Collection<Integer> type,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("0000011K"));
         mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("Recipient", type);
         mappings.put(APIConstants.TIME_CODE, years);

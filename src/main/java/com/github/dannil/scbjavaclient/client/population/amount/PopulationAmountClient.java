@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.population.amount;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -84,7 +83,6 @@ public class PopulationAmountClient extends AbstractClient {
     public List<Population> getPopulation(Collection<String> regions, Collection<String> relationshipStatuses,
             Collection<String> ages, Collection<Integer> genders, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("BE0101N1", "BE0101N2"));
         mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("Civilstand", relationshipStatuses);
         mappings.put("Alder", ages);

@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.energy.annualstatistics;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -84,7 +83,6 @@ public class EnergyAnnualStatisticsClient extends AbstractClient {
     public List<ConsumptionOfFuelsInElectricityGeneration> getConsumptionOfFuelsInElectricityGeneration(
             Collection<String> powerPlants, Collection<String> fuels, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("EN0105A6"));
         mappings.put("Prodslag", powerPlants);
         mappings.put("Bransle", fuels);
         mappings.put(APIConstants.TIME_CODE, years);
@@ -121,7 +119,6 @@ public class EnergyAnnualStatisticsClient extends AbstractClient {
      */
     public List<ElectricitySupply> getElectricitySupply(Collection<String> powerPlants, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("EN0105A1", "EN0105A4", "EN0105A5"));
         mappings.put("Prodslag", powerPlants);
         mappings.put(APIConstants.TIME_CODE, years);
 

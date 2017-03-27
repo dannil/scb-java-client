@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.population.density;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -79,7 +78,6 @@ public class PopulationDensityClient extends AbstractClient {
      */
     public List<Density> getDensity(Collection<String> regions, Collection<String> sexes, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("BE0101U1", "BE0101U2", "BE0101U3"));
         mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("Kon", sexes);
         mappings.put(APIConstants.TIME_CODE, years);

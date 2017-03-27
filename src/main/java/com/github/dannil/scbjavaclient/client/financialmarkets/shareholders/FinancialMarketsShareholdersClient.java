@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.financialmarkets.shareholders;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -80,7 +79,6 @@ public class FinancialMarketsShareholdersClient extends AbstractClient {
      */
     public List<OwnershipOfShares> getOwnershipOfShares(Collection<String> sectors, Collection<String> halfYears) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("FM0201A1", "FM0201A2"));
         mappings.put(APIConstants.SECTOR_CODE, sectors);
         mappings.put(APIConstants.TIME_CODE, halfYears);
 
@@ -120,7 +118,6 @@ public class FinancialMarketsShareholdersClient extends AbstractClient {
     public List<OwnershipOfSharesByMarketplace> getOwnershipOfSharesByMarketplace(Collection<String> sectors,
             Collection<String> marketplaces, Collection<String> halfYears) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("FM0201C1", "FM0201C2"));
         mappings.put(APIConstants.SECTOR_CODE, sectors);
         mappings.put("Marknadsplats", marketplaces);
         mappings.put(APIConstants.TIME_CODE, halfYears);
@@ -161,7 +158,6 @@ public class FinancialMarketsShareholdersClient extends AbstractClient {
     public List<OwnershipOfSharesBySeries> getOwnershipOfSharesBySeries(Collection<String> sectors,
             Collection<String> series, Collection<String> halfYears) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("FM0201B1", "FM0201B2", "FM0201B3"));
         mappings.put(APIConstants.SECTOR_CODE, sectors);
         mappings.put("Aktieserie", series);
         mappings.put(APIConstants.TIME_CODE, halfYears);
@@ -200,7 +196,6 @@ public class FinancialMarketsShareholdersClient extends AbstractClient {
     public List<ForeignOwnershipOfShares> getForeignOwnershipOfShares(Collection<String> countries,
             Collection<String> halfYears) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("FM0201D1", "FM0201D2"));
         mappings.put("Agarland", countries);
         mappings.put(APIConstants.TIME_CODE, halfYears);
 

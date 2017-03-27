@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.population.demography;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -82,7 +81,6 @@ public class PopulationDemographyClient extends AbstractClient {
     public List<FertilityRate> getFertilityRate(Collection<String> regions, Collection<Integer> genders,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("BE0701AA"));
         mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("Kon", genders);
         mappings.put(APIConstants.TIME_CODE, years);
@@ -123,7 +121,6 @@ public class PopulationDemographyClient extends AbstractClient {
     public List<MeanAgeFirstChild> getMeanAgeFirstChild(Collection<String> regions, Collection<Integer> genders,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("BE0701AB"));
         mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("Kon", genders);
         mappings.put(APIConstants.TIME_CODE, years);

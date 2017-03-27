@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.population.name;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -79,7 +78,6 @@ public class PopulationNameStatisticsClient extends AbstractClient {
     public List<NumberOfChildrenBornWithFirstName> getNumberOfChildrenBornWithFirstName(Collection<String> firstnames,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("BE0001AH"));
         mappings.put("Tilltalsnamn", firstnames);
         mappings.put(APIConstants.TIME_CODE, years);
 
