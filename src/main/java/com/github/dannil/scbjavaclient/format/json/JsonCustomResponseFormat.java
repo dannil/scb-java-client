@@ -54,10 +54,9 @@ public final class JsonCustomResponseFormat {
      */
     public JsonCustomResponseFormat(String json) {
         this();
+        this.entries = new ArrayList<>();
         this.json = this.converter.toNode(json);
         this.json = this.converter.getMapper().convertValue(getEntries(), JsonNode.class);
-
-        // System.out.println(this.json);
     }
 
     /**
@@ -66,7 +65,7 @@ public final class JsonCustomResponseFormat {
      * @return all the entries
      */
     public List<Map<String, Object>> getEntries() {
-        if (this.entries != null) {
+        if (!this.entries.isEmpty()) {
             return this.entries;
         }
 
@@ -79,7 +78,6 @@ public final class JsonCustomResponseFormat {
         List<String> codes = columns.findValuesAsText("code");
         List<String> texts = columns.findValuesAsText("text");
 
-        this.entries = new ArrayList<>();
         for (int i = 0; i < data.size(); i++) {
             Map<String, Object> map = new HashMap<>();
 
@@ -98,15 +96,13 @@ public final class JsonCustomResponseFormat {
             JsonNode keysNode = entry.get("key");
             JsonNode valuesNode = entry.get("values");
 
-            Map<String, String> keys = new HashMap<>(keysNode.size());
-            // Map<String, String> keysContents = new HashMap<>();
+            Map<String, String> variables = new HashMap<>();
             for (int j = 0; j < keysNode.size(); j++) {
-                keys.put(codes.get(j), keysNode.get(j).asText());
+                variables.put(codes.get(j), keysNode.get(j).asText());
             }
-            // keys.add(keysContents);
-            map.put("Keys", keys);
+            map.put("Variables", variables);
 
-            List<Map<String, String>> values = new ArrayList<>(valuesNode.size());
+            List<Map<String, String>> values = new ArrayList<>();
             for (int k = 0; k < valuesNode.size(); k++) {
                 Map<String, String> valuesContents = new HashMap<>();
                 valuesContents.put("Value", valuesNode.get(k).asText());

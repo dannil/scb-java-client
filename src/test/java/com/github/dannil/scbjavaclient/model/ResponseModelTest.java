@@ -61,22 +61,22 @@ public class ResponseModelTest {
         ResponseModel model = new ResponseModel(this.keys, this.values);
 
         assertNotNull(model);
-        assertEquals(this.keys, model.getKeys());
+        assertEquals(this.keys, model.getVariables());
         assertEquals(this.values, model.getValues());
     }
 
     @Test
-    public void getKeys() {
+    public void getVariables() {
         ResponseModel model = new ResponseModel(this.keys, this.values);
 
-        assertEquals(this.keys, model.getKeys());
+        assertEquals(this.keys, model.getVariables());
     }
 
     @Test
-    public void setKeys() {
+    public void setVariables() {
         ResponseModel model = new ResponseModel(this.keys, this.values);
 
-        assertEquals(this.keys, model.getKeys());
+        assertEquals(this.keys, model.getVariables());
     }
 
     @Test
@@ -200,7 +200,7 @@ public class ResponseModelTest {
     }
 
     @Test
-    public void toStringNoKeys() {
+    public void toStringNoVariables() {
         ResponseModel model = new ResponseModel();
 
         assertFalse(model.toString().contains("k1"));

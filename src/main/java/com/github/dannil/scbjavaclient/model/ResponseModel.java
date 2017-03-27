@@ -1,9 +1,23 @@
+/*
+ * Copyright 2017 Daniel Nilsson
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
 package com.github.dannil.scbjavaclient.model;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Objects;
@@ -11,16 +25,24 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.dannil.scbjavaclient.constants.ModelConstants;
 
+/**
+ * <p>Class which encapsulates data retrieved from the API.</p>
+ *
+ * @since 0.3.0
+ */
 public class ResponseModel {
 
-    @JsonProperty("Keys")
-    private Map<String, String> keys;
+    @JsonProperty("Variables")
+    private Map<String, String> variables;
 
     @JsonProperty("Values")
-    private List<ValueNode<String>> values;
+    private Collection<ValueNode<String>> values;
 
+    /**
+     * <p>Default constructor.</p>
+     */
     public ResponseModel() {
-        this.keys = new LinkedHashMap<>();
+        this.variables = new LinkedHashMap<>();
         this.values = new ArrayList<>();
     }
 
@@ -32,29 +54,29 @@ public class ResponseModel {
      * @param values
      *            the values
      */
-    public ResponseModel(Map<String, String> keys, List<ValueNode<String>> values) {
+    public ResponseModel(Map<String, String> keys, Collection<ValueNode<String>> values) {
         this();
-        this.keys = keys;
+        this.variables = keys;
         this.values = values;
     }
 
     /**
-     * <p>Getter for keys.</p>
+     * <p>Getter for variables.</p>
      *
-     * @return the keys
+     * @return the variables
      */
-    public Map<String, String> getKeys() {
-        return this.keys;
+    public Map<String, String> getVariables() {
+        return this.variables;
     }
 
     /**
-     * <p>Setter for keys.</p>
+     * <p>Setter for variables.</p>
      *
-     * @param keys
-     *            the keys
+     * @param variables
+     *            the variables
      */
-    public void setKeys(Map<String, String> keys) {
-        this.keys = keys;
+    public void setVariables(Map<String, String> variables) {
+        this.variables = variables;
     }
 
     /**
@@ -62,7 +84,7 @@ public class ResponseModel {
      *
      * @return the values
      */
-    public List<ValueNode<String>> getValues() {
+    public Collection<ValueNode<String>> getValues() {
         return this.values;
     }
 
@@ -72,8 +94,31 @@ public class ResponseModel {
      * @param values
      *            the values
      */
-    public void setValues(List<ValueNode<String>> values) {
+    public void setValues(Collection<ValueNode<String>> values) {
         this.values = values;
+    }
+
+    /**
+     * <p>Get the variable value for a specific key.</p>
+     *
+     * @param key
+     *            the key
+     * @return the value
+     */
+    public String getVariable(String key) {
+        return this.variables.get(key);
+    }
+
+    /**
+     * <p>Set the variable value for a specific key.</p>
+     *
+     * @param key
+     *            the key
+     * @param value
+     *            the value
+     */
+    public void setVariable(String key, String value) {
+        this.variables.put(key, value);
     }
 
     /**
@@ -101,16 +146,15 @@ public class ResponseModel {
      *            the value
      */
     public void setValue(String code, String value) {
-        for (ValueNode<String> v : this.values) {
-            if (Objects.equals(code, v.getCode())) {
-                v.setValue(value);
-            }
+        ValueNode<String> v = getValue(code);
+        if (v != null) {
+            v.setValue(value);
         }
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.keys, this.values);
+        return Objects.hash(this.variables, this.values);
     }
 
     @Override
@@ -125,7 +169,7 @@ public class ResponseModel {
             return false;
         }
         ResponseModel other = (ResponseModel) obj;
-        return Objects.equals(this.keys, other.keys) && Objects.equals(this.values, other.values);
+        return Objects.equals(this.variables, other.variables) && Objects.equals(this.values, other.values);
     }
 
     @Override
@@ -133,7 +177,7 @@ public class ResponseModel {
         StringBuilder builder = new StringBuilder(ModelConstants.TOSTRING_BUILDER_LENGTH);
         builder.append(getClass().getSimpleName());
         builder.append(" [");
-        for (Iterator<Entry<String, String>> entries = this.keys.entrySet().iterator(); entries.hasNext();) {
+        for (Iterator<Entry<String, String>> entries = this.variables.entrySet().iterator(); entries.hasNext();) {
             Entry<String, String> entry = entries.next();
             builder.append(entry.getKey());
             builder.append('=');
@@ -146,10 +190,10 @@ public class ResponseModel {
         return builder.toString();
     }
 
-    private static ResponseModel fromJson(String json) {
-        // JsonCustomResponseFormat format = new JsonCustomResponseFormat(json);
-        // return format.toListOf(ResponseModel.class);
-        return null;
-    }
+//    private static ResponseModel fromJson(String json) {
+//        // JsonCustomResponseFormat format = new JsonCustomResponseFormat(json);
+//        // return format.toListOf(ResponseModel.class);
+//        return null;
+//    }
 
 }
