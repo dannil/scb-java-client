@@ -80,8 +80,6 @@ public class PublicFinancesTaxAssessmentClient extends AbstractClient {
     public List<EarnedIncomeTax> getAssessedAndTaxableEarnedIncome(Collection<String> regions,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE,
-                Arrays.asList("OE0701AA", "OE0701AB", "OE0701AC", "OE0701AD", "OE0701AE"));
         mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put(APIConstants.TIME_CODE, years);
 
@@ -119,8 +117,6 @@ public class PublicFinancesTaxAssessmentClient extends AbstractClient {
     public List<CapitalIncomeTax> getAssessmentForNationalCapitalIncomeTax(Collection<String> regions,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE,
-                Arrays.asList("OE0701CA", "OE0701CB", "OE0701CC", "OE0701CD", "OE0701CE", "OE0701CF"));
         mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put(APIConstants.TIME_CODE, years);
 
