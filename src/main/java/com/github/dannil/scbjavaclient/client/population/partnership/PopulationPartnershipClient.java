@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.population.partnership;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;

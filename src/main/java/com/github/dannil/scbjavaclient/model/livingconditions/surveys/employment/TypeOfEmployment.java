@@ -29,7 +29,7 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
 /**
  * <p>Model for type of employment data.</p>
  *
-* @since 0.3.0
+ * @since 0.3.0
  */
 public class TypeOfEmployment extends AbstractEmployment {
 

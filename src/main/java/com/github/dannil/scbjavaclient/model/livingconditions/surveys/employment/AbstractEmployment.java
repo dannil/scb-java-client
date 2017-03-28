@@ -26,7 +26,7 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
  * <p>Abstract model for employment data. Holds data which are common for all classes
  * located in this package.</p>
  *
-* @since 0.3.0
+ * @since 0.3.0
  */
 public abstract class AbstractEmployment extends AbstractTimeAndValueModel<String, Double> {
 
