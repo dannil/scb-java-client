@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.population.partnership;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -83,7 +82,6 @@ public class PopulationPartnershipClient extends AbstractClient {
     public List<Partnership> getPartnership(Collection<String> regions, Collection<String> maritalStatuses,
             Collection<Integer> sexes, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("BE0101P1"));
         mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("Civilstand", maritalStatuses);
         mappings.put("Kon", sexes);
@@ -127,7 +125,6 @@ public class PopulationPartnershipClient extends AbstractClient {
     public List<PartnershipChange> getPartnershipChange(Collection<String> regions, Collection<String> maritalStatuses,
             Collection<Integer> sexes, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("BE0101XX"));
         mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("Civilstand", maritalStatuses);
         mappings.put("Kon", sexes);

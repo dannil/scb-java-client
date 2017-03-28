@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.publicfinances.governmentdebt;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -30,7 +29,7 @@ import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 /**
  * <p>Client which handles public finances government debt data fetching.</p>
  *
-* @since 0.3.0
+ * @since 0.3.0
  */
 public class PublicFinancesGovernmentDebtClient extends AbstractClient {
 
@@ -77,7 +76,6 @@ public class PublicFinancesGovernmentDebtClient extends AbstractClient {
      */
     public List<GovernmentDebt> getGovernmentDebt(Collection<String> items, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("OE0202A1"));
         mappings.put("Kontopost", items);
         mappings.put(APIConstants.TIME_CODE, months);
 

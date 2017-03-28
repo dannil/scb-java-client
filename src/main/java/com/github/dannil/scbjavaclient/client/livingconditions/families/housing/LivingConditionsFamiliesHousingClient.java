@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.livingconditions.families.housing;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -90,7 +89,6 @@ public class LivingConditionsFamiliesHousingClient extends AbstractClient {
             Collection<String> familyTypes, Collection<String> backgrounds, Collection<Integer> parentIncomes,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("000000UY", "000000UZ"));
         mappings.put("Kon", sexes);
         mappings.put("Alder", ages);
         mappings.put("Boendeform", housingTypes);

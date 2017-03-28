@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.livingconditions.families.legalguardians;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -82,7 +81,6 @@ public class LivingConditionsFamiliesLegalGuardiansClient extends AbstractClient
     public List<LegalGuardians> getLegalGuardians(Collection<String> sexes, Collection<String> caregivers,
             Collection<String> familyTypes, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("000000T0"));
         mappings.put("Kon", sexes);
         mappings.put("Vardnadshavare", caregivers);
         mappings.put("Familjetyp", familyTypes);

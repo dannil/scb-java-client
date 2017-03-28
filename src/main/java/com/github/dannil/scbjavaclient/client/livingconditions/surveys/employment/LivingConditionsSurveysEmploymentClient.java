@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.livingconditions.surveys.employment;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -85,7 +84,6 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
     public List<MainActivity> getMainActivity(Collection<String> activities, Collection<String> ages,
             Collection<Integer> sexes, Collection<String> periods) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("LE0101XF", "LE0101XG", "LE0101XH", "LE0101XI"));
         mappings.put("HuvSyss", activities);
         mappings.put("Alder", ages);
         mappings.put("Kon", sexes);
@@ -126,7 +124,6 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
     public List<GainfullyEmployedPersons> getGainfullyEmployedPersons(Collection<String> fullAndPartTimes,
             Collection<String> ages, Collection<Integer> sexes, Collection<String> periods) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("LE0101XL", "LE0101XM", "LE0101XP", "LE0101XQ"));
         mappings.put("Heltiddeltid", fullAndPartTimes);
         mappings.put("Alder", ages);
         mappings.put("Kon", sexes);
@@ -167,7 +164,6 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
     public List<TypeOfEmployment> getTypeOfEmployment(Collection<String> types, Collection<String> ages,
             Collection<Integer> sexes, Collection<String> periods) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("LE0101YB", "LE0101YC", "LE0101YD", "LE0101YE"));
         mappings.put("AnstTyp", types);
         mappings.put("Alder", ages);
         mappings.put("Kon", sexes);
@@ -209,7 +205,6 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
     public List<DistributionOfWorkingHours> getDistributionOfWorkingHoursForEmployees(Collection<String> indicators,
             Collection<String> ages, Collection<Integer> sexes, Collection<String> periods) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("LE0101YN", "LE0101YO", "LE0101YP", "LE0101YQ"));
         mappings.put("Indikator", indicators);
         mappings.put("Alder", ages);
         mappings.put("Kon", sexes);

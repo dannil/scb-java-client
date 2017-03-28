@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.energy.monthlystatistics;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -80,8 +79,7 @@ public class EnergyMonthlyStatisticsClient extends AbstractClient {
      */
     public List<DeliveriesOfLiquidFuels> getDeliveriesOfLiquidFuels(Collection<Integer> commodities,
             Collection<String> userCategories, Collection<String> months) {
-        return generate(Arrays.asList("EN0107A3"), commodities, userCategories, months, "LevOljorKatM",
-                DeliveriesOfLiquidFuels.class);
+        return generate(commodities, userCategories, months, "LevOljorKatM", DeliveriesOfLiquidFuels.class);
     }
 
     /**
@@ -112,15 +110,12 @@ public class EnergyMonthlyStatisticsClient extends AbstractClient {
      */
     public List<DeliveriesOfOilProducts> getDeliveriesOfOilProducts(Collection<Integer> commodities,
             Collection<String> userCategories, Collection<String> months) {
-        return generate(Arrays.asList("EN0107A2"), commodities, userCategories, months, "LevOljorM",
-                DeliveriesOfOilProducts.class);
+        return generate(commodities, userCategories, months, "LevOljorM", DeliveriesOfOilProducts.class);
     }
 
     /**
      * <p>Common generator method for the methods in this class.</p>
      *
-     * @param contentCodes
-     *            the content codes
      * @param commodities
      *            the commodities
      * @param userCategories
@@ -135,10 +130,9 @@ public class EnergyMonthlyStatisticsClient extends AbstractClient {
      *            the data type of the list
      * @return a <code>List</code> of the specified class
      */
-    private <T> List<T> generate(Collection<String> contentCodes, Collection<Integer> commodities,
-            Collection<String> userCategories, Collection<String> months, String table, Class<T> clazz) {
+    private <T> List<T> generate(Collection<Integer> commodities, Collection<String> userCategories,
+            Collection<String> months, String table, Class<T> clazz) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, contentCodes);
         mappings.put("Varuslag", commodities);
         mappings.put("Forbrukarkat", userCategories);
         mappings.put(APIConstants.TIME_CODE, months);

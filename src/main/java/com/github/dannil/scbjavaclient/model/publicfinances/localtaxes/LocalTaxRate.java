@@ -28,7 +28,7 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
 /**
  * <p>Model for local tax rate data.</p>
  *
-* @since 0.3.0
+ * @since 0.3.0
  */
 public class LocalTaxRate extends AbstractRegionTimeAndValueModel<String, Integer, String> {
 

@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.environment.landuse.usage;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -83,8 +82,7 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
      */
     public List<ArableAndForestLand> getArableAndForestLand(Collection<String> regions, Collection<Integer> categories,
             Collection<Integer> years) {
-        return generate(Arrays.asList("MI0803AI"), regions, categories, years, "MarkanvJbSk",
-                ArableAndForestLand.class);
+        return generate(regions, categories, years, "MarkanvJbSk", ArableAndForestLand.class);
     }
 
     /**
@@ -115,7 +113,7 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
      */
     public List<BuiltUpLand> getBuiltUpLand(Collection<String> regions, Collection<Integer> categories,
             Collection<Integer> years) {
-        return generate(Arrays.asList("MI0803AC"), regions, categories, years, "MarkanvBebyggdLnKn", BuiltUpLand.class);
+        return generate(regions, categories, years, "MarkanvBebyggdLnKn", BuiltUpLand.class);
     }
 
     /**
@@ -146,7 +144,7 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
      */
     public List<LandUseByCounty> getLandUseByCounty(Collection<String> regions, Collection<Integer> categories,
             Collection<Integer> years) {
-        return generate(Arrays.asList("MI0803AA"), regions, categories, years, "MarkanvLan", LandUseByCounty.class);
+        return generate(regions, categories, years, "MarkanvLan", LandUseByCounty.class);
     }
 
     /**
@@ -177,15 +175,12 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
      */
     public List<LandUseByMunicipality> getLandUseByMunicipality(Collection<String> regions,
             Collection<Integer> categories, Collection<Integer> years) {
-        return generate(Arrays.asList("MI0803AB"), regions, categories, years, "MarkanvKn",
-                LandUseByMunicipality.class);
+        return generate(regions, categories, years, "MarkanvKn", LandUseByMunicipality.class);
     }
 
     /**
      * <p>Common generator method for the methods in this class.</p>
      *
-     * @param contentCodes
-     *            the content codes
      * @param regions
      *            the regions
      * @param categories
@@ -200,10 +195,9 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
      *            the data type of the list
      * @return a <code>List</code> of the specified class
      */
-    private <T> List<T> generate(Collection<String> contentCodes, Collection<String> regions,
-            Collection<Integer> categories, Collection<Integer> years, String table, Class<T> clazz) {
+    private <T> List<T> generate(Collection<String> regions, Collection<Integer> categories, Collection<Integer> years,
+            String table, Class<T> clazz) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, contentCodes);
         mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("Markanvandningsklass", categories);
         mappings.put(APIConstants.TIME_CODE, years);

@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.environment.waste;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -81,7 +80,6 @@ public class EnvironmentWasteClient extends AbstractClient {
     public List<GeneratedWaste> getGeneratedWaste(Collection<String> industrialClassification,
             Collection<String> wasteCategories, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("MI0305AA", "MI0305AO"));
         mappings.put("SNI2007MI", industrialClassification);
         mappings.put("Avfallsslag", wasteCategories);
         mappings.put(APIConstants.TIME_CODE, years);
@@ -121,7 +119,6 @@ public class EnvironmentWasteClient extends AbstractClient {
     public List<TreatedWaste> getTreatedWaste(Collection<Integer> treatmentCategories,
             Collection<String> wasteCategories, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("MI0305AQ", "MI0305AR"));
         mappings.put("BehTyp", treatmentCategories);
         mappings.put("Avfallsslag", wasteCategories);
         mappings.put(APIConstants.TIME_CODE, years);

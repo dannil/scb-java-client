@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.livingconditions.surveys.health;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -86,8 +85,7 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
      */
     public List<PhysicalAndMentalHealth> getPhysicalAndMentalHealth(Collection<String> indicators,
             Collection<String> ages, Collection<Integer> sexes, Collection<String> periods) {
-        return generate(Arrays.asList("LE0101FR", "LE0101FS", "LE0101FT", "LE0101FU"), indicators, ages, sexes, periods,
-                "LE0101H01", PhysicalAndMentalHealth.class);
+        return generate(indicators, ages, sexes, periods, "LE0101H01", PhysicalAndMentalHealth.class);
     }
 
     /**
@@ -120,8 +118,7 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
      */
     public List<LongTermIllness> getLongTermIllness(Collection<String> indicators, Collection<String> ages,
             Collection<Integer> sexes, Collection<String> periods) {
-        return generate(Arrays.asList("LE0101N7", "LE0101N8", "LE0101N9", "LE0101N0"), indicators, ages, sexes, periods,
-                "LE0101H07", LongTermIllness.class);
+        return generate(indicators, ages, sexes, periods, "LE0101H07", LongTermIllness.class);
     }
 
     /**
@@ -154,8 +151,7 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
      */
     public List<Disabilities> getDisabilities(Collection<String> indicators, Collection<String> ages,
             Collection<Integer> sexes, Collection<String> periods) {
-        return generate(Arrays.asList("LE0101OU", "LE0101OV", "LE0101OX", "LE0101OY"), indicators, ages, sexes, periods,
-                "LE0101H13", Disabilities.class);
+        return generate(indicators, ages, sexes, periods, "LE0101H13", Disabilities.class);
     }
 
     /**
@@ -190,8 +186,7 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
      */
     public List<DoctorAndDentistAppointments> getDoctorAndDentistAppointments(Collection<String> indicators,
             Collection<String> ages, Collection<Integer> sexes, Collection<String> periods) {
-        return generate(Arrays.asList("LE0101PJ", "LE0101PK", "LE0101PL", "LE0101PM"), indicators, ages, sexes, periods,
-                "LE0101H19", DoctorAndDentistAppointments.class);
+        return generate(indicators, ages, sexes, periods, "LE0101H19", DoctorAndDentistAppointments.class);
     }
 
     /**
@@ -224,8 +219,7 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
      */
     public List<TobaccoHabits> getTobaccoHabits(Collection<String> indicators, Collection<String> ages,
             Collection<Integer> sexes, Collection<String> periods) {
-        return generate(Arrays.asList("LE0101P9", "LE0101P0", "LE0101QA", "LE0101QB"), indicators, ages, sexes, periods,
-                "LE0101H25", TobaccoHabits.class);
+        return generate(indicators, ages, sexes, periods, "LE0101H25", TobaccoHabits.class);
     }
 
     /**
@@ -258,15 +252,12 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
      */
     public List<BodyMassIndex> getBodyMassIndex(Collection<String> indicators, Collection<String> ages,
             Collection<Integer> sexes, Collection<String> periods) {
-        return generate(Arrays.asList("00000032", "00000035", "00000033", "00000034"), indicators, ages, sexes, periods,
-                "LE0101BMI01", BodyMassIndex.class);
+        return generate(indicators, ages, sexes, periods, "LE0101BMI01", BodyMassIndex.class);
     }
 
     /**
      * <p>Common generator method for the methods in this class.</p>
      *
-     * @param contentCodes
-     *            the content codes
      * @param indicators
      *            the indicators
      * @param ages
@@ -283,11 +274,9 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
      *            the data type of the list
      * @return a <code>List</code> of the specified class
      */
-    private <T> List<T> generate(Collection<String> contentCodes, Collection<String> indicators,
-            Collection<String> ages, Collection<Integer> sexes, Collection<String> periods, String table,
-            Class<T> clazz) {
+    private <T> List<T> generate(Collection<String> indicators, Collection<String> ages, Collection<Integer> sexes,
+            Collection<String> periods, String table, Class<T> clazz) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, contentCodes);
         mappings.put("Indikator", indicators);
         mappings.put("Alder", ages);
         mappings.put("Kon", sexes);

@@ -24,7 +24,7 @@ import com.github.dannil.scbjavaclient.http.requester.GETRequester;
 /**
  * <p>Model for capital income tax data.</p>
  *
-* @since 0.3.0
+ * @since 0.3.0
  */
 public class CapitalIncomeTax extends IncomeTax {
 

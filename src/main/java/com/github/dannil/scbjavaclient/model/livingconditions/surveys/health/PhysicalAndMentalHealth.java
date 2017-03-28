@@ -24,7 +24,7 @@ import com.github.dannil.scbjavaclient.http.requester.GETRequester;
 /**
  * <p>Model for physical and mental health data.</p>
  *
-* @since 0.3.0
+ * @since 0.3.0
  */
 public class PhysicalAndMentalHealth extends Health {
 
