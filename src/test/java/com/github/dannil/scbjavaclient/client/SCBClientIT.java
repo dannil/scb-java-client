@@ -71,12 +71,11 @@ public class SCBClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
-    public void getRawDataInputs() {
+    public void getRawDataWithInputs() {
         Locale locale = new Locale("sv", "SE");
         SCBClient client = new SCBClient(locale);
 
         Map<String, Collection<?>> payload = new HashMap<String, Collection<?>>();
-        payload.put("ContentsCode", Arrays.asList("BE0101N1"));
         payload.put("Region", Arrays.asList("00", "01", "0114"));
         payload.put("Civilstand", Arrays.asList("OG", "G"));
         payload.put("Alder", Arrays.asList(45, 50));

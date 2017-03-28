@@ -66,7 +66,6 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
         String url = client.getRootUrl() + "HE/HE0103/HE0103B/BefolkningAlder";
 
         Map<String, Collection<?>> map = new HashMap<String, Collection<?>>();
-        map.put("ContentsCode", Arrays.asList("HE0103D2"));
         map.put("Alder", Arrays.asList("tot"));
         map.put("Kon", Arrays.asList("4"));
         map.put("Boendeform", Arrays.asList("SMAG"));
