@@ -33,14 +33,14 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class ResponseModelTest {
 
-    private Map<String, String> keys;
+    private Map<String, String> variables;
     private List<ValueNode<String>> values;
 
     @Before
     public void setup() {
-        this.keys = new HashMap<>();
-        this.keys.put("k1", "value1");
-        this.keys.put("k2", "value2");
+        this.variables = new HashMap<>();
+        this.variables.put("k1", "value1");
+        this.variables.put("k2", "value2");
 
         this.values = new ArrayList<ValueNode<String>>();
         ValueNode<String> value1 = new ValueNode<String>("48403", "BE0101N1", "Population");
@@ -58,65 +58,65 @@ public class ResponseModelTest {
 
     @Test
     public void createWithOverloadedConstructor() {
-        ResponseModel model = new ResponseModel(this.keys, this.values);
+        ResponseModel model = new ResponseModel(this.variables, this.values);
 
         assertNotNull(model);
-        assertEquals(this.keys, model.getVariables());
+        assertEquals(this.variables, model.getVariables());
         assertEquals(this.values, model.getValues());
     }
 
     @Test
     public void getVariables() {
-        ResponseModel model = new ResponseModel(this.keys, this.values);
+        ResponseModel model = new ResponseModel(this.variables, this.values);
 
-        assertEquals(this.keys, model.getVariables());
+        assertEquals(this.variables, model.getVariables());
     }
 
     @Test
     public void setVariables() {
-        ResponseModel model = new ResponseModel(this.keys, this.values);
+        ResponseModel model = new ResponseModel(this.variables, this.values);
 
-        assertEquals(this.keys, model.getVariables());
+        assertEquals(this.variables, model.getVariables());
     }
 
     @Test
     public void getValues() {
-        ResponseModel model = new ResponseModel(this.keys, this.values);
+        ResponseModel model = new ResponseModel(this.variables, this.values);
 
         assertEquals(this.values, model.getValues());
     }
 
     @Test
     public void setValues() {
-        ResponseModel model = new ResponseModel(this.keys, this.values);
+        ResponseModel model = new ResponseModel(this.variables, this.values);
 
         assertEquals(this.values, model.getValues());
     }
 
     @Test
     public void getValue() {
-        ResponseModel model = new ResponseModel(this.keys, this.values);
+        ResponseModel model = new ResponseModel(this.variables, this.values);
 
         assertEquals("48403", model.getValue("BE0101N1").getValue());
     }
 
     @Test
     public void getValueNullInput() {
-        ResponseModel model = new ResponseModel(this.keys, this.values);
+        ResponseModel model = new ResponseModel(this.variables, this.values);
 
         assertEquals(null, model.getValue(null));
     }
 
     @Test
     public void getValueNonExistingCode() {
-        ResponseModel model = new ResponseModel(this.keys, this.values);
+        ResponseModel model = new ResponseModel(this.variables, this.values);
 
         assertEquals(null, model.getValue("XXX"));
     }
 
     @Test
     public void setValue() {
-        ResponseModel model = new ResponseModel(this.keys, this.values);
+        ResponseModel model = new ResponseModel(this.variables, this.values);
         model.setValue("BE0101N1", "789");
 
         assertEquals("789", model.getValue("BE0101N1").getValue());
@@ -124,7 +124,7 @@ public class ResponseModelTest {
 
     @Test
     public void setValueNonExistingCode() {
-        ResponseModel model = new ResponseModel(this.keys, this.values);
+        ResponseModel model = new ResponseModel(this.variables, this.values);
         model.setValue("NON_EXISTING_CODE", "789");
 
         assertEquals("48403", model.getValue("BE0101N1").getValue());
@@ -148,17 +148,10 @@ public class ResponseModelTest {
 
     @Test
     public void equalsItselfWithValues() {
-        ResponseModel model1 = new ResponseModel(this.keys, this.values);
-        ResponseModel model2 = new ResponseModel(this.keys, this.values);
+        ResponseModel model1 = new ResponseModel(this.variables, this.values);
+        ResponseModel model2 = new ResponseModel(this.variables, this.values);
 
         assertEquals(model1, model2);
-    }
-
-    @Test
-    public void notEqualsNull() {
-        ResponseModel model = new ResponseModel();
-
-        assertNotEquals(model, null);
     }
 
     @Test
@@ -167,18 +160,25 @@ public class ResponseModelTest {
 
         assertNotEquals(model, new Object());
     }
+    
+    @Test
+    public void notEqualsNull() {
+        ResponseModel model = new ResponseModel();
+
+        assertNotEquals(model, null);
+    }
 
     @Test
     public void equalsHashCode() {
-        ResponseModel model1 = new ResponseModel(this.keys, this.values);
-        ResponseModel model2 = new ResponseModel(this.keys, this.values);
+        ResponseModel model1 = new ResponseModel(this.variables, this.values);
+        ResponseModel model2 = new ResponseModel(this.variables, this.values);
 
         assertEquals(Integer.valueOf(model1.hashCode()), Integer.valueOf(model2.hashCode()));
     }
 
     @Test
     public void toStringValues() {
-        ResponseModel model = new ResponseModel(this.keys, this.values);
+        ResponseModel model = new ResponseModel(this.variables, this.values);
 
         assertTrue(model.toString().contains("k1"));
         assertTrue(model.toString().contains("value1"));

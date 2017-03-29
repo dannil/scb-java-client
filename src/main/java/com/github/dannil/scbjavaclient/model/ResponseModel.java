@@ -54,9 +54,9 @@ public class ResponseModel {
      * @param values
      *            the values
      */
-    public ResponseModel(Map<String, String> keys, Collection<ValueNode<String>> values) {
+    public ResponseModel(Map<String, String> variables, Collection<ValueNode<String>> values) {
         this();
-        this.variables = keys;
+        this.variables = variables;
         this.values = values;
     }
 
