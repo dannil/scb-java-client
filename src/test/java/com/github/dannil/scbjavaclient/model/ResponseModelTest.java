@@ -92,6 +92,21 @@ public class ResponseModelTest {
 
         assertEquals(this.values, model.getValues());
     }
+    
+    @Test
+    public void getVariable() {
+        ResponseModel model = new ResponseModel(this.variables, this.values);
+        
+        assertEquals(model.getVariable("k1"), "value1");
+    }
+    
+    @Test
+    public void setVariable() {
+        ResponseModel model = new ResponseModel(this.variables, this.values);
+        model.setVariable("k1", "newvalue1");
+        
+        assertEquals("newvalue1", model.getVariable("k1"));
+    }
 
     @Test
     public void getValue() {
@@ -155,17 +170,45 @@ public class ResponseModelTest {
     }
 
     @Test
+    public void notEqualsNull() {
+        ResponseModel model = new ResponseModel();
+
+        assertNotEquals(model, null);
+    }
+
+    @Test
     public void notEqualsIncompatibleObject() {
         ResponseModel model = new ResponseModel();
 
         assertNotEquals(model, new Object());
     }
-    
-    @Test
-    public void notEqualsNull() {
-        ResponseModel model = new ResponseModel();
 
-        assertNotEquals(model, null);
+    @Test
+    public void notEqualsVariables() {
+        ResponseModel model1 = new ResponseModel(this.variables, this.values);
+        ResponseModel model2 = new ResponseModel(this.variables, this.values);
+
+        Map<String, String> variables = new HashMap<>();
+        variables.put("k10", "value10");
+        variables.put("k20", "value20");
+        model2.setVariables(variables);
+
+        assertNotEquals(model1, model2);
+    }
+
+    @Test
+    public void notEqualsValues() {
+        ResponseModel model1 = new ResponseModel(this.variables, this.values);
+        ResponseModel model2 = new ResponseModel(this.variables, this.values);
+
+        ArrayList<ValueNode<String>> values = new ArrayList<>();
+        ValueNode<String> value1 = new ValueNode<String>("89341", "AA5312", "Test");
+        values.add(value1);
+        ValueNode<String> value2 = new ValueNode<String>("8888", "AA5313", "Test2");
+        values.add(value2);
+        model2.setValues(values);
+
+        assertNotEquals(model1, model2);
     }
 
     @Test
