@@ -16,10 +16,8 @@ package com.github.dannil.scbjavaclient.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -49,8 +47,8 @@ public class ResponseModel {
     /**
      * <p>Overloaded constructor.</p>
      *
-     * @param keys
-     *            the keys
+     * @param variables
+     *            the variables
      * @param values
      *            the values
      */
@@ -175,16 +173,10 @@ public class ResponseModel {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder(ModelConstants.TOSTRING_BUILDER_LENGTH);
-        builder.append(getClass().getSimpleName());
-        builder.append(" [");
-        for (Iterator<Entry<String, String>> entries = this.variables.entrySet().iterator(); entries.hasNext();) {
-            Entry<String, String> entry = entries.next();
-            builder.append(entry.getKey());
-            builder.append('=');
-            builder.append(entry.getValue());
-            builder.append(", ");
-        }
-        builder.append("values=");
+        builder.append("ResponseModel [");
+        builder.append("variables=");
+        builder.append(this.variables);
+        builder.append(", values=");
         builder.append(this.values);
         builder.append(']');
         return builder.toString();
