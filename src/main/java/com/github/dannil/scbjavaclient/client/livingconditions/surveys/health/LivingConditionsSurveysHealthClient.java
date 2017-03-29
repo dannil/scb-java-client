@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.livingconditions.surveys.health;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -81,8 +80,7 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
      */
     public List<ResponseModel> getPhysicalAndMentalHealth(Collection<String> indicators, Collection<String> ages,
             Collection<Integer> sexes, Collection<String> periods) {
-        return generate(Arrays.asList("LE0101FR", "LE0101FS", "LE0101FT", "LE0101FU"), indicators, ages, sexes, periods,
-                "LE0101H01");
+        return generate(indicators, ages, sexes, periods, "LE0101H01");
     }
 
     /**
@@ -115,8 +113,7 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
      */
     public List<ResponseModel> getLongTermIllness(Collection<String> indicators, Collection<String> ages,
             Collection<Integer> sexes, Collection<String> periods) {
-        return generate(Arrays.asList("LE0101N7", "LE0101N8", "LE0101N9", "LE0101N0"), indicators, ages, sexes, periods,
-                "LE0101H07");
+        return generate(indicators, ages, sexes, periods, "LE0101H07");
     }
 
     /**
@@ -149,8 +146,7 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
      */
     public List<ResponseModel> getDisabilities(Collection<String> indicators, Collection<String> ages,
             Collection<Integer> sexes, Collection<String> periods) {
-        return generate(Arrays.asList("LE0101OU", "LE0101OV", "LE0101OX", "LE0101OY"), indicators, ages, sexes, periods,
-                "LE0101H13");
+        return generate(indicators, ages, sexes, periods, "LE0101H13");
     }
 
     /**
@@ -183,10 +179,9 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getDoctorAndDentistAppointments(Collection<String> indicators, Collection<String> ages,
-            Collection<Integer> sexes, Collection<String> periods) {
-        return generate(Arrays.asList("LE0101PJ", "LE0101PK", "LE0101PL", "LE0101PM"), indicators, ages, sexes, periods,
-                "LE0101H19");
+    public List<ResponseModel> getDoctorAndDentistAppointments(Collection<String> indicators,
+            Collection<String> ages, Collection<Integer> sexes, Collection<String> periods) {
+        return generate(indicators, ages, sexes, periods, "LE0101H19");
     }
 
     /**
@@ -219,8 +214,7 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
      */
     public List<ResponseModel> getTobaccoHabits(Collection<String> indicators, Collection<String> ages,
             Collection<Integer> sexes, Collection<String> periods) {
-        return generate(Arrays.asList("LE0101P9", "LE0101P0", "LE0101QA", "LE0101QB"), indicators, ages, sexes, periods,
-                "LE0101H25");
+        return generate(indicators, ages, sexes, periods, "LE0101H25");
     }
 
     /**
@@ -253,15 +247,12 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
      */
     public List<ResponseModel> getBodyMassIndex(Collection<String> indicators, Collection<String> ages,
             Collection<Integer> sexes, Collection<String> periods) {
-        return generate(Arrays.asList("00000032", "00000035", "00000033", "00000034"), indicators, ages, sexes, periods,
-                "LE0101BMI01");
+        return generate(indicators, ages, sexes, periods, "LE0101BMI01");
     }
 
     /**
      * <p>Common generator method for the methods in this class.</p>
      *
-     * @param contentCodes
-     *            the content codes
      * @param indicators
      *            the indicators
      * @param ages
@@ -272,12 +263,11 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
      *            the periods
      * @param table
      *            the table
-     * @return a <code>List</code> of the specified class
+     * @return a <code>List</code> of {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      */
-    private List<ResponseModel> generate(Collection<String> contentCodes, Collection<String> indicators,
+    private List<ResponseModel> generate(Collection<String> indicators,
             Collection<String> ages, Collection<Integer> sexes, Collection<String> periods, String table) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, contentCodes);
         mappings.put("Indikator", indicators);
         mappings.put("Alder", ages);
         mappings.put("Kon", sexes);

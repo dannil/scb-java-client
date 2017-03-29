@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.publicfinances.taxassessment;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -79,8 +78,6 @@ public class PublicFinancesTaxAssessmentClient extends AbstractClient {
     public List<ResponseModel> getAssessedAndTaxableEarnedIncome(Collection<String> regions,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE,
-                Arrays.asList("OE0701AA", "OE0701AB", "OE0701AC", "OE0701AD", "OE0701AE"));
         mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put(APIConstants.TIME_CODE, years);
 
@@ -118,8 +115,6 @@ public class PublicFinancesTaxAssessmentClient extends AbstractClient {
     public List<ResponseModel> getAssessmentForNationalCapitalIncomeTax(Collection<String> regions,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE,
-                Arrays.asList("OE0701CA", "OE0701CB", "OE0701CC", "OE0701CD", "OE0701CE", "OE0701CF"));
         mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put(APIConstants.TIME_CODE, years);
 

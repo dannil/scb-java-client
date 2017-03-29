@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.energy.monthlystatistics;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -79,8 +78,7 @@ public class EnergyMonthlyStatisticsClient extends AbstractClient {
      */
     public List<ResponseModel> getDeliveriesOfLiquidFuels(Collection<Integer> commodities,
             Collection<String> userCategories, Collection<String> months) {
-        return generate(Arrays.asList("EN0107A3"), commodities, userCategories, months, "LevOljorKatM",
-                ResponseModel.class);
+        return generate(commodities, userCategories, months, "LevOljorKatM");
     }
 
     /**
@@ -111,15 +109,13 @@ public class EnergyMonthlyStatisticsClient extends AbstractClient {
      */
     public List<ResponseModel> getDeliveriesOfOilProducts(Collection<Integer> commodities,
             Collection<String> userCategories, Collection<String> months) {
-        return generate(Arrays.asList("EN0107A2"), commodities, userCategories, months, "LevOljorM",
-                ResponseModel.class);
+
+        return generate(commodities, userCategories, months, "LevOljorM");
     }
 
     /**
      * <p>Common generator method for the methods in this class.</p>
      *
-     * @param contentCodes
-     *            the content codes
      * @param commodities
      *            the commodities
      * @param userCategories
@@ -128,16 +124,11 @@ public class EnergyMonthlyStatisticsClient extends AbstractClient {
      *            the months
      * @param table
      *            the table
-     * @param clazz
-     *            the class to convert the generated data to
-     * @param <T>
-     *            the data type of the list
-     * @return a <code>List</code> of the specified class
+     * @return a <code>List</code> of {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      */
-    private <T> List<T> generate(Collection<String> contentCodes, Collection<Integer> commodities,
-            Collection<String> userCategories, Collection<String> months, String table, Class<T> clazz) {
+    private List<ResponseModel> generate(Collection<Integer> commodities, Collection<String> userCategories,
+            Collection<String> months, String table) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, contentCodes);
         mappings.put("Varuslag", commodities);
         mappings.put("Forbrukarkat", userCategories);
         mappings.put(APIConstants.TIME_CODE, months);
@@ -145,7 +136,7 @@ public class EnergyMonthlyStatisticsClient extends AbstractClient {
         String response = doPostRequest(getUrl() + table, QueryBuilder.build(mappings));
 
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(clazz);
+        return format.toListOf(ResponseModel.class);
     }
 
     @Override

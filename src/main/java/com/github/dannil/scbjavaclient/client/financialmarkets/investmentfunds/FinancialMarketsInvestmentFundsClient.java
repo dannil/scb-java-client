@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.financialmarkets.investmentfunds;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -81,7 +80,6 @@ public class FinancialMarketsInvestmentFundsClient extends AbstractClient {
     public List<ResponseModel> getOwnershipOfInvestmentFundShares(Collection<String> types, Collection<String> sectors,
             Collection<String> quarters) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("FM0403I1", "FM0403I2", "FM0403I3", "FM0403I4"));
         mappings.put("Fondtyp", types);
         mappings.put("Sektor", sectors);
         mappings.put(APIConstants.TIME_CODE, quarters);

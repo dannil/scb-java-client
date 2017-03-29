@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.financialmarkets.institutions;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -82,7 +81,6 @@ public class FinancialMarketsInstitutionsClient extends AbstractClient {
     public List<ResponseModel> getAssets(Collection<String> institutions, Collection<String> items,
             Collection<String> currencies, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("FM0401XX"));
         mappings.put("Institut", institutions);
         mappings.put("Kontopost", items);
         mappings.put("Valuta", currencies);

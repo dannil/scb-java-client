@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.environment.landuse.usage;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -80,7 +79,7 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
      */
     public List<ResponseModel> getArableAndForestLand(Collection<String> regions, Collection<Integer> categories,
             Collection<Integer> years) {
-        return generate(Arrays.asList("MI0803AI"), regions, categories, years, "MarkanvJbSk");
+        return generate(regions, categories, years, "MarkanvJbSk");
     }
 
     /**
@@ -111,7 +110,7 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
      */
     public List<ResponseModel> getBuiltUpLand(Collection<String> regions, Collection<Integer> categories,
             Collection<Integer> years) {
-        return generate(Arrays.asList("MI0803AC"), regions, categories, years, "MarkanvBebyggdLnKn");
+        return generate(regions, categories, years, "MarkanvBebyggdLnKn");
     }
 
     /**
@@ -142,7 +141,7 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
      */
     public List<ResponseModel> getLandUseByCounty(Collection<String> regions, Collection<Integer> categories,
             Collection<Integer> years) {
-        return generate(Arrays.asList("MI0803AA"), regions, categories, years, "MarkanvLan");
+        return generate(regions, categories, years, "MarkanvLan");
     }
 
     /**
@@ -173,14 +172,12 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
      */
     public List<ResponseModel> getLandUseByMunicipality(Collection<String> regions, Collection<Integer> categories,
             Collection<Integer> years) {
-        return generate(Arrays.asList("MI0803AB"), regions, categories, years, "MarkanvKn");
+        return generate(regions, categories, years, "MarkanvKn");
     }
 
     /**
      * <p>Common generator method for the methods in this class.</p>
      *
-     * @param contentCodes
-     *            the content codes
      * @param regions
      *            the regions
      * @param categories
@@ -189,12 +186,11 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
      *            the years
      * @param table
      *            the table
-     * @return a <code>List</code> of the specified class
+     * @return a <code>List</code> of {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      */
-    private List<ResponseModel> generate(Collection<String> contentCodes, Collection<String> regions,
-            Collection<Integer> categories, Collection<Integer> years, String table) {
+    private List<ResponseModel> generate(Collection<String> regions, Collection<Integer> categories,
+            Collection<Integer> years, String table) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, contentCodes);
         mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("Markanvandningsklass", categories);
         mappings.put(APIConstants.TIME_CODE, years);

@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.publicfinances.localtaxes;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -77,7 +76,6 @@ public class PublicFinancesLocalTaxesClient extends AbstractClient {
      */
     public List<ResponseModel> getLocalTaxRates(Collection<String> regions, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("OE0101D1", "OE0101D2", "OE0101D3"));
         mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put(APIConstants.TIME_CODE, years);
 

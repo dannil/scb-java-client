@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.population.averageage;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -80,7 +79,6 @@ public class PopulationAverageAgeClient extends AbstractClient {
     public List<ResponseModel> getAverageAge(Collection<String> regions, Collection<String> genders,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("BE0101G9"));
         mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("Kon", genders);
         mappings.put(APIConstants.TIME_CODE, years);

@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.livingconditions.families.adoptions;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -82,7 +81,6 @@ public class LivingConditionsFamiliesAdoptionsClient extends AbstractClient {
     public List<ResponseModel> getChildAdoptions(Collection<String> sexes, Collection<String> ages,
             Collection<String> birthCountries, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("LE0102H2"));
         mappings.put("Kon", sexes);
         mappings.put("Alder", ages);
         mappings.put("Fodelseland", birthCountries);

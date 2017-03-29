@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.livingconditions.families.siblings;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -84,7 +83,6 @@ public class LivingConditionsFamiliesSiblingsClient extends AbstractClient {
     public List<ResponseModel> getSiblings(Collection<String> sexes, Collection<String> ages,
             Collection<Integer> siblingsLivingAtHome, Collection<String> familyTypes, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("000000SV"));
         mappings.put("Kon", sexes);
         mappings.put("Alder", ages);
         mappings.put("SyskonHembo", siblingsLivingAtHome);

@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.environment.packagingandpackagingwaste;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -78,7 +77,6 @@ public class EnvironmentPackagingAndPackagingWasteClient extends AbstractClient 
      */
     public List<ResponseModel> getPackagingAndPackagingWaste(Collection<Integer> types, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("000000XV", "000000V9", "000000VA"));
         mappings.put("Forpackning", types);
         mappings.put(APIConstants.TIME_CODE, years);
 

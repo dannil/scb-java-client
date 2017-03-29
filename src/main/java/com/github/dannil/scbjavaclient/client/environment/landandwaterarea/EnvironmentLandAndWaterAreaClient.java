@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.environment.landandwaterarea;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -80,7 +79,6 @@ public class EnvironmentLandAndWaterAreaClient extends AbstractClient {
     public List<ResponseModel> getArea(Collection<String> regions, Collection<String> types,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("MI0802AA"));
         mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("ArealTyp", types);
         mappings.put(APIConstants.TIME_CODE, years);

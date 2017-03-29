@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.financialmarkets.securities;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -82,7 +81,6 @@ public class FinancialMarketsSecuritiesClient extends AbstractClient {
     public List<ResponseModel> getMaturityStructure(Collection<Integer> sectors, Collection<String> maturities,
             Collection<String> currencies, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE, Arrays.asList("FM9998AA"));
         mappings.put("Sektor", sectors);
         mappings.put("Forfall", maturities);
         mappings.put("Valuta", currencies);
@@ -126,8 +124,6 @@ public class FinancialMarketsSecuritiesClient extends AbstractClient {
     public List<ResponseModel> getOutstandingAndIssuedAmount(Collection<Integer> sectors, Collection<String> items,
             Collection<String> currencies, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.CONTENTSCODE_CODE,
-                Arrays.asList("FM9998AC", "FM9998AJ", "FM9998AD", "FM9998AE", "FM9998AF"));
         mappings.put("Sektor", sectors);
         mappings.put("Kontopost", items);
         mappings.put("Valuta", currencies);
