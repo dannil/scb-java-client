@@ -19,10 +19,6 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -34,44 +30,27 @@ import java.util.Map;
 
 import com.github.dannil.scbjavaclient.exception.SCBClientForbiddenException;
 import com.github.dannil.scbjavaclient.exception.SCBClientNotFoundException;
+import com.github.dannil.scbjavaclient.test.utility.Files;
+import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
-import org.apache.commons.io.FilenameUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class AbstractClientIT {
-
-    private static class DummyClient extends AbstractClient {
-
-        protected DummyClient() {
-            super();
-        }
-
-        protected DummyClient(Locale locale) {
-            super(locale);
-        }
-
-        @Override
-        public String getUrl() {
-            // TODO Auto-generated method stub
-            return null;
-        }
-
-    }
+public class AbstractClientIT extends RemoteIntegrationTestSuite {
 
     @Test
-    public void toFallbackUrlGetRequest() {
-        DummyClient client = new DummyClient(new Locale("en", "US"));
+    public void toFallbackUrlDoGetRequest() {
+        SCBClient client = new SCBClient(new Locale("en", "US"));
 
         String url = client.getRootUrl() + "HE/HE0103/HE0103B/BefolkningAlder";
 
-        // This request is performed by a dummy Client which is set to English
-        // (as specified in the setup method). This means that if we receive a response
-        // with Swedish text, we've used the fallback url.
-        String response = client.getRequest(url);
+        // This request is performed by a client which is set to English (as specified in
+        // the setup method). This means that if we receive a response with Swedish text,
+        // we've used the fallback url.
+        String response = client.doGetRequest(url);
 
         assertTrue(response.contains("ålder"));
         assertTrue(response.contains("kön"));
@@ -81,22 +60,21 @@ public class AbstractClientIT {
     }
 
     @Test
-    public void toFallbackUrlPostRequest() {
-        DummyClient client = new DummyClient(new Locale("en", "US"));
+    public void toFallbackUrlDoPostRequest() {
+        SCBClient client = new SCBClient(new Locale("en", "US"));
 
         String url = client.getRootUrl() + "HE/HE0103/HE0103B/BefolkningAlder";
 
         Map<String, Collection<?>> map = new HashMap<String, Collection<?>>();
-        map.put("ContentsCode", Arrays.asList("HE0103D2"));
         map.put("Alder", Arrays.asList("tot"));
         map.put("Kon", Arrays.asList("4"));
         map.put("Boendeform", Arrays.asList("SMAG"));
         map.put("Tid", Arrays.asList("2012"));
 
-        // This request is performed by a dummy client which is set to English
-        // (as specified above when creating the client). This means that if we receive a
-        // response with Swedish text, we've used the fallback url.
-        String response = client.postRequest(url, QueryBuilder.build(map));
+        // This request is performed by a client which is set to English (as specified in
+        // the setup method). This means that if we receive a response with Swedish text,
+        // we've used the fallback url.
+        String response = client.doPostRequest(url, QueryBuilder.build(map));
 
         assertTrue(response.contains("ålder"));
         assertTrue(response.contains("kön"));
@@ -105,15 +83,15 @@ public class AbstractClientIT {
     }
 
     @Test
-    public void postRequestWithEmptyList() {
-        DummyClient client = new DummyClient(new Locale("sv", "SE"));
+    public void doPostRequestWithEmptyList() {
+        SCBClient client = new SCBClient(new Locale("sv", "SE"));
 
         String url = client.getRootUrl() + "HE/HE0103/HE0103B/BefolkningAlder";
 
         Map<String, Collection<?>> inputMap = new HashMap<String, Collection<?>>();
         inputMap.put("Alder", Collections.EMPTY_LIST);
 
-        String response = client.postRequest(url, QueryBuilder.build(inputMap));
+        String response = client.doPostRequest(url, QueryBuilder.build(inputMap));
 
         assertTrue(response.contains("år"));
         assertFalse(response.contains("ålder"));
@@ -132,8 +110,6 @@ public class AbstractClientIT {
 
     @Test(expected = SCBClientForbiddenException.class)
     public void forbiddenException() {
-        // Need to use SCBClient here instead of DummyClient to reach
-        // getRawData(String)-method
         SCBClient client = new SCBClient();
 
         // This call will result in a HTTP 403 response (forbidden) since the
@@ -145,63 +121,34 @@ public class AbstractClientIT {
     }
 
     @Test
-    public void checkForLocaleConstructor() throws ClassNotFoundException, MalformedURLException {
+    public void checkForLocaleConstructor() {
         String execPath = System.getProperty("user.dir");
 
         // Find files matching the wildcard pattern
-        List<File> files = findFiles(execPath.concat("/src/main/java/com/github/dannil/scbjavaclient/client"), "*Client.java");
+        List<File> files = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient", "*Client.java");
 
+        List<Class<?>> matchedClasses = new ArrayList<>();
         for (File file : files) {
             // Convert path into binary name
-            String path = file.getAbsolutePath();
-            path = FilenameUtils.removeExtension(path);
-            path = path.substring(path.indexOf("com"));
-
-            // Handle both UNIX and Windows separators
-            String binaryName = path.replace('/', '.');
-            binaryName = binaryName.replace('\\', '.');
+            String binaryName = Files.fileToBinaryName(file);
 
             // Reflect the binary name into a concrete Java class
-            URLClassLoader loader = null;
             Class<?> clazz = null;
             try {
-                loader = new URLClassLoader(new URL[] { file.toURI().toURL() });
-                clazz = loader.loadClass(binaryName);
-
+                clazz = Class.forName(binaryName);
                 clazz.getDeclaredConstructor(Locale.class);
+            } catch (ClassNotFoundException e) {
+                // Class could not be created; respond with an assertion that'll always
+                // fail
+                e.printStackTrace();
+                assertTrue(e.getMessage(), false);
             } catch (NoSuchMethodException e) {
                 // Nope! Locale constructor not found
-                assertTrue("Class " + clazz.getName() + " doesn't declare a Locale constructor", false);
-            } finally {
-                try {
-                    // Close class loader
-                    loader.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    assertTrue(e.getMessage(), false);
-                }
+                matchedClasses.add(clazz);
             }
         }
-    }
-
-    public List<File> findFiles(String path, String partOfFile) {
-        List<File> allFiles = new ArrayList<File>();
-
-        File dir = new File(path);
-        File[] files = dir.listFiles();
-        for (int i = 0; i < files.length; i++) {
-            File file = files[i];
-
-            if (file.isDirectory()) {
-                allFiles.addAll(findFiles(file.getAbsolutePath(), partOfFile));
-            } else {
-                String partOfFileToRegex = ".*?" + partOfFile.replace("*", ".*?") + ".*?";
-                if (file.getAbsolutePath().matches(partOfFileToRegex)) {
-                    allFiles.add(file);
-                }
-            }
-        }
-        return allFiles;
+        assertTrue("Classes not declaring a Locale constructor: " + matchedClasses.toString(),
+                matchedClasses.isEmpty());
     }
 
 }

@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.population.amount;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -22,6 +21,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.model.population.amount.Population;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
@@ -83,14 +83,13 @@ public class PopulationAmountClient extends AbstractClient {
     public List<Population> getPopulation(Collection<String> regions, Collection<String> relationshipStatuses,
             Collection<String> ages, Collection<Integer> genders, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("BE0101N1", "BE0101N2"));
-        mappings.put("Region", regions);
+        mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("Civilstand", relationshipStatuses);
         mappings.put("Alder", ages);
         mappings.put("Kon", genders);
-        mappings.put("Tid", years);
+        mappings.put(APIConstants.TIME_CODE, years);
 
-        String response = postRequest(getUrl() + "BefolkningNy", QueryBuilder.build(mappings));
+        String response = doPostRequest(getUrl() + "BefolkningNy", QueryBuilder.build(mappings));
 
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
         return format.toListOf(Population.class);

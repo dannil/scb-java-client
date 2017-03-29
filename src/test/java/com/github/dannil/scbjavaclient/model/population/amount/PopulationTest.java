@@ -132,21 +132,21 @@ public class PopulationTest {
     }
 
     @Test
-    public void setYear() {
+    public void setTime() {
         Population population = new Population();
 
-        population.setYear(2011);
+        population.setTime(2011);
 
-        assertNotNull(population.getYear());
+        assertNotNull(population.getTime());
     }
 
     @Test
-    public void getYear() {
+    public void getTime() {
         Population population = new Population();
 
-        population.setYear(2011);
+        population.setTime(2011);
 
-        assertEquals(Integer.valueOf(2011), population.getYear());
+        assertEquals(Integer.valueOf(2011), population.getTime());
     }
 
     @Test
@@ -165,11 +165,6 @@ public class PopulationTest {
         population.setValues(this.values);
 
         assertEquals(this.values, population.getValues());
-    }
-
-    @Test
-    public void getInputs() {
-        assertNotNull(Population.getInputs());
     }
 
     @Test
@@ -322,7 +317,7 @@ public class PopulationTest {
     }
 
     @Test
-    public void notEqualsOnYear() {
+    public void notEqualsOnTime() {
         Population population = new Population("1267", "G", "20", 1, 2011, this.values);
         Population population2 = new Population("1267", "G", "20", 1, 1999, this.values2);
 
@@ -330,9 +325,9 @@ public class PopulationTest {
     }
 
     @Test
-    public void notEqualsOnFirstNullYear() {
+    public void notEqualsOnFirstNullTime() {
         Population population = new Population("1267", "G", "20", 1, 2011, this.values);
-        population.setYear(null);
+        population.setTime(null);
 
         Population population2 = new Population("1267", "G", "20", 1, 2011, this.values2);
 
@@ -340,11 +335,11 @@ public class PopulationTest {
     }
 
     @Test
-    public void notEqualsOnSecondNullYear() {
+    public void notEqualsOnSecondNullTime() {
         Population population = new Population("1267", "G", "20", 1, 2011, this.values);
 
         Population population2 = new Population("1267", "G", "20", 1, 2011, this.values2);
-        population2.setYear(null);
+        population2.setTime(null);
 
         assertNotEquals(population, population2);
     }

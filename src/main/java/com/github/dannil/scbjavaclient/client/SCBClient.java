@@ -22,8 +22,12 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.github.dannil.scbjavaclient.client.energy.EnergyClient;
 import com.github.dannil.scbjavaclient.client.environment.EnvironmentClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.FinancialMarketsClient;
+import com.github.dannil.scbjavaclient.client.livingconditions.LivingConditionsClient;
 import com.github.dannil.scbjavaclient.client.population.PopulationClient;
+import com.github.dannil.scbjavaclient.client.publicfinances.PublicFinancesClient;
 import com.github.dannil.scbjavaclient.exception.SCBClientNotFoundException;
 import com.github.dannil.scbjavaclient.format.json.JsonAPIConfigTableFormat;
 import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
@@ -39,21 +43,18 @@ import com.github.dannil.scbjavaclient.utility.URLUtility;
  */
 public class SCBClient extends AbstractContainerClient {
 
-    private PopulationClient populationClient;
-
-    private EnvironmentClient environmentClient;
-
     /**
      * <p>Default constructor. Initializes values and creates sub-clients.</p>
      */
     public SCBClient() {
         super();
 
-        this.populationClient = new PopulationClient();
-        addClient(this.populationClient);
-
-        this.environmentClient = new EnvironmentClient();
-        addClient(this.environmentClient);
+        addClient("energy", new EnergyClient());
+        addClient("environment", new EnvironmentClient());
+        addClient("financialmarkets", new FinancialMarketsClient());
+        addClient("livingconditions", new LivingConditionsClient());
+        addClient("population", new PopulationClient());
+        addClient("publicfinances", new PublicFinancesClient());
     }
 
     /**
@@ -69,12 +70,39 @@ public class SCBClient extends AbstractContainerClient {
     }
 
     /**
+     * <p>Retrieve the client for interacting with energy data.</p>
+     *
+     * @return a client for energy data
+     */
+    public EnergyClient energy() {
+        return (EnergyClient) getClient("energy");
+    }
+
+    /**
      * <p>Retrieve the client for interacting with environment data.</p>
      *
      * @return a client for environment data
      */
     public EnvironmentClient environment() {
-        return this.environmentClient;
+        return (EnvironmentClient) getClient("environment");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with financial markets data.</p>
+     *
+     * @return a client for financial markets data
+     */
+    public FinancialMarketsClient financialMarkets() {
+        return (FinancialMarketsClient) getClient("financialmarkets");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with living conditions data.</p>
+     *
+     * @return a client for living conditions data
+     */
+    public LivingConditionsClient livingConditions() {
+        return (LivingConditionsClient) getClient("livingconditions");
     }
 
     /**
@@ -83,7 +111,16 @@ public class SCBClient extends AbstractContainerClient {
      * @return a client for population data
      */
     public PopulationClient population() {
-        return this.populationClient;
+        return (PopulationClient) getClient("population");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with public finances data.</p>
+     *
+     * @return a client for public finances data
+     */
+    public PublicFinancesClient publicFinances() {
+        return (PublicFinancesClient) getClient("publicfinances");
     }
 
     /**
@@ -98,7 +135,7 @@ public class SCBClient extends AbstractContainerClient {
      */
     public Map<String, Collection<String>> getInputs(String table) {
         String url = getUrl() + table;
-        String json = getRequest(url);
+        String json = doGetRequest(url);
 
         return new JsonAPITableFormat(json).getInputs();
     }
@@ -112,7 +149,7 @@ public class SCBClient extends AbstractContainerClient {
      */
     public List<String> getRegions(String table) {
         String url = getUrl() + table;
-        String json = getRequest(url);
+        String json = doGetRequest(url);
         String code = "Region";
 
         JsonAPITableFormat format = new JsonAPITableFormat(json);
@@ -120,15 +157,15 @@ public class SCBClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Returns the list of the available years for a given table.</p>
+     * <p>Returns the list of the available times for a given table.</p>
      *
      * @param table
-     *            the table to retrieve the years from
-     * @return a list of the available years for the given table
+     *            the table to retrieve the times from
+     * @return a list of the available times for the given table
      */
-    public List<String> getYears(String table) {
+    public List<String> getTimes(String table) {
         String url = getUrl() + table;
-        String json = getRequest(url);
+        String json = doGetRequest(url);
         String code = "Tid";
 
         JsonAPITableFormat format = new JsonAPITableFormat(json);
@@ -152,12 +189,7 @@ public class SCBClient extends AbstractContainerClient {
      *      JsonAPITableFormat#getValues(String)
      */
     public String getRawData(String table) {
-        String url = getUrl() + table;
-        String json = getRequest(url);
-
         Map<String, Collection<?>> inputs = new HashMap<>();
-        inputs.put("ContentsCode", new JsonAPITableFormat(json).getValues("ContentsCode"));
-
         return getRawData(table, inputs);
     }
 
@@ -172,7 +204,7 @@ public class SCBClient extends AbstractContainerClient {
      * @return a response from the API formatted as JSON
      */
     public String getRawData(String table, Map<String, Collection<?>> query) {
-        return postRequest(getUrl() + table, QueryBuilder.build(query));
+        return doPostRequest(getUrl() + table, QueryBuilder.build(query));
     }
 
     /**
@@ -183,7 +215,7 @@ public class SCBClient extends AbstractContainerClient {
      */
     public Map<String, String> getConfig() {
         String url = getUrl() + "?config";
-        String json = getRequest(url);
+        String json = doGetRequest(url);
 
         JsonAPIConfigTableFormat format = new JsonAPIConfigTableFormat(json);
 

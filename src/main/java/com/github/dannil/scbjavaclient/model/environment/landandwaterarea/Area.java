@@ -15,16 +15,16 @@
 package com.github.dannil.scbjavaclient.model.environment.landandwaterarea;
 
 import java.util.Collection;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.github.dannil.scbjavaclient.constants.ModelConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
 import com.github.dannil.scbjavaclient.http.requester.AbstractRequester;
 import com.github.dannil.scbjavaclient.http.requester.GETRequester;
-import com.github.dannil.scbjavaclient.model.AbstractRegionYearAndValueModel;
+import com.github.dannil.scbjavaclient.model.AbstractRegionTimeAndValueModel;
 import com.github.dannil.scbjavaclient.model.ValueNode;
 
 /**
@@ -32,9 +32,9 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
  *
  * @since 0.0.1
  */
-public class Area extends AbstractRegionYearAndValueModel<String, Integer, Double> {
+public class Area extends AbstractRegionTimeAndValueModel<String, Integer, Double> {
 
-    @JsonProperty("arealTyp")
+    @JsonProperty("ArealTyp")
     private String type;
 
     /**
@@ -96,27 +96,15 @@ public class Area extends AbstractRegionYearAndValueModel<String, Integer, Doubl
         if (!(obj instanceof Area)) {
             return false;
         }
-
         Area other = (Area) obj;
         return super.equals(obj) && Objects.equals(this.type, other.type);
     }
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder(ModelConstants.TOSTRING_BUILDER_LENGTH);
-
-        builder.append(this.getClass().getSimpleName());
-        builder.append(" [type=");
-        builder.append(this.type);
-        builder.append(", region=");
-        builder.append(getRegion());
-        builder.append(", year=");
-        builder.append(getYear());
-        builder.append(", values=");
-        builder.append(getValues());
-        builder.append(']');
-
-        return builder.toString();
+        Map<String, Object> variables = new LinkedHashMap<>();
+        variables.put("type", this.type);
+        return super.buildToString(variables);
     }
 
     /**

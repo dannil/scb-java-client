@@ -16,6 +16,7 @@ package com.github.dannil.scbjavaclient.http.requester;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
@@ -24,11 +25,12 @@ import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.StandardCharsets;
 
 import com.github.dannil.scbjavaclient.http.RequestMethod;
-import com.github.dannil.scbjavaclient.http.requester.AbstractRequester;
-import com.github.dannil.scbjavaclient.http.requester.RequesterSingletonFactory;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
+@RunWith(JUnit4.class)
 public class RequesterSingletonFactoryTest {
 
     @Test
@@ -62,6 +64,8 @@ public class RequesterSingletonFactoryTest {
                 innerClass = innerClasses[i];
             }
         }
+
+        assertNotNull(innerClass);
         assertTrue(innerClass.toString().contains(innerClassName));
 
         Constructor<?> innerConstructor = innerClass.getDeclaredConstructors()[0];
@@ -93,6 +97,8 @@ public class RequesterSingletonFactoryTest {
                 innerClass = innerClasses[i];
             }
         }
+
+        assertNotNull(innerClass);
         assertTrue(innerClass.toString().contains(innerClassName));
 
         Constructor<?> innerConstructor = innerClass.getDeclaredConstructors()[0];

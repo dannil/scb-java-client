@@ -15,16 +15,16 @@
 package com.github.dannil.scbjavaclient.model.population.partnership;
 
 import java.util.Collection;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.github.dannil.scbjavaclient.constants.ModelConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
 import com.github.dannil.scbjavaclient.http.requester.AbstractRequester;
 import com.github.dannil.scbjavaclient.http.requester.GETRequester;
-import com.github.dannil.scbjavaclient.model.AbstractRegionYearAndValueModel;
+import com.github.dannil.scbjavaclient.model.AbstractRegionTimeAndValueModel;
 import com.github.dannil.scbjavaclient.model.ValueNode;
 
 /**
@@ -32,12 +32,12 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
  *
  * @since 0.1.0
  */
-public class PartnershipChange extends AbstractRegionYearAndValueModel<String, Integer, String> {
+public class PartnershipChange extends AbstractRegionTimeAndValueModel<String, Integer, String> {
 
-    @JsonProperty("civilstand")
+    @JsonProperty("Civilstand")
     private String maritalStatus;
 
-    @JsonProperty("kon")
+    @JsonProperty("Kon")
     private String sex;
 
     /**
@@ -48,7 +48,7 @@ public class PartnershipChange extends AbstractRegionYearAndValueModel<String, I
     }
 
     /**
-     * Overloaded constructor.
+     * <p>Overloaded constructor.</p>
      *
      * @param region
      *            the region
@@ -130,22 +130,10 @@ public class PartnershipChange extends AbstractRegionYearAndValueModel<String, I
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder(ModelConstants.TOSTRING_BUILDER_LENGTH);
-
-        builder.append(this.getClass().getSimpleName());
-        builder.append(" [maritalStatus=");
-        builder.append(this.maritalStatus);
-        builder.append(", sex=");
-        builder.append(this.sex);
-        builder.append(", region=");
-        builder.append(getRegion());
-        builder.append(", year=");
-        builder.append(getYear());
-        builder.append(", values=");
-        builder.append(getValues());
-        builder.append(']');
-
-        return builder.toString();
+        Map<String, Object> variables = new LinkedHashMap<>();
+        variables.put("maritalStatus", this.maritalStatus);
+        variables.put("sex", this.sex);
+        return super.buildToString(variables);
     }
 
     /**

@@ -26,7 +26,10 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
+@RunWith(JUnit4.class)
 public class NumberOfChildrenBornWithFirstNameTest {
 
     private String testContentsCode;
@@ -66,12 +69,12 @@ public class NumberOfChildrenBornWithFirstNameTest {
     }
 
     @Test
-    public void setYear() {
+    public void setTime() {
         NumberOfChildrenBornWithFirstName nbrChildren = new NumberOfChildrenBornWithFirstName();
 
-        nbrChildren.setYear(2010);
+        nbrChildren.setTime(2010);
 
-        assertEquals(Integer.valueOf(2010), nbrChildren.getYear());
+        assertEquals(Integer.valueOf(2010), nbrChildren.getTime());
     }
 
     @Test
@@ -81,11 +84,6 @@ public class NumberOfChildrenBornWithFirstNameTest {
         nbrChildren.setValues(this.values);
 
         assertNotNull(nbrChildren.getValues());
-    }
-
-    @Test
-    public void getInputs() {
-        assertNotNull(NumberOfChildrenBornWithFirstName.getInputs());
     }
 
     @Test
@@ -138,7 +136,7 @@ public class NumberOfChildrenBornWithFirstNameTest {
     }
 
     @Test
-    public void notEqualsYear() {
+    public void notEqualsTime() {
         NumberOfChildrenBornWithFirstName nbrChildren = new NumberOfChildrenBornWithFirstName("Adrian", 2010,
                 this.values);
         NumberOfChildrenBornWithFirstName nbrChildren2 = new NumberOfChildrenBornWithFirstName("Adrian", 2005,

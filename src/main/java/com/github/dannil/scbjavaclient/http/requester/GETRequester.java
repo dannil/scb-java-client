@@ -14,11 +14,14 @@
 
 package com.github.dannil.scbjavaclient.http.requester;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.nio.charset.Charset;
-import java.util.Map.Entry;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
+import com.github.dannil.scbjavaclient.exception.SCBClientException;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * <p>HTTP requester for GET requests.</p>
@@ -27,12 +30,13 @@ import org.apache.http.client.methods.HttpGet;
  */
 public class GETRequester extends AbstractRequester {
 
+    private static final Logger LOGGER = LogManager.getLogger(GETRequester.class);
+
     /**
      * <p>Default constructor.</p>
      */
     public GETRequester() {
         super();
-        getRequestProperties().put("Request-Method", "GET");
     }
 
     /**
@@ -43,18 +47,17 @@ public class GETRequester extends AbstractRequester {
      */
     public GETRequester(Charset charset) {
         super(charset);
-        getRequestProperties().put("Request-Method", "GET");
     }
 
     @Override
     public String getBody(String url) {
-        HttpGet request = new HttpGet(url);
-        for (Entry<String, String> entry : getRequestProperties().entrySet()) {
-            request.addHeader(entry.getKey(), entry.getValue());
+        LOGGER.info("GET: {}", url);
+        try {
+            InputStream response = getResponse(getConnection(url));
+            return getBody(response);
+        } catch (IOException e) {
+            throw new SCBClientException(e);
         }
-
-        HttpResponse response = getResponse(request);
-        return getBody(response);
     }
 
 }

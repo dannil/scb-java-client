@@ -24,7 +24,7 @@ import com.github.dannil.scbjavaclient.http.IHttpStatus;
  */
 public class SCBClientNotFoundException extends SCBClientException implements IHttpStatus {
 
-    private static final long serialVersionUID = 1779756868616751298L;
+    private static final long serialVersionUID = 1257045307364064956L;
 
     /**
      * <p>Default constructor.</p>

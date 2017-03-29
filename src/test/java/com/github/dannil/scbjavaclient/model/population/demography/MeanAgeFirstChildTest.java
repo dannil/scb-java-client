@@ -26,7 +26,10 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
+@RunWith(JUnit4.class)
 public class MeanAgeFirstChildTest {
 
     private String testContentsCode;
@@ -75,12 +78,12 @@ public class MeanAgeFirstChildTest {
     }
 
     @Test
-    public void setYear() {
+    public void setTime() {
         MeanAgeFirstChild mean = new MeanAgeFirstChild();
 
-        mean.setYear(1996);
+        mean.setTime(1996);
 
-        assertEquals(Integer.valueOf(1996), mean.getYear());
+        assertEquals(Integer.valueOf(1996), mean.getTime());
     }
 
     @Test
@@ -90,11 +93,6 @@ public class MeanAgeFirstChildTest {
         mean.setValues(this.values);
 
         assertNotNull(mean.getValues());
-    }
-
-    @Test
-    public void getInputs() {
-        assertNotNull(MeanAgeFirstChild.getInputs());
     }
 
     @Test
@@ -151,7 +149,7 @@ public class MeanAgeFirstChildTest {
     }
 
     @Test
-    public void notEqualsYear() {
+    public void notEqualsTime() {
         MeanAgeFirstChild mean = new MeanAgeFirstChild("1263", 2, 1996, this.values);
         MeanAgeFirstChild mean2 = new MeanAgeFirstChild("1263", 2, 2002, this.values2);
 

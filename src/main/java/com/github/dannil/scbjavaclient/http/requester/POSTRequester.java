@@ -14,13 +14,16 @@
 
 package com.github.dannil.scbjavaclient.http.requester;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URLConnection;
 import java.nio.charset.Charset;
-import java.util.Map.Entry;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.ByteArrayEntity;
+import com.github.dannil.scbjavaclient.exception.SCBClientException;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * <p>HTTP requester for POST requests.</p>
@@ -29,6 +32,8 @@ import org.apache.http.entity.ByteArrayEntity;
  */
 public class POSTRequester extends AbstractRequester {
 
+    private static final Logger LOGGER = LogManager.getLogger(POSTRequester.class);
+
     private String query;
 
     /**
@@ -36,7 +41,6 @@ public class POSTRequester extends AbstractRequester {
      */
     public POSTRequester() {
         super();
-        getRequestProperties().put("Request-Method", "POST");
     }
 
     /**
@@ -47,7 +51,6 @@ public class POSTRequester extends AbstractRequester {
      */
     public POSTRequester(Charset charset) {
         super(charset);
-        getRequestProperties().put("Request-Method", "POST");
     }
 
     /**
@@ -74,16 +77,18 @@ public class POSTRequester extends AbstractRequester {
         if (this.query == null) {
             throw new IllegalStateException("Payload is null");
         }
-
-        HttpPost request = new HttpPost(url);
-        for (Entry<String, String> entry : getRequestProperties().entrySet()) {
-            request.addHeader(entry.getKey(), entry.getValue());
+        LOGGER.info("POST: {}, {}", url, query);
+        try {
+            URLConnection connection = getConnection(url);
+            connection.setDoOutput(true);
+            try (OutputStream output = connection.getOutputStream()) {
+                output.write(this.query.getBytes(getCharset()));
+            }
+            InputStream response = getResponse(connection);
+            return getBody(response);
+        } catch (IOException e) {
+            throw new SCBClientException(e);
         }
-
-        HttpEntity entity = new ByteArrayEntity(this.query.getBytes(Charset.forName(getCharset().name())));
-        request.setEntity(entity);
-
-        HttpResponse response = getResponse(request);
-        return getBody(response);
     }
+
 }

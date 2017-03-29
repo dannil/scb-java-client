@@ -28,7 +28,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.github.dannil.scbjavaclient.test.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -47,7 +47,8 @@ public class SCBClientIT extends RemoteIntegrationTestSuite {
         Map<String, Collection<String>> staticInputs = new HashMap<String, Collection<String>>();
         Collection<String> staticInputsArsKurs = Arrays.asList("10", "11", "12", "13", "14", "15", "16");
         Collection<String> staticInputsContentsCode = Arrays.asList("UF0104L1");
-        Collection<String> staticInputsTid = Arrays.asList("1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006");
+        Collection<String> staticInputsTid = Arrays.asList("1997", "1998", "1999", "2000", "2001", "2002", "2003",
+                "2004", "2005", "2006");
 
         staticInputs.put("ArsKurs", staticInputsArsKurs);
         staticInputs.put("ContentsCode", staticInputsContentsCode);
@@ -70,12 +71,11 @@ public class SCBClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
-    public void getRawDataInputs() {
+    public void getRawDataWithInputs() {
         Locale locale = new Locale("sv", "SE");
         SCBClient client = new SCBClient(locale);
 
         Map<String, Collection<?>> payload = new HashMap<String, Collection<?>>();
-        payload.put("ContentsCode", Arrays.asList("BE0101N1"));
         payload.put("Region", Arrays.asList("00", "01", "0114"));
         payload.put("Civilstand", Arrays.asList("OG", "G"));
         payload.put("Alder", Arrays.asList(45, 50));
@@ -121,21 +121,21 @@ public class SCBClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
-    public void getYears() {
+    public void getTimes() {
         SCBClient client = new SCBClient();
 
-        List<String> years = client.getYears("BE/BE0101/BE0101A/BefolkningNy");
+        List<String> times = client.getTimes("BE/BE0101/BE0101A/BefolkningNy");
 
-        assertNotNull(years);
-        assertFalse(years.isEmpty());
+        assertNotNull(times);
+        assertFalse(times.isEmpty());
     }
 
-    public void getYearsMissingCodeInTable() {
+    public void getTimesMissingCodeInTable() {
         SCBClient client = new SCBClient();
 
-        List<String> years = client.getYears("NR/NR0105/NR0105A");
+        List<String> times = client.getTimes("NR/NR0105/NR0105A");
 
-        assertNull(years);
+        assertNull(times);
     }
 
     @Test

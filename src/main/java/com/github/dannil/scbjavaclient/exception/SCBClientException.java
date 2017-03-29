@@ -21,7 +21,7 @@ package com.github.dannil.scbjavaclient.exception;
  */
 public class SCBClientException extends RuntimeException {
 
-    private static final long serialVersionUID = -2428718528932238427L;
+    private static final long serialVersionUID = 2584382975227938912L;
 
     /**
      * <p>Default constructor.</p>

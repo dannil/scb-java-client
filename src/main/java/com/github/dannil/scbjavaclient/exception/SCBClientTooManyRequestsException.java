@@ -24,7 +24,7 @@ import com.github.dannil.scbjavaclient.http.IHttpStatus;
  */
 public class SCBClientTooManyRequestsException extends SCBClientException implements IHttpStatus {
 
-    private static final long serialVersionUID = -7761485153313257674L;
+    private static final long serialVersionUID = -265994763740041474L;
 
     /**
      * <p>Default constructor.</p>

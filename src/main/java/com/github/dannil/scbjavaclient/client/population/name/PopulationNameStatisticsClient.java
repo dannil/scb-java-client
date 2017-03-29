@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.population.name;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -22,6 +21,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.model.population.name.NumberOfChildrenBornWithFirstName;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
@@ -78,11 +78,10 @@ public class PopulationNameStatisticsClient extends AbstractClient {
     public List<NumberOfChildrenBornWithFirstName> getNumberOfChildrenBornWithFirstName(Collection<String> firstnames,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("BE0001AH"));
         mappings.put("Tilltalsnamn", firstnames);
-        mappings.put("Tid", years);
+        mappings.put(APIConstants.TIME_CODE, years);
 
-        String response = postRequest(getUrl() + "BE0001T04Ar", QueryBuilder.build(mappings));
+        String response = doPostRequest(getUrl() + "BE0001T04Ar", QueryBuilder.build(mappings));
 
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
         return format.toListOf(NumberOfChildrenBornWithFirstName.class);

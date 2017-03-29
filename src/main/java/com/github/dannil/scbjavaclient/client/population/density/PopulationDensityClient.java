@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.population.density;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -22,6 +21,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.model.population.density.Density;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
@@ -78,12 +78,11 @@ public class PopulationDensityClient extends AbstractClient {
      */
     public List<Density> getDensity(Collection<String> regions, Collection<String> sexes, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("BE0101U1", "BE0101U2", "BE0101U3"));
-        mappings.put("Region", regions);
+        mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("Kon", sexes);
-        mappings.put("Tid", years);
+        mappings.put(APIConstants.TIME_CODE, years);
 
-        String response = postRequest(getUrl() + "BefArealTathetKon", QueryBuilder.build(mappings));
+        String response = doPostRequest(getUrl() + "BefArealTathetKon", QueryBuilder.build(mappings));
 
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
         return format.toListOf(Density.class);

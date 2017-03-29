@@ -21,7 +21,7 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -45,7 +45,8 @@ public class EnvironmentLandAndWaterAreaClientIT extends RemoteIntegrationTestSu
 
     @Test
     public void getAreaWithParametersEmptyLists() {
-        assertNotEquals(0, this.environmentLandAndWaterAreaClient.getArea(Collections.<String>emptyList(), Collections.<String>emptyList(), Collections.<Integer>emptyList()));
+        assertNotEquals(0, this.environmentLandAndWaterAreaClient.getArea(Collections.<String>emptyList(),
+                Collections.<String>emptyList(), Collections.<Integer>emptyList()));
     }
 
     @Test

@@ -14,12 +14,14 @@
 
 package com.github.dannil.scbjavaclient.http.requester;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.nio.charset.StandardCharsets;
 
-import com.github.dannil.scbjavaclient.http.requester.RequesterFactory;
+import com.github.dannil.scbjavaclient.http.RequestMethod;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,6 +39,34 @@ public class RequesterFactoryTest {
         cons[0].setAccessible(false);
 
         assertFalse(cons[0].isAccessible());
+    }
+
+    @Test
+    public void getGETRequester() {
+        AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
+
+        assertEquals(StandardCharsets.UTF_8, get.getCharset());
+    }
+
+    @Test
+    public void getGETRequesterWithCharset() {
+        AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET, StandardCharsets.US_ASCII);
+
+        assertEquals(StandardCharsets.US_ASCII, get.getCharset());
+    }
+
+    @Test
+    public void getPOSTRequester() {
+        AbstractRequester post = RequesterFactory.getRequester(RequestMethod.POST);
+
+        assertEquals(StandardCharsets.UTF_8, post.getCharset());
+    }
+
+    @Test
+    public void getPOSTRequesterWithCharset() {
+        AbstractRequester post = RequesterFactory.getRequester(RequestMethod.POST, StandardCharsets.US_ASCII);
+
+        assertEquals(StandardCharsets.US_ASCII, post.getCharset());
     }
 
 }

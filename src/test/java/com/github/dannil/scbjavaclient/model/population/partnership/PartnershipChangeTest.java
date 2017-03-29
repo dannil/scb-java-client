@@ -26,7 +26,10 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
+@RunWith(JUnit4.class)
 public class PartnershipChangeTest {
 
     private String testContentsCode;
@@ -84,12 +87,12 @@ public class PartnershipChangeTest {
     }
 
     @Test
-    public void setYear() {
+    public void setTime() {
         PartnershipChange partner = new PartnershipChange();
 
-        partner.setYear(2002);
+        partner.setTime(2002);
 
-        assertEquals(Integer.valueOf(2002), partner.getYear());
+        assertEquals(Integer.valueOf(2002), partner.getTime());
     }
 
     @Test
@@ -99,11 +102,6 @@ public class PartnershipChangeTest {
         partner.setValues(this.values);
 
         assertNotNull(partner.getValues());
-    }
-
-    @Test
-    public void getInputs() {
-        assertNotNull(PartnershipChange.getInputs());
     }
 
     @Test
@@ -154,7 +152,7 @@ public class PartnershipChangeTest {
     @Test
     public void notEqualsMaritalStatus() {
         PartnershipChange partner = new PartnershipChange("00", "RP", "2", 2002, this.values);
-        PartnershipChange partner2 = new PartnershipChange("02", "SP", "2", 2002, this.values);
+        PartnershipChange partner2 = new PartnershipChange("00", "SP", "2", 2002, this.values);
 
         assertNotEquals(partner, partner2);
     }
@@ -162,13 +160,13 @@ public class PartnershipChangeTest {
     @Test
     public void notEqualsSex() {
         PartnershipChange partner = new PartnershipChange("00", "RP", "2", 2002, this.values);
-        PartnershipChange partner2 = new PartnershipChange("02", "RP", "1", 2002, this.values);
+        PartnershipChange partner2 = new PartnershipChange("00", "RP", "1", 2002, this.values);
 
         assertNotEquals(partner, partner2);
     }
 
     @Test
-    public void notEqualsYear() {
+    public void notEqualsTime() {
         PartnershipChange partner = new PartnershipChange("00", "RP", "2", 2002, this.values);
         PartnershipChange partner2 = new PartnershipChange("00", "RP", "2", 2004, this.values2);
 

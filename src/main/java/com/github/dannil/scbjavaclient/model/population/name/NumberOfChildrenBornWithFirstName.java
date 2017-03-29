@@ -15,16 +15,16 @@
 package com.github.dannil.scbjavaclient.model.population.name;
 
 import java.util.Collection;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.github.dannil.scbjavaclient.constants.ModelConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
 import com.github.dannil.scbjavaclient.http.requester.AbstractRequester;
 import com.github.dannil.scbjavaclient.http.requester.GETRequester;
-import com.github.dannil.scbjavaclient.model.AbstractYearAndValueModel;
+import com.github.dannil.scbjavaclient.model.AbstractTimeAndValueModel;
 import com.github.dannil.scbjavaclient.model.ValueNode;
 
 /**
@@ -32,9 +32,9 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
  *
  * @since 0.1.0
  */
-public class NumberOfChildrenBornWithFirstName extends AbstractYearAndValueModel<Integer, String> {
+public class NumberOfChildrenBornWithFirstName extends AbstractTimeAndValueModel<Integer, String> {
 
-    @JsonProperty("tilltalsnamn")
+    @JsonProperty("Tilltalsnamn")
     private String firstname;
 
     /**
@@ -101,18 +101,9 @@ public class NumberOfChildrenBornWithFirstName extends AbstractYearAndValueModel
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder(ModelConstants.TOSTRING_BUILDER_LENGTH);
-
-        builder.append(this.getClass().getSimpleName());
-        builder.append(" [firstname=");
-        builder.append(this.firstname);
-        builder.append(", year=");
-        builder.append(getYear());
-        builder.append(", values=");
-        builder.append(getValues());
-        builder.append(']');
-
-        return builder.toString();
+        Map<String, Object> variables = new LinkedHashMap<>();
+        variables.put("firstname", this.firstname);
+        return super.buildToString(variables);
     }
 
     /**

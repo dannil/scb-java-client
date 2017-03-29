@@ -26,7 +26,10 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
+@RunWith(JUnit4.class)
 public class DensityTest {
 
     private String testContentsCode;
@@ -75,12 +78,12 @@ public class DensityTest {
     }
 
     @Test
-    public void setYear() {
+    public void setTime() {
         Density density = new Density();
 
-        density.setYear(1996);
+        density.setTime(1996);
 
-        assertEquals(Integer.valueOf(1996), density.getYear());
+        assertEquals(Integer.valueOf(1996), density.getTime());
     }
 
     @Test
@@ -90,11 +93,6 @@ public class DensityTest {
         density.setValues(this.values);
 
         assertNotNull(density.getValues());
-    }
-
-    @Test
-    public void getInputs() {
-        assertNotNull(Density.getInputs());
     }
 
     @Test
@@ -151,7 +149,7 @@ public class DensityTest {
     }
 
     @Test
-    public void notEqualsYear() {
+    public void notEqualsTime() {
         Density density = new Density("1263", "2", 1996, this.values);
         Density density2 = new Density("1263", "2", 2002, this.values2);
 

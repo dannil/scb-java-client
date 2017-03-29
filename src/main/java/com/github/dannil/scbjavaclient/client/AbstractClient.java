@@ -23,17 +23,12 @@ import com.github.dannil.scbjavaclient.http.requester.POSTRequester;
 import com.github.dannil.scbjavaclient.utility.Localization;
 import com.github.dannil.scbjavaclient.utility.URLUtility;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 /**
  * <p>Abstract class which specifies how clients should operate.</p>
  *
  * @since 0.0.2
  */
 public abstract class AbstractClient {
-
-    private static final Logger LOGGER = LogManager.getLogger(AbstractClient.class);
 
     private Locale locale;
 
@@ -117,16 +112,9 @@ public abstract class AbstractClient {
      *            the URL which will be sent a GET request
      * @return a string representation of the API's response
      */
-    protected String getRequest(String url) {
+    protected String doGetRequest(String url) {
         AbstractRequester get = new GETRequester();
-        try {
-            LOGGER.info("GET: {}", url);
-            return get.getBody(url);
-        } catch (SCBClientNotFoundException e) {
-            // HTTP code 404, call the API again with the fallback language
-            LOGGER.error("HTTP {}: {}", e.getStatusCode().getCode(), url);
-            return get.getBody(URLUtility.changeLanguageForUrl(url));
-        }
+        return handleRequest(get, url);
     }
 
     /**
@@ -138,16 +126,28 @@ public abstract class AbstractClient {
      *            the query which the API will process
      * @return a string representation of the API's response
      */
-    protected String postRequest(String url, String query) {
+    protected String doPostRequest(String url, String query) {
         POSTRequester post = new POSTRequester();
         post.setQuery(query);
+        return handleRequest(post, url);
+    }
+
+    /**
+     * <p>Handles the request. This method contains the common logic for handling GET and
+     * POST requests.</p>
+     *
+     * @param requester
+     *            the requester
+     * @param url
+     *            the URL
+     * @return a string representation of the API's response
+     */
+    private String handleRequest(AbstractRequester requester, String url) {
         try {
-            LOGGER.info("POST: {}, {}", url, query);
-            return post.getBody(url);
+            return requester.getBody(url);
         } catch (SCBClientNotFoundException e) {
             // HTTP code 404, call the API again with the fallback language
-            LOGGER.error("HTTP {}: {}", e.getStatusCode().getCode(), url);
-            return post.getBody(URLUtility.changeLanguageForUrl(url));
+            return requester.getBody(URLUtility.changeLanguageForUrl(url));
         }
     }
 

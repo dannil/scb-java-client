@@ -26,7 +26,10 @@ import com.github.dannil.scbjavaclient.model.ValueNode;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
+@RunWith(JUnit4.class)
 public class AverageAgeTest {
 
     private String testContentsCode;
@@ -75,12 +78,12 @@ public class AverageAgeTest {
     }
 
     @Test
-    public void setYear() {
+    public void setTime() {
         AverageAge avg = new AverageAge();
 
-        avg.setYear(1996);
+        avg.setTime(1996);
 
-        assertEquals(Integer.valueOf(1996), avg.getYear());
+        assertEquals(Integer.valueOf(1996), avg.getTime());
     }
 
     @Test
@@ -90,11 +93,6 @@ public class AverageAgeTest {
         avg.setValues(this.values);
 
         assertNotNull(avg.getValues());
-    }
-
-    @Test
-    public void getInputs() {
-        assertNotNull(AverageAge.getInputs());
     }
 
     @Test
@@ -151,7 +149,7 @@ public class AverageAgeTest {
     }
 
     @Test
-    public void notEqualsYear() {
+    public void notEqualsTime() {
         AverageAge avg = new AverageAge("1263", "2", 1996, this.values);
         AverageAge avg2 = new AverageAge("1263", "2", 2002, this.values2);
 

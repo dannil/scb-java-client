@@ -26,7 +26,7 @@ import com.github.dannil.scbjavaclient.http.IHttpStatus;
  */
 public class SCBClientForbiddenException extends SCBClientException implements IHttpStatus {
 
-    private static final long serialVersionUID = 2445143839207212787L;
+    private static final long serialVersionUID = 1712957537801452923L;
 
     /**
      * <p>Default constructor.</p>
