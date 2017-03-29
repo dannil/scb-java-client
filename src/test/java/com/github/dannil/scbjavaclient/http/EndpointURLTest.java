@@ -51,9 +51,9 @@ public class EndpointURLTest {
 
     @Test
     public void toURLWithStringThreeCharacters() {
-        EndpointURL url = new EndpointURL("http://api.scb.se/OV0104/v1/doris/sv/ssd/AM");
+        EndpointURL url = new EndpointURL("http://api.scb.se/OV0104/v1/doris/sv/ssd/");
 
-        assertEquals("https://api.scb.se/OV0104/v1/doris/ger/ssd/", url.toURL("ger"));
+        assertEquals("http://api.scb.se/OV0104/v1/doris/ger/ssd/", url.toURL("ger").toString());
     }
 
     @Test

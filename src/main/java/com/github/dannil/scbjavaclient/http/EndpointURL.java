@@ -1,17 +1,48 @@
+/*
+ * Copyright 2017 Daniel Nilsson
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
 package com.github.dannil.scbjavaclient.http;
 
 import java.net.URL;
 import java.util.Locale;
 import java.util.Objects;
 
+/**
+ * <p>Class which encapsulates the API URL, and enables relevant operations on this URL.</p>
+ *
+ * @since 0.3.0
+ */
 public class EndpointURL {
 
     private String url;
 
+    /**
+     * <p>Overloaded constructor.</p>
+     *
+     * @param url
+     *            the URL
+     */
     public EndpointURL(URL url) {
         this(url.toString());
     }
 
+    /**
+     * <p>Overloaded constructor.</p>
+     *
+     * @param url
+     *            the URL
+     */
     public EndpointURL(String url) {
         this.url = url;
 
@@ -21,6 +52,13 @@ public class EndpointURL {
         }
     }
 
+    /**
+     * <p>Appends the given string to the URL.</p>
+     *
+     * @param str
+     *            the string to append
+     * @return a {@link EndpointURL} with the given string appended
+     */
     public EndpointURL append(String str) {
         return new EndpointURL(this.url + str);
     }
@@ -28,8 +66,7 @@ public class EndpointURL {
     /**
      * <p>Generates a new URL to the API using the specified <code>Locale</code>.</p>
      *
-     * <p>See {@link #toURL(String)} for implementation
-     * details.</p>
+     * <p>See {@link #toURL(String)} for implementation details.</p>
      *
      * @param locale
      *            the <code>Locale</code> to use
@@ -38,7 +75,7 @@ public class EndpointURL {
     public EndpointURL toURL(Locale locale) {
         return toURL(locale.getLanguage());
     }
-    
+
     /**
      * <p>Generates a new URL to the API by replacing the current language tag in the URL
      * with the specified language tag.</p>
@@ -55,19 +92,17 @@ public class EndpointURL {
      * <li>Replaces the content between the start and end of the segment (forward slashes
      * excluded) with the new language tag.</li> </ol>
      *
-     * <p>Example: URL of <b>https://api.scb.se/OV0104/v1/doris/sv/ssd/</b> and
-     * language input of <b>en</b> is converted to
+     * <p>Example: URL of <b>https://api.scb.se/OV0104/v1/doris/sv/ssd/</b> and language
+     * input of <b>en</b> is converted to
      * <b>https://api.scb.se/OV0104/v1/doris/en/ssd/</b>.</p>
      *
      * <p>Due to speed efficiency, this method does not perform any validity check on the
      * specified URL. Calling this method without a valid URL for the API may (and
      * probably will) result in undefined behavior.</p>
      *
-     * @param url
-     *            the URL to edit
      * @param language
      *            the language to use
-     * @return the modified URL
+     * @return a {@link EndpointURL} representing the modified URL
      */
     public EndpointURL toURL(String language) {
         // Specify the starting point. For this implementation, the starting
