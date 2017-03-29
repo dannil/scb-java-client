@@ -57,7 +57,7 @@ public class LivingConditionsClientTest {
         Locale locale = new Locale("en", "US");
         LivingConditionsClient client = new LivingConditionsClient(locale);
 
-        assertEquals(URLUtility.getRootUrl(locale) + "LE/", client.getUrl());
+        assertEquals(URLUtility.getRootUrl(locale) + "LE/", client.getUrl().toString());
     }
 
 }

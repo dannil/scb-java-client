@@ -23,6 +23,7 @@ import java.util.Map;
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
+import com.github.dannil.scbjavaclient.http.EndpointURL;
 import com.github.dannil.scbjavaclient.model.livingconditions.surveys.health.BodyMassIndex;
 import com.github.dannil.scbjavaclient.model.livingconditions.surveys.health.Disabilities;
 import com.github.dannil.scbjavaclient.model.livingconditions.surveys.health.DoctorAndDentistAppointments;
@@ -289,8 +290,8 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
     }
 
     @Override
-    public String getUrl() {
-        return getRootUrl() + "LE/LE0101/LE0101H/";
+    public EndpointURL getUrl() {
+        return getRootUrl().append("LE/LE0101/LE0101H/");
     }
 
 }

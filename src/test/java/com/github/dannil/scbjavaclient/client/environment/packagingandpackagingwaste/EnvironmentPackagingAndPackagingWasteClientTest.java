@@ -42,7 +42,7 @@ public class EnvironmentPackagingAndPackagingWasteClientTest {
         Locale locale = new Locale("en", "US");
         EnvironmentPackagingAndPackagingWasteClient client = new EnvironmentPackagingAndPackagingWasteClient(locale);
 
-        assertEquals(URLUtility.getRootUrl(locale) + "MI/MI0307/", client.getUrl());
+        assertEquals(URLUtility.getRootUrl(locale) + "MI/MI0307/", client.getUrl().toString());
     }
 
 }

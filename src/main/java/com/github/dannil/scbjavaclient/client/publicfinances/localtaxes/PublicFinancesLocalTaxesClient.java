@@ -23,6 +23,7 @@ import java.util.Map;
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
+import com.github.dannil.scbjavaclient.http.EndpointURL;
 import com.github.dannil.scbjavaclient.model.publicfinances.localtaxes.LocalTaxRate;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
@@ -86,8 +87,8 @@ public class PublicFinancesLocalTaxesClient extends AbstractClient {
     }
 
     @Override
-    public String getUrl() {
-        return getRootUrl() + "OE/OE0101/";
+    public EndpointURL getUrl() {
+        return getRootUrl().append("OE/OE0101/");
     }
 
 }

@@ -23,6 +23,7 @@ import java.util.Map;
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
+import com.github.dannil.scbjavaclient.http.EndpointURL;
 import com.github.dannil.scbjavaclient.model.population.averageage.AverageAge;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
@@ -90,8 +91,8 @@ public class PopulationAverageAgeClient extends AbstractClient {
     }
 
     @Override
-    public String getUrl() {
-        return getRootUrl() + "BE/BE0101/BE0101B/";
+    public EndpointURL getUrl() {
+        return getRootUrl().append("BE/BE0101/BE0101B/");
     }
 
 }

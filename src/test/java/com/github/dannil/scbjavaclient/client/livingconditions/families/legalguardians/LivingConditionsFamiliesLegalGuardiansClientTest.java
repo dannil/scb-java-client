@@ -42,7 +42,7 @@ public class LivingConditionsFamiliesLegalGuardiansClientTest {
         Locale locale = new Locale("en", "US");
         LivingConditionsFamiliesLegalGuardiansClient client = new LivingConditionsFamiliesLegalGuardiansClient(locale);
 
-        assertEquals(URLUtility.getRootUrl(locale) + "LE/LE0102/LE0102O/", client.getUrl());
+        assertEquals(URLUtility.getRootUrl(locale) + "LE/LE0102/LE0102O/", client.getUrl().toString());
     }
 
 }

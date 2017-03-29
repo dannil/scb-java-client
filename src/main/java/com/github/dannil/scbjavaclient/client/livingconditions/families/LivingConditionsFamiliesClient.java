@@ -21,6 +21,7 @@ import com.github.dannil.scbjavaclient.client.livingconditions.families.adoption
 import com.github.dannil.scbjavaclient.client.livingconditions.families.housing.LivingConditionsFamiliesHousingClient;
 import com.github.dannil.scbjavaclient.client.livingconditions.families.legalguardians.LivingConditionsFamiliesLegalGuardiansClient;
 import com.github.dannil.scbjavaclient.client.livingconditions.families.siblings.LivingConditionsFamiliesSiblingsClient;
+import com.github.dannil.scbjavaclient.http.EndpointURL;
 
 /**
  * <p>Client which handles living conditions families data fetching.</p>
@@ -94,8 +95,8 @@ public class LivingConditionsFamiliesClient extends AbstractContainerClient {
     }
 
     @Override
-    public String getUrl() {
-        return getRootUrl() + "LE/LE0102/";
+    public EndpointURL getUrl() {
+        return getRootUrl().append("LE/LE0102/");
     }
 
 }

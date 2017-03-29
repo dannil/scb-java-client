@@ -42,7 +42,7 @@ public class EnvironmentLandUseUsageClientTest {
         Locale locale = new Locale("en", "US");
         EnvironmentLandUseUsageClient client = new EnvironmentLandUseUsageClient(locale);
 
-        assertEquals(URLUtility.getRootUrl(locale) + "MI/MI0803/MI0803A/", client.getUrl());
+        assertEquals(URLUtility.getRootUrl(locale) + "MI/MI0803/MI0803A/", client.getUrl().toString());
     }
 
 }

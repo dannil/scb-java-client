@@ -18,6 +18,8 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
+import com.github.dannil.scbjavaclient.http.EndpointURL;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -32,7 +34,7 @@ public class AbstractClientTest {
         }
 
         @Override
-        public String getUrl() {
+        public EndpointURL getUrl() {
             // TODO Auto-generated method stub
             return null;
         }

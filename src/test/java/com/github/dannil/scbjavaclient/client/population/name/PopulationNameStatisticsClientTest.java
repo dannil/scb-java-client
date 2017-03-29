@@ -42,7 +42,7 @@ public class PopulationNameStatisticsClientTest {
         Locale locale = new Locale("en", "US");
         PopulationNameStatisticsClient client = new PopulationNameStatisticsClient(locale);
 
-        assertEquals(URLUtility.getRootUrl(locale) + "BE/BE0001/", client.getUrl());
+        assertEquals(URLUtility.getRootUrl(locale) + "BE/BE0001/", client.getUrl().toString());
     }
 
 }

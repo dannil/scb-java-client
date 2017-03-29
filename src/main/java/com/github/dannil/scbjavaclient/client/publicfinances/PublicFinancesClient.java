@@ -20,6 +20,7 @@ import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.publicfinances.governmentdebt.PublicFinancesGovernmentDebtClient;
 import com.github.dannil.scbjavaclient.client.publicfinances.localtaxes.PublicFinancesLocalTaxesClient;
 import com.github.dannil.scbjavaclient.client.publicfinances.taxassessment.PublicFinancesTaxAssessmentClient;
+import com.github.dannil.scbjavaclient.http.EndpointURL;
 
 /**
  * <p>Client which handles public finances data fetching.</p>
@@ -81,8 +82,8 @@ public class PublicFinancesClient extends AbstractContainerClient {
     }
 
     @Override
-    public String getUrl() {
-        return getRootUrl() + "OE/";
+    public EndpointURL getUrl() {
+        return getRootUrl().append("OE/");
     }
 
 }

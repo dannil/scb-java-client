@@ -56,7 +56,7 @@ public class PopulationClientTest {
         Locale locale = new Locale("en", "US");
         PopulationClient client = new PopulationClient(locale);
 
-        assertEquals(URLUtility.getRootUrl(locale) + "BE/", client.getUrl());
+        assertEquals(URLUtility.getRootUrl(locale) + "BE/", client.getUrl().toString());
     }
 
 }

@@ -24,6 +24,7 @@ import com.github.dannil.scbjavaclient.client.population.density.PopulationDensi
 import com.github.dannil.scbjavaclient.client.population.livebirths.PopulationLiveBirthsClient;
 import com.github.dannil.scbjavaclient.client.population.name.PopulationNameStatisticsClient;
 import com.github.dannil.scbjavaclient.client.population.partnership.PopulationPartnershipClient;
+import com.github.dannil.scbjavaclient.http.EndpointURL;
 
 /**
  * <p>Client which handles population data fetching.</p>
@@ -123,8 +124,8 @@ public class PopulationClient extends AbstractContainerClient {
     }
 
     @Override
-    public String getUrl() {
-        return getRootUrl() + "BE/";
+    public EndpointURL getUrl() {
+        return getRootUrl().append("BE/");
     }
 
 }

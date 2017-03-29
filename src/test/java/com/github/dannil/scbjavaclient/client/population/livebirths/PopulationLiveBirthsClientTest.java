@@ -42,7 +42,7 @@ public class PopulationLiveBirthsClientTest {
         Locale locale = new Locale("en", "US");
         PopulationLiveBirthsClient client = new PopulationLiveBirthsClient(locale);
 
-        assertEquals(URLUtility.getRootUrl(locale) + "BE/BE0101/BE0101H/", client.getUrl());
+        assertEquals(URLUtility.getRootUrl(locale) + "BE/BE0101/BE0101H/", client.getUrl().toString());
     }
 
 }

@@ -42,7 +42,7 @@ public class PopulationAmountClientTest {
         Locale locale = new Locale("en", "US");
         PopulationAmountClient client = new PopulationAmountClient(locale);
 
-        assertEquals(URLUtility.getRootUrl(locale) + "BE/BE0101/BE0101A/", client.getUrl());
+        assertEquals(URLUtility.getRootUrl(locale) + "BE/BE0101/BE0101A/", client.getUrl().toString());
     }
 
 }

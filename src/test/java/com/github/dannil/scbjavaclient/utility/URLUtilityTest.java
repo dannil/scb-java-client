@@ -54,21 +54,4 @@ public class URLUtilityTest {
         assertEquals("https://api.scb.se/OV0104/v1/doris/fr/ssd/", url);
     }
 
-    @Test
-    public void changeUrlLocale() {
-        String url = URLUtility.changeLanguageForUrl(
-                "https://api.scb.se/OV0104/v1/doris/en/ssd/BE/BE0101/BE0101A/BefolkningNy");
-
-        Locale locale = new Locale("sv", "SE");
-        assertEquals(URLUtility.getRootUrl(locale) + "BE/BE0101/BE0101A/BefolkningNy", url);
-    }
-
-    @Test
-    public void changeUrlLanguageWithThreeCharacters() {
-        Locale locale = new Locale("sv", "SE");
-        String url = URLUtility.getRootUrl(locale);
-
-        assertEquals("https://api.scb.se/OV0104/v1/doris/ger/ssd/", URLUtility.changeLanguageForUrl(url, "ger"));
-    }
-
 }

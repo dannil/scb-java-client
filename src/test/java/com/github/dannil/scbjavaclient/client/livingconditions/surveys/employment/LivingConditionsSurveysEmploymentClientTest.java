@@ -42,7 +42,7 @@ public class LivingConditionsSurveysEmploymentClientTest {
         Locale locale = new Locale("en", "US");
         LivingConditionsSurveysEmploymentClient client = new LivingConditionsSurveysEmploymentClient(locale);
 
-        assertEquals(URLUtility.getRootUrl(locale) + "LE/LE0101/LE0101S/", client.getUrl());
+        assertEquals(URLUtility.getRootUrl(locale) + "LE/LE0101/LE0101S/", client.getUrl().toString());
     }
 
 }

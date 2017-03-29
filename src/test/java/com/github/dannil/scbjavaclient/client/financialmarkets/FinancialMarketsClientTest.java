@@ -50,7 +50,7 @@ public class FinancialMarketsClientTest {
         Locale locale = new Locale("en", "US");
         FinancialMarketsClient client = new FinancialMarketsClient(locale);
 
-        assertEquals(URLUtility.getRootUrl(locale) + "FM/", client.getUrl());
+        assertEquals(URLUtility.getRootUrl(locale) + "FM/", client.getUrl().toString());
     }
 
 }

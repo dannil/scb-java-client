@@ -42,7 +42,7 @@ public class LivingConditionsFamiliesHousingClientTest {
         Locale locale = new Locale("en", "US");
         LivingConditionsFamiliesHousingClient client = new LivingConditionsFamiliesHousingClient(locale);
 
-        assertEquals(URLUtility.getRootUrl(locale) + "LE/LE0102/LE0102M/", client.getUrl());
+        assertEquals(URLUtility.getRootUrl(locale) + "LE/LE0102/LE0102M/", client.getUrl().toString());
     }
 
 }

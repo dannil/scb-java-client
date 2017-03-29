@@ -19,6 +19,7 @@ import java.util.Locale;
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.energy.annualstatistics.EnergyAnnualStatisticsClient;
 import com.github.dannil.scbjavaclient.client.energy.monthlystatistics.EnergyMonthlyStatisticsClient;
+import com.github.dannil.scbjavaclient.http.EndpointURL;
 
 /**
  * <p>Client which handles energy data fetching.</p>
@@ -68,8 +69,8 @@ public class EnergyClient extends AbstractContainerClient {
     }
 
     @Override
-    public String getUrl() {
-        return getRootUrl() + "EN/";
+    public EndpointURL getUrl() {
+        return getRootUrl().append("EN/");
     }
 
 }

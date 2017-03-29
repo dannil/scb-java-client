@@ -23,6 +23,7 @@ import java.util.Map;
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
+import com.github.dannil.scbjavaclient.http.EndpointURL;
 import com.github.dannil.scbjavaclient.model.environment.landuse.buildings.Building;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
@@ -90,8 +91,8 @@ public class EnvironmentLandUseBuildingsClient extends AbstractClient {
     }
 
     @Override
-    public String getUrl() {
-        return getRootUrl() + "MI/MI0803/MI0803B/";
+    public EndpointURL getUrl() {
+        return getRootUrl().append("MI/MI0803/MI0803B/");
     }
 
 }

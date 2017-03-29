@@ -51,7 +51,7 @@ public class SCBClientTest {
         Locale locale = new Locale("sv", "SE");
         SCBClient client = new SCBClient(locale);
 
-        assertEquals(URLUtility.getRootUrl(locale), client.getUrl());
+        assertEquals(URLUtility.getRootUrl(locale), client.getUrl().toString());
     }
 
 }

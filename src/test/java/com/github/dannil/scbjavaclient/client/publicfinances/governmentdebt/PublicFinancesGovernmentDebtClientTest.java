@@ -42,7 +42,7 @@ public class PublicFinancesGovernmentDebtClientTest {
         Locale locale = new Locale("en", "US");
         PublicFinancesGovernmentDebtClient client = new PublicFinancesGovernmentDebtClient(locale);
 
-        assertEquals(URLUtility.getRootUrl(locale) + "OE/OE0202/", client.getUrl());
+        assertEquals(URLUtility.getRootUrl(locale) + "OE/OE0202/", client.getUrl().toString());
     }
 
 }

@@ -28,9 +28,11 @@ import com.github.dannil.scbjavaclient.client.financialmarkets.FinancialMarketsC
 import com.github.dannil.scbjavaclient.client.livingconditions.LivingConditionsClient;
 import com.github.dannil.scbjavaclient.client.population.PopulationClient;
 import com.github.dannil.scbjavaclient.client.publicfinances.PublicFinancesClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.exception.SCBClientNotFoundException;
 import com.github.dannil.scbjavaclient.format.json.JsonAPIConfigTableFormat;
 import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
+import com.github.dannil.scbjavaclient.http.EndpointURL;
 import com.github.dannil.scbjavaclient.http.requester.AbstractRequester;
 import com.github.dannil.scbjavaclient.http.requester.GETRequester;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
@@ -249,8 +251,8 @@ public class SCBClient extends AbstractContainerClient {
     }
 
     @Override
-    public String getUrl() {
-        return getRootUrl();
+    public EndpointURL getUrl() {
+        return new EndpointURL(APIConstants.ROOT_URL);
     }
 
 }

@@ -42,7 +42,7 @@ public class PopulationAverageAgeClientTest {
         Locale locale = new Locale("en", "US");
         PopulationAverageAgeClient client = new PopulationAverageAgeClient(locale);
 
-        assertEquals(URLUtility.getRootUrl(locale) + "BE/BE0101/BE0101B/", client.getUrl());
+        assertEquals(URLUtility.getRootUrl(locale) + "BE/BE0101/BE0101B/", client.getUrl().toString());
     }
 
 }

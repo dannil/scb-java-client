@@ -42,7 +42,7 @@ public class PopulationDensityClientTest {
         Locale locale = new Locale("en", "US");
         PopulationDensityClient client = new PopulationDensityClient(locale);
 
-        assertEquals(URLUtility.getRootUrl(locale) + "BE/BE0101/BE0101C/", client.getUrl());
+        assertEquals(URLUtility.getRootUrl(locale) + "BE/BE0101/BE0101C/", client.getUrl().toString());
     }
 
 }

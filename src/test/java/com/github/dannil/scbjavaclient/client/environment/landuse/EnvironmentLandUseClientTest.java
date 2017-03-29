@@ -64,7 +64,7 @@ public class EnvironmentLandUseClientTest {
         Locale locale = new Locale("en", "US");
         EnvironmentLandUseClient client = new EnvironmentLandUseClient(locale);
 
-        assertEquals(URLUtility.getRootUrl(locale) + "MI/MI0803/", client.getUrl());
+        assertEquals(URLUtility.getRootUrl(locale) + "MI/MI0803/", client.getUrl().toString());
     }
 
 }

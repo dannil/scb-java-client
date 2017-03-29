@@ -31,16 +31,16 @@ public class EnvironmentClientTest {
     @Test
     public void createWithLocaleConstructor() {
         Locale locale = new Locale("sv", "SE");
-        EnvironmentClient envClient = new EnvironmentClient(locale);
+        EnvironmentClient client = new EnvironmentClient(locale);
 
-        assertEquals(locale, envClient.getLocale());
+        assertEquals(locale, client.getLocale());
     }
 
     @Test
     public void landAndWaterAreaClient() {
-        EnvironmentClient envClient = new EnvironmentClient();
+        EnvironmentClient client = new EnvironmentClient();
 
-        assertNotNull(envClient.landAndWaterArea());
+        assertNotNull(client.landAndWaterArea());
     }
 
     @Test
@@ -48,9 +48,9 @@ public class EnvironmentClientTest {
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints
         Locale locale = new Locale("en", "US");
-        EnvironmentClient envClient = new EnvironmentClient(locale);
+        EnvironmentClient client = new EnvironmentClient(locale);
 
-        assertEquals(URLUtility.getRootUrl(locale) + "MI/", envClient.getUrl());
+        assertEquals(URLUtility.getRootUrl(locale) + "MI/", client.getUrl().toString());
     }
 
 }

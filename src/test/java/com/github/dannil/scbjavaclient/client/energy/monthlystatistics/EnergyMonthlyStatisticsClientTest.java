@@ -42,7 +42,7 @@ public class EnergyMonthlyStatisticsClientTest {
         Locale locale = new Locale("en", "US");
         EnergyMonthlyStatisticsClient client = new EnergyMonthlyStatisticsClient(locale);
 
-        assertEquals(URLUtility.getRootUrl(locale) + "EN/EN0107/", client.getUrl());
+        assertEquals(URLUtility.getRootUrl(locale) + "EN/EN0107/", client.getUrl().toString());
     }
 
 }

@@ -42,7 +42,7 @@ public class PublicFinancesTaxAssessmentClientTest {
         Locale locale = new Locale("en", "US");
         PublicFinancesLocalTaxesClient client = new PublicFinancesLocalTaxesClient(locale);
 
-        assertEquals(URLUtility.getRootUrl(locale) + "OE/OE0101/", client.getUrl());
+        assertEquals(URLUtility.getRootUrl(locale) + "OE/OE0101/", client.getUrl().toString());
     }
 
 }

@@ -19,6 +19,7 @@ import java.util.Locale;
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.livingconditions.families.LivingConditionsFamiliesClient;
 import com.github.dannil.scbjavaclient.client.livingconditions.surveys.LivingConditionsSurveysClient;
+import com.github.dannil.scbjavaclient.http.EndpointURL;
 
 /**
  * <p>Client which handles living conditions data fetching.</p>
@@ -68,8 +69,8 @@ public class LivingConditionsClient extends AbstractContainerClient {
     }
 
     @Override
-    public String getUrl() {
-        return getRootUrl() + "LE/";
+    public EndpointURL getUrl() {
+        return getRootUrl().append("LE/");
     }
 
 }

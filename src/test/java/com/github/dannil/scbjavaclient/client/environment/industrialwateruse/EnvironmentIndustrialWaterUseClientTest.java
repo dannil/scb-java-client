@@ -42,7 +42,7 @@ public class EnvironmentIndustrialWaterUseClientTest {
         Locale locale = new Locale("en", "US");
         EnvironmentIndustrialWaterUseClient client = new EnvironmentIndustrialWaterUseClient(locale);
 
-        assertEquals(URLUtility.getRootUrl(locale) + "MI/MI0903/", client.getUrl());
+        assertEquals(URLUtility.getRootUrl(locale) + "MI/MI0903/", client.getUrl().toString());
     }
 
 }

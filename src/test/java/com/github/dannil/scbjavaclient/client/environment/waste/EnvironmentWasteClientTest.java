@@ -42,7 +42,7 @@ public class EnvironmentWasteClientTest {
         Locale locale = new Locale("en", "US");
         EnvironmentWasteClient client = new EnvironmentWasteClient(locale);
 
-        assertEquals(URLUtility.getRootUrl(locale) + "MI/MI0305/", client.getUrl());
+        assertEquals(URLUtility.getRootUrl(locale) + "MI/MI0305/", client.getUrl().toString());
     }
 
 }

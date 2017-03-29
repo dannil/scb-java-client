@@ -64,7 +64,7 @@ public class PublicFinancesClientTest {
         Locale locale = new Locale("en", "US");
         PublicFinancesClient client = new PublicFinancesClient(locale);
 
-        assertEquals(URLUtility.getRootUrl(locale) + "OE/", client.getUrl());
+        assertEquals(URLUtility.getRootUrl(locale) + "OE/", client.getUrl().toString());
     }
 
 }

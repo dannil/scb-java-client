@@ -50,7 +50,7 @@ public class EnergyClientTest {
         Locale locale = new Locale("en", "US");
         EnergyClient client = new EnergyClient(locale);
 
-        assertEquals(URLUtility.getRootUrl(locale) + "EN/", client.getUrl());
+        assertEquals(URLUtility.getRootUrl(locale) + "EN/", client.getUrl().toString());
     }
 
 }
