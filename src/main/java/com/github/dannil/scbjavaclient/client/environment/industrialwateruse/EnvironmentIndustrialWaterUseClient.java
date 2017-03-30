@@ -23,6 +23,7 @@ import java.util.Map;
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
+import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.environment.industrialwateruse.WaterAbstraction;
 import com.github.dannil.scbjavaclient.model.environment.industrialwateruse.WaterDischarge;
 import com.github.dannil.scbjavaclient.model.environment.industrialwateruse.WaterUse;
@@ -169,7 +170,7 @@ public class EnvironmentIndustrialWaterUseClient extends AbstractClient {
     }
 
     @Override
-    public String getUrl() {
-        return getRootUrl() + "MI/MI0903/";
+    public URLEndpoint getUrl() {
+        return getRootUrl().append("MI/MI0903/");
     }
 }

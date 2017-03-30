@@ -23,6 +23,7 @@ import java.util.Map;
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
+import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.financialmarkets.investmentfunds.OwnershipOfInvestmentFundShares;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
@@ -91,8 +92,8 @@ public class FinancialMarketsInvestmentFundsClient extends AbstractClient {
     }
 
     @Override
-    public String getUrl() {
-        return getRootUrl() + "FM/FM0403/";
+    public URLEndpoint getUrl() {
+        return getRootUrl().append("FM/FM0403/");
     }
 
 }

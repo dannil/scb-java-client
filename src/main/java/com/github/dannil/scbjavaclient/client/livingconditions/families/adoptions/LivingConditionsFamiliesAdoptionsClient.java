@@ -23,6 +23,7 @@ import java.util.Map;
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
+import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.livingconditions.families.adoptions.ChildAdoption;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
@@ -94,8 +95,8 @@ public class LivingConditionsFamiliesAdoptionsClient extends AbstractClient {
     }
 
     @Override
-    public String getUrl() {
-        return getRootUrl() + "LE/LE0102/LE0102I/";
+    public URLEndpoint getUrl() {
+        return getRootUrl().append("LE/LE0102/LE0102I/");
     }
 
 }

@@ -23,6 +23,7 @@ import java.util.Map;
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
+import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.publicfinances.governmentdebt.GovernmentDebt;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
@@ -86,8 +87,8 @@ public class PublicFinancesGovernmentDebtClient extends AbstractClient {
     }
 
     @Override
-    public String getUrl() {
-        return getRootUrl() + "OE/OE0202/";
+    public URLEndpoint getUrl() {
+        return getRootUrl().append("OE/OE0202/");
     }
 
 }

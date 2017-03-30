@@ -18,6 +18,8 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
+import com.github.dannil.scbjavaclient.http.URLEndpoint;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -32,7 +34,7 @@ public class AbstractContainerClientTest {
         }
 
         @Override
-        public String getUrl() {
+        public URLEndpoint getUrl() {
             // TODO Auto-generated method stub
             return null;
         }
@@ -70,7 +72,7 @@ public class AbstractContainerClientTest {
         Locale locale = new Locale("fr", "CA");
         AbstractContainerClient client = new DummyContainerClient(locale);
 
-        assertEquals("https://api.scb.se/OV0104/v1/doris/fr/ssd/", client.getRootUrl());
+        assertEquals("https://api.scb.se/OV0104/v1/doris/fr/ssd/", client.getRootUrl().toString());
     }
 
     @Test(expected = IllegalArgumentException.class)

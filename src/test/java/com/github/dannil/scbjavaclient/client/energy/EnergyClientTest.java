@@ -19,7 +19,7 @@ import static org.junit.Assert.assertNotNull;
 
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.utility.URLUtility;
+import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -50,7 +50,7 @@ public class EnergyClientTest {
         Locale locale = new Locale("en", "US");
         EnergyClient client = new EnergyClient(locale);
 
-        assertEquals(URLUtility.getRootUrl(locale) + "EN/", client.getUrl());
+        assertEquals(URLEndpoint.getRootUrl(locale).append("EN/"), client.getUrl());
     }
 
 }

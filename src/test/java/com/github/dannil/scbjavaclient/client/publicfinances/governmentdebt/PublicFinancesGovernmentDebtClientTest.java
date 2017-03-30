@@ -18,7 +18,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.utility.URLUtility;
+import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -42,7 +42,7 @@ public class PublicFinancesGovernmentDebtClientTest {
         Locale locale = new Locale("en", "US");
         PublicFinancesGovernmentDebtClient client = new PublicFinancesGovernmentDebtClient(locale);
 
-        assertEquals(URLUtility.getRootUrl(locale) + "OE/OE0202/", client.getUrl());
+        assertEquals(URLEndpoint.getRootUrl(locale).append("OE/OE0202/"), client.getUrl());
     }
 
 }
