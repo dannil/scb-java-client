@@ -67,6 +67,25 @@ public class URLEndpoint {
     }
 
     /**
+     * <p>Returns the table portion of this URL.</p>
+     *
+     * <p>Example: URL of
+     * <b>https://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0401/BE0401A/</b> is converted to
+     * <b>BE/BE0401/BE0401A/</b>.</p>
+     *
+     * <p>Due to speed efficiency, this method does not perform any validity check on the
+     * specified URL. Calling this method without a valid URL for the API may (and
+     * probably will) result in undefined behavior.</p>
+     *
+     * @return the table portion of this URL
+     */
+    public String getTable() {
+        String startSegment = "ssd";
+
+        return this.url.substring(this.url.indexOf(startSegment) + startSegment.length() + 1);
+    }
+
+    /**
      * <p>Generates a new URL to the API using the specified <code>Locale</code>.</p>
      *
      * <p>See {@link #toURL(String)} for implementation details.</p>

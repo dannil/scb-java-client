@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class EndpointURLTest {
+public class URLEndpointTest {
 
     @Test
     public void createWithLocaleConstructor() throws MalformedURLException {
@@ -52,6 +52,13 @@ public class EndpointURLTest {
         URLEndpoint url = new URLEndpoint("http://api.scb.se/OV0104/v1/doris/sv/ssd/");
 
         assertEquals("http://api.scb.se/OV0104/v1/doris/ger/ssd/", url.toURL("ger").toString());
+    }
+
+    @Test
+    public void getTable() {
+        URLEndpoint url = new URLEndpoint("http://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0401/BE0401A/");
+
+        assertEquals("BE/BE0401/BE0401A/", url.getTable());
     }
 
     @Test
