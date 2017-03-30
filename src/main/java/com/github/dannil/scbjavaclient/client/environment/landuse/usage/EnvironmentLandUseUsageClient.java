@@ -23,7 +23,7 @@ import java.util.Map;
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
-import com.github.dannil.scbjavaclient.http.EndpointURL;
+import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.environment.landuse.usage.ArableAndForestLand;
 import com.github.dannil.scbjavaclient.model.environment.landuse.usage.BuiltUpLand;
 import com.github.dannil.scbjavaclient.model.environment.landuse.usage.LandUseByCounty;
@@ -210,7 +210,7 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
     }
 
     @Override
-    public EndpointURL getUrl() {
+    public URLEndpoint getUrl() {
         return getRootUrl().append("MI/MI0803/MI0803A/");
     }
 

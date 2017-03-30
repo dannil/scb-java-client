@@ -20,7 +20,7 @@ import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.environment.landuse.buildings.EnvironmentLandUseBuildingsClient;
 import com.github.dannil.scbjavaclient.client.environment.landuse.planning.EnvironmentLandUsePlanningClient;
 import com.github.dannil.scbjavaclient.client.environment.landuse.usage.EnvironmentLandUseUsageClient;
-import com.github.dannil.scbjavaclient.http.EndpointURL;
+import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 /**
  * <p>Client which handles environment land use data fetching.</p>
@@ -81,7 +81,7 @@ public class EnvironmentLandUseClient extends AbstractContainerClient {
     }
 
     @Override
-    public EndpointURL getUrl() {
+    public URLEndpoint getUrl() {
         return getRootUrl().append("MI/MI0803/");
     }
 

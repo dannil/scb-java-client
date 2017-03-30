@@ -19,7 +19,7 @@ import static org.junit.Assert.assertNotNull;
 
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.utility.URLUtility;
+import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -64,7 +64,7 @@ public class EnvironmentLandUseClientTest {
         Locale locale = new Locale("en", "US");
         EnvironmentLandUseClient client = new EnvironmentLandUseClient(locale);
 
-        assertEquals(URLUtility.getRootUrl(locale) + "MI/MI0803/", client.getUrl().toString());
+        assertEquals(URLEndpoint.getRootUrl(locale).append("MI/MI0803/"), client.getUrl());
     }
 
 }

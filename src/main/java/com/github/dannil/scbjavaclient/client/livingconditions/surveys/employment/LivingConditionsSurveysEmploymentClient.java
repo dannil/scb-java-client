@@ -23,7 +23,7 @@ import java.util.Map;
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
-import com.github.dannil.scbjavaclient.http.EndpointURL;
+import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.livingconditions.surveys.employment.DistributionOfWorkingHours;
 import com.github.dannil.scbjavaclient.model.livingconditions.surveys.employment.GainfullyEmployedPersons;
 import com.github.dannil.scbjavaclient.model.livingconditions.surveys.employment.MainActivity;
@@ -218,7 +218,7 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
     }
 
     @Override
-    public EndpointURL getUrl() {
+    public URLEndpoint getUrl() {
         return getRootUrl().append("LE/LE0101/LE0101S/");
     }
 

@@ -20,7 +20,7 @@ import static org.junit.Assert.assertNull;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
-import com.github.dannil.scbjavaclient.utility.URLUtility;
+import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -65,7 +65,7 @@ public class POSTRequesterTest {
     public void doRequestIllegalStateNullPayload() throws IOException {
         POSTRequester post = new POSTRequester();
 
-        String response = post.getBody(URLUtility.getRootUrl() + "BE/BE0701/MedelAlderNY");
+        String response = post.getBody(URLEndpoint.getRootUrl() + "BE/BE0701/MedelAlderNY");
 
         assertNull(response);
     }

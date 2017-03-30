@@ -32,11 +32,10 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.exception.SCBClientNotFoundException;
 import com.github.dannil.scbjavaclient.format.json.JsonAPIConfigTableFormat;
 import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
-import com.github.dannil.scbjavaclient.http.EndpointURL;
+import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.http.requester.AbstractRequester;
 import com.github.dannil.scbjavaclient.http.requester.GETRequester;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
-import com.github.dannil.scbjavaclient.utility.URLUtility;
 
 /**
  * <p>Root client for the client hierarchy.</p>
@@ -239,7 +238,7 @@ public class SCBClient extends AbstractContainerClient {
      * @return true if the <code>Locale</code> is supported, otherwise false
      */
     public static boolean isSupportedLocale(Locale locale) {
-        String url = URLUtility.getRootUrl(locale);
+        String url = URLEndpoint.getRootUrl(locale).toString();
 
         AbstractRequester get = new GETRequester();
         try {
@@ -251,8 +250,8 @@ public class SCBClient extends AbstractContainerClient {
     }
 
     @Override
-    public EndpointURL getUrl() {
-        return new EndpointURL(APIConstants.ROOT_URL);
+    public URLEndpoint getUrl() {
+        return new URLEndpoint(APIConstants.ROOT_URL);
     }
 
 }

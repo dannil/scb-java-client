@@ -18,12 +18,15 @@ import java.net.URL;
 import java.util.Locale;
 import java.util.Objects;
 
+import com.github.dannil.scbjavaclient.constants.APIConstants;
+
 /**
- * <p>Class which encapsulates the API URL, and enables relevant operations on this URL.</p>
+ * <p>Class which encapsulates the API URL, and enables relevant operations on this
+ * URL.</p>
  *
  * @since 0.3.0
  */
-public class EndpointURL {
+public class URLEndpoint {
 
     private String url;
 
@@ -33,7 +36,7 @@ public class EndpointURL {
      * @param url
      *            the URL
      */
-    public EndpointURL(URL url) {
+    public URLEndpoint(URL url) {
         this(url.toString());
     }
 
@@ -43,7 +46,7 @@ public class EndpointURL {
      * @param url
      *            the URL
      */
-    public EndpointURL(String url) {
+    public URLEndpoint(String url) {
         this.url = url;
 
         char[] chars = this.url.toCharArray();
@@ -57,10 +60,10 @@ public class EndpointURL {
      *
      * @param str
      *            the string to append
-     * @return a {@link EndpointURL} with the given string appended
+     * @return a {@link URLEndpoint} with the given string appended
      */
-    public EndpointURL append(String str) {
-        return new EndpointURL(this.url + str);
+    public URLEndpoint append(String str) {
+        return new URLEndpoint(this.url + str);
     }
 
     /**
@@ -70,9 +73,9 @@ public class EndpointURL {
      *
      * @param locale
      *            the <code>Locale</code> to use
-     * @return the modified URL
+     * @return an {@link URLEndpoint} representing the URL
      */
-    public EndpointURL toURL(Locale locale) {
+    public URLEndpoint toURL(Locale locale) {
         return toURL(locale.getLanguage());
     }
 
@@ -102,9 +105,9 @@ public class EndpointURL {
      *
      * @param language
      *            the language to use
-     * @return a {@link EndpointURL} representing the modified URL
+     * @return an {@link URLEndpoint} representing the modified URL
      */
-    public EndpointURL toURL(String language) {
+    public URLEndpoint toURL(String language) {
         // Specify the starting point. For this implementation, the starting
         // point is the segment preceding the language tag segment in the URL
         String startSegment = "doris";
@@ -119,7 +122,7 @@ public class EndpointURL {
         StringBuilder builder = new StringBuilder(this.url);
         builder.replace(start, end, language);
 
-        return new EndpointURL(builder.toString());
+        return new URLEndpoint(builder.toString());
     }
 
     @Override
@@ -135,16 +138,41 @@ public class EndpointURL {
         if (obj == null) {
             return false;
         }
-        if (!(obj instanceof EndpointURL)) {
+        if (!(obj instanceof URLEndpoint)) {
             return false;
         }
-        EndpointURL other = (EndpointURL) obj;
+        URLEndpoint other = (URLEndpoint) obj;
         return Objects.equals(this.url, other.url);
     }
 
     @Override
     public String toString() {
         return this.url;
+    }
+
+    /**
+     * <p>Returns the root URL for the API.</p>
+     *
+     * @return an {@link URLEndpoint} representing the
+     *         {@link com.github.dannil.scbjavaclient.constants.APIConstants#ROOT_URL
+     *         ROOT_URL}
+     */
+    public static URLEndpoint getRootUrl() {
+        return new URLEndpoint(APIConstants.ROOT_URL);
+    }
+
+    /**
+     * <p>Returns the root URL for the API for a specific <code>Locale</code>.</p>
+     *
+     * @param locale
+     *            the <code>Locale</code>
+     * @return an {@link URLEndpoint} representing the
+     *         {@link com.github.dannil.scbjavaclient.constants.APIConstants#ROOT_URL
+     *         ROOT_URL} with a converted language tag segment matching the specified
+     *         <code>Locale</code>
+     */
+    public static URLEndpoint getRootUrl(Locale locale) {
+        return new URLEndpoint(APIConstants.ROOT_URL).toURL(locale);
     }
 
 }

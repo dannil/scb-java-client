@@ -23,7 +23,7 @@ import java.util.Map;
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
-import com.github.dannil.scbjavaclient.http.EndpointURL;
+import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.population.density.Density;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
@@ -90,7 +90,7 @@ public class PopulationDensityClient extends AbstractClient {
     }
 
     @Override
-    public EndpointURL getUrl() {
+    public URLEndpoint getUrl() {
         return getRootUrl().append("BE/BE0101/BE0101C/");
     }
 

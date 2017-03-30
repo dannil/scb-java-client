@@ -18,7 +18,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.utility.URLUtility;
+import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -42,7 +42,7 @@ public class FinancialMarketsShareholdersClientTest {
         Locale locale = new Locale("en", "US");
         FinancialMarketsShareholdersClient client = new FinancialMarketsShareholdersClient(locale);
 
-        assertEquals(URLUtility.getRootUrl(locale) + "FM/FM0201/", client.getUrl().toString());
+        assertEquals(URLEndpoint.getRootUrl(locale).append("FM/FM0201/"), client.getUrl());
     }
 
 }

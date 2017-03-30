@@ -18,7 +18,7 @@ import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.exception.SCBClientNotFoundException;
-import com.github.dannil.scbjavaclient.http.EndpointURL;
+import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.http.requester.AbstractRequester;
 import com.github.dannil.scbjavaclient.http.requester.GETRequester;
 import com.github.dannil.scbjavaclient.http.requester.POSTRequester;
@@ -102,8 +102,8 @@ public abstract class AbstractClient {
      *
      * @return the URL representing the entry point for the API
      */
-    protected EndpointURL getRootUrl() {
-        return new EndpointURL(APIConstants.ROOT_URL).toURL(this.locale);
+    protected URLEndpoint getRootUrl() {
+        return new URLEndpoint(APIConstants.ROOT_URL).toURL(this.locale);
     }
 
     /**
@@ -148,7 +148,7 @@ public abstract class AbstractClient {
             return requester.getBody(url);
         } catch (SCBClientNotFoundException e) {
             // HTTP code 404, call the API again with the fallback language
-            return requester.getBody(new EndpointURL(url).toURL(APIConstants.FALLBACK_LOCALE).toString());
+            return requester.getBody(new URLEndpoint(url).toURL(APIConstants.FALLBACK_LOCALE).toString());
         }
     }
 
@@ -157,6 +157,6 @@ public abstract class AbstractClient {
      *
      * @return the URL endpoint for this client
      */
-    public abstract EndpointURL getUrl();
+    public abstract URLEndpoint getUrl();
 
 }

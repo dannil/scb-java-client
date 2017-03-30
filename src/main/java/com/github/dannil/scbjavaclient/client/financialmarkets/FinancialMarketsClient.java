@@ -21,7 +21,7 @@ import com.github.dannil.scbjavaclient.client.financialmarkets.institutions.Fina
 import com.github.dannil.scbjavaclient.client.financialmarkets.investmentfunds.FinancialMarketsInvestmentFundsClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.securities.FinancialMarketsSecuritiesClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.shareholders.FinancialMarketsShareholdersClient;
-import com.github.dannil.scbjavaclient.http.EndpointURL;
+import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 /**
  * <p>Client which handles financial markets data fetching.</p>
@@ -94,7 +94,7 @@ public class FinancialMarketsClient extends AbstractContainerClient {
     }
 
     @Override
-    public EndpointURL getUrl() {
+    public URLEndpoint getUrl() {
         return getRootUrl().append("FM/");
     }
 

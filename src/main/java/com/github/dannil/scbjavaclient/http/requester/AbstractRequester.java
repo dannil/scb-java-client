@@ -29,8 +29,8 @@ import java.util.Map.Entry;
 import java.util.Properties;
 
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
+import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.utility.HttpUtility;
-import com.github.dannil.scbjavaclient.utility.URLUtility;
 
 import org.apache.commons.io.input.BOMInputStream;
 import org.apache.logging.log4j.Level;
@@ -183,7 +183,7 @@ public abstract class AbstractRequester {
         // responsibility to a client. The client knows what locale is currently in use
         // and the method can therefore be rewritten to either accept the locale as a
         // parameter or the input URL is converted before calling this method.
-        return getBody(URLUtility.getRootUrl() + table);
+        return getBody(URLEndpoint.getRootUrl().toString() + table);
     }
 
     /**
