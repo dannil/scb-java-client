@@ -15,7 +15,9 @@
 package com.github.dannil.scbjavaclient.format.json;
 
 import java.io.IOException;
+import java.util.List;
 
+import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
@@ -39,12 +41,39 @@ public class JsonConverter {
     }
 
     /**
-     * <p>Getter for mapper.</p>
+     * <p>Converts the specified object to the specified class.</p>
      *
-     * @return the mapper
+     * @param fromValue
+     *            the object to convert
+     * @param toValueType
+     *            the class to convert to
+     * @param <T>
+     *            the data type of the list
+     * @return a converted object
      */
-    public ObjectMapper getMapper() {
-        return this.mapper;
+    public <T> T convertValue(Object fromValue, Class<T> toValueType) {
+        return this.mapper.convertValue(fromValue, toValueType);
+    }
+
+    /**
+     * <p>Converts the JSON string into a list of the specified class.</p>
+     *
+     * @param json
+     *            the JSON string to convert
+     * @param clazz
+     *            the class to convert each JSON entry to
+     * @param <T>
+     *            the data type of the list
+     * @return a list of elements, which type is the specified class. Each element
+     *         represents the corresponding entry in the JSON
+     */
+    public <T> List<T> toListOf(String json, Class<T> clazz) {
+        try {
+            JavaType type = this.mapper.getTypeFactory().constructCollectionType(List.class, clazz);
+            return this.mapper.readValue(json.toString(), type);
+        } catch (IOException e) {
+            throw new SCBClientParsingException(e);
+        }
     }
 
     /**
