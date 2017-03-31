@@ -36,6 +36,11 @@ public final class APIConstants {
             + "/ssd/";
 
     /**
+     * <p>Constant for age code.</p>
+     */
+    public static final String AGE_CODE = "Alder";
+
+    /**
      * <p>Constant for contents code.</p>
      */
     public static final String CONTENTSCODE_CODE = "ContentsCode";
