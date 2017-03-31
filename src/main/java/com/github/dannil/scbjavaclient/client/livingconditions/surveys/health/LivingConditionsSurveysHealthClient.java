@@ -23,6 +23,7 @@ import java.util.Map;
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
+import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
@@ -179,8 +180,8 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getDoctorAndDentistAppointments(Collection<String> indicators,
-            Collection<String> ages, Collection<Integer> sexes, Collection<String> periods) {
+    public List<ResponseModel> getDoctorAndDentistAppointments(Collection<String> indicators, Collection<String> ages,
+            Collection<Integer> sexes, Collection<String> periods) {
         return generate(indicators, ages, sexes, periods, "LE0101H19");
     }
 
@@ -263,10 +264,11 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
      *            the periods
      * @param table
      *            the table
-     * @return a <code>List</code> of {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     * @return a <code>List</code> of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      */
-    private List<ResponseModel> generate(Collection<String> indicators,
-            Collection<String> ages, Collection<Integer> sexes, Collection<String> periods, String table) {
+    private List<ResponseModel> generate(Collection<String> indicators, Collection<String> ages,
+            Collection<Integer> sexes, Collection<String> periods, String table) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("Indikator", indicators);
         mappings.put("Alder", ages);
@@ -280,8 +282,8 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
     }
 
     @Override
-    public String getUrl() {
-        return getRootUrl() + "LE/LE0101/LE0101H/";
+    public URLEndpoint getUrl() {
+        return getRootUrl().append("LE/LE0101/LE0101H/");
     }
 
 }

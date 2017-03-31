@@ -23,6 +23,7 @@ import java.util.Map;
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
+import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
@@ -124,7 +125,8 @@ public class EnergyMonthlyStatisticsClient extends AbstractClient {
      *            the months
      * @param table
      *            the table
-     * @return a <code>List</code> of {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     * @return a <code>List</code> of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      */
     private List<ResponseModel> generate(Collection<Integer> commodities, Collection<String> userCategories,
             Collection<String> months, String table) {
@@ -140,8 +142,8 @@ public class EnergyMonthlyStatisticsClient extends AbstractClient {
     }
 
     @Override
-    public String getUrl() {
-        return getRootUrl() + "EN/EN0107/";
+    public URLEndpoint getUrl() {
+        return getRootUrl().append("EN/EN0107/");
     }
 
 }

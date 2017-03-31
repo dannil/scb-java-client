@@ -92,19 +92,19 @@ public class ResponseModelTest {
 
         assertEquals(this.values, model.getValues());
     }
-    
+
     @Test
     public void getVariable() {
         ResponseModel model = new ResponseModel(this.variables, this.values);
-        
+
         assertEquals(model.getVariable("k1"), "value1");
     }
-    
+
     @Test
     public void setVariable() {
         ResponseModel model = new ResponseModel(this.variables, this.values);
         model.setVariable("k1", "newvalue1");
-        
+
         assertEquals("newvalue1", model.getVariable("k1"));
     }
 

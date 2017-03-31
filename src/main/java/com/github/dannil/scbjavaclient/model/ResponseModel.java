@@ -182,10 +182,10 @@ public class ResponseModel {
         return builder.toString();
     }
 
-//    private static ResponseModel fromJson(String json) {
-//        // JsonCustomResponseFormat format = new JsonCustomResponseFormat(json);
-//        // return format.toListOf(ResponseModel.class);
-//        return null;
-//    }
+    // private static ResponseModel fromJson(String json) {
+    // // JsonCustomResponseFormat format = new JsonCustomResponseFormat(json);
+    // // return format.toListOf(ResponseModel.class);
+    // return null;
+    // }
 
 }

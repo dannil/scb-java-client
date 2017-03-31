@@ -14,15 +14,12 @@
 
 package com.github.dannil.scbjavaclient.format.json;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
 
 /**
  * <p>Class which encapsulates behavior for the custom JSON response format. Note that
@@ -56,7 +53,7 @@ public final class JsonCustomResponseFormat {
         this();
         this.entries = new ArrayList<>();
         this.json = this.converter.toNode(json);
-        this.json = this.converter.getMapper().convertValue(getEntries(), JsonNode.class);
+        this.json = this.converter.convertValue(getEntries(), JsonNode.class);
     }
 
     /**
@@ -128,13 +125,7 @@ public final class JsonCustomResponseFormat {
      *         represents the corresponding entry in the JSON
      */
     public <T> List<T> toListOf(Class<T> clazz) {
-        try {
-            JavaType type = this.converter.getMapper().getTypeFactory().constructCollectionType(List.class, clazz);
-
-            return this.converter.getMapper().readValue(this.json.toString(), type);
-        } catch (IOException e) {
-            throw new SCBClientParsingException(e);
-        }
+        return this.converter.toListOf(this.json.toString(), clazz);
     }
 
     @Override

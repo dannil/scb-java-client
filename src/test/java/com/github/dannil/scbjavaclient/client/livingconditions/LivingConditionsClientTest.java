@@ -19,7 +19,7 @@ import static org.junit.Assert.assertNotNull;
 
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.utility.URLUtility;
+import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -57,7 +57,7 @@ public class LivingConditionsClientTest {
         Locale locale = new Locale("en", "US");
         LivingConditionsClient client = new LivingConditionsClient(locale);
 
-        assertEquals(URLUtility.getRootUrl(locale) + "LE/", client.getUrl());
+        assertEquals(URLEndpoint.getRootUrl(locale).append("LE/"), client.getUrl());
     }
 
 }

@@ -77,7 +77,7 @@ public class POSTRequester extends AbstractRequester {
         if (this.query == null) {
             throw new IllegalStateException("Payload is null");
         }
-        LOGGER.info("POST: {}, {}", url, query);
+        LOGGER.info("POST: {}, {}", url, this.query);
         try {
             URLConnection connection = getConnection(url);
             connection.setDoOutput(true);

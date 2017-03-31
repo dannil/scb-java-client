@@ -23,6 +23,7 @@ import java.util.Map;
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
+import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
@@ -186,7 +187,8 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
      *            the years
      * @param table
      *            the table
-     * @return a <code>List</code> of {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     * @return a <code>List</code> of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      */
     private List<ResponseModel> generate(Collection<String> regions, Collection<Integer> categories,
             Collection<Integer> years, String table) {
@@ -202,8 +204,8 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
     }
 
     @Override
-    public String getUrl() {
-        return getRootUrl() + "MI/MI0803/MI0803A/";
+    public URLEndpoint getUrl() {
+        return getRootUrl().append("MI/MI0803/MI0803A/");
     }
 
 }

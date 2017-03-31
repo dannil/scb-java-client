@@ -23,6 +23,7 @@ import java.util.Map;
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
+import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
@@ -82,7 +83,7 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
             Collection<Integer> sexes, Collection<String> periods) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("HuvSyss", activities);
-        mappings.put("Alder", ages);
+        mappings.put(APIConstants.AGE_CODE, ages);
         mappings.put("Kon", sexes);
         mappings.put(APIConstants.TIME_CODE, periods);
 
@@ -122,7 +123,7 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
             Collection<Integer> sexes, Collection<String> periods) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("Heltiddeltid", fullAndPartTimes);
-        mappings.put("Alder", ages);
+        mappings.put(APIConstants.AGE_CODE, ages);
         mappings.put("Kon", sexes);
         mappings.put(APIConstants.TIME_CODE, periods);
 
@@ -162,7 +163,7 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
             Collection<Integer> sexes, Collection<String> periods) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("AnstTyp", types);
-        mappings.put("Alder", ages);
+        mappings.put(APIConstants.AGE_CODE, ages);
         mappings.put("Kon", sexes);
         mappings.put(APIConstants.TIME_CODE, periods);
 
@@ -203,7 +204,7 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
             Collection<String> ages, Collection<Integer> sexes, Collection<String> periods) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("Indikator", indicators);
-        mappings.put("Alder", ages);
+        mappings.put(APIConstants.AGE_CODE, ages);
         mappings.put("Kon", sexes);
         mappings.put(APIConstants.TIME_CODE, periods);
 
@@ -214,8 +215,8 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
     }
 
     @Override
-    public String getUrl() {
-        return getRootUrl() + "LE/LE0101/LE0101S/";
+    public URLEndpoint getUrl() {
+        return getRootUrl().append("LE/LE0101/LE0101S/");
     }
 
 }

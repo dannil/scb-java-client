@@ -23,6 +23,7 @@ import java.util.Map;
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
+import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
@@ -136,8 +137,8 @@ public class PopulationPartnershipClient extends AbstractClient {
     }
 
     @Override
-    public String getUrl() {
-        return getRootUrl() + "BE/BE0101/BE0101O/";
+    public URLEndpoint getUrl() {
+        return getRootUrl().append("BE/BE0101/BE0101O/");
     }
 
 }

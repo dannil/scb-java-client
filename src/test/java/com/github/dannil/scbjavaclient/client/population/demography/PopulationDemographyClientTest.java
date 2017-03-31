@@ -18,7 +18,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.utility.URLUtility;
+import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,19 +30,19 @@ public class PopulationDemographyClientTest {
     @Test
     public void createWithLocaleConstructor() {
         Locale locale = new Locale("sv", "SE");
-        PopulationDemographyClient populationDemographyClient = new PopulationDemographyClient(locale);
+        PopulationDemographyClient client = new PopulationDemographyClient(locale);
 
-        assertEquals(locale, populationDemographyClient.getLocale());
+        assertEquals(locale, client.getLocale());
     }
 
     @Test
     public void setLocale() {
         Locale locale = new Locale("sv", "SE");
-        PopulationDemographyClient populationDemographyClient = new PopulationDemographyClient();
+        PopulationDemographyClient client = new PopulationDemographyClient();
 
-        populationDemographyClient.setLocale(locale);
+        client.setLocale(locale);
 
-        assertEquals(locale, populationDemographyClient.getLocale());
+        assertEquals(locale, client.getLocale());
     }
 
     @Test
@@ -50,9 +50,9 @@ public class PopulationDemographyClientTest {
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints
         Locale locale = new Locale("en", "US");
-        PopulationDemographyClient populationDemographyClient = new PopulationDemographyClient(locale);
+        PopulationDemographyClient client = new PopulationDemographyClient(locale);
 
-        assertEquals(URLUtility.getRootUrl(locale) + "BE/BE0701/", populationDemographyClient.getUrl());
+        assertEquals(URLEndpoint.getRootUrl(locale).append("BE/BE0701/"), client.getUrl());
     }
 
 }
