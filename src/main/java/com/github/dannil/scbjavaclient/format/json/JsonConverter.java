@@ -70,7 +70,7 @@ public class JsonConverter {
     public <T> List<T> toListOf(String json, Class<T> clazz) {
         try {
             JavaType type = this.mapper.getTypeFactory().constructCollectionType(List.class, clazz);
-            return this.mapper.readValue(json.toString(), type);
+            return this.mapper.readValue(json, type);
         } catch (IOException e) {
             throw new SCBClientParsingException(e);
         }
