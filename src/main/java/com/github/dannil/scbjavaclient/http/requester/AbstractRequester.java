@@ -29,7 +29,6 @@ import java.util.Map.Entry;
 import java.util.Properties;
 
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.utility.HttpUtility;
 
 import org.apache.commons.io.input.BOMInputStream;
@@ -160,31 +159,6 @@ public abstract class AbstractRequester {
      * @return the response
      */
     public abstract String getBody(String url);
-
-    /**
-     * <p>Return the content from the specified table.</p>
-     *
-     * @param table
-     *            the table to fetch the content from
-     * @return the content of the table
-     */
-    public String getBodyFromTable(String table) {
-        // #NOTE#
-        //
-        // This needs to be rewritten to handle different locale. A good solution is hard
-        // to find right now since this class should not need to worry about the current
-        // locale, as methods calling this method (getBodyFromTable) should really
-        // convert the input language. This solution isn't really implementable right
-        // now as the only method calling this method is getInputs() in the model.
-        // However, the model doesn't (and should NOT) have any idea about the locale.
-        //
-        // A solution to this is to implement issue #12 on GitHub
-        // (https://github.com/dannil/scb-java-client/issues/12) which transfers the
-        // responsibility to a client. The client knows what locale is currently in use
-        // and the method can therefore be rewritten to either accept the locale as a
-        // parameter or the input URL is converted before calling this method.
-        return getBody(URLEndpoint.getRootUrl().toString() + table);
-    }
 
     /**
      * <p>Getter for charset.</p>
