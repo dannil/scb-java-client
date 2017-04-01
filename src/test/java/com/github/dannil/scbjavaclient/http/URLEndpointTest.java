@@ -24,6 +24,15 @@ public class URLEndpointTest {
     }
 
     @Test
+    public void append() {
+        URLEndpoint url = new URLEndpoint("http://api.scb.se/OV0104/v1/doris/sv/ssd/BE/");
+
+        url = url.append("BE0401/BE0401A/");
+
+        assertEquals(new URLEndpoint("http://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0401/BE0401A/"), url);
+    }
+
+    @Test
     public void appendTrailingSlash() {
         URLEndpoint url = new URLEndpoint("http://api.scb.se/OV0104/v1/doris/sv/ssd/AM");
 
