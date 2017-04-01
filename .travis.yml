@@ -16,7 +16,7 @@ matrix:
       jdk: oraclejdk7
     - os: linux
       jdk: oraclejdk8
-      # SonarQube addon needs to run with at least Java 8
+      # SonarQube needs to be run with at least Java 8
       script:
         - mvn install -Dmaven.javadoc.skip=true -B -V
         # Make sure we are on dev for running SonarQube
