@@ -22,10 +22,8 @@ import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
-import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
  * <p>Client which handles financial markets investment funds data fetching.</p>
@@ -85,10 +83,7 @@ public class FinancialMarketsInvestmentFundsClient extends AbstractClient {
         mappings.put("Sektor", sectors);
         mappings.put(APIConstants.TIME_CODE, quarters);
 
-        String response = doPostRequest(getUrl() + "VPfondKv", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(ResponseModel.class);
+        return getResponseModels("VPfondKv", mappings);
     }
 
     @Override

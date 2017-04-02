@@ -85,10 +85,7 @@ public class PopulationDemographyClient extends AbstractClient {
         mappings.put("Kon", genders);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        String response = doPostRequest(getUrl() + "FruktsamhetSumNy", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(ResponseModel.class);
+        return getResponseModels("FruktsamhetSumNy", mappings);
     }
 
     /**
