@@ -22,10 +22,8 @@ import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
-import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
  * <p>Client which handles financial markets shareholders data fetching.</p>
@@ -80,10 +78,7 @@ public class FinancialMarketsShareholdersClient extends AbstractClient {
         mappings.put(APIConstants.SECTOR_CODE, sectors);
         mappings.put(APIConstants.TIME_CODE, halfYears);
 
-        String response = doPostRequest(getUrl() + "AktieAgarAr", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(ResponseModel.class);
+        return getResponseModels("AktieAgarAr", mappings);
     }
 
     /**
@@ -120,10 +115,7 @@ public class FinancialMarketsShareholdersClient extends AbstractClient {
         mappings.put("Marknadsplats", marketplaces);
         mappings.put(APIConstants.TIME_CODE, halfYears);
 
-        String response = doPostRequest(getUrl() + "AktieAgarMarknad", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(ResponseModel.class);
+        return getResponseModels("AktieAgarMarknad", mappings);
     }
 
     /**
@@ -160,10 +152,7 @@ public class FinancialMarketsShareholdersClient extends AbstractClient {
         mappings.put("Aktieserie", series);
         mappings.put(APIConstants.TIME_CODE, halfYears);
 
-        String response = doPostRequest(getUrl() + "AktieAgarSerie", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(ResponseModel.class);
+        return getResponseModels("AktieAgarSerie", mappings);
     }
 
     /**
@@ -196,10 +185,7 @@ public class FinancialMarketsShareholdersClient extends AbstractClient {
         mappings.put("Agarland", countries);
         mappings.put(APIConstants.TIME_CODE, halfYears);
 
-        String response = doPostRequest(getUrl() + "AktieAgarUtland", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(ResponseModel.class);
+        return getResponseModels("AktieAgarUtland", mappings);
     }
 
     @Override

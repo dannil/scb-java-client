@@ -22,10 +22,8 @@ import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
-import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
  * <p>Client which handles living conditions surveys employment data fetching.</p>
@@ -87,10 +85,7 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
         mappings.put("Kon", sexes);
         mappings.put(APIConstants.TIME_CODE, periods);
 
-        String response = doPostRequest(getUrl() + "LE01012013S01", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(ResponseModel.class);
+        return getResponseModels("LE01012013S01", mappings);
     }
 
     /**
@@ -127,10 +122,7 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
         mappings.put("Kon", sexes);
         mappings.put(APIConstants.TIME_CODE, periods);
 
-        String response = doPostRequest(getUrl() + "LE01012013S07", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(ResponseModel.class);
+        return getResponseModels("LE01012013S07", mappings);
     }
 
     /**
@@ -167,10 +159,7 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
         mappings.put("Kon", sexes);
         mappings.put(APIConstants.TIME_CODE, periods);
 
-        String response = doPostRequest(getUrl() + "LE01012013S19", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(ResponseModel.class);
+        return getResponseModels("LE01012013S19", mappings);
     }
 
     /**
@@ -208,10 +197,7 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
         mappings.put("Kon", sexes);
         mappings.put(APIConstants.TIME_CODE, periods);
 
-        String response = doPostRequest(getUrl() + "LE01012013A19", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(ResponseModel.class);
+        return getResponseModels("LE01012013A19", mappings);
     }
 
     @Override

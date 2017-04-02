@@ -22,10 +22,8 @@ import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
-import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
  * <p>Client which handles living conditions families siblings data fetching.</p>
@@ -90,10 +88,7 @@ public class LivingConditionsFamiliesSiblingsClient extends AbstractClient {
         mappings.put("Familjetyp", familyTypes);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        String response = doPostRequest(getUrl() + "LE0102T22", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(ResponseModel.class);
+        return getResponseModels("LE0102T22", mappings);
     }
 
     @Override

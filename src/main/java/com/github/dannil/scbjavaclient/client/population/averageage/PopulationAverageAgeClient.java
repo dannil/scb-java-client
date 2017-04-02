@@ -22,10 +22,8 @@ import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
-import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
  * <p>Client which handles population average age data fetching.</p>
@@ -84,10 +82,7 @@ public class PopulationAverageAgeClient extends AbstractClient {
         mappings.put("Kon", genders);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        String response = doPostRequest(getUrl() + "BefolkningMedelAlder", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(ResponseModel.class);
+        return getResponseModels("BefolkningMedelAlder", mappings);
     }
 
     @Override

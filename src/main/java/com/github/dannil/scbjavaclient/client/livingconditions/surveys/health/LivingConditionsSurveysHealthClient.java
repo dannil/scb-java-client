@@ -22,10 +22,8 @@ import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
-import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
  * <p>Client which handles living conditions surveys health data fetching.</p>
@@ -275,10 +273,7 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
         mappings.put("Kon", sexes);
         mappings.put(APIConstants.TIME_CODE, periods);
 
-        String response = doPostRequest(getUrl() + table, QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(ResponseModel.class);
+        return getResponseModels(table, mappings);
     }
 
     @Override

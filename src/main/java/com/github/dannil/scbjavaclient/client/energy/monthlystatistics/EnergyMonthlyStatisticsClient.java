@@ -22,10 +22,8 @@ import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
-import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
  * <p>Client which handles energy monthly statistics data fetching.</p>
@@ -135,10 +133,7 @@ public class EnergyMonthlyStatisticsClient extends AbstractClient {
         mappings.put("Forbrukarkat", userCategories);
         mappings.put(APIConstants.TIME_CODE, months);
 
-        String response = doPostRequest(getUrl() + table, QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(ResponseModel.class);
+        return getResponseModels(table, mappings);
     }
 
     @Override

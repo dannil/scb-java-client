@@ -22,10 +22,8 @@ import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
-import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
  * <p>Client which handles environment industrial water use data fetching.</p>
@@ -84,10 +82,7 @@ public class EnvironmentIndustrialWaterUseClient extends AbstractClient {
         mappings.put("VattenTyp", type);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        String response = doPostRequest(getUrl() + "UttagVatten", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(ResponseModel.class);
+        return getResponseModels("UttagVatten", mappings);
     }
 
     /**
@@ -123,10 +118,7 @@ public class EnvironmentIndustrialWaterUseClient extends AbstractClient {
         mappings.put("VattenTyp", type);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        String response = doPostRequest(getUrl() + "VattenAnv", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(ResponseModel.class);
+        return getResponseModels("VattenAnv", mappings);
     }
 
     /**
@@ -162,10 +154,7 @@ public class EnvironmentIndustrialWaterUseClient extends AbstractClient {
         mappings.put("Recipient", type);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        String response = doPostRequest(getUrl() + "UtslappVatten", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(ResponseModel.class);
+        return getResponseModels("UtslappVatten", mappings);
     }
 
     @Override
