@@ -24,8 +24,7 @@ import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
-import com.github.dannil.scbjavaclient.model.energy.annualstatistics.ConsumptionOfFuelsInElectricityGeneration;
-import com.github.dannil.scbjavaclient.model.energy.annualstatistics.ElectricitySupply;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
@@ -56,14 +55,13 @@ public class EnergyAnnualStatisticsClient extends AbstractClient {
      * <p>Fetch all consumption of fuels in electricity generation data.</p>
      *
      * @return the consumption of fuels in electricity generation data wrapped in a list
-     *         of
-     *         {@link com.github.dannil.scbjavaclient.model.energy.annualstatistics.ConsumptionOfFuelsInElectricityGeneration
-     *         ConsumptionOfFuelsInElectricityGeneration} objects
+     *         of {@link com.github.dannil.scbjavaclient.model.ResponseModel
+     *         ResponseModel} objects
      *
      * @see #getConsumptionOfFuelsInElectricityGeneration(Collection, Collection,
      *      Collection)
      */
-    public List<ConsumptionOfFuelsInElectricityGeneration> getConsumptionOfFuelsInElectricityGeneration() {
+    public List<ResponseModel> getConsumptionOfFuelsInElectricityGeneration() {
         return getConsumptionOfFuelsInElectricityGeneration(null, null, null);
     }
 
@@ -76,13 +74,12 @@ public class EnergyAnnualStatisticsClient extends AbstractClient {
      *            the fuels to fetch data for
      * @param years
      *            the years to fetch data for
-     * @return the consumption of fuels in electricity generation data wrapped in a list
-     *         of
-     *         {@link com.github.dannil.scbjavaclient.model.energy.annualstatistics.ConsumptionOfFuelsInElectricityGeneration
-     *         ConsumptionOfFuelsInElectricityGeneration} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<ConsumptionOfFuelsInElectricityGeneration> getConsumptionOfFuelsInElectricityGeneration(
-            Collection<String> powerPlants, Collection<String> fuels, Collection<Integer> years) {
+    public List<ResponseModel> getConsumptionOfFuelsInElectricityGeneration(Collection<String> powerPlants,
+            Collection<String> fuels, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("Prodslag", powerPlants);
         mappings.put("Bransle", fuels);
@@ -91,19 +88,19 @@ public class EnergyAnnualStatisticsClient extends AbstractClient {
         String response = doPostRequest(getUrl() + "BrforelAR", QueryBuilder.build(mappings));
 
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(ConsumptionOfFuelsInElectricityGeneration.class);
+        return format.toListOf(ResponseModel.class);
     }
 
     /**
      * <p>Fetch all electricity supply data.</p>
      *
-     * @return the electricity supply data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.energy.annualstatistics.ElectricitySupply
-     *         ElectricitySupply} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getElectricitySupply(Collection, Collection)
      */
-    public List<ElectricitySupply> getElectricitySupply() {
+    public List<ResponseModel> getElectricitySupply() {
         return getElectricitySupply(null, null);
     }
 
@@ -114,11 +111,11 @@ public class EnergyAnnualStatisticsClient extends AbstractClient {
      *            the power plants to fetch data for
      * @param years
      *            the years to fetch data for
-     * @return the electricity supply data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.energy.annualstatistics.ElectricitySupply
-     *         ElectricitySupply} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<ElectricitySupply> getElectricitySupply(Collection<String> powerPlants, Collection<Integer> years) {
+    public List<ResponseModel> getElectricitySupply(Collection<String> powerPlants, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("Prodslag", powerPlants);
         mappings.put(APIConstants.TIME_CODE, years);
@@ -126,7 +123,7 @@ public class EnergyAnnualStatisticsClient extends AbstractClient {
         String response = doPostRequest(getUrl() + "ElProdAr", QueryBuilder.build(mappings));
 
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(ElectricitySupply.class);
+        return format.toListOf(ResponseModel.class);
     }
 
     @Override

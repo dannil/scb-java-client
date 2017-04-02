@@ -24,7 +24,7 @@ import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
-import com.github.dannil.scbjavaclient.model.financialmarkets.institutions.MonetaryAssets;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
@@ -54,13 +54,13 @@ public class FinancialMarketsInstitutionsClient extends AbstractClient {
     /**
      * <p>Fetch all institution assets data.</p>
      *
-     * @return the institution assets data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.financialmarkets.institutions.MonetaryAssets
-     *         MonetaryAssets} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getAssets(Collection, Collection, Collection, Collection)
      */
-    public List<MonetaryAssets> getAssets() {
+    public List<ResponseModel> getAssets() {
         return getAssets(null, null, null, null);
     }
 
@@ -75,11 +75,11 @@ public class FinancialMarketsInstitutionsClient extends AbstractClient {
      *            the currencies to fetch data for
      * @param months
      *            the months to fetch data for
-     * @return the institution data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.financialmarkets.institutions.MonetaryAssets
-     *         MonetaryAssets} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<MonetaryAssets> getAssets(Collection<String> institutions, Collection<String> items,
+    public List<ResponseModel> getAssets(Collection<String> institutions, Collection<String> items,
             Collection<String> currencies, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("Institut", institutions);
@@ -90,7 +90,7 @@ public class FinancialMarketsInstitutionsClient extends AbstractClient {
         String response = doPostRequest(getUrl() + "MFIM1", QueryBuilder.build(mappings));
 
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(MonetaryAssets.class);
+        return format.toListOf(ResponseModel.class);
     }
 
     @Override

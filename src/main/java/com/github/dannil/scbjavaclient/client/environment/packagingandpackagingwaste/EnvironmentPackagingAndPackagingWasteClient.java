@@ -24,7 +24,7 @@ import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
-import com.github.dannil.scbjavaclient.model.environment.packagingandpackagingwaste.PackagingAndPackagingWaste;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
@@ -54,13 +54,13 @@ public class EnvironmentPackagingAndPackagingWasteClient extends AbstractClient 
     /**
      * <p>Fetch all packaging and packaging waste data.</p>
      *
-     * @return the packaging and packaging waste data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.environment.packagingandpackagingwaste.PackagingAndPackagingWaste
-     *         PackagingAndPackagingWaste} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getPackagingAndPackagingWaste(Collection, Collection)
      */
-    public List<PackagingAndPackagingWaste> getPackagingAndPackagingWaste() {
+    public List<ResponseModel> getPackagingAndPackagingWaste() {
         return getPackagingAndPackagingWaste(null, null);
     }
 
@@ -72,12 +72,11 @@ public class EnvironmentPackagingAndPackagingWasteClient extends AbstractClient 
      *            the types to fetch data for
      * @param years
      *            the years to fetch data for
-     * @return the packaging and packaging waste data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.environment.packagingandpackagingwaste.PackagingAndPackagingWaste
-     *         PackagingAndPackagingWaste} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<PackagingAndPackagingWaste> getPackagingAndPackagingWaste(Collection<Integer> types,
-            Collection<Integer> years) {
+    public List<ResponseModel> getPackagingAndPackagingWaste(Collection<Integer> types, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("Forpackning", types);
         mappings.put(APIConstants.TIME_CODE, years);
@@ -85,7 +84,7 @@ public class EnvironmentPackagingAndPackagingWasteClient extends AbstractClient 
         String response = doPostRequest(getUrl() + "MI0307T1", QueryBuilder.build(mappings));
 
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(PackagingAndPackagingWaste.class);
+        return format.toListOf(ResponseModel.class);
     }
 
     @Override

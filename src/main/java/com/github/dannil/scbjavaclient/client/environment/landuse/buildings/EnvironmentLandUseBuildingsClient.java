@@ -24,7 +24,7 @@ import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
-import com.github.dannil.scbjavaclient.model.environment.landuse.buildings.Building;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
@@ -54,13 +54,13 @@ public class EnvironmentLandUseBuildingsClient extends AbstractClient {
     /**
      * <p>Fetch all building data.</p>
      *
-     * @return the building data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.environment.landuse.buildings.Building
-     *         Building} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getBuilding(Collection, Collection, Collection)
      */
-    public List<Building> getBuilding() {
+    public List<ResponseModel> getBuilding() {
         return getBuilding(null, null, null);
     }
 
@@ -73,11 +73,11 @@ public class EnvironmentLandUseBuildingsClient extends AbstractClient {
      *            the types to fetch data for
      * @param years
      *            the years to fetch data for
-     * @return the building data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.environment.landuse.buildings.Building
-     *         Building} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<Building> getBuilding(Collection<String> regions, Collection<Integer> types,
+    public List<ResponseModel> getBuilding(Collection<String> regions, Collection<Integer> types,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
@@ -87,7 +87,7 @@ public class EnvironmentLandUseBuildingsClient extends AbstractClient {
         String response = doPostRequest(getUrl() + "MarkanvByggnadLnKn", QueryBuilder.build(mappings));
 
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(Building.class);
+        return format.toListOf(ResponseModel.class);
     }
 
     @Override

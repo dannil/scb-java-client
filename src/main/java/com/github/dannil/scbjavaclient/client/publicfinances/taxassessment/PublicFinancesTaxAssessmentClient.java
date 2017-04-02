@@ -24,8 +24,7 @@ import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
-import com.github.dannil.scbjavaclient.model.publicfinances.taxassessment.CapitalIncomeTax;
-import com.github.dannil.scbjavaclient.model.publicfinances.taxassessment.EarnedIncomeTax;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
@@ -55,13 +54,13 @@ public class PublicFinancesTaxAssessmentClient extends AbstractClient {
     /**
      * <p>Fetch all assessed and taxable earned income data.</p>
      *
-     * @return the assessed and taxable earned income data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.publicfinances.taxassessment.EarnedIncomeTax
-     *         EarnedIncomeTax} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getAssessedAndTaxableEarnedIncome(Collection, Collection)
      */
-    public List<EarnedIncomeTax> getAssessedAndTaxableEarnedIncome() {
+    public List<ResponseModel> getAssessedAndTaxableEarnedIncome() {
         return getAssessedAndTaxableEarnedIncome(null, null);
     }
 
@@ -73,11 +72,11 @@ public class PublicFinancesTaxAssessmentClient extends AbstractClient {
      *            the regions
      * @param years
      *            the years
-     * @return the assessed and taxable earned income data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.publicfinances.taxassessment.EarnedIncomeTax
-     *         EarnedIncomeTax} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<EarnedIncomeTax> getAssessedAndTaxableEarnedIncome(Collection<String> regions,
+    public List<ResponseModel> getAssessedAndTaxableEarnedIncome(Collection<String> regions,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
@@ -86,19 +85,19 @@ public class PublicFinancesTaxAssessmentClient extends AbstractClient {
         String response = doPostRequest(getUrl() + "ForvInkomsterA", QueryBuilder.build(mappings));
 
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(EarnedIncomeTax.class);
+        return format.toListOf(ResponseModel.class);
     }
 
     /**
      * <p>Fetch all assessment for national capital income tax data.</p>
      *
-     * @return the assessment for national capital income tax data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.publicfinances.taxassessment.CapitalIncomeTax
-     *         CapitalIncomeTax} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getAssessmentForNationalCapitalIncomeTax(Collection, Collection)
      */
-    public List<CapitalIncomeTax> getAssessmentForNationalCapitalIncomeTax() {
+    public List<ResponseModel> getAssessmentForNationalCapitalIncomeTax() {
         return getAssessmentForNationalCapitalIncomeTax(null, null);
     }
 
@@ -110,11 +109,11 @@ public class PublicFinancesTaxAssessmentClient extends AbstractClient {
      *            the regions
      * @param years
      *            the years
-     * @return the assessment for national capital income tax data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.publicfinances.taxassessment.CapitalIncomeTax
-     *         CapitalIncomeTax} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<CapitalIncomeTax> getAssessmentForNationalCapitalIncomeTax(Collection<String> regions,
+    public List<ResponseModel> getAssessmentForNationalCapitalIncomeTax(Collection<String> regions,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
@@ -123,7 +122,7 @@ public class PublicFinancesTaxAssessmentClient extends AbstractClient {
         String response = doPostRequest(getUrl() + "KapInkomsterA", QueryBuilder.build(mappings));
 
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(CapitalIncomeTax.class);
+        return format.toListOf(ResponseModel.class);
     }
 
     @Override
