@@ -22,11 +22,8 @@ import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
-import com.github.dannil.scbjavaclient.model.energy.monthlystatistics.DeliveriesOfLiquidFuels;
-import com.github.dannil.scbjavaclient.model.energy.monthlystatistics.DeliveriesOfOilProducts;
-import com.github.dannil.scbjavaclient.utility.QueryBuilder;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles energy monthly statistics data fetching.</p>
@@ -55,13 +52,13 @@ public class EnergyMonthlyStatisticsClient extends AbstractClient {
     /**
      * <p>Fetch all deliveries of liquid fuels data.</p>
      *
-     * @return the deliveries of liquid fuels data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.energy.monthlystatistics.DeliveriesOfLiquidFuels
-     *         DeliveriesOfLiquidFuels} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getDeliveriesOfLiquidFuels(Collection, Collection, Collection)
      */
-    public List<DeliveriesOfLiquidFuels> getDeliveriesOfLiquidFuels() {
+    public List<ResponseModel> getDeliveriesOfLiquidFuels() {
         return getDeliveriesOfLiquidFuels(null, null, null);
     }
 
@@ -74,25 +71,25 @@ public class EnergyMonthlyStatisticsClient extends AbstractClient {
      *            the user categories to fetch data for
      * @param months
      *            the months to fetch data for
-     * @return the deliveries of liquid fuels data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.energy.monthlystatistics.DeliveriesOfLiquidFuels
-     *         DeliveriesOfLiquidFuels} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<DeliveriesOfLiquidFuels> getDeliveriesOfLiquidFuels(Collection<Integer> commodities,
+    public List<ResponseModel> getDeliveriesOfLiquidFuels(Collection<Integer> commodities,
             Collection<String> userCategories, Collection<String> months) {
-        return generate(commodities, userCategories, months, "LevOljorKatM", DeliveriesOfLiquidFuels.class);
+        return generate(commodities, userCategories, months, "LevOljorKatM");
     }
 
     /**
      * <p>Fetch all deliveries of oil products data.</p>
      *
-     * @return the deliveries of oil products data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.energy.monthlystatistics.DeliveriesOfOilProducts
-     *         DeliveriesOfOilProducts} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getDeliveriesOfOilProducts(Collection, Collection, Collection)
      */
-    public List<DeliveriesOfOilProducts> getDeliveriesOfOilProducts() {
+    public List<ResponseModel> getDeliveriesOfOilProducts() {
         return getDeliveriesOfOilProducts(null, null, null);
     }
 
@@ -105,13 +102,14 @@ public class EnergyMonthlyStatisticsClient extends AbstractClient {
      *            the user categories to fetch data for
      * @param months
      *            the months to fetch data for
-     * @return the deliveries of oil products data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.energy.monthlystatistics.DeliveriesOfOilProducts
-     *         DeliveriesOfOilProducts} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<DeliveriesOfOilProducts> getDeliveriesOfOilProducts(Collection<Integer> commodities,
+    public List<ResponseModel> getDeliveriesOfOilProducts(Collection<Integer> commodities,
             Collection<String> userCategories, Collection<String> months) {
-        return generate(commodities, userCategories, months, "LevOljorM", DeliveriesOfOilProducts.class);
+
+        return generate(commodities, userCategories, months, "LevOljorM");
     }
 
     /**
@@ -125,23 +123,17 @@ public class EnergyMonthlyStatisticsClient extends AbstractClient {
      *            the months
      * @param table
      *            the table
-     * @param clazz
-     *            the class to convert the generated data to
-     * @param <T>
-     *            the data type of the list
-     * @return a <code>List</code> of the specified class
+     * @return a <code>List</code> of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      */
-    private <T> List<T> generate(Collection<Integer> commodities, Collection<String> userCategories,
-            Collection<String> months, String table, Class<T> clazz) {
+    private List<ResponseModel> generate(Collection<Integer> commodities, Collection<String> userCategories,
+            Collection<String> months, String table) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("Varuslag", commodities);
         mappings.put("Forbrukarkat", userCategories);
         mappings.put(APIConstants.TIME_CODE, months);
 
-        String response = doPostRequest(getUrl() + table, QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(clazz);
+        return getResponseModels(table, mappings);
     }
 
     @Override

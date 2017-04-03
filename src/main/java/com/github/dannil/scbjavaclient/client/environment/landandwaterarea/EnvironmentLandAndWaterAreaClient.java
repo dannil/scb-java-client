@@ -22,10 +22,8 @@ import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
-import com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area;
-import com.github.dannil.scbjavaclient.utility.QueryBuilder;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles environment land and water area data fetching.</p>
@@ -54,13 +52,13 @@ public class EnvironmentLandAndWaterAreaClient extends AbstractClient {
     /**
      * <p>Fetch all area data.</p>
      *
-     * @return the area data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area
-     *         Area} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getArea(Collection, Collection, Collection)
      */
-    public List<Area> getArea() {
+    public List<ResponseModel> getArea() {
         return getArea(null, null, null);
     }
 
@@ -73,20 +71,18 @@ public class EnvironmentLandAndWaterAreaClient extends AbstractClient {
      *            the types to fetch data for
      * @param years
      *            the years to fetch data for
-     * @return the area data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.environment.landandwaterarea.Area
-     *         Area} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<Area> getArea(Collection<String> regions, Collection<String> types, Collection<Integer> years) {
+    public List<ResponseModel> getArea(Collection<String> regions, Collection<String> types,
+            Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("ArealTyp", types);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        String response = doPostRequest(getUrl() + "Areal2012", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(Area.class);
+        return getResponseModels("Areal2012", mappings);
     }
 
     @Override

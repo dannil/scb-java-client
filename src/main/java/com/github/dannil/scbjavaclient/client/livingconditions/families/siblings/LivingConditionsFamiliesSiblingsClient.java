@@ -22,10 +22,8 @@ import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
-import com.github.dannil.scbjavaclient.model.livingconditions.families.siblings.Siblings;
-import com.github.dannil.scbjavaclient.utility.QueryBuilder;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles living conditions families siblings data fetching.</p>
@@ -54,13 +52,13 @@ public class LivingConditionsFamiliesSiblingsClient extends AbstractClient {
     /**
      * <p>Fetch all siblings data.</p>
      *
-     * @return the siblings data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.families.siblings.Siblings
-     *         Siblings} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getSiblings(Collection, Collection, Collection, Collection, Collection)
      */
-    public List<Siblings> getSiblings() {
+    public List<ResponseModel> getSiblings() {
         return getSiblings(null, null, null, null, null);
     }
 
@@ -77,11 +75,11 @@ public class LivingConditionsFamiliesSiblingsClient extends AbstractClient {
      *            the family types
      * @param years
      *            the years
-     * @return the siblings data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.families.siblings.Siblings
-     *         Siblings} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<Siblings> getSiblings(Collection<String> sexes, Collection<String> ages,
+    public List<ResponseModel> getSiblings(Collection<String> sexes, Collection<String> ages,
             Collection<Integer> siblingsLivingAtHome, Collection<String> familyTypes, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("Kon", sexes);
@@ -90,10 +88,7 @@ public class LivingConditionsFamiliesSiblingsClient extends AbstractClient {
         mappings.put("Familjetyp", familyTypes);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        String response = doPostRequest(getUrl() + "LE0102T22", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(Siblings.class);
+        return getResponseModels("LE0102T22", mappings);
     }
 
     @Override

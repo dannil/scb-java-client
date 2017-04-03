@@ -22,10 +22,8 @@ import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
-import com.github.dannil.scbjavaclient.model.publicfinances.governmentdebt.GovernmentDebt;
-import com.github.dannil.scbjavaclient.utility.QueryBuilder;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles public finances government debt data fetching.</p>
@@ -54,13 +52,13 @@ public class PublicFinancesGovernmentDebtClient extends AbstractClient {
     /**
      * <p>Fetch all government debt data.</p>
      *
-     * @return the government debt data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.publicfinances.governmentdebt.GovernmentDebt
-     *         GovernmentDebt} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getGovernmentDebt(Collection, Collection)
      */
-    public List<GovernmentDebt> getGovernmentDebt() {
+    public List<ResponseModel> getGovernmentDebt() {
         return getGovernmentDebt(null, null);
     }
 
@@ -71,19 +69,16 @@ public class PublicFinancesGovernmentDebtClient extends AbstractClient {
      *            the items
      * @param months
      *            the months
-     * @return the government debt data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.publicfinances.governmentdebt.GovernmentDebt
-     *         GovernmentDebt} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<GovernmentDebt> getGovernmentDebt(Collection<String> items, Collection<String> months) {
+    public List<ResponseModel> getGovernmentDebt(Collection<String> items, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("Kontopost", items);
         mappings.put(APIConstants.TIME_CODE, months);
 
-        String response = doPostRequest(getUrl() + "Statsskuld", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(GovernmentDebt.class);
+        return getResponseModels("Statsskuld", mappings);
     }
 
     @Override

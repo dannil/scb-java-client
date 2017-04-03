@@ -22,13 +22,8 @@ import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
-import com.github.dannil.scbjavaclient.model.financialmarkets.shareholders.ForeignOwnershipOfShares;
-import com.github.dannil.scbjavaclient.model.financialmarkets.shareholders.OwnershipOfShares;
-import com.github.dannil.scbjavaclient.model.financialmarkets.shareholders.OwnershipOfSharesByMarketplace;
-import com.github.dannil.scbjavaclient.model.financialmarkets.shareholders.OwnershipOfSharesBySeries;
-import com.github.dannil.scbjavaclient.utility.QueryBuilder;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles financial markets shareholders data fetching.</p>
@@ -57,13 +52,13 @@ public class FinancialMarketsShareholdersClient extends AbstractClient {
     /**
      * <p>Fetch all ownership of shares data.</p>
      *
-     * @return the ownership of shares data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.financialmarkets.shareholders.OwnershipOfShares
-     *         OwnershipOfShares} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getOwnershipOfShares(Collection, Collection)
      */
-    public List<OwnershipOfShares> getOwnershipOfShares() {
+    public List<ResponseModel> getOwnershipOfShares() {
         return getOwnershipOfShares(null, null);
     }
 
@@ -74,31 +69,28 @@ public class FinancialMarketsShareholdersClient extends AbstractClient {
      *            the sectors to fetch data for
      * @param halfYears
      *            the half years to fetch data for
-     * @return the ownership of shares data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.financialmarkets.shareholders.OwnershipOfShares
-     *         OwnershipOfShares} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<OwnershipOfShares> getOwnershipOfShares(Collection<String> sectors, Collection<String> halfYears) {
+    public List<ResponseModel> getOwnershipOfShares(Collection<String> sectors, Collection<String> halfYears) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.SECTOR_CODE, sectors);
         mappings.put(APIConstants.TIME_CODE, halfYears);
 
-        String response = doPostRequest(getUrl() + "AktieAgarAr", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(OwnershipOfShares.class);
+        return getResponseModels("AktieAgarAr", mappings);
     }
 
     /**
      * <p>Fetch all ownership of shares by marketplace data.</p>
      *
-     * @return the ownership of shares by marketplace data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.financialmarkets.shareholders.OwnershipOfSharesByMarketplace
-     *         OwnershipOfSharesByMarketplace} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getOwnershipOfSharesByMarketplace(Collection, Collection, Collection)
      */
-    public List<OwnershipOfSharesByMarketplace> getOwnershipOfSharesByMarketplace() {
+    public List<ResponseModel> getOwnershipOfSharesByMarketplace() {
         return getOwnershipOfSharesByMarketplace(null, null, null);
     }
 
@@ -112,33 +104,30 @@ public class FinancialMarketsShareholdersClient extends AbstractClient {
      *            the half years to fetch data for
      * @param marketplaces
      *            the marketplaces to fetch data for
-     * @return the ownership of shares by marketplace data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.financialmarkets.shareholders.OwnershipOfSharesByMarketplace
-     *         OwnershipOfSharesByMarketplace} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<OwnershipOfSharesByMarketplace> getOwnershipOfSharesByMarketplace(Collection<String> sectors,
+    public List<ResponseModel> getOwnershipOfSharesByMarketplace(Collection<String> sectors,
             Collection<String> marketplaces, Collection<String> halfYears) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.SECTOR_CODE, sectors);
         mappings.put("Marknadsplats", marketplaces);
         mappings.put(APIConstants.TIME_CODE, halfYears);
 
-        String response = doPostRequest(getUrl() + "AktieAgarMarknad", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(OwnershipOfSharesByMarketplace.class);
+        return getResponseModels("AktieAgarMarknad", mappings);
     }
 
     /**
      * <p>Fetch all ownership of shares by series data.</p>
      *
-     * @return the ownership of of shares by series data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.financialmarkets.shareholders.OwnershipOfSharesBySeries
-     *         OwnershipOfSharesBySeries} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getOwnershipOfSharesBySeries(Collection, Collection, Collection)
      */
-    public List<OwnershipOfSharesBySeries> getOwnershipOfSharesBySeries() {
+    public List<ResponseModel> getOwnershipOfSharesBySeries() {
         return getOwnershipOfSharesBySeries(null, null, null);
     }
 
@@ -152,33 +141,30 @@ public class FinancialMarketsShareholdersClient extends AbstractClient {
      *            the half years to fetch data for
      * @param series
      *            the series to fetch data for
-     * @return the ownership of shares by series data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.financialmarkets.shareholders.OwnershipOfSharesBySeries
-     *         OwnershipOfSharesBySeries} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<OwnershipOfSharesBySeries> getOwnershipOfSharesBySeries(Collection<String> sectors,
-            Collection<String> series, Collection<String> halfYears) {
+    public List<ResponseModel> getOwnershipOfSharesBySeries(Collection<String> sectors, Collection<String> series,
+            Collection<String> halfYears) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.SECTOR_CODE, sectors);
         mappings.put("Aktieserie", series);
         mappings.put(APIConstants.TIME_CODE, halfYears);
 
-        String response = doPostRequest(getUrl() + "AktieAgarSerie", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(OwnershipOfSharesBySeries.class);
+        return getResponseModels("AktieAgarSerie", mappings);
     }
 
     /**
      * <p>Fetch all foreign ownership of shares data.</p>
      *
-     * @return the foreign ownership of shares data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.financialmarkets.shareholders.ForeignOwnershipOfShares
-     *         ForeignOwnershipOfShares} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getForeignOwnershipOfShares(Collection, Collection)
      */
-    public List<ForeignOwnershipOfShares> getForeignOwnershipOfShares() {
+    public List<ResponseModel> getForeignOwnershipOfShares() {
         return getForeignOwnershipOfShares(null, null);
     }
 
@@ -190,20 +176,16 @@ public class FinancialMarketsShareholdersClient extends AbstractClient {
      *            the countries to fetch data for
      * @param halfYears
      *            the half years to fetch data for
-     * @return the foreign ownership of shares data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.financialmarkets.shareholders.ForeignOwnershipOfShares
-     *         ForeignOwnershipOfShares} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<ForeignOwnershipOfShares> getForeignOwnershipOfShares(Collection<String> countries,
-            Collection<String> halfYears) {
+    public List<ResponseModel> getForeignOwnershipOfShares(Collection<String> countries, Collection<String> halfYears) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("Agarland", countries);
         mappings.put(APIConstants.TIME_CODE, halfYears);
 
-        String response = doPostRequest(getUrl() + "AktieAgarUtland", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(ForeignOwnershipOfShares.class);
+        return getResponseModels("AktieAgarUtland", mappings);
     }
 
     @Override

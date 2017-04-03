@@ -22,10 +22,8 @@ import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
-import com.github.dannil.scbjavaclient.model.livingconditions.families.adoptions.ChildAdoption;
-import com.github.dannil.scbjavaclient.utility.QueryBuilder;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles living conditions families adoptions data fetching.</p>
@@ -54,13 +52,13 @@ public class LivingConditionsFamiliesAdoptionsClient extends AbstractClient {
     /**
      * <p>Fetch all child adoptions data.</p>
      *
-     * @return the child adoptions data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.families.adoptions.ChildAdoption
-     *         ChildAdoption} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getChildAdoptions(Collection, Collection, Collection, Collection)
      */
-    public List<ChildAdoption> getChildAdoptions() {
+    public List<ResponseModel> getChildAdoptions() {
         return getChildAdoptions(null, null, null, null);
     }
 
@@ -75,11 +73,11 @@ public class LivingConditionsFamiliesAdoptionsClient extends AbstractClient {
      *            the birth countries
      * @param years
      *            the years
-     * @return the child adoptions data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.families.adoptions.ChildAdoption
-     *         ChildAdoption} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<ChildAdoption> getChildAdoptions(Collection<String> sexes, Collection<String> ages,
+    public List<ResponseModel> getChildAdoptions(Collection<String> sexes, Collection<String> ages,
             Collection<String> birthCountries, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("Kon", sexes);
@@ -87,11 +85,7 @@ public class LivingConditionsFamiliesAdoptionsClient extends AbstractClient {
         mappings.put("Fodelseland", birthCountries);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        String response = doPostRequest(getUrl() + "BarnAdoption", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(ChildAdoption.class);
-
+        return getResponseModels("BarnAdoption", mappings);
     }
 
     @Override

@@ -22,15 +22,8 @@ import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
-import com.github.dannil.scbjavaclient.model.livingconditions.surveys.health.BodyMassIndex;
-import com.github.dannil.scbjavaclient.model.livingconditions.surveys.health.Disabilities;
-import com.github.dannil.scbjavaclient.model.livingconditions.surveys.health.DoctorAndDentistAppointments;
-import com.github.dannil.scbjavaclient.model.livingconditions.surveys.health.LongTermIllness;
-import com.github.dannil.scbjavaclient.model.livingconditions.surveys.health.PhysicalAndMentalHealth;
-import com.github.dannil.scbjavaclient.model.livingconditions.surveys.health.TobaccoHabits;
-import com.github.dannil.scbjavaclient.utility.QueryBuilder;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles living conditions surveys health data fetching.</p>
@@ -59,13 +52,13 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
     /**
      * <p>Fetch all physical and mental health data.</p>
      *
-     * @return the physical and mental health data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.surveys.health.PhysicalAndMentalHealth
-     *         PhysicalAndMentalHealth} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getPhysicalAndMentalHealth(Collection, Collection, Collection, Collection)
      */
-    public List<PhysicalAndMentalHealth> getPhysicalAndMentalHealth() {
+    public List<ResponseModel> getPhysicalAndMentalHealth() {
         return getPhysicalAndMentalHealth(null, null, null, null);
     }
 
@@ -80,25 +73,25 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
      *            the sexes
      * @param periods
      *            the periods
-     * @return the physical and mental health data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.surveys.health.PhysicalAndMentalHealth
-     *         PhysicalAndMentalHealth} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<PhysicalAndMentalHealth> getPhysicalAndMentalHealth(Collection<String> indicators,
-            Collection<String> ages, Collection<Integer> sexes, Collection<String> periods) {
-        return generate(indicators, ages, sexes, periods, "LE0101H01", PhysicalAndMentalHealth.class);
+    public List<ResponseModel> getPhysicalAndMentalHealth(Collection<String> indicators, Collection<String> ages,
+            Collection<Integer> sexes, Collection<String> periods) {
+        return generate(indicators, ages, sexes, periods, "LE0101H01");
     }
 
     /**
      * <p>Fetch all long term illness data.</p>
      *
-     * @return the long term illness data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.surveys.health.LongTermIllness
-     *         LongTermIllness} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getLongTermIllness(Collection, Collection, Collection, Collection)
      */
-    public List<LongTermIllness> getLongTermIllness() {
+    public List<ResponseModel> getLongTermIllness() {
         return getLongTermIllness(null, null, null, null);
     }
 
@@ -113,25 +106,25 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
      *            the sexes
      * @param periods
      *            the periods
-     * @return the long term illness data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.surveys.health.LongTermIllness
-     *         LongTermIllness} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<LongTermIllness> getLongTermIllness(Collection<String> indicators, Collection<String> ages,
+    public List<ResponseModel> getLongTermIllness(Collection<String> indicators, Collection<String> ages,
             Collection<Integer> sexes, Collection<String> periods) {
-        return generate(indicators, ages, sexes, periods, "LE0101H07", LongTermIllness.class);
+        return generate(indicators, ages, sexes, periods, "LE0101H07");
     }
 
     /**
      * <p>Fetch all disabilities data.</p>
      *
-     * @return the disabilities data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.surveys.health.Disabilities
-     *         Disabilities} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getDisabilities(Collection, Collection, Collection, Collection)
      */
-    public List<Disabilities> getDisabilities() {
+    public List<ResponseModel> getDisabilities() {
         return getDisabilities(null, null, null, null);
     }
 
@@ -146,26 +139,26 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
      *            the sexes
      * @param periods
      *            the periods
-     * @return the disabilities data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.surveys.health.Disabilities
-     *         Disabilities} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<Disabilities> getDisabilities(Collection<String> indicators, Collection<String> ages,
+    public List<ResponseModel> getDisabilities(Collection<String> indicators, Collection<String> ages,
             Collection<Integer> sexes, Collection<String> periods) {
-        return generate(indicators, ages, sexes, periods, "LE0101H13", Disabilities.class);
+        return generate(indicators, ages, sexes, periods, "LE0101H13");
     }
 
     /**
      * <p>Fetch all doctor and dentist appointments data.</p>
      *
-     * @return the doctor and dentist appointments data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.surveys.health.DoctorAndDentistAppointments
-     *         DoctorAndDentistAppointments} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getDoctorAndDentistAppointments(Collection, Collection, Collection,
      *      Collection)
      */
-    public List<DoctorAndDentistAppointments> getDoctorAndDentistAppointments() {
+    public List<ResponseModel> getDoctorAndDentistAppointments() {
         return getDoctorAndDentistAppointments(null, null, null, null);
     }
 
@@ -181,25 +174,25 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
      *            the sexes
      * @param periods
      *            the periods
-     * @return the doctor and dentist appointments data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.surveys.health.DoctorAndDentistAppointments
-     *         DoctorAndDentistAppointments} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<DoctorAndDentistAppointments> getDoctorAndDentistAppointments(Collection<String> indicators,
-            Collection<String> ages, Collection<Integer> sexes, Collection<String> periods) {
-        return generate(indicators, ages, sexes, periods, "LE0101H19", DoctorAndDentistAppointments.class);
+    public List<ResponseModel> getDoctorAndDentistAppointments(Collection<String> indicators, Collection<String> ages,
+            Collection<Integer> sexes, Collection<String> periods) {
+        return generate(indicators, ages, sexes, periods, "LE0101H19");
     }
 
     /**
      * <p>Fetch all tobacco habits data.</p>
      *
-     * @return the tobacco habits data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.surveys.health.TobaccoHabits
-     *         TobaccoHabits} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getTobaccoHabits(Collection, Collection, Collection, Collection)
      */
-    public List<TobaccoHabits> getTobaccoHabits() {
+    public List<ResponseModel> getTobaccoHabits() {
         return getTobaccoHabits(null, null, null, null);
     }
 
@@ -214,25 +207,25 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
      *            the sexes
      * @param periods
      *            the periods
-     * @return the tobacco habits data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.surveys.health.TobaccoHabits
-     *         TobaccoHabits} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<TobaccoHabits> getTobaccoHabits(Collection<String> indicators, Collection<String> ages,
+    public List<ResponseModel> getTobaccoHabits(Collection<String> indicators, Collection<String> ages,
             Collection<Integer> sexes, Collection<String> periods) {
-        return generate(indicators, ages, sexes, periods, "LE0101H25", TobaccoHabits.class);
+        return generate(indicators, ages, sexes, periods, "LE0101H25");
     }
 
     /**
      * <p>Fetch all body mass index data.</p>
      *
-     * @return the body mass index data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.surveys.health.BodyMassIndex
-     *         BodyMassIndex} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getBodyMassIndex(Collection, Collection, Collection, Collection)
      */
-    public List<BodyMassIndex> getBodyMassIndex() {
+    public List<ResponseModel> getBodyMassIndex() {
         return getBodyMassIndex(null, null, null, null);
     }
 
@@ -247,13 +240,13 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
      *            the sexes
      * @param periods
      *            the periods
-     * @return the body mass index data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.surveys.health.BodyMassIndex
-     *         BodyMassIndex} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<BodyMassIndex> getBodyMassIndex(Collection<String> indicators, Collection<String> ages,
+    public List<ResponseModel> getBodyMassIndex(Collection<String> indicators, Collection<String> ages,
             Collection<Integer> sexes, Collection<String> periods) {
-        return generate(indicators, ages, sexes, periods, "LE0101BMI01", BodyMassIndex.class);
+        return generate(indicators, ages, sexes, periods, "LE0101BMI01");
     }
 
     /**
@@ -269,24 +262,18 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
      *            the periods
      * @param table
      *            the table
-     * @param clazz
-     *            the class to convert the generated data to
-     * @param <T>
-     *            the data type of the list
-     * @return a <code>List</code> of the specified class
+     * @return a <code>List</code> of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      */
-    private <T> List<T> generate(Collection<String> indicators, Collection<String> ages, Collection<Integer> sexes,
-            Collection<String> periods, String table, Class<T> clazz) {
+    private List<ResponseModel> generate(Collection<String> indicators, Collection<String> ages,
+            Collection<Integer> sexes, Collection<String> periods, String table) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("Indikator", indicators);
         mappings.put("Alder", ages);
         mappings.put("Kon", sexes);
         mappings.put(APIConstants.TIME_CODE, periods);
 
-        String response = doPostRequest(getUrl() + table, QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(clazz);
+        return getResponseModels(table, mappings);
     }
 
     @Override

@@ -22,10 +22,8 @@ import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
-import com.github.dannil.scbjavaclient.model.livingconditions.families.housing.Housing;
-import com.github.dannil.scbjavaclient.utility.QueryBuilder;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles living conditions families housing data fetching.</p>
@@ -54,14 +52,14 @@ public class LivingConditionsFamiliesHousingClient extends AbstractClient {
     /**
      * <p>Fetch all housing data.</p>
      *
-     * @return the housing data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.families.housing.Housing
-     *         Housing} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getHousing(Collection, Collection, Collection, Collection, Collection,
      *      Collection, Collection)
      */
-    public List<Housing> getHousing() {
+    public List<ResponseModel> getHousing() {
         return getHousing(null, null, null, null, null, null, null);
     }
 
@@ -82,13 +80,13 @@ public class LivingConditionsFamiliesHousingClient extends AbstractClient {
      *            the parent incomes
      * @param years
      *            the years
-     * @return the housing data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.livingconditions.families.housing.Housing
-     *         Housing} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<Housing> getHousing(Collection<String> sexes, Collection<String> ages, Collection<String> housingTypes,
-            Collection<String> familyTypes, Collection<String> backgrounds, Collection<Integer> parentIncomes,
-            Collection<Integer> years) {
+    public List<ResponseModel> getHousing(Collection<String> sexes, Collection<String> ages,
+            Collection<String> housingTypes, Collection<String> familyTypes, Collection<String> backgrounds,
+            Collection<Integer> parentIncomes, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("Kon", sexes);
         mappings.put("Alder", ages);
@@ -98,10 +96,7 @@ public class LivingConditionsFamiliesHousingClient extends AbstractClient {
         mappings.put("Foraldrarinkniv", parentIncomes);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        String response = doPostRequest(getUrl() + "LE0102T34", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(Housing.class);
+        return getResponseModels("LE0102T34", mappings);
     }
 
     @Override

@@ -22,10 +22,8 @@ import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
-import com.github.dannil.scbjavaclient.model.environment.landuse.planning.Planning;
-import com.github.dannil.scbjavaclient.utility.QueryBuilder;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles environment land use planning data fetching.</p>
@@ -54,13 +52,13 @@ public class EnvironmentLandUsePlanningClient extends AbstractClient {
     /**
      * <p>Fetch all planning data.</p>
      *
-     * @return the planning data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.environment.landuse.planning.Planning
-     *         Planning} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getPlanning(Collection, Collection)
      */
-    public List<Planning> getPlanning() {
+    public List<ResponseModel> getPlanning() {
         return getPlanning(null, null);
     }
 
@@ -71,19 +69,16 @@ public class EnvironmentLandUsePlanningClient extends AbstractClient {
      *            the regions to fetch data for
      * @param years
      *            the years to fetch data for
-     * @return the planning data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.environment.landuse.planning.Planning
-     *         Planning} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<Planning> getPlanning(Collection<String> regions, Collection<Integer> years) {
+    public List<ResponseModel> getPlanning(Collection<String> regions, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        String response = doPostRequest(getUrl() + "MarkanvFornl", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(Planning.class);
+        return getResponseModels("MarkanvFornl", mappings);
     }
 
     @Override

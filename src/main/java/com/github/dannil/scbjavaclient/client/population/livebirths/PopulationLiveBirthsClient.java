@@ -22,10 +22,8 @@ import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
-import com.github.dannil.scbjavaclient.model.population.livebirths.LiveBirth;
-import com.github.dannil.scbjavaclient.utility.QueryBuilder;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles population live births data fetching.</p>
@@ -54,13 +52,13 @@ public class PopulationLiveBirthsClient extends AbstractClient {
     /**
      * <p>Fetch all live births data.</p>
      *
-     * @return the live births data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.population.livebirths.LiveBirth
-     *         LiveBirth} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getLiveBirths(Collection, Collection, Collection, Collection)
      */
-    public List<LiveBirth> getLiveBirths() {
+    public List<ResponseModel> getLiveBirths() {
         return getLiveBirths(null, null, null, null);
     }
 
@@ -75,11 +73,11 @@ public class PopulationLiveBirthsClient extends AbstractClient {
      *            the genders to fetch data for
      * @param years
      *            the years to fetch data for
-     * @return the live births data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.population.livebirths.LiveBirth
-     *         LiveBirth} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<LiveBirth> getLiveBirths(Collection<String> regions, Collection<String> motherAges,
+    public List<ResponseModel> getLiveBirths(Collection<String> regions, Collection<String> motherAges,
             Collection<Integer> genders, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
@@ -87,10 +85,7 @@ public class PopulationLiveBirthsClient extends AbstractClient {
         mappings.put("Kon", genders);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        String response = doPostRequest(getUrl() + "FoddaK", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(LiveBirth.class);
+        return getResponseModels("FoddaK", mappings);
     }
 
     @Override
