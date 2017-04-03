@@ -14,10 +14,16 @@
 
 package com.github.dannil.scbjavaclient.client.labourmarket.grosspay.aggregatewages;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles labour market gross pay aggregate wages data fetching.</p>
@@ -42,8 +48,38 @@ public class LabourMarketGrossPayAggregateWagesClient extends AbstractClient {
     public LabourMarketGrossPayAggregateWagesClient(Locale locale) {
         super(locale);
     }
-    
-    ADD METHODS HERE
+
+    /**
+     * <p>Fetch all gross pay data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getGrossPay(Collection, Collection)
+     */
+    public List<ResponseModel> getGrossPay() {
+        return getGrossPay(null, null);
+    }
+
+    /**
+     * <p>Fetch all gross pay data which match the input constraints.</p>
+     *
+     * @param counties
+     *            the counties
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getGrossPay(Collection<String> counties, Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("Lan", counties);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("LSUMLan", mappings);
+    }
 
     @Override
     public URLEndpoint getUrl() {

@@ -25,6 +25,7 @@ import java.util.Map.Entry;
 import com.github.dannil.scbjavaclient.client.energy.EnergyClient;
 import com.github.dannil.scbjavaclient.client.environment.EnvironmentClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.FinancialMarketsClient;
+import com.github.dannil.scbjavaclient.client.labourmarket.LabourMarketClient;
 import com.github.dannil.scbjavaclient.client.livingconditions.LivingConditionsClient;
 import com.github.dannil.scbjavaclient.client.population.PopulationClient;
 import com.github.dannil.scbjavaclient.client.publicfinances.PublicFinancesClient;
@@ -52,6 +53,7 @@ public class SCBClient extends AbstractContainerClient {
         addClient("energy", new EnergyClient());
         addClient("environment", new EnvironmentClient());
         addClient("financialmarkets", new FinancialMarketsClient());
+        addClient("labourmarket", new LabourMarketClient());
         addClient("livingconditions", new LivingConditionsClient());
         addClient("population", new PopulationClient());
         addClient("publicfinances", new PublicFinancesClient());
@@ -94,6 +96,15 @@ public class SCBClient extends AbstractContainerClient {
      */
     public FinancialMarketsClient financialMarkets() {
         return (FinancialMarketsClient) getClient("financialmarkets");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with labour market data.</p>
+     *
+     * @return a client for labour market data
+     */
+    public LabourMarketClient labourMarket() {
+        return (LabourMarketClient) getClient("labourmarket");
     }
 
     /**

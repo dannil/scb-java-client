@@ -58,7 +58,7 @@ public class LabourMarketClient extends AbstractContainerClient {
     public LabourMarketCostIndexClient costIndex() {
         return (LabourMarketCostIndexClient) getClient("costindex");
     }
-    
+
     /**
      * <p>Retrieve the client for interacting with labour market gross pay data.</p>
      *
