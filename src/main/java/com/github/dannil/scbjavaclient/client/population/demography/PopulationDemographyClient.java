@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.population.demography;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -22,9 +21,10 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
-import com.github.dannil.scbjavaclient.model.population.demography.FertilityRate;
-import com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstChild;
+import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
@@ -54,14 +54,14 @@ public class PopulationDemographyClient extends AbstractClient {
     /**
      * <p>Fetch all fertility rate data.</p>
      *
-     * @return the fertility rate data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.population.demography.FertilityRate
-     *         FertilityRate} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see PopulationDemographyClient#getFertilityRate(Collection, Collection,
      *      Collection)
      */
-    public List<FertilityRate> getFertilityRate() {
+    public List<ResponseModel> getFertilityRate() {
         return getFertilityRate(null, null, null);
     }
 
@@ -74,34 +74,30 @@ public class PopulationDemographyClient extends AbstractClient {
      *            the genders to fetch data for
      * @param years
      *            the years to fetch data for
-     * @return the fertility rate data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.population.demography.FertilityRate
-     *         FertilityRate} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<FertilityRate> getFertilityRate(Collection<String> regions, Collection<Integer> genders,
+    public List<ResponseModel> getFertilityRate(Collection<String> regions, Collection<Integer> genders,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("BE0701AA"));
-        mappings.put("Region", regions);
+        mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("Kon", genders);
-        mappings.put("Tid", years);
+        mappings.put(APIConstants.TIME_CODE, years);
 
-        String response = doPostRequest(getUrl() + "FruktsamhetSumNy", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(FertilityRate.class);
+        return getResponseModels("FruktsamhetSumNy", mappings);
     }
 
     /**
      * <p>Fetch all mean age for the first child data.</p>
      *
-     * @return the mean age for the first child data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstChild
-     *         MeanAgeFirstChild} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getMeanAgeFirstChild(Collection, Collection, Collection)
      */
-    public List<MeanAgeFirstChild> getMeanAgeFirstChild() {
+    public List<ResponseModel> getMeanAgeFirstChild() {
         return getMeanAgeFirstChild(null, null, null);
     }
 
@@ -115,27 +111,26 @@ public class PopulationDemographyClient extends AbstractClient {
      *            the genders to fetch data for
      * @param years
      *            the years to fetch data for
-     * @return the mean age for the first child data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.population.demography.MeanAgeFirstChild
-     *         MeanAgeFirstChild} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<MeanAgeFirstChild> getMeanAgeFirstChild(Collection<String> regions, Collection<Integer> genders,
+    public List<ResponseModel> getMeanAgeFirstChild(Collection<String> regions, Collection<Integer> genders,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("BE0701AB"));
-        mappings.put("Region", regions);
+        mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("Kon", genders);
-        mappings.put("Tid", years);
+        mappings.put(APIConstants.TIME_CODE, years);
 
         String response = doPostRequest(getUrl() + "MedelAlderNY", QueryBuilder.build(mappings));
 
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(MeanAgeFirstChild.class);
+        return format.toListOf(ResponseModel.class);
     }
 
     @Override
-    public String getUrl() {
-        return getRootUrl() + "BE/BE0701/";
+    public URLEndpoint getUrl() {
+        return getRootUrl().append("BE/BE0701/");
     }
 
 }

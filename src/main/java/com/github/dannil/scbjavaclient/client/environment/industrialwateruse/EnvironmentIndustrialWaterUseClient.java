@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.environment.industrialwateruse;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -22,11 +21,9 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
-import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
-import com.github.dannil.scbjavaclient.model.environment.industrialwateruse.WaterAbstraction;
-import com.github.dannil.scbjavaclient.model.environment.industrialwateruse.WaterDischarge;
-import com.github.dannil.scbjavaclient.model.environment.industrialwateruse.WaterUse;
-import com.github.dannil.scbjavaclient.utility.QueryBuilder;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
+import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles environment industrial water use data fetching.</p>
@@ -55,13 +52,13 @@ public class EnvironmentIndustrialWaterUseClient extends AbstractClient {
     /**
      * <p>Fetch all water abstraction data.</p>
      *
-     * @return the water abstraction data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.environment.industrialwateruse.WaterAbstraction
-     *         WaterAbstraction} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getWaterAbstraction(Collection, Collection, Collection)
      */
-    public List<WaterAbstraction> getWaterAbstraction() {
+    public List<ResponseModel> getWaterAbstraction() {
         return getWaterAbstraction(null, null, null);
     }
 
@@ -74,34 +71,30 @@ public class EnvironmentIndustrialWaterUseClient extends AbstractClient {
      *            the type to fetch data for
      * @param years
      *            the years to fetch data for
-     * @return the water abstraction data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.environment.industrialwateruse.WaterAbstraction
-     *         WaterAbstraction} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<WaterAbstraction> getWaterAbstraction(Collection<String> regions, Collection<Integer> type,
+    public List<ResponseModel> getWaterAbstraction(Collection<String> regions, Collection<Integer> type,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("0000011J"));
-        mappings.put("Region", regions);
+        mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("VattenTyp", type);
-        mappings.put("Tid", years);
+        mappings.put(APIConstants.TIME_CODE, years);
 
-        String response = doPostRequest(getUrl() + "UttagVatten", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(WaterAbstraction.class);
+        return getResponseModels("UttagVatten", mappings);
     }
 
     /**
      * <p>Fetch all water use data.</p>
      *
-     * @return the water use data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.environment.industrialwateruse.WaterUse
-     *         WaterUse} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getWaterUse(Collection, Collection, Collection)
      */
-    public List<WaterUse> getWaterUse() {
+    public List<ResponseModel> getWaterUse() {
         return getWaterUse(null, null, null);
     }
 
@@ -114,33 +107,30 @@ public class EnvironmentIndustrialWaterUseClient extends AbstractClient {
      *            the type to fetch data for
      * @param years
      *            the years to fetch data for
-     * @return the water use data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.environment.industrialwateruse.WaterUse
-     *         WaterUse} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<WaterUse> getWaterUse(Collection<String> regions, Collection<Integer> type, Collection<Integer> years) {
+    public List<ResponseModel> getWaterUse(Collection<String> regions, Collection<Integer> type,
+            Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("00000121"));
-        mappings.put("Region", regions);
+        mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("VattenTyp", type);
-        mappings.put("Tid", years);
+        mappings.put(APIConstants.TIME_CODE, years);
 
-        String response = doPostRequest(getUrl() + "VattenAnv", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(WaterUse.class);
+        return getResponseModels("VattenAnv", mappings);
     }
 
     /**
      * <p>Fetch all water discharge data.</p>
      *
-     * @return the water discharge data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.environment.industrialwateruse.WaterDischarge
-     *         WaterDischarge} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getWaterDischarge(Collection, Collection, Collection)
      */
-    public List<WaterDischarge> getWaterDischarge() {
+    public List<ResponseModel> getWaterDischarge() {
         return getWaterDischarge(null, null, null);
     }
 
@@ -153,26 +143,22 @@ public class EnvironmentIndustrialWaterUseClient extends AbstractClient {
      *            the type to fetch data for
      * @param years
      *            the years to fetch data for
-     * @return the water abstraction data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.environment.industrialwateruse.WaterDischarge
-     *         WaterDischarge} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<WaterDischarge> getWaterDischarge(Collection<String> regions, Collection<Integer> type,
+    public List<ResponseModel> getWaterDischarge(Collection<String> regions, Collection<Integer> type,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("0000011K"));
-        mappings.put("Region", regions);
+        mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("Recipient", type);
-        mappings.put("Tid", years);
+        mappings.put(APIConstants.TIME_CODE, years);
 
-        String response = doPostRequest(getUrl() + "UtslappVatten", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(WaterDischarge.class);
+        return getResponseModels("UtslappVatten", mappings);
     }
 
     @Override
-    public String getUrl() {
-        return getRootUrl() + "MI/MI0903/";
+    public URLEndpoint getUrl() {
+        return getRootUrl().append("MI/MI0903/");
     }
 }

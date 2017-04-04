@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.population.partnership;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -22,10 +21,9 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
-import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
-import com.github.dannil.scbjavaclient.model.population.partnership.Partnership;
-import com.github.dannil.scbjavaclient.model.population.partnership.PartnershipChange;
-import com.github.dannil.scbjavaclient.utility.QueryBuilder;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
+import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles population partnership data fetching.</p>
@@ -54,13 +52,13 @@ public class PopulationPartnershipClient extends AbstractClient {
     /**
      * <p>Fetch all population partnership data.</p>
      *
-     * @return the population partnership data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.population.partnership.Partnership
-     *         Partnership} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getPartnership(Collection, Collection, Collection, Collection)
      */
-    public List<Partnership> getPartnership() {
+    public List<ResponseModel> getPartnership() {
         return getPartnership(null, null, null, null);
     }
 
@@ -75,35 +73,31 @@ public class PopulationPartnershipClient extends AbstractClient {
      *            the sexes to fetch data for
      * @param years
      *            the years to fetch data for
-     * @return the population partnership data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.population.partnership.Partnership
-     *         Partnership} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<Partnership> getPartnership(Collection<String> regions, Collection<String> maritalStatuses,
+    public List<ResponseModel> getPartnership(Collection<String> regions, Collection<String> maritalStatuses,
             Collection<Integer> sexes, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("BE0101P1"));
-        mappings.put("Region", regions);
+        mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("Civilstand", maritalStatuses);
         mappings.put("Kon", sexes);
-        mappings.put("Tid", years);
+        mappings.put(APIConstants.TIME_CODE, years);
 
-        String response = doPostRequest(getUrl() + "Partnerskap", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(Partnership.class);
+        return getResponseModels("Partnerskap", mappings);
     }
 
     /**
      * <p>Fetch all population partnership change data.</p>
      *
-     * @return the population partnership change data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.population.partnership.PartnershipChange
-     *         PartnershipChange} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getPartnershipChange(Collection, Collection, Collection, Collection)
      */
-    public List<PartnershipChange> getPartnershipChange() {
+    public List<ResponseModel> getPartnershipChange() {
         return getPartnershipChange(null, null, null, null);
     }
 
@@ -119,28 +113,24 @@ public class PopulationPartnershipClient extends AbstractClient {
      *            the sexes to fetch data for
      * @param years
      *            the years to fetch data for
-     * @return the population partnership change data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.population.partnership.PartnershipChange
-     *         PartnershipChange} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<PartnershipChange> getPartnershipChange(Collection<String> regions, Collection<String> maritalStatuses,
+    public List<ResponseModel> getPartnershipChange(Collection<String> regions, Collection<String> maritalStatuses,
             Collection<Integer> sexes, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("BE0101XX"));
-        mappings.put("Region", regions);
+        mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("Civilstand", maritalStatuses);
         mappings.put("Kon", sexes);
-        mappings.put("Tid", years);
+        mappings.put(APIConstants.TIME_CODE, years);
 
-        String response = doPostRequest(getUrl() + "PartnerskapAndring", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(PartnershipChange.class);
+        return getResponseModels("PartnerskapAndring", mappings);
     }
 
     @Override
-    public String getUrl() {
-        return getRootUrl() + "BE/BE0101/BE0101O/";
+    public URLEndpoint getUrl() {
+        return getRootUrl().append("BE/BE0101/BE0101O/");
     }
 
 }

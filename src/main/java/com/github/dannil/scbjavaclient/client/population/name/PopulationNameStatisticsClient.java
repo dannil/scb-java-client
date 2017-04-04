@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.population.name;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -22,9 +21,9 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
-import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
-import com.github.dannil.scbjavaclient.model.population.name.NumberOfChildrenBornWithFirstName;
-import com.github.dannil.scbjavaclient.utility.QueryBuilder;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
+import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles population name statistics data fetching.</p>
@@ -53,13 +52,13 @@ public class PopulationNameStatisticsClient extends AbstractClient {
     /**
      * <p>Fetch all number of children born with first name data.</p>
      *
-     * @return the number of children born with first name data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.population.name.NumberOfChildrenBornWithFirstName
-     *         NumberOfChildrenBornWithFirstName} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getNumberOfChildrenBornWithFirstName(Collection, Collection)
      */
-    public List<NumberOfChildrenBornWithFirstName> getNumberOfChildrenBornWithFirstName() {
+    public List<ResponseModel> getNumberOfChildrenBornWithFirstName() {
         return getNumberOfChildrenBornWithFirstName(null, null);
     }
 
@@ -71,26 +70,22 @@ public class PopulationNameStatisticsClient extends AbstractClient {
      *            the firstnames to fetch data for
      * @param years
      *            the years to fetch data for
-     * @return the number of children born with first name data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.population.name.NumberOfChildrenBornWithFirstName
-     *         NumberOfChildrenBornWithFirstName} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<NumberOfChildrenBornWithFirstName> getNumberOfChildrenBornWithFirstName(Collection<String> firstnames,
+    public List<ResponseModel> getNumberOfChildrenBornWithFirstName(Collection<String> firstnames,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("BE0001AH"));
         mappings.put("Tilltalsnamn", firstnames);
-        mappings.put("Tid", years);
+        mappings.put(APIConstants.TIME_CODE, years);
 
-        String response = doPostRequest(getUrl() + "BE0001T04Ar", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(NumberOfChildrenBornWithFirstName.class);
+        return getResponseModels("BE0001T04Ar", mappings);
     }
 
     @Override
-    public String getUrl() {
-        return getRootUrl() + "BE/BE0001/";
+    public URLEndpoint getUrl() {
+        return getRootUrl().append("BE/BE0001/");
     }
 
 }

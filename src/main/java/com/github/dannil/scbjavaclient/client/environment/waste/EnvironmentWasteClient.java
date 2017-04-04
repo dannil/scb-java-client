@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.environment.waste;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -22,10 +21,9 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
-import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
-import com.github.dannil.scbjavaclient.model.environment.waste.GeneratedWaste;
-import com.github.dannil.scbjavaclient.model.environment.waste.TreatedWaste;
-import com.github.dannil.scbjavaclient.utility.QueryBuilder;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
+import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles environment waste data fetching.</p>
@@ -54,13 +52,13 @@ public class EnvironmentWasteClient extends AbstractClient {
     /**
      * <p>Fetch all generated waste data.</p>
      *
-     * @return the generated waste data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.environment.waste.GeneratedWaste
-     *         GeneratedWaste} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getGeneratedWaste(Collection, Collection, Collection)
      */
-    public List<GeneratedWaste> getGeneratedWaste() {
+    public List<ResponseModel> getGeneratedWaste() {
         return getGeneratedWaste(null, null, null);
     }
 
@@ -73,34 +71,30 @@ public class EnvironmentWasteClient extends AbstractClient {
      *            the waste categories to fetch data for
      * @param years
      *            the years to fetch data for
-     * @return the generated waste data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.environment.waste.GeneratedWaste
-     *         GeneratedWaste} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<GeneratedWaste> getGeneratedWaste(Collection<String> industrialClassification,
+    public List<ResponseModel> getGeneratedWaste(Collection<String> industrialClassification,
             Collection<String> wasteCategories, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("MI0305AA", "MI0305AO"));
         mappings.put("SNI2007MI", industrialClassification);
         mappings.put("Avfallsslag", wasteCategories);
-        mappings.put("Tid", years);
+        mappings.put(APIConstants.TIME_CODE, years);
 
-        String response = doPostRequest(getUrl() + "MI0305T01", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(GeneratedWaste.class);
+        return getResponseModels("MI0305T01", mappings);
     }
 
     /**
      * <p>Fetch all treated waste data.</p>
      *
-     * @return the treated waste data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.environment.waste.TreatedWaste
-     *         TreatedWaste} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getTreatedWaste(Collection, Collection, Collection)
      */
-    public List<TreatedWaste> getTreatedWaste() {
+    public List<ResponseModel> getTreatedWaste() {
         return getTreatedWaste(null, null, null);
     }
 
@@ -113,26 +107,22 @@ public class EnvironmentWasteClient extends AbstractClient {
      *            the waste categories to fetch data for
      * @param years
      *            the years to fetch data for
-     * @return the treated waste data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.environment.waste.TreatedWaste
-     *         TreatedWaste} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<TreatedWaste> getTreatedWaste(Collection<Integer> treatmentCategories,
+    public List<ResponseModel> getTreatedWaste(Collection<Integer> treatmentCategories,
             Collection<String> wasteCategories, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("MI0305AQ", "MI0305AR"));
         mappings.put("BehTyp", treatmentCategories);
         mappings.put("Avfallsslag", wasteCategories);
-        mappings.put("Tid", years);
+        mappings.put(APIConstants.TIME_CODE, years);
 
-        String response = doPostRequest(getUrl() + "MI0305T02", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(TreatedWaste.class);
+        return getResponseModels("MI0305T02", mappings);
     }
 
     @Override
-    public String getUrl() {
-        return getRootUrl() + "MI/MI0305/";
+    public URLEndpoint getUrl() {
+        return getRootUrl().append("MI/MI0305/");
     }
 }

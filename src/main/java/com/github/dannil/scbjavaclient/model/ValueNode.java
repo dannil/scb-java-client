@@ -133,7 +133,6 @@ public class ValueNode<V> {
         if (!(obj instanceof ValueNode<?>)) {
             return false;
         }
-
         ValueNode<?> other = (ValueNode<?>) obj;
         return Objects.equals(this.code, other.code) && Objects.equals(this.value, other.value)
                 && Objects.equals(this.text, other.text);
@@ -142,7 +141,7 @@ public class ValueNode<V> {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder(ModelConstants.TOSTRING_BUILDER_LENGTH);
-
+        builder.append('[');
         builder.append("code=");
         builder.append(this.code);
         builder.append(", value=");
@@ -150,7 +149,6 @@ public class ValueNode<V> {
         builder.append(", text=");
         builder.append(this.text);
         builder.append(']');
-
         return builder.toString();
     }
 

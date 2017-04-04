@@ -84,7 +84,9 @@ public class POSTRequester extends AbstractRequester {
             try (OutputStream output = connection.getOutputStream()) {
                 output.write(this.query.getBytes(getCharset()));
             }
-            return getResponse(connection);
+            Response response = getResponse(connection);
+            LOGGER.info("HTTP {}: {}", response.getStatus().getCode(), url);
+            return response;
         } catch (IOException e) {
             throw new SCBClientException(e);
         }

@@ -53,7 +53,9 @@ public class GETRequester extends AbstractRequester {
     public Response getResponse(String url) {
         LOGGER.info("GET: {}", url);
         try {
-            return getResponse(getConnection(url));
+            Response response = getResponse(getConnection(url));
+            LOGGER.info("HTTP {}: {}", response.getStatus().getCode(), url);
+            return response;
         } catch (IOException e) {
             throw new SCBClientException();
         }

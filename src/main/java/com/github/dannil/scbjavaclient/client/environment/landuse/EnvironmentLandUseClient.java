@@ -20,6 +20,7 @@ import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.environment.landuse.buildings.EnvironmentLandUseBuildingsClient;
 import com.github.dannil.scbjavaclient.client.environment.landuse.planning.EnvironmentLandUsePlanningClient;
 import com.github.dannil.scbjavaclient.client.environment.landuse.usage.EnvironmentLandUseUsageClient;
+import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 /**
  * <p>Client which handles environment land use data fetching.</p>
@@ -28,26 +29,15 @@ import com.github.dannil.scbjavaclient.client.environment.landuse.usage.Environm
  */
 public class EnvironmentLandUseClient extends AbstractContainerClient {
 
-    private EnvironmentLandUseBuildingsClient environmentLandUseBuildingsClient;
-
-    private EnvironmentLandUsePlanningClient environmentLandUsePlanningClient;
-
-    private EnvironmentLandUseUsageClient environmentLandUseUsageClient;
-
     /**
      * <p>Default constructor. Initializes values and creates sub-clients.</p>
      */
     public EnvironmentLandUseClient() {
         super();
 
-        this.environmentLandUseBuildingsClient = new EnvironmentLandUseBuildingsClient();
-        addClient(this.environmentLandUseBuildingsClient);
-
-        this.environmentLandUsePlanningClient = new EnvironmentLandUsePlanningClient();
-        addClient(this.environmentLandUsePlanningClient);
-
-        this.environmentLandUseUsageClient = new EnvironmentLandUseUsageClient();
-        addClient(this.environmentLandUseUsageClient);
+        addClient("buildings", new EnvironmentLandUseBuildingsClient());
+        addClient("planning", new EnvironmentLandUsePlanningClient());
+        addClient("usage", new EnvironmentLandUseUsageClient());
     }
 
     /**
@@ -69,7 +59,7 @@ public class EnvironmentLandUseClient extends AbstractContainerClient {
      * @return a client for environment land use buildings data
      */
     public EnvironmentLandUseBuildingsClient buildings() {
-        return this.environmentLandUseBuildingsClient;
+        return (EnvironmentLandUseBuildingsClient) getClient("buildings");
     }
 
     /**
@@ -78,7 +68,7 @@ public class EnvironmentLandUseClient extends AbstractContainerClient {
      * @return a client for environment land use planning data
      */
     public EnvironmentLandUsePlanningClient planning() {
-        return this.environmentLandUsePlanningClient;
+        return (EnvironmentLandUsePlanningClient) getClient("planning");
     }
 
     /**
@@ -87,12 +77,12 @@ public class EnvironmentLandUseClient extends AbstractContainerClient {
      * @return a client for environment land use usage data
      */
     public EnvironmentLandUseUsageClient usage() {
-        return this.environmentLandUseUsageClient;
+        return (EnvironmentLandUseUsageClient) getClient("usage");
     }
 
     @Override
-    public String getUrl() {
-        return getRootUrl() + "MI/MI0803/";
+    public URLEndpoint getUrl() {
+        return getRootUrl().append("MI/MI0803/");
     }
 
 }

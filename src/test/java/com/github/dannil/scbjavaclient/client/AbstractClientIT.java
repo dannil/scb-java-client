@@ -19,6 +19,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
@@ -27,8 +28,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import com.github.dannil.scbjavaclient.exception.SCBClientForbiddenException;
-import com.github.dannil.scbjavaclient.exception.SCBClientNotFoundException;
 import com.github.dannil.scbjavaclient.test.utility.Files;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
@@ -64,7 +63,6 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
         String url = client.getRootUrl() + "HE/HE0103/HE0103B/BefolkningAlder";
 
         Map<String, Collection<?>> map = new HashMap<String, Collection<?>>();
-        map.put("ContentsCode", Arrays.asList("HE0103D2"));
         map.put("Alder", Arrays.asList("tot"));
         map.put("Kon", Arrays.asList("4"));
         map.put("Boendeform", Arrays.asList("SMAG"));
@@ -97,8 +95,8 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
         assertFalse(response.contains("boendeform"));
     }
 
-    @Test(expected = SCBClientNotFoundException.class)
-    public void urlNotFoundException() {
+    @Test
+    public void urlNotFound() {
         SCBClient client = new SCBClient();
 
         String response = client.getRawData("ABC/ABC/ABC");
@@ -106,10 +104,8 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
         assertNull(response);
     }
 
-    @Test(expected = SCBClientForbiddenException.class)
-    public void forbiddenException() {
-        // Need to use SCBClient here instead of DummyClient to reach
-        // getRawData(String)-method
+    @Test
+    public void urlForbidden() {
         SCBClient client = new SCBClient();
 
         // This call will result in a HTTP 403 response (forbidden) since the
@@ -127,6 +123,7 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
         // Find files matching the wildcard pattern
         List<File> files = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient", "*Client.java");
 
+        List<Class<?>> matchedClasses = new ArrayList<>();
         for (File file : files) {
             // Convert path into binary name
             String binaryName = Files.fileToBinaryName(file);
@@ -143,9 +140,11 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
                 assertTrue(e.getMessage(), false);
             } catch (NoSuchMethodException e) {
                 // Nope! Locale constructor not found
-                assertTrue("Class " + clazz.getName() + " doesn't declare a Locale constructor", false);
+                matchedClasses.add(clazz);
             }
         }
+        assertTrue("Classes not declaring a Locale constructor: " + matchedClasses.toString(),
+                matchedClasses.isEmpty());
     }
 
 }

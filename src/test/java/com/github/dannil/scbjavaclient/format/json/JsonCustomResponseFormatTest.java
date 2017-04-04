@@ -16,16 +16,17 @@ package com.github.dannil.scbjavaclient.format.json;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.model.ValueNode;
-import com.github.dannil.scbjavaclient.model.population.amount.Population;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -47,7 +48,14 @@ public class JsonCustomResponseFormatTest {
 
     @Test
     public void toListNonConventionalJson() {
-        List<Population> convertedPopulations = this.format.toListOf(Population.class);
+        List<ResponseModel> convertedPopulations = this.format.toListOf(ResponseModel.class);
+
+        Map<String, String> keys = new HashMap<String, String>();
+        keys.put("Region", "00");
+        keys.put("Civilstand", "OG");
+        keys.put("Alder", "45");
+        // keys.put("Kon", "null");
+        keys.put("Tid", "2011");
 
         List<ValueNode<String>> values = new ArrayList<ValueNode<String>>();
 
@@ -57,8 +65,8 @@ public class JsonCustomResponseFormatTest {
         ValueNode<String> value2 = new ValueNode<String>("1007", "BE0101N2", "Population growth");
         values.add(value2);
 
-        Population p = new Population("00", "OG", "45", null, 2011, values);
-        List<Population> staticPopulations = Arrays.asList(p);
+        ResponseModel p = new ResponseModel(keys, values);
+        List<ResponseModel> staticPopulations = Arrays.asList(p);
 
         assertEquals(convertedPopulations, staticPopulations);
     }
@@ -66,28 +74,17 @@ public class JsonCustomResponseFormatTest {
     @Test(expected = SCBClientParsingException.class)
     public void toListOfInvalidJson() {
         JsonCustomResponseFormat format = new JsonCustomResponseFormat("dadawdawgnjhgggggggggggggggggggggggg");
-        List<Population> populations = format.toListOf(Population.class);
+        List<ResponseModel> populations = format.toListOf(ResponseModel.class);
 
         assertNull(populations);
     }
 
-    @Test
-    public void isFormatted() {
-        String nonConventionalJson = "{\"columns\":[{\"code\":\"Region\",\"text\":\"region\",\"type\":\"d\"},{\"code\":\"Civilstand\",\"text\":\"marital status\",\"type\":\"d\"},{\"code\":\"Alder\",\"text\":\"age\",\"type\":\"d\"},{\"code\":\"Tid\",\"text\":\"year\",\"type\":\"t\"},{\"code\":\"BE0101N1\",\"text\":\"Population\",\"comment\":\"The tables show the conditions on December 31st for each respective year according to administrative subdivisions of January 1st of the following year\\r\\n\",\"type\":\"c\"},{\"code\":\"BE0101N2\",\"text\":\"Population growth\",\"comment\":\"Population growth is defined as the difference between the population at the beginning of the year and at the end of the year.\\r\\n\",\"type\":\"c\"}],\"comments\":[],\"data\":[{\"key\":[\"00\",\"OG\",\"45\",\"2011\"],\"values\":[\"48403\",\"1007\"]}]}";
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(nonConventionalJson);
+    @Test(expected = SCBClientParsingException.class)
+    public void toListOfInvalidConversionClass() {
+        JsonCustomResponseFormat format = new JsonCustomResponseFormat(this.json);
+        List<Locale> populations = format.toListOf(Locale.class);
 
-        assertTrue(format.isFormatted());
-    }
-
-    @Test
-    public void isFormattedCache() {
-        String nonConventionalJson = "{\"columns\":[{\"code\":\"Region\",\"text\":\"region\",\"type\":\"d\"},{\"code\":\"Civilstand\",\"text\":\"marital status\",\"type\":\"d\"},{\"code\":\"Alder\",\"text\":\"age\",\"type\":\"d\"},{\"code\":\"Tid\",\"text\":\"year\",\"type\":\"t\"},{\"code\":\"BE0101N1\",\"text\":\"Population\",\"comment\":\"The tables show the conditions on December 31st for each respective year according to administrative subdivisions of January 1st of the following year\\r\\n\",\"type\":\"c\"},{\"code\":\"BE0101N2\",\"text\":\"Population growth\",\"comment\":\"Population growth is defined as the difference between the population at the beginning of the year and at the end of the year.\\r\\n\",\"type\":\"c\"}],\"comments\":[],\"data\":[{\"key\":[\"00\",\"OG\",\"45\",\"2011\"],\"values\":[\"48403\",\"1007\"]}]}";
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(nonConventionalJson);
-
-        // A second call to format() triggers the return of the cache
-        JsonNode node = format.format();
-
-        assertEquals(node.toString(), format.toString());
+        assertNull(populations);
     }
 
     @Test

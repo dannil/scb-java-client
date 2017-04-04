@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.population.averageage;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -22,9 +21,9 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
-import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
-import com.github.dannil.scbjavaclient.model.population.averageage.AverageAge;
-import com.github.dannil.scbjavaclient.utility.QueryBuilder;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
+import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles population average age data fetching.</p>
@@ -53,13 +52,13 @@ public class PopulationAverageAgeClient extends AbstractClient {
     /**
      * <p>Fetch all average age data.</p>
      *
-     * @return the average age data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.population.averageage.AverageAge
-     *         AverageAge} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getAverageAge(Collection, Collection, Collection)
      */
-    public List<AverageAge> getAverageAge() {
+    public List<ResponseModel> getAverageAge() {
         return getAverageAge(null, null, null);
     }
 
@@ -72,27 +71,23 @@ public class PopulationAverageAgeClient extends AbstractClient {
      *            the genders to fetch data for
      * @param years
      *            the years to fetch data for
-     * @return the average age data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.population.averageage.AverageAge
-     *         AverageAge} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<AverageAge> getAverageAge(Collection<String> regions, Collection<String> genders,
+    public List<ResponseModel> getAverageAge(Collection<String> regions, Collection<String> genders,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("BE0101G9"));
-        mappings.put("Region", regions);
+        mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("Kon", genders);
-        mappings.put("Tid", years);
+        mappings.put(APIConstants.TIME_CODE, years);
 
-        String response = doPostRequest(getUrl() + "BefolkningMedelAlder", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(AverageAge.class);
+        return getResponseModels("BefolkningMedelAlder", mappings);
     }
 
     @Override
-    public String getUrl() {
-        return getRootUrl() + "BE/BE0101/BE0101B/";
+    public URLEndpoint getUrl() {
+        return getRootUrl().append("BE/BE0101/BE0101B/");
     }
 
 }

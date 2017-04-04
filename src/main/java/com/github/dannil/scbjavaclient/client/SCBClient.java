@@ -22,15 +22,21 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.github.dannil.scbjavaclient.client.energy.EnergyClient;
 import com.github.dannil.scbjavaclient.client.environment.EnvironmentClient;
-import com.github.dannil.scbjavaclient.client.finance.FinanceClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.FinancialMarketsClient;
+import com.github.dannil.scbjavaclient.client.labourmarket.LabourMarketClient;
+import com.github.dannil.scbjavaclient.client.livingconditions.LivingConditionsClient;
 import com.github.dannil.scbjavaclient.client.population.PopulationClient;
+import com.github.dannil.scbjavaclient.client.publicfinances.PublicFinancesClient;
 import com.github.dannil.scbjavaclient.format.json.JsonAPIConfigTableFormat;
 import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
+import com.github.dannil.scbjavaclient.http.HttpStatusCode;
 import com.github.dannil.scbjavaclient.http.Response;
+import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.http.requester.AbstractRequester;
 import com.github.dannil.scbjavaclient.http.requester.GETRequester;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
-import com.github.dannil.scbjavaclient.utility.URLUtility;
 
 /**
  * <p>Root client for the client hierarchy.</p>
@@ -39,26 +45,19 @@ import com.github.dannil.scbjavaclient.utility.URLUtility;
  */
 public class SCBClient extends AbstractContainerClient {
 
-    private EnvironmentClient environmentClient;
-
-    private FinanceClient financeClient;
-
-    private PopulationClient populationClient;
-
     /**
      * <p>Default constructor. Initializes values and creates sub-clients.</p>
      */
     public SCBClient() {
         super();
 
-        this.environmentClient = new EnvironmentClient();
-        addClient(this.environmentClient);
-
-        this.financeClient = new FinanceClient();
-        addClient(financeClient);
-
-        this.populationClient = new PopulationClient();
-        addClient(this.populationClient);
+        addClient("energy", new EnergyClient());
+        addClient("environment", new EnvironmentClient());
+        addClient("financialmarkets", new FinancialMarketsClient());
+        addClient("labourmarket", new LabourMarketClient());
+        addClient("livingconditions", new LivingConditionsClient());
+        addClient("population", new PopulationClient());
+        addClient("publicfinances", new PublicFinancesClient());
     }
 
     /**
@@ -74,21 +73,48 @@ public class SCBClient extends AbstractContainerClient {
     }
 
     /**
+     * <p>Retrieve the client for interacting with energy data.</p>
+     *
+     * @return a client for energy data
+     */
+    public EnergyClient energy() {
+        return (EnergyClient) getClient("energy");
+    }
+
+    /**
      * <p>Retrieve the client for interacting with environment data.</p>
      *
      * @return a client for environment data
      */
     public EnvironmentClient environment() {
-        return this.environmentClient;
+        return (EnvironmentClient) getClient("environment");
     }
 
     /**
-     * <p>Retrieve the client for interacting with finance data.</p>
+     * <p>Retrieve the client for interacting with financial markets data.</p>
      *
-     * @return a client for finance data
+     * @return a client for financial markets data
      */
-    public FinanceClient finance() {
-        return this.financeClient;
+    public FinancialMarketsClient financialMarkets() {
+        return (FinancialMarketsClient) getClient("financialmarkets");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with labour market data.</p>
+     *
+     * @return a client for labour market data
+     */
+    public LabourMarketClient labourMarket() {
+        return (LabourMarketClient) getClient("labourmarket");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with living conditions data.</p>
+     *
+     * @return a client for living conditions data
+     */
+    public LivingConditionsClient livingConditions() {
+        return (LivingConditionsClient) getClient("livingconditions");
     }
 
     /**
@@ -97,7 +123,16 @@ public class SCBClient extends AbstractContainerClient {
      * @return a client for population data
      */
     public PopulationClient population() {
-        return this.populationClient;
+        return (PopulationClient) getClient("population");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with public finances data.</p>
+     *
+     * @return a client for public finances data
+     */
+    public PublicFinancesClient publicFinances() {
+        return (PublicFinancesClient) getClient("publicfinances");
     }
 
     /**
@@ -166,12 +201,7 @@ public class SCBClient extends AbstractContainerClient {
      *      JsonAPITableFormat#getValues(String)
      */
     public String getRawData(String table) {
-        String url = getUrl() + table;
-        String json = doGetRequest(url);
-
         Map<String, Collection<?>> inputs = new HashMap<>();
-        inputs.put("ContentsCode", new JsonAPITableFormat(json).getValues("ContentsCode"));
-
         return getRawData(table, inputs);
     }
 
@@ -219,17 +249,17 @@ public class SCBClient extends AbstractContainerClient {
      * @return true if the <code>Locale</code> is supported, otherwise false
      */
     public static boolean isSupportedLocale(Locale locale) {
-        String url = URLUtility.getRootUrl(locale);
-        GETRequester get = new GETRequester();
+        String url = URLEndpoint.getRootUrl(locale).toString();
+        AbstractRequester get = new GETRequester();
         Response response = get.getResponse(url);
-        if (response.getStatus().getCode() == 404) {
-            return false;
+        if (response.getStatus() == HttpStatusCode.OK) {
+            return true;
         }
-        return true;
+        return false;
     }
 
     @Override
-    public String getUrl() {
+    public URLEndpoint getUrl() {
         return getRootUrl();
     }
 

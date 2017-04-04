@@ -92,7 +92,7 @@
     <!-- Checks for common coding problems -->
     <!-- See http://checkstyle.sf.net/config_coding.html -->
     <module name="ArrayTrailingComma" />
-    <module name="AvoidInlineConditionals" />
+    <!-- <module name="AvoidInlineConditionals" /> -->
     <module name="CovariantEquals" />
     <module name="DeclarationOrder" />
     <module name="DefaultComesLast" />
@@ -152,7 +152,7 @@
       <property name="specialImportsRegExp" value="gov." />
       <property name="sortImportsInGroupAlphabetically" value="true" />
       <property name="customImportOrderRules"
-        value="STATIC###SPECIAL_IMPORTS###STANDARD_JAVA_PACKAGE###THIRD_PARTY_PACKAGE" />
+        value="STATIC###STANDARD_JAVA_PACKAGE###THIRD_PARTY_PACKAGE" />
     </module>
     <module name="IllegalImport" /> <!-- defaults to sun.* packages -->
     <!-- <module name="ImportControl" /> -->
@@ -183,7 +183,7 @@
     <!-- Checks for metrics. -->
     <!-- See http://checkstyle.sf.net/config_metrics.html -->
     <module name="BooleanExpressionComplexity" />
-    <module name="ClassDataAbstractionCoupling" />
+    <!-- <module name="ClassDataAbstractionCoupling" /> -->
     <module name="ClassFanOutComplexity" />
     <module name="CyclomaticComplexity" />
     <module name="JavaNCSS" />
@@ -246,7 +246,9 @@
     <module name="MethodCount" />
     <module name="MethodLength" />
     <module name="OuterTypeNumber" />
-    <module name="ParameterNumber" />
+    <module name="ParameterNumber">
+      <property name="max" value="8" />
+    </module>
 
     <!-- Checks for whitespace -->
     <!-- See http://checkstyle.sf.net/config_whitespace.html -->

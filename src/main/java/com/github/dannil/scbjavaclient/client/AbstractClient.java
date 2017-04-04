@@ -14,19 +14,22 @@
 
 package com.github.dannil.scbjavaclient.client;
 
+import java.util.Collection;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
-import com.github.dannil.scbjavaclient.exception.SCBClientExceptionFactory;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
+import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.http.HttpStatusCode;
 import com.github.dannil.scbjavaclient.http.Response;
+import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.http.requester.AbstractRequester;
 import com.github.dannil.scbjavaclient.http.requester.GETRequester;
 import com.github.dannil.scbjavaclient.http.requester.POSTRequester;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.utility.Localization;
-import com.github.dannil.scbjavaclient.utility.URLUtility;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
  * <p>Abstract class which specifies how clients should operate.</p>
@@ -34,8 +37,6 @@ import org.apache.logging.log4j.Logger;
  * @since 0.0.2
  */
 public abstract class AbstractClient {
-
-    private static final Logger LOGGER = LogManager.getLogger(AbstractClient.class);
 
     private Locale locale;
 
@@ -108,8 +109,8 @@ public abstract class AbstractClient {
      *
      * @return the URL representing the entry point for the API
      */
-    protected String getRootUrl() {
-        return URLUtility.getRootUrl(this.locale);
+    protected URLEndpoint getRootUrl() {
+        return new URLEndpoint(APIConstants.ROOT_URL).toURL(this.locale);
     }
 
     /**
@@ -120,7 +121,7 @@ public abstract class AbstractClient {
      * @return a string representation of the API's response
      */
     protected String doGetRequest(String url) {
-        GETRequester get = new GETRequester();
+        AbstractRequester get = new GETRequester();
         return handleRequest(get, url);
     }
 
@@ -140,7 +141,8 @@ public abstract class AbstractClient {
     }
 
     /**
-     * <p>Handles the request.</p>
+     * <p>Handles the request. This method contains the common logic for handling GET and
+     * POST requests.</p>
      *
      * @param requester
      *            the requester
@@ -150,22 +152,31 @@ public abstract class AbstractClient {
      */
     private String handleRequest(AbstractRequester requester, String url) {
         Response response = requester.getResponse(url);
-        HttpStatusCode statusCode = response.getStatus();
-        if (statusCode.getCode() < 400) {
+        if (response.getStatus() == HttpStatusCode.OK) {
             return response.getBody();
-        } else {
-            LOGGER.error("HTTP {}: {}", response.getStatus().getCode(), url);
-            if (statusCode.getCode() == 404) {
-                // HTTP code 404, call the API again with the fallback language
-                response = requester.getResponse(URLUtility.changeLanguageForUrl(url));
-                if (response.getStatus().getCode() < 400) {
-                    return response.getBody();
-                } else {
-                    LOGGER.error("HTTP {}: {}", response.getStatus().getCode(), url);
-                }
-            }
+        } else if (response.getStatus() == HttpStatusCode.NOT_FOUND) {
+            // HTTP code 404, call the API again with the fallback language
+            URLEndpoint endpointUrl = new URLEndpoint(url).toURL(APIConstants.FALLBACK_LOCALE);
+            return requester.getResponse(endpointUrl.toString()).getBody();
         }
-        throw SCBClientExceptionFactory.getHttpException(url, statusCode.getCode());
+        return null;
+    }
+
+    /**
+     * <p>Retrieves the response models for a given table.</p>
+     *
+     * @param table
+     *            the table
+     * @param mappings
+     *            the mappings
+     * @return a list of {@link com.github.dannil.scbjavaclient.model.ResponseModel
+     *         ResponseModel}
+     */
+    protected List<ResponseModel> getResponseModels(String table, Map<String, Collection<?>> mappings) {
+        String response = doPostRequest(getUrl() + table, QueryBuilder.build(mappings));
+
+        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
+        return format.toListOf(ResponseModel.class);
     }
 
     /**
@@ -173,6 +184,6 @@ public abstract class AbstractClient {
      *
      * @return the URL endpoint for this client
      */
-    public abstract String getUrl();
+    public abstract URLEndpoint getUrl();
 
 }

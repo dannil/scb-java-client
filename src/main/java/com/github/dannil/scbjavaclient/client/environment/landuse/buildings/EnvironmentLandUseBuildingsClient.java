@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.environment.landuse.buildings;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -22,9 +21,9 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
-import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
-import com.github.dannil.scbjavaclient.model.environment.landuse.buildings.Building;
-import com.github.dannil.scbjavaclient.utility.QueryBuilder;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
+import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles environment land use building data fetching.</p>
@@ -53,13 +52,13 @@ public class EnvironmentLandUseBuildingsClient extends AbstractClient {
     /**
      * <p>Fetch all building data.</p>
      *
-     * @return the building data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.environment.landuse.buildings.Building
-     *         Building} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getBuilding(Collection, Collection, Collection)
      */
-    public List<Building> getBuilding() {
+    public List<ResponseModel> getBuilding() {
         return getBuilding(null, null, null);
     }
 
@@ -72,27 +71,23 @@ public class EnvironmentLandUseBuildingsClient extends AbstractClient {
      *            the types to fetch data for
      * @param years
      *            the years to fetch data for
-     * @return the building data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.environment.landuse.buildings.Building
-     *         Building} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<Building> getBuilding(Collection<String> regions, Collection<Integer> types,
+    public List<ResponseModel> getBuilding(Collection<String> regions, Collection<Integer> types,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("MI0803AD", "MI0803AE"));
-        mappings.put("Region", regions);
+        mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("Byggnadstyp", types);
-        mappings.put("Tid", years);
+        mappings.put(APIConstants.TIME_CODE, years);
 
-        String response = doPostRequest(getUrl() + "MarkanvByggnadLnKn", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(Building.class);
+        return getResponseModels("MarkanvByggnadLnKn", mappings);
     }
 
     @Override
-    public String getUrl() {
-        return getRootUrl() + "MI/MI0803/MI0803B/";
+    public URLEndpoint getUrl() {
+        return getRootUrl().append("MI/MI0803/MI0803B/");
     }
 
 }

@@ -14,9 +14,9 @@
 
 package com.github.dannil.scbjavaclient.client;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 /**
  * <p>Abstract class which specifies how methods by container clients (a client that has
@@ -26,7 +26,7 @@ import java.util.Locale;
  */
 public abstract class AbstractContainerClient extends AbstractClient {
 
-    private Collection<AbstractClient> clients;
+    private Map<String, AbstractClient> clients;
 
     /**
      * <p>Default constructor.</p>
@@ -34,7 +34,7 @@ public abstract class AbstractContainerClient extends AbstractClient {
     protected AbstractContainerClient() {
         super();
 
-        this.clients = new ArrayList<>();
+        this.clients = new HashMap<>();
     }
 
     /**
@@ -56,7 +56,7 @@ public abstract class AbstractContainerClient extends AbstractClient {
     public final void setLocale(Locale locale) {
         super.setLocale(locale);
 
-        for (AbstractClient client : this.clients) {
+        for (AbstractClient client : this.clients.values()) {
             client.setLocale(getLocale());
         }
     }
@@ -64,11 +64,30 @@ public abstract class AbstractContainerClient extends AbstractClient {
     /**
      * <p>Add a sub-client to this client.</p>
      *
+     * @param key
+     *            the key
      * @param client
      *            the client
+     * @throws IllegalArgumentException
+     *             if <code>this</code> client adds itself as a sub-client, such that the
+     *             expression <code>this == client</code> is true
      */
-    public void addClient(AbstractClient client) {
-        this.clients.add(client);
+    public void addClient(String key, AbstractClient client) {
+        if (this == client) {
+            throw new IllegalArgumentException("Can't add itself as a sub-client.");
+        }
+        this.clients.put(key, client);
+    }
+
+    /**
+     * <p>Get a sub-client from this client.</p>
+     *
+     * @param key
+     *            the key
+     * @return a client which is mapped to this key
+     */
+    public AbstractClient getClient(String key) {
+        return this.clients.get(key);
     }
 
 }

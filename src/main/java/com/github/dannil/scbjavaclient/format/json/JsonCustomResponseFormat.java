@@ -14,15 +14,12 @@
 
 package com.github.dannil.scbjavaclient.format.json;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
 
 /**
  * <p>Class which encapsulates behavior for the custom JSON response format. Note that
@@ -31,7 +28,7 @@ import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
  *
  * @since 0.1.0
  */
-public final class JsonCustomResponseFormat implements IJsonResponseFormat {
+public final class JsonCustomResponseFormat {
 
     private List<Map<String, Object>> entries;
 
@@ -54,17 +51,18 @@ public final class JsonCustomResponseFormat implements IJsonResponseFormat {
      */
     public JsonCustomResponseFormat(String json) {
         this();
+        this.entries = new ArrayList<>();
         this.json = this.converter.toNode(json);
-        this.json = format();
+        this.json = this.converter.convertValue(getEntries(), JsonNode.class);
     }
 
     /**
-     * Retrieves all the entries.
+     * <p>Retrieves all the entries.</p>
      *
      * @return all the entries
      */
     public List<Map<String, Object>> getEntries() {
-        if (this.entries != null) {
+        if (!this.entries.isEmpty()) {
             return this.entries;
         }
 
@@ -77,7 +75,6 @@ public final class JsonCustomResponseFormat implements IJsonResponseFormat {
         List<String> codes = columns.findValuesAsText("code");
         List<String> texts = columns.findValuesAsText("text");
 
-        this.entries = new ArrayList<>();
         for (int i = 0; i < data.size(); i++) {
             Map<String, Object> map = new HashMap<>();
 
@@ -96,39 +93,25 @@ public final class JsonCustomResponseFormat implements IJsonResponseFormat {
             JsonNode keysNode = entry.get("key");
             JsonNode valuesNode = entry.get("values");
 
+            Map<String, String> variables = new HashMap<>();
             for (int j = 0; j < keysNode.size(); j++) {
-                map.put(codes.get(j), keysNode.get(j).asText());
+                variables.put(codes.get(j), keysNode.get(j).asText());
             }
+            map.put("Variables", variables);
 
-            List<Map<String, String>> values = new ArrayList<>(valuesNode.size());
+            List<Map<String, String>> values = new ArrayList<>();
             for (int k = 0; k < valuesNode.size(); k++) {
-                Map<String, String> contents = new HashMap<>();
-                contents.put("Value", valuesNode.get(k).asText());
-                contents.put("Code", contentCodes.get(k));
-                contents.put("Text", contentCodesTexts.get(k));
-                values.add(contents);
+                Map<String, String> valuesContents = new HashMap<>();
+                valuesContents.put("Value", valuesNode.get(k).asText());
+                valuesContents.put("Code", contentCodes.get(k));
+                valuesContents.put("Text", contentCodesTexts.get(k));
+                values.add(valuesContents);
             }
             map.put("Values", values);
 
             this.entries.add(map);
         }
         return this.entries;
-    }
-
-    @Override
-    public JsonNode format() {
-        // Make sure the input is in the standardized non-conventional format
-        if (isFormatted()) {
-            return this.json;
-        }
-        return this.converter.getMapper().convertValue(getEntries(), JsonNode.class);
-    }
-
-    @Override
-    public boolean isFormatted() {
-        // Check if the node is correctly formatted
-        return !(this.json.has("columns") || this.json.has("data") || this.json.has("comments")
-                || !this.json.isArray());
     }
 
     /**
@@ -142,13 +125,7 @@ public final class JsonCustomResponseFormat implements IJsonResponseFormat {
      *         represents the corresponding entry in the JSON
      */
     public <T> List<T> toListOf(Class<T> clazz) {
-        try {
-            JavaType type = this.converter.getMapper().getTypeFactory().constructCollectionType(List.class, clazz);
-
-            return this.converter.getMapper().readValue(this.json.toString(), type);
-        } catch (IOException e) {
-            throw new SCBClientParsingException(e);
-        }
+        return this.converter.toListOf(this.json.toString(), clazz);
     }
 
     @Override

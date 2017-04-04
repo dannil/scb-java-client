@@ -47,7 +47,8 @@ public class SCBClientIT extends RemoteIntegrationTestSuite {
         Map<String, Collection<String>> staticInputs = new HashMap<String, Collection<String>>();
         Collection<String> staticInputsArsKurs = Arrays.asList("10", "11", "12", "13", "14", "15", "16");
         Collection<String> staticInputsContentsCode = Arrays.asList("UF0104L1");
-        Collection<String> staticInputsTid = Arrays.asList("1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006");
+        Collection<String> staticInputsTid = Arrays.asList("1997", "1998", "1999", "2000", "2001", "2002", "2003",
+                "2004", "2005", "2006");
 
         staticInputs.put("ArsKurs", staticInputsArsKurs);
         staticInputs.put("ContentsCode", staticInputsContentsCode);
@@ -70,12 +71,11 @@ public class SCBClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
-    public void getRawDataInputs() {
+    public void getRawDataWithInputs() {
         Locale locale = new Locale("sv", "SE");
         SCBClient client = new SCBClient(locale);
 
         Map<String, Collection<?>> payload = new HashMap<String, Collection<?>>();
-        payload.put("ContentsCode", Arrays.asList("BE0101N1"));
         payload.put("Region", Arrays.asList("00", "01", "0114"));
         payload.put("Civilstand", Arrays.asList("OG", "G"));
         payload.put("Alder", Arrays.asList(45, 50));

@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client.population.amount;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -22,9 +21,9 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
-import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
-import com.github.dannil.scbjavaclient.model.population.amount.Population;
-import com.github.dannil.scbjavaclient.utility.QueryBuilder;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
+import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles population amount data fetching.</p>
@@ -53,13 +52,13 @@ public class PopulationAmountClient extends AbstractClient {
     /**
      * <p>Fetch all population amount data.</p>
      *
-     * @return the population amount data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.population.amount.Population
-     *         Population} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      *
      * @see #getPopulation(Collection, Collection, Collection, Collection, Collection)
      */
-    public List<Population> getPopulation() {
+    public List<ResponseModel> getPopulation() {
         return getPopulation(null, null, null, null, null);
     }
 
@@ -76,29 +75,25 @@ public class PopulationAmountClient extends AbstractClient {
      *            the genders to fetch data for
      * @param years
      *            the years to fetch data for
-     * @return the population amount data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.population.amount.Population
-     *         Population} objects
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    public List<Population> getPopulation(Collection<String> regions, Collection<String> relationshipStatuses,
+    public List<ResponseModel> getPopulation(Collection<String> regions, Collection<String> relationshipStatuses,
             Collection<String> ages, Collection<Integer> genders, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ContentsCode", Arrays.asList("BE0101N1", "BE0101N2"));
-        mappings.put("Region", regions);
+        mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("Civilstand", relationshipStatuses);
         mappings.put("Alder", ages);
         mappings.put("Kon", genders);
-        mappings.put("Tid", years);
+        mappings.put(APIConstants.TIME_CODE, years);
 
-        String response = doPostRequest(getUrl() + "BefolkningNy", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(Population.class);
+        return getResponseModels("BefolkningNy", mappings);
     }
 
     @Override
-    public String getUrl() {
-        return getRootUrl() + "BE/BE0101/BE0101A/";
+    public URLEndpoint getUrl() {
+        return getRootUrl().append("BE/BE0101/BE0101A/");
     }
 
 }

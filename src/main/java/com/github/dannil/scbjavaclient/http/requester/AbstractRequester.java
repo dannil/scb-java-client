@@ -29,7 +29,6 @@ import java.util.Properties;
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
 import com.github.dannil.scbjavaclient.http.HttpStatusCode;
 import com.github.dannil.scbjavaclient.http.Response;
-import com.github.dannil.scbjavaclient.utility.URLUtility;
 
 /**
  * <p>Class which contains the logic for sending URL requests to a specified address.</p>
@@ -107,48 +106,31 @@ public abstract class AbstractRequester {
      *
      * @param connection
      *            the <code>URLConnection</code>
-     * @return the response as an <code>InputStream</code>
+     * @return the response as an {@link com.github.dannil.scbjavaclient.http.Response
+     *         Response}
      * @throws IOException
-     *             if an exception occurred while retrieving the <code>InputStream</code>
+     *             if an exception occurred while retrieving the <code>Response</code>
      */
     protected Response getResponse(URLConnection connection) throws IOException {
         HttpURLConnection httpConnection = (HttpURLConnection) connection;
         HttpStatusCode status = HttpStatusCode.valueOf(httpConnection.getResponseCode());
         InputStream stream = null;
-        if (status.getCode() < 400) {
+        final int httpErrorStartCode = 400;
+        if (status.getCode() < httpErrorStartCode) {
             stream = httpConnection.getInputStream();
-        } else {
-            stream = httpConnection.getErrorStream();
         }
         return new Response(status, stream);
     }
 
-    public abstract Response getResponse(String url);
-
     /**
-     * <p>Return the content from the specified table.</p>
+     * <p>Retrieves the response from the specified URL.</p>
      *
-     * @param table
-     *            the table to fetch the content from
-     * @return the content of the table
+     * @param url
+     *            the URL to call
+     * @return the response as an {@link com.github.dannil.scbjavaclient.http.Response
+     *         Response}
      */
-    public String getBodyFromTable(String table) {
-        // #NOTE#
-        //
-        // This needs to be rewritten to handle different locale. A good solution is hard
-        // to find right now since this class should not need to worry about the current
-        // locale, as methods calling this method (getBodyFromTable) should really
-        // convert the input language. This solution isn't really implementable right
-        // now as the only method calling this method is getInputs() in the model.
-        // However, the model doesn't (and should NOT) have any idea about the locale.
-        //
-        // A solution to this is to implement issue #12 on GitHub
-        // (https://github.com/dannil/scb-java-client/issues/12) which transfers the
-        // responsibility to a client. The client knows what locale is currently in use
-        // and the method can therefore be rewritten to either accept the locale as a
-        // parameter or the input URL is converted before calling this method.
-        return getResponse(URLUtility.getRootUrl() + table).getBody();
-    }
+    public abstract Response getResponse(String url);
 
     /**
      * <p>Getter for charset.</p>
@@ -168,8 +150,8 @@ public abstract class AbstractRequester {
     public final void setCharset(Charset charset) {
         this.charset = charset;
         this.requestProperties.put(REQUESTPROPERTY_ACCEPT_CHARSET, this.charset.name());
-        this.requestProperties.put(REQUESTPROPERTY_CONTENT_TYPE, "application/json; charset="
-                + this.charset.name().toLowerCase());
+        this.requestProperties.put(REQUESTPROPERTY_CONTENT_TYPE,
+                "application/json; charset=" + this.charset.name().toLowerCase());
     }
 
     /**
