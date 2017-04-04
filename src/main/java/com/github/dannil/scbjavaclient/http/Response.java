@@ -23,7 +23,7 @@ import com.github.dannil.scbjavaclient.exception.SCBClientException;
 import org.apache.commons.io.input.BOMInputStream;
 
 /**
- * <p>Class which encapsulates HTTP data.</p>
+ * <p>Class which encapsulates HTTP response data.</p>
  *
  * @since 0.3.0
  */
@@ -48,7 +48,7 @@ public class Response {
 
     /**
      * <p>Getter for status.</p>
-     * 
+     *
      * @return the status
      */
     public HttpStatusCode getStatus() {
@@ -57,7 +57,7 @@ public class Response {
 
     /**
      * <p>Getter for stream.</p>
-     * 
+     *
      * @return the stream
      */
     public InputStream getStream() {
@@ -66,7 +66,7 @@ public class Response {
 
     /**
      * <p>Retrieves the body for the current <code>InputStream</code>.</p>
-     * 
+     *
      * @return the body
      */
     public String getBody() {
