@@ -37,14 +37,6 @@ import com.github.dannil.scbjavaclient.http.Response;
  */
 public abstract class AbstractRequester {
 
-    private static final String REQUESTPROPERTY_ACCEPT = "Accept";
-
-    private static final String REQUESTPROPERTY_ACCEPT_CHARSET = "Accept-Charset";
-
-    private static final String REQUESTPROPERTY_CONTENT_TYPE = "Content-Type";
-
-    private static final String REQUESTPROPERTY_USER_AGENT = "User-Agent";
-
     private static Properties properties;
 
     private Charset charset;
@@ -77,8 +69,8 @@ public abstract class AbstractRequester {
      */
     protected AbstractRequester(Charset charset) {
         this.requestProperties = new HashMap<>();
-        this.requestProperties.put(REQUESTPROPERTY_ACCEPT, "application/json");
-        this.requestProperties.put(REQUESTPROPERTY_USER_AGENT, createUserAgent());
+        this.requestProperties.put("Accept", "application/json");
+        this.requestProperties.put("User-Agent", createUserAgent());
         setCharset(charset);
     }
 
@@ -149,9 +141,8 @@ public abstract class AbstractRequester {
      */
     public final void setCharset(Charset charset) {
         this.charset = charset;
-        this.requestProperties.put(REQUESTPROPERTY_ACCEPT_CHARSET, this.charset.name());
-        this.requestProperties.put(REQUESTPROPERTY_CONTENT_TYPE,
-                "application/json; charset=" + this.charset.name().toLowerCase());
+        this.requestProperties.put("Accept-Charset", this.charset.name());
+        this.requestProperties.put("Content-Type", "application/json; charset=" + this.charset.name().toLowerCase());
     }
 
     /**
