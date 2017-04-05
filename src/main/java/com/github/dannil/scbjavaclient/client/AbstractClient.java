@@ -15,6 +15,7 @@
 package com.github.dannil.scbjavaclient.client;
 
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -160,6 +161,20 @@ public abstract class AbstractClient {
 
     /**
      * <p>Retrieves the response models for a given table.</p>
+     *
+     * @param table
+     *            the table
+     * @return a list of {@link com.github.dannil.scbjavaclient.model.ResponseModel
+     *         ResponseModel}
+     */
+    protected List<ResponseModel> getResponseModels(String table) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        return getResponseModels(table, mappings);
+    }
+
+    /**
+     * <p>Retrieves the response models for a given table which match the input
+     * constraints.</p>
      *
      * @param table
      *            the table
