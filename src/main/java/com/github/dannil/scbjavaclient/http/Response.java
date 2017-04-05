@@ -81,7 +81,7 @@ public class Response {
                 return bos.toString();
             }
         } catch (IOException e) {
-            throw new SCBClientException();
+            throw new SCBClientException(e);
         }
     }
 
