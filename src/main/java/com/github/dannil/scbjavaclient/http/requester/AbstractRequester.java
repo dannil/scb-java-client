@@ -27,8 +27,8 @@ import java.util.Map.Entry;
 import java.util.Properties;
 
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
-import com.github.dannil.scbjavaclient.http.HttpStatusCode;
 import com.github.dannil.scbjavaclient.http.HttpResponse;
+import com.github.dannil.scbjavaclient.http.HttpStatusCode;
 
 /**
  * <p>Class which contains the logic for sending URL requests to a specified address.</p>
