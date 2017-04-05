@@ -22,7 +22,7 @@ import java.util.Map;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.http.HttpStatusCode;
-import com.github.dannil.scbjavaclient.http.Response;
+import com.github.dannil.scbjavaclient.http.HttpResponse;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.http.requester.AbstractRequester;
 import com.github.dannil.scbjavaclient.http.requester.GETRequester;
@@ -151,7 +151,7 @@ public abstract class AbstractClient {
      * @return a string representation of the API's response
      */
     private String handleRequest(AbstractRequester requester, String url) {
-        Response response = requester.getResponse(url);
+        HttpResponse response = requester.getResponse(url);
         if (response.getStatus() == HttpStatusCode.OK) {
             return response.getBody();
         } else if (response.getStatus() == HttpStatusCode.NOT_FOUND) {

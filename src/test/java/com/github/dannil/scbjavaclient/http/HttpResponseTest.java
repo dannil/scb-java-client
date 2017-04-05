@@ -26,12 +26,12 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class ResponseTest {
+public class HttpResponseTest {
 
     @Test
     public void createWithConstructor() {
         InputStream stream = new ByteArrayInputStream(new byte[] {});
-        Response response = new Response(HttpStatusCode.OK, stream);
+        HttpResponse response = new HttpResponse(HttpStatusCode.OK, stream);
 
         assertEquals(HttpStatusCode.OK, response.getStatus());
         assertNotNull(response.getStream());
@@ -39,7 +39,7 @@ public class ResponseTest {
 
     @Test
     public void getStatus() {
-        Response response = new Response(HttpStatusCode.OK, null);
+        HttpResponse response = new HttpResponse(HttpStatusCode.OK, null);
 
         assertEquals(HttpStatusCode.OK, response.getStatus());
     }
@@ -47,7 +47,7 @@ public class ResponseTest {
     @Test
     public void getStream() throws FileNotFoundException {
         InputStream stream = new ByteArrayInputStream(new byte[] {});
-        Response response = new Response(HttpStatusCode.OK, stream);
+        HttpResponse response = new HttpResponse(HttpStatusCode.OK, stream);
 
         assertNotNull(response.getStream());
     }

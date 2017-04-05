@@ -27,7 +27,7 @@ import org.apache.commons.io.input.BOMInputStream;
  *
  * @since 0.3.0
  */
-public class Response {
+public class HttpResponse {
 
     private HttpStatusCode status;
 
@@ -41,7 +41,7 @@ public class Response {
      * @param stream
      *            the stream
      */
-    public Response(HttpStatusCode status, InputStream stream) {
+    public HttpResponse(HttpStatusCode status, InputStream stream) {
         this.status = status;
         this.stream = stream;
     }

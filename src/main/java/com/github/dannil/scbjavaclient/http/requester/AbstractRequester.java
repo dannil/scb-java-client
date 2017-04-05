@@ -28,7 +28,7 @@ import java.util.Properties;
 
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
 import com.github.dannil.scbjavaclient.http.HttpStatusCode;
-import com.github.dannil.scbjavaclient.http.Response;
+import com.github.dannil.scbjavaclient.http.HttpResponse;
 
 /**
  * <p>Class which contains the logic for sending URL requests to a specified address.</p>
@@ -98,12 +98,12 @@ public abstract class AbstractRequester {
      *
      * @param connection
      *            the <code>URLConnection</code>
-     * @return the response as an {@link com.github.dannil.scbjavaclient.http.Response
+     * @return the response as an {@link com.github.dannil.scbjavaclient.http.HttpResponse
      *         Response}
      * @throws IOException
      *             if an exception occurred while retrieving the <code>Response</code>
      */
-    protected Response getResponse(URLConnection connection) throws IOException {
+    protected HttpResponse getResponse(URLConnection connection) throws IOException {
         HttpURLConnection httpConnection = (HttpURLConnection) connection;
         HttpStatusCode status = HttpStatusCode.valueOf(httpConnection.getResponseCode());
         InputStream stream = null;
@@ -111,7 +111,7 @@ public abstract class AbstractRequester {
         if (status.getCode() < httpErrorStartCode) {
             stream = httpConnection.getInputStream();
         }
-        return new Response(status, stream);
+        return new HttpResponse(status, stream);
     }
 
     /**
@@ -119,10 +119,10 @@ public abstract class AbstractRequester {
      *
      * @param url
      *            the URL to call
-     * @return the response as an {@link com.github.dannil.scbjavaclient.http.Response
+     * @return the response as an {@link com.github.dannil.scbjavaclient.http.HttpResponse
      *         Response}
      */
-    public abstract Response getResponse(String url);
+    public abstract HttpResponse getResponse(String url);
 
     /**
      * <p>Getter for charset.</p>

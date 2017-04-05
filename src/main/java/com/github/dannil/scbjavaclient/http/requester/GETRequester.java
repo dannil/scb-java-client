@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
-import com.github.dannil.scbjavaclient.http.Response;
+import com.github.dannil.scbjavaclient.http.HttpResponse;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -50,10 +50,10 @@ public class GETRequester extends AbstractRequester {
     }
 
     @Override
-    public Response getResponse(String url) {
+    public HttpResponse getResponse(String url) {
         LOGGER.info("GET: {}", url);
         try {
-            Response response = getResponse(getConnection(url));
+            HttpResponse response = getResponse(getConnection(url));
             LOGGER.info("HTTP {}: {}", response.getStatus().getCode(), url);
             return response;
         } catch (IOException e) {
