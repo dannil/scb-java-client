@@ -15,6 +15,7 @@
 package com.github.dannil.scbjavaclient.client;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
@@ -28,6 +29,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.test.utility.Files;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
@@ -114,6 +116,34 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
         String response = client.getRawData("NV/NV0119/IVPKNLonAr");
 
         assertNull(response);
+    }
+
+    @Test
+    public void getResponseModels() {
+        Locale locale = new Locale("sv", "SE");
+        SCBClient client = new SCBClient(locale);
+
+        List<ResponseModel> models = client.getResponseModels("HE/HE0103/HE0103B/BefolkningAlder");
+
+        assertNotNull(models);
+        assertFalse(models.isEmpty());
+    }
+
+    @Test
+    public void getResponseModelsWithParameters() {
+        Locale locale = new Locale("sv", "SE");
+        SCBClient client = new SCBClient(locale);
+
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("Alder", Arrays.asList("6-12", "13-19"));
+        mappings.put("Kon", Arrays.asList("1", "2"));
+        mappings.put("Boendeform", Arrays.asList("SMAG", "HY"));
+        mappings.put("Tid", Arrays.asList("2010", "2012"));
+
+        List<ResponseModel> models = client.getResponseModels("HE/HE0103/HE0103B/BefolkningAlder", mappings);
+
+        assertNotNull(models);
+        assertFalse(models.isEmpty());
     }
 
     @Test
