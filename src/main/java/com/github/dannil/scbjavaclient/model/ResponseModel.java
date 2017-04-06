@@ -173,8 +173,7 @@ public class ResponseModel {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder(ModelConstants.TOSTRING_BUILDER_LENGTH);
-        builder.append("ResponseModel [");
-        builder.append("variables=");
+        builder.append("ResponseModel [variables=");
         builder.append(this.variables);
         builder.append(", values=");
         builder.append(this.values);

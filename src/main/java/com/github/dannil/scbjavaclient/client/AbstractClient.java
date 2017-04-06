@@ -153,14 +153,15 @@ public abstract class AbstractClient {
      */
     private String handleRequest(AbstractRequester requester, String url) {
         HttpResponse response = requester.getResponse(url);
+        String body = null;
         if (response.getStatus() == HttpStatusCode.OK) {
-            return response.getBody();
+            body = response.getBody();
         } else if (response.getStatus() == HttpStatusCode.NOT_FOUND) {
             // HTTP code 404, call the API again with the fallback language
             URLEndpoint endpointUrl = new URLEndpoint(url).toURL(APIConstants.FALLBACK_LOCALE);
-            return requester.getResponse(endpointUrl.toString()).getBody();
+            body = requester.getResponse(endpointUrl.toString()).getBody();
         }
-        return null;
+        return body;
     }
 
     /**
