@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.http.requester;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -23,18 +22,13 @@ import java.net.URLConnection;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Properties;
 
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
-import com.github.dannil.scbjavaclient.utility.HttpUtility;
-
-import org.apache.commons.io.input.BOMInputStream;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import com.github.dannil.scbjavaclient.http.HttpResponse;
+import com.github.dannil.scbjavaclient.http.HttpStatusCode;
 
 /**
  * <p>Class which contains the logic for sending URL requests to a specified address.</p>
@@ -42,18 +36,6 @@ import org.apache.logging.log4j.Logger;
  * @since 0.0.2
  */
 public abstract class AbstractRequester {
-
-    private static final Logger LOGGER = LogManager.getLogger(AbstractRequester.class);
-
-    private static final int HTTP_STATUS_CODES_ERRORS_START_CODE = 400;
-
-    private static final String REQUESTPROPERTY_ACCEPT = "Accept";
-
-    private static final String REQUESTPROPERTY_ACCEPT_CHARSET = "Accept-Charset";
-
-    private static final String REQUESTPROPERTY_CONTENT_TYPE = "Content-Type";
-
-    private static final String REQUESTPROPERTY_USER_AGENT = "User-Agent";
 
     private static Properties properties;
 
@@ -87,8 +69,8 @@ public abstract class AbstractRequester {
      */
     protected AbstractRequester(Charset charset) {
         this.requestProperties = new HashMap<>();
-        this.requestProperties.put(REQUESTPROPERTY_ACCEPT, "application/json");
-        this.requestProperties.put(REQUESTPROPERTY_USER_AGENT, createUserAgent());
+        this.requestProperties.put("Accept", "application/json");
+        this.requestProperties.put("User-Agent", createUserAgent());
         setCharset(charset);
     }
 
@@ -116,49 +98,31 @@ public abstract class AbstractRequester {
      *
      * @param connection
      *            the <code>URLConnection</code>
-     * @return the response as an <code>InputStream</code>
+     * @return the response as an {@link com.github.dannil.scbjavaclient.http.HttpResponse
+     *         Response}
      * @throws IOException
-     *             if an exception occurred while retrieving the <code>InputStream</code>
+     *             if an exception occurred while retrieving the <code>Response</code>
      */
-    protected InputStream getResponse(URLConnection connection) throws IOException {
+    protected HttpResponse getResponse(URLConnection connection) throws IOException {
         HttpURLConnection httpConnection = (HttpURLConnection) connection;
-
-        Level level = httpConnection.getResponseCode() >= HTTP_STATUS_CODES_ERRORS_START_CODE ? Level.ERROR
-                : Level.INFO;
-        LOGGER.log(level, "HTTP {}: {}", httpConnection.getResponseCode(), httpConnection.getURL());
-
-        HttpUtility.validateStatusCode(httpConnection.getURL(), httpConnection.getResponseCode());
-        return connection.getInputStream();
-    }
-
-    /**
-     * Retrieves the body from the <code>InputStream</code> response.
-     *
-     * @param response
-     *            the <code>InputStream</code> response
-     * @return the body of the <code>InputStream</code>
-     * @throws IOException
-     *             if an exception occurred while retrieving the body
-     */
-    protected String getBody(InputStream response) throws IOException {
-        try (BOMInputStream bis = new BOMInputStream(response)) {
-            try (ByteArrayOutputStream bos = new ByteArrayOutputStream()) {
-                for (int result = bis.read(); result != -1; result = bis.read()) {
-                    bos.write((byte) result);
-                }
-                return bos.toString();
-            }
+        HttpStatusCode status = HttpStatusCode.valueOf(httpConnection.getResponseCode());
+        InputStream stream = null;
+        final int httpErrorStartCode = 400;
+        if (status.getCode() < httpErrorStartCode) {
+            stream = httpConnection.getInputStream();
         }
+        return new HttpResponse(status, stream);
     }
 
     /**
-     * <p>Extracts the response body from the URL.</p>
+     * <p>Retrieves the response from the specified URL.</p>
      *
      * @param url
-     *            the URL to get the response from
-     * @return the response
+     *            the URL to call
+     * @return the response as an {@link com.github.dannil.scbjavaclient.http.HttpResponse
+     *         Response}
      */
-    public abstract String getBody(String url);
+    public abstract HttpResponse getResponse(String url);
 
     /**
      * <p>Getter for charset.</p>
@@ -177,9 +141,8 @@ public abstract class AbstractRequester {
      */
     public final void setCharset(Charset charset) {
         this.charset = charset;
-        this.requestProperties.put(REQUESTPROPERTY_ACCEPT_CHARSET, this.charset.name());
-        this.requestProperties.put(REQUESTPROPERTY_CONTENT_TYPE,
-                "application/json; charset=" + this.charset.name().toLowerCase(Locale.getDefault()));
+        this.requestProperties.put("Accept-Charset", this.charset.name());
+        this.requestProperties.put("Content-Type", "application/json; charset=" + this.charset.name().toLowerCase());
     }
 
     /**

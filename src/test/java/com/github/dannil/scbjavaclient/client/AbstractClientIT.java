@@ -29,8 +29,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import com.github.dannil.scbjavaclient.exception.SCBClientForbiddenException;
-import com.github.dannil.scbjavaclient.exception.SCBClientNotFoundException;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.test.utility.Files;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
@@ -49,9 +47,8 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
 
         String url = client.getRootUrl() + "HE/HE0103/HE0103B/BefolkningAlder";
 
-        // This request is performed by a client which is set to English (as specified in
-        // the setup method). This means that if we receive a response with Swedish text,
-        // we've used the fallback url.
+        // This request is performed with the locale set to English. This means that if we
+        // receive a response with Swedish text, we've used the fallback url.
         String response = client.doGetRequest(url);
 
         assertTrue(response.contains("ålder"));
@@ -73,9 +70,8 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
         map.put("Boendeform", Arrays.asList("SMAG"));
         map.put("Tid", Arrays.asList("2012"));
 
-        // This request is performed by a client which is set to English (as specified in
-        // the setup method). This means that if we receive a response with Swedish text,
-        // we've used the fallback url.
+        // This request is performed with the locale set to English. This means that if we
+        // receive a response with Swedish text, we've used the fallback url.
         String response = client.doPostRequest(url, QueryBuilder.build(map));
 
         assertTrue(response.contains("ålder"));
@@ -101,8 +97,8 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
         assertFalse(response.contains("boendeform"));
     }
 
-    @Test(expected = SCBClientNotFoundException.class)
-    public void urlNotFoundException() {
+    @Test
+    public void urlNotFound() {
         SCBClient client = new SCBClient();
 
         String response = client.getRawData("ABC/ABC/ABC");
@@ -110,8 +106,8 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
         assertNull(response);
     }
 
-    @Test(expected = SCBClientForbiddenException.class)
-    public void forbiddenException() {
+    @Test
+    public void urlForbidden() {
         SCBClient client = new SCBClient();
 
         // This call will result in a HTTP 403 response (forbidden) since the

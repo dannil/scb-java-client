@@ -30,7 +30,7 @@ public class POSTRequesterIT extends RemoteIntegrationTestSuite {
     public void invalidUrl() {
         POSTRequester requester = new POSTRequester();
         requester.setQuery("query");
-        assertNull(requester.getBody("example.example"));
+        assertNull(requester.getResponse("example.example").getBody());
     }
 
 }

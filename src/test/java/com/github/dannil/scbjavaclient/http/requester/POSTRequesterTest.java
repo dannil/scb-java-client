@@ -65,7 +65,7 @@ public class POSTRequesterTest {
     public void doRequestIllegalStateNullPayload() throws IOException {
         POSTRequester post = new POSTRequester();
 
-        String response = post.getBody(URLEndpoint.getRootUrl() + "BE/BE0701/MedelAlderNY");
+        String response = post.getResponse(URLEndpoint.getRootUrl() + "BE/BE0701/MedelAlderNY").getBody();
 
         assertNull(response);
     }

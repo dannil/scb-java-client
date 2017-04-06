@@ -15,12 +15,12 @@
 package com.github.dannil.scbjavaclient.http.requester;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URLConnection;
 import java.nio.charset.Charset;
 
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
+import com.github.dannil.scbjavaclient.http.HttpResponse;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -73,7 +73,7 @@ public class POSTRequester extends AbstractRequester {
     }
 
     @Override
-    public String getBody(String url) {
+    public HttpResponse getResponse(String url) {
         if (this.query == null) {
             throw new IllegalStateException("Payload is null");
         }
@@ -84,8 +84,9 @@ public class POSTRequester extends AbstractRequester {
             try (OutputStream output = connection.getOutputStream()) {
                 output.write(this.query.getBytes(getCharset()));
             }
-            InputStream response = getResponse(connection);
-            return getBody(response);
+            HttpResponse response = getResponse(connection);
+            LOGGER.info("HTTP {}: {}", response.getStatus().getCode(), url);
+            return response;
         } catch (IOException e) {
             throw new SCBClientException(e);
         }

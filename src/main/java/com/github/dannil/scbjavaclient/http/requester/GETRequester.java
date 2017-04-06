@@ -15,10 +15,10 @@
 package com.github.dannil.scbjavaclient.http.requester;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.charset.Charset;
 
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
+import com.github.dannil.scbjavaclient.http.HttpResponse;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -50,11 +50,12 @@ public class GETRequester extends AbstractRequester {
     }
 
     @Override
-    public String getBody(String url) {
+    public HttpResponse getResponse(String url) {
         LOGGER.info("GET: {}", url);
         try {
-            InputStream response = getResponse(getConnection(url));
-            return getBody(response);
+            HttpResponse response = getResponse(getConnection(url));
+            LOGGER.info("HTTP {}: {}", response.getStatus().getCode(), url);
+            return response;
         } catch (IOException e) {
             throw new SCBClientException(e);
         }

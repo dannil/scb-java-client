@@ -29,7 +29,7 @@ public class GETRequesterIT extends RemoteIntegrationTestSuite {
     @Test(expected = SCBClientException.class)
     public void invalidUrl() {
         GETRequester requester = new GETRequester();
-        assertNull(requester.getBody("example.example"));
+        assertNull(requester.getResponse("example.example").getBody());
     }
 
 }
