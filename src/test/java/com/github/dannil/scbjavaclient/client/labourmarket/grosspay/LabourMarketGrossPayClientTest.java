@@ -15,10 +15,10 @@
 package com.github.dannil.scbjavaclient.client.labourmarket.grosspay;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 import java.util.Locale;
 
+import com.github.dannil.scbjavaclient.client.labourmarket.grosspay.aggregatewages.LabourMarketGrossPayAggregateWagesClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;
@@ -40,7 +40,7 @@ public class LabourMarketGrossPayClientTest {
     public void aggregateWages() {
         LabourMarketGrossPayClient client = new LabourMarketGrossPayClient();
 
-        assertNotNull(client.aggregateWages());
+        assertEquals(client.aggregateWages().getClass(), LabourMarketGrossPayAggregateWagesClient.class);
     }
 
     @Test

@@ -15,10 +15,12 @@
 package com.github.dannil.scbjavaclient.client.environment.landuse;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 import java.util.Locale;
 
+import com.github.dannil.scbjavaclient.client.environment.landuse.buildings.EnvironmentLandUseBuildingsClient;
+import com.github.dannil.scbjavaclient.client.environment.landuse.planning.EnvironmentLandUsePlanningClient;
+import com.github.dannil.scbjavaclient.client.environment.landuse.usage.EnvironmentLandUseUsageClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;
@@ -40,21 +42,21 @@ public class EnvironmentLandUseClientTest {
     public void buildingsClient() {
         EnvironmentLandUseClient client = new EnvironmentLandUseClient();
 
-        assertNotNull(client.buildings());
+        assertEquals(client.buildings().getClass(), EnvironmentLandUseBuildingsClient.class);
     }
 
     @Test
     public void planningClient() {
         EnvironmentLandUseClient client = new EnvironmentLandUseClient();
 
-        assertNotNull(client.planning());
+        assertEquals(client.planning().getClass(), EnvironmentLandUsePlanningClient.class);
     }
 
     @Test
     public void usageClient() {
         EnvironmentLandUseClient client = new EnvironmentLandUseClient();
 
-        assertNotNull(client.usage());
+        assertEquals(client.usage().getClass(), EnvironmentLandUseUsageClient.class);
     }
 
     @Test

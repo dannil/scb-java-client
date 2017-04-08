@@ -15,10 +15,14 @@
 package com.github.dannil.scbjavaclient.client.environment;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 import java.util.Locale;
 
+import com.github.dannil.scbjavaclient.client.environment.industrialwateruse.EnvironmentIndustrialWaterUseClient;
+import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.EnvironmentLandAndWaterAreaClient;
+import com.github.dannil.scbjavaclient.client.environment.landuse.EnvironmentLandUseClient;
+import com.github.dannil.scbjavaclient.client.environment.packagingandpackagingwaste.EnvironmentPackagingAndPackagingWasteClient;
+import com.github.dannil.scbjavaclient.client.environment.waste.EnvironmentWasteClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;
@@ -37,10 +41,38 @@ public class EnvironmentClientTest {
     }
 
     @Test
+    public void industrialWaterUseClient() {
+        EnvironmentClient client = new EnvironmentClient();
+
+        assertEquals(client.industrialWaterUse().getClass(), EnvironmentIndustrialWaterUseClient.class);
+    }
+
+    @Test
     public void landAndWaterAreaClient() {
         EnvironmentClient client = new EnvironmentClient();
 
-        assertNotNull(client.landAndWaterArea());
+        assertEquals(client.landAndWaterArea().getClass(), EnvironmentLandAndWaterAreaClient.class);
+    }
+
+    @Test
+    public void landUseClient() {
+        EnvironmentClient client = new EnvironmentClient();
+
+        assertEquals(client.landUse().getClass(), EnvironmentLandUseClient.class);
+    }
+
+    @Test
+    public void packagingAndPackagingWasteClient() {
+        EnvironmentClient client = new EnvironmentClient();
+
+        assertEquals(client.packagingAndPackagingWaste().getClass(), EnvironmentPackagingAndPackagingWasteClient.class);
+    }
+
+    @Test
+    public void wasteClient() {
+        EnvironmentClient client = new EnvironmentClient();
+
+        assertEquals(client.waste().getClass(), EnvironmentWasteClient.class);
     }
 
     @Test

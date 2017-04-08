@@ -15,10 +15,13 @@
 package com.github.dannil.scbjavaclient.client.financialmarkets;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 import java.util.Locale;
 
+import com.github.dannil.scbjavaclient.client.financialmarkets.institutions.FinancialMarketsInstitutionsClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.investmentfunds.FinancialMarketsInvestmentFundsClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.securities.FinancialMarketsSecuritiesClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.shareholders.FinancialMarketsShareholdersClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;
@@ -37,10 +40,31 @@ public class FinancialMarketsClientTest {
     }
 
     @Test
+    public void institutionsClient() {
+        FinancialMarketsClient client = new FinancialMarketsClient();
+
+        assertEquals(client.institutions().getClass(), FinancialMarketsInstitutionsClient.class);
+    }
+
+    @Test
+    public void investmentFundsClient() {
+        FinancialMarketsClient client = new FinancialMarketsClient();
+
+        assertEquals(client.investmentFunds().getClass(), FinancialMarketsInvestmentFundsClient.class);
+    }
+
+    @Test
+    public void securitiesClient() {
+        FinancialMarketsClient client = new FinancialMarketsClient();
+
+        assertEquals(client.securities().getClass(), FinancialMarketsSecuritiesClient.class);
+    }
+
+    @Test
     public void shareholdersClient() {
         FinancialMarketsClient client = new FinancialMarketsClient();
 
-        assertNotNull(client.shareholders());
+        assertEquals(client.shareholders().getClass(), FinancialMarketsShareholdersClient.class);
     }
 
     @Test
