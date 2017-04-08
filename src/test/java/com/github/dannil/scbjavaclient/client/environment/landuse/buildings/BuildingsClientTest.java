@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.environment.landuse.usage;
+package com.github.dannil.scbjavaclient.client.environment.landuse.buildings;
 
 import static org.junit.Assert.assertEquals;
 
@@ -25,12 +25,12 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class LandUseUsageClientTest {
+public class BuildingsClientTest {
 
     @Test
     public void createWithLocaleConstructor() {
         Locale locale = new Locale("sv", "SE");
-        LandUseUsageClient client = new LandUseUsageClient(locale);
+        LandUseBuildingsClient client = new LandUseBuildingsClient(locale);
 
         assertEquals(locale, client.getLocale());
     }
@@ -40,9 +40,9 @@ public class LandUseUsageClientTest {
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints
         Locale locale = new Locale("en", "US");
-        LandUseUsageClient client = new LandUseUsageClient(locale);
+        LandUseBuildingsClient client = new LandUseBuildingsClient(locale);
 
-        assertEquals(URLEndpoint.getRootUrl(locale).append("MI/MI0803/MI0803A/"), client.getUrl());
+        assertEquals(URLEndpoint.getRootUrl(locale).append("MI/MI0803/MI0803B/"), client.getUrl());
     }
 
 }
