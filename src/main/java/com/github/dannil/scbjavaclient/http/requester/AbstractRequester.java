@@ -38,6 +38,8 @@ import com.github.dannil.scbjavaclient.http.HttpStatusCode;
  */
 public abstract class AbstractRequester {
 
+    private static final int HTTP_ERRORS_START_CODE = 400;
+
     private static Properties properties;
 
     private Charset charset;
@@ -108,8 +110,7 @@ public abstract class AbstractRequester {
         HttpURLConnection httpConnection = (HttpURLConnection) connection;
         HttpStatusCode status = HttpStatusCode.valueOf(httpConnection.getResponseCode());
         InputStream stream = null;
-        int httpErrorStartCode = 400;
-        if (status.getCode() < httpErrorStartCode) {
+        if (status.getCode() < HTTP_ERRORS_START_CODE) {
             stream = httpConnection.getInputStream();
         }
         return new HttpResponse(status, stream);
