@@ -15,10 +15,10 @@
 package com.github.dannil.scbjavaclient.client.energy;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 import java.util.Locale;
 
+import com.github.dannil.scbjavaclient.client.energy.monthlystatistics.EnergyMonthlyStatisticsClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;
@@ -40,7 +40,7 @@ public class EnergyClientTest {
     public void monthlyStatisticsClient() {
         EnergyClient client = new EnergyClient();
 
-        assertNotNull(client.monthlyStatistics());
+        assertEquals(client.monthlyStatistics().getClass(), EnergyMonthlyStatisticsClient.class);
     }
 
     @Test

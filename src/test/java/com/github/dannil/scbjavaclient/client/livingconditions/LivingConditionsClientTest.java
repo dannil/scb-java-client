@@ -15,10 +15,11 @@
 package com.github.dannil.scbjavaclient.client.livingconditions;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 import java.util.Locale;
 
+import com.github.dannil.scbjavaclient.client.livingconditions.families.LivingConditionsFamiliesClient;
+import com.github.dannil.scbjavaclient.client.livingconditions.surveys.LivingConditionsSurveysClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;
@@ -40,14 +41,14 @@ public class LivingConditionsClientTest {
     public void familiesClient() {
         LivingConditionsClient client = new LivingConditionsClient();
 
-        assertNotNull(client.families());
+        assertEquals(client.families().getClass(), LivingConditionsFamiliesClient.class);
     }
 
     @Test
     public void surveysClient() {
         LivingConditionsClient client = new LivingConditionsClient();
 
-        assertNotNull(client.surveys());
+        assertEquals(client.surveys().getClass(), LivingConditionsSurveysClient.class);
     }
 
     @Test

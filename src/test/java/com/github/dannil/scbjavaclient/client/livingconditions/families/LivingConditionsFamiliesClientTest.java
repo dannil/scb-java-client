@@ -15,10 +15,13 @@
 package com.github.dannil.scbjavaclient.client.livingconditions.families;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 import java.util.Locale;
 
+import com.github.dannil.scbjavaclient.client.livingconditions.families.adoptions.LivingConditionsFamiliesAdoptionsClient;
+import com.github.dannil.scbjavaclient.client.livingconditions.families.housing.LivingConditionsFamiliesHousingClient;
+import com.github.dannil.scbjavaclient.client.livingconditions.families.legalguardians.LivingConditionsFamiliesLegalGuardiansClient;
+import com.github.dannil.scbjavaclient.client.livingconditions.families.siblings.LivingConditionsFamiliesSiblingsClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;
@@ -37,17 +40,31 @@ public class LivingConditionsFamiliesClientTest {
     }
 
     @Test
+    public void adoptionsClient() {
+        LivingConditionsFamiliesClient client = new LivingConditionsFamiliesClient();
+
+        assertEquals(client.adoptions().getClass(), LivingConditionsFamiliesAdoptionsClient.class);
+    }
+
+    @Test
     public void housingClient() {
         LivingConditionsFamiliesClient client = new LivingConditionsFamiliesClient();
 
-        assertNotNull(client.housing());
+        assertEquals(client.housing().getClass(), LivingConditionsFamiliesHousingClient.class);
     }
 
     @Test
     public void legalGuardiansClient() {
         LivingConditionsFamiliesClient client = new LivingConditionsFamiliesClient();
 
-        assertNotNull(client.legalGuardians());
+        assertEquals(client.legalGuardians().getClass(), LivingConditionsFamiliesLegalGuardiansClient.class);
+    }
+
+    @Test
+    public void siblingsClient() {
+        LivingConditionsFamiliesClient client = new LivingConditionsFamiliesClient();
+
+        assertEquals(client.siblings().getClass(), LivingConditionsFamiliesSiblingsClient.class);
     }
 
     @Test
