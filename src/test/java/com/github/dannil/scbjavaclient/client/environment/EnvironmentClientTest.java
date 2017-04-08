@@ -18,11 +18,11 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.client.environment.industrialwateruse.EnvironmentIndustrialWaterUseClient;
-import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.EnvironmentLandAndWaterAreaClient;
-import com.github.dannil.scbjavaclient.client.environment.landuse.EnvironmentLandUseClient;
-import com.github.dannil.scbjavaclient.client.environment.packagingandpackagingwaste.EnvironmentPackagingAndPackagingWasteClient;
-import com.github.dannil.scbjavaclient.client.environment.waste.EnvironmentWasteClient;
+import com.github.dannil.scbjavaclient.client.environment.industrialwateruse.IndustrialWaterUseClient;
+import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.LandAndWaterAreaClient;
+import com.github.dannil.scbjavaclient.client.environment.landuse.LandUseClient;
+import com.github.dannil.scbjavaclient.client.environment.packagingandpackagingwaste.PackagingAndPackagingWasteClient;
+import com.github.dannil.scbjavaclient.client.environment.waste.WasteClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;
@@ -44,35 +44,35 @@ public class EnvironmentClientTest {
     public void industrialWaterUseClient() {
         EnvironmentClient client = new EnvironmentClient();
 
-        assertEquals(client.industrialWaterUse().getClass(), EnvironmentIndustrialWaterUseClient.class);
+        assertEquals(client.industrialWaterUse().getClass(), IndustrialWaterUseClient.class);
     }
 
     @Test
     public void landAndWaterAreaClient() {
         EnvironmentClient client = new EnvironmentClient();
 
-        assertEquals(client.landAndWaterArea().getClass(), EnvironmentLandAndWaterAreaClient.class);
+        assertEquals(client.landAndWaterArea().getClass(), LandAndWaterAreaClient.class);
     }
 
     @Test
     public void landUseClient() {
         EnvironmentClient client = new EnvironmentClient();
 
-        assertEquals(client.landUse().getClass(), EnvironmentLandUseClient.class);
+        assertEquals(client.landUse().getClass(), LandUseClient.class);
     }
 
     @Test
     public void packagingAndPackagingWasteClient() {
         EnvironmentClient client = new EnvironmentClient();
 
-        assertEquals(client.packagingAndPackagingWaste().getClass(), EnvironmentPackagingAndPackagingWasteClient.class);
+        assertEquals(client.packagingAndPackagingWaste().getClass(), PackagingAndPackagingWasteClient.class);
     }
 
     @Test
     public void wasteClient() {
         EnvironmentClient client = new EnvironmentClient();
 
-        assertEquals(client.waste().getClass(), EnvironmentWasteClient.class);
+        assertEquals(client.waste().getClass(), WasteClient.class);
     }
 
     @Test

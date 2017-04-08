@@ -18,13 +18,13 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.client.population.amount.PopulationAmountClient;
-import com.github.dannil.scbjavaclient.client.population.averageage.PopulationAverageAgeClient;
-import com.github.dannil.scbjavaclient.client.population.demography.PopulationDemographyClient;
-import com.github.dannil.scbjavaclient.client.population.density.PopulationDensityClient;
-import com.github.dannil.scbjavaclient.client.population.livebirths.PopulationLiveBirthsClient;
-import com.github.dannil.scbjavaclient.client.population.name.PopulationNameStatisticsClient;
-import com.github.dannil.scbjavaclient.client.population.partnership.PopulationPartnershipClient;
+import com.github.dannil.scbjavaclient.client.population.amount.AmountClient;
+import com.github.dannil.scbjavaclient.client.population.averageage.AverageAgeClient;
+import com.github.dannil.scbjavaclient.client.population.demography.DemographyClient;
+import com.github.dannil.scbjavaclient.client.population.density.DensityClient;
+import com.github.dannil.scbjavaclient.client.population.livebirths.LiveBirthsClient;
+import com.github.dannil.scbjavaclient.client.population.name.NameStatisticsClient;
+import com.github.dannil.scbjavaclient.client.population.partnership.PartnershipClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;
@@ -60,49 +60,49 @@ public class PopulationClientTest {
     public void amountClient() {
         PopulationClient client = new PopulationClient();
 
-        assertEquals(client.amount().getClass(), PopulationAmountClient.class);
+        assertEquals(client.amount().getClass(), AmountClient.class);
     }
 
     @Test
     public void averageAgeClient() {
         PopulationClient client = new PopulationClient();
 
-        assertEquals(client.averageAge().getClass(), PopulationAverageAgeClient.class);
+        assertEquals(client.averageAge().getClass(), AverageAgeClient.class);
     }
 
     @Test
     public void demographyClient() {
         PopulationClient client = new PopulationClient();
 
-        assertEquals(client.demography().getClass(), PopulationDemographyClient.class);
+        assertEquals(client.demography().getClass(), DemographyClient.class);
     }
 
     @Test
     public void densityClient() {
         PopulationClient client = new PopulationClient();
 
-        assertEquals(client.density().getClass(), PopulationDensityClient.class);
+        assertEquals(client.density().getClass(), DensityClient.class);
     }
 
     @Test
     public void liveBirthsClient() {
         PopulationClient client = new PopulationClient();
 
-        assertEquals(client.liveBirths().getClass(), PopulationLiveBirthsClient.class);
+        assertEquals(client.liveBirths().getClass(), LiveBirthsClient.class);
     }
 
     @Test
     public void nameStatisticsClient() {
         PopulationClient client = new PopulationClient();
 
-        assertEquals(client.nameStatistics().getClass(), PopulationNameStatisticsClient.class);
+        assertEquals(client.nameStatistics().getClass(), NameStatisticsClient.class);
     }
 
     @Test
     public void partnershipClient() {
         PopulationClient client = new PopulationClient();
 
-        assertEquals(client.partnership().getClass(), PopulationPartnershipClient.class);
+        assertEquals(client.partnership().getClass(), PartnershipClient.class);
     }
 
     @Test

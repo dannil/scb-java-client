@@ -18,8 +18,8 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.client.labourmarket.costindex.LabourMarketCostIndexClient;
-import com.github.dannil.scbjavaclient.client.labourmarket.grosspay.LabourMarketGrossPayClient;
+import com.github.dannil.scbjavaclient.client.labourmarket.costindex.CostIndexClient;
+import com.github.dannil.scbjavaclient.client.labourmarket.grosspay.GrossPayClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;
@@ -41,14 +41,14 @@ public class LabourMarketClientTest {
     public void costIndex() {
         LabourMarketClient client = new LabourMarketClient();
 
-        assertEquals(client.costIndex().getClass(), LabourMarketCostIndexClient.class);
+        assertEquals(client.costIndex().getClass(), CostIndexClient.class);
     }
 
     @Test
     public void grossPay() {
         LabourMarketClient client = new LabourMarketClient();
 
-        assertEquals(client.grossPay().getClass(), LabourMarketGrossPayClient.class);
+        assertEquals(client.grossPay().getClass(), GrossPayClient.class);
     }
 
     @Test

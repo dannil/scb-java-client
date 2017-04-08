@@ -18,9 +18,9 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.client.publicfinances.governmentdebt.PublicFinancesGovernmentDebtClient;
-import com.github.dannil.scbjavaclient.client.publicfinances.localtaxes.PublicFinancesLocalTaxesClient;
-import com.github.dannil.scbjavaclient.client.publicfinances.taxassessment.PublicFinancesTaxAssessmentClient;
+import com.github.dannil.scbjavaclient.client.publicfinances.governmentdebt.GovernmentDebtClient;
+import com.github.dannil.scbjavaclient.client.publicfinances.localtaxes.LocalTaxesClient;
+import com.github.dannil.scbjavaclient.client.publicfinances.taxassessment.TaxAssessmentClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;
@@ -42,21 +42,21 @@ public class PublicFinancesClientTest {
     public void governmentDebtClient() {
         PublicFinancesClient client = new PublicFinancesClient();
 
-        assertEquals(client.governmentDebt().getClass(), PublicFinancesGovernmentDebtClient.class);
+        assertEquals(client.governmentDebt().getClass(), GovernmentDebtClient.class);
     }
 
     @Test
     public void localTaxesClient() {
         PublicFinancesClient client = new PublicFinancesClient();
 
-        assertEquals(client.localTaxes().getClass(), PublicFinancesLocalTaxesClient.class);
+        assertEquals(client.localTaxes().getClass(), LocalTaxesClient.class);
     }
 
     @Test
     public void taxAssessmentClient() {
         PublicFinancesClient client = new PublicFinancesClient();
 
-        assertEquals(client.taxAssessment().getClass(), PublicFinancesTaxAssessmentClient.class);
+        assertEquals(client.taxAssessment().getClass(), TaxAssessmentClient.class);
     }
 
     @Test

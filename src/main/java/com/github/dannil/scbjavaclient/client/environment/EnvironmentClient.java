@@ -17,11 +17,11 @@ package com.github.dannil.scbjavaclient.client.environment;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
-import com.github.dannil.scbjavaclient.client.environment.industrialwateruse.EnvironmentIndustrialWaterUseClient;
-import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.EnvironmentLandAndWaterAreaClient;
-import com.github.dannil.scbjavaclient.client.environment.landuse.EnvironmentLandUseClient;
-import com.github.dannil.scbjavaclient.client.environment.packagingandpackagingwaste.EnvironmentPackagingAndPackagingWasteClient;
-import com.github.dannil.scbjavaclient.client.environment.waste.EnvironmentWasteClient;
+import com.github.dannil.scbjavaclient.client.environment.industrialwateruse.IndustrialWaterUseClient;
+import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.LandAndWaterAreaClient;
+import com.github.dannil.scbjavaclient.client.environment.landuse.LandUseClient;
+import com.github.dannil.scbjavaclient.client.environment.packagingandpackagingwaste.PackagingAndPackagingWasteClient;
+import com.github.dannil.scbjavaclient.client.environment.waste.WasteClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 /**
@@ -37,11 +37,11 @@ public class EnvironmentClient extends AbstractContainerClient {
     public EnvironmentClient() {
         super();
 
-        addClient("industrialwateruse", new EnvironmentIndustrialWaterUseClient());
-        addClient("landandwaterarea", new EnvironmentLandAndWaterAreaClient());
-        addClient("landuse", new EnvironmentLandUseClient());
-        addClient("packagingandpackagingwaste", new EnvironmentPackagingAndPackagingWasteClient());
-        addClient("waste", new EnvironmentWasteClient());
+        addClient("industrialwateruse", new IndustrialWaterUseClient());
+        addClient("landandwaterarea", new LandAndWaterAreaClient());
+        addClient("landuse", new LandUseClient());
+        addClient("packagingandpackagingwaste", new PackagingAndPackagingWasteClient());
+        addClient("waste", new WasteClient());
     }
 
     /**
@@ -62,8 +62,8 @@ public class EnvironmentClient extends AbstractContainerClient {
      *
      * @return a client for environment industrial water use data
      */
-    public EnvironmentIndustrialWaterUseClient industrialWaterUse() {
-        return (EnvironmentIndustrialWaterUseClient) getClient("industrialwateruse");
+    public IndustrialWaterUseClient industrialWaterUse() {
+        return (IndustrialWaterUseClient) getClient("industrialwateruse");
     }
 
     /**
@@ -72,8 +72,8 @@ public class EnvironmentClient extends AbstractContainerClient {
      *
      * @return a client for environment land and water area data
      */
-    public EnvironmentLandAndWaterAreaClient landAndWaterArea() {
-        return (EnvironmentLandAndWaterAreaClient) getClient("landandwaterarea");
+    public LandAndWaterAreaClient landAndWaterArea() {
+        return (LandAndWaterAreaClient) getClient("landandwaterarea");
     }
 
     /**
@@ -81,8 +81,8 @@ public class EnvironmentClient extends AbstractContainerClient {
      *
      * @return a client for environment land use data
      */
-    public EnvironmentLandUseClient landUse() {
-        return (EnvironmentLandUseClient) getClient("landuse");
+    public LandUseClient landUse() {
+        return (LandUseClient) getClient("landuse");
     }
 
     /**
@@ -91,8 +91,8 @@ public class EnvironmentClient extends AbstractContainerClient {
      *
      * @return a client for environment packaging and packaging waste data
      */
-    public EnvironmentPackagingAndPackagingWasteClient packagingAndPackagingWaste() {
-        return (EnvironmentPackagingAndPackagingWasteClient) getClient("packagingandpackagingwaste");
+    public PackagingAndPackagingWasteClient packagingAndPackagingWaste() {
+        return (PackagingAndPackagingWasteClient) getClient("packagingandpackagingwaste");
     }
 
     /**
@@ -100,8 +100,8 @@ public class EnvironmentClient extends AbstractContainerClient {
      *
      * @return a client for environment waste data
      */
-    public EnvironmentWasteClient waste() {
-        return (EnvironmentWasteClient) getClient("waste");
+    public WasteClient waste() {
+        return (WasteClient) getClient("waste");
     }
 
     @Override

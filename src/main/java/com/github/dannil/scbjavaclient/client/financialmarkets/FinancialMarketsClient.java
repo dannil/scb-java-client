@@ -17,10 +17,10 @@ package com.github.dannil.scbjavaclient.client.financialmarkets;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
-import com.github.dannil.scbjavaclient.client.financialmarkets.institutions.FinancialMarketsInstitutionsClient;
-import com.github.dannil.scbjavaclient.client.financialmarkets.investmentfunds.FinancialMarketsInvestmentFundsClient;
-import com.github.dannil.scbjavaclient.client.financialmarkets.securities.FinancialMarketsSecuritiesClient;
-import com.github.dannil.scbjavaclient.client.financialmarkets.shareholders.FinancialMarketsShareholdersClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.institutions.InstitutionsClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.investmentfunds.InvestmentFundsClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.securities.SecuritiesClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.shareholders.ShareholdersClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 /**
@@ -36,10 +36,10 @@ public class FinancialMarketsClient extends AbstractContainerClient {
     public FinancialMarketsClient() {
         super();
 
-        addClient("institutions", new FinancialMarketsInstitutionsClient());
-        addClient("investmentfunds", new FinancialMarketsInvestmentFundsClient());
-        addClient("securities", new FinancialMarketsSecuritiesClient());
-        addClient("shareholders", new FinancialMarketsShareholdersClient());
+        addClient("institutions", new InstitutionsClient());
+        addClient("investmentfunds", new InvestmentFundsClient());
+        addClient("securities", new SecuritiesClient());
+        addClient("shareholders", new ShareholdersClient());
     }
 
     /**
@@ -60,8 +60,8 @@ public class FinancialMarketsClient extends AbstractContainerClient {
      *
      * @return a client for financial markets institutions data
      */
-    public FinancialMarketsInstitutionsClient institutions() {
-        return (FinancialMarketsInstitutionsClient) getClient("institutions");
+    public InstitutionsClient institutions() {
+        return (InstitutionsClient) getClient("institutions");
     }
 
     /**
@@ -70,8 +70,8 @@ public class FinancialMarketsClient extends AbstractContainerClient {
      *
      * @return a client for financial markets investment funds data
      */
-    public FinancialMarketsInvestmentFundsClient investmentFunds() {
-        return (FinancialMarketsInvestmentFundsClient) getClient("investmentfunds");
+    public InvestmentFundsClient investmentFunds() {
+        return (InvestmentFundsClient) getClient("investmentfunds");
     }
 
     /**
@@ -79,8 +79,8 @@ public class FinancialMarketsClient extends AbstractContainerClient {
      *
      * @return a client for financial markets securities data
      */
-    public FinancialMarketsSecuritiesClient securities() {
-        return (FinancialMarketsSecuritiesClient) getClient("securities");
+    public SecuritiesClient securities() {
+        return (SecuritiesClient) getClient("securities");
     }
 
     /**
@@ -89,8 +89,8 @@ public class FinancialMarketsClient extends AbstractContainerClient {
      *
      * @return a client for financial markets shareholders data
      */
-    public FinancialMarketsShareholdersClient shareholders() {
-        return (FinancialMarketsShareholdersClient) getClient("shareholders");
+    public ShareholdersClient shareholders() {
+        return (ShareholdersClient) getClient("shareholders");
     }
 
     @Override

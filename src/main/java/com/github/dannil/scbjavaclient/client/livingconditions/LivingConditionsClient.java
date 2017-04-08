@@ -17,8 +17,8 @@ package com.github.dannil.scbjavaclient.client.livingconditions;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
-import com.github.dannil.scbjavaclient.client.livingconditions.families.LivingConditionsFamiliesClient;
-import com.github.dannil.scbjavaclient.client.livingconditions.surveys.LivingConditionsSurveysClient;
+import com.github.dannil.scbjavaclient.client.livingconditions.families.FamiliesClient;
+import com.github.dannil.scbjavaclient.client.livingconditions.surveys.SurveysClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 /**
@@ -34,8 +34,8 @@ public class LivingConditionsClient extends AbstractContainerClient {
     public LivingConditionsClient() {
         super();
 
-        addClient("families", new LivingConditionsFamiliesClient());
-        addClient("surveys", new LivingConditionsSurveysClient());
+        addClient("families", new FamiliesClient());
+        addClient("surveys", new SurveysClient());
     }
 
     /**
@@ -55,8 +55,8 @@ public class LivingConditionsClient extends AbstractContainerClient {
      *
      * @return a client for living conditions families data
      */
-    public LivingConditionsFamiliesClient families() {
-        return (LivingConditionsFamiliesClient) getClient("families");
+    public FamiliesClient families() {
+        return (FamiliesClient) getClient("families");
     }
 
     /**
@@ -64,8 +64,8 @@ public class LivingConditionsClient extends AbstractContainerClient {
      *
      * @return a client for living conditions surveys data
      */
-    public LivingConditionsSurveysClient surveys() {
-        return (LivingConditionsSurveysClient) getClient("surveys");
+    public SurveysClient surveys() {
+        return (SurveysClient) getClient("surveys");
     }
 
     @Override

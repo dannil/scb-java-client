@@ -18,8 +18,8 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.client.livingconditions.families.LivingConditionsFamiliesClient;
-import com.github.dannil.scbjavaclient.client.livingconditions.surveys.LivingConditionsSurveysClient;
+import com.github.dannil.scbjavaclient.client.livingconditions.families.FamiliesClient;
+import com.github.dannil.scbjavaclient.client.livingconditions.surveys.SurveysClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;
@@ -41,14 +41,14 @@ public class LivingConditionsClientTest {
     public void familiesClient() {
         LivingConditionsClient client = new LivingConditionsClient();
 
-        assertEquals(client.families().getClass(), LivingConditionsFamiliesClient.class);
+        assertEquals(client.families().getClass(), FamiliesClient.class);
     }
 
     @Test
     public void surveysClient() {
         LivingConditionsClient client = new LivingConditionsClient();
 
-        assertEquals(client.surveys().getClass(), LivingConditionsSurveysClient.class);
+        assertEquals(client.surveys().getClass(), SurveysClient.class);
     }
 
     @Test

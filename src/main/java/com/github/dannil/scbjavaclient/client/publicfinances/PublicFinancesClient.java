@@ -17,9 +17,9 @@ package com.github.dannil.scbjavaclient.client.publicfinances;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
-import com.github.dannil.scbjavaclient.client.publicfinances.governmentdebt.PublicFinancesGovernmentDebtClient;
-import com.github.dannil.scbjavaclient.client.publicfinances.localtaxes.PublicFinancesLocalTaxesClient;
-import com.github.dannil.scbjavaclient.client.publicfinances.taxassessment.PublicFinancesTaxAssessmentClient;
+import com.github.dannil.scbjavaclient.client.publicfinances.governmentdebt.GovernmentDebtClient;
+import com.github.dannil.scbjavaclient.client.publicfinances.localtaxes.LocalTaxesClient;
+import com.github.dannil.scbjavaclient.client.publicfinances.taxassessment.TaxAssessmentClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 /**
@@ -35,9 +35,9 @@ public class PublicFinancesClient extends AbstractContainerClient {
     public PublicFinancesClient() {
         super();
 
-        addClient("governmentdebt", new PublicFinancesGovernmentDebtClient());
-        addClient("localtaxes", new PublicFinancesLocalTaxesClient());
-        addClient("taxassessment", new PublicFinancesTaxAssessmentClient());
+        addClient("governmentdebt", new GovernmentDebtClient());
+        addClient("localtaxes", new LocalTaxesClient());
+        addClient("taxassessment", new TaxAssessmentClient());
     }
 
     /**
@@ -58,8 +58,8 @@ public class PublicFinancesClient extends AbstractContainerClient {
      *
      * @return a client for public finances government debt data
      */
-    public PublicFinancesGovernmentDebtClient governmentDebt() {
-        return (PublicFinancesGovernmentDebtClient) getClient("governmentdebt");
+    public GovernmentDebtClient governmentDebt() {
+        return (GovernmentDebtClient) getClient("governmentdebt");
     }
 
     /**
@@ -67,8 +67,8 @@ public class PublicFinancesClient extends AbstractContainerClient {
      *
      * @return a client for public finances local taxes data
      */
-    public PublicFinancesLocalTaxesClient localTaxes() {
-        return (PublicFinancesLocalTaxesClient) getClient("localtaxes");
+    public LocalTaxesClient localTaxes() {
+        return (LocalTaxesClient) getClient("localtaxes");
     }
 
     /**
@@ -77,8 +77,8 @@ public class PublicFinancesClient extends AbstractContainerClient {
      *
      * @return a client for public finances tax assessment data
      */
-    public PublicFinancesTaxAssessmentClient taxAssessment() {
-        return (PublicFinancesTaxAssessmentClient) getClient("taxassessment");
+    public TaxAssessmentClient taxAssessment() {
+        return (TaxAssessmentClient) getClient("taxassessment");
     }
 
     @Override

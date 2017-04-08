@@ -17,8 +17,8 @@ package com.github.dannil.scbjavaclient.client.labourmarket;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
-import com.github.dannil.scbjavaclient.client.labourmarket.costindex.LabourMarketCostIndexClient;
-import com.github.dannil.scbjavaclient.client.labourmarket.grosspay.LabourMarketGrossPayClient;
+import com.github.dannil.scbjavaclient.client.labourmarket.costindex.CostIndexClient;
+import com.github.dannil.scbjavaclient.client.labourmarket.grosspay.GrossPayClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 /**
@@ -34,8 +34,8 @@ public class LabourMarketClient extends AbstractContainerClient {
     public LabourMarketClient() {
         super();
 
-        addClient("costindex", new LabourMarketCostIndexClient());
-        addClient("grosspay", new LabourMarketGrossPayClient());
+        addClient("costindex", new CostIndexClient());
+        addClient("grosspay", new GrossPayClient());
     }
 
     /**
@@ -55,8 +55,8 @@ public class LabourMarketClient extends AbstractContainerClient {
      *
      * @return a client for labour market cost index data
      */
-    public LabourMarketCostIndexClient costIndex() {
-        return (LabourMarketCostIndexClient) getClient("costindex");
+    public CostIndexClient costIndex() {
+        return (CostIndexClient) getClient("costindex");
     }
 
     /**
@@ -64,8 +64,8 @@ public class LabourMarketClient extends AbstractContainerClient {
      *
      * @return a client for labour market gross pay data
      */
-    public LabourMarketGrossPayClient grossPay() {
-        return (LabourMarketGrossPayClient) getClient("grosspay");
+    public GrossPayClient grossPay() {
+        return (GrossPayClient) getClient("grosspay");
     }
 
     @Override

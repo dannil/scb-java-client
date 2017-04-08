@@ -17,8 +17,8 @@ package com.github.dannil.scbjavaclient.client.energy;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
-import com.github.dannil.scbjavaclient.client.energy.annualstatistics.EnergyAnnualStatisticsClient;
-import com.github.dannil.scbjavaclient.client.energy.monthlystatistics.EnergyMonthlyStatisticsClient;
+import com.github.dannil.scbjavaclient.client.energy.annualstatistics.AnnualStatisticsClient;
+import com.github.dannil.scbjavaclient.client.energy.monthlystatistics.MonthlyStatisticsClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 /**
@@ -34,8 +34,8 @@ public class EnergyClient extends AbstractContainerClient {
     public EnergyClient() {
         super();
 
-        addClient("annualstatistics", new EnergyAnnualStatisticsClient());
-        addClient("monthlystatistics", new EnergyMonthlyStatisticsClient());
+        addClient("annualstatistics", new AnnualStatisticsClient());
+        addClient("monthlystatistics", new MonthlyStatisticsClient());
     }
 
     /**
@@ -55,8 +55,8 @@ public class EnergyClient extends AbstractContainerClient {
      *
      * @return a client for energy annual statistics data
      */
-    public EnergyAnnualStatisticsClient annualStatistics() {
-        return (EnergyAnnualStatisticsClient) getClient("annualstatistics");
+    public AnnualStatisticsClient annualStatistics() {
+        return (AnnualStatisticsClient) getClient("annualstatistics");
     }
 
     /**
@@ -64,8 +64,8 @@ public class EnergyClient extends AbstractContainerClient {
      *
      * @return a client for energy monthly statistics data
      */
-    public EnergyMonthlyStatisticsClient monthlyStatistics() {
-        return (EnergyMonthlyStatisticsClient) getClient("monthlystatistics");
+    public MonthlyStatisticsClient monthlyStatistics() {
+        return (MonthlyStatisticsClient) getClient("monthlystatistics");
     }
 
     @Override

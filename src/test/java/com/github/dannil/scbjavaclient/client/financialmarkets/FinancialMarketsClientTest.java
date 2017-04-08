@@ -18,10 +18,10 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.client.financialmarkets.institutions.FinancialMarketsInstitutionsClient;
-import com.github.dannil.scbjavaclient.client.financialmarkets.investmentfunds.FinancialMarketsInvestmentFundsClient;
-import com.github.dannil.scbjavaclient.client.financialmarkets.securities.FinancialMarketsSecuritiesClient;
-import com.github.dannil.scbjavaclient.client.financialmarkets.shareholders.FinancialMarketsShareholdersClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.institutions.InstitutionsClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.investmentfunds.InvestmentFundsClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.securities.SecuritiesClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.shareholders.ShareholdersClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;
@@ -43,28 +43,28 @@ public class FinancialMarketsClientTest {
     public void institutionsClient() {
         FinancialMarketsClient client = new FinancialMarketsClient();
 
-        assertEquals(client.institutions().getClass(), FinancialMarketsInstitutionsClient.class);
+        assertEquals(client.institutions().getClass(), InstitutionsClient.class);
     }
 
     @Test
     public void investmentFundsClient() {
         FinancialMarketsClient client = new FinancialMarketsClient();
 
-        assertEquals(client.investmentFunds().getClass(), FinancialMarketsInvestmentFundsClient.class);
+        assertEquals(client.investmentFunds().getClass(), InvestmentFundsClient.class);
     }
 
     @Test
     public void securitiesClient() {
         FinancialMarketsClient client = new FinancialMarketsClient();
 
-        assertEquals(client.securities().getClass(), FinancialMarketsSecuritiesClient.class);
+        assertEquals(client.securities().getClass(), SecuritiesClient.class);
     }
 
     @Test
     public void shareholdersClient() {
         FinancialMarketsClient client = new FinancialMarketsClient();
 
-        assertEquals(client.shareholders().getClass(), FinancialMarketsShareholdersClient.class);
+        assertEquals(client.shareholders().getClass(), ShareholdersClient.class);
     }
 
     @Test
