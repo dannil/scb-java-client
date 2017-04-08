@@ -17,6 +17,8 @@ package com.github.dannil.scbjavaclient.client.businessactivities.nonprofitorgan
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
+import com.github.dannil.scbjavaclient.client.businessactivities.nonprofitorganizations.primarystatistics.BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClient;
+import com.github.dannil.scbjavaclient.client.businessactivities.nonprofitorganizations.satelliteaccounts.BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 /**
@@ -32,7 +34,8 @@ public class BusinessActivitiesNonProfitOrganizationsClient extends AbstractCont
     public BusinessActivitiesNonProfitOrganizationsClient() {
         super();
 
-        addClient("", null);
+        addClient("primarystatistics", new BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClient());
+        addClient("satelliteaccounts", new BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClient());
     }
 
     /**
@@ -42,7 +45,31 @@ public class BusinessActivitiesNonProfitOrganizationsClient extends AbstractCont
      *            the <code>Locale</code> for this client
      */
     public BusinessActivitiesNonProfitOrganizationsClient(Locale locale) {
-        super(locale);
+        this();
+
+        setLocale(locale);
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with business activities non-profit
+     * organizations primary statistics data.</p>
+     *
+     * @return a client for business activities non-profit organizations primary
+     *         statistics data
+     */
+    public BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClient primaryStatistics() {
+        return (BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClient) getClient("primarystatistics");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with business activities non-profit
+     * organizations satellite accounts data.</p>
+     *
+     * @return a client for business activities non-profit organizations satellite
+     *         accounts data
+     */
+    public BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClient satelliteAccounts() {
+        return (BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClient) getClient("satelliteaccounts");
     }
 
     @Override

@@ -14,10 +14,16 @@
 
 package com.github.dannil.scbjavaclient.client.businessactivities.balancestatistics;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles business activities balance statistics data fetching.</p>
@@ -43,45 +49,18 @@ public class BusinessActivitiesBalanceStatisticsClient extends AbstractClient {
         super(locale);
     }
 
-    // /**
-    // * <p>Fetch all child adoptions data.</p>
-    // *
-    // * @return the data wrapped in a list of
-    // * {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-    // * objects
-    // *
-    // * @see #getChildAdoptions(Collection, Collection, Collection, Collection)
-    // */
-    // public List<ResponseModel> getChildAdoptions() {
-    // return getChildAdoptions(null, null, null, null);
-    // }
-    //
-    // /**
-    // * <p>Fetch all child adoptions data which match the input constraints.</p>
-    // *
-    // * @param sexes
-    // * the sexes
-    // * @param ages
-    // * the ages
-    // * @param birthCountries
-    // * the birth countries
-    // * @param years
-    // * the years
-    // * @return the data wrapped in a list of
-    // * {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-    // * objects
-    // */
-    // public List<ResponseModel> getChildAdoptions(Collection<String> sexes,
-    // Collection<String> ages,
-    // Collection<String> birthCountries, Collection<Integer> years) {
-    // Map<String, Collection<?>> mappings = new HashMap<>();
-    // mappings.put("Kon", sexes);
-    // mappings.put("Alder", ages);
-    // mappings.put("Fodelseland", birthCountries);
-    // mappings.put(APIConstants.TIME_CODE, years);
-    //
-    // return getResponseModels("BarnAdoption", mappings);
-    // }
+    public List<ResponseModel> getCorporationsAssetsAndLiabilities() {
+        return getCorporationsAssetsAndLiabilities(null, null);
+    }
+
+    public List<ResponseModel> getCorporationsAssetsAndLiabilities(Collection<String> items,
+            Collection<String> quarters) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("Kontopost", items);
+        mappings.put(APIConstants.TIME_CODE, quarters);
+
+        return getResponseModels("FtgBalK", mappings);
+    }
 
     @Override
     public URLEndpoint getUrl() {
