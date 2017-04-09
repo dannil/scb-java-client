@@ -31,16 +31,16 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class PopulationStatisticsDensityClientIT extends RemoteIntegrationTestSuite {
 
-    private PopulationStatisticsDensityClient populationDensityClient;
+    private PopulationStatisticsDensityClient client;
 
     @Before
     public void setup() {
-        this.populationDensityClient = new SCBClient().population().statistics().density();
+        this.client = new SCBClient().population().statistics().density();
     }
 
     @Test
     public void getDensity() {
-        assertNotEquals(0, this.populationDensityClient.getDensity().size());
+        assertNotEquals(0, this.client.getDensity().size());
     }
 
     @Test
@@ -49,7 +49,7 @@ public class PopulationStatisticsDensityClientIT extends RemoteIntegrationTestSu
         List<String> sexes = Arrays.asList("1", "2", "1+2");
         List<Integer> years = Arrays.asList(1996);
 
-        assertNotEquals(0, this.populationDensityClient.getDensity(regions, sexes, years).size());
+        assertNotEquals(0, this.client.getDensity(regions, sexes, years).size());
     }
 
 }

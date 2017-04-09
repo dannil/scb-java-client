@@ -30,16 +30,16 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class PopulationDemographyClientIT extends RemoteIntegrationTestSuite {
 
-    private PopulationDemographyClient populationDemographyClient;
+    private PopulationDemographyClient client;
 
     @Before
     public void setup() {
-        this.populationDemographyClient = new SCBClient().population().demography();
+        this.client = new SCBClient().population().demography();
     }
 
     @Test
     public void getFertilityRate() {
-        assertNotEquals(0, this.populationDemographyClient.getFertilityRate().size());
+        assertNotEquals(0, this.client.getFertilityRate().size());
     }
 
     @Test
@@ -48,12 +48,12 @@ public class PopulationDemographyClientIT extends RemoteIntegrationTestSuite {
         List<Integer> genders = Arrays.asList(1, 2);
         List<Integer> years = Arrays.asList(2002);
 
-        assertNotEquals(0, this.populationDemographyClient.getFertilityRate(regions, genders, years).size());
+        assertNotEquals(0, this.client.getFertilityRate(regions, genders, years).size());
     }
 
     @Test
     public void getMeanAgeFirstChild() {
-        assertNotEquals(0, this.populationDemographyClient.getMeanAgeFirstChild().size());
+        assertNotEquals(0, this.client.getMeanAgeFirstChild().size());
     }
 
     @Test
@@ -62,7 +62,7 @@ public class PopulationDemographyClientIT extends RemoteIntegrationTestSuite {
         List<Integer> genders = Arrays.asList(1, 2);
         List<Integer> years = Arrays.asList(2002);
 
-        assertNotEquals(0, this.populationDemographyClient.getMeanAgeFirstChild(regions, genders, years).size());
+        assertNotEquals(0, this.client.getMeanAgeFirstChild(regions, genders, years).size());
     }
 
 }

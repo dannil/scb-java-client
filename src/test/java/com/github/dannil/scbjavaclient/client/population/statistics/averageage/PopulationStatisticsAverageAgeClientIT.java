@@ -30,16 +30,16 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class PopulationStatisticsAverageAgeClientIT extends RemoteIntegrationTestSuite {
 
-    private PopulationStatisticsAverageAgeClient populationAverageAgeClient;
+    private PopulationStatisticsAverageAgeClient client;
 
     @Before
     public void setup() {
-        this.populationAverageAgeClient = new SCBClient().population().statistics().averageAge();
+        this.client = new SCBClient().population().statistics().averageAge();
     }
 
     @Test
     public void getAverageAge() {
-        assertNotEquals(0, this.populationAverageAgeClient.getAverageAge().size());
+        assertNotEquals(0, this.client.getAverageAge().size());
     }
 
     @Test
@@ -48,6 +48,6 @@ public class PopulationStatisticsAverageAgeClientIT extends RemoteIntegrationTes
         List<String> genders = Arrays.asList("1", "2", "1+2");
         List<Integer> years = Arrays.asList(2002);
 
-        assertNotEquals(0, this.populationAverageAgeClient.getAverageAge(regions, genders, years).size());
+        assertNotEquals(0, this.client.getAverageAge(regions, genders, years).size());
     }
 }

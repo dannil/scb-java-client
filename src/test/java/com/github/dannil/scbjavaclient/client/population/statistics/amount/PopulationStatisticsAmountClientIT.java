@@ -30,16 +30,16 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class PopulationStatisticsAmountClientIT extends RemoteIntegrationTestSuite {
 
-    private PopulationStatisticsAmountClient populationAmountClient;
+    private PopulationStatisticsAmountClient client;
 
     @Before
     public void setup() {
-        this.populationAmountClient = new SCBClient().population().statistics().amount();
+        this.client = new SCBClient().population().statistics().amount();
     }
 
     @Test
     public void getPopulation() {
-        assertNotEquals(0, this.populationAmountClient.getPopulation().size());
+        assertNotEquals(0, this.client.getPopulation().size());
     }
 
     @Test
@@ -50,7 +50,7 @@ public class PopulationStatisticsAmountClientIT extends RemoteIntegrationTestSui
         List<Integer> genders = Arrays.asList(1, 2);
         List<Integer> years = Arrays.asList(1996);
 
-        assertNotEquals(0, this.populationAmountClient.getPopulation(regions, statuses, ages, genders, years).size());
+        assertNotEquals(0, this.client.getPopulation(regions, statuses, ages, genders, years).size());
     }
 
 }
