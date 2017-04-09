@@ -55,7 +55,7 @@ public class BusinessActivitiesBalanceStatisticsClient extends AbstractClient {
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
-     * 
+     *
      * @see #getCorporationsAssetsAndLiabilities(Collection, Collection)
      */
     public List<ResponseModel> getCorporationsAssetsAndLiabilities() {

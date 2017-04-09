@@ -56,7 +56,7 @@ public class BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClient ext
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
-     * 
+     *
      * @see #getIncomeExpenditureAndSavings(Collection, Collection, Collection)
      */
     public List<ResponseModel> getIncomeExpenditureAndSavings() {
@@ -93,7 +93,7 @@ public class BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClient ext
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
-     * 
+     *
      * @see #getNumberOfOrganizationsAndEmployment(Collection, Collection)
      */
     public List<ResponseModel> getNumberOfOrganizationsAndEmployment() {

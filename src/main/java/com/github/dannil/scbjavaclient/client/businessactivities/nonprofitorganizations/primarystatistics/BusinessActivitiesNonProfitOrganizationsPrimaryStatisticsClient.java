@@ -56,7 +56,7 @@ public class BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClient ext
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
-     * 
+     *
      * @see #getPresentationOfResults(Collection, Collection)
      */
     public List<ResponseModel> getPresentationOfResults() {
@@ -89,7 +89,7 @@ public class BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClient ext
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
-     * 
+     *
      * @see #getIncomeAndCostsFromPublicAdministration(Collection, Collection)
      */
     public List<ResponseModel> getIncomeAndCostsFromPublicAdministration() {
@@ -123,7 +123,7 @@ public class BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClient ext
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
-     * 
+     *
      * @see #getPresentationOfResultsSwedishChurch(Collection, Collection)
      */
     public List<ResponseModel> getPresentationOfResultsSwedishChurch() {
@@ -157,7 +157,7 @@ public class BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClient ext
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
-     * 
+     *
      * @see #getIncomeAndCostsFromOccupationalPension(Collection, Collection)
      */
     public List<ResponseModel> getIncomeAndCostsFromOccupationalPension() {
