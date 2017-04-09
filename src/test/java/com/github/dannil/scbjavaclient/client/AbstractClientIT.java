@@ -25,9 +25,11 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.test.utility.Files;
@@ -174,6 +176,62 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
             }
         }
         assertTrue("Classes not declaring a Locale constructor: " + matchedClasses.toString(),
+                matchedClasses.isEmpty());
+    }
+
+    @Test
+    public void checkForCorrectPackageAndClientNames() {
+        String execPath = System.getProperty("user.dir");
+
+        // Find files matching the wildcard pattern
+        List<File> files = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient/client", "*.java");
+
+        // Filter out some classes from the list
+        List<Class<?>> filters = new ArrayList<>();
+        filters.add(AbstractClient.class);
+        filters.add(AbstractContainerClient.class);
+        filters.add(SCBClient.class);
+
+        Iterator<File> it = files.iterator();
+        while (it.hasNext()) {
+            File f = it.next();
+            for (Class<?> clazz : filters) {
+                if (Objects.equals(Files.fileToBinaryName(f), clazz.getName())) {
+                    it.remove();
+                }
+            }
+        }
+
+        List<Class<?>> matchedClasses = new ArrayList<>();
+        for (File file : files) {
+            // Convert path into binary name
+            String binaryName = Files.fileToBinaryName(file);
+            if (binaryName.contains("package-info")) {
+                continue;
+            }
+
+            // Reflect the binary name into a concrete Java class
+            Class<?> clazz = null;
+            try {
+                clazz = Class.forName(binaryName);
+                String packageName = clazz.getPackage().getName();
+
+                String toBeginFrom = "client";
+                int beginIndex = packageName.lastIndexOf(toBeginFrom) + toBeginFrom.length() + 1;
+                String substr = packageName.substring(beginIndex);
+                String lastPart = substr.replace(".", "");
+
+                if (!clazz.getSimpleName().toLowerCase().contains(lastPart)) {
+                    matchedClasses.add(clazz);
+                }
+            } catch (ClassNotFoundException e) {
+                // Class could not be created; respond with an assertion that'll always
+                // fail
+                e.printStackTrace();
+                assertTrue(e.getMessage(), false);
+            }
+        }
+        assertTrue("Classes not having matching package and client name: " + matchedClasses.toString(),
                 matchedClasses.isEmpty());
     }
 

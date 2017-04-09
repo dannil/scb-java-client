@@ -22,6 +22,7 @@ import java.net.URLConnection;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Properties;
@@ -36,6 +37,8 @@ import com.github.dannil.scbjavaclient.http.HttpStatusCode;
  * @since 0.0.2
  */
 public abstract class AbstractRequester {
+
+    private static final int HTTP_ERRORS_START_CODE = 400;
 
     private static Properties properties;
 
@@ -107,8 +110,7 @@ public abstract class AbstractRequester {
         HttpURLConnection httpConnection = (HttpURLConnection) connection;
         HttpStatusCode status = HttpStatusCode.valueOf(httpConnection.getResponseCode());
         InputStream stream = null;
-        final int httpErrorStartCode = 400;
-        if (status.getCode() < httpErrorStartCode) {
+        if (status.getCode() < HTTP_ERRORS_START_CODE) {
             stream = httpConnection.getInputStream();
         }
         return new HttpResponse(status, stream);
@@ -142,7 +144,8 @@ public abstract class AbstractRequester {
     public final void setCharset(Charset charset) {
         this.charset = charset;
         this.requestProperties.put("Accept-Charset", this.charset.name());
-        this.requestProperties.put("Content-Type", "application/json; charset=" + this.charset.name().toLowerCase());
+        this.requestProperties.put("Content-Type",
+                "application/json; charset=" + this.charset.name().toLowerCase(Locale.ENGLISH));
     }
 
     /**

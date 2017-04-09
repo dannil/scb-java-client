@@ -15,10 +15,12 @@
 package com.github.dannil.scbjavaclient.client.publicfinances;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 import java.util.Locale;
 
+import com.github.dannil.scbjavaclient.client.publicfinances.governmentdebt.PublicFinancesGovernmentDebtClient;
+import com.github.dannil.scbjavaclient.client.publicfinances.localtaxes.PublicFinancesLocalTaxesClient;
+import com.github.dannil.scbjavaclient.client.publicfinances.taxassessment.PublicFinancesTaxAssessmentClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;
@@ -40,21 +42,21 @@ public class PublicFinancesClientTest {
     public void governmentDebtClient() {
         PublicFinancesClient client = new PublicFinancesClient();
 
-        assertNotNull(client.governmentDebt());
+        assertEquals(client.governmentDebt().getClass(), PublicFinancesGovernmentDebtClient.class);
     }
 
     @Test
     public void localTaxesClient() {
         PublicFinancesClient client = new PublicFinancesClient();
 
-        assertNotNull(client.localTaxes());
+        assertEquals(client.localTaxes().getClass(), PublicFinancesLocalTaxesClient.class);
     }
 
     @Test
     public void taxAssessmentClient() {
         PublicFinancesClient client = new PublicFinancesClient();
 
-        assertNotNull(client.taxAssessment());
+        assertEquals(client.taxAssessment().getClass(), PublicFinancesTaxAssessmentClient.class);
     }
 
     @Test

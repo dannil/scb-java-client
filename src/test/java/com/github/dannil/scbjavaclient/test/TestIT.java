@@ -22,6 +22,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
+import com.github.dannil.scbjavaclient.client.AbstractClientIT;
+import com.github.dannil.scbjavaclient.client.AbstractClientTest;
+import com.github.dannil.scbjavaclient.client.AbstractContainerClientTest;
+import com.github.dannil.scbjavaclient.client.SCBClientIT;
+import com.github.dannil.scbjavaclient.client.SCBClientTest;
 import com.github.dannil.scbjavaclient.test.utility.Files;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
@@ -112,6 +117,61 @@ public class TestIT {
             }
         }
         assertTrue("Classes not annotated with RunWith: " + matchedClasses.toString(), matchedClasses.isEmpty());
+    }
+
+    @Test
+    public void checkForCorrectPackageAndClientNames() {
+        String execPath = System.getProperty("user.dir");
+
+        // Find files matching the wildcard pattern
+        List<File> files = Files.find(execPath + "/src/test/java/com/github/dannil/scbjavaclient/client", "*.java");
+
+        // Filter out some classes from the list
+        List<Class<?>> filters = new ArrayList<>();
+        filters.add(AbstractClientIT.class);
+        filters.add(AbstractClientTest.class);
+        filters.add(AbstractContainerClientTest.class);
+        filters.add(SCBClientIT.class);
+        filters.add(SCBClientTest.class);
+
+        Iterator<File> it = files.iterator();
+        while (it.hasNext()) {
+            File f = it.next();
+            for (Class<?> clazz : filters) {
+                if (Objects.equals(Files.fileToBinaryName(f), clazz.getName())) {
+                    it.remove();
+                }
+            }
+        }
+
+        List<Class<?>> matchedClasses = new ArrayList<>();
+        for (File file : files) {
+            // Convert path into binary name
+            String binaryName = Files.fileToBinaryName(file);
+
+            // Reflect the binary name into a concrete Java class
+            Class<?> clazz = null;
+            try {
+                clazz = Class.forName(binaryName);
+                String packageName = clazz.getPackage().getName();
+
+                String toBeginFrom = "client";
+                int beginIndex = packageName.lastIndexOf(toBeginFrom) + toBeginFrom.length() + 1;
+                String sub = packageName.substring(beginIndex);
+                String lastPart = sub.replace(".", "");
+
+                if (!clazz.getSimpleName().toLowerCase().contains(lastPart)) {
+                    matchedClasses.add(clazz);
+                }
+            } catch (ClassNotFoundException e) {
+                // Class could not be created; respond with an assertion that'll always
+                // fail
+                e.printStackTrace();
+                assertTrue(e.getMessage(), false);
+            }
+        }
+        assertTrue("Classes not having matching package and client name: " + matchedClasses.toString(),
+                matchedClasses.isEmpty());
     }
 
 }
