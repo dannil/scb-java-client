@@ -14,10 +14,16 @@
 
 package com.github.dannil.scbjavaclient.client.businessactivities.nonprofitorganizations.primarystatistics;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles business activities non-profit organizations primary statistics
@@ -44,7 +50,132 @@ public class BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClient ext
         super(locale);
     }
 
-    TODO ADD METHODS HERE
+    /**
+     * <p>Fetch all presentation of results data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getPresentationOfResults() {
+        return getPresentationOfResults(null, null);
+    }
+
+    /**
+     * <p>Fetch all presentation of results data which match the input constraints.</p>
+     *
+     * @param incomeStatements
+     *            the income statements
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getPresentationOfResults(Collection<String> incomeStatements,
+            Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("Resultatraknposter", incomeStatements);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("CivSamHIO", mappings);
+    }
+
+    /**
+     * <p>Fetch all income and costs from public administration data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getIncomeAndCostsFromPublicAdministration() {
+        return getIncomeAndCostsFromPublicAdministration(null, null);
+    }
+
+    /**
+     * <p>Fetch all income and costs from public administration data which match the input
+     * constraints.</p>
+     *
+     * @param incomesAndCosts
+     *            the incomes and costs
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getIncomeAndCostsFromPublicAdministration(Collection<String> incomesAndCosts,
+            Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("IntakterKostnader", incomesAndCosts);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("CivSamHIOOFFSEKT", mappings);
+    }
+
+    /**
+     * <p>Fetch all presentation of results for the Swedish Church data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getPresentationOfResultsSwedishChurch() {
+        return getPresentationOfResultsSwedishChurch(null, null);
+    }
+
+    /**
+     * <p>Fetch all presentation of results for the Swedish Church data which match the
+     * input constraints.</p>
+     *
+     * @param incomeStatements
+     *            the income statements
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getPresentationOfResultsSwedishChurch(Collection<String> incomeStatements,
+            Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("Resultatraknposter", incomeStatements);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("CivSamSvKyrk", mappings);
+    }
+
+    /**
+     * <p>Fetch all income and costs from occupational pension data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getIncomeAndCostsFromOccupationalPension() {
+        return getIncomeAndCostsFromPublicAdministration(null, null);
+    }
+
+    /**
+     * <p>Fetch all income and costs from occupational pension data which match the input
+     * constraints.</p>
+     *
+     * @param incomesAndCosts
+     *            the incomes and costs
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getIncomeAndCostsFromOccupationalPension(Collection<String> incomesAndCosts,
+            Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("IntakterKostnader", incomesAndCosts);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("CivSamTJP", mappings);
+    }
 
     @Override
     public URLEndpoint getUrl() {

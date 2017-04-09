@@ -50,10 +50,31 @@ public class BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClient ext
         super(locale);
     }
 
+    /**
+     * <p>Fetch all income, expenditure and savings data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getIncomeExpenditureAndSavings() {
         return getIncomeExpenditureAndSavings(null, null, null);
     }
 
+    /**
+     * <p>Fetch all income, expenditure and savings data which match the input
+     * constraints.</p>
+     *
+     * @param icnpo
+     *            the ICNPO
+     * @param transactionItems
+     *            the transaction items
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getIncomeExpenditureAndSavings(Collection<String> icnpo,
             Collection<String> transactionItems, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
@@ -64,10 +85,29 @@ public class BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClient ext
         return getResponseModels("CivSamICNPO2", mappings);
     }
 
+    /**
+     * <p>Fetch all number of organizations and employment data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getNumberOfOrganizationsAndEmployment() {
         return getNumberOfOrganizationsAndEmployment(null, null);
     }
 
+    /**
+     * <p>Fetch all number of organizations and employment data which match the input
+     * constraints.</p>
+     *
+     * @param icnpo
+     *            the ICNPO
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getNumberOfOrganizationsAndEmployment(Collection<String> icnpo,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();

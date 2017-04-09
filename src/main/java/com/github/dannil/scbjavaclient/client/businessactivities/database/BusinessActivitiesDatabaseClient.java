@@ -49,26 +49,20 @@ public class BusinessActivitiesDatabaseClient extends AbstractClient {
         super(locale);
     }
 
+    /**
+     * <p>Fetch all enterprises and employees (SNI 2002) data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getEnterprisesAndEmployeesSNI2002() {
         return getEnterprisesAndEmployeesSNI2002(null, null, null);
     }
 
-    public List<ResponseModel> getEnterprisesAndEmployeesSNI2002(Collection<String> industrialClassifications,
-            Collection<String> sizeClasses, Collection<Integer> years) {
-        return generate(industrialClassifications, sizeClasses, years, "FDBR");
-    }
-
-    public List<ResponseModel> getEnterprisesAndEmployeesSNI2007() {
-        return getEnterprisesAndEmployeesSNI2007(null, null, null);
-    }
-
-    public List<ResponseModel> getEnterprisesAndEmployeesSNI2007(Collection<String> industrialClassifications,
-            Collection<String> sizeClasses, Collection<Integer> years) {
-        return generate(industrialClassifications, sizeClasses, years, "FDBR07");
-    }
-
     /**
-     * <p>Common generator method for the methods in this class.</p>
+     * <p>Fetch all enterprises and employees (SNI 2002) data which match the input
+     * constraints.</p>
      *
      * @param industrialClassifications
      *            the industrial classifications
@@ -76,19 +70,53 @@ public class BusinessActivitiesDatabaseClient extends AbstractClient {
      *            the size classes
      * @param years
      *            the years
-     * @param table
-     *            the table
-     * @return a <code>List</code> of
+     * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
      */
-    private List<ResponseModel> generate(Collection<String> industrialClassifications, Collection<String> sizeClasses,
-            Collection<Integer> years, String table) {
+    public List<ResponseModel> getEnterprisesAndEmployeesSNI2002(Collection<String> industrialClassifications,
+            Collection<String> sizeClasses, Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("SNI2002", industrialClassifications);
+        mappings.put("Storleksklass", sizeClasses);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("FDBR", mappings);
+    }
+
+    /**
+     * <p>Fetch all enterprises and employees (SNI 2007) data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getEnterprisesAndEmployeesSNI2007() {
+        return getEnterprisesAndEmployeesSNI2007(null, null, null);
+    }
+
+    /**
+     * <p>Fetch all enterprises and employees (SNI 2007) data which match the input
+     * constraints.</p>
+     *
+     * @param industrialClassifications
+     *            the industrial classifications
+     * @param sizeClasses
+     *            the size classes
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getEnterprisesAndEmployeesSNI2007(Collection<String> industrialClassifications,
+            Collection<String> sizeClasses, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("SNI2007", industrialClassifications);
         mappings.put("Storleksklass", sizeClasses);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels(table, mappings);
+        return getResponseModels("FDBR07", mappings);
     }
 
     @Override
