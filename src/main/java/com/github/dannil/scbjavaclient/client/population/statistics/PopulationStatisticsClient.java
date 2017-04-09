@@ -17,6 +17,7 @@ package com.github.dannil.scbjavaclient.client.population.statistics;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
+import com.github.dannil.scbjavaclient.client.population.statistics.adoptees.PopulationStatisticsAdopteesClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.amount.PopulationStatisticsAmountClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.averageage.PopulationStatisticsAverageAgeClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.density.PopulationStatisticsDensityClient;
@@ -37,6 +38,7 @@ public class PopulationStatisticsClient extends AbstractContainerClient {
     public PopulationStatisticsClient() {
         super();
 
+        addClient("adoptees", new PopulationStatisticsAdopteesClient());
         addClient("amount", new PopulationStatisticsAmountClient());
         addClient("averageage", new PopulationStatisticsAverageAgeClient());
         addClient("density", new PopulationStatisticsDensityClient());
@@ -54,6 +56,16 @@ public class PopulationStatisticsClient extends AbstractContainerClient {
         this();
 
         setLocale(locale);
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with population statistics adoptees
+     * data.</p>
+     *
+     * @return a client for population statistics adoptees data
+     */
+    public PopulationStatisticsAdopteesClient adoptees() {
+        return (PopulationStatisticsAdopteesClient) getClient("adoptees");
     }
 
     /**
