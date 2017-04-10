@@ -46,7 +46,7 @@ public class BusinessActivitiesProductionIndexClientIT extends RemoteIntegration
     @Test
     public void getBusinessProductionIndexWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getBusinessProductionIndex(Collections.<String>emptyList(),
-                Collections.<String>emptyList()));
+                Collections.<String>emptyList()).size());
     }
 
     @Test

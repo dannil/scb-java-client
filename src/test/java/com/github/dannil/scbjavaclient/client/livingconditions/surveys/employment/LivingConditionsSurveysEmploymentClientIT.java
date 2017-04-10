@@ -46,7 +46,7 @@ public class LivingConditionsSurveysEmploymentClientIT extends RemoteIntegration
     @Test
     public void getMainActivityWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getMainActivity(Collections.<String>emptyList(), Collections.<String>emptyList(),
-                Collections.<Integer>emptyList(), Collections.<String>emptyList()));
+                Collections.<Integer>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test
@@ -66,8 +66,10 @@ public class LivingConditionsSurveysEmploymentClientIT extends RemoteIntegration
 
     @Test
     public void getGainfullyEmployedPersonsWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getGainfullyEmployedPersons(Collections.<String>emptyList(),
-                Collections.<String>emptyList(), Collections.<Integer>emptyList(), Collections.<String>emptyList()));
+        assertNotEquals(0,
+                this.client.getGainfullyEmployedPersons(Collections.<String>emptyList(),
+                        Collections.<String>emptyList(), Collections.<Integer>emptyList(),
+                        Collections.<String>emptyList()).size());
     }
 
     @Test
@@ -87,8 +89,9 @@ public class LivingConditionsSurveysEmploymentClientIT extends RemoteIntegration
 
     @Test
     public void getTypeOfEmploymentWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getTypeOfEmployment(Collections.<String>emptyList(),
-                Collections.<String>emptyList(), Collections.<Integer>emptyList(), Collections.<String>emptyList()));
+        assertNotEquals(0,
+                this.client.getTypeOfEmployment(Collections.<String>emptyList(), Collections.<String>emptyList(),
+                        Collections.<Integer>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test
@@ -108,8 +111,10 @@ public class LivingConditionsSurveysEmploymentClientIT extends RemoteIntegration
 
     @Test
     public void getDistributionOfWorkingHoursForEmployeesWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getDistributionOfWorkingHoursForEmployees(Collections.<String>emptyList(),
-                Collections.<String>emptyList(), Collections.<Integer>emptyList(), Collections.<String>emptyList()));
+        assertNotEquals(0,
+                this.client.getDistributionOfWorkingHoursForEmployees(Collections.<String>emptyList(),
+                        Collections.<String>emptyList(), Collections.<Integer>emptyList(),
+                        Collections.<String>emptyList()).size());
     }
 
     @Test

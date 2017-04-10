@@ -46,7 +46,7 @@ public class LabourMarketCostIndexClientIT extends RemoteIntegrationTestSuite {
     @Test
     public void getCostIndexForManualWorkersLCIWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getCostIndexForManualWorkersLCI(Collections.<String>emptyList(),
-                Collections.<String>emptyList()));
+                Collections.<String>emptyList()).size());
     }
 
     @Test
@@ -65,7 +65,7 @@ public class LabourMarketCostIndexClientIT extends RemoteIntegrationTestSuite {
     @Test
     public void getCostIndexForNonManualWorkersLCIWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getCostIndexForNonManualWorkersLCI(Collections.<String>emptyList(),
-                Collections.<String>emptyList()));
+                Collections.<String>emptyList()).size());
     }
 
     @Test
@@ -84,7 +84,7 @@ public class LabourMarketCostIndexClientIT extends RemoteIntegrationTestSuite {
     @Test
     public void getCostIndexForManualWorkersWAGWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getCostIndexForManualWorkersWAG(Collections.<String>emptyList(),
-                Collections.<String>emptyList()));
+                Collections.<String>emptyList()).size());
     }
 
     @Test

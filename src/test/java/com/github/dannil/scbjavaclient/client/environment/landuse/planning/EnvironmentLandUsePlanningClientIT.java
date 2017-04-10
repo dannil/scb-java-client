@@ -45,7 +45,8 @@ public class EnvironmentLandUsePlanningClientIT extends RemoteIntegrationTestSui
 
     @Test
     public void getPlanningWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getPlanning(Collections.<String>emptyList(), Collections.<Integer>emptyList()));
+        assertNotEquals(0,
+                this.client.getPlanning(Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test

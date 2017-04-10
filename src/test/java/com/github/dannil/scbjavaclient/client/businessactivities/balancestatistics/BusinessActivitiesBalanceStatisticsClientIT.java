@@ -46,7 +46,7 @@ public class BusinessActivitiesBalanceStatisticsClientIT extends RemoteIntegrati
     @Test
     public void getCorporationsAssetsAndLiabilitiesWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getCorporationsAssetsAndLiabilities(Collections.<String>emptyList(),
-                Collections.<String>emptyList()));
+                Collections.<String>emptyList()).size());
     }
 
     @Test

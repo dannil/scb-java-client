@@ -46,7 +46,7 @@ public class BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClientIT e
     @Test
     public void getPresentationOfResultsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getPresentationOfResults(Collections.<String>emptyList(),
-                Collections.<Integer>emptyList()));
+                Collections.<Integer>emptyList()).size());
     }
 
     @Test
@@ -65,7 +65,7 @@ public class BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClientIT e
     @Test
     public void getIncomeAndCostsFromPublicAdministrationWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getIncomeAndCostsFromPublicAdministration(Collections.<String>emptyList(),
-                Collections.<Integer>emptyList()));
+                Collections.<Integer>emptyList()).size());
     }
 
     @Test
@@ -84,7 +84,7 @@ public class BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClientIT e
     @Test
     public void getPresentationOfResultsSwedishChurchWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getPresentationOfResultsSwedishChurch(Collections.<String>emptyList(),
-                Collections.<Integer>emptyList()));
+                Collections.<Integer>emptyList()).size());
     }
 
     @Test
@@ -103,7 +103,7 @@ public class BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClientIT e
     @Test
     public void getIncomeAndCostsFromOccupationalPensionWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getIncomeAndCostsFromOccupationalPension(Collections.<String>emptyList(),
-                Collections.<Integer>emptyList()));
+                Collections.<Integer>emptyList()).size());
     }
 
     @Test

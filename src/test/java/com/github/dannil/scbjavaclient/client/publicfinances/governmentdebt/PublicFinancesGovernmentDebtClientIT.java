@@ -46,7 +46,7 @@ public class PublicFinancesGovernmentDebtClientIT extends RemoteIntegrationTestS
     @Test
     public void getGovernmentDebtWithParametersEmptyLists() {
         assertNotEquals(0,
-                this.client.getGovernmentDebt(Collections.<String>emptyList(), Collections.<String>emptyList()));
+                this.client.getGovernmentDebt(Collections.<String>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test

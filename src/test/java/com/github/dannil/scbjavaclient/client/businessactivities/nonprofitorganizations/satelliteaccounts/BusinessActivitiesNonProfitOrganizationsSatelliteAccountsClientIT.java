@@ -46,7 +46,7 @@ public class BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClientIT e
     @Test
     public void getIncomeExpenditureAndSavingsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getIncomeExpenditureAndSavings(Collections.<String>emptyList(),
-                Collections.<String>emptyList(), Collections.<Integer>emptyList()));
+                Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
@@ -66,7 +66,7 @@ public class BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClientIT e
     @Test
     public void getNumberOfOrganizationsAndEmploymentWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getNumberOfOrganizationsAndEmployment(Collections.<String>emptyList(),
-                Collections.<Integer>emptyList()));
+                Collections.<Integer>emptyList()).size());
     }
 
     @Test

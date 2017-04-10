@@ -45,8 +45,8 @@ public class FinancialMarketsShareholdersClientIT extends RemoteIntegrationTestS
 
     @Test
     public void getOwnershipOfSharesWithParametersEmptyLists() {
-        assertNotEquals(0,
-                this.client.getOwnershipOfShares(Collections.<String>emptyList(), Collections.<String>emptyList()));
+        assertNotEquals(0, this.client.getOwnershipOfShares(Collections.<String>emptyList(),
+                Collections.<String>emptyList()).size());
     }
 
     @Test
@@ -65,7 +65,7 @@ public class FinancialMarketsShareholdersClientIT extends RemoteIntegrationTestS
     @Test
     public void getOwnershipOfSharesByMarketplaceWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getOwnershipOfSharesByMarketplace(Collections.<String>emptyList(),
-                Collections.<String>emptyList(), Collections.<String>emptyList()));
+                Collections.<String>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test
@@ -85,7 +85,7 @@ public class FinancialMarketsShareholdersClientIT extends RemoteIntegrationTestS
     @Test
     public void getOwnershipOfSharesBySeriesWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getOwnershipOfSharesBySeries(Collections.<String>emptyList(),
-                Collections.<String>emptyList(), Collections.<String>emptyList()));
+                Collections.<String>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test
@@ -105,7 +105,7 @@ public class FinancialMarketsShareholdersClientIT extends RemoteIntegrationTestS
     @Test
     public void getForeignOwnershipOfSharesWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getForeignOwnershipOfShares(Collections.<String>emptyList(),
-                Collections.<String>emptyList()));
+                Collections.<String>emptyList()).size());
     }
 
     @Test

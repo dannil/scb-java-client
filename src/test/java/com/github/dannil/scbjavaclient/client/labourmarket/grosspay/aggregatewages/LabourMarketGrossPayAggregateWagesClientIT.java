@@ -45,7 +45,8 @@ public class LabourMarketGrossPayAggregateWagesClientIT extends RemoteIntegratio
 
     @Test
     public void getGrossPayWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getGrossPay(Collections.<String>emptyList(), Collections.<Integer>emptyList()));
+        assertNotEquals(0,
+                this.client.getGrossPay(Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test

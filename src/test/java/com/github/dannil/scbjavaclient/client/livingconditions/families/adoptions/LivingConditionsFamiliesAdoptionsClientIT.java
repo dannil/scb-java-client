@@ -45,8 +45,9 @@ public class LivingConditionsFamiliesAdoptionsClientIT extends RemoteIntegration
 
     @Test
     public void getChildAdoptionsWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getChildAdoptions(Collections.<String>emptyList(),
-                Collections.<String>emptyList(), Collections.<String>emptyList(), Collections.<Integer>emptyList()));
+        assertNotEquals(0,
+                this.client.getChildAdoptions(Collections.<String>emptyList(), Collections.<String>emptyList(),
+                        Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test

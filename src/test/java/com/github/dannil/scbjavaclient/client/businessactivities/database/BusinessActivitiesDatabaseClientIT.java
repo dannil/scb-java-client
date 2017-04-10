@@ -46,7 +46,7 @@ public class BusinessActivitiesDatabaseClientIT extends RemoteIntegrationTestSui
     @Test
     public void getEnterprisesAndEmployeesSNI2002WithParametersEmptyLists() {
         assertNotEquals(0, this.client.getEnterprisesAndEmployeesSNI2002(Collections.<String>emptyList(),
-                Collections.<String>emptyList(), Collections.<Integer>emptyList()));
+                Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
@@ -67,7 +67,7 @@ public class BusinessActivitiesDatabaseClientIT extends RemoteIntegrationTestSui
     @Test
     public void getEnterprisesAndEmployeesSNI2007WithParametersEmptyLists() {
         assertNotEquals(0, this.client.getEnterprisesAndEmployeesSNI2007(Collections.<String>emptyList(),
-                Collections.<String>emptyList(), Collections.<Integer>emptyList()));
+                Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test

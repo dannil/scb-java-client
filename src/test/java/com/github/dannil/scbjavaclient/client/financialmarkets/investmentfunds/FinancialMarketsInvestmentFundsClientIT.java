@@ -46,7 +46,7 @@ public class FinancialMarketsInvestmentFundsClientIT extends RemoteIntegrationTe
     @Test
     public void getOwnershipOfInvestmentFundSharesWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getOwnershipOfInvestmentFundShares(Collections.<String>emptyList(),
-                Collections.<String>emptyList(), Collections.<String>emptyList()));
+                Collections.<String>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test
