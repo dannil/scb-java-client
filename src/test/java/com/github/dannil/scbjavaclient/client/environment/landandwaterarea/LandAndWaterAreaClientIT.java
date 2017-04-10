@@ -31,22 +31,22 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class LandAndWaterAreaClientIT extends RemoteIntegrationTestSuite {
 
-    private LandAndWaterAreaClient landAndWaterAreaClient;
+    private LandAndWaterAreaClient client;
 
     @Before
     public void setup() {
-        this.landAndWaterAreaClient = new SCBClient().environment().landAndWaterArea();
+        this.client = new SCBClient().environment().landAndWaterArea();
     }
 
     @Test
     public void getArea() {
-        assertNotEquals(0, this.landAndWaterAreaClient.getArea().size());
+        assertNotEquals(0, this.client.getArea().size());
     }
 
     @Test
     public void getAreaWithParametersEmptyLists() {
-        assertNotEquals(0, this.landAndWaterAreaClient.getArea(Collections.<String>emptyList(),
-                Collections.<String>emptyList(), Collections.<Integer>emptyList()));
+        assertNotEquals(0, this.client.getArea(Collections.<String>emptyList(), Collections.<String>emptyList(),
+                Collections.<Integer>emptyList()).size());
     }
 
     @Test
@@ -55,7 +55,7 @@ public class LandAndWaterAreaClientIT extends RemoteIntegrationTestSuite {
         List<String> types = Arrays.asList("01", "02", "03", "04");
         List<Integer> years = Arrays.asList(2012);
 
-        assertNotEquals(0, this.landAndWaterAreaClient.getArea(regions, types, years).size());
+        assertNotEquals(0, this.client.getArea(regions, types, years).size());
     }
 
 }

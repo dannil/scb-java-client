@@ -45,8 +45,9 @@ public class HealthClientIT extends RemoteIntegrationTestSuite {
 
     @Test
     public void getPhysicalAndMentalHealthWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getPhysicalAndMentalHealth(Collections.<String>emptyList(),
-                Collections.<String>emptyList(), Collections.<Integer>emptyList(), Collections.<String>emptyList()));
+        assertNotEquals(0,
+                this.client.getPhysicalAndMentalHealth(Collections.<String>emptyList(), Collections.<String>emptyList(),
+                        Collections.<Integer>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test
@@ -66,8 +67,9 @@ public class HealthClientIT extends RemoteIntegrationTestSuite {
 
     @Test
     public void getLongTermIllnessWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getLongTermIllness(Collections.<String>emptyList(),
-                Collections.<String>emptyList(), Collections.<Integer>emptyList(), Collections.<String>emptyList()));
+        assertNotEquals(0,
+                this.client.getLongTermIllness(Collections.<String>emptyList(), Collections.<String>emptyList(),
+                        Collections.<Integer>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test
@@ -88,7 +90,7 @@ public class HealthClientIT extends RemoteIntegrationTestSuite {
     @Test
     public void getDisabilitiesWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getDisabilities(Collections.<String>emptyList(), Collections.<String>emptyList(),
-                Collections.<Integer>emptyList(), Collections.<String>emptyList()));
+                Collections.<Integer>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test
@@ -108,8 +110,10 @@ public class HealthClientIT extends RemoteIntegrationTestSuite {
 
     @Test
     public void getDoctorAndDentistAppointmentsWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getDoctorAndDentistAppointments(Collections.<String>emptyList(),
-                Collections.<String>emptyList(), Collections.<Integer>emptyList(), Collections.<String>emptyList()));
+        assertNotEquals(0,
+                this.client.getDoctorAndDentistAppointments(Collections.<String>emptyList(),
+                        Collections.<String>emptyList(), Collections.<Integer>emptyList(),
+                        Collections.<String>emptyList()).size());
     }
 
     @Test
@@ -129,8 +133,9 @@ public class HealthClientIT extends RemoteIntegrationTestSuite {
 
     @Test
     public void getTobaccoHabitsWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getTobaccoHabits(Collections.<String>emptyList(),
-                Collections.<String>emptyList(), Collections.<Integer>emptyList(), Collections.<String>emptyList()));
+        assertNotEquals(0,
+                this.client.getTobaccoHabits(Collections.<String>emptyList(), Collections.<String>emptyList(),
+                        Collections.<Integer>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test
@@ -150,8 +155,9 @@ public class HealthClientIT extends RemoteIntegrationTestSuite {
 
     @Test
     public void getBodyMassIndexWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getBodyMassIndex(Collections.<String>emptyList(),
-                Collections.<String>emptyList(), Collections.<Integer>emptyList(), Collections.<String>emptyList()));
+        assertNotEquals(0,
+                this.client.getBodyMassIndex(Collections.<String>emptyList(), Collections.<String>emptyList(),
+                        Collections.<Integer>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test

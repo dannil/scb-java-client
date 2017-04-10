@@ -45,8 +45,9 @@ public class LegalGuardiansClientIT extends RemoteIntegrationTestSuite {
 
     @Test
     public void getLegalGuardiansWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getLegalGuardians(Collections.<String>emptyList(),
-                Collections.<String>emptyList(), Collections.<String>emptyList(), Collections.<Integer>emptyList()));
+        assertNotEquals(0,
+                this.client.getLegalGuardians(Collections.<String>emptyList(), Collections.<String>emptyList(),
+                        Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test

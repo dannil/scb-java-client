@@ -18,13 +18,10 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.client.population.amount.AmountClient;
-import com.github.dannil.scbjavaclient.client.population.averageage.AverageAgeClient;
 import com.github.dannil.scbjavaclient.client.population.demography.DemographyClient;
-import com.github.dannil.scbjavaclient.client.population.density.DensityClient;
-import com.github.dannil.scbjavaclient.client.population.livebirths.LiveBirthsClient;
-import com.github.dannil.scbjavaclient.client.population.name.NameStatisticsClient;
-import com.github.dannil.scbjavaclient.client.population.partnership.PartnershipClient;
+import com.github.dannil.scbjavaclient.client.population.name.NameClient;
+import com.github.dannil.scbjavaclient.client.population.projections.ProjectionsClient;
+import com.github.dannil.scbjavaclient.client.population.statistics.StatisticsClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;
@@ -49,25 +46,10 @@ public class PopulationClientTest {
 
         // Not all sub-clients needs to be here. If one of the asserts fails it
         // automatically applies to all sub-clients since they share the same logic
-        assertEquals(client.amount().getLocale(), locale);
         assertEquals(client.demography().getLocale(), locale);
-        assertEquals(client.density().getLocale(), locale);
-        assertEquals(client.liveBirths().getLocale(), locale);
-        assertEquals(client.partnership().getLocale(), locale);
-    }
-
-    @Test
-    public void amountClient() {
-        PopulationClient client = new PopulationClient();
-
-        assertEquals(client.amount().getClass(), AmountClient.class);
-    }
-
-    @Test
-    public void averageAgeClient() {
-        PopulationClient client = new PopulationClient();
-
-        assertEquals(client.averageAge().getClass(), AverageAgeClient.class);
+        assertEquals(client.name().getLocale(), locale);
+        assertEquals(client.projections().getLocale(), locale);
+        assertEquals(client.statistics().getLocale(), locale);
     }
 
     @Test
@@ -78,31 +60,24 @@ public class PopulationClientTest {
     }
 
     @Test
-    public void densityClient() {
+    public void nameClient() {
         PopulationClient client = new PopulationClient();
 
-        assertEquals(client.density().getClass(), DensityClient.class);
+        assertEquals(client.name().getClass(), NameClient.class);
     }
 
     @Test
-    public void liveBirthsClient() {
+    public void projectionsClient() {
         PopulationClient client = new PopulationClient();
 
-        assertEquals(client.liveBirths().getClass(), LiveBirthsClient.class);
+        assertEquals(client.projections().getClass(), ProjectionsClient.class);
     }
 
     @Test
-    public void nameStatisticsClient() {
+    public void statisticsClient() {
         PopulationClient client = new PopulationClient();
 
-        assertEquals(client.nameStatistics().getClass(), NameStatisticsClient.class);
-    }
-
-    @Test
-    public void partnershipClient() {
-        PopulationClient client = new PopulationClient();
-
-        assertEquals(client.partnership().getClass(), PartnershipClient.class);
+        assertEquals(client.statistics().getClass(), StatisticsClient.class);
     }
 
     @Test

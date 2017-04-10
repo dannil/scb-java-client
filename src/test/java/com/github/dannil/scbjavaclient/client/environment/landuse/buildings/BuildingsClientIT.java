@@ -46,7 +46,7 @@ public class BuildingsClientIT extends RemoteIntegrationTestSuite {
     @Test
     public void getBuildingWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getBuilding(Collections.<String>emptyList(), Collections.<Integer>emptyList(),
-                Collections.<Integer>emptyList()));
+                Collections.<Integer>emptyList()).size());
     }
 
     @Test

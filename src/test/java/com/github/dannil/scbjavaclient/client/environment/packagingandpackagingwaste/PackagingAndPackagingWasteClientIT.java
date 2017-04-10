@@ -46,7 +46,7 @@ public class PackagingAndPackagingWasteClientIT extends RemoteIntegrationTestSui
     @Test
     public void getPackagingAndPackagingWasteWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getPackagingAndPackagingWaste(Collections.<Integer>emptyList(),
-                Collections.<Integer>emptyList()));
+                Collections.<Integer>emptyList()).size());
     }
 
     @Test

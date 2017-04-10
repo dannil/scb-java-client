@@ -47,7 +47,7 @@ public class HousingClientIT extends RemoteIntegrationTestSuite {
     public void getHousingWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getHousing(Collections.<String>emptyList(), Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<String>emptyList(), Collections.<String>emptyList(),
-                Collections.<Integer>emptyList(), Collections.<Integer>emptyList()));
+                Collections.<Integer>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test

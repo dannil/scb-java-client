@@ -45,8 +45,10 @@ public class SiblingsClientIT extends RemoteIntegrationTestSuite {
 
     @Test
     public void getSiblingsWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getSiblings(Collections.<String>emptyList(), Collections.<String>emptyList(),
-                Collections.<Integer>emptyList(), Collections.<String>emptyList(), Collections.<Integer>emptyList()));
+        assertNotEquals(0,
+                this.client.getSiblings(Collections.<String>emptyList(), Collections.<String>emptyList(),
+                        Collections.<Integer>emptyList(), Collections.<String>emptyList(),
+                        Collections.<Integer>emptyList()).size());
     }
 
     @Test
