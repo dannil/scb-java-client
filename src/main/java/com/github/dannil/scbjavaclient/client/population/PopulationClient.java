@@ -19,6 +19,7 @@ import java.util.Locale;
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.population.demography.PopulationDemographyClient;
 import com.github.dannil.scbjavaclient.client.population.name.PopulationNameClient;
+import com.github.dannil.scbjavaclient.client.population.projections.PopulationProjectionsClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.PopulationStatisticsClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
@@ -37,6 +38,7 @@ public class PopulationClient extends AbstractContainerClient {
 
         addClient("demography", new PopulationDemographyClient());
         addClient("name", new PopulationNameClient());
+        addClient("projections", new PopulationProjectionsClient());
         addClient("statistics", new PopulationStatisticsClient());
     }
 
@@ -68,6 +70,15 @@ public class PopulationClient extends AbstractContainerClient {
      */
     public PopulationNameClient name() {
         return (PopulationNameClient) getClient("name");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with population projections data.</p>
+     *
+     * @return a client for population projections data
+     */
+    public PopulationProjectionsClient projections() {
+        return (PopulationProjectionsClient) getClient("projections");
     }
 
     /**
