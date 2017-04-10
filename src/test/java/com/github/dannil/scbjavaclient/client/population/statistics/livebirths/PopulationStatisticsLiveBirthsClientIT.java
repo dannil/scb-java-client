@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.population.demography;
+package com.github.dannil.scbjavaclient.client.population.statistics.livebirths;
 
 import static org.junit.Assert.assertNotEquals;
 
@@ -28,41 +28,28 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class PopulationDemographyClientIT extends RemoteIntegrationTestSuite {
+public class PopulationStatisticsLiveBirthsClientIT extends RemoteIntegrationTestSuite {
 
-    private PopulationDemographyClient client;
+    private PopulationStatisticsLiveBirthsClient client;
 
     @Before
     public void setup() {
-        this.client = new SCBClient().population().demography();
+        this.client = new SCBClient().population().statistics().liveBirths();
     }
 
     @Test
-    public void getFertilityRate() {
-        assertNotEquals(0, this.client.getFertilityRate().size());
+    public void getLiveBirths() {
+        assertNotEquals(0, this.client.getLiveBirths().size());
     }
 
     @Test
-    public void getFertilityRateWithParameters() {
+    public void getLiveBirthsWithParameters() {
         List<String> regions = Arrays.asList("1263");
+        List<String> motherAges = Arrays.asList("tot");
         List<Integer> genders = Arrays.asList(1, 2);
-        List<Integer> years = Arrays.asList(2002);
+        List<Integer> years = Arrays.asList(1996);
 
-        assertNotEquals(0, this.client.getFertilityRate(regions, genders, years).size());
-    }
-
-    @Test
-    public void getMeanAgeFirstChild() {
-        assertNotEquals(0, this.client.getMeanAgeFirstChild().size());
-    }
-
-    @Test
-    public void getMeanAgeFirstChildWithParameters() {
-        List<String> regions = Arrays.asList("1263");
-        List<Integer> genders = Arrays.asList(1, 2);
-        List<Integer> years = Arrays.asList(2002);
-
-        assertNotEquals(0, this.client.getMeanAgeFirstChild(regions, genders, years).size());
+        assertNotEquals(0, this.client.getLiveBirths(regions, motherAges, genders, years).size());
     }
 
 }

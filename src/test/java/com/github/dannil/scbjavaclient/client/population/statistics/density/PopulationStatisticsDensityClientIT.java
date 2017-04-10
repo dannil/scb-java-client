@@ -1,3 +1,4 @@
+
 /*
  * Copyright 2016 Daniel Nilsson
  *
@@ -12,7 +13,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.population.demography;
+package com.github.dannil.scbjavaclient.client.population.statistics.density;
 
 import static org.junit.Assert.assertNotEquals;
 
@@ -28,41 +29,27 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class PopulationDemographyClientIT extends RemoteIntegrationTestSuite {
+public class PopulationStatisticsDensityClientIT extends RemoteIntegrationTestSuite {
 
-    private PopulationDemographyClient client;
+    private PopulationStatisticsDensityClient client;
 
     @Before
     public void setup() {
-        this.client = new SCBClient().population().demography();
+        this.client = new SCBClient().population().statistics().density();
     }
 
     @Test
-    public void getFertilityRate() {
-        assertNotEquals(0, this.client.getFertilityRate().size());
+    public void getDensity() {
+        assertNotEquals(0, this.client.getDensity().size());
     }
 
     @Test
-    public void getFertilityRateWithParameters() {
+    public void getDensityWithParameters() {
         List<String> regions = Arrays.asList("1263");
-        List<Integer> genders = Arrays.asList(1, 2);
-        List<Integer> years = Arrays.asList(2002);
+        List<String> sexes = Arrays.asList("1", "2", "1+2");
+        List<Integer> years = Arrays.asList(1996);
 
-        assertNotEquals(0, this.client.getFertilityRate(regions, genders, years).size());
-    }
-
-    @Test
-    public void getMeanAgeFirstChild() {
-        assertNotEquals(0, this.client.getMeanAgeFirstChild().size());
-    }
-
-    @Test
-    public void getMeanAgeFirstChildWithParameters() {
-        List<String> regions = Arrays.asList("1263");
-        List<Integer> genders = Arrays.asList(1, 2);
-        List<Integer> years = Arrays.asList(2002);
-
-        assertNotEquals(0, this.client.getMeanAgeFirstChild(regions, genders, years).size());
+        assertNotEquals(0, this.client.getDensity(regions, sexes, years).size());
     }
 
 }

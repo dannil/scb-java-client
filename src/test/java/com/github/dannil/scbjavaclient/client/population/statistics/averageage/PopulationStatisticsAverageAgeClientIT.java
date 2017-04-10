@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.population.demography;
+package com.github.dannil.scbjavaclient.client.population.statistics.averageage;
 
 import static org.junit.Assert.assertNotEquals;
 
@@ -28,41 +28,26 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class PopulationDemographyClientIT extends RemoteIntegrationTestSuite {
+public class PopulationStatisticsAverageAgeClientIT extends RemoteIntegrationTestSuite {
 
-    private PopulationDemographyClient client;
+    private PopulationStatisticsAverageAgeClient client;
 
     @Before
     public void setup() {
-        this.client = new SCBClient().population().demography();
+        this.client = new SCBClient().population().statistics().averageAge();
     }
 
     @Test
-    public void getFertilityRate() {
-        assertNotEquals(0, this.client.getFertilityRate().size());
+    public void getAverageAge() {
+        assertNotEquals(0, this.client.getAverageAge().size());
     }
 
     @Test
-    public void getFertilityRateWithParameters() {
+    public void getAverageAgeWithParameters() {
         List<String> regions = Arrays.asList("1263");
-        List<Integer> genders = Arrays.asList(1, 2);
+        List<String> genders = Arrays.asList("1", "2", "1+2");
         List<Integer> years = Arrays.asList(2002);
 
-        assertNotEquals(0, this.client.getFertilityRate(regions, genders, years).size());
+        assertNotEquals(0, this.client.getAverageAge(regions, genders, years).size());
     }
-
-    @Test
-    public void getMeanAgeFirstChild() {
-        assertNotEquals(0, this.client.getMeanAgeFirstChild().size());
-    }
-
-    @Test
-    public void getMeanAgeFirstChildWithParameters() {
-        List<String> regions = Arrays.asList("1263");
-        List<Integer> genders = Arrays.asList(1, 2);
-        List<Integer> years = Arrays.asList(2002);
-
-        assertNotEquals(0, this.client.getMeanAgeFirstChild(regions, genders, years).size());
-    }
-
 }

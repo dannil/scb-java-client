@@ -17,13 +17,10 @@ package com.github.dannil.scbjavaclient.client.population;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
-import com.github.dannil.scbjavaclient.client.population.amount.PopulationAmountClient;
-import com.github.dannil.scbjavaclient.client.population.averageage.PopulationAverageAgeClient;
 import com.github.dannil.scbjavaclient.client.population.demography.PopulationDemographyClient;
-import com.github.dannil.scbjavaclient.client.population.density.PopulationDensityClient;
-import com.github.dannil.scbjavaclient.client.population.livebirths.PopulationLiveBirthsClient;
-import com.github.dannil.scbjavaclient.client.population.name.PopulationNameStatisticsClient;
-import com.github.dannil.scbjavaclient.client.population.partnership.PopulationPartnershipClient;
+import com.github.dannil.scbjavaclient.client.population.name.PopulationNameClient;
+import com.github.dannil.scbjavaclient.client.population.projections.PopulationProjectionsClient;
+import com.github.dannil.scbjavaclient.client.population.statistics.PopulationStatisticsClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 /**
@@ -39,13 +36,10 @@ public class PopulationClient extends AbstractContainerClient {
     public PopulationClient() {
         super();
 
-        addClient("amount", new PopulationAmountClient());
-        addClient("averageage", new PopulationAverageAgeClient());
         addClient("demography", new PopulationDemographyClient());
-        addClient("density", new PopulationDensityClient());
-        addClient("livebirths", new PopulationLiveBirthsClient());
-        addClient("namestatistics", new PopulationNameStatisticsClient());
-        addClient("partnership", new PopulationPartnershipClient());
+        addClient("name", new PopulationNameClient());
+        addClient("projections", new PopulationProjectionsClient());
+        addClient("statistics", new PopulationStatisticsClient());
     }
 
     /**
@@ -61,25 +55,7 @@ public class PopulationClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with population amount data.</p>
-     *
-     * @return a client for population amount data
-     */
-    public PopulationAmountClient amount() {
-        return (PopulationAmountClient) getClient("amount");
-    }
-
-    /**
-     * <p>Retrieve the client for interacting with population average age data. </p>
-     *
-     * @return a client for population average age data
-     */
-    public PopulationAverageAgeClient averageAge() {
-        return (PopulationAverageAgeClient) getClient("averageage");
-    }
-
-    /**
-     * <p>Retrieve the client for interacting with population demography data. </p>
+     * <p>Retrieve the client for interacting with population demography data.</p>
      *
      * @return a client for population demography data
      */
@@ -88,39 +64,30 @@ public class PopulationClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with population density data. </p>
+     * <p>Retrieve the client for interacting with population statistics name data.</p>
      *
-     * @return a client for population density data
+     * @return a client for population statistics name data
      */
-    public PopulationDensityClient density() {
-        return (PopulationDensityClient) getClient("density");
+    public PopulationNameClient name() {
+        return (PopulationNameClient) getClient("name");
     }
 
     /**
-     * <p>Retrieve the client for interacting with population live births data. </p>
+     * <p>Retrieve the client for interacting with population projections data.</p>
      *
-     * @return a client for population live births data
+     * @return a client for population projections data
      */
-    public PopulationLiveBirthsClient liveBirths() {
-        return (PopulationLiveBirthsClient) getClient("livebirths");
+    public PopulationProjectionsClient projections() {
+        return (PopulationProjectionsClient) getClient("projections");
     }
 
     /**
-     * <p>Retrieve the client for interacting with population name statistic data.</p>
+     * <p>Retrieve the client for interacting with population statistics data.</p>
      *
-     * @return a client for population name statistic data
+     * @return a client for population statistics data
      */
-    public PopulationNameStatisticsClient nameStatistics() {
-        return (PopulationNameStatisticsClient) getClient("namestatistics");
-    }
-
-    /**
-     * <p>Retrieve the client for interacting with population partnership data.</p>
-     *
-     * @return a client for population partnership data
-     */
-    public PopulationPartnershipClient partnership() {
-        return (PopulationPartnershipClient) getClient("partnership");
+    public PopulationStatisticsClient statistics() {
+        return (PopulationStatisticsClient) getClient("statistics");
     }
 
     @Override

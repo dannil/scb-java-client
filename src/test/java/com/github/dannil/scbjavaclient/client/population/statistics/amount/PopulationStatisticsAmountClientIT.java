@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Daniel Nilsson
+ * Copyright 2014 Daniel Nilsson
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.population.demography;
+package com.github.dannil.scbjavaclient.client.population.statistics.amount;
 
 import static org.junit.Assert.assertNotEquals;
 
@@ -28,41 +28,29 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class PopulationDemographyClientIT extends RemoteIntegrationTestSuite {
+public class PopulationStatisticsAmountClientIT extends RemoteIntegrationTestSuite {
 
-    private PopulationDemographyClient client;
+    private PopulationStatisticsAmountClient client;
 
     @Before
     public void setup() {
-        this.client = new SCBClient().population().demography();
+        this.client = new SCBClient().population().statistics().amount();
     }
 
     @Test
-    public void getFertilityRate() {
-        assertNotEquals(0, this.client.getFertilityRate().size());
+    public void getPopulation() {
+        assertNotEquals(0, this.client.getPopulation().size());
     }
 
     @Test
-    public void getFertilityRateWithParameters() {
+    public void getPopulationWithParameters() {
         List<String> regions = Arrays.asList("1263");
+        List<String> statuses = Arrays.asList("OG", "G", "SK", "ÄNKL");
+        List<String> ages = Arrays.asList("25");
         List<Integer> genders = Arrays.asList(1, 2);
-        List<Integer> years = Arrays.asList(2002);
+        List<Integer> years = Arrays.asList(1996);
 
-        assertNotEquals(0, this.client.getFertilityRate(regions, genders, years).size());
-    }
-
-    @Test
-    public void getMeanAgeFirstChild() {
-        assertNotEquals(0, this.client.getMeanAgeFirstChild().size());
-    }
-
-    @Test
-    public void getMeanAgeFirstChildWithParameters() {
-        List<String> regions = Arrays.asList("1263");
-        List<Integer> genders = Arrays.asList(1, 2);
-        List<Integer> years = Arrays.asList(2002);
-
-        assertNotEquals(0, this.client.getMeanAgeFirstChild(regions, genders, years).size());
+        assertNotEquals(0, this.client.getPopulation(regions, statuses, ages, genders, years).size());
     }
 
 }
