@@ -55,6 +55,8 @@ public class BusinessActivitiesDatabaseClient extends AbstractClient {
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
+     *
+     * @see #getEnterprisesAndEmployeesSNI2002(Collection, Collection, Collection)
      */
     public List<ResponseModel> getEnterprisesAndEmployeesSNI2002() {
         return getEnterprisesAndEmployeesSNI2002(null, null, null);
@@ -90,6 +92,7 @@ public class BusinessActivitiesDatabaseClient extends AbstractClient {
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
+     * @see #getEnterprisesAndEmployeesSNI2007(Collection, Collection, Collection)
      */
     public List<ResponseModel> getEnterprisesAndEmployeesSNI2007() {
         return getEnterprisesAndEmployeesSNI2007(null, null, null);
