@@ -82,7 +82,7 @@ public class PopulationStatisticsPartnershipClient extends AbstractClient {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("Civilstand", maritalStatuses);
-        mappings.put("Kon", sexes);
+        mappings.put(APIConstants.SEX_CODE, sexes);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("Partnerskap", mappings);
@@ -122,7 +122,7 @@ public class PopulationStatisticsPartnershipClient extends AbstractClient {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("Civilstand", maritalStatuses);
-        mappings.put("Kon", sexes);
+        mappings.put(APIConstants.SEX_CODE, sexes);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("PartnerskapAndring", mappings);

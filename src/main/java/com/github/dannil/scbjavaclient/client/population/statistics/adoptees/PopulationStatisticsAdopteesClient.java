@@ -78,7 +78,7 @@ public class PopulationStatisticsAdopteesClient extends AbstractClient {
     public List<ResponseModel> getAdoptions(Collection<String> sexes, Collection<Integer> yearOfBirths,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Kon", sexes);
+        mappings.put(APIConstants.SEX_CODE, sexes);
         mappings.put("Fodelsear", yearOfBirths);
         mappings.put(APIConstants.TIME_CODE, years);
 

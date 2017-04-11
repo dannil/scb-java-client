@@ -88,8 +88,8 @@ public class LivingConditionsFamiliesHousingClient extends AbstractClient {
             Collection<String> housingTypes, Collection<String> familyTypes, Collection<String> backgrounds,
             Collection<Integer> parentIncomes, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Kon", sexes);
-        mappings.put("Alder", ages);
+        mappings.put(APIConstants.SEX_CODE, sexes);
+        mappings.put(APIConstants.AGE_CODE, ages);
         mappings.put("Boendeform", housingTypes);
         mappings.put("Familjetyp", familyTypes);
         mappings.put("UtlBakgrund", backgrounds);

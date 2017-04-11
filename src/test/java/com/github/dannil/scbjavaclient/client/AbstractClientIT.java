@@ -31,6 +31,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.test.utility.Files;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
@@ -137,8 +138,8 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
         SCBClient client = new SCBClient(locale);
 
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Alder", Arrays.asList("6-12", "13-19"));
-        mappings.put("Kon", Arrays.asList("1", "2"));
+        mappings.put(APIConstants.AGE_CODE, Arrays.asList("6-12", "13-19"));
+        mappings.put(APIConstants.SEX_CODE, Arrays.asList("1", "2"));
         mappings.put("Boendeform", Arrays.asList("SMAG", "HY"));
         mappings.put("Tid", Arrays.asList("2010", "2012"));
 

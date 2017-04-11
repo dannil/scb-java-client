@@ -79,7 +79,7 @@ public class PopulationProjectionsLatestProjectionsClient extends AbstractClient
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.AGE_CODE, ages);
-        mappings.put("Kon", sexes);
+        mappings.put(APIConstants.SEX_CODE, sexes);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("BefolkprognRev2016", mappings);
@@ -117,7 +117,7 @@ public class PopulationProjectionsLatestProjectionsClient extends AbstractClient
             Collection<String> ages, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("Fodelseland", countries);
-        mappings.put("Kon", sexes);
+        mappings.put(APIConstants.SEX_CODE, sexes);
         mappings.put(APIConstants.AGE_CODE, ages);
         mappings.put(APIConstants.TIME_CODE, years);
 
@@ -220,7 +220,7 @@ public class PopulationProjectionsLatestProjectionsClient extends AbstractClient
     public List<ResponseModel> getLifeExpectancy(Collection<Integer> sexes, Collection<String> ages,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Kon", sexes);
+        mappings.put(APIConstants.SEX_CODE, sexes);
         mappings.put(APIConstants.AGE_CODE, ages);
         mappings.put(APIConstants.TIME_CODE, years);
 

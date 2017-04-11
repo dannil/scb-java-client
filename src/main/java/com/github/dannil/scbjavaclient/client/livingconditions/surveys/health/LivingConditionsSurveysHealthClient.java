@@ -269,8 +269,8 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
             Collection<Integer> sexes, Collection<String> periods, String table) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("Indikator", indicators);
-        mappings.put("Alder", ages);
-        mappings.put("Kon", sexes);
+        mappings.put(APIConstants.AGE_CODE, ages);
+        mappings.put(APIConstants.SEX_CODE, sexes);
         mappings.put(APIConstants.TIME_CODE, periods);
 
         return getResponseModels(table, mappings);

@@ -82,7 +82,7 @@ public class PopulationStatisticsLiveBirthsClient extends AbstractClient {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("AlderModer", motherAges);
-        mappings.put("Kon", genders);
+        mappings.put(APIConstants.SEX_CODE, genders);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("FoddaK", mappings);

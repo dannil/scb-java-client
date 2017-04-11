@@ -56,6 +56,11 @@ public final class APIConstants {
     public static final String SECTOR_CODE = "Sektor";
 
     /**
+     * <p>Constant for sex code.</p>
+     */
+    public static final String SEX_CODE = "Kon";
+
+    /**
      * <p>Constant for time code.</p>
      */
     public static final String TIME_CODE = "Tid";

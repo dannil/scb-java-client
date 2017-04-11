@@ -263,10 +263,7 @@ public class SCBClient extends AbstractContainerClient {
         String url = URLEndpoint.getRootUrl(locale).toString();
         AbstractRequester get = new GETRequester();
         HttpResponse response = get.getResponse(url);
-        if (response.getStatus() == HttpStatusCode.OK) {
-            return true;
-        }
-        return false;
+        return response.getStatus() == HttpStatusCode.OK;
     }
 
     @Override
