@@ -78,7 +78,7 @@ public class EnvironmentEmissionsClient extends AbstractClient {
     public List<ResponseModel> getTotalEmissions(Collection<String> airPollutants, Collection<String> sectors,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Luftfororening", airPollutants);
+        mappings.put(APIConstants.AIRPOLLUTANT_CODE, airPollutants);
         mappings.put(APIConstants.SECTOR_CODE, sectors);
         mappings.put(APIConstants.TIME_CODE, years);
 
@@ -116,8 +116,8 @@ public class EnvironmentEmissionsClient extends AbstractClient {
     public List<ResponseModel> getEmissionsFromOffroadVehiclesAndMachinery(Collection<String> airPollutants,
             Collection<String> subSectors, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Luftfororening", airPollutants);
-        mappings.put("Delsektor", subSectors);
+        mappings.put(APIConstants.AIRPOLLUTANT_CODE, airPollutants);
+        mappings.put(APIConstants.SUBSECTOR_CODE, subSectors);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("MI0108ArbMask", mappings);
@@ -152,8 +152,8 @@ public class EnvironmentEmissionsClient extends AbstractClient {
     public List<ResponseModel> getEmissionsFromWaste(Collection<String> airPollutants, Collection<String> subSectors,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Luftfororening", airPollutants);
-        mappings.put("Delsektor", subSectors);
+        mappings.put(APIConstants.AIRPOLLUTANT_CODE, airPollutants);
+        mappings.put(APIConstants.SUBSECTOR_CODE, subSectors);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("MI0108Avfall", mappings);
@@ -189,7 +189,7 @@ public class EnvironmentEmissionsClient extends AbstractClient {
     public List<ResponseModel> getEmissionsFromElectricityAndHeating(Collection<String> airPollutants,
             Collection<String> fuelTypes, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Luftfororening", airPollutants);
+        mappings.put(APIConstants.AIRPOLLUTANT_CODE, airPollutants);
         mappings.put("BransleMI", fuelTypes);
         mappings.put(APIConstants.TIME_CODE, years);
 
@@ -225,7 +225,7 @@ public class EnvironmentEmissionsClient extends AbstractClient {
     public List<ResponseModel> getEmissionsFromIndustry(Collection<String> airPollutants, Collection<String> industries,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Luftfororening", airPollutants);
+        mappings.put(APIConstants.AIRPOLLUTANT_CODE, airPollutants);
         mappings.put("Bransch", industries);
         mappings.put(APIConstants.TIME_CODE, years);
 
@@ -262,7 +262,7 @@ public class EnvironmentEmissionsClient extends AbstractClient {
     public List<ResponseModel> getEmissionsFromDomesticTransport(Collection<String> airPollutants,
             Collection<String> modesOfTransports, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Luftfororening", airPollutants);
+        mappings.put(APIConstants.AIRPOLLUTANT_CODE, airPollutants);
         mappings.put("Transportslag", modesOfTransports);
         mappings.put(APIConstants.TIME_CODE, years);
 
@@ -298,8 +298,8 @@ public class EnvironmentEmissionsClient extends AbstractClient {
     public List<ResponseModel> getEmissionsFromAgriculture(Collection<String> airPollutants,
             Collection<String> subSectors, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Luftfororening", airPollutants);
-        mappings.put("Delsektor", subSectors);
+        mappings.put(APIConstants.AIRPOLLUTANT_CODE, airPollutants);
+        mappings.put(APIConstants.SUBSECTOR_CODE, subSectors);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("MI0108Jordbruk", mappings);
@@ -334,7 +334,7 @@ public class EnvironmentEmissionsClient extends AbstractClient {
     public List<ResponseModel> getEmissionsFromSolventUse(Collection<String> airPollutants, Collection<String> areas,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Luftfororening", airPollutants);
+        mappings.put(APIConstants.AIRPOLLUTANT_CODE, airPollutants);
         mappings.put("Omrade2", areas);
         mappings.put(APIConstants.TIME_CODE, years);
 
@@ -372,8 +372,8 @@ public class EnvironmentEmissionsClient extends AbstractClient {
     public List<ResponseModel> getEmissionsFromHeatingOfHousesAndBuildings(Collection<String> airPollutants,
             Collection<String> subSectors, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Luftfororening", airPollutants);
-        mappings.put("Delsektor", subSectors);
+        mappings.put(APIConstants.AIRPOLLUTANT_CODE, airPollutants);
+        mappings.put(APIConstants.SUBSECTOR_CODE, subSectors);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("MI0108UppvBoLok", mappings);
@@ -409,7 +409,7 @@ public class EnvironmentEmissionsClient extends AbstractClient {
     public List<ResponseModel> getEmissionsFromInternationalTransport(Collection<String> airPollutants,
             Collection<String> activities, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Luftfororening", airPollutants);
+        mappings.put(APIConstants.AIRPOLLUTANT_CODE, airPollutants);
         mappings.put("Verksamhetsomr", activities);
         mappings.put(APIConstants.TIME_CODE, years);
 
