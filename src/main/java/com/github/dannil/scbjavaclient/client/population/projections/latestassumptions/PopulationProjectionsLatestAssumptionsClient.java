@@ -78,11 +78,11 @@ public class PopulationProjectionsLatestAssumptionsClient extends AbstractClient
     public List<ResponseModel> getDeathRate(Collection<Integer> sexes, Collection<String> ages,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Kon", sexes);
+        mappings.put(APIConstants.SEX_CODE, sexes);
         mappings.put(APIConstants.AGE_CODE, ages);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("BefProgDodstal16", mappings);
+        return getResponseModels("BefProgDodstal17", mappings);
     }
 
     /**
@@ -111,7 +111,7 @@ public class PopulationProjectionsLatestAssumptionsClient extends AbstractClient
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("BefProgFruktTot16", mappings);
+        return getResponseModels("BefProgFruktTot17", mappings);
     }
 
     @Override

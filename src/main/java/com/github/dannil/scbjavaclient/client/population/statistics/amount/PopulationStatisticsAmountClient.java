@@ -84,8 +84,8 @@ public class PopulationStatisticsAmountClient extends AbstractClient {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put("Civilstand", relationshipStatuses);
-        mappings.put("Alder", ages);
-        mappings.put("Kon", genders);
+        mappings.put(APIConstants.AGE_CODE, ages);
+        mappings.put(APIConstants.SEX_CODE, genders);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("BefolkningNy", mappings);

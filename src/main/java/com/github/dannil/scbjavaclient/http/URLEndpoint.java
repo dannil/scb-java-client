@@ -28,6 +28,8 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
  */
 public class URLEndpoint {
 
+    private static final char TRAILING_SLASH = '/';
+
     private String url;
 
     /**
@@ -50,8 +52,8 @@ public class URLEndpoint {
         this.url = url;
 
         char[] chars = this.url.toCharArray();
-        if (chars[chars.length - 1] != '/') {
-            this.url = this.url + '/';
+        if (chars[chars.length - 1] != TRAILING_SLASH) {
+            this.url = this.url + TRAILING_SLASH;
         }
     }
 

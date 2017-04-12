@@ -79,7 +79,7 @@ public class PopulationStatisticsDensityClient extends AbstractClient {
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
-        mappings.put("Kon", sexes);
+        mappings.put(APIConstants.SEX_CODE, sexes);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("BefArealTathetKon", mappings);
