@@ -17,10 +17,12 @@ package com.github.dannil.scbjavaclient.client.environment;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
+import com.github.dannil.scbjavaclient.client.environment.emissions.EnvironmentEmissionsClient;
 import com.github.dannil.scbjavaclient.client.environment.industrialwateruse.EnvironmentIndustrialWaterUseClient;
 import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.EnvironmentLandAndWaterAreaClient;
 import com.github.dannil.scbjavaclient.client.environment.landuse.EnvironmentLandUseClient;
 import com.github.dannil.scbjavaclient.client.environment.packagingandpackagingwaste.EnvironmentPackagingAndPackagingWasteClient;
+import com.github.dannil.scbjavaclient.client.environment.protectednature.EnvironmentProtectedNatureClient;
 import com.github.dannil.scbjavaclient.client.environment.waste.EnvironmentWasteClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
@@ -37,10 +39,12 @@ public class EnvironmentClient extends AbstractContainerClient {
     public EnvironmentClient() {
         super();
 
+        addClient("emissions", new EnvironmentEmissionsClient());
         addClient("industrialwateruse", new EnvironmentIndustrialWaterUseClient());
         addClient("landandwaterarea", new EnvironmentLandAndWaterAreaClient());
         addClient("landuse", new EnvironmentLandUseClient());
         addClient("packagingandpackagingwaste", new EnvironmentPackagingAndPackagingWasteClient());
+        addClient("protectednature", new EnvironmentProtectedNatureClient());
         addClient("waste", new EnvironmentWasteClient());
     }
 
@@ -54,6 +58,15 @@ public class EnvironmentClient extends AbstractContainerClient {
         this();
 
         setLocale(locale);
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with environment emissions data.</p>
+     *
+     * @return a client for environment emissions data
+     */
+    public EnvironmentEmissionsClient emissions() {
+        return (EnvironmentEmissionsClient) getClient("emissions");
     }
 
     /**
@@ -93,6 +106,15 @@ public class EnvironmentClient extends AbstractContainerClient {
      */
     public EnvironmentPackagingAndPackagingWasteClient packagingAndPackagingWaste() {
         return (EnvironmentPackagingAndPackagingWasteClient) getClient("packagingandpackagingwaste");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with environment protected nature data.</p>
+     *
+     * @return a client for environment protected nature data
+     */
+    public EnvironmentProtectedNatureClient protectedNature() {
+        return (EnvironmentProtectedNatureClient) getClient("protectednature");
     }
 
     /**

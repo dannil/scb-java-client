@@ -18,10 +18,12 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
+import com.github.dannil.scbjavaclient.client.environment.emissions.EnvironmentEmissionsClient;
 import com.github.dannil.scbjavaclient.client.environment.industrialwateruse.EnvironmentIndustrialWaterUseClient;
 import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.EnvironmentLandAndWaterAreaClient;
 import com.github.dannil.scbjavaclient.client.environment.landuse.EnvironmentLandUseClient;
 import com.github.dannil.scbjavaclient.client.environment.packagingandpackagingwaste.EnvironmentPackagingAndPackagingWasteClient;
+import com.github.dannil.scbjavaclient.client.environment.protectednature.EnvironmentProtectedNatureClient;
 import com.github.dannil.scbjavaclient.client.environment.waste.EnvironmentWasteClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
@@ -38,6 +40,13 @@ public class EnvironmentClientTest {
         EnvironmentClient client = new EnvironmentClient(locale);
 
         assertEquals(locale, client.getLocale());
+    }
+
+    @Test
+    public void emissionsClient() {
+        EnvironmentClient client = new EnvironmentClient();
+
+        assertEquals(client.emissions().getClass(), EnvironmentEmissionsClient.class);
     }
 
     @Test
@@ -66,6 +75,13 @@ public class EnvironmentClientTest {
         EnvironmentClient client = new EnvironmentClient();
 
         assertEquals(client.packagingAndPackagingWaste().getClass(), EnvironmentPackagingAndPackagingWasteClient.class);
+    }
+
+    @Test
+    public void protectedNatureClient() {
+        EnvironmentClient client = new EnvironmentClient();
+
+        assertEquals(client.protectedNature().getClass(), EnvironmentProtectedNatureClient.class);
     }
 
     @Test
