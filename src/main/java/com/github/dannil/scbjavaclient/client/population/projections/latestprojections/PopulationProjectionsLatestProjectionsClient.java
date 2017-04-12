@@ -82,7 +82,7 @@ public class PopulationProjectionsLatestProjectionsClient extends AbstractClient
         mappings.put(APIConstants.SEX_CODE, sexes);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("BefolkprognRev2016", mappings);
+        return getResponseModels("BefolkprognRev2017", mappings);
     }
 
     /**
@@ -121,7 +121,7 @@ public class PopulationProjectionsLatestProjectionsClient extends AbstractClient
         mappings.put(APIConstants.AGE_CODE, ages);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("BefProgOsiktDetalj16", mappings);
+        return getResponseModels("BefProgOsiktDetalj17", mappings);
     }
 
     /**
@@ -151,7 +151,7 @@ public class PopulationProjectionsLatestProjectionsClient extends AbstractClient
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("BefPrognosOversikt16", mappings);
+        return getResponseModels("BefPrognosOversikt17", mappings);
     }
 
     /**
@@ -187,7 +187,7 @@ public class PopulationProjectionsLatestProjectionsClient extends AbstractClient
         mappings.put(APIConstants.AGE_CODE, ages);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("BefProgFoddaMedel16", mappings);
+        return getResponseModels("BefProgFoddaMedel17", mappings);
     }
 
     /**
@@ -224,7 +224,7 @@ public class PopulationProjectionsLatestProjectionsClient extends AbstractClient
         mappings.put(APIConstants.AGE_CODE, ages);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("BefProgLivslangd2016", mappings);
+        return getResponseModels("BefProgLivslangd2017", mappings);
     }
 
     @Override
