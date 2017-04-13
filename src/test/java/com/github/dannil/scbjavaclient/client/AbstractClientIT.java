@@ -220,7 +220,7 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
                 String toBeginFrom = "client";
                 int beginIndex = packageName.lastIndexOf(toBeginFrom) + toBeginFrom.length() + 1;
                 String substr = packageName.substring(beginIndex);
-                String lastPart = substr.replace(".", "");
+                String lastPart = substr.replace(".", "").concat("client");
 
                 if (!clazz.getSimpleName().toLowerCase().contains(lastPart)) {
                     matchedClasses.add(clazz);

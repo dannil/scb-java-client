@@ -29,7 +29,7 @@ import com.github.dannil.scbjavaclient.http.URLEndpoint;
 public class BusinessActivitiesNonProfitOrganizationsClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor.</p>
+     * <p>Default constructor. Initializes values and creates sub-clients.</p>
      */
     public BusinessActivitiesNonProfitOrganizationsClient() {
         super();
