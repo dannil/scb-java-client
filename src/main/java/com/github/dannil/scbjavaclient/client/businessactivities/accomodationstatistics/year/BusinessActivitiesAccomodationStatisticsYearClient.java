@@ -50,10 +50,32 @@ public class BusinessActivitiesAccomodationStatisticsYearClient extends Abstract
         super(locale);
     }
 
+    /**
+     * <p>Fetch all number of hotels data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getNumberOfHotels(Collection, Collection, Collection)
+     */
     public List<ResponseModel> getNumberOfHotels() {
         return getNumberOfHotels(null, null, null);
     }
 
+    /**
+     * <p>Fetch all number of hotels data which match the input constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param typesOfEstablishments
+     *            the types of establishments
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getNumberOfHotels(Collection<String> regions, Collection<String> typesOfEstablishments,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
@@ -64,10 +86,32 @@ public class BusinessActivitiesAccomodationStatisticsYearClient extends Abstract
         return getResponseModels("NV1701T12TotAr", mappings);
     }
 
+    /**
+     * <p>Fetch all capacity for hotels data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getCapacityForHotels(Collection, Collection, Collection)
+     */
     public List<ResponseModel> getCapacityForHotels() {
         return getCapacityForHotels(null, null, null);
     }
 
+    /**
+     * <p>Fetch all capacity for hotels data which match the input constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param typesOfHousing
+     *            the types of housing
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getCapacityForHotels(Collection<String> regions, Collection<String> typesOfHousing,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
@@ -78,10 +122,32 @@ public class BusinessActivitiesAccomodationStatisticsYearClient extends Abstract
         return getResponseModels("NV1701T12Ar", mappings);
     }
 
+    /**
+     * <p>Fetch all occupancy rate data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getOccupancyRate(Collection, Collection, Collection)
+     */
     public List<ResponseModel> getOccupancyRate() {
         return getOccupancyRate(null, null, null);
     }
 
+    /**
+     * <p>Fetch all occupancy rate data which match the input constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param typesOfHousing
+     *            the types of housing
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getOccupancyRate(Collection<String> regions, Collection<String> typesOfHousing,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
@@ -92,10 +158,30 @@ public class BusinessActivitiesAccomodationStatisticsYearClient extends Abstract
         return getResponseModels("NV1701T4Ar", mappings);
     }
 
+    /**
+     * <p>Fetch all number of occupied rooms data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getNumberOfOccupiedRooms(Collection, Collection)
+     */
     public List<ResponseModel> getNumberOfOccupiedRooms() {
         return getNumberOfOccupiedRooms(null, null);
     }
 
+    /**
+     * <p>Fetch all number of occupied rooms data which match the input constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getNumberOfOccupiedRooms(Collection<String> regions, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
@@ -104,10 +190,30 @@ public class BusinessActivitiesAccomodationStatisticsYearClient extends Abstract
         return getResponseModels("NV1701T6Ar", mappings);
     }
 
+    /**
+     * <p>Fetch all accomodation revenue data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getAccomodationRevenue(Collection, Collection)
+     */
     public List<ResponseModel> getAccomodationRevenue() {
         return getNumberOfOccupiedRooms(null, null);
     }
 
+    /**
+     * <p>Fetch all accomodation revenue data which match the input constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getAccomodationRevenue(Collection<String> regions, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);

@@ -50,10 +50,28 @@ public class BusinessActivitiesIndustrialInventoriesEconomicIndicatorsClient ext
         super(locale);
     }
 
+    /**
+     * <p>Fetch all total inventories data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getTotalInventories(Collection)
+     */
     public List<ResponseModel> getTotalInventories() {
         return getTotalInventories(null);
     }
 
+    /**
+     * <p>Fetch all total inventories data which match the input constraints.</p>
+     *
+     * @param quarters
+     *            the quarters
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getTotalInventories(Collection<String> quarters) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.TIME_CODE, quarters);

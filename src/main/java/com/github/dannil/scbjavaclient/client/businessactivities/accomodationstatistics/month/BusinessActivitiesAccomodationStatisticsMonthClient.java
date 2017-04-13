@@ -50,10 +50,30 @@ public class BusinessActivitiesAccomodationStatisticsMonthClient extends Abstrac
         super(locale);
     }
 
+    /**
+     * <p>Fetch all total capacity data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getTotalCapacity(Collection, Collection)
+     */
     public List<ResponseModel> getTotalCapacity() {
         return getTotalCapacity(null, null);
     }
 
+    /**
+     * <p>Fetch all total capacity data which match the input constraints.</p>
+     *
+     * @param typesOfEstablishments
+     *            the types of establishments
+     * @param months
+     *            the months
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getTotalCapacity(Collection<String> typesOfEstablishments, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("Anlaggning", typesOfEstablishments);
@@ -62,10 +82,30 @@ public class BusinessActivitiesAccomodationStatisticsMonthClient extends Abstrac
         return getResponseModels("NV1701T3M", mappings);
     }
 
+    /**
+     * <p>Fetch all available beds data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getAvailableBeds(Collection, Collection)
+     */
     public List<ResponseModel> getAvailableBeds() {
         return getAvailableBeds(null, null);
     }
 
+    /**
+     * <p>Fetch all available beds data which match the input constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param months
+     *            the months
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getAvailableBeds(Collection<String> regions, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
@@ -74,10 +114,30 @@ public class BusinessActivitiesAccomodationStatisticsMonthClient extends Abstrac
         return getResponseModels("NV1701T5BM", mappings);
     }
 
+    /**
+     * <p>Fetch all number of available rooms data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getNumberOfAvailableRooms(Collection, Collection)
+     */
     public List<ResponseModel> getNumberOfAvailableRooms() {
         return getNumberOfAvailableRooms(null, null);
     }
 
+    /**
+     * <p>Fetch all number of available rooms data which match the input constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param months
+     *            the months
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getNumberOfAvailableRooms(Collection<String> regions, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
@@ -86,10 +146,32 @@ public class BusinessActivitiesAccomodationStatisticsMonthClient extends Abstrac
         return getResponseModels("NV1701T7M", mappings);
     }
 
+    /**
+     * <p>Fetch all nights spent data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getNightsSpent(Collection, Collection, Collection)
+     */
     public List<ResponseModel> getNightsSpent() {
         return getNightsSpent(null, null, null);
     }
 
+    /**
+     * <p>Fetch all nights spent data which match the input constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param typesOfEstablishments
+     *            the types of establishments
+     * @param months
+     *            the months
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getNightsSpent(Collection<String> regions, Collection<String> typesOfEstablishments,
             Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
@@ -100,10 +182,30 @@ public class BusinessActivitiesAccomodationStatisticsMonthClient extends Abstrac
         return getResponseModels("NV1701T10M", mappings);
     }
 
+    /**
+     * <p>Fetch all occupancy data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getOccupancy(Collection, Collection)
+     */
     public List<ResponseModel> getOccupancy() {
         return getOccupancy(null, null);
     }
 
+    /**
+     * <p>Fetch all occupancy data which match the input constraints.</p>
+     *
+     * @param typesOfHousing
+     *            the types of housing
+     * @param months
+     *            the months
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getOccupancy(Collection<String> typesOfHousing, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("Overnattningstyp", typesOfHousing);
@@ -112,10 +214,30 @@ public class BusinessActivitiesAccomodationStatisticsMonthClient extends Abstrac
         return getResponseModels("NV1701T5M", mappings);
     }
 
+    /**
+     * <p>Fetch all occupied rooms data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getOccupiedRooms(Collection, Collection)
+     */
     public List<ResponseModel> getOccupiedRooms() {
         return getOccupiedRooms(null, null);
     }
 
+    /**
+     * <p>Fetch all occupied rooms data which match the input constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param months
+     *            the months
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getOccupiedRooms(Collection<String> regions, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
@@ -124,10 +246,28 @@ public class BusinessActivitiesAccomodationStatisticsMonthClient extends Abstrac
         return getResponseModels("NV1701T6M", mappings);
     }
 
+    /**
+     * <p>Fetch all revenue of occupied rooms data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getRevenueOfOccupiedRooms(Collection)
+     */
     public List<ResponseModel> getRevenueOfOccupiedRooms() {
         return getRevenueOfOccupiedRooms(null);
     }
 
+    /**
+     * <p>Fetch all revenue of occupied rooms data which match the input constraints.</p>
+     *
+     * @param months
+     *            the months
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getRevenueOfOccupiedRooms(Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.TIME_CODE, months);

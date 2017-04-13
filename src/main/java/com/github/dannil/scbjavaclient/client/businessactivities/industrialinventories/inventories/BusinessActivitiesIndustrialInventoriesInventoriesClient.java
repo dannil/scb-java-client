@@ -50,10 +50,32 @@ public class BusinessActivitiesIndustrialInventoriesInventoriesClient extends Ab
         super(locale);
     }
 
+    /**
+     * <p>Fetch all changes in inventories data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getChangesInInventories(Collection, Collection, Collection)
+     */
     public List<ResponseModel> getChangesInInventories() {
         return getChangesInInventories(null, null, null);
     }
 
+    /**
+     * <p>Fetch all changes in inventories data which match the input constraints.</p>
+     *
+     * @param inventoryTypes
+     *            the inventory types
+     * @param industrialClassifications
+     *            the industrial classifications
+     * @param quarters
+     *            the quarters
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getChangesInInventories(Collection<String> inventoryTypes,
             Collection<String> industrialClassifications, Collection<String> quarters) {
         Map<String, Collection<?>> mappings = new HashMap<>();
