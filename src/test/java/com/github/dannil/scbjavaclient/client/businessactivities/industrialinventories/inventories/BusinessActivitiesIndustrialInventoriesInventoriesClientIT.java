@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.businessactivities.industrialinventories.economicindicators.inventories;
+package com.github.dannil.scbjavaclient.client.businessactivities.industrialinventories.inventories;
 
 import static org.junit.Assert.assertNotEquals;
 
