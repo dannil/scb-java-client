@@ -21,7 +21,6 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.client.businessactivities.industrialinventories.inventories.BusinessActivitiesIndustrialInventoriesInventoriesClient;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
@@ -45,14 +44,14 @@ public class BusinessActivitiesIndustrialInventoriesInventoriesClientIT extends 
     }
 
     @Test
-    public void getTotalInventoriesWithParametersEmptyLists() {
+    public void getChangesInInventoriesWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getChangesInInventories(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test
-    public void getTotalInventoriesWithParameters() {
-        List<String> inventoryTypes = Arrays.asList("INSATS", "VARDARB");
+    public void getChangesInInventoriesWithParameters() {
+        List<String> inventoryTypes = Arrays.asList("INSATS", "VARARB");
         List<String> industrialClassifications = Arrays.asList("IVKON", "C");
         List<String> quarters = Arrays.asList("2015K2", "2015K4");
 
