@@ -14,10 +14,16 @@
 
 package com.github.dannil.scbjavaclient.client.businessactivities.industrialinventories.inventories;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles business activities industrial inventories inventories data
@@ -44,7 +50,19 @@ public class BusinessActivitiesIndustrialInventoriesInventoriesClient extends Ab
         super(locale);
     }
 
-    TODO
+    public List<ResponseModel> getChangesInInventories() {
+        return getChangesInInventories(null, null, null);
+    }
+
+    public List<ResponseModel> getChangesInInventories(Collection<String> inventoryTypes,
+            Collection<String> industrialClassifications, Collection<String> quarters) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("Lagertyp", inventoryTypes);
+        mappings.put("SNI2007", industrialClassifications);
+        mappings.put(APIConstants.TIME_CODE, quarters);
+
+        return getResponseModels("IndLagerSNI07Kv", mappings);
+    }
 
     @Override
     public URLEndpoint getUrl() {
