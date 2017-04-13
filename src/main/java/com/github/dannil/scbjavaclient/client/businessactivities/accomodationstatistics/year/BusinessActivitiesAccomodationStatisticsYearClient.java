@@ -14,10 +14,16 @@
 
 package com.github.dannil.scbjavaclient.client.businessactivities.accomodationstatistics.year;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles business activities accomodation statistics year data
@@ -44,7 +50,71 @@ public class BusinessActivitiesAccomodationStatisticsYearClient extends Abstract
         super(locale);
     }
 
-    TODO
+    public List<ResponseModel> getNumberOfHotels() {
+        return getNumberOfHotels(null, null, null);
+    }
+
+    public List<ResponseModel> getNumberOfHotels(Collection<String> regions, Collection<String> typesOfEstablishments,
+            Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.REGION_CODE, regions);
+        mappings.put("Anlaggning", typesOfEstablishments);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("NV1701T12TotAr", mappings);
+    }
+
+    public List<ResponseModel> getCapacityForHotels() {
+        return getCapacityForHotels(null, null, null);
+    }
+
+    public List<ResponseModel> getCapacityForHotels(Collection<String> regions, Collection<String> typesOfHousing,
+            Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.REGION_CODE, regions);
+        mappings.put("Overnattningstyp", typesOfHousing);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("NV1701T12Ar", mappings);
+    }
+
+    public List<ResponseModel> getOccupancyRate() {
+        return getOccupancyRate(null, null, null);
+    }
+
+    public List<ResponseModel> getOccupancyRate(Collection<String> regions, Collection<String> typesOfHousing,
+            Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.REGION_CODE, regions);
+        mappings.put("Overnattningstyp", typesOfHousing);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("NV1701T4Ar", mappings);
+    }
+
+    public List<ResponseModel> getNumberOfOccupiedRooms() {
+        return getNumberOfOccupiedRooms(null, null);
+    }
+
+    public List<ResponseModel> getNumberOfOccupiedRooms(Collection<String> regions, Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.REGION_CODE, regions);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("NV1701T6Ar", mappings);
+    }
+
+    public List<ResponseModel> getAccomodationRevenue() {
+        return getNumberOfOccupiedRooms(null, null);
+    }
+
+    public List<ResponseModel> getAccomodationRevenue(Collection<String> regions, Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.REGION_CODE, regions);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("NV1701T15Ar", mappings);
+    }
 
     @Override
     public URLEndpoint getUrl() {

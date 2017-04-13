@@ -14,10 +14,16 @@
 
 package com.github.dannil.scbjavaclient.client.businessactivities.accomodationstatistics.month;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles business activities accomodation statistics month data
@@ -44,7 +50,90 @@ public class BusinessActivitiesAccomodationStatisticsMonthClient extends Abstrac
         super(locale);
     }
 
-    TODO
+    public List<ResponseModel> getTotalCapacity() {
+        return getTotalCapacity(null, null);
+    }
+
+    public List<ResponseModel> getTotalCapacity(Collection<String> typesOfEstablishments, Collection<String> months) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("Anlaggning", typesOfEstablishments);
+        mappings.put(APIConstants.TIME_CODE, months);
+
+        return getResponseModels("NV1701T3M", mappings);
+    }
+
+    public List<ResponseModel> getAvailableBeds() {
+        return getAvailableBeds(null, null);
+    }
+
+    public List<ResponseModel> getAvailableBeds(Collection<String> regions, Collection<String> months) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.REGION_CODE, regions);
+        mappings.put(APIConstants.TIME_CODE, months);
+
+        return getResponseModels("NV1701T5BM", mappings);
+    }
+
+    public List<ResponseModel> getNumberOfAvailableRooms() {
+        return getNumberOfAvailableRooms(null, null);
+    }
+
+    public List<ResponseModel> getNumberOfAvailableRooms(Collection<String> regions, Collection<String> months) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.REGION_CODE, regions);
+        mappings.put(APIConstants.TIME_CODE, months);
+
+        return getResponseModels("NV1701T7M", mappings);
+    }
+
+    public List<ResponseModel> getNightsSpent() {
+        return getNightsSpent(null, null, null);
+    }
+
+    public List<ResponseModel> getNightsSpent(Collection<String> regions, Collection<String> typesOfEstablishments,
+            Collection<String> months) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.REGION_CODE, regions);
+        mappings.put("Anlaggning", typesOfEstablishments);
+        mappings.put(APIConstants.TIME_CODE, months);
+
+        return getResponseModels("NV1701T10M", mappings);
+    }
+
+    public List<ResponseModel> getOccupancy() {
+        return getOccupancy(null, null);
+    }
+
+    public List<ResponseModel> getOccupancy(Collection<String> typesOfHousing, Collection<String> months) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("Overnattningstyp", typesOfHousing);
+        mappings.put(APIConstants.TIME_CODE, months);
+
+        return getResponseModels("NV1701T5M", mappings);
+    }
+
+    public List<ResponseModel> getOccupiedRooms() {
+        return getOccupiedRooms(null, null);
+    }
+
+    public List<ResponseModel> getOccupiedRooms(Collection<String> regions, Collection<String> months) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.REGION_CODE, regions);
+        mappings.put(APIConstants.TIME_CODE, months);
+
+        return getResponseModels("NV1701T6M", mappings);
+    }
+
+    public List<ResponseModel> getRevenueOfOccupiedRooms() {
+        return getRevenueOfOccupiedRooms(null);
+    }
+
+    public List<ResponseModel> getRevenueOfOccupiedRooms(Collection<String> months) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.TIME_CODE, months);
+
+        return getResponseModels("NV1701T8M", mappings);
+    }
 
     @Override
     public URLEndpoint getUrl() {
