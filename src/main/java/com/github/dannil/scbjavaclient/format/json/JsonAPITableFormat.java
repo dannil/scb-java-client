@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.github.dannil.scbjavaclient.format.AbstractTableFormat;
 
 /**
  * <p>Class which encapsulates behavior for the JSON API table format. Note that this
