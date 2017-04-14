@@ -47,7 +47,7 @@ public abstract class AbstractTableFormat {
 
     /**
      * <p>Extracts the codes from the data.</p>
-     * 
+     *
      * @param key
      *            the key
      * @return a <code>List</code> of keys
