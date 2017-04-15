@@ -32,8 +32,7 @@ public class BusinessActivitiesNonProfitOrganizationsTest {
     @Test
     public void createWithLocaleConstructor() {
         Locale locale = new Locale("sv", "SE");
-        NonProfitOrganizationsClient client = new NonProfitOrganizationsClient(
-                locale);
+        NonProfitOrganizationsClient client = new NonProfitOrganizationsClient(locale);
 
         assertEquals(locale, client.getLocale());
     }
@@ -42,16 +41,14 @@ public class BusinessActivitiesNonProfitOrganizationsTest {
     public void primaryStatisticsClient() {
         NonProfitOrganizationsClient client = new NonProfitOrganizationsClient();
 
-        assertEquals(client.primaryStatistics().getClass(),
-                PrimaryStatisticsClient.class);
+        assertEquals(client.primaryStatistics().getClass(), PrimaryStatisticsClient.class);
     }
 
     @Test
     public void satelliteAccountsClient() {
         NonProfitOrganizationsClient client = new NonProfitOrganizationsClient();
 
-        assertEquals(client.satelliteAccounts().getClass(),
-                SatelliteAccountsClient.class);
+        assertEquals(client.satelliteAccounts().getClass(), SatelliteAccountsClient.class);
     }
 
     @Test
@@ -59,8 +56,7 @@ public class BusinessActivitiesNonProfitOrganizationsTest {
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints
         Locale locale = new Locale("en", "US");
-        NonProfitOrganizationsClient client = new NonProfitOrganizationsClient(
-                locale);
+        NonProfitOrganizationsClient client = new NonProfitOrganizationsClient(locale);
 
         assertEquals(URLEndpoint.getRootUrl(locale).append("NV/NV0117/"), client.getUrl());
     }

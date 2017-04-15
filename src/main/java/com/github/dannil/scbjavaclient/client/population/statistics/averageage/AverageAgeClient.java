@@ -79,7 +79,7 @@ public class AverageAgeClient extends AbstractClient {
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
-        mappings.put("Kon", genders);
+        mappings.put(APIConstants.SEX_CODE, genders);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("BefolkningMedelAlder", mappings);

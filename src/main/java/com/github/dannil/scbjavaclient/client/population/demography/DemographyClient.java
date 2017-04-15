@@ -58,7 +58,7 @@ public class DemographyClient extends AbstractClient {
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @see DemographyClient#getFertilityRate(Collection, Collection,
+     * @see PopulationDemographyClient#getFertilityRate(Collection, Collection,
      *      Collection)
      */
     public List<ResponseModel> getFertilityRate() {
@@ -82,7 +82,7 @@ public class DemographyClient extends AbstractClient {
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
-        mappings.put("Kon", genders);
+        mappings.put(APIConstants.SEX_CODE, genders);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("FruktsamhetSumNy", mappings);
@@ -119,7 +119,7 @@ public class DemographyClient extends AbstractClient {
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
-        mappings.put("Kon", genders);
+        mappings.put(APIConstants.SEX_CODE, genders);
         mappings.put(APIConstants.TIME_CODE, years);
 
         String response = doPostRequest(getUrl() + "MedelAlderNY", QueryBuilder.build(mappings));

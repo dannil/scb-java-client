@@ -158,7 +158,7 @@ public class TestIT {
                 String toBeginFrom = "client";
                 int beginIndex = packageName.lastIndexOf(toBeginFrom) + toBeginFrom.length() + 1;
                 String sub = packageName.substring(beginIndex);
-                String lastPart = sub.substring(sub.lastIndexOf(".") + 1);
+                String lastPart = sub.substring(sub.lastIndexOf(".") + 1).concat("client");
 
                 if (!clazz.getSimpleName().toLowerCase().contains(lastPart)) {
                     matchedClasses.add(clazz);

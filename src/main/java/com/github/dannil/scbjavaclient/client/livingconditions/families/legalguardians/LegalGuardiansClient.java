@@ -80,7 +80,7 @@ public class LegalGuardiansClient extends AbstractClient {
     public List<ResponseModel> getLegalGuardians(Collection<String> sexes, Collection<String> caregivers,
             Collection<String> familyTypes, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Kon", sexes);
+        mappings.put(APIConstants.SEX_CODE, sexes);
         mappings.put("Vardnadshavare", caregivers);
         mappings.put("Familjetyp", familyTypes);
         mappings.put(APIConstants.TIME_CODE, years);

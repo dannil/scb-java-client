@@ -17,8 +17,10 @@ package com.github.dannil.scbjavaclient.client.businessactivities;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
+import com.github.dannil.scbjavaclient.client.businessactivities.accomodationstatistics.AccomodationStatisticsClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.balancestatistics.BalanceStatisticsClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.database.DatabaseClient;
+import com.github.dannil.scbjavaclient.client.businessactivities.industrialinventories.IndustrialInventoriesClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.nonprofitorganizations.NonProfitOrganizationsClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.productionindex.ProductionIndexClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
@@ -36,8 +38,10 @@ public class BusinessActivitiesClient extends AbstractContainerClient {
     public BusinessActivitiesClient() {
         super();
 
+        addClient("accomodationstatistics", new AccomodationStatisticsClient());
         addClient("balancestatistics", new BalanceStatisticsClient());
         addClient("database", new DatabaseClient());
+        addClient("industrialinventories", new IndustrialInventoriesClient());
         addClient("nonprofitorganizations", new NonProfitOrganizationsClient());
         addClient("productionindex", new ProductionIndexClient());
     }
@@ -55,6 +59,16 @@ public class BusinessActivitiesClient extends AbstractContainerClient {
     }
 
     /**
+     * <p>Retrieve the client for interacting with business activities accomodation
+     * statistics data.</p>
+     *
+     * @return a client for business activities accomodation statistics
+     */
+    public AccomodationStatisticsClient accomodationStatistics() {
+        return (AccomodationStatisticsClient) getClient("accomodationstatistics");
+    }
+
+    /**
      * <p>Retrieve the client for interacting with business activities balance statistics
      * data.</p>
      *
@@ -65,13 +79,22 @@ public class BusinessActivitiesClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with business activities database statistics
-     * data.</p>
+     * <p>Retrieve the client for interacting with business activities database data.</p>
      *
      * @return a client for business activities database data
      */
     public DatabaseClient database() {
         return (DatabaseClient) getClient("database");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with business activities industrial
+     * inventories data.</p>
+     *
+     * @return a client for business activities industrial inventories data
+     */
+    public IndustrialInventoriesClient industrialInventories() {
+        return (IndustrialInventoriesClient) getClient("industrialinventories");
     }
 
     /**

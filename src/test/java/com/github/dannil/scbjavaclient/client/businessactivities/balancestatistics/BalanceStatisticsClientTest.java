@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.businessactivities.productionindex;
+package com.github.dannil.scbjavaclient.client.businessactivities.balancestatistics;
 
 import static org.junit.Assert.assertEquals;
 
@@ -25,12 +25,12 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class BusinessActivitiesProductionIndexClientTest {
+public class BalanceStatisticsClientTest {
 
     @Test
     public void createWithLocaleConstructor() {
         Locale locale = new Locale("sv", "SE");
-        ProductionIndexClient client = new ProductionIndexClient(locale);
+        BalanceStatisticsClient client = new BalanceStatisticsClient(locale);
 
         assertEquals(locale, client.getLocale());
     }
@@ -40,9 +40,9 @@ public class BusinessActivitiesProductionIndexClientTest {
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints
         Locale locale = new Locale("en", "US");
-        ProductionIndexClient client = new ProductionIndexClient(locale);
+        BalanceStatisticsClient client = new BalanceStatisticsClient(locale);
 
-        assertEquals(URLEndpoint.getRootUrl(locale).append("NV/NV0004/"), client.getUrl());
+        assertEquals(URLEndpoint.getRootUrl(locale).append("NV/NV0103/"), client.getUrl());
     }
 
 }

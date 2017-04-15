@@ -41,6 +41,11 @@ public final class APIConstants {
     public static final String AGE_CODE = "Alder";
 
     /**
+     * <p>Constant for air pollutant code.</p>
+     */
+    public static final String AIRPOLLUTANT_CODE = "Luftfororening";
+
+    /**
      * <p>Constant for contents code.</p>
      */
     public static final String CONTENTSCODE_CODE = "ContentsCode";
@@ -54,6 +59,16 @@ public final class APIConstants {
      * <p>Constant for sector code.</p>
      */
     public static final String SECTOR_CODE = "Sektor";
+
+    /**
+     * <p>Constant for sub-sector code.</p>
+     */
+    public static final String SUBSECTOR_CODE = "Delsektor";
+
+    /**
+     * <p>Constant for sex code.</p>
+     */
+    public static final String SEX_CODE = "Kon";
 
     /**
      * <p>Constant for time code.</p>

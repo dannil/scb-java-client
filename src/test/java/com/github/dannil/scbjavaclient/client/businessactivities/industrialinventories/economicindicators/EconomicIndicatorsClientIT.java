@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.businessactivities.balancestatistics;
+package com.github.dannil.scbjavaclient.client.businessactivities.industrialinventories.economicindicators;
 
 import static org.junit.Assert.assertNotEquals;
 
@@ -29,32 +29,30 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class BusinessActivitiesBalanceStatisticsClientIT extends RemoteIntegrationTestSuite {
+public class EconomicIndicatorsClientIT extends RemoteIntegrationTestSuite {
 
-    private BalanceStatisticsClient client;
+    private EconomicIndicatorsClient client;
 
     @Before
     public void setup() {
-        this.client = new SCBClient().businessActivities().balanceStatistics();
+        this.client = new SCBClient().businessActivities().industrialInventories().economicIndicators();
     }
 
     @Test
-    public void getCorporationsAssetsAndLiabilities() {
-        assertNotEquals(0, this.client.getCorporationsAssetsAndLiabilities().size());
+    public void getTotalInventories() {
+        assertNotEquals(0, this.client.getTotalInventories().size());
     }
 
     @Test
-    public void getCorporationsAssetsAndLiabilitiesWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getCorporationsAssetsAndLiabilities(Collections.<String>emptyList(),
-                Collections.<String>emptyList()).size());
+    public void getTotalInventoriesWithParametersEmptyLists() {
+        assertNotEquals(0, this.client.getTotalInventories(Collections.<String>emptyList()).size());
     }
 
     @Test
-    public void getCorporationsAssetsAndLiabilitiesWithParameters() {
-        List<String> items = Arrays.asList("010", "31B", "40A");
-        List<String> quarters = Arrays.asList("2004K1", "2007K1");
+    public void getTotalInventoriesWithParameters() {
+        List<String> quarters = Arrays.asList("2015K2", "2015K4");
 
-        assertNotEquals(0, this.client.getCorporationsAssetsAndLiabilities(items, quarters).size());
+        assertNotEquals(0, this.client.getTotalInventories(quarters).size());
     }
 
 }

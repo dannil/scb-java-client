@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.businessactivities.productionindex;
+package com.github.dannil.scbjavaclient.client.businessactivities.balancestatistics;
 
 import static org.junit.Assert.assertNotEquals;
 
@@ -29,32 +29,32 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class BusinessActivitiesProductionIndexClientIT extends RemoteIntegrationTestSuite {
+public class BalanceStatisticsClientIT extends RemoteIntegrationTestSuite {
 
-    private ProductionIndexClient client;
+    private BalanceStatisticsClient client;
 
     @Before
     public void setup() {
-        this.client = new SCBClient().businessActivities().productionIndex();
+        this.client = new SCBClient().businessActivities().balanceStatistics();
     }
 
     @Test
-    public void getBusinessProductionIndex() {
-        assertNotEquals(0, this.client.getBusinessProductionIndex().size());
+    public void getCorporationsAssetsAndLiabilities() {
+        assertNotEquals(0, this.client.getCorporationsAssetsAndLiabilities().size());
     }
 
     @Test
-    public void getBusinessProductionIndexWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getBusinessProductionIndex(Collections.<String>emptyList(),
+    public void getCorporationsAssetsAndLiabilitiesWithParametersEmptyLists() {
+        assertNotEquals(0, this.client.getCorporationsAssetsAndLiabilities(Collections.<String>emptyList(),
                 Collections.<String>emptyList()).size());
     }
 
     @Test
-    public void getBusinessProductionIndexWithParameters() {
-        List<String> industrialClassifications = Arrays.asList("B-S exkl K+O", "F");
-        List<String> months = Arrays.asList("2002M03", "2008M09");
+    public void getCorporationsAssetsAndLiabilitiesWithParameters() {
+        List<String> items = Arrays.asList("010", "31B", "40A");
+        List<String> quarters = Arrays.asList("2004K1", "2007K1");
 
-        assertNotEquals(0, this.client.getBusinessProductionIndex(industrialClassifications, months).size());
+        assertNotEquals(0, this.client.getCorporationsAssetsAndLiabilities(items, quarters).size());
     }
 
 }

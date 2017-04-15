@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.businessactivities.balancestatistics;
+package com.github.dannil.scbjavaclient.client.businessactivities.accomodationstatistics.month;
 
 import static org.junit.Assert.assertEquals;
 
@@ -25,12 +25,12 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class BusinessActivitiesBalanceStatisticsClientTest {
+public class MonthClientTest {
 
     @Test
     public void createWithLocaleConstructor() {
         Locale locale = new Locale("sv", "SE");
-        BalanceStatisticsClient client = new BalanceStatisticsClient(locale);
+        MonthClient client = new MonthClient(locale);
 
         assertEquals(locale, client.getLocale());
     }
@@ -40,9 +40,9 @@ public class BusinessActivitiesBalanceStatisticsClientTest {
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints
         Locale locale = new Locale("en", "US");
-        BalanceStatisticsClient client = new BalanceStatisticsClient(locale);
+        MonthClient client = new MonthClient(locale);
 
-        assertEquals(URLEndpoint.getRootUrl(locale).append("NV/NV0103/"), client.getUrl());
+        assertEquals(URLEndpoint.getRootUrl(locale).append("NV/NV1701/NV1701B/"), client.getUrl());
     }
 
 }

@@ -82,7 +82,7 @@ public class EmploymentClient extends AbstractClient {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("HuvSyss", activities);
         mappings.put(APIConstants.AGE_CODE, ages);
-        mappings.put("Kon", sexes);
+        mappings.put(APIConstants.SEX_CODE, sexes);
         mappings.put(APIConstants.TIME_CODE, periods);
 
         return getResponseModels("LE01012013S01", mappings);
@@ -119,7 +119,7 @@ public class EmploymentClient extends AbstractClient {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("Heltiddeltid", fullAndPartTimes);
         mappings.put(APIConstants.AGE_CODE, ages);
-        mappings.put("Kon", sexes);
+        mappings.put(APIConstants.SEX_CODE, sexes);
         mappings.put(APIConstants.TIME_CODE, periods);
 
         return getResponseModels("LE01012013S07", mappings);
@@ -156,7 +156,7 @@ public class EmploymentClient extends AbstractClient {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("AnstTyp", types);
         mappings.put(APIConstants.AGE_CODE, ages);
-        mappings.put("Kon", sexes);
+        mappings.put(APIConstants.SEX_CODE, sexes);
         mappings.put(APIConstants.TIME_CODE, periods);
 
         return getResponseModels("LE01012013S19", mappings);
@@ -194,7 +194,7 @@ public class EmploymentClient extends AbstractClient {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("Indikator", indicators);
         mappings.put(APIConstants.AGE_CODE, ages);
-        mappings.put("Kon", sexes);
+        mappings.put(APIConstants.SEX_CODE, sexes);
         mappings.put(APIConstants.TIME_CODE, periods);
 
         return getResponseModels("LE01012013A19", mappings);

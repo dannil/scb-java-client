@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.businessactivities.database;
+package com.github.dannil.scbjavaclient.client.environment.protectednature;
 
 import static org.junit.Assert.assertEquals;
 
@@ -25,12 +25,12 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class BusinessActivitiesDatabaseClientTest {
+public class ProtectedNatureClientTest {
 
     @Test
     public void createWithLocaleConstructor() {
         Locale locale = new Locale("sv", "SE");
-        DatabaseClient client = new DatabaseClient(locale);
+        EnvironmentProtectedNatureClient client = new EnvironmentProtectedNatureClient(locale);
 
         assertEquals(locale, client.getLocale());
     }
@@ -40,9 +40,9 @@ public class BusinessActivitiesDatabaseClientTest {
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints
         Locale locale = new Locale("en", "US");
-        DatabaseClient client = new DatabaseClient(locale);
+        EnvironmentProtectedNatureClient client = new EnvironmentProtectedNatureClient(locale);
 
-        assertEquals(URLEndpoint.getRootUrl(locale).append("NV/NV0101/"), client.getUrl());
+        assertEquals(URLEndpoint.getRootUrl(locale).append("MI/MI0603/"), client.getUrl());
     }
 
 }

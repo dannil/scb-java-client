@@ -80,8 +80,8 @@ public class AdoptionsClient extends AbstractClient {
     public List<ResponseModel> getChildAdoptions(Collection<String> sexes, Collection<String> ages,
             Collection<String> birthCountries, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Kon", sexes);
-        mappings.put("Alder", ages);
+        mappings.put(APIConstants.SEX_CODE, sexes);
+        mappings.put(APIConstants.AGE_CODE, ages);
         mappings.put("Fodelseland", birthCountries);
         mappings.put(APIConstants.TIME_CODE, years);
 
