@@ -104,7 +104,7 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
 
     @Test
     public void urlNotFound() {
-        SCBClient client = new SCBClient();
+        SCBClient client = new SCBClient(new Locale("sv", "SE"));
 
         String response = client.getRawData("ABC/ABC/ABC");
 
@@ -113,7 +113,7 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
 
     @Test
     public void urlForbidden() {
-        SCBClient client = new SCBClient();
+        SCBClient client = new SCBClient(new Locale("sv", "SE"));
 
         // This call will result in a HTTP 403 response (forbidden) since the
         // response from this table is larger than the API allows (given all the available
