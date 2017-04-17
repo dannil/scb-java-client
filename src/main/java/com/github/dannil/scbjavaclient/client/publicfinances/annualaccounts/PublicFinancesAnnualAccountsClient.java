@@ -17,7 +17,10 @@ package com.github.dannil.scbjavaclient.client.publicfinances.annualaccounts;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
-import com.github.dannil.scbjavaclient.client.publicfinances.assetsandliabilities.PublicFinancesAssetsAndLiabilitiesClient;
+import com.github.dannil.scbjavaclient.client.publicfinances.annualaccounts.balancesheetcounty.PublicFinancesAnnualAccountsBalanceSheetCountyClient;
+import com.github.dannil.scbjavaclient.client.publicfinances.annualaccounts.balancesheetmunicipality.PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient;
+import com.github.dannil.scbjavaclient.client.publicfinances.annualaccounts.statementaccountscounty.PublicFinancesAnnualAccountsStatementAccountsCountyClient;
+import com.github.dannil.scbjavaclient.client.publicfinances.annualaccounts.statementaccountsmunicipality.PublicFinancesAnnualAccountsStatementAccountsMunicipalityClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 /**
@@ -33,15 +36,11 @@ public class PublicFinancesAnnualAccountsClient extends AbstractContainerClient 
     public PublicFinancesAnnualAccountsClient() {
         super();
 
-        TODO
-
-        // addClient("assetsandliabilities", new
-        // PublicFinancesAssetsAndLiabilitiesClient());
-        // addClient("governmentdebt", new PublicFinancesGovernmentDebtClient());
-        // addClient("localtaxes", new PublicFinancesLocalTaxesClient());
-        // addClient("publiclyownedenterprises", new
-        // PublicFinancesPubliclyOwnedEnterprisesClient());
-        // addClient("taxassessment", new PublicFinancesTaxAssessmentClient());
+        addClient("balancesheetcounty", new PublicFinancesAnnualAccountsBalanceSheetCountyClient());
+        addClient("balancesheetmunicipality", new PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient());
+        addClient("statementaccountscounty", new PublicFinancesAnnualAccountsStatementAccountsCountyClient());
+        addClient("statementaccountsmunicipality",
+                new PublicFinancesAnnualAccountsStatementAccountsMunicipalityClient());
     }
 
     /**
@@ -56,16 +55,48 @@ public class PublicFinancesAnnualAccountsClient extends AbstractContainerClient 
         setLocale(locale);
     }
 
-    // /**
-    // * <p>Retrieve the client for interacting with public finances annual accounts
-    // * data.</p>
-    // *
-    // * @return a client for public finances annual accounts data
-    // */
-    // public PublicFinancesAssetsAndLiabilitiesClient assetsAndLiabilities() {
-    // return (PublicFinancesAssetsAndLiabilitiesClient)
-    // getClient("assetsandliabilities");
-    // }
+    /**
+     * <p>Retrieve the client for interacting with public finances annual accounts balance
+     * sheet county data.</p>
+     *
+     * @return a client for public finances annual accounts balance sheet county data
+     */
+    public PublicFinancesAnnualAccountsBalanceSheetCountyClient balanceSheetCounty() {
+        return (PublicFinancesAnnualAccountsBalanceSheetCountyClient) getClient("balancesheetcounty");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with public finances annual accounts balance
+     * sheet municipality data.</p>
+     *
+     * @return a client for public finances annual accounts balance sheet municipality
+     *         data
+     */
+    public PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient balanceSheetMunicipality() {
+        return (PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient) getClient("balancesheetmunicipality");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with public finances annual accounts
+     * statement accounts county data.</p>
+     *
+     * @return a client for public finances annual accounts statement accounts county data
+     */
+    public PublicFinancesAnnualAccountsStatementAccountsCountyClient statementAccountsCounty() {
+        return (PublicFinancesAnnualAccountsStatementAccountsCountyClient) getClient("statementaccountscounty");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with public finances annual accounts
+     * statement accounts municipality data.</p>
+     *
+     * @return a client for public finances annual accounts statement accounts
+     *         municipality data
+     */
+    public PublicFinancesAnnualAccountsStatementAccountsMunicipalityClient statementAccountsMunicipality() {
+        return (PublicFinancesAnnualAccountsStatementAccountsMunicipalityClient) getClient(
+                "statementaccountsmunicipality");
+    }
 
     @Override
     public URLEndpoint getUrl() {
