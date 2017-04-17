@@ -56,6 +56,19 @@ public class PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient extends 
     // return getIncomeStatements(null, null, null);
     // }
 
+    /**
+     * <p>Fetch all income statements data which match the input constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param incomeStatements
+     *            the income statements
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getIncomeStatements(Collection<String> regions, Collection<String> incomeStatements,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
@@ -72,6 +85,19 @@ public class PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient extends 
     // return getBalanceSheet(null, null, null);
     // }
 
+    /**
+     * <p>Fetch all balance sheet data which match the input constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param balanceSheets
+     *            the balance sheets
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getBalanceSheet(Collection<String> regions, Collection<String> balanceSheets,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
@@ -82,10 +108,33 @@ public class PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient extends 
         return getResponseModels("BalansKn", mappings);
     }
 
+    /**
+     * <p>Fetch all guarantees and contingent liabilities data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getGuaranteesAndContingentLiabilities(Collection, Collection, Collection)
+     */
     public List<ResponseModel> getGuaranteesAndContingentLiabilities() {
         return getGuaranteesAndContingentLiabilities(null, null, null);
     }
 
+    /**
+     * <p>Fetch all guarantees and contingent liabilities data which match the input
+     * constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param typesOfGuarantees
+     *            the types of guarantees
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getGuaranteesAndContingentLiabilities(Collection<String> regions,
             Collection<Integer> typesOfGuarantees, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
@@ -96,10 +145,32 @@ public class PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient extends 
         return getResponseModels("BorgensforbKn", mappings);
     }
 
+    /**
+     * <p>Fetch all local government incomes data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getLocalGovernmentIncomes(Collection, Collection, Collection)
+     */
     public List<ResponseModel> getLocalGovernmentIncomes() {
         return getLocalGovernmentIncomes(null, null, null);
     }
 
+    /**
+     * <p>Fetch all local government incomes data which match the input constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param items
+     *            the items
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getLocalGovernmentIncomes(Collection<String> regions, Collection<Integer> items,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
@@ -110,10 +181,32 @@ public class PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient extends 
         return getResponseModels("VerksInt", mappings);
     }
 
+    /**
+     * <p>Fetch all municipalities costs data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getMunicipalitiesCosts(Collection, Collection, Collection)
+     */
     public List<ResponseModel> getMunicipalitiesCosts() {
         return getMunicipalitiesCosts(null, null, null);
     }
 
+    /**
+     * <p>Fetch all municipalities costs data which match the input constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param items
+     *            the items
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getMunicipalitiesCosts(Collection<String> regions, Collection<Integer> items,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();

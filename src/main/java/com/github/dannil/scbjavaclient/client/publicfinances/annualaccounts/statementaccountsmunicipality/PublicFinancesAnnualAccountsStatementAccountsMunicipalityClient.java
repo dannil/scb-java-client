@@ -56,6 +56,19 @@ public class PublicFinancesAnnualAccountsStatementAccountsMunicipalityClient ext
     // return getCostsAndIncomes(null, null, null);
     // }
 
+    /**
+     * <p>Fetch all costs and incomes data which match the input constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param activities
+     *            the activities
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getCostsAndIncomes(Collection<String> regions, Collection<Integer> activities,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
@@ -66,10 +79,33 @@ public class PublicFinancesAnnualAccountsStatementAccountsMunicipalityClient ext
         return getResponseModels("KostnDR", mappings);
     }
 
+    /**
+     * <p>Fetch all purchase of main activities data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getPurchaseOfMainActivities(Collection, Collection, Collection)
+     */
     public List<ResponseModel> getPurchaseOfMainActivities() {
         return getPurchaseOfMainActivities(null, null, null);
     }
 
+    /**
+     * <p>Fetch all purchase of main activities data which match the input
+     * constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param activities
+     *            the activities
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getPurchaseOfMainActivities(Collection<String> regions, Collection<Integer> activities,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
@@ -80,10 +116,33 @@ public class PublicFinancesAnnualAccountsStatementAccountsMunicipalityClient ext
         return getResponseModels("KopDr", mappings);
     }
 
+    /**
+     * <p>Fetch all costs of individual and family care data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getCostsOfIndividualAndFamilyCare(Collection, Collection, Collection)
+     */
     public List<ResponseModel> getCostsOfIndividualAndFamilyCare() {
         return getCostsOfIndividualAndFamilyCare(null, null, null);
     }
 
+    /**
+     * <p>Fetch all costs of individual and family care data which match the input
+     * constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param cares
+     *            the cares
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getCostsOfIndividualAndFamilyCare(Collection<String> regions, Collection<Integer> cares,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
@@ -94,10 +153,32 @@ public class PublicFinancesAnnualAccountsStatementAccountsMunicipalityClient ext
         return getResponseModels("IndFamTkrR", mappings);
     }
 
+    /**
+     * <p>Fetch all grants data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getGrants(Collection, Collection, Collection)
+     */
     public List<ResponseModel> getGrants() {
         return getGrants(null, null, null);
     }
 
+    /**
+     * <p>Fetch all grants data which match the input constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param activities
+     *            the activities
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getGrants(Collection<String> regions, Collection<Integer> activities,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
@@ -108,10 +189,32 @@ public class PublicFinancesAnnualAccountsStatementAccountsMunicipalityClient ext
         return getResponseModels("Lamnadebidrag", mappings);
     }
 
+    /**
+     * <p>Fetch all some incomes data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getSomeIncomes(Collection, Collection, Collection)
+     */
     public List<ResponseModel> getSomeIncomes() {
         return getSomeIncomes(null, null, null);
     }
 
+    /**
+     * <p>Fetch all some incomes data which match the input constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param activities
+     *            the activities
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getSomeIncomes(Collection<String> regions, Collection<Integer> activities,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();

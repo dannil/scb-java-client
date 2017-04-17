@@ -49,10 +49,31 @@ public class PublicFinancesPubliclyOwnedEnterprisesClient extends AbstractClient
         super(locale);
     }
 
+    /**
+     * <p>Fetch all municipality owned enterprises data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getDataForMunicipalityOwnedEnterprises(Collection, Collection)
+     */
     public List<ResponseModel> getDataForMunicipalityOwnedEnterprises() {
         return getDataForMunicipalityOwnedEnterprises(null, null);
     }
 
+    /**
+     * <p>Fetch all municipality owned enterprises data which match the input
+     * constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getDataForMunicipalityOwnedEnterprises(Collection<String> regions,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
@@ -62,10 +83,30 @@ public class PublicFinancesPubliclyOwnedEnterprisesClient extends AbstractClient
         return getResponseModels("KomFtgK", mappings);
     }
 
+    /**
+     * <p>Fetch all enterprises data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getEnterprises(Collection, Collection)
+     */
     public List<ResponseModel> getEnterprises() {
         return getEnterprises(null, null);
     }
 
+    /**
+     * <p>Fetch all enterprises data which match the input constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getEnterprises(Collection<String> regions, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
@@ -74,10 +115,33 @@ public class PublicFinancesPubliclyOwnedEnterprisesClient extends AbstractClient
         return getResponseModels("KomFtgK100", mappings);
     }
 
+    /**
+     * <p>Fetch all county councils enterprises data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getCountyCouncilsEnterprises(Collection, Collection, Collection)
+     */
     public List<ResponseModel> getCountyCouncilsEnterprises() {
         return getCountyCouncilsEnterprises(null, null, null);
     }
 
+    /**
+     * <p>Fetch all county councils enterprises data which match the input
+     * constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param sectors
+     *            the sectors
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getCountyCouncilsEnterprises(Collection<String> regions, Collection<String> sectors,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
@@ -88,10 +152,34 @@ public class PublicFinancesPubliclyOwnedEnterprisesClient extends AbstractClient
         return getResponseModels("LtFtgL", mappings);
     }
 
+    /**
+     * <p>Fetch all publicly owned enterprises data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getPubliclyOwnedEnterprises(Collection, Collection, Collection, Collection)
+     */
     public List<ResponseModel> getPubliclyOwnedEnterprises() {
         return getPubliclyOwnedEnterprises(null, null, null, null);
     }
 
+    /**
+     * <p>Fetch all publicly owned enterprises data which match the input constraints.</p>
+     *
+     * @param sectors
+     *            the sectors
+     * @param typesOfOwnerships
+     *            the types of ownerships
+     * @param legalEntities
+     *            the legal entities
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getPubliclyOwnedEnterprises(Collection<String> sectors,
             Collection<Integer> typesOfOwnerships, Collection<Integer> legalEntities, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
@@ -103,10 +191,34 @@ public class PublicFinancesPubliclyOwnedEnterprisesClient extends AbstractClient
         return getResponseModels("OffFtg", mappings);
     }
 
+    /**
+     * <p>Fetch all income statements data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getIncomeStatements(Collection, Collection, Collection, Collection)
+     */
     public List<ResponseModel> getIncomeStatements() {
         return getIncomeStatements(null, null, null, null);
     }
 
+    /**
+     * <p>Fetch all income statements data which match the input constraints.</p>
+     *
+     * @param sectors
+     *            the sectors
+     * @param typesOfOwnerships
+     *            the types of ownerships
+     * @param industrialClassifications
+     *            the industrial classifications
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getIncomeStatements(Collection<String> sectors, Collection<Integer> typesOfOwnerships,
             Collection<String> industrialClassifications, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
@@ -118,10 +230,34 @@ public class PublicFinancesPubliclyOwnedEnterprisesClient extends AbstractClient
         return getResponseModels("OffResultSektor", mappings);
     }
 
+    /**
+     * <p>Fetch all liabilities and equity data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getLiabilitiesAndEquity(Collection, Collection, Collection, Collection)
+     */
     public List<ResponseModel> getLiabilitiesAndEquity() {
         return getLiabilitiesAndEquity(null, null, null, null);
     }
 
+    /**
+     * <p>Fetch all liabilities and equity data which match the input constraints.</p>
+     *
+     * @param sectors
+     *            the sectors
+     * @param typesOfOwnerships
+     *            the types of ownerships
+     * @param industrialClassifications
+     *            the industrial classifications
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getLiabilitiesAndEquity(Collection<String> sectors,
             Collection<Integer> typesOfOwnerships, Collection<String> industrialClassifications,
             Collection<Integer> years) {
@@ -134,10 +270,34 @@ public class PublicFinancesPubliclyOwnedEnterprisesClient extends AbstractClient
         return getResponseModels("OffSkulderSektor", mappings);
     }
 
+    /**
+     * <p>Fetch all assets data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getAssets(Collection, Collection, Collection, Collection)
+     */
     public List<ResponseModel> getAssets() {
         return getAssets(null, null, null, null);
     }
 
+    /**
+     * <p>Fetch all assets data which match the input constraints.</p>
+     *
+     * @param sectors
+     *            the sectors
+     * @param typesOfOwnerships
+     *            the types of ownerships
+     * @param industrialClassifications
+     *            the industrial classifications
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getAssets(Collection<String> sectors, Collection<Integer> typesOfOwnerships,
             Collection<String> industrialClassifications, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();

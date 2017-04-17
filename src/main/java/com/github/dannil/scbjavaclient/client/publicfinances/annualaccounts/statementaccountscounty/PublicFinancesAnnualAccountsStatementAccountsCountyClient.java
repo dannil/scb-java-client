@@ -50,37 +50,125 @@ public class PublicFinancesAnnualAccountsStatementAccountsCountyClient extends A
         super(locale);
     }
 
+    /**
+     * <p>Fetch all expenses and revenues data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getExpensesAndRevenues(Collection, Collection, Collection)
+     */
     public List<ResponseModel> getExpensesAndRevenues() {
         return getExpensesAndRevenues(null, null, null);
     }
 
+    /**
+     * <p>Fetch all expenses and revenues data which match the input constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param activities
+     *            the activities
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getExpensesAndRevenues(Collection<String> regions, Collection<String> activities,
             Collection<Integer> years) {
         return generate(regions, activities, years, "KostnDRLT");
     }
 
+    /**
+     * <p>Fetch all net costs data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getNetCosts(Collection, Collection, Collection)
+     */
     public List<ResponseModel> getNetCosts() {
         return getNetCosts(null, null, null);
     }
 
+    /**
+     * <p>Fetch all net costs data which match the input constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param activities
+     *            the activities
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getNetCosts(Collection<String> regions, Collection<String> activities,
             Collection<Integer> years) {
         return generate(regions, activities, years, "FinansLT");
     }
 
+    /**
+     * <p>Fetch all purchases and sales data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getPurchasesAndSales(Collection, Collection, Collection)
+     */
     public List<ResponseModel> getPurchasesAndSales() {
         return getPurchasesAndSales(null, null, null);
     }
 
+    /**
+     * <p>Fetch all purchases and sales data which match the input constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param activities
+     *            the activities
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getPurchasesAndSales(Collection<String> regions, Collection<String> activities,
             Collection<Integer> years) {
         return generate(regions, activities, years, "ForsaljVerksamh");
     }
 
+    /**
+     * <p>Fetch all contributions data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getContributions(Collection, Collection, Collection)
+     */
     public List<ResponseModel> getContributions() {
         return getContributions(null, null, null);
     }
 
+    /**
+     * <p>Fetch all contributions data which match the input constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param activities
+     *            the activities
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getContributions(Collection<String> regions, Collection<String> activities,
             Collection<Integer> years) {
         return generate(regions, activities, years, "LamnadeBidragTotalt");
@@ -92,15 +180,50 @@ public class PublicFinancesAnnualAccountsStatementAccountsCountyClient extends A
     // return getIncomeAndCosts(null, null, null);
     // }
 
+    /**
+     * <p>Fetch all income and costs data which match the input constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param activities
+     *            the activities
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getIncomeAndCosts(Collection<String> regions, Collection<String> activities,
             Collection<Integer> years) {
         return generate(regions, activities, years, "DriftredovLandst");
     }
 
+    /**
+     * <p>Fetch all income and costs data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getInvestments(Collection, Collection, Collection)
+     */
     public List<ResponseModel> getInvestments() {
         return getInvestments(null, null, null);
     }
 
+    /**
+     * <p>Fetch all income and costs data which match the input constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param activities
+     *            the activities
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
     public List<ResponseModel> getInvestments(Collection<String> regions, Collection<String> activities,
             Collection<Integer> years) {
         return generate(regions, activities, years, "InvestLands");
