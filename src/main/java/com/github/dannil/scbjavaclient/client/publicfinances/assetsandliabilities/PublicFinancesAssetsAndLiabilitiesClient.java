@@ -75,7 +75,7 @@ public class PublicFinancesAssetsAndLiabilitiesClient extends AbstractClient {
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getAssetsAndLiabilities(Collection<Integer> items, Collection<String> sectors,
+    public List<ResponseModel> getAssetsAndLiabilities(Collection<Integer> items, Collection<Integer> sectors,
             Collection<String> quarters) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("Kontopost", items);

@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.publicfinances.publiclyownedenterprises;
+package com.github.dannil.scbjavaclient.client.publicfinances.assetsandliabilities;
 
 import static org.junit.Assert.assertEquals;
 
@@ -25,12 +25,12 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class PublicFinancesPubliclyOwnedEnterprisesClientTest {
+public class PublicFinancesAssetsAndLiabilitiesClientTest {
 
     @Test
     public void createWithLocaleConstructor() {
         Locale locale = new Locale("sv", "SE");
-        PublicFinancesPubliclyOwnedEnterprisesClient client = new PublicFinancesPubliclyOwnedEnterprisesClient(locale);
+        PublicFinancesAssetsAndLiabilitiesClient client = new PublicFinancesAssetsAndLiabilitiesClient(locale);
 
         assertEquals(locale, client.getLocale());
     }
@@ -40,9 +40,9 @@ public class PublicFinancesPubliclyOwnedEnterprisesClientTest {
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints
         Locale locale = new Locale("en", "US");
-        PublicFinancesPubliclyOwnedEnterprisesClient client = new PublicFinancesPubliclyOwnedEnterprisesClient(locale);
+        PublicFinancesAssetsAndLiabilitiesClient client = new PublicFinancesAssetsAndLiabilitiesClient(locale);
 
-        assertEquals(URLEndpoint.getRootUrl(locale).append("OE/OE0108/"), client.getUrl());
+        assertEquals(URLEndpoint.getRootUrl(locale).append("OE/OE0106/"), client.getUrl());
     }
 
 }
