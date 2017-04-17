@@ -38,6 +38,21 @@ public class PublicFinancesAnnualAccountsBalanceSheetMunicipalityClientIT extend
         this.client = new SCBClient().publicFinances().annualAccounts().balanceSheetMunicipality();
     }
 
+    // Daniel 2017-04-17: Returns HTTP 403
+    //
+    // @Test
+    // public void getIncomeStatements() {
+    // assertNotEquals(0, this.client.getIncomeStatements().size());
+    // }
+
+    // Daniel 2017-04-17: Returns HTTP 403
+    //
+    // @Test
+    // public void getIncomeStatementsWithParametersEmptyLists() {
+    // assertNotEquals(0, this.client.getIncomeStatements(Collections.<String>emptyList(),
+    // Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
+    // }
+
     @Test
     public void getIncomeStatementsWithParameters() {
         List<String> regions = Arrays.asList("0125", "0160");
@@ -46,6 +61,22 @@ public class PublicFinancesAnnualAccountsBalanceSheetMunicipalityClientIT extend
 
         assertNotEquals(0, this.client.getIncomeStatements(regions, incomeStatements, years).size());
     }
+
+    // Daniel 2017-04-17: Returns HTTP 403
+    //
+    // @Test
+    // public void getBalanceSheet() {
+    // assertNotEquals(0, this.client.getBalanceSheet().size());
+    // }
+
+    // Daniel 2017-04-17: Returns HTTP 403
+    //
+    // @Test
+    // public void getBalanceSheetWithParametersEmptyLists() {
+    // assertNotEquals(0, this.client.getBalanceSheet(Collections.<String>emptyList(),
+    // Collections.<String>emptyList(),
+    // Collections.<Integer>emptyList()).size());
+    // }
 
     @Test
     public void getBalanceSheetWithParameters() {

@@ -71,6 +71,7 @@ public class PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient extends 
     // public List<ResponseModel> getBalanceSheet() {
     // return getBalanceSheet(null, null, null);
     // }
+
     public List<ResponseModel> getBalanceSheet(Collection<String> regions, Collection<String> balanceSheets,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
