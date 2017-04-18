@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.population.projections.latestprojections;
+package com.github.dannil.scbjavaclient.client.publicfinances.annualaccounts.statementaccountsmunicipality;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -26,16 +26,17 @@ import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles population projections latest projections data fetching.</p>
+ * <p>Client which handles public finances annual accounts statement accounts municipality
+ * data fetching.</p>
  *
  * @since 0.3.0
  */
-public class PopulationProjectionsLatestProjectionsClient extends AbstractClient {
+public class StatementAccountsMunicipalityClient extends AbstractClient {
 
     /**
      * <p>Default constructor.</p>
      */
-    public PopulationProjectionsLatestProjectionsClient() {
+    public StatementAccountsMunicipalityClient() {
         super();
     }
 
@@ -45,191 +46,188 @@ public class PopulationProjectionsLatestProjectionsClient extends AbstractClient
      * @param locale
      *            the <code>Locale</code> for this client
      */
-    public PopulationProjectionsLatestProjectionsClient(Locale locale) {
+    public StatementAccountsMunicipalityClient(Locale locale) {
         super(locale);
     }
 
-    /**
-     * <p>Fetch all population data.</p>
-     *
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     *
-     * @see #getPopulation(Collection, Collection, Collection)
-     */
-    public List<ResponseModel> getPopulation() {
-        return getPopulation(null, null, null);
-    }
+    // Daniel 2017-04-17: Returns HTTP 403
+    //
+    // public List<ResponseModel> getCostsAndIncomes() {
+    // return getCostsAndIncomes(null, null, null);
+    // }
 
     /**
-     * <p>Fetch all population data which match the input constraints.</p>
+     * <p>Fetch all costs and incomes data which match the input constraints.</p>
      *
-     * @param ages
-     *            the ages
-     * @param sexes
-     *            the sexes
+     * @param regions
+     *            the regions
+     * @param activities
+     *            the activities
      * @param years
      *            the years
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getPopulation(Collection<String> ages, Collection<Integer> sexes,
+    public List<ResponseModel> getCostsAndIncomes(Collection<String> regions, Collection<Integer> activities,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.AGE_CODE, ages);
-        mappings.put(APIConstants.SEX_CODE, sexes);
+        mappings.put(APIConstants.REGION_CODE, regions);
+        mappings.put("Verksomrkom", activities);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("BefolkprognRev2017", mappings);
+        return getResponseModels("KostnDR", mappings);
     }
 
     /**
-     * <p>Fetch all population changes data.</p>
+     * <p>Fetch all purchase of main activities data.</p>
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @see #getPopulationChanges(Collection, Collection, Collection, Collection)
+     * @see #getPurchaseOfMainActivities(Collection, Collection, Collection)
      */
-    public List<ResponseModel> getPopulationChanges() {
-        return getPopulationChanges(null, null, null, null);
+    public List<ResponseModel> getPurchaseOfMainActivities() {
+        return getPurchaseOfMainActivities(null, null, null);
     }
 
     /**
-     * <p>Fetch all population changes data which match the input constraints.</p>
-     *
-     * @param countries
-     *            the countries
-     * @param sexes
-     *            the sexes
-     * @param ages
-     *            the ages
-     * @param years
-     *            the years
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     */
-    public List<ResponseModel> getPopulationChanges(Collection<String> countries, Collection<Integer> sexes,
-            Collection<String> ages, Collection<Integer> years) {
-        Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Fodelseland", countries);
-        mappings.put(APIConstants.SEX_CODE, sexes);
-        mappings.put(APIConstants.AGE_CODE, ages);
-        mappings.put(APIConstants.TIME_CODE, years);
-
-        return getResponseModels("BefProgOsiktDetalj17", mappings);
-    }
-
-    /**
-     * <p>Fetch all population changes overview data.</p>
-     *
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     *
-     * @see #getPopulationChangesOverview(Collection)
-     */
-    public List<ResponseModel> getPopulationChangesOverview() {
-        return getPopulationChangesOverview(null);
-    }
-
-    /**
-     * <p>Fetch all population changes overview data which match the input
+     * <p>Fetch all purchase of main activities data which match the input
      * constraints.</p>
      *
+     * @param regions
+     *            the regions
+     * @param activities
+     *            the activities
      * @param years
      *            the years
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getPopulationChangesOverview(Collection<Integer> years) {
-        Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.TIME_CODE, years);
-
-        return getResponseModels("BefPrognosOversikt17", mappings);
-    }
-
-    /**
-     * <p>Fetch all number of births data.</p>
-     *
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     *
-     * @see #getNumberOfBirths(Collection, Collection, Collection)
-     */
-    public List<ResponseModel> getNumberOfBirths() {
-        return getNumberOfBirths(null, null, null);
-    }
-
-    /**
-     * <p>Fetch all number of births data which match the input constraints.</p>
-     *
-     * @param countries
-     *            the countries
-     * @param ages
-     *            the ages
-     * @param years
-     *            the years
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     */
-    public List<ResponseModel> getNumberOfBirths(Collection<String> countries, Collection<String> ages,
+    public List<ResponseModel> getPurchaseOfMainActivities(Collection<String> regions, Collection<Integer> activities,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Fodelseland", countries);
-        mappings.put(APIConstants.AGE_CODE, ages);
+        mappings.put(APIConstants.REGION_CODE, regions);
+        mappings.put("Verksomrkom", activities);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("BefProgFoddaMedel17", mappings);
+        return getResponseModels("KopDr", mappings);
     }
 
     /**
-     * <p>Fetch all life expectancy data.</p>
+     * <p>Fetch all costs of individual and family care data.</p>
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @see #getLifeExpectancy(Collection, Collection, Collection)
+     * @see #getCostsOfIndividualAndFamilyCare(Collection, Collection, Collection)
      */
-    public List<ResponseModel> getLifeExpectancy() {
-        return getLifeExpectancy(null, null, null);
-
+    public List<ResponseModel> getCostsOfIndividualAndFamilyCare() {
+        return getCostsOfIndividualAndFamilyCare(null, null, null);
     }
 
     /**
-     * <p>Fetch all life expectancy data which match the input constraints.</p>
+     * <p>Fetch all costs of individual and family care data which match the input
+     * constraints.</p>
      *
-     * @param sexes
-     *            the sexes
-     * @param ages
-     *            the ages
+     * @param regions
+     *            the regions
+     * @param cares
+     *            the cares
      * @param years
      *            the years
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getLifeExpectancy(Collection<Integer> sexes, Collection<String> ages,
+    public List<ResponseModel> getCostsOfIndividualAndFamilyCare(Collection<String> regions, Collection<Integer> cares,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.SEX_CODE, sexes);
-        mappings.put(APIConstants.AGE_CODE, ages);
+        mappings.put(APIConstants.REGION_CODE, regions);
+        mappings.put("Omsorg", cares);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("BefProgLivslangd2017", mappings);
+        return getResponseModels("IndFamTkrR", mappings);
+    }
+
+    /**
+     * <p>Fetch all grants data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getGrants(Collection, Collection, Collection)
+     */
+    public List<ResponseModel> getGrants() {
+        return getGrants(null, null, null);
+    }
+
+    /**
+     * <p>Fetch all grants data which match the input constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param activities
+     *            the activities
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getGrants(Collection<String> regions, Collection<Integer> activities,
+            Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.REGION_CODE, regions);
+        mappings.put("Verksomrkom", activities);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("Lamnadebidrag", mappings);
+    }
+
+    /**
+     * <p>Fetch all some incomes data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getSomeIncomes(Collection, Collection, Collection)
+     */
+    public List<ResponseModel> getSomeIncomes() {
+        return getSomeIncomes(null, null, null);
+    }
+
+    /**
+     * <p>Fetch all some incomes data which match the input constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param activities
+     *            the activities
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getSomeIncomes(Collection<String> regions, Collection<Integer> activities,
+            Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.REGION_CODE, regions);
+        mappings.put("Verksomrkom", activities);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("Vissaintakter", mappings);
     }
 
     @Override
     public URLEndpoint getUrl() {
-        return getRootUrl().append("BE/BE0401/BE0401A/");
+        return getRootUrl().append("OE/OE0107/OE0107B/");
     }
 
 }

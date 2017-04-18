@@ -1,5 +1,5 @@
 /*
- * Copyright 2014 Daniel Nilsson
+ * Copyright 2017 Daniel Nilsson
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.population.statistics.livebirths;
+package com.github.dannil.scbjavaclient.client.publicfinances.assetsandliabilities;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -26,16 +26,16 @@ import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles population statistics live births data fetching.</p>
+ * <p>Client which handles public finances assets and liabilities data fetching.</p>
  *
- * @since 0.1.0
+ * @since 0.3.0
  */
-public class PopulationStatisticsLiveBirthsClient extends AbstractClient {
+public class AssetsAndLiabilitiesClient extends AbstractClient {
 
     /**
      * <p>Default constructor.</p>
      */
-    public PopulationStatisticsLiveBirthsClient() {
+    public AssetsAndLiabilitiesClient() {
         super();
     }
 
@@ -45,52 +45,49 @@ public class PopulationStatisticsLiveBirthsClient extends AbstractClient {
      * @param locale
      *            the <code>Locale</code> for this client
      */
-    public PopulationStatisticsLiveBirthsClient(Locale locale) {
+    public AssetsAndLiabilitiesClient(Locale locale) {
         super(locale);
     }
 
     /**
-     * <p>Fetch all live births data.</p>
+     * <p>Fetch all assets and liabilities data.</p>
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @see #getLiveBirths(Collection, Collection, Collection, Collection)
+     * @see #getAssetsAndLiabilities(Collection, Collection, Collection)
      */
-    public List<ResponseModel> getLiveBirths() {
-        return getLiveBirths(null, null, null, null);
+    public List<ResponseModel> getAssetsAndLiabilities() {
+        return getAssetsAndLiabilities(null, null, null);
     }
 
     /**
-     * <p>Fetch all live births data which match the input constraints.</p>
+     * <p>Fetch all assets and liabilities data which match the input constraints.</p>
      *
-     * @param regions
-     *            the regions to fetch data for
-     * @param motherAges
-     *            the mothers' ages to fetch data for
-     * @param genders
-     *            the genders to fetch data for
-     * @param years
-     *            the years to fetch data for
+     * @param items
+     *            the items
+     * @param sectors
+     *            the sectors
+     * @param quarters
+     *            the quarters
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getLiveBirths(Collection<String> regions, Collection<String> motherAges,
-            Collection<Integer> genders, Collection<Integer> years) {
+    public List<ResponseModel> getAssetsAndLiabilities(Collection<Integer> items, Collection<Integer> sectors,
+            Collection<String> quarters) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.REGION_CODE, regions);
-        mappings.put("AlderModer", motherAges);
-        mappings.put(APIConstants.SEX_CODE, genders);
-        mappings.put(APIConstants.TIME_CODE, years);
+        mappings.put("Kontopost", items);
+        mappings.put(APIConstants.SECTOR_CODE, sectors);
+        mappings.put(APIConstants.TIME_CODE, quarters);
 
-        return getResponseModels("FoddaK", mappings);
+        return getResponseModels("KTS", mappings);
     }
 
     @Override
     public URLEndpoint getUrl() {
-        return getRootUrl().append("BE/BE0101/BE0101H/");
+        return getRootUrl().append("OE/OE0106/");
     }
 
 }

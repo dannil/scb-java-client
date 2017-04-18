@@ -20,6 +20,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -32,6 +33,7 @@ import java.util.Map;
 import java.util.Objects;
 
 import com.github.dannil.scbjavaclient.constants.APIConstants;
+import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.test.utility.Files;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
@@ -102,7 +104,7 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
 
     @Test
     public void urlNotFound() {
-        SCBClient client = new SCBClient();
+        SCBClient client = new SCBClient(new Locale("sv", "SE"));
 
         String response = client.getRawData("ABC/ABC/ABC");
 
@@ -111,7 +113,7 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
 
     @Test
     public void urlForbidden() {
-        SCBClient client = new SCBClient();
+        SCBClient client = new SCBClient(new Locale("sv", "SE"));
 
         // This call will result in a HTTP 403 response (forbidden) since the
         // response from this table is larger than the API allows (given all the available
@@ -234,6 +236,69 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
         }
         assertTrue("Classes not having matching package and client name: " + matchedClasses.toString(),
                 matchedClasses.isEmpty());
+    }
+
+    @Test
+    public void checkForUniqueTableImplementations() {
+        String execPath = System.getProperty("user.dir");
+
+        // Find files matching the wildcard pattern
+        List<File> files = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient/client", "*.java");
+
+        // Filter out some classes from the list
+        List<Class<?>> filters = new ArrayList<>();
+        filters.add(AbstractClient.class);
+        filters.add(AbstractContainerClient.class);
+
+        Iterator<File> it = files.iterator();
+        while (it.hasNext()) {
+            File f = it.next();
+            for (Class<?> clazz : filters) {
+                if (Objects.equals(Files.fileToBinaryName(f), clazz.getName())) {
+                    it.remove();
+                }
+            }
+        }
+
+        Map<String, Class<?>> register = new HashMap<>();
+        Map<String, List<Class<?>>> offendingClasses = new HashMap<>();
+        for (File file : files) {
+            // Convert path into binary name
+            String binaryName = Files.fileToBinaryName(file);
+            if (binaryName.contains("package-info")) {
+                continue;
+            }
+
+            // Reflect the binary name into a concrete Java class
+            Class<?> clazz = null;
+            try {
+                clazz = Class.forName(binaryName);
+
+                Method m = clazz.getDeclaredMethod("getUrl");
+                Object t = clazz.newInstance();
+                Object o = m.invoke(t);
+
+                URLEndpoint endPoint = (URLEndpoint) o;
+                String table = endPoint.getTable();
+                if (register.containsKey(table)) {
+                    List<Class<?>> fetchedClasses = offendingClasses.get(table);
+                    if (fetchedClasses == null) {
+                        fetchedClasses = new ArrayList<>();
+                        fetchedClasses.add(register.get(table));
+                    }
+                    fetchedClasses.add(clazz);
+                    offendingClasses.put(table, fetchedClasses);
+                } else {
+                    register.put(table, clazz);
+                }
+            } catch (ReflectiveOperationException e) {
+                // Class could not be created; respond with an assertion that'll always
+                // fail
+                e.printStackTrace();
+                assertTrue(e.getMessage(), false);
+            }
+        }
+        assertTrue("Classes implementing same table: " + offendingClasses.toString(), offendingClasses.isEmpty());
     }
 
 }
