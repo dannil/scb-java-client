@@ -58,8 +58,7 @@ public class DemographyClient extends AbstractClient {
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @see PopulationDemographyClient#getFertilityRate(Collection, Collection,
-     *      Collection)
+     * @see #getFertilityRate(Collection, Collection, Collection)
      */
     public List<ResponseModel> getFertilityRate() {
         return getFertilityRate(null, null, null);
