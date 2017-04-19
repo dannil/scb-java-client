@@ -1,5 +1,5 @@
 /*
- * Copyright 2014 Daniel Nilsson
+ * Copyright 2017 Daniel Nilsson
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.environment.landandwaterarea;
+package com.github.dannil.scbjavaclient.client.publicfinances.assetsandliabilities;
 
 import static org.junit.Assert.assertNotEquals;
 
@@ -29,33 +29,33 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class EnvironmentLandAndWaterAreaClientIT extends RemoteIntegrationTestSuite {
+public class PublicFinancesAssetsAndLiabilitiesClientIT extends RemoteIntegrationTestSuite {
 
-    private EnvironmentLandAndWaterAreaClient client;
+    private PublicFinancesAssetsAndLiabilitiesClient client;
 
     @Before
     public void setup() {
-        this.client = new SCBClient().environment().landAndWaterArea();
+        this.client = new SCBClient().publicFinances().assetsAndLiabilities();
     }
 
     @Test
-    public void getArea() {
-        assertNotEquals(0, this.client.getArea().size());
+    public void getAssetsAndLiabilities() {
+        assertNotEquals(0, this.client.getAssetsAndLiabilities().size());
     }
 
     @Test
-    public void getAreaWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getArea(Collections.<String>emptyList(), Collections.<String>emptyList(),
-                Collections.<Integer>emptyList()).size());
+    public void getAssetsAndLiabilitiesWithParametersEmptyLists() {
+        assertNotEquals(0, this.client.getAssetsAndLiabilities(Collections.<Integer>emptyList(),
+                Collections.<Integer>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test
-    public void getAreaWithParameters() {
-        List<String> regions = Arrays.asList("1263");
-        List<String> types = Arrays.asList("01", "02", "03", "04");
-        List<Integer> years = Arrays.asList(2012);
+    public void getAssetsAndLiabilitiesWithParameters() {
+        List<Integer> items = Arrays.asList(501, 504);
+        List<Integer> sectors = Arrays.asList(410, 420);
+        List<String> quarters = Arrays.asList("2005k2", "2007k3");
 
-        assertNotEquals(0, this.client.getArea(regions, types, years).size());
+        assertNotEquals(0, this.client.getAssetsAndLiabilities(items, sectors, quarters).size());
     }
 
 }

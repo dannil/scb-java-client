@@ -183,7 +183,7 @@ public class LabourMarketCostIndexClient extends AbstractClient {
     private List<ResponseModel> generate(Collection<String> industrialClassifications, Collection<String> quarters,
             String table) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("SNI2007", industrialClassifications);
+        mappings.put(APIConstants.SNI2007_CODE, industrialClassifications);
         mappings.put(APIConstants.TIME_CODE, quarters);
 
         return getResponseModels(table, mappings);

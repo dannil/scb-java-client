@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.businessactivities.industrialinventories.inventories;
+package com.github.dannil.scbjavaclient.client.publicfinances.annualaccounts.balancesheetcounty;
 
 import static org.junit.Assert.assertEquals;
 
@@ -25,12 +25,12 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class BusinessActivitiesIndustrialInventoriesInventoriesClientTest {
+public class PublicFinancesAnnualAccountsBalanceSheetCountyClientTest {
 
     @Test
     public void createWithLocaleConstructor() {
         Locale locale = new Locale("sv", "SE");
-        BusinessActivitiesIndustrialInventoriesInventoriesClient client = new BusinessActivitiesIndustrialInventoriesInventoriesClient(
+        PublicFinancesAnnualAccountsBalanceSheetCountyClient client = new PublicFinancesAnnualAccountsBalanceSheetCountyClient(
                 locale);
 
         assertEquals(locale, client.getLocale());
@@ -41,10 +41,10 @@ public class BusinessActivitiesIndustrialInventoriesInventoriesClientTest {
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints
         Locale locale = new Locale("en", "US");
-        BusinessActivitiesIndustrialInventoriesInventoriesClient client = new BusinessActivitiesIndustrialInventoriesInventoriesClient(
+        PublicFinancesAnnualAccountsBalanceSheetCountyClient client = new PublicFinancesAnnualAccountsBalanceSheetCountyClient(
                 locale);
 
-        assertEquals(URLEndpoint.getRootUrl(locale).append("NV/NV0602/NV0602A/"), client.getUrl());
+        assertEquals(URLEndpoint.getRootUrl(locale).append("OE/OE0107/OE0107C/"), client.getUrl());
     }
 
 }
