@@ -115,7 +115,7 @@ public class BusinessActivitiesDatabaseClient extends AbstractClient {
     public List<ResponseModel> getEnterprisesAndEmployeesSNI2007(Collection<String> industrialClassifications,
             Collection<String> sizeClasses, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("SNI2007", industrialClassifications);
+        mappings.put(APIConstants.SNI2007_CODE, industrialClassifications);
         mappings.put("Storleksklass", sizeClasses);
         mappings.put(APIConstants.TIME_CODE, years);
 

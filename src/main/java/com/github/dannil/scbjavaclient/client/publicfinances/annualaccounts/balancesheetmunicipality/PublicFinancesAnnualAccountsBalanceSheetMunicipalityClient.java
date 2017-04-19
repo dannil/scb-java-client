@@ -50,12 +50,6 @@ public class PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient extends 
         super(locale);
     }
 
-    // Daniel 2017-04-17: Returns HTTP 403
-    //
-    // public List<ResponseModel> getIncomeStatements() {
-    // return getIncomeStatements(null, null, null);
-    // }
-
     /**
      * <p>Fetch all income statements data which match the input constraints.</p>
      *
@@ -78,12 +72,6 @@ public class PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient extends 
 
         return getResponseModels("ResultKn", mappings);
     }
-
-    // Daniel 2017-04-17: Returns HTTP 403
-    //
-    // public List<ResponseModel> getBalanceSheet() {
-    // return getBalanceSheet(null, null, null);
-    // }
 
     /**
      * <p>Fetch all balance sheet data which match the input constraints.</p>
