@@ -34,7 +34,7 @@ public abstract class AbstractTableFormat {
      *
      * @return a <code>Map</code> of all keys and their respective values
      */
-    public abstract Map<String, Collection<String>> getKeysAndValues();
+    public abstract Map<String, Collection<String>> getPairs();
 
     /**
      * <p>Extracts the values for a key from the data.</p>
@@ -42,7 +42,7 @@ public abstract class AbstractTableFormat {
      * @return a <code>List</code> of values
      */
     public List<String> getKeys() {
-        return new ArrayList<>(getKeysAndValues().keySet());
+        return new ArrayList<>(getPairs().keySet());
     }
 
     /**
@@ -53,7 +53,7 @@ public abstract class AbstractTableFormat {
      * @return a <code>List</code> of keys
      */
     public List<String> getValues(String key) {
-        Map<String, Collection<String>> fetchedInputs = getKeysAndValues();
+        Map<String, Collection<String>> fetchedInputs = getPairs();
         if (fetchedInputs.containsKey(key)) {
             return new ArrayList<>(fetchedInputs.get(key));
         }

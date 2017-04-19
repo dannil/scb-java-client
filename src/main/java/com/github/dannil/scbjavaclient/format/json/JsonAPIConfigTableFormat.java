@@ -48,7 +48,7 @@ public class JsonAPIConfigTableFormat extends AbstractTableFormat {
     }
 
     @Override
-    public Map<String, Collection<String>> getKeysAndValues() {
+    public Map<String, Collection<String>> getPairs() {
         if (this.inputs != null) {
             return this.inputs;
         }

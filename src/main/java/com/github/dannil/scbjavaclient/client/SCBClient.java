@@ -153,14 +153,14 @@ public class SCBClient extends AbstractContainerClient {
      *            the table to fetch the inputs from
      * @return a collection of all codes and their respective values
      *
-     * @see com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat#getKeysAndValues()
-     *      JsonAPITableFormat#getKeysAndValues()
+     * @see com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat#getPairs()
+     *      JsonAPITableFormat#getPairs()
      */
     public Map<String, Collection<String>> getInputs(String table) {
         String url = getUrl() + table;
         String json = doGetRequest(url);
 
-        return new JsonAPITableFormat(json).getKeysAndValues();
+        return new JsonAPITableFormat(json).getPairs();
     }
 
     /**
@@ -243,7 +243,7 @@ public class SCBClient extends AbstractContainerClient {
         JsonAPIConfigTableFormat format = new JsonAPIConfigTableFormat(json);
 
         Map<String, String> config = new HashMap<>();
-        for (Entry<String, Collection<String>> entry : format.getKeysAndValues().entrySet()) {
+        for (Entry<String, Collection<String>> entry : format.getPairs().entrySet()) {
             Iterator<String> it = entry.getValue().iterator();
             config.put(entry.getKey(), it.next());
         }
