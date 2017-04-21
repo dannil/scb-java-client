@@ -65,7 +65,6 @@ public final class JsonCustomResponseFormat {
         if (!this.entries.isEmpty()) {
             return this.entries;
         }
-
         JsonNode columns = this.json.get("columns");
         JsonNode data = this.json.get("data");
 
