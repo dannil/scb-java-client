@@ -43,8 +43,8 @@ public class JsonAPITableFormatTest {
     }
 
     @Test
-    public void getInputs() {
-        Map<String, Collection<String>> extractedInputs = this.format.getInputs();
+    public void getKeysAndValues() {
+        Map<String, Collection<String>> extractedInputs = this.format.getKeysAndValues();
 
         Map<String, Collection<String>> staticInputs = new HashMap<String, Collection<String>>();
         staticInputs.put("Region", Arrays.asList("00", "01", "0114"));
@@ -69,11 +69,11 @@ public class JsonAPITableFormatTest {
     }
 
     @Test
-    public void getInputsReturnCache() {
-        Map<String, Collection<String>> extractedInputs = this.format.getInputs();
+    public void getKeysAndValuesReturnCache() {
+        Map<String, Collection<String>> extractedInputs = this.format.getKeysAndValues();
 
         // A second call to getInputs() triggers the return of the cache
-        extractedInputs = this.format.getInputs();
+        extractedInputs = this.format.getKeysAndValues();
 
         Map<String, Collection<String>> staticInputs = new HashMap<String, Collection<String>>();
         staticInputs.put("Region", Arrays.asList("00", "01", "0114"));
@@ -98,8 +98,8 @@ public class JsonAPITableFormatTest {
     }
 
     @Test
-    public void getCodes() {
-        List<String> extractedCodes = this.format.getCodes();
+    public void getKeys() {
+        List<String> extractedCodes = this.format.getKeys();
         List<String> staticCodes = Arrays.asList("Region", "Civilstand", "Alder", "Kon", "ContentsCode", "Tid");
 
         assertTrue(extractedCodes.containsAll(staticCodes));
@@ -107,18 +107,18 @@ public class JsonAPITableFormatTest {
     }
 
     @Test
-    public void getCodesEmpty() {
+    public void getKeysAndValuesEmpty() {
         String json = "{\"title\":\"Folkmängdenefterregion,civilstånd,ålder,kön,tabellinnehållochår\",\"variables\":[]}";
 
         JsonAPITableFormat format = new JsonAPITableFormat(json);
-        List<String> codes = format.getCodes();
+        List<String> codes = format.getKeys();
 
         assertEquals(0, codes.size());
     }
 
     @Test
     public void getValues() {
-        List<String> extractedCodes = this.format.getCodes();
+        List<String> extractedCodes = this.format.getKeys();
 
         Map<String, Collection<String>> staticInputs = new HashMap<String, Collection<String>>();
         staticInputs.put("Region", Arrays.asList("00", "01", "0114"));

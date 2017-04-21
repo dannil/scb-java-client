@@ -23,30 +23,46 @@ import java.util.Map;
  * variable which contains the JSON which should be operated on by the methods.</p>
  *
  * @since 0.1.0
+ *
+ * @deprecated use {@link com.github.dannil.scbjavaclient.format.AbstractTableFormat
+ *             AbstractTableFormat} instead
  */
+@Deprecated
 public interface IJsonTableFormat {
 
     /**
-     * <p>Extracts the codes and their respective values from the JSON.</p>
+     * <p>Extracts the keys and their respective values from the JSON.</p>
      *
-     * @return a collection of all codes and their respective values
+     * @return a <code>Map</code> of all keys and their respective values
+     *
+     * @deprecated use {@link com.github.dannil.scbjavaclient.format.AbstractTableFormat
+     *             AbstractTableFormat} instead
      */
-    Map<String, Collection<String>> getInputs();
+    @Deprecated
+    Map<String, Collection<String>> getKeysAndValues();
 
     /**
-     * <p>Extracts the values for a code from the JSON.</p>
+     * <p>Extracts the values for a key from the JSON.</p>
      *
-     * @param code
-     *            the code
-     * @return a list of values
+     * @param key
+     *            the key
+     * @return a <code>List</code> of values
+     *
+     * @deprecated use {@link com.github.dannil.scbjavaclient.format.AbstractTableFormat
+     *             AbstractTableFormat} instead
      */
-    List<String> getValues(String code);
+    @Deprecated
+    List<String> getValues(String key);
 
     /**
      * <p>Extracts the codes from the JSON.</p>
      *
-     * @return a list of codes
+     * @return a <code>List</code> of keys
+     *
+     * @deprecated use {@link com.github.dannil.scbjavaclient.format.AbstractTableFormat
+     *             AbstractTableFormat} instead
      */
-    List<String> getCodes();
+    @Deprecated
+    List<String> getKeys();
 
 }

@@ -16,14 +16,13 @@ package com.github.dannil.scbjavaclient.format.json;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.github.dannil.scbjavaclient.format.AbstractTableFormat;
 
 /**
  * <p>Class which encapsulates behavior for the JSON API config table format. Note that
@@ -32,7 +31,7 @@ import com.fasterxml.jackson.databind.JsonNode;
  *
  * @since 0.2.0
  */
-public class JsonAPIConfigTableFormat implements IJsonTableFormat {
+public class JsonAPIConfigTableFormat extends AbstractTableFormat {
 
     private JsonNode json;
 
@@ -49,13 +48,11 @@ public class JsonAPIConfigTableFormat implements IJsonTableFormat {
     }
 
     @Override
-    public Map<String, Collection<String>> getInputs() {
+    public Map<String, Collection<String>> getKeysAndValues() {
         if (this.inputs != null) {
             return this.inputs;
         }
-
         this.inputs = new HashMap<>();
-
         Iterator<Entry<String, JsonNode>> nodes = this.json.fields();
         while (nodes.hasNext()) {
             Entry<String, JsonNode> entry = nodes.next();
@@ -65,22 +62,7 @@ public class JsonAPIConfigTableFormat implements IJsonTableFormat {
 
             this.inputs.put(entry.getKey(), values);
         }
-
         return this.inputs;
-    }
-
-    @Override
-    public List<String> getCodes() {
-        return new ArrayList<>(getInputs().keySet());
-    }
-
-    @Override
-    public List<String> getValues(String code) {
-        Map<String, Collection<String>> fetchedInputs = getInputs();
-        if (fetchedInputs.containsKey(code)) {
-            return new ArrayList<>(fetchedInputs.get(code));
-        }
-        return Collections.emptyList();
     }
 
     @Override

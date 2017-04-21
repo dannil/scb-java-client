@@ -16,12 +16,12 @@ package com.github.dannil.scbjavaclient.format.json;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.github.dannil.scbjavaclient.format.AbstractTableFormat;
 
 /**
  * <p>Class which encapsulates behavior for the JSON API table format. Note that this
@@ -30,7 +30,7 @@ import com.fasterxml.jackson.databind.JsonNode;
  *
  * @since 0.1.0
  */
-public class JsonAPITableFormat implements IJsonTableFormat {
+public class JsonAPITableFormat extends AbstractTableFormat {
 
     private JsonNode json;
 
@@ -47,14 +47,12 @@ public class JsonAPITableFormat implements IJsonTableFormat {
     }
 
     @Override
-    public Map<String, Collection<String>> getInputs() {
+    public Map<String, Collection<String>> getKeysAndValues() {
         if (this.inputs != null) {
             return this.inputs;
         }
-
         JsonNode variables = this.json.get("variables");
-
-        Map<String, Collection<String>> fetchedInputs = new HashMap<>();
+        this.inputs = new HashMap<>();
         for (int i = 0; i < variables.size(); i++) {
             JsonNode entry = variables.get(i);
             List<String> values = new ArrayList<>();
@@ -62,26 +60,9 @@ public class JsonAPITableFormat implements IJsonTableFormat {
             for (int j = 0; j < valuesNode.size(); j++) {
                 values.add(valuesNode.get(j).asText());
             }
-            fetchedInputs.put(entry.get("code").asText(), values);
+            this.inputs.put(entry.get("code").asText(), values);
         }
-
-        this.inputs = fetchedInputs;
-
-        return fetchedInputs;
-    }
-
-    @Override
-    public List<String> getCodes() {
-        return new ArrayList<>(getInputs().keySet());
-    }
-
-    @Override
-    public List<String> getValues(String code) {
-        Map<String, Collection<String>> fetchedInputs = getInputs();
-        if (fetchedInputs.containsKey(code)) {
-            return new ArrayList<>(fetchedInputs.get(code));
-        }
-        return Collections.emptyList();
+        return this.inputs;
     }
 
     @Override

@@ -20,7 +20,7 @@ matrix:
       script:
         - mvn install -B -V
         # Make sure we are on dev for running SonarQube
-        - if [[ $TRAVIS_BRANCH == dev ]]; then mvn sonar:sonar -Dsonar.host.url=https://sonarqube.com -Dsonar.login=$SONARQUBE_TOKEN; fi
+        - mvn sonar:sonar -Dsonar.host.url=https://sonarqube.com -Dsonar.login=$SONARQUBE_TOKEN
 
 install:
 - true
