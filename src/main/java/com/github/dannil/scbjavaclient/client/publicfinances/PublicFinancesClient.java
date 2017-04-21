@@ -17,8 +17,11 @@ package com.github.dannil.scbjavaclient.client.publicfinances;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
+import com.github.dannil.scbjavaclient.client.publicfinances.annualaccounts.PublicFinancesAnnualAccountsClient;
+import com.github.dannil.scbjavaclient.client.publicfinances.assetsandliabilities.PublicFinancesAssetsAndLiabilitiesClient;
 import com.github.dannil.scbjavaclient.client.publicfinances.governmentdebt.PublicFinancesGovernmentDebtClient;
 import com.github.dannil.scbjavaclient.client.publicfinances.localtaxes.PublicFinancesLocalTaxesClient;
+import com.github.dannil.scbjavaclient.client.publicfinances.publiclyownedenterprises.PublicFinancesPubliclyOwnedEnterprisesClient;
 import com.github.dannil.scbjavaclient.client.publicfinances.taxassessment.PublicFinancesTaxAssessmentClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
@@ -35,8 +38,11 @@ public class PublicFinancesClient extends AbstractContainerClient {
     public PublicFinancesClient() {
         super();
 
+        addClient("annualaccounts", new PublicFinancesAnnualAccountsClient());
+        addClient("assetsandliabilities", new PublicFinancesAssetsAndLiabilitiesClient());
         addClient("governmentdebt", new PublicFinancesGovernmentDebtClient());
         addClient("localtaxes", new PublicFinancesLocalTaxesClient());
+        addClient("publiclyownedenterprises", new PublicFinancesPubliclyOwnedEnterprisesClient());
         addClient("taxassessment", new PublicFinancesTaxAssessmentClient());
     }
 
@@ -50,6 +56,26 @@ public class PublicFinancesClient extends AbstractContainerClient {
         this();
 
         setLocale(locale);
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with public finances annual accounts
+     * data.</p>
+     *
+     * @return a client for public finances annual accounts data
+     */
+    public PublicFinancesAnnualAccountsClient annualAccounts() {
+        return (PublicFinancesAnnualAccountsClient) getClient("annualaccounts");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with public finances assets and liabilities
+     * data.</p>
+     *
+     * @return a client for public finances assets and liabilities data
+     */
+    public PublicFinancesAssetsAndLiabilitiesClient assetsAndLiabilities() {
+        return (PublicFinancesAssetsAndLiabilitiesClient) getClient("assetsandliabilities");
     }
 
     /**
@@ -69,6 +95,16 @@ public class PublicFinancesClient extends AbstractContainerClient {
      */
     public PublicFinancesLocalTaxesClient localTaxes() {
         return (PublicFinancesLocalTaxesClient) getClient("localtaxes");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with public finances publicly owned
+     * enterprises data.</p>
+     *
+     * @return a client for public finances publicly owned enterprises data
+     */
+    public PublicFinancesPubliclyOwnedEnterprisesClient publiclyOwnedEnterprises() {
+        return (PublicFinancesPubliclyOwnedEnterprisesClient) getClient("publiclyownedenterprises");
     }
 
     /**

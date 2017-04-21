@@ -80,7 +80,7 @@ public class BusinessActivitiesIndustrialInventoriesInventoriesClient extends Ab
             Collection<String> industrialClassifications, Collection<String> quarters) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("Lagertyp", inventoryTypes);
-        mappings.put("SNI2007", industrialClassifications);
+        mappings.put(APIConstants.SNI2007_CODE, industrialClassifications);
         mappings.put(APIConstants.TIME_CODE, quarters);
 
         return getResponseModels("IndLagerSNI07Kv", mappings);

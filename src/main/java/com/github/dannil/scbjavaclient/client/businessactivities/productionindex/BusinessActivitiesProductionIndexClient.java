@@ -76,7 +76,7 @@ public class BusinessActivitiesProductionIndexClient extends AbstractClient {
     public List<ResponseModel> getBusinessProductionIndex(Collection<String> industrialClassifications,
             Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("SNI2007", industrialClassifications);
+        mappings.put(APIConstants.SNI2007_CODE, industrialClassifications);
         mappings.put(APIConstants.TIME_CODE, months);
 
         return getResponseModels("NV0004T1", mappings);

@@ -160,7 +160,7 @@ public class TestIT {
                 String sub = packageName.substring(beginIndex);
                 String lastPart = sub.replace(".", "").concat("client");
 
-                if (!clazz.getSimpleName().toLowerCase().contains(lastPart)) {
+                if (clazz.getSimpleName().toLowerCase().indexOf(lastPart) > 0) {
                     matchedClasses.add(clazz);
                 }
             } catch (ClassNotFoundException e) {
