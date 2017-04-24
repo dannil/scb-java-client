@@ -57,7 +57,7 @@ public class LabourMarketShortTermEmploymentSickLeaveClient extends AbstractClie
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @see #getGrossPay(Collection, Collection)
+     * @see #getProportionOfAbsentEmployees(Collection, Collection)
      */
     public List<ResponseModel> getProportionOfAbsentEmployees() {
         return getProportionOfAbsentEmployees(null, null);
