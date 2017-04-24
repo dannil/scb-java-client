@@ -49,18 +49,18 @@ This demonstrates the typical usage of the client.
 SCBClient client = new SCBClient();
 
 // Retrieve some client(s) matching the table(s) you want to fetch information from
-PopulationDemographyClient populationDemographyClient = client.population().demography();
-PopulationAmountClient populationAmountClient = client.population().amount();
+PopulationDemographyClient demographyClient = client.population().demography();
+PublicFinancesGovernmentDebtClient debtClient = client.publicFinances().governmentDebt();
 
-// Retrieve all population statistics
-List<Population> populationData = populationAmountClient.getPopulation();
+// Retrieve all mean age for first child birth data
+List<ResponseModel> firstChildData = demographyClient.getMeanAgeFirstChild();
 
-// Retrieve all mean age for first child birth statistics
-List<MeanAgeFirstChild> firstChildData = populationDemographyClient.getMeanAgeFirstChild();
+// Retrieve all government debt data
+List<ResponseModel> debtData = debtClient.getGovernmentDebt();
 
-// You may also want to skip the explicit creation of the matching client and fetch data 
-// directly from the method calls.
-List<Density> densityData = client.population().density().getDensity();
+// You may also want to skip the explicit creation of the client and fetch data
+// directly from the method call.
+List<ResponseModel> densityData = client.population().statistics().density().getDensity();
 ```
 
 The client also supports selecting specific values directly from the SCB API.
@@ -86,7 +86,7 @@ List<String> types = Arrays.asList("01", "02");
 List<Integer> years = null;
 
 // Retrieve all area statistics using the selected values
-List<Area> areas = client.environment().landAndWaterArea().getArea(regions, types, years);
+List<ResponseModel> areas = client.environment().landAndWaterArea().getArea(regions, types, years);
 ```
 
 If you're interested in fetching all JSON data from a particular table that hasn't been 
