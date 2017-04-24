@@ -64,8 +64,7 @@ public class LabourMarketShortTermEmploymentPopulationClient extends AbstractCli
     }
 
     /**
-     * <p>Fetch all proportion of absent employees data which match the input
-     * constraints.</p>
+     * <p>Fetch all number of employees data which match the input constraints.</p>
      *
      * @param regions
      *            the regions
