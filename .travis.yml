@@ -3,6 +3,7 @@ language: java
 branches:
   except:
   - gh-pages
+  - /^tag.*$/
 
 env:
   global:
