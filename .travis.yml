@@ -19,15 +19,17 @@ matrix:
       jdk: oraclejdk8
       # SonarQube needs to be run with at least Java 8
       script:
-        - mvn install -B -V
+        - mvn install -B -V -q
         # Make sure we are on dev for running SonarQube
         - if [[ $TRAVIS_BRANCH == dev ]]; then mvn sonar:sonar -Dsonar.host.url=https://sonarqube.com -Dsonar.login=$SONARQUBE_TOKEN; fi
+      after_success:
+      - true
 
 install:
 - true
 
 script:
-- mvn install -B -V
+- mvn install -B -V -q
 
 after_success:
 - mvn com.gavinmogan:codacy-maven-plugin:coverage -DcoverageReportFile=target/site/jacoco/jacoco.xml -DprojectToken=$CODACY_PROJECT_TOKEN -DapiToken=$CODACY_API_TOKEN
