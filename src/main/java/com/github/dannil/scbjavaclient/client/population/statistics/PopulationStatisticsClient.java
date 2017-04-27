@@ -24,6 +24,7 @@ import com.github.dannil.scbjavaclient.client.population.statistics.averageage.P
 import com.github.dannil.scbjavaclient.client.population.statistics.density.PopulationStatisticsDensityClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.foreigncitizens.PopulationStatisticsForeignCitizensClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.livebirths.PopulationStatisticsLiveBirthsClient;
+import com.github.dannil.scbjavaclient.client.population.statistics.migration.PopulationStatisticsMigrationClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.partnership.PopulationStatisticsPartnershipClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
@@ -47,6 +48,7 @@ public class PopulationStatisticsClient extends AbstractContainerClient {
         addClient("density", new PopulationStatisticsDensityClient());
         addClient("foreigncitizens", new PopulationStatisticsForeignCitizensClient());
         addClient("livebirths", new PopulationStatisticsLiveBirthsClient());
+        addClient("migration", new PopulationStatisticsMigrationClient());
         addClient("partnership", new PopulationStatisticsPartnershipClient());
     }
 
@@ -129,6 +131,16 @@ public class PopulationStatisticsClient extends AbstractContainerClient {
      */
     public PopulationStatisticsLiveBirthsClient liveBirths() {
         return (PopulationStatisticsLiveBirthsClient) getClient("livebirths");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with population statistics migration data.
+     * </p>
+     *
+     * @return a client for population statistics migration data
+     */
+    public PopulationStatisticsMigrationClient migration() {
+        return (PopulationStatisticsMigrationClient) getClient("migration");
     }
 
     /**
