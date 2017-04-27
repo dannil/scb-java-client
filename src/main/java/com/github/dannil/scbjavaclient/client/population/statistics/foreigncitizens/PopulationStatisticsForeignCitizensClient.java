@@ -14,10 +14,16 @@
 
 package com.github.dannil.scbjavaclient.client.population.statistics.foreigncitizens;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles population statistics foreign citizens data fetching.</p>
@@ -42,8 +48,45 @@ public class PopulationStatisticsForeignCitizensClient extends AbstractClient {
     public PopulationStatisticsForeignCitizensClient(Locale locale) {
         super(locale);
     }
-    
-    TODO
+
+    /**
+     * <p>Fetch all foreign citizens data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getLiveBirths(Collection, Collection, Collection, Collection)
+     */
+    public List<ResponseModel> getForeignCitizens() {
+        return getForeignCitizens(null, null, null, null);
+    }
+
+    /**
+     * <p>Fetch all foreign citizens data which match the input constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param ages
+     *            the ages
+     * @param sexes
+     *            the sexes
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getForeignCitizens(Collection<String> regions, Collection<String> ages,
+            Collection<Integer> sexes, Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.REGION_CODE, regions);
+        mappings.put(APIConstants.AGE_CODE, ages);
+        mappings.put(APIConstants.SEX_CODE, sexes);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("UtlmedbTotNK", mappings);
+    }
 
     @Override
     public URLEndpoint getUrl() {

@@ -22,6 +22,7 @@ import com.github.dannil.scbjavaclient.client.population.statistics.amount.Popul
 import com.github.dannil.scbjavaclient.client.population.statistics.asylumseekers.PopulationStatisticsAsylumSeekersClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.averageage.PopulationStatisticsAverageAgeClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.density.PopulationStatisticsDensityClient;
+import com.github.dannil.scbjavaclient.client.population.statistics.foreigncitizens.PopulationStatisticsForeignCitizensClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.livebirths.PopulationStatisticsLiveBirthsClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.partnership.PopulationStatisticsPartnershipClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
@@ -44,6 +45,7 @@ public class PopulationStatisticsClient extends AbstractContainerClient {
         addClient("asylumseekers", new PopulationStatisticsAsylumSeekersClient());
         addClient("averageage", new PopulationStatisticsAverageAgeClient());
         addClient("density", new PopulationStatisticsDensityClient());
+        addClient("foreigncitizens", new PopulationStatisticsForeignCitizensClient());
         addClient("livebirths", new PopulationStatisticsLiveBirthsClient());
         addClient("partnership", new PopulationStatisticsPartnershipClient());
     }
@@ -107,6 +109,16 @@ public class PopulationStatisticsClient extends AbstractContainerClient {
      */
     public PopulationStatisticsDensityClient density() {
         return (PopulationStatisticsDensityClient) getClient("density");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with population statistics foreign citizens
+     * data. </p>
+     *
+     * @return a client for population statistics foreign citizens data
+     */
+    public PopulationStatisticsForeignCitizensClient foreignCitizens() {
+        return (PopulationStatisticsForeignCitizensClient) getClient("foreigncitizens");
     }
 
     /**
