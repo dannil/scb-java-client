@@ -19,6 +19,7 @@ import java.util.Locale;
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.adoptees.PopulationStatisticsAdopteesClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.amount.PopulationStatisticsAmountClient;
+import com.github.dannil.scbjavaclient.client.population.statistics.asylumseekers.PopulationStatisticsAsylumSeekersClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.averageage.PopulationStatisticsAverageAgeClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.density.PopulationStatisticsDensityClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.livebirths.PopulationStatisticsLiveBirthsClient;
@@ -40,6 +41,7 @@ public class PopulationStatisticsClient extends AbstractContainerClient {
 
         addClient("adoptees", new PopulationStatisticsAdopteesClient());
         addClient("amount", new PopulationStatisticsAmountClient());
+        addClient("asylumseekers", new PopulationStatisticsAsylumSeekersClient());
         addClient("averageage", new PopulationStatisticsAverageAgeClient());
         addClient("density", new PopulationStatisticsDensityClient());
         addClient("livebirths", new PopulationStatisticsLiveBirthsClient());
@@ -75,6 +77,16 @@ public class PopulationStatisticsClient extends AbstractContainerClient {
      */
     public PopulationStatisticsAmountClient amount() {
         return (PopulationStatisticsAmountClient) getClient("amount");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with population statistics asylum seekers
+     * data.</p>
+     *
+     * @return a client for population statistics asylum seekers data
+     */
+    public PopulationStatisticsAsylumSeekersClient asylumSeekers() {
+        return (PopulationStatisticsAsylumSeekersClient) getClient("asylumseekers");
     }
 
     /**

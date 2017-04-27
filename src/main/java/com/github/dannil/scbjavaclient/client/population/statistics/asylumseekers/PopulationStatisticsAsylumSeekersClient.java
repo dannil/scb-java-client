@@ -14,10 +14,16 @@
 
 package com.github.dannil.scbjavaclient.client.population.statistics.asylumseekers;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles population statistics asylum seekers data fetching.</p>
@@ -42,8 +48,82 @@ public class PopulationStatisticsAsylumSeekersClient extends AbstractClient {
     public PopulationStatisticsAsylumSeekersClient(Locale locale) {
         super(locale);
     }
-    
-    TODO
+
+    /**
+     * <p>Fetch all asylum seekers data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getAsylumSeekers(Collection, Collection, Collection)
+     */
+    public List<ResponseModel> getAsylumSeekers() {
+        return getAsylumSeekers(null, null, null);
+    }
+
+    /**
+     * <p>Fetch all asylum seekers data which match the input constraints.</p>
+     * 
+     * @param countriesOfCitizenships
+     *            the countries of citizenships
+     * @param sexes
+     *            the sexes
+     * @param years
+     *            the years to fetch data for
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getAsylumSeekers(Collection<String> countriesOfCitizenships, Collection<String> sexes,
+            Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("Medbland", countriesOfCitizenships);
+        mappings.put(APIConstants.SEX_CODE, sexes);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("Asylsokande", mappings);
+    }
+
+    /**
+     * <p>Fetch all unaccompanied refugee minors data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getUnaccompaniedRefugeeMinors(Collection, Collection, Collection, Collection)
+     */
+    public List<ResponseModel> getUnaccompaniedRefugeeMinors() {
+        return getUnaccompaniedRefugeeMinors(null, null, null, null);
+    }
+
+    /**
+     * <p>Fetch all unaccompanied refugee minors data which match the input
+     * constraints.</p>
+     *
+     * @param sexes
+     *            the sexes
+     * @param ages
+     *            the ages
+     * @param countriesOfCitizenships
+     *            the countries of citizenships
+     * @param years
+     *            the years to fetch data for
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getUnaccompaniedRefugeeMinors(Collection<String> sexes, Collection<String> ages,
+            Collection<String> countriesOfCitizenships, Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.SEX_CODE, sexes);
+        mappings.put(APIConstants.AGE_CODE, ages);
+        mappings.put("Medbland", countriesOfCitizenships);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("Ensamkommande", mappings);
+    }
 
     @Override
     public URLEndpoint getUrl() {
