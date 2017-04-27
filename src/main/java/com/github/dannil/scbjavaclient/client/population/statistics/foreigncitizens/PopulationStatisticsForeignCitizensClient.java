@@ -56,7 +56,7 @@ public class PopulationStatisticsForeignCitizensClient extends AbstractClient {
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @see #getLiveBirths(Collection, Collection, Collection, Collection)
+     * @see #getForeignCitizens(Collection, Collection, Collection, Collection)
      */
     public List<ResponseModel> getForeignCitizens() {
         return getForeignCitizens(null, null, null, null);

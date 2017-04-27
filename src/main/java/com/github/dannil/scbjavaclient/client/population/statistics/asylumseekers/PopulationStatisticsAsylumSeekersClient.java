@@ -64,7 +64,7 @@ public class PopulationStatisticsAsylumSeekersClient extends AbstractClient {
 
     /**
      * <p>Fetch all asylum seekers data which match the input constraints.</p>
-     * 
+     *
      * @param countriesOfCitizenships
      *            the countries of citizenships
      * @param sexes
