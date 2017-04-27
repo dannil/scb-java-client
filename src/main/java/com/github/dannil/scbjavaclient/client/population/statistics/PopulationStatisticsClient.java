@@ -21,6 +21,7 @@ import com.github.dannil.scbjavaclient.client.population.statistics.adoptees.Pop
 import com.github.dannil.scbjavaclient.client.population.statistics.amount.PopulationStatisticsAmountClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.asylumseekers.PopulationStatisticsAsylumSeekersClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.averageage.PopulationStatisticsAverageAgeClient;
+import com.github.dannil.scbjavaclient.client.population.statistics.deaths.PopulationStatisticsDeathsClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.density.PopulationStatisticsDensityClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.foreigncitizens.PopulationStatisticsForeignCitizensClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.livebirths.PopulationStatisticsLiveBirthsClient;
@@ -45,6 +46,7 @@ public class PopulationStatisticsClient extends AbstractContainerClient {
         addClient("amount", new PopulationStatisticsAmountClient());
         addClient("asylumseekers", new PopulationStatisticsAsylumSeekersClient());
         addClient("averageage", new PopulationStatisticsAverageAgeClient());
+        addClient("deaths", new PopulationStatisticsDeathsClient());
         addClient("density", new PopulationStatisticsDensityClient());
         addClient("foreigncitizens", new PopulationStatisticsForeignCitizensClient());
         addClient("livebirths", new PopulationStatisticsLiveBirthsClient());
@@ -101,6 +103,15 @@ public class PopulationStatisticsClient extends AbstractContainerClient {
      */
     public PopulationStatisticsAverageAgeClient averageAge() {
         return (PopulationStatisticsAverageAgeClient) getClient("averageage");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with population statistics deaths data. </p>
+     *
+     * @return a client for population statistics deaths data
+     */
+    public PopulationStatisticsDeathsClient deaths() {
+        return (PopulationStatisticsDeathsClient) getClient("deaths");
     }
 
     /**
