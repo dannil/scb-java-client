@@ -37,22 +37,6 @@ public class GoodsAndServicesForeignTradeCNClientIT extends RemoteIntegrationTes
         this.client = new SCBClient().goodsAndServices().foreignTrade().cn();
     }
 
-    // Daniel 2017-04-28: Returns HTTP 403
-    //
-    // @Test
-    // public void getImportsAndExportsOfGoods() {
-    // assertNotEquals(0, this.client.getImportsAndExportsOfGoods().size());
-    // }
-
-    // Daniel 2017-04-28: Returns HTTP 403
-    //
-    // @Test
-    // public void getImportsAndExportsOfGoodsWithParametersEmptyLists() {
-    // assertNotEquals(0,
-    // this.client.getImportsAndExportsOfGoods(Collections.<String>emptyList(),
-    // Collections.<Integer>emptyList()).size());
-    // }
-
     @Test
     public void getImportsAndExportsOfGoodsWithParameters() {
         List<String> commodityGroups = Arrays.asList("0101", "0104");
