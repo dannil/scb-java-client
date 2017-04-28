@@ -17,6 +17,10 @@ package com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
+import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.cn.GoodsAndServicesForeignTradeCNClient;
+import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.economicindicators.GoodsAndServicesForeignTradeEconomicIndicatorsClient;
+import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.sitc.GoodsAndServicesForeignTradeSITCClient;
+import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.spin.GoodsAndServicesForeignTradeSPINClient;
 import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.total.GoodsAndServicesForeignTradeTotalClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
@@ -33,6 +37,10 @@ public class GoodsAndServicesForeignTradeClient extends AbstractContainerClient 
     public GoodsAndServicesForeignTradeClient() {
         super();
 
+        addClient("cn", new GoodsAndServicesForeignTradeCNClient());
+        addClient("economicindicators", new GoodsAndServicesForeignTradeEconomicIndicatorsClient());
+        addClient("sitc", new GoodsAndServicesForeignTradeSITCClient());
+        addClient("spin", new GoodsAndServicesForeignTradeSPINClient());
         addClient("total", new GoodsAndServicesForeignTradeTotalClient());
     }
 
@@ -46,6 +54,49 @@ public class GoodsAndServicesForeignTradeClient extends AbstractContainerClient 
         this();
 
         setLocale(locale);
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with goods and services foreign trade CN
+     * (Combined Nomenclature) data.</p>
+     *
+     * @return a client for goods and services foreign trade CN (Combined Nomenclature)
+     *         data
+     */
+    public GoodsAndServicesForeignTradeCNClient cn() {
+        return (GoodsAndServicesForeignTradeCNClient) getClient("cn");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with goods and services foreign trade
+     * economic indicators data.</p>
+     *
+     * @return a client for goods and services foreign trade economic indicators data
+     */
+    public GoodsAndServicesForeignTradeEconomicIndicatorsClient economicIndicators() {
+        return (GoodsAndServicesForeignTradeEconomicIndicatorsClient) getClient("economicindicators");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with goods and services foreign trade SITC
+     * (Standard International Trade Classification) data.</p>
+     *
+     * @return a client for goods and services foreign trade SITC (Standard International
+     *         Trade Classification) data
+     */
+    public GoodsAndServicesForeignTradeSITCClient sitc() {
+        return (GoodsAndServicesForeignTradeSITCClient) getClient("sitc");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with goods and services foreign trade SPIN
+     * (Swedish Standard Classification of Products by Activity) data.</p>
+     *
+     * @return a client for goods and services foreign trade SPIN (Swedish Standard
+     *         Classification of Products by Activity) data
+     */
+    public GoodsAndServicesForeignTradeSPINClient spin() {
+        return (GoodsAndServicesForeignTradeSPINClient) getClient("spin");
     }
 
     /**

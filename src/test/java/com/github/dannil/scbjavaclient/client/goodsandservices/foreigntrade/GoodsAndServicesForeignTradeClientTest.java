@@ -18,6 +18,10 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
+import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.cn.GoodsAndServicesForeignTradeCNClient;
+import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.economicindicators.GoodsAndServicesForeignTradeEconomicIndicatorsClient;
+import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.sitc.GoodsAndServicesForeignTradeSITCClient;
+import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.spin.GoodsAndServicesForeignTradeSPINClient;
 import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.total.GoodsAndServicesForeignTradeTotalClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
@@ -34,6 +38,35 @@ public class GoodsAndServicesForeignTradeClientTest {
         GoodsAndServicesForeignTradeClient client = new GoodsAndServicesForeignTradeClient(locale);
 
         assertEquals(locale, client.getLocale());
+    }
+
+    @Test
+    public void cnClient() {
+        GoodsAndServicesForeignTradeClient client = new GoodsAndServicesForeignTradeClient();
+
+        assertEquals(client.cn().getClass(), GoodsAndServicesForeignTradeCNClient.class);
+    }
+
+    @Test
+    public void economicIndicatorsClient() {
+        GoodsAndServicesForeignTradeClient client = new GoodsAndServicesForeignTradeClient();
+
+        assertEquals(client.economicIndicators().getClass(),
+                GoodsAndServicesForeignTradeEconomicIndicatorsClient.class);
+    }
+
+    @Test
+    public void sitcClient() {
+        GoodsAndServicesForeignTradeClient client = new GoodsAndServicesForeignTradeClient();
+
+        assertEquals(client.sitc().getClass(), GoodsAndServicesForeignTradeSITCClient.class);
+    }
+
+    @Test
+    public void spinClient() {
+        GoodsAndServicesForeignTradeClient client = new GoodsAndServicesForeignTradeClient();
+
+        assertEquals(client.spin().getClass(), GoodsAndServicesForeignTradeSPINClient.class);
     }
 
     @Test
