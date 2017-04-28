@@ -67,7 +67,7 @@ public class GoodsAndServicesFoodSalesClient extends AbstractClient {
      * constraints.</p>
      *
      * @param productGroups
-     *            the regions to fetch data for
+     *            the product groups to fetch data for
      * @param years
      *            the years to fetch data for
      * @return the data wrapped in a list of
@@ -100,7 +100,7 @@ public class GoodsAndServicesFoodSalesClient extends AbstractClient {
      * the input constraints.</p>
      *
      * @param productGroups
-     *            the regions to fetch data for
+     *            the product groups to fetch data for
      * @param years
      *            the years to fetch data for
      * @return the data wrapped in a list of
