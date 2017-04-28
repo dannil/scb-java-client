@@ -18,6 +18,7 @@ import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.goodsandservices.foodsales.GoodsAndServicesFoodSalesClient;
+import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.GoodsAndServicesForeignTradeClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 /**
@@ -34,6 +35,7 @@ public class GoodsAndServicesClient extends AbstractContainerClient {
         super();
 
         addClient("foodsales", new GoodsAndServicesFoodSalesClient());
+        addClient("foreigntrade", new GoodsAndServicesForeignTradeClient());
     }
 
     /**
@@ -55,6 +57,16 @@ public class GoodsAndServicesClient extends AbstractContainerClient {
      */
     public GoodsAndServicesFoodSalesClient foodSales() {
         return (GoodsAndServicesFoodSalesClient) getClient("foodsales");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with goods and services foreign trade
+     * data.</p>
+     *
+     * @return a client for goods and services foreign trade data
+     */
+    public GoodsAndServicesForeignTradeClient foreignTrade() {
+        return (GoodsAndServicesForeignTradeClient) getClient("foreigntrade");
     }
 
     @Override

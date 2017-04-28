@@ -12,14 +12,13 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.goodsandservices;
+package com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade;
 
 import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.client.goodsandservices.foodsales.GoodsAndServicesFoodSalesClient;
-import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.GoodsAndServicesForeignTradeClient;
+import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.total.GoodsAndServicesForeignTradeTotalClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;
@@ -27,28 +26,21 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class GoodsAndServicesClientTest {
+public class GoodsAndServicesForeignTradeClientTest {
 
     @Test
     public void createWithLocaleConstructor() {
         Locale locale = new Locale("sv", "SE");
-        GoodsAndServicesClient client = new GoodsAndServicesClient(locale);
+        GoodsAndServicesForeignTradeClient client = new GoodsAndServicesForeignTradeClient(locale);
 
         assertEquals(locale, client.getLocale());
     }
 
     @Test
-    public void foodSalesClient() {
-        GoodsAndServicesClient client = new GoodsAndServicesClient();
+    public void totalClient() {
+        GoodsAndServicesForeignTradeClient client = new GoodsAndServicesForeignTradeClient();
 
-        assertEquals(client.foodSales().getClass(), GoodsAndServicesFoodSalesClient.class);
-    }
-
-    @Test
-    public void foreignTradeClient() {
-        GoodsAndServicesClient client = new GoodsAndServicesClient();
-
-        assertEquals(client.foreignTrade().getClass(), GoodsAndServicesForeignTradeClient.class);
+        assertEquals(client.total().getClass(), GoodsAndServicesForeignTradeTotalClient.class);
     }
 
     @Test
@@ -56,9 +48,9 @@ public class GoodsAndServicesClientTest {
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints
         Locale locale = new Locale("en", "US");
-        GoodsAndServicesClient client = new GoodsAndServicesClient(locale);
+        GoodsAndServicesForeignTradeClient client = new GoodsAndServicesForeignTradeClient(locale);
 
-        assertEquals(URLEndpoint.getRootUrl(locale).append("HA"), client.getUrl());
+        assertEquals(URLEndpoint.getRootUrl(locale).append("HA/HA0201/"), client.getUrl());
     }
 
 }
