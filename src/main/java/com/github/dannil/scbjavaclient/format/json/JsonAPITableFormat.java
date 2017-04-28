@@ -43,6 +43,7 @@ public class JsonAPITableFormat extends AbstractTableFormat {
      *            the JSON to format
      */
     public JsonAPITableFormat(String json) {
+        super();
         this.json = new JsonConverter().toNode(json);
     }
 

@@ -19,9 +19,13 @@ import java.util.Locale;
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.adoptees.PopulationStatisticsAdopteesClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.amount.PopulationStatisticsAmountClient;
+import com.github.dannil.scbjavaclient.client.population.statistics.asylumseekers.PopulationStatisticsAsylumSeekersClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.averageage.PopulationStatisticsAverageAgeClient;
+import com.github.dannil.scbjavaclient.client.population.statistics.deaths.PopulationStatisticsDeathsClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.density.PopulationStatisticsDensityClient;
+import com.github.dannil.scbjavaclient.client.population.statistics.foreigncitizens.PopulationStatisticsForeignCitizensClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.livebirths.PopulationStatisticsLiveBirthsClient;
+import com.github.dannil.scbjavaclient.client.population.statistics.migration.PopulationStatisticsMigrationClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.partnership.PopulationStatisticsPartnershipClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
@@ -40,9 +44,13 @@ public class PopulationStatisticsClient extends AbstractContainerClient {
 
         addClient("adoptees", new PopulationStatisticsAdopteesClient());
         addClient("amount", new PopulationStatisticsAmountClient());
+        addClient("asylumseekers", new PopulationStatisticsAsylumSeekersClient());
         addClient("averageage", new PopulationStatisticsAverageAgeClient());
+        addClient("deaths", new PopulationStatisticsDeathsClient());
         addClient("density", new PopulationStatisticsDensityClient());
+        addClient("foreigncitizens", new PopulationStatisticsForeignCitizensClient());
         addClient("livebirths", new PopulationStatisticsLiveBirthsClient());
+        addClient("migration", new PopulationStatisticsMigrationClient());
         addClient("partnership", new PopulationStatisticsPartnershipClient());
     }
 
@@ -78,6 +86,16 @@ public class PopulationStatisticsClient extends AbstractContainerClient {
     }
 
     /**
+     * <p>Retrieve the client for interacting with population statistics asylum seekers
+     * data.</p>
+     *
+     * @return a client for population statistics asylum seekers data
+     */
+    public PopulationStatisticsAsylumSeekersClient asylumSeekers() {
+        return (PopulationStatisticsAsylumSeekersClient) getClient("asylumseekers");
+    }
+
+    /**
      * <p>Retrieve the client for interacting with population statistics average age data.
      * </p>
      *
@@ -85,6 +103,15 @@ public class PopulationStatisticsClient extends AbstractContainerClient {
      */
     public PopulationStatisticsAverageAgeClient averageAge() {
         return (PopulationStatisticsAverageAgeClient) getClient("averageage");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with population statistics deaths data. </p>
+     *
+     * @return a client for population statistics deaths data
+     */
+    public PopulationStatisticsDeathsClient deaths() {
+        return (PopulationStatisticsDeathsClient) getClient("deaths");
     }
 
     /**
@@ -98,6 +125,16 @@ public class PopulationStatisticsClient extends AbstractContainerClient {
     }
 
     /**
+     * <p>Retrieve the client for interacting with population statistics foreign citizens
+     * data. </p>
+     *
+     * @return a client for population statistics foreign citizens data
+     */
+    public PopulationStatisticsForeignCitizensClient foreignCitizens() {
+        return (PopulationStatisticsForeignCitizensClient) getClient("foreigncitizens");
+    }
+
+    /**
      * <p>Retrieve the client for interacting with population statistics live births data.
      * </p>
      *
@@ -105,6 +142,16 @@ public class PopulationStatisticsClient extends AbstractContainerClient {
      */
     public PopulationStatisticsLiveBirthsClient liveBirths() {
         return (PopulationStatisticsLiveBirthsClient) getClient("livebirths");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with population statistics migration data.
+     * </p>
+     *
+     * @return a client for population statistics migration data
+     */
+    public PopulationStatisticsMigrationClient migration() {
+        return (PopulationStatisticsMigrationClient) getClient("migration");
     }
 
     /**
