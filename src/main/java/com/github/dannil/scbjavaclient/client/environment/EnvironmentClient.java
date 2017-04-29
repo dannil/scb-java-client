@@ -17,12 +17,12 @@ package com.github.dannil.scbjavaclient.client.environment;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
-import com.github.dannil.scbjavaclient.client.environment.emissions.EnvironmentEmissionsClient;
+import com.github.dannil.scbjavaclient.client.environment.emissions.EmissionsClient;
 import com.github.dannil.scbjavaclient.client.environment.industrialwateruse.IndustrialWaterUseClient;
 import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.LandAndWaterAreaClient;
 import com.github.dannil.scbjavaclient.client.environment.landuse.LandUseClient;
 import com.github.dannil.scbjavaclient.client.environment.packagingandpackagingwaste.PackagingAndPackagingWasteClient;
-import com.github.dannil.scbjavaclient.client.environment.protectednature.EnvironmentProtectedNatureClient;
+import com.github.dannil.scbjavaclient.client.environment.protectednature.ProtectedNatureClient;
 import com.github.dannil.scbjavaclient.client.environment.waste.WasteClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
@@ -39,12 +39,12 @@ public class EnvironmentClient extends AbstractContainerClient {
     public EnvironmentClient() {
         super();
 
-        addClient("emissions", new EnvironmentEmissionsClient());
+        addClient("emissions", new EmissionsClient());
         addClient("industrialwateruse", new IndustrialWaterUseClient());
         addClient("landandwaterarea", new LandAndWaterAreaClient());
         addClient("landuse", new LandUseClient());
         addClient("packagingandpackagingwaste", new PackagingAndPackagingWasteClient());
-        addClient("protectednature", new EnvironmentProtectedNatureClient());
+        addClient("protectednature", new ProtectedNatureClient());
         addClient("waste", new WasteClient());
     }
 
@@ -65,8 +65,8 @@ public class EnvironmentClient extends AbstractContainerClient {
      *
      * @return a client for environment emissions data
      */
-    public EnvironmentEmissionsClient emissions() {
-        return (EnvironmentEmissionsClient) getClient("emissions");
+    public EmissionsClient emissions() {
+        return (EmissionsClient) getClient("emissions");
     }
 
     /**
@@ -113,8 +113,8 @@ public class EnvironmentClient extends AbstractContainerClient {
      *
      * @return a client for environment protected nature data
      */
-    public EnvironmentProtectedNatureClient protectedNature() {
-        return (EnvironmentProtectedNatureClient) getClient("protectednature");
+    public ProtectedNatureClient protectedNature() {
+        return (ProtectedNatureClient) getClient("protectednature");
     }
 
     /**

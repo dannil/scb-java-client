@@ -43,95 +43,90 @@ public class JsonAPITableFormatTest {
     }
 
     @Test
-    public void getInputs() {
-        Map<String, Collection<String>> extractedInputs = this.format.getInputs();
+    public void getPairs() {
+        Map<String, Collection<String>> extractedPairs = this.format.getPairs();
 
-        Map<String, Collection<String>> staticInputs = new HashMap<String, Collection<String>>();
-        staticInputs.put("Region", Arrays.asList("00", "01", "0114"));
-        staticInputs.put("Civilstand", Arrays.asList("OG", "G", "SK", "ÄNKL"));
-        staticInputs.put("Alder", Arrays.asList("0", "1"));
-        staticInputs.put("Kon", Arrays.asList("1", "2"));
-        staticInputs.put("ContentsCode", Arrays.asList("BE0101N1", "BE0101N2"));
-        staticInputs.put("Tid", Arrays.asList("1968", "1969"));
+        Map<String, Collection<String>> staticPairs = new HashMap<String, Collection<String>>();
+        staticPairs.put("Region", Arrays.asList("00", "01", "0114"));
+        staticPairs.put("Civilstand", Arrays.asList("OG", "G", "SK", "ÄNKL"));
+        staticPairs.put("Alder", Arrays.asList("0", "1"));
+        staticPairs.put("Kon", Arrays.asList("1", "2"));
+        staticPairs.put("ContentsCode", Arrays.asList("BE0101N1", "BE0101N2"));
+        staticPairs.put("Tid", Arrays.asList("1968", "1969"));
 
-        for (Entry<String, Collection<String>> entry : extractedInputs.entrySet()) {
+        for (Entry<String, Collection<String>> entry : extractedPairs.entrySet()) {
             String key = entry.getKey();
             Collection<String> value = entry.getValue();
-
-            assertTrue(staticInputs.get(key).containsAll(value));
+            assertTrue(staticPairs.get(key).containsAll(value));
         }
-        for (Entry<String, Collection<String>> entry : staticInputs.entrySet()) {
+        for (Entry<String, Collection<String>> entry : staticPairs.entrySet()) {
             String key = entry.getKey();
             Collection<String> value = entry.getValue();
-
-            assertTrue(extractedInputs.get(key).containsAll(value));
+            assertTrue(extractedPairs.get(key).containsAll(value));
         }
     }
 
     @Test
-    public void getInputsReturnCache() {
-        Map<String, Collection<String>> extractedInputs = this.format.getInputs();
+    public void getPairsReturnCache() {
+        Map<String, Collection<String>> extractedPairs = this.format.getPairs();
 
-        // A second call to getInputs() triggers the return of the cache
-        extractedInputs = this.format.getInputs();
+        // A second call to getPairs() triggers the return of the cache
+        extractedPairs = this.format.getPairs();
 
-        Map<String, Collection<String>> staticInputs = new HashMap<String, Collection<String>>();
-        staticInputs.put("Region", Arrays.asList("00", "01", "0114"));
-        staticInputs.put("Civilstand", Arrays.asList("OG", "G", "SK", "ÄNKL"));
-        staticInputs.put("Alder", Arrays.asList("0", "1"));
-        staticInputs.put("Kon", Arrays.asList("1", "2"));
-        staticInputs.put("ContentsCode", Arrays.asList("BE0101N1", "BE0101N2"));
-        staticInputs.put("Tid", Arrays.asList("1968", "1969"));
+        Map<String, Collection<String>> staticPairs = new HashMap<String, Collection<String>>();
+        staticPairs.put("Region", Arrays.asList("00", "01", "0114"));
+        staticPairs.put("Civilstand", Arrays.asList("OG", "G", "SK", "ÄNKL"));
+        staticPairs.put("Alder", Arrays.asList("0", "1"));
+        staticPairs.put("Kon", Arrays.asList("1", "2"));
+        staticPairs.put("ContentsCode", Arrays.asList("BE0101N1", "BE0101N2"));
+        staticPairs.put("Tid", Arrays.asList("1968", "1969"));
 
-        for (Entry<String, Collection<String>> entry : extractedInputs.entrySet()) {
+        for (Entry<String, Collection<String>> entry : extractedPairs.entrySet()) {
             String key = entry.getKey();
             Collection<String> value = entry.getValue();
-
-            assertTrue(staticInputs.get(key).containsAll(value));
+            assertTrue(staticPairs.get(key).containsAll(value));
         }
-        for (Entry<String, Collection<String>> entry : staticInputs.entrySet()) {
+        for (Entry<String, Collection<String>> entry : staticPairs.entrySet()) {
             String key = entry.getKey();
             Collection<String> value = entry.getValue();
-
-            assertTrue(extractedInputs.get(key).containsAll(value));
+            assertTrue(extractedPairs.get(key).containsAll(value));
         }
     }
 
     @Test
-    public void getCodes() {
-        List<String> extractedCodes = this.format.getCodes();
-        List<String> staticCodes = Arrays.asList("Region", "Civilstand", "Alder", "Kon", "ContentsCode", "Tid");
+    public void getKeys() {
+        List<String> extractedKeys = this.format.getKeys();
+        List<String> staticKeys = Arrays.asList("Region", "Civilstand", "Alder", "Kon", "ContentsCode", "Tid");
 
-        assertTrue(extractedCodes.containsAll(staticCodes));
-        assertTrue(staticCodes.containsAll(extractedCodes));
+        assertTrue(extractedKeys.containsAll(staticKeys));
+        assertTrue(staticKeys.containsAll(extractedKeys));
     }
 
     @Test
-    public void getCodesEmpty() {
+    public void getPairsEmpty() {
         String json = "{\"title\":\"Folkmängdenefterregion,civilstånd,ålder,kön,tabellinnehållochår\",\"variables\":[]}";
 
         JsonAPITableFormat format = new JsonAPITableFormat(json);
-        List<String> codes = format.getCodes();
+        List<String> keys = format.getKeys();
 
-        assertEquals(0, codes.size());
+        assertEquals(0, keys.size());
     }
 
     @Test
     public void getValues() {
-        List<String> extractedCodes = this.format.getCodes();
+        List<String> extractedKeys = this.format.getKeys();
 
-        Map<String, Collection<String>> staticInputs = new HashMap<String, Collection<String>>();
-        staticInputs.put("Region", Arrays.asList("00", "01", "0114"));
-        staticInputs.put("Civilstand", Arrays.asList("OG", "G", "SK", "ÄNKL"));
-        staticInputs.put("Alder", Arrays.asList("0", "1"));
-        staticInputs.put("Kon", Arrays.asList("1", "2"));
-        staticInputs.put("ContentsCode", Arrays.asList("BE0101N1", "BE0101N2"));
-        staticInputs.put("Tid", Arrays.asList("1968", "1969"));
+        Map<String, Collection<String>> staticPairs = new HashMap<String, Collection<String>>();
+        staticPairs.put("Region", Arrays.asList("00", "01", "0114"));
+        staticPairs.put("Civilstand", Arrays.asList("OG", "G", "SK", "ÄNKL"));
+        staticPairs.put("Alder", Arrays.asList("0", "1"));
+        staticPairs.put("Kon", Arrays.asList("1", "2"));
+        staticPairs.put("ContentsCode", Arrays.asList("BE0101N1", "BE0101N2"));
+        staticPairs.put("Tid", Arrays.asList("1968", "1969"));
 
-        for (String code : extractedCodes) {
-            List<String> extractedValues = this.format.getValues(code);
-
-            assertTrue(staticInputs.get(code).containsAll(extractedValues));
+        for (String key : extractedKeys) {
+            List<String> extractedValues = this.format.getValues(key);
+            assertTrue(staticPairs.get(key).containsAll(extractedValues));
         }
     }
 

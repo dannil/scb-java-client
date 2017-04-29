@@ -118,7 +118,7 @@ public class WasteClient extends AbstractClient {
         mappings.put("Avfallsslag", wasteCategories);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("MI0305T02", mappings);
+        return getResponseModels("MI0305T02N", mappings);
     }
 
     @Override

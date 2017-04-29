@@ -26,6 +26,7 @@ import com.github.dannil.scbjavaclient.client.businessactivities.BusinessActivit
 import com.github.dannil.scbjavaclient.client.energy.EnergyClient;
 import com.github.dannil.scbjavaclient.client.environment.EnvironmentClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.FinancialMarketsClient;
+import com.github.dannil.scbjavaclient.client.goodsandservices.GoodsAndServicesClient;
 import com.github.dannil.scbjavaclient.client.labourmarket.LabourMarketClient;
 import com.github.dannil.scbjavaclient.client.livingconditions.LivingConditionsClient;
 import com.github.dannil.scbjavaclient.client.population.PopulationClient;
@@ -56,6 +57,7 @@ public class SCBClient extends AbstractContainerClient {
         addClient("energy", new EnergyClient());
         addClient("environment", new EnvironmentClient());
         addClient("financialmarkets", new FinancialMarketsClient());
+        addClient("goodsandservices", new GoodsAndServicesClient());
         addClient("labourmarket", new LabourMarketClient());
         addClient("livingconditions", new LivingConditionsClient());
         addClient("population", new PopulationClient());
@@ -111,6 +113,15 @@ public class SCBClient extends AbstractContainerClient {
     }
 
     /**
+     * <p>Retrieve the client for interacting with goods and services data.</p>
+     *
+     * @return a client for goods and services data
+     */
+    public GoodsAndServicesClient goodsAndServices() {
+        return (GoodsAndServicesClient) getClient("goodsandservices");
+    }
+
+    /**
      * <p>Retrieve the client for interacting with labour market data.</p>
      *
      * @return a client for labour market data
@@ -153,14 +164,14 @@ public class SCBClient extends AbstractContainerClient {
      *            the table to fetch the inputs from
      * @return a collection of all codes and their respective values
      *
-     * @see com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat#getInputs()
-     *      JsonAPITableFormat#getInputs()
+     * @see com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat#getPairs()
+     *      JsonAPITableFormat#getPairs()
      */
     public Map<String, Collection<String>> getInputs(String table) {
         String url = getUrl() + table;
         String json = doGetRequest(url);
 
-        return new JsonAPITableFormat(json).getInputs();
+        return new JsonAPITableFormat(json).getPairs();
     }
 
     /**
@@ -243,7 +254,7 @@ public class SCBClient extends AbstractContainerClient {
         JsonAPIConfigTableFormat format = new JsonAPIConfigTableFormat(json);
 
         Map<String, String> config = new HashMap<>();
-        for (Entry<String, Collection<String>> entry : format.getInputs().entrySet()) {
+        for (Entry<String, Collection<String>> entry : format.getPairs().entrySet()) {
             Iterator<String> it = entry.getValue().iterator();
             config.put(entry.getKey(), it.next());
         }

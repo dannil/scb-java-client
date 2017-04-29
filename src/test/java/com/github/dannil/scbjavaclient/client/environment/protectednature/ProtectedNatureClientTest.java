@@ -30,7 +30,7 @@ public class ProtectedNatureClientTest {
     @Test
     public void createWithLocaleConstructor() {
         Locale locale = new Locale("sv", "SE");
-        EnvironmentProtectedNatureClient client = new EnvironmentProtectedNatureClient(locale);
+        ProtectedNatureClient client = new ProtectedNatureClient(locale);
 
         assertEquals(locale, client.getLocale());
     }
@@ -40,7 +40,7 @@ public class ProtectedNatureClientTest {
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints
         Locale locale = new Locale("en", "US");
-        EnvironmentProtectedNatureClient client = new EnvironmentProtectedNatureClient(locale);
+        ProtectedNatureClient client = new ProtectedNatureClient(locale);
 
         assertEquals(URLEndpoint.getRootUrl(locale).append("MI/MI0603/"), client.getUrl());
     }

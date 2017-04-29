@@ -31,7 +31,7 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class UsageClientIT extends RemoteIntegrationTestSuite {
 
-    private LandUseUsageClient client;
+    private UsageClient client;
 
     @Before
     public void setup() {

@@ -174,12 +174,6 @@ public class StatementAccountsCountyClient extends AbstractClient {
         return generate(regions, activities, years, "LamnadeBidragTotalt");
     }
 
-    // Daniel 2017-04-17: Returns HTTP 403
-    //
-    // public List<ResponseModel> getIncomeAndCosts() {
-    // return getIncomeAndCosts(null, null, null);
-    // }
-
     /**
      * <p>Fetch all income and costs data which match the input constraints.</p>
      *

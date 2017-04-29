@@ -18,12 +18,12 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.client.environment.emissions.EnvironmentEmissionsClient;
+import com.github.dannil.scbjavaclient.client.environment.emissions.EmissionsClient;
 import com.github.dannil.scbjavaclient.client.environment.industrialwateruse.IndustrialWaterUseClient;
 import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.LandAndWaterAreaClient;
 import com.github.dannil.scbjavaclient.client.environment.landuse.LandUseClient;
 import com.github.dannil.scbjavaclient.client.environment.packagingandpackagingwaste.PackagingAndPackagingWasteClient;
-import com.github.dannil.scbjavaclient.client.environment.protectednature.EnvironmentProtectedNatureClient;
+import com.github.dannil.scbjavaclient.client.environment.protectednature.ProtectedNatureClient;
 import com.github.dannil.scbjavaclient.client.environment.waste.WasteClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
@@ -46,7 +46,7 @@ public class EnvironmentClientTest {
     public void emissionsClient() {
         EnvironmentClient client = new EnvironmentClient();
 
-        assertEquals(client.emissions().getClass(), EnvironmentEmissionsClient.class);
+        assertEquals(client.emissions().getClass(), EmissionsClient.class);
     }
 
     @Test
@@ -81,7 +81,7 @@ public class EnvironmentClientTest {
     public void protectedNatureClient() {
         EnvironmentClient client = new EnvironmentClient();
 
-        assertEquals(client.protectedNature().getClass(), EnvironmentProtectedNatureClient.class);
+        assertEquals(client.protectedNature().getClass(), ProtectedNatureClient.class);
     }
 
     @Test

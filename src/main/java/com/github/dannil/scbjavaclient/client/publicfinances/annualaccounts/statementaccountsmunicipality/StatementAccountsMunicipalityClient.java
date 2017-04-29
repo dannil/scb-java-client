@@ -33,6 +33,8 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
  */
 public class StatementAccountsMunicipalityClient extends AbstractClient {
 
+    private static final String ACTIVITY_CODE = "Verksomrkom";
+
     /**
      * <p>Default constructor.</p>
      */
@@ -49,12 +51,6 @@ public class StatementAccountsMunicipalityClient extends AbstractClient {
     public StatementAccountsMunicipalityClient(Locale locale) {
         super(locale);
     }
-
-    // Daniel 2017-04-17: Returns HTTP 403
-    //
-    // public List<ResponseModel> getCostsAndIncomes() {
-    // return getCostsAndIncomes(null, null, null);
-    // }
 
     /**
      * <p>Fetch all costs and incomes data which match the input constraints.</p>
@@ -73,7 +69,7 @@ public class StatementAccountsMunicipalityClient extends AbstractClient {
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
-        mappings.put("Verksomrkom", activities);
+        mappings.put(ACTIVITY_CODE, activities);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("KostnDR", mappings);
@@ -110,7 +106,7 @@ public class StatementAccountsMunicipalityClient extends AbstractClient {
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
-        mappings.put("Verksomrkom", activities);
+        mappings.put(ACTIVITY_CODE, activities);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("KopDr", mappings);
@@ -183,7 +179,7 @@ public class StatementAccountsMunicipalityClient extends AbstractClient {
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
-        mappings.put("Verksomrkom", activities);
+        mappings.put(ACTIVITY_CODE, activities);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("Lamnadebidrag", mappings);
@@ -219,7 +215,7 @@ public class StatementAccountsMunicipalityClient extends AbstractClient {
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
-        mappings.put("Verksomrkom", activities);
+        mappings.put(ACTIVITY_CODE, activities);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("Vissaintakter", mappings);

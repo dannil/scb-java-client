@@ -30,12 +30,12 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
  *
  * @since 0.3.0
  */
-public class EnvironmentEmissionsClient extends AbstractClient {
+public class EmissionsClient extends AbstractClient {
 
     /**
      * <p>Default constructor.</p>
      */
-    public EnvironmentEmissionsClient() {
+    public EmissionsClient() {
         super();
     }
 
@@ -45,7 +45,7 @@ public class EnvironmentEmissionsClient extends AbstractClient {
      * @param locale
      *            the <code>Locale</code> for this client
      */
-    public EnvironmentEmissionsClient(Locale locale) {
+    public EmissionsClient(Locale locale) {
         super(locale);
     }
 

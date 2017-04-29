@@ -32,6 +32,8 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
  */
 public class PubliclyOwnedEnterprisesClient extends AbstractClient {
 
+    private static final String OWNERCATEGORY_CODE = "Agarkategori";
+
     /**
      * <p>Default constructor.</p>
      */
@@ -184,7 +186,7 @@ public class PubliclyOwnedEnterprisesClient extends AbstractClient {
             Collection<Integer> typesOfOwnerships, Collection<Integer> legalEntities, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.SECTOR_CODE, sectors);
-        mappings.put("Agarkategori", typesOfOwnerships);
+        mappings.put(OWNERCATEGORY_CODE, typesOfOwnerships);
         mappings.put("Juridiskform", legalEntities);
         mappings.put(APIConstants.TIME_CODE, years);
 
@@ -223,8 +225,8 @@ public class PubliclyOwnedEnterprisesClient extends AbstractClient {
             Collection<String> industrialClassifications, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.SECTOR_CODE, sectors);
-        mappings.put("Agarkategori", typesOfOwnerships);
-        mappings.put("SNI2007", industrialClassifications);
+        mappings.put(OWNERCATEGORY_CODE, typesOfOwnerships);
+        mappings.put(APIConstants.SNI2007_CODE, industrialClassifications);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("OffResultSektor", mappings);
@@ -263,8 +265,8 @@ public class PubliclyOwnedEnterprisesClient extends AbstractClient {
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.SECTOR_CODE, sectors);
-        mappings.put("Agarkategori", typesOfOwnerships);
-        mappings.put("SNI2007", industrialClassifications);
+        mappings.put(OWNERCATEGORY_CODE, typesOfOwnerships);
+        mappings.put(APIConstants.SNI2007_CODE, industrialClassifications);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("OffSkulderSektor", mappings);
@@ -302,8 +304,8 @@ public class PubliclyOwnedEnterprisesClient extends AbstractClient {
             Collection<String> industrialClassifications, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.SECTOR_CODE, sectors);
-        mappings.put("Agarkategori", typesOfOwnerships);
-        mappings.put("SNI2007", industrialClassifications);
+        mappings.put(OWNERCATEGORY_CODE, typesOfOwnerships);
+        mappings.put(APIConstants.SNI2007_CODE, industrialClassifications);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("OffTillgSektor", mappings);

@@ -17,9 +17,9 @@ package com.github.dannil.scbjavaclient.client.environment.landuse;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
-import com.github.dannil.scbjavaclient.client.environment.landuse.buildings.LandUseBuildingsClient;
-import com.github.dannil.scbjavaclient.client.environment.landuse.planning.LandUsePlanningClient;
-import com.github.dannil.scbjavaclient.client.environment.landuse.usage.LandUseUsageClient;
+import com.github.dannil.scbjavaclient.client.environment.landuse.buildings.BuildingsClient;
+import com.github.dannil.scbjavaclient.client.environment.landuse.planning.PlanningClient;
+import com.github.dannil.scbjavaclient.client.environment.landuse.usage.UsageClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 /**
@@ -35,9 +35,9 @@ public class LandUseClient extends AbstractContainerClient {
     public LandUseClient() {
         super();
 
-        addClient("buildings", new LandUseBuildingsClient());
-        addClient("planning", new LandUsePlanningClient());
-        addClient("usage", new LandUseUsageClient());
+        addClient("buildings", new BuildingsClient());
+        addClient("planning", new PlanningClient());
+        addClient("usage", new UsageClient());
     }
 
     /**
@@ -58,8 +58,8 @@ public class LandUseClient extends AbstractContainerClient {
      *
      * @return a client for environment land use buildings data
      */
-    public LandUseBuildingsClient buildings() {
-        return (LandUseBuildingsClient) getClient("buildings");
+    public BuildingsClient buildings() {
+        return (BuildingsClient) getClient("buildings");
     }
 
     /**
@@ -67,8 +67,8 @@ public class LandUseClient extends AbstractContainerClient {
      *
      * @return a client for environment land use planning data
      */
-    public LandUsePlanningClient planning() {
-        return (LandUsePlanningClient) getClient("planning");
+    public PlanningClient planning() {
+        return (PlanningClient) getClient("planning");
     }
 
     /**
@@ -76,8 +76,8 @@ public class LandUseClient extends AbstractContainerClient {
      *
      * @return a client for environment land use usage data
      */
-    public LandUseUsageClient usage() {
-        return (LandUseUsageClient) getClient("usage");
+    public UsageClient usage() {
+        return (UsageClient) getClient("usage");
     }
 
     @Override

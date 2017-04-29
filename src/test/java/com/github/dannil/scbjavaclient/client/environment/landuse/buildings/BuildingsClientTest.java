@@ -30,7 +30,7 @@ public class BuildingsClientTest {
     @Test
     public void createWithLocaleConstructor() {
         Locale locale = new Locale("sv", "SE");
-        LandUseBuildingsClient client = new LandUseBuildingsClient(locale);
+        BuildingsClient client = new BuildingsClient(locale);
 
         assertEquals(locale, client.getLocale());
     }
@@ -40,7 +40,7 @@ public class BuildingsClientTest {
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints
         Locale locale = new Locale("en", "US");
-        LandUseBuildingsClient client = new LandUseBuildingsClient(locale);
+        BuildingsClient client = new BuildingsClient(locale);
 
         assertEquals(URLEndpoint.getRootUrl(locale).append("MI/MI0803/MI0803B/"), client.getUrl());
     }

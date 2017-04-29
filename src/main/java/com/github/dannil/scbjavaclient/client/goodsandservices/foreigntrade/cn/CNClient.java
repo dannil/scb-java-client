@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.environment.landuse.planning;
+package com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.cn;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -26,16 +26,17 @@ import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles environment land use planning data fetching.</p>
+ * <p>Client which handles goods and services foreign trade CN (Combined Nomenclature)
+ * data fetching.</p>
  *
- * @since 0.2.0
+ * @since 0.3.0
  */
-public class LandUsePlanningClient extends AbstractClient {
+public class CNClient extends AbstractClient {
 
     /**
      * <p>Default constructor.</p>
      */
-    public LandUsePlanningClient() {
+    public CNClient() {
         super();
     }
 
@@ -45,45 +46,34 @@ public class LandUsePlanningClient extends AbstractClient {
      * @param locale
      *            the <code>Locale</code> for this client
      */
-    public LandUsePlanningClient(Locale locale) {
+    public CNClient(Locale locale) {
         super(locale);
     }
 
     /**
-     * <p>Fetch all planning data.</p>
+     * <p>Fetch all imports and exports of goods data which match the input
+     * constraints.</p>
      *
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     *
-     * @see #getPlanning(Collection, Collection)
-     */
-    public List<ResponseModel> getPlanning() {
-        return getPlanning(null, null);
-    }
-
-    /**
-     * <p>Fetch all planning data which match the input constraints.</p>
-     *
-     * @param regions
-     *            the regions to fetch data for
+     * @param commodityGroups
+     *            the commodity groups
      * @param years
-     *            the years to fetch data for
+     *            the years
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getPlanning(Collection<String> regions, Collection<Integer> years) {
+    public List<ResponseModel> getImportsAndExportsOfGoods(Collection<String> commodityGroups,
+            Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.REGION_CODE, regions);
+        mappings.put("VarugruppKN", commodityGroups);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("MarkanvFornl", mappings);
+        return getResponseModels("ImpExpKNTotAr", mappings);
     }
 
     @Override
     public URLEndpoint getUrl() {
-        return getRootUrl().append("MI/MI0803/MI0803C/");
+        return getRootUrl().append("HA/HA0201/HA0201B/");
     }
 
 }

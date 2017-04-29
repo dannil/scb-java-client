@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.environment.landuse.buildings;
+package com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.spin;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -26,16 +26,17 @@ import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles environment land use building data fetching.</p>
+ * <p>Client which handles goods and services foreign trade SPIN (Swedish Standard
+ * Classification of Products by Activity) data fetching.</p>
  *
- * @since 0.2.0
+ * @since 0.3.0
  */
-public class LandUseBuildingsClient extends AbstractClient {
+public class SPINClient extends AbstractClient {
 
     /**
      * <p>Default constructor.</p>
      */
-    public LandUseBuildingsClient() {
+    public SPINClient() {
         super();
     }
 
@@ -45,49 +46,46 @@ public class LandUseBuildingsClient extends AbstractClient {
      * @param locale
      *            the <code>Locale</code> for this client
      */
-    public LandUseBuildingsClient(Locale locale) {
+    public SPINClient(Locale locale) {
         super(locale);
     }
 
     /**
-     * <p>Fetch all building data.</p>
+     * <p>Fetch all imports and exports of goods data.</p>
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @see #getBuilding(Collection, Collection, Collection)
+     * @see #getImportsAndExportsOfGoods(Collection, Collection)
      */
-    public List<ResponseModel> getBuilding() {
-        return getBuilding(null, null, null);
+    public List<ResponseModel> getImportsAndExportsOfGoods() {
+        return getImportsAndExportsOfGoods(null, null);
     }
 
     /**
-     * <p>Fetch all building data which match the input constraints.</p>
+     * <p>Fetch all imports and exports of goods data which match the input
+     * constraints.</p>
      *
-     * @param regions
-     *            the regions to fetch data for
-     * @param types
-     *            the types to fetch data for
+     * @param spin2007
+     *            the SPIN 2007
      * @param years
-     *            the years to fetch data for
+     *            the years
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getBuilding(Collection<String> regions, Collection<Integer> types,
-            Collection<Integer> years) {
+    public List<ResponseModel> getImportsAndExportsOfGoods(Collection<String> spin2007, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.REGION_CODE, regions);
-        mappings.put("Byggnadstyp", types);
+        mappings.put("SPIN2007Original", spin2007);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("MarkanvByggnadLnKn", mappings);
+        return getResponseModels("ImpExpSPIN2007TotAr", mappings);
     }
 
     @Override
     public URLEndpoint getUrl() {
-        return getRootUrl().append("MI/MI0803/MI0803B/");
+        return getRootUrl().append("HA/HA0201/HA0201E/");
     }
 
 }

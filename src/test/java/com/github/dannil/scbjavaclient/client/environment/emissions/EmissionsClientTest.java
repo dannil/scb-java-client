@@ -30,7 +30,7 @@ public class EmissionsClientTest {
     @Test
     public void createWithLocaleConstructor() {
         Locale locale = new Locale("sv", "SE");
-        EnvironmentEmissionsClient client = new EnvironmentEmissionsClient(locale);
+        EmissionsClient client = new EmissionsClient(locale);
 
         assertEquals(locale, client.getLocale());
     }
@@ -40,7 +40,7 @@ public class EmissionsClientTest {
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints
         Locale locale = new Locale("en", "US");
-        EnvironmentEmissionsClient client = new EnvironmentEmissionsClient(locale);
+        EmissionsClient client = new EmissionsClient(locale);
 
         assertEquals(URLEndpoint.getRootUrl(locale).append("MI/MI0108/"), client.getUrl());
     }
