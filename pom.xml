@@ -142,8 +142,8 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>2.20</version>
         <configuration>
-          <!-- <forkCount>3</forkCount> -->
-          <!-- <reuseForks>true</reuseForks> -->
+          <forkCount>3</forkCount>
+          <reuseForks>true</reuseForks>
           <argLine>${surefireArgLine} -Xmx1024m -XX:MaxPermSize=256m
             -Dfile.encoding=UTF-8</argLine>
           <!-- <argLine>${surefireArgLine} -Dfile.encoding=UTF-8</argLine> -->
