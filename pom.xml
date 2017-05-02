@@ -146,7 +146,7 @@
         <configuration>
           <forkCount>3</forkCount>
           <reuseForks>true</reuseForks>
-          <argLine>${argLine}</argLine>
+          <!-- <argLine>${argLine}</argLine> -->
           <!-- <argLine>${surefireArgLine} -Dfile.encoding=UTF-8</argLine> -->
         </configuration>
       </plugin>
@@ -157,7 +157,7 @@
         <configuration>
           <!-- <argLine>-Xmx1024m -XX:MaxPermSize=256m -->
           <!-- -Dfile.encoding=UTF-8 ${argLine}</argLine> -->
-          <argLine>${argLine}</argLine>
+          <!-- <argLine>${argLine}</argLine> -->
         </configuration>
         <executions>
           <execution>
