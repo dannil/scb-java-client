@@ -19,6 +19,7 @@ import java.util.Locale;
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.labourmarket.costindex.LabourMarketCostIndexClient;
 import com.github.dannil.scbjavaclient.client.labourmarket.grosspay.LabourMarketGrossPayClient;
+import com.github.dannil.scbjavaclient.client.labourmarket.shorttermemployment.LabourMarketShortTermEmploymentClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 /**
@@ -36,6 +37,7 @@ public class LabourMarketClient extends AbstractContainerClient {
 
         addClient("costindex", new LabourMarketCostIndexClient());
         addClient("grosspay", new LabourMarketGrossPayClient());
+        addClient("shorttermemployment", new LabourMarketShortTermEmploymentClient());
     }
 
     /**
@@ -66,6 +68,16 @@ public class LabourMarketClient extends AbstractContainerClient {
      */
     public LabourMarketGrossPayClient grossPay() {
         return (LabourMarketGrossPayClient) getClient("grosspay");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with labour market short-term employment
+     * data.</p>
+     *
+     * @return a client for labour market short-term employment data
+     */
+    public LabourMarketShortTermEmploymentClient shortTermEmployment() {
+        return (LabourMarketShortTermEmploymentClient) getClient("shorttermemployment");
     }
 
     @Override

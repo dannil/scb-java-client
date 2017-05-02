@@ -44,6 +44,7 @@ public class JsonAPIConfigTableFormat extends AbstractTableFormat {
      *            the JSON to format
      */
     public JsonAPIConfigTableFormat(String json) {
+        super();
         this.json = new JsonConverter().toNode(json);
     }
 
