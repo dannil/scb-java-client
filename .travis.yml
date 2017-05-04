@@ -20,7 +20,7 @@ matrix:
       sudo: required
       jdk: oraclejdk7
     - os: linux
-      dist: precise
+      dist: trusty
       jdk: oraclejdk8
       script:
         - mvn install -B -V 
