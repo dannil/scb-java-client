@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.environment.waste;
+package com.github.dannil.scbjavaclient.client.goodsandservices.foodsales;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -26,16 +26,16 @@ import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles environment waste data fetching.</p>
+ * <p>Client which handles goods and services food sales data fetching.</p>
  *
- * @since 0.2.0
+ * @since 0.3.0
  */
-public class EnvironmentWasteClient extends AbstractClient {
+public class GoodsAndServicesFoodSalesClient extends AbstractClient {
 
     /**
      * <p>Default constructor.</p>
      */
-    public EnvironmentWasteClient() {
+    public GoodsAndServicesFoodSalesClient() {
         super();
     }
 
@@ -45,84 +45,80 @@ public class EnvironmentWasteClient extends AbstractClient {
      * @param locale
      *            the <code>Locale</code> for this client
      */
-    public EnvironmentWasteClient(Locale locale) {
+    public GoodsAndServicesFoodSalesClient(Locale locale) {
         super(locale);
     }
 
     /**
-     * <p>Fetch all generated waste data.</p>
+     * <p>Fetch all turnover of food and drinks data.</p>
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @see #getGeneratedWaste(Collection, Collection, Collection)
+     * @see #getTurnoverOfFoodAndDrinks(Collection, Collection)
      */
-    public List<ResponseModel> getGeneratedWaste() {
-        return getGeneratedWaste(null, null, null);
+    public List<ResponseModel> getTurnoverOfFoodAndDrinks() {
+        return getTurnoverOfFoodAndDrinks(null, null);
     }
 
     /**
-     * <p>Fetch all generated waste data which match the input constraints.</p>
+     * <p>Fetch all turnover of food and drinks data which match the input
+     * constraints.</p>
      *
-     * @param industrialClassification
-     *            the industrial classifications to fetch data for
-     * @param wasteCategories
-     *            the waste categories to fetch data for
+     * @param productGroups
+     *            the product groups to fetch data for
      * @param years
      *            the years to fetch data for
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getGeneratedWaste(Collection<String> industrialClassification,
-            Collection<String> wasteCategories, Collection<Integer> years) {
+    public List<ResponseModel> getTurnoverOfFoodAndDrinks(Collection<String> productGroups, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("SNI2007MI", industrialClassification);
-        mappings.put("Avfallsslag", wasteCategories);
+        mappings.put("Varugrupp", productGroups);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("MI0305T01", mappings);
+        return getResponseModels("Livs", mappings);
     }
 
     /**
-     * <p>Fetch all treated waste data.</p>
+     * <p>Fetch all turnover of ecological food and non alcoholic drinks data.</p>
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @see #getTreatedWaste(Collection, Collection, Collection)
+     * @see #getTurnoverOfEcologicalFoodAndNonAlcoholicDrinks(Collection, Collection)
      */
-    public List<ResponseModel> getTreatedWaste() {
-        return getTreatedWaste(null, null, null);
+    public List<ResponseModel> getTurnoverOfEcologicalFoodAndNonAlcoholicDrinks() {
+        return getTurnoverOfEcologicalFoodAndNonAlcoholicDrinks(null, null);
     }
 
     /**
-     * <p>Fetch all treated waste data which match the input constraints.</p>
+     * <p>Fetch all turnover of ecological food and non alcoholic drinks data which match
+     * the input constraints.</p>
      *
-     * @param treatmentCategories
-     *            the treatment categories to fetch data for
-     * @param wasteCategories
-     *            the waste categories to fetch data for
+     * @param productGroups
+     *            the product groups to fetch data for
      * @param years
      *            the years to fetch data for
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getTreatedWaste(Collection<Integer> treatmentCategories,
-            Collection<String> wasteCategories, Collection<Integer> years) {
+    public List<ResponseModel> getTurnoverOfEcologicalFoodAndNonAlcoholicDrinks(Collection<String> productGroups,
+            Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("BehTyp", treatmentCategories);
-        mappings.put("Avfallsslag", wasteCategories);
+        mappings.put("Varugrupp", productGroups);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("MI0305T02N", mappings);
+        return getResponseModels("Livs", mappings);
     }
 
     @Override
     public URLEndpoint getUrl() {
-        return getRootUrl().append("MI/MI0305/");
+        return getRootUrl().append("HA/HA0103/");
     }
+
 }

@@ -26,6 +26,7 @@ import com.github.dannil.scbjavaclient.client.businessactivities.BusinessActivit
 import com.github.dannil.scbjavaclient.client.energy.EnergyClient;
 import com.github.dannil.scbjavaclient.client.environment.EnvironmentClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.FinancialMarketsClient;
+import com.github.dannil.scbjavaclient.client.goodsandservices.GoodsAndServicesClient;
 import com.github.dannil.scbjavaclient.client.labourmarket.LabourMarketClient;
 import com.github.dannil.scbjavaclient.client.livingconditions.LivingConditionsClient;
 import com.github.dannil.scbjavaclient.client.population.PopulationClient;
@@ -56,6 +57,7 @@ public class SCBClient extends AbstractContainerClient {
         addClient("energy", new EnergyClient());
         addClient("environment", new EnvironmentClient());
         addClient("financialmarkets", new FinancialMarketsClient());
+        addClient("goodsandservices", new GoodsAndServicesClient());
         addClient("labourmarket", new LabourMarketClient());
         addClient("livingconditions", new LivingConditionsClient());
         addClient("population", new PopulationClient());
@@ -108,6 +110,15 @@ public class SCBClient extends AbstractContainerClient {
      */
     public FinancialMarketsClient financialMarkets() {
         return (FinancialMarketsClient) getClient("financialmarkets");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with goods and services data.</p>
+     *
+     * @return a client for goods and services data
+     */
+    public GoodsAndServicesClient goodsAndServices() {
+        return (GoodsAndServicesClient) getClient("goodsandservices");
     }
 
     /**
