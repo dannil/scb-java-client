@@ -59,11 +59,11 @@ public class PopulationStatisticsBackgroundClient extends AbstractClient {
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @see #getPersonWithBackgroundRoughDivision(Collection, Collection, Collection,
+     * @see #getPersonsWithBackgroundRoughDivision(Collection, Collection, Collection,
      *      Collection, Collection)
      */
-    public List<ResponseModel> getPersonWithBackgroundRoughDivision() {
-        return getPersonWithBackgroundRoughDivision(null, null, null, null, null);
+    public List<ResponseModel> getPersonsWithBackgroundRoughDivision() {
+        return getPersonsWithBackgroundRoughDivision(null, null, null, null, null);
     }
 
     /**
@@ -84,7 +84,7 @@ public class PopulationStatisticsBackgroundClient extends AbstractClient {
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getPersonWithBackgroundRoughDivision(Collection<String> regions,
+    public List<ResponseModel> getPersonsWithBackgroundRoughDivision(Collection<String> regions,
             Collection<Integer> backgrounds, Collection<String> ages, Collection<Integer> sexes,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
@@ -105,11 +105,11 @@ public class PopulationStatisticsBackgroundClient extends AbstractClient {
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @see #getPersonWithBackgroundDetailedDivision(Collection, Collection, Collection,
+     * @see #getPersonsWithBackgroundDetailedDivision(Collection, Collection, Collection,
      *      Collection, Collection)
      */
-    public List<ResponseModel> getPersonWithBackgroundDetailedDivision() {
-        return getPersonWithBackgroundDetailedDivision(null, null, null, null, null);
+    public List<ResponseModel> getPersonsWithBackgroundDetailedDivision() {
+        return getPersonsWithBackgroundDetailedDivision(null, null, null, null, null);
     }
 
     /**
@@ -130,7 +130,7 @@ public class PopulationStatisticsBackgroundClient extends AbstractClient {
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getPersonWithBackgroundDetailedDivision(Collection<String> regions,
+    public List<ResponseModel> getPersonsWithBackgroundDetailedDivision(Collection<String> regions,
             Collection<String> backgrounds, Collection<String> ages, Collection<Integer> sexes,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();

@@ -40,13 +40,13 @@ public class PopulationStatisticsBackgroundClientIT extends RemoteIntegrationTes
 
     @Test
     public void getPersonWithBackgroundRoughDivision() {
-        assertNotEquals(0, this.client.getPersonWithBackgroundRoughDivision().size());
+        assertNotEquals(0, this.client.getPersonsWithBackgroundRoughDivision().size());
     }
 
     @Test
     public void getPersonWithBackgroundRoughDivisionWithParametersEmptyLists() {
         assertNotEquals(0,
-                this.client.getPersonWithBackgroundRoughDivision(Collections.<String>emptyList(),
+                this.client.getPersonsWithBackgroundRoughDivision(Collections.<String>emptyList(),
                         Collections.<Integer>emptyList(), Collections.<String>emptyList(),
                         Collections.<Integer>emptyList(), Collections.<Integer>emptyList()).size());
     }
@@ -60,18 +60,18 @@ public class PopulationStatisticsBackgroundClientIT extends RemoteIntegrationTes
         List<Integer> years = Arrays.asList(2009);
 
         assertNotEquals(0,
-                this.client.getPersonWithBackgroundRoughDivision(regions, backgrounds, ages, sexes, years).size());
+                this.client.getPersonsWithBackgroundRoughDivision(regions, backgrounds, ages, sexes, years).size());
     }
 
     @Test
     public void getPersonWithBackgroundDetailedDivision() {
-        assertNotEquals(0, this.client.getPersonWithBackgroundDetailedDivision().size());
+        assertNotEquals(0, this.client.getPersonsWithBackgroundDetailedDivision().size());
     }
 
     @Test
     public void getPersonWithBackgroundDetailedDivisionWithParametersEmptyLists() {
         assertNotEquals(0,
-                this.client.getPersonWithBackgroundDetailedDivision(Collections.<String>emptyList(),
+                this.client.getPersonsWithBackgroundDetailedDivision(Collections.<String>emptyList(),
                         Collections.<String>emptyList(), Collections.<String>emptyList(),
                         Collections.<Integer>emptyList(), Collections.<Integer>emptyList()).size());
     }
@@ -85,7 +85,7 @@ public class PopulationStatisticsBackgroundClientIT extends RemoteIntegrationTes
         List<Integer> years = Arrays.asList(2009);
 
         assertNotEquals(0,
-                this.client.getPersonWithBackgroundDetailedDivision(regions, backgrounds, ages, sexes, years).size());
+                this.client.getPersonsWithBackgroundDetailedDivision(regions, backgrounds, ages, sexes, years).size());
     }
 
 }
