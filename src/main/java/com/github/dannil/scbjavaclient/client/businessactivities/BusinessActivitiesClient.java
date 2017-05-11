@@ -62,7 +62,7 @@ public class BusinessActivitiesClient extends AbstractContainerClient {
      * <p>Retrieve the client for interacting with business activities accomodation
      * statistics data.</p>
      *
-     * @return a client for business activities accomodation statistics
+     * @return a client for business activities accomodation statistics data
      */
     public BusinessActivitiesAccomodationStatisticsClient accomodationStatistics() {
         return (BusinessActivitiesAccomodationStatisticsClient) getClient("accomodationstatistics");

@@ -31,6 +31,7 @@ import com.github.dannil.scbjavaclient.client.labourmarket.LabourMarketClient;
 import com.github.dannil.scbjavaclient.client.livingconditions.LivingConditionsClient;
 import com.github.dannil.scbjavaclient.client.population.PopulationClient;
 import com.github.dannil.scbjavaclient.client.publicfinances.PublicFinancesClient;
+import com.github.dannil.scbjavaclient.client.transport.TransportClient;
 import com.github.dannil.scbjavaclient.format.json.JsonAPIConfigTableFormat;
 import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
 import com.github.dannil.scbjavaclient.http.HttpResponse;
@@ -62,6 +63,7 @@ public class SCBClient extends AbstractContainerClient {
         addClient("livingconditions", new LivingConditionsClient());
         addClient("population", new PopulationClient());
         addClient("publicfinances", new PublicFinancesClient());
+        addClient("transport", new TransportClient());
     }
 
     /**
@@ -155,6 +157,15 @@ public class SCBClient extends AbstractContainerClient {
      */
     public PublicFinancesClient publicFinances() {
         return (PublicFinancesClient) getClient("publicfinances");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with transport data.</p>
+     *
+     * @return a client for transport data
+     */
+    public TransportClient transport() {
+        return (TransportClient) getClient("transport");
     }
 
     /**

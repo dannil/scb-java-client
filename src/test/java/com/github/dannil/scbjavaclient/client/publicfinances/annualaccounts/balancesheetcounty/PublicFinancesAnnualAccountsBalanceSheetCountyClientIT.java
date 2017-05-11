@@ -53,7 +53,7 @@ public class PublicFinancesAnnualAccountsBalanceSheetCountyClientIT extends Remo
     public void getContingentLiabilitiesWithParameters() {
         List<String> regions = Arrays.asList("03L", "05L");
         List<String> contingentLiabilities = Arrays.asList("borgen", "p_skuld");
-        List<Integer> years = Arrays.asList(2009, 2012);
+        List<Integer> years = Arrays.asList(2014, 2015);
 
         assertNotEquals(0, this.client.getContingentLiabilities(regions, contingentLiabilities, years).size());
     }
@@ -73,7 +73,7 @@ public class PublicFinancesAnnualAccountsBalanceSheetCountyClientIT extends Remo
     public void getRevenueWithParameters() {
         List<String> regions = Arrays.asList("03L", "05L");
         List<String> items = Arrays.asList("307", "35-36");
-        List<Integer> years = Arrays.asList(2009, 2012);
+        List<Integer> years = Arrays.asList(2014, 2015);
 
         assertNotEquals(0, this.client.getRevenue(regions, items, years).size());
     }
@@ -93,7 +93,7 @@ public class PublicFinancesAnnualAccountsBalanceSheetCountyClientIT extends Remo
     public void getCostsWithParameters() {
         List<String> regions = Arrays.asList("03L", "05L");
         List<String> items = Arrays.asList("558", "5615,5619");
-        List<Integer> years = Arrays.asList(2009, 2012);
+        List<Integer> years = Arrays.asList(2014, 2015);
 
         assertNotEquals(0, this.client.getCosts(regions, items, years).size());
     }
@@ -113,7 +113,7 @@ public class PublicFinancesAnnualAccountsBalanceSheetCountyClientIT extends Remo
     public void getIncomeStatementsWithParameters() {
         List<String> regions = Arrays.asList("03L", "05L");
         List<String> incomeStatements = Arrays.asList("030", "040");
-        List<Integer> years = Arrays.asList(2009, 2012);
+        List<Integer> years = Arrays.asList(2014, 2015);
 
         assertNotEquals(0, this.client.getIncomeStatements(regions, incomeStatements, years).size());
     }
@@ -133,7 +133,7 @@ public class PublicFinancesAnnualAccountsBalanceSheetCountyClientIT extends Remo
     public void getBalanceSheetWithParameters() {
         List<String> regions = Arrays.asList("03L", "05L");
         List<String> balanceSheets = Arrays.asList("132", "10-138");
-        List<Integer> years = Arrays.asList(2009, 2012);
+        List<Integer> years = Arrays.asList(2014, 2015);
 
         assertNotEquals(0, this.client.getBalanceSheet(regions, balanceSheets, years).size());
     }

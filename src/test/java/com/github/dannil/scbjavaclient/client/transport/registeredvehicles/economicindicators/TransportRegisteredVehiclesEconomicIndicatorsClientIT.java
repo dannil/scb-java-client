@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.population.statistics.adoptees;
+package com.github.dannil.scbjavaclient.client.transport.registeredvehicles.economicindicators;
 
 import static org.junit.Assert.assertNotEquals;
 
@@ -29,33 +29,30 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class PopulationStatisticsAdopteesClientIT extends RemoteIntegrationTestSuite {
+public class TransportRegisteredVehiclesEconomicIndicatorsClientIT extends RemoteIntegrationTestSuite {
 
-    private PopulationStatisticsAdopteesClient client;
+    private TransportRegisteredVehiclesEconomicIndicatorsClient client;
 
     @Before
     public void setup() {
-        this.client = new SCBClient().population().statistics().adoptees();
+        this.client = new SCBClient().transport().registeredVehicles().economicIndicators();
     }
 
     @Test
-    public void getAdoptions() {
-        assertNotEquals(0, this.client.getAdoptions().size());
+    public void getNewRegistrationsOfPassengerCars() {
+        assertNotEquals(0, this.client.getNewRegistrationsOfPassengerCars().size());
     }
 
     @Test
-    public void getAdoptionsWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getAdoptions(Collections.<String>emptyList(), Collections.<Integer>emptyList(),
-                Collections.<Integer>emptyList()).size());
+    public void getNewRegistrationsOfPassengerCarsWithParametersEmptyLists() {
+        assertNotEquals(0, this.client.getNewRegistrationsOfPassengerCars(Collections.<String>emptyList()).size());
     }
 
     @Test
-    public void getAdoptionsWithParameters() {
-        List<String> sexes = Arrays.asList("1", "1+2");
-        List<Integer> yearOfBirths = Arrays.asList(1928, 1956);
-        List<Integer> years = Arrays.asList(2009);
+    public void getNewRegistrationsOfPassengerCarsWithParameters() {
+        List<String> months = Arrays.asList("2015M08", "2015M09");
 
-        assertNotEquals(0, this.client.getAdoptions(sexes, yearOfBirths, years).size());
+        assertNotEquals(0, this.client.getNewRegistrationsOfPassengerCars(months).size());
     }
 
 }

@@ -12,12 +12,14 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.population.statistics.foreigncitizens;
+package com.github.dannil.scbjavaclient.client.transport.registeredvehicles;
 
 import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
+import com.github.dannil.scbjavaclient.client.transport.registeredvehicles.economicindicators.TransportRegisteredVehiclesEconomicIndicatorsClient;
+import com.github.dannil.scbjavaclient.client.transport.registeredvehicles.vehicles.TransportRegisteredVehiclesVehiclesClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;
@@ -25,14 +27,28 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class PopulationStatisticsForeignCitizensClientTest {
+public class TransportRegisteredVehiclesClientTest {
 
     @Test
     public void createWithLocaleConstructor() {
         Locale locale = new Locale("sv", "SE");
-        PopulationStatisticsForeignCitizensClient client = new PopulationStatisticsForeignCitizensClient(locale);
+        TransportRegisteredVehiclesClient client = new TransportRegisteredVehiclesClient(locale);
 
         assertEquals(locale, client.getLocale());
+    }
+
+    @Test
+    public void vehiclesClient() {
+        TransportRegisteredVehiclesClient client = new TransportRegisteredVehiclesClient();
+
+        assertEquals(client.vehicles().getClass(), TransportRegisteredVehiclesVehiclesClient.class);
+    }
+
+    @Test
+    public void economicIndicatorsClient() {
+        TransportRegisteredVehiclesClient client = new TransportRegisteredVehiclesClient();
+
+        assertEquals(client.economicIndicators().getClass(), TransportRegisteredVehiclesEconomicIndicatorsClient.class);
     }
 
     @Test
@@ -40,9 +56,9 @@ public class PopulationStatisticsForeignCitizensClientTest {
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints
         Locale locale = new Locale("en", "US");
-        PopulationStatisticsForeignCitizensClient client = new PopulationStatisticsForeignCitizensClient(locale);
+        TransportRegisteredVehiclesClient client = new TransportRegisteredVehiclesClient(locale);
 
-        assertEquals(URLEndpoint.getRootUrl(locale).append("BE/BE0101/BE0101F/"), client.getUrl());
+        assertEquals(URLEndpoint.getRootUrl(locale).append("TK/TK1001/"), client.getUrl());
     }
 
 }
