@@ -19,6 +19,8 @@ matrix:
     jdk: oraclejdk8
     script:
     - mvn install -B -V
+    # SonarQube needs to be run with at least Java 8
+    # Make sure we are on dev for running SonarQube
     - if [[ $TRAVIS_BRANCH == dev ]]; then mvn sonar:sonar -Dsonar.host.url=https://sonarqube.com -Dsonar.login=$SONARQUBE_TOKEN; fi
     after_success:
     - true

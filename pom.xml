@@ -54,6 +54,8 @@
     <!-- General configuration -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+    <argLine>-Xmx1024m -XX:MaxPermSize=256m -Dfile.encoding=UTF-8</argLine>
   </properties>
 
   <dependencies>
@@ -141,8 +143,9 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>2.20</version>
         <configuration>
-          <!-- Sets the VM argument line used when unit tests are run. -->
-          <argLine>${surefireArgLine} -Dfile.encoding=UTF-8</argLine>
+          <forkCount>3</forkCount>
+          <reuseForks>true</reuseForks>
+          <!-- <argLine>${argLine}</argLine> -->
           <!-- <argLine>${surefireArgLine} -Dfile.encoding=UTF-8</argLine> -->
         </configuration>
       </plugin>
@@ -151,10 +154,9 @@
         <artifactId>maven-failsafe-plugin</artifactId>
         <version>2.20</version>
         <configuration>
-          <!-- <argLine>${argLine} -Dfile.encoding=UTF-8</argLine> -->
-          <!-- Sets the VM argument line used when integration tests are 
-            run.! -->
-          <argLine>${failsafeArgLine} -Dfile.encoding=UTF-8</argLine>
+          <!-- <argLine>-Xmx1024m -XX:MaxPermSize=256m -->
+          <!-- -Dfile.encoding=UTF-8 ${argLine}</argLine> -->
+          <!-- <argLine>${argLine}</argLine> -->
         </configuration>
         <executions>
           <execution>
@@ -191,7 +193,7 @@
               <!-- Sets the name of the property containing the settings 
                 for JaCoCo -->
               <!-- runtime agent. -->
-              <propertyName>surefireArgLine</propertyName>
+              <propertyName>argLine</propertyName>
             </configuration>
           </execution>
           <!-- Ensures that the code coverage report for unit tests is created -->
@@ -227,7 +229,7 @@
               <!-- Sets the name of the property containing the settings 
                 for JaCoCo -->
               <!-- runtime agent. -->
-              <propertyName>failsafeArgLine</propertyName>
+              <propertyName>argLine</propertyName>
             </configuration>
           </execution>
           <!-- Ensures that the code coverage report for integration tests 
