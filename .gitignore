@@ -4,38 +4,15 @@
 # General folders common for 
 # several languages
 ######################
-build/
-bin/
-bin_temp/
-gen/
-target/
-lib/cache/
 log/
 doc/
-local/
 
 ######################
 # Eclipse
 ######################
-*.pydevproject
-.project
-.metadata
-bin/**
-tmp/**
-tmp/**/*
-*.tmp
-*.bak
-*.swp
-*~.nib
-local.properties
-#.classpath
 .settings/
-.loadpath
-/src/main/resources/rebel.xml
-/project.properties
- PDT-specific
-.buildpath
-proguard/
+.project
+.classpath
 
 ######################
 # IntelliJ IDEA
@@ -43,27 +20,15 @@ proguard/
 .idea/
 
 ######################
-# Android
-######################
-*.apk
-*.ap_
-*.dex
-R.java
-
-######################
 # Java
 ######################
+build/
+bin/
+target/
 *.class
 *.jar
 *.war
 *.ear
-.classpath
-
-######################
-# PHP
-######################
-vendor/
-cache/
 
 ######################
 # Windows
@@ -83,10 +48,3 @@ Desktop.ini
 ######################
 # Other
 ######################
-*.db
-/project.properties
-.classpath
-*.log
-.externalToolBuilders/
-*.launch
-.cproject
