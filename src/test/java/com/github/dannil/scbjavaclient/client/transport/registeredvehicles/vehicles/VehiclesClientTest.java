@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.population.statistics.adoptees;
+package com.github.dannil.scbjavaclient.client.transport.registeredvehicles.vehicles;
 
 import static org.junit.Assert.assertEquals;
 
@@ -25,12 +25,12 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class AdopteesClientTest {
+public class VehiclesClientTest {
 
     @Test
     public void createWithLocaleConstructor() {
         Locale locale = new Locale("sv", "SE");
-        AdopteesClient client = new AdopteesClient(locale);
+        VehiclesClient client = new VehiclesClient(locale);
 
         assertEquals(locale, client.getLocale());
     }
@@ -40,9 +40,9 @@ public class AdopteesClientTest {
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints
         Locale locale = new Locale("en", "US");
-        AdopteesClient client = new AdopteesClient(locale);
+        VehiclesClient client = new VehiclesClient(locale);
 
-        assertEquals(URLEndpoint.getRootUrl(locale).append("BE/BE0101/BE0101K/"), client.getUrl());
+        assertEquals(URLEndpoint.getRootUrl(locale).append("TK/TK1001/TK1001A/"), client.getUrl());
     }
 
 }

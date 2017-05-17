@@ -12,12 +12,14 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.population.statistics.adoptees;
+package com.github.dannil.scbjavaclient.client.transport.registeredvehicles;
 
 import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
+import com.github.dannil.scbjavaclient.client.transport.registeredvehicles.economicindicators.EconomicIndicatorsClient;
+import com.github.dannil.scbjavaclient.client.transport.registeredvehicles.vehicles.VehiclesClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;
@@ -25,14 +27,28 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class AdopteesClientTest {
+public class RegisteredVehiclesClientTest {
 
     @Test
     public void createWithLocaleConstructor() {
         Locale locale = new Locale("sv", "SE");
-        AdopteesClient client = new AdopteesClient(locale);
+        RegisteredVehiclesClient client = new RegisteredVehiclesClient(locale);
 
         assertEquals(locale, client.getLocale());
+    }
+
+    @Test
+    public void vehiclesClient() {
+        RegisteredVehiclesClient client = new RegisteredVehiclesClient();
+
+        assertEquals(client.vehicles().getClass(), VehiclesClient.class);
+    }
+
+    @Test
+    public void economicIndicatorsClient() {
+        RegisteredVehiclesClient client = new RegisteredVehiclesClient();
+
+        assertEquals(client.economicIndicators().getClass(), EconomicIndicatorsClient.class);
     }
 
     @Test
@@ -40,9 +56,9 @@ public class AdopteesClientTest {
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints
         Locale locale = new Locale("en", "US");
-        AdopteesClient client = new AdopteesClient(locale);
+        RegisteredVehiclesClient client = new RegisteredVehiclesClient(locale);
 
-        assertEquals(URLEndpoint.getRootUrl(locale).append("BE/BE0101/BE0101K/"), client.getUrl());
+        assertEquals(URLEndpoint.getRootUrl(locale).append("TK/TK1001/"), client.getUrl());
     }
 
 }

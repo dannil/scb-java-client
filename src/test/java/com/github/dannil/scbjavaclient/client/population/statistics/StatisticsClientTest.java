@@ -22,12 +22,16 @@ import com.github.dannil.scbjavaclient.client.population.statistics.adoptees.Ado
 import com.github.dannil.scbjavaclient.client.population.statistics.amount.AmountClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.asylumseekers.AsylumSeekersClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.averageage.AverageAgeClient;
+import com.github.dannil.scbjavaclient.client.population.statistics.background.BackgroundClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.deaths.DeathsClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.density.DensityClient;
+import com.github.dannil.scbjavaclient.client.population.statistics.foreignbornpersons.ForeignBornPersonsClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.foreigncitizens.ForeignCitizensClient;
+import com.github.dannil.scbjavaclient.client.population.statistics.household.HouseholdClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.livebirths.LiveBirthsClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.migration.MigrationClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.partnership.PartnershipClient;
+import com.github.dannil.scbjavaclient.client.population.statistics.vitalevents.VitalEventsClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;
@@ -87,6 +91,13 @@ public class StatisticsClientTest {
     }
 
     @Test
+    public void backgroundClient() {
+        StatisticsClient client = new StatisticsClient();
+
+        assertEquals(client.background().getClass(), BackgroundClient.class);
+    }
+
+    @Test
     public void deathsClient() {
         StatisticsClient client = new StatisticsClient();
 
@@ -101,10 +112,24 @@ public class StatisticsClientTest {
     }
 
     @Test
+    public void foreignBornPersonsClient() {
+        StatisticsClient client = new StatisticsClient();
+
+        assertEquals(client.foreignBornPersons().getClass(), ForeignBornPersonsClient.class);
+    }
+
+    @Test
     public void foreignCitizensClient() {
         StatisticsClient client = new StatisticsClient();
 
         assertEquals(client.foreignCitizens().getClass(), ForeignCitizensClient.class);
+    }
+
+    @Test
+    public void householdClient() {
+        StatisticsClient client = new StatisticsClient();
+
+        assertEquals(client.household().getClass(), HouseholdClient.class);
     }
 
     @Test
@@ -126,6 +151,13 @@ public class StatisticsClientTest {
         StatisticsClient client = new StatisticsClient();
 
         assertEquals(client.partnership().getClass(), PartnershipClient.class);
+    }
+
+    @Test
+    public void vitalEventsClient() {
+        StatisticsClient client = new StatisticsClient();
+
+        assertEquals(client.vitalEvents().getClass(), VitalEventsClient.class);
     }
 
     @Test

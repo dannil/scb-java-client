@@ -12,12 +12,13 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.population.statistics.adoptees;
+package com.github.dannil.scbjavaclient.client.transport;
 
 import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
+import com.github.dannil.scbjavaclient.client.transport.registeredvehicles.RegisteredVehiclesClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;
@@ -25,14 +26,21 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class AdopteesClientTest {
+public class TransportClientTest {
 
     @Test
     public void createWithLocaleConstructor() {
         Locale locale = new Locale("sv", "SE");
-        AdopteesClient client = new AdopteesClient(locale);
+        TransportClient client = new TransportClient(locale);
 
         assertEquals(locale, client.getLocale());
+    }
+
+    @Test
+    public void registeredVehiclesClient() {
+        TransportClient client = new TransportClient();
+
+        assertEquals(client.registeredVehicles().getClass(), RegisteredVehiclesClient.class);
     }
 
     @Test
@@ -40,9 +48,9 @@ public class AdopteesClientTest {
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints
         Locale locale = new Locale("en", "US");
-        AdopteesClient client = new AdopteesClient(locale);
+        TransportClient client = new TransportClient(locale);
 
-        assertEquals(URLEndpoint.getRootUrl(locale).append("BE/BE0101/BE0101K/"), client.getUrl());
+        assertEquals(URLEndpoint.getRootUrl(locale).append("TK/"), client.getUrl());
     }
 
 }
