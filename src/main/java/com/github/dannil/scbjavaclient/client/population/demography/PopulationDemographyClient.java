@@ -22,10 +22,8 @@ import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
-import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
  * <p>Client which handles population demography data fetching.</p>
@@ -121,10 +119,7 @@ public class PopulationDemographyClient extends AbstractClient {
         mappings.put(APIConstants.SEX_CODE, genders);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        String response = doPostRequest(getUrl() + "MedelAlderNY", QueryBuilder.build(mappings));
-
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);
-        return format.toListOf(ResponseModel.class);
+        return getResponseModels("MedelAlderNY", mappings);
     }
 
     @Override
