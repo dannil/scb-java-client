@@ -22,6 +22,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.github.dannil.scbjavaclient.client.agriculture.AgricultureClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.BusinessActivitiesClient;
 import com.github.dannil.scbjavaclient.client.energy.EnergyClient;
 import com.github.dannil.scbjavaclient.client.environment.EnvironmentClient;
@@ -54,6 +55,7 @@ public class SCBClient extends AbstractContainerClient {
     public SCBClient() {
         super();
 
+        addClient("agriculture", new AgricultureClient());
         addClient("businessactivities", new BusinessActivitiesClient());
         addClient("energy", new EnergyClient());
         addClient("environment", new EnvironmentClient());
@@ -76,6 +78,15 @@ public class SCBClient extends AbstractContainerClient {
         this();
 
         setLocale(locale);
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with agriculture data.</p>
+     *
+     * @return a client for agriculture data
+     */
+    public AgricultureClient agriculture() {
+        return (AgricultureClient) getClient("agriculture");
     }
 
     /**
