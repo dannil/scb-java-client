@@ -146,8 +146,8 @@ public class AgricultureLandUseClient extends AbstractClient {
      *
      * @param regions
      *            the regions
-     * @param crops
-     *            the crops
+     * @param typesOfLands
+     *            the types of lands
      * @param years
      *            the years
      * @return the data wrapped in a list of
