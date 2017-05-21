@@ -14,10 +14,16 @@
 
 package com.github.dannil.scbjavaclient.client.agriculture.cerealcrops;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles agriculture cereal crops data fetching.</p>
@@ -43,43 +49,42 @@ public class AgricultureCerealCropsClient extends AbstractClient {
         super(locale);
     }
 
-    // /**
-    // * <p>Fetch all enterprises and employees (SNI 2002) data.</p>
-    // *
-    // * @return the data wrapped in a list of
-    // * {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-    // * objects
-    // *
-    // * @see #getEnterprisesAndEmployeesSNI2002(Collection, Collection, Collection)
-    // */
-    // public List<ResponseModel> getEnterprisesAndEmployeesSNI2002() {
-    // return getEnterprisesAndEmployeesSNI2002(null, null, null);
-    // }
-    //
-    // /**
-    // * <p>Fetch all enterprises and employees (SNI 2002) data which match the input
-    // * constraints.</p>
-    // *
-    // * @param industrialClassifications
-    // * the industrial classifications
-    // * @param sizeClasses
-    // * the size classes
-    // * @param years
-    // * the years
-    // * @return the data wrapped in a list of
-    // * {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-    // * objects
-    // */
-    // public List<ResponseModel> getEnterprisesAndEmployeesSNI2002(Collection<String>
-    // industrialClassifications,
-    // Collection<String> sizeClasses, Collection<Integer> years) {
-    // Map<String, Collection<?>> mappings = new HashMap<>();
-    // mappings.put("SNI2002", industrialClassifications);
-    // mappings.put("Storleksklass", sizeClasses);
-    // mappings.put(APIConstants.TIME_CODE, years);
-    //
-    // return getResponseModels("FDBR", mappings);
-    // }
+    /**
+     * <p>Fetch all yield per hectar and total production data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getYieldPerHectarAndTotalProduction(Collection, Collection, Collection)
+     */
+    public List<ResponseModel> getYieldPerHectarAndTotalProduction() {
+        return getYieldPerHectarAndTotalProduction(null, null, null);
+    }
+
+    /**
+     * <p>Fetch all yield per hectar and total production data which match the input
+     * constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param crops
+     *            the crops
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getYieldPerHectarAndTotalProduction(Collection<String> regions,
+            Collection<Integer> crops, Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.REGION_CODE, regions);
+        mappings.put("Groda", crops);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("SkordarL", mappings);
+    }
 
     @Override
     public URLEndpoint getUrl() {

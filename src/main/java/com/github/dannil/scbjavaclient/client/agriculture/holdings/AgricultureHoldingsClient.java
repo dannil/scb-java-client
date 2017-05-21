@@ -14,10 +14,16 @@
 
 package com.github.dannil.scbjavaclient.client.agriculture.holdings;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles agriculture holdings data fetching.</p>
@@ -25,6 +31,8 @@ import com.github.dannil.scbjavaclient.http.URLEndpoint;
  * @since 0.4.0
  */
 public class AgricultureHoldingsClient extends AbstractClient {
+
+    private static final String SIZECLASS_CODE = "Storleksklass";
 
     /**
      * <p>Default constructor.</p>
@@ -43,43 +51,119 @@ public class AgricultureHoldingsClient extends AbstractClient {
         super(locale);
     }
 
-    // /**
-    // * <p>Fetch all enterprises and employees (SNI 2002) data.</p>
-    // *
-    // * @return the data wrapped in a list of
-    // * {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-    // * objects
-    // *
-    // * @see #getEnterprisesAndEmployeesSNI2002(Collection, Collection, Collection)
-    // */
-    // public List<ResponseModel> getEnterprisesAndEmployeesSNI2002() {
-    // return getEnterprisesAndEmployeesSNI2002(null, null, null);
-    // }
-    //
-    // /**
-    // * <p>Fetch all enterprises and employees (SNI 2002) data which match the input
-    // * constraints.</p>
-    // *
-    // * @param industrialClassifications
-    // * the industrial classifications
-    // * @param sizeClasses
-    // * the size classes
-    // * @param years
-    // * the years
-    // * @return the data wrapped in a list of
-    // * {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-    // * objects
-    // */
-    // public List<ResponseModel> getEnterprisesAndEmployeesSNI2002(Collection<String>
-    // industrialClassifications,
-    // Collection<String> sizeClasses, Collection<Integer> years) {
-    // Map<String, Collection<?>> mappings = new HashMap<>();
-    // mappings.put("SNI2002", industrialClassifications);
-    // mappings.put("Storleksklass", sizeClasses);
-    // mappings.put(APIConstants.TIME_CODE, years);
-    //
-    // return getResponseModels("FDBR", mappings);
-    // }
+    /**
+     * <p>Fetch all agricultural enterprises by municipality and size class data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getAgriculturalEnterprisesByMunicipalityAndSizeClass(Collection, Collection,
+     *      Collection)
+     */
+    public List<ResponseModel> getAgriculturalEnterprisesByMunicipalityAndSizeClass() {
+        return getAgriculturalEnterprisesByMunicipalityAndSizeClass(null, null, null);
+    }
+
+    /**
+     * <p>Fetch all agricultural enterprises by municipality and size class data which
+     * match the input constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param sizeClasses
+     *            the size classes
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getAgriculturalEnterprisesByMunicipalityAndSizeClass(Collection<String> regions,
+            Collection<String> sizeClasses, Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.REGION_CODE, regions);
+        mappings.put(SIZECLASS_CODE, sizeClasses);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("ForetagStorlekK", mappings);
+    }
+
+    /**
+     * <p>Fetch all agricultural enterprises by county and size class data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getAgriculturalEnterprisesByCountyAndSizeClass(Collection, Collection,
+     *      Collection)
+     */
+    public List<ResponseModel> getAgriculturalEnterprisesByCountyAndSizeClass() {
+        return getAgriculturalEnterprisesByCountyAndSizeClass(null, null, null);
+    }
+
+    /**
+     * <p>Fetch all agricultural enterprises by county and size class data which match the
+     * input constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param sizeClasses
+     *            the size classes
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getAgriculturalEnterprisesByCountyAndSizeClass(Collection<String> regions,
+            Collection<String> sizeClasses, Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.REGION_CODE, regions);
+        mappings.put(SIZECLASS_CODE, sizeClasses);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("ForetagStorlekL", mappings);
+    }
+
+    /**
+     * <p>Fetch all agricultural enterprises by county and juridical form data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getAgriculturalEnterprisesByCountyAndJuridicalForm(Collection, Collection,
+     *      Collection)
+     */
+    public List<ResponseModel> getAgriculturalEnterprisesByCountyAndJuridicalForm() {
+        return getAgriculturalEnterprisesByCountyAndJuridicalForm(null, null, null);
+    }
+
+    /**
+     * <p>Fetch all agricultural enterprises by county and juridical form data which match
+     * the input constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param typesOfHoldings
+     *            the types of holdings
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getAgriculturalEnterprisesByCountyAndJuridicalForm(Collection<String> regions,
+            Collection<String> typesOfHoldings, Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.REGION_CODE, regions);
+        mappings.put("Foretagsform", typesOfHoldings);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("ForetagFormL", mappings);
+    }
 
     @Override
     public URLEndpoint getUrl() {

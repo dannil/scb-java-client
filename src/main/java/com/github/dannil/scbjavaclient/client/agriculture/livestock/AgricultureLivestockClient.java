@@ -14,10 +14,16 @@
 
 package com.github.dannil.scbjavaclient.client.agriculture.livestock;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles agriculture livestock data fetching.</p>
@@ -25,6 +31,8 @@ import com.github.dannil.scbjavaclient.http.URLEndpoint;
  * @since 0.4.0
  */
 public class AgricultureLivestockClient extends AbstractClient {
+
+    private static final String TYPEOFANIMAL_CODE = "Djurslag";
 
     /**
      * <p>Default constructor.</p>
@@ -43,43 +51,77 @@ public class AgricultureLivestockClient extends AbstractClient {
         super(locale);
     }
 
-    // /**
-    // * <p>Fetch all enterprises and employees (SNI 2002) data.</p>
-    // *
-    // * @return the data wrapped in a list of
-    // * {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-    // * objects
-    // *
-    // * @see #getEnterprisesAndEmployeesSNI2002(Collection, Collection, Collection)
-    // */
-    // public List<ResponseModel> getEnterprisesAndEmployeesSNI2002() {
-    // return getEnterprisesAndEmployeesSNI2002(null, null, null);
-    // }
-    //
-    // /**
-    // * <p>Fetch all enterprises and employees (SNI 2002) data which match the input
-    // * constraints.</p>
-    // *
-    // * @param industrialClassifications
-    // * the industrial classifications
-    // * @param sizeClasses
-    // * the size classes
-    // * @param years
-    // * the years
-    // * @return the data wrapped in a list of
-    // * {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-    // * objects
-    // */
-    // public List<ResponseModel> getEnterprisesAndEmployeesSNI2002(Collection<String>
-    // industrialClassifications,
-    // Collection<String> sizeClasses, Collection<Integer> years) {
-    // Map<String, Collection<?>> mappings = new HashMap<>();
-    // mappings.put("SNI2002", industrialClassifications);
-    // mappings.put("Storleksklass", sizeClasses);
-    // mappings.put(APIConstants.TIME_CODE, years);
-    //
-    // return getResponseModels("FDBR", mappings);
-    // }
+    /**
+     * <p>Fetch all livestock by municipality data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getLivestockByMunicipality(Collection, Collection, Collection)
+     */
+    public List<ResponseModel> getLivestockByMunicipality() {
+        return getLivestockByMunicipality(null, null, null);
+    }
+
+    /**
+     * <p>Fetch all livestock by municipality data which match the input constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param typesOfAnimals
+     *            the types of animals
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getLivestockByMunicipality(Collection<String> regions, Collection<String> typesOfAnimals,
+            Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.REGION_CODE, regions);
+        mappings.put(TYPEOFANIMAL_CODE, typesOfAnimals);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("HusdjurK", mappings);
+    }
+
+    /**
+     * <p>Fetch all livestock by county data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getLivestockByCounty(Collection, Collection, Collection)
+     */
+    public List<ResponseModel> getLivestockByCounty() {
+        return getLivestockByCounty(null, null, null);
+    }
+
+    /**
+     * <p>Fetch all livestock by county data which match the input constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param typesOfAnimals
+     *            the types of animals
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getLivestockByCounty(Collection<String> regions, Collection<String> typesOfAnimals,
+            Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.REGION_CODE, regions);
+        mappings.put(TYPEOFANIMAL_CODE, typesOfAnimals);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("HusdjurL", mappings);
+    }
 
     @Override
     public URLEndpoint getUrl() {
