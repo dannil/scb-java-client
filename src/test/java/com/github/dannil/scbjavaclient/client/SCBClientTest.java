@@ -22,6 +22,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import com.github.dannil.scbjavaclient.client.agriculture.AgricultureClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.BusinessActivitiesClient;
 import com.github.dannil.scbjavaclient.client.energy.EnergyClient;
 import com.github.dannil.scbjavaclient.client.environment.EnvironmentClient;
@@ -56,6 +57,12 @@ public class SCBClientTest {
     }
 
     @Test
+    public void agriculture() {
+        SCBClient client = new SCBClient();
+
+        assertEquals(client.agriculture().getClass(), AgricultureClient.class);
+    }
+
     public void businessActivities() {
         SCBClient client = new SCBClient();
 
