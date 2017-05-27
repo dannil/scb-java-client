@@ -23,6 +23,7 @@ import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.Envir
 import com.github.dannil.scbjavaclient.client.environment.landuse.EnvironmentLandUseClient;
 import com.github.dannil.scbjavaclient.client.environment.packagingandpackagingwaste.EnvironmentPackagingAndPackagingWasteClient;
 import com.github.dannil.scbjavaclient.client.environment.protectednature.EnvironmentProtectedNatureClient;
+import com.github.dannil.scbjavaclient.client.environment.smallerlocalities.EnvironmentSmallerLocalitiesClient;
 import com.github.dannil.scbjavaclient.client.environment.waste.EnvironmentWasteClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
@@ -45,6 +46,7 @@ public class EnvironmentClient extends AbstractContainerClient {
         addClient("landuse", new EnvironmentLandUseClient());
         addClient("packagingandpackagingwaste", new EnvironmentPackagingAndPackagingWasteClient());
         addClient("protectednature", new EnvironmentProtectedNatureClient());
+        addClient("smallerlocalities", new EnvironmentSmallerLocalitiesClient());
         addClient("waste", new EnvironmentWasteClient());
     }
 
@@ -115,6 +117,16 @@ public class EnvironmentClient extends AbstractContainerClient {
      */
     public EnvironmentProtectedNatureClient protectedNature() {
         return (EnvironmentProtectedNatureClient) getClient("protectednature");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with environment smaller localities
+     * data.</p>
+     *
+     * @return a client for environment smaller localities data
+     */
+    public EnvironmentSmallerLocalitiesClient smallerLocalities() {
+        return (EnvironmentSmallerLocalitiesClient) getClient("smallerlocalities");
     }
 
     /**
