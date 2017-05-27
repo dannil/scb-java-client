@@ -22,6 +22,7 @@ import com.github.dannil.scbjavaclient.client.financialmarkets.institutions.Fina
 import com.github.dannil.scbjavaclient.client.financialmarkets.investmentfunds.FinancialMarketsInvestmentFundsClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.securities.FinancialMarketsSecuritiesClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.shareholders.FinancialMarketsShareholdersClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.statistics.FinancialMarketsStatisticsClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 /**
@@ -42,6 +43,7 @@ public class FinancialMarketsClient extends AbstractContainerClient {
         addClient("investmentfunds", new FinancialMarketsInvestmentFundsClient());
         addClient("securities", new FinancialMarketsSecuritiesClient());
         addClient("shareholders", new FinancialMarketsShareholdersClient());
+        addClient("statistics", new FinancialMarketsStatisticsClient());
     }
 
     /**
@@ -102,6 +104,15 @@ public class FinancialMarketsClient extends AbstractContainerClient {
      */
     public FinancialMarketsShareholdersClient shareholders() {
         return (FinancialMarketsShareholdersClient) getClient("shareholders");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with financial markets statistics data.</p>
+     *
+     * @return a client for financial markets statistics data
+     */
+    public FinancialMarketsStatisticsClient statistics() {
+        return (FinancialMarketsStatisticsClient) getClient("statistics");
     }
 
     @Override
