@@ -17,6 +17,7 @@ package com.github.dannil.scbjavaclient.client.financialmarkets;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.enterprises.FinancialMarketsEnterprisesClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.institutions.FinancialMarketsInstitutionsClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.investmentfunds.FinancialMarketsInvestmentFundsClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.securities.FinancialMarketsSecuritiesClient;
@@ -36,6 +37,7 @@ public class FinancialMarketsClient extends AbstractContainerClient {
     public FinancialMarketsClient() {
         super();
 
+        addClient("enterprises", new FinancialMarketsEnterprisesClient());
         addClient("institutions", new FinancialMarketsInstitutionsClient());
         addClient("investmentfunds", new FinancialMarketsInvestmentFundsClient());
         addClient("securities", new FinancialMarketsSecuritiesClient());
@@ -52,6 +54,15 @@ public class FinancialMarketsClient extends AbstractContainerClient {
         this();
 
         setLocale(locale);
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with financial markets enterprises data.</p>
+     *
+     * @return a client for financial markets enterprises data
+     */
+    public FinancialMarketsEnterprisesClient enterprises() {
+        return (FinancialMarketsEnterprisesClient) getClient("enterprises");
     }
 
     /**
