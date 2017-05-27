@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.environment.emissions;
+package com.github.dannil.scbjavaclient.client.environment.airpollutants;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -26,16 +26,16 @@ import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles environment emissions data fetching.</p>
+ * <p>Client which handles environment air pollutants data fetching.</p>
  *
  * @since 0.3.0
  */
-public class EnvironmentEmissionsClient extends AbstractClient {
+public class EnvironmentAirPollutantsClient extends AbstractClient {
 
     /**
      * <p>Default constructor.</p>
      */
-    public EnvironmentEmissionsClient() {
+    public EnvironmentAirPollutantsClient() {
         super();
     }
 
@@ -45,7 +45,7 @@ public class EnvironmentEmissionsClient extends AbstractClient {
      * @param locale
      *            the <code>Locale</code> for this client
      */
-    public EnvironmentEmissionsClient(Locale locale) {
+    public EnvironmentAirPollutantsClient(Locale locale) {
         super(locale);
     }
 
