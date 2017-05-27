@@ -28,7 +28,7 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
 /**
  * <p>Client which handles environment air pollutants data fetching.</p>
  *
- * @since 0.3.0
+ * @since 0.4.0
  */
 public class EnvironmentAirPollutantsClient extends AbstractClient {
 
