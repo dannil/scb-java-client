@@ -116,6 +116,25 @@ public class EnvironmentIslandsClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    public void getIslandsInSwedenNumberAreaAndPerimiter() {
+        assertNotEquals(0, this.client.getIslandsInSwedenNumberAreaAndPerimiter().size());
+    }
+
+    @Test
+    public void getIslandsInSwedenNumberAreaAndPerimiterWithParametersEmptyLists() {
+        assertNotEquals(0, this.client.getIslandsInSwedenNumberAreaAndPerimiter(Collections.<String>emptyList(),
+                Collections.<Integer>emptyList()).size());
+    }
+
+    @Test
+    public void getIslandsInSwedenNumberAreaAndPerimiterWithParameters() {
+        List<String> regions = Arrays.asList("0117", "0120");
+        List<Integer> years = Arrays.asList(2013);
+
+        assertNotEquals(0, this.client.getIslandsInSwedenNumberAreaAndPerimiter(regions, years).size());
+    }
+
+    @Test
     public void getPopulationOnIslands() {
         assertNotEquals(0, this.client.getPopulationOnIslands().size());
     }
@@ -132,6 +151,26 @@ public class EnvironmentIslandsClientIT extends RemoteIntegrationTestSuite {
         List<Integer> years = Arrays.asList(2013);
 
         assertNotEquals(0, this.client.getPopulationOnIslands(regions, years).size());
+    }
+
+    @Test
+    public void getNumberOfIslandsInSweden() {
+        assertNotEquals(0, this.client.getNumberOfIslandsInSweden().size());
+    }
+
+    @Test
+    public void getNumberOfIslandsInSwedenWithParametersEmptyLists() {
+        assertNotEquals(0, this.client.getNumberOfIslandsInSweden(Collections.<String>emptyList(),
+                Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
+    }
+
+    @Test
+    public void getNumberOfIslandsInSwedenWithParameters() {
+        List<String> regions = Arrays.asList("0117", "0120");
+        List<String> sizeClasses = Arrays.asList("1-9", "10-99");
+        List<Integer> years = Arrays.asList(2013);
+
+        assertNotEquals(0, this.client.getNumberOfIslandsInSweden(regions, sizeClasses, years).size());
     }
 
 }

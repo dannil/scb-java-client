@@ -182,6 +182,40 @@ public class EnvironmentIslandsClient extends AbstractClient {
     }
 
     /**
+     * <p>Fetch all islands in Sweden by number, area and perimeter data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getIslandsInSwedenNumberAreaAndPerimiter(Collection, Collection)
+     */
+    public List<ResponseModel> getIslandsInSwedenNumberAreaAndPerimiter() {
+        return getIslandsInSwedenNumberAreaAndPerimiter(null, null);
+    }
+
+    /**
+     * <p>Fetch all islands in Sweden by number, area and perimeter data which match the
+     * input constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getIslandsInSwedenNumberAreaAndPerimiter(Collection<String> regions,
+            Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.REGION_CODE, regions);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("OarArealOmk", mappings);
+    }
+
+    /**
      * <p>Fetch all population on islands data.</p>
      *
      * @return the data wrapped in a list of
@@ -211,6 +245,43 @@ public class EnvironmentIslandsClient extends AbstractClient {
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("OarBefolkning", mappings);
+    }
+
+    /**
+     * <p>Fetch all number of islands in Sweden data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getNumberOfIslandsInSweden(Collection, Collection, Collection)
+     */
+    public List<ResponseModel> getNumberOfIslandsInSweden() {
+        return getNumberOfIslandsInSweden(null, null, null);
+    }
+
+    /**
+     * <p>Fetch all number of islands in Sweden data which match the input
+     * constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param sizeClasses
+     *            the size classes
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getNumberOfIslandsInSweden(Collection<String> regions, Collection<String> sizeClasses,
+            Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.REGION_CODE, regions);
+        mappings.put("Storleksklass", sizeClasses);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("OarStorleksklass", mappings);
     }
 
     @Override
