@@ -101,12 +101,12 @@ public class EnvironmentGreenhouseGasClientIT extends RemoteIntegrationTestSuite
 
     @Test
     public void getEmissionsFromLandUse() {
-        assertNotEquals(0, this.client.getEmissionsFromHeatingOfHousesAndBuildings().size());
+        assertNotEquals(0, this.client.getEmissionsFromLandUse().size());
     }
 
     @Test
     public void getEmissionsFromLandUseWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getEmissionsFromHeatingOfHousesAndBuildings(Collections.<String>emptyList(),
+        assertNotEquals(0, this.client.getEmissionsFromLandUse(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
