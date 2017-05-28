@@ -319,7 +319,7 @@ public class EnvironmentAirPollutantsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all emissions from solvent usedata which match the input constraints.</p>
+     * <p>Fetch all emissions from solvent use data which match the input constraints.</p>
      *
      * @param airPollutants
      *            the air pollutants
