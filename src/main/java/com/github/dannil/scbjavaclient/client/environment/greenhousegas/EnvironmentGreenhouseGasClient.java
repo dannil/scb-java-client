@@ -307,11 +307,11 @@ public class EnvironmentGreenhouseGasClient extends AbstractClient {
 
     /**
      * <p>Fetch all emissions from solvent use data.</p>
-     * 
+     *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
-     * 
+     *
      * @see #getEmissionsFromSolventUse(Collection, Collection, Collection)
      */
     public List<ResponseModel> getEmissionsFromSolventUse() {
