@@ -23,6 +23,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import com.github.dannil.scbjavaclient.client.environment.emissions.EnvironmentEmissionsClient;
+import com.github.dannil.scbjavaclient.client.environment.greenhousegas.EnvironmentGreenhouseGasClient;
 import com.github.dannil.scbjavaclient.client.environment.industrialwateruse.EnvironmentIndustrialWaterUseClient;
 import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.EnvironmentLandAndWaterAreaClient;
 import com.github.dannil.scbjavaclient.client.environment.landuse.EnvironmentLandUseClient;
@@ -48,6 +49,13 @@ public class EnvironmentClientTest {
         EnvironmentClient client = new EnvironmentClient();
 
         assertEquals(client.emissions().getClass(), EnvironmentEmissionsClient.class);
+    }
+
+    @Test
+    public void greenhouseGasClient() {
+        EnvironmentClient client = new EnvironmentClient();
+
+        assertEquals(client.greenhouseGas().getClass(), EnvironmentGreenhouseGasClient.class);
     }
 
     @Test

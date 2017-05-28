@@ -18,6 +18,7 @@ import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.environment.emissions.EnvironmentEmissionsClient;
+import com.github.dannil.scbjavaclient.client.environment.greenhousegas.EnvironmentGreenhouseGasClient;
 import com.github.dannil.scbjavaclient.client.environment.industrialwateruse.EnvironmentIndustrialWaterUseClient;
 import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.EnvironmentLandAndWaterAreaClient;
 import com.github.dannil.scbjavaclient.client.environment.landuse.EnvironmentLandUseClient;
@@ -41,6 +42,7 @@ public class EnvironmentClient extends AbstractContainerClient {
         super();
 
         addClient("emissions", new EnvironmentEmissionsClient());
+        addClient("greenhousegas", new EnvironmentGreenhouseGasClient());
         addClient("industrialwateruse", new EnvironmentIndustrialWaterUseClient());
         addClient("landandwaterarea", new EnvironmentLandAndWaterAreaClient());
         addClient("landuse", new EnvironmentLandUseClient());
@@ -69,6 +71,15 @@ public class EnvironmentClient extends AbstractContainerClient {
      */
     public EnvironmentEmissionsClient emissions() {
         return (EnvironmentEmissionsClient) getClient("emissions");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with environment greenhouse gas data.</p>
+     *
+     * @return a client for environment greenhouse gas data
+     */
+    public EnvironmentGreenhouseGasClient greenhouseGas() {
+        return (EnvironmentGreenhouseGasClient) getClient("greenhousegas");
     }
 
     /**
