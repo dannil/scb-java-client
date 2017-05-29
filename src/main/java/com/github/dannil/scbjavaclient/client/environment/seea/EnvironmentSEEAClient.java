@@ -18,6 +18,7 @@ import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.environment.seea.airemissionsaccounts.EnvironmentSEEAAirEmissionsAccountsClient;
+import com.github.dannil.scbjavaclient.client.environment.seea.energyaccounts.EnvironmentSEEAEnergyAccountsClient;
 import com.github.dannil.scbjavaclient.client.environment.seea.goodsandservicessector.EnvironmentSEEAGoodsAndServicesSectorClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
@@ -36,6 +37,7 @@ public class EnvironmentSEEAClient extends AbstractContainerClient {
         super();
 
         addClient("airemissionsaccounts", new EnvironmentSEEAAirEmissionsAccountsClient());
+        addClient("energyaccounts", new EnvironmentSEEAEnergyAccountsClient());
         addClient("goodsandservicessector", new EnvironmentSEEAGoodsAndServicesSectorClient());
     }
 
@@ -60,6 +62,17 @@ public class EnvironmentSEEAClient extends AbstractContainerClient {
      */
     public EnvironmentSEEAAirEmissionsAccountsClient airEmissionsAccounts() {
         return (EnvironmentSEEAAirEmissionsAccountsClient) getClient("airemissionsaccounts");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with environment System of
+     * Environmental-Economic Accounting (SEEA) energy accounts data.</p>
+     *
+     * @return a client for environment System of Environmental-Economic Accounting (SEEA)
+     *         energy accounts data
+     */
+    public EnvironmentSEEAEnergyAccountsClient energyAccounts() {
+        return (EnvironmentSEEAEnergyAccountsClient) getClient("energyaccounts");
     }
 
     /**
