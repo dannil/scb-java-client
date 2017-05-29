@@ -26,6 +26,7 @@ import com.github.dannil.scbjavaclient.client.environment.landuse.EnvironmentLan
 import com.github.dannil.scbjavaclient.client.environment.landusedfortransport.EnvironmentLandUsedForTransportClient;
 import com.github.dannil.scbjavaclient.client.environment.packagingandpackagingwaste.EnvironmentPackagingAndPackagingWasteClient;
 import com.github.dannil.scbjavaclient.client.environment.protectednature.EnvironmentProtectedNatureClient;
+import com.github.dannil.scbjavaclient.client.environment.seea.EnvironmentSEEAClient;
 import com.github.dannil.scbjavaclient.client.environment.smallerlocalities.EnvironmentSmallerLocalitiesClient;
 import com.github.dannil.scbjavaclient.client.environment.waste.EnvironmentWasteClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
@@ -52,6 +53,7 @@ public class EnvironmentClient extends AbstractContainerClient {
         addClient("landusedfortransport", new EnvironmentLandUsedForTransportClient());
         addClient("packagingandpackagingwaste", new EnvironmentPackagingAndPackagingWasteClient());
         addClient("protectednature", new EnvironmentProtectedNatureClient());
+        addClient("seea", new EnvironmentSEEAClient());
         addClient("smallerlocalities", new EnvironmentSmallerLocalitiesClient());
         addClient("waste", new EnvironmentWasteClient());
     }
@@ -151,6 +153,17 @@ public class EnvironmentClient extends AbstractContainerClient {
      */
     public EnvironmentProtectedNatureClient protectedNature() {
         return (EnvironmentProtectedNatureClient) getClient("protectednature");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with environment System of
+     * Environmental-Economic Accounting (SEEA) data.</p>
+     *
+     * @return a client for environment System of Environmental-Economic Accounting (SEEA)
+     *         data
+     */
+    public EnvironmentSEEAClient seea() {
+        return (EnvironmentSEEAClient) getClient("seea");
     }
 
     /**
