@@ -18,11 +18,11 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
+import com.github.dannil.scbjavaclient.http.URLEndpoint;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 @RunWith(JUnit4.class)
 public class EnvironmentGreenhouseGasClientTest {
