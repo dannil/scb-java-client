@@ -20,6 +20,7 @@ import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.environment.seea.airemissionsaccounts.EnvironmentSEEAAirEmissionsAccountsClient;
 import com.github.dannil.scbjavaclient.client.environment.seea.energyaccounts.EnvironmentSEEAEnergyAccountsClient;
 import com.github.dannil.scbjavaclient.client.environment.seea.goodsandservicessector.EnvironmentSEEAGoodsAndServicesSectorClient;
+import com.github.dannil.scbjavaclient.client.environment.seea.materialflowaccounts.EnvironmentSEEAMaterialFlowAccountsClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 /**
@@ -39,6 +40,7 @@ public class EnvironmentSEEAClient extends AbstractContainerClient {
         addClient("airemissionsaccounts", new EnvironmentSEEAAirEmissionsAccountsClient());
         addClient("energyaccounts", new EnvironmentSEEAEnergyAccountsClient());
         addClient("goodsandservicessector", new EnvironmentSEEAGoodsAndServicesSectorClient());
+        addClient("materialflowaccounts", new EnvironmentSEEAMaterialFlowAccountsClient());
     }
 
     /**
@@ -84,6 +86,17 @@ public class EnvironmentSEEAClient extends AbstractContainerClient {
      */
     public EnvironmentSEEAGoodsAndServicesSectorClient goodsAndServicesSector() {
         return (EnvironmentSEEAGoodsAndServicesSectorClient) getClient("goodsandservicessector");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with environment System of
+     * Environmental-Economic Accounting (SEEA) material flow accounts data.</p>
+     *
+     * @return a client for environment System of Environmental-Economic Accounting (SEEA)
+     *         material flow accounts data
+     */
+    public EnvironmentSEEAMaterialFlowAccountsClient materialFlowAccounts() {
+        return (EnvironmentSEEAMaterialFlowAccountsClient) getClient("materialflowaccounts");
     }
 
     @Override
