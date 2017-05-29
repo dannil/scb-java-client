@@ -42,7 +42,7 @@ public class EnvironmentSEEAMaterialFlowAccountsClientTest {
         Locale locale = new Locale("en", "US");
         EnvironmentSEEAMaterialFlowAccountsClient client = new EnvironmentSEEAMaterialFlowAccountsClient(locale);
 
-        assertEquals(URLEndpoint.getRootUrl(locale).append("MI/MI301/MI1301C/"), client.getUrl());
+        assertEquals(URLEndpoint.getRootUrl(locale).append("MI/MI1301/MI1301C/"), client.getUrl());
     }
 
 }
