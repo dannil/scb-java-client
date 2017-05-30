@@ -21,6 +21,7 @@ import com.github.dannil.scbjavaclient.client.financialmarkets.statistics.claims
 import com.github.dannil.scbjavaclient.client.financialmarkets.statistics.depositandlending.FinancialMarketsStatisticsDepositAndLendingClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.statistics.economicindicators.FinancialMarketsStatisticsEconomicIndicatorsClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.statistics.keyfigures.FinancialMarketsStatisticsKeyFiguresClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.statistics.statistics.FinancialMarketsStatisticsStatisticsClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 /**
