@@ -14,10 +14,16 @@
 
 package com.github.dannil.scbjavaclient.client.financialmarkets.statistics.claimsandliabilities;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles financial markets statistics claims and liabilities data
@@ -42,6 +48,93 @@ public class FinancialMarketsStatisticsClaimsAndLiabilitiesClient extends Abstra
      */
     public FinancialMarketsStatisticsClaimsAndLiabilitiesClient(Locale locale) {
         super(locale);
+    }
+
+    // Daniel 2017-05-30: Returns HTTP 403
+    // /**
+    // * <p>Fetch all claims and liabilities outside Sweden data.</p>
+    // *
+    // * @return the data wrapped in a list of
+    // * {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+    // * objects
+    // *
+    // * @see #getClaimsAndLiabilitiesOutsideSweden(Collection, Collection, Collection,
+    // * Collection, Collection)
+    // */
+    // public List<ResponseModel> getClaimsAndLiabilitiesOutsideSweden() {
+    // return getClaimsAndLiabilitiesOutsideSweden(null, null, null, null, null);
+    // }
+
+    /**
+     * <p>Fetch all claims and liabilities outside Sweden data which match the input
+     * constraints.</p>
+     *
+     * @param positions
+     *            the positions
+     * @param countryGroups
+     *            the country groups
+     * @param counterPartySectors
+     *            the counter party sectors
+     * @param currencies
+     *            the currencies
+     * @param quarters
+     *            the quarters
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getClaimsAndLiabilitiesOutsideSweden(Collection<String> positions,
+            Collection<String> countryGroups, Collection<String> counterPartySectors, Collection<Integer> currencies,
+            Collection<String> quarters) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("Position", positions);
+        mappings.put("LandLandgrupper", countryGroups);
+        mappings.put("Motpartssektor", counterPartySectors);
+        mappings.put("Valuta", currencies);
+        mappings.put(APIConstants.TIME_CODE, quarters);
+
+        return getResponseModels("MFIFordSku", mappings);
+    }
+
+    /**
+     * <p>Fetch all consolidated claims outside Sweden data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getConsolidatedClaimsOutsideSweden(Collection, Collection, Collection,
+     *      Collection)
+     */
+    public List<ResponseModel> getConsolidatedClaimsOutsideSweden() {
+        return getConsolidatedClaimsOutsideSweden(null, null, null, null);
+    }
+
+    /**
+     * <p>Fetch all consolidated claims outside Sweden data which match the input
+     * constraints.</p>
+     *
+     * @param positions
+     *            the positions
+     * @param countryGroups
+     *            the country groups
+     * @param counterPartySectors
+     *            the counter party sectors
+     * @param quarters
+     *            the quarters
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getConsolidatedClaimsOutsideSweden(Collection<String> positions,
+            Collection<String> countryGroups, Collection<String> counterPartySectors, Collection<String> quarters) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("Position", positions);
+        mappings.put("LandLandgrupper", countryGroups);
+        mappings.put("Motpartssektor", counterPartySectors);
+        mappings.put(APIConstants.TIME_CODE, quarters);
+
+        return getResponseModels("MFIFord", mappings);
     }
 
     @Override
