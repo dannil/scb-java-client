@@ -116,22 +116,22 @@ public class EnvironmentIslandsClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
-    public void getIslandsInSwedenNumberAreaAndPerimiter() {
-        assertNotEquals(0, this.client.getIslandsInSwedenNumberAreaAndPerimiter().size());
+    public void getIslandsInSwedenByNumberAreaAndPerimiter() {
+        assertNotEquals(0, this.client.getIslandsInSwedenByNumberAreaAndPerimiter().size());
     }
 
     @Test
-    public void getIslandsInSwedenNumberAreaAndPerimiterWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getIslandsInSwedenNumberAreaAndPerimiter(Collections.<String>emptyList(),
+    public void getIslandsInSwedenByNumberAreaAndPerimiterWithParametersEmptyLists() {
+        assertNotEquals(0, this.client.getIslandsInSwedenByNumberAreaAndPerimiter(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
-    public void getIslandsInSwedenNumberAreaAndPerimiterWithParameters() {
+    public void getIslandsInSwedenByNumberAreaAndPerimiterWithParameters() {
         List<String> regions = Arrays.asList("0117", "0120");
         List<Integer> years = Arrays.asList(2013);
 
-        assertNotEquals(0, this.client.getIslandsInSwedenNumberAreaAndPerimiter(regions, years).size());
+        assertNotEquals(0, this.client.getIslandsInSwedenByNumberAreaAndPerimiter(regions, years).size());
     }
 
     @Test

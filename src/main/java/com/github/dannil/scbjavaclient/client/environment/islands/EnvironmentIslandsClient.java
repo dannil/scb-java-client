@@ -188,10 +188,10 @@ public class EnvironmentIslandsClient extends AbstractClient {
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @see #getIslandsInSwedenNumberAreaAndPerimiter(Collection, Collection)
+     * @see #getIslandsInSwedenByNumberAreaAndPerimiter(Collection, Collection)
      */
-    public List<ResponseModel> getIslandsInSwedenNumberAreaAndPerimiter() {
-        return getIslandsInSwedenNumberAreaAndPerimiter(null, null);
+    public List<ResponseModel> getIslandsInSwedenByNumberAreaAndPerimiter() {
+        return getIslandsInSwedenByNumberAreaAndPerimiter(null, null);
     }
 
     /**
@@ -206,7 +206,7 @@ public class EnvironmentIslandsClient extends AbstractClient {
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getIslandsInSwedenNumberAreaAndPerimiter(Collection<String> regions,
+    public List<ResponseModel> getIslandsInSwedenByNumberAreaAndPerimiter(Collection<String> regions,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
