@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.agriculture.cerealcrops;
+package com.github.dannil.scbjavaclient.client.environment.smallerlocalities;
 
 import static org.junit.Assert.assertNotEquals;
 
@@ -29,33 +29,32 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class AgricultureCerealCropsClientIT extends RemoteIntegrationTestSuite {
+public class EnvironmentSmallerLocalitiesClientIT extends RemoteIntegrationTestSuite {
 
-    private AgricultureCerealCropsClient client;
+    private EnvironmentSmallerLocalitiesClient client;
 
     @Before
     public void setup() {
-        this.client = new SCBClient().agriculture().cerealCrops();
+        this.client = new SCBClient().environment().smallerLocalities();
     }
 
     @Test
-    public void getYieldPerHectarAndTotalProduction() {
-        assertNotEquals(0, this.client.getYieldPerHectarAndTotalProduction().size());
+    public void getLandArea() {
+        assertNotEquals(0, this.client.getLandArea().size());
     }
 
     @Test
-    public void getYieldPerHectarAndTotalProductionWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getYieldPerHectarAndTotalProduction(Collections.<String>emptyList(),
-                Collections.<Integer>emptyList(), Collections.<Integer>emptyList()).size());
+    public void getLandAreaWithParametersEmptyLists() {
+        assertNotEquals(0,
+                this.client.getLandArea(Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
-    public void getYieldPerHectarAndTotalProductionWithParameters() {
-        List<String> regions = Arrays.asList("05", "08");
-        List<Integer> crops = Arrays.asList(105, 150);
-        List<Integer> years = Arrays.asList(2003, 2005);
+    public void getLandAreaWithParameters() {
+        List<String> regions = Arrays.asList("S0245", "S0225");
+        List<Integer> years = Arrays.asList(2005, 2010);
 
-        assertNotEquals(0, this.client.getYieldPerHectarAndTotalProduction(regions, crops, years).size());
+        assertNotEquals(0, this.client.getLandArea(regions, years).size());
     }
 
 }

@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.agriculture.cerealcrops;
+package com.github.dannil.scbjavaclient.client.environment.seea.energyaccounts;
 
 import static org.junit.Assert.assertNotEquals;
 
@@ -29,33 +29,33 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class AgricultureCerealCropsClientIT extends RemoteIntegrationTestSuite {
+public class EnvironmentSEEAEnergyAccountsClientIT extends RemoteIntegrationTestSuite {
 
-    private AgricultureCerealCropsClient client;
+    private EnvironmentSEEAEnergyAccountsClient client;
 
     @Before
     public void setup() {
-        this.client = new SCBClient().agriculture().cerealCrops();
+        this.client = new SCBClient().environment().seea().energyAccounts();
     }
 
     @Test
-    public void getYieldPerHectarAndTotalProduction() {
-        assertNotEquals(0, this.client.getYieldPerHectarAndTotalProduction().size());
+    public void getCombustionOfFuels() {
+        assertNotEquals(0, this.client.getCombustionOfFuels().size());
     }
 
     @Test
-    public void getYieldPerHectarAndTotalProductionWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getYieldPerHectarAndTotalProduction(Collections.<String>emptyList(),
-                Collections.<Integer>emptyList(), Collections.<Integer>emptyList()).size());
+    public void getCombustionOfFuelsWithParametersEmptyLists() {
+        assertNotEquals(0, this.client.getCombustionOfFuels(Collections.<String>emptyList(),
+                Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
-    public void getYieldPerHectarAndTotalProductionWithParameters() {
-        List<String> regions = Arrays.asList("05", "08");
-        List<Integer> crops = Arrays.asList(105, 150);
-        List<Integer> years = Arrays.asList(2003, 2005);
+    public void getCombustionOfFuelsWithParameters() {
+        List<String> industrialClassifications = Arrays.asList("C23", "C24");
+        List<String> typesOfFuels = Arrays.asList("01", "02");
+        List<Integer> years = Arrays.asList(2010, 2011);
 
-        assertNotEquals(0, this.client.getYieldPerHectarAndTotalProduction(regions, crops, years).size());
+        assertNotEquals(0, this.client.getCombustionOfFuels(industrialClassifications, typesOfFuels, years).size());
     }
 
 }

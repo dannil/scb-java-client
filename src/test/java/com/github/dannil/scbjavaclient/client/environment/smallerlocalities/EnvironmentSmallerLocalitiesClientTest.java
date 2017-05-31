@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.agriculture.holdings;
+package com.github.dannil.scbjavaclient.client.environment.smallerlocalities;
 
 import static org.junit.Assert.assertEquals;
 
@@ -25,12 +25,12 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class AgricultureHoldingsClientTest {
+public class EnvironmentSmallerLocalitiesClientTest {
 
     @Test
     public void createWithLocaleConstructor() {
         Locale locale = new Locale("sv", "SE");
-        AgricultureHoldingsClient client = new AgricultureHoldingsClient(locale);
+        EnvironmentSmallerLocalitiesClient client = new EnvironmentSmallerLocalitiesClient(locale);
 
         assertEquals(locale, client.getLocale());
     }
@@ -40,9 +40,9 @@ public class AgricultureHoldingsClientTest {
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints
         Locale locale = new Locale("en", "US");
-        AgricultureHoldingsClient client = new AgricultureHoldingsClient(locale);
+        EnvironmentSmallerLocalitiesClient client = new EnvironmentSmallerLocalitiesClient(locale);
 
-        assertEquals(URLEndpoint.getRootUrl(locale).append("JO/JO0106/"), client.getUrl());
+        assertEquals(URLEndpoint.getRootUrl(locale).append("MI/MI0811/"), client.getUrl());
     }
 
 }

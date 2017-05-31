@@ -18,15 +18,15 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
-
 import com.github.dannil.scbjavaclient.client.agriculture.cerealcrops.AgricultureCerealCropsClient;
 import com.github.dannil.scbjavaclient.client.agriculture.holdings.AgricultureHoldingsClient;
 import com.github.dannil.scbjavaclient.client.agriculture.landuse.AgricultureLandUseClient;
 import com.github.dannil.scbjavaclient.client.agriculture.livestock.AgricultureLivestockClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
 public class AgricultureClientTest {

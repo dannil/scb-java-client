@@ -51,6 +51,11 @@ public final class APIConstants {
     public static final String CONTENTSCODE_CODE = "ContentsCode";
 
     /**
+     * <p>Constant for greenhouse gas code.</p>
+     */
+    public static final String GREENHOUSEGAS_CODE = "Vaxthusgaser";
+
+    /**
      * <p>Constant for region code.</p>
      */
     public static final String REGION_CODE = "Region";
@@ -64,6 +69,11 @@ public final class APIConstants {
      * <p>Constant for SNI 2007 code.</p>
      */
     public static final String SNI2007_CODE = "SNI2007";
+
+    /**
+     * <p>Constant for SNI 92 code.</p>
+     */
+    public static final String SNI92_CODE = "SNI92";
 
     /**
      * <p>Constant for sub-sector code.</p>
