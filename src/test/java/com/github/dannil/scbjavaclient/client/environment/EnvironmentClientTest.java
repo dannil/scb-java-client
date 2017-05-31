@@ -18,7 +18,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.client.environment.emissions.EnvironmentEmissionsClient;
+import com.github.dannil.scbjavaclient.client.environment.airpollutants.EnvironmentAirPollutantsClient;
 import com.github.dannil.scbjavaclient.client.environment.greenhousegas.EnvironmentGreenhouseGasClient;
 import com.github.dannil.scbjavaclient.client.environment.industrialwateruse.EnvironmentIndustrialWaterUseClient;
 import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.EnvironmentLandAndWaterAreaClient;
@@ -46,10 +46,10 @@ public class EnvironmentClientTest {
     }
 
     @Test
-    public void emissionsClient() {
+    public void airPollutantsClient() {
         EnvironmentClient client = new EnvironmentClient();
 
-        assertEquals(client.emissions().getClass(), EnvironmentEmissionsClient.class);
+        assertEquals(client.airPollutants().getClass(), EnvironmentAirPollutantsClient.class);
     }
 
     @Test

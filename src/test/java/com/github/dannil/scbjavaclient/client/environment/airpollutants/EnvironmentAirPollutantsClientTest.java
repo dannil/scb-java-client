@@ -12,25 +12,25 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.environment.emissions;
+package com.github.dannil.scbjavaclient.client.environment.airpollutants;
 
 import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import com.github.dannil.scbjavaclient.http.URLEndpoint;
+
 @RunWith(JUnit4.class)
-public class EnvironmentEmissionsClientTest {
+public class EnvironmentAirPollutantsClientTest {
 
     @Test
     public void createWithLocaleConstructor() {
         Locale locale = new Locale("sv", "SE");
-        EnvironmentEmissionsClient client = new EnvironmentEmissionsClient(locale);
+        EnvironmentAirPollutantsClient client = new EnvironmentAirPollutantsClient(locale);
 
         assertEquals(locale, client.getLocale());
     }
@@ -40,7 +40,7 @@ public class EnvironmentEmissionsClientTest {
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints
         Locale locale = new Locale("en", "US");
-        EnvironmentEmissionsClient client = new EnvironmentEmissionsClient(locale);
+        EnvironmentAirPollutantsClient client = new EnvironmentAirPollutantsClient(locale);
 
         assertEquals(URLEndpoint.getRootUrl(locale).append("MI/MI0108/"), client.getUrl());
     }

@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.environment.emissions;
+package com.github.dannil.scbjavaclient.client.environment.airpollutants;
 
 import static org.junit.Assert.assertNotEquals;
 
@@ -20,22 +20,22 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
-public class EnvironmentEmissionsClientIT extends RemoteIntegrationTestSuite {
+import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
-    private EnvironmentEmissionsClient client;
+@RunWith(JUnit4.class)
+public class EnvironmentAirPollutantsClientIT extends RemoteIntegrationTestSuite {
+
+    private EnvironmentAirPollutantsClient client;
 
     @Before
     public void setup() {
-        this.client = new SCBClient().environment().emissions();
+        this.client = new SCBClient().environment().airPollutants();
     }
 
     @Test

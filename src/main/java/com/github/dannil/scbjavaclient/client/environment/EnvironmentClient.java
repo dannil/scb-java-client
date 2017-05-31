@@ -17,7 +17,7 @@ package com.github.dannil.scbjavaclient.client.environment;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
-import com.github.dannil.scbjavaclient.client.environment.emissions.EnvironmentEmissionsClient;
+import com.github.dannil.scbjavaclient.client.environment.airpollutants.EnvironmentAirPollutantsClient;
 import com.github.dannil.scbjavaclient.client.environment.greenhousegas.EnvironmentGreenhouseGasClient;
 import com.github.dannil.scbjavaclient.client.environment.industrialwateruse.EnvironmentIndustrialWaterUseClient;
 import com.github.dannil.scbjavaclient.client.environment.islands.EnvironmentIslandsClient;
@@ -44,7 +44,7 @@ public class EnvironmentClient extends AbstractContainerClient {
     public EnvironmentClient() {
         super();
 
-        addClient("emissions", new EnvironmentEmissionsClient());
+        addClient("airpollutants", new EnvironmentAirPollutantsClient());
         addClient("greenhousegas", new EnvironmentGreenhouseGasClient());
         addClient("industrialwateruse", new EnvironmentIndustrialWaterUseClient());
         addClient("islands", new EnvironmentIslandsClient());
@@ -71,12 +71,12 @@ public class EnvironmentClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with environment emissions data.</p>
+     * <p>Retrieve the client for interacting with environment air pollutants data.</p>
      *
-     * @return a client for environment emissions data
+     * @return a client for environment air pollutants data
      */
-    public EnvironmentEmissionsClient emissions() {
-        return (EnvironmentEmissionsClient) getClient("emissions");
+    public EnvironmentAirPollutantsClient airPollutants() {
+        return (EnvironmentAirPollutantsClient) getClient("airpollutants");
     }
 
     /**
