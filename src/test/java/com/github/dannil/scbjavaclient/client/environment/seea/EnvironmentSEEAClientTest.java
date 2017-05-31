@@ -22,6 +22,7 @@ import com.github.dannil.scbjavaclient.client.environment.seea.airemissionsaccou
 import com.github.dannil.scbjavaclient.client.environment.seea.energyaccounts.EnvironmentSEEAEnergyAccountsClient;
 import com.github.dannil.scbjavaclient.client.environment.seea.goodsandservicessector.EnvironmentSEEAGoodsAndServicesSectorClient;
 import com.github.dannil.scbjavaclient.client.environment.seea.materialflowaccounts.EnvironmentSEEAMaterialFlowAccountsClient;
+import com.github.dannil.scbjavaclient.client.environment.seea.taxes.EnvironmentSEEATaxesClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;
@@ -67,12 +68,12 @@ public class EnvironmentSEEAClientTest {
         assertEquals(client.materialFlowAccounts().getClass(), EnvironmentSEEAMaterialFlowAccountsClient.class);
     }
 
-    // @Test
-    // public void taxes() {
-    // EnvironmentSEEAClient client = new EnvironmentSEEAClient();
-    //
-    // assertEquals(client.taxes().getClass(), EnvironmentSEEATaxes.class);
-    // }
+    @Test
+    public void taxes() {
+        EnvironmentSEEAClient client = new EnvironmentSEEAClient();
+
+        assertEquals(client.taxes().getClass(), EnvironmentSEEATaxesClient.class);
+    }
 
     @Test
     public void getUrl() {
