@@ -14,10 +14,16 @@
 
 package com.github.dannil.scbjavaclient.client.financialmarkets.statistics.statistics;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles financial markets statistics statistics data fetching.</p>
@@ -41,6 +47,108 @@ public class FinancialMarketsStatisticsStatisticsClient extends AbstractClient {
      */
     public FinancialMarketsStatisticsStatisticsClient(Locale locale) {
         super(locale);
+    }
+
+    /**
+     * <p>Fetch all assets and liabilities data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getAssetsAndLiabilities(Collection, Collection, Collection)
+     */
+    public List<ResponseModel> getAssetsAndLiabilities() {
+        return getAssetsAndLiabilities(null, null, null);
+    }
+
+    /**
+     * <p>Fetch all assets and liabilities data which match the input constraints.</p>
+     *
+     * @param institutions
+     *            the institutions
+     * @param itemsAndCounterPartsSectors
+     *            the items and counter parts sector
+     * @param months
+     *            the months
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getAssetsAndLiabilities(Collection<String> institutions,
+            Collection<String> itemsAndCounterPartsSectors, Collection<String> months) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("Institut", institutions);
+        mappings.put("KontopostMotsektor", itemsAndCounterPartsSectors);
+        mappings.put(APIConstants.TIME_CODE, months);
+
+        return getResponseModels("FM5001SDDSMFI", mappings);
+    }
+
+    /**
+     * <p>Fetch all financial soundness indicators data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getFinancialSoundnessIndicators(Collection, Collection)
+     */
+    public List<ResponseModel> getFinancialSoundnessIndicators() {
+        return getFinancialSoundnessIndicators(null, null);
+    }
+
+    /**
+     * <p>Fetch all financial soundness indicators data which match the input
+     * constraints.</p>
+     *
+     * @param indicators
+     *            the indicators
+     * @param quarters
+     *            the quarters
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getFinancialSoundnessIndicators(Collection<String> indicators,
+            Collection<String> quarters) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("FinansiellIndikator", indicators);
+        mappings.put(APIConstants.TIME_CODE, quarters);
+
+        return getResponseModels("FM5001SDDSFSI", mappings);
+    }
+
+    /**
+     * <p>Fetch all money supply data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getMoneySupply(Collection, Collection)
+     */
+    public List<ResponseModel> getMoneySupply() {
+        return getMoneySupply(null, null);
+    }
+
+    /**
+     * <p>Fetch all money supply data which match the input constraints.</p>
+     *
+     * @param moneySupplies
+     *            the money supplies
+     * @param months
+     *            the months
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getMoneySupply(Collection<String> moneySupplies, Collection<String> months) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("Penningm", moneySupplies);
+        mappings.put(APIConstants.TIME_CODE, months);
+
+        return getResponseModels("FM5001SDDSPM", mappings);
     }
 
     @Override
