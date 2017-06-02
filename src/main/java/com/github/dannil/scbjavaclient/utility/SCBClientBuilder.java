@@ -1,6 +1,8 @@
-package com.github.dannil.scbjavaclient.client;
+package com.github.dannil.scbjavaclient.utility;
 
 import java.util.Locale;
+
+import com.github.dannil.scbjavaclient.client.SCBClient;
 
 public class SCBClientBuilder {
 
