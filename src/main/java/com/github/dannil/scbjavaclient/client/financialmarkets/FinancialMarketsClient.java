@@ -17,6 +17,7 @@ package com.github.dannil.scbjavaclient.client.financialmarkets;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.balanceofpayments.FinancialMarketsBalanceOfPaymentsClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.enterprises.FinancialMarketsEnterprisesClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.institutions.FinancialMarketsInstitutionsClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.investmentfunds.FinancialMarketsInvestmentFundsClient;
@@ -38,6 +39,7 @@ public class FinancialMarketsClient extends AbstractContainerClient {
     public FinancialMarketsClient() {
         super();
 
+        addClient("balanceofpayments", new FinancialMarketsBalanceOfPaymentsClient());
         addClient("enterprises", new FinancialMarketsEnterprisesClient());
         addClient("institutions", new FinancialMarketsInstitutionsClient());
         addClient("investmentfunds", new FinancialMarketsInvestmentFundsClient());
@@ -56,6 +58,16 @@ public class FinancialMarketsClient extends AbstractContainerClient {
         this();
 
         setLocale(locale);
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with financial markets balance of payments
+     * data.</p>
+     *
+     * @return a client for financial markets balance of payments data
+     */
+    public FinancialMarketsBalanceOfPaymentsClient balanceOfPayments() {
+        return (FinancialMarketsBalanceOfPaymentsClient) getClient("balanceofpayments");
     }
 
     /**

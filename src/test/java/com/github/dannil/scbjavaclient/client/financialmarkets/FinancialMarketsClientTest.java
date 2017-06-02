@@ -18,10 +18,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
-
+import com.github.dannil.scbjavaclient.client.financialmarkets.balanceofpayments.FinancialMarketsBalanceOfPaymentsClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.enterprises.FinancialMarketsEnterprisesClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.institutions.FinancialMarketsInstitutionsClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.investmentfunds.FinancialMarketsInvestmentFundsClient;
@@ -29,6 +26,10 @@ import com.github.dannil.scbjavaclient.client.financialmarkets.securities.Financ
 import com.github.dannil.scbjavaclient.client.financialmarkets.shareholders.FinancialMarketsShareholdersClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.statistics.FinancialMarketsStatisticsClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
 public class FinancialMarketsClientTest {
@@ -39,6 +40,13 @@ public class FinancialMarketsClientTest {
         FinancialMarketsClient client = new FinancialMarketsClient(locale);
 
         assertEquals(locale, client.getLocale());
+    }
+
+    @Test
+    public void balanceOfPaymentsClient() {
+        FinancialMarketsClient client = new FinancialMarketsClient();
+
+        assertEquals(client.balanceOfPayments().getClass(), FinancialMarketsBalanceOfPaymentsClient.class);
     }
 
     @Test
