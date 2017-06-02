@@ -111,7 +111,7 @@ public abstract class AbstractClient {
      * @return the URL representing the entry point for the API
      */
     protected URLEndpoint getRootUrl() {
-        return new URLEndpoint(APIConstants.ROOT_URL).toURL(this.locale);
+        return URLEndpoint.getRootUrl(this.locale);
     }
 
     /**
