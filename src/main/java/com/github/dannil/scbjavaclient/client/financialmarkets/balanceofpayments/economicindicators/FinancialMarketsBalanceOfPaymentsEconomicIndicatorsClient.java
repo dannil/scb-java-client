@@ -26,7 +26,8 @@ import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles financial markets balance of payments economic indicators data fetching.</p>
+ * <p>Client which handles financial markets balance of payments economic indicators data
+ * fetching.</p>
  *
  * @since 0.4.0
  */
@@ -49,7 +50,37 @@ public class FinancialMarketsBalanceOfPaymentsEconomicIndicatorsClient extends A
         super(locale);
     }
 
-    TODO
+    /**
+     * <p>Fetch all balance of payments net data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getBalanceOfPaymentsNet(Collection, Collection)
+     */
+    public List<ResponseModel> getBalanceOfPaymentsNet() {
+        return getBalanceOfPaymentsNet(null, null);
+    }
+
+    /**
+     * <p>Fetch all balance of payments net data which match the input constraints.</p>
+     *
+     * @param indicators
+     *            the indicators
+     * @param quarters
+     *            the quarters
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getBalanceOfPaymentsNet(Collection<String> indicators, Collection<String> quarters) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("EkoIndikator", indicators);
+        mappings.put(APIConstants.TIME_CODE, quarters);
+
+        return getResponseModels("SnabbStatFM0001", mappings);
+    }
 
     @Override
     public URLEndpoint getUrl() {
