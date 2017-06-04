@@ -31,6 +31,7 @@ import com.github.dannil.scbjavaclient.client.goodsandservices.GoodsAndServicesC
 import com.github.dannil.scbjavaclient.client.labourmarket.LabourMarketClient;
 import com.github.dannil.scbjavaclient.client.livingconditions.LivingConditionsClient;
 import com.github.dannil.scbjavaclient.client.population.PopulationClient;
+import com.github.dannil.scbjavaclient.client.pricesandconsumption.PricesAndConsumptionClient;
 import com.github.dannil.scbjavaclient.client.publicfinances.PublicFinancesClient;
 import com.github.dannil.scbjavaclient.client.transport.TransportClient;
 import com.github.dannil.scbjavaclient.format.json.JsonAPIConfigTableFormat;
@@ -64,6 +65,7 @@ public class SCBClient extends AbstractContainerClient {
         addClient("labourmarket", new LabourMarketClient());
         addClient("livingconditions", new LivingConditionsClient());
         addClient("population", new PopulationClient());
+        addClient("pricesandconsumption", new PricesAndConsumptionClient());
         addClient("publicfinances", new PublicFinancesClient());
         addClient("transport", new TransportClient());
     }
@@ -159,6 +161,15 @@ public class SCBClient extends AbstractContainerClient {
      */
     public PopulationClient population() {
         return (PopulationClient) getClient("population");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with prices and consumption data.</p>
+     *
+     * @return a client for prices and consumption data
+     */
+    public PricesAndConsumptionClient pricesAndConsumption() {
+        return (PricesAndConsumptionClient) getClient("pricesandconsumption");
     }
 
     /**
