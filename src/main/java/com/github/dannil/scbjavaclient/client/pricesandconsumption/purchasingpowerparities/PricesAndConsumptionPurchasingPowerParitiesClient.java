@@ -14,10 +14,16 @@
 
 package com.github.dannil.scbjavaclient.client.pricesandconsumption.purchasingpowerparities;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles prices and consumption purchasing power parities data
@@ -43,56 +49,76 @@ public class PricesAndConsumptionPurchasingPowerParitiesClient extends AbstractC
     public PricesAndConsumptionPurchasingPowerParitiesClient(Locale locale) {
         super(locale);
     }
-    
-    TODO
 
-    // /**
-    // * <p>Fetch all income statements data which match the input constraints.</p>
-    // *
-    // * @param regions
-    // * the regions
-    // * @param incomeStatements
-    // * the income statements
-    // * @param years
-    // * the years
-    // * @return the data wrapped in a list of
-    // * {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-    // * objects
-    // */
-    // public List<ResponseModel> getIncomeStatements(Collection<String> regions,
-    // Collection<String> incomeStatements,
-    // Collection<Integer> years) {
-    // Map<String, Collection<?>> mappings = new HashMap<>();
-    // mappings.put(APIConstants.REGION_CODE, regions);
-    // mappings.put("Resultatraknposter", incomeStatements);
-    // mappings.put(APIConstants.TIME_CODE, years);
-    //
-    // return getResponseModels("ResultKn", mappings);
-    // }
-    //
-    // /**
-    // * <p>Fetch all balance sheet data which match the input constraints.</p>
-    // *
-    // * @param regions
-    // * the regions
-    // * @param balanceSheets
-    // * the balance sheets
-    // * @param years
-    // * the years
-    // * @return the data wrapped in a list of
-    // * {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-    // * objects
-    // */
-    // public List<ResponseModel> getBalanceSheet(Collection<String> regions,
-    // Collection<String> balanceSheets,
-    // Collection<Integer> years) {
-    // Map<String, Collection<?>> mappings = new HashMap<>();
-    // mappings.put(APIConstants.REGION_CODE, regions);
-    // mappings.put("Balansraknposter", balanceSheets);
-    // mappings.put(APIConstants.TIME_CODE, years);
-    //
-    // return getResponseModels("BalansKn", mappings);
-    // }
+    /**
+     * <p>Fetch all extrapolated price level indices data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     * 
+     * @see #getExtrapolatedPriceLevelIndices(Collection, Collection)
+     */
+    public List<ResponseModel> getExtrapolatedPriceLevelIndices() {
+        return getExtrapolatedPriceLevelIndices(null, null);
+    }
+
+    /**
+     * <p>Fetch all extrapolated price level indices data which match the input
+     * constraints.</p>
+     *
+     * @param countryGroups
+     *            the country groups
+     * @param years
+     *            the quarters
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getExtrapolatedPriceLevelIndices(Collection<String> countryGroups,
+            Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("LandLandgrupper", countryGroups);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("PR0401T01Ar", mappings);
+    }
+
+    /**
+     * <p>Fetch all purchasing power parities data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     * 
+     * @see #getPurchasingPowerParities(Collection, Collection, Collection)
+     */
+    public List<ResponseModel> getPurchasingPowerParities() {
+        return getPurchasingPowerParities(null, null, null);
+    }
+
+    /**
+     * <p>Fetch all purchasing power parities data which match the input constraints.</p>
+     *
+     * @param countries
+     *            the countries
+     * @param esaClassifications
+     *            the ESA classifications
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getPurchasingPowerParities(Collection<String> countries,
+            Collection<String> esaClassifications, Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("Land", countries);
+        mappings.put("ENS", esaClassifications);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("PR0401T03BAr", mappings);
+    }
 
     @Override
     public URLEndpoint getUrl() {
