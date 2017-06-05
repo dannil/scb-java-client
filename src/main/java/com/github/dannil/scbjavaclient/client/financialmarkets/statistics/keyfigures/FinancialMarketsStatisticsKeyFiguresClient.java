@@ -42,6 +42,8 @@ public class FinancialMarketsStatisticsKeyFiguresClient extends AbstractClient {
     public FinancialMarketsStatisticsKeyFiguresClient(Locale locale) {
         super(locale);
     }
+    
+    TODO
 
     @Override
     public URLEndpoint getUrl() {
