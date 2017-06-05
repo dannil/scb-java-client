@@ -70,7 +70,7 @@ public class PricesAndConsumptionPurchasingPowerParitiesClient extends AbstractC
      * @param countryGroups
      *            the country groups
      * @param years
-     *            the quarters
+     *            the years
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
