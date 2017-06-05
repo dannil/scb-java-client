@@ -14,10 +14,16 @@
 
 package com.github.dannil.scbjavaclient.client.pricesandconsumption.ppi.economicindicators;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles prices and consumption producer and import price index (PPI)
@@ -43,43 +49,40 @@ public class PricesAndConsumptionPPIEconomicIndicatorsClient extends AbstractCon
     public PricesAndConsumptionPPIEconomicIndicatorsClient(Locale locale) {
         super(locale);
     }
-    
-    TODO
 
-    // /**
-    // * <p>Fetch all extrapolated price level indices data.</p>
-    // *
-    // * @return the data wrapped in a list of
-    // * {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-    // * objects
-    // *
-    // * @see #getExtrapolatedPriceLevelIndices(Collection, Collection)
-    // */
-    // public List<ResponseModel> getExtrapolatedPriceLevelIndices() {
-    // return getExtrapolatedPriceLevelIndices(null, null);
-    // }
-    //
-    // /**
-    // * <p>Fetch all extrapolated price level indices data which match the input
-    // * constraints.</p>
-    // *
-    // * @param countryGroups
-    // * the country groups
-    // * @param years
-    // * the quarters
-    // * @return the data wrapped in a list of
-    // * {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-    // * objects
-    // */
-    // public List<ResponseModel> getExtrapolatedPriceLevelIndices(Collection<String>
-    // countryGroups,
-    // Collection<Integer> years) {
-    // Map<String, Collection<?>> mappings = new HashMap<>();
-    // mappings.put("LandLandgrupper", countryGroups);
-    // mappings.put(APIConstants.TIME_CODE, years);
-    //
-    // return getResponseModels("PR0401T01Ar", mappings);
-    // }
+    /**
+     * <p>Fetch all price indices in producer and import stages data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getPriceIndicesInProducerAndImportStages(Collection, Collection)
+     */
+    public List<ResponseModel> getPriceIndicesInProducerAndImportStages() {
+        return getPriceIndicesInProducerAndImportStages(null, null);
+    }
+
+    /**
+     * <p>Fetch all price indices in producer and import stages data which match the input
+     * constraints.</p>
+     *
+     * @param indicators
+     *            the indicators
+     * @param months
+     *            the months
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getPriceIndicesInProducerAndImportStages(Collection<String> indicators,
+            Collection<String> months) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("EkoIndikator", indicators);
+        mappings.put(APIConstants.TIME_CODE, months);
+
+        return getResponseModels("SnabbStatPR0301", mappings);
+    }
 
     @Override
     public URLEndpoint getUrl() {
