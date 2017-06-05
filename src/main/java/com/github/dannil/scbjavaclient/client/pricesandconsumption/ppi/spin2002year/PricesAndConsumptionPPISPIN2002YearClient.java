@@ -14,10 +14,16 @@
 
 package com.github.dannil.scbjavaclient.client.pricesandconsumption.ppi.spin2002year;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles prices and consumption producer and import price index (PPI)
@@ -43,43 +49,202 @@ public class PricesAndConsumptionPPISPIN2002YearClient extends AbstractContainer
     public PricesAndConsumptionPPISPIN2002YearClient(Locale locale) {
         super(locale);
     }
-    
-    TODO
 
-    // /**
-    // * <p>Fetch all extrapolated price level indices data.</p>
-    // *
-    // * @return the data wrapped in a list of
-    // * {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-    // * objects
-    // *
-    // * @see #getExtrapolatedPriceLevelIndices(Collection, Collection)
-    // */
-    // public List<ResponseModel> getExtrapolatedPriceLevelIndices() {
-    // return getExtrapolatedPriceLevelIndices(null, null);
-    // }
-    //
-    // /**
-    // * <p>Fetch all extrapolated price level indices data which match the input
-    // * constraints.</p>
-    // *
-    // * @param countryGroups
-    // * the country groups
-    // * @param years
-    // * the quarters
-    // * @return the data wrapped in a list of
-    // * {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-    // * objects
-    // */
-    // public List<ResponseModel> getExtrapolatedPriceLevelIndices(Collection<String>
-    // countryGroups,
-    // Collection<Integer> years) {
-    // Map<String, Collection<?>> mappings = new HashMap<>();
-    // mappings.put("LandLandgrupper", countryGroups);
-    // mappings.put(APIConstants.TIME_CODE, years);
-    //
-    // return getResponseModels("PR0401T01Ar", mappings);
-    // }
+    /**
+     * <p>Fetch all producer price index home sales data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getProducerPriceIndexHomeSales(Collection, Collection)
+     */
+    public List<ResponseModel> getProducerPriceIndexHomeSales() {
+        return getProducerPriceIndexHomeSales(null, null);
+    }
+
+    /**
+     * <p>Fetch all producer price index home sales data which match the input
+     * constraints.</p>
+     *
+     * @param spin2002
+     *            the SPIN 2002
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getProducerPriceIndexHomeSales(Collection<String> spin2002, Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.SPIN_2002, spin2002);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("HMPIAr", mappings);
+    }
+
+    /**
+     * <p>Fetch all export price index data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getExportPriceIndex(Collection, Collection)
+     */
+    public List<ResponseModel> getExportPriceIndex() {
+        return getExportPriceIndex(null, null);
+    }
+
+    /**
+     * <p>Fetch all export price index data which match the input constraints.</p>
+     *
+     * @param spin2002
+     *            the SPIN 2002
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getExportPriceIndex(Collection<String> spin2002, Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.SPIN_2002, spin2002);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("EXPIAr", mappings);
+    }
+
+    /**
+     * <p>Fetch all import price index data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getImportPriceIndex(Collection, Collection)
+     */
+    public List<ResponseModel> getImportPriceIndex() {
+        return getImportPriceIndex(null, null);
+    }
+
+    /**
+     * <p>Fetch all import price index data which match the input constraints.</p>
+     *
+     * @param spin2002
+     *            the SPIN 2002
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getImportPriceIndex(Collection<String> spin2002, Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.SPIN_2002, spin2002);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("IMPIAr", mappings);
+    }
+
+    /**
+     * <p>Fetch all producer price index data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getProducerPriceIndex(Collection, Collection)
+     */
+    public List<ResponseModel> getProducerPriceIndex() {
+        return getProducerPriceIndex(null, null);
+    }
+
+    /**
+     * <p>Fetch all producer price index data which match the input constraints.</p>
+     *
+     * @param spin2002
+     *            the SPIN 2002
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getProducerPriceIndex(Collection<String> spin2002, Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.SPIN_2002, spin2002);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("PPIAr", mappings);
+    }
+
+    /**
+     * <p>Fetch all price index for domestic supply data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getPriceIndexForDomesticSupply(Collection, Collection)
+     */
+    public List<ResponseModel> getPriceIndexForDomesticSupply() {
+        return getPriceIndexForDomesticSupply(null, null);
+    }
+
+    /**
+     * <p>Fetch all price index for domestic supply data which match the input
+     * constraints.</p>
+     *
+     * @param spin2002
+     *            the SPIN 2002
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getPriceIndexForDomesticSupply(Collection<String> spin2002, Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.SPIN_2002, spin2002);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("ITPIAr", mappings);
+    }
+
+    /**
+     * <p>Fetch all producer price index for services data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getProducerPriceIndexForServices(Collection, Collection)
+     */
+    public List<ResponseModel> getProducerPriceIndexForServices() {
+        return getProducerPriceIndexForServices(null, null);
+    }
+
+    /**
+     * <p>Fetch all producer price index for services data which match the input
+     * constraints.</p>
+     *
+     * @param spin2002
+     *            the SPIN 2002
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getProducerPriceIndexForServices(Collection<String> spin2002,
+            Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.SPIN_2002, spin2002);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("TPI2005Ar", mappings);
+    }
 
     @Override
     public URLEndpoint getUrl() {
