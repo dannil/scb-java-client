@@ -1,5 +1,0 @@
-/**
- * <p>Package which contains all clients for prices and consumption construction cost
- * index data.</p>
- */
-package com.github.dannil.scbjavaclient.client.pricesandconsumption.constructioncostindex;

@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.pricesandconsumption.constructioncostindex;
+package com.github.dannil.scbjavaclient.client.pricesandconsumption.cci;
 
 import java.util.Locale;
 
@@ -20,17 +20,17 @@ import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 /**
- * <p>Client which handles prices and consumption construction cost index data
+ * <p>Client which handles prices and consumption construction cost index (CCI) data
  * fetching.</p>
  *
  * @since 0.4.0
  */
-public class PricesAndConsumptionConstructionCostIndexClient extends AbstractContainerClient {
+public class PricesAndConsumptionCCIClient extends AbstractContainerClient {
 
     /**
      * <p>Default constructor. Initializes values and creates sub-clients.</p>
      */
-    public PricesAndConsumptionConstructionCostIndexClient() {
+    public PricesAndConsumptionCCIClient() {
         super();
 
         // addClient("annualaccounts", new PublicFinancesAnnualAccountsClient());
@@ -42,7 +42,7 @@ public class PricesAndConsumptionConstructionCostIndexClient extends AbstractCon
      * @param locale
      *            the <code>Locale</code> for this client
      */
-    public PricesAndConsumptionConstructionCostIndexClient(Locale locale) {
+    public PricesAndConsumptionCCIClient(Locale locale) {
         this();
 
         setLocale(locale);

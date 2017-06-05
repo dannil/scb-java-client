@@ -19,7 +19,7 @@ import static org.junit.Assert.assertEquals;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.bpi.PricesAndConsumptionBPIClient;
-import com.github.dannil.scbjavaclient.client.pricesandconsumption.constructioncostindex.PricesAndConsumptionConstructionCostIndexClient;
+import com.github.dannil.scbjavaclient.client.pricesandconsumption.cci.PricesAndConsumptionCCIClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.PricesAndConsumptionCPIClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.ppi.PricesAndConsumptionPPIClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.purchasingpowerparities.PricesAndConsumptionPurchasingPowerParitiesClient;
@@ -48,10 +48,10 @@ public class PricesAndConsumptionClientTest {
     }
 
     @Test
-    public void constructionCostIndex() {
+    public void cci() {
         PricesAndConsumptionClient client = new PricesAndConsumptionClient();
 
-        assertEquals(client.constructionCostIndex().getClass(), PricesAndConsumptionConstructionCostIndexClient.class);
+        assertEquals(client.cci().getClass(), PricesAndConsumptionCCIClient.class);
     }
 
     @Test

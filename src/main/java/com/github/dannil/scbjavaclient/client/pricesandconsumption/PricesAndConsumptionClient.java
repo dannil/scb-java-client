@@ -18,7 +18,7 @@ import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.bpi.PricesAndConsumptionBPIClient;
-import com.github.dannil.scbjavaclient.client.pricesandconsumption.constructioncostindex.PricesAndConsumptionConstructionCostIndexClient;
+import com.github.dannil.scbjavaclient.client.pricesandconsumption.cci.PricesAndConsumptionCCIClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.PricesAndConsumptionCPIClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.ppi.PricesAndConsumptionPPIClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.purchasingpowerparities.PricesAndConsumptionPurchasingPowerParitiesClient;
@@ -38,7 +38,7 @@ public class PricesAndConsumptionClient extends AbstractContainerClient {
         super();
 
         addClient("bpi", new PricesAndConsumptionBPIClient());
-        addClient("constructioncostindex", new PricesAndConsumptionConstructionCostIndexClient());
+        addClient("cci", new PricesAndConsumptionCCIClient());
         addClient("cpi", new PricesAndConsumptionCPIClient());
         addClient("ppi", new PricesAndConsumptionPPIClient());
         addClient("purchasingpowerparities", new PricesAndConsumptionPurchasingPowerParitiesClient());
@@ -68,12 +68,12 @@ public class PricesAndConsumptionClient extends AbstractContainerClient {
 
     /**
      * <p>Retrieve the client for interacting with prices and consumption construction
-     * cost index data.</p>
+     * cost index (CCI) data.</p>
      *
-     * @return a client for prices and consumption construction cost index data
+     * @return a client for prices and consumption construction cost index (CCI) data
      */
-    public PricesAndConsumptionConstructionCostIndexClient constructionCostIndex() {
-        return (PricesAndConsumptionConstructionCostIndexClient) getClient("constructioncostindex");
+    public PricesAndConsumptionCCIClient cci() {
+        return (PricesAndConsumptionCCIClient) getClient("cci");
     }
 
     /**

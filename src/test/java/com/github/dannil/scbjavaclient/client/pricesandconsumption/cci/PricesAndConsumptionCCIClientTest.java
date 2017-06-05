@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.pricesandconsumption.constructioncostindex;
+package com.github.dannil.scbjavaclient.client.pricesandconsumption.cci;
 
 import static org.junit.Assert.assertEquals;
 
@@ -25,13 +25,12 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class PricesAndConsumptionConstructionCostIndexClientTest {
+public class PricesAndConsumptionCCIClientTest {
 
     @Test
     public void createWithLocaleConstructor() {
         Locale locale = new Locale("sv", "SE");
-        PricesAndConsumptionConstructionCostIndexClient client = new PricesAndConsumptionConstructionCostIndexClient(
-                locale);
+        PricesAndConsumptionCCIClient client = new PricesAndConsumptionCCIClient(locale);
 
         assertEquals(locale, client.getLocale());
     }
@@ -43,8 +42,7 @@ public class PricesAndConsumptionConstructionCostIndexClientTest {
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints
         Locale locale = new Locale("en", "US");
-        PricesAndConsumptionConstructionCostIndexClient client = new PricesAndConsumptionConstructionCostIndexClient(
-                locale);
+        PricesAndConsumptionCCIClient client = new PricesAndConsumptionCCIClient(locale);
 
         assertEquals(URLEndpoint.getRootUrl(locale).append("PR/PR0502/"), client.getUrl());
     }
