@@ -76,11 +76,7 @@ public class PricesAndConsumptionPPISPIN2002YearClient extends AbstractContainer
      *         objects
      */
     public List<ResponseModel> getProducerPriceIndexHomeSales(Collection<String> spin2002, Collection<Integer> years) {
-        Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.SPIN_2002, spin2002);
-        mappings.put(APIConstants.TIME_CODE, years);
-
-        return getResponseModels("HMPIAr", mappings);
+        return generate(spin2002, years, "HMPIAr");
     }
 
     /**
@@ -108,11 +104,7 @@ public class PricesAndConsumptionPPISPIN2002YearClient extends AbstractContainer
      *         objects
      */
     public List<ResponseModel> getExportPriceIndex(Collection<String> spin2002, Collection<Integer> years) {
-        Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.SPIN_2002, spin2002);
-        mappings.put(APIConstants.TIME_CODE, years);
-
-        return getResponseModels("EXPIAr", mappings);
+        return generate(spin2002, years, "EXPIAr");
     }
 
     /**
@@ -140,11 +132,7 @@ public class PricesAndConsumptionPPISPIN2002YearClient extends AbstractContainer
      *         objects
      */
     public List<ResponseModel> getImportPriceIndex(Collection<String> spin2002, Collection<Integer> years) {
-        Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.SPIN_2002, spin2002);
-        mappings.put(APIConstants.TIME_CODE, years);
-
-        return getResponseModels("IMPIAr", mappings);
+        return generate(spin2002, years, "IMPIAr");
     }
 
     /**
@@ -172,11 +160,7 @@ public class PricesAndConsumptionPPISPIN2002YearClient extends AbstractContainer
      *         objects
      */
     public List<ResponseModel> getProducerPriceIndex(Collection<String> spin2002, Collection<Integer> years) {
-        Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.SPIN_2002, spin2002);
-        mappings.put(APIConstants.TIME_CODE, years);
-
-        return getResponseModels("PPIAr", mappings);
+        return generate(spin2002, years, "PPIAr");
     }
 
     /**
@@ -205,11 +189,7 @@ public class PricesAndConsumptionPPISPIN2002YearClient extends AbstractContainer
      *         objects
      */
     public List<ResponseModel> getPriceIndexForDomesticSupply(Collection<String> spin2002, Collection<Integer> years) {
-        Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.SPIN_2002, spin2002);
-        mappings.put(APIConstants.TIME_CODE, years);
-
-        return getResponseModels("ITPIAr", mappings);
+        return generate(spin2002, years, "ITPIAr");
     }
 
     /**
@@ -239,11 +219,27 @@ public class PricesAndConsumptionPPISPIN2002YearClient extends AbstractContainer
      */
     public List<ResponseModel> getProducerPriceIndexForServices(Collection<String> spin2002,
             Collection<Integer> years) {
+        return generate(spin2002, years, "TPI2005Ar");
+    }
+
+    /**
+     * <p>Common generator method for the methods in this class.</p>
+     *
+     * @param spin2002
+     *            the SPIN 2002
+     * @param times
+     *            the times
+     * @param table
+     *            the table
+     * @return a <code>List</code> of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     */
+    private List<ResponseModel> generate(Collection<String> spin2002, Collection<Integer> times, String table) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.SPIN_2002, spin2002);
-        mappings.put(APIConstants.TIME_CODE, years);
+        mappings.put(APIConstants.TIME_CODE, times);
 
-        return getResponseModels("TPI2005Ar", mappings);
+        return getResponseModels(table, mappings);
     }
 
     @Override
