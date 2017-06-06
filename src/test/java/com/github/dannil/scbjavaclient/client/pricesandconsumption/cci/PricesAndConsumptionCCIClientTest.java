@@ -34,8 +34,8 @@ public class PricesAndConsumptionCCIClientTest {
 
         assertEquals(locale, client.getLocale());
     }
-    
-    TODO
+
+    // TODO
 
     @Test
     public void getUrl() {

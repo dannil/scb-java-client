@@ -92,7 +92,7 @@ public class PricesAndConsumptionPPIClientTest {
         Locale locale = new Locale("en", "US");
         PricesAndConsumptionPPIClient client = new PricesAndConsumptionPPIClient(locale);
 
-        assertEquals(URLEndpoint.getRootUrl(locale).append("PR/P0301/"), client.getUrl());
+        assertEquals(URLEndpoint.getRootUrl(locale).append("PR/PR0301/"), client.getUrl());
     }
 
 }

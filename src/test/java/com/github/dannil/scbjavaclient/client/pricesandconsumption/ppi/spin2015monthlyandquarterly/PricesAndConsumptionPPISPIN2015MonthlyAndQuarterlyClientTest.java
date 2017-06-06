@@ -44,7 +44,7 @@ public class PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClientTest {
         PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient client = new PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient(
                 locale);
 
-        assertEquals(URLEndpoint.getRootUrl(locale).append("PR/P0301/PR0301J/"), client.getUrl());
+        assertEquals(URLEndpoint.getRootUrl(locale).append("PR/PR0301/PR0301J/"), client.getUrl());
     }
 
 }

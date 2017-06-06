@@ -30,7 +30,8 @@ public class PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClientTest {
     @Test
     public void createWithLocaleConstructor() {
         Locale locale = new Locale("sv", "SE");
-        PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient client = new PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient(locale);
+        PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient client = new PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient(
+                locale);
 
         assertEquals(locale, client.getLocale());
     }
@@ -40,9 +41,10 @@ public class PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClientTest {
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints
         Locale locale = new Locale("en", "US");
-        PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient client = new PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient(locale);
+        PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient client = new PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient(
+                locale);
 
-        assertEquals(URLEndpoint.getRootUrl(locale).append("PR/P0301/PR0301B/"), client.getUrl());
+        assertEquals(URLEndpoint.getRootUrl(locale).append("PR/PR0301/PR0301B/"), client.getUrl());
     }
 
 }

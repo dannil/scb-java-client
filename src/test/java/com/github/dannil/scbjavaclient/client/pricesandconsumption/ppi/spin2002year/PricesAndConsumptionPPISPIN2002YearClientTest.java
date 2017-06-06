@@ -42,7 +42,7 @@ public class PricesAndConsumptionPPISPIN2002YearClientTest {
         Locale locale = new Locale("en", "US");
         PricesAndConsumptionPPISPIN2002YearClient client = new PricesAndConsumptionPPISPIN2002YearClient(locale);
 
-        assertEquals(URLEndpoint.getRootUrl(locale).append("PR/P0301/PR0301F/"), client.getUrl());
+        assertEquals(URLEndpoint.getRootUrl(locale).append("PR/PR0301/PR0301F/"), client.getUrl());
     }
 
 }

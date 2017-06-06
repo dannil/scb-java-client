@@ -19,6 +19,7 @@ import static org.junit.Assert.assertNotEquals;
 import java.util.Arrays;
 import java.util.List;
 
+import com.github.dannil.scbjavaclient.client.SCBClient;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
@@ -33,9 +34,7 @@ public class PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClientIT extends 
 
     @Before
     public void setup() {
-        // this.client = new
-        // SCBClient().pricesAndConsumption().ppi().spin2015MonthlyAndQuarterly();
-        this.client = new PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient();
+        this.client = new SCBClient().pricesAndConsumption().ppi().spin2015MonthlyAndQuarterly();
     }
 
     // Daniel 2017-06-06:

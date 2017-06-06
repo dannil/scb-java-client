@@ -44,7 +44,7 @@ public class PricesAndConsumptionPurchasingPowerParitiesClientTest {
         PricesAndConsumptionPurchasingPowerParitiesClient client = new PricesAndConsumptionPurchasingPowerParitiesClient(
                 locale);
 
-        assertEquals(URLEndpoint.getRootUrl(locale).append("PR/P0401/"), client.getUrl());
+        assertEquals(URLEndpoint.getRootUrl(locale).append("PR/PR0401/"), client.getUrl());
     }
 
 }

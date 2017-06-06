@@ -30,23 +30,21 @@ public class PricesAndConsumptionCPIClientTest {
     @Test
     public void createWithLocaleConstructor() {
         Locale locale = new Locale("sv", "SE");
-        PricesAndConsumptionCPIClient client = new PricesAndConsumptionCPIClient(
-                locale);
+        PricesAndConsumptionCPIClient client = new PricesAndConsumptionCPIClient(locale);
 
         assertEquals(locale, client.getLocale());
     }
-    
-    TODO
+
+    // TODO
 
     @Test
     public void getUrl() {
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints
         Locale locale = new Locale("en", "US");
-        PricesAndConsumptionCPIClient client = new PricesAndConsumptionCPIClient(
-                locale);
+        PricesAndConsumptionCPIClient client = new PricesAndConsumptionCPIClient(locale);
 
-        assertEquals(URLEndpoint.getRootUrl(locale).append("PR/P0101/"), client.getUrl());
+        assertEquals(URLEndpoint.getRootUrl(locale).append("PR/PR0101/"), client.getUrl());
     }
 
 }

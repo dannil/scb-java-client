@@ -44,7 +44,7 @@ public class PricesAndConsumptionPPIEconomicIndicatorsClientTest {
         PricesAndConsumptionPPIEconomicIndicatorsClient client = new PricesAndConsumptionPPIEconomicIndicatorsClient(
                 locale);
 
-        assertEquals(URLEndpoint.getRootUrl(locale).append("PR/P0301/PR0301A/"), client.getUrl());
+        assertEquals(URLEndpoint.getRootUrl(locale).append("PR/PR0301/PR0301A/"), client.getUrl());
     }
 
 }
