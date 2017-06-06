@@ -48,7 +48,7 @@ public class PricesAndConsumptionCCIClient extends AbstractContainerClient {
         setLocale(locale);
     }
 
-    // TODO
+    TODO
 
     // /**
     // * <p>Retrieve the client for interacting with public finances annual accounts
