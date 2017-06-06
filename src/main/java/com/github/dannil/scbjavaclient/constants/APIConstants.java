@@ -86,6 +86,11 @@ public final class APIConstants {
     public static final String SPIN_2007 = "SPIN2007";
 
     /**
+     * <p>Constant for SPIN 2015 code.</p>
+     */
+    public static final String SPIN_2015 = "SPIN2015";
+
+    /**
      * <p>Constant for sub-sector code.</p>
      */
     public static final String SUBSECTOR_CODE = "Delsektor";
