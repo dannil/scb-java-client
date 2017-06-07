@@ -7,7 +7,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import org.junit.Test;
 import org.junit.runners.BlockJUnit4ClassRunner;
@@ -21,8 +20,14 @@ public class DateJUnitRunner extends BlockJUnit4ClassRunner {
     public DateJUnitRunner(Class<?> clazz) throws InitializationError {
         super(clazz);
 
-        // 30 days cutoff time
-        this.dayLimit = 30;
+        // Set the cutoff time
+        String s = System.getProperty("testsDayLimit");
+        if (s != null && s.length() != 0) {
+            this.dayLimit = Integer.parseInt(s);
+        } else {
+            // Use 30 days as fallback value if no value for parameter is set
+            this.dayLimit = 30;
+        }
     }
 
     @Override
@@ -48,13 +53,9 @@ public class DateJUnitRunner extends BlockJUnit4ClassRunner {
                 throw new RuntimeException(e);
             }
 
-            // Get the difference in days
-            long differenceInMillis = cutoffDate.getTime() - annotatedDate.getTime();
-            long days = TimeUnit.DAYS.convert(differenceInMillis, TimeUnit.MILLISECONDS);
-
-            // If the difference of days between the two dates are within the limit, the
-            // test should be run; otherwise not
-            if (days <= this.dayLimit) {
+            // If the cutoff date is before the annotated date (a point in time which
+            // occurred before the annotated date), the test should be run; otherwise not
+            if (cutoffDate.before(annotatedDate)) {
                 children.add(fm);
             }
         }
