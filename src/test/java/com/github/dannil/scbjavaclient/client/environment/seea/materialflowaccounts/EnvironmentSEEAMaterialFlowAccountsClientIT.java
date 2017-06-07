@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class EnvironmentSEEAMaterialFlowAccountsClientIT extends RemoteIntegrationTestSuite {
 
     private EnvironmentSEEAMaterialFlowAccountsClient client;
@@ -39,17 +40,20 @@ public class EnvironmentSEEAMaterialFlowAccountsClientIT extends RemoteIntegrati
     }
 
     @Test
+    @Date("2017-05-29")
     public void getMaterialFlows() {
         assertNotEquals(0, this.client.getMaterialFlows().size());
     }
 
     @Test
+    @Date("2017-05-29")
     public void getMaterialFlowsWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getMaterialFlows(Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-05-29")
     public void getMaterialFlowsWithParameters() {
         List<String> categories = Arrays.asList("1.2.1", "1.2.2");
         List<Integer> years = Arrays.asList(2010, 2011);

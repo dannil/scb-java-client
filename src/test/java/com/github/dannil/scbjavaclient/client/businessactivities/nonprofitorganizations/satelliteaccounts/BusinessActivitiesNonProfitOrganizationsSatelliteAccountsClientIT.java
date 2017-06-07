@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClientIT extends RemoteIntegrationTestSuite {
 
     private BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClient client;
@@ -39,17 +40,20 @@ public class BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClientIT e
     }
 
     @Test
+    @Date("2017-04-09")
     public void getIncomeExpenditureAndSavings() {
         assertNotEquals(0, this.client.getIncomeExpenditureAndSavings().size());
     }
 
     @Test
+    @Date("2017-04-09")
     public void getIncomeExpenditureAndSavingsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getIncomeExpenditureAndSavings(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-09")
     public void getIncomeExpenditureAndSavingsWithParameters() {
         List<String> icnpo = Arrays.asList("02", "06");
         List<String> transactionItems = Arrays.asList("D42.PAY", "B6n");
@@ -59,17 +63,20 @@ public class BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClientIT e
     }
 
     @Test
+    @Date("2017-04-09")
     public void getNumberOfOrganizationsAndEmployment() {
         assertNotEquals(0, this.client.getNumberOfOrganizationsAndEmployment().size());
     }
 
     @Test
+    @Date("2017-04-09")
     public void getNumberOfOrganizationsAndEmploymentWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getNumberOfOrganizationsAndEmployment(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-09")
     public void getNumberOfOrganizationsAndEmploymentWithParameters() {
         List<String> incomesAndCosts = Arrays.asList("07", "10");
         List<Integer> years = Arrays.asList(2013, 2014);

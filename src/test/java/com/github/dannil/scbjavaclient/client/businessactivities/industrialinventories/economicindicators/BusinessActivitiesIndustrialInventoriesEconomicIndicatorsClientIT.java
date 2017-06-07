@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class BusinessActivitiesIndustrialInventoriesEconomicIndicatorsClientIT extends RemoteIntegrationTestSuite {
 
     private BusinessActivitiesIndustrialInventoriesEconomicIndicatorsClient client;
@@ -39,16 +40,19 @@ public class BusinessActivitiesIndustrialInventoriesEconomicIndicatorsClientIT e
     }
 
     @Test
+    @Date("2017-04-13")
     public void getTotalInventories() {
         assertNotEquals(0, this.client.getTotalInventories().size());
     }
 
     @Test
+    @Date("2017-04-13")
     public void getTotalInventoriesWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getTotalInventories(Collections.<String>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-13")
     public void getTotalInventoriesWithParameters() {
         List<String> quarters = Arrays.asList("2015K2", "2015K4");
 

@@ -35,18 +35,20 @@ import java.util.Objects;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.Files;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class AbstractClientIT extends RemoteIntegrationTestSuite {
 
     @Test
+    @Date("2017-01-01")
     public void toFallbackUrlDoGetRequest() {
         SCBClient client = new SCBClient(new Locale("en", "US"));
 
@@ -64,6 +66,7 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    @Date("2017-01-01")
     public void toFallbackUrlDoPostRequest() {
         SCBClient client = new SCBClient(new Locale("en", "US"));
 
@@ -86,6 +89,7 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    @Date("2017-01-01")
     public void doPostRequestWithEmptyList() {
         SCBClient client = new SCBClient(new Locale("sv", "SE"));
 
@@ -103,6 +107,7 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    @Date("2017-01-01")
     public void urlNotFound() {
         SCBClient client = new SCBClient(new Locale("sv", "SE"));
 
@@ -112,6 +117,7 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    @Date("2017-01-01")
     public void urlForbidden() {
         SCBClient client = new SCBClient(new Locale("sv", "SE"));
 
@@ -124,6 +130,7 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    @Date("2017-01-01")
     public void getResponseModels() {
         Locale locale = new Locale("sv", "SE");
         SCBClient client = new SCBClient(locale);
@@ -135,6 +142,7 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    @Date("2017-01-01")
     public void getResponseModelsWithParameters() {
         Locale locale = new Locale("sv", "SE");
         SCBClient client = new SCBClient(locale);
@@ -152,6 +160,7 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    @Date("now")
     public void checkForLocaleConstructor() {
         String execPath = System.getProperty("user.dir");
 
@@ -183,6 +192,7 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    @Date("now")
     public void checkForCorrectPackageAndClientNames() {
         String execPath = System.getProperty("user.dir");
 
@@ -239,6 +249,7 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    @Date("now")
     public void checkForUniqueTableImplementations() {
         String execPath = System.getProperty("user.dir");
 

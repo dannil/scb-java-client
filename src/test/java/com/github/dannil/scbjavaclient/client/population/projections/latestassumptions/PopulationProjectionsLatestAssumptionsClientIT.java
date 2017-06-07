@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class PopulationProjectionsLatestAssumptionsClientIT extends RemoteIntegrationTestSuite {
 
     private PopulationProjectionsLatestAssumptionsClient client;
@@ -39,17 +40,20 @@ public class PopulationProjectionsLatestAssumptionsClientIT extends RemoteIntegr
     }
 
     @Test
+    @Date("2017-04-10")
     public void getDeathRate() {
         assertNotEquals(0, this.client.getDeathRate().size());
     }
 
     @Test
+    @Date("2017-04-10")
     public void getDeathRateWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getDeathRate(Collections.<Integer>emptyList(), Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-10")
     public void getDeathRateWithParameters() {
         List<Integer> sexes = Arrays.asList(1, 2);
         List<String> ages = Arrays.asList("21", "31");
@@ -59,16 +63,19 @@ public class PopulationProjectionsLatestAssumptionsClientIT extends RemoteIntegr
     }
 
     @Test
+    @Date("2017-04-10")
     public void getFertilityAssumption() {
         assertNotEquals(0, this.client.getFertilityAssumption().size());
     }
 
     @Test
+    @Date("2017-04-10")
     public void getFertilityAssumptionWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getFertilityAssumption(Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-10")
     public void getFertilityAssumptionWithParameters() {
         List<Integer> years = Arrays.asList(2038, 2053);
 

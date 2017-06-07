@@ -27,6 +27,8 @@ import com.github.dannil.scbjavaclient.client.AbstractClientTest;
 import com.github.dannil.scbjavaclient.client.AbstractContainerClientTest;
 import com.github.dannil.scbjavaclient.client.SCBClientIT;
 import com.github.dannil.scbjavaclient.client.SCBClientTest;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.Files;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
@@ -86,6 +88,8 @@ public class TestIT {
         List<Class<?>> filters = new ArrayList<>();
         filters.add(RemoteIntegrationTestSuite.class);
         filters.add(Files.class);
+        filters.add(Date.class);
+        filters.add(DateJUnitRunner.class);
 
         Iterator<File> it = files.iterator();
         while (it.hasNext()) {

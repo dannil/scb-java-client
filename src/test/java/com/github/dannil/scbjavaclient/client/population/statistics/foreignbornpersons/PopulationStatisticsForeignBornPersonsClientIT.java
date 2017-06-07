@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class PopulationStatisticsForeignBornPersonsClientIT extends RemoteIntegrationTestSuite {
 
     private PopulationStatisticsForeignBornPersonsClient client;
@@ -39,11 +40,13 @@ public class PopulationStatisticsForeignBornPersonsClientIT extends RemoteIntegr
     }
 
     @Test
+    @Date("2017-05-10")
     public void getForeignBornPersons() {
         assertNotEquals(0, this.client.getForeignBornPersons().size());
     }
 
     @Test
+    @Date("2017-05-10")
     public void getForeignBornPersonsWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getForeignBornPersons(Collections.<String>emptyList(), Collections.<String>emptyList(),
@@ -51,6 +54,7 @@ public class PopulationStatisticsForeignBornPersonsClientIT extends RemoteIntegr
     }
 
     @Test
+    @Date("2017-05-10")
     public void getForeignBornPersonsWithParameters() {
         List<String> regions = Arrays.asList("0162", "0180");
         List<String> ages = Arrays.asList("25-34", "55-64");
@@ -61,11 +65,13 @@ public class PopulationStatisticsForeignBornPersonsClientIT extends RemoteIntegr
     }
 
     @Test
+    @Date("2017-05-10")
     public void getForeignBornPersonsInSweden() {
         assertNotEquals(0, this.client.getForeignBornPersonsInSweden().size());
     }
 
     @Test
+    @Date("2017-05-10")
     public void getForeignBornPersonsInSwedenWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getForeignBornPersonsInSweden(Collections.<String>emptyList(),
@@ -74,6 +80,7 @@ public class PopulationStatisticsForeignBornPersonsClientIT extends RemoteIntegr
     }
 
     @Test
+    @Date("2017-05-10")
     public void getForeignBornPersonsInSwedenWithParameters() {
         List<String> countriesOfBirths = Arrays.asList("AU", "DK");
         List<String> ages = Arrays.asList("30-34", "40-44");

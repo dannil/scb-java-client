@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class LivingConditionsFamiliesAdoptionsClientIT extends RemoteIntegrationTestSuite {
 
     private LivingConditionsFamiliesAdoptionsClient client;
@@ -39,11 +40,13 @@ public class LivingConditionsFamiliesAdoptionsClientIT extends RemoteIntegration
     }
 
     @Test
+    @Date("2017-03-16")
     public void getChildAdoptions() {
         assertNotEquals(0, this.client.getChildAdoptions().size());
     }
 
     @Test
+    @Date("2017-03-16")
     public void getChildAdoptionsWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getChildAdoptions(Collections.<String>emptyList(), Collections.<String>emptyList(),
@@ -51,6 +54,7 @@ public class LivingConditionsFamiliesAdoptionsClientIT extends RemoteIntegration
     }
 
     @Test
+    @Date("2017-03-16")
     public void getChildAdoptionsWithParameters() {
         List<String> sexes = Arrays.asList("5", "6");
         List<String> ages = Arrays.asList("10", "13");

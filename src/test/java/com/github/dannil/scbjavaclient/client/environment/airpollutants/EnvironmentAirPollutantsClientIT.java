@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class EnvironmentAirPollutantsClientIT extends RemoteIntegrationTestSuite {
 
     private EnvironmentAirPollutantsClient client;
@@ -39,17 +40,20 @@ public class EnvironmentAirPollutantsClientIT extends RemoteIntegrationTestSuite
     }
 
     @Test
+    @Date("2017-04-13")
     public void getTotalEmissions() {
         assertNotEquals(0, this.client.getTotalEmissions().size());
     }
 
     @Test
+    @Date("2017-04-13")
     public void getTotalEmissionsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getTotalEmissions(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-13")
     public void getTotalEmissionsWithParameters() {
         List<String> airPollutants = Arrays.asList("NH3", "Cd");
         List<String> sectors = Arrays.asList("1.0", "5.0");
@@ -59,17 +63,20 @@ public class EnvironmentAirPollutantsClientIT extends RemoteIntegrationTestSuite
     }
 
     @Test
+    @Date("2017-04-13")
     public void getEmissionsFromOffroadVehiclesAndMachinery() {
         assertNotEquals(0, this.client.getEmissionsFromOffroadVehiclesAndMachinery().size());
     }
 
     @Test
+    @Date("2017-04-13")
     public void getEmissionsFromOffroadVehiclesAndMachineryWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getEmissionsFromOffroadVehiclesAndMachinery(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-13")
     public void getEmissionsFromOffroadVehiclesAndMachineryWithParameters() {
         List<String> airPollutants = Arrays.asList("NH3", "Cd");
         List<String> subSectors = Arrays.asList("1.0", "1.5");
@@ -80,17 +87,20 @@ public class EnvironmentAirPollutantsClientIT extends RemoteIntegrationTestSuite
     }
 
     @Test
+    @Date("2017-04-13")
     public void getEmissionsFromWaste() {
         assertNotEquals(0, this.client.getEmissionsFromWaste().size());
     }
 
     @Test
+    @Date("2017-04-13")
     public void getEmissionsFromWasteWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getEmissionsFromWaste(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-13")
     public void getEmissionsFromWasteWithParameters() {
         List<String> airPollutants = Arrays.asList("NH3", "Cd");
         List<String> subSectors = Arrays.asList("2.0", "2.1.1");
@@ -100,17 +110,20 @@ public class EnvironmentAirPollutantsClientIT extends RemoteIntegrationTestSuite
     }
 
     @Test
+    @Date("2017-04-13")
     public void getEmissionsFromElectricityAndHeating() {
         assertNotEquals(0, this.client.getEmissionsFromElectricityAndHeating().size());
     }
 
     @Test
+    @Date("2017-04-13")
     public void getEmissionsFromElectricityAndHeatingParametersWithEmptyLists() {
         assertNotEquals(0, this.client.getEmissionsFromWaste(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-13")
     public void getEmissionsFromElectricityAndHeatingWithParameters() {
         List<String> airPollutants = Arrays.asList("NH3", "Cd");
         List<String> fuelTypes = Arrays.asList("3.0", "3.4");
@@ -120,17 +133,20 @@ public class EnvironmentAirPollutantsClientIT extends RemoteIntegrationTestSuite
     }
 
     @Test
+    @Date("2017-04-13")
     public void getEmissionsFromIndustry() {
         assertNotEquals(0, this.client.getEmissionsFromIndustry().size());
     }
 
     @Test
+    @Date("2017-04-13")
     public void getEmissionsFromIndustryWithEmptyLists() {
         assertNotEquals(0, this.client.getEmissionsFromIndustry(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-13")
     public void getEmissionsFromIndustryWithParameters() {
         List<String> airPollutants = Arrays.asList("NH3", "Cd");
         List<String> industries = Arrays.asList("4.1.1", "4.1.3");
@@ -140,17 +156,20 @@ public class EnvironmentAirPollutantsClientIT extends RemoteIntegrationTestSuite
     }
 
     @Test
+    @Date("2017-04-13")
     public void getEmissionsFromDomesticTransport() {
         assertNotEquals(0, this.client.getEmissionsFromDomesticTransport().size());
     }
 
     @Test
+    @Date("2017-04-13")
     public void getEmissionsFromDomesticTransportWithEmptyLists() {
         assertNotEquals(0, this.client.getEmissionsFromDomesticTransport(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-13")
     public void getEmissionsFromDomesticTransportWithParameters() {
         List<String> airPollutants = Arrays.asList("NH3", "Cd");
         List<String> modesOfTransportations = Arrays.asList("8.4", "8.4.2");
@@ -161,17 +180,20 @@ public class EnvironmentAirPollutantsClientIT extends RemoteIntegrationTestSuite
     }
 
     @Test
+    @Date("2017-04-13")
     public void getEmissionsFromAgriculture() {
         assertNotEquals(0, this.client.getEmissionsFromAgriculture().size());
     }
 
     @Test
+    @Date("2017-04-13")
     public void getEmissionsFromAgricultureWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getEmissionsFromWaste(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-13")
     public void getEmissionsFromAgricultureWithParameters() {
         List<String> airPollutants = Arrays.asList("NH3", "Cd");
         List<String> subSectors = Arrays.asList("6.3", "6.3.4");
@@ -181,17 +203,20 @@ public class EnvironmentAirPollutantsClientIT extends RemoteIntegrationTestSuite
     }
 
     @Test
+    @Date("2017-04-13")
     public void getEmissionsFromSolventUse() {
         assertNotEquals(0, this.client.getEmissionsFromSolventUse().size());
     }
 
     @Test
+    @Date("2017-04-13")
     public void getEmissionsFromSolventUseWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getEmissionsFromWaste(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-13")
     public void getEmissionsFromSolventUseWithParameters() {
         List<String> airPollutants = Arrays.asList("NH3", "Cd");
         List<String> areas = Arrays.asList("7.2.1", "7.2.5");
@@ -201,17 +226,20 @@ public class EnvironmentAirPollutantsClientIT extends RemoteIntegrationTestSuite
     }
 
     @Test
+    @Date("2017-04-13")
     public void getEmissionsFromHeatingOfHousesAndBuildings() {
         assertNotEquals(0, this.client.getEmissionsFromHeatingOfHousesAndBuildings().size());
     }
 
     @Test
+    @Date("2017-04-13")
     public void getEmissionsFromHeatingOfHousesAndBuildingsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getEmissionsFromHeatingOfHousesAndBuildings(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-13")
     public void getEmissionsFromHeatingOfHousesAndBuildingsWithParameters() {
         List<String> airPollutants = Arrays.asList("NH3", "Cd");
         List<String> subSectors = Arrays.asList("9.1.1", "9.2");
@@ -222,17 +250,20 @@ public class EnvironmentAirPollutantsClientIT extends RemoteIntegrationTestSuite
     }
 
     @Test
+    @Date("2017-04-13")
     public void getEmissionsFromInternationalTransport() {
         assertNotEquals(0, this.client.getEmissionsFromInternationalTransport().size());
     }
 
     @Test
+    @Date("2017-04-13")
     public void getEmissionsFromInternationalTransportWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getEmissionsFromInternationalTransport(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-13")
     public void getEmissionsFromInternationalTransportWithParameters() {
         List<String> airPollutants = Arrays.asList("NH3", "Cd");
         List<String> activities = Arrays.asList("5.4", "5.6");

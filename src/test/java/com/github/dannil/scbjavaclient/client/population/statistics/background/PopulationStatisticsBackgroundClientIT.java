@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class PopulationStatisticsBackgroundClientIT extends RemoteIntegrationTestSuite {
 
     private PopulationStatisticsBackgroundClient client;
@@ -39,11 +40,13 @@ public class PopulationStatisticsBackgroundClientIT extends RemoteIntegrationTes
     }
 
     @Test
+    @Date("2017-05-10")
     public void getPersonWithBackgroundRoughDivision() {
         assertNotEquals(0, this.client.getPersonsWithBackgroundRoughDivision().size());
     }
 
     @Test
+    @Date("2017-05-10")
     public void getPersonWithBackgroundRoughDivisionWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getPersonsWithBackgroundRoughDivision(Collections.<String>emptyList(),
@@ -52,6 +55,7 @@ public class PopulationStatisticsBackgroundClientIT extends RemoteIntegrationTes
     }
 
     @Test
+    @Date("2017-05-10")
     public void getPersonWithBackgroundRoughDivisionWithParameters() {
         List<String> regions = Arrays.asList("0162", "0180");
         List<Integer> backgrounds = Arrays.asList(1, 2);
@@ -64,11 +68,13 @@ public class PopulationStatisticsBackgroundClientIT extends RemoteIntegrationTes
     }
 
     @Test
+    @Date("2017-05-10")
     public void getPersonWithBackgroundDetailedDivision() {
         assertNotEquals(0, this.client.getPersonsWithBackgroundDetailedDivision().size());
     }
 
     @Test
+    @Date("2017-05-10")
     public void getPersonWithBackgroundDetailedDivisionWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getPersonsWithBackgroundDetailedDivision(Collections.<String>emptyList(),
@@ -77,6 +83,7 @@ public class PopulationStatisticsBackgroundClientIT extends RemoteIntegrationTes
     }
 
     @Test
+    @Date("2017-05-10")
     public void getPersonWithBackgroundDetailedDivisionWithParameters() {
         List<String> regions = Arrays.asList("0162", "0180");
         List<String> backgrounds = Arrays.asList("08", "4");

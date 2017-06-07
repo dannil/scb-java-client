@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class PublicFinancesAssetsAndLiabilitiesClientIT extends RemoteIntegrationTestSuite {
 
     private PublicFinancesAssetsAndLiabilitiesClient client;
@@ -39,17 +40,20 @@ public class PublicFinancesAssetsAndLiabilitiesClientIT extends RemoteIntegratio
     }
 
     @Test
+    @Date("2017-04-17")
     public void getAssetsAndLiabilities() {
         assertNotEquals(0, this.client.getAssetsAndLiabilities().size());
     }
 
     @Test
+    @Date("2017-04-17")
     public void getAssetsAndLiabilitiesWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getAssetsAndLiabilities(Collections.<Integer>emptyList(),
                 Collections.<Integer>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-17")
     public void getAssetsAndLiabilitiesWithParameters() {
         List<Integer> items = Arrays.asList(501, 504);
         List<Integer> sectors = Arrays.asList(410, 420);

@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClientIT extends RemoteIntegrationTestSuite {
 
     private BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClient client;
@@ -39,17 +40,20 @@ public class BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClientIT e
     }
 
     @Test
+    @Date("2017-04-09")
     public void getPresentationOfResults() {
         assertNotEquals(0, this.client.getPresentationOfResults().size());
     }
 
     @Test
+    @Date("2017-04-09")
     public void getPresentationOfResultsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getPresentationOfResults(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-09")
     public void getPresentationOfResultsWithParameters() {
         List<String> incomeStatements = Arrays.asList("AvNed", "FinInt");
         List<Integer> years = Arrays.asList(2013, 2014);
@@ -58,17 +62,20 @@ public class BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClientIT e
     }
 
     @Test
+    @Date("2017-04-09")
     public void getIncomeAndCostsFromPublicAdministration() {
         assertNotEquals(0, this.client.getIncomeAndCostsFromPublicAdministration().size());
     }
 
     @Test
+    @Date("2017-04-09")
     public void getIncomeAndCostsFromPublicAdministrationWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getIncomeAndCostsFromPublicAdministration(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-09")
     public void getIncomeAndCostsFromPublicAdministrationWithParameters() {
         List<String> incomesAndCosts = Arrays.asList("Int", "Kost");
         List<Integer> years = Arrays.asList(2013, 2014);
@@ -77,17 +84,20 @@ public class BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClientIT e
     }
 
     @Test
+    @Date("2017-04-09")
     public void getPresentationOfResultsSwedishChurch() {
         assertNotEquals(0, this.client.getPresentationOfResultsSwedishChurch().size());
     }
 
     @Test
+    @Date("2017-04-09")
     public void getPresentationOfResultsSwedishChurchWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getPresentationOfResultsSwedishChurch(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-09")
     public void getPresentationOfResultsSwedishChurchWithParameters() {
         List<String> incomeStatements = Arrays.asList("AvNed", "FinInt");
         List<Integer> years = Arrays.asList(2013, 2014);
@@ -96,17 +106,20 @@ public class BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClientIT e
     }
 
     @Test
+    @Date("2017-04-09")
     public void getIncomeAndCostsFromOccupationalPension() {
         assertNotEquals(0, this.client.getIncomeAndCostsFromOccupationalPension().size());
     }
 
     @Test
+    @Date("2017-04-09")
     public void getIncomeAndCostsFromOccupationalPensionWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getIncomeAndCostsFromOccupationalPension(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-09")
     public void getIncomeAndCostsFromOccupationalPensionWithParameters() {
         List<String> incomesAndCosts = Arrays.asList("Int", "Kost");
         List<Integer> years = Arrays.asList(2013, 2014);

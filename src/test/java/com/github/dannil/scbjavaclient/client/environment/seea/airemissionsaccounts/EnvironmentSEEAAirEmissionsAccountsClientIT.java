@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class EnvironmentSEEAAirEmissionsAccountsClientIT extends RemoteIntegrationTestSuite {
 
     private EnvironmentSEEAAirEmissionsAccountsClient client;
@@ -39,17 +40,20 @@ public class EnvironmentSEEAAirEmissionsAccountsClientIT extends RemoteIntegrati
     }
 
     @Test
+    @Date("2017-05-31")
     public void getAirEmissionsByIndustrySNI2007() {
         assertNotEquals(0, this.client.getAirEmissionsByIndustrySNI2007().size());
     }
 
     @Test
+    @Date("2017-05-31")
     public void getAirEmissionsByIndustrySNI2007WithParametersEmptyLists() {
         assertNotEquals(0, this.client.getAirEmissionsByIndustrySNI2007(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-05-31")
     public void getAirEmissionsByIndustrySNI2007WithParameters() {
         List<String> industrialClassifications = Arrays.asList("C25", "C26");
         List<String> substances = Arrays.asList("NH3", "NMVOC");
@@ -60,17 +64,20 @@ public class EnvironmentSEEAAirEmissionsAccountsClientIT extends RemoteIntegrati
     }
 
     @Test
+    @Date("2017-05-31")
     public void getAirEmissionsByIndustrySNI92() {
         assertNotEquals(0, this.client.getAirEmissionsByIndustrySNI92().size());
     }
 
     @Test
+    @Date("2017-05-31")
     public void getAirEmissionsByIndustrySNI92WithParametersEmptyLists() {
         assertNotEquals(0, this.client.getAirEmissionsByIndustrySNI92(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-05-31")
     public void getAirEmissionsByIndustrySNI92WithParameters() {
         List<String> industrialClassifications = Arrays.asList("50-52", "64");
         List<String> substances = Arrays.asList("pm10", "pm25");
@@ -81,17 +88,20 @@ public class EnvironmentSEEAAirEmissionsAccountsClientIT extends RemoteIntegrati
     }
 
     @Test
+    @Date("2017-05-31")
     public void getAirEmissionsByIndustryAndQuartersSNI2007() {
         assertNotEquals(0, this.client.getAirEmissionsByIndustryAndQuartersSNI2007().size());
     }
 
     @Test
+    @Date("2017-05-31")
     public void getAirEmissionsByIndustryAndQuartersSNI2007WithParametersEmptyLists() {
         assertNotEquals(0, this.client.getAirEmissionsByIndustryAndQuartersSNI2007(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test
+    @Date("2017-05-31")
     public void getAirEmissionsByIndustryAndQuartersSNI2007WithParameters() {
         List<String> industrialClassifications = Arrays.asList("C22-C23", "M69-M72");
         List<String> substances = Arrays.asList("CO2", "SO2");
@@ -102,17 +112,20 @@ public class EnvironmentSEEAAirEmissionsAccountsClientIT extends RemoteIntegrati
     }
 
     @Test
+    @Date("2017-05-31")
     public void getAirEmissionsByMunicipalityLAU2() {
         assertNotEquals(0, this.client.getAirEmissionsByMunicipalityLAU2().size());
     }
 
     @Test
+    @Date("2017-05-31")
     public void getAirEmissionsByMunicipalityLAU2WithParametersEmptyLists() {
         assertNotEquals(0, this.client.getAirEmissionsByMunicipalityLAU2(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-05-31")
     public void getAirEmissionsByMunicipalityLAU2WithParameters() {
         List<String> regions = Arrays.asList("0330", "0331");
         List<String> substances = Arrays.asList("PM25", "PFC");
@@ -122,11 +135,13 @@ public class EnvironmentSEEAAirEmissionsAccountsClientIT extends RemoteIntegrati
     }
 
     @Test
+    @Date("2017-05-31")
     public void getAirEmissionsNUTS2() {
         assertNotEquals(0, this.client.getAirEmissionsNUTS2().size());
     }
 
     @Test
+    @Date("2017-05-31")
     public void getAirEmissionsNUTS2WithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getAirEmissionsNUTS2(Collections.<String>emptyList(), Collections.<String>emptyList(),
@@ -134,6 +149,7 @@ public class EnvironmentSEEAAirEmissionsAccountsClientIT extends RemoteIntegrati
     }
 
     @Test
+    @Date("2017-05-31")
     public void getAirEmissionsNUTS2WithParameters() {
         List<String> regions = Arrays.asList("SE21", "SE22");
         List<String> industrialClassifications = Arrays.asList("I55-I56", "M69-N82");
@@ -145,11 +161,13 @@ public class EnvironmentSEEAAirEmissionsAccountsClientIT extends RemoteIntegrati
     }
 
     @Test
+    @Date("2017-05-31")
     public void getAirEmissionsFromTransportNUTS2() {
         assertNotEquals(0, this.client.getAirEmissionsFromTransportNUTS2().size());
     }
 
     @Test
+    @Date("2017-05-31")
     public void getAirEmissionsFromTransportNUTS2WithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getAirEmissionsFromTransportNUTS2(Collections.<String>emptyList(),
@@ -158,6 +176,7 @@ public class EnvironmentSEEAAirEmissionsAccountsClientIT extends RemoteIntegrati
     }
 
     @Test
+    @Date("2017-05-31")
     public void getAirEmissionsFromTransportNUTS2WithParameters() {
         List<String> regions = Arrays.asList("SE21", "SE22");
         List<String> industrialClassifications = Arrays.asList("I55-I56", "M69-N82");
@@ -169,11 +188,13 @@ public class EnvironmentSEEAAirEmissionsAccountsClientIT extends RemoteIntegrati
     }
 
     @Test
+    @Date("2017-05-31")
     public void getAirEmissionsByCountyNUTS3() {
         assertNotEquals(0, this.client.getAirEmissionsByCountyNUTS3().size());
     }
 
     @Test
+    @Date("2017-05-31")
     public void getAirEmissionsByCountyNUTS3WithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getAirEmissionsByCountyNUTS3(Collections.<String>emptyList(),
@@ -182,6 +203,7 @@ public class EnvironmentSEEAAirEmissionsAccountsClientIT extends RemoteIntegrati
     }
 
     @Test
+    @Date("2017-05-31")
     public void getAirEmissionsByCountyNUTS3WithParameters() {
         List<String> regions = Arrays.asList("06", "08");
         List<String> industrialClassifications = Arrays.asList("A01-F43", "G45-T98");

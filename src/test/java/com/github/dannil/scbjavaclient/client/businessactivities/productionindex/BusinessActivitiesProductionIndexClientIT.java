@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class BusinessActivitiesProductionIndexClientIT extends RemoteIntegrationTestSuite {
 
     private BusinessActivitiesProductionIndexClient client;
@@ -39,17 +40,20 @@ public class BusinessActivitiesProductionIndexClientIT extends RemoteIntegration
     }
 
     @Test
+    @Date("2017-04-09")
     public void getBusinessProductionIndex() {
         assertNotEquals(0, this.client.getBusinessProductionIndex().size());
     }
 
     @Test
+    @Date("2017-04-09")
     public void getBusinessProductionIndexWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getBusinessProductionIndex(Collections.<String>emptyList(),
                 Collections.<String>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-09")
     public void getBusinessProductionIndexWithParameters() {
         List<String> industrialClassifications = Arrays.asList("B-S exkl K+O", "F");
         List<String> months = Arrays.asList("2002M03", "2008M09");

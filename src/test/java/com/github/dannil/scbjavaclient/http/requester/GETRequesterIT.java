@@ -17,16 +17,18 @@ package com.github.dannil.scbjavaclient.http.requester;
 import static org.junit.Assert.assertNull;
 
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class GETRequesterIT extends RemoteIntegrationTestSuite {
 
     @Test(expected = SCBClientException.class)
+    @Date("2017-03-12")
     public void invalidUrl() {
         GETRequester requester = new GETRequester();
         assertNull(requester.getResponse("example.example").getBody());

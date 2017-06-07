@@ -24,9 +24,6 @@ public class DateJUnitRunner extends BlockJUnit4ClassRunner {
         String s = System.getProperty("testsDayLimit");
         if (s != null && s.length() != 0) {
             this.dayLimit = Integer.parseInt(s);
-        } else {
-            // Use 30 days as fallback value if no value for parameter is set
-            this.dayLimit = 30;
         }
     }
 

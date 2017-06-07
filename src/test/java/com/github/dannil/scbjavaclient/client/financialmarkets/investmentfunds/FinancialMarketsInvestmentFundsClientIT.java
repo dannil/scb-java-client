@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class FinancialMarketsInvestmentFundsClientIT extends RemoteIntegrationTestSuite {
 
     private FinancialMarketsInvestmentFundsClient client;
@@ -39,17 +40,20 @@ public class FinancialMarketsInvestmentFundsClientIT extends RemoteIntegrationTe
     }
 
     @Test
+    @Date("2017-03-08")
     public void getOwnershipOfInvestmentFundShares() {
         assertNotEquals(0, this.client.getOwnershipOfInvestmentFundShares().size());
     }
 
     @Test
+    @Date("2017-03-08")
     public void getOwnershipOfInvestmentFundSharesWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getOwnershipOfInvestmentFundShares(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test
+    @Date("2017-03-08")
     public void getOwnershipOfInvestmentFundSharesWithParameters() {
         List<String> types = Arrays.asList("S12251", "S12354");
         List<String> sectors = Arrays.asList("S14", "S15");

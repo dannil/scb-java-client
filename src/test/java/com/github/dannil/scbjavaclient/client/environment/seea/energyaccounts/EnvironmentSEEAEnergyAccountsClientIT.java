@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class EnvironmentSEEAEnergyAccountsClientIT extends RemoteIntegrationTestSuite {
 
     private EnvironmentSEEAEnergyAccountsClient client;
@@ -39,17 +40,20 @@ public class EnvironmentSEEAEnergyAccountsClientIT extends RemoteIntegrationTest
     }
 
     @Test
+    @Date("2017-05-29")
     public void getCombustionOfFuels() {
         assertNotEquals(0, this.client.getCombustionOfFuels().size());
     }
 
     @Test
+    @Date("2017-05-29")
     public void getCombustionOfFuelsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getCombustionOfFuels(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-05-29")
     public void getCombustionOfFuelsWithParameters() {
         List<String> industrialClassifications = Arrays.asList("C23", "C24");
         List<String> typesOfFuels = Arrays.asList("01", "02");
