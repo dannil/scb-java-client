@@ -48,7 +48,8 @@ public class DateJUnitRunner extends BlockJUnit4ClassRunner {
             java.util.Date annotatedDate;
             try {
                 DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-                annotatedDate = format.parse(m.getAnnotation(Date.class).value());
+                Date d = m.getAnnotation(Date.class);
+                annotatedDate = (d.value().equals("now") ? new java.util.Date() : format.parse(d.value()));
             } catch (ParseException e) {
                 throw new RuntimeException(e);
             }
