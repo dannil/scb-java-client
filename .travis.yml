@@ -18,7 +18,7 @@ matrix:
     dist: trusty
     jdk: oraclejdk8
     script:
-    - mvn install -B -V -DtestsDayLimit=16000
+    - mvn install -B -V -DtestsDayLimit=30
     # SonarQube needs to be run with at least Java 8
     # Make sure we are on dev for running SonarQube
     - if [[ $TRAVIS_BRANCH == test/run-all-tests ]]; then mvn sonar:sonar -Dsonar.host.url=https://sonarqube.com -Dsonar.login=$SONARQUBE_TOKEN; fi
@@ -27,6 +27,6 @@ matrix:
 install:
 - true
 script:
-- mvn install -B -V -DtestsDayLimit=16000
+- mvn install -B -V -DtestsDayLimit=30
 after_success:
 - mvn com.gavinmogan:codacy-maven-plugin:coverage -DcoverageReportFile=target/site/jacoco/jacoco.xml -DprojectToken=$CODACY_PROJECT_TOKEN -DapiToken=$CODACY_API_TOKEN
