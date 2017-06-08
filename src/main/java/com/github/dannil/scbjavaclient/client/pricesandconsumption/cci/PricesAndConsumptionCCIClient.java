@@ -17,6 +17,8 @@ package com.github.dannil.scbjavaclient.client.pricesandconsumption.cci;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
+import com.github.dannil.scbjavaclient.client.pricesandconsumption.cci.fpiexcludingwage.PricesAndConsumptionCCIFPIExcludingWageClient;
+import com.github.dannil.scbjavaclient.client.pricesandconsumption.cci.fpiincludingwage.PricesAndConsumptionCCIFPIIncludingWageClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 /**
@@ -33,7 +35,8 @@ public class PricesAndConsumptionCCIClient extends AbstractContainerClient {
     public PricesAndConsumptionCCIClient() {
         super();
 
-        // addClient("annualaccounts", new PublicFinancesAnnualAccountsClient());
+        addClient("fpiexcludingwage", new PricesAndConsumptionCCIFPIExcludingWageClient());
+        addClient("fpiincludingwage", new PricesAndConsumptionCCIFPIIncludingWageClient());
     }
 
     /**
@@ -48,17 +51,27 @@ public class PricesAndConsumptionCCIClient extends AbstractContainerClient {
         setLocale(locale);
     }
 
-    TODO
+    /**
+     * <p>Retrieve the client for interacting with prices and consumption construction
+     * cost index (CCI) factor price index (FPI) excluding wage data.</p>
+     *
+     * @return a client for prices and consumption construction cost index (CCI) factor
+     *         price index (FPI) excluding wage data
+     */
+    public PricesAndConsumptionCCIFPIExcludingWageClient fpiExcludingWage() {
+        return (PricesAndConsumptionCCIFPIExcludingWageClient) getClient("fpiexcludingwage");
+    }
 
-    // /**
-    // * <p>Retrieve the client for interacting with public finances annual accounts
-    // * data.</p>
-    // *
-    // * @return a client for public finances annual accounts data
-    // */
-    // public PublicFinancesAnnualAccountsClient annualAccounts() {
-    // return (PublicFinancesAnnualAccountsClient) getClient("annualaccounts");
-    // }
+    /**
+     * <p>Retrieve the client for interacting with prices and consumption construction
+     * cost index (CCI) factor price index (FPI) including wage data.</p>
+     *
+     * @return a client for prices and consumption construction cost index (CCI) factor
+     *         price index (FPI) including wage data
+     */
+    public PricesAndConsumptionCCIFPIIncludingWageClient fpiIncludingWage() {
+        return (PricesAndConsumptionCCIFPIIncludingWageClient) getClient("fpiincludingwage");
+    }
 
     @Override
     public URLEndpoint getUrl() {

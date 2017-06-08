@@ -12,14 +12,12 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.pricesandconsumption.cci;
+package com.github.dannil.scbjavaclient.client.pricesandconsumption.cci.fpiexcludingwage;
 
 import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.client.pricesandconsumption.cci.fpiexcludingwage.PricesAndConsumptionCCIFPIExcludingWageClient;
-import com.github.dannil.scbjavaclient.client.pricesandconsumption.cci.fpiincludingwage.PricesAndConsumptionCCIFPIIncludingWageClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;
@@ -27,28 +25,15 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class PricesAndConsumptionCCIClientTest {
+public class PricesAndConsumptionCCIFPIExcludingWageClientTest {
 
     @Test
     public void createWithLocaleConstructor() {
         Locale locale = new Locale("sv", "SE");
-        PricesAndConsumptionCCIClient client = new PricesAndConsumptionCCIClient(locale);
+        PricesAndConsumptionCCIFPIExcludingWageClient client = new PricesAndConsumptionCCIFPIExcludingWageClient(
+                locale);
 
         assertEquals(locale, client.getLocale());
-    }
-
-    @Test
-    public void fpiExcludingWage() {
-        PricesAndConsumptionCCIClient client = new PricesAndConsumptionCCIClient();
-
-        assertEquals(client.fpiExcludingWage().getClass(), PricesAndConsumptionCCIFPIExcludingWageClient.class);
-    }
-
-    @Test
-    public void fpiIncludingWage() {
-        PricesAndConsumptionCCIClient client = new PricesAndConsumptionCCIClient();
-
-        assertEquals(client.fpiIncludingWage().getClass(), PricesAndConsumptionCCIFPIIncludingWageClient.class);
     }
 
     @Test
@@ -56,9 +41,10 @@ public class PricesAndConsumptionCCIClientTest {
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints
         Locale locale = new Locale("en", "US");
-        PricesAndConsumptionCCIClient client = new PricesAndConsumptionCCIClient(locale);
+        PricesAndConsumptionCCIFPIExcludingWageClient client = new PricesAndConsumptionCCIFPIExcludingWageClient(
+                locale);
 
-        assertEquals(URLEndpoint.getRootUrl(locale).append("PR/PR0502/"), client.getUrl());
+        assertEquals(URLEndpoint.getRootUrl(locale).append("PR/PR0502/PR0502A/"), client.getUrl());
     }
 
 }
