@@ -40,54 +40,55 @@ public class PopulationStatisticsForeignBornPersonsClientIT extends RemoteIntegr
     }
 
     @Test
-    @Date("2017-05-10")
-    public void getForeignBornPersons() {
-        assertNotEquals(0, this.client.getForeignBornPersons().size());
+    @Date("2017-06-09")
+    public void getSwedishAndForeignBornPopulation() {
+        assertNotEquals(0, this.client.getSwedishAndForeignBornPopulation().size());
     }
 
     @Test
-    @Date("2017-05-10")
-    public void getForeignBornPersonsWithParametersEmptyLists() {
+    @Date("2017-06-09")
+    public void getSwedishAndForeignBornPopulationWithParametersEmptyLists() {
         assertNotEquals(0,
-                this.client.getForeignBornPersons(Collections.<String>emptyList(), Collections.<String>emptyList(),
-                        Collections.<Integer>emptyList(), Collections.<Integer>emptyList()).size());
-    }
-
-    @Test
-    @Date("2017-05-10")
-    public void getForeignBornPersonsWithParameters() {
-        List<String> regions = Arrays.asList("0162", "0180");
-        List<String> ages = Arrays.asList("25-34", "55-64");
-        List<Integer> sexes = Arrays.asList(1, 2);
-        List<Integer> years = Arrays.asList(2009);
-
-        assertNotEquals(0, this.client.getForeignBornPersons(regions, ages, sexes, years).size());
-    }
-
-    @Test
-    @Date("2017-05-10")
-    public void getForeignBornPersonsInSweden() {
-        assertNotEquals(0, this.client.getForeignBornPersonsInSweden().size());
-    }
-
-    @Test
-    @Date("2017-05-10")
-    public void getForeignBornPersonsInSwedenWithParametersEmptyLists() {
-        assertNotEquals(0,
-                this.client.getForeignBornPersonsInSweden(Collections.<String>emptyList(),
+                this.client.getSwedishAndForeignBornPopulation(Collections.<String>emptyList(),
                         Collections.<String>emptyList(), Collections.<Integer>emptyList(),
                         Collections.<Integer>emptyList()).size());
     }
 
     @Test
-    @Date("2017-05-10")
-    public void getForeignBornPersonsInSwedenWithParameters() {
-        List<String> countriesOfBirths = Arrays.asList("AU", "DK");
-        List<String> ages = Arrays.asList("30-34", "40-44");
+    @Date("2017-06-09")
+    public void getSwedishAndForeignBornPopulationWithParameters() {
+        List<String> regions = Arrays.asList("0162", "0180");
+        List<String> ages = Arrays.asList("77", "100+");
         List<Integer> sexes = Arrays.asList(1, 2);
         List<Integer> years = Arrays.asList(2009);
 
-        assertNotEquals(0, this.client.getForeignBornPersonsInSweden(countriesOfBirths, ages, sexes, years).size());
+        assertNotEquals(0, this.client.getSwedishAndForeignBornPopulation(regions, ages, sexes, years).size());
+    }
+
+    @Test
+    @Date("2017-06-09")
+    public void getPopulationByCountryOfBirth() {
+        assertNotEquals(0, this.client.getPopulationByCountryOfBirth().size());
+    }
+
+    @Test
+    @Date("2017-06-09")
+    public void getPopulationByCountryOfBirthWithParametersEmptyLists() {
+        assertNotEquals(0,
+                this.client.getPopulationByCountryOfBirth(Collections.<String>emptyList(),
+                        Collections.<String>emptyList(), Collections.<Integer>emptyList(),
+                        Collections.<Integer>emptyList()).size());
+    }
+
+    @Test
+    @Date("2017-06-09")
+    public void getPopulationByCountryOfBirthWithParameters() {
+        List<String> countriesOfBirths = Arrays.asList("AU", "DK");
+        List<String> ages = Arrays.asList("77", "100+");
+        List<Integer> sexes = Arrays.asList(1, 2);
+        List<Integer> years = Arrays.asList(2009);
+
+        assertNotEquals(0, this.client.getPopulationByCountryOfBirth(countriesOfBirths, ages, sexes, years).size());
     }
 
 }

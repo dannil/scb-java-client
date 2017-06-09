@@ -40,13 +40,13 @@ public class PopulationStatisticsBackgroundClientIT extends RemoteIntegrationTes
     }
 
     @Test
-    @Date("2017-05-10")
+    @Date("2017-06-09")
     public void getPersonWithBackgroundRoughDivision() {
         assertNotEquals(0, this.client.getPersonsWithBackgroundRoughDivision().size());
     }
 
     @Test
-    @Date("2017-05-10")
+    @Date("2017-06-09")
     public void getPersonWithBackgroundRoughDivisionWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getPersonsWithBackgroundRoughDivision(Collections.<String>emptyList(),
@@ -55,11 +55,11 @@ public class PopulationStatisticsBackgroundClientIT extends RemoteIntegrationTes
     }
 
     @Test
-    @Date("2017-05-10")
+    @Date("2017-06-09")
     public void getPersonWithBackgroundRoughDivisionWithParameters() {
         List<String> regions = Arrays.asList("0162", "0180");
         List<Integer> backgrounds = Arrays.asList(1, 2);
-        List<String> ages = Arrays.asList("25-34", "55-64");
+        List<String> ages = Arrays.asList("77", "100+");
         List<Integer> sexes = Arrays.asList(1, 2);
         List<Integer> years = Arrays.asList(2009);
 
@@ -68,13 +68,13 @@ public class PopulationStatisticsBackgroundClientIT extends RemoteIntegrationTes
     }
 
     @Test
-    @Date("2017-05-10")
+    @Date("2017-06-09")
     public void getPersonWithBackgroundDetailedDivision() {
         assertNotEquals(0, this.client.getPersonsWithBackgroundDetailedDivision().size());
     }
 
     @Test
-    @Date("2017-05-10")
+    @Date("2017-06-09")
     public void getPersonWithBackgroundDetailedDivisionWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getPersonsWithBackgroundDetailedDivision(Collections.<String>emptyList(),
@@ -83,11 +83,11 @@ public class PopulationStatisticsBackgroundClientIT extends RemoteIntegrationTes
     }
 
     @Test
-    @Date("2017-05-10")
+    @Date("2017-06-09")
     public void getPersonWithBackgroundDetailedDivisionWithParameters() {
         List<String> regions = Arrays.asList("0162", "0180");
         List<String> backgrounds = Arrays.asList("08", "4");
-        List<String> ages = Arrays.asList("25-34", "55-64");
+        List<String> ages = Arrays.asList("77", "100+");
         List<Integer> sexes = Arrays.asList(1, 2);
         List<Integer> years = Arrays.asList(2009);
 
