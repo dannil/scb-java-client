@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class PublicFinancesTaxAssessmentClientIT extends RemoteIntegrationTestSuite {
 
     private PublicFinancesTaxAssessmentClient client;
@@ -39,17 +40,20 @@ public class PublicFinancesTaxAssessmentClientIT extends RemoteIntegrationTestSu
     }
 
     @Test
+    @Date("2017-03-21")
     public void getAssessedAndTaxableEarnedIncome() {
         assertNotEquals(0, this.client.getAssessedAndTaxableEarnedIncome().size());
     }
 
     @Test
+    @Date("2017-03-21")
     public void getAssessedAndTaxableEarnedIncomeWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getAssessedAndTaxableEarnedIncome(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-03-21")
     public void getAssessedAndTaxableEarnedIncomeWithParameters() {
         List<String> regions = Arrays.asList("0182", "0305");
         List<Integer> years = Arrays.asList(2004, 2008);
@@ -58,17 +62,20 @@ public class PublicFinancesTaxAssessmentClientIT extends RemoteIntegrationTestSu
     }
 
     @Test
+    @Date("2017-03-21")
     public void getAssessmentForNationalCapitalIncomeTax() {
         assertNotEquals(0, this.client.getAssessmentForNationalCapitalIncomeTax().size());
     }
 
     @Test
+    @Date("2017-03-21")
     public void getAssessmentForNationalCapitalIncomeTaxWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getAssessedAndTaxableEarnedIncome(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-03-21")
     public void getAssessmentForNationalCapitalIncomeTaxWithParameters() {
         List<String> regions = Arrays.asList("0182", "0305");
         List<Integer> years = Arrays.asList(2004, 2008);

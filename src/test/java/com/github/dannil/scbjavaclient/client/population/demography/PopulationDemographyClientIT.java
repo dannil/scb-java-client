@@ -20,14 +20,15 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class PopulationDemographyClientIT extends RemoteIntegrationTestSuite {
 
     private PopulationDemographyClient client;
@@ -38,11 +39,13 @@ public class PopulationDemographyClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    @Date("2017-01-01")
     public void getFertilityRate() {
         assertNotEquals(0, this.client.getFertilityRate().size());
     }
 
     @Test
+    @Date("2017-01-01")
     public void getFertilityRateWithParameters() {
         List<String> regions = Arrays.asList("1263");
         List<Integer> genders = Arrays.asList(1, 2);
@@ -52,11 +55,13 @@ public class PopulationDemographyClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    @Date("2017-01-01")
     public void getMeanAgeFirstChild() {
         assertNotEquals(0, this.client.getMeanAgeFirstChild().size());
     }
 
     @Test
+    @Date("2017-01-01")
     public void getMeanAgeFirstChildWithParameters() {
         List<String> regions = Arrays.asList("1263");
         List<Integer> genders = Arrays.asList(1, 2);

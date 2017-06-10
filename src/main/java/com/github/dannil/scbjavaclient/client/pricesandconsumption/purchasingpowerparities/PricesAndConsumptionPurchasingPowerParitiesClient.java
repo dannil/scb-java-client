@@ -56,7 +56,7 @@ public class PricesAndConsumptionPurchasingPowerParitiesClient extends AbstractC
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
-     * 
+     *
      * @see #getExtrapolatedPriceLevelIndices(Collection, Collection)
      */
     public List<ResponseModel> getExtrapolatedPriceLevelIndices() {
@@ -90,7 +90,7 @@ public class PricesAndConsumptionPurchasingPowerParitiesClient extends AbstractC
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
-     * 
+     *
      * @see #getPurchasingPowerParities(Collection, Collection, Collection)
      */
     public List<ResponseModel> getPurchasingPowerParities() {

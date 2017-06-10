@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class PopulationStatisticsForeignCitizensClientIT extends RemoteIntegrationTestSuite {
 
     private PopulationStatisticsForeignCitizensClient client;
@@ -39,11 +40,13 @@ public class PopulationStatisticsForeignCitizensClientIT extends RemoteIntegrati
     }
 
     @Test
+    @Date("2017-04-27")
     public void getForeignCitizens() {
         assertNotEquals(0, this.client.getForeignCitizens().size());
     }
 
     @Test
+    @Date("2017-04-27")
     public void getForeignCitizensWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getForeignCitizens(Collections.<String>emptyList(), Collections.<String>emptyList(),
@@ -51,6 +54,7 @@ public class PopulationStatisticsForeignCitizensClientIT extends RemoteIntegrati
     }
 
     @Test
+    @Date("2017-04-27")
     public void getForeignCitizensWithParameters() {
         List<String> regions = Arrays.asList("1263");
         List<String> ages = Arrays.asList("15-24", "45-54");

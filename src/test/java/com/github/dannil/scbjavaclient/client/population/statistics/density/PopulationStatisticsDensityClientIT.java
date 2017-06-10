@@ -20,14 +20,15 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class PopulationStatisticsDensityClientIT extends RemoteIntegrationTestSuite {
 
     private PopulationStatisticsDensityClient client;
@@ -38,11 +39,13 @@ public class PopulationStatisticsDensityClientIT extends RemoteIntegrationTestSu
     }
 
     @Test
+    @Date("2017-01-01")
     public void getDensity() {
         assertNotEquals(0, this.client.getDensity().size());
     }
 
     @Test
+    @Date("2017-01-01")
     public void getDensityWithParameters() {
         List<String> regions = Arrays.asList("1263");
         List<String> sexes = Arrays.asList("1", "2", "1+2");

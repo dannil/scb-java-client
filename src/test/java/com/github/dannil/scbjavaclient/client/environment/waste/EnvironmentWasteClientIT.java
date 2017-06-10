@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class EnvironmentWasteClientIT extends RemoteIntegrationTestSuite {
 
     private EnvironmentWasteClient client;
@@ -39,17 +40,20 @@ public class EnvironmentWasteClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    @Date("2017-03-06")
     public void getGeneratedWaste() {
         assertNotEquals(0, this.client.getGeneratedWaste().size());
     }
 
     @Test
+    @Date("2017-03-06")
     public void getGeneratedWasteWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getGeneratedWaste(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-03-06")
     public void getGeneratedWasteWasteWithParameters() {
         List<String> industrialClassifications = Arrays.asList("A01-03", "C16");
         List<String> wasteCategories = Arrays.asList("01.1", "03.2");
@@ -59,17 +63,20 @@ public class EnvironmentWasteClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    @Date("2017-03-06")
     public void getTreatedWaste() {
         assertNotEquals(0, this.client.getTreatedWaste().size());
     }
 
     @Test
+    @Date("2017-03-06")
     public void getTreatedWasteWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getTreatedWaste(Collections.<Integer>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-03-06")
     public void getTreatedWasteWasteWithParameters() {
         List<Integer> treatmentCategories = Arrays.asList(40, 50);
         List<String> wasteCategories = Arrays.asList("01.1", "03.2");

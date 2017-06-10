@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class PricesAndConsumptionPPIEconomicIndicatorsClientIT extends RemoteIntegrationTestSuite {
 
     private PricesAndConsumptionPPIEconomicIndicatorsClient client;
@@ -39,17 +40,20 @@ public class PricesAndConsumptionPPIEconomicIndicatorsClientIT extends RemoteInt
     }
 
     @Test
+    @Date("2017-06-05")
     public void getPriceIndicesInProducerAndImportStages() {
         assertNotEquals(0, this.client.getPriceIndicesInProducerAndImportStages().size());
     }
 
     @Test
+    @Date("2017-06-05")
     public void getPriceIndicesInProducerAndImportStagesWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getPriceIndicesInProducerAndImportStages(Collections.<String>emptyList(),
                 Collections.<String>emptyList()).size());
     }
 
     @Test
+    @Date("2017-06-05")
     public void getPriceIndicesInProducerAndImportStagesWithParameters() {
         List<String> indicators = Arrays.asList("PPI20", "PPI30");
         List<String> months = Arrays.asList("2014M07", "2014M08");

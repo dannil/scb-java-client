@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class AgricultureCerealCropsClientIT extends RemoteIntegrationTestSuite {
 
     private AgricultureCerealCropsClient client;
@@ -39,17 +40,20 @@ public class AgricultureCerealCropsClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    @Date("2017-05-21")
     public void getYieldPerHectarAndTotalProduction() {
         assertNotEquals(0, this.client.getYieldPerHectarAndTotalProduction().size());
     }
 
     @Test
+    @Date("2017-05-21")
     public void getYieldPerHectarAndTotalProductionWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getYieldPerHectarAndTotalProduction(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-05-21")
     public void getYieldPerHectarAndTotalProductionWithParameters() {
         List<String> regions = Arrays.asList("05", "08");
         List<Integer> crops = Arrays.asList(105, 150);

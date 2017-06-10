@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class PricesAndConsumptionPPISPIN2007YearClientIT extends RemoteIntegrationTestSuite {
 
     private PricesAndConsumptionPPISPIN2007YearClient client;
@@ -39,17 +40,20 @@ public class PricesAndConsumptionPPISPIN2007YearClientIT extends RemoteIntegrati
     }
 
     @Test
+    @Date("2017-06-06")
     public void getProducerPriceIndexHomeSales() {
         assertNotEquals(0, this.client.getProducerPriceIndexHomeSales().size());
     }
 
     @Test
+    @Date("2017-06-06")
     public void getProducerPriceIndexHomeSalesWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getProducerPriceIndexHomeSales(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-06-06")
     public void getProducerPriceIndexHomeSalesWithParameters() {
         List<String> spin2007 = Arrays.asList("MIG_CAG_ORD", "MIG_ING_ORD");
         List<Integer> years = Arrays.asList(1998, 2000);
@@ -58,17 +62,20 @@ public class PricesAndConsumptionPPISPIN2007YearClientIT extends RemoteIntegrati
     }
 
     @Test
+    @Date("2017-06-06")
     public void getExportPriceIndex() {
         assertNotEquals(0, this.client.getExportPriceIndex().size());
     }
 
     @Test
+    @Date("2017-06-06")
     public void getExportPriceIndexWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getExportPriceIndex(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-06-06")
     public void getExportPriceIndexWithParameters() {
         List<String> spin2007 = Arrays.asList("MIG_CAG_ORD", "MIG_ING_ORD");
         List<Integer> years = Arrays.asList(1998, 2000);
@@ -77,17 +84,20 @@ public class PricesAndConsumptionPPISPIN2007YearClientIT extends RemoteIntegrati
     }
 
     @Test
+    @Date("2017-06-06")
     public void getImportPriceIndex() {
         assertNotEquals(0, this.client.getImportPriceIndex().size());
     }
 
     @Test
+    @Date("2017-06-06")
     public void getImportPriceIndexWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getImportPriceIndex(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-06-06")
     public void getImportPriceIndexWithParameters() {
         List<String> spin2007 = Arrays.asList("MIG_CAG_ORD", "MIG_ING_ORD");
         List<Integer> years = Arrays.asList(1998, 2000);
@@ -96,17 +106,20 @@ public class PricesAndConsumptionPPISPIN2007YearClientIT extends RemoteIntegrati
     }
 
     @Test
+    @Date("2017-06-06")
     public void getProducerPriceIndex() {
         assertNotEquals(0, this.client.getProducerPriceIndex().size());
     }
 
     @Test
+    @Date("2017-06-06")
     public void getProducerPriceIndexWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getProducerPriceIndex(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-06-06")
     public void getProducerPriceIndexWithParameters() {
         List<String> spin2007 = Arrays.asList("MIG_CAG_ORD", "MIG_ING_ORD");
         List<Integer> years = Arrays.asList(1998, 2000);
@@ -115,17 +128,20 @@ public class PricesAndConsumptionPPISPIN2007YearClientIT extends RemoteIntegrati
     }
 
     @Test
+    @Date("2017-06-06")
     public void getPriceIndexForDomesticSupply() {
         assertNotEquals(0, this.client.getPriceIndexForDomesticSupply().size());
     }
 
     @Test
+    @Date("2017-06-06")
     public void getPriceIndexForDomesticSupplyWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getPriceIndexForDomesticSupply(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-06-06")
     public void getPriceIndexForDomesticSupplyWithParameters() {
         List<String> spin2007 = Arrays.asList("MIG_CAG_ORD", "MIG_ING_ORD");
         List<Integer> years = Arrays.asList(1998, 2000);
@@ -134,17 +150,20 @@ public class PricesAndConsumptionPPISPIN2007YearClientIT extends RemoteIntegrati
     }
 
     @Test
+    @Date("2017-06-06")
     public void getWeightsForDifferentIndices() {
         assertNotEquals(0, this.client.getWeightsForDifferentIndices().size());
     }
 
     @Test
+    @Date("2017-06-06")
     public void getWeightsForDifferentIndicesWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getWeightsForDifferentIndices(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-06-06")
     public void getWeightsForDifferentIndicesWithParameters() {
         List<String> spin2007 = Arrays.asList("07", "08");
         List<Integer> years = Arrays.asList(2012, 2013);
@@ -153,17 +172,20 @@ public class PricesAndConsumptionPPISPIN2007YearClientIT extends RemoteIntegrati
     }
 
     @Test
+    @Date("2017-06-06")
     public void getProducerPriceIndexForServices() {
         assertNotEquals(0, this.client.getProducerPriceIndexForServices().size());
     }
 
     @Test
+    @Date("2017-06-06")
     public void getProducerPriceIndexForServicesWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getProducerPriceIndexForServices(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-06-06")
     public void getProducerPriceIndexForServicesWithParameters() {
         List<String> spin2007 = Arrays.asList("77.1A", "77.1B");
         List<Integer> years = Arrays.asList(1998, 2000);

@@ -94,7 +94,7 @@ public class PopulationStatisticsBackgroundClient extends AbstractClient {
         mappings.put(APIConstants.SEX_CODE, sexes);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("UtlSvBakgTotNK", mappings);
+        return getResponseModels("UtlSvBakgGrov", mappings);
     }
 
     /**
@@ -140,7 +140,7 @@ public class PopulationStatisticsBackgroundClient extends AbstractClient {
         mappings.put(APIConstants.SEX_CODE, sexes);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("UtlSvBakgTot", mappings);
+        return getResponseModels("UtlSvBakgFin", mappings);
     }
 
     @Override

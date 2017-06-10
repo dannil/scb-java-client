@@ -20,14 +20,15 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClientIT extends RemoteIntegrationTestSuite {
 
     private PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient client;
@@ -40,7 +41,7 @@ public class PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClientIT extends 
     // Daniel 2017-06-06:
     // Returns HTTP 403
     //
-    // @Test
+    // @Test @Date("2017-06-06")
     // public void getProducerPriceIndexHomeSales() {
     // assertNotEquals(0, this.client.getProducerPriceIndexHomeSales().size());
     // }
@@ -48,7 +49,7 @@ public class PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClientIT extends 
     // Daniel 2017-06-06:
     // Returns HTTP 403
     //
-    // @Test
+    // @Test @Date("2017-06-06")
     // public void getProducerPriceIndexHomeSalesWithParametersEmptyLists() {
     // assertNotEquals(0,
     // this.client.getProducerPriceIndexHomeSales(Collections.<String>emptyList(),
@@ -56,6 +57,7 @@ public class PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClientIT extends 
     // }
 
     @Test
+    @Date("2017-06-06")
     public void getProducerPriceIndexHomeSalesWithParameters() {
         List<String> spin2015 = Arrays.asList("B", "C");
         List<String> months = Arrays.asList("2001M03", "2001M07");
@@ -66,7 +68,7 @@ public class PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClientIT extends 
     // Daniel 2017-06-06:
     // Returns HTTP 403
     //
-    // @Test
+    // @Test @Date("2017-06-06")
     // public void getExportPriceIndex() {
     // assertNotEquals(0, this.client.getExportPriceIndex().size());
     // }
@@ -74,13 +76,14 @@ public class PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClientIT extends 
     // Daniel 2017-06-06:
     // Returns HTTP 403
     //
-    // @Test
+    // @Test @Date("2017-06-06")
     // public void getExportPriceIndexWithParametersEmptyLists() {
     // assertNotEquals(0, this.client.getExportPriceIndex(Collections.<String>emptyList(),
     // Collections.<String>emptyList()).size());
     // }
 
     @Test
+    @Date("2017-06-06")
     public void getExportPriceIndexWithParameters() {
         List<String> spin2015 = Arrays.asList("A", "B");
         List<String> months = Arrays.asList("2001M03", "2001M07");
@@ -91,7 +94,7 @@ public class PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClientIT extends 
     // Daniel 2017-06-06:
     // Returns HTTP 403
     //
-    // @Test
+    // @Test @Date("2017-06-06")
     // public void getImportPriceIndex() {
     // assertNotEquals(0, this.client.getImportPriceIndex().size());
     // }
@@ -99,13 +102,14 @@ public class PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClientIT extends 
     // Daniel 2017-06-06:
     // Returns HTTP 403
     //
-    // @Test
+    // @Test @Date("2017-06-06")
     // public void getImportPriceIndexWithParametersEmptyLists() {
     // assertNotEquals(0, this.client.getImportPriceIndex(Collections.<String>emptyList(),
     // Collections.<String>emptyList()).size());
     // }
 
     @Test
+    @Date("2017-06-06")
     public void getImportPriceIndexWithParameters() {
         List<String> spin2015 = Arrays.asList("A", "B");
         List<String> months = Arrays.asList("2001M03", "2001M07");
@@ -116,7 +120,7 @@ public class PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClientIT extends 
     // Daniel 2017-06-06:
     // Returns HTTP 403
     //
-    // @Test
+    // @Test @Date("2017-06-06")
     // public void getProducerPriceIndex() {
     // assertNotEquals(0, this.client.getProducerPriceIndex().size());
     // }
@@ -124,7 +128,7 @@ public class PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClientIT extends 
     // Daniel 2017-06-06:
     // Returns HTTP 403
     //
-    // @Test
+    // @Test @Date("2017-06-06")
     // public void getProducerPriceIndexWithParametersEmptyLists() {
     // assertNotEquals(0,
     // this.client.getProducerPriceIndex(Collections.<String>emptyList(),
@@ -132,6 +136,7 @@ public class PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClientIT extends 
     // }
 
     @Test
+    @Date("2017-06-06")
     public void getProducerPriceIndexWithParameters() {
         List<String> spin2015 = Arrays.asList("A", "B");
         List<String> months = Arrays.asList("2001M03", "2001M07");
@@ -142,7 +147,7 @@ public class PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClientIT extends 
     // Daniel 2017-06-06:
     // Returns HTTP 403
     //
-    // @Test
+    // @Test @Date("2017-06-06")
     // public void getPriceIndexForDomesticSupply() {
     // assertNotEquals(0, this.client.getPriceIndexForDomesticSupply().size());
     // }
@@ -150,7 +155,7 @@ public class PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClientIT extends 
     // Daniel 2017-06-06:
     // Returns HTTP 403
     //
-    // @Test
+    // @Test @Date("2017-06-06")
     // public void getPriceIndexForDomesticSupplyWithParametersEmptyLists() {
     // assertNotEquals(0,
     // this.client.getPriceIndexForDomesticSupply(Collections.<String>emptyList(),
@@ -158,6 +163,7 @@ public class PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClientIT extends 
     // }
 
     @Test
+    @Date("2017-06-06")
     public void getPriceIndexForDomesticSupplyWithParameters() {
         List<String> spin2015 = Arrays.asList("A", "B");
         List<String> months = Arrays.asList("2001M03", "2001M07");

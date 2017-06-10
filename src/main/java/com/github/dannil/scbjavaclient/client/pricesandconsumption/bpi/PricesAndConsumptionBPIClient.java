@@ -60,7 +60,7 @@ public class PricesAndConsumptionBPIClient extends AbstractContainerClient {
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
-     * 
+     *
      * @see #getBuildingPriceIndexForDwellingsQuarters(Collection, Collection, Collection)
      */
     public List<ResponseModel> getBuildingPriceIndexForDwellingsQuarters() {
@@ -97,7 +97,7 @@ public class PricesAndConsumptionBPIClient extends AbstractContainerClient {
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
-     * 
+     *
      * @see #getBuildingPriceIndexForDwellingsYears(Collection, Collection, Collection)
      */
     public List<ResponseModel> getBuildingPriceIndexForDwellingsYears() {

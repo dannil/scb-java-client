@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class PopulationStatisticsVitalEventsClientIT extends RemoteIntegrationTestSuite {
 
     private PopulationStatisticsVitalEventsClient client;
@@ -39,11 +40,13 @@ public class PopulationStatisticsVitalEventsClientIT extends RemoteIntegrationTe
     }
 
     @Test
+    @Date("2017-05-10")
     public void getPopulationChangesNumberOfPersons() {
         assertNotEquals(0, this.client.getPopulationChangesNumberOfPersons().size());
     }
 
     @Test
+    @Date("2017-05-10")
     public void getPopulationChangesNumberOfPersonsWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getPopulationChangesNumberOfPersons(Collections.<String>emptyList(),
@@ -52,6 +55,7 @@ public class PopulationStatisticsVitalEventsClientIT extends RemoteIntegrationTe
     }
 
     @Test
+    @Date("2017-05-10")
     public void getPopulationChangesNumberOfPersonsWithParameters() {
         List<String> regions = Arrays.asList("0120", "0125");
         List<Integer> populationChanges = Arrays.asList(140, 160);
@@ -63,17 +67,20 @@ public class PopulationStatisticsVitalEventsClientIT extends RemoteIntegrationTe
     }
 
     @Test
+    @Date("2017-05-10")
     public void getPopulationAndPopulationChanges() {
         assertNotEquals(0, this.client.getPopulationAndPopulationChanges().size());
     }
 
     @Test
+    @Date("2017-05-10")
     public void getPopulationAndPopulationChangesWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getPopulationAndPopulationChanges(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-05-10")
     public void getPopulationAndPopulationChangesWithParameters() {
         List<String> sexes = Arrays.asList("1", "2", "1+2");
         List<Integer> years = Arrays.asList(1876, 1948, 2004);
@@ -82,17 +89,20 @@ public class PopulationStatisticsVitalEventsClientIT extends RemoteIntegrationTe
     }
 
     @Test
+    @Date("2017-05-10")
     public void getBirthsAndDeathsPerMonth() {
         assertNotEquals(0, this.client.getBirthsAndDeathsPerMonth().size());
     }
 
     @Test
+    @Date("2017-05-10")
     public void getBirthsAndDeathsPerMonthWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getBirthsAndDeathsPerMonth(Collections.<Integer>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-05-10")
     public void getBirthsAndDeathsPerMonthWithParameters() {
         List<Integer> sexes = Arrays.asList(1, 2);
         List<String> months = Arrays.asList("06", "09");

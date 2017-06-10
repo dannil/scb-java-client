@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class GoodsAndServicesForeignTradeSPINClientIT extends RemoteIntegrationTestSuite {
 
     private GoodsAndServicesForeignTradeSPINClient client;
@@ -39,17 +40,20 @@ public class GoodsAndServicesForeignTradeSPINClientIT extends RemoteIntegrationT
     }
 
     @Test
+    @Date("2017-04-28")
     public void getImportsAndExportsOfGoods() {
         assertNotEquals(0, this.client.getImportsAndExportsOfGoods().size());
     }
 
     @Test
+    @Date("2017-04-28")
     public void getImportsAndExportsOfGoodsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getImportsAndExportsOfGoods(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-28")
     public void getImportsAndExportsOfGoodsWithParameters() {
         List<String> spin2007 = Arrays.asList("A-U", "01");
         List<Integer> years = Arrays.asList(2010, 2011);

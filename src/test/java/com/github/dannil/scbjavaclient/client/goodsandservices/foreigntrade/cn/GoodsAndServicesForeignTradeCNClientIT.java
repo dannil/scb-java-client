@@ -20,14 +20,15 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class GoodsAndServicesForeignTradeCNClientIT extends RemoteIntegrationTestSuite {
 
     private GoodsAndServicesForeignTradeCNClient client;
@@ -38,6 +39,7 @@ public class GoodsAndServicesForeignTradeCNClientIT extends RemoteIntegrationTes
     }
 
     @Test
+    @Date("2017-04-28")
     public void getImportsAndExportsOfGoodsWithParameters() {
         List<String> commodityGroups = Arrays.asList("0101", "0104");
         List<Integer> years = Arrays.asList(2010, 2011);

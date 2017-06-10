@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class PricesAndConsumptionCCIFPIIncludingWageClientIT extends RemoteIntegrationTestSuite {
 
     private PricesAndConsumptionCCIFPIIncludingWageClient client;
@@ -39,17 +40,20 @@ public class PricesAndConsumptionCCIFPIIncludingWageClientIT extends RemoteInteg
     }
 
     @Test
+    @Date("2017-06-10")
     public void getFactorPriceIndexForBuildings1968Years() {
         assertNotEquals(0, this.client.getFactorPriceIndexForBuildings1968Years().size());
     }
 
     @Test
+    @Date("2017-06-10")
     public void getFactorPriceIndexForBuildings1968YearsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getFactorPriceIndexForBuildings1968Years(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-06-10")
     public void getFactorPriceIndexForBuildings1968YearsWithParameters() {
         List<String> typesOfBuildings = Arrays.asList("FLERBO", "GRUPPSMÅ");
         List<String> typesOfExpenditures = Arrays.asList("TOTIM", "ARBL");
@@ -60,17 +64,20 @@ public class PricesAndConsumptionCCIFPIIncludingWageClientIT extends RemoteInteg
     }
 
     @Test
+    @Date("2017-06-10")
     public void getFactorPriceIndexForBuildings2004Years() {
         assertNotEquals(0, this.client.getFactorPriceIndexForBuildings2004Years().size());
     }
 
     @Test
+    @Date("2017-06-10")
     public void getFactorPriceIndexForBuildings2004YearsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getFactorPriceIndexForBuildings2004Years(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-06-10")
     public void getFactorPriceIndexForBuildings2004YearsWithParameters() {
         List<String> typesOfBuildings = Arrays.asList("FLERBO", "GRUPPSMÅ");
         List<String> typesOfExpenditures = Arrays.asList("TOTIM", "ARBL");

@@ -22,14 +22,15 @@ import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.deaths.PopulationStatisticsDeathsClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class PopulationStatisticsDeathsClientIT extends RemoteIntegrationTestSuite {
 
     private PopulationStatisticsDeathsClient client;
@@ -40,17 +41,20 @@ public class PopulationStatisticsDeathsClientIT extends RemoteIntegrationTestSui
     }
 
     @Test
+    @Date("2017-04-27")
     public void getMortalityRate() {
         assertNotEquals(0, this.client.getMortalityRate().size());
     }
 
     @Test
+    @Date("2017-04-27")
     public void getMortalityRateWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getMortalityRate(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-27")
     public void getMortalityRateWithParameters() {
         List<String> ages = Arrays.asList("30-34", "40-44");
         List<Integer> sexes = Arrays.asList(1, 2);
@@ -60,17 +64,20 @@ public class PopulationStatisticsDeathsClientIT extends RemoteIntegrationTestSui
     }
 
     @Test
+    @Date("2017-04-27")
     public void getStillborn() {
         assertNotEquals(0, this.client.getStillborn().size());
     }
 
     @Test
+    @Date("2017-04-27")
     public void getStillbornWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getStillborn(Collections.<String>emptyList(), Collections.<String>emptyList(),
                 Collections.<Integer>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-27")
     public void getStillbornWithParameters() {
         List<String> regions = Arrays.asList("1263");
         List<String> motherAges = Arrays.asList("30-34");
@@ -81,17 +88,20 @@ public class PopulationStatisticsDeathsClientIT extends RemoteIntegrationTestSui
     }
 
     @Test
+    @Date("2017-04-27")
     public void getLifeExpectency() {
         assertNotEquals(0, this.client.getLifeExpectency().size());
     }
 
     @Test
+    @Date("2017-04-27")
     public void getLifeExpectencyWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getLifeExpectency(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-27")
     public void getLifeExpectencyWithParameters() {
         List<String> regions = Arrays.asList("1263");
         List<Integer> sexes = Arrays.asList(1, 2);
@@ -101,17 +111,20 @@ public class PopulationStatisticsDeathsClientIT extends RemoteIntegrationTestSui
     }
 
     @Test
+    @Date("2017-04-27")
     public void getLifeTable() {
         assertNotEquals(0, this.client.getLifeTable().size());
     }
 
     @Test
+    @Date("2017-04-27")
     public void getLifeTableWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getLifeTable(Collections.<Integer>emptyList(), Collections.<Integer>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-27")
     public void getLifeTableWithParameters() {
         List<Integer> sexes = Arrays.asList(1, 2);
         List<Integer> ages = Arrays.asList(20, 22);
@@ -121,17 +134,20 @@ public class PopulationStatisticsDeathsClientIT extends RemoteIntegrationTestSui
     }
 
     @Test
+    @Date("2017-04-27")
     public void getInfantMortality() {
         assertNotEquals(0, this.client.getInfantMortality().size());
     }
 
     @Test
+    @Date("2017-04-27")
     public void getInfantMortalityWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getInfantMortality(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-27")
     public void getInfantMortalityWithParameters() {
         List<String> sexes = Arrays.asList("5+6");
         List<String> infantMortalities = Arrays.asList("0020", "0040");

@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class PricesAndConsumptionPurchasingPowerParitiesClientIT extends RemoteIntegrationTestSuite {
 
     private PricesAndConsumptionPurchasingPowerParitiesClient client;
@@ -39,17 +40,20 @@ public class PricesAndConsumptionPurchasingPowerParitiesClientIT extends RemoteI
     }
 
     @Test
+    @Date("2017-06-04")
     public void getExtrapolatedPriceLevelIndices() {
         assertNotEquals(0, this.client.getExtrapolatedPriceLevelIndices().size());
     }
 
     @Test
+    @Date("2017-06-04")
     public void getExtrapolatedPriceLevelIndicesWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getExtrapolatedPriceLevelIndices(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-06-04")
     public void getExtrapolatedPriceLevelIndicesWithParameters() {
         List<String> countryGroups = Arrays.asList("DE", "GR");
         List<Integer> years = Arrays.asList(2010, 2011);
@@ -58,17 +62,20 @@ public class PricesAndConsumptionPurchasingPowerParitiesClientIT extends RemoteI
     }
 
     @Test
+    @Date("2017-06-04")
     public void getPurchasingPowerParities() {
         assertNotEquals(0, this.client.getPurchasingPowerParities().size());
     }
 
     @Test
+    @Date("2017-06-04")
     public void getPurchasingPowerParitiesWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getPurchasingPowerParities(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-06-04")
     public void getPurchasingPowerParitiesWithParameters() {
         List<String> countries = Arrays.asList("MT", "ME");
         List<String> esaClassifications = Arrays.asList("A01010106", "A010603");

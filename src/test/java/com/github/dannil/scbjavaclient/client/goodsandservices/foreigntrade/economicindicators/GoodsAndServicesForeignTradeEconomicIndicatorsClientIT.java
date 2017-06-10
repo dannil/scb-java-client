@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class GoodsAndServicesForeignTradeEconomicIndicatorsClientIT extends RemoteIntegrationTestSuite {
 
     private GoodsAndServicesForeignTradeEconomicIndicatorsClient client;
@@ -39,17 +40,20 @@ public class GoodsAndServicesForeignTradeEconomicIndicatorsClientIT extends Remo
     }
 
     @Test
+    @Date("2017-04-28")
     public void getImportsAndExportsOfGoods() {
         assertNotEquals(0, this.client.getImportsAndExportsOfGoods().size());
     }
 
     @Test
+    @Date("2017-04-28")
     public void getImportsAndExportsOfGoodsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getImportsAndExportsOfGoods(Collections.<String>emptyList(),
                 Collections.<String>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-28")
     public void getImportsAndExportsOfGoodsWithParameters() {
         List<String> economicIndicators = Arrays.asList("HAH10", "HAH20");
         List<String> months = Arrays.asList("2014M09", "2014M11");
@@ -58,17 +62,20 @@ public class GoodsAndServicesForeignTradeEconomicIndicatorsClientIT extends Remo
     }
 
     @Test
+    @Date("2017-04-28")
     public void getTrendsInVolumeOfExportsAndImportsOfGoods() {
         assertNotEquals(0, this.client.getTrendsInVolumeOfExportsAndImportsOfGoods().size());
     }
 
     @Test
+    @Date("2017-04-28")
     public void getTrendsInVolumeOfExportsAndImportsOfGoodsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getTrendsInVolumeOfExportsAndImportsOfGoods(Collections.<String>emptyList(),
                 Collections.<String>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-28")
     public void getTrendsInVolumeOfExportsAndImportsOfGoodsWithParameters() {
         List<String> economicIndicators = Arrays.asList("HAV10", "HAV20");
         List<String> quarters = Arrays.asList("2013K3", "2014K3");

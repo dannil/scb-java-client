@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class PricesAndConsumptionBPIClientIT extends RemoteIntegrationTestSuite {
 
     private PricesAndConsumptionBPIClient client;
@@ -39,38 +40,44 @@ public class PricesAndConsumptionBPIClientIT extends RemoteIntegrationTestSuite 
     }
 
     @Test
+    @Date("2017-06-04")
     public void getBuildingPriceIndexForDwellingsQuarters() {
         assertNotEquals(0, this.client.getBuildingPriceIndexForDwellingsQuarters().size());
     }
 
     @Test
+    @Date("2017-06-04")
     public void getBuildingPriceIndexForDwellingsQuartersWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getBuildingPriceIndexForDwellingsQuarters(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test
+    @Date("2017-06-04")
     public void getBuildingPriceIndexForDwellingsQuartersWithParameters() {
         List<String> typesOfBuildings = Arrays.asList("FLERBO", "GRUPPSMÅ");
         List<String> typesOfIndexes = Arrays.asList("ANPR", "PÅPR");
         List<String> quarters = Arrays.asList("2003K3", "2004K4");
 
-        assertNotEquals(0,
-                this.client.getBuildingPriceIndexForDwellingsQuarters(typesOfBuildings, typesOfIndexes, quarters).size());
+        assertNotEquals(0, this.client.getBuildingPriceIndexForDwellingsQuarters(typesOfBuildings, typesOfIndexes,
+                quarters).size());
     }
 
     @Test
+    @Date("2017-06-04")
     public void getBuildingPriceIndexForDwellingsYears() {
         assertNotEquals(0, this.client.getBuildingPriceIndexForDwellingsYears().size());
     }
 
     @Test
+    @Date("2017-06-04")
     public void getBuildingPriceIndexForDwellingsYearsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getBuildingPriceIndexForDwellingsYears(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-06-04")
     public void getBuildingPriceIndexForDwellingsYearsWithParameters() {
         List<String> typesOfBuildings = Arrays.asList("FLERBO", "GRUPPSMÅ");
         List<String> typesOfIndexes = Arrays.asList("ANPR", "PÅPR");
