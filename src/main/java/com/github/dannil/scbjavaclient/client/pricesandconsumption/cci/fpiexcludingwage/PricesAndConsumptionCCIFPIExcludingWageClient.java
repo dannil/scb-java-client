@@ -14,10 +14,16 @@
 
 package com.github.dannil.scbjavaclient.client.pricesandconsumption.cci.fpiexcludingwage;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles prices and consumption construction cost index (CCI) factor
@@ -26,6 +32,10 @@ import com.github.dannil.scbjavaclient.http.URLEndpoint;
  * @since 0.4.0
  */
 public class PricesAndConsumptionCCIFPIExcludingWageClient extends AbstractContainerClient {
+
+    private static final String TYPEOFBUILDING_CODE = "Hustyp";
+
+    private static final String TYPEOFEXPENDITURE_CODE = "Kostnadsslag";
 
     /**
      * <p>Default constructor.</p>
@@ -44,8 +54,80 @@ public class PricesAndConsumptionCCIFPIExcludingWageClient extends AbstractConta
         super(locale);
     }
 
-    TODO
-    
+    /**
+     * <p>Fetch all factor price index for buildings (1968=100) months data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getFactorPriceIndexForBuildings1968Months(Collection, Collection, Collection)
+     */
+    public List<ResponseModel> getFactorPriceIndexForBuildings1968Months() {
+        return getFactorPriceIndexForBuildings1968Months(null, null, null);
+    }
+
+    /**
+     * <p>Fetch all factor price index for buildings (1968=100) months data which match
+     * the input constraints.</p>
+     *
+     * @param typesOfBuildings
+     *            the types of buildings
+     * @param typesOfExpenditures
+     *            the types of expenditures
+     * @param months
+     *            the months
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getFactorPriceIndexForBuildings1968Months(Collection<String> typesOfBuildings,
+            Collection<String> typesOfExpenditures, Collection<String> months) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(TYPEOFBUILDING_CODE, typesOfBuildings);
+        mappings.put(TYPEOFEXPENDITURE_CODE, typesOfExpenditures);
+        mappings.put(APIConstants.TIME_CODE, months);
+
+        return getResponseModels("FPIBOM", mappings);
+    }
+
+    /**
+     * <p>Fetch all factor price index for buildings (2015=100) months data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getFactorPriceIndexForBuildings2015Months(Collection, Collection, Collection)
+     */
+    public List<ResponseModel> getFactorPriceIndexForBuildings2015Months() {
+        return getFactorPriceIndexForBuildings2015Months(null, null, null);
+    }
+
+    /**
+     * <p>Fetch all factor price index for buildings (2015=100) months data which match
+     * the input constraints.</p>
+     *
+     * @param typesOfBuildings
+     *            the types of buildings
+     * @param typesOfExpenditures
+     *            the types of expenditures
+     * @param months
+     *            the months
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getFactorPriceIndexForBuildings2015Months(Collection<String> typesOfBuildings,
+            Collection<String> typesOfExpenditures, Collection<String> months) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(TYPEOFBUILDING_CODE, typesOfBuildings);
+        mappings.put(TYPEOFEXPENDITURE_CODE, typesOfExpenditures);
+        mappings.put(APIConstants.TIME_CODE, months);
+
+        return getResponseModels("FPIBOM2015", mappings);
+    }
+
     @Override
     public URLEndpoint getUrl() {
         return getRootUrl().append("PR/PR0502/PR0502A/");
