@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Objects;
 
 import org.junit.Test;
 import org.junit.runners.BlockJUnit4ClassRunner;
@@ -46,14 +47,16 @@ public class DateJUnitRunner extends BlockJUnit4ClassRunner {
             try {
                 DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
                 Date d = m.getAnnotation(Date.class);
-                annotatedDate = (d.value().equals("now") ? new java.util.Date() : format.parse(d.value()));
+                String value = d.value();
+                annotatedDate = (Objects.equals(value, "now") ? cutoffDate : format.parse(value));
             } catch (ParseException e) {
                 throw new RuntimeException(e);
             }
 
-            // If the cutoff date is before the annotated date (a point in time which
+            // If the cutoff date is equal to the annotated date OR the
+            // cutoff date is before the annotated date (a point in time which
             // occurred before the annotated date), the test should be run; otherwise not
-            if (cutoffDate.before(annotatedDate)) {
+            if (Objects.equals(annotatedDate, cutoffDate) || cutoffDate.before(annotatedDate)) {
                 children.add(fm);
             }
         }
