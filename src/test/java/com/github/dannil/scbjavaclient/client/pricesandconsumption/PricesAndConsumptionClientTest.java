@@ -20,7 +20,6 @@ import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.bpi.PricesAndConsumptionBPIClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cci.PricesAndConsumptionCCIClient;
-import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.PricesAndConsumptionCPIClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.ppi.PricesAndConsumptionPPIClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.purchasingpowerparities.PricesAndConsumptionPurchasingPowerParitiesClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
@@ -52,13 +51,6 @@ public class PricesAndConsumptionClientTest {
         PricesAndConsumptionClient client = new PricesAndConsumptionClient();
 
         assertEquals(client.cci().getClass(), PricesAndConsumptionCCIClient.class);
-    }
-
-    @Test
-    public void cpi() {
-        PricesAndConsumptionClient client = new PricesAndConsumptionClient();
-
-        assertEquals(client.cpi().getClass(), PricesAndConsumptionCPIClient.class);
     }
 
     @Test
