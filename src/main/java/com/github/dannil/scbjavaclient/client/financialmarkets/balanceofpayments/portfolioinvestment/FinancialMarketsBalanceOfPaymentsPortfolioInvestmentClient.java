@@ -26,11 +26,16 @@ import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles financial markets balance of payments portfolio investment data fetching.</p>
+ * <p>Client which handles financial markets balance of payments portfolio investment data
+ * fetching.</p>
  *
  * @since 0.4.0
  */
 public class FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClient extends AbstractClient {
+
+    private static final String CURRENCY_CODE = "DenomValuta";
+
+    private static final String ITEM_CODE = "Kontopost";
 
     /**
      * <p>Default constructor.</p>
@@ -49,7 +54,195 @@ public class FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClient extends 
         super(locale);
     }
 
-    TODO
+    /**
+     * <p>Fetch all net flows years data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getNetFlowsYears(Collection, Collection, Collection)
+     */
+    public List<ResponseModel> getNetFlowsYears() {
+        return getNetFlowsYears(null, null, null);
+    }
+
+    /**
+     * <p>Fetch all net flows years data which match the input constraints.</p>
+     *
+     * @param currencies
+     *            the currencies
+     * @param items
+     *            the items
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getNetFlowsYears(Collection<String> currencies, Collection<String> items,
+            Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(CURRENCY_CODE, currencies);
+        mappings.put(ITEM_CODE, items);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("FM0001PIAr", mappings);
+    }
+
+    // Daniel 2017-06-11: Returns HTTP 403
+    //
+    // /**
+    // * <p>Fetch all non-resident trade in Swedish shares data.</p>
+    // *
+    // * @return the data wrapped in a list of
+    // * {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+    // * objects
+    // *
+    // * @see #getNonResidentTradeInSwedishShares(Collection, Collection, Collection)
+    // */
+    // public List<ResponseModel> getNonResidentTradeInSwedishShares() {
+    // return getNonResidentTradeInSwedishShares(null, null, null);
+    // }
+
+    /**
+     * <p>Fetch all non-resident trade in Swedish shares data which match the input
+     * constraints.</p>
+     *
+     * @param typesOfTrades
+     *            the types of trades
+     * @param typesOfShares
+     *            the types of shares
+     * @param months
+     *            the months
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getNonResidentTradeInSwedishShares(Collection<String> typesOfTrades,
+            Collection<String> typesOfShares, Collection<String> months) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("UtlHandelAktier", typesOfTrades);
+        mappings.put("Aktieslag", typesOfShares);
+        mappings.put(APIConstants.TIME_CODE, months);
+
+        return getResponseModels("FM0001PIM", mappings);
+    }
+
+    /**
+     * <p>Fetch all non-resident holdings of Swedish interest-bearing securities data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getNonResidentHoldingsOfSwedishInterestBearingSecuritiesData(Collection,
+     *      Collection, Collection, Collection)
+     */
+    public List<ResponseModel> getNonResidentHoldingsOfSwedishInterestBearingSecuritiesData() {
+        return getNonResidentHoldingsOfSwedishInterestBearingSecuritiesData(null, null, null, null);
+    }
+
+    /**
+     * <p>Fetch all non-resident holdings of Swedish interest-bearing securities data
+     * which match the input constraints.</p>
+     *
+     * @param holdings
+     *            the holdings
+     * @param sectors
+     *            the sectors
+     * @param maturities
+     *            the maturities
+     * @param month
+     *            the month
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getNonResidentHoldingsOfSwedishInterestBearingSecuritiesData(Collection<String> holdings,
+            Collection<String> sectors, Collection<String> maturities, Collection<String> months) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("Innehav", holdings);
+        mappings.put(APIConstants.SECTOR_CODE, sectors);
+        mappings.put("Loptid", maturities);
+        mappings.put(APIConstants.TIME_CODE, months);
+
+        return getResponseModels("FM0001DepM", mappings);
+    }
+
+    /**
+     * <p>Fetch all net flows quarters data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getNetFlowsQuarters(Collection, Collection, Collection)
+     */
+    public List<ResponseModel> getNetFlowsQuarters() {
+        return getNetFlowsQuarters(null, null, null);
+    }
+
+    /**
+     * <p>Fetch all net flows quarters data which match the input constraints.</p>
+     *
+     * @param currencies
+     *            the currencies
+     * @param items
+     *            the items
+     * @param quarters
+     *            the quarters
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getNetFlowsQuarters(Collection<String> currencies, Collection<String> items,
+            Collection<String> quarters) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(CURRENCY_CODE, currencies);
+        mappings.put(ITEM_CODE, items);
+        mappings.put(APIConstants.TIME_CODE, quarters);
+
+        return getResponseModels("FM0001PIKv", mappings);
+    }
+
+    /**
+     * <p>Fetch all Swedish portfolio holdings of foreign securities data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getSwedishPortfolioHoldingsOfForeignSecurities(Collection, Collection,
+     *      Collection)
+     */
+    public List<ResponseModel> getSwedishPortfolioHoldingsOfForeignSecurities() {
+        return getSwedishPortfolioHoldingsOfForeignSecurities(null, null, null);
+    }
+
+    /**
+     * <p>Fetch all Swedish portfolio holdings of foreign securities data which match the
+     * input constraints.</p>
+     *
+     * @param countries
+     *            the countries
+     * @param securities
+     *            the securities
+     * @param halfYears
+     *            the half years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getSwedishPortfolioHoldingsOfForeignSecurities(Collection<String> countries,
+            Collection<String> securities, Collection<String> halfYears) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("Land", countries);
+        mappings.put("Vardepapper", securities);
+        mappings.put(APIConstants.TIME_CODE, halfYears);
+
+        return getResponseModels("FM0001PIUAr", mappings);
+    }
 
     @Override
     public URLEndpoint getUrl() {
