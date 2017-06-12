@@ -64,16 +64,10 @@ public class DateJUnitRunner extends BlockJUnit4ClassRunner {
 
     private class DateJUnitRunnerException extends RuntimeException {
 
-        public DateJUnitRunnerException() {
-            super();
-        }
+        private static final long serialVersionUID = -273544118424218668L;
 
         public DateJUnitRunnerException(String message) {
             super(message);
-        }
-
-        public DateJUnitRunnerException(String message, Throwable cause) {
-            super(message, cause);
         }
 
         public DateJUnitRunnerException(Throwable cause) {
