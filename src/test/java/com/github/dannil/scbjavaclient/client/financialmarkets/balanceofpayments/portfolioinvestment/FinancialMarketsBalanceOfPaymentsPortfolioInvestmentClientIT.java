@@ -89,7 +89,7 @@ public class FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClientIT extend
     }
 
     @Test
-    public void getNonResidentHoldingsOfSwedishInterestBearingSecuritiesDataEmptyLists() {
+    public void getNonResidentHoldingsOfSwedishInterestBearingSecuritiesDataWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getNonResidentHoldingsOfSwedishInterestBearingSecuritiesData(
                         Collections.<String>emptyList(), Collections.<String>emptyList(),
@@ -113,7 +113,7 @@ public class FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClientIT extend
     }
 
     @Test
-    public void getNetFlowsQuartersWithParametersEmptyLists() {
+    public void getNetFlowsQuartersWithParametersWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getNetFlowsQuarters(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<String>emptyList()).size());
     }
@@ -133,7 +133,7 @@ public class FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClientIT extend
     }
 
     @Test
-    public void getSwedishPortfolioHoldingsOfForeignSecuritiesEmptyLists() {
+    public void getSwedishPortfolioHoldingsOfForeignSecuritiesWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getSwedishPortfolioHoldingsOfForeignSecurities(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<String>emptyList()).size());
     }
