@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class FinancialMarketsSecuritiesClientIT extends RemoteIntegrationTestSuite {
 
     private FinancialMarketsSecuritiesClient client;
@@ -39,11 +40,13 @@ public class FinancialMarketsSecuritiesClientIT extends RemoteIntegrationTestSui
     }
 
     @Test
+    @Date("2017-03-08")
     public void getMaturityStructure() {
         assertNotEquals(0, this.client.getMaturityStructure().size());
     }
 
     @Test
+    @Date("2017-03-08")
     public void getMaturityStructureWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getMaturityStructure(Collections.<Integer>emptyList(), Collections.<String>emptyList(),
@@ -51,6 +54,7 @@ public class FinancialMarketsSecuritiesClientIT extends RemoteIntegrationTestSui
     }
 
     @Test
+    @Date("2017-03-08")
     public void getMaturityStructureWithParameters() {
         List<Integer> sectors = Arrays.asList(113, 114);
         List<String> maturities = Arrays.asList("4-6", "24");
@@ -61,11 +65,13 @@ public class FinancialMarketsSecuritiesClientIT extends RemoteIntegrationTestSui
     }
 
     @Test
+    @Date("2017-03-08")
     public void getOutstandingAndIssuedAmount() {
         assertNotEquals(0, this.client.getOutstandingAndIssuedAmount().size());
     }
 
     @Test
+    @Date("2017-03-08")
     public void getOutstandingAndIssuedAmountWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getOutstandingAndIssuedAmount(Collections.<Integer>emptyList(),
@@ -74,6 +80,7 @@ public class FinancialMarketsSecuritiesClientIT extends RemoteIntegrationTestSui
     }
 
     @Test
+    @Date("2017-03-08")
     public void getOutstandingAndIssuedAmountStructureWithParameters() {
         List<Integer> sectors = Arrays.asList(113, 114);
         List<String> items = Arrays.asList("FMTOT", "FMPMI");

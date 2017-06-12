@@ -20,14 +20,15 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class PopulationNameClientIT extends RemoteIntegrationTestSuite {
 
     private PopulationNameClient client;
@@ -38,11 +39,13 @@ public class PopulationNameClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    @Date("2017-01-01")
     public void getNumberOfChildrenBornWithFirstName() {
         assertNotEquals(0, this.client.getNumberOfChildrenBornWithFirstName().size());
     }
 
     @Test
+    @Date("2017-01-01")
     public void getNumberOfChildrenBornWithFirstNameWithParameters() {
         List<String> firstnames = Arrays.asList("AdinaK");
         List<Integer> years = Arrays.asList(2002);

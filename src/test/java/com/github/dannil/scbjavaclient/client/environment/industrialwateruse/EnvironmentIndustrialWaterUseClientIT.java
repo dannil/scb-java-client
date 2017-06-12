@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class EnvironmentIndustrialWaterUseClientIT extends RemoteIntegrationTestSuite {
 
     private EnvironmentIndustrialWaterUseClient client;
@@ -39,17 +40,20 @@ public class EnvironmentIndustrialWaterUseClientIT extends RemoteIntegrationTest
     }
 
     @Test
+    @Date("2017-03-06")
     public void getWaterAbstraction() {
         assertNotEquals(0, this.client.getWaterAbstraction().size());
     }
 
     @Test
+    @Date("2017-03-06")
     public void getWaterAbstractionWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getWaterAbstraction(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-03-06")
     public void getWaterAbstractionWithParameters() {
         List<String> regions = Arrays.asList("04", "05");
         List<Integer> types = Arrays.asList(70, 80);
@@ -59,17 +63,20 @@ public class EnvironmentIndustrialWaterUseClientIT extends RemoteIntegrationTest
     }
 
     @Test
+    @Date("2017-03-06")
     public void getWaterUse() {
         assertNotEquals(0, this.client.getWaterUse().size());
     }
 
     @Test
+    @Date("2017-03-06")
     public void getWaterUseWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getWaterUse(Collections.<String>emptyList(), Collections.<Integer>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-03-06")
     public void getWaterUseWithParameters() {
         List<String> regions = Arrays.asList("04", "05");
         List<Integer> types = Arrays.asList(70, 80);
@@ -79,17 +86,20 @@ public class EnvironmentIndustrialWaterUseClientIT extends RemoteIntegrationTest
     }
 
     @Test
+    @Date("2017-03-06")
     public void getWaterDischarge() {
         assertNotEquals(0, this.client.getWaterDischarge().size());
     }
 
     @Test
+    @Date("2017-03-06")
     public void getWaterDischargeWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getWaterDischarge(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-03-06")
     public void getWaterDischargeWithParameters() {
         List<String> regions = Arrays.asList("04", "05");
         List<Integer> recipients = Arrays.asList(130, 160);

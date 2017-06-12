@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class PublicFinancesPubliclyOwnedEnterprisesClientIT extends RemoteIntegrationTestSuite {
 
     private PublicFinancesPubliclyOwnedEnterprisesClient client;
@@ -39,17 +40,20 @@ public class PublicFinancesPubliclyOwnedEnterprisesClientIT extends RemoteIntegr
     }
 
     @Test
+    @Date("2017-04-16")
     public void getDataForMunicipalityOwnedEnterprises() {
         assertNotEquals(0, this.client.getDataForMunicipalityOwnedEnterprises().size());
     }
 
     @Test
+    @Date("2017-04-16")
     public void getDataForMunicipalityOwnedEnterprisesWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getDataForMunicipalityOwnedEnterprises(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-16")
     public void getDataForMunicipalityOwnedEnterprisesWithParameters() {
         List<String> regions = Arrays.asList("0182", "0305");
         List<Integer> years = Arrays.asList(2015);
@@ -58,17 +62,20 @@ public class PublicFinancesPubliclyOwnedEnterprisesClientIT extends RemoteIntegr
     }
 
     @Test
+    @Date("2017-04-16")
     public void getEnterprises() {
         assertNotEquals(0, this.client.getEnterprises().size());
     }
 
     @Test
+    @Date("2017-04-16")
     public void getEnterprisesWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getEnterprises(Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-16")
     public void getEnterprisesWithParameters() {
         List<String> regions = Arrays.asList("0182", "0305");
         List<Integer> years = Arrays.asList(2015);
@@ -77,17 +84,20 @@ public class PublicFinancesPubliclyOwnedEnterprisesClientIT extends RemoteIntegr
     }
 
     @Test
+    @Date("2017-04-16")
     public void getCountyCouncilsEnterprises() {
         assertNotEquals(0, this.client.getCountyCouncilsEnterprises().size());
     }
 
     @Test
+    @Date("2017-04-16")
     public void getCountyCouncilsEnterprisesWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getCountyCouncilsEnterprises(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-16")
     public void getCountyCouncilsEnterprisesWithParameters() {
         List<String> regions = Arrays.asList("17", "19");
         List<String> sectors = Arrays.asList("samtliga");
@@ -97,11 +107,13 @@ public class PublicFinancesPubliclyOwnedEnterprisesClientIT extends RemoteIntegr
     }
 
     @Test
+    @Date("2017-04-16")
     public void getPubliclyOwnedEnterprises() {
         assertNotEquals(0, this.client.getPubliclyOwnedEnterprises().size());
     }
 
     @Test
+    @Date("2017-04-16")
     public void getPubliclyOwnedEnterprisesWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getPubliclyOwnedEnterprises(Collections.<String>emptyList(),
@@ -110,6 +122,7 @@ public class PublicFinancesPubliclyOwnedEnterprisesClientIT extends RemoteIntegr
     }
 
     @Test
+    @Date("2017-04-16")
     public void getPubliclyOwnedEnterprisesWithParameters() {
         List<String> sectors = Arrays.asList("samtliga");
         List<Integer> typesOfOwnerships = Arrays.asList(60, 65);
@@ -121,11 +134,13 @@ public class PublicFinancesPubliclyOwnedEnterprisesClientIT extends RemoteIntegr
     }
 
     @Test
+    @Date("2017-04-16")
     public void getIncomeStatements() {
         assertNotEquals(0, this.client.getIncomeStatements().size());
     }
 
     @Test
+    @Date("2017-04-16")
     public void getIncomeStatementsWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getIncomeStatements(Collections.<String>emptyList(), Collections.<Integer>emptyList(),
@@ -133,6 +148,7 @@ public class PublicFinancesPubliclyOwnedEnterprisesClientIT extends RemoteIntegr
     }
 
     @Test
+    @Date("2017-04-16")
     public void getIncomeStatementsWithParameters() {
         List<String> sectors = Arrays.asList("samtliga");
         List<Integer> typesOfOwnerships = Arrays.asList(60, 65);
@@ -144,11 +160,13 @@ public class PublicFinancesPubliclyOwnedEnterprisesClientIT extends RemoteIntegr
     }
 
     @Test
+    @Date("2017-04-16")
     public void getLiabilitiesAndEquity() {
         assertNotEquals(0, this.client.getLiabilitiesAndEquity().size());
     }
 
     @Test
+    @Date("2017-04-16")
     public void getLiabilitiesAndEquityWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getLiabilitiesAndEquity(Collections.<String>emptyList(), Collections.<Integer>emptyList(),
@@ -156,6 +174,7 @@ public class PublicFinancesPubliclyOwnedEnterprisesClientIT extends RemoteIntegr
     }
 
     @Test
+    @Date("2017-04-16")
     public void getLiabilitiesAndEquityWithParameters() {
         List<String> sectors = Arrays.asList("samtliga");
         List<Integer> typesOfOwnerships = Arrays.asList(60, 65);
@@ -167,17 +186,20 @@ public class PublicFinancesPubliclyOwnedEnterprisesClientIT extends RemoteIntegr
     }
 
     @Test
+    @Date("2017-04-16")
     public void getAssets() {
         assertNotEquals(0, this.client.getAssets().size());
     }
 
     @Test
+    @Date("2017-04-16")
     public void getAssetsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getAssets(Collections.<String>emptyList(), Collections.<Integer>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-16")
     public void getAssetsWithParameters() {
         List<String> sectors = Arrays.asList("samtliga");
         List<Integer> typesOfOwnerships = Arrays.asList(60, 65);

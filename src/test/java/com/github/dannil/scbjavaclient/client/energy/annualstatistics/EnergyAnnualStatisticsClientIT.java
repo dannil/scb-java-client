@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class EnergyAnnualStatisticsClientIT extends RemoteIntegrationTestSuite {
 
     private EnergyAnnualStatisticsClient client;
@@ -39,17 +40,20 @@ public class EnergyAnnualStatisticsClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    @Date("2017-03-14")
     public void getConsumptionOfFuelsInElectricityGeneration() {
         assertNotEquals(0, this.client.getConsumptionOfFuelsInElectricityGeneration().size());
     }
 
     @Test
+    @Date("2017-03-14")
     public void getConsumptionOfFuelsInElectricityGenerationWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getConsumptionOfFuelsInElectricityGeneration(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-03-14")
     public void getConsumptionOfFuelsInElectricityGenerationWithParameters() {
         List<String> powerPlants = Arrays.asList("Kraftvindkr", "Gasturbin");
         List<String> fuels = Arrays.asList("kok", "karn");
@@ -59,17 +63,20 @@ public class EnergyAnnualStatisticsClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    @Date("2017-03-14")
     public void getElectricitySupply() {
         assertNotEquals(0, this.client.getElectricitySupply().size());
     }
 
     @Test
+    @Date("2017-03-14")
     public void getElectricitySupplyWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getElectricitySupply(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-03-14")
     public void getElectricitySupplyWithParameters() {
         List<String> powerPlants = Arrays.asList("Kraftvi", "Vind");
         List<Integer> years = Arrays.asList(1997, 1999);

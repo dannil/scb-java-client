@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class EnvironmentPackagingAndPackagingWasteClientIT extends RemoteIntegrationTestSuite {
 
     private EnvironmentPackagingAndPackagingWasteClient client;
@@ -39,17 +40,20 @@ public class EnvironmentPackagingAndPackagingWasteClientIT extends RemoteIntegra
     }
 
     @Test
+    @Date("2015-03-06")
     public void getPackagingAndPackagingWaste() {
         assertNotEquals(0, this.client.getPackagingAndPackagingWaste().size());
     }
 
     @Test
+    @Date("2015-03-06")
     public void getPackagingAndPackagingWasteWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getPackagingAndPackagingWaste(Collections.<Integer>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2015-03-06")
     public void getPackagingAndPackagingWasteWithParameters() {
         List<Integer> types = Arrays.asList(10, 20);
         List<Integer> years = Arrays.asList(2012, 2013);

@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class EnvironmentLandAndWaterAreaClientIT extends RemoteIntegrationTestSuite {
 
     private EnvironmentLandAndWaterAreaClient client;
@@ -39,17 +40,20 @@ public class EnvironmentLandAndWaterAreaClientIT extends RemoteIntegrationTestSu
     }
 
     @Test
+    @Date("2015-04-22")
     public void getArea() {
         assertNotEquals(0, this.client.getArea().size());
     }
 
     @Test
+    @Date("2015-04-22")
     public void getAreaWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getArea(Collections.<String>emptyList(), Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2015-04-22")
     public void getAreaWithParameters() {
         List<String> regions = Arrays.asList("1263");
         List<String> types = Arrays.asList("01", "02", "03", "04");

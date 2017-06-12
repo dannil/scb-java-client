@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class PublicFinancesAnnualAccountsBalanceSheetCountyClientIT extends RemoteIntegrationTestSuite {
 
     private PublicFinancesAnnualAccountsBalanceSheetCountyClient client;
@@ -39,17 +40,20 @@ public class PublicFinancesAnnualAccountsBalanceSheetCountyClientIT extends Remo
     }
 
     @Test
+    @Date("2017-04-17")
     public void getContingentLiabilities() {
         assertNotEquals(0, this.client.getContingentLiabilities().size());
     }
 
     @Test
+    @Date("2017-04-17")
     public void getContingentLiabilitiesWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getContingentLiabilities(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-17")
     public void getContingentLiabilitiesWithParameters() {
         List<String> regions = Arrays.asList("03L", "05L");
         List<String> contingentLiabilities = Arrays.asList("borgen", "p_skuld");
@@ -59,17 +63,20 @@ public class PublicFinancesAnnualAccountsBalanceSheetCountyClientIT extends Remo
     }
 
     @Test
+    @Date("2017-04-17")
     public void getRevenue() {
         assertNotEquals(0, this.client.getRevenue().size());
     }
 
     @Test
+    @Date("2017-04-17")
     public void getRevenueWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getRevenue(Collections.<String>emptyList(), Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-17")
     public void getRevenueWithParameters() {
         List<String> regions = Arrays.asList("03L", "05L");
         List<String> items = Arrays.asList("307", "35-36");
@@ -79,17 +86,20 @@ public class PublicFinancesAnnualAccountsBalanceSheetCountyClientIT extends Remo
     }
 
     @Test
+    @Date("2017-04-17")
     public void getCosts() {
         assertNotEquals(0, this.client.getCosts().size());
     }
 
     @Test
+    @Date("2017-04-17")
     public void getCostsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getCosts(Collections.<String>emptyList(), Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-17")
     public void getCostsWithParameters() {
         List<String> regions = Arrays.asList("03L", "05L");
         List<String> items = Arrays.asList("558", "5615,5619");
@@ -99,17 +109,20 @@ public class PublicFinancesAnnualAccountsBalanceSheetCountyClientIT extends Remo
     }
 
     @Test
+    @Date("2017-04-17")
     public void getIncomeStatements() {
         assertNotEquals(0, this.client.getIncomeStatements().size());
     }
 
     @Test
+    @Date("2017-04-17")
     public void getIncomeStatementsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getIncomeStatements(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-17")
     public void getIncomeStatementsWithParameters() {
         List<String> regions = Arrays.asList("03L", "05L");
         List<String> incomeStatements = Arrays.asList("030", "040");
@@ -119,17 +132,20 @@ public class PublicFinancesAnnualAccountsBalanceSheetCountyClientIT extends Remo
     }
 
     @Test
+    @Date("2017-04-17")
     public void getBalanceSheet() {
         assertNotEquals(0, this.client.getBalanceSheet().size());
     }
 
     @Test
+    @Date("2017-04-17")
     public void getBalanceSheetWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getBalanceSheet(Collections.<String>emptyList(), Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-17")
     public void getBalanceSheetWithParameters() {
         List<String> regions = Arrays.asList("03L", "05L");
         List<String> balanceSheets = Arrays.asList("132", "10-138");

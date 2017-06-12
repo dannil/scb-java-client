@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class PublicFinancesLocalTaxesClientIT extends RemoteIntegrationTestSuite {
 
     private PublicFinancesLocalTaxesClient client;
@@ -39,17 +40,20 @@ public class PublicFinancesLocalTaxesClientIT extends RemoteIntegrationTestSuite
     }
 
     @Test
+    @Date("2017-03-21")
     public void getLocalTaxRates() {
         assertNotEquals(0, this.client.getLocalTaxRates().size());
     }
 
     @Test
+    @Date("2017-03-21")
     public void getLocalTaxRatesWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getLocalTaxRates(Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-03-21")
     public void getLocalTaxRatesWithParameters() {
         List<String> regions = Arrays.asList("0182", "0305");
         List<Integer> years = Arrays.asList(2004, 2008);

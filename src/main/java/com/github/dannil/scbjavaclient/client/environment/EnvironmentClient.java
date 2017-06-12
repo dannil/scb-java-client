@@ -17,12 +17,17 @@ package com.github.dannil.scbjavaclient.client.environment;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
-import com.github.dannil.scbjavaclient.client.environment.emissions.EnvironmentEmissionsClient;
+import com.github.dannil.scbjavaclient.client.environment.airpollutants.EnvironmentAirPollutantsClient;
+import com.github.dannil.scbjavaclient.client.environment.greenhousegas.EnvironmentGreenhouseGasClient;
 import com.github.dannil.scbjavaclient.client.environment.industrialwateruse.EnvironmentIndustrialWaterUseClient;
+import com.github.dannil.scbjavaclient.client.environment.islands.EnvironmentIslandsClient;
 import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.EnvironmentLandAndWaterAreaClient;
 import com.github.dannil.scbjavaclient.client.environment.landuse.EnvironmentLandUseClient;
+import com.github.dannil.scbjavaclient.client.environment.landusedfortransport.EnvironmentLandUsedForTransportClient;
 import com.github.dannil.scbjavaclient.client.environment.packagingandpackagingwaste.EnvironmentPackagingAndPackagingWasteClient;
 import com.github.dannil.scbjavaclient.client.environment.protectednature.EnvironmentProtectedNatureClient;
+import com.github.dannil.scbjavaclient.client.environment.seea.EnvironmentSEEAClient;
+import com.github.dannil.scbjavaclient.client.environment.smallerlocalities.EnvironmentSmallerLocalitiesClient;
 import com.github.dannil.scbjavaclient.client.environment.waste.EnvironmentWasteClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
@@ -39,12 +44,17 @@ public class EnvironmentClient extends AbstractContainerClient {
     public EnvironmentClient() {
         super();
 
-        addClient("emissions", new EnvironmentEmissionsClient());
+        addClient("airpollutants", new EnvironmentAirPollutantsClient());
+        addClient("greenhousegas", new EnvironmentGreenhouseGasClient());
         addClient("industrialwateruse", new EnvironmentIndustrialWaterUseClient());
+        addClient("islands", new EnvironmentIslandsClient());
         addClient("landandwaterarea", new EnvironmentLandAndWaterAreaClient());
         addClient("landuse", new EnvironmentLandUseClient());
+        addClient("landusedfortransport", new EnvironmentLandUsedForTransportClient());
         addClient("packagingandpackagingwaste", new EnvironmentPackagingAndPackagingWasteClient());
         addClient("protectednature", new EnvironmentProtectedNatureClient());
+        addClient("seea", new EnvironmentSEEAClient());
+        addClient("smallerlocalities", new EnvironmentSmallerLocalitiesClient());
         addClient("waste", new EnvironmentWasteClient());
     }
 
@@ -61,12 +71,21 @@ public class EnvironmentClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with environment emissions data.</p>
+     * <p>Retrieve the client for interacting with environment air pollutants data.</p>
      *
-     * @return a client for environment emissions data
+     * @return a client for environment air pollutants data
      */
-    public EnvironmentEmissionsClient emissions() {
-        return (EnvironmentEmissionsClient) getClient("emissions");
+    public EnvironmentAirPollutantsClient airPollutants() {
+        return (EnvironmentAirPollutantsClient) getClient("airpollutants");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with environment greenhouse gas data.</p>
+     *
+     * @return a client for environment greenhouse gas data
+     */
+    public EnvironmentGreenhouseGasClient greenhouseGas() {
+        return (EnvironmentGreenhouseGasClient) getClient("greenhousegas");
     }
 
     /**
@@ -77,6 +96,15 @@ public class EnvironmentClient extends AbstractContainerClient {
      */
     public EnvironmentIndustrialWaterUseClient industrialWaterUse() {
         return (EnvironmentIndustrialWaterUseClient) getClient("industrialwateruse");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with environment islands data.</p>
+     *
+     * @return a client for environment islands data
+     */
+    public EnvironmentIslandsClient islands() {
+        return (EnvironmentIslandsClient) getClient("islands");
     }
 
     /**
@@ -99,6 +127,16 @@ public class EnvironmentClient extends AbstractContainerClient {
     }
 
     /**
+     * <p>Retrieve the client for interacting with environment land used for transport
+     * data.</p>
+     *
+     * @return a client for environment land used for transport data
+     */
+    public EnvironmentLandUsedForTransportClient landUsedForTransport() {
+        return (EnvironmentLandUsedForTransportClient) getClient("landusedfortransport");
+    }
+
+    /**
      * <p>Retrieve the client for interacting with environment packaging and packaging
      * waste data.</p>
      *
@@ -115,6 +153,27 @@ public class EnvironmentClient extends AbstractContainerClient {
      */
     public EnvironmentProtectedNatureClient protectedNature() {
         return (EnvironmentProtectedNatureClient) getClient("protectednature");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with environment System of
+     * Environmental-Economic Accounting (SEEA) data.</p>
+     *
+     * @return a client for environment System of Environmental-Economic Accounting (SEEA)
+     *         data
+     */
+    public EnvironmentSEEAClient seea() {
+        return (EnvironmentSEEAClient) getClient("seea");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with environment smaller localities
+     * data.</p>
+     *
+     * @return a client for environment smaller localities data
+     */
+    public EnvironmentSmallerLocalitiesClient smallerLocalities() {
+        return (EnvironmentSmallerLocalitiesClient) getClient("smallerlocalities");
     }
 
     /**

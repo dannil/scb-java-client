@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class FinancialMarketsShareholdersClientIT extends RemoteIntegrationTestSuite {
 
     private FinancialMarketsShareholdersClient client;
@@ -39,17 +40,20 @@ public class FinancialMarketsShareholdersClientIT extends RemoteIntegrationTestS
     }
 
     @Test
+    @Date("2017-03-08")
     public void getOwnershipOfShares() {
         assertNotEquals(0, this.client.getOwnershipOfShares().size());
     }
 
     @Test
+    @Date("2017-03-08")
     public void getOwnershipOfSharesWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getOwnershipOfShares(Collections.<String>emptyList(),
                 Collections.<String>emptyList()).size());
     }
 
     @Test
+    @Date("2017-03-08")
     public void getOwnershipOfSharesWithParameters() {
         List<String> sectors = Arrays.asList("100", "200");
         List<String> halfYears = Arrays.asList("2001M12", "2002M12");
@@ -58,17 +62,20 @@ public class FinancialMarketsShareholdersClientIT extends RemoteIntegrationTestS
     }
 
     @Test
+    @Date("2017-03-08")
     public void getOwnershipOfSharesByMarketplace() {
         assertNotEquals(0, this.client.getOwnershipOfSharesByMarketplace().size());
     }
 
     @Test
+    @Date("2017-03-08")
     public void getOwnershipOfSharesByMarketplaceWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getOwnershipOfSharesByMarketplace(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test
+    @Date("2017-03-08")
     public void getOwnershipOfSharesByMarketplaceWithParameters() {
         List<String> sectors = Arrays.asList("100", "200");
         List<String> marketplaces = Arrays.asList("AUKTMPTORGTORG");
@@ -78,17 +85,20 @@ public class FinancialMarketsShareholdersClientIT extends RemoteIntegrationTestS
     }
 
     @Test
+    @Date("2017-03-08")
     public void getOwnershipOfSharesBySeries() {
         assertNotEquals(0, this.client.getOwnershipOfSharesBySeries().size());
     }
 
     @Test
+    @Date("2017-03-08")
     public void getOwnershipOfSharesBySeriesWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getOwnershipOfSharesBySeries(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test
+    @Date("2017-03-08")
     public void getOwnershipOfSharesBySeriesWithParameters() {
         List<String> sectors = Arrays.asList("300", "400");
         List<String> series = Arrays.asList("Noterad");
@@ -98,17 +108,20 @@ public class FinancialMarketsShareholdersClientIT extends RemoteIntegrationTestS
     }
 
     @Test
+    @Date("2017-03-08")
     public void getForeignOwnershipOfShares() {
         assertNotEquals(0, this.client.getForeignOwnershipOfShares().size());
     }
 
     @Test
+    @Date("2017-03-08")
     public void getForeignOwnershipOfSharesWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getForeignOwnershipOfShares(Collections.<String>emptyList(),
                 Collections.<String>emptyList()).size());
     }
 
     @Test
+    @Date("2017-03-08")
     public void getForeignOwnershipOfSharesWithParameters() {
         List<String> countries = Arrays.asList("BE", "DK");
         List<String> halfYears = Arrays.asList("2001M12", "2002M12");

@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class TransportRegisteredVehiclesEconomicIndicatorsClientIT extends RemoteIntegrationTestSuite {
 
     private TransportRegisteredVehiclesEconomicIndicatorsClient client;
@@ -39,16 +40,19 @@ public class TransportRegisteredVehiclesEconomicIndicatorsClientIT extends Remot
     }
 
     @Test
+    @Date("2017-05-08")
     public void getNewRegistrationsOfPassengerCars() {
         assertNotEquals(0, this.client.getNewRegistrationsOfPassengerCars().size());
     }
 
     @Test
+    @Date("2017-05-08")
     public void getNewRegistrationsOfPassengerCarsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getNewRegistrationsOfPassengerCars(Collections.<String>emptyList()).size());
     }
 
     @Test
+    @Date("2017-05-08")
     public void getNewRegistrationsOfPassengerCarsWithParameters() {
         List<String> months = Arrays.asList("2015M08", "2015M09");
 

@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.environment.emissions;
+package com.github.dannil.scbjavaclient.client.pricesandconsumption.ppi.spin2002month;
 
 import static org.junit.Assert.assertEquals;
 
@@ -25,12 +25,12 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class EnvironmentEmissionsClientTest {
+public class PricesAndConsumptionPPISPIN2002MonthClientTest {
 
     @Test
     public void createWithLocaleConstructor() {
         Locale locale = new Locale("sv", "SE");
-        EnvironmentEmissionsClient client = new EnvironmentEmissionsClient(locale);
+        PricesAndConsumptionPPISPIN2002MonthClient client = new PricesAndConsumptionPPISPIN2002MonthClient(locale);
 
         assertEquals(locale, client.getLocale());
     }
@@ -40,9 +40,9 @@ public class EnvironmentEmissionsClientTest {
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints
         Locale locale = new Locale("en", "US");
-        EnvironmentEmissionsClient client = new EnvironmentEmissionsClient(locale);
+        PricesAndConsumptionPPISPIN2002MonthClient client = new PricesAndConsumptionPPISPIN2002MonthClient(locale);
 
-        assertEquals(URLEndpoint.getRootUrl(locale).append("MI/MI0108/"), client.getUrl());
+        assertEquals(URLEndpoint.getRootUrl(locale).append("PR/PR0301/PR0301C/"), client.getUrl());
     }
 
 }

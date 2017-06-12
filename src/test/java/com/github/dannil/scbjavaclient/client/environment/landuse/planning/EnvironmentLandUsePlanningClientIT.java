@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class EnvironmentLandUsePlanningClientIT extends RemoteIntegrationTestSuite {
 
     private EnvironmentLandUsePlanningClient client;
@@ -39,17 +40,20 @@ public class EnvironmentLandUsePlanningClientIT extends RemoteIntegrationTestSui
     }
 
     @Test
+    @Date("2017-03-17")
     public void getPlanning() {
         assertNotEquals(0, this.client.getPlanning().size());
     }
 
     @Test
+    @Date("2017-03-17")
     public void getPlanningWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getPlanning(Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-03-17")
     public void getPlanningWithParameters() {
         List<String> regions = Arrays.asList("0114", "0140");
         List<Integer> years = Arrays.asList(2010);

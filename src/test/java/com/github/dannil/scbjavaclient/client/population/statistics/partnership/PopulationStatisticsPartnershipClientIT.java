@@ -20,14 +20,15 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class PopulationStatisticsPartnershipClientIT extends RemoteIntegrationTestSuite {
 
     private PopulationStatisticsPartnershipClient client;
@@ -38,11 +39,13 @@ public class PopulationStatisticsPartnershipClientIT extends RemoteIntegrationTe
     }
 
     @Test
+    @Date("2017-01-01")
     public void getPartnership() {
         assertNotEquals(0, this.client.getPartnership().size());
     }
 
     @Test
+    @Date("2017-01-01")
     public void getPartnershipWithParameters() {
         List<String> regions = Arrays.asList("12");
         List<String> statuses = Arrays.asList("RP", "SP", "EP");
@@ -53,11 +56,13 @@ public class PopulationStatisticsPartnershipClientIT extends RemoteIntegrationTe
     }
 
     @Test
+    @Date("2017-01-01")
     public void getPartnershipChange() {
         assertNotEquals(0, this.client.getPartnershipChange().size());
     }
 
     @Test
+    @Date("2017-01-01")
     public void getPartnershipChangeWithParameters() {
         List<String> regions = Arrays.asList("122");
         List<String> statuses = Arrays.asList("RP", "SP", "EP");

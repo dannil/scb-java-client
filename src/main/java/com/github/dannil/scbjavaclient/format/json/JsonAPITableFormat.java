@@ -53,6 +53,9 @@ public class JsonAPITableFormat extends AbstractTableFormat {
             return this.inputs;
         }
         JsonNode variables = this.json.get("variables");
+        if (variables == null) {
+            return new HashMap<String, Collection<String>>();
+        }
         this.inputs = new HashMap<>();
         for (int i = 0; i < variables.size(); i++) {
             JsonNode entry = variables.get(i);

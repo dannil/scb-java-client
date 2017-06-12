@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class PopulationStatisticsAsylumSeekersClientIT extends RemoteIntegrationTestSuite {
 
     private PopulationStatisticsAsylumSeekersClient client;
@@ -39,17 +40,20 @@ public class PopulationStatisticsAsylumSeekersClientIT extends RemoteIntegration
     }
 
     @Test
+    @Date("2017-04-27")
     public void getAsylumSeekers() {
         assertNotEquals(0, this.client.getAsylumSeekers().size());
     }
 
     @Test
+    @Date("2017-04-27")
     public void getAsylumSeekersWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getAsylumSeekers(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-27")
     public void getAsylumSeekersWithParameters() {
         List<String> countriesOfCitizenships = Arrays.asList("CD", "HR");
         List<String> sexes = Arrays.asList("1", "2");
@@ -59,11 +63,13 @@ public class PopulationStatisticsAsylumSeekersClientIT extends RemoteIntegration
     }
 
     @Test
+    @Date("2017-04-27")
     public void getUnaccompaniedRefugeeMinors() {
         assertNotEquals(0, this.client.getUnaccompaniedRefugeeMinors().size());
     }
 
     @Test
+    @Date("2017-04-27")
     public void getUnaccompaniedRefugeeMinorsWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getUnaccompaniedRefugeeMinors(Collections.<String>emptyList(),
@@ -72,6 +78,7 @@ public class PopulationStatisticsAsylumSeekersClientIT extends RemoteIntegration
     }
 
     @Test
+    @Date("2017-04-27")
     public void getUnaccompaniedRefugeeMinorsWithParameters() {
         List<String> sexes = Arrays.asList("5", "6");
         List<String> ages = Arrays.asList("0-6");
