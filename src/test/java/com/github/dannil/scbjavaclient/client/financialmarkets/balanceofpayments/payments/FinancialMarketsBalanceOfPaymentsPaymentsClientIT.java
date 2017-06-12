@@ -203,7 +203,7 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClientIT extends RemoteInt
     @Test
     @Date("2017-06-12")
     public void getCurrentAccountsYears() {
-        assertNotEquals(0, this.client.getCurrentAccountsQuarters().size());
+        assertNotEquals(0, this.client.getCurrentAccountsYears().size());
     }
 
     @Test
