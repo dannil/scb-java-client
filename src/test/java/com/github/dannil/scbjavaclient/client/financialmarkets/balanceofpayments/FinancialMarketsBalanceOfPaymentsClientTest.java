@@ -75,7 +75,8 @@ public class FinancialMarketsBalanceOfPaymentsClientTest {
     public void portfolioInvestment() {
         FinancialMarketsBalanceOfPaymentsClient client = new FinancialMarketsBalanceOfPaymentsClient();
 
-        assertEquals(client.payments().getClass(), FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClient.class);
+        assertEquals(client.portfolioInvestment().getClass(),
+                FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClient.class);
     }
 
     @Test

@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class FinancialMarketsBalanceOfPaymentsPaymentsClientIT extends RemoteIntegrationTestSuite {
 
     private FinancialMarketsBalanceOfPaymentsPaymentsClient client;
@@ -39,17 +40,20 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClientIT extends RemoteInt
     }
 
     @Test
+    @Date("2017-06-12")
     public void getTransactionsQuarters() {
         assertNotEquals(0, this.client.getTransactionsQuarters().size());
     }
 
     @Test
+    @Date("2017-06-12")
     public void getTransactionsQuartersWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getTransactionsQuarters(Collections.<String>emptyList(),
                 Collections.<String>emptyList()).size());
     }
 
     @Test
+    @Date("2017-06-12")
     public void getTransactionsQuartersWithParameters() {
         List<String> items = Arrays.asList("A1.1.1", "A1.1.2");
         List<String> quarters = Arrays.asList("1999K1", "1999K2");
@@ -58,11 +62,13 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClientIT extends RemoteInt
     }
 
     @Test
+    @Date("2017-06-12")
     public void getSeasonallyAdjustedCurrentAccountAndCapitalAccount() {
         assertNotEquals(0, this.client.getSeasonallyAdjustedCurrentAccountAndCapitalAccount().size());
     }
 
     @Test
+    @Date("2017-06-12")
     public void getSeasonallyAdjustedCurrentAccountAndCapitalAccountWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getSeasonallyAdjustedCurrentAccountAndCapitalAccount(Collections.<String>emptyList(),
@@ -70,6 +76,7 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClientIT extends RemoteInt
     }
 
     @Test
+    @Date("2017-06-12")
     public void getSeasonallyAdjustedCurrentAccountAndCapitalAccountWithParameters() {
         List<String> items = Arrays.asList("S1.1.1", "S1.1.2");
         List<String> quarters = Arrays.asList("2015K1", "2016K2");
@@ -78,11 +85,13 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClientIT extends RemoteInt
     }
 
     @Test
+    @Date("2017-06-12")
     public void getCurrentAccountsQuarters() {
         assertNotEquals(0, this.client.getCurrentAccountsQuarters().size());
     }
 
     @Test
+    @Date("2017-06-12")
     public void getCurrentAccountsQuartersWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getCurrentAccountsQuarters(Collections.<String>emptyList(), Collections.<String>emptyList(),
@@ -90,6 +99,7 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClientIT extends RemoteInt
     }
 
     @Test
+    @Date("2017-06-12")
     public void getCurrentAccountsQuartersWithParameters() {
         List<String> countryGroups = Arrays.asList("B5", "D5");
         List<String> exportsAndImports = Arrays.asList("X1", "X2");
@@ -101,17 +111,20 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClientIT extends RemoteInt
     }
 
     @Test
+    @Date("2017-06-12")
     public void getFinancialAccountsQuarters() {
         assertNotEquals(0, this.client.getFinancialAccountsQuarters().size());
     }
 
     @Test
+    @Date("2017-06-12")
     public void getFinancialAccountsQuartersWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getFinancialAccountsQuarters(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test
+    @Date("2017-06-12")
     public void getFinancialAccountsQuartersWithParameters() {
         List<String> typesOfInvestments = Arrays.asList("X1", "X2");
         List<String> items = Arrays.asList("G2.1", "G2.2");
@@ -121,17 +134,20 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClientIT extends RemoteInt
     }
 
     @Test
+    @Date("2017-06-12")
     public void getSecondaryIncomeAndCapitalAccounts() {
         assertNotEquals(0, this.client.getSecondaryIncomeAndCapitalAccounts().size());
     }
 
     @Test
+    @Date("2017-06-12")
     public void getSecondaryIncomeAndCapitalAccountsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getSecondaryIncomeAndCapitalAccounts(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test
+    @Date("2017-06-12")
     public void getSecondaryIncomeAndCapitalAccountsWithParameters() {
         List<String> transactions = Arrays.asList("X1", "X2");
         List<String> items = Arrays.asList("F1", "F2");
@@ -141,17 +157,20 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClientIT extends RemoteInt
     }
 
     @Test
+    @Date("2017-06-12")
     public void getTransactionsYears() {
         assertNotEquals(0, this.client.getTransactionsYears().size());
     }
 
     @Test
+    @Date("2017-06-12")
     public void getTransactionsYearsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getTransactionsYears(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-06-12")
     public void getTransactionsYearsWithParameters() {
         List<String> items = Arrays.asList("A1.1.1", "A1.1.2");
         List<Integer> years = Arrays.asList(2006, 2007);
@@ -160,17 +179,20 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClientIT extends RemoteInt
     }
 
     @Test
+    @Date("2017-06-12")
     public void getRevisions() {
         assertNotEquals(0, this.client.getRevisions().size());
     }
 
     @Test
+    @Date("2017-06-12")
     public void getRevisionsWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getRevisions(Collections.<String>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test
+    @Date("2017-06-12")
     public void getRevisionsWithParameters() {
         List<String> items = Arrays.asList("H3", "H4");
         List<String> quarters = Arrays.asList("2016K1", "2016K2");
@@ -179,11 +201,13 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClientIT extends RemoteInt
     }
 
     @Test
+    @Date("2017-06-12")
     public void getCurrentAccountsYears() {
         assertNotEquals(0, this.client.getCurrentAccountsQuarters().size());
     }
 
     @Test
+    @Date("2017-06-12")
     public void getCurrentAccountsYearsWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getCurrentAccountsYears(Collections.<String>emptyList(), Collections.<String>emptyList(),
@@ -191,6 +215,7 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClientIT extends RemoteInt
     }
 
     @Test
+    @Date("2017-06-12")
     public void getCurrentAccountsYearsWithParameters() {
         List<String> countryGroups = Arrays.asList("B5", "D5");
         List<String> exportsAndImports = Arrays.asList("X1", "X2");
@@ -201,17 +226,20 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClientIT extends RemoteInt
     }
 
     @Test
+    @Date("2017-06-12")
     public void getFinancialAccountsYears() {
         assertNotEquals(0, this.client.getFinancialAccountsYears().size());
     }
 
     @Test
+    @Date("2017-06-12")
     public void getFinancialAccountsYearsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getFinancialAccountsYears(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-06-12")
     public void getFinancialAccountsYearsWithParameters() {
         List<String> typesOfInvestments = Arrays.asList("X1", "X2");
         List<String> items = Arrays.asList("G2.1", "G2.2");
@@ -221,17 +249,20 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClientIT extends RemoteInt
     }
 
     @Test
+    @Date("2017-06-12")
     public void getPrimaryIncome() {
         assertNotEquals(0, this.client.getPrimaryIncome().size());
     }
 
     @Test
+    @Date("2017-06-12")
     public void getPrimaryIncomeWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getPrimaryIncome(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test
+    @Date("2017-06-12")
     public void getPrimaryIncomeWithParameters() {
         List<String> exportsAndImports = Arrays.asList("X1", "X2");
         List<String> items = Arrays.asList("E2.2.1", "E2.2.2");

@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class FinancialMarketsStatisticsStatisticsClientIT extends RemoteIntegrationTestSuite {
 
     private FinancialMarketsStatisticsStatisticsClient client;
@@ -39,17 +40,20 @@ public class FinancialMarketsStatisticsStatisticsClientIT extends RemoteIntegrat
     }
 
     @Test
+    @Date("2017-06-02")
     public void getAssetsAndLiabilities() {
         assertNotEquals(0, this.client.getAssetsAndLiabilities().size());
     }
 
     @Test
+    @Date("2017-06-02")
     public void getAssetsAndLiabilitiesWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getAssetsAndLiabilities(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test
+    @Date("2017-06-02")
     public void getAssetsAndLiabilitiesWithParameters() {
         List<String> institutions = Arrays.asList("MFI", "RB");
         List<String> itemsAndCounterPartsSectors = Arrays.asList("5LM4A.1E.N11.V.A", "5LM4A.1E.N31.V.A");
@@ -60,17 +64,20 @@ public class FinancialMarketsStatisticsStatisticsClientIT extends RemoteIntegrat
     }
 
     @Test
+    @Date("2017-06-02")
     public void getFinancialSoundnessIndicators() {
         assertNotEquals(0, this.client.getFinancialSoundnessIndicators().size());
     }
 
     @Test
+    @Date("2017-06-02")
     public void getFinancialSoundnessIndicatorsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getFinancialSoundnessIndicators(Collections.<String>emptyList(),
                 Collections.<String>emptyList()).size());
     }
 
     @Test
+    @Date("2017-06-02")
     public void getFinancialSoundnessIndicatorsWithParameters() {
         List<String> indicators = Arrays.asList("I004", "I006");
         List<String> quarters = Arrays.asList("2013k1", "2013k3");
@@ -79,17 +86,20 @@ public class FinancialMarketsStatisticsStatisticsClientIT extends RemoteIntegrat
     }
 
     @Test
+    @Date("2017-06-02")
     public void getMoneySupply() {
         assertNotEquals(0, this.client.getMoneySupply().size());
     }
 
     @Test
+    @Date("2017-06-02")
     public void getMoneySupplyWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getMoneySupply(Collections.<String>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test
+    @Date("2017-06-02")
     public void getMoneySupplyWithParameters() {
         List<String> moneySupplies = Arrays.asList("5LLM1.1E.NEP.V.A", "5LLM3a.1E.NEP.V.A");
         List<String> months = Arrays.asList("2005M10", "2005M12");

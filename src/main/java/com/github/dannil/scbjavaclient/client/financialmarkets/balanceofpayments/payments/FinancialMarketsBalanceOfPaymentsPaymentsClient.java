@@ -201,8 +201,7 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClient extends AbstractCli
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @see #getSecondaryIncomeAndCapitalAccounts(Collection, Collection, Collection,
-     *      Collection)
+     * @see #getSecondaryIncomeAndCapitalAccounts(Collection, Collection, Collection)
      */
     public List<ResponseModel> getSecondaryIncomeAndCapitalAccounts() {
         return getSecondaryIncomeAndCapitalAccounts(null, null, null);

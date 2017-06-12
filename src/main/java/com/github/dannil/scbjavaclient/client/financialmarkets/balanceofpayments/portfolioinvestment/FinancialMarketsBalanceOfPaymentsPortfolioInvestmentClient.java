@@ -153,8 +153,8 @@ public class FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClient extends 
      *            the sectors
      * @param maturities
      *            the maturities
-     * @param month
-     *            the month
+     * @param months
+     *            the months
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects

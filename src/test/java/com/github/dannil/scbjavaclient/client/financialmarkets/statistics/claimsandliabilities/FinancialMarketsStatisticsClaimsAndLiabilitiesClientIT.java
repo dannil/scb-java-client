@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class FinancialMarketsStatisticsClaimsAndLiabilitiesClientIT extends RemoteIntegrationTestSuite {
 
     private FinancialMarketsStatisticsClaimsAndLiabilitiesClient client;
@@ -39,13 +40,13 @@ public class FinancialMarketsStatisticsClaimsAndLiabilitiesClientIT extends Remo
     }
 
     // Daniel 2017-05-30: Returns HTTP 403
-    // @Test
+    // @Test @Date("2017-05-30")
     // public void getClaimsAndLiabilitiesOutsideSweden() {
     // assertNotEquals(0, this.client.getClaimsAndLiabilitiesOutsideSweden().size());
     // }
     //
     // Daniel 2017-05-30: Returns HTTP 403
-    // @Test
+    // @Test @Date("2017-05-30")
     // public void getClaimsAndLiabilitiesOutsideSwedenWithParametersEmptyLists() {
     // assertNotEquals(0,
     // this.client.getClaimsAndLiabilitiesOutsideSweden(Collections.<String>emptyList(),
@@ -54,6 +55,7 @@ public class FinancialMarketsStatisticsClaimsAndLiabilitiesClientIT extends Remo
     // }
 
     @Test
+    @Date("2017-05-30")
     public void getClaimsAndLiabilitiesOutsideSwedenWithParameters() {
         List<String> positions = Arrays.asList("1", "1.1");
         List<String> countryGroups = Arrays.asList("5D", "5F");
@@ -66,11 +68,13 @@ public class FinancialMarketsStatisticsClaimsAndLiabilitiesClientIT extends Remo
     }
 
     @Test
+    @Date("2017-05-30")
     public void getConsolidatedClaimsOutsideSweden() {
         assertNotEquals(0, this.client.getConsolidatedClaimsOutsideSweden().size());
     }
 
     @Test
+    @Date("2017-05-30")
     public void getConsolidatedClaimsOutsideSwedenWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getConsolidatedClaimsOutsideSweden(Collections.<String>emptyList(),
@@ -79,6 +83,7 @@ public class FinancialMarketsStatisticsClaimsAndLiabilitiesClientIT extends Remo
     }
 
     @Test
+    @Date("2017-05-30")
     public void getConsolidatedClaimsOutsideSwedenWithParameters() {
         List<String> positions = Arrays.asList("1b", "2b");
         List<String> countryGroups = Arrays.asList("4A", "US");

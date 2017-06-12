@@ -20,15 +20,16 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
+import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
-
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class FinancialMarketsEnterprisesClientIT extends RemoteIntegrationTestSuite {
 
     private FinancialMarketsEnterprisesClient client;
@@ -39,17 +40,20 @@ public class FinancialMarketsEnterprisesClientIT extends RemoteIntegrationTestSu
     }
 
     @Test
+    @Date("2017-05-27")
     public void getIncomeStatements() {
         assertNotEquals(0, this.client.getIncomeStatements().size());
     }
 
     @Test
+    @Date("2017-05-27")
     public void getIncomeStatementsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getIncomeStatements(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-05-27")
     public void getIncomeStatementsWithParameters() {
         List<String> institutes = Arrays.asList("S201", "S2123");
         List<String> items = Arrays.asList("E00130", "E00051");
@@ -59,17 +63,20 @@ public class FinancialMarketsEnterprisesClientIT extends RemoteIntegrationTestSu
     }
 
     @Test
+    @Date("2017-05-27")
     public void getBalanceSheet() {
         assertNotEquals(0, this.client.getBalanceSheet().size());
     }
 
     @Test
+    @Date("2017-05-27")
     public void getBalanceSheetWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getBalanceSheet(Collections.<String>emptyList(), Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-05-27")
     public void getBalanceSheetWithParameters() {
         List<String> institutes = Arrays.asList("S201", "S2123");
         List<String> items = Arrays.asList("E02003", "E09901");

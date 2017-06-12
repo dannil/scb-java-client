@@ -21,14 +21,15 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
+import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
-@RunWith(JUnit4.class)
+@RunWith(DateJUnitRunner.class)
 public class FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClientIT extends RemoteIntegrationTestSuite {
 
     private FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClient client;
@@ -39,17 +40,20 @@ public class FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClientIT extend
     }
 
     @Test
+    @Date("2017-06-11")
     public void getNetFlowsYears() {
         assertNotEquals(0, this.client.getNetFlowsYears().size());
     }
 
     @Test
+    @Date("2017-06-11")
     public void getNetFlowsYearsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getNetFlowsYears(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-06-11")
     public void getNetFlowsYearsWithParameters() {
         List<String> currencies = Arrays.asList("v1", "v2");
         List<String> items = Arrays.asList("P2", "P3");
@@ -60,14 +64,14 @@ public class FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClientIT extend
 
     // Daniel 2017-06-11: Returns HTTP 403
     //
-    // @Test
+    // @Test @Date("2017-06-11")
     // public void getNonResidentTradeInSwedishShares() {
     // assertNotEquals(0, this.client.getNonResidentTradeInSwedishShares().size());
     // }
     //
     // Daniel 2017-06-11: Returns HTTP 403
     //
-    // @Test
+    // @Test @Date("2017-06-11")
     // public void getNonResidentTradeInSwedishSharesWithParametersEmptyLists() {
     // assertNotEquals(0,
     // this.client.getNonResidentTradeInSwedishShares(Collections.<String>emptyList(),
@@ -75,6 +79,7 @@ public class FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClientIT extend
     // }
 
     @Test
+    @Date("2017-06-11")
     public void getNonResidentTradeInSwedishSharesWithParameters() {
         List<String> typesOfTrades = Arrays.asList("AI", "AN");
         List<String> typesOfShares = Arrays.asList("SE0000937682", "SE0000472268");
@@ -84,11 +89,13 @@ public class FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClientIT extend
     }
 
     @Test
+    @Date("2017-06-11")
     public void getNonResidentHoldingsOfSwedishInterestBearingSecuritiesData() {
         assertNotEquals(0, this.client.getNonResidentHoldingsOfSwedishInterestBearingSecuritiesData().size());
     }
 
     @Test
+    @Date("2017-06-11")
     public void getNonResidentHoldingsOfSwedishInterestBearingSecuritiesDataWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getNonResidentHoldingsOfSwedishInterestBearingSecuritiesData(
@@ -97,6 +104,7 @@ public class FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClientIT extend
     }
 
     @Test
+    @Date("2017-06-11")
     public void getNonResidentHoldingsOfSwedishInterestBearingSecuritiesDataWithParameters() {
         List<String> holdings = Arrays.asList("Q2", "Q4");
         List<String> sectors = Arrays.asList("S", "M");
@@ -108,17 +116,20 @@ public class FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClientIT extend
     }
 
     @Test
+    @Date("2017-06-11")
     public void getNetFlowsQuarters() {
         assertNotEquals(0, this.client.getNetFlowsQuarters().size());
     }
 
     @Test
+    @Date("2017-06-11")
     public void getNetFlowsQuartersWithParametersWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getNetFlowsQuarters(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test
+    @Date("2017-06-11")
     public void getNetFlowsQuartersWithParameters() {
         List<String> currencies = Arrays.asList("v1", "v2");
         List<String> items = Arrays.asList("P2", "P3");
@@ -128,17 +139,20 @@ public class FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClientIT extend
     }
 
     @Test
+    @Date("2017-06-11")
     public void getSwedishPortfolioHoldingsOfForeignSecurities() {
         assertNotEquals(0, this.client.getSwedishPortfolioHoldingsOfForeignSecurities().size());
     }
 
     @Test
+    @Date("2017-06-11")
     public void getSwedishPortfolioHoldingsOfForeignSecuritiesWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getSwedishPortfolioHoldingsOfForeignSecurities(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test
+    @Date("2017-06-11")
     public void getSwedishPortfolioHoldingsOfForeignSecuritiesParameters() {
         List<String> countries = Arrays.asList("ES", "LV");
         List<String> securities = Arrays.asList("12.1.1", "12.1.2");
