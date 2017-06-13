@@ -152,7 +152,7 @@
 				<version>2.20</version>
 				<configuration>
 					<systemPropertyVariables>
-						<testsDayLimit>30</testsDayLimit>
+						<testsDayLimit>7</testsDayLimit>
 					</systemPropertyVariables>
 				</configuration>
 				<executions>
