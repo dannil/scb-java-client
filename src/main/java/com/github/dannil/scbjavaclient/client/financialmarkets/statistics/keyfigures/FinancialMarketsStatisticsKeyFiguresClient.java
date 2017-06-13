@@ -22,7 +22,7 @@ import com.github.dannil.scbjavaclient.http.URLEndpoint;
 /**
  * <p>Client which handles financial markets statistics key figures data fetching.</p>
  *
- * @since 0.4.0
+ * @since 0.4.0 TODO Maybe new version here???
  */
 public class FinancialMarketsStatisticsKeyFiguresClient extends AbstractClient {
 
@@ -43,7 +43,7 @@ public class FinancialMarketsStatisticsKeyFiguresClient extends AbstractClient {
         super(locale);
     }
     
-    TODO
+    TODO IMPLEMENT
 
     @Override
     public URLEndpoint getUrl() {

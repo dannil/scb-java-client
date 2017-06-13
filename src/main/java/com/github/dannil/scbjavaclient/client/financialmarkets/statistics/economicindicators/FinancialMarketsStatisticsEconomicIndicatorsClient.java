@@ -23,7 +23,7 @@ import com.github.dannil.scbjavaclient.http.URLEndpoint;
  * <p>Client which handles financial markets statistics economic indicators data
  * fetching.</p>
  *
- * @since 0.4.0
+ * @since 0.4.0 TODO Maybe new version here???
  */
 public class FinancialMarketsStatisticsEconomicIndicatorsClient extends AbstractClient {
 
@@ -44,7 +44,7 @@ public class FinancialMarketsStatisticsEconomicIndicatorsClient extends Abstract
         super(locale);
     }
 
-    TODO
+    TODO IMPLEMENT
 
     @Override
     public URLEndpoint getUrl() {
