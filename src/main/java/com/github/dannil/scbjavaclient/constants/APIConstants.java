@@ -66,6 +66,11 @@ public final class APIConstants {
     public static final String SECTOR_CODE = "Sektor";
 
     /**
+     * <p>Constant for SNI 2002 code.</p>
+     */
+    public static final String SNI2002_CODE = "SNI2002";
+
+    /**
      * <p>Constant for SNI 2007 code.</p>
      */
     public static final String SNI2007_CODE = "SNI2007";
