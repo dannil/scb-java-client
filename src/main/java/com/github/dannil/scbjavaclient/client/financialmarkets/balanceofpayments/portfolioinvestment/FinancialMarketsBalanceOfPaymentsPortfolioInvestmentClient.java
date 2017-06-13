@@ -136,11 +136,11 @@ public class FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClient extends 
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @see #getNonResidentHoldingsOfSwedishInterestBearingSecuritiesData(Collection,
+     * @see #getNonResidentHoldingsOfSwedishInterestBearingSecurities(Collection,
      *      Collection, Collection, Collection)
      */
-    public List<ResponseModel> getNonResidentHoldingsOfSwedishInterestBearingSecuritiesData() {
-        return getNonResidentHoldingsOfSwedishInterestBearingSecuritiesData(null, null, null, null);
+    public List<ResponseModel> getNonResidentHoldingsOfSwedishInterestBearingSecurities() {
+        return getNonResidentHoldingsOfSwedishInterestBearingSecurities(null, null, null, null);
     }
 
     /**
@@ -159,7 +159,7 @@ public class FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClient extends 
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getNonResidentHoldingsOfSwedishInterestBearingSecuritiesData(Collection<String> holdings,
+    public List<ResponseModel> getNonResidentHoldingsOfSwedishInterestBearingSecurities(Collection<String> holdings,
             Collection<String> sectors, Collection<String> maturities, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("Innehav", holdings);
