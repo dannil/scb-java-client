@@ -6,6 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -30,6 +31,11 @@ public class DateJUnitRunner extends BlockJUnit4ClassRunner {
 
     @Override
     protected List<FrameworkMethod> getChildren() {
+        // If day limit is less than 0, no tests should be run
+        if (this.dayLimit < 0) {
+            return Collections.emptyList();
+        }
+
         // Modify the calendar to represent the date if the day limit would've been added
         Calendar cutoffCalendar = Calendar.getInstance();
         cutoffCalendar.add(Calendar.DAY_OF_YEAR, -this.dayLimit);
