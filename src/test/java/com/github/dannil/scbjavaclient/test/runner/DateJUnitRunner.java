@@ -1,14 +1,10 @@
 package com.github.dannil.scbjavaclient.test.runner;
 
 import java.lang.reflect.Method;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 import org.junit.Test;
 import org.junit.runners.BlockJUnit4ClassRunner;
@@ -36,10 +32,8 @@ public class DateJUnitRunner extends BlockJUnit4ClassRunner {
             return Collections.emptyList();
         }
 
-        // Modify the calendar to represent the date if the day limit would've been added
-        Calendar cutoffCalendar = Calendar.getInstance();
-        cutoffCalendar.add(Calendar.DAY_OF_YEAR, -this.dayLimit);
-        java.util.Date cutoffDate = cutoffCalendar.getTime();
+        // Modify the date to represent the date with the day limit subtracted
+        LocalDate cutoff = LocalDate.now().minusDays(this.dayLimit);
 
         List<FrameworkMethod> children = new ArrayList<>();
         for (FrameworkMethod fm : getTestClass().getAnnotatedMethods(Test.class)) {
@@ -48,24 +42,26 @@ public class DateJUnitRunner extends BlockJUnit4ClassRunner {
                 throw new DateJUnitRunnerException("Tests run with DateJUnitRunner must be annotated with a date.");
             }
 
-            Date d = m.getAnnotation(Date.class);
-            String value = d.value();
-            DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-            java.util.Date annotatedDate;
-            try {
-                annotatedDate = (Objects.equals(value, "now") ? cutoffDate : format.parse(value));
-            } catch (ParseException e) {
-                throw new DateJUnitRunnerException(e);
-            }
+            String value = m.getAnnotation(Date.class).value();
+            LocalDate date = getLocalDate(value);
 
-            // If the cutoff date is equal to the annotated date OR the
-            // cutoff date is before the annotated date (a point in time which
-            // occurred before the annotated date), the test should be run; otherwise not
-            if (Objects.equals(annotatedDate, cutoffDate) || cutoffDate.before(annotatedDate)) {
+            // If the date is equal to the cutoff date OR the date is after the cutoff
+            // date (a point in time which occurred after the cutoff date), the test
+            // should be run; otherwise not
+            if (date.equals(cutoff) || date.isAfter(cutoff)) {
                 children.add(fm);
             }
         }
         return children;
+    }
+
+    private LocalDate getLocalDate(String value) {
+        switch (value) {
+            case "now":
+                return LocalDate.now();
+            default:
+                return LocalDate.parse(value);
+        }
     }
 
     private class DateJUnitRunnerException extends RuntimeException {
@@ -74,10 +70,6 @@ public class DateJUnitRunner extends BlockJUnit4ClassRunner {
 
         public DateJUnitRunnerException(String message) {
             super(message);
-        }
-
-        public DateJUnitRunnerException(Throwable cause) {
-            super(cause);
         }
 
     }
