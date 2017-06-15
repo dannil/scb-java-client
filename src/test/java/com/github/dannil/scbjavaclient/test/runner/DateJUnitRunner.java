@@ -2,6 +2,8 @@ package com.github.dannil.scbjavaclient.test.runner;
 
 import java.lang.reflect.Method;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -33,7 +35,7 @@ public class DateJUnitRunner extends BlockJUnit4ClassRunner {
         }
 
         // Modify the date to represent the date with the day limit subtracted
-        LocalDate cutoff = LocalDate.now().minusDays(this.dayLimit);
+        LocalDateTime cutoff = LocalDateTime.now().minusDays(this.dayLimit);
 
         List<FrameworkMethod> children = new ArrayList<>();
         for (FrameworkMethod fm : getTestClass().getAnnotatedMethods(Test.class)) {
@@ -43,7 +45,7 @@ public class DateJUnitRunner extends BlockJUnit4ClassRunner {
             }
 
             String value = m.getAnnotation(Date.class).value();
-            LocalDate date = getLocalDate(value);
+            LocalDateTime date = getDate(value);
 
             // If the date is equal to the cutoff date OR the date is after the cutoff
             // date (a point in time which occurred after the cutoff date), the test
@@ -55,12 +57,12 @@ public class DateJUnitRunner extends BlockJUnit4ClassRunner {
         return children;
     }
 
-    private LocalDate getLocalDate(String value) {
+    private LocalDateTime getDate(String value) {
         switch (value) {
             case "now":
-                return LocalDate.now();
+                return LocalDateTime.now();
             default:
-                return LocalDate.parse(value);
+                return LocalDateTime.of(LocalDate.parse(value), LocalTime.MIDNIGHT);
         }
     }
 
