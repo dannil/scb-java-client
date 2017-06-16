@@ -346,14 +346,14 @@
         <version>1.4.1</version>
         <executions>
           <execution>
-            <id>enforce-maven-3</id>
+            <id>enforce-maven</id>
             <goals>
               <goal>enforce</goal>
             </goals>
             <configuration>
               <rules>
                 <requireMavenVersion>
-                  <version>3.0.5</version>
+                  <version>3.0</version>
                 </requireMavenVersion>
               </rules>
               <fail>true</fail>
