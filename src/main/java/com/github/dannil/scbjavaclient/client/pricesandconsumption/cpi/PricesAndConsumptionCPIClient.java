@@ -17,13 +17,14 @@ package com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
+import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.pricebasicamount.PricesAndConsumptionCPIPriceBasicAmountClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 /**
  * <p>Client which handles prices and consumption Consumer Price Index (CPI) data
  * fetching.</p>
  *
- * @since 0.4.0
+ * @since 0.4.0 TODO Maybe new version here???
  */
 public class PricesAndConsumptionCPIClient extends AbstractContainerClient {
 
@@ -33,7 +34,7 @@ public class PricesAndConsumptionCPIClient extends AbstractContainerClient {
     public PricesAndConsumptionCPIClient() {
         super();
 
-        // addClient("annualaccounts", new PublicFinancesAnnualAccountsClient());
+        addClient("pricebasicamount", new PricesAndConsumptionCPIPriceBasicAmountClient());
     }
 
     /**
@@ -48,17 +49,16 @@ public class PricesAndConsumptionCPIClient extends AbstractContainerClient {
         setLocale(locale);
     }
 
-    // TODO
-
-    // /**
-    // * <p>Retrieve the client for interacting with public finances annual accounts
-    // * data.</p>
-    // *
-    // * @return a client for public finances annual accounts data
-    // */
-    // public PublicFinancesAnnualAccountsClient annualAccounts() {
-    // return (PublicFinancesAnnualAccountsClient) getClient("annualaccounts");
-    // }
+    /**
+     * <p>Retrieve the client for interacting with prices and consumption Consumer Price
+     * Index (CPI) Price Basic Amount data.</p>
+     *
+     * @return a client for prices and consumption Consumer Price Index (CPI) Price Basic
+     *         Amount data
+     */
+    public PricesAndConsumptionCPIPriceBasicAmountClient priceBasicAmount() {
+        return (PricesAndConsumptionCPIPriceBasicAmountClient) getClient("pricebasicamount");
+    }
 
     @Override
     public URLEndpoint getUrl() {

@@ -12,13 +12,12 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi;
+package com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.pricebasicamount;
 
 import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.pricebasicamount.PricesAndConsumptionCPIPriceBasicAmountClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;
@@ -26,21 +25,15 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class PricesAndConsumptionCPIClientTest {
+public class PricesAndConsumptionCPIPriceBasicAmountClientTest {
 
     @Test
     public void createWithLocaleConstructor() {
         Locale locale = new Locale("sv", "SE");
-        PricesAndConsumptionCPIClient client = new PricesAndConsumptionCPIClient(locale);
+        PricesAndConsumptionCPIPriceBasicAmountClient client = new PricesAndConsumptionCPIPriceBasicAmountClient(
+                locale);
 
         assertEquals(locale, client.getLocale());
-    }
-
-    @Test
-    public void priceBasicAmount() {
-        PricesAndConsumptionCPIClient client = new PricesAndConsumptionCPIClient();
-
-        assertEquals(client.priceBasicAmount().getClass(), PricesAndConsumptionCPIPriceBasicAmountClient.class);
     }
 
     @Test
@@ -48,9 +41,10 @@ public class PricesAndConsumptionCPIClientTest {
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints
         Locale locale = new Locale("en", "US");
-        PricesAndConsumptionCPIClient client = new PricesAndConsumptionCPIClient(locale);
+        PricesAndConsumptionCPIPriceBasicAmountClient client = new PricesAndConsumptionCPIPriceBasicAmountClient(
+                locale);
 
-        assertEquals(URLEndpoint.getRootUrl(locale).append("PR/PR0101/"), client.getUrl());
+        assertEquals(URLEndpoint.getRootUrl(locale).append("PR/PR0101/PR0101E/"), client.getUrl());
     }
 
 }
