@@ -17,6 +17,7 @@ package com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
+import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.economicindicators.PricesAndConsumptionCPIEconomicIndicatorsClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.pricebasicamount.PricesAndConsumptionCPIPriceBasicAmountClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
@@ -35,6 +36,7 @@ public class PricesAndConsumptionCPIClient extends AbstractContainerClient {
         super();
 
         addClient("pricebasicamount", new PricesAndConsumptionCPIPriceBasicAmountClient());
+        addClient("economicindicators", new PricesAndConsumptionCPIEconomicIndicatorsClient());
     }
 
     /**
@@ -47,6 +49,17 @@ public class PricesAndConsumptionCPIClient extends AbstractContainerClient {
         this();
 
         setLocale(locale);
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with prices and consumption Consumer Price
+     * Index (CPI) economic indicators data.</p>
+     *
+     * @return a client for prices and consumption Consumer Price Index (CPI) economic
+     *         indicators data
+     */
+    public PricesAndConsumptionCPIEconomicIndicatorsClient economicIndicators() {
+        return (PricesAndConsumptionCPIEconomicIndicatorsClient) getClient("economicindicators");
     }
 
     /**
