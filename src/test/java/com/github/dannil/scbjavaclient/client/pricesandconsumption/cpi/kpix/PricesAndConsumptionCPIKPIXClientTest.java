@@ -12,12 +12,13 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.underlyinginflationratekpix;
+package com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.kpix;
 
 import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
+import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.kpix.PricesAndConsumptionCPIKPIXClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;
@@ -25,12 +26,12 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class PricesAndConsumptionCPIUnderlyingInflationRateKPIXClientTest {
+public class PricesAndConsumptionCPIKPIXClientTest {
 
     @Test
     public void createWithLocaleConstructor() {
         Locale locale = new Locale("sv", "SE");
-        PricesAndConsumptionCPIUnderlyingInflationRateKPIXClient client = new PricesAndConsumptionCPIUnderlyingInflationRateKPIXClient(
+        PricesAndConsumptionCPIKPIXClient client = new PricesAndConsumptionCPIKPIXClient(
                 locale);
 
         assertEquals(locale, client.getLocale());
@@ -41,7 +42,7 @@ public class PricesAndConsumptionCPIUnderlyingInflationRateKPIXClientTest {
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints
         Locale locale = new Locale("en", "US");
-        PricesAndConsumptionCPIUnderlyingInflationRateKPIXClient client = new PricesAndConsumptionCPIUnderlyingInflationRateKPIXClient(
+        PricesAndConsumptionCPIKPIXClient client = new PricesAndConsumptionCPIKPIXClient(
                 locale);
 
         assertEquals(URLEndpoint.getRootUrl(locale).append("PR/PR0101/PR0101D/"), client.getUrl());

@@ -19,9 +19,9 @@ import static org.junit.Assert.assertEquals;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.economicindicators.PricesAndConsumptionCPIEconomicIndicatorsClient;
+import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.kpif.PricesAndConsumptionCPIKPIFClient;
+import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.kpix.PricesAndConsumptionCPIKPIXClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.pricebasicamount.PricesAndConsumptionCPIPriceBasicAmountClient;
-import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.underlyinginflationratekpif.PricesAndConsumptionCPIUnderlyingInflationRateKPIFClient;
-import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.underlyinginflationratekpix.PricesAndConsumptionCPIUnderlyingInflationRateKPIXClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;
@@ -54,19 +54,17 @@ public class PricesAndConsumptionCPIClientTest {
     }
 
     @Test
-    public void underlyingInflationRateKPIF() {
+    public void kpif() {
         PricesAndConsumptionCPIClient client = new PricesAndConsumptionCPIClient();
 
-        assertEquals(client.underlyingInflationRateKPIF().getClass(),
-                PricesAndConsumptionCPIUnderlyingInflationRateKPIFClient.class);
+        assertEquals(client.kpif().getClass(), PricesAndConsumptionCPIKPIFClient.class);
     }
 
     @Test
-    public void underlyingInflationRateKPIX() {
+    public void kpix() {
         PricesAndConsumptionCPIClient client = new PricesAndConsumptionCPIClient();
 
-        assertEquals(client.underlyingInflationRateKPIX().getClass(),
-                PricesAndConsumptionCPIUnderlyingInflationRateKPIXClient.class);
+        assertEquals(client.kpix().getClass(), PricesAndConsumptionCPIKPIXClient.class);
     }
 
     @Test

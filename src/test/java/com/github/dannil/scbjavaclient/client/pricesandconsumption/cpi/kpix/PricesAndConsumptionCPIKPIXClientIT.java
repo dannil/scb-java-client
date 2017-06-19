@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.underlyinginflationratekpix;
+package com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.kpix;
 
 import static org.junit.Assert.assertNotEquals;
 
@@ -21,6 +21,7 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.kpix.PricesAndConsumptionCPIKPIXClient;
 import com.github.dannil.scbjavaclient.test.runner.Date;
 import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
@@ -30,13 +31,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(DateJUnitRunner.class)
-public class PricesAndConsumptionCPIUnderlyingInflationRateKPIXClientIT extends RemoteIntegrationTestSuite {
+public class PricesAndConsumptionCPIKPIXClientIT extends RemoteIntegrationTestSuite {
 
-    private PricesAndConsumptionCPIUnderlyingInflationRateKPIXClient client;
+    private PricesAndConsumptionCPIKPIXClient client;
 
     @Before
     public void setup() {
-        this.client = new SCBClient().pricesAndConsumption().cpi().underlyingInflationRateKPIX();
+        this.client = new SCBClient().pricesAndConsumption().cpi().kpix();
     }
 
     @Test

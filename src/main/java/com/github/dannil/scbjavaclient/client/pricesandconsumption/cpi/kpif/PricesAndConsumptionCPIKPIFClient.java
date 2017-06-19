@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.underlyinginflationratekpix;
+package com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.kpif;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -27,16 +27,16 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles prices and consumption Consumer Price Index (CPI) Underlying
- * Inflation Rate (KPIX) data fetching.</p>
+ * Inflation Rate (KPIF) data fetching.</p>
  *
  * @since 0.4.0 TODO Maybe new version here???
  */
-public class PricesAndConsumptionCPIUnderlyingInflationRateKPIXClient extends AbstractClient {
+public class PricesAndConsumptionCPIKPIFClient extends AbstractClient {
 
     /**
      * <p>Default constructor.</p>
      */
-    public PricesAndConsumptionCPIUnderlyingInflationRateKPIXClient() {
+    public PricesAndConsumptionCPIKPIFClient() {
         super();
     }
 
@@ -46,7 +46,7 @@ public class PricesAndConsumptionCPIUnderlyingInflationRateKPIXClient extends Ab
      * @param locale
      *            the <code>Locale</code> for this client
      */
-    public PricesAndConsumptionCPIUnderlyingInflationRateKPIXClient(Locale locale) {
+    public PricesAndConsumptionCPIKPIFClient(Locale locale) {
         super(locale);
     }
 
@@ -77,7 +77,7 @@ public class PricesAndConsumptionCPIUnderlyingInflationRateKPIXClient extends Ab
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.TIME_CODE, months);
 
-        return getResponseModels("KPIXFM", mappings);
+        return getResponseModels("KPIF12M", mappings);
     }
 
     /**
@@ -107,12 +107,12 @@ public class PricesAndConsumptionCPIUnderlyingInflationRateKPIXClient extends Ab
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.TIME_CODE, months);
 
-        return getResponseModels("KPIX12M", mappings);
+        return getResponseModels("KPIFFM", mappings);
     }
 
     @Override
     public URLEndpoint getUrl() {
-        return getRootUrl().append("PR/PR0101/PR0101D/");
+        return getRootUrl().append("PR/PR0101/PR0101G/");
     }
 
 }

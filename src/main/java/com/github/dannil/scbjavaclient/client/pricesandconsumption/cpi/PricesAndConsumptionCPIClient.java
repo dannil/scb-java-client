@@ -18,9 +18,9 @@ import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.economicindicators.PricesAndConsumptionCPIEconomicIndicatorsClient;
+import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.kpif.PricesAndConsumptionCPIKPIFClient;
+import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.kpix.PricesAndConsumptionCPIKPIXClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.pricebasicamount.PricesAndConsumptionCPIPriceBasicAmountClient;
-import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.underlyinginflationratekpif.PricesAndConsumptionCPIUnderlyingInflationRateKPIFClient;
-import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.underlyinginflationratekpix.PricesAndConsumptionCPIUnderlyingInflationRateKPIXClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 /**
@@ -39,8 +39,8 @@ public class PricesAndConsumptionCPIClient extends AbstractContainerClient {
 
         addClient("economicindicators", new PricesAndConsumptionCPIEconomicIndicatorsClient());
         addClient("pricebasicamount", new PricesAndConsumptionCPIPriceBasicAmountClient());
-        addClient("underlyinginflationratekpif", new PricesAndConsumptionCPIUnderlyingInflationRateKPIFClient());
-        addClient("underlyinginflationratekpix", new PricesAndConsumptionCPIUnderlyingInflationRateKPIXClient());
+        addClient("kpif", new PricesAndConsumptionCPIKPIFClient());
+        addClient("kpix", new PricesAndConsumptionCPIKPIXClient());
     }
 
     /**
@@ -84,8 +84,8 @@ public class PricesAndConsumptionCPIClient extends AbstractContainerClient {
      * @return a client for prices and consumption Consumer Price Index (CPI) Underlying
      *         Inflation Rate (KPIF) data
      */
-    public PricesAndConsumptionCPIUnderlyingInflationRateKPIFClient underlyingInflationRateKPIF() {
-        return (PricesAndConsumptionCPIUnderlyingInflationRateKPIFClient) getClient("underlyinginflationratekpif");
+    public PricesAndConsumptionCPIKPIFClient kpif() {
+        return (PricesAndConsumptionCPIKPIFClient) getClient("kpif");
     }
 
     /**
@@ -95,8 +95,8 @@ public class PricesAndConsumptionCPIClient extends AbstractContainerClient {
      * @return a client for prices and consumption Consumer Price Index (CPI) Underlying
      *         Inflation Rate (KPIX) data
      */
-    public PricesAndConsumptionCPIUnderlyingInflationRateKPIXClient underlyingInflationRateKPIX() {
-        return (PricesAndConsumptionCPIUnderlyingInflationRateKPIXClient) getClient("underlyinginflationratekpix");
+    public PricesAndConsumptionCPIKPIXClient kpix() {
+        return (PricesAndConsumptionCPIKPIXClient) getClient("kpix");
     }
 
     @Override
