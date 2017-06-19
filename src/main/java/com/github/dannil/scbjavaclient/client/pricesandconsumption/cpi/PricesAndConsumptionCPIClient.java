@@ -19,6 +19,7 @@ import java.util.Locale;
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.economicindicators.PricesAndConsumptionCPIEconomicIndicatorsClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.pricebasicamount.PricesAndConsumptionCPIPriceBasicAmountClient;
+import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.underlyinginflationratekpif.PricesAndConsumptionCPIUnderlyingInflationRateKPIFClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.underlyinginflationratekpix.PricesAndConsumptionCPIUnderlyingInflationRateKPIXClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
@@ -38,6 +39,7 @@ public class PricesAndConsumptionCPIClient extends AbstractContainerClient {
 
         addClient("economicindicators", new PricesAndConsumptionCPIEconomicIndicatorsClient());
         addClient("pricebasicamount", new PricesAndConsumptionCPIPriceBasicAmountClient());
+        addClient("underlyinginflationratekpif", new PricesAndConsumptionCPIUnderlyingInflationRateKPIFClient());
         addClient("underlyinginflationratekpix", new PricesAndConsumptionCPIUnderlyingInflationRateKPIXClient());
     }
 
@@ -73,6 +75,17 @@ public class PricesAndConsumptionCPIClient extends AbstractContainerClient {
      */
     public PricesAndConsumptionCPIPriceBasicAmountClient priceBasicAmount() {
         return (PricesAndConsumptionCPIPriceBasicAmountClient) getClient("pricebasicamount");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with prices and consumption Consumer Price
+     * Index (CPI) Underlying Inflation Rate (KPIF) data.</p>
+     *
+     * @return a client for prices and consumption Consumer Price Index (CPI) Underlying
+     *         Inflation Rate (KPIF) data
+     */
+    public PricesAndConsumptionCPIUnderlyingInflationRateKPIFClient underlyingInflationRateKPIF() {
+        return (PricesAndConsumptionCPIUnderlyingInflationRateKPIFClient) getClient("underlyinginflationratekpif");
     }
 
     /**

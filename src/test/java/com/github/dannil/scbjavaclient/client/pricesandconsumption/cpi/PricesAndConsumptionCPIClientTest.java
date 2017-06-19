@@ -20,6 +20,7 @@ import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.economicindicators.PricesAndConsumptionCPIEconomicIndicatorsClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.pricebasicamount.PricesAndConsumptionCPIPriceBasicAmountClient;
+import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.underlyinginflationratekpif.PricesAndConsumptionCPIUnderlyingInflationRateKPIFClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.underlyinginflationratekpix.PricesAndConsumptionCPIUnderlyingInflationRateKPIXClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
@@ -50,6 +51,14 @@ public class PricesAndConsumptionCPIClientTest {
         PricesAndConsumptionCPIClient client = new PricesAndConsumptionCPIClient();
 
         assertEquals(client.priceBasicAmount().getClass(), PricesAndConsumptionCPIPriceBasicAmountClient.class);
+    }
+
+    @Test
+    public void underlyingInflationRateKPIF() {
+        PricesAndConsumptionCPIClient client = new PricesAndConsumptionCPIClient();
+
+        assertEquals(client.underlyingInflationRateKPIF().getClass(),
+                PricesAndConsumptionCPIUnderlyingInflationRateKPIFClient.class);
     }
 
     @Test
