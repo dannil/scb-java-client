@@ -18,7 +18,9 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
+import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.economicindicators.PricesAndConsumptionCPIEconomicIndicatorsClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.pricebasicamount.PricesAndConsumptionCPIPriceBasicAmountClient;
+import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.underlyinginflationratekpix.PricesAndConsumptionCPIUnderlyingInflationRateKPIXClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;
@@ -37,10 +39,25 @@ public class PricesAndConsumptionCPIClientTest {
     }
 
     @Test
+    public void economicIndicators() {
+        PricesAndConsumptionCPIClient client = new PricesAndConsumptionCPIClient();
+
+        assertEquals(client.economicIndicators().getClass(), PricesAndConsumptionCPIEconomicIndicatorsClient.class);
+    }
+
+    @Test
     public void priceBasicAmount() {
         PricesAndConsumptionCPIClient client = new PricesAndConsumptionCPIClient();
 
         assertEquals(client.priceBasicAmount().getClass(), PricesAndConsumptionCPIPriceBasicAmountClient.class);
+    }
+
+    @Test
+    public void underlyingInflationRateKPIX() {
+        PricesAndConsumptionCPIClient client = new PricesAndConsumptionCPIClient();
+
+        assertEquals(client.underlyingInflationRateKPIX().getClass(),
+                PricesAndConsumptionCPIUnderlyingInflationRateKPIXClient.class);
     }
 
     @Test

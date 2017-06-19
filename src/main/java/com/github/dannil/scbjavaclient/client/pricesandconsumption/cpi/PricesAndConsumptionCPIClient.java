@@ -19,6 +19,7 @@ import java.util.Locale;
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.economicindicators.PricesAndConsumptionCPIEconomicIndicatorsClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.pricebasicamount.PricesAndConsumptionCPIPriceBasicAmountClient;
+import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.underlyinginflationratekpix.PricesAndConsumptionCPIUnderlyingInflationRateKPIXClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 /**
@@ -35,8 +36,9 @@ public class PricesAndConsumptionCPIClient extends AbstractContainerClient {
     public PricesAndConsumptionCPIClient() {
         super();
 
-        addClient("pricebasicamount", new PricesAndConsumptionCPIPriceBasicAmountClient());
         addClient("economicindicators", new PricesAndConsumptionCPIEconomicIndicatorsClient());
+        addClient("pricebasicamount", new PricesAndConsumptionCPIPriceBasicAmountClient());
+        addClient("underlyinginflationratekpix", new PricesAndConsumptionCPIUnderlyingInflationRateKPIXClient());
     }
 
     /**
@@ -71,6 +73,17 @@ public class PricesAndConsumptionCPIClient extends AbstractContainerClient {
      */
     public PricesAndConsumptionCPIPriceBasicAmountClient priceBasicAmount() {
         return (PricesAndConsumptionCPIPriceBasicAmountClient) getClient("pricebasicamount");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with prices and consumption Consumer Price
+     * Index (CPI) Underlying Inflation Rate (KPIX) data.</p>
+     *
+     * @return a client for prices and consumption Consumer Price Index (CPI) Underlying
+     *         Inflation Rate (KPIX) data
+     */
+    public PricesAndConsumptionCPIUnderlyingInflationRateKPIXClient underlyingInflationRateKPIX() {
+        return (PricesAndConsumptionCPIUnderlyingInflationRateKPIXClient) getClient("underlyinginflationratekpix");
     }
 
     @Override
