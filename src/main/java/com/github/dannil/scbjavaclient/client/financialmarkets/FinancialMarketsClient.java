@@ -17,10 +17,13 @@ package com.github.dannil.scbjavaclient.client.financialmarkets;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.balanceofpayments.FinancialMarketsBalanceOfPaymentsClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.enterprises.FinancialMarketsEnterprisesClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.institutions.FinancialMarketsInstitutionsClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.investmentfunds.FinancialMarketsInvestmentFundsClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.securities.FinancialMarketsSecuritiesClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.shareholders.FinancialMarketsShareholdersClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.statistics.FinancialMarketsStatisticsClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 /**
@@ -36,10 +39,13 @@ public class FinancialMarketsClient extends AbstractContainerClient {
     public FinancialMarketsClient() {
         super();
 
+        addClient("balanceofpayments", new FinancialMarketsBalanceOfPaymentsClient());
+        addClient("enterprises", new FinancialMarketsEnterprisesClient());
         addClient("institutions", new FinancialMarketsInstitutionsClient());
         addClient("investmentfunds", new FinancialMarketsInvestmentFundsClient());
         addClient("securities", new FinancialMarketsSecuritiesClient());
         addClient("shareholders", new FinancialMarketsShareholdersClient());
+        addClient("statistics", new FinancialMarketsStatisticsClient());
     }
 
     /**
@@ -52,6 +58,25 @@ public class FinancialMarketsClient extends AbstractContainerClient {
         this();
 
         setLocale(locale);
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with financial markets balance of payments
+     * data.</p>
+     *
+     * @return a client for financial markets balance of payments data
+     */
+    public FinancialMarketsBalanceOfPaymentsClient balanceOfPayments() {
+        return (FinancialMarketsBalanceOfPaymentsClient) getClient("balanceofpayments");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with financial markets enterprises data.</p>
+     *
+     * @return a client for financial markets enterprises data
+     */
+    public FinancialMarketsEnterprisesClient enterprises() {
+        return (FinancialMarketsEnterprisesClient) getClient("enterprises");
     }
 
     /**
@@ -91,6 +116,15 @@ public class FinancialMarketsClient extends AbstractContainerClient {
      */
     public FinancialMarketsShareholdersClient shareholders() {
         return (FinancialMarketsShareholdersClient) getClient("shareholders");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with financial markets statistics data.</p>
+     *
+     * @return a client for financial markets statistics data
+     */
+    public FinancialMarketsStatisticsClient statistics() {
+        return (FinancialMarketsStatisticsClient) getClient("statistics");
     }
 
     @Override

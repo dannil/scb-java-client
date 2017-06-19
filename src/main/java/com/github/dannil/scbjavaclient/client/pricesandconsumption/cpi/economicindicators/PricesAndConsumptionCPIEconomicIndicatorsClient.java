@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
+import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
@@ -31,7 +31,7 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
  *
  * @since 0.4.0 TODO Maybe new version here???
  */
-public class PricesAndConsumptionCPIEconomicIndicatorsClient extends AbstractContainerClient {
+public class PricesAndConsumptionCPIEconomicIndicatorsClient extends AbstractClient {
 
     /**
      * <p>Default constructor.</p>
