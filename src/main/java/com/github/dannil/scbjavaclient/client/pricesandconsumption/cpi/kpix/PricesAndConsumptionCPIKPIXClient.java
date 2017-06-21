@@ -74,10 +74,7 @@ public class PricesAndConsumptionCPIKPIXClient extends AbstractClient {
      *         objects
      */
     public List<ResponseModel> getUnderlyingInflationMonthlyChanges(Collection<String> months) {
-        Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.TIME_CODE, months);
-
-        return getResponseModels("KPIXFM", mappings);
+        return generate(months, "KPIXFM");
     }
 
     /**
@@ -104,10 +101,24 @@ public class PricesAndConsumptionCPIKPIXClient extends AbstractClient {
      *         objects
      */
     public List<ResponseModel> getUnderlyingInflationAnnualChanges(Collection<String> months) {
+        return generate(months, "KPIX12M");
+    }
+
+    /**
+     * <p>Common generator method for the methods in this class.</p>
+     *
+     * @param months
+     *            the months
+     * @param table
+     *            the table
+     * @return a <code>List</code> of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     */
+    private List<ResponseModel> generate(Collection<String> months, String table) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.TIME_CODE, months);
 
-        return getResponseModels("KPIX12M", mappings);
+        return getResponseModels(table, mappings);
     }
 
     @Override

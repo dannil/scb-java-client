@@ -33,6 +33,8 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
  */
 public class FinancialMarketsBalanceOfPaymentsPaymentsClient extends AbstractClient {
 
+    private static final String EXPORTANDIMPORT_CODE = "ExpImp";
+
     private static final String ITEM_CODE = "Kontopost";
 
     /**
@@ -150,7 +152,7 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClient extends AbstractCli
             Collection<String> exportsAndImports, Collection<String> items, Collection<String> quarters) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("Landgrupp", countryGroups);
-        mappings.put("ExpImp", exportsAndImports);
+        mappings.put(EXPORTANDIMPORT_CODE, exportsAndImports);
         mappings.put(ITEM_CODE, items);
         mappings.put(APIConstants.TIME_CODE, quarters);
 
@@ -327,7 +329,7 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClient extends AbstractCli
             Collection<String> exportsAndImports, Collection<String> items, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("Landgrupp", countryGroups);
-        mappings.put("ExpImp", exportsAndImports);
+        mappings.put(EXPORTANDIMPORT_CODE, exportsAndImports);
         mappings.put(ITEM_CODE, items);
         mappings.put(APIConstants.TIME_CODE, years);
 
@@ -399,7 +401,7 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClient extends AbstractCli
     public List<ResponseModel> getPrimaryIncome(Collection<String> exportsAndImports, Collection<String> items,
             Collection<String> quarters) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ExpImp", exportsAndImports);
+        mappings.put(EXPORTANDIMPORT_CODE, exportsAndImports);
         mappings.put(ITEM_CODE, items);
         mappings.put(APIConstants.TIME_CODE, quarters);
 
