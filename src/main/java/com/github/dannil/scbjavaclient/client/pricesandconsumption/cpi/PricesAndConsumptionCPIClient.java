@@ -17,6 +17,7 @@ package com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
+import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.cpifct.PricesAndConsumptionCPICPIFCTClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.economicindicators.PricesAndConsumptionCPIEconomicIndicatorsClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.kpif.PricesAndConsumptionCPIKPIFClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.kpix.PricesAndConsumptionCPIKPIXClient;
@@ -37,6 +38,7 @@ public class PricesAndConsumptionCPIClient extends AbstractContainerClient {
     public PricesAndConsumptionCPIClient() {
         super();
 
+        addClient("cpifct", new PricesAndConsumptionCPICPIFCTClient());
         addClient("economicindicators", new PricesAndConsumptionCPIEconomicIndicatorsClient());
         addClient("pricebasicamount", new PricesAndConsumptionCPIPriceBasicAmountClient());
         addClient("kpif", new PricesAndConsumptionCPIKPIFClient());
@@ -53,6 +55,17 @@ public class PricesAndConsumptionCPIClient extends AbstractContainerClient {
         this();
 
         setLocale(locale);
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with prices and consumption Consumer Price
+     * Index (CPI) with fixed interest rate and at constant taxes (CPIF-CT) data.</p>
+     *
+     * @return a client for prices and consumption Consumer Price Index (CPI) with fixed
+     *         interest rate and at constant taxes (CPIF-CT) data
+     */
+    public PricesAndConsumptionCPICPIFCTClient cpifct() {
+        return (PricesAndConsumptionCPICPIFCTClient) getClient("cpifct");
     }
 
     /**
