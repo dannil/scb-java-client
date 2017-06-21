@@ -12,6 +12,7 @@ matrix:
   include:
   - os: linux
     dist: trusty
+    group: deprecated-2017Q2
     sudo: required
     jdk: oraclejdk7
   - os: linux
