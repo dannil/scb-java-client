@@ -20,6 +20,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -288,7 +289,8 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
                 clazz = Class.forName(binaryName);
 
                 Method m = clazz.getDeclaredMethod("getUrl");
-                Object t = clazz.newInstance();
+                Constructor<?> c = clazz.getConstructor();
+                Object t = c.newInstance();
                 Object o = m.invoke(t);
 
                 URLEndpoint endPoint = (URLEndpoint) o;

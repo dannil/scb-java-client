@@ -15,7 +15,6 @@
 package com.github.dannil.scbjavaclient.http.requester;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
@@ -38,10 +37,10 @@ public class RequesterSingletonFactoryTest {
             throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
         Constructor<?>[] cons = RequesterSingletonFactory.class.getDeclaredConstructors();
         cons[0].setAccessible(true);
-        cons[0].newInstance();
+        Object o = cons[0].newInstance();
         cons[0].setAccessible(false);
 
-        assertFalse(cons[0].isAccessible());
+        assertNotNull(o);
     }
 
     @Test
@@ -71,10 +70,10 @@ public class RequesterSingletonFactoryTest {
         Constructor<?> innerConstructor = innerClass.getDeclaredConstructors()[0];
 
         innerConstructor.setAccessible(true);
-        innerConstructor.newInstance();
+        Object o = innerConstructor.newInstance();
         innerConstructor.setAccessible(false);
 
-        assertFalse(innerConstructor.isAccessible());
+        assertNotNull(o);
     }
 
     @Test
@@ -104,10 +103,10 @@ public class RequesterSingletonFactoryTest {
         Constructor<?> innerConstructor = innerClass.getDeclaredConstructors()[0];
 
         innerConstructor.setAccessible(true);
-        innerConstructor.newInstance();
+        Object o = innerConstructor.newInstance();
         innerConstructor.setAccessible(false);
 
-        assertFalse(innerConstructor.isAccessible());
+        assertNotNull(o);
     }
 
     @Test
