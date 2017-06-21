@@ -29,7 +29,7 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
  * <p>Client which handles prices and consumption Consumer Price Index (CPI) with fixed
  * interest rate and at constant taxes (CPIF-CT) data fetching.</p>
  *
- * @since 0.4.0 TODO Maybe new version here???
+ * @since 0.4.0
  */
 public class PricesAndConsumptionCPICPIFCTClient extends AbstractClient {
 

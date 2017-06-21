@@ -28,7 +28,7 @@ import com.github.dannil.scbjavaclient.http.URLEndpoint;
  * <p>Client which handles prices and consumption Consumer Price Index (CPI) data
  * fetching.</p>
  *
- * @since 0.4.0 TODO Maybe new version here???
+ * @since 0.4.0
  */
 public class PricesAndConsumptionCPIClient extends AbstractContainerClient {
 

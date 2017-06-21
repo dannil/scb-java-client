@@ -29,7 +29,7 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
  * <p>Client which handles prices and consumption Consumer Price Index (CPI) economic
  * indicators data fetching.</p>
  *
- * @since 0.4.0 TODO Maybe new version here???
+ * @since 0.4.0
  */
 public class PricesAndConsumptionCPIEconomicIndicatorsClient extends AbstractClient {
 
