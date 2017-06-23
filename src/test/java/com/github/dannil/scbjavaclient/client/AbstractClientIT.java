@@ -20,6 +20,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,6 +32,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import java.util.TreeSet;
 
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
@@ -286,7 +289,8 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
                 clazz = Class.forName(binaryName);
 
                 Method m = clazz.getDeclaredMethod("getUrl");
-                Object t = clazz.newInstance();
+                Constructor<?> c = clazz.getConstructor();
+                Object t = c.newInstance();
                 Object o = m.invoke(t);
 
                 URLEndpoint endPoint = (URLEndpoint) o;
@@ -310,6 +314,80 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
             }
         }
         assertTrue("Classes implementing same table: " + offendingClasses.toString(), offendingClasses.isEmpty());
+    }
+
+    @Test
+    @Date("now")
+    public void checkForCorrectSuperclass() {
+        String execPath = System.getProperty("user.dir");
+
+        // Find files matching the wildcard pattern
+        List<File> files = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient/client", "*.java");
+
+        // Filter out some classes from the list
+        List<Class<?>> filters = new ArrayList<>();
+        filters.add(AbstractClient.class);
+        filters.add(AbstractContainerClient.class);
+
+        Iterator<File> it = files.iterator();
+        while (it.hasNext()) {
+            File f = it.next();
+            for (Class<?> clazz : filters) {
+                if (Objects.equals(Files.fileToBinaryName(f), clazz.getName())) {
+                    it.remove();
+                }
+            }
+        }
+
+        // Convert paths into binary names
+        Set<String> binaryNames = new TreeSet<String>();
+        for (File file : files) {
+            String binaryName = Files.fileToBinaryName(file);
+            if (binaryName.contains("package-info")) {
+                continue;
+            } else {
+                binaryNames.add(binaryName);
+            }
+        }
+
+        List<Class<?>> matchedClasses = new ArrayList<>();
+        for (String binaryName : binaryNames) {
+            // Reflect the binary name into a concrete Java class
+            Class<?> clazz = null;
+            try {
+                clazz = Class.forName(binaryName);
+                String packageName = clazz.getPackage().getName();
+
+                // Add all binary names which starts with the current class's package
+                Set<String> children = new TreeSet<String>();
+                for (String s : binaryNames) {
+                    if (s.startsWith(packageName)) {
+                        children.add(s);
+                    }
+                }
+                // Remove the parent from the list
+                children.remove(binaryName);
+
+                Class<?> actualSuperclass = clazz.getSuperclass();
+                Class<?> supposedSuperclass = null;
+                if (children.size() > 0) {
+                    // Current class's package has sub-packages; is a container client
+                    supposedSuperclass = AbstractContainerClient.class;
+                } else {
+                    // Current class's package has no sub-packages; is a regular client
+                    supposedSuperclass = AbstractClient.class;
+                }
+                if (!actualSuperclass.equals(supposedSuperclass)) {
+                    matchedClasses.add(clazz);
+                }
+            } catch (ClassNotFoundException e) {
+                // Class could not be created; respond with an assertion that'll always
+                // fail
+                e.printStackTrace();
+                assertTrue(e.getMessage(), false);
+            }
+        }
+        assertTrue("Classes not extending correct superclass: " + matchedClasses.toString(), matchedClasses.isEmpty());
     }
 
 }

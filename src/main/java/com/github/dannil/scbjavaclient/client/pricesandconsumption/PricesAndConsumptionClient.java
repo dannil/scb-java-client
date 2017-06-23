@@ -19,6 +19,7 @@ import java.util.Locale;
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.bpi.PricesAndConsumptionBPIClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cci.PricesAndConsumptionCCIClient;
+import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.PricesAndConsumptionCPIClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.ppi.PricesAndConsumptionPPIClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.purchasingpowerparities.PricesAndConsumptionPurchasingPowerParitiesClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
@@ -38,6 +39,7 @@ public class PricesAndConsumptionClient extends AbstractContainerClient {
 
         addClient("bpi", new PricesAndConsumptionBPIClient());
         addClient("cci", new PricesAndConsumptionCCIClient());
+        addClient("cpi", new PricesAndConsumptionCPIClient());
         addClient("ppi", new PricesAndConsumptionPPIClient());
         addClient("purchasingpowerparities", new PricesAndConsumptionPurchasingPowerParitiesClient());
     }
@@ -72,6 +74,16 @@ public class PricesAndConsumptionClient extends AbstractContainerClient {
      */
     public PricesAndConsumptionCCIClient cci() {
         return (PricesAndConsumptionCCIClient) getClient("cci");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with prices and consumption Consumer Price
+     * Index (CPI) data.</p>
+     *
+     * @return a client for prices and consumption Consumer Price Index (CPI) data
+     */
+    public PricesAndConsumptionCPIClient cpi() {
+        return (PricesAndConsumptionCPIClient) getClient("cpi");
     }
 
     /**

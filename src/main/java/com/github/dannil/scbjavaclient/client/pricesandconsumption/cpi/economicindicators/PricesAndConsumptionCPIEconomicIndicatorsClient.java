@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.pricesandconsumption.ppi.economicindicators;
+package com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.economicindicators;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -26,17 +26,17 @@ import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles prices and consumption producer and import price index (PPI)
- * economic indicators data fetching.</p>
+ * <p>Client which handles prices and consumption Consumer Price Index (CPI) economic
+ * indicators data fetching.</p>
  *
  * @since 0.4.0
  */
-public class PricesAndConsumptionPPIEconomicIndicatorsClient extends AbstractClient {
+public class PricesAndConsumptionCPIEconomicIndicatorsClient extends AbstractClient {
 
     /**
      * <p>Default constructor.</p>
      */
-    public PricesAndConsumptionPPIEconomicIndicatorsClient() {
+    public PricesAndConsumptionCPIEconomicIndicatorsClient() {
         super();
     }
 
@@ -46,26 +46,25 @@ public class PricesAndConsumptionPPIEconomicIndicatorsClient extends AbstractCli
      * @param locale
      *            the <code>Locale</code> for this client
      */
-    public PricesAndConsumptionPPIEconomicIndicatorsClient(Locale locale) {
+    public PricesAndConsumptionCPIEconomicIndicatorsClient(Locale locale) {
         super(locale);
     }
 
     /**
-     * <p>Fetch all price indices in producer and import stages data.</p>
+     * <p>Fetch all consumer price index data.</p>
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @see #getPriceIndicesInProducerAndImportStages(Collection, Collection)
+     * @see #getConsumerPriceIndex(Collection, Collection)
      */
-    public List<ResponseModel> getPriceIndicesInProducerAndImportStages() {
-        return getPriceIndicesInProducerAndImportStages(null, null);
+    public List<ResponseModel> getConsumerPriceIndex() {
+        return getConsumerPriceIndex(null, null);
     }
 
     /**
-     * <p>Fetch all price indices in producer and import stages data which match the input
-     * constraints.</p>
+     * <p>Fetch all consumer price index data which match the input constraints.</p>
      *
      * @param indicators
      *            the indicators
@@ -75,18 +74,17 @@ public class PricesAndConsumptionPPIEconomicIndicatorsClient extends AbstractCli
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getPriceIndicesInProducerAndImportStages(Collection<String> indicators,
-            Collection<String> months) {
+    public List<ResponseModel> getConsumerPriceIndex(Collection<String> indicators, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("EkoIndikator", indicators);
         mappings.put(APIConstants.TIME_CODE, months);
 
-        return getResponseModels("SnabbStatPR0301", mappings);
+        return getResponseModels("SnabbStatPR0101", mappings);
     }
 
     @Override
     public URLEndpoint getUrl() {
-        return getRootUrl().append("PR/PR0301/PR0301A/");
+        return getRootUrl().append("PR/PR0101/PR0101S");
     }
 
 }

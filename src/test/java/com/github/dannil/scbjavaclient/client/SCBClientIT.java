@@ -68,8 +68,11 @@ public class SCBClientIT extends RemoteIntegrationTestSuite {
 
         assertTrue(response.contains("BE0101N1"));
         assertTrue(response.contains("BE0101N2"));
-        assertTrue(response.contains("Region"));
         assertTrue(response.contains("Tid"));
+        assertFalse(response.contains("Region"));
+        assertFalse(response.contains("Civilstand"));
+        assertFalse(response.contains("Alder"));
+        assertFalse(response.contains("Kon"));
     }
 
     @Test

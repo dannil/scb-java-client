@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.pricesandconsumption.purchasingpowerparities;
+package com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.cpifct;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -26,17 +26,17 @@ import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles prices and consumption purchasing power parities data
- * fetching.</p>
+ * <p>Client which handles prices and consumption Consumer Price Index (CPI) with fixed
+ * interest rate and at constant taxes (CPIF-CT) data fetching.</p>
  *
  * @since 0.4.0
  */
-public class PricesAndConsumptionPurchasingPowerParitiesClient extends AbstractClient {
+public class PricesAndConsumptionCPICPIFCTClient extends AbstractClient {
 
     /**
      * <p>Default constructor.</p>
      */
-    public PricesAndConsumptionPurchasingPowerParitiesClient() {
+    public PricesAndConsumptionCPICPIFCTClient() {
         super();
     }
 
@@ -46,83 +46,75 @@ public class PricesAndConsumptionPurchasingPowerParitiesClient extends AbstractC
      * @param locale
      *            the <code>Locale</code> for this client
      */
-    public PricesAndConsumptionPurchasingPowerParitiesClient(Locale locale) {
+    public PricesAndConsumptionCPICPIFCTClient(Locale locale) {
         super(locale);
     }
 
     /**
-     * <p>Fetch all extrapolated price level indices data.</p>
+     * <p>Fetch all fixed interest rate and at constant taxes (CPIF-CT) monthly changes
+     * data.</p>
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @see #getExtrapolatedPriceLevelIndices(Collection, Collection)
+     * @see #getFixedInterestRateMonthlyChanges(Collection)
      */
-    public List<ResponseModel> getExtrapolatedPriceLevelIndices() {
-        return getExtrapolatedPriceLevelIndices(null, null);
+    public List<ResponseModel> getFixedInterestRateMonthlyChanges() {
+        return getFixedInterestRateMonthlyChanges(null);
     }
 
     /**
-     * <p>Fetch all extrapolated price level indices data which match the input
-     * constraints.</p>
+     * <p>Fetch all fixed interest rate and at constant taxes (CPIF-CT) monthly changes
+     * data which match the input constraints.</p>
      *
-     * @param countryGroups
-     *            the country groups
-     * @param years
-     *            the years
+     * @param months
+     *            the months
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getExtrapolatedPriceLevelIndices(Collection<String> countryGroups,
-            Collection<Integer> years) {
+    public List<ResponseModel> getFixedInterestRateMonthlyChanges(Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("LandLandgrupper", countryGroups);
-        mappings.put(APIConstants.TIME_CODE, years);
+        mappings.put(APIConstants.TIME_CODE, months);
 
-        return getResponseModels("PR0401T01Ar", mappings);
+        return getResponseModels("KPIKSFM", mappings);
     }
 
     /**
-     * <p>Fetch all purchasing power parities data.</p>
+     * <p>Fetch all fixed interest rate and at constant taxes (CPIF-CT) annual changes
+     * data.</p>
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @see #getPurchasingPowerParities(Collection, Collection, Collection)
+     * @see #getFixedInterestRateAnnualChanges(Collection)
      */
-    public List<ResponseModel> getPurchasingPowerParities() {
-        return getPurchasingPowerParities(null, null, null);
+    public List<ResponseModel> getFixedInterestRateAnnualChanges() {
+        return getFixedInterestRateAnnualChanges(null);
     }
 
     /**
-     * <p>Fetch all purchasing power parities data which match the input constraints.</p>
+     * <p>Fetch all fixed interest rate and at constant taxes (CPIF-CT) annual changes
+     * data which match the input constraints.</p>
      *
-     * @param countries
-     *            the countries
-     * @param esaClassifications
-     *            the ESA classifications
-     * @param years
-     *            the years
+     * @param months
+     *            the months
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getPurchasingPowerParities(Collection<String> countries,
-            Collection<String> esaClassifications, Collection<Integer> years) {
+    public List<ResponseModel> getFixedInterestRateAnnualChanges(Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Land", countries);
-        mappings.put("ENS", esaClassifications);
-        mappings.put(APIConstants.TIME_CODE, years);
+        mappings.put(APIConstants.TIME_CODE, months);
 
-        return getResponseModels("PR0401T03BAr", mappings);
+        return getResponseModels("KPIKSF12M", mappings);
     }
 
     @Override
     public URLEndpoint getUrl() {
-        return getRootUrl().append("PR/PR0401/");
+        return getRootUrl().append("PR/PR0101/PR0101I/");
     }
 
 }
