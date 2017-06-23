@@ -26,7 +26,6 @@ matrix:
   - os: linux
     dist: trusty
     group: edge
-    sudo: required
     jdk: oraclejdk9
     addons:
       apt:
