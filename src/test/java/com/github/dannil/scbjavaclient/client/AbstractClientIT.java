@@ -27,11 +27,9 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -41,6 +39,7 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.test.runner.Date;
 import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.Files;
+import com.github.dannil.scbjavaclient.test.utility.Filters;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
@@ -203,20 +202,7 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
         List<File> files = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient/client", "*.java");
 
         // Filter out some classes from the list
-        List<Class<?>> filters = new ArrayList<>();
-        filters.add(AbstractClient.class);
-        filters.add(AbstractContainerClient.class);
-        filters.add(SCBClient.class);
-
-        Iterator<File> it = files.iterator();
-        while (it.hasNext()) {
-            File f = it.next();
-            for (Class<?> clazz : filters) {
-                if (Objects.equals(Files.fileToBinaryName(f), clazz.getName())) {
-                    it.remove();
-                }
-            }
-        }
+        Filters.files(files, AbstractClient.class, AbstractContainerClient.class, SCBClient.class);
 
         List<Class<?>> matchedClasses = new ArrayList<>();
         for (File file : files) {
@@ -260,19 +246,7 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
         List<File> files = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient/client", "*.java");
 
         // Filter out some classes from the list
-        List<Class<?>> filters = new ArrayList<>();
-        filters.add(AbstractClient.class);
-        filters.add(AbstractContainerClient.class);
-
-        Iterator<File> it = files.iterator();
-        while (it.hasNext()) {
-            File f = it.next();
-            for (Class<?> clazz : filters) {
-                if (Objects.equals(Files.fileToBinaryName(f), clazz.getName())) {
-                    it.remove();
-                }
-            }
-        }
+        Filters.files(files, AbstractClient.class, AbstractContainerClient.class);
 
         Map<String, Class<?>> register = new HashMap<>();
         Map<String, List<Class<?>>> offendingClasses = new HashMap<>();
@@ -325,19 +299,7 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
         List<File> files = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient/client", "*.java");
 
         // Filter out some classes from the list
-        List<Class<?>> filters = new ArrayList<>();
-        filters.add(AbstractClient.class);
-        filters.add(AbstractContainerClient.class);
-
-        Iterator<File> it = files.iterator();
-        while (it.hasNext()) {
-            File f = it.next();
-            for (Class<?> clazz : filters) {
-                if (Objects.equals(Files.fileToBinaryName(f), clazz.getName())) {
-                    it.remove();
-                }
-            }
-        }
+        Filters.files(files, AbstractClient.class, AbstractContainerClient.class);
 
         // Convert paths into binary names
         Set<String> binaryNames = new TreeSet<String>();
