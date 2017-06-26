@@ -20,6 +20,7 @@ import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.cpifct.PricesAndConsumptionCPICPIFCTClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.economicindicators.PricesAndConsumptionCPIEconomicIndicatorsClient;
+import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.hicp.PricesAndConsumptionCPIHICPClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.kpif.PricesAndConsumptionCPIKPIFClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.kpix.PricesAndConsumptionCPIKPIXClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.pricebasicamount.PricesAndConsumptionCPIPriceBasicAmountClient;
@@ -52,6 +53,13 @@ public class PricesAndConsumptionCPIClientTest {
         PricesAndConsumptionCPIClient client = new PricesAndConsumptionCPIClient();
 
         assertEquals(client.economicIndicators().getClass(), PricesAndConsumptionCPIEconomicIndicatorsClient.class);
+    }
+
+    @Test
+    public void hicp() {
+        PricesAndConsumptionCPIClient client = new PricesAndConsumptionCPIClient();
+
+        assertEquals(client.hicp().getClass(), PricesAndConsumptionCPIHICPClient.class);
     }
 
     @Test
