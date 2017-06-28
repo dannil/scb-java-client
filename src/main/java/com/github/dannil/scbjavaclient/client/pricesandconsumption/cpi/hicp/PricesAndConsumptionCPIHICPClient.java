@@ -29,7 +29,7 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
  * <p>Client which handles prices and consumption Consumer Price Index (CPI) Harmonized
  * Index of Consumer Prices (HICP) data fetching.</p>
  *
- * @since 0.5.0 TODO Maybe other version here???
+ * @since 0.5.0
  */
 public class PricesAndConsumptionCPIHICPClient extends AbstractClient {
 

@@ -125,8 +125,6 @@ public class PricesAndConsumptionCPIClient extends AbstractContainerClient {
         return (PricesAndConsumptionCPIKPIXClient) getClient("kpix");
     }
 
-    // TODO MORE CLIENTS HERE
-
     @Override
     public URLEndpoint getUrl() {
         return getRootUrl().append("PR/PR0101/");
