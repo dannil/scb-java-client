@@ -24,6 +24,7 @@ import java.util.Map.Entry;
 
 import com.github.dannil.scbjavaclient.client.agriculture.AgricultureClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.BusinessActivitiesClient;
+import com.github.dannil.scbjavaclient.client.educationandresearch.EducationAndResearchClient;
 import com.github.dannil.scbjavaclient.client.energy.EnergyClient;
 import com.github.dannil.scbjavaclient.client.environment.EnvironmentClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.FinancialMarketsClient;
@@ -58,6 +59,7 @@ public class SCBClient extends AbstractContainerClient {
 
         addClient("agriculture", new AgricultureClient());
         addClient("businessactivities", new BusinessActivitiesClient());
+        addClient("educationandresearch", new EducationAndResearchClient());
         addClient("energy", new EnergyClient());
         addClient("environment", new EnvironmentClient());
         addClient("financialmarkets", new FinancialMarketsClient());
@@ -98,6 +100,15 @@ public class SCBClient extends AbstractContainerClient {
      */
     public BusinessActivitiesClient businessActivities() {
         return (BusinessActivitiesClient) getClient("businessactivities");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with education and research data.</p>
+     *
+     * @return a client for education and research data
+     */
+    public EducationAndResearchClient educationAndResearch() {
+        return (EducationAndResearchClient) getClient("educationandresearch");
     }
 
     /**
