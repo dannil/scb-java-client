@@ -398,7 +398,7 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
                         offendingMethods.remove(full);
                     }
                 }
-            } catch (ReflectiveOperationException e) {
+            } catch (ClassNotFoundException e) {
                 // Class could not be created; respond with an assertion that'll always
                 // fail
                 e.printStackTrace();
