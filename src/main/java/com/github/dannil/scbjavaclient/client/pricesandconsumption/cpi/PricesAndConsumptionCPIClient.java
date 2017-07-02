@@ -19,6 +19,7 @@ import java.util.Locale;
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.cpifct.PricesAndConsumptionCPICPIFCTClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.economicindicators.PricesAndConsumptionCPIEconomicIndicatorsClient;
+import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.hicp.PricesAndConsumptionCPIHICPClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.kpif.PricesAndConsumptionCPIKPIFClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.kpix.PricesAndConsumptionCPIKPIXClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.pricebasicamount.PricesAndConsumptionCPIPriceBasicAmountClient;
@@ -40,6 +41,7 @@ public class PricesAndConsumptionCPIClient extends AbstractContainerClient {
 
         addClient("cpifct", new PricesAndConsumptionCPICPIFCTClient());
         addClient("economicindicators", new PricesAndConsumptionCPIEconomicIndicatorsClient());
+        addClient("hicp", new PricesAndConsumptionCPIHICPClient());
         addClient("pricebasicamount", new PricesAndConsumptionCPIPriceBasicAmountClient());
         addClient("kpif", new PricesAndConsumptionCPIKPIFClient());
         addClient("kpix", new PricesAndConsumptionCPIKPIXClient());
@@ -77,6 +79,17 @@ public class PricesAndConsumptionCPIClient extends AbstractContainerClient {
      */
     public PricesAndConsumptionCPIEconomicIndicatorsClient economicIndicators() {
         return (PricesAndConsumptionCPIEconomicIndicatorsClient) getClient("economicindicators");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with prices and consumption Consumer Price
+     * Index (CPI) Harmonized Index of Consumer Prices (HICP) data.</p>
+     *
+     * @return a client for prices and consumption Consumer Price Index (CPI) Harmonized
+     *         Index of Consumer Prices (HICP) data
+     */
+    public PricesAndConsumptionCPIHICPClient hicp() {
+        return (PricesAndConsumptionCPIHICPClient) getClient("hicp");
     }
 
     /**
