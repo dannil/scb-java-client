@@ -18,6 +18,7 @@ import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.educationandresearch.activityaftertraining.EducationAndResearchActivityAfterTrainingClient;
+import com.github.dannil.scbjavaclient.client.educationandresearch.communityinnovationsurvey.EducationAndResearchCommunityInnovationSurveyClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 /**
@@ -34,7 +35,7 @@ public class EducationAndResearchClient extends AbstractContainerClient {
         super();
 
         addClient("activityaftertraining", new EducationAndResearchActivityAfterTrainingClient());
-        // addClient("monthlystatistics", new EnergyMonthlyStatisticsClient());
+        addClient("communityinnovationsurvey", new EducationAndResearchCommunityInnovationSurveyClient());
     }
 
     /**
@@ -59,14 +60,15 @@ public class EducationAndResearchClient extends AbstractContainerClient {
         return (EducationAndResearchActivityAfterTrainingClient) getClient("activityaftertraining");
     }
 
-    // /**
-    // * <p>Retrieve the client for interacting with energy monthly statistics data.</p>
-    // *
-    // * @return a client for energy monthly statistics data
-    // */
-    // public EnergyMonthlyStatisticsClient monthlyStatistics() {
-    // return (EnergyMonthlyStatisticsClient) getClient("monthlystatistics");
-    // }
+    /**
+     * <p>Retrieve the client for interacting with education and research community
+     * innovation survey data.</p>
+     *
+     * @return a client for education and research community innovation survey data
+     */
+    public EducationAndResearchCommunityInnovationSurveyClient communityInnovationSurvey() {
+        return (EducationAndResearchCommunityInnovationSurveyClient) getClient("communityinnovationsurvey");
+    }
 
     @Override
     public URLEndpoint getUrl() {
