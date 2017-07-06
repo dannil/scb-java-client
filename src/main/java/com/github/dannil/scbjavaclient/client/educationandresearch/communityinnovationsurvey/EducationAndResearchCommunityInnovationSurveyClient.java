@@ -17,6 +17,8 @@ package com.github.dannil.scbjavaclient.client.educationandresearch.communityinn
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
+import com.github.dannil.scbjavaclient.client.educationandresearch.communityinnovationsurvey.activity.EducationAndResearchCommunityInnovationSurveyActivityClient;
+import com.github.dannil.scbjavaclient.client.educationandresearch.communityinnovationsurvey.cooperation.EducationAndResearchCommunityInnovationSurveyCooperationClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 /**
@@ -33,9 +35,8 @@ public class EducationAndResearchCommunityInnovationSurveyClient extends Abstrac
     public EducationAndResearchCommunityInnovationSurveyClient() {
         super();
 
-        // addClient("activityaftertraining", new
-        // EducationAndResearchActivityAfterTrainingClient());
-        // addClient("monthlystatistics", new EnergyMonthlyStatisticsClient());
+        addClient("activity", new EducationAndResearchCommunityInnovationSurveyActivityClient());
+        addClient("cooperation", new EducationAndResearchCommunityInnovationSurveyCooperationClient());
     }
 
     /**
@@ -50,27 +51,27 @@ public class EducationAndResearchCommunityInnovationSurveyClient extends Abstrac
         setLocale(locale);
     }
 
-    // /**
-    // * <p>Retrieve the client for interacting with education and research activity after
-    // * training data.</p>
-    // *
-    // * @return a client for education and research activity after training data
-    // */
-    // public EducationAndResearchActivityAfterTrainingClient activityAfterTraining() {
-    // return (EducationAndResearchActivityAfterTrainingClient)
-    // getClient("activityaftertraining");
-    // }
+    /**
+     * <p>Retrieve the client for interacting with education and research community
+     * innovation survey innovation activity among enterprises data.</p>
+     *
+     * @return a client for education and research community innovation survey innovation
+     *         activity among enterprises data
+     */
+    public EducationAndResearchCommunityInnovationSurveyActivityClient activity() {
+        return (EducationAndResearchCommunityInnovationSurveyActivityClient) getClient("activity");
+    }
 
-    // /**
-    // * <p>Retrieve the client for interacting with energy monthly statistics data.</p>
-    // *
-    // * @return a client for energy monthly statistics data
-    // */
-    // public EnergyMonthlyStatisticsClient monthlyStatistics() {
-    // return (EnergyMonthlyStatisticsClient) getClient("monthlystatistics");
-    // }
-    
-    TODO
+    /**
+     * <p>Retrieve the client for interacting with education and research community
+     * innovation survey co-operation activity among enterprises data.</p>
+     *
+     * @return a client for education and research community innovation survey
+     *         co-operation activity among enterprises data
+     */
+    public EducationAndResearchCommunityInnovationSurveyCooperationClient cooperation() {
+        return (EducationAndResearchCommunityInnovationSurveyCooperationClient) getClient("cooperation");
+    }
 
     @Override
     public URLEndpoint getUrl() {

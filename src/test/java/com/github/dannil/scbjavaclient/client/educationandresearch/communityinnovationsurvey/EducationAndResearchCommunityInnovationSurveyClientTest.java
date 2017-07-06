@@ -18,6 +18,8 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
+import com.github.dannil.scbjavaclient.client.educationandresearch.communityinnovationsurvey.activity.EducationAndResearchCommunityInnovationSurveyActivityClient;
+import com.github.dannil.scbjavaclient.client.educationandresearch.communityinnovationsurvey.cooperation.EducationAndResearchCommunityInnovationSurveyCooperationClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;
@@ -34,6 +36,21 @@ public class EducationAndResearchCommunityInnovationSurveyClientTest {
                 locale);
 
         assertEquals(locale, client.getLocale());
+    }
+
+    @Test
+    public void activity() {
+        EducationAndResearchCommunityInnovationSurveyClient client = new EducationAndResearchCommunityInnovationSurveyClient();
+
+        assertEquals(client.activity().getClass(), EducationAndResearchCommunityInnovationSurveyActivityClient.class);
+    }
+
+    @Test
+    public void cooperation() {
+        EducationAndResearchCommunityInnovationSurveyClient client = new EducationAndResearchCommunityInnovationSurveyClient();
+
+        assertEquals(client.cooperation().getClass(),
+                EducationAndResearchCommunityInnovationSurveyCooperationClient.class);
     }
 
     @Test
