@@ -27,9 +27,12 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -350,6 +353,83 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
             }
         }
         assertTrue("Classes not extending correct superclass: " + matchedClasses.toString(), matchedClasses.isEmpty());
+    }
+
+    // Method which is used to check for correctly overloaded methods (with methods
+    // throwing HTTP 403 removed)
+    @Test
+    @Date("now")
+    public void checkForOverloadedMethods() {
+        String execPath = System.getProperty("user.dir");
+
+        // Find files matching the wildcard pattern
+        List<File> files = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient/client", "*.java");
+
+        // Filter out some classes from the list
+        Filters.files(files, AbstractClient.class, AbstractContainerClient.class, SCBClient.class);
+
+        Map<String, Integer> offendingMethods = new HashMap<String, Integer>();
+        for (File file : files) {
+            // Convert path into binary name
+            String binaryName = Files.fileToBinaryName(file);
+            if (binaryName.contains("package-info")) {
+                continue;
+            }
+
+            // Reflect the binary name into a concrete Java class
+            Class<?> clazz = null;
+            try {
+                clazz = Class.forName(binaryName);
+                Method[] methods = clazz.getDeclaredMethods();
+                for (int i = 0; i < methods.length; i++) {
+                    Method m = methods[i];
+                    if (m.getName().equals("getUrl") || !m.getName().startsWith("get")) {
+                        continue;
+                    }
+                    String full = clazz.getSimpleName() + "." + m.getName();
+                    if (!offendingMethods.containsKey(full)) {
+                        offendingMethods.put(full, 1);
+                    } else {
+                        offendingMethods.put(full, offendingMethods.get(full) + 1);
+                    }
+                    // Removed offending methods which occur more than once (which means
+                    // that there does exists an overload)
+                    if (offendingMethods.get(full) > 1) {
+                        offendingMethods.remove(full);
+                    }
+                }
+            } catch (ClassNotFoundException e) {
+                // Class could not be created; respond with an assertion that'll always
+                // fail
+                e.printStackTrace();
+                assertTrue(e.getMessage(), false);
+            }
+        }
+        // Filter out known methods throwing HTTP 403. Format is the same used for the
+        // entries in the offending methods collection
+        Set<String> knownMethods = new HashSet<>();
+        knownMethods.add("PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient.getPriceIndexForDomesticSupply");
+        knownMethods.add("FinancialMarketsStatisticsClaimsAndLiabilitiesClient.getClaimsAndLiabilitiesOutsideSweden");
+        knownMethods.add(
+                "FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClient.getNonResidentTradeInSwedishShares");
+        knownMethods.add("PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient.getProducerPriceIndexHomeSales");
+        knownMethods.add("PublicFinancesAnnualAccountsStatementAccountsMunicipalityClient.getCostsAndIncomes");
+        knownMethods.add("PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient.getProducerPriceIndex");
+        knownMethods.add("GoodsAndServicesForeignTradeCNClient.getImportsAndExportsOfGoods");
+        knownMethods.add("PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient.getExportPriceIndex");
+        knownMethods.add("PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient.getBalanceSheet");
+        knownMethods.add("PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient.getImportPriceIndex");
+        knownMethods.add("PublicFinancesAnnualAccountsStatementAccountsCountyClient.getIncomeAndCosts");
+        knownMethods.add("PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient.getPriceIndexForDomesticSupply");
+        knownMethods.add("PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient.getIncomeStatements");
+        for (Iterator<Entry<String, Integer>> it = offendingMethods.entrySet().iterator(); it.hasNext();) {
+            Entry<String, Integer> entry = it.next();
+            if (knownMethods.contains(entry.getKey())) {
+                it.remove();
+            }
+        }
+        assertTrue("Methods not having correct overloads: " + offendingMethods.keySet().toString(),
+                offendingMethods.isEmpty());
     }
 
 }
