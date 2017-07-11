@@ -14,9 +14,19 @@
 
 package com.github.dannil.scbjavaclient.client.educationandresearch.activityaftertraining;
 
+import static org.junit.Assert.assertNotEquals;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
 import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(DateJUnitRunner.class)
@@ -24,61 +34,70 @@ public class EducationAndResearchActivityAfterTrainingClientIT extends RemoteInt
 
     private EducationAndResearchActivityAfterTrainingClient client;
 
-    // @Before
-    // public void setup() {
-    // this.client = new SCBClient().educationAndResearch().activityAfterTraining();
-    // }
-    //
-    // @Test
-    // @Date("2017-04-09")
-    // public void getEnterprisesAndEmployeesSNI2002() {
-    // assertNotEquals(0, this.client.getEnterprisesAndEmployeesSNI2002().size());
-    // }
-    //
-    // @Test
-    // @Date("2017-04-09")
-    // public void getEnterprisesAndEmployeesSNI2002WithParametersEmptyLists() {
-    // assertNotEquals(0,
-    // this.client.getEnterprisesAndEmployeesSNI2002(Collections.<String>emptyList(),
-    // Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
-    // }
-    //
-    // @Test
-    // @Date("2017-04-09")
-    // public void getEnterprisesAndEmployeesSNI2002WithParameters() {
-    // List<String> industrialClassifications = Arrays.asList("01.124", "01.2");
-    // List<String> sizeClasses = Arrays.asList("SGR3", "SGR5");
-    // List<Integer> years = Arrays.asList(2003, 2005);
-    //
-    // assertNotEquals(0,
-    // this.client.getEnterprisesAndEmployeesSNI2002(industrialClassifications,
-    // sizeClasses, years).size());
-    // }
-    //
-    // @Test
-    // @Date("2017-04-09")
-    // public void getEnterprisesAndEmployeesSNI2007() {
-    // assertNotEquals(0, this.client.getEnterprisesAndEmployeesSNI2007().size());
-    // }
-    //
-    // @Test
-    // @Date("2017-04-09")
-    // public void getEnterprisesAndEmployeesSNI2007WithParametersEmptyLists() {
-    // assertNotEquals(0,
-    // this.client.getEnterprisesAndEmployeesSNI2007(Collections.<String>emptyList(),
-    // Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
-    // }
-    //
-    // @Test
-    // @Date("2017-04-09")
-    // public void getEnterprisesAndEmployeesSNI2007WithParameters() {
-    // List<String> industrialClassifications = Arrays.asList("01.199", "01.3");
-    // List<String> sizeClasses = Arrays.asList("SGR3", "SGR5");
-    // List<Integer> years = Arrays.asList(2010, 2014);
-    //
-    // assertNotEquals(0,
-    // this.client.getEnterprisesAndEmployeesSNI2007(industrialClassifications,
-    // sizeClasses, years).size());
-    // }
+    @Before
+    public void setup() {
+        this.client = new SCBClient().educationAndResearch().activityAfterTraining();
+    }
+
+    @Test
+    @Date("2017-07-11")
+    public void getPersonsActivitiesAfterCompletingHigherEducation() {
+        assertNotEquals(0, this.client.getPersonsActivitiesAfterCompletingHigherEducation().size());
+    }
+
+    @Test
+    @Date("2017-07-11")
+    public void getPersonsActivitiesAfterCompletingHigherEducationWithParametersEmptyLists() {
+        assertNotEquals(0,
+                this.client.getPersonsActivitiesAfterCompletingHigherEducation(Collections.<Integer>emptyList(),
+                        Collections.<Integer>emptyList(), Collections.<Integer>emptyList(),
+                        Collections.<Integer>emptyList(), Collections.<String>emptyList(),
+                        Collections.<String>emptyList()).size());
+    }
+
+    @Test
+    @Date("2017-07-11")
+    public void getPersonsActivitiesAfterCompletingHigherEducationWithParameters() {
+        List<Integer> yearsAfterCompletedEducation = Arrays.asList(2, 3);
+        List<Integer> levelsOfAcademicDegrees = Arrays.asList(14, 17);
+        List<Integer> activities = Arrays.asList(3, 4);
+        List<Integer> sexes = Arrays.asList(1, 2);
+        List<String> agesAtExam = Arrays.asList("25-29", "30-34");
+        List<String> yearsOfExam = Arrays.asList("2003/2004", "2005/2006");
+
+        assertNotEquals(0, this.client.getPersonsActivitiesAfterCompletingHigherEducation(yearsAfterCompletedEducation,
+                levelsOfAcademicDegrees, activities, sexes, agesAtExam, yearsOfExam).size());
+    }
+
+    @Test
+    @Date("2017-07-11")
+    public void getPersonsActivitiesAfterCompletingCompulsorySchool() {
+        assertNotEquals(0, this.client.getPersonsActivitiesAfterCompletingCompulsorySchool().size());
+    }
+
+    @Test
+    @Date("2017-07-11")
+    public void getPersonsActivitiesAfterCompletingCompulsorySchoolWithParametersEmptyLists() {
+        assertNotEquals(0,
+                this.client.getPersonsActivitiesAfterCompletingCompulsorySchool(Collections.<Integer>emptyList(),
+                        Collections.<Integer>emptyList(), Collections.<Integer>emptyList(),
+                        Collections.<Integer>emptyList(), Collections.<String>emptyList(),
+                        Collections.<Integer>emptyList(), Collections.<String>emptyList()).size());
+    }
+
+    @Test
+    @Date("2017-07-11")
+    public void getPersonsActivitiesAfterCompletingCompulsorySchoolWithParameters() {
+        List<Integer> yearsAfterCompletedEducation = Arrays.asList(2, 3);
+        List<Integer> levelsOfEducations = Arrays.asList(1, 2);
+        List<Integer> activities = Arrays.asList(3, 4);
+        List<Integer> sexes = Arrays.asList(1, 2);
+        List<String> counties = Arrays.asList("05", "06");
+        List<Integer> municipalityGroups = Arrays.asList(7, 8);
+        List<String> yearsOfExam = Arrays.asList("2003/2004", "2005/2006");
+
+        assertNotEquals(0, this.client.getPersonsActivitiesAfterCompletingCompulsorySchool(yearsAfterCompletedEducation,
+                levelsOfEducations, activities, sexes, counties, municipalityGroups, yearsOfExam).size());
+    }
 
 }
