@@ -14,71 +14,57 @@
 
 package com.github.dannil.scbjavaclient.client.educationandresearch.communityinnovationsurvey.activity;
 
-import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
+import static org.junit.Assert.assertNotEquals;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.test.runner.Date;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
-@RunWith(DateJUnitRunner.class)
+// @RunWith(DateJUnitRunner.class)
+@RunWith(JUnit4.class)
 public class EducationAndResearchCommunityInnovationSurveyActivityClientIT extends RemoteIntegrationTestSuite {
 
     private EducationAndResearchCommunityInnovationSurveyActivityClient client;
 
-    // @Before
-    // public void setup() {
-    // this.client = new SCBClient().educationAndResearch().activityAfterTraining();
-    // }
-    //
-    // @Test
-    // @Date("2017-04-09")
-    // public void getEnterprisesAndEmployeesSNI2002() {
-    // assertNotEquals(0, this.client.getEnterprisesAndEmployeesSNI2002().size());
-    // }
-    //
-    // @Test
-    // @Date("2017-04-09")
-    // public void getEnterprisesAndEmployeesSNI2002WithParametersEmptyLists() {
-    // assertNotEquals(0,
-    // this.client.getEnterprisesAndEmployeesSNI2002(Collections.<String>emptyList(),
-    // Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
-    // }
-    //
-    // @Test
-    // @Date("2017-04-09")
-    // public void getEnterprisesAndEmployeesSNI2002WithParameters() {
-    // List<String> industrialClassifications = Arrays.asList("01.124", "01.2");
-    // List<String> sizeClasses = Arrays.asList("SGR3", "SGR5");
-    // List<Integer> years = Arrays.asList(2003, 2005);
-    //
-    // assertNotEquals(0,
-    // this.client.getEnterprisesAndEmployeesSNI2002(industrialClassifications,
-    // sizeClasses, years).size());
-    // }
-    //
-    // @Test
-    // @Date("2017-04-09")
-    // public void getEnterprisesAndEmployeesSNI2007() {
-    // assertNotEquals(0, this.client.getEnterprisesAndEmployeesSNI2007().size());
-    // }
-    //
-    // @Test
-    // @Date("2017-04-09")
-    // public void getEnterprisesAndEmployeesSNI2007WithParametersEmptyLists() {
-    // assertNotEquals(0,
-    // this.client.getEnterprisesAndEmployeesSNI2007(Collections.<String>emptyList(),
-    // Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
-    // }
-    //
-    // @Test
-    // @Date("2017-04-09")
-    // public void getEnterprisesAndEmployeesSNI2007WithParameters() {
-    // List<String> industrialClassifications = Arrays.asList("01.199", "01.3");
-    // List<String> sizeClasses = Arrays.asList("SGR3", "SGR5");
-    // List<Integer> years = Arrays.asList(2010, 2014);
-    //
-    // assertNotEquals(0,
-    // this.client.getEnterprisesAndEmployeesSNI2007(industrialClassifications,
-    // sizeClasses, years).size());
-    // }
+    @Before
+    public void setup() {
+        this.client = new SCBClient().educationAndResearch().communityInnovationSurvey().activity();
+    }
+
+    @Test
+    @Date("2017-07-11")
+    public void getNumberOfInnovativeEnterprises() {
+        assertNotEquals(0, this.client.getNumberOfInnovativeEnterprises().size());
+    }
+
+    @Test
+    @Date("2017-07-11")
+    public void getNumberOfInnovativeEnterprisesWithParametersEmptyLists() {
+        assertNotEquals(0,
+                this.client.getNumberOfInnovativeEnterprises(Collections.<String>emptyList(),
+                        Collections.<String>emptyList(), Collections.<String>emptyList(),
+                        Collections.<String>emptyList()).size());
+    }
+
+    @Test
+    @Date("2017-07-11")
+    public void getNumberOfInnovativeEnterprisesWithParameters() {
+        List<String> industrialClassifications = Arrays.asList("SA14", "SA12");
+        List<String> sizeClasses = Arrays.asList("10-49", "50-249");
+        List<String> typesOfValues = Arrays.asList("PS", "KI");
+        List<String> periods = Arrays.asList("2008-2010", "2010-2012");
+
+        assertNotEquals(0, this.client.getNumberOfInnovativeEnterprises(industrialClassifications, sizeClasses,
+                typesOfValues, periods).size());
+    }
 
 }
