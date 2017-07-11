@@ -62,7 +62,8 @@ public class EducationAndResearchActivityAfterTrainingClient extends AbstractCli
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @see #getPersonsActivitiesAfterCompletingHigherEducation(Collection, Collection)
+     * @see #getPersonsActivitiesAfterCompletingHigherEducation(Collection, Collection,
+     *      Collection, Collection, Collection, Collection)
      */
     public List<ResponseModel> getPersonsActivitiesAfterCompletingHigherEducation() {
         return getPersonsActivitiesAfterCompletingHigherEducation(null, null, null, null, null, null);
@@ -80,10 +81,10 @@ public class EducationAndResearchActivityAfterTrainingClient extends AbstractCli
      *            the activities
      * @param sexes
      *            the sexes
-     * @param ages
-     *            at exam the ages at exam
-     * @param years
-     *            of exam the years of exam
+     * @param agesAtExam
+     *            the ages at exam
+     * @param yearsOfExam
+     *            the years of exam
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
@@ -111,7 +112,8 @@ public class EducationAndResearchActivityAfterTrainingClient extends AbstractCli
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @see #getPersonsActivitiesAfterCompletingCompulsorySchool(Collection, Collection)
+     * @see #getPersonsActivitiesAfterCompletingCompulsorySchool(Collection, Collection,
+     *      Collection, Collection, Collection, Collection, Collection)
      */
     public List<ResponseModel> getPersonsActivitiesAfterCompletingCompulsorySchool() {
         return getPersonsActivitiesAfterCompletingCompulsorySchool(null, null, null, null, null, null, null);

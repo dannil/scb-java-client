@@ -57,7 +57,8 @@ public class EducationAndResearchCommunityInnovationSurveyCooperationClient exte
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @see #getNumberOfInnovativeEnterprises(Collection, Collection)
+     * @see #getNumberOfInnovativeEnterprises(Collection, Collection, Collection,
+     *      Collection)
      */
     public List<ResponseModel> getNumberOfInnovativeEnterprises() {
         return getNumberOfInnovativeEnterprises(null, null, null, null);
