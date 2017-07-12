@@ -53,7 +53,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-    <argLine>-Xmx1024m -XX:MaxPermSize=256m -Dfile.encoding=UTF-8</argLine>
+    <jacocoAgentArgLine>-Xmx1024m -XX:MaxPermSize=256m -Dfile.encoding=UTF-8</jacocoAgentArgLine>
   </properties>
 
   <dependencies>
@@ -191,7 +191,7 @@
               <!-- Sets the name of the property containing the settings 
                 for JaCoCo -->
               <!-- runtime agent. -->
-              <propertyName>argLine</propertyName>
+              <propertyName>jacocoAgentArgLine</propertyName>
             </configuration>
           </execution>
           <!-- Ensures that the code coverage report for unit tests is created -->
@@ -227,7 +227,7 @@
               <!-- Sets the name of the property containing the settings 
                 for JaCoCo -->
               <!-- runtime agent. -->
-              <propertyName>argLine</propertyName>
+              <propertyName>jacocoAgentArgLine</propertyName>
             </configuration>
           </execution>
           <!-- Ensures that the code coverage report for integration tests 
