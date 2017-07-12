@@ -53,7 +53,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-    <jacocoAgentArgLine>-Xmx1024m -XX:MaxPermSize=256m -Dfile.encoding=UTF-8</jacocoAgentArgLine>
+    <jacocoAgentArgLine>-Xmx2048m -XX:MaxPermSize=512m -Dfile.encoding=UTF-8</jacocoAgentArgLine>
   </properties>
 
   <dependencies>
