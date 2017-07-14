@@ -144,7 +144,6 @@
         <configuration>
           <forkCount>3</forkCount>
           <reuseForks>true</reuseForks>
-          <argLine>${argLine}</argLine>
         </configuration>
       </plugin>
       <plugin>
@@ -155,7 +154,6 @@
           <systemPropertyVariables>
             <testsDayLimit>7</testsDayLimit>
           </systemPropertyVariables>
-          <argLine>${argLine}</argLine>
         </configuration>
         <executions>
           <execution>
