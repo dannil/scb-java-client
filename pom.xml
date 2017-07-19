@@ -346,7 +346,7 @@
         <version>1.4.1</version>
         <executions>
           <execution>
-            <id>enforce-maven</id>
+            <id>enforce-versions</id>
             <goals>
               <goal>enforce</goal>
             </goals>
@@ -355,6 +355,9 @@
                 <requireMavenVersion>
                   <version>3.0</version>
                 </requireMavenVersion>
+                <requireJavaVersion>
+                  <version>1.7</version>
+                </requireJavaVersion>
               </rules>
               <fail>true</fail>
             </configuration>
@@ -367,10 +370,7 @@
             <configuration>
               <rules>
                 <requireReleaseDeps>
-                  <failWhenParentIsSnapshot>true</failWhenParentIsSnapshot>
-                  <excludes>
-                    <exclude>${project.groupId}:*</exclude>
-                  </excludes>
+                  <message>No snapshots allowed as release dependencies.</message>
                 </requireReleaseDeps>
               </rules>
               <fail>true</fail>
