@@ -57,6 +57,9 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
+    <project.java.source>1.7</project.java.source>
+    <project.java.target>1.7</project.java.target>
+
     <argLine>-Xmx2048m -XX:MaxPermSize=512m -Dfile.encoding=${project.build.sourceEncoding}</argLine>
   </properties>
 
@@ -319,8 +322,8 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.6.1</version>
         <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
+          <source>${project.java.source}</source>
+          <target>${project.java.target}</target>
           <encoding>${project.build.sourceEncoding}</encoding>
         </configuration>
       </plugin>
@@ -350,7 +353,7 @@
                   <version>3.0</version>
                 </requireMavenVersion>
                 <requireJavaVersion>
-                  <version>1.7</version>
+                  <version>${project.java.source}</version>
                 </requireJavaVersion>
               </rules>
               <fail>true</fail>
