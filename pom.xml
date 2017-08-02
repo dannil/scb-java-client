@@ -12,10 +12,6 @@
   <description>Java client for the SCB (Statistiska centralbyrån) API</description>
   <url>https://github.com/dannil/scb-java-client</url>
 
-  <prerequisites>
-    <maven>3.0</maven>
-  </prerequisites>
-
   <developers>
     <developer>
       <id>dannil</id>
