@@ -18,6 +18,7 @@ import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.population.name.newborn.PopulationNameNewbornClient;
+import com.github.dannil.scbjavaclient.client.population.name.registeredpersons.PopulationNameRegisteredPersonsClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 /**
@@ -34,6 +35,7 @@ public class PopulationNameClient extends AbstractContainerClient {
         super();
 
         addClient("newborn", new PopulationNameNewbornClient());
+        addClient("registeredpersons", new PopulationNameRegisteredPersonsClient());
     }
 
     /**
@@ -55,6 +57,15 @@ public class PopulationNameClient extends AbstractContainerClient {
      */
     public PopulationNameNewbornClient newborn() {
         return (PopulationNameNewbornClient) getClient("newborn");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with population name registered persons data.</p>
+     *
+     * @return a client for population name registered persons data
+     */
+    public PopulationNameRegisteredPersonsClient registeredPersons() {
+        return (PopulationNameRegisteredPersonsClient) getClient("registeredpersons");
     }
 
     @Override

@@ -12,14 +12,12 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.population.name;
+package com.github.dannil.scbjavaclient.client.population.name.registeredpersons;
 
 import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.client.population.name.newborn.PopulationNameNewbornClient;
-import com.github.dannil.scbjavaclient.client.population.name.registeredpersons.PopulationNameRegisteredPersonsClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;
@@ -27,28 +25,14 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 @RunWith(JUnit4.class)
-public class PopulationNameClientTest {
+public class PopulationNameRegisteredPersonsClientTest {
 
     @Test
     public void createWithLocaleConstructor() {
         Locale locale = new Locale("sv", "SE");
-        PopulationNameClient client = new PopulationNameClient(locale);
+        PopulationNameRegisteredPersonsClient client = new PopulationNameRegisteredPersonsClient(locale);
 
         assertEquals(locale, client.getLocale());
-    }
-
-    @Test
-    public void newbornClient() {
-        PopulationNameClient client = new PopulationNameClient();
-
-        assertEquals(client.newborn().getClass(), PopulationNameNewbornClient.class);
-    }
-    
-    @Test
-    public void registeredPersonsClient() {
-        PopulationNameClient client = new PopulationNameClient();
-
-        assertEquals(client.registeredPersons().getClass(), PopulationNameRegisteredPersonsClient.class);
     }
 
     @Test
@@ -56,9 +40,9 @@ public class PopulationNameClientTest {
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints
         Locale locale = new Locale("en", "US");
-        PopulationNameClient client = new PopulationNameClient(locale);
+        PopulationNameRegisteredPersonsClient client = new PopulationNameRegisteredPersonsClient(locale);
 
-        assertEquals(URLEndpoint.getRootUrl(locale).append("BE/BE0001/"), client.getUrl());
+        assertEquals(URLEndpoint.getRootUrl(locale).append("BE/BE0001/BE0001G/"), client.getUrl());
     }
 
 }
