@@ -50,20 +50,20 @@ public class PopulationNameNewbornClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all newborns first name data.</p>
+     * <p>Fetch all first names normally used data.</p>
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @see #getNewbornsFirstName(Collection, Collection)
+     * @see #getFirstNamesNormallyUsed(Collection, Collection)
      */
-    public List<ResponseModel> getNewbornsFirstName() {
-        return getNewbornsFirstName(null, null);
+    public List<ResponseModel> getFirstNamesNormallyUsed() {
+        return getFirstNamesNormallyUsed(null, null);
     }
 
     /**
-     * <p>Fetch all newborns first name data which match the input constraints.</p>
+     * <p>Fetch all first names normally used data which match the input constraints.</p>
      *
      * @param firstnames
      *            the firstnames
@@ -73,7 +73,7 @@ public class PopulationNameNewbornClient extends AbstractClient {
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getNewbornsFirstName(Collection<String> firstnames, Collection<Integer> years) {
+    public List<ResponseModel> getFirstNamesNormallyUsed(Collection<String> firstnames, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("Tilltalsnamn", firstnames);
         mappings.put(APIConstants.TIME_CODE, years);

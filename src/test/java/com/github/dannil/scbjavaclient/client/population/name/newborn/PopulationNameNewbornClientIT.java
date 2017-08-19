@@ -40,17 +40,17 @@ public class PopulationNameNewbornClientIT extends RemoteIntegrationTestSuite {
 
     @Test
     @Date("2017-08-19")
-    public void getNewbornsFirstName() {
-        assertNotEquals(0, this.client.getNewbornsFirstName().size());
+    public void getFirstNamesNormallyUsed() {
+        assertNotEquals(0, this.client.getFirstNamesNormallyUsed().size());
     }
 
     @Test
     @Date("2017-08-19")
-    public void getNewbornsFirstNameWithParameters() {
+    public void getFirstNamesNormallyUsedWithParameters() {
         List<String> firstnames = Arrays.asList("AdinaK");
         List<Integer> years = Arrays.asList(2002);
 
-        assertNotEquals(0, this.client.getNewbornsFirstName(firstnames, years).size());
+        assertNotEquals(0, this.client.getFirstNamesNormallyUsed(firstnames, years).size());
     }
 
 }
