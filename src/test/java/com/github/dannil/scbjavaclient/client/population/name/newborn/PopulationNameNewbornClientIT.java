@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.population.name;
+package com.github.dannil.scbjavaclient.client.population.name.newborn;
 
 import static org.junit.Assert.assertNotEquals;
 
@@ -29,28 +29,28 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(DateJUnitRunner.class)
-public class PopulationNameClientIT extends RemoteIntegrationTestSuite {
+public class PopulationNameNewbornClientIT extends RemoteIntegrationTestSuite {
 
-    private PopulationNameClient client;
+    private PopulationNameNewbornClient client;
 
     @Before
     public void setup() {
-        this.client = new SCBClient().population().name();
+        this.client = new SCBClient().population().name().newborn();
     }
 
     @Test
-    @Date("2017-01-01")
-    public void getNumberOfChildrenBornWithFirstName() {
-        assertNotEquals(0, this.client.getNumberOfChildrenBornWithFirstName().size());
+    @Date("2017-08-19")
+    public void getNewbornsFirstName() {
+        assertNotEquals(0, this.client.getNewbornsFirstName().size());
     }
 
     @Test
-    @Date("2017-01-01")
-    public void getNumberOfChildrenBornWithFirstNameWithParameters() {
+    @Date("2017-08-19")
+    public void getNewbornsFirstNameWithParameters() {
         List<String> firstnames = Arrays.asList("AdinaK");
         List<Integer> years = Arrays.asList(2002);
 
-        assertNotEquals(0, this.client.getNumberOfChildrenBornWithFirstName(firstnames, years).size());
+        assertNotEquals(0, this.client.getNewbornsFirstName(firstnames, years).size());
     }
 
 }
