@@ -14,16 +14,22 @@
 
 package com.github.dannil.scbjavaclient.client.financialmarkets.statistics.depositandlending;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles financial markets statistics deposit and lending data
  * fetching.</p>
  *
- * @since 0.4.0 TODO Maybe new version here???
+ * @since 0.5.0
  */
 public class FinancialMarketsStatisticsDepositAndLendingClient extends AbstractClient {
 
@@ -44,8 +50,48 @@ public class FinancialMarketsStatisticsDepositAndLendingClient extends AbstractC
         super(locale);
     }
 
-    TODO IMPLEMENT
-    
+    /**
+     * <p>Fetch all lending rates breakdown by remaining maturity data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getLendingRatesBreakdownByRemainingMaturity(Collection, Collection)
+     */
+    public List<ResponseModel> getLendingRatesBreakdownByRemainingMaturity() {
+        return getLendingRatesBreakdownByRemainingMaturity(null, null, null, null);
+    }
+
+    /**
+     * <p>Fetch all lending rates breakdown by remaining maturity data which match the
+     * input constraints.</p>
+     *
+     * @param referenceSectors
+     *            the reference sectors
+     * @param counterpartySectors
+     *            the counterparty sectors
+     * @param remainingMaturity
+     *            the remaining maturity
+     * @param months
+     *            the months
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getLendingRatesBreakdownByRemainingMaturity(Collection<String> referenceSectors,
+            Collection<Integer> counterpartySectors, Collection<String> remainingMaturity, Collection<String> months) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("Referenssektor", referenceSectors);
+        mappings.put("Motpartssektor", counterpartySectors);
+        mappings.put("AterstRantebtid", remainingMaturity);
+        mappings.put(APIConstants.TIME_CODE, months);
+
+        return getResponseModels("RantaT02", mappings);
+    }
+
+    // TODO IMPLEMENT
+
     @Override
     public URLEndpoint getUrl() {
         return getRootUrl().append("FM/FM5001/FM5001C/");

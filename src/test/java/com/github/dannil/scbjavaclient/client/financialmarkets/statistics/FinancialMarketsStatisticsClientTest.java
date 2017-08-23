@@ -19,6 +19,7 @@ import static org.junit.Assert.assertEquals;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.financialmarkets.statistics.claimsandliabilities.FinancialMarketsStatisticsClaimsAndLiabilitiesClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.statistics.depositandlending.FinancialMarketsStatisticsDepositAndLendingClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.statistics.statistics.FinancialMarketsStatisticsStatisticsClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
@@ -43,6 +44,13 @@ public class FinancialMarketsStatisticsClientTest {
 
         assertEquals(client.claimsAndLiabilities().getClass(),
                 FinancialMarketsStatisticsClaimsAndLiabilitiesClient.class);
+    }
+
+    @Test
+    public void depositAndLending() {
+        FinancialMarketsStatisticsClient client = new FinancialMarketsStatisticsClient();
+
+        assertEquals(client.depositAndLending().getClass(), FinancialMarketsStatisticsDepositAndLendingClient.class);
     }
 
     @Test

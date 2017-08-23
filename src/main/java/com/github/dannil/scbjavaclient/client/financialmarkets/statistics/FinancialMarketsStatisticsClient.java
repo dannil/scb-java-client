@@ -18,6 +18,7 @@ import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.statistics.claimsandliabilities.FinancialMarketsStatisticsClaimsAndLiabilitiesClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.statistics.depositandlending.FinancialMarketsStatisticsDepositAndLendingClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.statistics.statistics.FinancialMarketsStatisticsStatisticsClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
@@ -35,6 +36,7 @@ public class FinancialMarketsStatisticsClient extends AbstractContainerClient {
         super();
 
         addClient("claimsandliabilities", new FinancialMarketsStatisticsClaimsAndLiabilitiesClient());
+        addClient("depositandlending", new FinancialMarketsStatisticsDepositAndLendingClient());
         addClient("statistics", new FinancialMarketsStatisticsStatisticsClient());
     }
 
@@ -58,6 +60,16 @@ public class FinancialMarketsStatisticsClient extends AbstractContainerClient {
      */
     public FinancialMarketsStatisticsClaimsAndLiabilitiesClient claimsAndLiabilities() {
         return (FinancialMarketsStatisticsClaimsAndLiabilitiesClient) getClient("claimsandliabilities");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with financial markets statistics deposit
+     * and lending data.</p>
+     *
+     * @return a client for financial markets statistics deposit and lending data
+     */
+    public FinancialMarketsStatisticsDepositAndLendingClient depositAndLending() {
+        return (FinancialMarketsStatisticsDepositAndLendingClient) getClient("depositandlending");
     }
 
     /**
