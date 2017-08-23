@@ -20,17 +20,21 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Objects;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.TreeSet;
 
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
@@ -38,6 +42,7 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.test.runner.Date;
 import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.Files;
+import com.github.dannil.scbjavaclient.test.utility.Filters;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
@@ -200,20 +205,7 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
         List<File> files = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient/client", "*.java");
 
         // Filter out some classes from the list
-        List<Class<?>> filters = new ArrayList<>();
-        filters.add(AbstractClient.class);
-        filters.add(AbstractContainerClient.class);
-        filters.add(SCBClient.class);
-
-        Iterator<File> it = files.iterator();
-        while (it.hasNext()) {
-            File f = it.next();
-            for (Class<?> clazz : filters) {
-                if (Objects.equals(Files.fileToBinaryName(f), clazz.getName())) {
-                    it.remove();
-                }
-            }
-        }
+        Filters.files(files, AbstractClient.class, AbstractContainerClient.class, SCBClient.class);
 
         List<Class<?>> matchedClasses = new ArrayList<>();
         for (File file : files) {
@@ -257,19 +249,7 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
         List<File> files = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient/client", "*.java");
 
         // Filter out some classes from the list
-        List<Class<?>> filters = new ArrayList<>();
-        filters.add(AbstractClient.class);
-        filters.add(AbstractContainerClient.class);
-
-        Iterator<File> it = files.iterator();
-        while (it.hasNext()) {
-            File f = it.next();
-            for (Class<?> clazz : filters) {
-                if (Objects.equals(Files.fileToBinaryName(f), clazz.getName())) {
-                    it.remove();
-                }
-            }
-        }
+        Filters.files(files, AbstractClient.class, AbstractContainerClient.class);
 
         Map<String, Class<?>> register = new HashMap<>();
         Map<String, List<Class<?>>> offendingClasses = new HashMap<>();
@@ -286,7 +266,8 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
                 clazz = Class.forName(binaryName);
 
                 Method m = clazz.getDeclaredMethod("getUrl");
-                Object t = clazz.newInstance();
+                Constructor<?> c = clazz.getConstructor();
+                Object t = c.newInstance();
                 Object o = m.invoke(t);
 
                 URLEndpoint endPoint = (URLEndpoint) o;
@@ -310,6 +291,145 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
             }
         }
         assertTrue("Classes implementing same table: " + offendingClasses.toString(), offendingClasses.isEmpty());
+    }
+
+    @Test
+    @Date("now")
+    public void checkForCorrectSuperclass() {
+        String execPath = System.getProperty("user.dir");
+
+        // Find files matching the wildcard pattern
+        List<File> files = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient/client", "*.java");
+
+        // Filter out some classes from the list
+        Filters.files(files, AbstractClient.class, AbstractContainerClient.class);
+
+        // Convert paths into binary names
+        Set<String> binaryNames = new TreeSet<String>();
+        for (File file : files) {
+            String binaryName = Files.fileToBinaryName(file);
+            if (binaryName.contains("package-info")) {
+                continue;
+            } else {
+                binaryNames.add(binaryName);
+            }
+        }
+
+        List<Class<?>> matchedClasses = new ArrayList<>();
+        for (String binaryName : binaryNames) {
+            // Reflect the binary name into a concrete Java class
+            Class<?> clazz = null;
+            try {
+                clazz = Class.forName(binaryName);
+                String packageName = clazz.getPackage().getName();
+
+                // Add all binary names which starts with the current class's package
+                Set<String> children = new TreeSet<String>();
+                for (String s : binaryNames) {
+                    if (s.startsWith(packageName)) {
+                        children.add(s);
+                    }
+                }
+                // Remove the parent from the list
+                children.remove(binaryName);
+
+                Class<?> actualSuperclass = clazz.getSuperclass();
+                Class<?> supposedSuperclass = null;
+                if (children.size() > 0) {
+                    // Current class's package has sub-packages; is a container client
+                    supposedSuperclass = AbstractContainerClient.class;
+                } else {
+                    // Current class's package has no sub-packages; is a regular client
+                    supposedSuperclass = AbstractClient.class;
+                }
+                if (!actualSuperclass.equals(supposedSuperclass)) {
+                    matchedClasses.add(clazz);
+                }
+            } catch (ClassNotFoundException e) {
+                // Class could not be created; respond with an assertion that'll always
+                // fail
+                e.printStackTrace();
+                assertTrue(e.getMessage(), false);
+            }
+        }
+        assertTrue("Classes not extending correct superclass: " + matchedClasses.toString(), matchedClasses.isEmpty());
+    }
+
+    // Method which is used to check for correctly overloaded methods (with methods
+    // throwing HTTP 403 removed)
+    @Test
+    @Date("now")
+    public void checkForOverloadedMethods() {
+        String execPath = System.getProperty("user.dir");
+
+        // Find files matching the wildcard pattern
+        List<File> files = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient/client", "*.java");
+
+        // Filter out some classes from the list
+        Filters.files(files, AbstractClient.class, AbstractContainerClient.class, SCBClient.class);
+
+        Map<String, Integer> offendingMethods = new HashMap<String, Integer>();
+        for (File file : files) {
+            // Convert path into binary name
+            String binaryName = Files.fileToBinaryName(file);
+            if (binaryName.contains("package-info")) {
+                continue;
+            }
+
+            // Reflect the binary name into a concrete Java class
+            Class<?> clazz = null;
+            try {
+                clazz = Class.forName(binaryName);
+                Method[] methods = clazz.getDeclaredMethods();
+                for (int i = 0; i < methods.length; i++) {
+                    Method m = methods[i];
+                    if (m.getName().equals("getUrl") || !m.getName().startsWith("get")) {
+                        continue;
+                    }
+                    String full = clazz.getSimpleName() + "." + m.getName();
+                    if (!offendingMethods.containsKey(full)) {
+                        offendingMethods.put(full, 1);
+                    } else {
+                        offendingMethods.put(full, offendingMethods.get(full) + 1);
+                    }
+                    // Removed offending methods which occur more than once (which means
+                    // that there does exists an overload)
+                    if (offendingMethods.get(full) > 1) {
+                        offendingMethods.remove(full);
+                    }
+                }
+            } catch (ClassNotFoundException e) {
+                // Class could not be created; respond with an assertion that'll always
+                // fail
+                e.printStackTrace();
+                assertTrue(e.getMessage(), false);
+            }
+        }
+        // Filter out known methods throwing HTTP 403. Format is the same used for the
+        // entries in the offending methods collection
+        Set<String> knownMethods = new HashSet<>();
+        knownMethods.add("PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient.getPriceIndexForDomesticSupply");
+        knownMethods.add("FinancialMarketsStatisticsClaimsAndLiabilitiesClient.getClaimsAndLiabilitiesOutsideSweden");
+        knownMethods.add(
+                "FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClient.getNonResidentTradeInSwedishShares");
+        knownMethods.add("PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient.getProducerPriceIndexHomeSales");
+        knownMethods.add("PublicFinancesAnnualAccountsStatementAccountsMunicipalityClient.getCostsAndIncomes");
+        knownMethods.add("PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient.getProducerPriceIndex");
+        knownMethods.add("GoodsAndServicesForeignTradeCNClient.getImportsAndExportsOfGoods");
+        knownMethods.add("PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient.getExportPriceIndex");
+        knownMethods.add("PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient.getBalanceSheet");
+        knownMethods.add("PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient.getImportPriceIndex");
+        knownMethods.add("PublicFinancesAnnualAccountsStatementAccountsCountyClient.getIncomeAndCosts");
+        knownMethods.add("PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient.getPriceIndexForDomesticSupply");
+        knownMethods.add("PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient.getIncomeStatements");
+        for (Iterator<Entry<String, Integer>> it = offendingMethods.entrySet().iterator(); it.hasNext();) {
+            Entry<String, Integer> entry = it.next();
+            if (knownMethods.contains(entry.getKey())) {
+                it.remove();
+            }
+        }
+        assertTrue("Methods not having correct overloads: " + offendingMethods.keySet().toString(),
+                offendingMethods.isEmpty());
     }
 
 }

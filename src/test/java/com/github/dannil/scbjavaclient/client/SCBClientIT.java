@@ -68,8 +68,11 @@ public class SCBClientIT extends RemoteIntegrationTestSuite {
 
         assertTrue(response.contains("BE0101N1"));
         assertTrue(response.contains("BE0101N2"));
-        assertTrue(response.contains("Region"));
         assertTrue(response.contains("Tid"));
+        assertFalse(response.contains("Region"));
+        assertFalse(response.contains("Civilstand"));
+        assertFalse(response.contains("Alder"));
+        assertFalse(response.contains("Kon"));
     }
 
     @Test
@@ -118,11 +121,11 @@ public class SCBClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
-    @Date("2017-01-01")
+    @Date("2017-08-19")
     public void getRegionsMissingCodeInTable() {
         SCBClient client = new SCBClient();
 
-        List<String> regions = client.getRegions("BE/BE0001/BE0001T04Ar");
+        List<String> regions = client.getRegions("BE/BE0001/BE0001D/BE0001T04Ar");
 
         assertNotNull(regions);
         assertTrue(regions.isEmpty());

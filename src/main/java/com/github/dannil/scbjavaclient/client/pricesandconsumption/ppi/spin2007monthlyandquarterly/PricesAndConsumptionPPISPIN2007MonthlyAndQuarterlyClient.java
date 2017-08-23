@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
+import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
@@ -31,7 +31,7 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
  *
  * @since 0.4.0
  */
-public class PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient extends AbstractContainerClient {
+public class PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient extends AbstractClient {
 
     /**
      * <p>Default constructor.</p>
@@ -163,7 +163,7 @@ public class PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient extends Ab
         return generate(spin2007, months, "PPIM07");
     }
 
-    // Daniel 2017-06-05
+    // Daniel 2017-06-05:
     // Returns HTTP 403
     //
     // /**

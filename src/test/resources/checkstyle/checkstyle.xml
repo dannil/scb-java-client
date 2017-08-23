@@ -213,7 +213,7 @@
     <!-- Checks for Naming Conventions. -->
     <!-- See http://checkstyle.sf.net/config_naming.html -->
     <module name="AbbreviationAsWordInName">
-      <property name="allowedAbbreviationLength" value="6" />
+      <property name="allowedAbbreviationLength" value="9" />
     </module>
     <module name="AbstractClassName" />
     <module name="CatchParameterName" />

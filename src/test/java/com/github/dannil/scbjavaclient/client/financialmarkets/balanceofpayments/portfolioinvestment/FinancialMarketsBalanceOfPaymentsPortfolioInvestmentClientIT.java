@@ -90,28 +90,28 @@ public class FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClientIT extend
 
     @Test
     @Date("2017-06-11")
-    public void getNonResidentHoldingsOfSwedishInterestBearingSecuritiesData() {
-        assertNotEquals(0, this.client.getNonResidentHoldingsOfSwedishInterestBearingSecuritiesData().size());
+    public void getNonResidentHoldingsOfSwedishInterestBearingSecurities() {
+        assertNotEquals(0, this.client.getNonResidentHoldingsOfSwedishInterestBearingSecurities().size());
     }
 
     @Test
     @Date("2017-06-11")
-    public void getNonResidentHoldingsOfSwedishInterestBearingSecuritiesDataWithParametersEmptyLists() {
+    public void getNonResidentHoldingsOfSwedishInterestBearingSecuritiesWithParametersEmptyLists() {
         assertNotEquals(0,
-                this.client.getNonResidentHoldingsOfSwedishInterestBearingSecuritiesData(
+                this.client.getNonResidentHoldingsOfSwedishInterestBearingSecurities(Collections.<String>emptyList(),
                         Collections.<String>emptyList(), Collections.<String>emptyList(),
-                        Collections.<String>emptyList(), Collections.<String>emptyList()).size());
+                        Collections.<String>emptyList()).size());
     }
 
     @Test
     @Date("2017-06-11")
-    public void getNonResidentHoldingsOfSwedishInterestBearingSecuritiesDataWithParameters() {
+    public void getNonResidentHoldingsOfSwedishInterestBearingSecuritiesWithParameters() {
         List<String> holdings = Arrays.asList("Q2", "Q4");
         List<String> sectors = Arrays.asList("S", "M");
         List<String> maturities = Arrays.asList("Z1", "Z2");
         List<String> months = Arrays.asList("2013M06", "2013M08");
 
-        assertNotEquals(0, this.client.getNonResidentHoldingsOfSwedishInterestBearingSecuritiesData(holdings, sectors,
+        assertNotEquals(0, this.client.getNonResidentHoldingsOfSwedishInterestBearingSecurities(holdings, sectors,
                 maturities, months).size());
     }
 

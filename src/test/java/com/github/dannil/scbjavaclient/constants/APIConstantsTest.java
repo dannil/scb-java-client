@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.constants;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
 import java.lang.reflect.Constructor;
@@ -32,10 +31,10 @@ public class APIConstantsTest {
             throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
         Constructor<?>[] cons = APIConstants.class.getDeclaredConstructors();
         cons[0].setAccessible(true);
-        cons[0].newInstance();
+        Object o = cons[0].newInstance();
         cons[0].setAccessible(false);
 
-        assertFalse(cons[0].isAccessible());
+        assertNotNull(o);
     }
 
     @Test

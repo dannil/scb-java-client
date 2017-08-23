@@ -12,11 +12,12 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.population.name;
+package com.github.dannil.scbjavaclient.client.population.name.registeredpersons;
 
 import static org.junit.Assert.assertNotEquals;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
@@ -29,28 +30,35 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(DateJUnitRunner.class)
-public class PopulationNameClientIT extends RemoteIntegrationTestSuite {
+public class PopulationNameRegisteredPersonsClientIT extends RemoteIntegrationTestSuite {
 
-    private PopulationNameClient client;
+    private PopulationNameRegisteredPersonsClient client;
 
     @Before
     public void setup() {
-        this.client = new SCBClient().population().name();
+        this.client = new SCBClient().population().name().registeredPersons();
     }
 
     @Test
-    @Date("2017-01-01")
-    public void getNumberOfChildrenBornWithFirstName() {
-        assertNotEquals(0, this.client.getNumberOfChildrenBornWithFirstName().size());
+    @Date("2017-08-19")
+    public void getFirstNamesNormallyUsed() {
+        assertNotEquals(0, this.client.getFirstNamesNormallyUsed().size());
     }
 
     @Test
-    @Date("2017-01-01")
-    public void getNumberOfChildrenBornWithFirstNameWithParameters() {
-        List<String> firstnames = Arrays.asList("AdinaK");
-        List<Integer> years = Arrays.asList(2002);
+    @Date("2017-08-19")
+    public void getFirstNamesNormallyUsedWithParametersEmptyLists() {
+        assertNotEquals(0, this.client.getFirstNamesNormallyUsed(Collections.<String>emptyList(),
+                Collections.<Integer>emptyList()).size());
+    }
 
-        assertNotEquals(0, this.client.getNumberOfChildrenBornWithFirstName(firstnames, years).size());
+    @Test
+    @Date("2017-08-19")
+    public void getFirstNamesNormallyUsedWithParameters() {
+        List<String> firstnames = Arrays.asList("1Hugo", "1Jimmy");
+        List<Integer> years = Arrays.asList(2006);
+
+        assertNotEquals(0, this.client.getFirstNamesNormallyUsed(firstnames, years).size());
     }
 
 }
