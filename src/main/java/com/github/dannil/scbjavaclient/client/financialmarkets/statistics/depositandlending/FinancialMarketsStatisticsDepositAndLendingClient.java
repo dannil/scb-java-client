@@ -57,7 +57,8 @@ public class FinancialMarketsStatisticsDepositAndLendingClient extends AbstractC
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @see #getLendingRatesBreakdownByRemainingMaturity(Collection, Collection)
+     * @see #getLendingRatesBreakdownByRemainingMaturity(Collection, Collection,
+     *      Collection, Collection)
      */
     public List<ResponseModel> getLendingRatesBreakdownByRemainingMaturity() {
         return getLendingRatesBreakdownByRemainingMaturity(null, null, null, null);
@@ -99,7 +100,7 @@ public class FinancialMarketsStatisticsDepositAndLendingClient extends AbstractC
      *         objects
      *
      * @see #getLendingRatesToHouseholdsForHousingLoansBreakdownByRemainingMaturity(Collection,
-     *      Collection)
+     *      Collection, Collection, Collection, Collection)
      */
     public List<ResponseModel> getLendingRatesToHouseholdsForHousingLoansBreakdownByRemainingMaturity() {
         return getLendingRatesToHouseholdsForHousingLoansBreakdownByRemainingMaturity(null, null, null, null, null);
