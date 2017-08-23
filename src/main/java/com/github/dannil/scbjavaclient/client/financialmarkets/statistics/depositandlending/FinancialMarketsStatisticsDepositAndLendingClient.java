@@ -90,6 +90,52 @@ public class FinancialMarketsStatisticsDepositAndLendingClient extends AbstractC
         return getResponseModels("RantaT02", mappings);
     }
 
+    /**
+     * <p>Fetch all lending rates to households for housing loans breakdown by remaining
+     * maturity data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getLendingRatesToHouseholdsForHousingLoansBreakdownByRemainingMaturity(Collection,
+     *      Collection)
+     */
+    public List<ResponseModel> getLendingRatesToHouseholdsForHousingLoansBreakdownByRemainingMaturity() {
+        return getLendingRatesToHouseholdsForHousingLoansBreakdownByRemainingMaturity(null, null, null, null, null);
+    }
+
+    /**
+     * <p>Fetch all lending rates to households for housing loans breakdown by remaining
+     * maturity data which match the input constraints.</p>
+     *
+     * @param referenceSectors
+     *            the reference sectors
+     * @param counterpartySectors
+     *            the counterparty sectors
+     * @param agreements
+     *            the agreements
+     * @param originalRateFixations
+     *            the original rate fixations
+     * @param months
+     *            the months
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getLendingRatesToHouseholdsForHousingLoansBreakdownByRemainingMaturity(
+            Collection<String> referenceSectors, Collection<String> counterpartySectors, Collection<String> agreements,
+            Collection<String> originalRateFixations, Collection<String> months) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("Referenssektor", referenceSectors);
+        mappings.put("Motpartssektor", counterpartySectors);
+        mappings.put("Avtal", agreements);
+        mappings.put("Rantebindningstid", originalRateFixations);
+        mappings.put(APIConstants.TIME_CODE, months);
+
+        return getResponseModels("RantaT04", mappings);
+    }
+
     // TODO IMPLEMENT
 
     @Override
