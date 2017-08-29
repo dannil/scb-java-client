@@ -161,4 +161,32 @@ public class FinancialMarketsStatisticsDepositAndLendingClientIT extends RemoteI
                 agreements, purposes, months).size());
     }
 
+    @Test
+    @Date("2017-08-29")
+    public void getBanksDepositRates() {
+        assertNotEquals(0, this.client.getBanksDepositRates().size());
+    }
+
+    @Test
+    @Date("2017-08-29")
+    public void getBanksDepositRatesWithParametersEmptyLists() {
+        assertNotEquals(0,
+                this.client.getBanksDepositRates(Collections.<String>emptyList(), Collections.<Integer>emptyList(),
+                        Collections.<String>emptyList(), Collections.<Integer>emptyList(),
+                        Collections.<String>emptyList()).size());
+    }
+
+    @Test
+    @Date("2017-08-29")
+    public void getBanksDepositRatesWithParameters() {
+        List<String> referenceSectors = Arrays.asList("1.1b");
+        List<Integer> counterpartySectors = Arrays.asList(1, 2);
+        List<String> agreements = Arrays.asList("0100", "0200");
+        List<Integer> originalRateFixations = Arrays.asList(21, 211, 212);
+        List<String> months = Arrays.asList("2014M04", "2014M05");
+
+        assertNotEquals(0, this.client.getBanksDepositRates(referenceSectors, counterpartySectors, agreements,
+                originalRateFixations, months).size());
+    }
+
 }
