@@ -67,33 +67,32 @@ public class FinancialMarketsStatisticsDepositAndLendingClientIT extends RemoteI
     }
 
     @Test
-    @Date("2017-08-23")
-    public void getLendingRatesToHouseholdsForHousingLoansBreakdownByRemainingMaturity() {
-        assertNotEquals(0, this.client.getLendingRatesBreakdownByRemainingMaturity().size());
+    @Date("2017-08-29")
+    public void getLendingRatesToHouseholdsForHousingLoansBreakdownByMaturity() {
+        assertNotEquals(0, this.client.getLendingRatesToHouseholdsForHousingLoansBreakdownByMaturity().size());
     }
 
     @Test
-    @Date("2017-08-23")
-    public void getLendingRatesToHouseholdsForHousingLoansBreakdownByRemainingMaturityWithParametersEmptyLists() {
+    @Date("2017-08-29")
+    public void getLendingRatesToHouseholdsForHousingLoansBreakdownByMaturityWithParametersEmptyLists() {
         assertNotEquals(0,
-                this.client.getLendingRatesToHouseholdsForHousingLoansBreakdownByRemainingMaturity(
+                this.client.getLendingRatesToHouseholdsForHousingLoansBreakdownByMaturity(
                         Collections.<String>emptyList(), Collections.<String>emptyList(),
                         Collections.<String>emptyList(), Collections.<String>emptyList(),
                         Collections.<String>emptyList()).size());
     }
 
     @Test
-    @Date("2017-08-23")
-    public void getLendingRatesToHouseholdsForHousingLoansBreakdownByRemainingMaturityWithParameters() {
+    @Date("2017-08-29")
+    public void getLendingRatesToHouseholdsForHousingLoansBreakdownByMaturityWithParameters() {
         List<String> referenceSectors = Arrays.asList("1.");
         List<String> counterpartySectors = Arrays.asList("2c");
         List<String> agreements = Arrays.asList("0100", "0200");
         List<String> originalRateFixations = Arrays.asList("1.1.1", "1.1.3");
         List<String> months = Arrays.asList("2007M06", "2007M07");
 
-        assertNotEquals(0,
-                this.client.getLendingRatesToHouseholdsForHousingLoansBreakdownByRemainingMaturity(referenceSectors,
-                        counterpartySectors, agreements, originalRateFixations, months).size());
+        assertNotEquals(0, this.client.getLendingRatesToHouseholdsForHousingLoansBreakdownByMaturity(referenceSectors,
+                counterpartySectors, agreements, originalRateFixations, months).size());
     }
 
     //
