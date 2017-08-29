@@ -95,6 +95,44 @@ public class FinancialMarketsStatisticsDepositAndLendingClientIT extends RemoteI
                 counterpartySectors, agreements, originalRateFixations, months).size());
     }
 
+    // Daniel 2017-08-29:
+    // Throws HTTP 403
+    // @Test
+    // @Date("2017-08-29")
+    // public void
+    // getLendingRatesToHouseholdsAndNonFinancialCorporationsBreakdownByMaturity() {
+    // assertNotEquals(0,
+    // this.client.getLendingRatesToHouseholdsAndNonFinancialCorporationsBreakdownByMaturity().size());
+    // }
+
+    // Daniel 2017-08-29:
+    // Throws HTTP 403
+    // @Test
+    // @Date("2017-08-29")
+    // public void
+    // getLendingRatesToHouseholdsAndNonFinancialCorporationsBreakdownByMaturityWithParametersEmptyLists()
+    // {
+    // assertNotEquals(0,
+    // this.client.getLendingRatesToHouseholdsAndNonFinancialCorporationsBreakdownByMaturity(
+    // Collections.<String>emptyList(), Collections.<String>emptyList(),
+    // Collections.<String>emptyList(), Collections.<String>emptyList(),
+    // Collections.<String>emptyList()).size());
+    // }
+
+    @Test
+    @Date("2017-08-29")
+    public void getLendingRatesToHouseholdsAndNonFinancialCorporationsBreakdownByMaturityWithParameters() {
+        List<String> referenceSectors = Arrays.asList("1.", "1.2");
+        List<String> counterpartySectors = Arrays.asList("2.1", "2.2");
+        List<String> agreements = Arrays.asList("0100", "0200");
+        List<String> originalRateFixations = Arrays.asList("1.1.1", "1.1.3");
+        List<String> months = Arrays.asList("2013M05", "2013M06");
+
+        assertNotEquals(0,
+                this.client.getLendingRatesToHouseholdsAndNonFinancialCorporationsBreakdownByMaturity(referenceSectors,
+                        counterpartySectors, agreements, originalRateFixations, months).size());
+    }
+
     //
     // @Test
     // @Date("2017-05-30")
