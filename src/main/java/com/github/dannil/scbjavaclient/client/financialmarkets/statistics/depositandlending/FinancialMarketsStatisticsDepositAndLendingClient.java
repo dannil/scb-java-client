@@ -190,6 +190,51 @@ public class FinancialMarketsStatisticsDepositAndLendingClient extends AbstractC
         return getResponseModels("RantaT01", mappings);
     }
 
+    /**
+     * <p>Fetch all lending rates breakdown by purpose data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getLendingRatesBreakdownByPurpose(Collection, Collection, Collection,
+     *      Collection, Collection)
+     */
+    public List<ResponseModel> getLendingRatesBreakdownByPurpose() {
+        return getLendingRatesBreakdownByPurpose(null, null, null, null, null);
+    }
+
+    /**
+     * <p>Fetch all lending rates breakdown by purpose data which match the input
+     * constraints.</p>
+     *
+     * @param referenceSectors
+     *            the reference sectors
+     * @param counterpartySectors
+     *            the counterparty sectors
+     * @param agreements
+     *            the agreements
+     * @param purposes
+     *            the purposes
+     * @param months
+     *            the months
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getLendingRatesBreakdownByPurpose(Collection<String> referenceSectors,
+            Collection<String> counterpartySectors, Collection<String> agreements, Collection<String> purposes,
+            Collection<String> months) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("Referenssektor", referenceSectors);
+        mappings.put("Motpartssektor", counterpartySectors);
+        mappings.put("Avtal", agreements);
+        mappings.put("Andamal", purposes);
+        mappings.put(APIConstants.TIME_CODE, months);
+
+        return getResponseModels("RantaT03", mappings);
+    }
+
     // TODO IMPLEMENT
 
     @Override

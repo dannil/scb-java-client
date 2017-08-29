@@ -133,33 +133,32 @@ public class FinancialMarketsStatisticsDepositAndLendingClientIT extends RemoteI
                         counterpartySectors, agreements, originalRateFixations, months).size());
     }
 
-    //
-    // @Test
-    // @Date("2017-05-30")
-    // public void getConsolidatedClaimsOutsideSweden() {
-    // assertNotEquals(0, this.client.getConsolidatedClaimsOutsideSweden().size());
-    // }
-    //
-    // @Test
-    // @Date("2017-05-30")
-    // public void getConsolidatedClaimsOutsideSwedenWithParametersEmptyLists() {
-    // assertNotEquals(0,
-    // this.client.getConsolidatedClaimsOutsideSweden(Collections.<String>emptyList(),
-    // Collections.<String>emptyList(), Collections.<String>emptyList(),
-    // Collections.<String>emptyList()).size());
-    // }
-    //
-    // @Test
-    // @Date("2017-05-30")
-    // public void getConsolidatedClaimsOutsideSwedenWithParameters() {
-    // List<String> positions = Arrays.asList("1b", "2b");
-    // List<String> countryGroups = Arrays.asList("4A", "US");
-    // List<String> counterPartySectors = Arrays.asList("11b", "13");
-    // List<String> quarters = Arrays.asList("2007K2", "2007K4");
-    //
-    // assertNotEquals(0, this.client.getConsolidatedClaimsOutsideSweden(positions,
-    // countryGroups, counterPartySectors,
-    // quarters).size());
-    // }
+    @Test
+    @Date("2017-08-29")
+    public void getLendingRatesBreakdownByPurpose() {
+        assertNotEquals(0, this.client.getLendingRatesBreakdownByPurpose().size());
+    }
+
+    @Test
+    @Date("2017-08-29")
+    public void getLendingRatesBreakdownByPurposeWithParametersEmptyLists() {
+        assertNotEquals(0,
+                this.client.getLendingRatesBreakdownByPurpose(Collections.<String>emptyList(),
+                        Collections.<String>emptyList(), Collections.<String>emptyList(),
+                        Collections.<String>emptyList(), Collections.<String>emptyList()).size());
+    }
+
+    @Test
+    @Date("2017-08-29")
+    public void getLendingRatesBreakdownByPurposeWithParameters() {
+        List<String> referenceSectors = Arrays.asList("1.", "1.2");
+        List<String> counterpartySectors = Arrays.asList("2.1b", "2.2b");
+        List<String> agreements = Arrays.asList("0300", "0400");
+        List<String> purposes = Arrays.asList("1.1", "1.2");
+        List<String> months = Arrays.asList("2011M04", "2011M06");
+
+        assertNotEquals(0, this.client.getLendingRatesBreakdownByPurpose(referenceSectors, counterpartySectors,
+                agreements, purposes, months).size());
+    }
 
 }
