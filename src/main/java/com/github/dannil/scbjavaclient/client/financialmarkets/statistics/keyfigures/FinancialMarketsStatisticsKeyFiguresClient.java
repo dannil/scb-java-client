@@ -14,15 +14,21 @@
 
 package com.github.dannil.scbjavaclient.client.financialmarkets.statistics.keyfigures;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles financial markets statistics key figures data fetching.</p>
  *
- * @since 0.4.0 TODO Maybe new version here???
+ * @since 0.5.0
  */
 public class FinancialMarketsStatisticsKeyFiguresClient extends AbstractClient {
 
@@ -42,8 +48,38 @@ public class FinancialMarketsStatisticsKeyFiguresClient extends AbstractClient {
     public FinancialMarketsStatisticsKeyFiguresClient(Locale locale) {
         super(locale);
     }
-    
-    TODO IMPLEMENT
+
+    /**
+     * <p>Fetch all key figures data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getKeyFigures(Collection, Collection)
+     */
+    public List<ResponseModel> getKeyFigures() {
+        return getKeyFigures(null, null);
+    }
+
+    /**
+     * <p>Fetch all key figures data which match the input constraints.</p>
+     *
+     * @param keyFigures
+     *            the key figures
+     * @param months
+     *            the months
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getKeyFigures(Collection<String> keyFigures, Collection<String> months) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("NyckeltalSCB", keyFigures);
+        mappings.put(APIConstants.TIME_CODE, months);
+
+        return getResponseModels("NTFM5001", mappings);
+    }
 
     @Override
     public URLEndpoint getUrl() {
