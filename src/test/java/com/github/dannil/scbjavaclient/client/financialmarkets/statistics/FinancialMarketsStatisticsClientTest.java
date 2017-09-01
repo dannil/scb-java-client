@@ -21,6 +21,7 @@ import java.util.Locale;
 import com.github.dannil.scbjavaclient.client.financialmarkets.statistics.claimsandliabilities.FinancialMarketsStatisticsClaimsAndLiabilitiesClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.statistics.depositandlending.FinancialMarketsStatisticsDepositAndLendingClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.statistics.economicindicators.FinancialMarketsStatisticsEconomicIndicatorsClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.statistics.keyfigures.FinancialMarketsStatisticsKeyFiguresClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.statistics.statistics.FinancialMarketsStatisticsStatisticsClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
@@ -59,6 +60,13 @@ public class FinancialMarketsStatisticsClientTest {
         FinancialMarketsStatisticsClient client = new FinancialMarketsStatisticsClient();
 
         assertEquals(client.economicIndicators().getClass(), FinancialMarketsStatisticsEconomicIndicatorsClient.class);
+    }
+
+    @Test
+    public void keyFigures() {
+        FinancialMarketsStatisticsClient client = new FinancialMarketsStatisticsClient();
+
+        assertEquals(client.keyFigures().getClass(), FinancialMarketsStatisticsKeyFiguresClient.class);
     }
 
     @Test
