@@ -54,20 +54,4 @@ public class PopulationDemographyClientIT extends RemoteIntegrationTestSuite {
         assertNotEquals(0, this.client.getFertilityRate(regions, genders, years).size());
     }
 
-    @Test
-    @Date("2017-01-01")
-    public void getMeanAgeFirstChild() {
-        assertNotEquals(0, this.client.getMeanAgeFirstChild().size());
-    }
-
-    @Test
-    @Date("2017-01-01")
-    public void getMeanAgeFirstChildWithParameters() {
-        List<String> regions = Arrays.asList("1263");
-        List<Integer> genders = Arrays.asList(1, 2);
-        List<Integer> years = Arrays.asList(2002);
-
-        assertNotEquals(0, this.client.getMeanAgeFirstChild(regions, genders, years).size());
-    }
-
 }

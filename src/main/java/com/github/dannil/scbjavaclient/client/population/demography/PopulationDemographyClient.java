@@ -85,43 +85,6 @@ public class PopulationDemographyClient extends AbstractClient {
         return getResponseModels("FruktsamhetSumNy", mappings);
     }
 
-    /**
-     * <p>Fetch all mean age for the first child data.</p>
-     *
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     *
-     * @see #getMeanAgeFirstChild(Collection, Collection, Collection)
-     */
-    public List<ResponseModel> getMeanAgeFirstChild() {
-        return getMeanAgeFirstChild(null, null, null);
-    }
-
-    /**
-     * <p>Fetch all mean age for the first child data which match the input
-     * constraints.</p>
-     *
-     * @param regions
-     *            the regions to fetch data for
-     * @param genders
-     *            the genders to fetch data for
-     * @param years
-     *            the years to fetch data for
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     */
-    public List<ResponseModel> getMeanAgeFirstChild(Collection<String> regions, Collection<Integer> genders,
-            Collection<Integer> years) {
-        Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.REGION_CODE, regions);
-        mappings.put(APIConstants.SEX_CODE, genders);
-        mappings.put(APIConstants.TIME_CODE, years);
-
-        return getResponseModels("MedelAlderNY", mappings);
-    }
-
     @Override
     public URLEndpoint getUrl() {
         return getRootUrl().append("BE/BE0701/");
