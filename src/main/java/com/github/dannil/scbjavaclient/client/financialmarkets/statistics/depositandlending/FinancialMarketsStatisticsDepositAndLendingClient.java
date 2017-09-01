@@ -33,6 +33,12 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
  */
 public class FinancialMarketsStatisticsDepositAndLendingClient extends AbstractClient {
 
+    private static final String COUNTERPARTYSECTOR_CODE = "Motpartssektor";
+
+    private static final String ORIGINALRATEFIXATIONS_CODE = "Rantebindningstid";
+
+    private static final String REFERENCESECTOR_CODE = "Referenssektor";
+
     /**
      * <p>Default constructor.</p>
      */
@@ -83,8 +89,8 @@ public class FinancialMarketsStatisticsDepositAndLendingClient extends AbstractC
     public List<ResponseModel> getLendingRatesBreakdownByRemainingMaturity(Collection<String> referenceSectors,
             Collection<Integer> counterpartySectors, Collection<String> remainingMaturity, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Referenssektor", referenceSectors);
-        mappings.put("Motpartssektor", counterpartySectors);
+        mappings.put(REFERENCESECTOR_CODE, referenceSectors);
+        mappings.put(COUNTERPARTYSECTOR_CODE, counterpartySectors);
         mappings.put("AterstRantebtid", remainingMaturity);
         mappings.put(APIConstants.TIME_CODE, months);
 
@@ -128,10 +134,10 @@ public class FinancialMarketsStatisticsDepositAndLendingClient extends AbstractC
             Collection<String> referenceSectors, Collection<String> counterpartySectors, Collection<String> agreements,
             Collection<String> originalRateFixations, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Referenssektor", referenceSectors);
-        mappings.put("Motpartssektor", counterpartySectors);
+        mappings.put(REFERENCESECTOR_CODE, referenceSectors);
+        mappings.put(COUNTERPARTYSECTOR_CODE, counterpartySectors);
         mappings.put("Avtal", agreements);
-        mappings.put("Rantebindningstid", originalRateFixations);
+        mappings.put(ORIGINALRATEFIXATIONS_CODE, originalRateFixations);
         mappings.put(APIConstants.TIME_CODE, months);
 
         return getResponseModels("RantaT04", mappings);
@@ -181,10 +187,10 @@ public class FinancialMarketsStatisticsDepositAndLendingClient extends AbstractC
             Collection<String> referenceSectors, Collection<String> counterpartySectors, Collection<String> agreements,
             Collection<String> originalRateFixations, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Referenssektor", referenceSectors);
-        mappings.put("Motpartssektor", counterpartySectors);
+        mappings.put(REFERENCESECTOR_CODE, referenceSectors);
+        mappings.put(COUNTERPARTYSECTOR_CODE, counterpartySectors);
         mappings.put("Avtal", agreements);
-        mappings.put("Rantebindningstid", originalRateFixations);
+        mappings.put(ORIGINALRATEFIXATIONS_CODE, originalRateFixations);
         mappings.put(APIConstants.TIME_CODE, months);
 
         return getResponseModels("RantaT01", mappings);
@@ -226,8 +232,8 @@ public class FinancialMarketsStatisticsDepositAndLendingClient extends AbstractC
             Collection<String> counterpartySectors, Collection<String> agreements, Collection<String> purposes,
             Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Referenssektor", referenceSectors);
-        mappings.put("Motpartssektor", counterpartySectors);
+        mappings.put(REFERENCESECTOR_CODE, referenceSectors);
+        mappings.put(COUNTERPARTYSECTOR_CODE, counterpartySectors);
         mappings.put("Avtal", agreements);
         mappings.put("Andamal", purposes);
         mappings.put(APIConstants.TIME_CODE, months);
@@ -270,10 +276,10 @@ public class FinancialMarketsStatisticsDepositAndLendingClient extends AbstractC
             Collection<Integer> counterpartySectors, Collection<String> agreements,
             Collection<Integer> originalRateFixations, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Referenssektor", referenceSectors);
-        mappings.put("Motpartssektor", counterpartySectors);
+        mappings.put(REFERENCESECTOR_CODE, referenceSectors);
+        mappings.put(COUNTERPARTYSECTOR_CODE, counterpartySectors);
         mappings.put("Avtal", agreements);
-        mappings.put("Rantebindningstid", originalRateFixations);
+        mappings.put(ORIGINALRATEFIXATIONS_CODE, originalRateFixations);
         mappings.put(APIConstants.TIME_CODE, months);
 
         return getResponseModels("RantaT05", mappings);
