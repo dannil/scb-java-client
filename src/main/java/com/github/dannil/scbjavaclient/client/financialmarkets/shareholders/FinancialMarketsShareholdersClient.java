@@ -78,7 +78,7 @@ public class FinancialMarketsShareholdersClient extends AbstractClient {
         mappings.put(APIConstants.SECTOR_CODE, sectors);
         mappings.put(APIConstants.TIME_CODE, halfYears);
 
-        return getResponseModels("AktieAgarAr", mappings);
+        return getResponseModels("AktieAgarNAr", mappings);
     }
 
     /**
@@ -100,10 +100,10 @@ public class FinancialMarketsShareholdersClient extends AbstractClient {
      *
      * @param sectors
      *            the sectors to fetch data for
-     * @param halfYears
-     *            the half years to fetch data for
      * @param marketplaces
      *            the marketplaces to fetch data for
+     * @param halfYears
+     *            the half years to fetch data for
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
@@ -137,22 +137,22 @@ public class FinancialMarketsShareholdersClient extends AbstractClient {
      *
      * @param sectors
      *            the sectors to fetch data for
+     * @param classesOfShares
+     *            the classes of shares to fetch data for
      * @param halfYears
      *            the half years to fetch data for
-     * @param series
-     *            the series to fetch data for
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getOwnershipOfSharesBySeries(Collection<String> sectors, Collection<String> series,
-            Collection<String> halfYears) {
+    public List<ResponseModel> getOwnershipOfSharesBySeries(Collection<String> sectors,
+            Collection<String> classesOfShares, Collection<String> halfYears) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.SECTOR_CODE, sectors);
-        mappings.put("Aktieserie", series);
+        mappings.put("Aktieserie", classesOfShares);
         mappings.put(APIConstants.TIME_CODE, halfYears);
 
-        return getResponseModels("AktieAgarSerie", mappings);
+        return getResponseModels("AktieAgarSerieN", mappings);
     }
 
     /**

@@ -40,23 +40,23 @@ public class FinancialMarketsShareholdersClientIT extends RemoteIntegrationTestS
     }
 
     @Test
-    @Date("2017-03-08")
+    @Date("2017-09-07")
     public void getOwnershipOfShares() {
         assertNotEquals(0, this.client.getOwnershipOfShares().size());
     }
 
     @Test
-    @Date("2017-03-08")
+    @Date("2017-09-07")
     public void getOwnershipOfSharesWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getOwnershipOfShares(Collections.<String>emptyList(),
                 Collections.<String>emptyList()).size());
     }
 
     @Test
-    @Date("2017-03-08")
+    @Date("2017-09-07")
     public void getOwnershipOfSharesWithParameters() {
-        List<String> sectors = Arrays.asList("100", "200");
-        List<String> halfYears = Arrays.asList("2001M12", "2002M12");
+        List<String> sectors = Arrays.asList("S12", "S1254");
+        List<String> halfYears = Arrays.asList("2012M12", "2013M06");
 
         assertNotEquals(0, this.client.getOwnershipOfShares(sectors, halfYears).size());
     }
@@ -85,26 +85,26 @@ public class FinancialMarketsShareholdersClientIT extends RemoteIntegrationTestS
     }
 
     @Test
-    @Date("2017-03-08")
+    @Date("2017-09-07")
     public void getOwnershipOfSharesBySeries() {
         assertNotEquals(0, this.client.getOwnershipOfSharesBySeries().size());
     }
 
     @Test
-    @Date("2017-03-08")
+    @Date("2017-09-07")
     public void getOwnershipOfSharesBySeriesWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getOwnershipOfSharesBySeries(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test
-    @Date("2017-03-08")
+    @Date("2017-09-07")
     public void getOwnershipOfSharesBySeriesWithParameters() {
-        List<String> sectors = Arrays.asList("300", "400");
-        List<String> series = Arrays.asList("Noterad");
-        List<String> halfYears = Arrays.asList("2001M12", "2002M12");
+        List<String> sectors = Arrays.asList("S1311", "S1313");
+        List<String> classesOfShares = Arrays.asList("Noterad");
+        List<String> halfYears = Arrays.asList("2008M12", "2009M12");
 
-        assertNotEquals(0, this.client.getOwnershipOfSharesBySeries(sectors, series, halfYears).size());
+        assertNotEquals(0, this.client.getOwnershipOfSharesBySeries(sectors, classesOfShares, halfYears).size());
     }
 
     @Test
