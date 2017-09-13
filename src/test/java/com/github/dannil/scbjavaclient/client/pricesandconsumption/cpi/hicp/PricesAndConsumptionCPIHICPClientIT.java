@@ -40,99 +40,19 @@ public class PricesAndConsumptionCPIHICPClientIT extends RemoteIntegrationTestSu
     }
 
     @Test
-    @Date("2017-06-26")
-    public void getHarmonizedIndexCTAnnualChanges() {
-        assertNotEquals(0, this.client.getHarmonizedIndexCTAnnualChanges().size());
-    }
-
-    @Test
-    @Date("2017-06-26")
-    public void getHarmonizedIndexCTAnnualChangesWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getHarmonizedIndexCTAnnualChanges(Collections.<String>emptyList()).size());
-    }
-
-    @Test
-    @Date("2017-06-26")
-    public void getHarmonizedIndexCTAnnualChangesWithParameters() {
-        List<String> months = Arrays.asList("2011M02", "2011M03");
-
-        assertNotEquals(0, this.client.getHarmonizedIndexCTAnnualChanges(months).size());
-    }
-
-    @Test
-    @Date("2017-06-26")
-    public void getHarmonizedIndexCTMonthlyChanges() {
-        assertNotEquals(0, this.client.getHarmonizedIndexCTMonthlyChanges().size());
-    }
-
-    @Test
-    @Date("2017-06-26")
-    public void getHarmonizedIndexCTMonthlyChangesWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getHarmonizedIndexCTMonthlyChanges(Collections.<String>emptyList()).size());
-    }
-
-    @Test
-    @Date("2017-06-26")
-    public void getHarmonizedIndexCTMonthlyChangesWithParameters() {
-        List<String> months = Arrays.asList("2011M02", "2011M03");
-
-        assertNotEquals(0, this.client.getHarmonizedIndexCTMonthlyChanges(months).size());
-    }
-
-    @Test
-    @Date("2017-06-26")
-    public void getHarmonizedIndexCTMonths() {
-        assertNotEquals(0, this.client.getHarmonizedIndexCTMonths().size());
-    }
-
-    @Test
-    @Date("2017-06-26")
-    public void getHarmonizedIndexCTMonthsWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getHarmonizedIndexCTMonths(Collections.<String>emptyList()).size());
-    }
-
-    @Test
-    @Date("2017-06-26")
-    public void getHarmonizedIndexCTMonthsWithParameters() {
-        List<String> months = Arrays.asList("2008M02", "2008M03");
-
-        assertNotEquals(0, this.client.getHarmonizedIndexCTMonths(months).size());
-    }
-
-    @Test
-    @Date("2017-06-26")
-    public void getHarmonizedIndexCTYears() {
-        assertNotEquals(0, this.client.getHarmonizedIndexCTYears().size());
-    }
-
-    @Test
-    @Date("2017-06-26")
-    public void getHarmonizedIndexCTYearsWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getHarmonizedIndexCTYears(Collections.<Integer>emptyList()).size());
-    }
-
-    @Test
-    @Date("2017-06-26")
-    public void getHarmonizedIndexCTYearsWithParameters() {
-        List<Integer> years = Arrays.asList(2008, 2009);
-
-        assertNotEquals(0, this.client.getHarmonizedIndexCTYears(years).size());
-    }
-
-    @Test
-    @Date("2017-06-26")
+    @Date("2017-09-12")
     public void getHarmonizedIndexAnnualChanges() {
         assertNotEquals(0, this.client.getHarmonizedIndexAnnualChanges().size());
     }
 
     @Test
-    @Date("2017-06-26")
+    @Date("2017-09-12")
     public void getHarmonizedIndexAnnualChangesWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getHarmonizedIndexAnnualChanges(Collections.<String>emptyList()).size());
     }
 
     @Test
-    @Date("2017-06-26")
+    @Date("2017-09-12")
     public void getHarmonizedIndexAnnualChangesWithParameters() {
         List<String> months = Arrays.asList("1998M02", "1999M03");
 
@@ -140,19 +60,19 @@ public class PricesAndConsumptionCPIHICPClientIT extends RemoteIntegrationTestSu
     }
 
     @Test
-    @Date("2017-06-26")
+    @Date("2017-09-12")
     public void getHarmonizedIndexMonthlyChanges() {
         assertNotEquals(0, this.client.getHarmonizedIndexMonthlyChanges().size());
     }
 
     @Test
-    @Date("2017-06-26")
+    @Date("2017-09-12")
     public void getHarmonizedIndexMonthlyChangesWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getHarmonizedIndexMonthlyChanges(Collections.<String>emptyList()).size());
     }
 
     @Test
-    @Date("2017-06-26")
+    @Date("2017-09-12")
     public void getHarmonizedIndexMonthlyChangesWithParameters() {
         List<String> months = Arrays.asList("1998M02", "1999M03");
 
@@ -160,19 +80,19 @@ public class PricesAndConsumptionCPIHICPClientIT extends RemoteIntegrationTestSu
     }
 
     @Test
-    @Date("2017-06-26")
+    @Date("2017-09-12")
     public void getHarmonizedIndexMonths() {
         assertNotEquals(0, this.client.getHarmonizedIndexMonths().size());
     }
 
     @Test
-    @Date("2017-06-26")
+    @Date("2017-09-12")
     public void getHarmonizedIndexMonthsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getHarmonizedIndexMonths(Collections.<String>emptyList()).size());
     }
 
     @Test
-    @Date("2017-06-26")
+    @Date("2017-09-12")
     public void getHarmonizedIndexMonthsWithParameters() {
         List<String> months = Arrays.asList("1998M02", "1999M03");
 
@@ -180,19 +100,19 @@ public class PricesAndConsumptionCPIHICPClientIT extends RemoteIntegrationTestSu
     }
 
     @Test
-    @Date("2017-06-26")
+    @Date("2017-09-12")
     public void getHarmonizedIndexYears() {
         assertNotEquals(0, this.client.getHarmonizedIndexYears().size());
     }
 
     @Test
-    @Date("2017-06-26")
+    @Date("2017-09-12")
     public void getHarmonizedIndexYearsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getHarmonizedIndexYears(Collections.<Integer>emptyList()).size());
     }
 
     @Test
-    @Date("2017-06-26")
+    @Date("2017-09-12")
     public void getHarmonizedIndexYearsWithParameters() {
         List<Integer> years = Arrays.asList(2002, 2003);
 
