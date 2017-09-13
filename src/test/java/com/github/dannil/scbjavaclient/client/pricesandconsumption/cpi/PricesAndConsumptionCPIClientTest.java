@@ -22,7 +22,6 @@ import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.cpifct.Pr
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.economicindicators.PricesAndConsumptionCPIEconomicIndicatorsClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.hicp.PricesAndConsumptionCPIHICPClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.kpif.PricesAndConsumptionCPIKPIFClient;
-import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.kpix.PricesAndConsumptionCPIKPIXClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.pricebasicamount.PricesAndConsumptionCPIPriceBasicAmountClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
@@ -74,13 +73,6 @@ public class PricesAndConsumptionCPIClientTest {
         PricesAndConsumptionCPIClient client = new PricesAndConsumptionCPIClient();
 
         assertEquals(client.kpif().getClass(), PricesAndConsumptionCPIKPIFClient.class);
-    }
-
-    @Test
-    public void kpix() {
-        PricesAndConsumptionCPIClient client = new PricesAndConsumptionCPIClient();
-
-        assertEquals(client.kpix().getClass(), PricesAndConsumptionCPIKPIXClient.class);
     }
 
     @Test
