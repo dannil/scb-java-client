@@ -31,8 +31,7 @@ public class PricesAndConsumptionCPIKPIFClientTest {
     @Test
     public void createWithLocaleConstructor() {
         Locale locale = new Locale("sv", "SE");
-        PricesAndConsumptionCPIKPIFClient client = new PricesAndConsumptionCPIKPIFClient(
-                locale);
+        PricesAndConsumptionCPIKPIFClient client = new PricesAndConsumptionCPIKPIFClient(locale);
 
         assertEquals(locale, client.getLocale());
     }
@@ -42,8 +41,7 @@ public class PricesAndConsumptionCPIKPIFClientTest {
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints
         Locale locale = new Locale("en", "US");
-        PricesAndConsumptionCPIKPIFClient client = new PricesAndConsumptionCPIKPIFClient(
-                locale);
+        PricesAndConsumptionCPIKPIFClient client = new PricesAndConsumptionCPIKPIFClient(locale);
 
         assertEquals(URLEndpoint.getRootUrl(locale).append("PR/PR0101/PR0101G/"), client.getUrl());
     }

@@ -43,7 +43,7 @@ public class PopulationNameClientTest {
 
         assertEquals(client.newborn().getClass(), PopulationNameNewbornClient.class);
     }
-    
+
     @Test
     public void registeredPersonsClient() {
         PopulationNameClient client = new PopulationNameClient();

@@ -33,8 +33,8 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
  */
 public class FinancialMarketsStatisticsDepositAndLendingClient extends AbstractClient {
 
-	private static final String AGREEMENT_CODE = "Avtal";
-	
+    private static final String AGREEMENT_CODE = "Avtal";
+
     private static final String COUNTERPARTYSECTOR_CODE = "Motpartssektor";
 
     private static final String ORIGINALRATEFIXATIONS_CODE = "Rantebindningstid";

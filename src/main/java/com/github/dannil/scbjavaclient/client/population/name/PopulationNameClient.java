@@ -60,7 +60,8 @@ public class PopulationNameClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with population name registered persons data.</p>
+     * <p>Retrieve the client for interacting with population name registered persons
+     * data.</p>
      *
      * @return a client for population name registered persons data
      */
