@@ -33,6 +33,8 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
  */
 public class FinancialMarketsStatisticsDepositAndLendingClient extends AbstractClient {
 
+	private static final String AGREEMENT_CODE = "Avtal";
+	
     private static final String COUNTERPARTYSECTOR_CODE = "Motpartssektor";
 
     private static final String ORIGINALRATEFIXATIONS_CODE = "Rantebindningstid";
@@ -136,7 +138,7 @@ public class FinancialMarketsStatisticsDepositAndLendingClient extends AbstractC
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(REFERENCESECTOR_CODE, referenceSectors);
         mappings.put(COUNTERPARTYSECTOR_CODE, counterpartySectors);
-        mappings.put("Avtal", agreements);
+        mappings.put(AGREEMENT_CODE, agreements);
         mappings.put(ORIGINALRATEFIXATIONS_CODE, originalRateFixations);
         mappings.put(APIConstants.TIME_CODE, months);
 
@@ -189,7 +191,7 @@ public class FinancialMarketsStatisticsDepositAndLendingClient extends AbstractC
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(REFERENCESECTOR_CODE, referenceSectors);
         mappings.put(COUNTERPARTYSECTOR_CODE, counterpartySectors);
-        mappings.put("Avtal", agreements);
+        mappings.put(AGREEMENT_CODE, agreements);
         mappings.put(ORIGINALRATEFIXATIONS_CODE, originalRateFixations);
         mappings.put(APIConstants.TIME_CODE, months);
 
@@ -234,7 +236,7 @@ public class FinancialMarketsStatisticsDepositAndLendingClient extends AbstractC
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(REFERENCESECTOR_CODE, referenceSectors);
         mappings.put(COUNTERPARTYSECTOR_CODE, counterpartySectors);
-        mappings.put("Avtal", agreements);
+        mappings.put(AGREEMENT_CODE, agreements);
         mappings.put("Andamal", purposes);
         mappings.put(APIConstants.TIME_CODE, months);
 
@@ -278,7 +280,7 @@ public class FinancialMarketsStatisticsDepositAndLendingClient extends AbstractC
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(REFERENCESECTOR_CODE, referenceSectors);
         mappings.put(COUNTERPARTYSECTOR_CODE, counterpartySectors);
-        mappings.put("Avtal", agreements);
+        mappings.put(AGREEMENT_CODE, agreements);
         mappings.put(ORIGINALRATEFIXATIONS_CODE, originalRateFixations);
         mappings.put(APIConstants.TIME_CODE, months);
 
