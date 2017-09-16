@@ -32,6 +32,8 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
  */
 public class EnvironmentProtectedNatureNatureTypesClient extends AbstractClient {
 
+    private static final String NATURETYPES_CODE = "Naturtyp";
+
     /**
      * <p>Default constructor.</p>
      */
@@ -75,7 +77,7 @@ public class EnvironmentProtectedNatureNatureTypesClient extends AbstractClient 
      */
     public List<ResponseModel> getProtectedAreas(Collection<String> natureTypes, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Naturtyp", natureTypes);
+        mappings.put(NATURETYPES_CODE, natureTypes);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("NaturTypSkyddOmr", mappings);
@@ -142,7 +144,7 @@ public class EnvironmentProtectedNatureNatureTypesClient extends AbstractClient 
     public List<ResponseModel> getProtectedNatureAboveTheBoundariesForMountainForests(Collection<String> natureTypes,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Naturtyp", natureTypes);
+        mappings.put(NATURETYPES_CODE, natureTypes);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("NaturSkyddFjallSkog", mappings);
@@ -174,7 +176,7 @@ public class EnvironmentProtectedNatureNatureTypesClient extends AbstractClient 
      */
     public List<ResponseModel> getNewProtectedAreas(Collection<String> natureTypes, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Naturtyp", natureTypes);
+        mappings.put(NATURETYPES_CODE, natureTypes);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("NytillkSkyddAreal", mappings);
