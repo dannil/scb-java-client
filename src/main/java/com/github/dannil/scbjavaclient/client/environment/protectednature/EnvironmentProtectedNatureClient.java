@@ -19,6 +19,7 @@ import java.util.Locale;
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.environment.protectednature.naturetypes.EnvironmentProtectedNatureNatureTypesClient;
 import com.github.dannil.scbjavaclient.client.environment.protectednature.numberandarea.EnvironmentProtectedNatureNumberAndAreaClient;
+import com.github.dannil.scbjavaclient.client.environment.protectednature.populationandaccessibility.EnvironmentProtectedNaturePopulationAndAccessibilityClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 /**
@@ -36,6 +37,7 @@ public class EnvironmentProtectedNatureClient extends AbstractContainerClient {
 
         addClient("naturetypes", new EnvironmentProtectedNatureNatureTypesClient());
         addClient("numberandarea", new EnvironmentProtectedNatureNumberAndAreaClient());
+        addClient("populationandaccessibility", new EnvironmentProtectedNaturePopulationAndAccessibilityClient());
     }
 
     /**
@@ -68,6 +70,16 @@ public class EnvironmentProtectedNatureClient extends AbstractContainerClient {
      */
     public EnvironmentProtectedNatureNumberAndAreaClient numberAndArea() {
         return (EnvironmentProtectedNatureNumberAndAreaClient) getClient("numberandarea");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with environment protected nature population
+     * and accessibility data.</p>
+     *
+     * @return a client for environment protected nature population and accessibility data
+     */
+    public EnvironmentProtectedNaturePopulationAndAccessibilityClient populationAndAccessibility() {
+        return (EnvironmentProtectedNaturePopulationAndAccessibilityClient) getClient("populationandaccessibility");
     }
 
     // TODO More sub-clients
