@@ -148,7 +148,37 @@ public class EnvironmentProtectedNatureNatureTypesClient extends AbstractClient 
         return getResponseModels("NaturSkyddFjallSkog", mappings);
     }
 
-    // TODO More methods
+    /**
+     * <p>Fetch all new protected areas data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getNewProtectedAreas(Collection, Collection)
+     */
+    public List<ResponseModel> getNewProtectedAreas() {
+        return getNewProtectedAreas(null, null);
+    }
+
+    /**
+     * <p>Fetch all new protected areas data which match the input constraints.</p>
+     *
+     * @param natureTypes
+     *            the nature types
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getNewProtectedAreas(Collection<String> natureTypes, Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("Naturtyp", natureTypes);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("NytillkSkyddAreal", mappings);
+    }
 
     @Override
     public URLEndpoint getUrl() {
