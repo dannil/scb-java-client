@@ -113,6 +113,41 @@ public class EnvironmentProtectedNatureNatureTypesClient extends AbstractClient 
         return getResponseModels("ProdSkogsmark", mappings);
     }
 
+    /**
+     * <p>Fetch all protected nature above the boundaries for mountain forests data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getProtectedNatureAboveTheBoundariesForMountainForests(Collection,
+     *      Collection)
+     */
+    public List<ResponseModel> getProtectedNatureAboveTheBoundariesForMountainForests() {
+        return getProtectedNatureAboveTheBoundariesForMountainForests(null, null);
+    }
+
+    /**
+     * <p>Fetch all protected nature above the boundaries for mountain forests data which
+     * match the input constraints.</p>
+     *
+     * @param natureTypes
+     *            the nature types
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getProtectedNatureAboveTheBoundariesForMountainForests(Collection<String> natureTypes,
+            Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("Naturtyp", natureTypes);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("NaturSkyddFjallSkog", mappings);
+    }
+
     // TODO More methods
 
     @Override

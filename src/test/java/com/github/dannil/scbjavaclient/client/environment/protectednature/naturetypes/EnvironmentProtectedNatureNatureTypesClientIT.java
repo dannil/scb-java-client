@@ -83,4 +83,28 @@ public class EnvironmentProtectedNatureNatureTypesClientIT extends RemoteIntegra
         assertNotEquals(0, this.client.getProductiveForestLand(regions, years).size());
     }
 
+    @Test
+    @Date("2017-09-16")
+    public void getProtectedNatureAboveTheBoundariesForMountainForests() {
+        assertNotEquals(0, this.client.getProtectedNatureAboveTheBoundariesForMountainForests().size());
+    }
+
+    @Test
+    @Date("2017-09-16")
+    public void getProtectedNatureAboveTheBoundariesForMountainForestsWithParametersEmptyLists() {
+        assertNotEquals(0,
+                this.client.getProtectedNatureAboveTheBoundariesForMountainForests(Collections.<String>emptyList(),
+                        Collections.<Integer>emptyList()).size());
+    }
+
+    @Test
+    @Date("2017-09-16")
+    public void getProtectedNatureAboveTheBoundariesForMountainForestsWithParameters() {
+        List<String> natureTypes = Arrays.asList("FJTS", "FJBS");
+        List<Integer> years = Arrays.asList(2014, 2015);
+
+        assertNotEquals(0,
+                this.client.getProtectedNatureAboveTheBoundariesForMountainForests(natureTypes, years).size());
+    }
+
 }
