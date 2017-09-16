@@ -113,6 +113,42 @@ public class EnvironmentProtectedNatureNumberAndAreaClient extends AbstractClien
         return getResponseModels("Natura2000", mappings);
     }
 
+    /**
+     * <p>Fetch all protected nature data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getProtectedNature(Collection, Collection, Collection)
+     */
+    public List<ResponseModel> getProtectedNature() {
+        return getProtectedNature(null, null, null);
+    }
+
+    /**
+     * <p>Fetch all protected nature data which match the input constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param protectionTypes
+     *            the protection types
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getProtectedNature(Collection<String> regions, Collection<String> protectionTypes,
+            Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.REGION_CODE, regions);
+        mappings.put("Skyddsform", protectionTypes);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("Skyddadnatur", mappings);
+    }
+
     // TODO More methods
 
     @Override

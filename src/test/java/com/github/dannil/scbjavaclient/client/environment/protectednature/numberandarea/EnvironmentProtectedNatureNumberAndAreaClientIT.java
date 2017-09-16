@@ -83,4 +83,27 @@ public class EnvironmentProtectedNatureNumberAndAreaClientIT extends RemoteInteg
         assertNotEquals(0, this.client.getNatura2000Sites(regions, years).size());
     }
 
+    @Test
+    @Date("2017-09-16")
+    public void getProtectedNature() {
+        assertNotEquals(0, this.client.getProtectedNature().size());
+    }
+
+    @Test
+    @Date("2017-09-16")
+    public void getProtectedNatureWithParametersEmptyLists() {
+        assertNotEquals(0, this.client.getProtectedNature(Collections.<String>emptyList(),
+                Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
+    }
+
+    @Test
+    @Date("2017-09-16")
+    public void getProtectedNatureWithParameters() {
+        List<String> regions = Arrays.asList("0128", "0182");
+        List<String> protectionTypes = Arrays.asList("NVO", "SBO");
+        List<Integer> years = Arrays.asList(2011, 2012);
+
+        assertNotEquals(0, this.client.getProtectedNature(regions, protectionTypes, years).size());
+    }
+
 }
