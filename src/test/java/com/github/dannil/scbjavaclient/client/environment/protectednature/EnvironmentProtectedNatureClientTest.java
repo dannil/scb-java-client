@@ -18,6 +18,8 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
+import com.github.dannil.scbjavaclient.client.environment.protectednature.naturetypes.EnvironmentProtectedNatureNatureTypesClient;
+import com.github.dannil.scbjavaclient.client.environment.protectednature.numberandarea.EnvironmentProtectedNatureNumberAndAreaClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;
@@ -33,6 +35,20 @@ public class EnvironmentProtectedNatureClientTest {
         EnvironmentProtectedNatureClient client = new EnvironmentProtectedNatureClient(locale);
 
         assertEquals(locale, client.getLocale());
+    }
+
+    @Test
+    public void natureTypes() {
+        EnvironmentProtectedNatureClient client = new EnvironmentProtectedNatureClient();
+
+        assertEquals(client.natureTypes().getClass(), EnvironmentProtectedNatureNatureTypesClient.class);
+    }
+
+    @Test
+    public void numberAndArea() {
+        EnvironmentProtectedNatureClient client = new EnvironmentProtectedNatureClient();
+
+        assertEquals(client.numberAndArea().getClass(), EnvironmentProtectedNatureNumberAndAreaClient.class);
     }
 
     @Test
