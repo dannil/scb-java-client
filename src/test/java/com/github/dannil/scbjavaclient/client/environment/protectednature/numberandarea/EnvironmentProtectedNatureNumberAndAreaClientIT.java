@@ -172,5 +172,27 @@ public class EnvironmentProtectedNatureNumberAndAreaClientIT extends RemoteInteg
 
         assertNotEquals(0, this.client.getNaturalMonuments(regions, years).size());
     }
+    
+    @Test
+    @Date("2017-09-17")
+    public void getWaterProtectionAreas() {
+        assertNotEquals(0, this.client.getWaterProtectionAreas().size());
+    }
+
+    @Test
+    @Date("2017-09-17")
+    public void getWaterProtectionAreasWithParametersEmptyLists() {
+        assertNotEquals(0, this.client.getWaterProtectionAreas(Collections.<String>emptyList(),
+                Collections.<Integer>emptyList()).size());
+    }
+
+    @Test
+    @Date("2017-09-17")
+    public void getWaterProtectionAreasWithParameters() {
+        List<String> regions = Arrays.asList("0662", "0665");
+        List<Integer> years = Arrays.asList(2015, 2016);
+
+        assertNotEquals(0, this.client.getWaterProtectionAreas(regions, years).size());
+    }
 
 }

@@ -249,7 +249,37 @@ public class EnvironmentProtectedNatureNumberAndAreaClient extends AbstractClien
         return getResponseModels("Naturminnen", mappings);
     }
 
-    // TODO More methods
+    /**
+     * <p>Fetch all water protection areas data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getWaterProtectionAreas(Collection, Collection)
+     */
+    public List<ResponseModel> getWaterProtectionAreas() {
+        return getWaterProtectionAreas(null, null);
+    }
+
+    /**
+     * <p>Fetch all water protection areas data which match the input constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getWaterProtectionAreas(Collection<String> regions, Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.REGION_CODE, regions);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("Vattenskyddsomr", mappings);
+    }
 
     @Override
     public URLEndpoint getUrl() {
