@@ -217,7 +217,37 @@ public class EnvironmentProtectedNatureNumberAndAreaClient extends AbstractClien
         return getResponseModels("KulturRes", mappings);
     }
     
-    
+    /**
+     * <p>Fetch all natural monuments data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getNaturalMonuments(Collection, Collection)
+     */
+    public List<ResponseModel> getNaturalMonuments() {
+        return getNaturalMonuments(null, null);
+    }
+
+    /**
+     * <p>Fetch all natural monuments data which match the input constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getNaturalMonuments(Collection<String> regions, Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.REGION_CODE, regions);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("Naturminnen", mappings);
+    }
 
     // TODO More methods
 
