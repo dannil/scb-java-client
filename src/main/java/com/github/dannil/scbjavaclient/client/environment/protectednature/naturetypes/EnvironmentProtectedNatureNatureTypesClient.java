@@ -28,7 +28,7 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
 /**
  * <p>Client which handles environment protected nature nature types data fetching.</p>
  *
- * @since 0.5.0 //TODO CHANGE THIS?
+ * @since 0.5.0
  */
 public class EnvironmentProtectedNatureNatureTypesClient extends AbstractClient {
 

@@ -29,7 +29,7 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
  * <p>Client which handles environment protected nature population and accessibility data
  * fetching.</p>
  *
- * @since 0.5.0 //TODO CHANGE THIS?
+ * @since 0.5.0
  */
 public class EnvironmentProtectedNaturePopulationAndAccessibilityClient extends AbstractClient {
 

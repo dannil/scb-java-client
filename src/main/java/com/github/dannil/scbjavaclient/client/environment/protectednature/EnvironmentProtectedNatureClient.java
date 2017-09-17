@@ -25,7 +25,7 @@ import com.github.dannil.scbjavaclient.http.URLEndpoint;
 /**
  * <p>Client which handles environment protected nature data fetching.</p>
  *
- * @since 0.5.0 //TODO CHANGE THIS???
+ * @since 0.5.0
  */
 public class EnvironmentProtectedNatureClient extends AbstractContainerClient {
 
@@ -81,8 +81,6 @@ public class EnvironmentProtectedNatureClient extends AbstractContainerClient {
     public EnvironmentProtectedNaturePopulationAndAccessibilityClient populationAndAccessibility() {
         return (EnvironmentProtectedNaturePopulationAndAccessibilityClient) getClient("populationandaccessibility");
     }
-
-    // TODO More sub-clients
 
     @Override
     public URLEndpoint getUrl() {

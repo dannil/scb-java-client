@@ -28,7 +28,7 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
 /**
  * <p>Client which handles environment protected nature number and area data fetching.</p>
  *
- * @since 0.5.0 //TODO CHANGE THIS???
+ * @since 0.5.0
  */
 public class EnvironmentProtectedNatureNumberAndAreaClient extends AbstractClient {
 
@@ -148,7 +148,7 @@ public class EnvironmentProtectedNatureNumberAndAreaClient extends AbstractClien
 
         return getResponseModels("Skyddadnatur", mappings);
     }
-    
+
     /**
      * <p>Fetch all species protected by law data.</p>
      *
@@ -184,7 +184,7 @@ public class EnvironmentProtectedNatureNumberAndAreaClient extends AbstractClien
 
         return getResponseModels("DjuroVaxtart", mappings);
     }
-    
+
     /**
      * <p>Fetch all culture reserves data.</p>
      *
@@ -216,7 +216,7 @@ public class EnvironmentProtectedNatureNumberAndAreaClient extends AbstractClien
 
         return getResponseModels("KulturRes", mappings);
     }
-    
+
     /**
      * <p>Fetch all natural monuments data.</p>
      *
