@@ -148,6 +148,42 @@ public class EnvironmentProtectedNatureNumberAndAreaClient extends AbstractClien
 
         return getResponseModels("Skyddadnatur", mappings);
     }
+    
+    /**
+     * <p>Fetch all species protected by law data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getSpeciesProtectedByLaw(Collection, Collection, Collection)
+     */
+    public List<ResponseModel> getSpeciesProtectedByLaw() {
+        return getSpeciesProtectedByLaw(null, null, null);
+    }
+
+    /**
+     * <p>Fetch all species protected by law data which match the input constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param species
+     *            the species
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getSpeciesProtectedByLaw(Collection<String> regions, Collection<String> species,
+            Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.REGION_CODE, regions);
+        mappings.put("Arter", species);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("DjuroVaxtart", mappings);
+    }
 
     // TODO More methods
 
