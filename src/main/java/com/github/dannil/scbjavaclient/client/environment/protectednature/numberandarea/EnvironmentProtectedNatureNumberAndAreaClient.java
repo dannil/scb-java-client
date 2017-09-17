@@ -184,6 +184,40 @@ public class EnvironmentProtectedNatureNumberAndAreaClient extends AbstractClien
 
         return getResponseModels("DjuroVaxtart", mappings);
     }
+    
+    /**
+     * <p>Fetch all culture reserves data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getCultureReserves(Collection, Collection)
+     */
+    public List<ResponseModel> getCultureReserves() {
+        return getCultureReserves(null, null);
+    }
+
+    /**
+     * <p>Fetch all culture reserves data which match the input constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getCultureReserves(Collection<String> regions, Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.REGION_CODE, regions);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("KulturRes", mappings);
+    }
+    
+    
 
     // TODO More methods
 

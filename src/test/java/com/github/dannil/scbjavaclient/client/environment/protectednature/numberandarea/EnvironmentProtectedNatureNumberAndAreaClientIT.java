@@ -105,7 +105,7 @@ public class EnvironmentProtectedNatureNumberAndAreaClientIT extends RemoteInteg
 
         assertNotEquals(0, this.client.getProtectedNature(regions, protectionTypes, years).size());
     }
-    
+
     @Test
     @Date("2017-09-17")
     public void getSpeciesProtectedByLaw() {
@@ -127,6 +127,28 @@ public class EnvironmentProtectedNatureNumberAndAreaClientIT extends RemoteInteg
         List<Integer> years = Arrays.asList(2015, 2016);
 
         assertNotEquals(0, this.client.getSpeciesProtectedByLaw(regions, species, years).size());
+    }
+
+    @Test
+    @Date("2017-09-17")
+    public void getCultureReserves() {
+        assertNotEquals(0, this.client.getCultureReserves().size());
+    }
+
+    @Test
+    @Date("2017-09-17")
+    public void getCultureReservesWithParametersEmptyLists() {
+        assertNotEquals(0, this.client.getCultureReserves(Collections.<String>emptyList(),
+                Collections.<Integer>emptyList()).size());
+    }
+
+    @Test
+    @Date("2017-09-17")
+    public void getCultureReservesWithParameters() {
+        List<String> regions = Arrays.asList("07", "08");
+        List<Integer> years = Arrays.asList(2005, 2006);
+
+        assertNotEquals(0, this.client.getCultureReserves(regions, years).size());
     }
 
 }
