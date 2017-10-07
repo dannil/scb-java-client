@@ -40,20 +40,20 @@ public class EnvironmentSEEATaxesClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
-    @Date("2017-05-31")
+    @Date("2017-10-05")
     public void getEnvironmentalTaxesSNI2007() {
         assertNotEquals(0, this.client.getEnvironmentalTaxesSNI2007().size());
     }
 
     @Test
-    @Date("2017-05-31")
+    @Date("2017-10-05")
     public void getEnvironmentalTaxesSNI2007WithParametersEmptyLists() {
         assertNotEquals(0, this.client.getEnvironmentalTaxesSNI2007(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
-    @Date("2017-05-31")
+    @Date("2017-10-05")
     public void getEnvironmentalTaxesSNI2007WithParameters() {
         List<String> industrialClassifications = Arrays.asList("K65", "K66");
         List<Integer> years = Arrays.asList(2010, 2011);
