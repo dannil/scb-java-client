@@ -20,7 +20,6 @@ import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.environment.airpollutants.EnvironmentAirPollutantsClient;
 import com.github.dannil.scbjavaclient.client.environment.greenhousegas.EnvironmentGreenhouseGasClient;
-import com.github.dannil.scbjavaclient.client.environment.industrialwateruse.EnvironmentIndustrialWaterUseClient;
 import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.EnvironmentLandAndWaterAreaClient;
 import com.github.dannil.scbjavaclient.client.environment.landuse.EnvironmentLandUseClient;
 import com.github.dannil.scbjavaclient.client.environment.landusedfortransport.EnvironmentLandUsedForTransportClient;
@@ -57,13 +56,6 @@ public class EnvironmentClientTest {
         EnvironmentClient client = new EnvironmentClient();
 
         assertEquals(client.greenhouseGas().getClass(), EnvironmentGreenhouseGasClient.class);
-    }
-
-    @Test
-    public void industrialWaterUseClient() {
-        EnvironmentClient client = new EnvironmentClient();
-
-        assertEquals(client.industrialWaterUse().getClass(), EnvironmentIndustrialWaterUseClient.class);
     }
 
     @Test
