@@ -18,7 +18,6 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.kpif.PricesAndConsumptionCPIKPIFClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;

@@ -150,7 +150,7 @@ public class EnvironmentProtectedNatureNumberAndAreaClientIT extends RemoteInteg
 
         assertNotEquals(0, this.client.getCultureReserves(regions, years).size());
     }
-    
+
     @Test
     @Date("2017-09-17")
     public void getNaturalMonuments() {
@@ -172,7 +172,7 @@ public class EnvironmentProtectedNatureNumberAndAreaClientIT extends RemoteInteg
 
         assertNotEquals(0, this.client.getNaturalMonuments(regions, years).size());
     }
-    
+
     @Test
     @Date("2017-09-17")
     public void getWaterProtectionAreas() {
