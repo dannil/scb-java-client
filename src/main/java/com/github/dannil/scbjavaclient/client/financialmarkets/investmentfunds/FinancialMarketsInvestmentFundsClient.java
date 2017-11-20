@@ -83,7 +83,7 @@ public class FinancialMarketsInvestmentFundsClient extends AbstractClient {
         mappings.put("Sektor", sectors);
         mappings.put(APIConstants.TIME_CODE, quarters);
 
-        return getResponseModels("VPfondKv", mappings);
+        return getResponseModels("F813FondKv", mappings);
     }
 
     @Override

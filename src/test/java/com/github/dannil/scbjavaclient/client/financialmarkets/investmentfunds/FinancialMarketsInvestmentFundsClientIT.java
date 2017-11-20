@@ -40,20 +40,20 @@ public class FinancialMarketsInvestmentFundsClientIT extends RemoteIntegrationTe
     }
 
     @Test
-    @Date("2017-03-08")
+    @Date("2017-11-20")
     public void getOwnershipOfInvestmentFundShares() {
         assertNotEquals(0, this.client.getOwnershipOfInvestmentFundShares().size());
     }
 
     @Test
-    @Date("2017-03-08")
+    @Date("2017-11-20")
     public void getOwnershipOfInvestmentFundSharesWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getOwnershipOfInvestmentFundShares(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test
-    @Date("2017-03-08")
+    @Date("2017-11-20")
     public void getOwnershipOfInvestmentFundSharesWithParameters() {
         List<String> types = Arrays.asList("S12251", "S12354");
         List<String> sectors = Arrays.asList("S14", "S15");
