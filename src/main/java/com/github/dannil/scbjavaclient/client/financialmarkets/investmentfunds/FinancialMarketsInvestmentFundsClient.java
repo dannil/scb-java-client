@@ -56,7 +56,7 @@ public class FinancialMarketsInvestmentFundsClient extends AbstractClient {
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @see #getOwnershipOfInvestmentFund(Collection, Collection, Collection)
+     * @see #getOwnershipOfInvestmentFund(Collection, Collection, Collection, Collection)
      */
     public List<ResponseModel> getOwnershipOfInvestmentFund() {
         return getOwnershipOfInvestmentFund(null, null, null, null);
