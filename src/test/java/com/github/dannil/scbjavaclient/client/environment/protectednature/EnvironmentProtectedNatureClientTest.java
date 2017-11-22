@@ -20,6 +20,7 @@ import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.environment.protectednature.naturetypes.EnvironmentProtectedNatureNatureTypesClient;
 import com.github.dannil.scbjavaclient.client.environment.protectednature.numberandarea.EnvironmentProtectedNatureNumberAndAreaClient;
+import com.github.dannil.scbjavaclient.client.environment.protectednature.populationandaccessibility.EnvironmentProtectedNaturePopulationAndAccessibilityClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;
@@ -49,6 +50,13 @@ public class EnvironmentProtectedNatureClientTest {
         EnvironmentProtectedNatureClient client = new EnvironmentProtectedNatureClient();
 
         assertEquals(client.numberAndArea().getClass(), EnvironmentProtectedNatureNumberAndAreaClient.class);
+    }
+    
+    @Test
+    public void populationAndAccessibility() {
+        EnvironmentProtectedNatureClient client = new EnvironmentProtectedNatureClient();
+
+        assertEquals(client.populationAndAccessibility().getClass(), EnvironmentProtectedNaturePopulationAndAccessibilityClient.class);
     }
 
     @Test

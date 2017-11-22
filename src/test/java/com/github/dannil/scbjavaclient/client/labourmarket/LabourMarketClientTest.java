@@ -20,6 +20,7 @@ import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.labourmarket.costindex.LabourMarketCostIndexClient;
 import com.github.dannil.scbjavaclient.client.labourmarket.grosspay.LabourMarketGrossPayClient;
+import com.github.dannil.scbjavaclient.client.labourmarket.shorttermemployment.LabourMarketShortTermEmploymentClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;
@@ -49,6 +50,13 @@ public class LabourMarketClientTest {
         LabourMarketClient client = new LabourMarketClient();
 
         assertEquals(client.grossPay().getClass(), LabourMarketGrossPayClient.class);
+    }
+    
+    @Test
+    public void shortTermEmployment() {
+        LabourMarketClient client = new LabourMarketClient();
+
+        assertEquals(client.shortTermEmployment().getClass(), LabourMarketShortTermEmploymentClient.class);
     }
 
     @Test
