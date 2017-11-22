@@ -27,8 +27,9 @@ import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
-@RunWith(DateJUnitRunner.class)
+@RunWith(JUnit4.class)
 public class FinancialMarketsInvestmentFundsClientIT extends RemoteIntegrationTestSuite {
 
     private FinancialMarketsInvestmentFundsClient client;
@@ -39,26 +40,29 @@ public class FinancialMarketsInvestmentFundsClientIT extends RemoteIntegrationTe
     }
 
     @Test
-    @Date("2017-11-20")
-    public void getOwnershipOfInvestmentFundShares() {
-        assertNotEquals(0, this.client.getOwnershipOfInvestmentFundShares().size());
+    @Date("2017-11-22")
+    public void getOwnershipOfInvestmentFund() {
+        assertNotEquals(0, this.client.getOwnershipOfInvestmentFund().size());
     }
 
     @Test
-    @Date("2017-11-20")
-    public void getOwnershipOfInvestmentFundSharesWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getOwnershipOfInvestmentFundShares(Collections.<String>emptyList(),
-                Collections.<String>emptyList(), Collections.<String>emptyList()).size());
+    @Date("2017-11-22")
+    public void getOwnershipOfInvestmentFundWithParametersEmptyLists() {
+        assertNotEquals(0,
+                this.client.getOwnershipOfInvestmentFund(Collections.<String>emptyList(),
+                        Collections.<String>emptyList(), Collections.<String>emptyList(),
+                        Collections.<String>emptyList()).size());
     }
 
     @Test
-    @Date("2017-11-20")
-    public void getOwnershipOfInvestmentFundSharesWithParameters() {
+    @Date("2017-11-22")
+    public void getOwnershipOfInvestmentFundWithParameters() {
+        List<String> observations = Arrays.asList("inbet", "utbet");
         List<String> types = Arrays.asList("S12251", "S12354");
         List<String> sectors = Arrays.asList("S14", "S15");
         List<String> quarters = Arrays.asList("2011K1", "2011K2");
 
-        assertNotEquals(0, this.client.getOwnershipOfInvestmentFundShares(types, sectors, quarters).size());
+        assertNotEquals(0, this.client.getOwnershipOfInvestmentFund(observations, types, sectors, quarters).size());
     }
 
 }
