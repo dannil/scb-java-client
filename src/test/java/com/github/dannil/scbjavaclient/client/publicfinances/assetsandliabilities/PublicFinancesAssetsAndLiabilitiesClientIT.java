@@ -36,7 +36,7 @@ public class PublicFinancesAssetsAndLiabilitiesClientIT extends RemoteIntegratio
 
     @Before
     public void setup() {
-        this.client = new SCBClient().publicFinances().assetsAndLiabilities();
+        this.client = new PublicFinancesAssetsAndLiabilitiesClient();
     }
 
     @Test

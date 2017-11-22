@@ -36,7 +36,7 @@ public class PublicFinancesAnnualAccountsBalanceSheetCountyClientIT extends Remo
 
     @Before
     public void setup() {
-        this.client = new SCBClient().publicFinances().annualAccounts().balanceSheetCounty();
+        this.client = new PublicFinancesAnnualAccountsBalanceSheetCountyClient();
     }
 
     @Test

@@ -36,7 +36,7 @@ public class BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClientIT e
 
     @Before
     public void setup() {
-        this.client = new SCBClient().businessActivities().nonProfitOrganizations().primaryStatistics();
+        this.client = new BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClient();
     }
 
     @Test

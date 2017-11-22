@@ -35,7 +35,7 @@ public class PopulationStatisticsDensityClientIT extends RemoteIntegrationTestSu
 
     @Before
     public void setup() {
-        this.client = new SCBClient().population().statistics().density();
+        this.client = new PopulationStatisticsDensityClient();
     }
 
     @Test

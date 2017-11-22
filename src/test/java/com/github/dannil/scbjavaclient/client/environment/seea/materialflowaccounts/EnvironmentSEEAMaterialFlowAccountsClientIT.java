@@ -36,7 +36,7 @@ public class EnvironmentSEEAMaterialFlowAccountsClientIT extends RemoteIntegrati
 
     @Before
     public void setup() {
-        this.client = new SCBClient().environment().seea().materialFlowAccounts();
+        this.client = new EnvironmentSEEAMaterialFlowAccountsClient();
     }
 
     @Test

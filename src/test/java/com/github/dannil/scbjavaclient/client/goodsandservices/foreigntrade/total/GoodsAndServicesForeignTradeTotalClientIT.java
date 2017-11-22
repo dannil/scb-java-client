@@ -36,7 +36,7 @@ public class GoodsAndServicesForeignTradeTotalClientIT extends RemoteIntegration
 
     @Before
     public void setup() {
-        this.client = new SCBClient().goodsAndServices().foreignTrade().total();
+        this.client = new GoodsAndServicesForeignTradeTotalClient();
     }
 
     @Test

@@ -37,7 +37,7 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
 
     @Before
     public void setup() {
-        this.client = new SCBClient().financialMarkets().balanceOfPayments().internationalInvestmentPosition();
+        this.client = new FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionClient();
     }
 
     @Test

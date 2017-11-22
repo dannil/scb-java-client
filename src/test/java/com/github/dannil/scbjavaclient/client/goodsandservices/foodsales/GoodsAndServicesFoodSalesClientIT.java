@@ -36,7 +36,7 @@ public class GoodsAndServicesFoodSalesClientIT extends RemoteIntegrationTestSuit
 
     @Before
     public void setup() {
-        this.client = new SCBClient().goodsAndServices().foodSales();
+        this.client = new GoodsAndServicesFoodSalesClient();
     }
 
     @Test

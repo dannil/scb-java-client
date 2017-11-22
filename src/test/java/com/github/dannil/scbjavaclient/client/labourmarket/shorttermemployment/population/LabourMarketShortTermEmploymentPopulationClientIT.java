@@ -36,7 +36,7 @@ public class LabourMarketShortTermEmploymentPopulationClientIT extends RemoteInt
 
     @Before
     public void setup() {
-        this.client = new SCBClient().labourMarket().shortTermEmployment().population();
+        this.client = new LabourMarketShortTermEmploymentPopulationClient();
     }
 
     @Test

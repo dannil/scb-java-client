@@ -36,7 +36,7 @@ public class EnvironmentSmallerLocalitiesClientIT extends RemoteIntegrationTestS
 
     @Before
     public void setup() {
-        this.client = new SCBClient().environment().smallerLocalities();
+        this.client = new EnvironmentSmallerLocalitiesClient();
     }
 
     @Test

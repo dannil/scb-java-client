@@ -36,7 +36,7 @@ public class PublicFinancesAnnualAccountsStatementAccountsMunicipalityClientIT e
 
     @Before
     public void setup() {
-        this.client = new SCBClient().publicFinances().annualAccounts().statementAccountsMunicipality();
+        this.client = new PublicFinancesAnnualAccountsStatementAccountsMunicipalityClient();
     }
 
     // Daniel 2017-04-17: Returns HTTP 403

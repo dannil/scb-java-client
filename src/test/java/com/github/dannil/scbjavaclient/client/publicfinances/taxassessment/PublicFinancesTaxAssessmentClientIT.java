@@ -36,7 +36,7 @@ public class PublicFinancesTaxAssessmentClientIT extends RemoteIntegrationTestSu
 
     @Before
     public void setup() {
-        this.client = new SCBClient().publicFinances().taxAssessment();
+        this.client = new PublicFinancesTaxAssessmentClient();
     }
 
     @Test

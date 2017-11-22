@@ -36,7 +36,7 @@ public class FinancialMarketsStatisticsDepositAndLendingClientIT extends RemoteI
 
     @Before
     public void setup() {
-        this.client = new SCBClient().financialMarkets().statistics().depositAndLending();
+        this.client = new FinancialMarketsStatisticsDepositAndLendingClient();
     }
 
     @Test

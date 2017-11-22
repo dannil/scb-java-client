@@ -36,7 +36,7 @@ public class BusinessActivitiesIndustrialInventoriesEconomicIndicatorsClientIT e
 
     @Before
     public void setup() {
-        this.client = new SCBClient().businessActivities().industrialInventories().economicIndicators();
+        this.client = new BusinessActivitiesIndustrialInventoriesEconomicIndicatorsClient();
     }
 
     @Test

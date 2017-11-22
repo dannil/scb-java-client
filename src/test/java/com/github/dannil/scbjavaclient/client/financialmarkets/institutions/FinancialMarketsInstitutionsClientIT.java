@@ -36,7 +36,7 @@ public class FinancialMarketsInstitutionsClientIT extends RemoteIntegrationTestS
 
     @Before
     public void setup() {
-        this.client = new SCBClient().financialMarkets().institutions();
+        this.client = new FinancialMarketsInstitutionsClient();
     }
 
     @Test

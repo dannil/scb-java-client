@@ -36,7 +36,7 @@ public class EnvironmentAirPollutantsClientIT extends RemoteIntegrationTestSuite
 
     @Before
     public void setup() {
-        this.client = new SCBClient().environment().airPollutants();
+        this.client = new EnvironmentAirPollutantsClient();
     }
 
     @Test

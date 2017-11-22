@@ -36,7 +36,7 @@ public class EnergyMonthlyStatisticsClientIT extends RemoteIntegrationTestSuite 
 
     @Before
     public void setup() {
-        this.client = new SCBClient().energy().monthlyStatistics();
+        this.client = new EnergyMonthlyStatisticsClient();
     }
 
     @Test

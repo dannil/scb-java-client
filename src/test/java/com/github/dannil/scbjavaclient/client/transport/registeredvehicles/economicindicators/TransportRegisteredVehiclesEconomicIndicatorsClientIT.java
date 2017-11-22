@@ -36,7 +36,7 @@ public class TransportRegisteredVehiclesEconomicIndicatorsClientIT extends Remot
 
     @Before
     public void setup() {
-        this.client = new SCBClient().transport().registeredVehicles().economicIndicators();
+        this.client = new TransportRegisteredVehiclesEconomicIndicatorsClient();
     }
 
     @Test

@@ -36,7 +36,7 @@ public class EducationAndResearchActivityAfterTrainingClientIT extends RemoteInt
 
     @Before
     public void setup() {
-        this.client = new SCBClient().educationAndResearch().activityAfterTraining();
+        this.client = new EducationAndResearchActivityAfterTrainingClient();
     }
 
     @Test

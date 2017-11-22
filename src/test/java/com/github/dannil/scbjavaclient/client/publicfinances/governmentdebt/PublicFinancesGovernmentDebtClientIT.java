@@ -36,7 +36,7 @@ public class PublicFinancesGovernmentDebtClientIT extends RemoteIntegrationTestS
 
     @Before
     public void setup() {
-        this.client = new SCBClient().publicFinances().governmentDebt();
+        this.client = new PublicFinancesGovernmentDebtClient();
     }
 
     @Test

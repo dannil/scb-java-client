@@ -36,7 +36,7 @@ public class EducationAndResearchCommunityInnovationSurveyActivityClientIT exten
 
     @Before
     public void setup() {
-        this.client = new SCBClient().educationAndResearch().communityInnovationSurvey().activity();
+        this.client = new EducationAndResearchCommunityInnovationSurveyActivityClient();
     }
 
     @Test

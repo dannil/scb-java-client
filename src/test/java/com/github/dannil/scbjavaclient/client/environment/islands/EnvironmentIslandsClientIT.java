@@ -36,7 +36,7 @@ public class EnvironmentIslandsClientIT extends RemoteIntegrationTestSuite {
 
     @Before
     public void setup() {
-        this.client = new SCBClient().environment().islands();
+        this.client = new EnvironmentIslandsClient();
     }
 
     @Test

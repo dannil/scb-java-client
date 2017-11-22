@@ -36,7 +36,7 @@ public class EnvironmentPackagingAndPackagingWasteClientIT extends RemoteIntegra
 
     @Before
     public void setup() {
-        this.client = new SCBClient().environment().packagingAndPackagingWaste();
+        this.client = new EnvironmentPackagingAndPackagingWasteClient();
     }
 
     @Test

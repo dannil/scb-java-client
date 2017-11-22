@@ -36,7 +36,7 @@ public class EnvironmentSEEAEnergyAccountsClientIT extends RemoteIntegrationTest
 
     @Before
     public void setup() {
-        this.client = new SCBClient().environment().seea().energyAccounts();
+        this.client = new EnvironmentSEEAEnergyAccountsClient();
     }
 
     @Test

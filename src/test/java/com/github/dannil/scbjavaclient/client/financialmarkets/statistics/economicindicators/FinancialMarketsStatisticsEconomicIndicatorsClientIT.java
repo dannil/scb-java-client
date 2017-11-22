@@ -36,7 +36,7 @@ public class FinancialMarketsStatisticsEconomicIndicatorsClientIT extends Remote
 
     @Before
     public void setup() {
-        this.client = new SCBClient().financialMarkets().statistics().economicIndicators();
+        this.client = new FinancialMarketsStatisticsEconomicIndicatorsClient();
     }
 
     @Test

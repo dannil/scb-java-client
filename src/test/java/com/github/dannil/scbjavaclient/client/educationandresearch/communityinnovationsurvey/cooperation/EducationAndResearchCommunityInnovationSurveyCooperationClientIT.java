@@ -36,7 +36,7 @@ public class EducationAndResearchCommunityInnovationSurveyCooperationClientIT ex
 
     @Before
     public void setup() {
-        this.client = new SCBClient().educationAndResearch().communityInnovationSurvey().cooperation();
+        this.client = new EducationAndResearchCommunityInnovationSurveyCooperationClient();
     }
 
     @Test

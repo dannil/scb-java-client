@@ -36,7 +36,7 @@ public class PublicFinancesAnnualAccountsStatementAccountsCountyClientIT extends
 
     @Before
     public void setup() {
-        this.client = new SCBClient().publicFinances().annualAccounts().statementAccountsCounty();
+        this.client = new PublicFinancesAnnualAccountsStatementAccountsCountyClient();
     }
 
     @Test

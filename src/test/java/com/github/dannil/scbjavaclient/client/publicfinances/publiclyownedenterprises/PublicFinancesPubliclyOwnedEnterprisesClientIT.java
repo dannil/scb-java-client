@@ -36,7 +36,7 @@ public class PublicFinancesPubliclyOwnedEnterprisesClientIT extends RemoteIntegr
 
     @Before
     public void setup() {
-        this.client = new SCBClient().publicFinances().publiclyOwnedEnterprises();
+        this.client = new PublicFinancesPubliclyOwnedEnterprisesClient();
     }
 
     @Test

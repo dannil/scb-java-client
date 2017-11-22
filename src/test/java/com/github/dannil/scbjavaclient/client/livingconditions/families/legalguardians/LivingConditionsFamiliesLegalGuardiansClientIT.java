@@ -36,7 +36,7 @@ public class LivingConditionsFamiliesLegalGuardiansClientIT extends RemoteIntegr
 
     @Before
     public void setup() {
-        this.client = new SCBClient().livingConditions().families().legalGuardians();
+        this.client = new LivingConditionsFamiliesLegalGuardiansClient();
     }
 
     @Test

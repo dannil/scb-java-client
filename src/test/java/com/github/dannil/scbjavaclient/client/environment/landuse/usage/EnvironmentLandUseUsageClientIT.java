@@ -36,7 +36,7 @@ public class EnvironmentLandUseUsageClientIT extends RemoteIntegrationTestSuite 
 
     @Before
     public void setup() {
-        this.client = new SCBClient().environment().landUse().usage();
+        this.client = new EnvironmentLandUseUsageClient();
     }
 
     @Test

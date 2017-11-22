@@ -36,7 +36,7 @@ public class EnvironmentProtectedNaturePopulationAndAccessibilityClientIT extend
 
     @Before
     public void setup() {
-        this.client = new SCBClient().environment().protectedNature().populationAndAccessibility();
+        this.client = new EnvironmentProtectedNaturePopulationAndAccessibilityClient();
     }
 
     @Test

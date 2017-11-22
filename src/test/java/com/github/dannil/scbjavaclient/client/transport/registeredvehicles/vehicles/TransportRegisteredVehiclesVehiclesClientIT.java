@@ -36,7 +36,7 @@ public class TransportRegisteredVehiclesVehiclesClientIT extends RemoteIntegrati
 
     @Before
     public void setup() {
-        this.client = new SCBClient().transport().registeredVehicles().vehicles();
+        this.client = new TransportRegisteredVehiclesVehiclesClient();
     }
 
     @Test

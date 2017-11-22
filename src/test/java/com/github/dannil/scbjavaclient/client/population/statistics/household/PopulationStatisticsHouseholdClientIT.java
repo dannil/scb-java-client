@@ -36,7 +36,7 @@ public class PopulationStatisticsHouseholdClientIT extends RemoteIntegrationTest
 
     @Before
     public void setup() {
-        this.client = new SCBClient().population().statistics().household();
+        this.client = new PopulationStatisticsHouseholdClient();
     }
 
     @Test

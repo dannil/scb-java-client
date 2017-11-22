@@ -36,7 +36,7 @@ public class FinancialMarketsStatisticsClaimsAndLiabilitiesClientIT extends Remo
 
     @Before
     public void setup() {
-        this.client = new SCBClient().financialMarkets().statistics().claimsAndLiabilities();
+        this.client = new FinancialMarketsStatisticsClaimsAndLiabilitiesClient();
     }
 
     // Daniel 2017-05-30: Returns HTTP 403

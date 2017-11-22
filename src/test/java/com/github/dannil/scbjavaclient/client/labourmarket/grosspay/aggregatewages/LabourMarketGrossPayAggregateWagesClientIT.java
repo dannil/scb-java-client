@@ -36,7 +36,7 @@ public class LabourMarketGrossPayAggregateWagesClientIT extends RemoteIntegratio
 
     @Before
     public void setup() {
-        this.client = new SCBClient().labourMarket().grossPay().aggregateWages();
+        this.client = new LabourMarketGrossPayAggregateWagesClient();
     }
 
     @Test

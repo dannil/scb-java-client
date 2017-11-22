@@ -35,7 +35,7 @@ public class PopulationNameNewbornClientIT extends RemoteIntegrationTestSuite {
 
     @Before
     public void setup() {
-        this.client = new SCBClient().population().name().newborn();
+        this.client = new PopulationNameNewbornClient();
     }
 
     @Test

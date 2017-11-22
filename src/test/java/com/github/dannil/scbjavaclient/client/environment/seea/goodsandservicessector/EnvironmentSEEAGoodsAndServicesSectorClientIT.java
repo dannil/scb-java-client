@@ -36,7 +36,7 @@ public class EnvironmentSEEAGoodsAndServicesSectorClientIT extends RemoteIntegra
 
     @Before
     public void setup() {
-        this.client = new SCBClient().environment().seea().goodsAndServicesSector();
+        this.client = new EnvironmentSEEAGoodsAndServicesSectorClient();
     }
 
     @Test

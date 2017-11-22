@@ -36,7 +36,7 @@ public class EnvironmentProtectedNatureNatureTypesClientIT extends RemoteIntegra
 
     @Before
     public void setup() {
-        this.client = new SCBClient().environment().protectedNature().natureTypes();
+        this.client = new EnvironmentProtectedNatureNatureTypesClient();
     }
 
     @Test

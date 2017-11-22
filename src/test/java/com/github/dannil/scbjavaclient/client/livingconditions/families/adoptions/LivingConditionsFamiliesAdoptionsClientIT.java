@@ -36,7 +36,7 @@ public class LivingConditionsFamiliesAdoptionsClientIT extends RemoteIntegration
 
     @Before
     public void setup() {
-        this.client = new SCBClient().livingConditions().families().adoptions();
+        this.client = new LivingConditionsFamiliesAdoptionsClient();
     }
 
     @Test

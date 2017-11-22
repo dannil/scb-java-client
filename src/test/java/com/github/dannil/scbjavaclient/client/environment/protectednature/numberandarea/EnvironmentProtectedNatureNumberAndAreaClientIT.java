@@ -36,7 +36,7 @@ public class EnvironmentProtectedNatureNumberAndAreaClientIT extends RemoteInteg
 
     @Before
     public void setup() {
-        this.client = new SCBClient().environment().protectedNature().numberAndArea();
+        this.client = new EnvironmentProtectedNatureNumberAndAreaClient();
     }
 
     @Test

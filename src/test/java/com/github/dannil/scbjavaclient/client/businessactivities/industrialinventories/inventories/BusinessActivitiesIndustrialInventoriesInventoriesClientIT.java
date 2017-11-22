@@ -36,7 +36,7 @@ public class BusinessActivitiesIndustrialInventoriesInventoriesClientIT extends 
 
     @Before
     public void setup() {
-        this.client = new SCBClient().businessActivities().industrialInventories().inventories();
+        this.client = new BusinessActivitiesIndustrialInventoriesInventoriesClient();
     }
 
     @Test

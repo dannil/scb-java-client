@@ -36,7 +36,7 @@ public class FinancialMarketsBalanceOfPaymentsDirectInvestmentsClientIT extends 
 
     @Before
     public void setup() {
-        this.client = new SCBClient().financialMarkets().balanceOfPayments().directInvestments();
+        this.client = new FinancialMarketsBalanceOfPaymentsDirectInvestmentsClient();
     }
 
     @Test

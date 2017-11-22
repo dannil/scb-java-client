@@ -36,7 +36,7 @@ public class BusinessActivitiesProductionIndexClientIT extends RemoteIntegration
 
     @Before
     public void setup() {
-        this.client = new SCBClient().businessActivities().productionIndex();
+        this.client = new BusinessActivitiesProductionIndexClient();
     }
 
     @Test

@@ -36,7 +36,7 @@ public class LivingConditionsSurveysHealthClientIT extends RemoteIntegrationTest
 
     @Before
     public void setup() {
-        this.client = new SCBClient().livingConditions().surveys().health();
+        this.client = new LivingConditionsSurveysHealthClient();
     }
 
     @Test

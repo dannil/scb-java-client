@@ -36,7 +36,7 @@ public class PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClientIT extends 
 
     @Before
     public void setup() {
-        this.client = new SCBClient().pricesAndConsumption().ppi().spin2007MonthlyAndQuarterly();
+        this.client = new PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient();
     }
 
     @Test

@@ -36,7 +36,7 @@ public class PricesAndConsumptionCPICPIFCTClientIT extends RemoteIntegrationTest
 
     @Before
     public void setup() {
-        this.client = new SCBClient().pricesAndConsumption().cpi().cpifct();
+        this.client = new PricesAndConsumptionCPICPIFCTClient();
     }
 
     @Test

@@ -36,7 +36,7 @@ public class GoodsAndServicesForeignTradeEconomicIndicatorsClientIT extends Remo
 
     @Before
     public void setup() {
-        this.client = new SCBClient().goodsAndServices().foreignTrade().economicIndicators();
+        this.client = new GoodsAndServicesForeignTradeEconomicIndicatorsClient();
     }
 
     @Test

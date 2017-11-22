@@ -36,7 +36,7 @@ public class PricesAndConsumptionCCIFPIExcludingWageClientIT extends RemoteInteg
 
     @Before
     public void setup() {
-        this.client = new SCBClient().pricesAndConsumption().cci().fpiExcludingWage();
+        this.client = new PricesAndConsumptionCCIFPIExcludingWageClient();
     }
 
     @Test

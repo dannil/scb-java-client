@@ -36,7 +36,7 @@ public class EnvironmentLandAndWaterAreaClientIT extends RemoteIntegrationTestSu
 
     @Before
     public void setup() {
-        this.client = new SCBClient().environment().landAndWaterArea();
+        this.client = new EnvironmentLandAndWaterAreaClient();
     }
 
     @Test

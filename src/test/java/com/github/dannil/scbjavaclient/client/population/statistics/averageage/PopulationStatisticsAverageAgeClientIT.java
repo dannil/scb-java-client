@@ -35,7 +35,7 @@ public class PopulationStatisticsAverageAgeClientIT extends RemoteIntegrationTes
 
     @Before
     public void setup() {
-        this.client = new SCBClient().population().statistics().averageAge();
+        this.client = new PopulationStatisticsAverageAgeClient();
     }
 
     @Test

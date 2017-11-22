@@ -36,7 +36,7 @@ public class PricesAndConsumptionPPISPIN2007YearClientIT extends RemoteIntegrati
 
     @Before
     public void setup() {
-        this.client = new SCBClient().pricesAndConsumption().ppi().spin2007Year();
+        this.client = new PricesAndConsumptionPPISPIN2007YearClient();
     }
 
     @Test

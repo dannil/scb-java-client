@@ -36,7 +36,7 @@ public class EnvironmentSEEAAirEmissionsAccountsClientIT extends RemoteIntegrati
 
     @Before
     public void setup() {
-        this.client = new SCBClient().environment().seea().airEmissionsAccounts();
+        this.client = new EnvironmentSEEAAirEmissionsAccountsClient();
     }
 
     @Test

@@ -36,7 +36,7 @@ public class AgricultureLivestockClientIT extends RemoteIntegrationTestSuite {
 
     @Before
     public void setup() {
-        this.client = new SCBClient().agriculture().livestock();
+        this.client = new AgricultureLivestockClient();
     }
 
     @Test

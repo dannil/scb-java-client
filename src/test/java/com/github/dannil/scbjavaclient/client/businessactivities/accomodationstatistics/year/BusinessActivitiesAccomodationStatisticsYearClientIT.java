@@ -36,7 +36,7 @@ public class BusinessActivitiesAccomodationStatisticsYearClientIT extends Remote
 
     @Before
     public void setup() {
-        this.client = new SCBClient().businessActivities().accomodationStatistics().year();
+        this.client = new BusinessActivitiesAccomodationStatisticsYearClient();
     }
 
     @Test

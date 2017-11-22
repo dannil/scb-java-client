@@ -36,7 +36,7 @@ public class PricesAndConsumptionCPIEconomicIndicatorsClientIT extends RemoteInt
 
     @Before
     public void setup() {
-        this.client = new SCBClient().pricesAndConsumption().cpi().economicIndicators();
+        this.client = new PricesAndConsumptionCPIEconomicIndicatorsClient();
     }
 
     @Test

@@ -36,7 +36,7 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClientIT extends RemoteInt
 
     @Before
     public void setup() {
-        this.client = new SCBClient().financialMarkets().balanceOfPayments().payments();
+        this.client = new FinancialMarketsBalanceOfPaymentsPaymentsClient();
     }
 
     @Test

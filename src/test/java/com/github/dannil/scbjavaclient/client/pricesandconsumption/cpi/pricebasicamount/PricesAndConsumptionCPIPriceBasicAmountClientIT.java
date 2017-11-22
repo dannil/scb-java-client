@@ -36,7 +36,7 @@ public class PricesAndConsumptionCPIPriceBasicAmountClientIT extends RemoteInteg
 
     @Before
     public void setup() {
-        this.client = new SCBClient().pricesAndConsumption().cpi().priceBasicAmount();
+        this.client = new PricesAndConsumptionCPIPriceBasicAmountClient();
     }
 
     @Test

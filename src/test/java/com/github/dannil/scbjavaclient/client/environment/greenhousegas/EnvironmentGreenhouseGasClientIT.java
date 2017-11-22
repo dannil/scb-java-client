@@ -36,7 +36,7 @@ public class EnvironmentGreenhouseGasClientIT extends RemoteIntegrationTestSuite
 
     @Before
     public void setup() {
-        this.client = new SCBClient().environment().greenhouseGas();
+        this.client = new EnvironmentGreenhouseGasClient();
     }
 
     @Test

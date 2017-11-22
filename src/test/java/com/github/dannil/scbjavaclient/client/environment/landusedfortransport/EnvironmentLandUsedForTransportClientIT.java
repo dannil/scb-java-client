@@ -36,7 +36,7 @@ public class EnvironmentLandUsedForTransportClientIT extends RemoteIntegrationTe
 
     @Before
     public void setup() {
-        this.client = new SCBClient().environment().landUsedForTransport();
+        this.client = new EnvironmentLandUsedForTransportClient();
     }
 
     @Test

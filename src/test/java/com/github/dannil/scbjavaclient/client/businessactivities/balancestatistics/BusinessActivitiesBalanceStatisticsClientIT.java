@@ -36,7 +36,7 @@ public class BusinessActivitiesBalanceStatisticsClientIT extends RemoteIntegrati
 
     @Before
     public void setup() {
-        this.client = new SCBClient().businessActivities().balanceStatistics();
+        this.client = new BusinessActivitiesBalanceStatisticsClient();
     }
 
     @Test

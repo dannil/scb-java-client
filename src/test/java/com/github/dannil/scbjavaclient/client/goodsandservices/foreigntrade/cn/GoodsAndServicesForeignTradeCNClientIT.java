@@ -35,7 +35,7 @@ public class GoodsAndServicesForeignTradeCNClientIT extends RemoteIntegrationTes
 
     @Before
     public void setup() {
-        this.client = new SCBClient().goodsAndServices().foreignTrade().cn();
+        this.client = new GoodsAndServicesForeignTradeCNClient();
     }
 
     // Daniel 2017-04-28: Returns HTTP 403

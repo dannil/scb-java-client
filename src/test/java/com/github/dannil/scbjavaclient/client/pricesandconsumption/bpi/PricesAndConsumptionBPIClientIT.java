@@ -36,7 +36,7 @@ public class PricesAndConsumptionBPIClientIT extends RemoteIntegrationTestSuite 
 
     @Before
     public void setup() {
-        this.client = new SCBClient().pricesAndConsumption().bpi();
+        this.client = new PricesAndConsumptionBPIClient();
     }
 
     @Test

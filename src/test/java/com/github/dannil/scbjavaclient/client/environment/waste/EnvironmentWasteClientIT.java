@@ -36,7 +36,7 @@ public class EnvironmentWasteClientIT extends RemoteIntegrationTestSuite {
 
     @Before
     public void setup() {
-        this.client = new SCBClient().environment().waste();
+        this.client = new EnvironmentWasteClient();
     }
 
     @Test

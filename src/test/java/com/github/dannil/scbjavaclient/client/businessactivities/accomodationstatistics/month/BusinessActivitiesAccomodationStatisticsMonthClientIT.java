@@ -36,7 +36,7 @@ public class BusinessActivitiesAccomodationStatisticsMonthClientIT extends Remot
 
     @Before
     public void setup() {
-        this.client = new SCBClient().businessActivities().accomodationStatistics().month();
+        this.client = new BusinessActivitiesAccomodationStatisticsMonthClient();
     }
 
     @Test

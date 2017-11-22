@@ -36,7 +36,7 @@ public class PopulationNameRegisteredPersonsClientIT extends RemoteIntegrationTe
 
     @Before
     public void setup() {
-        this.client = new SCBClient().population().name().registeredPersons();
+        this.client = new PopulationNameRegisteredPersonsClient();
     }
 
     @Test

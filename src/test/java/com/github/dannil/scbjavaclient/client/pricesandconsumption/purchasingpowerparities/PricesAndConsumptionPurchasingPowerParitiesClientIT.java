@@ -36,7 +36,7 @@ public class PricesAndConsumptionPurchasingPowerParitiesClientIT extends RemoteI
 
     @Before
     public void setup() {
-        this.client = new SCBClient().pricesAndConsumption().purchasingPowerParities();
+        this.client = new PricesAndConsumptionPurchasingPowerParitiesClient();
     }
 
     @Test

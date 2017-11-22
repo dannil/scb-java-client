@@ -36,7 +36,7 @@ public class EnvironmentSEEATaxesClientIT extends RemoteIntegrationTestSuite {
 
     @Before
     public void setup() {
-        this.client = new SCBClient().environment().seea().taxes();
+        this.client = new EnvironmentSEEATaxesClient();
     }
 
     @Test

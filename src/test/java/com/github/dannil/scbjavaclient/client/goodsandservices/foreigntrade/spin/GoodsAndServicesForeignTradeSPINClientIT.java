@@ -36,7 +36,7 @@ public class GoodsAndServicesForeignTradeSPINClientIT extends RemoteIntegrationT
 
     @Before
     public void setup() {
-        this.client = new SCBClient().goodsAndServices().foreignTrade().spin();
+        this.client = new GoodsAndServicesForeignTradeSPINClient();
     }
 
     @Test

@@ -36,7 +36,7 @@ public class BusinessActivitiesDatabaseClientIT extends RemoteIntegrationTestSui
 
     @Before
     public void setup() {
-        this.client = new SCBClient().businessActivities().database();
+        this.client = new BusinessActivitiesDatabaseClient();
     }
 
     @Test

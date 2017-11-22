@@ -36,7 +36,7 @@ public class PopulationProjectionsLatestProjectionsClientIT extends RemoteIntegr
 
     @Before
     public void setup() {
-        this.client = new SCBClient().population().projections().latestProjections();
+        this.client = new PopulationProjectionsLatestProjectionsClient();
     }
 
     @Test

@@ -36,7 +36,7 @@ public class PopulationStatisticsForeignCitizensClientIT extends RemoteIntegrati
 
     @Before
     public void setup() {
-        this.client = new SCBClient().population().statistics().foreignCitizens();
+        this.client = new PopulationStatisticsForeignCitizensClient();
     }
 
     @Test
