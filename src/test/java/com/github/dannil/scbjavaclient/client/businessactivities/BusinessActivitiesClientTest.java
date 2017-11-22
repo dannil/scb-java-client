@@ -40,7 +40,7 @@ public class BusinessActivitiesClientTest {
 
         assertEquals(locale, client.getLocale());
     }
-    
+
     @Test
     public void accomodationStatisticsClient() {
         BusinessActivitiesClient client = new BusinessActivitiesClient();
@@ -61,7 +61,7 @@ public class BusinessActivitiesClientTest {
 
         assertEquals(client.database().getClass(), BusinessActivitiesDatabaseClient.class);
     }
-    
+
     @Test
     public void industrialInventoriesClient() {
         BusinessActivitiesClient client = new BusinessActivitiesClient();
