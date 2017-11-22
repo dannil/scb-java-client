@@ -18,9 +18,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Objects;
 
 import com.github.dannil.scbjavaclient.client.AbstractClientIT;
 import com.github.dannil.scbjavaclient.client.AbstractClientTest;
@@ -30,6 +28,7 @@ import com.github.dannil.scbjavaclient.client.SCBClientTest;
 import com.github.dannil.scbjavaclient.test.runner.Date;
 import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.Files;
+import com.github.dannil.scbjavaclient.test.utility.Filters;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
 import org.junit.Test;
@@ -47,12 +46,7 @@ public class TestIT {
         List<File> files = Files.find(execPath + "/src/test/java/com/github/dannil/scbjavaclient", "*IT.java");
 
         // Filter out THIS class from the list
-        Iterator<File> it = files.iterator();
-        while (it.hasNext()) {
-            if (Objects.equals(Files.fileToBinaryName(it.next()), this.getClass().getName())) {
-                it.remove();
-            }
-        }
+        Filters.files(files, this.getClass());
 
         List<Class<?>> matchedClasses = new ArrayList<Class<?>>();
         for (File file : files) {
@@ -85,21 +79,8 @@ public class TestIT {
         List<File> files = Files.find(execPath + "/src/test/java/com/github/dannil/scbjavaclient", "*.java");
 
         // Filter out some classes from the list which shouldn't be annotated
-        List<Class<?>> filters = new ArrayList<>();
-        filters.add(RemoteIntegrationTestSuite.class);
-        filters.add(Files.class);
-        filters.add(Date.class);
-        filters.add(DateJUnitRunner.class);
-
-        Iterator<File> it = files.iterator();
-        while (it.hasNext()) {
-            File f = it.next();
-            for (Class<?> clazz : filters) {
-                if (Objects.equals(Files.fileToBinaryName(f), clazz.getName())) {
-                    it.remove();
-                }
-            }
-        }
+        Filters.files(files, RemoteIntegrationTestSuite.class, Files.class, Date.class, DateJUnitRunner.class,
+                Filters.class);
 
         List<Class<?>> matchedClasses = new ArrayList<>();
         for (File file : files) {
@@ -131,22 +112,8 @@ public class TestIT {
         List<File> files = Files.find(execPath + "/src/test/java/com/github/dannil/scbjavaclient/client", "*.java");
 
         // Filter out some classes from the list
-        List<Class<?>> filters = new ArrayList<>();
-        filters.add(AbstractClientIT.class);
-        filters.add(AbstractClientTest.class);
-        filters.add(AbstractContainerClientTest.class);
-        filters.add(SCBClientIT.class);
-        filters.add(SCBClientTest.class);
-
-        Iterator<File> it = files.iterator();
-        while (it.hasNext()) {
-            File f = it.next();
-            for (Class<?> clazz : filters) {
-                if (Objects.equals(Files.fileToBinaryName(f), clazz.getName())) {
-                    it.remove();
-                }
-            }
-        }
+        Filters.files(files, AbstractClientIT.class, AbstractClientTest.class, AbstractContainerClientTest.class,
+                SCBClientIT.class, SCBClientTest.class);
 
         List<Class<?>> matchedClasses = new ArrayList<>();
         for (File file : files) {

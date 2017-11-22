@@ -20,7 +20,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
 import com.github.dannil.scbjavaclient.test.runner.Date;
 import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
@@ -36,7 +35,7 @@ public class PricesAndConsumptionPPISPIN2002MonthClientIT extends RemoteIntegrat
 
     @Before
     public void setup() {
-        this.client = new SCBClient().pricesAndConsumption().ppi().spin2002Month();
+        this.client = new PricesAndConsumptionPPISPIN2002MonthClient();
     }
 
     @Test

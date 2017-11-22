@@ -163,7 +163,7 @@ public class PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient extends Ab
         return generate(spin2007, months, "PPIM07");
     }
 
-    // Daniel 2017-06-05
+    // Daniel 2017-06-05:
     // Returns HTTP 403
     //
     // /**

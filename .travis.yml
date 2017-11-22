@@ -12,12 +12,10 @@ matrix:
   include:
   - os: linux
     dist: trusty
-    sudo: required
     jdk: oraclejdk8
 before_script:
 # If we get the same IP on concurrent builds and this triggers an error
 # on the API (rate limiting), this can be easily debugged by checking the log
-# where this command printed its result
 - curl icanhazip.com
 install:
 - true

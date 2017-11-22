@@ -20,8 +20,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.kpif.PricesAndConsumptionCPIKPIFClient;
 import com.github.dannil.scbjavaclient.test.runner.Date;
 import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
@@ -37,7 +35,7 @@ public class PricesAndConsumptionCPIKPIFClientIT extends RemoteIntegrationTestSu
 
     @Before
     public void setup() {
-        this.client = new SCBClient().pricesAndConsumption().cpi().kpif();
+        this.client = new PricesAndConsumptionCPIKPIFClient();
     }
 
     @Test

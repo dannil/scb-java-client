@@ -19,7 +19,6 @@ import static org.junit.Assert.assertNotEquals;
 import java.util.Arrays;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
 import com.github.dannil.scbjavaclient.test.runner.Date;
 import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
@@ -35,8 +34,26 @@ public class GoodsAndServicesForeignTradeCNClientIT extends RemoteIntegrationTes
 
     @Before
     public void setup() {
-        this.client = new SCBClient().goodsAndServices().foreignTrade().cn();
+        this.client = new GoodsAndServicesForeignTradeCNClient();
     }
+
+    // Daniel 2017-04-28: Returns HTTP 403
+    //
+    // @Test
+    // @Date("2017-04-28")
+    // public void getImportsAndExportsOfGoods() {
+    // assertNotEquals(0, this.client.getImportsAndExportsOfGoods().size());
+    // }
+
+    // Daniel 2017-04-28: Returns HTTP 403
+    //
+    // @Test
+    // @Date("2017-04-28")
+    // public void getImportsAndExportsOfGoodsWithParametersEmptyLists() {
+    // assertNotEquals(0,
+    // this.client.getImportsAndExportsOfGoods(Collections.<String>emptyList(),
+    // Collections.<Integer>emptyList()).size());
+    // }
 
     @Test
     @Date("2017-04-28")

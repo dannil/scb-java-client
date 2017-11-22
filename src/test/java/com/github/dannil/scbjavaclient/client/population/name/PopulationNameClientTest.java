@@ -18,6 +18,8 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
+import com.github.dannil.scbjavaclient.client.population.name.newborn.PopulationNameNewbornClient;
+import com.github.dannil.scbjavaclient.client.population.name.registeredpersons.PopulationNameRegisteredPersonsClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 import org.junit.Test;
@@ -33,6 +35,20 @@ public class PopulationNameClientTest {
         PopulationNameClient client = new PopulationNameClient(locale);
 
         assertEquals(locale, client.getLocale());
+    }
+
+    @Test
+    public void newbornClient() {
+        PopulationNameClient client = new PopulationNameClient();
+
+        assertEquals(client.newborn().getClass(), PopulationNameNewbornClient.class);
+    }
+
+    @Test
+    public void registeredPersonsClient() {
+        PopulationNameClient client = new PopulationNameClient();
+
+        assertEquals(client.registeredPersons().getClass(), PopulationNameRegisteredPersonsClient.class);
     }
 
     @Test

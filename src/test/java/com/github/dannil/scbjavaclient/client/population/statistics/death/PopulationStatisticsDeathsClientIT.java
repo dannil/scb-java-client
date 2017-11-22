@@ -20,7 +20,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.deaths.PopulationStatisticsDeathsClient;
 import com.github.dannil.scbjavaclient.test.runner.Date;
 import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
@@ -37,7 +36,7 @@ public class PopulationStatisticsDeathsClientIT extends RemoteIntegrationTestSui
 
     @Before
     public void setup() {
-        this.client = new SCBClient().population().statistics().deaths();
+        this.client = new PopulationStatisticsDeathsClient();
     }
 
     @Test

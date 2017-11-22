@@ -20,12 +20,13 @@ import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.environment.airpollutants.EnvironmentAirPollutantsClient;
 import com.github.dannil.scbjavaclient.client.environment.greenhousegas.EnvironmentGreenhouseGasClient;
-import com.github.dannil.scbjavaclient.client.environment.industrialwateruse.EnvironmentIndustrialWaterUseClient;
+import com.github.dannil.scbjavaclient.client.environment.islands.EnvironmentIslandsClient;
 import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.EnvironmentLandAndWaterAreaClient;
 import com.github.dannil.scbjavaclient.client.environment.landuse.EnvironmentLandUseClient;
 import com.github.dannil.scbjavaclient.client.environment.landusedfortransport.EnvironmentLandUsedForTransportClient;
 import com.github.dannil.scbjavaclient.client.environment.packagingandpackagingwaste.EnvironmentPackagingAndPackagingWasteClient;
 import com.github.dannil.scbjavaclient.client.environment.protectednature.EnvironmentProtectedNatureClient;
+import com.github.dannil.scbjavaclient.client.environment.seea.EnvironmentSEEAClient;
 import com.github.dannil.scbjavaclient.client.environment.smallerlocalities.EnvironmentSmallerLocalitiesClient;
 import com.github.dannil.scbjavaclient.client.environment.waste.EnvironmentWasteClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
@@ -58,12 +59,12 @@ public class EnvironmentClientTest {
 
         assertEquals(client.greenhouseGas().getClass(), EnvironmentGreenhouseGasClient.class);
     }
-
+    
     @Test
-    public void industrialWaterUseClient() {
+    public void islandsClient() {
         EnvironmentClient client = new EnvironmentClient();
 
-        assertEquals(client.industrialWaterUse().getClass(), EnvironmentIndustrialWaterUseClient.class);
+        assertEquals(client.islands().getClass(), EnvironmentIslandsClient.class);
     }
 
     @Test
@@ -99,6 +100,13 @@ public class EnvironmentClientTest {
         EnvironmentClient client = new EnvironmentClient();
 
         assertEquals(client.protectedNature().getClass(), EnvironmentProtectedNatureClient.class);
+    }
+    
+    @Test
+    public void seeaClient() {
+        EnvironmentClient client = new EnvironmentClient();
+
+        assertEquals(client.seea().getClass(), EnvironmentSEEAClient.class);
     }
 
     @Test

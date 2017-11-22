@@ -18,6 +18,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
+import com.github.dannil.scbjavaclient.client.energy.annualstatistics.EnergyAnnualStatisticsClient;
 import com.github.dannil.scbjavaclient.client.energy.monthlystatistics.EnergyMonthlyStatisticsClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
@@ -34,6 +35,13 @@ public class EnergyClientTest {
         EnergyClient client = new EnergyClient(locale);
 
         assertEquals(locale, client.getLocale());
+    }
+    
+    @Test
+    public void annualStatisticsClient() {
+        EnergyClient client = new EnergyClient();
+
+        assertEquals(client.annualStatistics().getClass(), EnergyAnnualStatisticsClient.class);
     }
 
     @Test

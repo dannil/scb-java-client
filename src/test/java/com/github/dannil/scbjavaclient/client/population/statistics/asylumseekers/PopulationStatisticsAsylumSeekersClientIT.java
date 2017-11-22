@@ -20,7 +20,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
 import com.github.dannil.scbjavaclient.test.runner.Date;
 import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
@@ -36,27 +35,27 @@ public class PopulationStatisticsAsylumSeekersClientIT extends RemoteIntegration
 
     @Before
     public void setup() {
-        this.client = new SCBClient().population().statistics().asylumSeekers();
+        this.client = new PopulationStatisticsAsylumSeekersClient();
     }
 
     @Test
-    @Date("2017-04-27")
+    @Date("2017-08-23")
     public void getAsylumSeekers() {
         assertNotEquals(0, this.client.getAsylumSeekers().size());
     }
 
     @Test
-    @Date("2017-04-27")
+    @Date("2017-08-23")
     public void getAsylumSeekersWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getAsylumSeekers(Collections.<String>emptyList(),
-                Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
+                Collections.<Integer>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
-    @Date("2017-04-27")
+    @Date("2017-08-23")
     public void getAsylumSeekersWithParameters() {
         List<String> countriesOfCitizenships = Arrays.asList("CD", "HR");
-        List<String> sexes = Arrays.asList("1", "2");
+        List<Integer> sexes = Arrays.asList(1, 2);
         List<Integer> years = Arrays.asList(2009);
 
         assertNotEquals(0, this.client.getAsylumSeekers(countriesOfCitizenships, sexes, years).size());

@@ -18,8 +18,10 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
+import com.github.dannil.scbjavaclient.client.businessactivities.accomodationstatistics.BusinessActivitiesAccomodationStatisticsClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.balancestatistics.BusinessActivitiesBalanceStatisticsClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.database.BusinessActivitiesDatabaseClient;
+import com.github.dannil.scbjavaclient.client.businessactivities.industrialinventories.BusinessActivitiesIndustrialInventoriesClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.nonprofitorganizations.BusinessActivitiesNonProfitOrganizationsClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.productionindex.BusinessActivitiesProductionIndexClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
@@ -40,6 +42,13 @@ public class BusinessActivitiesClientTest {
     }
 
     @Test
+    public void accomodationStatisticsClient() {
+        BusinessActivitiesClient client = new BusinessActivitiesClient();
+
+        assertEquals(client.accomodationStatistics().getClass(), BusinessActivitiesAccomodationStatisticsClient.class);
+    }
+
+    @Test
     public void balanceStatisticsClient() {
         BusinessActivitiesClient client = new BusinessActivitiesClient();
 
@@ -51,6 +60,13 @@ public class BusinessActivitiesClientTest {
         BusinessActivitiesClient client = new BusinessActivitiesClient();
 
         assertEquals(client.database().getClass(), BusinessActivitiesDatabaseClient.class);
+    }
+
+    @Test
+    public void industrialInventoriesClient() {
+        BusinessActivitiesClient client = new BusinessActivitiesClient();
+
+        assertEquals(client.industrialInventories().getClass(), BusinessActivitiesIndustrialInventoriesClient.class);
     }
 
     @Test

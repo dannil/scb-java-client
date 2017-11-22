@@ -18,8 +18,8 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.client.population.demography.PopulationDemographyClient;
 import com.github.dannil.scbjavaclient.client.population.name.PopulationNameClient;
+import com.github.dannil.scbjavaclient.client.population.projections.PopulationProjectionsClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.PopulationStatisticsClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
@@ -45,16 +45,8 @@ public class PopulationClientTest {
 
         // Not all sub-clients needs to be here. If one of the asserts fails it
         // automatically applies to all sub-clients since they share the same logic
-        assertEquals(client.demography().getLocale(), locale);
         assertEquals(client.name().getLocale(), locale);
         assertEquals(client.statistics().getLocale(), locale);
-    }
-
-    @Test
-    public void demographyClient() {
-        PopulationClient client = new PopulationClient();
-
-        assertEquals(client.demography().getClass(), PopulationDemographyClient.class);
     }
 
     @Test
@@ -64,6 +56,13 @@ public class PopulationClientTest {
         assertEquals(client.name().getClass(), PopulationNameClient.class);
     }
 
+    @Test
+    public void projectionsClient() {
+        PopulationClient client = new PopulationClient();
+
+        assertEquals(client.projections().getClass(), PopulationProjectionsClient.class);
+    }
+    
     @Test
     public void statisticsClient() {
         PopulationClient client = new PopulationClient();

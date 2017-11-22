@@ -20,7 +20,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
 import com.github.dannil.scbjavaclient.test.runner.Date;
 import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
@@ -36,24 +35,24 @@ public class EnvironmentSEEATaxesClientIT extends RemoteIntegrationTestSuite {
 
     @Before
     public void setup() {
-        this.client = new SCBClient().environment().seea().taxes();
+        this.client = new EnvironmentSEEATaxesClient();
     }
 
     @Test
-    @Date("2017-05-31")
+    @Date("2017-10-05")
     public void getEnvironmentalTaxesSNI2007() {
         assertNotEquals(0, this.client.getEnvironmentalTaxesSNI2007().size());
     }
 
     @Test
-    @Date("2017-05-31")
+    @Date("2017-10-05")
     public void getEnvironmentalTaxesSNI2007WithParametersEmptyLists() {
         assertNotEquals(0, this.client.getEnvironmentalTaxesSNI2007(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
-    @Date("2017-05-31")
+    @Date("2017-10-05")
     public void getEnvironmentalTaxesSNI2007WithParameters() {
         List<String> industrialClassifications = Arrays.asList("K65", "K66");
         List<Integer> years = Arrays.asList(2010, 2011);
