@@ -5,9 +5,16 @@ branches:
   - /^tag.*$/
 env:
   global:
-  - secure: c6MyQOm1B//KGDpJ+swHWgWJSp/XEkkZ61ZMeF02VxdMM2kJmGAaMfCjIrF3+0wSOKs4V/3LzjHefY4OMTBMuf/snrlXfWRRIymNIvsgEvFPKQHz/YunFdoHmhF54fgRQt+lmeKwKL/p/4PG2hdzo3e0+sufbXAAphQ01Vo8wg0=
+  - secure: S1xQE4V/lo5sxkdCPoTTq4ExkV2DR9Fu6QYQr7ORqJ11aRhyWdzADvogF4Gc9dsf+IM9XyPyj+BGvhpRaeMxTBrf0QTJ5LUd5AKdyDzZj9vcMjp+MT29iPwboI4hEC8zh6+I2YH+2xFVcvfwDVtDoDXjwHLr6q/Xsr1qzi/eOyE=
   - secure: jP+6no77LmkNsx9/ih/q4fECS+6g2HxXcmLk3kEw309BTfmi270578YTFrhquwnXO4iRWG02Uza3Qs7lwLLlUIz+KRhBgDG1kcLa/juJEqxBfJ9nsbxbBU6ncnSHvOGWh3dYXWGjXzWKACSb0tGF+BL4RG8aq4/9k60++/11zM8=
   - secure: p4TxOFCOSPKKb6g3ZlDeJFuUQ35wKKT+5Ae5ugDORnh09RXzwLRSglItEY29s2mK/lnAyn77U3HZQiXPGkLiZK5w8Vzb6KFr8NYbMvwz53MIMyZlKEg6nJEddk998vwNdB06tJ0qjmZYK1aGJx53oPm90drF00uLmOk65WRk2P0=
+addons:
+  sonarcloud:
+    organization: "dannil-github" # the key of the org you chose at step #3
+    token:
+      secure: $SONARQUBE_TOKEN # encrypted value of your token
+    branches:
+      - test/run-all-tests
 matrix:
   include:
   - os: linux
@@ -18,10 +25,8 @@ matrix:
     dist: trusty
     jdk: oraclejdk8
     script:
-    - mvn install -B -V -DtestsDayLimit=7
     # SonarQube needs to be run with at least Java 8
-    # Make sure we are on dev for running SonarQube
-    - if [[ $TRAVIS_BRANCH == test/run-all-tests ]]; then mvn sonar:sonar -Dsonar.host.url=https://sonarqube.com -Dsonar.login=$SONARQUBE_TOKEN; fi
+    - mvn install sonar:sonar -B -V -DtestsDayLimit=7
     after_success:
     - true
 install:
