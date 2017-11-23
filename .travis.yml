@@ -1,4 +1,6 @@
 language: java
+git:
+  depth: 99999
 branches:
   except:
   - gh-pages
@@ -8,13 +10,6 @@ env:
   - secure: llfqmprQ05WEQ7dQ4S03UTQNxuMYuk3nlunkBJxLXP5oFIo8gDgT0lBzG41PeG6SfrO4d2oZE9/Nrv1vqAZ/J2ZNLbviWzufpEJi44FW6tIp2YYl0jgtjDi7JTVKNoGeYfiD2vjN3jCbhIEeJO7RCDqDxHaQpnTHWPvLqOldz/w=
   - secure: jP+6no77LmkNsx9/ih/q4fECS+6g2HxXcmLk3kEw309BTfmi270578YTFrhquwnXO4iRWG02Uza3Qs7lwLLlUIz+KRhBgDG1kcLa/juJEqxBfJ9nsbxbBU6ncnSHvOGWh3dYXWGjXzWKACSb0tGF+BL4RG8aq4/9k60++/11zM8=
   - secure: p4TxOFCOSPKKb6g3ZlDeJFuUQ35wKKT+5Ae5ugDORnh09RXzwLRSglItEY29s2mK/lnAyn77U3HZQiXPGkLiZK5w8Vzb6KFr8NYbMvwz53MIMyZlKEg6nJEddk998vwNdB06tJ0qjmZYK1aGJx53oPm90drF00uLmOk65WRk2P0=
-addons:
-  sonarcloud:
-    organization: "dannil-github"
-    token:
-      secure: $SONARQUBE_TOKEN
-    branches:
-      - test/run-all-tests
 matrix:
   include:
   - os: linux
@@ -25,13 +20,14 @@ matrix:
     dist: trusty
     jdk: oraclejdk8
     script:
-    # SonarQube needs to be run with at least Java 8
-    - mvn install sonar:sonar -B -V -DtestsDayLimit=7
+    - mvn install -B -V -DtestsDayLimit=7
     after_success:
-    - true
+    # SonarQube needs to be run with at least Java 8
+    # Make sure we are on the correct branch
+    - if [[ $TRAVIS_BRANCH == test/run-all-tests ]]; then mvn sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONARQUBE_TOKEN; fi
 install:
 - true
 script:
 - mvn install -B -V -DtestsDayLimit=7
 after_success:
-- mvn com.gavinmogan:codacy-maven-plugin:coverage -DcoverageReportFile=target/site/jacoco/jacoco.xml -DprojectToken=$CODACY_PROJECT_TOKEN -DapiToken=$CODACY_API_TOKEN
+# - mvn com.gavinmogan:codacy-maven-plugin:coverage -DcoverageReportFile=target/site/jacoco/jacoco.xml -DprojectToken=$CODACY_PROJECT_TOKEN -DapiToken=$CODACY_API_TOKEN
