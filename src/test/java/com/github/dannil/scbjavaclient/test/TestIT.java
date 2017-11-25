@@ -25,6 +25,7 @@ import com.github.dannil.scbjavaclient.client.AbstractClientTest;
 import com.github.dannil.scbjavaclient.client.AbstractContainerClientTest;
 import com.github.dannil.scbjavaclient.client.SCBClientIT;
 import com.github.dannil.scbjavaclient.client.SCBClientTest;
+import com.github.dannil.scbjavaclient.format.json.IJsonTableFormat;
 import com.github.dannil.scbjavaclient.test.runner.Date;
 import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.Files;
@@ -142,6 +143,49 @@ public class TestIT {
             }
         }
         assertTrue("Classes not having matching package and client name: " + matchedClasses.toString(),
+                matchedClasses.isEmpty());
+    }
+    
+    @Test
+    @SuppressWarnings("deprecation")
+    public void checkForMatchingNameAndPackage() {
+        String execPath = System.getProperty("user.dir");
+
+        // Find files matching the wildcard pattern
+        List<File> mainFiles = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient", "*.java");
+        List<File> testFiles = Files.find(execPath + "/src/test/java/com/github/dannil/scbjavaclient", "*.java");
+
+        // Filter out some classes from the list
+        Filters.files(mainFiles, IJsonTableFormat.class);
+
+        List<Class<?>> matchedClasses = new ArrayList<>();
+        for (File fileMain : mainFiles) {
+            // Convert path into binary name
+            String binaryNameMain = Files.fileToBinaryName(fileMain);
+            if (binaryNameMain.contains("package-info")) {
+                continue;
+            }
+
+            // Reflect the binary name into a concrete Java class
+            Class<?> clazz = null;
+            try {
+                clazz = Class.forName(binaryNameMain);
+                matchedClasses.add(clazz);
+            } catch (ClassNotFoundException e) {
+                // Class could not be created; respond with an assertion that'll always
+                // fail
+                e.printStackTrace();
+                assertTrue(e.getMessage(), false);
+            }
+
+            for (File fileTest : testFiles) {
+                String binaryNameTest = Files.fileToBinaryName(fileTest);
+                if (binaryNameTest.startsWith(binaryNameMain)) {
+                    matchedClasses.remove(clazz);
+                }
+            }
+        }
+        assertTrue("Test classes not having matching name and/or package : " + matchedClasses.toString(),
                 matchedClasses.isEmpty());
     }
 
