@@ -27,7 +27,6 @@ import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
 
 @RunWith(DateJUnitRunner.class)
 public class FinancialMarketsInvestmentFundsClientIT extends RemoteIntegrationTestSuite {
