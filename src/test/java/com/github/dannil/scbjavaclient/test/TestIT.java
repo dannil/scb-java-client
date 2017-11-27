@@ -20,14 +20,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.AbstractClientIT;
-import com.github.dannil.scbjavaclient.client.AbstractClientTest;
-import com.github.dannil.scbjavaclient.client.AbstractContainerClientTest;
-import com.github.dannil.scbjavaclient.client.SCBClientIT;
-import com.github.dannil.scbjavaclient.client.SCBClientTest;
-import com.github.dannil.scbjavaclient.format.json.IJsonTableFormat;
-import com.github.dannil.scbjavaclient.test.runner.Date;
-import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
 import com.github.dannil.scbjavaclient.test.utility.Files;
 import com.github.dannil.scbjavaclient.test.utility.Filters;
 import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
@@ -36,7 +28,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-@SuppressWarnings("deprecation")
 @RunWith(JUnit4.class)
 public class TestIT {
 
@@ -81,8 +72,7 @@ public class TestIT {
         List<File> files = Files.find(execPath + "/src/test/java/com/github/dannil/scbjavaclient", "*.java");
 
         // Filter out some classes from the list which shouldn't be annotated
-        Filters.files(files, RemoteIntegrationTestSuite.class, Files.class, Date.class, DateJUnitRunner.class,
-                Filters.class);
+        Filters.files(files, "com.github.dannil.scbjavaclient.test");
 
         List<Class<?>> matchedClasses = new ArrayList<>();
         for (File file : files) {
@@ -114,8 +104,7 @@ public class TestIT {
         List<File> files = Files.find(execPath + "/src/test/java/com/github/dannil/scbjavaclient/client", "*.java");
 
         // Filter out some classes from the list
-        Filters.files(files, AbstractClientIT.class, AbstractClientTest.class, AbstractContainerClientTest.class,
-                SCBClientIT.class, SCBClientTest.class);
+        Filters.files(files, false, "com.github.dannil.scbjavaclient.client");
 
         List<Class<?>> matchedClasses = new ArrayList<>();
         for (File file : files) {
@@ -156,7 +145,7 @@ public class TestIT {
         List<File> testFiles = Files.find(execPath + "/src/test/java/com/github/dannil/scbjavaclient", "*.java");
 
         // Filter out some classes from the list
-        Filters.files(mainFiles, IJsonTableFormat.class);
+        Filters.files(mainFiles, "com.github.dannil.scbjavaclient.format.json.IJsonTableFormat");
 
         List<Class<?>> matchedClasses = new ArrayList<>();
         for (File fileMain : mainFiles) {
