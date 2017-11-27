@@ -36,6 +36,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+@SuppressWarnings("deprecation")
 @RunWith(JUnit4.class)
 public class TestIT {
 
@@ -147,7 +148,6 @@ public class TestIT {
     }
     
     @Test
-    @SuppressWarnings("deprecation")
     public void checkForMatchingNameAndPackage() {
         String execPath = System.getProperty("user.dir");
 
