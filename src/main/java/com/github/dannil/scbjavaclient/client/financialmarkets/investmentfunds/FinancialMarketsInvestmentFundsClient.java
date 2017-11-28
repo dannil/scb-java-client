@@ -83,7 +83,7 @@ public class FinancialMarketsInvestmentFundsClient extends AbstractClient {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("Innehall", observations);
         mappings.put("Fondtyp", types);
-        mappings.put("Sektor", sectors);
+        mappings.put(APIConstants.SECTOR_CODE, sectors);
         mappings.put(APIConstants.TIME_CODE, quarters);
 
         return getResponseModels("F813FondKv", mappings);
