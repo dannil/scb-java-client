@@ -35,6 +35,7 @@ import com.github.dannil.scbjavaclient.client.population.PopulationClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.PricesAndConsumptionClient;
 import com.github.dannil.scbjavaclient.client.publicfinances.PublicFinancesClient;
 import com.github.dannil.scbjavaclient.client.transport.TransportClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonAPIConfigTableFormat;
 import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
 import com.github.dannil.scbjavaclient.http.HttpResponse;
@@ -228,10 +229,9 @@ public class SCBClient extends AbstractContainerClient {
     public List<String> getRegions(String table) {
         String url = getUrl() + table;
         String json = doGetRequest(url);
-        String code = "Region";
 
         JsonAPITableFormat format = new JsonAPITableFormat(json);
-        return format.getValues(code);
+        return format.getValues(APIConstants.REGION_CODE);
     }
 
     /**
@@ -244,10 +244,9 @@ public class SCBClient extends AbstractContainerClient {
     public List<String> getTimes(String table) {
         String url = getUrl() + table;
         String json = doGetRequest(url);
-        String code = "Tid";
 
         JsonAPITableFormat format = new JsonAPITableFormat(json);
-        return format.getValues(code);
+        return format.getValues(APIConstants.TIME_CODE);
     }
 
     /**
