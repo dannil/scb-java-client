@@ -190,12 +190,10 @@ public class TestIT {
 		String execPath = System.getProperty("user.dir");
 
 		// Find files matching the wildcard pattern
-		List<File> mainFiles = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient/client", "*.java");
+		List<File> mainFiles = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient", "*.java");
 
-		Filters.files(mainFiles, "package-info");
-		for (File f : mainFiles) {
-			System.out.println(f);
-		}
+		// Filter out some classes from the list
+		Filters.files(mainFiles, APIConstants.class);
 
 		Field[] apiFields = APIConstants.class.getDeclaredFields();
 
@@ -214,10 +212,12 @@ public class TestIT {
 		}
 
 		Map<Class<?>, List<String>> matchedClasses = new LinkedHashMap<>();
-		// List<Class<?>> matchedClasses = new ArrayList<>();
 		for (File f : mainFiles) {
 			// Convert path into binary name
 			String binaryNameMain = Files.fileToBinaryName(f);
+			if (binaryNameMain.endsWith("package-info")) {
+				continue;
+			}
 
 			// Reflect the binary name into a concrete Java class
 			Class<?> clazz = null;
@@ -233,9 +233,23 @@ public class TestIT {
 			List<String> lines = java.nio.file.Files.readAllLines(Paths.get(f.getPath()), StandardCharsets.UTF_8);
 			List<String> offending = new ArrayList<>();
 			for (String line : lines) {
+				// Skip line if it is a comment, Javadoc or alike
+				String trimmedLine = line.trim();
+				String[] comments = { "//", "/**", "/*", "*", "*/" };
+				boolean offendingLine = false;
+				for (int i = 0; i < comments.length; i++) {
+					if (trimmedLine.startsWith(comments[i])) {
+						offendingLine = true;
+					}
+				}
+				if (offendingLine) {
+					continue;
+				}
+
 				for (String field : fields) {
-					String stringField = "\"" + field + "\"";
-					if (line.contains(stringField)) {
+					String fieldAsJavaString = "\"" + field + "\"";
+					if (line.contains(fieldAsJavaString)) {
+						System.out.println(field + " : " + line);
 						offending.add(field);
 					}
 				}
