@@ -17,7 +17,6 @@ package com.github.dannil.scbjavaclient.test;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
-import java.io.IOException;
 import java.lang.reflect.Field;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
@@ -249,7 +248,6 @@ public class TestIT {
 				for (String field : fields) {
 					String fieldAsJavaString = "\"" + field + "\"";
 					if (line.contains(fieldAsJavaString)) {
-						System.out.println(field + " : " + line);
 						offending.add(field);
 					}
 				}
