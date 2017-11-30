@@ -33,7 +33,7 @@ public class Files {
         path = path.substring(path.indexOf("com"));
 
         // Handle both UNIX and Windows separators
-        String binaryName = path.replace('/', '.').replace('\\', '.');
+        String binaryName = path.replace(File.separatorChar, '.');
         return binaryName;
     }
 

@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.population.statistics.death;
+package com.github.dannil.scbjavaclient.client.population.statistics.deaths;
 
 import static org.junit.Assert.assertNotEquals;
 
