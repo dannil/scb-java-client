@@ -97,7 +97,7 @@ public class ResponseModelTest {
     public void getVariable() {
         ResponseModel model = new ResponseModel(this.variables, this.values);
 
-        assertEquals(model.getVariable("k1"), "value1");
+        assertEquals("value1", model.getVariable("k1"));
     }
 
     @Test

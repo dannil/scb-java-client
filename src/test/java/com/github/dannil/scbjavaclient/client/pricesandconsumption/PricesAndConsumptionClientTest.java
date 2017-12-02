@@ -53,7 +53,7 @@ public class PricesAndConsumptionClientTest {
 
         assertEquals(client.cci().getClass(), PricesAndConsumptionCCIClient.class);
     }
-    
+
     @Test
     public void cpi() {
         PricesAndConsumptionClient client = new PricesAndConsumptionClient();

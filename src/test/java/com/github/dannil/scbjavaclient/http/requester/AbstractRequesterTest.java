@@ -18,16 +18,16 @@ public class AbstractRequesterTest {
         public HttpResponse getResponse(String url) {
             return new HttpResponse(HttpStatusCode.OK, null);
         }
-        
+
     }
-    
+
     @Test
     public void getResponse() {
         DummyRequester requester = new DummyRequester();
         HttpResponse response = requester.getResponse("");
-        
-        assertEquals(response.getStatus(), HttpStatusCode.OK);
-        assertEquals(response.getStream(), null);
+
+        assertEquals(HttpStatusCode.OK, response.getStatus());
+        assertEquals(null, response.getStream());
     }
-    
+
 }

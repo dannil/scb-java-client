@@ -15,14 +15,14 @@ public class IHttpStatusTest {
         public HttpStatusCode getStatusCode() {
             return HttpStatusCode.OK;
         }
-        
+
     }
-    
+
     @Test
     public void getStatusCode() {
         DummyHttpStatus status = new DummyHttpStatus();
-        
+
         assertEquals(HttpStatusCode.OK, status.getStatusCode());
     }
-    
+
 }

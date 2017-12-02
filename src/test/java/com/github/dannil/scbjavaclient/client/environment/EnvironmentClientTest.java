@@ -59,7 +59,7 @@ public class EnvironmentClientTest {
 
         assertEquals(client.greenhouseGas().getClass(), EnvironmentGreenhouseGasClient.class);
     }
-    
+
     @Test
     public void islandsClient() {
         EnvironmentClient client = new EnvironmentClient();
@@ -101,7 +101,7 @@ public class EnvironmentClientTest {
 
         assertEquals(client.protectedNature().getClass(), EnvironmentProtectedNatureClient.class);
     }
-    
+
     @Test
     public void seeaClient() {
         EnvironmentClient client = new EnvironmentClient();

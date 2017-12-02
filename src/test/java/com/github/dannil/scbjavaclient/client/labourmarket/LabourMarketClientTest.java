@@ -51,7 +51,7 @@ public class LabourMarketClientTest {
 
         assertEquals(client.grossPay().getClass(), LabourMarketGrossPayClient.class);
     }
-    
+
     @Test
     public void shortTermEmployment() {
         LabourMarketClient client = new LabourMarketClient();

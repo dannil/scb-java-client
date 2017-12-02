@@ -36,7 +36,7 @@ public class EnergyClientTest {
 
         assertEquals(locale, client.getLocale());
     }
-    
+
     @Test
     public void annualStatisticsClient() {
         EnergyClient client = new EnergyClient();
