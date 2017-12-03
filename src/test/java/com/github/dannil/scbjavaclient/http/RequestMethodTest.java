@@ -17,8 +17,6 @@ package com.github.dannil.scbjavaclient.http;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-import com.github.dannil.scbjavaclient.http.RequestMethod;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;

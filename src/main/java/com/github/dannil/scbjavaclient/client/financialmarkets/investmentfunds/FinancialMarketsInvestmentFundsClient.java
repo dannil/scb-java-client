@@ -78,8 +78,8 @@ public class FinancialMarketsInvestmentFundsClient extends AbstractClient {
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getOwnershipOfInvestmentFund(Collection<String> observations,
-            Collection<String> types, Collection<String> sectors, Collection<String> quarters) {
+    public List<ResponseModel> getOwnershipOfInvestmentFund(Collection<String> observations, Collection<String> types,
+            Collection<String> sectors, Collection<String> quarters) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("Innehall", observations);
         mappings.put("Fondtyp", types);

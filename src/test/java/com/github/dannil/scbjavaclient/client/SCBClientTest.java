@@ -26,6 +26,7 @@ import com.github.dannil.scbjavaclient.client.environment.EnvironmentClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.FinancialMarketsClient;
 import com.github.dannil.scbjavaclient.client.goodsandservices.GoodsAndServicesClient;
 import com.github.dannil.scbjavaclient.client.labourmarket.LabourMarketClient;
+import com.github.dannil.scbjavaclient.client.livingconditions.LivingConditionsClient;
 import com.github.dannil.scbjavaclient.client.population.PopulationClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.PricesAndConsumptionClient;
 import com.github.dannil.scbjavaclient.client.publicfinances.PublicFinancesClient;
@@ -111,6 +112,13 @@ public class SCBClientTest {
         SCBClient client = new SCBClient();
 
         assertEquals(client.labourMarket().getClass(), LabourMarketClient.class);
+    }
+
+    @Test
+    public void livingConditions() {
+        SCBClient client = new SCBClient();
+
+        assertEquals(client.livingConditions().getClass(), LivingConditionsClient.class);
     }
 
     @Test

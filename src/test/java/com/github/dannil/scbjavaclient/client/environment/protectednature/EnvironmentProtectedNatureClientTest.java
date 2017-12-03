@@ -51,12 +51,13 @@ public class EnvironmentProtectedNatureClientTest {
 
         assertEquals(client.numberAndArea().getClass(), EnvironmentProtectedNatureNumberAndAreaClient.class);
     }
-    
+
     @Test
     public void populationAndAccessibility() {
         EnvironmentProtectedNatureClient client = new EnvironmentProtectedNatureClient();
 
-        assertEquals(client.populationAndAccessibility().getClass(), EnvironmentProtectedNaturePopulationAndAccessibilityClient.class);
+        assertEquals(client.populationAndAccessibility().getClass(),
+                EnvironmentProtectedNaturePopulationAndAccessibilityClient.class);
     }
 
     @Test

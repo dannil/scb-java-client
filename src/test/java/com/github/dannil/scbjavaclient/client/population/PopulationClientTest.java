@@ -62,7 +62,7 @@ public class PopulationClientTest {
 
         assertEquals(client.projections().getClass(), PopulationProjectionsClient.class);
     }
-    
+
     @Test
     public void statisticsClient() {
         PopulationClient client = new PopulationClient();
