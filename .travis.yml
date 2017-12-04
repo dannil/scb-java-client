@@ -14,19 +14,17 @@ matrix:
   include:
   - os: linux
     dist: trusty
-    sudo: required
-    jdk: openjdk7
-  - os: linux
-    dist: trusty
     jdk: oraclejdk8
-    script:
-    - mvn install -B -V -DtestsDayLimit=7
     after_success:
     # SonarQube needs to be run with at least Java 8
     # Make sure we are on the correct branch
     - if [[ $TRAVIS_BRANCH == test/run-all-tests ]]; then mvn sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONARQUBE_TOKEN; fi
 install:
 - true
+before_script:
+# If we get the same IP on concurrent builds and this triggers an error
+# on the API (rate limiting), this can be easily debugged by checking the log
+- curl icanhazip.com
 script:
 - mvn install -B -V -DtestsDayLimit=7
 after_success:

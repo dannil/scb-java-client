@@ -52,8 +52,8 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-    <project.java.source>1.7</project.java.source>
-    <project.java.target>1.7</project.java.target>
+    <project.java.source>1.8</project.java.source>
+    <project.java.target>1.8</project.java.target>
 
     <argLine>-Xmx2048m -XX:MaxPermSize=512m -Dfile.encoding=${project.build.sourceEncoding}</argLine>
   </properties>
@@ -281,7 +281,7 @@
         <configuration>
           <signature>
             <groupId>org.codehaus.mojo.signature</groupId>
-            <artifactId>java17</artifactId>
+            <artifactId>java18</artifactId>
             <version>1.0</version>
           </signature>
         </configuration>
@@ -294,8 +294,7 @@
           <dependency>
             <groupId>com.puppycrawl.tools</groupId>
             <artifactId>checkstyle</artifactId>
-            <!-- <version>7.5.1</version> -->
-            <version>6.19</version>
+            <version>8.4</version>
           </dependency>
         </dependencies>
         <executions>
