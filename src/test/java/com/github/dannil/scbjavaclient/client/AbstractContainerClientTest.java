@@ -14,17 +14,17 @@
 
 package com.github.dannil.scbjavaclient.client;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.test.extensions.TestSuite;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
+@TestSuite
 public class AbstractContainerClientTest {
 
     private static class DummyContainerClient extends AbstractContainerClient {
@@ -75,12 +75,14 @@ public class AbstractContainerClientTest {
         assertEquals("https://api.scb.se/OV0104/v1/doris/fr/ssd/", client.getRootUrl().toString());
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void addClientItself() {
         Locale locale = new Locale("sv", "SE");
         AbstractContainerClient client = new DummyContainerClient(locale);
 
-        client.addClient("client", client);
+        assertThrows(IllegalArgumentException.class, () -> {
+            client.addClient("client", client);
+        });
     }
 
 }

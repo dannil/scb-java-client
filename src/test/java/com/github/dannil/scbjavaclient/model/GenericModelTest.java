@@ -14,26 +14,26 @@
 
 package com.github.dannil.scbjavaclient.model;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import com.github.dannil.scbjavaclient.test.extensions.TestSuite;
 
-@RunWith(JUnit4.class)
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+@TestSuite
 public class GenericModelTest {
 
     private String json;
 
-    @Before
+    @BeforeEach
     public void setup() {
         this.json = "{\"columns\":[{\"code\":\"Region\",\"text\":\"region\",\"type\":\"d\"},{\"code\":\"Civilstand\",\"text\":\"civilst\u00E5nd\",\"type\":\"d\"},{\"code\":\"Alder\",\"text\":\"\u00E5lder\",\"type\":\"d\"},{\"code\":\"Tid\",\"text\":\"\u00E5r\",\"type\":\"t\"},{\"code\":\"BE0101N1\",\"text\":\"Folkm\u00E4ngd\",\"type\":\"c\"}],\"comments\":[],\"data\":[{\"key\":[\"00\",\"OG\",\"45\",\"2011\"],\"values\":[\"48403\"]},{\"key\":[\"00\",\"OG\",\"45\",\"2012\"],\"values\":[\"47619\"]},{\"key\":[\"00\",\"OG\",\"50\",\"2011\"],\"values\":[\"34868\"]},{\"key\":[\"00\",\"OG\",\"50\",\"2012\"],\"values\":[\"36454\"]},{\"key\":[\"00\",\"G\",\"45\",\"2011\"],\"values\":[\"68640\"]},{\"key\":[\"00\",\"G\",\"45\",\"2012\"],\"values\":[\"69184\"]},{\"key\":[\"00\",\"G\",\"50\",\"2011\"],\"values\":[\"60262\"]},{\"key\":[\"00\",\"G\",\"50\",\"2012\"],\"values\":[\"61902\"]},{\"key\":[\"01\",\"OG\",\"45\",\"2011\"],\"values\":[\"10833\"]},{\"key\":[\"01\",\"OG\",\"45\",\"2012\"],\"values\":[\"10339\"]},{\"key\":[\"01\",\"OG\",\"50\",\"2011\"],\"values\":[\"7893\"]},{\"key\":[\"01\",\"OG\",\"50\",\"2012\"],\"values\":[\"8255\"]},{\"key\":[\"01\",\"G\",\"45\",\"2011\"],\"values\":[\"16031\"]},{\"key\":[\"01\",\"G\",\"45\",\"2012\"],\"values\":[\"16121\"]},{\"key\":[\"01\",\"G\",\"50\",\"2011\"],\"values\":[\"13103\"]},{\"key\":[\"01\",\"G\",\"50\",\"2012\"],\"values\":[\"13966\"]},{\"key\":[\"0114\",\"OG\",\"45\",\"2011\"],\"values\":[\"227\"]},{\"key\":[\"0114\",\"OG\",\"45\",\"2012\"],\"values\":[\"202\"]},{\"key\":[\"0114\",\"OG\",\"50\",\"2011\"],\"values\":[\"127\"]},{\"key\":[\"0114\",\"OG\",\"50\",\"2012\"],\"values\":[\"139\"]},{\"key\":[\"0114\",\"G\",\"45\",\"2011\"],\"values\":[\"344\"]},{\"key\":[\"0114\",\"G\",\"45\",\"2012\"],\"values\":[\"326\"]},{\"key\":[\"0114\",\"G\",\"50\",\"2011\"],\"values\":[\"265\"]},{\"key\":[\"0114\",\"G\",\"50\",\"2012\"],\"values\":[\"266\"]}]}";
     }

@@ -14,19 +14,18 @@
 
 package com.github.dannil.scbjavaclient.http.requester;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.test.extensions.TestSuite;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
+@TestSuite
 public class POSTRequesterTest {
 
     @Test
@@ -61,13 +60,13 @@ public class POSTRequesterTest {
         assertEquals("payload", post.getQuery());
     }
 
-    @Test(expected = IllegalStateException.class)
+    @Test
     public void doRequestIllegalStateNullPayload() throws IOException {
         POSTRequester post = new POSTRequester();
 
-        String response = post.getResponse(URLEndpoint.getRootUrl() + "BE/BE0701/MedelAlderNY").getBody();
-
-        assertNull(response);
+        assertThrows(IllegalStateException.class, () -> {
+            post.getResponse(URLEndpoint.getRootUrl() + "BE/BE0701/MedelAlderNY").getBody();
+        });
     }
 
 }

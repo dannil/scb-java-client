@@ -14,24 +14,29 @@
 
 package com.github.dannil.scbjavaclient.http.requester;
 
-import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
-import com.github.dannil.scbjavaclient.test.runner.Date;
-import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.TestSuite;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 
-@RunWith(DateJUnitRunner.class)
-public class GETRequesterIT extends RemoteIntegrationTestSuite {
+@TestSuite
+@Remote
+public class GETRequesterIT {
 
-    @Test(expected = SCBClientException.class)
+    @Test
     @Date("2017-03-12")
     public void invalidUrl() {
         GETRequester requester = new GETRequester();
         assertNull(requester.getResponse("example.example").getBody());
+
+        assertThrows(SCBClientException.class, () -> {
+            requester.getResponse("example.example").getBody();
+        });
     }
 
 }

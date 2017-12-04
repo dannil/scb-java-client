@@ -1,6 +1,6 @@
 package com.github.dannil.scbjavaclient.format;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -9,12 +9,12 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import com.github.dannil.scbjavaclient.test.extensions.TestSuite;
 
-@RunWith(JUnit4.class)
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+@TestSuite
 public class AbstractTableFormatTest {
 
     private class DummyTableFormat extends AbstractTableFormat {
@@ -34,7 +34,7 @@ public class AbstractTableFormatTest {
 
     private DummyTableFormat tableFormat;
 
-    @Before
+    @BeforeEach
     public void setup() {
         Map<String, Collection<String>> pairs = new LinkedHashMap<>();
         pairs.put("a", Arrays.asList("a1", "a2", "a3"));

@@ -14,26 +14,26 @@
 
 package com.github.dannil.scbjavaclient.client.businessactivities.nonprofitorganizations.satelliteaccounts;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.test.runner.Date;
-import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.TestSuite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(DateJUnitRunner.class)
-public class BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClientIT extends RemoteIntegrationTestSuite {
+@TestSuite
+@Remote
+public class BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClientIT {
 
     private BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
         this.client = new BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClient();
     }

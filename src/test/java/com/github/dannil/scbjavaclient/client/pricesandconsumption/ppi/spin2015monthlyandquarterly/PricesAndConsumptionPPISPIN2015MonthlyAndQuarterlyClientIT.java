@@ -14,25 +14,25 @@
 
 package com.github.dannil.scbjavaclient.client.pricesandconsumption.ppi.spin2015monthlyandquarterly;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.test.runner.Date;
-import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.TestSuite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(DateJUnitRunner.class)
-public class PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClientIT extends RemoteIntegrationTestSuite {
+@TestSuite
+@Remote
+public class PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClientIT {
 
     private PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
         this.client = new PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient();
     }

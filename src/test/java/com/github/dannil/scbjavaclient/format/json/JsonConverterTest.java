@@ -14,25 +14,24 @@
 
 package com.github.dannil.scbjavaclient.format.json;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
+import com.github.dannil.scbjavaclient.test.extensions.TestSuite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
+@TestSuite
 public class JsonConverterTest {
 
     private String json;
 
     private JsonConverter converter;
 
-    @Before
+    @BeforeEach
     public void setup() {
         this.json = "{\"query\": [{\"code\": \"ContentsCode\",\"selection\": {\"filter\": \"item\",\"values\": [\"MI0802AA\"]}}],\"response\": {\"format\": \"json\"}}";
 
@@ -48,11 +47,11 @@ public class JsonConverterTest {
         assertEquals(node.toString().replaceAll("\\s+", ""), comparison.replaceAll("\\s+", ""));
     }
 
-    @Test(expected = SCBClientParsingException.class)
+    @Test
     public void getNodeInvalidJson() {
-        JsonNode node = this.converter.toNode("hello world");
-
-        assertNull(node);
+        assertThrows(SCBClientParsingException.class, () -> {
+            this.converter.toNode("hello world");
+        });
     }
 
 }
