@@ -72,10 +72,8 @@ public class JsonCustomResponseFormatTest {
 
     @Test
     public void toListOfInvalidJson() {
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat("dadawdawgnjhgggggggggggggggggggggggg");
-
         assertThrows(SCBClientParsingException.class, () -> {
-            format.toListOf(ResponseModel.class);
+            new JsonCustomResponseFormat("dadawdawgnjhggggggg");
         });
     }
 
@@ -103,4 +101,5 @@ public class JsonCustomResponseFormatTest {
 
         assertEquals(expected, toString);
     }
+
 }

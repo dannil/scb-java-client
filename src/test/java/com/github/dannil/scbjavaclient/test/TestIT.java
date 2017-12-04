@@ -66,43 +66,8 @@ public class TestIT {
                 assertTrue(false, e.getMessage());
             }
         }
-        assertTrue(matchedClasses.isEmpty(),
-                "Classes not extending RemoteIntegrationTestSuite: " + matchedClasses.toString());
+        assertTrue(matchedClasses.isEmpty(), "Classes not annotated with Remote " + matchedClasses.toString());
     }
-
-    // @Test
-    // public void checkForRunWithAnnotation() {
-    // String execPath = System.getProperty("user.dir");
-    //
-    // // Find files matching the wildcard pattern
-    // List<File> files = Files.find(execPath +
-    // "/src/test/java/com/github/dannil/scbjavaclient", "*.java");
-    //
-    // // Filter out some classes from the list which shouldn't be annotated
-    // Filters.files(files, "com.github.dannil.scbjavaclient.test");
-    //
-    // List<Class<?>> matchedClasses = new ArrayList<>();
-    // for (File file : files) {
-    // // Convert path into binary name
-    // String binaryName = Files.fileToBinaryName(file);
-    //
-    // // Reflect the binary name into a concrete Java class
-    // Class<?> clazz = null;
-    // try {
-    // clazz = Class.forName(binaryName);
-    // if (clazz.getAnnotation(RunWith.class) == null) {
-    // matchedClasses.add(clazz);
-    // }
-    // } catch (ClassNotFoundException e) {
-    // // Class could not be created; respond with an assertion that'll always
-    // // fail
-    // e.printStackTrace();
-    // assertTrue(e.getMessage(), false);
-    // }
-    // }
-    // assertTrue("Classes not annotated with RunWith: " + matchedClasses.toString(),
-    // matchedClasses.isEmpty());
-    // }
 
     @Test
     public void checkForCorrectPackageAndClientNames() {

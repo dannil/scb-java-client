@@ -56,6 +56,7 @@ public class HttpStatusCodeTest {
         assertEquals("404", httpStatusCode.asText());
     }
 
+    @Test
     public void valueOfIllegalArgument() {
         assertThrows(IllegalArgumentException.class, () -> {
             HttpStatusCode.valueOf(-1);
