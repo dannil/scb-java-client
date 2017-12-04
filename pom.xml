@@ -154,7 +154,11 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
+        <!-- Do not upgrade if the new version doesn't support JUnit 5, due 
+          to the process of running the tests will break; it seems that surefire-provider 
+          needs surefire/failsafe version 2.19.1 to work -->
         <version>2.19.1</version>
+        <!-- Remove these dependencies when surefire/failsafe has support for JUnit 5 -->
         <dependencies>
           <dependency>
             <groupId>org.junit.platform</groupId>
@@ -175,19 +179,23 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-failsafe-plugin</artifactId>
+        <!-- Do not upgrade if the new version doesn't support JUnit 5, due 
+          to the process of running the tests will break; it seems that surefire-provider 
+          needs surefire/failsafe version 2.19.1 to work -->
         <version>2.19.1</version>
-<!--         <dependencies> -->
-<!--         <dependency> -->
-<!--         <groupId>org.junit.platform</groupId> -->
-<!--         <artifactId>junit-platform-surefire-provider</artifactId> -->
-<!--         <version>1.0.1</version> -->
-<!--         </dependency> -->
-<!--         <dependency> -->
-<!--         <groupId>org.junit.jupiter</groupId> -->
-<!--         <artifactId>junit-jupiter-engine</artifactId> -->
-<!--         <version>5.0.2</version> -->
-<!--         </dependency> -->
-<!--         </dependencies> -->
+        <!-- Remove these dependencies when surefire/failsafe has support for JUnit 5 -->
+        <dependencies>
+          <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-surefire-provider</artifactId>
+            <version>1.0.2</version>
+          </dependency>
+          <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.0.2</version>
+          </dependency>
+        </dependencies>
         <configuration>
           <systemPropertyVariables>
             <testsDayLimit>7</testsDayLimit>

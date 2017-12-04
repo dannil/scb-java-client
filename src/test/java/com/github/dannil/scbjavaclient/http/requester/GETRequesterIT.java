@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.http.requester;
 
-import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
@@ -32,7 +31,6 @@ public class GETRequesterIT {
     @Date("2017-03-12")
     public void invalidUrl() {
         GETRequester requester = new GETRequester();
-        assertNull(requester.getResponse("example.example").getBody());
 
         assertThrows(SCBClientException.class, () -> {
             requester.getResponse("example.example").getBody();
