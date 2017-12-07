@@ -12,4 +12,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 @ExtendWith(AllowFailureExtension.class)
 public @interface AllowFailure {
 
+    NoticeStrategy strategy() default NoticeStrategy.TEMPORARY;
+    
 }
