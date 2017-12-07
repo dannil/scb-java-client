@@ -17,14 +17,14 @@ public class AllowFailureExtension implements TestExecutionExceptionHandler {
     public void handleTestExecutionException(ExtensionContext context, Throwable throwable) throws Throwable {
         Optional<AnnotatedElement> opElement = context.getElement();
         AllowFailure a = opElement.get().getDeclaredAnnotation(AllowFailure.class);
-        NoticeStrategy s = a.strategy();
+        NoticeStrategy s = a.notice();
         
         try {
             // Swallow exception to change test result
         } catch (Throwable t) {
             // Swallow exception to change test result
         } finally {
-            if (Objects.equals(NoticeStrategy.TEMPORARY, s)) {
+            if (Objects.equals(NoticeStrategy.ALWAYS, s)) {
                 String className = context.getRequiredTestClass().getSimpleName();
                 String testName = context.getRequiredTestMethod().getName();
                 LOGGER.warn("Test {}.{} failed but is marked with @AllowFailure", className, testName);
