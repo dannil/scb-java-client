@@ -13,5 +13,5 @@ import org.junit.jupiter.api.extension.ExtendWith;
 public @interface AllowFailure {
 
     NoticeStrategy notice() default NoticeStrategy.ALWAYS;
-    
+
 }

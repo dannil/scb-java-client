@@ -1,7 +1,6 @@
 package com.github.dannil.scbjavaclient.test.extensions;
 
 import java.lang.reflect.AnnotatedElement;
-import java.util.Objects;
 import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
@@ -18,16 +17,24 @@ public class AllowFailureExtension implements TestExecutionExceptionHandler {
         Optional<AnnotatedElement> opElement = context.getElement();
         AllowFailure a = opElement.get().getDeclaredAnnotation(AllowFailure.class);
         NoticeStrategy s = a.notice();
-        
+
         try {
             // Swallow exception to change test result
         } catch (Throwable t) {
             // Swallow exception to change test result
         } finally {
-            if (Objects.equals(NoticeStrategy.ALWAYS, s)) {
-                String className = context.getRequiredTestClass().getSimpleName();
-                String testName = context.getRequiredTestMethod().getName();
-                LOGGER.warn("Test {}.{} failed but is marked with @AllowFailure", className, testName);
+            String className = context.getRequiredTestClass().getSimpleName();
+            String testName = context.getRequiredTestMethod().getName();
+            switch (s) {
+                case ALWAYS:
+                    LOGGER.warn("Test {}.{} failed but is marked with @AllowFailure", className, testName);
+                    break;
+                // case ON_FAILURE:
+                // LOGGER.warn("Test {}.{} failed but is marked with @AllowFailure",
+                // className, testName);
+                // break;
+                default:
+                    break;
             }
         }
     }
