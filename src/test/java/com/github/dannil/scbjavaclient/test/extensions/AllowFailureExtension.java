@@ -4,21 +4,18 @@ import java.lang.reflect.AnnotatedElement;
 import java.util.Objects;
 import java.util.Optional;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.extension.AfterEachCallback;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.ExtensionContext.Namespace;
 import org.junit.jupiter.api.extension.ExtensionContext.Store;
 import org.junit.jupiter.api.extension.TestExecutionExceptionHandler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class AllowFailureExtension implements BeforeEachCallback, TestExecutionExceptionHandler, AfterEachCallback {
 
     private static final Namespace NAMESPACE = Namespace.create("com", "github", "dannil", "scbjavaclient");
-
-    // private static final Logger LOGGER =
-    // LogManager.getLogger(AllowFailureExtension.class);
 
     @Override
     public void beforeEach(ExtensionContext context) throws Exception {
@@ -67,12 +64,9 @@ public class AllowFailureExtension implements BeforeEachCallback, TestExecutionE
 
         if (failed) {
             result = ", changing result to PASSED";
-        } else {
-            // result = "consider removing the annotation or changing the notice
-            // strategy";
         }
 
-        Logger logger = LogManager.getLogger(className);
+        Logger logger = LoggerFactory.getLogger(className);
         logger.warn("Test {} {} and is annotated with @AllowFailure(NoticeStrategy.{}){}", testName, failedAsString,
                 strategyAsString, result);
     }

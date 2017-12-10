@@ -12,8 +12,6 @@ import org.junit.jupiter.api.extension.ExtensionContext;
 
 public class DateExtension implements ExecutionCondition {
 
-    // private static final Logger LOGGER = LogManager.getLogger(DateExtension.class);
-
     @Override
     public ConditionEvaluationResult evaluateExecutionCondition(ExtensionContext context) {
         int dayLimit = 0;
