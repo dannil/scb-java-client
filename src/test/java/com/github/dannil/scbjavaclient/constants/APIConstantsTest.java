@@ -19,11 +19,11 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
-import com.github.dannil.scbjavaclient.test.extensions.TestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 import org.junit.jupiter.api.Test;
 
-@TestSuite
+@Suite
 public class APIConstantsTest {
 
     @Test

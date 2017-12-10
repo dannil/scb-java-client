@@ -25,12 +25,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.github.dannil.scbjavaclient.test.extensions.TestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-@TestSuite
+@Suite
 public class ResponseModelTest {
 
     private Map<String, String> variables;

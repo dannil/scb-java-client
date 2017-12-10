@@ -21,11 +21,11 @@ import java.util.Locale;
 import com.github.dannil.scbjavaclient.client.educationandresearch.activityaftertraining.EducationAndResearchActivityAfterTrainingClient;
 import com.github.dannil.scbjavaclient.client.educationandresearch.communityinnovationsurvey.EducationAndResearchCommunityInnovationSurveyClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
-import com.github.dannil.scbjavaclient.test.extensions.TestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 import org.junit.jupiter.api.Test;
 
-@TestSuite
+@Suite
 public class EducationAndResearchClientTest {
 
     @Test

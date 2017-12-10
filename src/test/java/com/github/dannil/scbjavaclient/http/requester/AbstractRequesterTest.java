@@ -4,11 +4,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.github.dannil.scbjavaclient.http.HttpResponse;
 import com.github.dannil.scbjavaclient.http.HttpStatusCode;
-import com.github.dannil.scbjavaclient.test.extensions.TestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 import org.junit.jupiter.api.Test;
 
-@TestSuite
+@Suite
 public class AbstractRequesterTest {
 
     private class DummyRequester extends AbstractRequester {

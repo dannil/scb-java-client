@@ -26,11 +26,11 @@ import com.github.dannil.scbjavaclient.client.financialmarkets.securities.Financ
 import com.github.dannil.scbjavaclient.client.financialmarkets.shareholders.FinancialMarketsShareholdersClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.statistics.FinancialMarketsStatisticsClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
-import com.github.dannil.scbjavaclient.test.extensions.TestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 import org.junit.jupiter.api.Test;
 
-@TestSuite
+@Suite
 public class FinancialMarketsClientTest {
 
     @Test

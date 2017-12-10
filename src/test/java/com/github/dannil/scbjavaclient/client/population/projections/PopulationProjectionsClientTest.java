@@ -21,11 +21,11 @@ import java.util.Locale;
 import com.github.dannil.scbjavaclient.client.population.projections.latestassumptions.PopulationProjectionsLatestAssumptionsClient;
 import com.github.dannil.scbjavaclient.client.population.projections.latestprojections.PopulationProjectionsLatestProjectionsClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
-import com.github.dannil.scbjavaclient.test.extensions.TestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 import org.junit.jupiter.api.Test;
 
-@TestSuite
+@Suite
 public class PopulationProjectionsClientTest {
 
     @Test

@@ -21,11 +21,11 @@ import java.util.Locale;
 import com.github.dannil.scbjavaclient.client.labourmarket.shorttermemployment.population.LabourMarketShortTermEmploymentPopulationClient;
 import com.github.dannil.scbjavaclient.client.labourmarket.shorttermemployment.sickleave.LabourMarketShortTermEmploymentSickLeaveClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
-import com.github.dannil.scbjavaclient.test.extensions.TestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 import org.junit.jupiter.api.Test;
 
-@TestSuite
+@Suite
 public class LabourMarketShortTermEmploymentClientTest {
 
     @Test

@@ -25,11 +25,11 @@ import com.github.dannil.scbjavaclient.client.pricesandconsumption.ppi.spin2007m
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.ppi.spin2007year.PricesAndConsumptionPPISPIN2007YearClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.ppi.spin2015monthlyandquarterly.PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
-import com.github.dannil.scbjavaclient.test.extensions.TestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 import org.junit.jupiter.api.Test;
 
-@TestSuite
+@Suite
 public class PricesAndConsumptionPPIClientTest {
 
     @Test

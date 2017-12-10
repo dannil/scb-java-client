@@ -24,12 +24,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.github.dannil.scbjavaclient.test.extensions.TestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-@TestSuite
+@Suite
 public class JsonAPITableFormatTest {
 
     private String json;

@@ -21,11 +21,11 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
-import com.github.dannil.scbjavaclient.test.extensions.TestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 import org.junit.jupiter.api.Test;
 
-@TestSuite
+@Suite
 public class POSTRequesterTest {
 
     @Test

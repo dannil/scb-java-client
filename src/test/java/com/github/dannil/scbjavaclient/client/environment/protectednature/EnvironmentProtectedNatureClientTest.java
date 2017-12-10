@@ -22,11 +22,11 @@ import com.github.dannil.scbjavaclient.client.environment.protectednature.nature
 import com.github.dannil.scbjavaclient.client.environment.protectednature.numberandarea.EnvironmentProtectedNatureNumberAndAreaClient;
 import com.github.dannil.scbjavaclient.client.environment.protectednature.populationandaccessibility.EnvironmentProtectedNaturePopulationAndAccessibilityClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
-import com.github.dannil.scbjavaclient.test.extensions.TestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 import org.junit.jupiter.api.Test;
 
-@TestSuite
+@Suite
 public class EnvironmentProtectedNatureClientTest {
 
     @Test

@@ -23,11 +23,11 @@ import com.github.dannil.scbjavaclient.client.agriculture.holdings.AgricultureHo
 import com.github.dannil.scbjavaclient.client.agriculture.landuse.AgricultureLandUseClient;
 import com.github.dannil.scbjavaclient.client.agriculture.livestock.AgricultureLivestockClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
-import com.github.dannil.scbjavaclient.test.extensions.TestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 import org.junit.jupiter.api.Test;
 
-@TestSuite
+@Suite
 public class AgricultureClientTest {
 
     @Test

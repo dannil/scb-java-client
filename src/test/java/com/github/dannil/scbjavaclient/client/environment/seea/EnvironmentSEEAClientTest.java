@@ -24,11 +24,11 @@ import com.github.dannil.scbjavaclient.client.environment.seea.goodsandservicess
 import com.github.dannil.scbjavaclient.client.environment.seea.materialflowaccounts.EnvironmentSEEAMaterialFlowAccountsClient;
 import com.github.dannil.scbjavaclient.client.environment.seea.taxes.EnvironmentSEEATaxesClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
-import com.github.dannil.scbjavaclient.test.extensions.TestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 import org.junit.jupiter.api.Test;
 
-@TestSuite
+@Suite
 public class EnvironmentSEEAClientTest {
 
     @Test

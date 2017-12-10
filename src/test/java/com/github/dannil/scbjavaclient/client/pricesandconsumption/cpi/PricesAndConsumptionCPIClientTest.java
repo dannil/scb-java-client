@@ -24,11 +24,11 @@ import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.hicp.Pric
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.kpif.PricesAndConsumptionCPIKPIFClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.pricebasicamount.PricesAndConsumptionCPIPriceBasicAmountClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
-import com.github.dannil.scbjavaclient.test.extensions.TestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 import org.junit.jupiter.api.Test;
 
-@TestSuite
+@Suite
 public class PricesAndConsumptionCPIClientTest {
 
     @Test

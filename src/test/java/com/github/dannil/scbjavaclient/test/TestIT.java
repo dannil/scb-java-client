@@ -27,13 +27,13 @@ import java.util.Map;
 
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
-import com.github.dannil.scbjavaclient.test.extensions.TestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 import com.github.dannil.scbjavaclient.test.utility.Files;
 import com.github.dannil.scbjavaclient.test.utility.Filters;
 
 import org.junit.jupiter.api.Test;
 
-@TestSuite
+@Suite
 public class TestIT {
 
     @Test

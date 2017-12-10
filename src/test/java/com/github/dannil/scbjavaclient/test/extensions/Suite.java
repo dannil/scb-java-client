@@ -9,7 +9,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-@ExtendWith(TestSuiteExtension.class)
-public @interface TestSuite {
+@ExtendWith(SuiteExtension.class)
+public @interface Suite {
 
 }
