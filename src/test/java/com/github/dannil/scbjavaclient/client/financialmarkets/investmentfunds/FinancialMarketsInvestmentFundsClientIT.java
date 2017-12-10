@@ -19,8 +19,11 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
+import com.github.dannil.scbjavaclient.test.extensions.AllowFailure;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.NoticeStrategy;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
@@ -40,12 +43,14 @@ public class FinancialMarketsInvestmentFundsClientIT {
 
     @Test
     @Date("2017-12-22")
+    @AllowFailure(notice = NoticeStrategy.ALWAYS)
     public void getOwnershipOfInvestmentFund() {
         assertNotEquals(0, this.client.getOwnershipOfInvestmentFund().size());
     }
 
     @Test
     @Date("2017-12-22")
+    @AllowFailure(notice = NoticeStrategy.ALWAYS)
     public void getOwnershipOfInvestmentFundWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getOwnershipOfInvestmentFund(Collections.<String>emptyList(),
@@ -55,6 +60,7 @@ public class FinancialMarketsInvestmentFundsClientIT {
 
     @Test
     @Date("2017-12-22")
+    @AllowFailure(notice = NoticeStrategy.ALWAYS)
     public void getOwnershipOfInvestmentFundWithParameters() {
         List<String> observations = Arrays.asList("inbet", "utbet");
         List<String> types = Arrays.asList("S12251", "S12354");
