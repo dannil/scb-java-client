@@ -1,15 +1,14 @@
 package com.github.dannil.scbjavaclient.http.requester;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.github.dannil.scbjavaclient.http.HttpResponse;
 import com.github.dannil.scbjavaclient.http.HttpStatusCode;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
+@Suite
 public class AbstractRequesterTest {
 
     private class DummyRequester extends AbstractRequester {

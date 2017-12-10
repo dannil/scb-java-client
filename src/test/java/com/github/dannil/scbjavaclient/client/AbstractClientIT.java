@@ -14,10 +14,10 @@
 
 package com.github.dannil.scbjavaclient.client;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
 import java.lang.reflect.Constructor;
@@ -39,18 +39,18 @@ import java.util.TreeSet;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
-import com.github.dannil.scbjavaclient.test.runner.Date;
-import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 import com.github.dannil.scbjavaclient.test.utility.Files;
 import com.github.dannil.scbjavaclient.test.utility.Filters;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 
-@RunWith(DateJUnitRunner.class)
-public class AbstractClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class AbstractClientIT {
 
     @Test
     @Date("2017-01-01")
@@ -186,14 +186,14 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
                 // Class could not be created; respond with an assertion that'll always
                 // fail
                 e.printStackTrace();
-                assertTrue(e.getMessage(), false);
+                assertTrue(false, e.getMessage());
             } catch (NoSuchMethodException e) {
                 // Nope! Locale constructor not found
                 matchedClasses.add(clazz);
             }
         }
-        assertTrue("Classes not declaring a Locale constructor: " + matchedClasses.toString(),
-                matchedClasses.isEmpty());
+        assertTrue(matchedClasses.isEmpty(),
+                "Classes not declaring a Locale constructor: " + matchedClasses.toString());
     }
 
     @Test
@@ -233,11 +233,11 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
                 // Class could not be created; respond with an assertion that'll always
                 // fail
                 e.printStackTrace();
-                assertTrue(e.getMessage(), false);
+                assertTrue(false, e.getMessage());
             }
         }
-        assertTrue("Classes not having matching package and client name: " + matchedClasses.toString(),
-                matchedClasses.isEmpty());
+        assertTrue(matchedClasses.isEmpty(),
+                "Classes not having matching package and client name: " + matchedClasses.toString());
     }
 
     @Test
@@ -287,10 +287,10 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
                 // Class could not be created; respond with an assertion that'll always
                 // fail
                 e.printStackTrace();
-                assertTrue(e.getMessage(), false);
+                assertTrue(false, e.getMessage());
             }
         }
-        assertTrue("Classes implementing same table: " + offendingClasses.toString(), offendingClasses.isEmpty());
+        assertTrue(offendingClasses.isEmpty(), "Classes implementing same table: " + offendingClasses.toString());
     }
 
     @Test
@@ -349,10 +349,10 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
                 // Class could not be created; respond with an assertion that'll always
                 // fail
                 e.printStackTrace();
-                assertTrue(e.getMessage(), false);
+                assertTrue(false, e.getMessage());
             }
         }
-        assertTrue("Classes not extending correct superclass: " + matchedClasses.toString(), matchedClasses.isEmpty());
+        assertTrue(matchedClasses.isEmpty(), "Classes not extending correct superclass: " + matchedClasses.toString());
     }
 
     // Method which is used to check for correctly overloaded methods (with methods
@@ -402,7 +402,7 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
                 // Class could not be created; respond with an assertion that'll always
                 // fail
                 e.printStackTrace();
-                assertTrue(e.getMessage(), false);
+                assertTrue(false, e.getMessage());
             }
         }
         // Filter out known methods throwing HTTP 403. Format is the same used for the
@@ -430,8 +430,8 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
                 it.remove();
             }
         }
-        assertTrue("Methods not having correct overloads: " + offendingMethods.keySet().toString(),
-                offendingMethods.isEmpty());
+        assertTrue(offendingMethods.isEmpty(),
+                "Methods not having correct overloads: " + offendingMethods.keySet().toString());
     }
 
 }

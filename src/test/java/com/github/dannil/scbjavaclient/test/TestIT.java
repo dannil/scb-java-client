@@ -14,7 +14,7 @@
 
 package com.github.dannil.scbjavaclient.test;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
 import java.lang.reflect.Field;
@@ -26,19 +26,18 @@ import java.util.List;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.constants.APIConstants;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 import com.github.dannil.scbjavaclient.test.utility.Files;
 import com.github.dannil.scbjavaclient.test.utility.Filters;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
+@Suite
 public class TestIT {
 
     @Test
-    public void checkForRemoteIntegrationTestSuiteAsSuperclass() {
+    public void checkForExistingRemoteAnnotation() {
         String execPath = System.getProperty("user.dir");
 
         // Find files matching the wildcard pattern
@@ -56,50 +55,18 @@ public class TestIT {
             Class<?> clazz = null;
             try {
                 clazz = Class.forName(binaryName);
-                if (!RemoteIntegrationTestSuite.class.isAssignableFrom(clazz)) {
+                Remote r = clazz.getDeclaredAnnotation(Remote.class);
+                if (r == null) {
                     matchedClasses.add(clazz);
                 }
             } catch (ClassNotFoundException e) {
                 // Class could not be created; respond with an assertion that'll always
                 // fail
                 e.printStackTrace();
-                assertTrue(e.getMessage(), false);
+                assertTrue(false, e.getMessage());
             }
         }
-        assertTrue("Classes not extending RemoteIntegrationTestSuite: " + matchedClasses.toString(),
-                matchedClasses.isEmpty());
-    }
-
-    @Test
-    public void checkForRunWithAnnotation() {
-        String execPath = System.getProperty("user.dir");
-
-        // Find files matching the wildcard pattern
-        List<File> files = Files.find(execPath + "/src/test/java/com/github/dannil/scbjavaclient", "*.java");
-
-        // Filter out some classes from the list which shouldn't be annotated
-        Filters.files(files, "com.github.dannil.scbjavaclient.test");
-
-        List<Class<?>> matchedClasses = new ArrayList<>();
-        for (File file : files) {
-            // Convert path into binary name
-            String binaryName = Files.fileToBinaryName(file);
-
-            // Reflect the binary name into a concrete Java class
-            Class<?> clazz = null;
-            try {
-                clazz = Class.forName(binaryName);
-                if (clazz.getAnnotation(RunWith.class) == null) {
-                    matchedClasses.add(clazz);
-                }
-            } catch (ClassNotFoundException e) {
-                // Class could not be created; respond with an assertion that'll always
-                // fail
-                e.printStackTrace();
-                assertTrue(e.getMessage(), false);
-            }
-        }
-        assertTrue("Classes not annotated with RunWith: " + matchedClasses.toString(), matchedClasses.isEmpty());
+        assertTrue(matchedClasses.isEmpty(), "Classes not annotated with Remote " + matchedClasses.toString());
     }
 
     @Test
@@ -135,11 +102,11 @@ public class TestIT {
                 // Class could not be created; respond with an assertion that'll always
                 // fail
                 e.printStackTrace();
-                assertTrue(e.getMessage(), false);
+                assertTrue(false, e.getMessage());
             }
         }
-        assertTrue("Classes not having matching package and client name: " + matchedClasses.toString(),
-                matchedClasses.isEmpty());
+        assertTrue(matchedClasses.isEmpty(),
+                "Classes not having matching package and client name: " + matchedClasses.toString());
     }
 
     @Test
@@ -170,7 +137,7 @@ public class TestIT {
                 // Class could not be created; respond with an assertion that'll always
                 // fail
                 e.printStackTrace();
-                assertTrue(e.getMessage(), false);
+                assertTrue(false, e.getMessage());
             }
 
             for (File fileTest : testFiles) {
@@ -180,8 +147,8 @@ public class TestIT {
                 }
             }
         }
-        assertTrue("Test classes not having matching name and/or package : " + matchedClasses.toString(),
-                matchedClasses.isEmpty());
+        assertTrue(matchedClasses.isEmpty(),
+                "Test classes not having matching name and/or package : " + matchedClasses.toString());
     }
 
     @Test
@@ -226,7 +193,7 @@ public class TestIT {
                 // Class could not be created; respond with an assertion that'll always
                 // fail
                 e.printStackTrace();
-                assertTrue(e.getMessage(), false);
+                assertTrue(false, e.getMessage());
             }
 
             List<String> lines = java.nio.file.Files.readAllLines(Paths.get(f.getPath()), StandardCharsets.UTF_8);
@@ -256,7 +223,7 @@ public class TestIT {
                 matchedClasses.put(clazz, offending);
             }
         }
-        assertTrue("Clients not utilizing API constants : " + matchedClasses.toString(), matchedClasses.isEmpty());
+        assertTrue(matchedClasses.isEmpty(), "Clients not utilizing API constants : " + matchedClasses.toString());
     }
 
 }

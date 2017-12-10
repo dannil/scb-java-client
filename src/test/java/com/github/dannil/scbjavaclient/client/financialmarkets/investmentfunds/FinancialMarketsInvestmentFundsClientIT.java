@@ -14,38 +14,43 @@
 
 package com.github.dannil.scbjavaclient.client.financialmarkets.investmentfunds;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.test.runner.Date;
-import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.AllowFailure;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.NoticeStrategy;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(DateJUnitRunner.class)
-public class FinancialMarketsInvestmentFundsClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class FinancialMarketsInvestmentFundsClientIT {
 
     private FinancialMarketsInvestmentFundsClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
         this.client = new FinancialMarketsInvestmentFundsClient();
     }
 
     @Test
     @Date("2017-12-22")
+    @AllowFailure(notice = NoticeStrategy.ALWAYS)
     public void getOwnershipOfInvestmentFund() {
         assertNotEquals(0, this.client.getOwnershipOfInvestmentFund().size());
     }
 
     @Test
     @Date("2017-12-22")
+    @AllowFailure(notice = NoticeStrategy.ALWAYS)
     public void getOwnershipOfInvestmentFundWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getOwnershipOfInvestmentFund(Collections.<String>emptyList(),
@@ -55,6 +60,7 @@ public class FinancialMarketsInvestmentFundsClientIT extends RemoteIntegrationTe
 
     @Test
     @Date("2017-12-22")
+    @AllowFailure(notice = NoticeStrategy.ALWAYS)
     public void getOwnershipOfInvestmentFundWithParameters() {
         List<String> observations = Arrays.asList("inbet", "utbet");
         List<String> types = Arrays.asList("S12251", "S12354");
