@@ -163,7 +163,8 @@
           to the process of running the tests will break; it seems that surefire-provider 
           needs surefire/failsafe version 2.19.1 to work -->
         <version>2.19.1</version>
-        <!-- Remove these dependencies when surefire/failsafe has support for JUnit 5 -->
+        <!-- Remove these dependencies when surefire/failsafe has support 
+          for JUnit 5 -->
         <dependencies>
           <dependency>
             <groupId>org.junit.platform</groupId>
@@ -188,7 +189,8 @@
           to the process of running the tests will break; it seems that surefire-provider 
           needs surefire/failsafe version 2.19.1 to work -->
         <version>2.19.1</version>
-        <!-- Remove these dependencies when surefire/failsafe has support for JUnit 5 -->
+        <!-- Remove these dependencies when surefire/failsafe has support 
+          for JUnit 5 -->
         <dependencies>
           <dependency>
             <groupId>org.junit.platform</groupId>
@@ -486,6 +488,13 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
         <version>3.6</version>
+<!--         <dependencies> -->
+<!--           <dependency> -->
+<!--             <groupId>org.apache.maven.doxia</groupId> -->
+<!--             <artifactId>doxia-module-markdown</artifactId> -->
+<!--             <version>1.7</version> -->
+<!--           </dependency> -->
+<!--         </dependencies> -->
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
