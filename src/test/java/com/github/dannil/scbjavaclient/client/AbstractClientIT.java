@@ -27,6 +27,7 @@ import java.io.PrintStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
 import java.text.Collator;
@@ -38,13 +39,16 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Random;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.concurrent.TimeUnit;
 
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
@@ -444,102 +448,106 @@ public class AbstractClientIT {
                 "Methods not having correct overloads: " + offendingMethods.keySet().toString());
     }
 
-//    @Test
-//    @Date("now")
-//    public void checkForUsageOfAllCodes() throws Exception {
-//        String execPath = System.getProperty("user.dir");
-//
-//        // Find files matching the wildcard pattern
-//        List<File> files = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient/client", "*.java");
-//
-//        // Filter out some classes from the list
-//        Filters.files(files, AbstractClient.class, AbstractContainerClient.class, SCBClient.class);
-//
-//        List<Class<?>> classes = new ArrayList<Class<?>>();
-//        for (File file : files) {
-//            // Convert path into binary name
-//            String binaryName = Files.fileToBinaryName(file);
-//            if (binaryName.contains("package-info")) {
-//                continue;
-//            }
-//
-//            // Reflect the binary name into a concrete Java class
-//            Class<?> clazz = null;
-//            try {
-//                clazz = Class.forName(binaryName);
-//            } catch (ClassNotFoundException e) {
-//                e.printStackTrace();
-//            }
-//            classes.add(clazz);
-//        }
-//
-//        // Map<String, Class<?>> register = new HashMap<>();
-//        // Map<String, List<Class<?>>> offendingClasses = new HashMap<>();
-//
-//        Collection<String> tables = new TreeSet<String>(Collator.getInstance());
-//        for (Class<?> clazz : classes) {
-//            LocalDateTime now = LocalDateTime.now();
-//            Random r = new Random();
-//            String tempName = "temp_1.txt";
-//
-//            // System.out.println(clazz);
-//            Object client = clazz.newInstance();
-//            Method mUrl = clazz.getMethod("getUrl", new Class[] {});
-//            URLEndpoint u = (URLEndpoint) mUrl.invoke(client, new Object[] {});
-//            tables.add(u.getTable());
-//
-//            Object instance = clazz.newInstance();
-//
-//            Method[] methods = clazz.getDeclaredMethods();
-//            List<Method> filteredMethods = new ArrayList<>();
-//            for (int i = 0; i < methods.length; i++) {
-//                Method m = methods[i];
-//                if (m.getName().equals("getUrl") || !m.getName().startsWith("get") || m.getParameterCount() == 0) {
-//                    continue;
-//                }
-//                filteredMethods.add(m);
-//            }
-////            
-////            for (Method m3 : filteredMethods) {
-////                System.out.println(m3);
-////            }
-//            
-//            
-//            File f = new File("f.txt");
-//            f.createNewFile();
-//            
-//            if (!filteredMethods.isEmpty()) {
-//                PrintStream orgStream = System.out;
-//                PrintStream fileStream = new PrintStream(new FileOutputStream(tempName, true));
-//                System.setOut(fileStream);
-//                System.setErr(fileStream);
-//                for (Method m2 : filteredMethods) {
-//                    Object[] objs = new Object[m2.getParameterCount()];
-//                    m2.invoke(instance, objs);
-//                    Thread.sleep(500);
-//                }
-//                System.setOut(orgStream);
-//                System.setErr(orgStream);
-//            }
-//            try (BufferedReader br = new BufferedReader(new FileReader(tempName))) {
-//                String line = br.readLine();
-//                while (line != null) {
-//                    tables.add(line);
-//                    line = br.readLine();
-//                }
-//            }
-//
-//            //
-//            try {
-//                java.nio.file.Files.delete(Paths.get(tempName));
-//            } catch (NoSuchFileException e) {
-//
-//            }
-//
-//        }
-//        for (String s : tables) {
-//            System.out.println(s);
-//        }
-//    }
+    @Test
+    @Date("2017-12-11")
+    public void checkForUsageOfAllCodes() throws Exception {
+        String execPath = System.getProperty("user.dir");
+
+        // Find files matching the wildcard pattern
+        List<File> files = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient/client", "*.java");
+
+        // Filter out some classes from the list
+        Filters.files(files, AbstractClient.class, AbstractContainerClient.class, SCBClient.class);
+
+        List<String> offendingMethods = new ArrayList<>();
+        for (File f : files) {
+            // Convert path into binary name
+            String binaryName = Files.fileToBinaryName(f);
+            if (binaryName.endsWith("package-info")) {
+                continue;
+            }
+
+            // Reflect the binary name into a concrete Java class
+            Class<?> clazz = null;
+            try {
+                clazz = Class.forName(binaryName);
+            } catch (ClassNotFoundException e) {
+                // Class could not be created; respond with an assertion that'll always
+                // fail
+                e.printStackTrace();
+                assertTrue(false, e.getMessage());
+            }
+            
+            Map<String, String> tables = new LinkedHashMap<>();
+            // Figure out implemented tables by inspecting the source code
+            List<String> lines = java.nio.file.Files.readAllLines(Paths.get(f.getPath()), StandardCharsets.UTF_8);
+            String beginningOfMethod = "List<ResponseModel>";
+            String method = "";
+            String table = "";
+            for (String line : lines) {
+                // Skip line if it is a comment, Javadoc or alike
+                String trimmedLine = line.trim();
+                String[] comments = { "//", "/**", "/*", "*", "*/" };
+                boolean offendingLine = false;
+                for (int i = 0; i < comments.length; i++) {
+                    if (trimmedLine.startsWith(comments[i])) {
+                        offendingLine = true;
+                    }
+                }
+                if (offendingLine) {
+                    continue;
+                }
+                if (trimmedLine.contains(beginningOfMethod)) {
+                    int beginIndex = trimmedLine.indexOf(beginningOfMethod) + beginningOfMethod.length() + 1;
+                    int endIndex = trimmedLine.indexOf('(', beginIndex + 1);
+                    method = trimmedLine.substring(beginIndex, endIndex);
+                }
+                if (trimmedLine.contains("return generate") || trimmedLine.contains("return getResponseModels")) {
+                    int beginIndex = trimmedLine.indexOf('"') + 1;
+                    int endIndex = trimmedLine.indexOf('"', beginIndex + 2);
+                    if (beginIndex > 0 && endIndex > 0) {
+                        table = trimmedLine.substring(beginIndex, endIndex);
+                        tables.put(method, table);
+                    }
+                }
+            }
+            if (tables.isEmpty()) {
+                continue;
+            }
+            
+            Object instance = clazz.newInstance();
+            URLEndpoint url = (URLEndpoint) clazz.getMethod("getUrl", new Class<?>[] {}).invoke(instance,
+                    new Object[] {});
+            Method[] declaredMethods = clazz.getDeclaredMethods();
+            List<Method> filteredMethods = new ArrayList<>();
+            for (int i = 0; i < declaredMethods.length; i++) {
+                Method m = declaredMethods[i];
+                if (m.getName().equals("getUrl") || !m.getName().startsWith("get") || m.getParameterCount() == 0) {
+                    continue;
+                }
+                filteredMethods.add(m);
+            }
+            SCBClient client = new SCBClient();
+            for (Entry<String, String> entry : tables.entrySet()) {
+                String key = entry.getKey();
+                String value = entry.getValue();
+                for (Method filteredMethod : filteredMethods) {
+                    if (Objects.equals(filteredMethod.getName(), key)) {
+                        URLEndpoint fullUrl = new URLEndpoint(url.getTable() + value);
+                        Map<String, Collection<String>> inputs = client.getInputs(fullUrl.getTable());
+                        // Check for same amount of codes. Add one to the parameter count
+                        // as the code ContentsCode is implicitly added by every method
+                        // and doesn't need to be a parameter
+                        if (inputs.keySet().size() != filteredMethod.getParameterCount() + 1) {
+                            offendingMethods.add(clazz.getSimpleName() + "." + filteredMethod.getName());
+                        }
+                        TimeUnit.MILLISECONDS.sleep(500);
+                    }
+                }
+            }
+        }
+        assertTrue(offendingMethods.isEmpty(), "Methods not implementing all codes: " + offendingMethods);
+    }
 
 }
+

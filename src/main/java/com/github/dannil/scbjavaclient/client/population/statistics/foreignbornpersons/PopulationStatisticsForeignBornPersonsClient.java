@@ -57,10 +57,10 @@ public class PopulationStatisticsForeignBornPersonsClient extends AbstractClient
      *         objects
      *
      * @see #getSwedishAndForeignBornPopulation(Collection, Collection, Collection,
-     *      Collection)
+     *      Collection, Collection)
      */
     public List<ResponseModel> getSwedishAndForeignBornPopulation() {
-        return getSwedishAndForeignBornPopulation(null, null, null, null);
+        return getSwedishAndForeignBornPopulation(null, null, null, null, null);
     }
 
     /**
@@ -73,6 +73,8 @@ public class PopulationStatisticsForeignBornPersonsClient extends AbstractClient
      *            the ages
      * @param sexes
      *            the sexes
+     * @param regionOfBirths
+     *            the region of births
      * @param years
      *            the years
      * @return the data wrapped in a list of
@@ -80,11 +82,12 @@ public class PopulationStatisticsForeignBornPersonsClient extends AbstractClient
      *         objects
      */
     public List<ResponseModel> getSwedishAndForeignBornPopulation(Collection<String> regions, Collection<String> ages,
-            Collection<Integer> sexes, Collection<Integer> years) {
+            Collection<Integer> sexes, Collection<String> regionOfBirths, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put(APIConstants.AGE_CODE, ages);
         mappings.put(APIConstants.SEX_CODE, sexes);
+        mappings.put("Fodelseregion", regionOfBirths);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("InrUtrFoddaRegAlKon", mappings);

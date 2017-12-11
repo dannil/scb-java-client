@@ -47,17 +47,18 @@ public class TransportRegisteredVehiclesVehiclesClientIT {
     @Test
     @Date("2017-05-08")
     public void getVehiclesInUseWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getVehiclesInUse(Collections.<Integer>emptyList(),
+        assertNotEquals(0, this.client.getVehiclesInUse(Collections.<String>emptyList(), Collections.<Integer>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
     @Date("2017-05-08")
     public void getVehiclesInUseWithParameters() {
+        List<String> regions = Arrays.asList("0127", "0128");
         List<Integer> typesOfVehicles = Arrays.asList(30, 40);
         List<Integer> years = Arrays.asList(2008, 2010);
 
-        assertNotEquals(0, this.client.getVehiclesInUse(typesOfVehicles, years).size());
+        assertNotEquals(0, this.client.getVehiclesInUse(regions, typesOfVehicles, years).size());
     }
 
     @Test

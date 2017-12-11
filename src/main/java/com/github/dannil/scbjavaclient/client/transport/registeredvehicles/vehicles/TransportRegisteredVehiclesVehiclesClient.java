@@ -58,15 +58,17 @@ public class TransportRegisteredVehiclesVehiclesClient extends AbstractClient {
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @see #getVehiclesInUse(Collection, Collection)
+     * @see #getVehiclesInUse(Collection, Collection, Collection)
      */
     public List<ResponseModel> getVehiclesInUse() {
-        return getVehiclesInUse(null, null);
+        return getVehiclesInUse(null, null, null);
     }
 
     /**
      * <p>Fetch all vehicles in use data which match the input constraints.</p>
      *
+     * @param regions
+     *            the regions
      * @param typesOfVehicles
      *            the types of vehicles
      * @param years
@@ -75,8 +77,10 @@ public class TransportRegisteredVehiclesVehiclesClient extends AbstractClient {
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getVehiclesInUse(Collection<Integer> typesOfVehicles, Collection<Integer> years) {
+    public List<ResponseModel> getVehiclesInUse(Collection<String> regions, Collection<Integer> typesOfVehicles,
+            Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put(TYPEOFVEHICLE_CODE, typesOfVehicles);
         mappings.put(APIConstants.TIME_CODE, years);
 
