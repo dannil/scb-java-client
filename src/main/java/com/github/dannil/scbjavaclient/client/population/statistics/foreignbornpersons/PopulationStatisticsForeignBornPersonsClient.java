@@ -73,6 +73,31 @@ public class PopulationStatisticsForeignBornPersonsClient extends AbstractClient
      *            the ages
      * @param sexes
      *            the sexes
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     * @deprecated use
+     *             {@link #getSwedishAndForeignBornPopulation(Collection, Collection, Collection, Collection, Collection)}
+     *             instead.
+     */
+    @Deprecated
+    public List<ResponseModel> getSwedishAndForeignBornPopulation(Collection<String> regions, Collection<String> ages,
+            Collection<Integer> sexes, Collection<Integer> years) {
+        return getSwedishAndForeignBornPopulation(regions, ages, sexes, null, years);
+    }
+
+    /**
+     * <p>Fetch all Swedish and foreign-born population data which match the input
+     * constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param ages
+     *            the ages
+     * @param sexes
+     *            the sexes
      * @param regionOfBirths
      *            the region of births
      * @param years

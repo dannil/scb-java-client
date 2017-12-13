@@ -67,6 +67,28 @@ public class TransportRegisteredVehiclesVehiclesClient extends AbstractClient {
     /**
      * <p>Fetch all vehicles in use data which match the input constraints.</p>
      *
+     * @param typesOfVehicles
+     *            the types of vehicles
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     * @deprecated use {@link #getVehiclesInUse(Collection, Collection, Collection)}
+     *             instead.
+     */
+    @Deprecated
+    public List<ResponseModel> getVehiclesInUse(Collection<Integer> typesOfVehicles, Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(TYPEOFVEHICLE_CODE, typesOfVehicles);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("FordonTrafik", mappings);
+    }
+
+    /**
+     * <p>Fetch all vehicles in use data which match the input constraints.</p>
+     *
      * @param regions
      *            the regions
      * @param typesOfVehicles

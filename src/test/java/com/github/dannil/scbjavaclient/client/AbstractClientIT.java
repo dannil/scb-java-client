@@ -406,17 +406,20 @@ public class AbstractClientIT {
                     } else {
                         offendingMethods.put(full, offendingMethods.get(full) + 1);
                     }
-                    // Removed offending methods which occur more than once (which means
-                    // that there does exists an overload)
-                    if (offendingMethods.get(full) > 1) {
-                        offendingMethods.remove(full);
-                    }
                 }
             } catch (ClassNotFoundException e) {
                 // Class could not be created; respond with an assertion that'll always
                 // fail
                 e.printStackTrace();
                 assertTrue(false, e.getMessage());
+            }
+        }
+        for (Iterator<Integer> it = offendingMethods.values().iterator(); it.hasNext();) {
+            Integer value = it.next();
+            // Remove offending methods which occur more than once (which means
+            // that there does exists an overload)
+            if (value > 1) {
+                it.remove();
             }
         }
         // Filter out known methods throwing HTTP 403. Format is the same used for the
@@ -477,7 +480,7 @@ public class AbstractClientIT {
                 e.printStackTrace();
                 assertTrue(false, e.getMessage());
             }
-            
+
             Map<String, String> tables = new LinkedHashMap<>();
             // Figure out implemented tables by inspecting the source code
             List<String> lines = java.nio.file.Files.readAllLines(Paths.get(f.getPath()), StandardCharsets.UTF_8);
@@ -514,7 +517,7 @@ public class AbstractClientIT {
             if (tables.isEmpty()) {
                 continue;
             }
-            
+
             Object instance = clazz.newInstance();
             URLEndpoint url = (URLEndpoint) clazz.getMethod("getUrl", new Class<?>[] {}).invoke(instance,
                     new Object[] {});
@@ -532,6 +535,10 @@ public class AbstractClientIT {
                 String key = entry.getKey();
                 String value = entry.getValue();
                 for (Method filteredMethod : filteredMethods) {
+                    // Method is deprecated; we don't care if it has all the codes
+                    if (filteredMethod.isAnnotationPresent(Deprecated.class)) {
+                        continue;
+                    }
                     if (Objects.equals(filteredMethod.getName(), key)) {
                         URLEndpoint fullUrl = new URLEndpoint(url.getTable() + value);
                         Map<String, Collection<String>> inputs = client.getInputs(fullUrl.getTable());
@@ -550,4 +557,3 @@ public class AbstractClientIT {
     }
 
 }
-
