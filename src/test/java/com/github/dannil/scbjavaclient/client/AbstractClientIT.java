@@ -531,12 +531,13 @@ public class AbstractClientIT {
                 String key = entry.getKey();
                 String value = entry.getValue();
                 for (Method filteredMethod : filteredMethods) {
-                    // Method is deprecated; we don't care if it has all the codes
+                    // Method is deprecated; we don't care if it doesn't have all the
+                    // codes
                     if (filteredMethod.isAnnotationPresent(Deprecated.class)) {
                         continue;
                     }
                     if (Objects.equals(filteredMethod.getName(), key)) {
-                        URLEndpoint fullUrl = new URLEndpoint(url.getTable() + value);
+                        URLEndpoint fullUrl = url.append(value);
                         Map<String, Collection<String>> inputs = client.getInputs(fullUrl.getTable());
                         // Check for same amount of codes. Add one to the parameter count
                         // as the code ContentsCode is implicitly added by every method
