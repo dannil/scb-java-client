@@ -19,19 +19,11 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.PrintStream;
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
-import java.text.Collator;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -45,7 +37,6 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Objects;
-import java.util.Random;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.concurrent.TimeUnit;
@@ -437,11 +428,8 @@ public class AbstractClientIT {
         knownMethods.add("PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient.getIncomeStatements");
         knownMethods.add(
                 "FinancialMarketsStatisticsDepositAndLendingClient.getLendingRatesToHouseholdsAndNonFinancialCorporationsBreakdownByMaturity");
-        for (Iterator<Entry<String, Integer>> it = offendingMethods.entrySet().iterator(); it.hasNext();) {
-            Entry<String, Integer> entry = it.next();
-            if (knownMethods.contains(entry.getKey())) {
-                it.remove();
-            }
+        for (String knownMethod : knownMethods) {
+            offendingMethods.remove(knownMethod);
         }
         assertTrue(offendingMethods.isEmpty(),
                 "Methods not having correct overloads: " + offendingMethods.keySet().toString());
@@ -542,7 +530,8 @@ public class AbstractClientIT {
                         // Check for same amount of codes. Add one to the parameter count
                         // as the code ContentsCode is implicitly added by every method
                         // and doesn't need to be a parameter
-                        if (inputs.keySet().size() != filteredMethod.getParameterCount() + 1) {
+                        int differenceOfParameters = inputs.keySet().size() - filteredMethod.getParameterCount() + 1;
+                        if (differenceOfParameters > 0) {
                             offendingMethods.add(clazz.getSimpleName() + "." + filteredMethod.getName());
                         }
                         TimeUnit.MILLISECONDS.sleep(TestConstants.API_SLEEP_MS);
