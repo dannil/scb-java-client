@@ -53,6 +53,7 @@ import java.util.concurrent.TimeUnit;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
+import com.github.dannil.scbjavaclient.test.TestConstants;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
@@ -543,7 +544,7 @@ public class AbstractClientIT {
                         if (inputs.keySet().size() != filteredMethod.getParameterCount() + 1) {
                             offendingMethods.add(clazz.getSimpleName() + "." + filteredMethod.getName());
                         }
-                        TimeUnit.MILLISECONDS.sleep(500);
+                        TimeUnit.MILLISECONDS.sleep(TestConstants.API_SLEEP_MS);
                     }
                 }
             }
