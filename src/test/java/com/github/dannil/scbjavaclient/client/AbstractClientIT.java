@@ -527,10 +527,10 @@ public class AbstractClientIT {
                     if (Objects.equals(filteredMethod.getName(), key)) {
                         URLEndpoint fullUrl = url.append(value);
                         Map<String, Collection<String>> inputs = client.getInputs(fullUrl.getTable());
-                        // Check for same amount of codes. Add one to the parameter count
-                        // as the code ContentsCode is implicitly added by every method
-                        // and doesn't need to be a parameter
-                        int differenceOfParameters = inputs.keySet().size() - filteredMethod.getParameterCount() + 1;
+                        // Check for same amount of codes. Remove one as the code
+                        // ContentsCode is implicitly added by every method and doesn't
+                        // need to be a parameter
+                        int differenceOfParameters = inputs.keySet().size() - filteredMethod.getParameterCount() - 1;
                         if (differenceOfParameters > 0) {
                             offendingMethods.add(clazz.getSimpleName() + "." + filteredMethod.getName());
                         }
