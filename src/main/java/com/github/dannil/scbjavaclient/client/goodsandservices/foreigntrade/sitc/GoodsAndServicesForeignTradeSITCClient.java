@@ -30,7 +30,12 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
  * Trade Classification) data fetching.</p>
  *
  * @since 0.3.0
+ * 
+ * @deprecated use
+ *             {@link com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods.sitc.GoodsAndServicesForeignTradeGoodsSITCClient
+ *             GoodsAndServicesForeignTradeGoodsSITCClient} instead
  */
+@Deprecated
 public class GoodsAndServicesForeignTradeSITCClient extends AbstractClient {
 
     /**

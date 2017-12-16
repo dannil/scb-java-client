@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade;
+package com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods;
 
 import java.util.Locale;
 
@@ -25,21 +25,16 @@ import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.tota
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 /**
- * <p>Client which handles goods and services foreign trade data fetching.</p>
+ * <p>Client which handles goods and services foreign trade goods data fetching.</p>
  *
- * @since 0.3.0
- * 
- * @deprecated use
- *             {@link com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods.GoodsAndServicesForeignTradeGoodsClient
- *             GoodsAndServicesForeignTradeGoodsClient} instead
+ * @since 0.7.0
  */
-@Deprecated
-public class GoodsAndServicesForeignTradeClient extends AbstractContainerClient {
+public class GoodsAndServicesForeignTradeGoodsClient extends AbstractContainerClient {
 
     /**
      * <p>Default constructor. Initializes values and creates sub-clients.</p>
      */
-    public GoodsAndServicesForeignTradeClient() {
+    public GoodsAndServicesForeignTradeGoodsClient() {
         super();
 
         addClient("cn", new GoodsAndServicesForeignTradeCNClient());
@@ -55,49 +50,50 @@ public class GoodsAndServicesForeignTradeClient extends AbstractContainerClient 
      * @param locale
      *            the <code>Locale</code> for this client
      */
-    public GoodsAndServicesForeignTradeClient(Locale locale) {
+    public GoodsAndServicesForeignTradeGoodsClient(Locale locale) {
         this();
 
         setLocale(locale);
     }
 
     /**
-     * <p>Retrieve the client for interacting with goods and services foreign trade CN
-     * (Combined Nomenclature) data.</p>
+     * <p>Retrieve the client for interacting with goods and services foreign trade goods
+     * CN (Combined Nomenclature) data.</p>
      *
-     * @return a client for goods and services foreign trade CN (Combined Nomenclature)
-     *         data
+     * @return a client for goods and services foreign trade goods CN (Combined
+     *         Nomenclature) data
      */
     public GoodsAndServicesForeignTradeCNClient cn() {
         return (GoodsAndServicesForeignTradeCNClient) getClient("cn");
     }
 
     /**
-     * <p>Retrieve the client for interacting with goods and services foreign trade
+     * <p>Retrieve the client for interacting with goods and services foreign trade goods
      * economic indicators data.</p>
      *
-     * @return a client for goods and services foreign trade economic indicators data
+     * @return a client for goods and services foreign trade goods economic indicators
+     *         data
      */
     public GoodsAndServicesForeignTradeEconomicIndicatorsClient economicIndicators() {
         return (GoodsAndServicesForeignTradeEconomicIndicatorsClient) getClient("economicindicators");
     }
 
     /**
-     * <p>Retrieve the client for interacting with goods and services foreign trade SITC
-     * (Standard International Trade Classification) data.</p>
+     * <p>Retrieve the client for interacting with goods and services foreign trade goods
+     * SITC (Standard International Trade Classification) data.</p>
      *
-     * @return a client for goods and services foreign trade SITC (Standard International
-     *         Trade Classification) data
+     * @return a client for goods and services foreign trade goods SITC (Standard
+     *         International Trade Classification) data
      */
     public GoodsAndServicesForeignTradeSITCClient sitc() {
         return (GoodsAndServicesForeignTradeSITCClient) getClient("sitc");
     }
 
     /**
-     * <p>Retrieve the client for interacting with goods and services foreign trade SPIN
-     * (Swedish Standard Classification of Products by Activity) data.</p>
+     * <p>Retrieve the client for interacting with goods and services foreign trade goods
+     * SPIN (Swedish Standard Classification of Products by Activity) data.</p>
      *
-     * @return a client for goods and services foreign trade SPIN (Swedish Standard
+     * @return a client for goods and services foreign trade goods SPIN (Swedish Standard
      *         Classification of Products by Activity) data
      */
     public GoodsAndServicesForeignTradeSPINClient spin() {
@@ -105,10 +101,10 @@ public class GoodsAndServicesForeignTradeClient extends AbstractContainerClient 
     }
 
     /**
-     * <p>Retrieve the client for interacting with goods and services foreign trade total
-     * data.</p>
+     * <p>Retrieve the client for interacting with goods and services foreign trade goods
+     * total data.</p>
      *
-     * @return a client for goods and services foreign trade total data
+     * @return a client for goods and services foreign trade goods total data
      */
     public GoodsAndServicesForeignTradeTotalClient total() {
         return (GoodsAndServicesForeignTradeTotalClient) getClient("total");

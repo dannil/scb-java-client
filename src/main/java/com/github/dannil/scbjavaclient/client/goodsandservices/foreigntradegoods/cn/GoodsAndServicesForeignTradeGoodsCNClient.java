@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.cn;
+package com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods.cn;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -26,22 +26,17 @@ import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles goods and services foreign trade CN (Combined Nomenclature)
+ * <p>Client which handles goods and services foreign trade goods CN (Combined Nomenclature)
  * data fetching.</p>
  *
- * @since 0.3.0
- * 
- * @deprecated use
- *             {@link com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods.cn.GoodsAndServicesForeignTradeGoodsCNClient
- *             GoodsAndServicesForeignTradeGoodsCNClient} instead
+ * @since 0.7.0
  */
-@Deprecated
-public class GoodsAndServicesForeignTradeCNClient extends AbstractClient {
+public class GoodsAndServicesForeignTradeGoodsCNClient extends AbstractClient {
 
     /**
      * <p>Default constructor.</p>
      */
-    public GoodsAndServicesForeignTradeCNClient() {
+    public GoodsAndServicesForeignTradeGoodsCNClient() {
         super();
     }
 
@@ -51,7 +46,7 @@ public class GoodsAndServicesForeignTradeCNClient extends AbstractClient {
      * @param locale
      *            the <code>Locale</code> for this client
      */
-    public GoodsAndServicesForeignTradeCNClient(Locale locale) {
+    public GoodsAndServicesForeignTradeGoodsCNClient(Locale locale) {
         super(locale);
     }
 

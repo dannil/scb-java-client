@@ -20,6 +20,7 @@ import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.goodsandservices.foodsales.GoodsAndServicesFoodSalesClient;
 import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.GoodsAndServicesForeignTradeClient;
+import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods.GoodsAndServicesForeignTradeGoodsClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
@@ -48,6 +49,13 @@ public class GoodsAndServicesClientTest {
         GoodsAndServicesClient client = new GoodsAndServicesClient();
 
         assertEquals(client.foreignTrade().getClass(), GoodsAndServicesForeignTradeClient.class);
+    }
+    
+    @Test
+    public void foreignTradeGoodsClient() {
+        GoodsAndServicesClient client = new GoodsAndServicesClient();
+
+        assertEquals(client.foreignTradeGoods().getClass(), GoodsAndServicesForeignTradeGoodsClient.class);
     }
 
     @Test
