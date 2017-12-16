@@ -14,10 +14,16 @@
 
 package com.github.dannil.scbjavaclient.client.goodsandservices.turnoverservicesector.economicindicators;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles goods and services turnover service sector economic indicators data fetching.</p>
@@ -43,7 +49,37 @@ public class GoodsAndServicesTurnoverServiceSectorEconomicIndicators extends Abs
         super(locale);
     }
     
-    // TODO Add methods here!
+    /**
+     * <p>Fetch all retail trade sales data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getRetailTradeSales(Collection, Collection)
+     */
+    public List<ResponseModel> getRetailTradeSales() {
+        return getRetailTradeSales(null, null);
+    }
+
+    /**
+     * <p>Fetch all retail trade sales data which match the input constraints.</p>
+     *
+     * @param indicators
+     *            the indicators
+     * @param months
+     *            the months
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getRetailTradeSales(Collection<String> indicators, Collection<String> months) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("EkoIndikator", indicators);
+        mappings.put(APIConstants.TIME_CODE, months);
+
+        return getResponseModels("SnabbStatHA0101", mappings);
+    }
 
     @Override
     public URLEndpoint getUrl() {
