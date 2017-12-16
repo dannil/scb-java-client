@@ -20,7 +20,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.economicindicators.GoodsAndServicesForeignTradeEconomicIndicatorsClient;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;

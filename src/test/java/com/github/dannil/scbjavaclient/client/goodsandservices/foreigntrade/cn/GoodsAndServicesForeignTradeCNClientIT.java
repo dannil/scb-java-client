@@ -28,6 +28,7 @@ import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
+@SuppressWarnings("deprecation")
 public class GoodsAndServicesForeignTradeCNClientIT {
 
     private GoodsAndServicesForeignTradeCNClient client;

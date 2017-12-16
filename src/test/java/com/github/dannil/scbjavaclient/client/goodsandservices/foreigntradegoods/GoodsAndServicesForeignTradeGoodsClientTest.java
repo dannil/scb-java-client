@@ -18,11 +18,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.cn.GoodsAndServicesForeignTradeCNClient;
-import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.economicindicators.GoodsAndServicesForeignTradeEconomicIndicatorsClient;
-import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.sitc.GoodsAndServicesForeignTradeSITCClient;
-import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.spin.GoodsAndServicesForeignTradeSPINClient;
-import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.total.GoodsAndServicesForeignTradeTotalClient;
+import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods.cn.GoodsAndServicesForeignTradeGoodsCNClient;
+import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods.economicindicators.GoodsAndServicesForeignTradeGoodsEconomicIndicatorsClient;
+import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods.sitc.GoodsAndServicesForeignTradeGoodsSITCClient;
+import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods.spin.GoodsAndServicesForeignTradeGoodsSPINClient;
+import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods.total.GoodsAndServicesForeignTradeGoodsTotalClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
@@ -43,7 +43,7 @@ public class GoodsAndServicesForeignTradeGoodsClientTest {
     public void cnClient() {
         GoodsAndServicesForeignTradeGoodsClient client = new GoodsAndServicesForeignTradeGoodsClient();
 
-        assertEquals(client.cn().getClass(), GoodsAndServicesForeignTradeCNClient.class);
+        assertEquals(client.cn().getClass(), GoodsAndServicesForeignTradeGoodsCNClient.class);
     }
 
     @Test
@@ -51,28 +51,28 @@ public class GoodsAndServicesForeignTradeGoodsClientTest {
         GoodsAndServicesForeignTradeGoodsClient client = new GoodsAndServicesForeignTradeGoodsClient();
 
         assertEquals(client.economicIndicators().getClass(),
-                GoodsAndServicesForeignTradeEconomicIndicatorsClient.class);
+                GoodsAndServicesForeignTradeGoodsEconomicIndicatorsClient.class);
     }
 
     @Test
     public void sitcClient() {
         GoodsAndServicesForeignTradeGoodsClient client = new GoodsAndServicesForeignTradeGoodsClient();
 
-        assertEquals(client.sitc().getClass(), GoodsAndServicesForeignTradeSITCClient.class);
+        assertEquals(client.sitc().getClass(), GoodsAndServicesForeignTradeGoodsSITCClient.class);
     }
 
     @Test
     public void spinClient() {
         GoodsAndServicesForeignTradeGoodsClient client = new GoodsAndServicesForeignTradeGoodsClient();
 
-        assertEquals(client.spin().getClass(), GoodsAndServicesForeignTradeSPINClient.class);
+        assertEquals(client.spin().getClass(), GoodsAndServicesForeignTradeGoodsSPINClient.class);
     }
 
     @Test
     public void totalClient() {
         GoodsAndServicesForeignTradeGoodsClient client = new GoodsAndServicesForeignTradeGoodsClient();
 
-        assertEquals(client.total().getClass(), GoodsAndServicesForeignTradeTotalClient.class);
+        assertEquals(client.total().getClass(), GoodsAndServicesForeignTradeGoodsTotalClient.class);
     }
 
     @Test
