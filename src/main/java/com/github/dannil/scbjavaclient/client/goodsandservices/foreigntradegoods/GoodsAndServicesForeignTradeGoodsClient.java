@@ -17,11 +17,11 @@ package com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegood
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
-import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.cn.GoodsAndServicesForeignTradeCNClient;
-import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.economicindicators.GoodsAndServicesForeignTradeEconomicIndicatorsClient;
-import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.sitc.GoodsAndServicesForeignTradeSITCClient;
-import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.spin.GoodsAndServicesForeignTradeSPINClient;
-import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.total.GoodsAndServicesForeignTradeTotalClient;
+import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods.cn.GoodsAndServicesForeignTradeGoodsCNClient;
+import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods.economicindicators.GoodsAndServicesForeignTradeGoodsEconomicIndicatorsClient;
+import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods.sitc.GoodsAndServicesForeignTradeGoodsSITCClient;
+import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods.spin.GoodsAndServicesForeignTradeGoodsSPINClient;
+import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods.total.GoodsAndServicesForeignTradeGoodsTotalClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 /**
@@ -37,11 +37,11 @@ public class GoodsAndServicesForeignTradeGoodsClient extends AbstractContainerCl
     public GoodsAndServicesForeignTradeGoodsClient() {
         super();
 
-        addClient("cn", new GoodsAndServicesForeignTradeCNClient());
-        addClient("economicindicators", new GoodsAndServicesForeignTradeEconomicIndicatorsClient());
-        addClient("sitc", new GoodsAndServicesForeignTradeSITCClient());
-        addClient("spin", new GoodsAndServicesForeignTradeSPINClient());
-        addClient("total", new GoodsAndServicesForeignTradeTotalClient());
+        addClient("cn", new GoodsAndServicesForeignTradeGoodsCNClient());
+        addClient("economicindicators", new GoodsAndServicesForeignTradeGoodsEconomicIndicatorsClient());
+        addClient("sitc", new GoodsAndServicesForeignTradeGoodsSITCClient());
+        addClient("spin", new GoodsAndServicesForeignTradeGoodsSPINClient());
+        addClient("total", new GoodsAndServicesForeignTradeGoodsTotalClient());
     }
 
     /**
@@ -63,8 +63,8 @@ public class GoodsAndServicesForeignTradeGoodsClient extends AbstractContainerCl
      * @return a client for goods and services foreign trade goods CN (Combined
      *         Nomenclature) data
      */
-    public GoodsAndServicesForeignTradeCNClient cn() {
-        return (GoodsAndServicesForeignTradeCNClient) getClient("cn");
+    public GoodsAndServicesForeignTradeGoodsCNClient cn() {
+        return (GoodsAndServicesForeignTradeGoodsCNClient) getClient("cn");
     }
 
     /**
@@ -74,8 +74,8 @@ public class GoodsAndServicesForeignTradeGoodsClient extends AbstractContainerCl
      * @return a client for goods and services foreign trade goods economic indicators
      *         data
      */
-    public GoodsAndServicesForeignTradeEconomicIndicatorsClient economicIndicators() {
-        return (GoodsAndServicesForeignTradeEconomicIndicatorsClient) getClient("economicindicators");
+    public GoodsAndServicesForeignTradeGoodsEconomicIndicatorsClient economicIndicators() {
+        return (GoodsAndServicesForeignTradeGoodsEconomicIndicatorsClient) getClient("economicindicators");
     }
 
     /**
@@ -85,8 +85,8 @@ public class GoodsAndServicesForeignTradeGoodsClient extends AbstractContainerCl
      * @return a client for goods and services foreign trade goods SITC (Standard
      *         International Trade Classification) data
      */
-    public GoodsAndServicesForeignTradeSITCClient sitc() {
-        return (GoodsAndServicesForeignTradeSITCClient) getClient("sitc");
+    public GoodsAndServicesForeignTradeGoodsSITCClient sitc() {
+        return (GoodsAndServicesForeignTradeGoodsSITCClient) getClient("sitc");
     }
 
     /**
@@ -96,8 +96,8 @@ public class GoodsAndServicesForeignTradeGoodsClient extends AbstractContainerCl
      * @return a client for goods and services foreign trade goods SPIN (Swedish Standard
      *         Classification of Products by Activity) data
      */
-    public GoodsAndServicesForeignTradeSPINClient spin() {
-        return (GoodsAndServicesForeignTradeSPINClient) getClient("spin");
+    public GoodsAndServicesForeignTradeGoodsSPINClient spin() {
+        return (GoodsAndServicesForeignTradeGoodsSPINClient) getClient("spin");
     }
 
     /**
@@ -106,8 +106,8 @@ public class GoodsAndServicesForeignTradeGoodsClient extends AbstractContainerCl
      *
      * @return a client for goods and services foreign trade goods total data
      */
-    public GoodsAndServicesForeignTradeTotalClient total() {
-        return (GoodsAndServicesForeignTradeTotalClient) getClient("total");
+    public GoodsAndServicesForeignTradeGoodsTotalClient total() {
+        return (GoodsAndServicesForeignTradeGoodsTotalClient) getClient("total");
     }
 
     @Override
