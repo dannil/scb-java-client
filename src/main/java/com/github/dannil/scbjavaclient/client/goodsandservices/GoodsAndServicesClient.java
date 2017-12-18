@@ -70,7 +70,7 @@ public class GoodsAndServicesClient extends AbstractContainerClient {
     public GoodsAndServicesForeignTradeClient foreignTrade() {
         return (GoodsAndServicesForeignTradeClient) getClient("foreigntrade");
     }
-    
+
     /**
      * <p>Retrieve the client for interacting with goods and services foreign trade goods
      * data.</p>

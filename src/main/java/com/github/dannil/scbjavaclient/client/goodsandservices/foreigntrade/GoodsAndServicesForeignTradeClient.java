@@ -28,7 +28,7 @@ import com.github.dannil.scbjavaclient.http.URLEndpoint;
  * <p>Client which handles goods and services foreign trade data fetching.</p>
  *
  * @since 0.3.0
- * 
+ *
  * @deprecated use
  *             {@link com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods.GoodsAndServicesForeignTradeGoodsClient
  *             GoodsAndServicesForeignTradeGoodsClient} instead

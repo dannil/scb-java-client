@@ -30,7 +30,7 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
  * Classification of Products by Activity) data fetching.</p>
  *
  * @since 0.3.0
- * 
+ *
  * @deprecated use
  *             {@link com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods.spin.GoodsAndServicesForeignTradeGoodsSPINClient
  *             GoodsAndServicesForeignTradeGoodsSPINClient} instead

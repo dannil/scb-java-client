@@ -29,7 +29,7 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
  * <p>Client which handles goods and services foreign trade total data fetching.</p>
  *
  * @since 0.3.0
- * 
+ *
  * @deprecated use
  *             {@link com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods.total.GoodsAndServicesForeignTradeGoodsTotalClient
  *             GoodsAndServicesForeignTradeGoodsTotalClient} instead
