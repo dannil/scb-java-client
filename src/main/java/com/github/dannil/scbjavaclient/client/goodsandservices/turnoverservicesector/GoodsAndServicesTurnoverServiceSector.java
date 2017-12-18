@@ -17,8 +17,6 @@ package com.github.dannil.scbjavaclient.client.goodsandservices.turnoverservices
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
-import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.cn.GoodsAndServicesForeignTradeCNClient;
-import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.economicindicators.GoodsAndServicesForeignTradeEconomicIndicatorsClient;
 import com.github.dannil.scbjavaclient.client.goodsandservices.turnoverservicesector.economicindicators.GoodsAndServicesTurnoverServiceSectorEconomicIndicators;
 import com.github.dannil.scbjavaclient.client.goodsandservices.turnoverservicesector.turnover.GoodsAndServicesTurnoverServiceSectorTurnover;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;

@@ -72,6 +72,7 @@ public class SCBClientTest {
         assertEquals(client.businessActivities().getClass(), BusinessActivitiesClient.class);
     }
 
+    @Test
     public void educationAndResearch() {
         SCBClient client = new SCBClient();
 

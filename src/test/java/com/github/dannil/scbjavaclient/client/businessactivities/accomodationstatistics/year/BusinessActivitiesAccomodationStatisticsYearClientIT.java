@@ -70,7 +70,7 @@ public class BusinessActivitiesAccomodationStatisticsYearClientIT {
     @Test
     @Date("2017-04-13")
     public void getCapacityForHotelsEmptyLists() {
-        assertNotEquals(0, this.client.getNumberOfHotels(Collections.<String>emptyList(),
+        assertNotEquals(0, this.client.getCapacityForHotels(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
