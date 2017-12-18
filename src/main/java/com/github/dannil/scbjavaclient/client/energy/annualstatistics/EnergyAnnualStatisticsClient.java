@@ -32,6 +32,8 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
  */
 public class EnergyAnnualStatisticsClient extends AbstractClient {
 
+    private static final String POWERPLANTS_CODE = "Prodslag";
+
     /**
      * <p>Default constructor.</p>
      */
@@ -64,7 +66,8 @@ public class EnergyAnnualStatisticsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all consumption of fuels in electricity generation data.</p>
+     * <p>Fetch all consumption of fuels in electricity generation data which match the
+     * input constraints.</p>
      *
      * @param powerPlants
      *            the power plants to fetch data for
@@ -79,7 +82,7 @@ public class EnergyAnnualStatisticsClient extends AbstractClient {
     public List<ResponseModel> getConsumptionOfFuelsInElectricityGeneration(Collection<String> powerPlants,
             Collection<String> fuels, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Prodslag", powerPlants);
+        mappings.put(POWERPLANTS_CODE, powerPlants);
         mappings.put("Bransle", fuels);
         mappings.put(APIConstants.TIME_CODE, years);
 
@@ -100,7 +103,7 @@ public class EnergyAnnualStatisticsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all electricity supply data.</p>
+     * <p>Fetch all electricity supply data which match the input constraints.</p>
      *
      * @param powerPlants
      *            the power plants to fetch data for
@@ -112,10 +115,80 @@ public class EnergyAnnualStatisticsClient extends AbstractClient {
      */
     public List<ResponseModel> getElectricitySupply(Collection<String> powerPlants, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Prodslag", powerPlants);
+        mappings.put(POWERPLANTS_CODE, powerPlants);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("ElProdAr", mappings);
+    }
+
+    /**
+     * <p>Fetch all consumption of fuels for steam and hot water production data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getConsumptionOfFuelsForSteamAndHotWaterProduction(Collection, Collection,
+     *      Collection)
+     */
+    public List<ResponseModel> getConsumptionOfFuelsForSteamAndHotWaterProduction() {
+        return getConsumptionOfFuelsForSteamAndHotWaterProduction(null, null, null);
+    }
+
+    /**
+     * <p>Fetch all consumption of fuels for steam and hot water production data which
+     * match the input constraints.</p>
+     *
+     * @param powerPlants
+     *            the power plants to fetch data for
+     * @param fuels
+     *            the fuels to fetch data for
+     * @param years
+     *            the years to fetch data for
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getConsumptionOfFuelsForSteamAndHotWaterProduction(Collection<String> powerPlants,
+            Collection<String> fuels, Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(POWERPLANTS_CODE, powerPlants);
+        mappings.put("Bransle", fuels);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("BrforangaAR", mappings);
+    }
+
+    /**
+     * <p>Fetch all electricity use in Sweden data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getElectricityUseInSweden(Collection, Collection)
+     */
+    public List<ResponseModel> getElectricityUseInSweden() {
+        return getElectricityUseInSweden(null, null);
+    }
+
+    /**
+     * <p>Fetch all electricity use in Sweden data which match the input constraints.</p>
+     *
+     * @param areaOfUses
+     *            the area of uses to fetch data for
+     * @param years
+     *            the years to fetch data for
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getElectricityUseInSweden(Collection<String> areaOfUses, Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("AnvOmrade", areaOfUses);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("ElAnvSNI2007Ar", mappings);
     }
 
     @Override
