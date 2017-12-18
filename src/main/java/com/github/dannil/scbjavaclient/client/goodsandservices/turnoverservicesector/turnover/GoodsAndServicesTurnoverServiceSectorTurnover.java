@@ -262,6 +262,213 @@ public class GoodsAndServicesTurnoverServiceSectorTurnover extends AbstractClien
         return getResponseModels("PartihFtgtj", mappings);
     }
 
+    /**
+     * <p>Fetch all retail sale index by industry (SIC 2007) monthly data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getRetailSaleIndexSIC2007Monthly(Collection, Collection)
+     */
+    public List<ResponseModel> getRetailSaleIndexSIC2007Monthly() {
+        return getRetailSaleIndexSIC2007Monthly(null, null);
+    }
+
+    /**
+     * <p>Fetch all retail sale index by industry (SIC 2007) monthly data which match the
+     * input constraints.</p>
+     *
+     * @param industrialClassifications
+     *            the industrial classifications
+     * @param months
+     *            the months
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getRetailSaleIndexSIC2007Monthly(Collection<String> industrialClassifications,
+            Collection<String> months) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.SNI2007_CODE, industrialClassifications);
+        mappings.put(APIConstants.TIME_CODE, months);
+
+        return getResponseModels("Detoms07", mappings);
+    }
+
+    /**
+     * <p>Fetch all retail sale index by industry (SIC 2007) yearly data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getRetailSaleIndexSIC2007Yearly(Collection, Collection)
+     */
+    public List<ResponseModel> getRetailSaleIndexSIC2007Yearly() {
+        return getRetailSaleIndexSIC2007Yearly(null, null);
+    }
+
+    /**
+     * <p>Fetch all retail sale index by industry (SIC 2007) yearly data which match the
+     * input constraints.</p>
+     *
+     * @param industrialClassifications
+     *            the industrial classifications
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getRetailSaleIndexSIC2007Yearly(Collection<String> industrialClassifications,
+            Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.SNI2007_CODE, industrialClassifications);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("DetOmsAr07", mappings);
+    }
+
+    /**
+     * <p>Fetch all turnover index for the service sector by industry (SIC 2007) yearly
+     * data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getTurnoverIndexForTheServiceSectorSIC2007Yearly(Collection, Collection)
+     */
+    public List<ResponseModel> getTurnoverIndexForTheServiceSectorSIC2007Yearly() {
+        return getTurnoverIndexForTheServiceSectorSIC2007Yearly(null, null);
+    }
+
+    /**
+     * <p>Fetch all turnover index for the service sector by industry (SIC 2007) yearly
+     * data which match the input constraints.</p>
+     *
+     * @param industrialClassifications
+     *            the industrial classifications
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getTurnoverIndexForTheServiceSectorSIC2007Yearly(
+            Collection<String> industrialClassifications, Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.SNI2007_CODE, industrialClassifications);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("DivtjansterAr07X", mappings);
+    }
+
+    /**
+     * <p>Fetch all turnover index for the service sector by industry (SIC 2007) quarterly
+     * data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getTurnoverIndexForTheServiceSectorSIC2007Quarterly(Collection, Collection)
+     */
+    public List<ResponseModel> getTurnoverIndexForTheServiceSectorSIC2007Quarterly() {
+        return getTurnoverIndexForTheServiceSectorSIC2007Quarterly(null, null);
+    }
+
+    /**
+     * <p>Fetch all turnover index for the service sector by industry (SIC 2007) quarterly
+     * data which match the input constraints.</p>
+     *
+     * @param industrialClassifications
+     *            the industrial classifications
+     * @param quarters
+     *            the quarters
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getTurnoverIndexForTheServiceSectorSIC2007Quarterly(
+            Collection<String> industrialClassifications, Collection<String> quarters) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.SNI2007_CODE, industrialClassifications);
+        mappings.put(APIConstants.TIME_CODE, quarters);
+
+        return getResponseModels("DivtjansterKv07X", mappings);
+    }
+    
+    /**
+     * <p>Fetch all monthly indicator for household consumption data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getMonthlyIndicatorForHouseholdConsumption(Collection, Collection)
+     */
+    public List<ResponseModel> getMonthlyIndicatorForHouseholdConsumption() {
+        return getMonthlyIndicatorForHouseholdConsumption(null, null);
+    }
+
+    /**
+     * <p>Fetch all monthly indicator for household consumption data which match the
+     * input constraints.</p>
+     *
+     * @param purposes
+     *            the purposes
+     * @param months
+     *            the months
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getMonthlyIndicatorForHouseholdConsumption(Collection<String> purposes,
+            Collection<String> months) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("Andamal", purposes);
+        mappings.put(APIConstants.TIME_CODE, months);
+
+        return getResponseModels("HushKonInd", mappings);
+    }
+    
+    /**
+     * <p>Fetch all turnover index for the service sector by industry (SIC 2007) monthly
+     * data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getTurnoverIndexForTheServiceSectorSIC2007Monthly(Collection, Collection)
+     */
+    public List<ResponseModel> getTurnoverIndexForTheServiceSectorSIC2007Monthly() {
+        return getTurnoverIndexForTheServiceSectorSIC2007Monthly(null, null);
+    }
+
+    /**
+     * <p>Fetch all turnover index for the service sector by industry (SIC 2007) monthly
+     * data which match the input constraints.</p>
+     *
+     * @param industrialClassifications
+     *            the industrial classifications
+     * @param months
+     *            the months
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getTurnoverIndexForTheServiceSectorSIC2007Monthly(
+            Collection<String> industrialClassifications, Collection<String> months) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.SNI2007_CODE, industrialClassifications);
+        mappings.put(APIConstants.TIME_CODE, months);
+
+        return getResponseModels("DivtjansterM07X", mappings);
+    }
+
     // TODO Add methods here!
 
     @Override
