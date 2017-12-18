@@ -33,7 +33,7 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
 public class EnergyAnnualStatisticsClient extends AbstractClient {
 
     private static final String POWERPLANTS_CODE = "Prodslag";
-    
+
     /**
      * <p>Default constructor.</p>
      */
