@@ -399,7 +399,7 @@ public class GoodsAndServicesTurnoverServiceSectorTurnover extends AbstractClien
 
         return getResponseModels("DivtjansterKv07X", mappings);
     }
-    
+
     /**
      * <p>Fetch all monthly indicator for household consumption data.</p>
      *
@@ -433,7 +433,7 @@ public class GoodsAndServicesTurnoverServiceSectorTurnover extends AbstractClien
 
         return getResponseModels("HushKonInd", mappings);
     }
-    
+
     /**
      * <p>Fetch all turnover index for the service sector by industry (SIC 2007) monthly
      * data.</p>
@@ -468,8 +468,6 @@ public class GoodsAndServicesTurnoverServiceSectorTurnover extends AbstractClien
 
         return getResponseModels("DivtjansterM07X", mappings);
     }
-
-    // TODO Add methods here!
 
     @Override
     public URLEndpoint getUrl() {

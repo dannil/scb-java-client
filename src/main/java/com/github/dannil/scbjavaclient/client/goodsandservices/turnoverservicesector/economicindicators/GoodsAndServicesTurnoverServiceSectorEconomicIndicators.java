@@ -48,7 +48,7 @@ public class GoodsAndServicesTurnoverServiceSectorEconomicIndicators extends Abs
     public GoodsAndServicesTurnoverServiceSectorEconomicIndicators(Locale locale) {
         super(locale);
     }
-    
+
     /**
      * <p>Fetch all retail trade sales data.</p>
      *
