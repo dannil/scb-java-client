@@ -32,6 +32,8 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
  */
 public class EnergyAnnualStatisticsClient extends AbstractClient {
 
+    private static final String POWERPLANTS_CODE = "Prodslag";
+    
     /**
      * <p>Default constructor.</p>
      */
@@ -80,7 +82,7 @@ public class EnergyAnnualStatisticsClient extends AbstractClient {
     public List<ResponseModel> getConsumptionOfFuelsInElectricityGeneration(Collection<String> powerPlants,
             Collection<String> fuels, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Prodslag", powerPlants);
+        mappings.put(POWERPLANTS_CODE, powerPlants);
         mappings.put("Bransle", fuels);
         mappings.put(APIConstants.TIME_CODE, years);
 
@@ -113,7 +115,7 @@ public class EnergyAnnualStatisticsClient extends AbstractClient {
      */
     public List<ResponseModel> getElectricitySupply(Collection<String> powerPlants, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Prodslag", powerPlants);
+        mappings.put(POWERPLANTS_CODE, powerPlants);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("ElProdAr", mappings);
@@ -150,7 +152,7 @@ public class EnergyAnnualStatisticsClient extends AbstractClient {
     public List<ResponseModel> getConsumptionOfFuelsForSteamAndHotWaterProduction(Collection<String> powerPlants,
             Collection<String> fuels, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Prodslag", powerPlants);
+        mappings.put(POWERPLANTS_CODE, powerPlants);
         mappings.put("Bransle", fuels);
         mappings.put(APIConstants.TIME_CODE, years);
 
