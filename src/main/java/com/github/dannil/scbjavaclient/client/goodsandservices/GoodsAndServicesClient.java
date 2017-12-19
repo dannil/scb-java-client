@@ -27,6 +27,7 @@ import com.github.dannil.scbjavaclient.http.URLEndpoint;
  *
  * @since 0.3.0
  */
+@SuppressWarnings("deprecation")
 public class GoodsAndServicesClient extends AbstractContainerClient {
 
     /**
