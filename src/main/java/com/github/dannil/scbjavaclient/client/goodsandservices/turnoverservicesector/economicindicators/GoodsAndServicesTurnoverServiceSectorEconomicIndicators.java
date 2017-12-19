@@ -26,7 +26,8 @@ import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles goods and services turnover service sector economic indicators data fetching.</p>
+ * <p>Client which handles goods and services turnover service sector economic indicators
+ * data fetching.</p>
  *
  * @since 0.7.0
  */

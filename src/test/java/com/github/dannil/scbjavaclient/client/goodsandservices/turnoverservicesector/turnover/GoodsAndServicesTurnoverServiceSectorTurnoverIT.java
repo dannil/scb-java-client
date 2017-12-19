@@ -268,7 +268,7 @@ public class GoodsAndServicesTurnoverServiceSectorTurnoverIT {
         assertNotEquals(0, this.client.getTurnoverIndexForTheServiceSectorSIC2007Quarterly(industrialClassifications,
                 quarters).size());
     }
-    
+
     @Test
     @Date("2017-12-18")
     public void getMonthlyIndicatorForHouseholdConsumption() {
@@ -290,7 +290,7 @@ public class GoodsAndServicesTurnoverServiceSectorTurnoverIT {
 
         assertNotEquals(0, this.client.getMonthlyIndicatorForHouseholdConsumption(purposes, months).size());
     }
-    
+
     @Test
     @Date("2017-12-18")
     public void getTurnoverIndexForTheServiceSectorSIC2007Monthly() {
@@ -300,8 +300,9 @@ public class GoodsAndServicesTurnoverServiceSectorTurnoverIT {
     @Test
     @Date("2017-12-18")
     public void getTurnoverIndexForTheServiceSectorSIC2007MonthlyWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getTurnoverIndexForTheServiceSectorSIC2007Monthly(Collections.<String>emptyList(),
-                Collections.<String>emptyList()).size());
+        assertNotEquals(0,
+                this.client.getTurnoverIndexForTheServiceSectorSIC2007Monthly(Collections.<String>emptyList(),
+                        Collections.<String>emptyList()).size());
     }
 
     @Test
@@ -310,7 +311,8 @@ public class GoodsAndServicesTurnoverServiceSectorTurnoverIT {
         List<String> industrialClassifications = Arrays.asList("45.1+45.3", "45.2-45.4");
         List<String> months = Arrays.asList("2010M03", "2010M04");
 
-        assertNotEquals(0, this.client.getTurnoverIndexForTheServiceSectorSIC2007Monthly(industrialClassifications, months).size());
+        assertNotEquals(0, this.client.getTurnoverIndexForTheServiceSectorSIC2007Monthly(industrialClassifications,
+                months).size());
     }
 
     // TODO Add methods here!

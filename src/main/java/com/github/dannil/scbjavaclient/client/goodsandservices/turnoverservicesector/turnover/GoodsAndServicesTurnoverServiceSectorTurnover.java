@@ -414,8 +414,8 @@ public class GoodsAndServicesTurnoverServiceSectorTurnover extends AbstractClien
     }
 
     /**
-     * <p>Fetch all monthly indicator for household consumption data which match the
-     * input constraints.</p>
+     * <p>Fetch all monthly indicator for household consumption data which match the input
+     * constraints.</p>
      *
      * @param purposes
      *            the purposes

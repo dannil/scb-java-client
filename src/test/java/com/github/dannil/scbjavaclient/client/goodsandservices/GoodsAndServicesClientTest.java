@@ -51,7 +51,7 @@ public class GoodsAndServicesClientTest {
 
         assertEquals(client.foreignTrade().getClass(), GoodsAndServicesForeignTradeClient.class);
     }
-    
+
     @Test
     public void foreignTradeGoodsClient() {
         GoodsAndServicesClient client = new GoodsAndServicesClient();

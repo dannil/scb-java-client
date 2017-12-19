@@ -82,7 +82,7 @@ public class EnergyAnnualStatisticsClientIT {
 
         assertNotEquals(0, this.client.getElectricitySupply(powerPlants, years).size());
     }
-    
+
     @Test
     @Date("2017-12-16")
     public void getConsumptionOfFuelsForSteamAndHotWaterProduction() {
@@ -92,8 +92,9 @@ public class EnergyAnnualStatisticsClientIT {
     @Test
     @Date("2017-12-16")
     public void getConsumptionOfFuelsForSteamAndHotWaterProductionWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getConsumptionOfFuelsForSteamAndHotWaterProduction(Collections.<String>emptyList(),
-                Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
+        assertNotEquals(0,
+                this.client.getConsumptionOfFuelsForSteamAndHotWaterProduction(Collections.<String>emptyList(),
+                        Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
@@ -103,9 +104,10 @@ public class EnergyAnnualStatisticsClientIT {
         List<String> fuels = Arrays.asList("E4", "E5");
         List<Integer> years = Arrays.asList(1997, 1999);
 
-        assertNotEquals(0, this.client.getConsumptionOfFuelsForSteamAndHotWaterProduction(powerPlants, fuels, years).size());
+        assertNotEquals(0,
+                this.client.getConsumptionOfFuelsForSteamAndHotWaterProduction(powerPlants, fuels, years).size());
     }
-    
+
     @Test
     @Date("2017-12-16")
     public void getElectricityUseInSweden() {
@@ -115,7 +117,8 @@ public class EnergyAnnualStatisticsClientIT {
     @Test
     @Date("2017-12-16")
     public void getElectricityUseInSwedenWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getElectricityUseInSweden(Collections.<String>emptyList(),Collections.<Integer>emptyList()).size());
+        assertNotEquals(0, this.client.getElectricityUseInSweden(Collections.<String>emptyList(),
+                Collections.<Integer>emptyList()).size());
     }
 
     @Test

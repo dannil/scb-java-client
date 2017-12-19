@@ -29,7 +29,8 @@ public class GoodsAndServicesTurnoverServiceSectorTurnoverTest {
     @Test
     public void createWithLocaleConstructor() {
         Locale locale = new Locale("sv", "SE");
-        GoodsAndServicesTurnoverServiceSectorTurnover client = new GoodsAndServicesTurnoverServiceSectorTurnover(locale);
+        GoodsAndServicesTurnoverServiceSectorTurnover client = new GoodsAndServicesTurnoverServiceSectorTurnover(
+                locale);
 
         assertEquals(locale, client.getLocale());
     }
@@ -39,7 +40,8 @@ public class GoodsAndServicesTurnoverServiceSectorTurnoverTest {
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints
         Locale locale = new Locale("en", "US");
-        GoodsAndServicesTurnoverServiceSectorTurnover client = new GoodsAndServicesTurnoverServiceSectorTurnover(locale);
+        GoodsAndServicesTurnoverServiceSectorTurnover client = new GoodsAndServicesTurnoverServiceSectorTurnover(
+                locale);
 
         assertEquals(URLEndpoint.getRootUrl(locale).append("HA/HA0101/HA0101B"), client.getUrl());
     }
