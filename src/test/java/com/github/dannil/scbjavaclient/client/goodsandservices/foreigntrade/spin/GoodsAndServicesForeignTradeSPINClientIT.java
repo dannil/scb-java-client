@@ -29,6 +29,7 @@ import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
+@SuppressWarnings("deprecation")
 public class GoodsAndServicesForeignTradeSPINClientIT {
 
     private GoodsAndServicesForeignTradeSPINClient client;

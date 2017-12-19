@@ -267,6 +267,11 @@ public class AbstractClientIT {
             Class<?> clazz = null;
             try {
                 clazz = Class.forName(binaryName);
+                if (clazz.isAnnotationPresent(Deprecated.class)) {
+                    // Class is deprecated; we don't care if there's another class
+                    // implementing the same tables as clazz (which is its replacer class)
+                    continue;
+                }
 
                 Method m = clazz.getDeclaredMethod("getUrl");
                 Constructor<?> c = clazz.getConstructor();
@@ -420,6 +425,7 @@ public class AbstractClientIT {
         knownMethods.add("PublicFinancesAnnualAccountsStatementAccountsMunicipalityClient.getCostsAndIncomes");
         knownMethods.add("PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient.getProducerPriceIndex");
         knownMethods.add("GoodsAndServicesForeignTradeCNClient.getImportsAndExportsOfGoods");
+        knownMethods.add("GoodsAndServicesForeignTradeGoodsCNClient.getImportsAndExportsOfGoods");
         knownMethods.add("PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient.getExportPriceIndex");
         knownMethods.add("PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient.getBalanceSheet");
         knownMethods.add("PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient.getImportPriceIndex");

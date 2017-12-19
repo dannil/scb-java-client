@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.spin;
+package com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods.spin;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -26,22 +26,17 @@ import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles goods and services foreign trade SPIN (Swedish Standard
+ * <p>Client which handles goods and services foreign trade goods SPIN (Swedish Standard
  * Classification of Products by Activity) data fetching.</p>
  *
- * @since 0.3.0
- *
- * @deprecated use
- *             {@link com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods.spin.GoodsAndServicesForeignTradeGoodsSPINClient
- *             GoodsAndServicesForeignTradeGoodsSPINClient} instead
+ * @since 0.7.0
  */
-@Deprecated
-public class GoodsAndServicesForeignTradeSPINClient extends AbstractClient {
+public class GoodsAndServicesForeignTradeGoodsSPINClient extends AbstractClient {
 
     /**
      * <p>Default constructor.</p>
      */
-    public GoodsAndServicesForeignTradeSPINClient() {
+    public GoodsAndServicesForeignTradeGoodsSPINClient() {
         super();
     }
 
@@ -51,7 +46,7 @@ public class GoodsAndServicesForeignTradeSPINClient extends AbstractClient {
      * @param locale
      *            the <code>Locale</code> for this client
      */
-    public GoodsAndServicesForeignTradeSPINClient(Locale locale) {
+    public GoodsAndServicesForeignTradeGoodsSPINClient(Locale locale) {
         super(locale);
     }
 

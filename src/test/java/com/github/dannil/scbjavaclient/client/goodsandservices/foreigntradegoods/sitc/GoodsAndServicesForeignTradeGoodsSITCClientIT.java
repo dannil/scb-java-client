@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.total;
+package com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods.sitc;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
@@ -29,14 +29,13 @@ import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
-@SuppressWarnings("deprecation")
-public class GoodsAndServicesForeignTradeTotalClientIT {
+public class GoodsAndServicesForeignTradeGoodsSITCClientIT {
 
-    private GoodsAndServicesForeignTradeTotalClient client;
+    private GoodsAndServicesForeignTradeGoodsSITCClient client;
 
     @BeforeEach
     public void setup() {
-        this.client = new GoodsAndServicesForeignTradeTotalClient();
+        this.client = new GoodsAndServicesForeignTradeGoodsSITCClient();
     }
 
     @Test
@@ -55,10 +54,10 @@ public class GoodsAndServicesForeignTradeTotalClientIT {
     @Test
     @Date("2017-04-28")
     public void getImportsAndExportsOfGoodsWithParameters() {
-        List<String> importsOrExports = Arrays.asList("ITOT", "ETOT");
+        List<String> commodityGroups = Arrays.asList("02", "034");
         List<Integer> years = Arrays.asList(2010, 2011);
 
-        assertNotEquals(0, this.client.getImportsAndExportsOfGoods(importsOrExports, years).size());
+        assertNotEquals(0, this.client.getImportsAndExportsOfGoods(commodityGroups, years).size());
     }
 
 }

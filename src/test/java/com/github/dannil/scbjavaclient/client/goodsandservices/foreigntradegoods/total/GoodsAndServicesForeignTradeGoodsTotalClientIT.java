@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.total;
+package com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods.total;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
@@ -29,14 +29,13 @@ import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
-@SuppressWarnings("deprecation")
-public class GoodsAndServicesForeignTradeTotalClientIT {
+public class GoodsAndServicesForeignTradeGoodsTotalClientIT {
 
-    private GoodsAndServicesForeignTradeTotalClient client;
+    private GoodsAndServicesForeignTradeGoodsTotalClient client;
 
     @BeforeEach
     public void setup() {
-        this.client = new GoodsAndServicesForeignTradeTotalClient();
+        this.client = new GoodsAndServicesForeignTradeGoodsTotalClient();
     }
 
     @Test

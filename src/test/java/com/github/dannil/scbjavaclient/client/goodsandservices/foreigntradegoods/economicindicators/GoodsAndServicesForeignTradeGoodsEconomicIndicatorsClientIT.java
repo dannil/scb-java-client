@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.total;
+package com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods.economicindicators;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
@@ -29,14 +29,13 @@ import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
-@SuppressWarnings("deprecation")
-public class GoodsAndServicesForeignTradeTotalClientIT {
+public class GoodsAndServicesForeignTradeGoodsEconomicIndicatorsClientIT {
 
-    private GoodsAndServicesForeignTradeTotalClient client;
+    private GoodsAndServicesForeignTradeGoodsEconomicIndicatorsClient client;
 
     @BeforeEach
     public void setup() {
-        this.client = new GoodsAndServicesForeignTradeTotalClient();
+        this.client = new GoodsAndServicesForeignTradeGoodsEconomicIndicatorsClient();
     }
 
     @Test
@@ -49,16 +48,39 @@ public class GoodsAndServicesForeignTradeTotalClientIT {
     @Date("2017-04-28")
     public void getImportsAndExportsOfGoodsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getImportsAndExportsOfGoods(Collections.<String>emptyList(),
-                Collections.<Integer>emptyList()).size());
+                Collections.<String>emptyList()).size());
     }
 
     @Test
     @Date("2017-04-28")
     public void getImportsAndExportsOfGoodsWithParameters() {
-        List<String> importsOrExports = Arrays.asList("ITOT", "ETOT");
-        List<Integer> years = Arrays.asList(2010, 2011);
+        List<String> economicIndicators = Arrays.asList("HAH10", "HAH20");
+        List<String> months = Arrays.asList("2014M09", "2014M11");
 
-        assertNotEquals(0, this.client.getImportsAndExportsOfGoods(importsOrExports, years).size());
+        assertNotEquals(0, this.client.getImportsAndExportsOfGoods(economicIndicators, months).size());
+    }
+
+    @Test
+    @Date("2017-04-28")
+    public void getTrendsInVolumeOfExportsAndImportsOfGoods() {
+        assertNotEquals(0, this.client.getTrendsInVolumeOfExportsAndImportsOfGoods().size());
+    }
+
+    @Test
+    @Date("2017-04-28")
+    public void getTrendsInVolumeOfExportsAndImportsOfGoodsWithParametersEmptyLists() {
+        assertNotEquals(0, this.client.getTrendsInVolumeOfExportsAndImportsOfGoods(Collections.<String>emptyList(),
+                Collections.<String>emptyList()).size());
+    }
+
+    @Test
+    @Date("2017-04-28")
+    public void getTrendsInVolumeOfExportsAndImportsOfGoodsWithParameters() {
+        List<String> economicIndicators = Arrays.asList("HAV10", "HAV20");
+        List<String> quarters = Arrays.asList("2013K3", "2014K3");
+
+        assertNotEquals(0,
+                this.client.getTrendsInVolumeOfExportsAndImportsOfGoods(economicIndicators, quarters).size());
     }
 
 }

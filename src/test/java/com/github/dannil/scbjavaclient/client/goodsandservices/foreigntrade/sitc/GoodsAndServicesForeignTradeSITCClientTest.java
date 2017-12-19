@@ -24,6 +24,7 @@ import com.github.dannil.scbjavaclient.test.extensions.Suite;
 import org.junit.jupiter.api.Test;
 
 @Suite
+@SuppressWarnings("deprecation")
 public class GoodsAndServicesForeignTradeSITCClientTest {
 
     @Test

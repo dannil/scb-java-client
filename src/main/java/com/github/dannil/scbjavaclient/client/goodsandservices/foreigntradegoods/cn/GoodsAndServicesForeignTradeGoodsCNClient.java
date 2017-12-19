@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.spin;
+package com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods.cn;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -26,22 +26,17 @@ import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles goods and services foreign trade SPIN (Swedish Standard
- * Classification of Products by Activity) data fetching.</p>
+ * <p>Client which handles goods and services foreign trade goods CN (Combined Nomenclature)
+ * data fetching.</p>
  *
- * @since 0.3.0
- *
- * @deprecated use
- *             {@link com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods.spin.GoodsAndServicesForeignTradeGoodsSPINClient
- *             GoodsAndServicesForeignTradeGoodsSPINClient} instead
+ * @since 0.7.0
  */
-@Deprecated
-public class GoodsAndServicesForeignTradeSPINClient extends AbstractClient {
+public class GoodsAndServicesForeignTradeGoodsCNClient extends AbstractClient {
 
     /**
      * <p>Default constructor.</p>
      */
-    public GoodsAndServicesForeignTradeSPINClient() {
+    public GoodsAndServicesForeignTradeGoodsCNClient() {
         super();
     }
 
@@ -51,46 +46,49 @@ public class GoodsAndServicesForeignTradeSPINClient extends AbstractClient {
      * @param locale
      *            the <code>Locale</code> for this client
      */
-    public GoodsAndServicesForeignTradeSPINClient(Locale locale) {
+    public GoodsAndServicesForeignTradeGoodsCNClient(Locale locale) {
         super(locale);
     }
 
-    /**
-     * <p>Fetch all imports and exports of goods data.</p>
-     *
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     *
-     * @see #getImportsAndExportsOfGoods(Collection, Collection)
-     */
-    public List<ResponseModel> getImportsAndExportsOfGoods() {
-        return getImportsAndExportsOfGoods(null, null);
-    }
+    // Daniel 2017-04-28: Returns HTTP 403
+    //
+    // /**
+    // * <p>Fetch all imports and exports of goods data.</p>
+    // *
+    // * @return the data wrapped in a list of
+    // * {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+    // * objects
+    // *
+    // * @see #getImportsAndExportsOfGoods(Collection, Collection)
+    // */
+    // public List<ResponseModel> getImportsAndExportsOfGoods() {
+    // return getImportsAndExportsOfGoods(null, null);
+    // }
 
     /**
      * <p>Fetch all imports and exports of goods data which match the input
      * constraints.</p>
      *
-     * @param spin2007
-     *            the SPIN 2007
+     * @param commodityGroups
+     *            the commodity groups
      * @param years
      *            the years
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getImportsAndExportsOfGoods(Collection<String> spin2007, Collection<Integer> years) {
+    public List<ResponseModel> getImportsAndExportsOfGoods(Collection<String> commodityGroups,
+            Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("SPIN2007Original", spin2007);
+        mappings.put("VarugruppKN", commodityGroups);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("ImpExpSPIN2007TotAr", mappings);
+        return getResponseModels("ImpExpKNTotAr", mappings);
     }
 
     @Override
     public URLEndpoint getUrl() {
-        return getRootUrl().append("HA/HA0201/HA0201E/");
+        return getRootUrl().append("HA/HA0201/HA0201B/");
     }
 
 }

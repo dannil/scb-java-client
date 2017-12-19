@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.spin;
+package com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods.sitc;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -26,22 +26,17 @@ import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles goods and services foreign trade SPIN (Swedish Standard
- * Classification of Products by Activity) data fetching.</p>
+ * <p>Client which handles goods and services foreign trade goods SITC (Standard
+ * International Trade Classification) data fetching.</p>
  *
- * @since 0.3.0
- *
- * @deprecated use
- *             {@link com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods.spin.GoodsAndServicesForeignTradeGoodsSPINClient
- *             GoodsAndServicesForeignTradeGoodsSPINClient} instead
+ * @since 0.7.0
  */
-@Deprecated
-public class GoodsAndServicesForeignTradeSPINClient extends AbstractClient {
+public class GoodsAndServicesForeignTradeGoodsSITCClient extends AbstractClient {
 
     /**
      * <p>Default constructor.</p>
      */
-    public GoodsAndServicesForeignTradeSPINClient() {
+    public GoodsAndServicesForeignTradeGoodsSITCClient() {
         super();
     }
 
@@ -51,7 +46,7 @@ public class GoodsAndServicesForeignTradeSPINClient extends AbstractClient {
      * @param locale
      *            the <code>Locale</code> for this client
      */
-    public GoodsAndServicesForeignTradeSPINClient(Locale locale) {
+    public GoodsAndServicesForeignTradeGoodsSITCClient(Locale locale) {
         super(locale);
     }
 
@@ -72,25 +67,26 @@ public class GoodsAndServicesForeignTradeSPINClient extends AbstractClient {
      * <p>Fetch all imports and exports of goods data which match the input
      * constraints.</p>
      *
-     * @param spin2007
-     *            the SPIN 2007
+     * @param commodityGroups
+     *            the commodity groups
      * @param years
      *            the years
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getImportsAndExportsOfGoods(Collection<String> spin2007, Collection<Integer> years) {
+    public List<ResponseModel> getImportsAndExportsOfGoods(Collection<String> commodityGroups,
+            Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("SPIN2007Original", spin2007);
+        mappings.put("VarugruppSITCrev3", commodityGroups);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("ImpExpSPIN2007TotAr", mappings);
+        return getResponseModels("ImpExpSITCTotAr", mappings);
     }
 
     @Override
     public URLEndpoint getUrl() {
-        return getRootUrl().append("HA/HA0201/HA0201E/");
+        return getRootUrl().append("HA/HA0201/HA0201D/");
     }
 
 }

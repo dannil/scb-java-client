@@ -12,12 +12,11 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.total;
+package com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods.cn;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.test.extensions.Date;
@@ -29,36 +28,40 @@ import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
-@SuppressWarnings("deprecation")
-public class GoodsAndServicesForeignTradeTotalClientIT {
+public class GoodsAndServicesForeignTradeGoodsCNClientIT {
 
-    private GoodsAndServicesForeignTradeTotalClient client;
+    private GoodsAndServicesForeignTradeGoodsCNClient client;
 
     @BeforeEach
     public void setup() {
-        this.client = new GoodsAndServicesForeignTradeTotalClient();
+        this.client = new GoodsAndServicesForeignTradeGoodsCNClient();
     }
 
-    @Test
-    @Date("2017-04-28")
-    public void getImportsAndExportsOfGoods() {
-        assertNotEquals(0, this.client.getImportsAndExportsOfGoods().size());
-    }
+    // Daniel 2017-04-28: Returns HTTP 403
+    //
+    // @Test
+    // @Date("2017-04-28")
+    // public void getImportsAndExportsOfGoods() {
+    // assertNotEquals(0, this.client.getImportsAndExportsOfGoods().size());
+    // }
 
-    @Test
-    @Date("2017-04-28")
-    public void getImportsAndExportsOfGoodsWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getImportsAndExportsOfGoods(Collections.<String>emptyList(),
-                Collections.<Integer>emptyList()).size());
-    }
+    // Daniel 2017-04-28: Returns HTTP 403
+    //
+    // @Test
+    // @Date("2017-04-28")
+    // public void getImportsAndExportsOfGoodsWithParametersEmptyLists() {
+    // assertNotEquals(0,
+    // this.client.getImportsAndExportsOfGoods(Collections.<String>emptyList(),
+    // Collections.<Integer>emptyList()).size());
+    // }
 
     @Test
     @Date("2017-04-28")
     public void getImportsAndExportsOfGoodsWithParameters() {
-        List<String> importsOrExports = Arrays.asList("ITOT", "ETOT");
+        List<String> commodityGroups = Arrays.asList("0101", "0104");
         List<Integer> years = Arrays.asList(2010, 2011);
 
-        assertNotEquals(0, this.client.getImportsAndExportsOfGoods(importsOrExports, years).size());
+        assertNotEquals(0, this.client.getImportsAndExportsOfGoods(commodityGroups, years).size());
     }
 
 }
