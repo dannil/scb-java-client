@@ -67,7 +67,7 @@ public class GoodsAndServicesClient extends AbstractContainerClient {
      * data.</p>
      *
      * @return a client for goods and services foreign trade data
-     * 
+     *
      * @deprecated use {@link #foreignTradeGoods()} instead
      */
     @Deprecated
