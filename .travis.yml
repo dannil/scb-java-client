@@ -23,16 +23,7 @@ matrix:
     - if [[ $TRAVIS_BRANCH == test/run-all-tests ]]; then sh push_build_results.sh; fi
   - os: linux
     dist: trusty
-    group: edge
     jdk: oraclejdk9
-before_script:
-# If we get the same IP on concurrent builds and this triggers an error
-# on the API (rate limiting), this can be easily debugged by checking the log
-# where this command printed its result
-- curl icanhazip.com
-=======
-
->>>>>>> refs/heads/dev
 install:
 - true
 before_script:
