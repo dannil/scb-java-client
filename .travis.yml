@@ -28,6 +28,6 @@ before_script:
 # on the API (rate limiting), this can be easily debugged by checking the log
 - curl icanhazip.com
 script:
-- mvn install -B -V -DtestsDayLimit=7
+- mvn install -B -V -DtestsDayLimit=16000
 after_success:
 # - mvn com.gavinmogan:codacy-maven-plugin:coverage -DcoverageReportFile=target/site/jacoco/jacoco.xml -DprojectToken=$CODACY_PROJECT_TOKEN -DapiToken=$CODACY_API_TOKEN
