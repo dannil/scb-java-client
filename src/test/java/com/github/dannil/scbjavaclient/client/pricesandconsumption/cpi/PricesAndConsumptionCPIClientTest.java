@@ -14,22 +14,21 @@
 
 package com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.cpifct.PricesAndConsumptionCPICPIFCTClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.economicindicators.PricesAndConsumptionCPIEconomicIndicatorsClient;
+import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.hicp.PricesAndConsumptionCPIHICPClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.kpif.PricesAndConsumptionCPIKPIFClient;
-import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.kpix.PricesAndConsumptionCPIKPIXClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.pricebasicamount.PricesAndConsumptionCPIPriceBasicAmountClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
+@Suite
 public class PricesAndConsumptionCPIClientTest {
 
     @Test
@@ -55,6 +54,13 @@ public class PricesAndConsumptionCPIClientTest {
     }
 
     @Test
+    public void hicp() {
+        PricesAndConsumptionCPIClient client = new PricesAndConsumptionCPIClient();
+
+        assertEquals(client.hicp().getClass(), PricesAndConsumptionCPIHICPClient.class);
+    }
+
+    @Test
     public void priceBasicAmount() {
         PricesAndConsumptionCPIClient client = new PricesAndConsumptionCPIClient();
 
@@ -66,13 +72,6 @@ public class PricesAndConsumptionCPIClientTest {
         PricesAndConsumptionCPIClient client = new PricesAndConsumptionCPIClient();
 
         assertEquals(client.kpif().getClass(), PricesAndConsumptionCPIKPIFClient.class);
-    }
-
-    @Test
-    public void kpix() {
-        PricesAndConsumptionCPIClient client = new PricesAndConsumptionCPIClient();
-
-        assertEquals(client.kpix().getClass(), PricesAndConsumptionCPIKPIXClient.class);
     }
 
     @Test

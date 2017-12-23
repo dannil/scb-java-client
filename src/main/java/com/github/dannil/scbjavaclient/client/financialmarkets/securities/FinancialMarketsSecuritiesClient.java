@@ -80,7 +80,7 @@ public class FinancialMarketsSecuritiesClient extends AbstractClient {
     public List<ResponseModel> getMaturityStructure(Collection<Integer> sectors, Collection<String> maturities,
             Collection<String> currencies, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Sektor", sectors);
+        mappings.put(APIConstants.SECTOR_CODE, sectors);
         mappings.put("Forfall", maturities);
         mappings.put("Valuta", currencies);
         mappings.put(APIConstants.TIME_CODE, months);
@@ -120,7 +120,7 @@ public class FinancialMarketsSecuritiesClient extends AbstractClient {
     public List<ResponseModel> getOutstandingAndIssuedAmount(Collection<Integer> sectors, Collection<String> items,
             Collection<String> currencies, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Sektor", sectors);
+        mappings.put(APIConstants.SECTOR_CODE, sectors);
         mappings.put("Kontopost", items);
         mappings.put("Valuta", currencies);
         mappings.put(APIConstants.TIME_CODE, months);

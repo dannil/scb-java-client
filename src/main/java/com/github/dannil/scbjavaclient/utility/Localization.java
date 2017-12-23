@@ -27,8 +27,8 @@ import java.util.ResourceBundle;
 
 import com.github.dannil.scbjavaclient.constants.ClientConstants;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>Class for handling localization for the clients.</p>
@@ -128,7 +128,7 @@ public class Localization {
      */
     private static class ResourceBundleEncodingControl extends ResourceBundle.Control {
 
-        private static final Logger LOGGER = LogManager.getLogger(ResourceBundleEncodingControl.class);
+        private static final Logger LOGGER = LoggerFactory.getLogger(ResourceBundleEncodingControl.class);
 
         private String encoding;
 
@@ -167,7 +167,7 @@ public class Localization {
                         return new PropertyResourceBundle(streamReader);
                     }
                 } catch (IOException e) {
-                    LOGGER.error(e);
+                    LOGGER.error(e.getMessage());
                 }
             }
             return null;

@@ -14,29 +14,28 @@
 
 package com.github.dannil.scbjavaclient.client.population.statistics.foreignbornpersons;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.runner.Date;
-import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(DateJUnitRunner.class)
-public class PopulationStatisticsForeignBornPersonsClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class PopulationStatisticsForeignBornPersonsClientIT {
 
     private PopulationStatisticsForeignBornPersonsClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
-        this.client = new SCBClient().population().statistics().foreignBornPersons();
+        this.client = new PopulationStatisticsForeignBornPersonsClient();
     }
 
     @Test
@@ -47,11 +46,21 @@ public class PopulationStatisticsForeignBornPersonsClientIT extends RemoteIntegr
 
     @Test
     @Date("2017-06-09")
-    public void getSwedishAndForeignBornPopulationWithParametersEmptyLists() {
+    @SuppressWarnings("deprecation")
+    public void getSwedishAndForeignBornPopulationDeprecated() {
         assertNotEquals(0,
                 this.client.getSwedishAndForeignBornPopulation(Collections.<String>emptyList(),
                         Collections.<String>emptyList(), Collections.<Integer>emptyList(),
                         Collections.<Integer>emptyList()).size());
+    }
+
+    @Test
+    @Date("2017-12-12")
+    public void getSwedishAndForeignBornPopulationWithParametersEmptyLists() {
+        assertNotEquals(0,
+                this.client.getSwedishAndForeignBornPopulation(Collections.<String>emptyList(),
+                        Collections.<String>emptyList(), Collections.<Integer>emptyList(),
+                        Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
@@ -60,9 +69,11 @@ public class PopulationStatisticsForeignBornPersonsClientIT extends RemoteIntegr
         List<String> regions = Arrays.asList("0162", "0180");
         List<String> ages = Arrays.asList("77", "100+");
         List<Integer> sexes = Arrays.asList(1, 2);
+        List<String> regionOfBirths = Arrays.asList("09", "11");
         List<Integer> years = Arrays.asList(2009);
 
-        assertNotEquals(0, this.client.getSwedishAndForeignBornPopulation(regions, ages, sexes, years).size());
+        assertNotEquals(0,
+                this.client.getSwedishAndForeignBornPopulation(regions, ages, sexes, regionOfBirths, years).size());
     }
 
     @Test

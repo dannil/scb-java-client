@@ -18,6 +18,9 @@ import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.statistics.claimsandliabilities.FinancialMarketsStatisticsClaimsAndLiabilitiesClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.statistics.depositandlending.FinancialMarketsStatisticsDepositAndLendingClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.statistics.economicindicators.FinancialMarketsStatisticsEconomicIndicatorsClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.statistics.keyfigures.FinancialMarketsStatisticsKeyFiguresClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.statistics.statistics.FinancialMarketsStatisticsStatisticsClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
@@ -35,6 +38,9 @@ public class FinancialMarketsStatisticsClient extends AbstractContainerClient {
         super();
 
         addClient("claimsandliabilities", new FinancialMarketsStatisticsClaimsAndLiabilitiesClient());
+        addClient("depositandlending", new FinancialMarketsStatisticsDepositAndLendingClient());
+        addClient("economicindicators", new FinancialMarketsStatisticsEconomicIndicatorsClient());
+        addClient("keyfigures", new FinancialMarketsStatisticsKeyFiguresClient());
         addClient("statistics", new FinancialMarketsStatisticsStatisticsClient());
     }
 
@@ -58,6 +64,36 @@ public class FinancialMarketsStatisticsClient extends AbstractContainerClient {
      */
     public FinancialMarketsStatisticsClaimsAndLiabilitiesClient claimsAndLiabilities() {
         return (FinancialMarketsStatisticsClaimsAndLiabilitiesClient) getClient("claimsandliabilities");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with financial markets statistics deposit
+     * and lending data.</p>
+     *
+     * @return a client for financial markets statistics deposit and lending data
+     */
+    public FinancialMarketsStatisticsDepositAndLendingClient depositAndLending() {
+        return (FinancialMarketsStatisticsDepositAndLendingClient) getClient("depositandlending");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with financial markets statistics economic
+     * indicators data.</p>
+     *
+     * @return a client for financial markets statistics economic indicators data
+     */
+    public FinancialMarketsStatisticsEconomicIndicatorsClient economicIndicators() {
+        return (FinancialMarketsStatisticsEconomicIndicatorsClient) getClient("economicindicators");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with financial markets statistics key
+     * figures data.</p>
+     *
+     * @return a client for financial markets statistics key figures data
+     */
+    public FinancialMarketsStatisticsKeyFiguresClient keyFigures() {
+        return (FinancialMarketsStatisticsKeyFiguresClient) getClient("keyfigures");
     }
 
     /**

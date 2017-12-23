@@ -14,30 +14,28 @@
 
 package com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.kpif;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.kpif.PricesAndConsumptionCPIKPIFClient;
-import com.github.dannil.scbjavaclient.test.runner.Date;
-import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(DateJUnitRunner.class)
-public class PricesAndConsumptionCPIKPIFClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class PricesAndConsumptionCPIKPIFClientIT {
 
     private PricesAndConsumptionCPIKPIFClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
-        this.client = new SCBClient().pricesAndConsumption().cpi().kpif();
+        this.client = new PricesAndConsumptionCPIKPIFClient();
     }
 
     @Test

@@ -14,29 +14,47 @@
 
 package com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.cn;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.runner.Date;
-import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(DateJUnitRunner.class)
-public class GoodsAndServicesForeignTradeCNClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+@SuppressWarnings("deprecation")
+public class GoodsAndServicesForeignTradeCNClientIT {
 
     private GoodsAndServicesForeignTradeCNClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
-        this.client = new SCBClient().goodsAndServices().foreignTrade().cn();
+        this.client = new GoodsAndServicesForeignTradeCNClient();
     }
+
+    // Daniel 2017-04-28: Returns HTTP 403
+    //
+    // @Test
+    // @Date("2017-04-28")
+    // public void getImportsAndExportsOfGoods() {
+    // assertNotEquals(0, this.client.getImportsAndExportsOfGoods().size());
+    // }
+
+    // Daniel 2017-04-28: Returns HTTP 403
+    //
+    // @Test
+    // @Date("2017-04-28")
+    // public void getImportsAndExportsOfGoodsWithParametersEmptyLists() {
+    // assertNotEquals(0,
+    // this.client.getImportsAndExportsOfGoods(Collections.<String>emptyList(),
+    // Collections.<Integer>emptyList()).size());
+    // }
 
     @Test
     @Date("2017-04-28")

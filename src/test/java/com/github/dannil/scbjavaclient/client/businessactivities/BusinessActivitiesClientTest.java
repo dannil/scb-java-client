@@ -14,21 +14,22 @@
 
 package com.github.dannil.scbjavaclient.client.businessactivities;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
+import com.github.dannil.scbjavaclient.client.businessactivities.accomodationstatistics.BusinessActivitiesAccomodationStatisticsClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.balancestatistics.BusinessActivitiesBalanceStatisticsClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.database.BusinessActivitiesDatabaseClient;
+import com.github.dannil.scbjavaclient.client.businessactivities.industrialinventories.BusinessActivitiesIndustrialInventoriesClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.nonprofitorganizations.BusinessActivitiesNonProfitOrganizationsClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.productionindex.BusinessActivitiesProductionIndexClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
+@Suite
 public class BusinessActivitiesClientTest {
 
     @Test
@@ -37,6 +38,13 @@ public class BusinessActivitiesClientTest {
         BusinessActivitiesClient client = new BusinessActivitiesClient(locale);
 
         assertEquals(locale, client.getLocale());
+    }
+
+    @Test
+    public void accomodationStatisticsClient() {
+        BusinessActivitiesClient client = new BusinessActivitiesClient();
+
+        assertEquals(client.accomodationStatistics().getClass(), BusinessActivitiesAccomodationStatisticsClient.class);
     }
 
     @Test
@@ -51,6 +59,13 @@ public class BusinessActivitiesClientTest {
         BusinessActivitiesClient client = new BusinessActivitiesClient();
 
         assertEquals(client.database().getClass(), BusinessActivitiesDatabaseClient.class);
+    }
+
+    @Test
+    public void industrialInventoriesClient() {
+        BusinessActivitiesClient client = new BusinessActivitiesClient();
+
+        assertEquals(client.industrialInventories().getClass(), BusinessActivitiesIndustrialInventoriesClient.class);
     }
 
     @Test

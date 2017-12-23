@@ -1,44 +1,45 @@
 language: java
+git:
+  depth: 99999
 branches:
   except:
   - gh-pages
   - /^tag.*$/
 env:
   global:
-  - secure: c6MyQOm1B//KGDpJ+swHWgWJSp/XEkkZ61ZMeF02VxdMM2kJmGAaMfCjIrF3+0wSOKs4V/3LzjHefY4OMTBMuf/snrlXfWRRIymNIvsgEvFPKQHz/YunFdoHmhF54fgRQt+lmeKwKL/p/4PG2hdzo3e0+sufbXAAphQ01Vo8wg0=
+  - secure: llfqmprQ05WEQ7dQ4S03UTQNxuMYuk3nlunkBJxLXP5oFIo8gDgT0lBzG41PeG6SfrO4d2oZE9/Nrv1vqAZ/J2ZNLbviWzufpEJi44FW6tIp2YYl0jgtjDi7JTVKNoGeYfiD2vjN3jCbhIEeJO7RCDqDxHaQpnTHWPvLqOldz/w=
   - secure: jP+6no77LmkNsx9/ih/q4fECS+6g2HxXcmLk3kEw309BTfmi270578YTFrhquwnXO4iRWG02Uza3Qs7lwLLlUIz+KRhBgDG1kcLa/juJEqxBfJ9nsbxbBU6ncnSHvOGWh3dYXWGjXzWKACSb0tGF+BL4RG8aq4/9k60++/11zM8=
   - secure: p4TxOFCOSPKKb6g3ZlDeJFuUQ35wKKT+5Ae5ugDORnh09RXzwLRSglItEY29s2mK/lnAyn77U3HZQiXPGkLiZK5w8Vzb6KFr8NYbMvwz53MIMyZlKEg6nJEddk998vwNdB06tJ0qjmZYK1aGJx53oPm90drF00uLmOk65WRk2P0=
+  - secure: Ob+txuzaiED1BdNO67hQbDCNv+/7vnngKfptzqKYVlW8ZA9RpwU9I27+dHAdfVvFkzY1xP/hk6Y3u//Js5u/5dpiNU4RWo37koK0hgmNtMKiSNwUkIii+yFvFn0y5ynG6HPRyQca3i0EXSqIZg0PvONLAcV76132qgMJs0cmOKk=
 matrix:
   include:
   - os: linux
     dist: trusty
-    sudo: required
-    jdk: openjdk7
-  - os: linux
-    dist: trusty
     jdk: oraclejdk8
-    script:
-    - mvn install -B -V -DtestsDayLimit=7
     after_success:
     # SonarQube needs to be run with at least Java 8
     # Make sure we are on dev for running SonarQube
-    - if [[ $TRAVIS_BRANCH == test/run-all-tests ]]; then mvn sonar:sonar -Dsonar.host.url=https://sonarqube.com -Dsonar.login=$SONARQUBE_TOKEN; fi
+    - if [[ $TRAVIS_BRANCH == test/run-all-tests ]]; then mvn sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONARQUBE_TOKEN; fi
+    - if [[ $TRAVIS_BRANCH == test/run-all-tests ]]; then sh push_build_results.sh; fi
   - os: linux
     dist: trusty
     group: edge
     jdk: oraclejdk9
-    addons:
-      apt:
-        packages:
-        - oracle-java9-installer
 before_script:
 # If we get the same IP on concurrent builds and this triggers an error
 # on the API (rate limiting), this can be easily debugged by checking the log
 # where this command printed its result
 - curl icanhazip.com
+=======
+
+>>>>>>> refs/heads/dev
 install:
 - true
+before_script:
+# If we get the same IP on concurrent builds and this triggers an error
+# on the API (rate limiting), this can be easily debugged by checking the log
+- curl icanhazip.com
 script:
 - mvn install -B -V -DtestsDayLimit=7
 after_success:
-- mvn com.gavinmogan:codacy-maven-plugin:coverage -DcoverageReportFile=target/site/jacoco/jacoco.xml -DprojectToken=$CODACY_PROJECT_TOKEN -DapiToken=$CODACY_API_TOKEN
+# - mvn com.gavinmogan:codacy-maven-plugin:coverage -DcoverageReportFile=target/site/jacoco/jacoco.xml -DprojectToken=$CODACY_PROJECT_TOKEN -DapiToken=$CODACY_API_TOKEN

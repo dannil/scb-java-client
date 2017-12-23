@@ -14,22 +14,21 @@
 
 package com.github.dannil.scbjavaclient.http.requester;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.StandardCharsets;
 
 import com.github.dannil.scbjavaclient.http.RequestMethod;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
+@Suite
 public class RequesterSingletonFactoryTest {
 
     @Test
@@ -116,11 +115,11 @@ public class RequesterSingletonFactoryTest {
         assertEquals(RequesterSingletonFactory.getRequester(RequestMethod.GET), abs);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void getRequesterIllegalArgument() {
-        AbstractRequester abs = RequesterSingletonFactory.getRequester(null);
-
-        assertNull(abs);
+        assertThrows(IllegalArgumentException.class, () -> {
+            RequesterSingletonFactory.getRequester(null);
+        });
     }
 
     // @Test

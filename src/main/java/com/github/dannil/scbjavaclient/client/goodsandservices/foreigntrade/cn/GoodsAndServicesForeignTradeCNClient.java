@@ -30,7 +30,12 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
  * data fetching.</p>
  *
  * @since 0.3.0
+ *
+ * @deprecated use
+ *             {@link com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods.cn.GoodsAndServicesForeignTradeGoodsCNClient
+ *             GoodsAndServicesForeignTradeGoodsCNClient} instead
  */
+@Deprecated
 public class GoodsAndServicesForeignTradeCNClient extends AbstractClient {
 
     /**
@@ -49,6 +54,21 @@ public class GoodsAndServicesForeignTradeCNClient extends AbstractClient {
     public GoodsAndServicesForeignTradeCNClient(Locale locale) {
         super(locale);
     }
+
+    // Daniel 2017-04-28: Returns HTTP 403
+    //
+    // /**
+    // * <p>Fetch all imports and exports of goods data.</p>
+    // *
+    // * @return the data wrapped in a list of
+    // * {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+    // * objects
+    // *
+    // * @see #getImportsAndExportsOfGoods(Collection, Collection)
+    // */
+    // public List<ResponseModel> getImportsAndExportsOfGoods() {
+    // return getImportsAndExportsOfGoods(null, null);
+    // }
 
     /**
      * <p>Fetch all imports and exports of goods data which match the input

@@ -50,22 +50,24 @@ public class FinancialMarketsInvestmentFundsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all ownership of investment fund shares data.</p>
+     * <p>Fetch all ownership of investment fund data.</p>
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @see #getOwnershipOfInvestmentFundShares(Collection, Collection, Collection)
+     * @see #getOwnershipOfInvestmentFund(Collection, Collection, Collection, Collection)
      */
-    public List<ResponseModel> getOwnershipOfInvestmentFundShares() {
-        return getOwnershipOfInvestmentFundShares(null, null, null);
+    public List<ResponseModel> getOwnershipOfInvestmentFund() {
+        return getOwnershipOfInvestmentFund(null, null, null, null);
     }
 
     /**
-     * <p>Fetch all ownership of investment fund shares data which match the input
+     * <p>Fetch all ownership of investment fund data which match the input
      * constraints.</p>
      *
+     * @param observations
+     *            the observations to fetch data for
      * @param types
      *            the types to fetch data for
      * @param sectors
@@ -76,14 +78,15 @@ public class FinancialMarketsInvestmentFundsClient extends AbstractClient {
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getOwnershipOfInvestmentFundShares(Collection<String> types, Collection<String> sectors,
-            Collection<String> quarters) {
+    public List<ResponseModel> getOwnershipOfInvestmentFund(Collection<String> observations, Collection<String> types,
+            Collection<String> sectors, Collection<String> quarters) {
         Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("Innehall", observations);
         mappings.put("Fondtyp", types);
-        mappings.put("Sektor", sectors);
+        mappings.put(APIConstants.SECTOR_CODE, sectors);
         mappings.put(APIConstants.TIME_CODE, quarters);
 
-        return getResponseModels("VPfondKv", mappings);
+        return getResponseModels("F813FondKv", mappings);
     }
 
     @Override

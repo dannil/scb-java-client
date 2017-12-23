@@ -14,17 +14,17 @@
 
 package com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.spin;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
+@Suite
+@SuppressWarnings("deprecation")
 public class GoodsAndServicesForeignTradeSPINClientTest {
 
     @Test

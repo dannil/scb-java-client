@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="scb-java-client">
+  <skin>
+    <groupId>org.apache.maven.skins</groupId>
+    <artifactId>maven-fluido-skin</artifactId>
+    <version>1.6</version>
+  </skin>
+  <custom>
+    <fluidoSkin>
+      <gitHub>
+        <projectId>dannil/scb-java-client</projectId>
+        <ribbonOrientation>right</ribbonOrientation>
+        <ribbonColor>gray</ribbonColor>
+      </gitHub>
+    </fluidoSkin>
+  </custom>
+  <body>
+    <breadcrumbs>
+      <item name="scb-java-client" href="index.html" />
+    </breadcrumbs>
+    <menu name="Overview">
+      <item href="index.html" name="Introduction" />
+    </menu>
+    <menu ref="reports" inherit="bottom" />
+  </body>
+</project>

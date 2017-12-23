@@ -14,16 +14,16 @@
 
 package com.github.dannil.scbjavaclient.constants;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-@RunWith(JUnit4.class)
+import org.junit.jupiter.api.Test;
+
+@Suite
 public class ClientConstantsTest {
 
     @Test

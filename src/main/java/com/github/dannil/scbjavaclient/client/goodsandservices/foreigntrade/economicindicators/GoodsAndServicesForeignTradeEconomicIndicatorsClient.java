@@ -30,7 +30,12 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
  * fetching.</p>
  *
  * @since 0.3.0
+ *
+ * @deprecated use
+ *             {@link com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods.economicindicators.GoodsAndServicesForeignTradeGoodsEconomicIndicatorsClient
+ *             GoodsAndServicesForeignTradeGoodsEconomicIndicatorsClient} instead
  */
+@Deprecated
 public class GoodsAndServicesForeignTradeEconomicIndicatorsClient extends AbstractClient {
 
     /**

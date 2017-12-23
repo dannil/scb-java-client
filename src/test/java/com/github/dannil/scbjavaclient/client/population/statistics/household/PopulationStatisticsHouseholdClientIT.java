@@ -14,29 +14,28 @@
 
 package com.github.dannil.scbjavaclient.client.population.statistics.household;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.runner.Date;
-import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(DateJUnitRunner.class)
-public class PopulationStatisticsHouseholdClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class PopulationStatisticsHouseholdClientIT {
 
     private PopulationStatisticsHouseholdClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
-        this.client = new SCBClient().population().statistics().household();
+        this.client = new PopulationStatisticsHouseholdClient();
     }
 
     @Test

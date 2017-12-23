@@ -20,8 +20,8 @@ import java.nio.charset.Charset;
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
 import com.github.dannil.scbjavaclient.http.HttpResponse;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>HTTP requester for GET requests.</p>
@@ -30,7 +30,7 @@ import org.apache.logging.log4j.Logger;
  */
 public class GETRequester extends AbstractRequester {
 
-    private static final Logger LOGGER = LogManager.getLogger(GETRequester.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(GETRequester.class);
 
     /**
      * <p>Default constructor.</p>

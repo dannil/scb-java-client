@@ -14,29 +14,28 @@
 
 package com.github.dannil.scbjavaclient.client.businessactivities.accomodationstatistics.year;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.runner.Date;
-import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(DateJUnitRunner.class)
-public class BusinessActivitiesAccomodationStatisticsYearClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class BusinessActivitiesAccomodationStatisticsYearClientIT {
 
     private BusinessActivitiesAccomodationStatisticsYearClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
-        this.client = new SCBClient().businessActivities().accomodationStatistics().year();
+        this.client = new BusinessActivitiesAccomodationStatisticsYearClient();
     }
 
     @Test
@@ -71,7 +70,7 @@ public class BusinessActivitiesAccomodationStatisticsYearClientIT extends Remote
     @Test
     @Date("2017-04-13")
     public void getCapacityForHotelsEmptyLists() {
-        assertNotEquals(0, this.client.getNumberOfHotels(Collections.<String>emptyList(),
+        assertNotEquals(0, this.client.getCapacityForHotels(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 

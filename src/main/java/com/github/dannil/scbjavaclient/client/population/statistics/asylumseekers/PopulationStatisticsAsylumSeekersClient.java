@@ -75,7 +75,7 @@ public class PopulationStatisticsAsylumSeekersClient extends AbstractClient {
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getAsylumSeekers(Collection<String> countriesOfCitizenships, Collection<String> sexes,
+    public List<ResponseModel> getAsylumSeekers(Collection<String> countriesOfCitizenships, Collection<Integer> sexes,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("Medbland", countriesOfCitizenships);

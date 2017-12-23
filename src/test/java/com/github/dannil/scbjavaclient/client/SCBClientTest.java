@@ -14,28 +14,29 @@
 
 package com.github.dannil.scbjavaclient.client;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.agriculture.AgricultureClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.BusinessActivitiesClient;
+import com.github.dannil.scbjavaclient.client.educationandresearch.EducationAndResearchClient;
 import com.github.dannil.scbjavaclient.client.energy.EnergyClient;
 import com.github.dannil.scbjavaclient.client.environment.EnvironmentClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.FinancialMarketsClient;
 import com.github.dannil.scbjavaclient.client.goodsandservices.GoodsAndServicesClient;
 import com.github.dannil.scbjavaclient.client.labourmarket.LabourMarketClient;
+import com.github.dannil.scbjavaclient.client.livingconditions.LivingConditionsClient;
 import com.github.dannil.scbjavaclient.client.population.PopulationClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.PricesAndConsumptionClient;
 import com.github.dannil.scbjavaclient.client.publicfinances.PublicFinancesClient;
 import com.github.dannil.scbjavaclient.client.transport.TransportClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
+@Suite
 public class SCBClientTest {
 
     @Test
@@ -64,10 +65,18 @@ public class SCBClientTest {
         assertEquals(client.agriculture().getClass(), AgricultureClient.class);
     }
 
+    @Test
     public void businessActivities() {
         SCBClient client = new SCBClient();
 
         assertEquals(client.businessActivities().getClass(), BusinessActivitiesClient.class);
+    }
+
+    @Test
+    public void educationAndResearch() {
+        SCBClient client = new SCBClient();
+
+        assertEquals(client.educationAndResearch().getClass(), EducationAndResearchClient.class);
     }
 
     @Test
@@ -103,6 +112,13 @@ public class SCBClientTest {
         SCBClient client = new SCBClient();
 
         assertEquals(client.labourMarket().getClass(), LabourMarketClient.class);
+    }
+
+    @Test
+    public void livingConditions() {
+        SCBClient client = new SCBClient();
+
+        assertEquals(client.livingConditions().getClass(), LivingConditionsClient.class);
     }
 
     @Test

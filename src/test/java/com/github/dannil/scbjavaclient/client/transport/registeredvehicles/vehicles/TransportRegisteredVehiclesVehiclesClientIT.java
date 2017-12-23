@@ -14,29 +14,28 @@
 
 package com.github.dannil.scbjavaclient.client.transport.registeredvehicles.vehicles;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.runner.Date;
-import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(DateJUnitRunner.class)
-public class TransportRegisteredVehiclesVehiclesClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class TransportRegisteredVehiclesVehiclesClientIT {
 
     private TransportRegisteredVehiclesVehiclesClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
-        this.client = new SCBClient().transport().registeredVehicles().vehicles();
+        this.client = new TransportRegisteredVehiclesVehiclesClient();
     }
 
     @Test
@@ -47,18 +46,27 @@ public class TransportRegisteredVehiclesVehiclesClientIT extends RemoteIntegrati
 
     @Test
     @Date("2017-05-08")
-    public void getVehiclesInUseWithParametersEmptyLists() {
+    @SuppressWarnings("deprecation")
+    public void getVehiclesInUseDeprecated() {
         assertNotEquals(0, this.client.getVehiclesInUse(Collections.<Integer>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-12-12")
+    public void getVehiclesInUseWithParametersEmptyLists() {
+        assertNotEquals(0, this.client.getVehiclesInUse(Collections.<String>emptyList(),
+                Collections.<Integer>emptyList(), Collections.<Integer>emptyList()).size());
+    }
+
+    @Test
     @Date("2017-05-08")
     public void getVehiclesInUseWithParameters() {
+        List<String> regions = Arrays.asList("0127", "0128");
         List<Integer> typesOfVehicles = Arrays.asList(30, 40);
         List<Integer> years = Arrays.asList(2008, 2010);
 
-        assertNotEquals(0, this.client.getVehiclesInUse(typesOfVehicles, years).size());
+        assertNotEquals(0, this.client.getVehiclesInUse(regions, typesOfVehicles, years).size());
     }
 
     @Test

@@ -14,17 +14,19 @@
 
 package com.github.dannil.scbjavaclient.client.environment.protectednature;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
+import com.github.dannil.scbjavaclient.client.environment.protectednature.naturetypes.EnvironmentProtectedNatureNatureTypesClient;
+import com.github.dannil.scbjavaclient.client.environment.protectednature.numberandarea.EnvironmentProtectedNatureNumberAndAreaClient;
+import com.github.dannil.scbjavaclient.client.environment.protectednature.populationandaccessibility.EnvironmentProtectedNaturePopulationAndAccessibilityClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
+@Suite
 public class EnvironmentProtectedNatureClientTest {
 
     @Test
@@ -33,6 +35,28 @@ public class EnvironmentProtectedNatureClientTest {
         EnvironmentProtectedNatureClient client = new EnvironmentProtectedNatureClient(locale);
 
         assertEquals(locale, client.getLocale());
+    }
+
+    @Test
+    public void natureTypes() {
+        EnvironmentProtectedNatureClient client = new EnvironmentProtectedNatureClient();
+
+        assertEquals(client.natureTypes().getClass(), EnvironmentProtectedNatureNatureTypesClient.class);
+    }
+
+    @Test
+    public void numberAndArea() {
+        EnvironmentProtectedNatureClient client = new EnvironmentProtectedNatureClient();
+
+        assertEquals(client.numberAndArea().getClass(), EnvironmentProtectedNatureNumberAndAreaClient.class);
+    }
+
+    @Test
+    public void populationAndAccessibility() {
+        EnvironmentProtectedNatureClient client = new EnvironmentProtectedNatureClient();
+
+        assertEquals(client.populationAndAccessibility().getClass(),
+                EnvironmentProtectedNaturePopulationAndAccessibilityClient.class);
     }
 
     @Test

@@ -14,21 +14,21 @@
 
 package com.github.dannil.scbjavaclient.client.pricesandconsumption;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.bpi.PricesAndConsumptionBPIClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cci.PricesAndConsumptionCCIClient;
+import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.PricesAndConsumptionCPIClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.ppi.PricesAndConsumptionPPIClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.purchasingpowerparities.PricesAndConsumptionPurchasingPowerParitiesClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
+@Suite
 public class PricesAndConsumptionClientTest {
 
     @Test
@@ -51,6 +51,13 @@ public class PricesAndConsumptionClientTest {
         PricesAndConsumptionClient client = new PricesAndConsumptionClient();
 
         assertEquals(client.cci().getClass(), PricesAndConsumptionCCIClient.class);
+    }
+
+    @Test
+    public void cpi() {
+        PricesAndConsumptionClient client = new PricesAndConsumptionClient();
+
+        assertEquals(client.cpi().getClass(), PricesAndConsumptionCPIClient.class);
     }
 
     @Test

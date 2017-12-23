@@ -1,10 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.dannil</groupId>
   <artifactId>scb-java-client</artifactId>
-  <version>0.4.0-SNAPSHOT</version>
+  <version>0.7.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>scb-java-client</name>
@@ -52,7 +53,10 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-    <argLine>-Xmx1024m -Dfile.encoding=UTF-8</argLine>
+    <project.java.source>1.8</project.java.source>
+    <project.java.target>1.8</project.java.target>
+
+    <argLine>-Xmx2048m -Dfile.encoding=${project.build.sourceEncoding}</argLine>
   </properties>
 
   <dependencies>
@@ -60,33 +64,49 @@
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-core</artifactId>
-      <version>2.9.0.pr3</version>
+      <version>2.9.3</version>
     </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
-      <version>2.9.0.pr3</version>
+      <version>2.9.3</version>
     </dependency>
     <dependency>
       <groupId>commons-io</groupId>
       <artifactId>commons-io</artifactId>
-      <version>2.5</version>
+      <version>2.6</version>
     </dependency>
 
     <!-- Logging -->
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-core</artifactId>
-      <version>2.8.2</version>
+      <version>2.10.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-slf4j-impl</artifactId>
+      <version>2.10.0</version>
     </dependency>
 
     <!-- Test dependencies -->
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.12</version>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>5.0.2</version>
       <scope>test</scope>
-      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>5.0.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.platform</groupId>
+      <artifactId>junit-platform-launcher</artifactId>
+      <version>1.0.2</version>
+      <scope>test</scope>
     </dependency>
   </dependencies>
 
@@ -138,18 +158,50 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.20</version>
+        <!-- Do not upgrade if the new version doesn't support JUnit 5, due 
+          to the process of running the tests will break; it seems that surefire-provider 
+          needs surefire/failsafe version 2.19.1 to work -->
+        <version>2.19.1</version>
+        <!-- Remove these dependencies when surefire/failsafe has support 
+          for JUnit 5 -->
+        <dependencies>
+          <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-surefire-provider</artifactId>
+            <version>1.0.2</version>
+          </dependency>
+          <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.0.2</version>
+          </dependency>
+        </dependencies>
         <configuration>
           <forkCount>3</forkCount>
           <reuseForks>true</reuseForks>
-          <!-- <argLine>${argLine}</argLine> -->
-          <!-- <argLine>${surefireArgLine} -Dfile.encoding=UTF-8</argLine> -->
         </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-failsafe-plugin</artifactId>
-        <version>2.20</version>
+        <!-- Do not upgrade if the new version doesn't support JUnit 5, due 
+          to the process of running the tests will break; it seems that surefire-provider 
+          needs surefire/failsafe version 2.19.1 to work -->
+        <version>2.19.1</version>
+        <!-- Remove these dependencies when surefire/failsafe has support 
+          for JUnit 5 -->
+        <dependencies>
+          <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-surefire-provider</artifactId>
+            <version>1.0.2</version>
+          </dependency>
+          <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.0.2</version>
+          </dependency>
+        </dependencies>
         <configuration>
           <systemPropertyVariables>
             <testsDayLimit>7</testsDayLimit>
@@ -276,7 +328,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>animal-sniffer-maven-plugin</artifactId>
-        <version>1.15</version>
+        <version>1.16</version>
         <executions>
           <execution>
             <id>signature-check</id>
@@ -289,10 +341,28 @@
         <configuration>
           <signature>
             <groupId>org.codehaus.mojo.signature</groupId>
-            <artifactId>java17</artifactId>
+            <artifactId>java18</artifactId>
             <version>1.0</version>
           </signature>
         </configuration>
+      </plugin>
+      <plugin>
+        <groupId>com.github.siom79.japicmp</groupId>
+        <artifactId>japicmp-maven-plugin</artifactId>
+        <version>0.11.0</version>
+        <configuration>
+          <parameter>
+            <onlyBinaryIncompatible>true</onlyBinaryIncompatible>
+          </parameter>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>verify</phase>
+            <goals>
+              <goal>cmp</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -302,8 +372,7 @@
           <dependency>
             <groupId>com.puppycrawl.tools</groupId>
             <artifactId>checkstyle</artifactId>
-            <!-- <version>7.5.1</version> -->
-            <version>6.19</version>
+            <version>8.5</version>
           </dependency>
         </dependencies>
         <executions>
@@ -323,10 +392,10 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.6.1</version>
+        <version>3.7.0</version>
         <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
+          <source>${project.java.source}</source>
+          <target>${project.java.target}</target>
           <encoding>${project.build.sourceEncoding}</encoding>
         </configuration>
       </plugin>
@@ -343,18 +412,21 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
-        <version>1.4.1</version>
+        <version>3.0.0-M1</version>
         <executions>
           <execution>
-            <id>enforce-maven</id>
+            <id>enforce-versions</id>
             <goals>
               <goal>enforce</goal>
             </goals>
             <configuration>
               <rules>
                 <requireMavenVersion>
-                  <version>3.0</version>
+                  <version>3.0.3</version>
                 </requireMavenVersion>
+                <requireJavaVersion>
+                  <version>${project.java.source}</version>
+                </requireJavaVersion>
               </rules>
               <fail>true</fail>
             </configuration>
@@ -367,10 +439,7 @@
             <configuration>
               <rules>
                 <requireReleaseDeps>
-                  <failWhenParentIsSnapshot>false</failWhenParentIsSnapshot>
-                  <excludes>
-                    <exclude>${project.groupId}:*</exclude>
-                  </excludes>
+                  <message>No snapshots allowed as release dependencies.</message>
                 </requireReleaseDeps>
               </rules>
               <fail>true</fail>
@@ -391,7 +460,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>2.10.4</version>
+        <version>3.0.0-M1</version>
         <configuration>
           <failOnError>true</failOnError>
         </configuration>

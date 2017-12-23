@@ -14,25 +14,22 @@
 
 package com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.kpif;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.kpif.PricesAndConsumptionCPIKPIFClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
+@Suite
 public class PricesAndConsumptionCPIKPIFClientTest {
 
     @Test
     public void createWithLocaleConstructor() {
         Locale locale = new Locale("sv", "SE");
-        PricesAndConsumptionCPIKPIFClient client = new PricesAndConsumptionCPIKPIFClient(
-                locale);
+        PricesAndConsumptionCPIKPIFClient client = new PricesAndConsumptionCPIKPIFClient(locale);
 
         assertEquals(locale, client.getLocale());
     }
@@ -42,8 +39,7 @@ public class PricesAndConsumptionCPIKPIFClientTest {
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints
         Locale locale = new Locale("en", "US");
-        PricesAndConsumptionCPIKPIFClient client = new PricesAndConsumptionCPIKPIFClient(
-                locale);
+        PricesAndConsumptionCPIKPIFClient client = new PricesAndConsumptionCPIKPIFClient(locale);
 
         assertEquals(URLEndpoint.getRootUrl(locale).append("PR/PR0101/PR0101G/"), client.getUrl());
     }

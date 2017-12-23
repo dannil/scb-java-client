@@ -14,10 +14,10 @@
 
 package com.github.dannil.scbjavaclient.client;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -27,15 +27,15 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.github.dannil.scbjavaclient.test.runner.Date;
-import com.github.dannil.scbjavaclient.test.runner.DateJUnitRunner;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 
-@RunWith(DateJUnitRunner.class)
-public class SCBClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class SCBClientIT {
 
     @Test
     @Date("2017-01-01")
@@ -121,11 +121,11 @@ public class SCBClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
-    @Date("2017-01-01")
+    @Date("2017-08-19")
     public void getRegionsMissingCodeInTable() {
         SCBClient client = new SCBClient();
 
-        List<String> regions = client.getRegions("BE/BE0001/BE0001T04Ar");
+        List<String> regions = client.getRegions("BE/BE0001/BE0001D/BE0001T04Ar");
 
         assertNotNull(regions);
         assertTrue(regions.isEmpty());

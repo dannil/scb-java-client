@@ -24,6 +24,7 @@ import java.util.Map.Entry;
 
 import com.github.dannil.scbjavaclient.client.agriculture.AgricultureClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.BusinessActivitiesClient;
+import com.github.dannil.scbjavaclient.client.educationandresearch.EducationAndResearchClient;
 import com.github.dannil.scbjavaclient.client.energy.EnergyClient;
 import com.github.dannil.scbjavaclient.client.environment.EnvironmentClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.FinancialMarketsClient;
@@ -34,6 +35,7 @@ import com.github.dannil.scbjavaclient.client.population.PopulationClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.PricesAndConsumptionClient;
 import com.github.dannil.scbjavaclient.client.publicfinances.PublicFinancesClient;
 import com.github.dannil.scbjavaclient.client.transport.TransportClient;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonAPIConfigTableFormat;
 import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
 import com.github.dannil.scbjavaclient.http.HttpResponse;
@@ -58,6 +60,7 @@ public class SCBClient extends AbstractContainerClient {
 
         addClient("agriculture", new AgricultureClient());
         addClient("businessactivities", new BusinessActivitiesClient());
+        addClient("educationandresearch", new EducationAndResearchClient());
         addClient("energy", new EnergyClient());
         addClient("environment", new EnvironmentClient());
         addClient("financialmarkets", new FinancialMarketsClient());
@@ -98,6 +101,15 @@ public class SCBClient extends AbstractContainerClient {
      */
     public BusinessActivitiesClient businessActivities() {
         return (BusinessActivitiesClient) getClient("businessactivities");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with education and research data.</p>
+     *
+     * @return a client for education and research data
+     */
+    public EducationAndResearchClient educationAndResearch() {
+        return (EducationAndResearchClient) getClient("educationandresearch");
     }
 
     /**
@@ -217,10 +229,9 @@ public class SCBClient extends AbstractContainerClient {
     public List<String> getRegions(String table) {
         String url = getUrl() + table;
         String json = doGetRequest(url);
-        String code = "Region";
 
         JsonAPITableFormat format = new JsonAPITableFormat(json);
-        return format.getValues(code);
+        return format.getValues(APIConstants.REGION_CODE);
     }
 
     /**
@@ -233,10 +244,9 @@ public class SCBClient extends AbstractContainerClient {
     public List<String> getTimes(String table) {
         String url = getUrl() + table;
         String json = doGetRequest(url);
-        String code = "Tid";
 
         JsonAPITableFormat format = new JsonAPITableFormat(json);
-        return format.getValues(code);
+        return format.getValues(APIConstants.TIME_CODE);
     }
 
     /**
