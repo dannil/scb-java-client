@@ -1,0 +1,50 @@
+######################
+# Directories and files
+#
+# General folders common for 
+# several languages
+######################
+log/
+doc/
+
+######################
+# Eclipse
+######################
+.settings/
+.project
+.classpath
+
+######################
+# IntelliJ IDEA
+######################
+.idea/
+
+######################
+# Java
+######################
+build/
+bin/
+target/
+*.class
+*.jar
+*.war
+*.ear
+
+######################
+# Windows
+######################
+Thumbs.db
+Desktop.ini
+
+######################
+# OSX
+######################
+.DS_Store
+.svn
+._*
+.Spotlight-V100
+.Trashes
+
+######################
+# Other
+######################
