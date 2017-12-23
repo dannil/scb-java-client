@@ -109,6 +109,13 @@
       <version>1.0.2</version>
       <scope>test</scope>
     </dependency>
+
+    <!-- TESTING -->
+    <dependency>
+      <groupId>com.github.dannil</groupId>
+      <artifactId>scb-java-client-utilities</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
   </dependencies>
 
   <distributionManagement>
