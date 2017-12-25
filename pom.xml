@@ -351,6 +351,31 @@
         <groupId>com.github.siom79.japicmp</groupId>
         <artifactId>japicmp-maven-plugin</artifactId>
         <version>0.11.0</version>
+        <!-- These dependencies are needed to compile on Java 9 and onward, 
+          as this plugin doesn't yet declare these on their own. These dependencies 
+          can be removed in the future when the plugin supports Java 9 out-of-box -->
+        <dependencies>
+          <dependency>
+            <groupId>javax.activation</groupId>
+            <artifactId>activation</artifactId>
+            <version>1.1.1</version>
+          </dependency>
+          <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.0</version>
+          </dependency>
+          <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-core</artifactId>
+            <version>2.3.0</version>
+          </dependency>
+          <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>2.3.0</version>
+          </dependency>
+        </dependencies>
         <configuration>
           <parameter>
             <onlyBinaryIncompatible>true</onlyBinaryIncompatible>
