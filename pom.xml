@@ -56,7 +56,8 @@
     <project.java.source>1.8</project.java.source>
     <project.java.target>1.8</project.java.target>
 
-    <argLine>-Xmx2048m -Dfile.encoding=${project.build.sourceEncoding}</argLine>
+    <argLine>-Xmx2048m -XX:MaxPermSize=512m
+      -Dfile.encoding=${project.build.sourceEncoding}</argLine>
   </properties>
 
   <dependencies>
@@ -500,6 +501,22 @@
             </goals>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <groupId>pw.krejci</groupId>
+        <artifactId>multi-release-jar-maven-plugin</artifactId>
+        <version>0.1.4</version>
+        <configuration>
+          <perReleaseConfiguration>
+            <release>9</release>
+            <configuration>
+              <compilerArguments>
+                <arg>--add-modules</arg>
+                <arg>java.xml.bind</arg>
+              </compilerArguments>
+            </configuration>
+          </perReleaseConfiguration>
+        </configuration>
       </plugin>
     </plugins>
   </build>
