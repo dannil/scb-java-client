@@ -229,8 +229,7 @@
         <version>0.7.9</version>
         <executions>
           <!-- Prepares the property pointing to the JaCoCo runtime agent 
-            which -->
-          <!-- is passed as a VM argument when maven-surefire-plugin is executed. -->
+            which is passed as a VM argument when maven-surefire-plugin is executed -->
           <execution>
             <id>pre-unit-test</id>
             <goals>
@@ -238,16 +237,15 @@
             </goals>
             <configuration>
               <!-- Sets the path to the file which contains the execution 
-                data. -->
+                data -->
               <destFile>${project.build.directory}/jacoco-unit.exec</destFile>
               <!-- Sets the name of the property containing the settings 
-                for JaCoCo -->
-              <!-- runtime agent. -->
+                for JaCoCo runtime agent -->
               <propertyName>argLine</propertyName>
             </configuration>
           </execution>
-          <!-- Ensures that the code coverage report for unit tests is created -->
-          <!-- after unit tests have been run. -->
+          <!-- Ensures that the code coverage report for unit tests is created 
+            after unit tests have been run -->
           <execution>
             <id>post-unit-test</id>
             <phase>test</phase>
@@ -256,16 +254,15 @@
             </goals>
             <configuration>
               <!-- Sets the path to the file which contains the execution 
-                data. -->
+                data -->
               <dataFile>${project.build.directory}/jacoco-unit.exec</dataFile>
-              <!-- Sets the output directory for the code coverage report. -->
+              <!-- Sets the output directory for the code coverage report -->
               <outputDirectory>${project.reporting.outputDirectory}/jacoco-unit</outputDirectory>
             </configuration>
           </execution>
-          <!-- The Executions required by unit tests are omitted. -->
-          <!-- Prepares the property pointing to the JaCoCo runtime agent 
-            which -->
-          <!-- is passed as a VM argument when maven-failsafe-plugin is executed. -->
+          <!-- The Executions required by unit tests are omitted. Prepares 
+            the property pointing to the JaCoCo runtime agent which is passed as a VM 
+            argument when maven-failsafe-plugin is executed. -->
           <execution>
             <id>pre-integration-test</id>
             <phase>pre-integration-test</phase>
@@ -274,17 +271,15 @@
             </goals>
             <configuration>
               <!-- Sets the path to the file which contains the execution 
-                data. -->
+                data -->
               <destFile>${project.build.directory}/jacoco-integration.exec</destFile>
               <!-- Sets the name of the property containing the settings 
-                for JaCoCo -->
-              <!-- runtime agent. -->
+                for JaCoCo runtime agent -->
               <propertyName>argLine</propertyName>
             </configuration>
           </execution>
           <!-- Ensures that the code coverage report for integration tests 
-            after -->
-          <!-- integration tests have been run. -->
+            after integration tests have been run -->
           <execution>
             <id>post-integration-test</id>
             <phase>post-integration-test</phase>
@@ -293,9 +288,9 @@
             </goals>
             <configuration>
               <!-- Sets the path to the file which contains the execution 
-                data. -->
+                data -->
               <dataFile>${project.build.directory}/jacoco-integration.exec</dataFile>
-              <!-- Sets the output directory for the code coverage report. -->
+              <!-- Sets the output directory for the code coverage report -->
               <outputDirectory>${project.reporting.outputDirectory}/jacoco-integration</outputDirectory>
             </configuration>
           </execution>
@@ -441,6 +436,18 @@
         <version>3.0.0-M1</version>
         <executions>
           <execution>
+            <id>enforce-consistency</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <dependencyConvergence />
+              </rules>
+              <fail>true</fail>
+            </configuration>
+          </execution>
+          <execution>
             <id>enforce-versions</id>
             <goals>
               <goal>enforce</goal>
@@ -453,6 +460,11 @@
                 <requireJavaVersion>
                   <version>${project.java.source}</version>
                 </requireJavaVersion>
+                <requireSameVersions>
+                  <dependencies>
+                    <dependency>org.junit.jupiter</dependency>
+                  </dependencies>
+                </requireSameVersions>
               </rules>
               <fail>true</fail>
             </configuration>
