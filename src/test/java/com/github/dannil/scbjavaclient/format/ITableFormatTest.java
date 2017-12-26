@@ -15,10 +15,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 @Suite
-@SuppressWarnings("deprecation")
-public class AbstractTableFormatTest {
+public class ITableFormatTest {
 
-    private class DummyTableFormat extends AbstractTableFormat {
+    private class DummyTableFormat implements ITableFormat {
 
         private Map<String, Collection<String>> pairs;
 

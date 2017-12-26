@@ -21,31 +21,27 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * <p>Abstract class for API table format. All implementing classes should specify an
- * instance variable which contains the data which should be operated on by the
- * methods.</p>
+ * <p>Interface which contains operations for working with API table format. All
+ * implementing classes should specify an instance variable which contains the data which
+ * should be operated on by the methods.</p>
  *
- * @since 0.3.0
- *
- * @deprecated use {@link com.github.dannil.scbjavaclient.format.ITableFormat
- *             ITableFormat} instead
+ * @since 0.7.0
  */
-@Deprecated
-public abstract class AbstractTableFormat {
+public interface ITableFormat {
 
     /**
      * <p>Extracts the keys and their respective values from the data.</p>
      *
      * @return a <code>Map</code> of all keys and their respective values
      */
-    public abstract Map<String, Collection<String>> getPairs();
+    Map<String, Collection<String>> getPairs();
 
     /**
      * <p>Extracts the values for a key from the data.</p>
      *
      * @return a <code>List</code> of values
      */
-    public List<String> getKeys() {
+    default List<String> getKeys() {
         return new ArrayList<>(getPairs().keySet());
     }
 
@@ -56,7 +52,7 @@ public abstract class AbstractTableFormat {
      *            the key
      * @return a <code>List</code> of keys
      */
-    public List<String> getValues(String key) {
+    default List<String> getValues(String key) {
         Map<String, Collection<String>> fetchedInputs = getPairs();
         if (fetchedInputs.containsKey(key)) {
             return new ArrayList<>(fetchedInputs.get(key));

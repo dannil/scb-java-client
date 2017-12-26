@@ -21,6 +21,9 @@ matrix:
     # Make sure we are on the correct branch
     - if [[ $TRAVIS_BRANCH == test/run-all-tests ]]; then mvn sonar:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONARQUBE_TOKEN; fi
     - if [[ $TRAVIS_BRANCH == test/run-all-tests ]]; then sh push_build_results.sh; fi
+  - os: linux
+    dist: trusty
+    jdk: oraclejdk9
 install:
 - true
 before_script:
