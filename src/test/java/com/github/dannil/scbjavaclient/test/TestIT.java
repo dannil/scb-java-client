@@ -118,8 +118,7 @@ public class TestIT {
         List<File> testFiles = Files.find(execPath + "/src/test/java/com/github/dannil/scbjavaclient", "*.java");
 
         // Filter out some classes from the list
-        Filters.files(mainFiles, "com.github.dannil.scbjavaclient.format.json.IJsonTableFormat",
-                "com.github.dannil.scbjavaclient.format.AbstractTableFormat");
+        Filters.files(mainFiles, "com.github.dannil.scbjavaclient.format.json.IJsonTableFormat");
 
         List<Class<?>> matchedClasses = new ArrayList<>();
         for (File fileMain : mainFiles) {

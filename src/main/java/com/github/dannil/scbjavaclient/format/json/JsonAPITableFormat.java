@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.github.dannil.scbjavaclient.format.ITableFormat;
+import com.github.dannil.scbjavaclient.format.AbstractTableFormat;
 
 /**
  * <p>Class which encapsulates behavior for the JSON API table format. Note that this
@@ -30,7 +30,7 @@ import com.github.dannil.scbjavaclient.format.ITableFormat;
  *
  * @since 0.1.0
  */
-public class JsonAPITableFormat implements ITableFormat {
+public class JsonAPITableFormat extends AbstractTableFormat {
 
     private JsonNode json;
 
