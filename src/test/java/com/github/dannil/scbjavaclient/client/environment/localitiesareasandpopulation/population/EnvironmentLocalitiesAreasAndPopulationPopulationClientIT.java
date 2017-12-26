@@ -37,7 +37,74 @@ public class EnvironmentLocalitiesAreasAndPopulationPopulationClientIT {
     public void setup() {
         this.client = new EnvironmentLocalitiesAreasAndPopulationPopulationClient();
     }
-    
-    // TODO Add more methods
+
+    @Test
+    @Date("2017-12-26")
+    public void getPopulationAndLandAreaWithinLocalities() {
+        assertNotEquals(0, this.client.getPopulationAndLandAreaWithinLocalities().size());
+    }
+
+    @Test
+    @Date("2017-12-26")
+    public void getPopulationAndLandAreaWithinLocalitiesWithParametersEmptyLists() {
+        assertNotEquals(0, this.client.getPopulationAndLandAreaWithinLocalities(Collections.<String>emptyList(),
+                Collections.<Integer>emptyList()).size());
+    }
+
+    @Test
+    @Date("2017-12-26")
+    public void getPopulationAndLandAreaWithinLocalitiesWithParameters() {
+        List<String> regions = Arrays.asList("T0132", "T0164");
+        List<Integer> years = Arrays.asList(1990, 1995);
+
+        assertNotEquals(0, this.client.getPopulationAndLandAreaWithinLocalities(regions, years).size());
+    }
+
+    @Test
+    @Date("2017-12-26")
+    public void getPopulationAndLandAreaWithinAndOutsideOfLocalities() {
+        assertNotEquals(0, this.client.getPopulationAndLandAreaWithinAndOutsideOfLocalities().size());
+    }
+
+    @Test
+    @Date("2017-12-26")
+    public void getPopulationAndLandAreaWithinAndOutsideOfLocalitiesWithParametersEmptyLists() {
+        assertNotEquals(0,
+                this.client.getPopulationAndLandAreaWithinAndOutsideOfLocalities(Collections.<String>emptyList(),
+                        Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
+    }
+
+    @Test
+    @Date("2017-12-26")
+    public void getPopulationAndLandAreaWithinAndOutsideOfLocalitiesWithParameters() {
+        List<String> regions = Arrays.asList("0162", "0182");
+        List<String> typeOfAreas = Arrays.asList("IT", "UT");
+        List<Integer> years = Arrays.asList(2010, 2015);
+
+        assertNotEquals(0,
+                this.client.getPopulationAndLandAreaWithinAndOutsideOfLocalities(regions, typeOfAreas, years).size());
+    }
+
+    @Test
+    @Date("2017-12-26")
+    public void getNumberOfLocalitiesAndPopulationDensity() {
+        assertNotEquals(0, this.client.getNumberOfLocalitiesAndPopulationDensity().size());
+    }
+
+    @Test
+    @Date("2017-12-26")
+    public void getNumberOfLocalitiesAndPopulationDensityWithParametersEmptyLists() {
+        assertNotEquals(0, this.client.getNumberOfLocalitiesAndPopulationDensity(Collections.<String>emptyList(),
+                Collections.<Integer>emptyList()).size());
+    }
+
+    @Test
+    @Date("2017-12-26")
+    public void getNumberOfLocalitiesAndPopulationDensityWithParameters() {
+        List<String> regions = Arrays.asList("0319", "0331");
+        List<Integer> years = Arrays.asList(2005, 2010);
+
+        assertNotEquals(0, this.client.getNumberOfLocalitiesAndPopulationDensity(regions, years).size());
+    }
 
 }
