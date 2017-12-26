@@ -101,6 +101,16 @@ public class JsonAPITableFormatTest {
         assertTrue(extractedKeys.containsAll(staticKeys));
         assertTrue(staticKeys.containsAll(extractedKeys));
     }
+    
+    @Test
+    public void getPairsNoVariables() {
+        String json = "{\"title\":\"Folkmängdenefterregion,civilstånd,ålder,kön,tabellinnehållochår\"}";
+
+        JsonAPITableFormat format = new JsonAPITableFormat(json);
+        Map<String, Collection<String>> expected = new HashMap<String, Collection<String>>();
+        
+        assertEquals(expected, format.getPairs());
+    }
 
     @Test
     public void getPairsEmpty() {
