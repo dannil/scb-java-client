@@ -500,6 +500,7 @@
         <artifactId>maven-javadoc-plugin</artifactId>
         <version>3.0.0-M1</version>
         <configuration>
+          <additionalparam>-Xdoclint:all</additionalparam>
           <failOnError>true</failOnError>
         </configuration>
         <executions>
