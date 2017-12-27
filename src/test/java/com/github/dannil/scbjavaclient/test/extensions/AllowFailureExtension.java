@@ -106,8 +106,7 @@ public class AllowFailureExtension implements BeforeEachCallback, TestExecutionE
         private static final long serialVersionUID = -7319716043109363600L;
 
         public boolean containsCombination(K key, V value) {
-            V fetchedValue = get(key);
-            return (fetchedValue != null && Objects.equals(fetchedValue, value));
+            return (containsKey(key) && Objects.equals(get(key), value));
         }
 
     }
