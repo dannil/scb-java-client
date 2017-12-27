@@ -1,6 +1,7 @@
 package com.github.dannil.scbjavaclient.test.extensions;
 
 import java.lang.reflect.AnnotatedElement;
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Objects;
 import java.util.Optional;
@@ -24,14 +25,17 @@ public class AllowFailureExtension implements BeforeEachCallback, TestExecutionE
         AllowFailure allowFailure = opElement.get().getDeclaredAnnotation(AllowFailure.class);
         NoticeStrategy strategy = allowFailure.notice();
 
+        Class<?> clazz = context.getRequiredTestClass();
+        Method method = context.getRequiredTestMethod();
+
         Store store = context.getStore(NAMESPACE);
+        store.put("class", clazz);
+        store.put("method", method);
         store.put("strategy", strategy);
     }
 
     @Override
     public void handleTestExecutionException(ExtensionContext context, Throwable throwable) throws Throwable {
-        throwable.printStackTrace();
-        
         try {
             // Swallow exception to change test result
         } catch (Throwable t) {
@@ -39,46 +43,37 @@ public class AllowFailureExtension implements BeforeEachCallback, TestExecutionE
         }
         Store store = context.getStore(NAMESPACE);
         store.put("failed", true);
-        
-        Class<?> clazz = context.getRequiredTestClass();
-        String testName = context.getRequiredTestMethod().getName();
-        
-        String testClassAndTestName = clazz.getName() + "." + testName;
-        System.out.println(testClassAndTestName);
-        
+
+        Class<?> clazz = (Class<?>) store.get("class");
+        Method method = (Method) store.get("method");
+        String fullyQualifiedName = clazz.getName() + "." + method.getName();
+
         StackTraceElement[] elements = throwable.getStackTrace();
-        for (int i = 0; i < elements.length; i++) {
-            StackTraceElement element = elements[i];
-            String elementClassAndTestName = element.getClassName() + "." + element.getMethodName();
-            System.out.println(elementClassAndTestName);
-            
-            if (Objects.equals(testClassAndTestName, elementClassAndTestName)) {
-                store.put("linenumber", element.getLineNumber());
-                break;
-            }
-        }
+        StackTraceElement element = getStackTraceElement(elements, fullyQualifiedName);
+        store.put("linenumber", element.getLineNumber());
     }
 
     @Override
     public void afterEach(ExtensionContext context) throws Exception {
         Store store = context.getStore(NAMESPACE);
         Optional<Object> opFailed = Optional.ofNullable(store.get("failed"));
+        Optional<Object> opLineNumber = Optional.ofNullable(store.get("linenumber"));
 
         boolean failed = (boolean) opFailed.orElse(false);
         NoticeStrategy strategy = (NoticeStrategy) store.get("strategy");
-        String className = context.getRequiredTestClass().getSimpleName();
-        String testName = context.getRequiredTestMethod().getName();
-        int lineNumber = (int) store.get("linenumber");
+        Class<?> clazz = (Class<?>) store.get("class");
+        Method method = (Method) store.get("method");
+        int lineNumber = (int) opLineNumber.orElse(-1);
 
         CombinationHashMap<Boolean, NoticeStrategy> mappings = new CombinationHashMap<>();
         mappings.put(true, NoticeStrategy.ON_FAILURE);
         mappings.put(false, NoticeStrategy.ON_SUCCESS);
         if (strategy == NoticeStrategy.ALWAYS || mappings.containsCombination(failed, strategy)) {
-            logResult(failed, strategy, className, testName, lineNumber);
+            logResult(failed, strategy, clazz, method, lineNumber);
         }
     }
 
-    private void logResult(boolean failed, NoticeStrategy strategy, String className, String testName, int lineNumber) {
+    private void logResult(boolean failed, NoticeStrategy strategy, Class<?> clazz, Method method, int lineNumber) {
         String failedAsString = (failed ? "FAILED" : "PASSED");
         String strategyAsString = strategy.name();
         String result = "";
@@ -86,10 +81,24 @@ public class AllowFailureExtension implements BeforeEachCallback, TestExecutionE
         if (failed) {
             result = ", changing result to PASSED";
         }
+        if (lineNumber > 0) {
+            System.out.println(lineNumber);
+        }
 
-        Logger logger = LoggerFactory.getLogger(className);
-        logger.warn("Test {} {} and is annotated with @AllowFailure(NoticeStrategy.{}){}, {}", testName, failedAsString,
-                strategyAsString, result, lineNumber);
+        Logger logger = LoggerFactory.getLogger(clazz);
+        logger.warn("Test {} {} and is annotated with @AllowFailure(NoticeStrategy.{}){}", method.getName(),
+                failedAsString, strategyAsString, result);
+    }
+
+    private StackTraceElement getStackTraceElement(StackTraceElement[] elements, String name) {
+        for (int i = 0; i < elements.length; i++) {
+            StackTraceElement element = elements[i];
+            String elementClassAndMethod = element.getClassName() + "." + element.getMethodName();
+            if (Objects.equals(name, elementClassAndMethod)) {
+                return element;
+            }
+        }
+        throw new IllegalArgumentException();
     }
 
     private class CombinationHashMap<K, V> extends HashMap<K, V> {
