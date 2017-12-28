@@ -14,6 +14,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.Marker;
 import org.apache.logging.log4j.MarkerManager;
+import org.apache.logging.log4j.ThreadContext;
 import org.apache.logging.log4j.core.Appender;
 import org.apache.logging.log4j.core.Filter;
 import org.apache.logging.log4j.core.Layout;
@@ -107,71 +108,22 @@ public class AllowFailureExtension implements BeforeEachCallback, TestExecutionE
         if (failed) {
             result = ", changing result to PASSED";
         }
+        
+        
         if (lineNumber > 0) {
-            System.out.println(lineNumber);
+            System.out.println("LINE: " + lineNumber);
         }
-
-        LoggerContext ctx = (LoggerContext) LogManager.getContext(false);
-        Configuration config = ctx.getConfiguration();
-        LoggerConfig loggerConfig = config.getLoggerConfig(LogManager.ROOT_LOGGER_NAME);
         
-        // Read the Appenders
-        System.out.println("Appenders declared in .xml :" + loggerConfig.getAppenderRefs());
-        System.out.println("Appenders used in Logger :" + loggerConfig.getAppenders());
+        String lineCtx = (lineNumber > 0 ? String.valueOf(lineNumber) : "%L");
+        System.out.println("LINECTX: " + lineCtx);
+        System.out.println("Next line logging");
         
-        ConfigurationFactory custom2 = new CustomConfigurationFactory();
-        //
-        // Configuration configuration = custom.getConfiguration(ctx,
-        // oldConf.getConfigurationSource().resetInputStream());
-        // Configuration configuration2 = custom2.getConfiguration(ctx,
-        // oldConf.getConfigurationSource().resetInputStream());
-
-        // ConfigurationBuilder<BuiltConfiguration> builder =
-        // ConfigurationBuilderFactory.newConfigurationBuilder();
-        // builder.setStatusLevel(Level.DEBUG);
-        // builder.setConfigurationName("BuilderTest");
-        // builder.add(builder.newFilter("ThresholdFilter", Filter.Result.ACCEPT,
-        // Filter.Result.NEUTRAL).addAttribute(
-        // "level", Level.DEBUG));
-        //
-        // AppenderComponentBuilder appenderBuilder = builder.newAppender("Stdout",
-        // "CONSOLE").addAttribute("target",
-        // ConsoleAppender.Target.SYSTEM_OUT);
-        // appenderBuilder.add(builder.newLayout("PatternLayout").addAttribute("pattern",
-        // "%d Thread:[%t] %-5level: MSG: %msg%n%throwable"));
-        // appenderBuilder.add(builder.newFilter("MarkerFilter", Filter.Result.DENY,
-        // Filter.Result.NEUTRAL).addAttribute(
-        // "marker", "FLOW"));
-        //
-        // builder.add(appenderBuilder);
-        // builder.add(builder.newLogger("org.apache.logging.log4j", Level.DEBUG).add(
-        // builder.newAppenderRef("Stdout")).addAttribute("additivity", false));
-        // builder.add(builder.newRootLogger(Level.DEBUG).add(builder.newAppenderRef("Stdout")));
-
-        Configurator.initialize(custom2.getConfiguration(null, "", null));
-        //
-        // Configurator.initialize(configuration);
-        // ctx = (LoggerContext) LogManager.getContext(false);
-        //
-        // ctx.updateLoggers(configuration);
-
-        // Configuration newConf = custom.getConfiguration(ctx, null,
-        // ctx.getConfigLocation());
-
-        // System.out.println(ctx.getLoggers());
-
-        // ConfigurationFactory.setConfigurationFactory(custom);
-        // ctx.updateLoggers();
-
-        // System.out.println("C: " + configuration2.getLoggers());
-
-        // LoggerContext ctx = Configurator.intitialize(builder.build());
-
-        Logger logger = LogManager.getLogger(clazz);
-
+        ThreadContext.put("line", lineCtx);
         Marker m = MarkerManager.getMarker("ALLOW_FAILURE_EXTENSION");
+        Logger logger = LogManager.getLogger(clazz);
         logger.warn(m, "Test {} {} and is annotated with @AllowFailure(NoticeStrategy.{}){}", method.getName(),
                 failedAsString, strategyAsString, result);
+        ThreadContext.clearMap();
     }
 
     private StackTraceElement getStackTraceElement(StackTraceElement[] elements, String name) {

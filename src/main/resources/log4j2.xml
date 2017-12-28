@@ -7,25 +7,26 @@
         onMatch="DENY" onMismatch="ACCEPT" />
       <PatternLayout pattern="[%p] %d{yyyy-MM-dd HH:mm:ss zzz} %c{1}:%L - %m%n" />
     </Console>
-    <!-- <Console name="AllowFailure" target="SYSTEM_OUT"> -->
-    <!-- <MarkerFilter marker="ALLOW_FAILURE_EXTENSION" -->
-    <!-- onMatch="ACCEPT" onMismatch="DENY" /> -->
-    <!-- <PatternLayout pattern="[%p] %c{1} {test} - %m%n" /> -->
-    <!-- </Console> -->
+    <Console name="AllowFailure" target="SYSTEM_OUT">
+      <MarkerFilter marker="ALLOW_FAILURE_EXTENSION"
+        onMatch="ACCEPT" onMismatch="DENY" />
+      <PatternLayout
+        pattern="[%p] %d{yyyy-MM-dd HH:mm:ss zzz} %c{1}:%X{line} - %m%n" />
+    </Console>
   </Appenders>
   <Loggers>
     <Logger name="com.github.dannil.scbjavaclient.client.AbstractClient"
       level="trace" additivity="false">
       <AppenderRef ref="Console" />
     </Logger>
-    <!-- <Logger -->
-    <!-- name="com.github.dannil.scbjavaclient.test.extensions.AllowFailureExtension" -->
-    <!-- level="trace" additivity="false"> -->
-    <!-- <AppenderRef ref="AllowFailure" /> -->
-    <!-- </Logger> -->
+    <Logger
+      name="com.github.dannil.scbjavaclient.test.extensions.AllowFailureExtension"
+      level="trace" additivity="false">
+      <AppenderRef ref="AllowFailure" />
+    </Logger>
     <Root level="trace">
       <AppenderRef ref="Console" />
-      <!-- <AppenderRef ref="AllowFailure" /> -->
+      <AppenderRef ref="AllowFailure" />
     </Root>
   </Loggers>
 </Configuration>
