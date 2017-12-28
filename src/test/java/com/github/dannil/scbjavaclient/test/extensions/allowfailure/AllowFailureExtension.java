@@ -5,17 +5,15 @@ import java.io.IOException;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Random;
 import java.util.Stack;
 
 import com.github.dannil.scbjavaclient.test.extensions.NoticeStrategy;
@@ -25,8 +23,6 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.Marker;
 import org.apache.logging.log4j.MarkerManager;
 import org.junit.jupiter.api.extension.AfterEachCallback;
-import org.junit.jupiter.api.extension.AfterTestExecutionCallback;
-import org.junit.jupiter.api.extension.BeforeAllCallback;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.ExtensionContext.Namespace;
@@ -104,11 +100,13 @@ public class AllowFailureExtension implements BeforeEachCallback, TestExecutionE
         NoticeStrategy strategy = (NoticeStrategy) store.get("strategy");
         Class<?> clazz = (Class<?>) store.get("class");
         Method method = (Method) store.get("method");
+        
+        System.out.println(method.getName());
 
         Map<String, Collection<String>> implementations = (Map<String, Collection<String>>) store.get(
                 "implementations");
 
-        //System.out.println(implementations);
+        // System.out.println(implementations);
 
         Collection<String> imp = implementations.get(method.getName());
         System.out.println(imp);
@@ -119,9 +117,9 @@ public class AllowFailureExtension implements BeforeEachCallback, TestExecutionE
         System.out.println("INDEX: " + lastAssertIndex);
         System.out.println("L: " + lineNumber);
 
-        if (lineNumber < 0) {
-            lineNumber = lastAssertIndex;
-        }
+        // if (lineNumber < 0) {
+        // lineNumber = lastAssertIndex;
+        // }
 
         CombinationHashMap<Boolean, NoticeStrategy> mappings = new CombinationHashMap<>();
         mappings.put(true, NoticeStrategy.ON_FAILURE);
@@ -145,11 +143,11 @@ public class AllowFailureExtension implements BeforeEachCallback, TestExecutionE
         // if (lineNumber > 0) {
         String lineCtx = String.valueOf(lineNumber);
         MDC.put("line", lineCtx);
-        
+
         System.out.println("LINECTX: " + lineCtx);
-        
+
         System.out.println("MDCLINE: " + MDC.get("line"));
-        
+
         // }
         m = MarkerManager.getMarker("ALLOW_FAILURE_EXTENSION");
         Logger logger = LogManager.getLogger(clazz);
@@ -222,6 +220,7 @@ public class AllowFailureExtension implements BeforeEachCallback, TestExecutionE
     private int getLineNumberForLastAssert(Collection<String> implementation) {
         Iterator<String> it = implementation.iterator();
         int line = -1;
+        int lastAssert = -1;
         while (it.hasNext()) {
             String s = it.next();
             String row = s.substring(0, s.indexOf(":"));
@@ -229,15 +228,11 @@ public class AllowFailureExtension implements BeforeEachCallback, TestExecutionE
             line = lineNumber;
 
             String rowContent = s.substring(s.indexOf(":") + 1);
-            
-            // CURRENTLY MATCHES ON FIRST ASSERT, FIX!
             if (rowContent.startsWith("assert")) {
-                return line;
+                lastAssert = line;
             }
-
-            // System.out.println("R: " + row);
         }
-        return line;
+        return Math.min(line, lastAssert);
     }
 
     private class CombinationHashMap<K, V> extends HashMap<K, V> {
