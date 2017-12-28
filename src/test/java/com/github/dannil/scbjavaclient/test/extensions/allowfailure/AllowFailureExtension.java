@@ -112,13 +112,18 @@ public class AllowFailureExtension implements BeforeEachCallback, TestExecutionE
         
         if (lineNumber > 0) {
             System.out.println("LINE: " + lineNumber);
+            
+            String lineCtx = String.valueOf(lineNumber);
+            
+            System.out.println("LINECTX: " + lineCtx);
+            ThreadContext.put("line", lineCtx);
         }
         
-        String lineCtx = (lineNumber > 0 ? String.valueOf(lineNumber) : "%L");
-        System.out.println("LINECTX: " + lineCtx);
+        //String lineCtx = (lineNumber > 0 ? String.valueOf(lineNumber) : "%L");
+        
         System.out.println("Next line logging");
         
-        ThreadContext.put("line", lineCtx);
+        //ThreadContext.put("line", lineCtx);
         Marker m = MarkerManager.getMarker("ALLOW_FAILURE_EXTENSION");
         Logger logger = LogManager.getLogger(clazz);
         logger.warn(m, "Test {} {} and is annotated with @AllowFailure(NoticeStrategy.{}){}", method.getName(),
