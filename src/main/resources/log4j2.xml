@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration package="com.github.dannil.scbjavaclient"
   status="WARN">
-  <Properties>
-    <!-- <Property name="line">%L</Property> -->
-  </Properties>
   <Appenders>
     <Console name="Console" target="SYSTEM_OUT">
       <MarkerFilter marker="ALLOW_FAILURE_EXTENSION"
@@ -14,7 +11,7 @@
       <MarkerFilter marker="ALLOW_FAILURE_EXTENSION"
         onMatch="ACCEPT" onMismatch="DENY" />
       <PatternLayout
-        pattern="[%p] %d{yyyy-MM-dd HH:mm:ss zzz} %c{1}:$${ctx:line} - %m%n" />
+        pattern="[%p] %d{yyyy-MM-dd HH:mm:ss zzz} %c{1}:${ctx:line} - %m%n" />
     </Console>
   </Appenders>
   <Loggers>

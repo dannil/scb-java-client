@@ -1,52 +1,47 @@
 package com.github.dannil.scbjavaclient.test.extensions.allowfailure;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Method;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Stack;
 
 import com.github.dannil.scbjavaclient.test.extensions.NoticeStrategy;
 
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.Marker;
 import org.apache.logging.log4j.MarkerManager;
-import org.apache.logging.log4j.ThreadContext;
-import org.apache.logging.log4j.core.Appender;
-import org.apache.logging.log4j.core.Filter;
-import org.apache.logging.log4j.core.Layout;
-import org.apache.logging.log4j.core.LoggerContext;
-import org.apache.logging.log4j.core.appender.ConsoleAppender;
-import org.apache.logging.log4j.core.appender.FileAppender;
-import org.apache.logging.log4j.core.appender.OutputStreamAppender;
-import org.apache.logging.log4j.core.config.AbstractConfiguration;
-import org.apache.logging.log4j.core.config.AppenderRef;
-import org.apache.logging.log4j.core.config.Configuration;
-import org.apache.logging.log4j.core.config.ConfigurationFactory;
-import org.apache.logging.log4j.core.config.ConfigurationSource;
-import org.apache.logging.log4j.core.config.Configurator;
-import org.apache.logging.log4j.core.config.LoggerConfig;
-import org.apache.logging.log4j.core.config.builder.api.AppenderComponentBuilder;
-import org.apache.logging.log4j.core.config.builder.api.ConfigurationBuilder;
-import org.apache.logging.log4j.core.config.builder.api.ConfigurationBuilderFactory;
-import org.apache.logging.log4j.core.config.builder.impl.BuiltConfiguration;
-import org.apache.logging.log4j.core.layout.PatternLayout;
 import org.junit.jupiter.api.extension.AfterEachCallback;
+import org.junit.jupiter.api.extension.AfterTestExecutionCallback;
+import org.junit.jupiter.api.extension.BeforeAllCallback;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.ExtensionContext.Namespace;
 import org.junit.jupiter.api.extension.ExtensionContext.Store;
 import org.junit.jupiter.api.extension.TestExecutionExceptionHandler;
+import org.slf4j.MDC;
 
 public class AllowFailureExtension implements BeforeEachCallback, TestExecutionExceptionHandler, AfterEachCallback {
 
-    private static final Namespace NAMESPACE = Namespace.create("com", "github", "dannil", "scbjavaclient");
+    private static final Namespace NAMESPACE = Namespace.create("com", "github", "dannil", "scbjavaclient", "test",
+            "extensions", "allowfailure");
 
     @Override
     public void beforeEach(ExtensionContext context) throws Exception {
+
         Optional<AnnotatedElement> opElement = context.getElement();
         AllowFailure allowFailure = opElement.get().getDeclaredAnnotation(AllowFailure.class);
         NoticeStrategy strategy = allowFailure.notice();
@@ -54,7 +49,27 @@ public class AllowFailureExtension implements BeforeEachCallback, TestExecutionE
         Class<?> clazz = context.getRequiredTestClass();
         Method method = context.getRequiredTestMethod();
 
+        // Map<String, Collection<String>> implementations =
+        // getMethodsImplementations(clazz);
+        // for (Entry<String, Collection<String>> entry : implementations.entrySet()) {
+        // System.out.println(entry.getKey());
+        // for (String s : entry.getValue()) {
+        // System.out.println(s);
+        // }
+        // }
+
         Store store = context.getStore(NAMESPACE);
+        if (store.get("implementations") == null) {
+            Map<String, Collection<String>> implementations = getMethodsImplementations(clazz);
+            store.put("implementations", implementations);
+            // for (Entry<String, Collection<String>> entry : implementations.entrySet())
+            // {
+            // System.out.println(entry.getKey());
+            // for (String s : entry.getValue()) {
+            // System.out.println(s);
+            // }
+            // }
+        }
         store.put("class", clazz);
         store.put("method", method);
         store.put("strategy", strategy);
@@ -89,7 +104,24 @@ public class AllowFailureExtension implements BeforeEachCallback, TestExecutionE
         NoticeStrategy strategy = (NoticeStrategy) store.get("strategy");
         Class<?> clazz = (Class<?>) store.get("class");
         Method method = (Method) store.get("method");
+
+        Map<String, Collection<String>> implementations = (Map<String, Collection<String>>) store.get(
+                "implementations");
+
+        //System.out.println(implementations);
+
+        Collection<String> imp = implementations.get(method.getName());
+        System.out.println(imp);
+
+        int lastAssertIndex = getLineNumberForLastAssert(imp);
         int lineNumber = (int) opLineNumber.orElse(-1);
+
+        System.out.println("INDEX: " + lastAssertIndex);
+        System.out.println("L: " + lineNumber);
+
+        if (lineNumber < 0) {
+            lineNumber = lastAssertIndex;
+        }
 
         CombinationHashMap<Boolean, NoticeStrategy> mappings = new CombinationHashMap<>();
         mappings.put(true, NoticeStrategy.ON_FAILURE);
@@ -108,27 +140,22 @@ public class AllowFailureExtension implements BeforeEachCallback, TestExecutionE
         if (failed) {
             result = ", changing result to PASSED";
         }
+
+        Marker m = null;
+        // if (lineNumber > 0) {
+        String lineCtx = String.valueOf(lineNumber);
+        MDC.put("line", lineCtx);
         
+        System.out.println("LINECTX: " + lineCtx);
         
-        if (lineNumber > 0) {
-            System.out.println("LINE: " + lineNumber);
-            
-            String lineCtx = String.valueOf(lineNumber);
-            
-            System.out.println("LINECTX: " + lineCtx);
-            ThreadContext.put("line", lineCtx);
-        }
+        System.out.println("MDCLINE: " + MDC.get("line"));
         
-        //String lineCtx = (lineNumber > 0 ? String.valueOf(lineNumber) : "%L");
-        
-        System.out.println("Next line logging");
-        
-        //ThreadContext.put("line", lineCtx);
-        Marker m = MarkerManager.getMarker("ALLOW_FAILURE_EXTENSION");
+        // }
+        m = MarkerManager.getMarker("ALLOW_FAILURE_EXTENSION");
         Logger logger = LogManager.getLogger(clazz);
         logger.warn(m, "Test {} {} and is annotated with @AllowFailure(NoticeStrategy.{}){}", method.getName(),
                 failedAsString, strategyAsString, result);
-        ThreadContext.clearMap();
+        MDC.clear();
     }
 
     private StackTraceElement getStackTraceElement(StackTraceElement[] elements, String name) {
@@ -140,6 +167,77 @@ public class AllowFailureExtension implements BeforeEachCallback, TestExecutionE
             }
         }
         throw new IllegalArgumentException();
+    }
+
+    private Map<String, Collection<String>> getMethodsImplementations(Class<?> clazz) throws IOException {
+        Map<String, Collection<String>> implementations = new HashMap<>();
+
+        String execPath = System.getProperty("user.dir");
+        String path = execPath + "/src/test/java/" + clazz.getPackage().getName().replaceAll("\\.", "/");
+        File sourceFile = new File(path, clazz.getSimpleName() + ".java");
+        List<String> lines = java.nio.file.Files.readAllLines(sourceFile.toPath(), StandardCharsets.UTF_8);
+
+        List<String> implementation = new ArrayList<>();
+
+        Stack<Character> s = new Stack<Character>();
+        boolean foundBeginning = false;
+        int row = 0;
+        for (String line : lines) {
+            row++;
+            String trimmedLine = line.trim();
+
+            if (trimmedLine.contains("@Test")) {
+                // Next line is (probably) the beginning of the test
+                foundBeginning = true;
+                continue;
+            }
+
+            if (foundBeginning && !trimmedLine.contains("@Test") && !trimmedLine.contains("@AllowFailure")) {
+                implementation.add(row + ":" + trimmedLine);
+                for (Character c : trimmedLine.toCharArray()) {
+                    if (Objects.equals(c, '{')) {
+                        s.push(c);
+                    } else if (Objects.equals(c, '}')) {
+                        s.pop();
+                    }
+                }
+                if ("}".equals(trimmedLine) && s.size() == 0) {
+                    String firstLine = implementation.get(0);
+
+                    int parenthesis = firstLine.indexOf("(");
+                    String methodName = firstLine.substring(0, parenthesis);
+                    methodName = methodName.substring(methodName.lastIndexOf(" ") + 1);
+                    implementation.set(0, firstLine);
+                    implementations.put(methodName, implementation);
+
+                    s = new Stack<Character>();
+                    foundBeginning = false;
+                    implementation = new ArrayList<>();
+                }
+            }
+        }
+        return implementations;
+    }
+
+    private int getLineNumberForLastAssert(Collection<String> implementation) {
+        Iterator<String> it = implementation.iterator();
+        int line = -1;
+        while (it.hasNext()) {
+            String s = it.next();
+            String row = s.substring(0, s.indexOf(":"));
+            int lineNumber = Integer.parseInt(row);
+            line = lineNumber;
+
+            String rowContent = s.substring(s.indexOf(":") + 1);
+            
+            // CURRENTLY MATCHES ON FIRST ASSERT, FIX!
+            if (rowContent.startsWith("assert")) {
+                return line;
+            }
+
+            // System.out.println("R: " + row);
+        }
+        return line;
     }
 
     private class CombinationHashMap<K, V> extends HashMap<K, V> {
