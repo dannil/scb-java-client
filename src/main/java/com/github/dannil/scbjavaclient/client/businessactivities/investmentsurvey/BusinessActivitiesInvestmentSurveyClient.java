@@ -17,8 +17,7 @@ package com.github.dannil.scbjavaclient.client.businessactivities.investmentsurv
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
-import com.github.dannil.scbjavaclient.client.businessactivities.industrialinventories.economicindicators.BusinessActivitiesIndustrialInventoriesEconomicIndicatorsClient;
-import com.github.dannil.scbjavaclient.client.businessactivities.industrialinventories.inventories.BusinessActivitiesIndustrialInventoriesInventoriesClient;
+import com.github.dannil.scbjavaclient.client.businessactivities.investmentsurvey.economicindicators.BusinessActivitiesInvestmentSurveyEconomicIndicatorsClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 /**
@@ -34,8 +33,7 @@ public class BusinessActivitiesInvestmentSurveyClient extends AbstractContainerC
     public BusinessActivitiesInvestmentSurveyClient() {
         super();
 
-        // addClient("economicindicators", new
-        // BusinessActivitiesIndustrialInventoriesEconomicIndicatorsClient());
+        addClient("economicindicators", new BusinessActivitiesInvestmentSurveyEconomicIndicatorsClient());
     }
 
     /**
@@ -50,19 +48,15 @@ public class BusinessActivitiesInvestmentSurveyClient extends AbstractContainerC
         setLocale(locale);
     }
 
-    // /**
-    // * <p>Retrieve the client for interacting with business activities industrial
-    // * inventories economic indicators data.</p>
-    // *
-    // * @return a client for business activities industrial inventories economic
-    // indicators
-    // * data
-    // */
-    // public BusinessActivitiesIndustrialInventoriesEconomicIndicatorsClient
-    // economicIndicators() {
-    // return (BusinessActivitiesIndustrialInventoriesEconomicIndicatorsClient)
-    // getClient("economicindicators");
-    // }
+    /**
+     * <p>Retrieve the client for interacting with business activities investment survey
+     * economic indicators data.</p>
+     *
+     * @return a client for business activities investment survey economic indicators data
+     */
+    public BusinessActivitiesInvestmentSurveyEconomicIndicatorsClient economicIndicators() {
+        return (BusinessActivitiesInvestmentSurveyEconomicIndicatorsClient) getClient("economicindicators");
+    }
 
     // TODO Add more methods
 

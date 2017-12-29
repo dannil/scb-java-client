@@ -18,6 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
+import com.github.dannil.scbjavaclient.client.businessactivities.investmentsurvey.economicindicators.BusinessActivitiesInvestmentSurveyEconomicIndicatorsClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
@@ -34,14 +35,13 @@ public class BusinessActivitiesInvestmentSurveyClientTest {
         assertEquals(locale, client.getLocale());
     }
 
-    // @Test
-    // public void economicIndicatorsClient() {
-    // BusinessActivitiesIndustrialInventoriesClient client = new
-    // BusinessActivitiesIndustrialInventoriesClient();
-    //
-    // assertEquals(client.economicIndicators().getClass(),
-    // BusinessActivitiesIndustrialInventoriesEconomicIndicatorsClient.class);
-    // }
+    @Test
+    public void economicIndicators() {
+        BusinessActivitiesInvestmentSurveyClient client = new BusinessActivitiesInvestmentSurveyClient();
+
+        assertEquals(client.economicIndicators().getClass(),
+                BusinessActivitiesInvestmentSurveyEconomicIndicatorsClient.class);
+    }
 
     // TODO Add more methods
 
