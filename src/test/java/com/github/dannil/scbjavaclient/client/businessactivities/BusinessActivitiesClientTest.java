@@ -24,6 +24,7 @@ import com.github.dannil.scbjavaclient.client.businessactivities.database.Busine
 import com.github.dannil.scbjavaclient.client.businessactivities.industrialinventories.BusinessActivitiesIndustrialInventoriesClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.nonprofitorganizations.BusinessActivitiesNonProfitOrganizationsClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.productionindex.BusinessActivitiesProductionIndexClient;
+import com.github.dannil.scbjavaclient.client.businessactivities.productionvalueindex.BusinessActivitiesProductionValueIndexClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
@@ -81,6 +82,14 @@ public class BusinessActivitiesClientTest {
 
         assertEquals(client.productionIndex().getClass(), BusinessActivitiesProductionIndexClient.class);
     }
+
+    @Test
+    public void productionValueIndexClient() {
+        BusinessActivitiesClient client = new BusinessActivitiesClient();
+
+        assertEquals(client.productionValueIndex().getClass(), BusinessActivitiesProductionValueIndexClient.class);
+    }
+
 
     @Test
     public void getUrl() {

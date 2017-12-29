@@ -23,6 +23,7 @@ import com.github.dannil.scbjavaclient.client.businessactivities.database.Busine
 import com.github.dannil.scbjavaclient.client.businessactivities.industrialinventories.BusinessActivitiesIndustrialInventoriesClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.nonprofitorganizations.BusinessActivitiesNonProfitOrganizationsClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.productionindex.BusinessActivitiesProductionIndexClient;
+import com.github.dannil.scbjavaclient.client.businessactivities.productionvalueindex.BusinessActivitiesProductionValueIndexClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 /**
@@ -44,6 +45,7 @@ public class BusinessActivitiesClient extends AbstractContainerClient {
         addClient("industrialinventories", new BusinessActivitiesIndustrialInventoriesClient());
         addClient("nonprofitorganizations", new BusinessActivitiesNonProfitOrganizationsClient());
         addClient("productionindex", new BusinessActivitiesProductionIndexClient());
+        addClient("productionvalueindex", new BusinessActivitiesProductionValueIndexClient());
     }
 
     /**
@@ -115,6 +117,16 @@ public class BusinessActivitiesClient extends AbstractContainerClient {
      */
     public BusinessActivitiesProductionIndexClient productionIndex() {
         return (BusinessActivitiesProductionIndexClient) getClient("productionindex");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with business activities production value index
+     * data.</p>
+     *
+     * @return a client for business activities production value index data
+     */
+    public BusinessActivitiesProductionValueIndexClient productionValueIndex() {
+        return (BusinessActivitiesProductionValueIndexClient) getClient("productionvalueindex");
     }
 
     @Override
