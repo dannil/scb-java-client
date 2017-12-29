@@ -37,7 +37,73 @@ public class EnvironmentLocalitiesAreasAndPopulationGainfullyEmployedAndWorkplac
     public void setup() {
         this.client = new EnvironmentLocalitiesAreasAndPopulationGainfullyEmployedAndWorkplacesClient();
     }
-    
-    // TODO Add more methods
+
+    @Test
+    @Date("2017-12-29")
+    public void getGainfullyEmployed() {
+        assertNotEquals(0, this.client.getGainfullyEmployed().size());
+    }
+
+    @Test
+    @Date("2017-12-29")
+    public void getGainfullyEmployedWithParametersEmptyLists() {
+        assertNotEquals(0, this.client.getGainfullyEmployed(Collections.<String>emptyList(),
+                Collections.<Integer>emptyList(), Collections.<Integer>emptyList()).size());
+    }
+
+    @Test
+    @Date("2017-12-29")
+    public void getGainfullyEmployedWithParameters() {
+        List<String> regions = Arrays.asList("T0388", "T0326");
+        List<Integer> sexes = Arrays.asList(1, 2);
+        List<Integer> years = Arrays.asList(2005, 2010);
+
+        assertNotEquals(0, this.client.getGainfullyEmployed(regions, sexes, years).size());
+    }
+
+    @Test
+    @Date("2017-12-29")
+    public void getGainfullyEmployedWorkplaces() {
+        assertNotEquals(0, this.client.getGainfullyEmployedWorkplaces().size());
+    }
+
+    @Test
+    @Date("2017-12-29")
+    public void getGainfullyEmployedWorkplacesWithParametersEmptyLists() {
+        assertNotEquals(0, this.client.getGainfullyEmployedWorkplaces(Collections.<String>emptyList(),
+                Collections.<Integer>emptyList()).size());
+    }
+
+    @Test
+    @Date("2017-12-29")
+    public void getGainfullyEmployedWorkplacesWithParameters() {
+        List<String> regions = Arrays.asList("T0224", "T0232");
+        List<Integer> years = Arrays.asList(2005, 2010);
+
+        assertNotEquals(0, this.client.getGainfullyEmployedWorkplaces(regions, years).size());
+    }
+
+    @Test
+    @Date("2017-12-29")
+    public void getGainfullyEmployedAreas() {
+        assertNotEquals(0, this.client.getGainfullyEmployedAreas().size());
+    }
+
+    @Test
+    @Date("2017-12-29")
+    public void getGainfullyEmployedAreasWithParametersEmptyLists() {
+        assertNotEquals(0, this.client.getGainfullyEmployedAreas(Collections.<String>emptyList(),
+                Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
+    }
+
+    @Test
+    @Date("2017-12-29")
+    public void getGainfullyEmployedAreasWithParameters() {
+        List<String> regions = Arrays.asList("0125", "0128");
+        List<String> typeOfAreas = Arrays.asList("IAO", "UTA");
+        List<Integer> years = Arrays.asList(2005, 2010);
+
+        assertNotEquals(0, this.client.getGainfullyEmployedAreas(regions, typeOfAreas, years).size());
+    }
 
 }
