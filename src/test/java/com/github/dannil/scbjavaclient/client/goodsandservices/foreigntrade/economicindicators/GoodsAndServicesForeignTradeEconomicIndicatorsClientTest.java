@@ -25,7 +25,7 @@ import org.junit.jupiter.api.Test;
 
 @Suite
 @SuppressWarnings("deprecation")
-public class GoodsAndServicesForeignTradeSITCClientTest {
+public class GoodsAndServicesForeignTradeEconomicIndicatorsClientTest {
 
     @Test
     public void createWithLocaleConstructor() {
