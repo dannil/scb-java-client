@@ -37,7 +37,6 @@ public class AllowFailureExtension implements BeforeEachCallback, TestExecutionE
 
     @Override
     public void beforeEach(ExtensionContext context) throws Exception {
-
         Optional<AnnotatedElement> opElement = context.getElement();
         AllowFailure allowFailure = opElement.get().getDeclaredAnnotation(AllowFailure.class);
         NoticeStrategy strategy = allowFailure.notice();
@@ -94,6 +93,9 @@ public class AllowFailureExtension implements BeforeEachCallback, TestExecutionE
     public void afterEach(ExtensionContext context) throws Exception {
         Store store = context.getStore(NAMESPACE);
         Optional<Object> opFailed = Optional.ofNullable(store.get("failed"));
+        
+        System.out.println("LINE FROM STORE: " + opFailed.toString());
+        
         Optional<Object> opLineNumber = Optional.ofNullable(store.get("linenumber"));
 
         boolean failed = (boolean) opFailed.orElse(false);
@@ -112,7 +114,7 @@ public class AllowFailureExtension implements BeforeEachCallback, TestExecutionE
         System.out.println(imp);
 
         int lastAssertIndex = getLineNumberForLastAssert(imp);
-        int lineNumber = (int) opLineNumber.orElse(-1);
+        int lineNumber = (int) opLineNumber.orElse(lastAssertIndex);
 
         System.out.println("INDEX: " + lastAssertIndex);
         System.out.println("L: " + lineNumber);
@@ -120,6 +122,8 @@ public class AllowFailureExtension implements BeforeEachCallback, TestExecutionE
         // if (lineNumber < 0) {
         // lineNumber = lastAssertIndex;
         // }
+        
+        System.out.println("MDC1: " + MDC.get("line"));
 
         CombinationHashMap<Boolean, NoticeStrategy> mappings = new CombinationHashMap<>();
         mappings.put(true, NoticeStrategy.ON_FAILURE);
