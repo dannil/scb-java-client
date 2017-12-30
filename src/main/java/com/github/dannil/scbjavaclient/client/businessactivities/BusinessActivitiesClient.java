@@ -20,6 +20,7 @@ import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.accomodationstatistics.BusinessActivitiesAccomodationStatisticsClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.balancestatistics.BusinessActivitiesBalanceStatisticsClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.database.BusinessActivitiesDatabaseClient;
+import com.github.dannil.scbjavaclient.client.businessactivities.industrialcapacityutilization.BusinessActivitiesIndustrialCapacityUtilizationClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.industrialinventories.BusinessActivitiesIndustrialInventoriesClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.investmentsurvey.BusinessActivitiesInvestmentSurveyClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.nonfinancialcorporations.BusinessActivitiesNonFinancialCorporationsClient;
@@ -44,6 +45,7 @@ public class BusinessActivitiesClient extends AbstractContainerClient {
         addClient("accomodationstatistics", new BusinessActivitiesAccomodationStatisticsClient());
         addClient("balancestatistics", new BusinessActivitiesBalanceStatisticsClient());
         addClient("database", new BusinessActivitiesDatabaseClient());
+        addClient("industrialcapacityutilization", new BusinessActivitiesIndustrialCapacityUtilizationClient());
         addClient("industrialinventories", new BusinessActivitiesIndustrialInventoriesClient());
         addClient("investmentsurvey", new BusinessActivitiesInvestmentSurveyClient());
         addClient("nonfinancialcorporations", new BusinessActivitiesNonFinancialCorporationsClient());
@@ -91,6 +93,16 @@ public class BusinessActivitiesClient extends AbstractContainerClient {
      */
     public BusinessActivitiesDatabaseClient database() {
         return (BusinessActivitiesDatabaseClient) getClient("database");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with business activities industrial capacity
+     * utilization data.</p>
+     *
+     * @return a client for business activities industrial capacity utilization data
+     */
+    public BusinessActivitiesIndustrialCapacityUtilizationClient industrialCapacityUtilization() {
+        return (BusinessActivitiesIndustrialCapacityUtilizationClient) getClient("industrialcapacityutilization");
     }
 
     /**

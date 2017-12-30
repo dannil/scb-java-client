@@ -21,6 +21,7 @@ import java.util.Locale;
 import com.github.dannil.scbjavaclient.client.businessactivities.accomodationstatistics.BusinessActivitiesAccomodationStatisticsClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.balancestatistics.BusinessActivitiesBalanceStatisticsClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.database.BusinessActivitiesDatabaseClient;
+import com.github.dannil.scbjavaclient.client.businessactivities.industrialcapacityutilization.BusinessActivitiesIndustrialCapacityUtilizationClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.industrialinventories.BusinessActivitiesIndustrialInventoriesClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.investmentsurvey.BusinessActivitiesInvestmentSurveyClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.nonfinancialcorporations.BusinessActivitiesNonFinancialCorporationsClient;
@@ -62,6 +63,14 @@ public class BusinessActivitiesClientTest {
         BusinessActivitiesClient client = new BusinessActivitiesClient();
 
         assertEquals(client.database().getClass(), BusinessActivitiesDatabaseClient.class);
+    }
+
+    @Test
+    public void industrialCapacityUtilizationClient() {
+        BusinessActivitiesClient client = new BusinessActivitiesClient();
+
+        assertEquals(client.industrialCapacityUtilization().getClass(),
+                BusinessActivitiesIndustrialCapacityUtilizationClient.class);
     }
 
     @Test
