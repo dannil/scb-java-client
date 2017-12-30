@@ -78,7 +78,7 @@ public class BusinessActivitiesIndustrialCapacityUtilizationIndustrialCapacityUt
     public List<ResponseModel> getIndustrialCapacityUtilisationSNI2007(Collection<String> industrialClassifications,
             Collection<String> quarters) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.SNI2007_CODE, quarters);
+        mappings.put(APIConstants.SNI2007_CODE, industrialClassifications);
         mappings.put(APIConstants.TIME_CODE, quarters);
 
         return getResponseModels("IndKaputnSNI07Kv", mappings);
@@ -112,7 +112,7 @@ public class BusinessActivitiesIndustrialCapacityUtilizationIndustrialCapacityUt
     public List<ResponseModel> getIndustrialCapacityUtilisationSNI92(Collection<String> industrialClassifications,
             Collection<String> quarters) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.SNI92_CODE, quarters);
+        mappings.put(APIConstants.SNI92_CODE, industrialClassifications);
         mappings.put(APIConstants.TIME_CODE, quarters);
 
         return getResponseModels("IndKaputnFaktKv", mappings);
@@ -148,7 +148,7 @@ public class BusinessActivitiesIndustrialCapacityUtilizationIndustrialCapacityUt
     public List<ResponseModel> getIndustrialCapacityUtilisationSNI2007HistoricalTimeSeries(
             Collection<String> industrialClassifications, Collection<String> quarters) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.SNI2007_CODE, quarters);
+        mappings.put(APIConstants.SNI2007_CODE, industrialClassifications);
         mappings.put(APIConstants.TIME_CODE, quarters);
 
         return getResponseModels("IndKaputnSNI07KvHis", mappings);
