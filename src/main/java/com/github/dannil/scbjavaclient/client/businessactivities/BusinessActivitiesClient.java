@@ -22,6 +22,7 @@ import com.github.dannil.scbjavaclient.client.businessactivities.balancestatisti
 import com.github.dannil.scbjavaclient.client.businessactivities.database.BusinessActivitiesDatabaseClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.industrialinventories.BusinessActivitiesIndustrialInventoriesClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.investmentsurvey.BusinessActivitiesInvestmentSurveyClient;
+import com.github.dannil.scbjavaclient.client.businessactivities.nonfinancialcorporations.BusinessActivitiesNonFinancialCorporationsClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.nonprofitorganizations.BusinessActivitiesNonProfitOrganizationsClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.productionindex.BusinessActivitiesProductionIndexClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.productionvalueindex.BusinessActivitiesProductionValueIndexClient;
@@ -45,6 +46,7 @@ public class BusinessActivitiesClient extends AbstractContainerClient {
         addClient("database", new BusinessActivitiesDatabaseClient());
         addClient("industrialinventories", new BusinessActivitiesIndustrialInventoriesClient());
         addClient("investmentsurvey", new BusinessActivitiesInvestmentSurveyClient());
+        addClient("nonfinancialcorporations", new BusinessActivitiesNonFinancialCorporationsClient());
         addClient("nonprofitorganizations", new BusinessActivitiesNonProfitOrganizationsClient());
         addClient("productionindex", new BusinessActivitiesProductionIndexClient());
         addClient("productionvalueindex", new BusinessActivitiesProductionValueIndexClient());
@@ -109,6 +111,16 @@ public class BusinessActivitiesClient extends AbstractContainerClient {
      */
     public BusinessActivitiesInvestmentSurveyClient investmentSurvey() {
         return (BusinessActivitiesInvestmentSurveyClient) getClient("investmentsurvey");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with business activities non financial
+     * corporations data.</p>
+     *
+     * @return a client for business activities non financial corporations data
+     */
+    public BusinessActivitiesNonFinancialCorporationsClient nonFinancialCorporations() {
+        return (BusinessActivitiesNonFinancialCorporationsClient) getClient("nonfinancialcorporations");
     }
 
     /**

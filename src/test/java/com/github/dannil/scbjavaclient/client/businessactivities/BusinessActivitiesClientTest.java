@@ -23,6 +23,7 @@ import com.github.dannil.scbjavaclient.client.businessactivities.balancestatisti
 import com.github.dannil.scbjavaclient.client.businessactivities.database.BusinessActivitiesDatabaseClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.industrialinventories.BusinessActivitiesIndustrialInventoriesClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.investmentsurvey.BusinessActivitiesInvestmentSurveyClient;
+import com.github.dannil.scbjavaclient.client.businessactivities.nonfinancialcorporations.BusinessActivitiesNonFinancialCorporationsClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.nonprofitorganizations.BusinessActivitiesNonProfitOrganizationsClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.productionindex.BusinessActivitiesProductionIndexClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.productionvalueindex.BusinessActivitiesProductionValueIndexClient;
@@ -69,12 +70,20 @@ public class BusinessActivitiesClientTest {
 
         assertEquals(client.industrialInventories().getClass(), BusinessActivitiesIndustrialInventoriesClient.class);
     }
-    
+
     @Test
     public void investmentSurveyClient() {
         BusinessActivitiesClient client = new BusinessActivitiesClient();
 
         assertEquals(client.investmentSurvey().getClass(), BusinessActivitiesInvestmentSurveyClient.class);
+    }
+
+    @Test
+    public void nonFinancialCorporationsClient() {
+        BusinessActivitiesClient client = new BusinessActivitiesClient();
+
+        assertEquals(client.nonFinancialCorporations().getClass(),
+                BusinessActivitiesNonFinancialCorporationsClient.class);
     }
 
     @Test
@@ -97,7 +106,6 @@ public class BusinessActivitiesClientTest {
 
         assertEquals(client.productionValueIndex().getClass(), BusinessActivitiesProductionValueIndexClient.class);
     }
-
 
     @Test
     public void getUrl() {
