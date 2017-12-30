@@ -17,8 +17,7 @@ package com.github.dannil.scbjavaclient.client.businessactivities.industrialcapa
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
-import com.github.dannil.scbjavaclient.client.businessactivities.industrialinventories.economicindicators.BusinessActivitiesIndustrialInventoriesEconomicIndicatorsClient;
-import com.github.dannil.scbjavaclient.client.businessactivities.industrialinventories.inventories.BusinessActivitiesIndustrialInventoriesInventoriesClient;
+import com.github.dannil.scbjavaclient.client.businessactivities.industrialcapacityutilization.economicindicators.BusinessActivitiesIndustrialCapacityUtilizationEconomicIndicatorsClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 /**
@@ -63,6 +62,8 @@ public class BusinessActivitiesIndustrialCapacityUtilizationClient extends Abstr
         return (BusinessActivitiesIndustrialCapacityUtilizationEconomicIndicatorsClient) getClient(
                 "economicindicators");
     }
+
+    // TODO Add more methods
 
     @Override
     public URLEndpoint getUrl() {
