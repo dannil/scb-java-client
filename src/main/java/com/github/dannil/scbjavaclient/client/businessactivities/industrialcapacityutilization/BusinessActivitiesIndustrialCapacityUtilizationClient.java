@@ -18,6 +18,7 @@ import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.industrialcapacityutilization.economicindicators.BusinessActivitiesIndustrialCapacityUtilizationEconomicIndicatorsClient;
+import com.github.dannil.scbjavaclient.client.businessactivities.industrialcapacityutilization.industrialcapacityutilization.BusinessActivitiesIndustrialCapacityUtilizationIndustrialCapacityUtilizationClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 /**
@@ -35,8 +36,8 @@ public class BusinessActivitiesIndustrialCapacityUtilizationClient extends Abstr
         super();
 
         addClient("economicindicators", new BusinessActivitiesIndustrialCapacityUtilizationEconomicIndicatorsClient());
-        // addClient("industrialcapacityutilization", new
-        // BusinessActivitiesIndustrialInventoriesInventoriesClient());
+        addClient("industrialcapacityutilization",
+                new BusinessActivitiesIndustrialCapacityUtilizationIndustrialCapacityUtilizationClient());
     }
 
     /**
@@ -63,7 +64,17 @@ public class BusinessActivitiesIndustrialCapacityUtilizationClient extends Abstr
                 "economicindicators");
     }
 
-    // TODO Add more methods
+    /**
+     * <p>Retrieve the client for interacting with business activities industrial capacity
+     * utilization industrial capacity utilization data.</p>
+     *
+     * @return a client for business activities industrial capacity utilization industrial
+     *         capacity utilization data
+     */
+    public BusinessActivitiesIndustrialCapacityUtilizationIndustrialCapacityUtilizationClient industrialCapacityUtilization() {
+        return (BusinessActivitiesIndustrialCapacityUtilizationIndustrialCapacityUtilizationClient) getClient(
+                "industrialcapacityutilization");
+    }
 
     @Override
     public URLEndpoint getUrl() {
