@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.goodsandservices.turnoverservicesector.economicindicators;
+package com.github.dannil.scbjavaclient.client.goodsandservices.turnoverservicesector.turnover;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -24,12 +24,12 @@ import com.github.dannil.scbjavaclient.test.extensions.Suite;
 import org.junit.jupiter.api.Test;
 
 @Suite
-public class GoodsAndServicesTurnoverServiceSectorEconomicIndicatorsTest {
+public class GoodsAndServicesTurnoverServiceSectorTurnoverClientTest {
 
     @Test
     public void createWithLocaleConstructor() {
         Locale locale = new Locale("sv", "SE");
-        GoodsAndServicesTurnoverServiceSectorEconomicIndicators client = new GoodsAndServicesTurnoverServiceSectorEconomicIndicators(
+        GoodsAndServicesTurnoverServiceSectorTurnover client = new GoodsAndServicesTurnoverServiceSectorTurnover(
                 locale);
 
         assertEquals(locale, client.getLocale());
@@ -40,10 +40,10 @@ public class GoodsAndServicesTurnoverServiceSectorEconomicIndicatorsTest {
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints
         Locale locale = new Locale("en", "US");
-        GoodsAndServicesTurnoverServiceSectorEconomicIndicators client = new GoodsAndServicesTurnoverServiceSectorEconomicIndicators(
+        GoodsAndServicesTurnoverServiceSectorTurnover client = new GoodsAndServicesTurnoverServiceSectorTurnover(
                 locale);
 
-        assertEquals(URLEndpoint.getRootUrl(locale).append("HA/HA0101/HA0101A"), client.getUrl());
+        assertEquals(URLEndpoint.getRootUrl(locale).append("HA/HA0101/HA0101B"), client.getUrl());
     }
 
 }

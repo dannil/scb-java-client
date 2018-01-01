@@ -26,7 +26,7 @@ import com.github.dannil.scbjavaclient.test.extensions.Suite;
 import org.junit.jupiter.api.Test;
 
 @Suite
-public class GoodsAndServicesTurnoverServiceSectorTest {
+public class GoodsAndServicesTurnoverServiceSectorClientTest {
 
     @Test
     public void createWithLocaleConstructor() {

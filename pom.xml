@@ -393,7 +393,7 @@
           <dependency>
             <groupId>com.puppycrawl.tools</groupId>
             <artifactId>checkstyle</artifactId>
-            <version>8.5</version>
+            <version>8.7</version>
           </dependency>
         </dependencies>
         <executions>
@@ -500,6 +500,7 @@
         <artifactId>maven-javadoc-plugin</artifactId>
         <version>3.0.0-M1</version>
         <configuration>
+          <additionalparam>-Xdoclint:all</additionalparam>
           <failOnError>true</failOnError>
         </configuration>
         <executions>
