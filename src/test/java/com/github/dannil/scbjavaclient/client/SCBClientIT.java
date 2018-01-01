@@ -152,6 +152,22 @@ public class SCBClientIT {
         assertNotNull(times);
         assertTrue(times.isEmpty());
     }
+    
+    @Test
+    @Date("2018-01-01")
+    public void supportedLanguage() {
+        String language = "sv";
+        
+        assertTrue(SCBClient.isSupportedLanguage(language));
+    }
+    
+    @Test
+    @Date("2018-01-01")
+    public void unsupportedLanguage() {
+        String language = "fr";
+        
+        assertFalse(SCBClient.isSupportedLanguage(language));
+    }
 
     @Test
     @Date("2017-01-01")
