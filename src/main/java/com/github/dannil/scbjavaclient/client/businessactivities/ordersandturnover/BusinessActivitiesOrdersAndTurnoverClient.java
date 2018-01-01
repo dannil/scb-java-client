@@ -17,6 +17,7 @@ package com.github.dannil.scbjavaclient.client.businessactivities.ordersandturno
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
+import com.github.dannil.scbjavaclient.client.businessactivities.ordersandturnover.economicindicators.BusinessActivitiesOrdersAndTurnoverClientEconomicIndicatorsClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 /**
@@ -32,8 +33,7 @@ public class BusinessActivitiesOrdersAndTurnoverClient extends AbstractContainer
     public BusinessActivitiesOrdersAndTurnoverClient() {
         super();
 
-        // addClient("economicindicators", new
-        // BusinessActivitiesIndustrialCapacityUtilizationEconomicIndicatorsClient());
+        addClient("economicindicators", new BusinessActivitiesOrdersAndTurnoverClientEconomicIndicatorsClient());
     }
 
     /**
@@ -48,20 +48,16 @@ public class BusinessActivitiesOrdersAndTurnoverClient extends AbstractContainer
         setLocale(locale);
     }
 
-    // /**
-    // * <p>Retrieve the client for interacting with business activities industrial
-    // capacity
-    // * utilization economic indicators data.</p>
-    // *
-    // * @return a client for business activities industrial capacity utilization economic
-    // * indicators data
-    // */
-    // public BusinessActivitiesIndustrialCapacityUtilizationEconomicIndicatorsClient
-    // economicIndicators() {
-    // return (BusinessActivitiesIndustrialCapacityUtilizationEconomicIndicatorsClient)
-    // getClient(
-    // "economicindicators");
-    // }
+    /**
+     * <p>Retrieve the client for interacting with business activities orders and turnover
+     * economic indicators data.</p>
+     *
+     * @return a client for business activities orders and turnover economic indicators
+     *         data
+     */
+    public BusinessActivitiesOrdersAndTurnoverClientEconomicIndicatorsClient economicIndicators() {
+        return (BusinessActivitiesOrdersAndTurnoverClientEconomicIndicatorsClient) getClient("economicindicators");
+    }
 
     // TODO Add more methods
 
