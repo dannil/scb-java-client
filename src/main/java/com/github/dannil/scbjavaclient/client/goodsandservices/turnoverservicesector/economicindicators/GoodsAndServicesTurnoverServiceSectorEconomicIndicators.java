@@ -76,7 +76,7 @@ public class GoodsAndServicesTurnoverServiceSectorEconomicIndicators extends Abs
      */
     public List<ResponseModel> getRetailTradeSales(Collection<String> indicators, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("EkoIndikator", indicators);
+        mappings.put(APIConstants.ECONOMICINDICATOR_CODE, indicators);
         mappings.put(APIConstants.TIME_CODE, months);
 
         return getResponseModels("SnabbStatHA0101", mappings);
