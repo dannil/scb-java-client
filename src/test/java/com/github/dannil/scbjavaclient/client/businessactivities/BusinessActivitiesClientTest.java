@@ -21,9 +21,13 @@ import java.util.Locale;
 import com.github.dannil.scbjavaclient.client.businessactivities.accomodationstatistics.BusinessActivitiesAccomodationStatisticsClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.balancestatistics.BusinessActivitiesBalanceStatisticsClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.database.BusinessActivitiesDatabaseClient;
+import com.github.dannil.scbjavaclient.client.businessactivities.industrialcapacityutilization.BusinessActivitiesIndustrialCapacityUtilizationClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.industrialinventories.BusinessActivitiesIndustrialInventoriesClient;
+import com.github.dannil.scbjavaclient.client.businessactivities.investmentsurvey.BusinessActivitiesInvestmentSurveyClient;
+import com.github.dannil.scbjavaclient.client.businessactivities.nonfinancialcorporations.BusinessActivitiesNonFinancialCorporationsClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.nonprofitorganizations.BusinessActivitiesNonProfitOrganizationsClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.productionindex.BusinessActivitiesProductionIndexClient;
+import com.github.dannil.scbjavaclient.client.businessactivities.productionvalueindex.BusinessActivitiesProductionValueIndexClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
@@ -62,10 +66,33 @@ public class BusinessActivitiesClientTest {
     }
 
     @Test
+    public void industrialCapacityUtilizationClient() {
+        BusinessActivitiesClient client = new BusinessActivitiesClient();
+
+        assertEquals(client.industrialCapacityUtilization().getClass(),
+                BusinessActivitiesIndustrialCapacityUtilizationClient.class);
+    }
+
+    @Test
     public void industrialInventoriesClient() {
         BusinessActivitiesClient client = new BusinessActivitiesClient();
 
         assertEquals(client.industrialInventories().getClass(), BusinessActivitiesIndustrialInventoriesClient.class);
+    }
+
+    @Test
+    public void investmentSurveyClient() {
+        BusinessActivitiesClient client = new BusinessActivitiesClient();
+
+        assertEquals(client.investmentSurvey().getClass(), BusinessActivitiesInvestmentSurveyClient.class);
+    }
+
+    @Test
+    public void nonFinancialCorporationsClient() {
+        BusinessActivitiesClient client = new BusinessActivitiesClient();
+
+        assertEquals(client.nonFinancialCorporations().getClass(),
+                BusinessActivitiesNonFinancialCorporationsClient.class);
     }
 
     @Test
@@ -80,6 +107,13 @@ public class BusinessActivitiesClientTest {
         BusinessActivitiesClient client = new BusinessActivitiesClient();
 
         assertEquals(client.productionIndex().getClass(), BusinessActivitiesProductionIndexClient.class);
+    }
+
+    @Test
+    public void productionValueIndexClient() {
+        BusinessActivitiesClient client = new BusinessActivitiesClient();
+
+        assertEquals(client.productionValueIndex().getClass(), BusinessActivitiesProductionValueIndexClient.class);
     }
 
     @Test
