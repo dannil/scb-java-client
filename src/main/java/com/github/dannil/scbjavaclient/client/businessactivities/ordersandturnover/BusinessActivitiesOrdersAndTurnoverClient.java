@@ -18,6 +18,7 @@ import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.ordersandturnover.economicindicators.BusinessActivitiesOrdersAndTurnoverClientEconomicIndicatorsClient;
+import com.github.dannil.scbjavaclient.client.businessactivities.ordersandturnover.ordersandturnover.BusinessActivitiesOrdersAndTurnoverOrdersAndTurnoverClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 /**
@@ -34,6 +35,7 @@ public class BusinessActivitiesOrdersAndTurnoverClient extends AbstractContainer
         super();
 
         addClient("economicindicators", new BusinessActivitiesOrdersAndTurnoverClientEconomicIndicatorsClient());
+        addClient("ordersandturnover", new BusinessActivitiesOrdersAndTurnoverOrdersAndTurnoverClient());
     }
 
     /**
@@ -59,7 +61,16 @@ public class BusinessActivitiesOrdersAndTurnoverClient extends AbstractContainer
         return (BusinessActivitiesOrdersAndTurnoverClientEconomicIndicatorsClient) getClient("economicindicators");
     }
 
-    // TODO Add more methods
+    /**
+     * <p>Retrieve the client for interacting with business activities orders and turnover
+     * orders and turnover data.</p>
+     *
+     * @return a client for business activities orders and turnover orders and turnover
+     *         data
+     */
+    public BusinessActivitiesOrdersAndTurnoverOrdersAndTurnoverClient ordersAndTurnover() {
+        return (BusinessActivitiesOrdersAndTurnoverOrdersAndTurnoverClient) getClient("ordersandturnover");
+    }
 
     @Override
     public URLEndpoint getUrl() {
