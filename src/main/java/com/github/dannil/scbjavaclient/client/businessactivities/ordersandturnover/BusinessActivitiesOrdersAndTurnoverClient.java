@@ -17,7 +17,7 @@ package com.github.dannil.scbjavaclient.client.businessactivities.ordersandturno
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
-import com.github.dannil.scbjavaclient.client.businessactivities.ordersandturnover.economicindicators.BusinessActivitiesOrdersAndTurnoverClientEconomicIndicatorsClient;
+import com.github.dannil.scbjavaclient.client.businessactivities.ordersandturnover.economicindicators.BusinessActivitiesOrdersAndTurnoverEconomicIndicatorsClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.ordersandturnover.ordersandturnover.BusinessActivitiesOrdersAndTurnoverOrdersAndTurnoverClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
@@ -34,7 +34,7 @@ public class BusinessActivitiesOrdersAndTurnoverClient extends AbstractContainer
     public BusinessActivitiesOrdersAndTurnoverClient() {
         super();
 
-        addClient("economicindicators", new BusinessActivitiesOrdersAndTurnoverClientEconomicIndicatorsClient());
+        addClient("economicindicators", new BusinessActivitiesOrdersAndTurnoverEconomicIndicatorsClient());
         addClient("ordersandturnover", new BusinessActivitiesOrdersAndTurnoverOrdersAndTurnoverClient());
     }
 
@@ -57,8 +57,8 @@ public class BusinessActivitiesOrdersAndTurnoverClient extends AbstractContainer
      * @return a client for business activities orders and turnover economic indicators
      *         data
      */
-    public BusinessActivitiesOrdersAndTurnoverClientEconomicIndicatorsClient economicIndicators() {
-        return (BusinessActivitiesOrdersAndTurnoverClientEconomicIndicatorsClient) getClient("economicindicators");
+    public BusinessActivitiesOrdersAndTurnoverEconomicIndicatorsClient economicIndicators() {
+        return (BusinessActivitiesOrdersAndTurnoverEconomicIndicatorsClient) getClient("economicindicators");
     }
 
     /**

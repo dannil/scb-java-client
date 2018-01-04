@@ -29,13 +29,13 @@ import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
-public class BusinessActivitiesOrdersAndTurnoverClientEconomicIndicatorsClientIT {
+public class BusinessActivitiesOrdersAndTurnoverEconomicIndicatorsClientIT {
 
-    private BusinessActivitiesOrdersAndTurnoverClientEconomicIndicatorsClient client;
+    private BusinessActivitiesOrdersAndTurnoverEconomicIndicatorsClient client;
 
     @BeforeEach
     public void setup() {
-        this.client = new BusinessActivitiesOrdersAndTurnoverClientEconomicIndicatorsClient();
+        this.client = new BusinessActivitiesOrdersAndTurnoverEconomicIndicatorsClient();
     }
 
     @Test

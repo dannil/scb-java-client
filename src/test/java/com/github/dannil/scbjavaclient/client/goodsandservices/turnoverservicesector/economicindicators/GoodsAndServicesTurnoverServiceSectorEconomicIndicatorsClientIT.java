@@ -29,7 +29,7 @@ import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
-public class GoodsAndServicesTurnoverServiceSectorEconomicIndicatorsIT {
+public class GoodsAndServicesTurnoverServiceSectorEconomicIndicatorsClientIT {
 
     private GoodsAndServicesTurnoverServiceSectorEconomicIndicators client;
 

@@ -78,7 +78,7 @@ public class BusinessActivitiesInvestmentSurveyEconomicIndicatorsClient extends 
     public List<ResponseModel> getInvestmentSurveyPlansAndOutcomes(Collection<String> economicIndicators,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("EkoIndikator", economicIndicators);
+        mappings.put(APIConstants.ECONOMICINDICATOR_CODE, economicIndicators);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("SnabbStatNV0801", mappings);

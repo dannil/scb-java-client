@@ -31,12 +31,12 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
  *
  * @since 0.7.0
  */
-public class BusinessActivitiesOrdersAndTurnoverClientEconomicIndicatorsClient extends AbstractClient {
+public class BusinessActivitiesOrdersAndTurnoverEconomicIndicatorsClient extends AbstractClient {
 
     /**
      * <p>Default constructor.</p>
      */
-    public BusinessActivitiesOrdersAndTurnoverClientEconomicIndicatorsClient() {
+    public BusinessActivitiesOrdersAndTurnoverEconomicIndicatorsClient() {
         super();
     }
 
@@ -46,7 +46,7 @@ public class BusinessActivitiesOrdersAndTurnoverClientEconomicIndicatorsClient e
      * @param locale
      *            the <code>Locale</code> for this client
      */
-    public BusinessActivitiesOrdersAndTurnoverClientEconomicIndicatorsClient(Locale locale) {
+    public BusinessActivitiesOrdersAndTurnoverEconomicIndicatorsClient(Locale locale) {
         super(locale);
     }
 
@@ -78,7 +78,7 @@ public class BusinessActivitiesOrdersAndTurnoverClientEconomicIndicatorsClient e
     public List<ResponseModel> getOrdersAndTurnoverInIndustryForTotalIndustry(Collection<String> economicIndicators,
             Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("EkoIndikator", economicIndicators);
+        mappings.put(APIConstants.ECONOMICINDICATOR_CODE, economicIndicators);
         mappings.put(APIConstants.TIME_CODE, months);
 
         return getResponseModels("SnabbStatNV0501", mappings);

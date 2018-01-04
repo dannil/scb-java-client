@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.client.businessactivities.ordersandturnover.economicindicators.BusinessActivitiesOrdersAndTurnoverClientEconomicIndicatorsClient;
+import com.github.dannil.scbjavaclient.client.businessactivities.ordersandturnover.economicindicators.BusinessActivitiesOrdersAndTurnoverEconomicIndicatorsClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.ordersandturnover.ordersandturnover.BusinessActivitiesOrdersAndTurnoverOrdersAndTurnoverClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
@@ -41,7 +41,7 @@ public class BusinessActivitiesOrdersAndTurnoverClientTest {
         BusinessActivitiesOrdersAndTurnoverClient client = new BusinessActivitiesOrdersAndTurnoverClient();
 
         assertEquals(client.economicIndicators().getClass(),
-                BusinessActivitiesOrdersAndTurnoverClientEconomicIndicatorsClient.class);
+                BusinessActivitiesOrdersAndTurnoverEconomicIndicatorsClient.class);
     }
 
     @Test

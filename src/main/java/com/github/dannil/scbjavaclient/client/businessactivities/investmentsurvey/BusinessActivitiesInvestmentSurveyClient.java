@@ -58,8 +58,6 @@ public class BusinessActivitiesInvestmentSurveyClient extends AbstractContainerC
         return (BusinessActivitiesInvestmentSurveyEconomicIndicatorsClient) getClient("economicindicators");
     }
 
-    // TODO Add more methods
-
     @Override
     public URLEndpoint getUrl() {
         return getRootUrl().append("NV/NV0801/");

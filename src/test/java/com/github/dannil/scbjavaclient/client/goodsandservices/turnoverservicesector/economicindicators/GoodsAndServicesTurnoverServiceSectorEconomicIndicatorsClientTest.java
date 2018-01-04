@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Daniel Nilsson
+ * Copyright 2017 Daniel Nilsson
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.businessactivities.ordersandturnover.economicindicators;
+package com.github.dannil.scbjavaclient.client.goodsandservices.turnoverservicesector.economicindicators;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -24,12 +24,12 @@ import com.github.dannil.scbjavaclient.test.extensions.Suite;
 import org.junit.jupiter.api.Test;
 
 @Suite
-public class BusinessActivitiesOrdersAndTurnoverClientEconomicIndicatorsClientTest {
+public class GoodsAndServicesTurnoverServiceSectorEconomicIndicatorsClientTest {
 
     @Test
     public void createWithLocaleConstructor() {
         Locale locale = new Locale("sv", "SE");
-        BusinessActivitiesOrdersAndTurnoverClientEconomicIndicatorsClient client = new BusinessActivitiesOrdersAndTurnoverClientEconomicIndicatorsClient(
+        GoodsAndServicesTurnoverServiceSectorEconomicIndicators client = new GoodsAndServicesTurnoverServiceSectorEconomicIndicators(
                 locale);
 
         assertEquals(locale, client.getLocale());
@@ -40,10 +40,10 @@ public class BusinessActivitiesOrdersAndTurnoverClientEconomicIndicatorsClientTe
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints
         Locale locale = new Locale("en", "US");
-        BusinessActivitiesOrdersAndTurnoverClientEconomicIndicatorsClient client = new BusinessActivitiesOrdersAndTurnoverClientEconomicIndicatorsClient(
+        GoodsAndServicesTurnoverServiceSectorEconomicIndicators client = new GoodsAndServicesTurnoverServiceSectorEconomicIndicators(
                 locale);
 
-        assertEquals(URLEndpoint.getRootUrl(locale).append("NV/NV0501/NV0501S/"), client.getUrl());
+        assertEquals(URLEndpoint.getRootUrl(locale).append("HA/HA0101/HA0101A"), client.getUrl());
     }
 
 }

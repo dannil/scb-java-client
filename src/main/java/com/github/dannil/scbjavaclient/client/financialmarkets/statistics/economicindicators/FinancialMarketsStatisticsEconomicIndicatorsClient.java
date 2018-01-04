@@ -78,7 +78,7 @@ public class FinancialMarketsStatisticsEconomicIndicatorsClient extends Abstract
     public List<ResponseModel> getFinancialMarketStatisticsGrowthRate(Collection<String> economicIndicators,
             Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("EkoIndikator", economicIndicators);
+        mappings.put(APIConstants.ECONOMICINDICATOR_CODE, economicIndicators);
         mappings.put(APIConstants.TIME_CODE, months);
 
         return getResponseModels("SnabbStatFM5001", mappings);
