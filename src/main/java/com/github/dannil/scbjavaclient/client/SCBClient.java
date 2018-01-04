@@ -305,6 +305,19 @@ public class SCBClient extends AbstractContainerClient {
     }
 
     /**
+     * <p>Checks if the specified language is supported by the API. See
+     * {@link #isSupportedLocale(Locale)} for implementation details.</p>
+     *
+     * @param language
+     *            the language to check
+     * @return true if the language is supported, otherwise false
+     */
+    public static boolean isSupportedLanguage(String language) {
+        Locale locale = new Locale(language);
+        return isSupportedLocale(locale);
+    }
+
+    /**
      * <p>Checks if the specified <code>Locale</code> is supported by the API. The method
      * performs a request to the API using the <code>Locale</code>'s language and checks
      * if a HTTP resource exists matching the language.</p>

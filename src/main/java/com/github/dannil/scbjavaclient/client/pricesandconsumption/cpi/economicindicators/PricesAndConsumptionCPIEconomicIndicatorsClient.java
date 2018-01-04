@@ -76,7 +76,7 @@ public class PricesAndConsumptionCPIEconomicIndicatorsClient extends AbstractCli
      */
     public List<ResponseModel> getConsumerPriceIndex(Collection<String> indicators, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("EkoIndikator", indicators);
+        mappings.put(APIConstants.ECONOMICINDICATOR_CODE, indicators);
         mappings.put(APIConstants.TIME_CODE, months);
 
         return getResponseModels("SnabbStatPR0101", mappings);

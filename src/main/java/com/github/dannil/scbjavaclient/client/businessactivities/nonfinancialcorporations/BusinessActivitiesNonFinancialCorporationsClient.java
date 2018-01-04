@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.goodsandservices.turnoverservicesector.economicindicators;
+package com.github.dannil.scbjavaclient.client.businessactivities.nonfinancialcorporations;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -26,17 +26,17 @@ import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles goods and services turnover service sector economic indicators
- * data fetching.</p>
+ * <p>Client which handles business activities non financial corporations data
+ * fetching.</p>
  *
  * @since 0.7.0
  */
-public class GoodsAndServicesTurnoverServiceSectorEconomicIndicators extends AbstractClient {
+public class BusinessActivitiesNonFinancialCorporationsClient extends AbstractClient {
 
     /**
      * <p>Default constructor.</p>
      */
-    public GoodsAndServicesTurnoverServiceSectorEconomicIndicators() {
+    public BusinessActivitiesNonFinancialCorporationsClient() {
         super();
     }
 
@@ -46,45 +46,46 @@ public class GoodsAndServicesTurnoverServiceSectorEconomicIndicators extends Abs
      * @param locale
      *            the <code>Locale</code> for this client
      */
-    public GoodsAndServicesTurnoverServiceSectorEconomicIndicators(Locale locale) {
+    public BusinessActivitiesNonFinancialCorporationsClient(Locale locale) {
         super(locale);
     }
 
     /**
-     * <p>Fetch all retail trade sales data.</p>
+     * <p>Fetch all corporations Foreign Trade Credits data.</p>
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @see #getRetailTradeSales(Collection, Collection)
+     * @see #getCorporationsForeignTradeCredits(Collection, Collection)
      */
-    public List<ResponseModel> getRetailTradeSales() {
-        return getRetailTradeSales(null, null);
+    public List<ResponseModel> getCorporationsForeignTradeCredits() {
+        return getCorporationsForeignTradeCredits(null, null);
     }
 
     /**
-     * <p>Fetch all retail trade sales data which match the input constraints.</p>
+     * <p>Fetch all corporations Foreign Trade Credits data which match the input
+     * constraints.</p>
      *
-     * @param indicators
-     *            the indicators
-     * @param months
-     *            the months
+     * @param items
+     *            the items
+     * @param quarters
+     *            the quarters
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getRetailTradeSales(Collection<String> indicators, Collection<String> months) {
+    public List<ResponseModel> getCorporationsForeignTradeCredits(Collection<String> items, Collection<String> quarters) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.ECONOMICINDICATOR_CODE, indicators);
-        mappings.put(APIConstants.TIME_CODE, months);
+        mappings.put("Kontopost", items);
+        mappings.put(APIConstants.TIME_CODE, quarters);
 
-        return getResponseModels("SnabbStatHA0101", mappings);
+        return getResponseModels("FtgHkuK", mappings);
     }
 
     @Override
     public URLEndpoint getUrl() {
-        return getRootUrl().append("HA/HA0101/HA0101A");
+        return getRootUrl().append("NV/NV0118/");
     }
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Daniel Nilsson
+ * Copyright 2018 Daniel Nilsson
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.goodsandservices.turnoverservicesector.economicindicators;
+package com.github.dannil.scbjavaclient.client.businessactivities.ordersandturnover.economicindicators;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -26,17 +26,17 @@ import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles goods and services turnover service sector economic indicators
+ * <p>Client which handles business activities orders and turnover economic indicators
  * data fetching.</p>
  *
  * @since 0.7.0
  */
-public class GoodsAndServicesTurnoverServiceSectorEconomicIndicators extends AbstractClient {
+public class BusinessActivitiesOrdersAndTurnoverEconomicIndicatorsClient extends AbstractClient {
 
     /**
      * <p>Default constructor.</p>
      */
-    public GoodsAndServicesTurnoverServiceSectorEconomicIndicators() {
+    public BusinessActivitiesOrdersAndTurnoverEconomicIndicatorsClient() {
         super();
     }
 
@@ -46,45 +46,47 @@ public class GoodsAndServicesTurnoverServiceSectorEconomicIndicators extends Abs
      * @param locale
      *            the <code>Locale</code> for this client
      */
-    public GoodsAndServicesTurnoverServiceSectorEconomicIndicators(Locale locale) {
+    public BusinessActivitiesOrdersAndTurnoverEconomicIndicatorsClient(Locale locale) {
         super(locale);
     }
 
     /**
-     * <p>Fetch all retail trade sales data.</p>
+     * <p>Fetch all orders and turnover in industry for total industry data.</p>
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @see #getRetailTradeSales(Collection, Collection)
+     * @see #getOrdersAndTurnoverInIndustryForTotalIndustry(Collection, Collection)
      */
-    public List<ResponseModel> getRetailTradeSales() {
-        return getRetailTradeSales(null, null);
+    public List<ResponseModel> getOrdersAndTurnoverInIndustryForTotalIndustry() {
+        return getOrdersAndTurnoverInIndustryForTotalIndustry(null, null);
     }
 
     /**
-     * <p>Fetch all retail trade sales data which match the input constraints.</p>
+     * <p>Fetch all orders and turnover in industry for total industry data which match
+     * the input constraints.</p>
      *
-     * @param indicators
-     *            the indicators
+     * @param economicIndicators
+     *            the economic indicators
      * @param months
      *            the months
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getRetailTradeSales(Collection<String> indicators, Collection<String> months) {
+    public List<ResponseModel> getOrdersAndTurnoverInIndustryForTotalIndustry(Collection<String> economicIndicators,
+            Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.ECONOMICINDICATOR_CODE, indicators);
+        mappings.put(APIConstants.ECONOMICINDICATOR_CODE, economicIndicators);
         mappings.put(APIConstants.TIME_CODE, months);
 
-        return getResponseModels("SnabbStatHA0101", mappings);
+        return getResponseModels("SnabbStatNV0501", mappings);
     }
 
     @Override
     public URLEndpoint getUrl() {
-        return getRootUrl().append("HA/HA0101/HA0101A");
+        return getRootUrl().append("NV/NV0501/NV0501S/");
     }
 
 }

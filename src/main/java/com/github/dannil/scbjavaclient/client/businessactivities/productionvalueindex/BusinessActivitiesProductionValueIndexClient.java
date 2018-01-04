@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.goodsandservices.turnoverservicesector.economicindicators;
+package com.github.dannil.scbjavaclient.client.businessactivities.productionvalueindex;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -26,17 +26,16 @@ import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles goods and services turnover service sector economic indicators
- * data fetching.</p>
+ * <p>Client which handles business activities production value index data fetching.</p>
  *
  * @since 0.7.0
  */
-public class GoodsAndServicesTurnoverServiceSectorEconomicIndicators extends AbstractClient {
+public class BusinessActivitiesProductionValueIndexClient extends AbstractClient {
 
     /**
      * <p>Default constructor.</p>
      */
-    public GoodsAndServicesTurnoverServiceSectorEconomicIndicators() {
+    public BusinessActivitiesProductionValueIndexClient() {
         super();
     }
 
@@ -46,45 +45,46 @@ public class GoodsAndServicesTurnoverServiceSectorEconomicIndicators extends Abs
      * @param locale
      *            the <code>Locale</code> for this client
      */
-    public GoodsAndServicesTurnoverServiceSectorEconomicIndicators(Locale locale) {
+    public BusinessActivitiesProductionValueIndexClient(Locale locale) {
         super(locale);
     }
 
     /**
-     * <p>Fetch all retail trade sales data.</p>
+     * <p>Fetch all production value index data.</p>
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @see #getRetailTradeSales(Collection, Collection)
+     * @see #getProductionValueIndex(Collection, Collection)
      */
-    public List<ResponseModel> getRetailTradeSales() {
-        return getRetailTradeSales(null, null);
+    public List<ResponseModel> getProductionValueIndex() {
+        return getProductionValueIndex(null, null);
     }
 
     /**
-     * <p>Fetch all retail trade sales data which match the input constraints.</p>
+     * <p>Fetch all production value index data which match the input constraints.</p>
      *
-     * @param indicators
-     *            the indicators
+     * @param industrialClassifications
+     *            the industrial classifications
      * @param months
      *            the months
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getRetailTradeSales(Collection<String> indicators, Collection<String> months) {
+    public List<ResponseModel> getProductionValueIndex(Collection<String> industrialClassifications,
+            Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.ECONOMICINDICATOR_CODE, indicators);
+        mappings.put(APIConstants.SNI2007_CODE, industrialClassifications);
         mappings.put(APIConstants.TIME_CODE, months);
 
-        return getResponseModels("SnabbStatHA0101", mappings);
+        return getResponseModels("PVI2015FastM07", mappings);
     }
 
     @Override
     public URLEndpoint getUrl() {
-        return getRootUrl().append("HA/HA0101/HA0101A");
+        return getRootUrl().append("NV/NV0006/");
     }
 
 }

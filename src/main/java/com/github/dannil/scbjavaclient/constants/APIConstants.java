@@ -51,6 +51,11 @@ public final class APIConstants {
     public static final String CONTENTSCODE_CODE = "ContentsCode";
 
     /**
+     * <p>Constant for economic indicator code.</p>
+     */
+    public static final String ECONOMICINDICATOR_CODE = "EkoIndikator";
+
+    /**
      * <p>Constant for greenhouse gas code.</p>
      */
     public static final String GREENHOUSEGAS_CODE = "Vaxthusgaser";
