@@ -33,6 +33,8 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
  */
 public class BusinessActivitiesOrdersAndTurnoverOrdersAndTurnoverClient extends AbstractClient {
 
+    private static final String MARKET_CODE = "Marknad";
+
     /**
      * <p>Default constructor.</p>
      */
@@ -81,7 +83,7 @@ public class BusinessActivitiesOrdersAndTurnoverOrdersAndTurnoverClient extends 
     public List<ResponseModel> getTurnoverInIndustryFixedPricesSNI2007Annual(Collection<String> markets,
             Collection<String> industrialClassifications, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Marknad", markets);
+        mappings.put(MARKET_CODE, markets);
         mappings.put(APIConstants.SNI2007_CODE, industrialClassifications);
         mappings.put(APIConstants.TIME_CODE, years);
 
@@ -118,7 +120,7 @@ public class BusinessActivitiesOrdersAndTurnoverOrdersAndTurnoverClient extends 
     public List<ResponseModel> getTurnoverInIndustrySNI2007Monthly(Collection<String> markets,
             Collection<String> industrialClassifications, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Marknad", markets);
+        mappings.put(MARKET_CODE, markets);
         mappings.put(APIConstants.SNI2007_CODE, industrialClassifications);
         mappings.put(APIConstants.TIME_CODE, months);
 
@@ -156,7 +158,7 @@ public class BusinessActivitiesOrdersAndTurnoverOrdersAndTurnoverClient extends 
     public List<ResponseModel> getOrdersInIndustryFixedPricesSNI2007Annual(Collection<String> markets,
             Collection<String> industrialClassifications, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Marknad", markets);
+        mappings.put(MARKET_CODE, markets);
         mappings.put(APIConstants.SNI2007_CODE, industrialClassifications);
         mappings.put(APIConstants.TIME_CODE, years);
 
@@ -193,7 +195,7 @@ public class BusinessActivitiesOrdersAndTurnoverOrdersAndTurnoverClient extends 
     public List<ResponseModel> getOrdersInIndustrySNI2007Monthly(Collection<String> markets,
             Collection<String> industrialClassifications, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Marknad", markets);
+        mappings.put(MARKET_CODE, markets);
         mappings.put(APIConstants.SNI2007_CODE, industrialClassifications);
         mappings.put(APIConstants.TIME_CODE, months);
 
@@ -230,7 +232,7 @@ public class BusinessActivitiesOrdersAndTurnoverOrdersAndTurnoverClient extends 
     public List<ResponseModel> getTurnoverInIndustrySNI2002Annual(Collection<String> markets,
             Collection<String> industrialClassifications, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Marknad", markets);
+        mappings.put(MARKET_CODE, markets);
         mappings.put(APIConstants.SNI2002_CODE, industrialClassifications);
         mappings.put(APIConstants.TIME_CODE, years);
 
@@ -267,7 +269,7 @@ public class BusinessActivitiesOrdersAndTurnoverOrdersAndTurnoverClient extends 
     public List<ResponseModel> getTurnoverInIndustrySNI2002Monthly(Collection<String> markets,
             Collection<String> industrialClassifications, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Marknad", markets);
+        mappings.put(MARKET_CODE, markets);
         mappings.put(APIConstants.SNI2002_CODE, industrialClassifications);
         mappings.put(APIConstants.TIME_CODE, months);
 
@@ -304,7 +306,7 @@ public class BusinessActivitiesOrdersAndTurnoverOrdersAndTurnoverClient extends 
     public List<ResponseModel> getOrdersInIndustrySNI2002Annual(Collection<String> markets,
             Collection<String> industrialClassifications, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Marknad", markets);
+        mappings.put(MARKET_CODE, markets);
         mappings.put(APIConstants.SNI2002_CODE, industrialClassifications);
         mappings.put(APIConstants.TIME_CODE, years);
 
@@ -341,7 +343,7 @@ public class BusinessActivitiesOrdersAndTurnoverOrdersAndTurnoverClient extends 
     public List<ResponseModel> getOrdersInIndustrySNI2002Monthly(Collection<String> markets,
             Collection<String> industrialClassifications, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Marknad", markets);
+        mappings.put(MARKET_CODE, markets);
         mappings.put(APIConstants.SNI2002_CODE, industrialClassifications);
         mappings.put(APIConstants.TIME_CODE, months);
 
