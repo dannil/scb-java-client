@@ -193,7 +193,7 @@ public class PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient extends 
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
-        mappings.put("Kontopost", items);
+        mappings.put(APIConstants.ITEM_CODE, items);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("VerksInt", mappings);
@@ -229,7 +229,7 @@ public class PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient extends 
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
-        mappings.put("Kontopost", items);
+        mappings.put(APIConstants.ITEM_CODE, items);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("VerksKostn", mappings);

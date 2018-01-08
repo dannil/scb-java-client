@@ -77,7 +77,7 @@ public class BusinessActivitiesNonFinancialCorporationsClient extends AbstractCl
      */
     public List<ResponseModel> getCorporationsForeignTradeCredits(Collection<String> items, Collection<String> quarters) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Kontopost", items);
+        mappings.put(APIConstants.ITEM_CODE, items);
         mappings.put(APIConstants.TIME_CODE, quarters);
 
         return getResponseModels("FtgHkuK", mappings);

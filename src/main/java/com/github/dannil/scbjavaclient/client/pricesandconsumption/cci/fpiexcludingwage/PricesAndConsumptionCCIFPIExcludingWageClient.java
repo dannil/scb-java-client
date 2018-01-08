@@ -33,10 +33,6 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
  */
 public class PricesAndConsumptionCCIFPIExcludingWageClient extends AbstractClient {
 
-    private static final String TYPEOFBUILDING_CODE = "Hustyp";
-
-    private static final String TYPEOFEXPENDITURE_CODE = "Kostnadsslag";
-
     /**
      * <p>Default constructor.</p>
      */
@@ -84,8 +80,8 @@ public class PricesAndConsumptionCCIFPIExcludingWageClient extends AbstractClien
     public List<ResponseModel> getFactorPriceIndexForBuildings1968Months(Collection<String> typesOfBuildings,
             Collection<String> typesOfExpenditures, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(TYPEOFBUILDING_CODE, typesOfBuildings);
-        mappings.put(TYPEOFEXPENDITURE_CODE, typesOfExpenditures);
+        mappings.put(APIConstants.TYPEOFBUILDING_CODE, typesOfBuildings);
+        mappings.put(APIConstants.TYPEOFEXPENDITURE_CODE, typesOfExpenditures);
         mappings.put(APIConstants.TIME_CODE, months);
 
         return getResponseModels("FPIBOM", mappings);
@@ -121,8 +117,8 @@ public class PricesAndConsumptionCCIFPIExcludingWageClient extends AbstractClien
     public List<ResponseModel> getFactorPriceIndexForBuildings2015Months(Collection<String> typesOfBuildings,
             Collection<String> typesOfExpenditures, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(TYPEOFBUILDING_CODE, typesOfBuildings);
-        mappings.put(TYPEOFEXPENDITURE_CODE, typesOfExpenditures);
+        mappings.put(APIConstants.TYPEOFBUILDING_CODE, typesOfBuildings);
+        mappings.put(APIConstants.TYPEOFEXPENDITURE_CODE, typesOfExpenditures);
         mappings.put(APIConstants.TIME_CODE, months);
 
         return getResponseModels("FPIBOM2015", mappings);

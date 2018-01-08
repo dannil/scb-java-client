@@ -21,6 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
@@ -546,6 +547,63 @@ public class AbstractClientIT {
             }
         }
         assertTrue(offendingMethods.isEmpty(), "Methods not implementing all codes: " + offendingMethods);
+    }
+
+    @Test
+    public void checkForNonDuplicatedCodeAndValueCombinations()
+            throws IllegalArgumentException, IllegalAccessException {
+        String execPath = System.getProperty("user.dir");
+
+        // Find files matching the wildcard pattern
+        List<File> files = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient/client", "*.java");
+
+        Map<String, List<String>> offendingCodes = new HashMap<>();
+        for (File file : files) {
+            // Convert path into binary name
+            String binaryName = Files.fileToBinaryName(file);
+            if (binaryName.contains("package-info")) {
+                continue;
+            }
+
+            // Reflect the binary name into a concrete Java class
+            Class<?> clazz = null;
+            try {
+                clazz = Class.forName(binaryName);
+                Field[] fields = clazz.getDeclaredFields();
+                for (int i = 0; i < fields.length; i++) {
+                    Field field = fields[i];
+                    String name = field.getName();
+                    if (name.endsWith("CODE")) {
+                        field.setAccessible(true);
+                        String value = (String) field.get(clazz);
+                        field.setAccessible(false);
+                        String full = name + "." + value;
+                        List<String> classes = null;
+                        if (!offendingCodes.containsKey(full)) {
+                            classes = new ArrayList<>();
+                        } else {
+                            classes = offendingCodes.get(full);
+                        }
+                        classes.add(clazz.getSimpleName());
+                        offendingCodes.put(full, classes);
+                    }
+                }
+            } catch (ClassNotFoundException e) {
+                // Class could not be created; respond with an assertion that'll always
+                // fail
+                e.printStackTrace();
+                assertTrue(false, e.getMessage());
+            }
+        }
+        // Remove code and value combinations which only occurs once (which means it isn't
+        // a duplicate)
+        for (Iterator<List<String>> it = offendingCodes.values().iterator(); it.hasNext();) {
+            List<String> value = it.next();
+            if (value.size() == 1) {
+                it.remove();
+            }
+        }
+        assertTrue(offendingCodes.isEmpty(), "Duplicated code and value combinations: " + offendingCodes.toString());
     }
 
 }
