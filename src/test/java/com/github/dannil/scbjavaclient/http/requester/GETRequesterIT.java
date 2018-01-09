@@ -32,9 +32,7 @@ public class GETRequesterIT {
     public void invalidUrl() {
         GETRequester requester = new GETRequester();
 
-        assertThrows(SCBClientException.class, () -> {
-            requester.getResponse("example.example").getBody();
-        });
+        assertThrows(SCBClientException.class, () -> requester.getResponse("example.example").getBody());
     }
 
 }

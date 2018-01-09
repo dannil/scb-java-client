@@ -49,9 +49,7 @@ public class JsonConverterTest {
 
     @Test
     public void getNodeInvalidJson() {
-        assertThrows(SCBClientParsingException.class, () -> {
-            this.converter.toNode("hello world");
-        });
+        assertThrows(SCBClientParsingException.class, () -> this.converter.toNode("hello world"));
     }
 
 }

@@ -154,7 +154,7 @@ public class JsonAPITableFormatTest {
 
         // Remove whitespace for easier comparison; JSON is still valid
         expected = expected.replace(" ", "");
-        toString = expected.replace(" ", "");
+        toString = toString.replace(" ", "");
 
         assertEquals(expected, toString);
     }
