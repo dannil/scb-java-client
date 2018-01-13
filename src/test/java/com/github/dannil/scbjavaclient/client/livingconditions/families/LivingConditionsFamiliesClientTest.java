@@ -42,28 +42,28 @@ public class LivingConditionsFamiliesClientTest {
     public void adoptionsClient() {
         LivingConditionsFamiliesClient client = new LivingConditionsFamiliesClient();
 
-        assertEquals(client.adoptions().getClass(), LivingConditionsFamiliesAdoptionsClient.class);
+        assertEquals(LivingConditionsFamiliesAdoptionsClient.class, client.adoptions().getClass());
     }
 
     @Test
     public void housingClient() {
         LivingConditionsFamiliesClient client = new LivingConditionsFamiliesClient();
 
-        assertEquals(client.housing().getClass(), LivingConditionsFamiliesHousingClient.class);
+        assertEquals(LivingConditionsFamiliesHousingClient.class, client.housing().getClass());
     }
 
     @Test
     public void legalGuardiansClient() {
         LivingConditionsFamiliesClient client = new LivingConditionsFamiliesClient();
 
-        assertEquals(client.legalGuardians().getClass(), LivingConditionsFamiliesLegalGuardiansClient.class);
+        assertEquals(LivingConditionsFamiliesLegalGuardiansClient.class, client.legalGuardians().getClass());
     }
 
     @Test
     public void siblingsClient() {
         LivingConditionsFamiliesClient client = new LivingConditionsFamiliesClient();
 
-        assertEquals(client.siblings().getClass(), LivingConditionsFamiliesSiblingsClient.class);
+        assertEquals(LivingConditionsFamiliesSiblingsClient.class, client.siblings().getClass());
     }
 
     @Test

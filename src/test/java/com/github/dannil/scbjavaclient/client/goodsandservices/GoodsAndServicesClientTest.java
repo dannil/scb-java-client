@@ -42,21 +42,21 @@ public class GoodsAndServicesClientTest {
     public void foodSalesClient() {
         GoodsAndServicesClient client = new GoodsAndServicesClient();
 
-        assertEquals(client.foodSales().getClass(), GoodsAndServicesFoodSalesClient.class);
+        assertEquals(GoodsAndServicesFoodSalesClient.class, client.foodSales().getClass());
     }
 
     @Test
     public void foreignTradeClient() {
         GoodsAndServicesClient client = new GoodsAndServicesClient();
 
-        assertEquals(client.foreignTrade().getClass(), GoodsAndServicesForeignTradeClient.class);
+        assertEquals(GoodsAndServicesForeignTradeClient.class, client.foreignTrade().getClass());
     }
 
     @Test
     public void foreignTradeGoodsClient() {
         GoodsAndServicesClient client = new GoodsAndServicesClient();
 
-        assertEquals(client.foreignTradeGoods().getClass(), GoodsAndServicesForeignTradeGoodsClient.class);
+        assertEquals(GoodsAndServicesForeignTradeGoodsClient.class, client.foreignTradeGoods().getClass());
     }
 
     @Test

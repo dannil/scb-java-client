@@ -39,7 +39,7 @@ public class LabourMarketGrossPayClientTest {
     public void aggregateWages() {
         LabourMarketGrossPayClient client = new LabourMarketGrossPayClient();
 
-        assertEquals(client.aggregateWages().getClass(), LabourMarketGrossPayAggregateWagesClient.class);
+        assertEquals(LabourMarketGrossPayAggregateWagesClient.class, client.aggregateWages().getClass());
     }
 
     @Test

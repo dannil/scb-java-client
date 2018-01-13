@@ -66,6 +66,11 @@ public final class APIConstants {
     public static final String ITEM_CODE = "Kontopost";
 
     /**
+     * <p>Constant for market code.</p>
+     */
+    public static final String MARKET_CODE = "Marknad";
+
+    /**
      * <p>Constant for region code.</p>
      */
     public static final String REGION_CODE = "Region";

@@ -41,22 +41,22 @@ public class EnvironmentProtectedNatureClientTest {
     public void natureTypes() {
         EnvironmentProtectedNatureClient client = new EnvironmentProtectedNatureClient();
 
-        assertEquals(client.natureTypes().getClass(), EnvironmentProtectedNatureNatureTypesClient.class);
+        assertEquals(EnvironmentProtectedNatureNatureTypesClient.class, client.natureTypes().getClass());
     }
 
     @Test
     public void numberAndArea() {
         EnvironmentProtectedNatureClient client = new EnvironmentProtectedNatureClient();
 
-        assertEquals(client.numberAndArea().getClass(), EnvironmentProtectedNatureNumberAndAreaClient.class);
+        assertEquals(EnvironmentProtectedNatureNumberAndAreaClient.class, client.numberAndArea().getClass());
     }
 
     @Test
     public void populationAndAccessibility() {
         EnvironmentProtectedNatureClient client = new EnvironmentProtectedNatureClient();
 
-        assertEquals(client.populationAndAccessibility().getClass(),
-                EnvironmentProtectedNaturePopulationAndAccessibilityClient.class);
+        assertEquals(EnvironmentProtectedNaturePopulationAndAccessibilityClient.class,
+                client.populationAndAccessibility().getClass());
     }
 
     @Test
