@@ -17,7 +17,8 @@ package com.github.dannil.scbjavaclient.client.goodsandservices.turnoverservices
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
-import com.github.dannil.scbjavaclient.client.goodsandservices.turnoverservicesector.economicindicators.GoodsAndServicesTurnoverServiceSectorEconomicIndicators;
+import com.github.dannil.scbjavaclient.client.goodsandservices.turnoverservicesector.oldtablessni2002.GoodsAndServicesTurnoverServiceSectorOldTablesSNI2002Client;
+import com.github.dannil.scbjavaclient.client.goodsandservices.turnoverservicesector.oldtablessni2007.GoodsAndServicesTurnoverServiceSectorOldTablesSNI2007Client;
 import com.github.dannil.scbjavaclient.client.goodsandservices.turnoverservicesector.turnover.GoodsAndServicesTurnoverServiceSectorTurnover;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
@@ -34,7 +35,8 @@ public class GoodsAndServicesTurnoverServiceSector extends AbstractContainerClie
     public GoodsAndServicesTurnoverServiceSector() {
         super();
 
-        addClient("economicindicators", new GoodsAndServicesTurnoverServiceSectorEconomicIndicators());
+        addClient("oldtablessni2002", new GoodsAndServicesTurnoverServiceSectorOldTablesSNI2002Client());
+        addClient("oldtablessni2007", new GoodsAndServicesTurnoverServiceSectorOldTablesSNI2007Client());
         addClient("turnover", new GoodsAndServicesTurnoverServiceSectorTurnover());
     }
 
@@ -52,13 +54,22 @@ public class GoodsAndServicesTurnoverServiceSector extends AbstractContainerClie
 
     /**
      * <p>Retrieve the client for interacting with goods and services turnover service
-     * sector economic indicators data.</p>
+     * sector old tables SNI 2002 data.</p>
      *
-     * @return a client for goods and services turnover service sector economic indicators
-     *         data
+     * @return a client for goods and services turnover service sector old tables SNI 2002 data
      */
-    public GoodsAndServicesTurnoverServiceSectorEconomicIndicators economicIndicators() {
-        return (GoodsAndServicesTurnoverServiceSectorEconomicIndicators) getClient("economicindicators");
+    public GoodsAndServicesTurnoverServiceSectorOldTablesSNI2002Client oldTablesSNI2002() {
+        return (GoodsAndServicesTurnoverServiceSectorOldTablesSNI2002Client) getClient("oldtablessni2002");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with goods and services turnover service
+     * sector old tables SNI 2007 data.</p>
+     *
+     * @return a client for goods and services turnover service sector old tables SNI 2007 data
+     */
+    public GoodsAndServicesTurnoverServiceSectorOldTablesSNI2007Client oldTablesSNI2007() {
+        return (GoodsAndServicesTurnoverServiceSectorOldTablesSNI2007Client) getClient("oldtablessni2007");
     }
 
     /**
