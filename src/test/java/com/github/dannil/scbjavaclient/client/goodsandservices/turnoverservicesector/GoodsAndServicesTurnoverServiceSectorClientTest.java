@@ -18,7 +18,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.client.goodsandservices.turnoverservicesector.economicindicators.GoodsAndServicesTurnoverServiceSectorEconomicIndicators;
+import com.github.dannil.scbjavaclient.client.goodsandservices.turnoverservicesector.oldtablessni2002.GoodsAndServicesTurnoverServiceSectorOldTablesSNI2002Client;
+import com.github.dannil.scbjavaclient.client.goodsandservices.turnoverservicesector.oldtablessni2007.GoodsAndServicesTurnoverServiceSectorOldTablesSNI2007Client;
 import com.github.dannil.scbjavaclient.client.goodsandservices.turnoverservicesector.turnover.GoodsAndServicesTurnoverServiceSectorTurnover;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
@@ -35,13 +36,19 @@ public class GoodsAndServicesTurnoverServiceSectorClientTest {
 
         assertEquals(locale, client.getLocale());
     }
-
+    
     @Test
-    public void economicIndicatorsClient() {
+    public void oldTablesSNI2002Client() {
         GoodsAndServicesTurnoverServiceSector client = new GoodsAndServicesTurnoverServiceSector();
 
-        assertEquals(client.economicIndicators().getClass(),
-                GoodsAndServicesTurnoverServiceSectorEconomicIndicators.class);
+        assertEquals(client.oldTablesSNI2002().getClass(), GoodsAndServicesTurnoverServiceSectorOldTablesSNI2002Client.class);
+    }
+    
+    @Test
+    public void oldTablesSNI2007Client() {
+        GoodsAndServicesTurnoverServiceSector client = new GoodsAndServicesTurnoverServiceSector();
+
+        assertEquals(client.oldTablesSNI2007().getClass(), GoodsAndServicesTurnoverServiceSectorOldTablesSNI2007Client.class);
     }
 
     @Test
