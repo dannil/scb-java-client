@@ -61,6 +61,16 @@ public final class APIConstants {
     public static final String GREENHOUSEGAS_CODE = "Vaxthusgaser";
 
     /**
+     * <p>Constant for item code.</p>
+     */
+    public static final String ITEM_CODE = "Kontopost";
+
+    /**
+     * <p>Constant for market code.</p>
+     */
+    public static final String MARKET_CODE = "Marknad";
+
+    /**
      * <p>Constant for region code.</p>
      */
     public static final String REGION_CODE = "Region";
@@ -114,6 +124,16 @@ public final class APIConstants {
      * <p>Constant for time code.</p>
      */
     public static final String TIME_CODE = "Tid";
+
+    /**
+     * <p>Constant for type of building code.</p>
+     */
+    public static final String TYPEOFBUILDING_CODE = "Hustyp";
+
+    /**
+     * <p>Constant for type of expenditure code.</p>
+     */
+    public static final String TYPEOFEXPENDITURE_CODE = "Kostnadsslag";
 
     /**
      * <p>Private constructor to prevent instantiation.</p>

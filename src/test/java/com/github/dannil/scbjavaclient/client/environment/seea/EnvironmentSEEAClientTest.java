@@ -43,35 +43,35 @@ public class EnvironmentSEEAClientTest {
     public void airEmissionsAccounts() {
         EnvironmentSEEAClient client = new EnvironmentSEEAClient();
 
-        assertEquals(client.airEmissionsAccounts().getClass(), EnvironmentSEEAAirEmissionsAccountsClient.class);
+        assertEquals(EnvironmentSEEAAirEmissionsAccountsClient.class, client.airEmissionsAccounts().getClass());
     }
 
     @Test
     public void goodsAndServicesSector() {
         EnvironmentSEEAClient client = new EnvironmentSEEAClient();
 
-        assertEquals(client.goodsAndServicesSector().getClass(), EnvironmentSEEAGoodsAndServicesSectorClient.class);
+        assertEquals(EnvironmentSEEAGoodsAndServicesSectorClient.class, client.goodsAndServicesSector().getClass());
     }
 
     @Test
     public void energyAccounts() {
         EnvironmentSEEAClient client = new EnvironmentSEEAClient();
 
-        assertEquals(client.energyAccounts().getClass(), EnvironmentSEEAEnergyAccountsClient.class);
+        assertEquals(EnvironmentSEEAEnergyAccountsClient.class, client.energyAccounts().getClass());
     }
 
     @Test
     public void materialFlowAccounts() {
         EnvironmentSEEAClient client = new EnvironmentSEEAClient();
 
-        assertEquals(client.materialFlowAccounts().getClass(), EnvironmentSEEAMaterialFlowAccountsClient.class);
+        assertEquals(EnvironmentSEEAMaterialFlowAccountsClient.class, client.materialFlowAccounts().getClass());
     }
 
     @Test
     public void taxes() {
         EnvironmentSEEAClient client = new EnvironmentSEEAClient();
 
-        assertEquals(client.taxes().getClass(), EnvironmentSEEATaxesClient.class);
+        assertEquals(EnvironmentSEEATaxesClient.class, client.taxes().getClass());
     }
 
     @Test

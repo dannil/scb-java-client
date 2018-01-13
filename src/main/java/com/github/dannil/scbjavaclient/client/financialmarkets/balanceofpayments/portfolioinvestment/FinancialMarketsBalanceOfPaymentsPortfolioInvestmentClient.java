@@ -35,8 +35,6 @@ public class FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClient extends 
 
     private static final String CURRENCY_CODE = "DenomValuta";
 
-    private static final String ITEM_CODE = "Kontopost";
-
     /**
      * <p>Default constructor.</p>
      */
@@ -84,7 +82,7 @@ public class FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClient extends 
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(CURRENCY_CODE, currencies);
-        mappings.put(ITEM_CODE, items);
+        mappings.put(APIConstants.ITEM_CODE, items);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("FM0001PIAr", mappings);
@@ -200,7 +198,7 @@ public class FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClient extends 
             Collection<String> quarters) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(CURRENCY_CODE, currencies);
-        mappings.put(ITEM_CODE, items);
+        mappings.put(APIConstants.ITEM_CODE, items);
         mappings.put(APIConstants.TIME_CODE, quarters);
 
         return getResponseModels("FM0001PIKv", mappings);

@@ -43,35 +43,35 @@ public class PricesAndConsumptionCPIClientTest {
     public void cpifct() {
         PricesAndConsumptionCPIClient client = new PricesAndConsumptionCPIClient();
 
-        assertEquals(client.cpifct().getClass(), PricesAndConsumptionCPICPIFCTClient.class);
+        assertEquals(PricesAndConsumptionCPICPIFCTClient.class, client.cpifct().getClass());
     }
 
     @Test
     public void economicIndicators() {
         PricesAndConsumptionCPIClient client = new PricesAndConsumptionCPIClient();
 
-        assertEquals(client.economicIndicators().getClass(), PricesAndConsumptionCPIEconomicIndicatorsClient.class);
+        assertEquals(PricesAndConsumptionCPIEconomicIndicatorsClient.class, client.economicIndicators().getClass());
     }
 
     @Test
     public void hicp() {
         PricesAndConsumptionCPIClient client = new PricesAndConsumptionCPIClient();
 
-        assertEquals(client.hicp().getClass(), PricesAndConsumptionCPIHICPClient.class);
+        assertEquals(PricesAndConsumptionCPIHICPClient.class, client.hicp().getClass());
     }
 
     @Test
     public void priceBasicAmount() {
         PricesAndConsumptionCPIClient client = new PricesAndConsumptionCPIClient();
 
-        assertEquals(client.priceBasicAmount().getClass(), PricesAndConsumptionCPIPriceBasicAmountClient.class);
+        assertEquals(PricesAndConsumptionCPIPriceBasicAmountClient.class, client.priceBasicAmount().getClass());
     }
 
     @Test
     public void kpif() {
         PricesAndConsumptionCPIClient client = new PricesAndConsumptionCPIClient();
 
-        assertEquals(client.kpif().getClass(), PricesAndConsumptionCPIKPIFClient.class);
+        assertEquals(PricesAndConsumptionCPIKPIFClient.class, client.kpif().getClass());
     }
 
     @Test

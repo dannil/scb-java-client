@@ -41,19 +41,18 @@ public class BusinessActivitiesIndustrialCapacityUtilizationClientTest {
     public void economicIndicatorsClient() {
         BusinessActivitiesIndustrialCapacityUtilizationClient client = new BusinessActivitiesIndustrialCapacityUtilizationClient();
 
-        assertEquals(client.economicIndicators().getClass(),
-                BusinessActivitiesIndustrialCapacityUtilizationEconomicIndicatorsClient.class);
+        assertEquals(BusinessActivitiesIndustrialCapacityUtilizationEconomicIndicatorsClient.class,
+                client.economicIndicators().getClass());
     }
 
     @Test
     public void industrialCapacityUtilizationClient() {
         BusinessActivitiesIndustrialCapacityUtilizationClient client = new BusinessActivitiesIndustrialCapacityUtilizationClient();
 
-        assertEquals(client.industrialCapacityUtilization().getClass(),
-                BusinessActivitiesIndustrialCapacityUtilizationIndustrialCapacityUtilizationClient.class);
+        assertEquals(BusinessActivitiesIndustrialCapacityUtilizationIndustrialCapacityUtilizationClient.class,
+                client.industrialCapacityUtilization().getClass());
     }
 
-    @Test
     public void getUrl() {
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints

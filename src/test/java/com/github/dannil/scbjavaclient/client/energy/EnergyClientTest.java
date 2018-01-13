@@ -40,14 +40,14 @@ public class EnergyClientTest {
     public void annualStatisticsClient() {
         EnergyClient client = new EnergyClient();
 
-        assertEquals(client.annualStatistics().getClass(), EnergyAnnualStatisticsClient.class);
+        assertEquals(EnergyAnnualStatisticsClient.class, client.annualStatistics().getClass());
     }
 
     @Test
     public void monthlyStatisticsClient() {
         EnergyClient client = new EnergyClient();
 
-        assertEquals(client.monthlyStatistics().getClass(), EnergyMonthlyStatisticsClient.class);
+        assertEquals(EnergyMonthlyStatisticsClient.class, client.monthlyStatistics().getClass());
     }
 
     @Test

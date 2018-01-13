@@ -33,8 +33,6 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
  */
 public class BusinessActivitiesOrdersAndTurnoverOrdersAndTurnoverClient extends AbstractClient {
 
-    private static final String MARKET_CODE = "Marknad";
-
     /**
      * <p>Default constructor.</p>
      */
@@ -50,44 +48,6 @@ public class BusinessActivitiesOrdersAndTurnoverOrdersAndTurnoverClient extends 
      */
     public BusinessActivitiesOrdersAndTurnoverOrdersAndTurnoverClient(Locale locale) {
         super(locale);
-    }
-
-    /**
-     * <p>Fetch all turnover in industry fixed prices SNI 2007 annual data.</p>
-     *
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     *
-     * @see #getTurnoverInIndustryFixedPricesSNI2007Annual(Collection, Collection,
-     *      Collection)
-     */
-    public List<ResponseModel> getTurnoverInIndustryFixedPricesSNI2007Annual() {
-        return getTurnoverInIndustryFixedPricesSNI2007Annual(null, null, null);
-    }
-
-    /**
-     * <p>Fetch all turnover in industry fixed prices SNI 2007 annual data which match the
-     * input constraints.</p>
-     *
-     * @param markets
-     *            the markets
-     * @param industrialClassifications
-     *            the industrial classifications
-     * @param years
-     *            the years
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     */
-    public List<ResponseModel> getTurnoverInIndustryFixedPricesSNI2007Annual(Collection<String> markets,
-            Collection<String> industrialClassifications, Collection<Integer> years) {
-        Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(MARKET_CODE, markets);
-        mappings.put(APIConstants.SNI2007_CODE, industrialClassifications);
-        mappings.put(APIConstants.TIME_CODE, years);
-
-        return getResponseModels("IndLev2010Ar", mappings);
     }
 
     /**
@@ -120,49 +80,11 @@ public class BusinessActivitiesOrdersAndTurnoverOrdersAndTurnoverClient extends 
     public List<ResponseModel> getTurnoverInIndustrySNI2007Monthly(Collection<String> markets,
             Collection<String> industrialClassifications, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(MARKET_CODE, markets);
+        mappings.put(APIConstants.MARKET_CODE, markets);
         mappings.put(APIConstants.SNI2007_CODE, industrialClassifications);
         mappings.put(APIConstants.TIME_CODE, months);
 
         return getResponseModels("IndLev2010M", mappings);
-    }
-
-    /**
-     * <p>Fetch all orders in industry fixed prices SNI 2007 annual data.</p>
-     *
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     *
-     * @see #getOrdersInIndustryFixedPricesSNI2007Annual(Collection, Collection,
-     *      Collection)
-     */
-    public List<ResponseModel> getOrdersInIndustryFixedPricesSNI2007Annual() {
-        return getOrdersInIndustryFixedPricesSNI2007Annual(null, null, null);
-    }
-
-    /**
-     * <p>Fetch all orders in industry fixed prices SNI 2007 annual data which match the
-     * input constraints.</p>
-     *
-     * @param markets
-     *            the markets
-     * @param industrialClassifications
-     *            the industrial classifications
-     * @param years
-     *            the years
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     */
-    public List<ResponseModel> getOrdersInIndustryFixedPricesSNI2007Annual(Collection<String> markets,
-            Collection<String> industrialClassifications, Collection<Integer> years) {
-        Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(MARKET_CODE, markets);
-        mappings.put(APIConstants.SNI2007_CODE, industrialClassifications);
-        mappings.put(APIConstants.TIME_CODE, years);
-
-        return getResponseModels("IndOrd2010Ar", mappings);
     }
 
     /**
@@ -195,159 +117,11 @@ public class BusinessActivitiesOrdersAndTurnoverOrdersAndTurnoverClient extends 
     public List<ResponseModel> getOrdersInIndustrySNI2007Monthly(Collection<String> markets,
             Collection<String> industrialClassifications, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(MARKET_CODE, markets);
+        mappings.put(APIConstants.MARKET_CODE, markets);
         mappings.put(APIConstants.SNI2007_CODE, industrialClassifications);
         mappings.put(APIConstants.TIME_CODE, months);
 
         return getResponseModels("IndOrd2010M", mappings);
-    }
-
-    /**
-     * <p>Fetch all turnover in industry SNI 2002 annual data.</p>
-     *
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     *
-     * @see #getTurnoverInIndustrySNI2002Annual(Collection, Collection, Collection)
-     */
-    public List<ResponseModel> getTurnoverInIndustrySNI2002Annual() {
-        return getTurnoverInIndustrySNI2002Annual(null, null, null);
-    }
-
-    /**
-     * <p>Fetch all turnover in industry SNI 2002 annual data which match the input
-     * constraints.</p>
-     *
-     * @param markets
-     *            the markets
-     * @param industrialClassifications
-     *            the industrial classifications
-     * @param years
-     *            the years
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     */
-    public List<ResponseModel> getTurnoverInIndustrySNI2002Annual(Collection<String> markets,
-            Collection<String> industrialClassifications, Collection<Integer> years) {
-        Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(MARKET_CODE, markets);
-        mappings.put(APIConstants.SNI2002_CODE, industrialClassifications);
-        mappings.put(APIConstants.TIME_CODE, years);
-
-        return getResponseModels("IndLev2000Ar", mappings);
-    }
-
-    /**
-     * <p>Fetch all turnover in industry SNI 2002 monthly data.</p>
-     *
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     *
-     * @see #getTurnoverInIndustrySNI2002Monthly(Collection, Collection, Collection)
-     */
-    public List<ResponseModel> getTurnoverInIndustrySNI2002Monthly() {
-        return getTurnoverInIndustrySNI2002Monthly(null, null, null);
-    }
-
-    /**
-     * <p>Fetch all turnover in industry SNI 2002 monthly data which match the input
-     * constraints.</p>
-     *
-     * @param markets
-     *            the markets
-     * @param industrialClassifications
-     *            the industrial classifications
-     * @param months
-     *            the months
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     */
-    public List<ResponseModel> getTurnoverInIndustrySNI2002Monthly(Collection<String> markets,
-            Collection<String> industrialClassifications, Collection<String> months) {
-        Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(MARKET_CODE, markets);
-        mappings.put(APIConstants.SNI2002_CODE, industrialClassifications);
-        mappings.put(APIConstants.TIME_CODE, months);
-
-        return getResponseModels("IndLev2000M", mappings);
-    }
-
-    /**
-     * <p>Fetch all orders in industry SNI 2002 annual data.</p>
-     *
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     *
-     * @see #getOrdersInIndustrySNI2002Annual(Collection, Collection, Collection)
-     */
-    public List<ResponseModel> getOrdersInIndustrySNI2002Annual() {
-        return getOrdersInIndustrySNI2002Annual(null, null, null);
-    }
-
-    /**
-     * <p>Fetch all orders in industry SNI 2002 annual data which match the input
-     * constraints.</p>
-     *
-     * @param markets
-     *            the markets
-     * @param industrialClassifications
-     *            the industrial classifications
-     * @param years
-     *            the years
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     */
-    public List<ResponseModel> getOrdersInIndustrySNI2002Annual(Collection<String> markets,
-            Collection<String> industrialClassifications, Collection<Integer> years) {
-        Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(MARKET_CODE, markets);
-        mappings.put(APIConstants.SNI2002_CODE, industrialClassifications);
-        mappings.put(APIConstants.TIME_CODE, years);
-
-        return getResponseModels("IndOrd2000Ar", mappings);
-    }
-
-    /**
-     * <p>Fetch all orders in industry SNI 2002 monthly data.</p>
-     *
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     *
-     * @see #getOrdersInIndustrySNI2002Monthly(Collection, Collection, Collection)
-     */
-    public List<ResponseModel> getOrdersInIndustrySNI2002Monthly() {
-        return getOrdersInIndustrySNI2002Monthly(null, null, null);
-    }
-
-    /**
-     * <p>Fetch all orders in industry SNI 2002 monthly data which match the input
-     * constraints.</p>
-     *
-     * @param markets
-     *            the markets
-     * @param industrialClassifications
-     *            the industrial classifications
-     * @param months
-     *            the months
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     */
-    public List<ResponseModel> getOrdersInIndustrySNI2002Monthly(Collection<String> markets,
-            Collection<String> industrialClassifications, Collection<String> months) {
-        Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(MARKET_CODE, markets);
-        mappings.put(APIConstants.SNI2002_CODE, industrialClassifications);
-        mappings.put(APIConstants.TIME_CODE, months);
-
-        return getResponseModels("IndOrd2000M", mappings);
     }
 
     @Override

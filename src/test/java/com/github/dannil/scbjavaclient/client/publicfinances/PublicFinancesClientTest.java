@@ -44,42 +44,42 @@ public class PublicFinancesClientTest {
     public void annualAccountsClient() {
         PublicFinancesClient client = new PublicFinancesClient();
 
-        assertEquals(client.annualAccounts().getClass(), PublicFinancesAnnualAccountsClient.class);
+        assertEquals(PublicFinancesAnnualAccountsClient.class, client.annualAccounts().getClass());
     }
 
     @Test
     public void assetsAndLiabilities() {
         PublicFinancesClient client = new PublicFinancesClient();
 
-        assertEquals(client.assetsAndLiabilities().getClass(), PublicFinancesAssetsAndLiabilitiesClient.class);
+        assertEquals(PublicFinancesAssetsAndLiabilitiesClient.class, client.assetsAndLiabilities().getClass());
     }
 
     @Test
     public void governmentDebtClient() {
         PublicFinancesClient client = new PublicFinancesClient();
 
-        assertEquals(client.governmentDebt().getClass(), PublicFinancesGovernmentDebtClient.class);
+        assertEquals(PublicFinancesGovernmentDebtClient.class, client.governmentDebt().getClass());
     }
 
     @Test
     public void localTaxesClient() {
         PublicFinancesClient client = new PublicFinancesClient();
 
-        assertEquals(client.localTaxes().getClass(), PublicFinancesLocalTaxesClient.class);
+        assertEquals(PublicFinancesLocalTaxesClient.class, client.localTaxes().getClass());
     }
 
     @Test
     public void publiclyOwnedEnterprisesClient() {
         PublicFinancesClient client = new PublicFinancesClient();
 
-        assertEquals(client.publiclyOwnedEnterprises().getClass(), PublicFinancesPubliclyOwnedEnterprisesClient.class);
+        assertEquals(PublicFinancesPubliclyOwnedEnterprisesClient.class, client.publiclyOwnedEnterprises().getClass());
     }
 
     @Test
     public void taxAssessmentClient() {
         PublicFinancesClient client = new PublicFinancesClient();
 
-        assertEquals(client.taxAssessment().getClass(), PublicFinancesTaxAssessmentClient.class);
+        assertEquals(PublicFinancesTaxAssessmentClient.class, client.taxAssessment().getClass());
     }
 
     @Test

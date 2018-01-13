@@ -117,9 +117,7 @@ public class RequesterSingletonFactoryTest {
 
     @Test
     public void getRequesterIllegalArgument() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            RequesterSingletonFactory.getRequester(null);
-        });
+        assertThrows(IllegalArgumentException.class, () -> RequesterSingletonFactory.getRequester(null));
     }
 
     // @Test

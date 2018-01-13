@@ -41,14 +41,14 @@ public class BusinessActivitiesAccomodationStatisticsClientTest {
     public void monthClient() {
         BusinessActivitiesAccomodationStatisticsClient client = new BusinessActivitiesAccomodationStatisticsClient();
 
-        assertEquals(client.month().getClass(), BusinessActivitiesAccomodationStatisticsMonthClient.class);
+        assertEquals(BusinessActivitiesAccomodationStatisticsMonthClient.class, client.month().getClass());
     }
 
     @Test
     public void yearClient() {
         BusinessActivitiesAccomodationStatisticsClient client = new BusinessActivitiesAccomodationStatisticsClient();
 
-        assertEquals(client.year().getClass(), BusinessActivitiesAccomodationStatisticsYearClient.class);
+        assertEquals(BusinessActivitiesAccomodationStatisticsYearClient.class, client.year().getClass());
     }
 
     @Test

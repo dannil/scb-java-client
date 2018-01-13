@@ -29,7 +29,8 @@ public class BusinessActivitiesNonFinancialCorporationsClientTest {
     @Test
     public void createWithLocaleConstructor() {
         Locale locale = new Locale("sv", "SE");
-        BusinessActivitiesNonFinancialCorporationsClient client = new BusinessActivitiesNonFinancialCorporationsClient(locale);
+        BusinessActivitiesNonFinancialCorporationsClient client = new BusinessActivitiesNonFinancialCorporationsClient(
+                locale);
 
         assertEquals(locale, client.getLocale());
     }
@@ -39,7 +40,8 @@ public class BusinessActivitiesNonFinancialCorporationsClientTest {
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints
         Locale locale = new Locale("en", "US");
-        BusinessActivitiesNonFinancialCorporationsClient client = new BusinessActivitiesNonFinancialCorporationsClient(locale);
+        BusinessActivitiesNonFinancialCorporationsClient client = new BusinessActivitiesNonFinancialCorporationsClient(
+                locale);
 
         assertEquals(URLEndpoint.getRootUrl(locale).append("NV/NV0118/"), client.getUrl());
     }

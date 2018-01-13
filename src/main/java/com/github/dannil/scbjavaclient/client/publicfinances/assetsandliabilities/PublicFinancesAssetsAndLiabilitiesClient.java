@@ -78,7 +78,7 @@ public class PublicFinancesAssetsAndLiabilitiesClient extends AbstractClient {
     public List<ResponseModel> getAssetsAndLiabilities(Collection<Integer> items, Collection<Integer> sectors,
             Collection<String> quarters) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Kontopost", items);
+        mappings.put(APIConstants.ITEM_CODE, items);
         mappings.put(APIConstants.SECTOR_CODE, sectors);
         mappings.put(APIConstants.TIME_CODE, quarters);
 

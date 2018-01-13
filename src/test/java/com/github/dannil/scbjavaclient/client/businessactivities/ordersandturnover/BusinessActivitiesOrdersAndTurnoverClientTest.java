@@ -18,7 +18,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.client.businessactivities.ordersandturnover.economicindicators.BusinessActivitiesOrdersAndTurnoverEconomicIndicatorsClient;
+import com.github.dannil.scbjavaclient.client.businessactivities.ordersandturnover.oldtablessni2002.BusinessActivitiesOrdersAndTurnoverOldTablesSNI2002Client;
+import com.github.dannil.scbjavaclient.client.businessactivities.ordersandturnover.oldtablessni2007.BusinessActivitiesOrdersAndTurnoverOldTablesSNI2007Client;
 import com.github.dannil.scbjavaclient.client.businessactivities.ordersandturnover.ordersandturnover.BusinessActivitiesOrdersAndTurnoverOrdersAndTurnoverClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
@@ -37,19 +38,27 @@ public class BusinessActivitiesOrdersAndTurnoverClientTest {
     }
 
     @Test
-    public void economicIndicatorsClient() {
+    public void oldTablesSNI2002Client() {
         BusinessActivitiesOrdersAndTurnoverClient client = new BusinessActivitiesOrdersAndTurnoverClient();
 
-        assertEquals(client.economicIndicators().getClass(),
-                BusinessActivitiesOrdersAndTurnoverEconomicIndicatorsClient.class);
+        assertEquals(BusinessActivitiesOrdersAndTurnoverOldTablesSNI2002Client.class,
+                client.oldTablesSNI2002().getClass());
+    }
+
+    @Test
+    public void oldTablesSNI2007Client() {
+        BusinessActivitiesOrdersAndTurnoverClient client = new BusinessActivitiesOrdersAndTurnoverClient();
+
+        assertEquals(BusinessActivitiesOrdersAndTurnoverOldTablesSNI2007Client.class,
+                client.oldTablesSNI2007().getClass());
     }
 
     @Test
     public void ordersAndTurnoverClient() {
         BusinessActivitiesOrdersAndTurnoverClient client = new BusinessActivitiesOrdersAndTurnoverClient();
 
-        assertEquals(client.ordersAndTurnover().getClass(),
-                BusinessActivitiesOrdersAndTurnoverOrdersAndTurnoverClient.class);
+        assertEquals(BusinessActivitiesOrdersAndTurnoverOrdersAndTurnoverClient.class,
+                client.ordersAndTurnover().getClass());
     }
 
     @Test

@@ -111,7 +111,7 @@ public class TestIT {
             }
         }
         assertTrue(matchedClasses.isEmpty(),
-                "Classes not having correct package and name: " + matchedClasses.toString());
+                "Classes not having correct package and/or name: " + matchedClasses.toString());
     }
 
     @Test
@@ -154,7 +154,7 @@ public class TestIT {
             }
         }
         assertTrue(matchedClasses.isEmpty(),
-                "Test classes not having matching name and/or package : " + matchedClasses.toString());
+                "Classes not having matching test class name and/or package: " + matchedClasses.toString());
     }
 
     @Test

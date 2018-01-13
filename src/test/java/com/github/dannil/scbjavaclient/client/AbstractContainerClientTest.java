@@ -80,9 +80,7 @@ public class AbstractContainerClientTest {
         Locale locale = new Locale("sv", "SE");
         AbstractContainerClient client = new DummyContainerClient(locale);
 
-        assertThrows(IllegalArgumentException.class, () -> {
-            client.addClient("client", client);
-        });
+        assertThrows(IllegalArgumentException.class, () -> client.addClient("client", client));
     }
 
 }
