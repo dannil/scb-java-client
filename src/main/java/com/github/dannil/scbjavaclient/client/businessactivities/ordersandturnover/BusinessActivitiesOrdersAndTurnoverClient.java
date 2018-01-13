@@ -17,7 +17,8 @@ package com.github.dannil.scbjavaclient.client.businessactivities.ordersandturno
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
-import com.github.dannil.scbjavaclient.client.businessactivities.ordersandturnover.economicindicators.BusinessActivitiesOrdersAndTurnoverEconomicIndicatorsClient;
+import com.github.dannil.scbjavaclient.client.businessactivities.ordersandturnover.oldtablessni2002.BusinessActivitiesOrdersAndTurnoverOldTablesSNI2002Client;
+import com.github.dannil.scbjavaclient.client.businessactivities.ordersandturnover.oldtablessni2007.BusinessActivitiesOrdersAndTurnoverOldTablesSNI2007Client;
 import com.github.dannil.scbjavaclient.client.businessactivities.ordersandturnover.ordersandturnover.BusinessActivitiesOrdersAndTurnoverOrdersAndTurnoverClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
@@ -34,7 +35,8 @@ public class BusinessActivitiesOrdersAndTurnoverClient extends AbstractContainer
     public BusinessActivitiesOrdersAndTurnoverClient() {
         super();
 
-        addClient("economicindicators", new BusinessActivitiesOrdersAndTurnoverEconomicIndicatorsClient());
+        addClient("oldtablessni2002", new BusinessActivitiesOrdersAndTurnoverOldTablesSNI2002Client());
+        addClient("oldtablessni2007", new BusinessActivitiesOrdersAndTurnoverOldTablesSNI2007Client());
         addClient("ordersandturnover", new BusinessActivitiesOrdersAndTurnoverOrdersAndTurnoverClient());
     }
 
@@ -52,13 +54,24 @@ public class BusinessActivitiesOrdersAndTurnoverClient extends AbstractContainer
 
     /**
      * <p>Retrieve the client for interacting with business activities orders and turnover
-     * economic indicators data.</p>
+     * old tables SNI 2002 data.</p>
      *
-     * @return a client for business activities orders and turnover economic indicators
+     * @return a client for business activities orders and turnover old tables SNI 2002
      *         data
      */
-    public BusinessActivitiesOrdersAndTurnoverEconomicIndicatorsClient economicIndicators() {
-        return (BusinessActivitiesOrdersAndTurnoverEconomicIndicatorsClient) getClient("economicindicators");
+    public BusinessActivitiesOrdersAndTurnoverOldTablesSNI2002Client oldTablesSNI2002() {
+        return (BusinessActivitiesOrdersAndTurnoverOldTablesSNI2002Client) getClient("oldtablessni2002");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with business activities orders and turnover
+     * old tables SNI 2007 data.</p>
+     *
+     * @return a client for business activities orders and turnover old tables SNI 2007
+     *         data
+     */
+    public BusinessActivitiesOrdersAndTurnoverOldTablesSNI2007Client oldTablesSNI2007() {
+        return (BusinessActivitiesOrdersAndTurnoverOldTablesSNI2007Client) getClient("oldtablessni2007");
     }
 
     /**

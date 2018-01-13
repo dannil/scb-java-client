@@ -18,7 +18,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.client.businessactivities.ordersandturnover.economicindicators.BusinessActivitiesOrdersAndTurnoverEconomicIndicatorsClient;
+import com.github.dannil.scbjavaclient.client.businessactivities.ordersandturnover.oldtablessni2002.BusinessActivitiesOrdersAndTurnoverOldTablesSNI2002Client;
+import com.github.dannil.scbjavaclient.client.businessactivities.ordersandturnover.oldtablessni2007.BusinessActivitiesOrdersAndTurnoverOldTablesSNI2007Client;
 import com.github.dannil.scbjavaclient.client.businessactivities.ordersandturnover.ordersandturnover.BusinessActivitiesOrdersAndTurnoverOrdersAndTurnoverClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
@@ -37,11 +38,19 @@ public class BusinessActivitiesOrdersAndTurnoverClientTest {
     }
 
     @Test
-    public void economicIndicatorsClient() {
+    public void oldTablesSNI2002Client() {
         BusinessActivitiesOrdersAndTurnoverClient client = new BusinessActivitiesOrdersAndTurnoverClient();
 
-        assertEquals(client.economicIndicators().getClass(),
-                BusinessActivitiesOrdersAndTurnoverEconomicIndicatorsClient.class);
+        assertEquals(client.oldTablesSNI2002().getClass(),
+                BusinessActivitiesOrdersAndTurnoverOldTablesSNI2002Client.class);
+    }
+
+    @Test
+    public void oldTablesSNI2007Client() {
+        BusinessActivitiesOrdersAndTurnoverClient client = new BusinessActivitiesOrdersAndTurnoverClient();
+
+        assertEquals(client.oldTablesSNI2007().getClass(),
+                BusinessActivitiesOrdersAndTurnoverOldTablesSNI2007Client.class);
     }
 
     @Test
