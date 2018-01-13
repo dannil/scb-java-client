@@ -37,7 +37,7 @@ public class BusinessActivitiesOrdersAndTurnoverOldTablesSNI2007ClientIT {
     public void setup() {
         this.client = new BusinessActivitiesOrdersAndTurnoverOldTablesSNI2007Client();
     }
-    
+
     @Test
     @Date("2018-01-13")
     public void getTurnoverInIndustryFixedPricesSNI2007Annual() {
@@ -61,7 +61,7 @@ public class BusinessActivitiesOrdersAndTurnoverOldTablesSNI2007ClientIT {
         assertNotEquals(0, this.client.getTurnoverInIndustryFixedPricesSNI2007Annual(markets, industrialClassifications,
                 years).size());
     }
-    
+
     @Test
     @Date("2018-01-13")
     public void getOrdersInIndustryFixedPricesSNI2007Annual() {
@@ -85,7 +85,7 @@ public class BusinessActivitiesOrdersAndTurnoverOldTablesSNI2007ClientIT {
         assertNotEquals(0, this.client.getOrdersInIndustryFixedPricesSNI2007Annual(markets, industrialClassifications,
                 years).size());
     }
-    
+
     @Test
     @Date("2018-01-13")
     public void getOrdersAndTurnoverInIndustryForTotalIndustry() {

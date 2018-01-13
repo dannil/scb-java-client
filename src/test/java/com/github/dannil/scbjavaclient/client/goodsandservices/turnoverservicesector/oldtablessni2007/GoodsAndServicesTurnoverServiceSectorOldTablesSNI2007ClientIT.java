@@ -37,7 +37,7 @@ public class GoodsAndServicesTurnoverServiceSectorOldTablesSNI2007ClientIT {
     public void setup() {
         this.client = new GoodsAndServicesTurnoverServiceSectorOldTablesSNI2007Client();
     }
-    
+
     @Test
     @Date("2018-01-13")
     public void getTurnoverIndexForTheServiceSectorSIC2007Yearly() {
@@ -84,7 +84,7 @@ public class GoodsAndServicesTurnoverServiceSectorOldTablesSNI2007ClientIT {
         assertNotEquals(0, this.client.getTurnoverIndexForTheServiceSectorSIC2007Quarterly(industrialClassifications,
                 quarters).size());
     }
-    
+
     @Test
     @Date("2018-01-13")
     public void getRetailTradeSales() {

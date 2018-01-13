@@ -37,7 +37,7 @@ public class BusinessActivitiesOrdersAndTurnoverOldTablesSNI2002ClientIT {
     public void setup() {
         this.client = new BusinessActivitiesOrdersAndTurnoverOldTablesSNI2002Client();
     }
-    
+
     @Test
     @Date("2018-01-13")
     public void getTurnoverInIndustrySNI2002Annual() {
@@ -61,7 +61,7 @@ public class BusinessActivitiesOrdersAndTurnoverOldTablesSNI2002ClientIT {
         assertNotEquals(0,
                 this.client.getTurnoverInIndustrySNI2002Annual(markets, industrialClassifications, years).size());
     }
-    
+
     @Test
     @Date("2018-01-13")
     public void getTurnoverInIndustrySNI2002Monthly() {

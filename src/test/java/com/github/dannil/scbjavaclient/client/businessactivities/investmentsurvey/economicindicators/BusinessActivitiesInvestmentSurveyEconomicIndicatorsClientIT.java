@@ -59,7 +59,7 @@ public class BusinessActivitiesInvestmentSurveyEconomicIndicatorsClientIT {
 
         assertNotEquals(0, this.client.getInvestmentSurveyPlansAndOutcomes(economicIndicators, years).size());
     }
-    
- // TODO Add more methods
+
+    // TODO Add more methods
 
 }

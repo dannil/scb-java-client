@@ -37,7 +37,7 @@ public class GoodsAndServicesTurnoverServiceSectorOldTablesSNI2002ClientIT {
     public void setup() {
         this.client = new GoodsAndServicesTurnoverServiceSectorOldTablesSNI2002Client();
     }
-    
+
     @Test
     @Date("2018-01-13")
     public void getTurnoverIndexForWholesaleTradeAndOtherServicesSIC2002Yearly() {

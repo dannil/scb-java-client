@@ -26,7 +26,8 @@ import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles business activities orders and turnover old tables SNI 2007 data fetching.</p>
+ * <p>Client which handles business activities orders and turnover old tables SNI 2007
+ * data fetching.</p>
  *
  * @since 0.7.0
  */

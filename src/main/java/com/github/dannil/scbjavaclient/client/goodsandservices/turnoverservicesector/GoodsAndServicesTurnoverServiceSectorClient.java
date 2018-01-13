@@ -56,7 +56,8 @@ public class GoodsAndServicesTurnoverServiceSectorClient extends AbstractContain
      * <p>Retrieve the client for interacting with goods and services turnover service
      * sector old tables SNI 2002 data.</p>
      *
-     * @return a client for goods and services turnover service sector old tables SNI 2002 data
+     * @return a client for goods and services turnover service sector old tables SNI 2002
+     *         data
      */
     public GoodsAndServicesTurnoverServiceSectorOldTablesSNI2002Client oldTablesSNI2002() {
         return (GoodsAndServicesTurnoverServiceSectorOldTablesSNI2002Client) getClient("oldtablessni2002");
@@ -66,7 +67,8 @@ public class GoodsAndServicesTurnoverServiceSectorClient extends AbstractContain
      * <p>Retrieve the client for interacting with goods and services turnover service
      * sector old tables SNI 2007 data.</p>
      *
-     * @return a client for goods and services turnover service sector old tables SNI 2007 data
+     * @return a client for goods and services turnover service sector old tables SNI 2007
+     *         data
      */
     public GoodsAndServicesTurnoverServiceSectorOldTablesSNI2007Client oldTablesSNI2007() {
         return (GoodsAndServicesTurnoverServiceSectorOldTablesSNI2007Client) getClient("oldtablessni2007");
