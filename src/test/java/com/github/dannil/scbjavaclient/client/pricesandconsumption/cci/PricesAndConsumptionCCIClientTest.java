@@ -40,14 +40,14 @@ public class PricesAndConsumptionCCIClientTest {
     public void fpiExcludingWage() {
         PricesAndConsumptionCCIClient client = new PricesAndConsumptionCCIClient();
 
-        assertEquals(client.fpiExcludingWage().getClass(), PricesAndConsumptionCCIFPIExcludingWageClient.class);
+        assertEquals(PricesAndConsumptionCCIFPIExcludingWageClient.class, client.fpiExcludingWage().getClass());
     }
 
     @Test
     public void fpiIncludingWage() {
         PricesAndConsumptionCCIClient client = new PricesAndConsumptionCCIClient();
 
-        assertEquals(client.fpiIncludingWage().getClass(), PricesAndConsumptionCCIFPIIncludingWageClient.class);
+        assertEquals(PricesAndConsumptionCCIFPIIncludingWageClient.class, client.fpiIncludingWage().getClass());
     }
 
     @Test

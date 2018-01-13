@@ -202,7 +202,7 @@ public class AbstractClientIT {
     }
 
     @Test
-    public void checkForCorrectPackageAndClientNames() {
+    public void checkForCorrectPackageAndName() {
         String execPath = System.getProperty("user.dir");
 
         // Find files matching the wildcard pattern
@@ -230,7 +230,12 @@ public class AbstractClientIT {
                 String substr = packageName.substring(beginIndex);
                 String lastPart = substr.replace(".", "").concat("client");
 
+                // Check if package name is correct
                 if (clazz.getSimpleName().toLowerCase().indexOf(lastPart) > 0) {
+                    matchedClasses.add(clazz);
+                }
+                // Check if class name is correct
+                else if (!clazz.getSimpleName().toLowerCase().startsWith(lastPart)) {
                     matchedClasses.add(clazz);
                 }
             } catch (ClassNotFoundException e) {
@@ -241,7 +246,7 @@ public class AbstractClientIT {
             }
         }
         assertTrue(matchedClasses.isEmpty(),
-                "Classes not having matching package and client name: " + matchedClasses.toString());
+                "Classes not having correct package and/or name: " + matchedClasses.toString());
     }
 
     @Test

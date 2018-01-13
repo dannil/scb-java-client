@@ -31,11 +31,11 @@ import org.junit.jupiter.api.Test;
 @Remote
 public class GoodsAndServicesTurnoverServiceSectorTurnoverClientIT {
 
-    private GoodsAndServicesTurnoverServiceSectorTurnover client;
+    private GoodsAndServicesTurnoverServiceSectorTurnoverClient client;
 
     @BeforeEach
     public void setup() {
-        this.client = new GoodsAndServicesTurnoverServiceSectorTurnover();
+        this.client = new GoodsAndServicesTurnoverServiceSectorTurnoverClient();
     }
 
     @Test

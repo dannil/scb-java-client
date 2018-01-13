@@ -48,72 +48,72 @@ public class BusinessActivitiesClientTest {
     public void accomodationStatisticsClient() {
         BusinessActivitiesClient client = new BusinessActivitiesClient();
 
-        assertEquals(client.accomodationStatistics().getClass(), BusinessActivitiesAccomodationStatisticsClient.class);
+        assertEquals(BusinessActivitiesAccomodationStatisticsClient.class, client.accomodationStatistics().getClass());
     }
 
     @Test
     public void balanceStatisticsClient() {
         BusinessActivitiesClient client = new BusinessActivitiesClient();
 
-        assertEquals(client.balanceStatistics().getClass(), BusinessActivitiesBalanceStatisticsClient.class);
+        assertEquals(BusinessActivitiesBalanceStatisticsClient.class, client.balanceStatistics().getClass());
     }
 
     @Test
     public void databaseClient() {
         BusinessActivitiesClient client = new BusinessActivitiesClient();
 
-        assertEquals(client.database().getClass(), BusinessActivitiesDatabaseClient.class);
+        assertEquals(BusinessActivitiesDatabaseClient.class, client.database().getClass());
     }
 
     @Test
     public void industrialCapacityUtilizationClient() {
         BusinessActivitiesClient client = new BusinessActivitiesClient();
 
-        assertEquals(client.industrialCapacityUtilization().getClass(),
-                BusinessActivitiesIndustrialCapacityUtilizationClient.class);
+        assertEquals(BusinessActivitiesIndustrialCapacityUtilizationClient.class,
+                client.industrialCapacityUtilization().getClass());
     }
 
     @Test
     public void industrialInventoriesClient() {
         BusinessActivitiesClient client = new BusinessActivitiesClient();
 
-        assertEquals(client.industrialInventories().getClass(), BusinessActivitiesIndustrialInventoriesClient.class);
+        assertEquals(BusinessActivitiesIndustrialInventoriesClient.class, client.industrialInventories().getClass());
     }
 
     @Test
     public void investmentSurveyClient() {
         BusinessActivitiesClient client = new BusinessActivitiesClient();
 
-        assertEquals(client.investmentSurvey().getClass(), BusinessActivitiesInvestmentSurveyClient.class);
+        assertEquals(BusinessActivitiesInvestmentSurveyClient.class, client.investmentSurvey().getClass());
     }
 
     @Test
     public void nonFinancialCorporationsClient() {
         BusinessActivitiesClient client = new BusinessActivitiesClient();
 
-        assertEquals(client.nonFinancialCorporations().getClass(),
-                BusinessActivitiesNonFinancialCorporationsClient.class);
+        assertEquals(BusinessActivitiesNonFinancialCorporationsClient.class,
+                client.nonFinancialCorporations().getClass());
     }
 
     @Test
     public void nonProfitOrganizationsClient() {
         BusinessActivitiesClient client = new BusinessActivitiesClient();
 
-        assertEquals(client.nonProfitOrganizations().getClass(), BusinessActivitiesNonProfitOrganizationsClient.class);
+        assertEquals(BusinessActivitiesNonProfitOrganizationsClient.class, client.nonProfitOrganizations().getClass());
     }
 
     @Test
     public void productionIndexClient() {
         BusinessActivitiesClient client = new BusinessActivitiesClient();
 
-        assertEquals(client.productionIndex().getClass(), BusinessActivitiesProductionIndexClient.class);
+        assertEquals(BusinessActivitiesProductionIndexClient.class, client.productionIndex().getClass());
     }
 
     @Test
     public void productionValueIndexClient() {
         BusinessActivitiesClient client = new BusinessActivitiesClient();
 
-        assertEquals(client.productionValueIndex().getClass(), BusinessActivitiesProductionValueIndexClient.class);
+        assertEquals(BusinessActivitiesProductionValueIndexClient.class, client.productionValueIndex().getClass());
     }
 
     @Test

@@ -43,36 +43,36 @@ public class PricesAndConsumptionClientTest {
     public void bpi() {
         PricesAndConsumptionClient client = new PricesAndConsumptionClient();
 
-        assertEquals(client.bpi().getClass(), PricesAndConsumptionBPIClient.class);
+        assertEquals(PricesAndConsumptionBPIClient.class, client.bpi().getClass());
     }
 
     @Test
     public void cci() {
         PricesAndConsumptionClient client = new PricesAndConsumptionClient();
 
-        assertEquals(client.cci().getClass(), PricesAndConsumptionCCIClient.class);
+        assertEquals(PricesAndConsumptionCCIClient.class, client.cci().getClass());
     }
 
     @Test
     public void cpi() {
         PricesAndConsumptionClient client = new PricesAndConsumptionClient();
 
-        assertEquals(client.cpi().getClass(), PricesAndConsumptionCPIClient.class);
+        assertEquals(PricesAndConsumptionCPIClient.class, client.cpi().getClass());
     }
 
     @Test
     public void ppi() {
         PricesAndConsumptionClient client = new PricesAndConsumptionClient();
 
-        assertEquals(client.ppi().getClass(), PricesAndConsumptionPPIClient.class);
+        assertEquals(PricesAndConsumptionPPIClient.class, client.ppi().getClass());
     }
 
     @Test
     public void purchasingPowerParities() {
         PricesAndConsumptionClient client = new PricesAndConsumptionClient();
 
-        assertEquals(client.purchasingPowerParities().getClass(),
-                PricesAndConsumptionPurchasingPowerParitiesClient.class);
+        assertEquals(PricesAndConsumptionPurchasingPowerParitiesClient.class,
+                client.purchasingPowerParities().getClass());
     }
 
     @Test

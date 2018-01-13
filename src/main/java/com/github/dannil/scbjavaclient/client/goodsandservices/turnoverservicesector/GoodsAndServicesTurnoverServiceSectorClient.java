@@ -19,7 +19,7 @@ import java.util.Locale;
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.goodsandservices.turnoverservicesector.oldtablessni2002.GoodsAndServicesTurnoverServiceSectorOldTablesSNI2002Client;
 import com.github.dannil.scbjavaclient.client.goodsandservices.turnoverservicesector.oldtablessni2007.GoodsAndServicesTurnoverServiceSectorOldTablesSNI2007Client;
-import com.github.dannil.scbjavaclient.client.goodsandservices.turnoverservicesector.turnover.GoodsAndServicesTurnoverServiceSectorTurnover;
+import com.github.dannil.scbjavaclient.client.goodsandservices.turnoverservicesector.turnover.GoodsAndServicesTurnoverServiceSectorTurnoverClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 /**
@@ -27,17 +27,17 @@ import com.github.dannil.scbjavaclient.http.URLEndpoint;
  *
  * @since 0.7.0
  */
-public class GoodsAndServicesTurnoverServiceSector extends AbstractContainerClient {
+public class GoodsAndServicesTurnoverServiceSectorClient extends AbstractContainerClient {
 
     /**
      * <p>Default constructor. Initializes values and creates sub-clients.</p>
      */
-    public GoodsAndServicesTurnoverServiceSector() {
+    public GoodsAndServicesTurnoverServiceSectorClient() {
         super();
 
         addClient("oldtablessni2002", new GoodsAndServicesTurnoverServiceSectorOldTablesSNI2002Client());
         addClient("oldtablessni2007", new GoodsAndServicesTurnoverServiceSectorOldTablesSNI2007Client());
-        addClient("turnover", new GoodsAndServicesTurnoverServiceSectorTurnover());
+        addClient("turnover", new GoodsAndServicesTurnoverServiceSectorTurnoverClient());
     }
 
     /**
@@ -46,7 +46,7 @@ public class GoodsAndServicesTurnoverServiceSector extends AbstractContainerClie
      * @param locale
      *            the <code>Locale</code> for this client
      */
-    public GoodsAndServicesTurnoverServiceSector(Locale locale) {
+    public GoodsAndServicesTurnoverServiceSectorClient(Locale locale) {
         this();
 
         setLocale(locale);
@@ -78,8 +78,8 @@ public class GoodsAndServicesTurnoverServiceSector extends AbstractContainerClie
      *
      * @return a client for goods and services turnover service sector turnover data
      */
-    public GoodsAndServicesTurnoverServiceSectorTurnover turnover() {
-        return (GoodsAndServicesTurnoverServiceSectorTurnover) getClient("turnover");
+    public GoodsAndServicesTurnoverServiceSectorTurnoverClient turnover() {
+        return (GoodsAndServicesTurnoverServiceSectorTurnoverClient) getClient("turnover");
     }
 
     @Override

@@ -40,14 +40,14 @@ public class LivingConditionsClientTest {
     public void familiesClient() {
         LivingConditionsClient client = new LivingConditionsClient();
 
-        assertEquals(client.families().getClass(), LivingConditionsFamiliesClient.class);
+        assertEquals(LivingConditionsFamiliesClient.class, client.families().getClass());
     }
 
     @Test
     public void surveysClient() {
         LivingConditionsClient client = new LivingConditionsClient();
 
-        assertEquals(client.surveys().getClass(), LivingConditionsSurveysClient.class);
+        assertEquals(LivingConditionsSurveysClient.class, client.surveys().getClass());
     }
 
     @Test

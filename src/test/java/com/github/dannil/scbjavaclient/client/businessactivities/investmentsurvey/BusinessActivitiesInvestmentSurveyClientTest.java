@@ -39,8 +39,8 @@ public class BusinessActivitiesInvestmentSurveyClientTest {
     public void economicIndicators() {
         BusinessActivitiesInvestmentSurveyClient client = new BusinessActivitiesInvestmentSurveyClient();
 
-        assertEquals(client.economicIndicators().getClass(),
-                BusinessActivitiesInvestmentSurveyEconomicIndicatorsClient.class);
+        assertEquals(BusinessActivitiesInvestmentSurveyEconomicIndicatorsClient.class,
+                client.economicIndicators().getClass());
     }
 
     // TODO Add more methods

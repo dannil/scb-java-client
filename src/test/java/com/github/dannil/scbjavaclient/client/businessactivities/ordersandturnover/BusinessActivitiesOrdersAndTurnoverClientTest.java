@@ -41,24 +41,24 @@ public class BusinessActivitiesOrdersAndTurnoverClientTest {
     public void oldTablesSNI2002Client() {
         BusinessActivitiesOrdersAndTurnoverClient client = new BusinessActivitiesOrdersAndTurnoverClient();
 
-        assertEquals(client.oldTablesSNI2002().getClass(),
-                BusinessActivitiesOrdersAndTurnoverOldTablesSNI2002Client.class);
+        assertEquals(BusinessActivitiesOrdersAndTurnoverOldTablesSNI2002Client.class,
+                client.oldTablesSNI2002().getClass());
     }
 
     @Test
     public void oldTablesSNI2007Client() {
         BusinessActivitiesOrdersAndTurnoverClient client = new BusinessActivitiesOrdersAndTurnoverClient();
 
-        assertEquals(client.oldTablesSNI2007().getClass(),
-                BusinessActivitiesOrdersAndTurnoverOldTablesSNI2007Client.class);
+        assertEquals(BusinessActivitiesOrdersAndTurnoverOldTablesSNI2007Client.class,
+                client.oldTablesSNI2007().getClass());
     }
 
     @Test
     public void ordersAndTurnoverClient() {
         BusinessActivitiesOrdersAndTurnoverClient client = new BusinessActivitiesOrdersAndTurnoverClient();
 
-        assertEquals(client.ordersAndTurnover().getClass(),
-                BusinessActivitiesOrdersAndTurnoverOrdersAndTurnoverClient.class);
+        assertEquals(BusinessActivitiesOrdersAndTurnoverOrdersAndTurnoverClient.class,
+                client.ordersAndTurnover().getClass());
     }
 
     @Test

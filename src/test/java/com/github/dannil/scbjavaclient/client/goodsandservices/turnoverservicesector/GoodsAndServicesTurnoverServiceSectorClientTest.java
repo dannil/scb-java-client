@@ -20,7 +20,7 @@ import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.goodsandservices.turnoverservicesector.oldtablessni2002.GoodsAndServicesTurnoverServiceSectorOldTablesSNI2002Client;
 import com.github.dannil.scbjavaclient.client.goodsandservices.turnoverservicesector.oldtablessni2007.GoodsAndServicesTurnoverServiceSectorOldTablesSNI2007Client;
-import com.github.dannil.scbjavaclient.client.goodsandservices.turnoverservicesector.turnover.GoodsAndServicesTurnoverServiceSectorTurnover;
+import com.github.dannil.scbjavaclient.client.goodsandservices.turnoverservicesector.turnover.GoodsAndServicesTurnoverServiceSectorTurnoverClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
@@ -32,30 +32,32 @@ public class GoodsAndServicesTurnoverServiceSectorClientTest {
     @Test
     public void createWithLocaleConstructor() {
         Locale locale = new Locale("sv", "SE");
-        GoodsAndServicesTurnoverServiceSector client = new GoodsAndServicesTurnoverServiceSector(locale);
+        GoodsAndServicesTurnoverServiceSectorClient client = new GoodsAndServicesTurnoverServiceSectorClient(locale);
 
         assertEquals(locale, client.getLocale());
     }
-    
+
     @Test
     public void oldTablesSNI2002Client() {
-        GoodsAndServicesTurnoverServiceSector client = new GoodsAndServicesTurnoverServiceSector();
+        GoodsAndServicesTurnoverServiceSectorClient client = new GoodsAndServicesTurnoverServiceSectorClient();
 
-        assertEquals(client.oldTablesSNI2002().getClass(), GoodsAndServicesTurnoverServiceSectorOldTablesSNI2002Client.class);
+        assertEquals(GoodsAndServicesTurnoverServiceSectorOldTablesSNI2002Client.class,
+                client.oldTablesSNI2002().getClass());
     }
-    
+
     @Test
     public void oldTablesSNI2007Client() {
-        GoodsAndServicesTurnoverServiceSector client = new GoodsAndServicesTurnoverServiceSector();
+        GoodsAndServicesTurnoverServiceSectorClient client = new GoodsAndServicesTurnoverServiceSectorClient();
 
-        assertEquals(client.oldTablesSNI2007().getClass(), GoodsAndServicesTurnoverServiceSectorOldTablesSNI2007Client.class);
+        assertEquals(GoodsAndServicesTurnoverServiceSectorOldTablesSNI2007Client.class,
+                client.oldTablesSNI2007().getClass());
     }
 
     @Test
     public void turnoverClient() {
-        GoodsAndServicesTurnoverServiceSector client = new GoodsAndServicesTurnoverServiceSector();
+        GoodsAndServicesTurnoverServiceSectorClient client = new GoodsAndServicesTurnoverServiceSectorClient();
 
-        assertEquals(client.turnover().getClass(), GoodsAndServicesTurnoverServiceSectorTurnover.class);
+        assertEquals(GoodsAndServicesTurnoverServiceSectorTurnoverClient.class, client.turnover().getClass());
     }
 
     @Test
@@ -63,7 +65,7 @@ public class GoodsAndServicesTurnoverServiceSectorClientTest {
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints
         Locale locale = new Locale("en", "US");
-        GoodsAndServicesTurnoverServiceSector client = new GoodsAndServicesTurnoverServiceSector(locale);
+        GoodsAndServicesTurnoverServiceSectorClient client = new GoodsAndServicesTurnoverServiceSectorClient(locale);
 
         assertEquals(URLEndpoint.getRootUrl(locale).append("HA/HA0101/"), client.getUrl());
     }

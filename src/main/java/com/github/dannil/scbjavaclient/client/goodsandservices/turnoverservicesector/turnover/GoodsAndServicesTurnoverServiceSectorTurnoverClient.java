@@ -31,12 +31,12 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
  *
  * @since 0.7.0
  */
-public class GoodsAndServicesTurnoverServiceSectorTurnover extends AbstractClient {
+public class GoodsAndServicesTurnoverServiceSectorTurnoverClient extends AbstractClient {
 
     /**
      * <p>Default constructor.</p>
      */
-    public GoodsAndServicesTurnoverServiceSectorTurnover() {
+    public GoodsAndServicesTurnoverServiceSectorTurnoverClient() {
         super();
     }
 
@@ -46,7 +46,7 @@ public class GoodsAndServicesTurnoverServiceSectorTurnover extends AbstractClien
      * @param locale
      *            the <code>Locale</code> for this client
      */
-    public GoodsAndServicesTurnoverServiceSectorTurnover(Locale locale) {
+    public GoodsAndServicesTurnoverServiceSectorTurnoverClient(Locale locale) {
         super(locale);
     }
 
