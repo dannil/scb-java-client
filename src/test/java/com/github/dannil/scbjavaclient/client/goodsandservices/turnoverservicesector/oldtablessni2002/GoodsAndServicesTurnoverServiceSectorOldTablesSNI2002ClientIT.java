@@ -39,6 +39,30 @@ public class GoodsAndServicesTurnoverServiceSectorOldTablesSNI2002ClientIT {
     }
 
     @Test
+    @Date("2018-01-15")
+    public void getTurnoverIndexForMotorTradeHotelsRestaurantsAndOtherServicesSIC2002Yearly() {
+        assertNotEquals(0,
+                this.client.getTurnoverIndexForMotorTradeHotelsRestaurantsAndOtherServicesSIC2002Yearly().size());
+    }
+
+    @Test
+    @Date("2018-01-15")
+    public void getTurnoverIndexForMotorTradeHotelsRestaurantsAndOtherServicesSIC2002YearlyWithParametersEmptyLists() {
+        assertNotEquals(0, this.client.getTurnoverIndexForMotorTradeHotelsRestaurantsAndOtherServicesSIC2002Yearly(
+                Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
+    }
+
+    @Test
+    @Date("2018-01-15")
+    public void getTurnoverIndexForMotorTradeHotelsRestaurantsAndOtherServicesSIC2002YearlyWithParameters() {
+        List<String> industrialClassifications = Arrays.asList("50.2", "50.5");
+        List<Integer> years = Arrays.asList(2003, 2005);
+
+        assertNotEquals(0, this.client.getTurnoverIndexForMotorTradeHotelsRestaurantsAndOtherServicesSIC2002Yearly(
+                industrialClassifications, years).size());
+    }
+
+    @Test
     @Date("2018-01-13")
     public void getTurnoverIndexForWholesaleTradeAndOtherServicesSIC2002Yearly() {
         assertNotEquals(0, this.client.getTurnoverIndexForWholesaleTradeAndOtherServicesSIC2002Yearly().size());
@@ -104,6 +128,30 @@ public class GoodsAndServicesTurnoverServiceSectorOldTablesSNI2002ClientIT {
         List<Integer> years = Arrays.asList(2003, 2005);
 
         assertNotEquals(0, this.client.getRetailSaleIndexSIC2002Yearly(industrialClassifications, years).size());
+    }
+
+    @Test
+    @Date("2018-01-15")
+    public void getTurnoverIndexForMotorTradeHotelsRestaurantsAndOtherServicesSIC2002Quarterly() {
+        assertNotEquals(0,
+                this.client.getTurnoverIndexForMotorTradeHotelsRestaurantsAndOtherServicesSIC2002Quarterly().size());
+    }
+
+    @Test
+    @Date("2018-01-15")
+    public void getTurnoverIndexForMotorTradeHotelsRestaurantsAndOtherServicesSIC2002QuarterlyWithParametersEmptyLists() {
+        assertNotEquals(0, this.client.getTurnoverIndexForMotorTradeHotelsRestaurantsAndOtherServicesSIC2002Quarterly(
+                Collections.<String>emptyList(), Collections.<String>emptyList()).size());
+    }
+
+    @Test
+    @Date("2018-01-15")
+    public void getTurnoverIndexForMotorTradeHotelsRestaurantsAndOtherServicesSIC2002QuarterlyWithParameters() {
+        List<String> industrialClassifications = Arrays.asList("50.2", "50.5");
+        List<String> quarters = Arrays.asList("1998K2", "1998K3");
+
+        assertNotEquals(0, this.client.getTurnoverIndexForMotorTradeHotelsRestaurantsAndOtherServicesSIC2002Quarterly(
+                industrialClassifications, quarters).size());
     }
 
     @Test
