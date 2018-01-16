@@ -448,6 +448,24 @@
             </configuration>
           </execution>
           <execution>
+            <id>enforce-banned-dependencies</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <bannedDependencies>
+                  <searchTransitive>true</searchTransitive>
+                  <excludes>
+                    <!-- CVE-2015-7501 (https://access.redhat.com/security/cve/cve-2015-7501) -->
+                    <exclude>commons-collections:commons-collection</exclude>
+                  </excludes>
+                </bannedDependencies>
+              </rules>
+              <fail>true</fail>
+            </configuration>
+          </execution>
+          <execution>
             <id>enforce-versions</id>
             <goals>
               <goal>enforce</goal>
@@ -462,7 +480,23 @@
                 </requireJavaVersion>
                 <requireSameVersions>
                   <dependencies>
-                    <dependency>org.junit.jupiter</dependency>
+                    <dependency>com.fasterxml.jackson.core:jackson-core</dependency>
+                    <dependency>com.fasterxml.jackson.core:jackson-databind</dependency>
+                  </dependencies>
+                </requireSameVersions>
+                <requireSameVersions>
+                  <dependencies>
+                    <dependency>org.apache.logging.log4j:*</dependency>
+                  </dependencies>
+                </requireSameVersions>
+                <requireSameVersions>
+                  <dependencies>
+                    <dependency>org.junit.jupiter:*</dependency>
+                  </dependencies>
+                </requireSameVersions>
+                <requireSameVersions>
+                  <dependencies>
+                    <dependency>org.junit.platform:*</dependency>
                   </dependencies>
                 </requireSameVersions>
               </rules>
