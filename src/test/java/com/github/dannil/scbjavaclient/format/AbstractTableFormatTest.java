@@ -15,6 +15,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 @Suite
+@SuppressWarnings("deprecation")
 public class AbstractTableFormatTest {
 
     private class DummyTableFormat extends AbstractTableFormat {

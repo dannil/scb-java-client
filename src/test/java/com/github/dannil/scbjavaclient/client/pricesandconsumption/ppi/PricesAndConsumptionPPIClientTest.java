@@ -44,44 +44,44 @@ public class PricesAndConsumptionPPIClientTest {
     public void economicIndicators() {
         PricesAndConsumptionPPIClient client = new PricesAndConsumptionPPIClient();
 
-        assertEquals(client.economicIndicators().getClass(), PricesAndConsumptionPPIEconomicIndicatorsClient.class);
+        assertEquals(PricesAndConsumptionPPIEconomicIndicatorsClient.class, client.economicIndicators().getClass());
     }
 
     @Test
     public void spin2002Month() {
         PricesAndConsumptionPPIClient client = new PricesAndConsumptionPPIClient();
 
-        assertEquals(client.spin2002Month().getClass(), PricesAndConsumptionPPISPIN2002MonthClient.class);
+        assertEquals(PricesAndConsumptionPPISPIN2002MonthClient.class, client.spin2002Month().getClass());
     }
 
     @Test
     public void spin2002Year() {
         PricesAndConsumptionPPIClient client = new PricesAndConsumptionPPIClient();
 
-        assertEquals(client.spin2002Year().getClass(), PricesAndConsumptionPPISPIN2002YearClient.class);
+        assertEquals(PricesAndConsumptionPPISPIN2002YearClient.class, client.spin2002Year().getClass());
     }
 
     @Test
     public void spin2007MonthlyAndQuarterly() {
         PricesAndConsumptionPPIClient client = new PricesAndConsumptionPPIClient();
 
-        assertEquals(client.spin2007MonthlyAndQuarterly().getClass(),
-                PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient.class);
+        assertEquals(PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient.class,
+                client.spin2007MonthlyAndQuarterly().getClass());
     }
 
     @Test
     public void spin2007Year() {
         PricesAndConsumptionPPIClient client = new PricesAndConsumptionPPIClient();
 
-        assertEquals(client.spin2007Year().getClass(), PricesAndConsumptionPPISPIN2007YearClient.class);
+        assertEquals(PricesAndConsumptionPPISPIN2007YearClient.class, client.spin2007Year().getClass());
     }
 
     @Test
     public void spin2015MonthlyAndQuarterly() {
         PricesAndConsumptionPPIClient client = new PricesAndConsumptionPPIClient();
 
-        assertEquals(client.spin2015MonthlyAndQuarterly().getClass(),
-                PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient.class);
+        assertEquals(PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient.class,
+                client.spin2015MonthlyAndQuarterly().getClass());
     }
 
     @Test

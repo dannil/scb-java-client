@@ -41,16 +41,16 @@ public class BusinessActivitiesNonProfitOrganizationsClientTest {
     public void primaryStatisticsClient() {
         BusinessActivitiesNonProfitOrganizationsClient client = new BusinessActivitiesNonProfitOrganizationsClient();
 
-        assertEquals(client.primaryStatistics().getClass(),
-                BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClient.class);
+        assertEquals(BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClient.class,
+                client.primaryStatistics().getClass());
     }
 
     @Test
     public void satelliteAccountsClient() {
         BusinessActivitiesNonProfitOrganizationsClient client = new BusinessActivitiesNonProfitOrganizationsClient();
 
-        assertEquals(client.satelliteAccounts().getClass(),
-                BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClient.class);
+        assertEquals(BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClient.class,
+                client.satelliteAccounts().getClass());
     }
 
     @Test

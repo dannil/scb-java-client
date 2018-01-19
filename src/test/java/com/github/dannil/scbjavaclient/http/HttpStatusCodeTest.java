@@ -58,9 +58,7 @@ public class HttpStatusCodeTest {
 
     @Test
     public void valueOfIllegalArgument() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            HttpStatusCode.valueOf(-1);
-        });
+        assertThrows(IllegalArgumentException.class, () -> HttpStatusCode.valueOf(-1));
     }
 
     @Test

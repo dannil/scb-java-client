@@ -75,7 +75,7 @@ public class PublicFinancesGovernmentDebtClient extends AbstractClient {
      */
     public List<ResponseModel> getGovernmentDebt(Collection<String> items, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Kontopost", items);
+        mappings.put(APIConstants.ITEM_CODE, items);
         mappings.put(APIConstants.TIME_CODE, months);
 
         return getResponseModels("Statsskuld", mappings);

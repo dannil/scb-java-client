@@ -35,8 +35,6 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClient extends AbstractCli
 
     private static final String EXPORTANDIMPORT_CODE = "ExpImp";
 
-    private static final String ITEM_CODE = "Kontopost";
-
     /**
      * <p>Default constructor.</p>
      */
@@ -80,7 +78,7 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClient extends AbstractCli
      */
     public List<ResponseModel> getTransactionsQuarters(Collection<String> items, Collection<String> quarters) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(ITEM_CODE, items);
+        mappings.put(APIConstants.ITEM_CODE, items);
         mappings.put(APIConstants.TIME_CODE, quarters);
 
         return getResponseModels("FM0001BetBalKv", mappings);
@@ -114,7 +112,7 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClient extends AbstractCli
     public List<ResponseModel> getSeasonallyAdjustedCurrentAccountAndCapitalAccount(Collection<String> items,
             Collection<String> quarters) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(ITEM_CODE, items);
+        mappings.put(APIConstants.ITEM_CODE, items);
         mappings.put(APIConstants.TIME_CODE, quarters);
 
         return getResponseModels("FM0001BetSasRKv", mappings);
@@ -153,7 +151,7 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClient extends AbstractCli
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("Landgrupp", countryGroups);
         mappings.put(EXPORTANDIMPORT_CODE, exportsAndImports);
-        mappings.put(ITEM_CODE, items);
+        mappings.put(APIConstants.ITEM_CODE, items);
         mappings.put(APIConstants.TIME_CODE, quarters);
 
         return getResponseModels("FM0001BytBKv", mappings);
@@ -190,7 +188,7 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClient extends AbstractCli
             Collection<String> items, Collection<String> quarters) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("Investering", typesOfInvestments);
-        mappings.put(ITEM_CODE, items);
+        mappings.put(APIConstants.ITEM_CODE, items);
         mappings.put(APIConstants.TIME_CODE, quarters);
 
         return getResponseModels("FM0001FinansBKv", mappings);
@@ -227,7 +225,7 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClient extends AbstractCli
             Collection<String> items, Collection<String> quarters) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("Transaktioner", transactions);
-        mappings.put(ITEM_CODE, items);
+        mappings.put(APIConstants.ITEM_CODE, items);
         mappings.put(APIConstants.TIME_CODE, quarters);
 
         return getResponseModels("FM0001SInkomstKv", mappings);
@@ -259,7 +257,7 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClient extends AbstractCli
      */
     public List<ResponseModel> getTransactionsYears(Collection<String> items, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(ITEM_CODE, items);
+        mappings.put(APIConstants.ITEM_CODE, items);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("FM0001BetBalAr", mappings);
@@ -291,7 +289,7 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClient extends AbstractCli
      */
     public List<ResponseModel> getRevisions(Collection<String> items, Collection<String> quarters) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(ITEM_CODE, items);
+        mappings.put(APIConstants.ITEM_CODE, items);
         mappings.put(APIConstants.TIME_CODE, quarters);
 
         return getResponseModels("FM0001BetBalRevKv", mappings);
@@ -330,7 +328,7 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClient extends AbstractCli
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("Landgrupp", countryGroups);
         mappings.put(EXPORTANDIMPORT_CODE, exportsAndImports);
-        mappings.put(ITEM_CODE, items);
+        mappings.put(APIConstants.ITEM_CODE, items);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("FM0001BytBAr", mappings);
@@ -366,7 +364,7 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClient extends AbstractCli
             Collection<String> items, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("Investering", typesOfInvestments);
-        mappings.put(ITEM_CODE, items);
+        mappings.put(APIConstants.ITEM_CODE, items);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("FM0001FinansBAr", mappings);
@@ -402,7 +400,7 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClient extends AbstractCli
             Collection<String> quarters) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(EXPORTANDIMPORT_CODE, exportsAndImports);
-        mappings.put(ITEM_CODE, items);
+        mappings.put(APIConstants.ITEM_CODE, items);
         mappings.put(APIConstants.TIME_CODE, quarters);
 
         return getResponseModels("FM0001PInkomstKv", mappings);

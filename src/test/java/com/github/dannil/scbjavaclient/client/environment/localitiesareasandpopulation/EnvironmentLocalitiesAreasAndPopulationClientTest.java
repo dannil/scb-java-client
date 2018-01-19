@@ -41,15 +41,15 @@ public class EnvironmentLocalitiesAreasAndPopulationClientTest {
     public void gainfullyEmployedAndWorkplaces() {
         EnvironmentLocalitiesAreasAndPopulationClient client = new EnvironmentLocalitiesAreasAndPopulationClient();
 
-        assertEquals(client.gainfullyEmployedAndWorkplaces().getClass(),
-                EnvironmentLocalitiesAreasAndPopulationGainfullyEmployedAndWorkplacesClient.class);
+        assertEquals(EnvironmentLocalitiesAreasAndPopulationGainfullyEmployedAndWorkplacesClient.class,
+                client.gainfullyEmployedAndWorkplaces().getClass());
     }
 
     @Test
     public void population() {
         EnvironmentLocalitiesAreasAndPopulationClient client = new EnvironmentLocalitiesAreasAndPopulationClient();
 
-        assertEquals(client.population().getClass(), EnvironmentLocalitiesAreasAndPopulationPopulationClient.class);
+        assertEquals(EnvironmentLocalitiesAreasAndPopulationPopulationClient.class, client.population().getClass());
     }
 
     @Test

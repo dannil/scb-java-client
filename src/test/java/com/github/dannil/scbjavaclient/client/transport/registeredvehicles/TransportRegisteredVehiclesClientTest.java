@@ -40,14 +40,14 @@ public class TransportRegisteredVehiclesClientTest {
     public void vehiclesClient() {
         TransportRegisteredVehiclesClient client = new TransportRegisteredVehiclesClient();
 
-        assertEquals(client.vehicles().getClass(), TransportRegisteredVehiclesVehiclesClient.class);
+        assertEquals(TransportRegisteredVehiclesVehiclesClient.class, client.vehicles().getClass());
     }
 
     @Test
     public void economicIndicatorsClient() {
         TransportRegisteredVehiclesClient client = new TransportRegisteredVehiclesClient();
 
-        assertEquals(client.economicIndicators().getClass(), TransportRegisteredVehiclesEconomicIndicatorsClient.class);
+        assertEquals(TransportRegisteredVehiclesEconomicIndicatorsClient.class, client.economicIndicators().getClass());
     }
 
     @Test

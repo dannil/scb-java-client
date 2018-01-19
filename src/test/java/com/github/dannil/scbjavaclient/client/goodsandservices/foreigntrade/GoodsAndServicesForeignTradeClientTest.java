@@ -44,36 +44,36 @@ public class GoodsAndServicesForeignTradeClientTest {
     public void cnClient() {
         GoodsAndServicesForeignTradeClient client = new GoodsAndServicesForeignTradeClient();
 
-        assertEquals(client.cn().getClass(), GoodsAndServicesForeignTradeCNClient.class);
+        assertEquals(GoodsAndServicesForeignTradeCNClient.class, client.cn().getClass());
     }
 
     @Test
     public void economicIndicatorsClient() {
         GoodsAndServicesForeignTradeClient client = new GoodsAndServicesForeignTradeClient();
 
-        assertEquals(client.economicIndicators().getClass(),
-                GoodsAndServicesForeignTradeEconomicIndicatorsClient.class);
+        assertEquals(GoodsAndServicesForeignTradeEconomicIndicatorsClient.class,
+                client.economicIndicators().getClass());
     }
 
     @Test
     public void sitcClient() {
         GoodsAndServicesForeignTradeClient client = new GoodsAndServicesForeignTradeClient();
 
-        assertEquals(client.sitc().getClass(), GoodsAndServicesForeignTradeSITCClient.class);
+        assertEquals(GoodsAndServicesForeignTradeSITCClient.class, client.sitc().getClass());
     }
 
     @Test
     public void spinClient() {
         GoodsAndServicesForeignTradeClient client = new GoodsAndServicesForeignTradeClient();
 
-        assertEquals(client.spin().getClass(), GoodsAndServicesForeignTradeSPINClient.class);
+        assertEquals(GoodsAndServicesForeignTradeSPINClient.class, client.spin().getClass());
     }
 
     @Test
     public void totalClient() {
         GoodsAndServicesForeignTradeClient client = new GoodsAndServicesForeignTradeClient();
 
-        assertEquals(client.total().getClass(), GoodsAndServicesForeignTradeTotalClient.class);
+        assertEquals(GoodsAndServicesForeignTradeTotalClient.class, client.total().getClass());
     }
 
     @Test

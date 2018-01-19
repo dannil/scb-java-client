@@ -42,32 +42,32 @@ public class PublicFinancesAnnualAccountsClientTest {
     public void balanceSheetCountyClient() {
         PublicFinancesAnnualAccountsClient client = new PublicFinancesAnnualAccountsClient();
 
-        assertEquals(client.balanceSheetCounty().getClass(),
-                PublicFinancesAnnualAccountsBalanceSheetCountyClient.class);
+        assertEquals(PublicFinancesAnnualAccountsBalanceSheetCountyClient.class,
+                client.balanceSheetCounty().getClass());
     }
 
     @Test
     public void balanceSheetMunicipalityClient() {
         PublicFinancesAnnualAccountsClient client = new PublicFinancesAnnualAccountsClient();
 
-        assertEquals(client.balanceSheetMunicipality().getClass(),
-                PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient.class);
+        assertEquals(PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient.class,
+                client.balanceSheetMunicipality().getClass());
     }
 
     @Test
     public void statementAccountsCountyClient() {
         PublicFinancesAnnualAccountsClient client = new PublicFinancesAnnualAccountsClient();
 
-        assertEquals(client.statementAccountsCounty().getClass(),
-                PublicFinancesAnnualAccountsStatementAccountsCountyClient.class);
+        assertEquals(PublicFinancesAnnualAccountsStatementAccountsCountyClient.class,
+                client.statementAccountsCounty().getClass());
     }
 
     @Test
     public void statementAccountsMunicipalityClient() {
         PublicFinancesAnnualAccountsClient client = new PublicFinancesAnnualAccountsClient();
 
-        assertEquals(client.statementAccountsMunicipality().getClass(),
-                PublicFinancesAnnualAccountsStatementAccountsMunicipalityClient.class);
+        assertEquals(PublicFinancesAnnualAccountsStatementAccountsMunicipalityClient.class,
+                client.statementAccountsMunicipality().getClass());
     }
 
     @Test

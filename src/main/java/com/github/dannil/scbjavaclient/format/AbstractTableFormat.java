@@ -26,7 +26,11 @@ import java.util.Map;
  * methods.</p>
  *
  * @since 0.3.0
+ *
+ * @deprecated use {@link com.github.dannil.scbjavaclient.format.ITableFormat
+ *             ITableFormat} instead
  */
+@Deprecated
 public abstract class AbstractTableFormat {
 
     /**
