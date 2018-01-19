@@ -347,8 +347,9 @@
         <artifactId>japicmp-maven-plugin</artifactId>
         <version>0.11.0</version>
         <!-- These dependencies are needed to compile on Java 9 and onward, 
-          as this plugin doesn't yet declare these on their own. These dependencies 
-          can be removed in the future when the plugin supports Java 9 out-of-box -->
+          as this plugin (version 0.11.0) doesn't yet declare these on their own. These 
+          dependencies can be removed in the future when the plugin supports Java 9 
+          out-of-box -->
         <dependencies>
           <dependency>
             <groupId>javax.activation</groupId>
@@ -374,6 +375,7 @@
         <configuration>
           <parameter>
             <onlyBinaryIncompatible>true</onlyBinaryIncompatible>
+            <breakBuildBasedOnSemanticVersioning>true</breakBuildBasedOnSemanticVersioning>
           </parameter>
         </configuration>
         <executions>
