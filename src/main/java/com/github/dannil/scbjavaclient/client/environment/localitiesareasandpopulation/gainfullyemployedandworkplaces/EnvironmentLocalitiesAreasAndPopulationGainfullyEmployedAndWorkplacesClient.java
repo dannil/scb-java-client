@@ -26,8 +26,8 @@ import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles environment localities areas and population population
- * gainfully employed and workplaces data fetching.</p>
+ * <p>Client which handles environment localities areas and population gainfully employed
+ * and workplaces data fetching.</p>
  *
  * @since 0.7.0
  */
