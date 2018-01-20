@@ -347,8 +347,9 @@
         <artifactId>japicmp-maven-plugin</artifactId>
         <version>0.11.0</version>
         <!-- These dependencies are needed to compile on Java 9 and onward, 
-          as this plugin doesn't yet declare these on their own. These dependencies 
-          can be removed in the future when the plugin supports Java 9 out-of-box -->
+          as this plugin (version 0.11.0) doesn't yet declare these on their own. These 
+          dependencies can be removed in the future when the plugin supports Java 9 
+          out-of-box -->
         <dependencies>
           <dependency>
             <groupId>javax.activation</groupId>
@@ -374,6 +375,7 @@
         <configuration>
           <parameter>
             <onlyBinaryIncompatible>true</onlyBinaryIncompatible>
+            <breakBuildBasedOnSemanticVersioning>true</breakBuildBasedOnSemanticVersioning>
           </parameter>
         </configuration>
         <executions>
@@ -448,6 +450,24 @@
             </configuration>
           </execution>
           <execution>
+            <id>enforce-banned-dependencies</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <bannedDependencies>
+                  <searchTransitive>true</searchTransitive>
+                  <excludes>
+                    <!-- CVE-2015-7501 (https://access.redhat.com/security/cve/cve-2015-7501) -->
+                    <exclude>commons-collections:commons-collection</exclude>
+                  </excludes>
+                </bannedDependencies>
+              </rules>
+              <fail>true</fail>
+            </configuration>
+          </execution>
+          <execution>
             <id>enforce-versions</id>
             <goals>
               <goal>enforce</goal>
@@ -462,7 +482,23 @@
                 </requireJavaVersion>
                 <requireSameVersions>
                   <dependencies>
-                    <dependency>org.junit.jupiter</dependency>
+                    <dependency>com.fasterxml.jackson.core:jackson-core</dependency>
+                    <dependency>com.fasterxml.jackson.core:jackson-databind</dependency>
+                  </dependencies>
+                </requireSameVersions>
+                <requireSameVersions>
+                  <dependencies>
+                    <dependency>org.apache.logging.log4j:*</dependency>
+                  </dependencies>
+                </requireSameVersions>
+                <requireSameVersions>
+                  <dependencies>
+                    <dependency>org.junit.jupiter:*</dependency>
+                  </dependencies>
+                </requireSameVersions>
+                <requireSameVersions>
+                  <dependencies>
+                    <dependency>org.junit.platform:*</dependency>
                   </dependencies>
                 </requireSameVersions>
               </rules>
