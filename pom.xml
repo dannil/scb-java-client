@@ -588,6 +588,9 @@
         <reportSets>
           <reportSet>
             <reports>
+              <!-- The ordering of the elements below effects the menu generated 
+                by maven-site-plugin, with the top-most element appearing highest in the 
+                menu, the next below that and so forth -->
               <report>index</report>
               <report>summary</report>
               <report>cim</report>
