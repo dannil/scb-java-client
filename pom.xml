@@ -475,7 +475,7 @@
             <configuration>
               <rules>
                 <requireMavenVersion>
-                  <version>3.0.3</version>
+                  <version>3.0.4</version>
                 </requireMavenVersion>
                 <requireJavaVersion>
                   <version>${project.java.source}</version>
@@ -561,7 +561,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
-        <version>3.6</version>
+        <version>3.7</version>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -578,5 +578,33 @@
       </plugin>
     </plugins>
   </build>
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <version>2.9</version>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>index</report>
+              <report>summary</report>
+              <report>cim</report>
+              <report>dependencies</report>
+              <report>dependency-info</report>
+              <report>distribution-management</report>
+              <report>issue-tracking</report>
+              <report>license</report>
+              <report>plugin-management</report>
+              <report>plugins</report>
+              <report>scm</report>
+              <report>project-team</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+    </plugins>
+  </reporting>
 
 </project>
