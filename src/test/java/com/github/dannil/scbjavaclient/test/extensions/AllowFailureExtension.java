@@ -19,12 +19,10 @@ public class AllowFailureExtension implements BeforeEachCallback, TestExecutionE
 
     @Override
     public void beforeEach(ExtensionContext context) throws Exception {
-        Optional<AnnotatedElement> opElement = context.getElement();
-        AllowFailure allowFailure = opElement.get().getDeclaredAnnotation(AllowFailure.class);
-        NoticeStrategy strategy = allowFailure.notice();
-
         Store store = context.getStore(NAMESPACE);
-        store.put("strategy", strategy);
+
+        Optional<AnnotatedElement> opElement = context.getElement();
+        opElement.map(e -> e.getAnnotation(AllowFailure.class)).ifPresent(a -> store.put("strategy", a.notice()));
     }
 
     @Override

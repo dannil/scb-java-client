@@ -389,7 +389,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
-        <version>2.17</version>
+        <version>3.0.0</version>
         <dependencies>
           <dependency>
             <groupId>com.puppycrawl.tools</groupId>
@@ -533,7 +533,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>3.0.0-M1</version>
+        <version>3.0.0</version>
         <configuration>
           <additionalparam>-Xdoclint:all</additionalparam>
           <failOnError>true</failOnError>
@@ -587,6 +587,9 @@
         <reportSets>
           <reportSet>
             <reports>
+              <!-- The ordering of the elements below effects the menu generated 
+                by maven-site-plugin, with the top-most element appearing highest in the 
+                menu, the next below that and so forth -->
               <report>index</report>
               <report>summary</report>
               <report>cim</report>
