@@ -35,8 +35,6 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
 
     private static final String ASSETSANDLIABILITIES_CODE = "TillgangSkuld";
 
-    private static final String ITEM_CODE = "Kontopost";
-
     /**
      * <p>Default constructor.</p>
      */
@@ -84,7 +82,7 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
             Collection<String> quarters) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(ASSETSANDLIABILITIES_CODE, assetsAndLiabilities);
-        mappings.put(ITEM_CODE, items);
+        mappings.put(APIConstants.ITEM_CODE, items);
         mappings.put(APIConstants.TIME_CODE, quarters);
 
         return getResponseModels("FM0001UtlRevKv", mappings);
@@ -125,7 +123,7 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(ASSETSANDLIABILITIES_CODE, assetsAndLiabilities);
         mappings.put(APIConstants.SECTOR_CODE, sectors);
-        mappings.put(ITEM_CODE, items);
+        mappings.put(APIConstants.ITEM_CODE, items);
         mappings.put(APIConstants.TIME_CODE, quarters);
 
         return getResponseModels("FM0001UtlSektorKv", mappings);
@@ -166,7 +164,7 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(ASSETSANDLIABILITIES_CODE, assetsAndLiabilities);
         mappings.put("DenomValuta", currencies);
-        mappings.put(ITEM_CODE, items);
+        mappings.put(APIConstants.ITEM_CODE, items);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("FM0001UtlTSVKAr", mappings);
@@ -198,7 +196,7 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
      */
     public List<ResponseModel> getGrossExternalDebt(Collection<String> items, Collection<String> quarters) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(ITEM_CODE, items);
+        mappings.put(APIConstants.ITEM_CODE, items);
         mappings.put(APIConstants.TIME_CODE, quarters);
 
         return getResponseModels("FM0001RSkuldKv", mappings);
@@ -239,7 +237,7 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(ASSETSANDLIABILITIES_CODE, assetsAndLiabilities);
         mappings.put(APIConstants.SECTOR_CODE, sectors);
-        mappings.put(ITEM_CODE, items);
+        mappings.put(APIConstants.ITEM_CODE, items);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("FM0001UtlSektorAr", mappings);
@@ -280,7 +278,7 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(ASSETSANDLIABILITIES_CODE, assetsAndLiabilities);
         mappings.put("Valuta", currencies);
-        mappings.put(ITEM_CODE, items);
+        mappings.put(APIConstants.ITEM_CODE, items);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("FM0001UtlStMVAr", mappings);
@@ -321,7 +319,7 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(ASSETSANDLIABILITIES_CODE, assetsAndLiabilities);
         mappings.put("DenomValuta", currencies);
-        mappings.put(ITEM_CODE, items);
+        mappings.put(APIConstants.ITEM_CODE, items);
         mappings.put(APIConstants.TIME_CODE, quarters);
 
         return getResponseModels("FM0001UtlTSVKKv", mappings);

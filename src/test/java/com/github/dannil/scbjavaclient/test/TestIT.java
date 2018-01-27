@@ -70,7 +70,7 @@ public class TestIT {
     }
 
     @Test
-    public void checkForCorrectPackageAndClientNames() {
+    public void checkForCorrectPackageAndName() {
         String execPath = System.getProperty("user.dir");
 
         // Find files matching the wildcard pattern
@@ -95,7 +95,12 @@ public class TestIT {
                 String sub = packageName.substring(beginIndex);
                 String lastPart = sub.replace(".", "").concat("client");
 
+                // Check if package name is correct
                 if (clazz.getSimpleName().toLowerCase().indexOf(lastPart) > 0) {
+                    matchedClasses.add(clazz);
+                }
+                // Check if test class name is correct
+                else if (!clazz.getSimpleName().toLowerCase().startsWith(lastPart)) {
                     matchedClasses.add(clazz);
                 }
             } catch (ClassNotFoundException e) {
@@ -106,7 +111,7 @@ public class TestIT {
             }
         }
         assertTrue(matchedClasses.isEmpty(),
-                "Classes not having matching package and client name: " + matchedClasses.toString());
+                "Classes not having correct package and/or name: " + matchedClasses.toString());
     }
 
     @Test
@@ -149,7 +154,7 @@ public class TestIT {
             }
         }
         assertTrue(matchedClasses.isEmpty(),
-                "Test classes not having matching name and/or package : " + matchedClasses.toString());
+                "Classes not having matching test class name and/or package: " + matchedClasses.toString());
     }
 
     @Test

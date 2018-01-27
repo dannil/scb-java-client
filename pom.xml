@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.dannil</groupId>
   <artifactId>scb-java-client</artifactId>
-  <version>0.7.0-SNAPSHOT</version>
+  <version>1.0.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>scb-java-client</name>
@@ -65,12 +64,12 @@
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-core</artifactId>
-      <version>2.9.3</version>
+      <version>2.9.4</version>
     </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
-      <version>2.9.3</version>
+      <version>2.9.4</version>
     </dependency>
     <dependency>
       <groupId>commons-io</groupId>
@@ -347,8 +346,9 @@
         <artifactId>japicmp-maven-plugin</artifactId>
         <version>0.11.0</version>
         <!-- These dependencies are needed to compile on Java 9 and onward, 
-          as this plugin doesn't yet declare these on their own. These dependencies 
-          can be removed in the future when the plugin supports Java 9 out-of-box -->
+          as this plugin (version 0.11.0) doesn't yet declare these on their own. These 
+          dependencies can be removed in the future when the plugin supports Java 9 
+          out-of-box -->
         <dependencies>
           <dependency>
             <groupId>javax.activation</groupId>
@@ -374,6 +374,7 @@
         <configuration>
           <parameter>
             <onlyBinaryIncompatible>true</onlyBinaryIncompatible>
+            <breakBuildBasedOnSemanticVersioning>true</breakBuildBasedOnSemanticVersioning>
           </parameter>
         </configuration>
         <executions>
@@ -388,12 +389,12 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
-        <version>2.17</version>
+        <version>3.0.0</version>
         <dependencies>
           <dependency>
             <groupId>com.puppycrawl.tools</groupId>
             <artifactId>checkstyle</artifactId>
-            <version>8.5</version>
+            <version>8.7</version>
           </dependency>
         </dependencies>
         <executions>
@@ -448,6 +449,24 @@
             </configuration>
           </execution>
           <execution>
+            <id>enforce-banned-dependencies</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <bannedDependencies>
+                  <searchTransitive>true</searchTransitive>
+                  <excludes>
+                    <!-- CVE-2015-7501 (https://access.redhat.com/security/cve/cve-2015-7501) -->
+                    <exclude>commons-collections:commons-collection</exclude>
+                  </excludes>
+                </bannedDependencies>
+              </rules>
+              <fail>true</fail>
+            </configuration>
+          </execution>
+          <execution>
             <id>enforce-versions</id>
             <goals>
               <goal>enforce</goal>
@@ -455,14 +474,30 @@
             <configuration>
               <rules>
                 <requireMavenVersion>
-                  <version>3.0.3</version>
+                  <version>3.0.4</version>
                 </requireMavenVersion>
                 <requireJavaVersion>
                   <version>${project.java.source}</version>
                 </requireJavaVersion>
                 <requireSameVersions>
                   <dependencies>
-                    <dependency>org.junit.jupiter</dependency>
+                    <dependency>com.fasterxml.jackson.core:jackson-core</dependency>
+                    <dependency>com.fasterxml.jackson.core:jackson-databind</dependency>
+                  </dependencies>
+                </requireSameVersions>
+                <requireSameVersions>
+                  <dependencies>
+                    <dependency>org.apache.logging.log4j:*</dependency>
+                  </dependencies>
+                </requireSameVersions>
+                <requireSameVersions>
+                  <dependencies>
+                    <dependency>org.junit.jupiter:*</dependency>
+                  </dependencies>
+                </requireSameVersions>
+                <requireSameVersions>
+                  <dependencies>
+                    <dependency>org.junit.platform:*</dependency>
                   </dependencies>
                 </requireSameVersions>
               </rules>
@@ -498,8 +533,9 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>3.0.0-M1</version>
+        <version>3.0.0</version>
         <configuration>
+          <additionalparam>-Xdoclint:all</additionalparam>
           <failOnError>true</failOnError>
         </configuration>
         <executions>
@@ -524,7 +560,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
-        <version>3.6</version>
+        <version>3.7</version>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -541,5 +577,36 @@
       </plugin>
     </plugins>
   </build>
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <version>2.9</version>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <!-- The ordering of the elements below effects the menu generated 
+                by maven-site-plugin, with the top-most element appearing highest in the 
+                menu, the next below that and so forth -->
+              <report>index</report>
+              <report>summary</report>
+              <report>cim</report>
+              <report>dependencies</report>
+              <report>dependency-info</report>
+              <report>distribution-management</report>
+              <report>issue-tracking</report>
+              <report>license</report>
+              <report>plugin-management</report>
+              <report>plugins</report>
+              <report>scm</report>
+              <report>project-team</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+    </plugins>
+  </reporting>
 
 </project>

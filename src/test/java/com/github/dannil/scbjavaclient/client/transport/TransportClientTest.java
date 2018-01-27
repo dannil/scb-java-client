@@ -39,7 +39,7 @@ public class TransportClientTest {
     public void registeredVehiclesClient() {
         TransportClient client = new TransportClient();
 
-        assertEquals(client.registeredVehicles().getClass(), TransportRegisteredVehiclesClient.class);
+        assertEquals(TransportRegisteredVehiclesClient.class, client.registeredVehicles().getClass());
     }
 
     @Test

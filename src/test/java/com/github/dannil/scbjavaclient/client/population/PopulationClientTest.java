@@ -44,29 +44,29 @@ public class PopulationClientTest {
 
         // Not all sub-clients needs to be here. If one of the asserts fails it
         // automatically applies to all sub-clients since they share the same logic
-        assertEquals(client.name().getLocale(), locale);
-        assertEquals(client.statistics().getLocale(), locale);
+        assertEquals(locale, client.name().getLocale());
+        assertEquals(locale, client.statistics().getLocale());
     }
 
     @Test
     public void nameClient() {
         PopulationClient client = new PopulationClient();
 
-        assertEquals(client.name().getClass(), PopulationNameClient.class);
+        assertEquals(PopulationNameClient.class, client.name().getClass());
     }
 
     @Test
     public void projectionsClient() {
         PopulationClient client = new PopulationClient();
 
-        assertEquals(client.projections().getClass(), PopulationProjectionsClient.class);
+        assertEquals(PopulationProjectionsClient.class, client.projections().getClass());
     }
 
     @Test
     public void statisticsClient() {
         PopulationClient client = new PopulationClient();
 
-        assertEquals(client.statistics().getClass(), PopulationStatisticsClient.class);
+        assertEquals(PopulationStatisticsClient.class, client.statistics().getClass());
     }
 
     @Test

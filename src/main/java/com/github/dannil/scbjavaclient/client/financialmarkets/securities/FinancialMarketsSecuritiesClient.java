@@ -121,7 +121,7 @@ public class FinancialMarketsSecuritiesClient extends AbstractClient {
             Collection<String> currencies, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.SECTOR_CODE, sectors);
-        mappings.put("Kontopost", items);
+        mappings.put(APIConstants.ITEM_CODE, items);
         mappings.put("Valuta", currencies);
         mappings.put(APIConstants.TIME_CODE, months);
 

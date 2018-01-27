@@ -45,49 +45,49 @@ public class FinancialMarketsClientTest {
     public void balanceOfPaymentsClient() {
         FinancialMarketsClient client = new FinancialMarketsClient();
 
-        assertEquals(client.balanceOfPayments().getClass(), FinancialMarketsBalanceOfPaymentsClient.class);
+        assertEquals(FinancialMarketsBalanceOfPaymentsClient.class, client.balanceOfPayments().getClass());
     }
 
     @Test
     public void enterprisesClient() {
         FinancialMarketsClient client = new FinancialMarketsClient();
 
-        assertEquals(client.enterprises().getClass(), FinancialMarketsEnterprisesClient.class);
+        assertEquals(FinancialMarketsEnterprisesClient.class, client.enterprises().getClass());
     }
 
     @Test
     public void institutionsClient() {
         FinancialMarketsClient client = new FinancialMarketsClient();
 
-        assertEquals(client.institutions().getClass(), FinancialMarketsInstitutionsClient.class);
+        assertEquals(FinancialMarketsInstitutionsClient.class, client.institutions().getClass());
     }
 
     @Test
     public void investmentFundsClient() {
         FinancialMarketsClient client = new FinancialMarketsClient();
 
-        assertEquals(client.investmentFunds().getClass(), FinancialMarketsInvestmentFundsClient.class);
+        assertEquals(FinancialMarketsInvestmentFundsClient.class, client.investmentFunds().getClass());
     }
 
     @Test
     public void securitiesClient() {
         FinancialMarketsClient client = new FinancialMarketsClient();
 
-        assertEquals(client.securities().getClass(), FinancialMarketsSecuritiesClient.class);
+        assertEquals(FinancialMarketsSecuritiesClient.class, client.securities().getClass());
     }
 
     @Test
     public void shareholdersClient() {
         FinancialMarketsClient client = new FinancialMarketsClient();
 
-        assertEquals(client.shareholders().getClass(), FinancialMarketsShareholdersClient.class);
+        assertEquals(FinancialMarketsShareholdersClient.class, client.shareholders().getClass());
     }
 
     @Test
     public void statisticsClient() {
         FinancialMarketsClient client = new FinancialMarketsClient();
 
-        assertEquals(client.statistics().getClass(), FinancialMarketsStatisticsClient.class);
+        assertEquals(FinancialMarketsStatisticsClient.class, client.statistics().getClass());
     }
 
     @Test

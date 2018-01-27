@@ -43,36 +43,36 @@ public class FinancialMarketsStatisticsClientTest {
     public void claimsAndLiabilities() {
         FinancialMarketsStatisticsClient client = new FinancialMarketsStatisticsClient();
 
-        assertEquals(client.claimsAndLiabilities().getClass(),
-                FinancialMarketsStatisticsClaimsAndLiabilitiesClient.class);
+        assertEquals(FinancialMarketsStatisticsClaimsAndLiabilitiesClient.class,
+                client.claimsAndLiabilities().getClass());
     }
 
     @Test
     public void depositAndLending() {
         FinancialMarketsStatisticsClient client = new FinancialMarketsStatisticsClient();
 
-        assertEquals(client.depositAndLending().getClass(), FinancialMarketsStatisticsDepositAndLendingClient.class);
+        assertEquals(FinancialMarketsStatisticsDepositAndLendingClient.class, client.depositAndLending().getClass());
     }
 
     @Test
     public void economicIndicators() {
         FinancialMarketsStatisticsClient client = new FinancialMarketsStatisticsClient();
 
-        assertEquals(client.economicIndicators().getClass(), FinancialMarketsStatisticsEconomicIndicatorsClient.class);
+        assertEquals(FinancialMarketsStatisticsEconomicIndicatorsClient.class, client.economicIndicators().getClass());
     }
 
     @Test
     public void keyFigures() {
         FinancialMarketsStatisticsClient client = new FinancialMarketsStatisticsClient();
 
-        assertEquals(client.keyFigures().getClass(), FinancialMarketsStatisticsKeyFiguresClient.class);
+        assertEquals(FinancialMarketsStatisticsKeyFiguresClient.class, client.keyFigures().getClass());
     }
 
     @Test
     public void statistics() {
         FinancialMarketsStatisticsClient client = new FinancialMarketsStatisticsClient();
 
-        assertEquals(client.statistics().getClass(), FinancialMarketsStatisticsStatisticsClient.class);
+        assertEquals(FinancialMarketsStatisticsStatisticsClient.class, client.statistics().getClass());
     }
 
     @Test
