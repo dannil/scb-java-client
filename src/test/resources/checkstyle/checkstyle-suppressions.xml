@@ -6,28 +6,4 @@
 
 <suppressions>
   <suppress checks="Regexp" files="package-info\.java" />
-
-  <!-- Suppressions needed to support Javadoc @link to classes replacing 
-    deprecated ones, as the @link Javadoc together with the package names plus 
-    the class name exceeds the maximum line length. These suppressions can safely 
-    be removed when the effected classes are removed -->
-  <suppress checks="LineLength"
-    files="goodsandservices.foreigntrade.*.GoodsAndServicesForeignTradeClient.java"
-    lines="30-40" />
-  <suppress checks="LineLength"
-    files="goodsandservices.foreigntrade.*.GoodsAndServicesForeignTradeCNClient.java"
-    lines="30-40" />
-  <suppress checks="LineLength"
-    files="goodsandservices.foreigntrade.*.GoodsAndServicesForeignTradeEconomicIndicatorsClient.java"
-    lines="30-40" />
-  <suppress checks="LineLength"
-    files="goodsandservices.foreigntrade.*.GoodsAndServicesForeignTradeSITCClient.java"
-    lines="30-40" />
-  <suppress checks="LineLength"
-    files="goodsandservices.foreigntrade.*.GoodsAndServicesForeignTradeSPINClient.java"
-    lines="30-40" />
-  <suppress checks="LineLength"
-    files="goodsandservices.foreigntrade.*.GoodsAndServicesForeignTradeTotalClient.java"
-    lines="30-40" />
-
 </suppressions>
