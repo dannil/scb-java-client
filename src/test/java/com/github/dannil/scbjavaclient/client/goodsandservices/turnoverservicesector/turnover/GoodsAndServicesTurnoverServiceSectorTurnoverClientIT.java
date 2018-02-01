@@ -127,6 +127,28 @@ public class GoodsAndServicesTurnoverServiceSectorTurnoverClientIT {
         assertNotEquals(0, this.client.getTurnoverIndexForTheServiceSectorSIC2007Monthly(industrialClassifications,
                 months).size());
     }
+    
+    @Test
+    @Date("2018-02-01")
+    public void getRetailTradeSales() {
+        assertNotEquals(0, this.client.getRetailTradeSales().size());
+    }
+
+    @Test
+    @Date("2018-02-01")
+    public void getRetailTradeSalesWithParametersEmptyLists() {
+        assertNotEquals(0, this.client.getRetailTradeSales(Collections.<String>emptyList(),
+                Collections.<String>emptyList()).size());
+    }
+
+    @Test
+    @Date("2018-02-01")
+    public void getRetailTradeSalesWithParameters() {
+        List<String> indicators = Arrays.asList("DHF10", "DHF20");
+        List<String> months = Arrays.asList("2007M05", "2007M06");
+
+        assertNotEquals(0, this.client.getRetailTradeSales(indicators, months).size());
+    }
 
     // TODO Add methods here!
 
