@@ -120,38 +120,6 @@ public class GoodsAndServicesTurnoverServiceSectorOldTablesSNI2007Client extends
         return getResponseModels("DivtjansterKv07X", mappings);
     }
 
-    /**
-     * <p>Fetch all retail trade sales data.</p>
-     *
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     *
-     * @see #getRetailTradeSales(Collection, Collection)
-     */
-    public List<ResponseModel> getRetailTradeSales() {
-        return getRetailTradeSales(null, null);
-    }
-
-    /**
-     * <p>Fetch all retail trade sales data which match the input constraints.</p>
-     *
-     * @param indicators
-     *            the indicators
-     * @param months
-     *            the months
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     */
-    public List<ResponseModel> getRetailTradeSales(Collection<String> indicators, Collection<String> months) {
-        Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.ECONOMICINDICATOR_CODE, indicators);
-        mappings.put(APIConstants.TIME_CODE, months);
-
-        return getResponseModels("SnabbStatHA0101", mappings);
-    }
-
     @Override
     public URLEndpoint getUrl() {
         return getRootUrl().append("HA/HA0101/HA0101C");
