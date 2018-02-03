@@ -43,15 +43,7 @@ public class TransportRegisteredVehiclesVehiclesClientIT {
     public void getVehiclesInUse() {
         assertNotEquals(0, this.client.getVehiclesInUse().size());
     }
-
-    @Test
-    @Date("2017-05-08")
-    @SuppressWarnings("deprecation")
-    public void getVehiclesInUseDeprecated() {
-        assertNotEquals(0, this.client.getVehiclesInUse(Collections.<Integer>emptyList(),
-                Collections.<Integer>emptyList()).size());
-    }
-
+    
     @Test
     @Date("2017-12-12")
     public void getVehiclesInUseWithParametersEmptyLists() {
