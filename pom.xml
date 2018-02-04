@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.dannil</groupId>
@@ -55,8 +56,7 @@
     <project.java.source>1.8</project.java.source>
     <project.java.target>1.8</project.java.target>
 
-    <argLine>-Xmx2048m -XX:MaxPermSize=512m
-      -Dfile.encoding=${project.build.sourceEncoding}</argLine>
+    <argLine>-XX:MaxPermSize=512m -Dfile.encoding=${project.build.sourceEncoding}</argLine>
   </properties>
 
   <dependencies>
