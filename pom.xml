@@ -56,7 +56,7 @@
     <project.java.source>1.8</project.java.source>
     <project.java.target>1.8</project.java.target>
 
-    <argLine>-XX:MaxPermSize=512m -Dfile.encoding=${project.build.sourceEncoding}</argLine>
+    <argLine>-Xmx2048m -Dfile.encoding=${project.build.sourceEncoding}</argLine>
   </properties>
 
   <dependencies>
@@ -204,7 +204,7 @@
         </dependencies>
         <configuration>
           <systemPropertyVariables>
-            <testsDayLimit>16000</testsDayLimit>
+            <testsDayLimit>7</testsDayLimit>
           </systemPropertyVariables>
         </configuration>
         <executions>
@@ -225,7 +225,7 @@
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
-        <version>0.7.9</version>
+        <version>0.8.0</version>
         <executions>
           <!-- Prepares the property pointing to the JaCoCo runtime agent 
             which is passed as a VM argument when maven-surefire-plugin is executed -->
@@ -394,7 +394,7 @@
           <dependency>
             <groupId>com.puppycrawl.tools</groupId>
             <artifactId>checkstyle</artifactId>
-            <version>8.7</version>
+            <version>8.8</version>
           </dependency>
         </dependencies>
         <executions>
