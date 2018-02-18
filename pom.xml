@@ -56,7 +56,7 @@
     <project.java.source>1.8</project.java.source>
     <project.java.target>1.8</project.java.target>
 
-    <argLine>-Xmx2048m -Dfile.encoding=${project.build.sourceEncoding}</argLine>
+    <argLine>-Dfile.encoding=${project.build.sourceEncoding}</argLine>
   </properties>
 
   <dependencies>
