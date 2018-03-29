@@ -51,40 +51,6 @@ public class EnvironmentLocalitiesAreasAndPopulationPopulationClient extends Abs
     }
 
     /**
-     * <p>Fetch all population and land area within localities data.</p>
-     *
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     *
-     * @see #getPopulationAndLandAreaWithinLocalities(Collection, Collection)
-     */
-    public List<ResponseModel> getPopulationAndLandAreaWithinLocalities() {
-        return getPopulationAndLandAreaWithinLocalities(null, null);
-    }
-
-    /**
-     * <p>Fetch all population and land area within localities data which match the input
-     * constraints.</p>
-     *
-     * @param regions
-     *            the regions to fetch data for
-     * @param years
-     *            the years to fetch data for
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     */
-    public List<ResponseModel> getPopulationAndLandAreaWithinLocalities(Collection<String> regions,
-            Collection<Integer> years) {
-        Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.REGION_CODE, regions);
-        mappings.put(APIConstants.TIME_CODE, years);
-
-        return getResponseModels("LandarealTatort", mappings);
-    }
-
-    /**
      * <p>Fetch all population and land area within and outside of localities data.</p>
      *
      * @return the data wrapped in a list of

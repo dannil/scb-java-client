@@ -18,7 +18,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.client.environment.localitiesareasandpopulation.gainfullyemployedandworkplaces.EnvironmentLocalitiesAreasAndPopulationGainfullyEmployedAndWorkplacesClient;
 import com.github.dannil.scbjavaclient.client.environment.localitiesareasandpopulation.population.EnvironmentLocalitiesAreasAndPopulationPopulationClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
@@ -35,14 +34,6 @@ public class EnvironmentLocalitiesAreasAndPopulationClientTest {
                 locale);
 
         assertEquals(locale, client.getLocale());
-    }
-
-    @Test
-    public void gainfullyEmployedAndWorkplaces() {
-        EnvironmentLocalitiesAreasAndPopulationClient client = new EnvironmentLocalitiesAreasAndPopulationClient();
-
-        assertEquals(EnvironmentLocalitiesAreasAndPopulationGainfullyEmployedAndWorkplacesClient.class,
-                client.gainfullyEmployedAndWorkplaces().getClass());
     }
 
     @Test

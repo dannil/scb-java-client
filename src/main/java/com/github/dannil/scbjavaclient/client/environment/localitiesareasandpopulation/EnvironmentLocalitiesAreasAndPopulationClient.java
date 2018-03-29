@@ -17,7 +17,6 @@ package com.github.dannil.scbjavaclient.client.environment.localitiesareasandpop
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
-import com.github.dannil.scbjavaclient.client.environment.localitiesareasandpopulation.gainfullyemployedandworkplaces.EnvironmentLocalitiesAreasAndPopulationGainfullyEmployedAndWorkplacesClient;
 import com.github.dannil.scbjavaclient.client.environment.localitiesareasandpopulation.population.EnvironmentLocalitiesAreasAndPopulationPopulationClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
@@ -34,8 +33,6 @@ public class EnvironmentLocalitiesAreasAndPopulationClient extends AbstractConta
     public EnvironmentLocalitiesAreasAndPopulationClient() {
         super();
 
-        addClient("gainfullyemployedandworkplaces",
-                new EnvironmentLocalitiesAreasAndPopulationGainfullyEmployedAndWorkplacesClient());
         addClient("population", new EnvironmentLocalitiesAreasAndPopulationPopulationClient());
     }
 
@@ -49,18 +46,6 @@ public class EnvironmentLocalitiesAreasAndPopulationClient extends AbstractConta
         this();
 
         setLocale(locale);
-    }
-
-    /**
-     * <p>Retrieve the client for interacting with environment localities areas and
-     * population gainfully employed and workplaces data.</p>
-     *
-     * @return a client for environment localities areas and population gainfully employed
-     *         and workplaces data
-     */
-    public EnvironmentLocalitiesAreasAndPopulationGainfullyEmployedAndWorkplacesClient gainfullyEmployedAndWorkplaces() {
-        return (EnvironmentLocalitiesAreasAndPopulationGainfullyEmployedAndWorkplacesClient) getClient(
-                "gainfullyemployedandworkplaces");
     }
 
     /**
