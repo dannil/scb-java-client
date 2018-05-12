@@ -20,6 +20,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import com.github.dannil.scbjavaclient.test.extensions.AllowFailure;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
@@ -60,7 +61,7 @@ public class PopulationProjectionsLatestAssumptionsClientIT {
 
         assertNotEquals(0, this.client.getDeathRate(sexes, ages, years).size());
     }
-    
+
     // Daniel 2018-05-12: Returns HTTP 403
     //
     // @Test
@@ -74,14 +75,16 @@ public class PopulationProjectionsLatestAssumptionsClientIT {
     // @Test
     // @Date("2018-05-12")
     // public void getEmigrationAssumptionWithParametersEmptyLists() {
-    // assertNotEquals(0, this.client.getEmigrationRateAssumption(Collections.<String>emptyList(),
-    // Collections.<Integer>emptyList(), Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
+    // assertNotEquals(0,
+    // this.client.getEmigrationRateAssumption(Collections.<String>emptyList(),
+    // Collections.<Integer>emptyList(), Collections.<String>emptyList(),
+    // Collections.<Integer>emptyList()).size());
     // }
 
     @Test
     @Date("2018-05-12")
     public void getEmigrationAssumptionWithParameters() {
-    	List<String> regionOfBirths = Arrays.asList("010", "020");
+        List<String> regionOfBirths = Arrays.asList("010", "020");
         List<Integer> sexes = Arrays.asList(1, 2);
         List<String> ages = Arrays.asList("19", "42");
         List<Integer> years = Arrays.asList(2030, 2050);
@@ -96,17 +99,38 @@ public class PopulationProjectionsLatestAssumptionsClientIT {
     }
 
     @Test
+    @SuppressWarnings("deprecation")
+    @AllowFailure
+    @Date("2018-05-12")
+    public void getFertilityAssumptionWithParametersEmptyListsDeprecated1() {
+        assertNotEquals(0, this.client.getFertilityAssumption(Collections.<Integer>emptyList()).size());
+    }
+
+    @Test
+    @SuppressWarnings("deprecation")
+    @AllowFailure
+    @Date("2018-05-12")
+    public void getFertilityAssumptionWithParametersDeprecated1() {
+        List<Integer> years = Arrays.asList(2038, 2053);
+
+        assertNotEquals(0, this.client.getFertilityAssumption(years).size());
+    }
+
+    @Test
     @Date("2018-05-12")
     public void getFertilityAssumptionWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getFertilityAssumption(Collections.<Integer>emptyList()).size());
+        assertNotEquals(0, this.client.getFertilityAssumption(Collections.<String>emptyList(),
+                Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
     @Date("2018-05-12")
     public void getFertilityAssumptionWithParameters() {
-        List<Integer> years = Arrays.asList(2038, 2053);
+        List<String> mothersRegionOfBirths = Arrays.asList("040", "070");
+        List<String> ages = Arrays.asList("24", "25");
+        List<Integer> years = Arrays.asList(2039, 2054);
 
-        assertNotEquals(0, this.client.getFertilityAssumption(years).size());
+        assertNotEquals(0, this.client.getFertilityAssumption(mothersRegionOfBirths, ages, years).size());
     }
 
 }

@@ -56,10 +56,10 @@ public class PopulationProjectionsLatestProjectionsClient extends AbstractClient
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @see #getPopulation(Collection, Collection, Collection)
+     * @see #getPopulation(Collection, Collection, Collection, Collection)
      */
     public List<ResponseModel> getPopulation() {
-        return getPopulation(null, null, null);
+        return getPopulation(null, null, null, null);
     }
 
     /**
@@ -74,10 +74,39 @@ public class PopulationProjectionsLatestProjectionsClient extends AbstractClient
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
+     *         
+     * @deprecated Use {@link #getPopulation(Collection, Collection, Collection, Collection)}
      */
+    @Deprecated
     public List<ResponseModel> getPopulation(Collection<String> ages, Collection<Integer> sexes,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.AGE_CODE, ages);
+        mappings.put(APIConstants.SEX_CODE, sexes);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("BefolkprognRevN", mappings);
+    }
+
+    /**
+     * <p>Fetch all population data which match the input constraints.</p>
+     *
+     * @param regionOfBirths
+     *            the region of births
+     * @param ages
+     *            the ages
+     * @param sexes
+     *            the sexes
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getPopulation(Collection<Integer> regionOfBirths, Collection<String> ages,
+            Collection<Integer> sexes, Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("Fodelseregion", regionOfBirths);
         mappings.put(APIConstants.AGE_CODE, ages);
         mappings.put(APIConstants.SEX_CODE, sexes);
         mappings.put(APIConstants.TIME_CODE, years);

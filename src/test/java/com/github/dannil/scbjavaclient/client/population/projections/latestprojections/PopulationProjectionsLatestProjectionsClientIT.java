@@ -20,6 +20,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import com.github.dannil.scbjavaclient.test.extensions.AllowFailure;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
@@ -45,20 +46,42 @@ public class PopulationProjectionsLatestProjectionsClientIT {
     }
 
     @Test
+    @SuppressWarnings("deprecation")
+    @AllowFailure
     @Date("2018-05-12")
-    public void getPopulationWithParametersEmptyLists() {
+    public void getPopulationWithParametersEmptyListsDeprecated1() {
         assertNotEquals(0, this.client.getPopulation(Collections.<String>emptyList(), Collections.<Integer>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @SuppressWarnings("deprecation")
+    @AllowFailure
     @Date("2018-05-12")
-    public void getPopulationWithParameters() {
+    public void getPopulationWithParametersDeprecated1() {
         List<String> ages = Arrays.asList("13", "66");
         List<Integer> sexes = Arrays.asList(1, 2);
         List<Integer> years = Arrays.asList(2038, 2053);
 
         assertNotEquals(0, this.client.getPopulation(ages, sexes, years).size());
+    }
+
+    @Test
+    @Date("2018-05-12")
+    public void getPopulationWithParametersEmptyLists() {
+        assertNotEquals(0, this.client.getPopulation(Collections.<Integer>emptyList(), Collections.<String>emptyList(),
+                Collections.<Integer>emptyList(), Collections.<Integer>emptyList()).size());
+    }
+
+    @Test
+    @Date("2018-05-12")
+    public void getPopulationWithParameters() {
+        List<Integer> regionOfBirths = Arrays.asList(13, 23);
+        List<String> ages = Arrays.asList("13", "66");
+        List<Integer> sexes = Arrays.asList(1, 2);
+        List<Integer> years = Arrays.asList(2038, 2053);
+
+        assertNotEquals(0, this.client.getPopulation(regionOfBirths, ages, sexes, years).size());
     }
 
     @Test
