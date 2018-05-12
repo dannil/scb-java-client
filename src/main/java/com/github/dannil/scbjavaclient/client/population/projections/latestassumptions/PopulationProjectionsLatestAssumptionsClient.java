@@ -147,7 +147,7 @@ public class PopulationProjectionsLatestAssumptionsClient extends AbstractClient
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
-     * 
+     *
      * @deprecated use {@link #getFertilityAssumption(Collection, Collection, Collection)}
      */
     @Deprecated

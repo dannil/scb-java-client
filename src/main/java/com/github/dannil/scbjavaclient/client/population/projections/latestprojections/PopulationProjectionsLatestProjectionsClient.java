@@ -74,7 +74,7 @@ public class PopulationProjectionsLatestProjectionsClient extends AbstractClient
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
-     *         
+     *
      * @deprecated Use {@link #getPopulation(Collection, Collection, Collection, Collection)}
      */
     @Deprecated
