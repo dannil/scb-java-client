@@ -20,6 +20,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import com.github.dannil.scbjavaclient.test.extensions.AllowFailure;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
@@ -106,23 +107,23 @@ public class PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClientIT {
 
     // Daniel 2018-05-12:
     // Returns HTTP 403
-    //
-    // @Test
-    // @Date("2018-05-12")
-    // public void getProducerPriceIndex() {
-    // assertNotEquals(0, this.client.getProducerPriceIndex().size());
-    // }
+    @Test
+    @AllowFailure
+    @SuppressWarnings("deprecation")
+    @Date("2018-05-12")
+    public void getProducerPriceIndex() {
+        assertNotEquals(0, this.client.getProducerPriceIndex().size());
+    }
 
     // Daniel 2018-05-12:
     // Returns HTTP 403
-    //
-    // @Test
-    // @Date("2018-05-12")
-    // public void getProducerPriceIndexWithParametersEmptyLists() {
-    // assertNotEquals(0,
-    // this.client.getProducerPriceIndex(Collections.<String>emptyList(),
-    // Collections.<String>emptyList()).size());
-    // }
+    @Test
+    @AllowFailure
+    @Date("2018-05-12")
+    public void getProducerPriceIndexWithParametersEmptyLists() {
+        assertNotEquals(0, this.client.getProducerPriceIndex(Collections.<String>emptyList(),
+                Collections.<String>emptyList()).size());
+    }
 
     @Test
     @Date("2018-05-12")

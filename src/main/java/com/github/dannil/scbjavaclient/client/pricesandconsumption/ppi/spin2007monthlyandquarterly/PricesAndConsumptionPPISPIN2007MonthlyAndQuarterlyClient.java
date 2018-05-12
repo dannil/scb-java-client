@@ -137,7 +137,6 @@ public class PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient extends Ab
 
     // Daniel 2018-05-12:
     // Returns HTTP 403, remove when incrementing major version
-    //
     /**
      * <p>Fetch all producer price index data.</p>
      *
