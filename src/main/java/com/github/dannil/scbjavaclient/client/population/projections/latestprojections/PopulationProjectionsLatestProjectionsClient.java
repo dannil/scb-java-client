@@ -82,7 +82,7 @@ public class PopulationProjectionsLatestProjectionsClient extends AbstractClient
         mappings.put(APIConstants.SEX_CODE, sexes);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("BefolkprognRev2017", mappings);
+        return getResponseModels("BefolkprognRevN", mappings);
     }
 
     /**
@@ -116,12 +116,12 @@ public class PopulationProjectionsLatestProjectionsClient extends AbstractClient
     public List<ResponseModel> getPopulationChanges(Collection<String> countries, Collection<Integer> sexes,
             Collection<String> ages, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Fodelseland", countries);
+        mappings.put("Fodelselandgrupp", countries);
         mappings.put(APIConstants.SEX_CODE, sexes);
         mappings.put(APIConstants.AGE_CODE, ages);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("BefProgOsiktDetalj17", mappings);
+        return getResponseModels("BefProgOsiktDetaljN", mappings);
     }
 
     /**
@@ -151,7 +151,7 @@ public class PopulationProjectionsLatestProjectionsClient extends AbstractClient
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("BefPrognosOversikt17", mappings);
+        return getResponseModels("BefPrognosOversiktN", mappings);
     }
 
     /**
@@ -183,11 +183,11 @@ public class PopulationProjectionsLatestProjectionsClient extends AbstractClient
     public List<ResponseModel> getNumberOfBirths(Collection<String> countries, Collection<String> ages,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Fodelseland", countries);
+        mappings.put("ModerFodlandgrupp", countries);
         mappings.put(APIConstants.AGE_CODE, ages);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("BefProgFoddaMedel17", mappings);
+        return getResponseModels("BefProgFoddaMedelN", mappings);
     }
 
     /**
@@ -224,7 +224,7 @@ public class PopulationProjectionsLatestProjectionsClient extends AbstractClient
         mappings.put(APIConstants.AGE_CODE, ages);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("BefProgLivslangd2017", mappings);
+        return getResponseModels("BefProgLivslangdN", mappings);
     }
 
     @Override
