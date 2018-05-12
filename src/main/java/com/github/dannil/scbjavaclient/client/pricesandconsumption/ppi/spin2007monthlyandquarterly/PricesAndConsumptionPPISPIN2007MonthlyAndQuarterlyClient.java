@@ -135,6 +135,9 @@ public class PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient extends Ab
         return generate(spin2007, months, "IMPIM07");
     }
 
+    // Daniel 2018-05-12:
+    // Returns HTTP 403, remove when incrementing major version
+    //
     /**
      * <p>Fetch all producer price index data.</p>
      *
@@ -143,7 +146,12 @@ public class PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient extends Ab
      *         objects
      *
      * @see #getProducerPriceIndex(Collection, Collection)
+     *
+     * @deprecated Results in a HTTP 403 as the resulting response is larger than the
+     *             maximum size allowed by the API, use
+     *             {@link #getProducerPriceIndex(Collection, Collection)}
      */
+    @Deprecated
     public List<ResponseModel> getProducerPriceIndex() {
         return getProducerPriceIndex(null, null);
     }

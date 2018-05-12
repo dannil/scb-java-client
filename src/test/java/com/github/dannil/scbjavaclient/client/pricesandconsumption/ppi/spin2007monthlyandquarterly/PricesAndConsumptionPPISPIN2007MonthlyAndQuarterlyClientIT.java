@@ -104,21 +104,28 @@ public class PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClientIT {
         assertNotEquals(0, this.client.getImportPriceIndex(spin2007, months).size());
     }
 
-    @Test
-    @Date("2017-06-05")
-    public void getProducerPriceIndex() {
-        assertNotEquals(0, this.client.getProducerPriceIndex().size());
-    }
+    // Daniel 2018-05-12:
+    // Returns HTTP 403
+    //
+    // @Test
+    // @Date("2018-05-12")
+    // public void getProducerPriceIndex() {
+    // assertNotEquals(0, this.client.getProducerPriceIndex().size());
+    // }
+
+    // Daniel 2018-05-12:
+    // Returns HTTP 403
+    //
+    // @Test
+    // @Date("2018-05-12")
+    // public void getProducerPriceIndexWithParametersEmptyLists() {
+    // assertNotEquals(0,
+    // this.client.getProducerPriceIndex(Collections.<String>emptyList(),
+    // Collections.<String>emptyList()).size());
+    // }
 
     @Test
-    @Date("2017-06-05")
-    public void getProducerPriceIndexWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getProducerPriceIndex(Collections.<String>emptyList(),
-                Collections.<String>emptyList()).size());
-    }
-
-    @Test
-    @Date("2017-06-05")
+    @Date("2018-05-12")
     public void getProducerPriceIndexWithParameters() {
         List<String> spin2007 = Arrays.asList("MIG_CAG_ORD", "MIG_COG_ORD");
         List<String> months = Arrays.asList("2001M03", "2001M07");
