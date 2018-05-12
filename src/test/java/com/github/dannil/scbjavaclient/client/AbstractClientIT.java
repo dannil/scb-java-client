@@ -442,6 +442,7 @@ public class AbstractClientIT {
                 "FinancialMarketsStatisticsDepositAndLendingClient.getLendingRatesToHouseholdsAndNonFinancialCorporationsBreakdownByMaturity");
         knownMethods.add(
                 "EnvironmentLocalitiesAreasAndPopulationPopulationClient.getPopulationAndLandAreaWithinLocalities");
+        knownMethods.add("PopulationProjectionsLatestAssumptionsClient.getEmigrationRateAssumption");
         for (String knownMethod : knownMethods) {
             offendingMethods.remove(knownMethod);
         }
