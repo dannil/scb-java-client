@@ -351,10 +351,9 @@
           dependencies can be removed in the future when the plugin supports Java 9 
           out-of-box -->
         <!-- The next release after 0.12 (probably 0.13?) added own dependency 
-          on javax.activation (see https://github.com/siom79/japicmp/commit/63a399f88bcb220
-          5444051e3117d3269cefcc12f#diff-600376dffeb79835ede4a0b285078036R176) which means that
-          this dependency can be removed after the next release
-        -->
+          on javax.activation (see https://github.com/siom79/japicmp/commit/63a399f88bcb220 
+          5444051e3117d3269cefcc12f#diff-600376dffeb79835ede4a0b285078036R176) which 
+          means that this dependency can be removed after the next release -->
         <dependencies>
           <dependency>
             <groupId>javax.activation</groupId>
@@ -509,7 +508,62 @@
               <fail>true</fail>
             </configuration>
           </execution>
+          <execution>
+            <id>enforce-bytecode-version</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <enforceBytecodeVersion>
+                  <maxJdkVersion>1.8</maxJdkVersion>
+                  <excludes>
+                    <exclude>org.slf4j:slf4j-api:jar:1.8.0-alpha2</exclude>
+                  </excludes>
+                </enforceBytecodeVersion>
+              </rules>
+              <fail>true</fail>
+            </configuration>
+          </execution>
+          <execution>
+            <id>enforce-ban-duplicate-classes</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <banDuplicateClasses>
+                  <findAllDuplicates>true</findAllDuplicates>
+                </banDuplicateClasses>
+              </rules>
+              <fail>true</fail>
+            </configuration>
+          </execution>
+          <!-- Not usable right now, see https://github.com/mojohaus/extra-enforcer-rules/issues/48 -->
+          <!-- <execution> -->
+          <!-- <id>enforce-utf8-encoding</id> -->
+          <!-- <goals> -->
+          <!-- <goal>enforce</goal> -->
+          <!-- </goals> -->
+          <!-- <configuration> -->
+          <!-- <rules> -->
+          <!-- <requireEncoding> -->
+          <!-- <encoding>${project.build.sourceEncoding}</encoding> -->
+          <!-- <includes>src/main/resources/**,src/test/resources/**</includes> -->
+          <!-- </requireEncoding> -->
+          <!-- </rules> -->
+          <!-- <failFast>false</failFast> -->
+          <!-- <fail>true</fail> -->
+          <!-- </configuration> -->
+          <!-- </execution> -->
         </executions>
+        <dependencies>
+          <dependency>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>extra-enforcer-rules</artifactId>
+            <version>1.0-beta-7</version>
+          </dependency>
+        </dependencies>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
