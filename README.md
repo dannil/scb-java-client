@@ -47,11 +47,11 @@ This demonstrates the typical usage of the client.
 SCBClient client = new SCBClient();
 
 // Retrieve some client(s) matching the table(s) you want to fetch information from
-PopulationDemographyClient demographyClient = client.population().demography();
+AgricultureLivestockClient livestockClient = client.agriculture().livestock();
 PublicFinancesGovernmentDebtClient debtClient = client.publicFinances().governmentDebt();
 
-// Retrieve all mean age for first child birth data
-List<ResponseModel> firstChildData = demographyClient.getMeanAgeFirstChild();
+// Retrieve all livestock by county data
+List<ResponseModel> livestockData = livestockClient.getLivestockByCounty();
 
 // Retrieve all government debt data
 List<ResponseModel> debtData = debtClient.getGovernmentDebt();
