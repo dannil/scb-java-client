@@ -363,7 +363,8 @@
         </dependencies>
         <configuration>
           <parameter>
-            <onlyBinaryIncompatible>true</onlyBinaryIncompatible>
+            <onlyModified>true</onlyModified>
+            <onlyBinaryIncompatible>false</onlyBinaryIncompatible>
             <breakBuildBasedOnSemanticVersioning>true</breakBuildBasedOnSemanticVersioning>
           </parameter>
         </configuration>
