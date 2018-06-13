@@ -20,6 +20,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import com.github.dannil.scbjavaclient.test.extensions.AllowFailure;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
@@ -39,21 +40,25 @@ public class PopulationProjectionsLatestProjectionsClientIT {
     }
 
     @Test
-    @Date("2017-04-10")
+    @Date("2018-05-12")
     public void getPopulation() {
         assertNotEquals(0, this.client.getPopulation().size());
     }
 
     @Test
-    @Date("2017-04-10")
-    public void getPopulationWithParametersEmptyLists() {
+    @SuppressWarnings("deprecation")
+    @AllowFailure
+    @Date("2018-05-12")
+    public void getPopulationWithParametersEmptyListsDeprecated1() {
         assertNotEquals(0, this.client.getPopulation(Collections.<String>emptyList(), Collections.<Integer>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
-    @Date("2017-04-10")
-    public void getPopulationWithParameters() {
+    @SuppressWarnings("deprecation")
+    @AllowFailure
+    @Date("2018-05-12")
+    public void getPopulationWithParametersDeprecated1() {
         List<String> ages = Arrays.asList("13", "66");
         List<Integer> sexes = Arrays.asList(1, 2);
         List<Integer> years = Arrays.asList(2038, 2053);
@@ -62,13 +67,31 @@ public class PopulationProjectionsLatestProjectionsClientIT {
     }
 
     @Test
-    @Date("2017-04-10")
+    @Date("2018-05-12")
+    public void getPopulationWithParametersEmptyLists() {
+        assertNotEquals(0, this.client.getPopulation(Collections.<Integer>emptyList(), Collections.<String>emptyList(),
+                Collections.<Integer>emptyList(), Collections.<Integer>emptyList()).size());
+    }
+
+    @Test
+    @Date("2018-05-12")
+    public void getPopulationWithParameters() {
+        List<Integer> regionOfBirths = Arrays.asList(13, 23);
+        List<String> ages = Arrays.asList("13", "66");
+        List<Integer> sexes = Arrays.asList(1, 2);
+        List<Integer> years = Arrays.asList(2038, 2053);
+
+        assertNotEquals(0, this.client.getPopulation(regionOfBirths, ages, sexes, years).size());
+    }
+
+    @Test
+    @Date("2018-05-12")
     public void getPopulationChanges() {
         assertNotEquals(0, this.client.getPopulationChanges().size());
     }
 
     @Test
-    @Date("2017-04-10")
+    @Date("2018-05-12")
     public void getPopulationChangesWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getPopulationChanges(Collections.<String>emptyList(), Collections.<Integer>emptyList(),
@@ -76,7 +99,7 @@ public class PopulationProjectionsLatestProjectionsClientIT {
     }
 
     @Test
-    @Date("2017-04-10")
+    @Date("2018-05-12")
     public void getPopulationChangesWithParameters() {
         List<String> countries = Arrays.asList("020", "060");
         List<Integer> sexes = Arrays.asList(1, 2);
@@ -87,19 +110,19 @@ public class PopulationProjectionsLatestProjectionsClientIT {
     }
 
     @Test
-    @Date("2017-04-10")
+    @Date("2018-05-12")
     public void getPopulationChangesOverview() {
         assertNotEquals(0, this.client.getPopulationChangesOverview().size());
     }
 
     @Test
-    @Date("2017-04-10")
+    @Date("2018-05-12")
     public void getPopulationChangesOverviewWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getPopulationChangesOverview(Collections.<Integer>emptyList()).size());
     }
 
     @Test
-    @Date("2017-04-10")
+    @Date("2018-05-12")
     public void getPopulationChangesOverviewWithParameters() {
         List<Integer> years = Arrays.asList(2038, 2053);
 
@@ -107,20 +130,20 @@ public class PopulationProjectionsLatestProjectionsClientIT {
     }
 
     @Test
-    @Date("2017-04-10")
+    @Date("2018-05-12")
     public void getNumberOfBirths() {
         assertNotEquals(0, this.client.getNumberOfBirths().size());
     }
 
     @Test
-    @Date("2017-04-10")
+    @Date("2018-05-12")
     public void getNumberOfBirthsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getNumberOfBirths(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
-    @Date("2017-04-10")
+    @Date("2018-05-12")
     public void getNumberOfBirthsWithParameters() {
         List<String> countries = Arrays.asList("020", "060");
         List<String> ages = Arrays.asList("22", "33");
@@ -130,13 +153,13 @@ public class PopulationProjectionsLatestProjectionsClientIT {
     }
 
     @Test
-    @Date("2017-04-10")
+    @Date("2018-05-12")
     public void getLifeExpectancy() {
         assertNotEquals(0, this.client.getLifeExpectancy().size());
     }
 
     @Test
-    @Date("2017-04-10")
+    @Date("2018-05-12")
     public void getLifeExpectancyWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getPopulationChanges(Collections.<String>emptyList(), Collections.<Integer>emptyList(),
@@ -144,7 +167,7 @@ public class PopulationProjectionsLatestProjectionsClientIT {
     }
 
     @Test
-    @Date("2017-04-10")
+    @Date("2018-05-12")
     public void getLifeExpectancyWithParameters() {
         List<Integer> sexes = Arrays.asList(1, 2);
         List<String> ages = Arrays.asList("13", "66");

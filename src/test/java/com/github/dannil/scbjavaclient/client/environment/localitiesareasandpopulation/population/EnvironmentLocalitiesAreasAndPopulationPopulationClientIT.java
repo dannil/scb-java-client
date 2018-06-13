@@ -38,21 +38,28 @@ public class EnvironmentLocalitiesAreasAndPopulationPopulationClientIT {
         this.client = new EnvironmentLocalitiesAreasAndPopulationPopulationClient();
     }
 
-    @Test
-    @Date("2017-12-26")
-    public void getPopulationAndLandAreaWithinLocalities() {
-        assertNotEquals(0, this.client.getPopulationAndLandAreaWithinLocalities().size());
-    }
+    // Daniel 2017-03-29: Returns HTTP 403
+    //
+    // @Test
+    // @Date("2018-03-29")
+    // public void getPopulationAndLandAreaWithinLocalities() {
+    // assertNotEquals(0,
+    // this.client.getPopulationAndLandAreaWithinLocalities().size());
+    // }
+
+    // Daniel 2017-03-29: Returns HTTP 403
+    //
+    // @Test
+    // @Date("2018-03-29")
+    // public void
+    // getPopulationAndLandAreaWithinLocalitiesWithParametersEmptyLists() {
+    // assertNotEquals(0,
+    // this.client.getPopulationAndLandAreaWithinLocalities(Collections.<String>emptyList(),
+    // Collections.<Integer>emptyList()).size());
+    // }
 
     @Test
-    @Date("2017-12-26")
-    public void getPopulationAndLandAreaWithinLocalitiesWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getPopulationAndLandAreaWithinLocalities(Collections.<String>emptyList(),
-                Collections.<Integer>emptyList()).size());
-    }
-
-    @Test
-    @Date("2017-12-26")
+    @Date("2018-03-29")
     public void getPopulationAndLandAreaWithinLocalitiesWithParameters() {
         List<String> regions = Arrays.asList("T0132", "T0164");
         List<Integer> years = Arrays.asList(1990, 1995);

@@ -440,6 +440,10 @@ public class AbstractClientIT {
         knownMethods.add("PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient.getIncomeStatements");
         knownMethods.add(
                 "FinancialMarketsStatisticsDepositAndLendingClient.getLendingRatesToHouseholdsAndNonFinancialCorporationsBreakdownByMaturity");
+        knownMethods.add(
+                "EnvironmentLocalitiesAreasAndPopulationPopulationClient.getPopulationAndLandAreaWithinLocalities");
+        knownMethods.add("PopulationProjectionsLatestAssumptionsClient.getEmigrationRateAssumption");
+        knownMethods.add("PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient.getProducerPriceIndex");
         for (String knownMethod : knownMethods) {
             offendingMethods.remove(knownMethod);
         }
