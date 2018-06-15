@@ -57,9 +57,13 @@ public class LivingConditionsFamiliesAdoptionsClient extends AbstractClient {
      *         objects
      *
      * @see #getChildAdoptions(Collection, Collection, Collection, Collection)
+     *
+     * @deprecated Use
+     *             {@link #getAllAdoptedChildrenAndYoungPersons(Collection, Collection, Collection, Collection)}
      */
+    @Deprecated
     public List<ResponseModel> getChildAdoptions() {
-        return getChildAdoptions(null, null, null, null);
+        return getAllAdoptedChildrenAndYoungPersons(null, null, null, null);
     }
 
     /**
@@ -76,8 +80,47 @@ public class LivingConditionsFamiliesAdoptionsClient extends AbstractClient {
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
+     *
+     * @deprecated Use
+     *             {@link #getAllAdoptedChildrenAndYoungPersons(Collection, Collection, Collection, Collection)}
      */
+    @Deprecated
     public List<ResponseModel> getChildAdoptions(Collection<String> sexes, Collection<String> ages,
+            Collection<String> birthCountries, Collection<Integer> years) {
+        return getAllAdoptedChildrenAndYoungPersons(sexes, ages, birthCountries, years);
+    }
+
+    /**
+     * <p>Fetch all adopted children and young persons aged 0-21 data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getAllAdoptedChildrenAndYoungPersons(Collection, Collection, Collection,
+     *      Collection)
+     */
+    public List<ResponseModel> getAllAdoptedChildrenAndYoungPersons() {
+        return getAllAdoptedChildrenAndYoungPersons(null, null, null, null);
+    }
+
+    /**
+     * <p>Fetch all adopted children and young persons aged 0-21 data which match the
+     * input constraints.</p>
+     *
+     * @param sexes
+     *            the sexes
+     * @param ages
+     *            the ages
+     * @param birthCountries
+     *            the birth countries
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getAllAdoptedChildrenAndYoungPersons(Collection<String> sexes, Collection<String> ages,
             Collection<String> birthCountries, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.SEX_CODE, sexes);
@@ -85,7 +128,7 @@ public class LivingConditionsFamiliesAdoptionsClient extends AbstractClient {
         mappings.put("Fodelseland", birthCountries);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("BarnAdoption", mappings);
+        return getResponseModels("BarnAdoptionN", mappings);
     }
 
     @Override
