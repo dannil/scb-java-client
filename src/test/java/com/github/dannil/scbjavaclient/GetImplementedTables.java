@@ -114,7 +114,7 @@ public class GetImplementedTables {
         Collection<String> tables = t.getImplementedTables();
 
         DateTimeFormatter formatter = DateTimeFormatter.ISO_OFFSET_DATE_TIME;
-        String date = LocalDateTime.now().format(formatter);
+        String date = LocalDateTime.now().format(formatter).replace(':', '-');
         
         String fileName = "tables_implemented_" + date + ".txt";
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))) {

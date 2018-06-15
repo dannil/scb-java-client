@@ -13,7 +13,7 @@ public class GetImplementationPriority {
         // TODO Auto-generated method stub
         SCBTreeStructure tree = new SCBTreeStructure(new Locale("en", "US"));
         
-        File f = new File("scb_2017-06-23T19-41-45.395_2017-06-23T20-10-50.492_en.json");
+        File f = new File("scb_2018-06-15T10-12-11.947_2018-06-15T10-43-35.304_en.json");
         
         GetImplementedTables g = new GetImplementedTables();
         Collection<String> implementedTables = g.getImplementedTables();

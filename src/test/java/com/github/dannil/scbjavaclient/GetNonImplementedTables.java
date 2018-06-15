@@ -4,6 +4,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -14,21 +16,20 @@ import java.util.Objects;
 import com.github.dannil.scbjavaclient.GetImplementedTables;
 import com.github.dannil.scbjavaclientutil.contents.SCBTreeStructure;
 
-import org.joda.time.DateTime;
-
 public class GetNonImplementedTables {
 
     public static void main(String[] args) throws IOException, ReflectiveOperationException, InterruptedException {
         SCBTreeStructure tree = new SCBTreeStructure(new Locale("sv", "SE"));
 
-        File f = new File("scb_2017-12-15T08-51-33.247_2017-12-15T09-21-01.263_en.json");
+        File f = new File("scb_2018-06-15T10-12-11.947_2018-06-15T10-43-35.304_en.json");
         Collection<String> allTables = tree.getTables("", f);
         System.out.println("ALL size: " + allTables.size());
         // for (String e : allTables) {
         // // System.out.println(e);
         // }
 
-        DateTime now = DateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+        String now = LocalDateTime.now().format(formatter).replace(':', '-');
 
         GetImplementedTables t1 = new GetImplementedTables();
         Collection<String> implementedTables = t1.getImplementedTables();
