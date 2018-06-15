@@ -41,21 +41,21 @@ public class EnvironmentLandUseClientTest {
     public void buildingsClient() {
         EnvironmentLandUseClient client = new EnvironmentLandUseClient();
 
-        assertEquals(client.buildings().getClass(), EnvironmentLandUseBuildingsClient.class);
+        assertEquals(EnvironmentLandUseBuildingsClient.class, client.buildings().getClass());
     }
 
     @Test
     public void planningClient() {
         EnvironmentLandUseClient client = new EnvironmentLandUseClient();
 
-        assertEquals(client.planning().getClass(), EnvironmentLandUsePlanningClient.class);
+        assertEquals(EnvironmentLandUsePlanningClient.class, client.planning().getClass());
     }
 
     @Test
     public void usageClient() {
         EnvironmentLandUseClient client = new EnvironmentLandUseClient();
 
-        assertEquals(client.usage().getClass(), EnvironmentLandUseUsageClient.class);
+        assertEquals(EnvironmentLandUseUsageClient.class, client.usage().getClass());
     }
 
     @Test

@@ -20,9 +20,13 @@ import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.accomodationstatistics.BusinessActivitiesAccomodationStatisticsClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.balancestatistics.BusinessActivitiesBalanceStatisticsClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.database.BusinessActivitiesDatabaseClient;
+import com.github.dannil.scbjavaclient.client.businessactivities.industrialcapacityutilization.BusinessActivitiesIndustrialCapacityUtilizationClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.industrialinventories.BusinessActivitiesIndustrialInventoriesClient;
+import com.github.dannil.scbjavaclient.client.businessactivities.investmentsurvey.BusinessActivitiesInvestmentSurveyClient;
+import com.github.dannil.scbjavaclient.client.businessactivities.nonfinancialcorporations.BusinessActivitiesNonFinancialCorporationsClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.nonprofitorganizations.BusinessActivitiesNonProfitOrganizationsClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.productionindex.BusinessActivitiesProductionIndexClient;
+import com.github.dannil.scbjavaclient.client.businessactivities.productionvalueindex.BusinessActivitiesProductionValueIndexClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 
 /**
@@ -41,9 +45,13 @@ public class BusinessActivitiesClient extends AbstractContainerClient {
         addClient("accomodationstatistics", new BusinessActivitiesAccomodationStatisticsClient());
         addClient("balancestatistics", new BusinessActivitiesBalanceStatisticsClient());
         addClient("database", new BusinessActivitiesDatabaseClient());
+        addClient("industrialcapacityutilization", new BusinessActivitiesIndustrialCapacityUtilizationClient());
         addClient("industrialinventories", new BusinessActivitiesIndustrialInventoriesClient());
+        addClient("investmentsurvey", new BusinessActivitiesInvestmentSurveyClient());
+        addClient("nonfinancialcorporations", new BusinessActivitiesNonFinancialCorporationsClient());
         addClient("nonprofitorganizations", new BusinessActivitiesNonProfitOrganizationsClient());
         addClient("productionindex", new BusinessActivitiesProductionIndexClient());
+        addClient("productionvalueindex", new BusinessActivitiesProductionValueIndexClient());
     }
 
     /**
@@ -88,6 +96,16 @@ public class BusinessActivitiesClient extends AbstractContainerClient {
     }
 
     /**
+     * <p>Retrieve the client for interacting with business activities industrial capacity
+     * utilization data.</p>
+     *
+     * @return a client for business activities industrial capacity utilization data
+     */
+    public BusinessActivitiesIndustrialCapacityUtilizationClient industrialCapacityUtilization() {
+        return (BusinessActivitiesIndustrialCapacityUtilizationClient) getClient("industrialcapacityutilization");
+    }
+
+    /**
      * <p>Retrieve the client for interacting with business activities industrial
      * inventories data.</p>
      *
@@ -95,6 +113,26 @@ public class BusinessActivitiesClient extends AbstractContainerClient {
      */
     public BusinessActivitiesIndustrialInventoriesClient industrialInventories() {
         return (BusinessActivitiesIndustrialInventoriesClient) getClient("industrialinventories");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with business activities investment survey
+     * data.</p>
+     *
+     * @return a client for business activities investment survey data
+     */
+    public BusinessActivitiesInvestmentSurveyClient investmentSurvey() {
+        return (BusinessActivitiesInvestmentSurveyClient) getClient("investmentsurvey");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with business activities non financial
+     * corporations data.</p>
+     *
+     * @return a client for business activities non financial corporations data
+     */
+    public BusinessActivitiesNonFinancialCorporationsClient nonFinancialCorporations() {
+        return (BusinessActivitiesNonFinancialCorporationsClient) getClient("nonfinancialcorporations");
     }
 
     /**
@@ -115,6 +153,16 @@ public class BusinessActivitiesClient extends AbstractContainerClient {
      */
     public BusinessActivitiesProductionIndexClient productionIndex() {
         return (BusinessActivitiesProductionIndexClient) getClient("productionindex");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with business activities production value
+     * index data.</p>
+     *
+     * @return a client for business activities production value index data
+     */
+    public BusinessActivitiesProductionValueIndexClient productionValueIndex() {
+        return (BusinessActivitiesProductionValueIndexClient) getClient("productionvalueindex");
     }
 
     @Override

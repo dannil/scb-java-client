@@ -40,14 +40,14 @@ public class PopulationProjectionsClientTest {
     public void latestAssumptionsClient() {
         PopulationProjectionsClient client = new PopulationProjectionsClient();
 
-        assertEquals(client.latestAssumptions().getClass(), PopulationProjectionsLatestAssumptionsClient.class);
+        assertEquals(PopulationProjectionsLatestAssumptionsClient.class, client.latestAssumptions().getClass());
     }
 
     @Test
     public void latestProjectionsClient() {
         PopulationProjectionsClient client = new PopulationProjectionsClient();
 
-        assertEquals(client.latestProjections().getClass(), PopulationProjectionsLatestProjectionsClient.class);
+        assertEquals(PopulationProjectionsLatestProjectionsClient.class, client.latestProjections().getClass());
     }
 
     @Test

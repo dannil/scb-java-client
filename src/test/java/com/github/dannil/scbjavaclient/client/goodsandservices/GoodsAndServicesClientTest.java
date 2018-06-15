@@ -19,7 +19,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.goodsandservices.foodsales.GoodsAndServicesFoodSalesClient;
-import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntrade.GoodsAndServicesForeignTradeClient;
 import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods.GoodsAndServicesForeignTradeGoodsClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
@@ -27,7 +26,6 @@ import com.github.dannil.scbjavaclient.test.extensions.Suite;
 import org.junit.jupiter.api.Test;
 
 @Suite
-@SuppressWarnings("deprecation")
 public class GoodsAndServicesClientTest {
 
     @Test
@@ -42,21 +40,14 @@ public class GoodsAndServicesClientTest {
     public void foodSalesClient() {
         GoodsAndServicesClient client = new GoodsAndServicesClient();
 
-        assertEquals(client.foodSales().getClass(), GoodsAndServicesFoodSalesClient.class);
-    }
-
-    @Test
-    public void foreignTradeClient() {
-        GoodsAndServicesClient client = new GoodsAndServicesClient();
-
-        assertEquals(client.foreignTrade().getClass(), GoodsAndServicesForeignTradeClient.class);
+        assertEquals(GoodsAndServicesFoodSalesClient.class, client.foodSales().getClass());
     }
 
     @Test
     public void foreignTradeGoodsClient() {
         GoodsAndServicesClient client = new GoodsAndServicesClient();
 
-        assertEquals(client.foreignTradeGoods().getClass(), GoodsAndServicesForeignTradeGoodsClient.class);
+        assertEquals(GoodsAndServicesForeignTradeGoodsClient.class, client.foreignTradeGoods().getClass());
     }
 
     @Test

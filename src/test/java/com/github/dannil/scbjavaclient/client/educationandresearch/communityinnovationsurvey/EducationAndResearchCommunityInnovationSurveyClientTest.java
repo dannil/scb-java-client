@@ -41,15 +41,15 @@ public class EducationAndResearchCommunityInnovationSurveyClientTest {
     public void activity() {
         EducationAndResearchCommunityInnovationSurveyClient client = new EducationAndResearchCommunityInnovationSurveyClient();
 
-        assertEquals(client.activity().getClass(), EducationAndResearchCommunityInnovationSurveyActivityClient.class);
+        assertEquals(EducationAndResearchCommunityInnovationSurveyActivityClient.class, client.activity().getClass());
     }
 
     @Test
     public void cooperation() {
         EducationAndResearchCommunityInnovationSurveyClient client = new EducationAndResearchCommunityInnovationSurveyClient();
 
-        assertEquals(client.cooperation().getClass(),
-                EducationAndResearchCommunityInnovationSurveyCooperationClient.class);
+        assertEquals(EducationAndResearchCommunityInnovationSurveyCooperationClient.class,
+                client.cooperation().getClass());
     }
 
     @Test

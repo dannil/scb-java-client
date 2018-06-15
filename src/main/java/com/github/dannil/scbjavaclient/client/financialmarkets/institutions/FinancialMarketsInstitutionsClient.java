@@ -81,7 +81,7 @@ public class FinancialMarketsInstitutionsClient extends AbstractClient {
             Collection<String> currencies, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("Institut", institutions);
-        mappings.put("Kontopost", items);
+        mappings.put(APIConstants.ITEM_CODE, items);
         mappings.put("Valuta", currencies);
         mappings.put(APIConstants.TIME_CODE, months);
 

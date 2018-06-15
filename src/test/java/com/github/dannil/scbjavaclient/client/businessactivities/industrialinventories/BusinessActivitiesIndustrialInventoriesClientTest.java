@@ -41,15 +41,15 @@ public class BusinessActivitiesIndustrialInventoriesClientTest {
     public void economicIndicatorsClient() {
         BusinessActivitiesIndustrialInventoriesClient client = new BusinessActivitiesIndustrialInventoriesClient();
 
-        assertEquals(client.economicIndicators().getClass(),
-                BusinessActivitiesIndustrialInventoriesEconomicIndicatorsClient.class);
+        assertEquals(BusinessActivitiesIndustrialInventoriesEconomicIndicatorsClient.class,
+                client.economicIndicators().getClass());
     }
 
     @Test
     public void inventoriesClient() {
         BusinessActivitiesIndustrialInventoriesClient client = new BusinessActivitiesIndustrialInventoriesClient();
 
-        assertEquals(client.inventories().getClass(), BusinessActivitiesIndustrialInventoriesInventoriesClient.class);
+        assertEquals(BusinessActivitiesIndustrialInventoriesInventoriesClient.class, client.inventories().getClass());
     }
 
     @Test

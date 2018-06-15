@@ -103,6 +103,16 @@ public class JsonAPITableFormatTest {
     }
 
     @Test
+    public void getPairsNoVariables() {
+        String json = "{\"title\":\"Folkmängdenefterregion,civilstånd,ålder,kön,tabellinnehållochår\"}";
+
+        JsonAPITableFormat format = new JsonAPITableFormat(json);
+        Map<String, Collection<String>> expected = new HashMap<String, Collection<String>>();
+
+        assertEquals(expected, format.getPairs());
+    }
+
+    @Test
     public void getPairsEmpty() {
         String json = "{\"title\":\"Folkmängdenefterregion,civilstånd,ålder,kön,tabellinnehållochår\",\"variables\":[]}";
 
@@ -144,7 +154,7 @@ public class JsonAPITableFormatTest {
 
         // Remove whitespace for easier comparison; JSON is still valid
         expected = expected.replace(" ", "");
-        toString = expected.replace(" ", "");
+        toString = toString.replace(" ", "");
 
         assertEquals(expected, toString);
     }

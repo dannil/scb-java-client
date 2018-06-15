@@ -78,7 +78,7 @@ public class GoodsAndServicesForeignTradeGoodsEconomicIndicatorsClient extends A
     public List<ResponseModel> getImportsAndExportsOfGoods(Collection<String> economicIndicators,
             Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("EkoIndikator", economicIndicators);
+        mappings.put(APIConstants.ECONOMICINDICATOR_CODE, economicIndicators);
         mappings.put(APIConstants.TIME_CODE, months);
 
         return getResponseModels("SnabbStatHA0201H", mappings);
@@ -112,7 +112,7 @@ public class GoodsAndServicesForeignTradeGoodsEconomicIndicatorsClient extends A
     public List<ResponseModel> getTrendsInVolumeOfExportsAndImportsOfGoods(Collection<String> economicIndicators,
             Collection<String> quarters) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("EkoIndikator", economicIndicators);
+        mappings.put(APIConstants.ECONOMICINDICATOR_CODE, economicIndicators);
         mappings.put(APIConstants.TIME_CODE, quarters);
 
         return getResponseModels("SnabbStatHA0201V", mappings);

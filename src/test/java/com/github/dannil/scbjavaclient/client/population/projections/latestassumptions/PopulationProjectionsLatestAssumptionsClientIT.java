@@ -20,6 +20,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import com.github.dannil.scbjavaclient.test.extensions.AllowFailure;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
@@ -39,20 +40,20 @@ public class PopulationProjectionsLatestAssumptionsClientIT {
     }
 
     @Test
-    @Date("2017-04-10")
+    @Date("2018-05-12")
     public void getDeathRate() {
         assertNotEquals(0, this.client.getDeathRate().size());
     }
 
     @Test
-    @Date("2017-04-10")
+    @Date("2018-05-12")
     public void getDeathRateWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getDeathRate(Collections.<Integer>emptyList(), Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
-    @Date("2017-04-10")
+    @Date("2018-05-12")
     public void getDeathRateWithParameters() {
         List<Integer> sexes = Arrays.asList(1, 2);
         List<String> ages = Arrays.asList("21", "31");
@@ -61,24 +62,75 @@ public class PopulationProjectionsLatestAssumptionsClientIT {
         assertNotEquals(0, this.client.getDeathRate(sexes, ages, years).size());
     }
 
+    // Daniel 2018-05-12: Returns HTTP 403
+    //
+    // @Test
+    // @Date("2018-05-12")
+    // public void getEmigrationAssumption() {
+    // assertNotEquals(0, this.client.getEmigrationRateAssumption().size());
+    // }
+
+    // Daniel 2018-05-12: Returns HTTP 403
+    //
+    // @Test
+    // @Date("2018-05-12")
+    // public void getEmigrationAssumptionWithParametersEmptyLists() {
+    // assertNotEquals(0,
+    // this.client.getEmigrationRateAssumption(Collections.<String>emptyList(),
+    // Collections.<Integer>emptyList(), Collections.<String>emptyList(),
+    // Collections.<Integer>emptyList()).size());
+    // }
+
     @Test
-    @Date("2017-04-10")
+    @Date("2018-05-12")
+    public void getEmigrationAssumptionWithParameters() {
+        List<String> regionOfBirths = Arrays.asList("010", "020");
+        List<Integer> sexes = Arrays.asList(1, 2);
+        List<String> ages = Arrays.asList("19", "42");
+        List<Integer> years = Arrays.asList(2030, 2050);
+
+        assertNotEquals(0, this.client.getEmigrationRateAssumption(regionOfBirths, sexes, ages, years).size());
+    }
+
+    @Test
+    @Date("2018-05-12")
     public void getFertilityAssumption() {
         assertNotEquals(0, this.client.getFertilityAssumption().size());
     }
 
     @Test
-    @Date("2017-04-10")
-    public void getFertilityAssumptionWithParametersEmptyLists() {
+    @SuppressWarnings("deprecation")
+    @AllowFailure
+    @Date("2018-05-12")
+    public void getFertilityAssumptionWithParametersEmptyListsDeprecated1() {
         assertNotEquals(0, this.client.getFertilityAssumption(Collections.<Integer>emptyList()).size());
     }
 
     @Test
-    @Date("2017-04-10")
-    public void getFertilityAssumptionWithParameters() {
+    @SuppressWarnings("deprecation")
+    @AllowFailure
+    @Date("2018-05-12")
+    public void getFertilityAssumptionWithParametersDeprecated1() {
         List<Integer> years = Arrays.asList(2038, 2053);
 
         assertNotEquals(0, this.client.getFertilityAssumption(years).size());
+    }
+
+    @Test
+    @Date("2018-05-12")
+    public void getFertilityAssumptionWithParametersEmptyLists() {
+        assertNotEquals(0, this.client.getFertilityAssumption(Collections.<String>emptyList(),
+                Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
+    }
+
+    @Test
+    @Date("2018-05-12")
+    public void getFertilityAssumptionWithParameters() {
+        List<String> mothersRegionOfBirths = Arrays.asList("040", "070");
+        List<String> ages = Arrays.asList("24", "25");
+        List<Integer> years = Arrays.asList(2039, 2054);
+
+        assertNotEquals(0, this.client.getFertilityAssumption(mothersRegionOfBirths, ages, years).size());
     }
 
 }

@@ -33,9 +33,7 @@ public class POSTRequesterIT {
         POSTRequester requester = new POSTRequester();
         requester.setQuery("query");
 
-        assertThrows(SCBClientException.class, () -> {
-            requester.getResponse("example.example").getBody();
-        });
+        assertThrows(SCBClientException.class, () -> requester.getResponse("example.example").getBody());
     }
 
 }

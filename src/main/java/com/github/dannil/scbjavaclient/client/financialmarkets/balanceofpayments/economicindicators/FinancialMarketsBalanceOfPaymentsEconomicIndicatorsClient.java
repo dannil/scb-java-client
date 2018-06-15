@@ -76,7 +76,7 @@ public class FinancialMarketsBalanceOfPaymentsEconomicIndicatorsClient extends A
      */
     public List<ResponseModel> getBalanceOfPaymentsNet(Collection<String> indicators, Collection<String> quarters) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("EkoIndikator", indicators);
+        mappings.put(APIConstants.ECONOMICINDICATOR_CODE, indicators);
         mappings.put(APIConstants.TIME_CODE, quarters);
 
         return getResponseModels("SnabbStatFM0001", mappings);
