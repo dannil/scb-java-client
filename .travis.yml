@@ -27,6 +27,12 @@ matrix:
   - os: linux
     dist: trusty
     jdk: oraclejdk10
+  - os: linux
+    dist: trusty
+    jdk: oraclejdk11
+    script:
+    # As JaCoCo does not yet support Java 11 (as of 2018-06-16), we skip it
+    - mvn install -B -V -DtestsDayLimit=7 -Djacoco.skip=true
 install:
 - true
 before_script:
