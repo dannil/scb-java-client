@@ -38,7 +38,10 @@ install:
 before_script:
 # If we get the same IP on concurrent builds and this triggers an error
 # on the API (rate limiting), this can be easily debugged by checking the log
-- curl icanhazip.com
+#
+# Return 0 even if the command fails; we don't want the build to stall just because
+# no connection could be made to the URL
+- curl icanhazip.com -m 5 || true
 script:
 - mvn install -B -V -DtestsDayLimit=7
 after_success:
