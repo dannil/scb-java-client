@@ -210,7 +210,8 @@ public class AbstractClientIT {
         List<File> files = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient/client", "*.java");
 
         // Filter out some classes from the list
-        Filters.files(files, AbstractClient.class, AbstractContainerClient.class, SCBClient.class);
+        Filters.files(files, AbstractClient.class, AbstractContainerClient.class, SCBClient.class,
+                SCBClientBuilder.class);
 
         List<Class<?>> matchedClasses = new ArrayList<>();
         for (File file : files) {
@@ -258,7 +259,7 @@ public class AbstractClientIT {
         List<File> files = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient/client", "*.java");
 
         // Filter out some classes from the list
-        Filters.files(files, AbstractClient.class, AbstractContainerClient.class);
+        Filters.files(files, AbstractClient.class, AbstractContainerClient.class, SCBClientBuilder.class);
 
         Map<String, Class<?>> register = new HashMap<>();
         Map<String, List<Class<?>>> offendingClasses = new HashMap<>();
@@ -315,7 +316,7 @@ public class AbstractClientIT {
         List<File> files = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient/client", "*.java");
 
         // Filter out some classes from the list
-        Filters.files(files, AbstractClient.class, AbstractContainerClient.class);
+        Filters.files(files, AbstractClient.class, AbstractContainerClient.class, SCBClientBuilder.class);
 
         // Convert paths into binary names
         Set<String> binaryNames = new TreeSet<String>();

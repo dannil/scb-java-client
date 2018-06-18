@@ -25,6 +25,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.github.dannil.scbjavaclient.client.SCBClientBuilderIT;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
@@ -43,8 +44,8 @@ public class TestIT {
         // Find files matching the wildcard pattern
         List<File> files = Files.find(execPath + "/src/test/java/com/github/dannil/scbjavaclient", "*IT.java");
 
-        // Filter out THIS class from the list
-        Filters.files(files, this.getClass());
+        // Filter out THIS and some other classes from the list
+        Filters.files(files, this.getClass(), SCBClientBuilderIT.class);
 
         List<Class<?>> matchedClasses = new ArrayList<Class<?>>();
         for (File file : files) {
