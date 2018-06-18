@@ -16,27 +16,56 @@ package com.github.dannil.scbjavaclient.client;
 
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
 import com.github.dannil.scbjavaclient.http.HttpProtocol;
 
+/**
+ * <p>Builder class for constructing new clients.</p>
+ *
+ * @since 1.2.0
+ */
 public class SCBClientBuilder {
 
     private SCBClient client;
 
+    /**
+     * <p>Default constructor.</p>
+     */
     public SCBClientBuilder() {
         this.client = new SCBClient();
     }
 
+    /**
+     * <p>Sets the <code>Locale</code> for this builder, and therefore the client
+     * generated from this builder.</p>
+     *
+     * @param locale
+     *            the <code>Locale</code> to use
+     * @return the instance of this builder
+     */
     public SCBClientBuilder setLocale(Locale locale) {
         this.client.setLocale(locale);
         return this;
     }
 
+    /**
+     * <p>Sets the {@link com.github.dannil.scbjavaclient.http.HttpProtocol HttpProtocol}
+     * for this builder, and therefore the client generated from this builder.</p>
+     *
+     * @param httpProtocol
+     *            the {@link com.github.dannil.scbjavaclient.http.HttpProtocol
+     *            HttpProtocol} to use
+     * @return the instance of this builder
+     */
     public SCBClientBuilder setHttpProtocol(HttpProtocol httpProtocol) {
         this.client.setHttpProtocol(httpProtocol);
         return this;
     }
 
+    /**
+     * <p>Generates a {@link SCBClient} with the previously assigned parameters.</p>
+     *
+     * @return a {@link SCBClient} with specified parameters
+     */
     public SCBClient build() {
         return this.client;
     }

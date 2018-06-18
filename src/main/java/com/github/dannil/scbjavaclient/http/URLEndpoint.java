@@ -104,12 +104,12 @@ public class URLEndpoint {
      * <p>Generates a new URL to the API by replacing the current language tag in the URL
      * with the specified language tag. The HTTP protocol used (HTTP or HTTPS) is not
      * modified.</p>
-     * 
-     * @see #toURL(String, HttpProtocol)
-     * 
+     *
      * @param language
      *            the language to use
      * @return an {@link URLEndpoint} representing the modified URL
+     *
+     * @see #toURL(String, HttpProtocol)
      */
     public URLEndpoint toURL(String language) {
         return toURL(language, null);
@@ -126,7 +126,7 @@ public class URLEndpoint {
      *
      * <ol> <li>Replaces the <b>HTTP protocol</b> (such as "http") with the specified
      * protocol.</li>
-     * 
+     *
      * <li>Specifies the <b>start segment</b> as the segment preceding the <b>language tag
      * segment</b> in the URL.</li>
      *
