@@ -3,6 +3,7 @@ package com.github.dannil.scbjavaclient.utility;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.http.HttpProtocol;
 
 public class SCBClientBuilder {
 
@@ -17,8 +18,8 @@ public class SCBClientBuilder {
         return this;
     }
 
-    public SCBClientBuilder enableHttps() {
-        // TODO do some fine logic here which sets HTTPS
+    public SCBClientBuilder setHttpProtocol(HttpProtocol httpProtocol) {
+        this.client.setHttpProtocol(httpProtocol);
         return this;
     }
 

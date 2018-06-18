@@ -22,6 +22,7 @@ import java.util.Map;
 
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
+import com.github.dannil.scbjavaclient.http.HttpProtocol;
 import com.github.dannil.scbjavaclient.http.HttpResponse;
 import com.github.dannil.scbjavaclient.http.HttpStatusCode;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
@@ -39,6 +40,8 @@ import com.github.dannil.scbjavaclient.utility.QueryBuilder;
  */
 public abstract class AbstractClient {
 
+    private HttpProtocol httpProtocol;
+
     private Locale locale;
 
     private Localization localization;
@@ -47,6 +50,7 @@ public abstract class AbstractClient {
      * <p>Default constructor.</p>
      */
     protected AbstractClient() {
+        this.httpProtocol = HttpProtocol.HTTPS;
         this.locale = Locale.getDefault();
         this.localization = new Localization(this.locale);
     }
@@ -61,6 +65,27 @@ public abstract class AbstractClient {
         this();
         this.locale = locale;
         this.localization.setLocale(this.locale);
+    }
+
+    /**
+     * <p>Returns the HTTP protocol for this client instance.</p>
+     *
+     * @return the {@link com.github.dannil.scbjavaclient.http.HttpProtocol HttpProtocol}
+     *         for this client instance
+     */
+    public HttpProtocol getHttpProtocol() {
+        return this.httpProtocol;
+    }
+
+    /**
+     * <p>Sets the HTTP protocol for this client instance.</p>
+     *
+     * @param httpProtocol
+     *            the {@link com.github.dannil.scbjavaclient.http.HttpProtocol
+     *            HttpProtocol} for this client instance
+     */
+    public void setHttpProtocol(HttpProtocol httpProtocol) {
+        this.httpProtocol = httpProtocol;
     }
 
     /**
@@ -106,12 +131,13 @@ public abstract class AbstractClient {
     }
 
     /**
-     * <p>Determines the URL for the API based on the current <code>Locale</code>.</p>
+     * <p>Determines the URL for the API based on the current <code>Locale</code> and HTTP
+     * protocol.</p>
      *
      * @return the URL representing the entry point for the API
      */
     protected URLEndpoint getRootUrl() {
-        return URLEndpoint.getRootUrl(this.locale);
+        return URLEndpoint.getRootUrl(this.locale, this.httpProtocol);
     }
 
     /**

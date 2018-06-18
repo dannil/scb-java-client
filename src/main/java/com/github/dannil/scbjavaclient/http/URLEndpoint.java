@@ -102,12 +102,33 @@ public class URLEndpoint {
 
     /**
      * <p>Generates a new URL to the API by replacing the current language tag in the URL
-     * with the specified language tag.</p>
+     * with the specified language tag. The HTTP protocol used (HTTP or HTTPS) is not
+     * modified.</p>
+     * 
+     * @see #toURL(String, HttpProtocol)
+     * 
+     * @param language
+     *            the language to use
+     * @return an {@link URLEndpoint} representing the modified URL
+     */
+    public URLEndpoint toURL(String language) {
+        return toURL(language, null);
+    }
+
+    /**
+     * <p>Generates a new URL to the API by replacing the current language tag and HTTP
+     * protocol in the URL with the specified language tag and
+     * {@link com.github.dannil.scbjavaclient.http.HttpProtocol HttpProtocol}.</p>
      *
-     * <p>This method performs these steps to figure out what needs to be replaced:</p>
+     * <p>The method performs two distinct operations: replacement of the HTTP protocol
+     * and replacement of the language tag. The following steps are performed to figure
+     * out what needs to be replaced:</p>
      *
-     * <ol> <li>Specifies the <b>start segment</b> as the segment preceding the
-     * <b>language tag segment</b> in the URL.</li>
+     * <ol> <li>Replaces the <b>HTTP protocol</b> (such as "http") with the specified
+     * protocol.</li>
+     * 
+     * <li>Specifies the <b>start segment</b> as the segment preceding the <b>language tag
+     * segment</b> in the URL.</li>
      *
      * <li>Finds the length of the <b>language tag segment</b> by finding the next forward
      * slash following the <b>start segment</b>, as this indicates that the segment has
@@ -126,21 +147,31 @@ public class URLEndpoint {
      *
      * @param language
      *            the language to use
+     * @param httpProtocol
+     *            the HTTP protocol to use
      * @return an {@link URLEndpoint} representing the modified URL
      */
-    public URLEndpoint toURL(String language) {
+    public URLEndpoint toURL(String language, HttpProtocol httpProtocol) {
+        StringBuilder builder = new StringBuilder(this.url);
+
+        // Replace the HTTP protocol with the specified parameter. If the parameter is
+        // null we don't change the protocol
+        if (httpProtocol != null) {
+            String protocol = httpProtocol.getProtocol();
+            builder.replace(0, builder.toString().indexOf("://"), protocol);
+        }
+
         // Specify the starting point. For this implementation, the starting
         // point is the segment preceding the language tag segment in the URL
         String startSegment = "doris";
 
         // Find the index where the language tag starts
-        int start = this.url.indexOf(startSegment) + startSegment.length() + 1;
+        int start = builder.toString().indexOf(startSegment) + startSegment.length() + 1;
         // Find the index where the language tag ends
-        int end = start + this.url.substring(start).indexOf('/');
+        int end = start + builder.toString().substring(start).indexOf('/');
 
         // Replace the contents between the start and end index with our new
         // language tag
-        StringBuilder builder = new StringBuilder(this.url);
         builder.replace(start, end, language);
 
         return new URLEndpoint(builder.toString());
@@ -190,10 +221,29 @@ public class URLEndpoint {
      * @return an {@link URLEndpoint} representing the
      *         {@link com.github.dannil.scbjavaclient.constants.APIConstants#ROOT_URL
      *         ROOT_URL} with a converted language tag segment matching the specified
-     *         <code>Locale</code>
+     *         <code>Locale</code>.
      */
     public static URLEndpoint getRootUrl(Locale locale) {
         return new URLEndpoint(APIConstants.ROOT_URL).toURL(locale);
+    }
+
+    /**
+     * <p>Returns the root URL for the API for a specific <code>Locale</code> and
+     * {@link com.github.dannil.scbjavaclient.http.HttpProtocol HttpProtocol}.</p>
+     *
+     * @param locale
+     *            the <code>Locale</code>
+     * @param httpProtocol
+     *            the {@link com.github.dannil.scbjavaclient.http.HttpProtocol
+     *            HttpProtocol}
+     * @return an {@link URLEndpoint} representing the
+     *         {@link com.github.dannil.scbjavaclient.constants.APIConstants#ROOT_URL
+     *         ROOT_URL} with a converted language tag segment matching the specified
+     *         <code>Locale</code> and
+     *         {@link com.github.dannil.scbjavaclient.http.HttpProtocol HttpProtocol}
+     */
+    public static URLEndpoint getRootUrl(Locale locale, HttpProtocol httpProtocol) {
+        return new URLEndpoint(APIConstants.ROOT_URL).toURL(locale.getLanguage(), httpProtocol);
     }
 
 }
