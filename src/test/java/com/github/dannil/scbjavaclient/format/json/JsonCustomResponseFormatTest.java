@@ -14,8 +14,8 @@
 
 package com.github.dannil.scbjavaclient.format.json;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,20 +27,19 @@ import java.util.Map;
 import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.model.ValueNode;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
+@Suite
 public class JsonCustomResponseFormatTest {
 
     private String json;
 
     private JsonCustomResponseFormat format;
 
-    @Before
+    @BeforeEach
     public void setup() {
         this.json = "{\"columns\":[{\"code\":\"Region\",\"text\":\"region\",\"type\":\"d\"},{\"code\":\"Civilstand\",\"text\":\"marital status\",\"type\":\"d\"},{\"code\":\"Alder\",\"text\":\"age\",\"type\":\"d\"},{\"code\":\"Tid\",\"text\":\"year\",\"type\":\"t\"},{\"code\":\"BE0101N1\",\"text\":\"Population\",\"comment\":\"The tables show the conditions on December 31st for each respective year according to administrative subdivisions of January 1st of the following year\\r\\n\",\"type\":\"c\"},{\"code\":\"BE0101N2\",\"text\":\"Population growth\",\"comment\":\"Population growth is defined as the difference between the population at the beginning of the year and at the end of the year.\\r\\n\",\"type\":\"c\"}],\"comments\":[],\"data\":[{\"key\":[\"00\",\"OG\",\"45\",\"2011\"],\"values\":[\"48403\",\"1007\"]}]}";
         this.format = new JsonCustomResponseFormat(this.json);
@@ -71,20 +70,18 @@ public class JsonCustomResponseFormatTest {
         assertEquals(convertedPopulations, staticPopulations);
     }
 
-    @Test(expected = SCBClientParsingException.class)
+    @Test
     public void toListOfInvalidJson() {
-        JsonCustomResponseFormat format = new JsonCustomResponseFormat("dadawdawgnjhgggggggggggggggggggggggg");
-        List<ResponseModel> populations = format.toListOf(ResponseModel.class);
-
-        assertNull(populations);
+        assertThrows(SCBClientParsingException.class, () -> {
+            new JsonCustomResponseFormat("dadawdawgnjhggggggg");
+        });
     }
 
-    @Test(expected = SCBClientParsingException.class)
+    @Test
     public void toListOfInvalidConversionClass() {
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(this.json);
-        List<Locale> populations = format.toListOf(Locale.class);
 
-        assertNull(populations);
+        assertThrows(SCBClientParsingException.class, () -> format.toListOf(Locale.class));
     }
 
     @Test
@@ -93,13 +90,14 @@ public class JsonCustomResponseFormatTest {
 
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(input);
 
-        String expected = "[{\"region\": \"00\",\"values\":[{\"text\": \"Population\",\"value\": \"48403\",\"code\":\"BE0101N1\"},{\"text\":\"Population growth\",\"value\":\"1007\",\"code\":\"BE0101N2\"}],\"alder\":\"45\",\"tid\":\"2011\",\"civilstand\":\"OG\"}]";
+        String expected = "[{\"Variables\":{\"Alder\":\"45\",\"Region\":\"00\",\"Civilstand\":\"OG\",\"Tid\":\"2011\"},\"Values\":[{\"Value\":\"48403\",\"Text\":\"Population\",\"Code\":\"BE0101N1\"},{\"Value\":\"1007\",\"Text\":\"Populationgrowth\",\"Code\":\"BE0101N2\"}]}]";
         String toString = format.toString();
 
         // Remove whitespace for easier comparison; JSON is still valid
         expected = expected.replace(" ", "");
-        toString = expected.replace(" ", "");
+        toString = toString.replace(" ", "");
 
         assertEquals(expected, toString);
     }
+
 }

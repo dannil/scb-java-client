@@ -14,36 +14,38 @@
 
 package com.github.dannil.scbjavaclient.client.population.statistics.foreigncitizens;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
-public class PopulationStatisticsForeignCitizensClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class PopulationStatisticsForeignCitizensClientIT {
 
     private PopulationStatisticsForeignCitizensClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
-        this.client = new SCBClient().population().statistics().foreignCitizens();
+        this.client = new PopulationStatisticsForeignCitizensClient();
     }
 
     @Test
+    @Date("2017-04-27")
     public void getForeignCitizens() {
         assertNotEquals(0, this.client.getForeignCitizens().size());
     }
 
     @Test
+    @Date("2017-04-27")
     public void getForeignCitizensWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getForeignCitizens(Collections.<String>emptyList(), Collections.<String>emptyList(),
@@ -51,6 +53,7 @@ public class PopulationStatisticsForeignCitizensClientIT extends RemoteIntegrati
     }
 
     @Test
+    @Date("2017-04-27")
     public void getForeignCitizensWithParameters() {
         List<String> regions = Arrays.asList("1263");
         List<String> ages = Arrays.asList("15-24", "45-54");

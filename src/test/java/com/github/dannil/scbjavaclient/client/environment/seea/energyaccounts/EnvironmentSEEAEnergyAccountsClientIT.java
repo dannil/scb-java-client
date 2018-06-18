@@ -14,42 +14,45 @@
 
 package com.github.dannil.scbjavaclient.client.environment.seea.energyaccounts;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
-public class EnvironmentSEEAEnergyAccountsClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class EnvironmentSEEAEnergyAccountsClientIT {
 
     private EnvironmentSEEAEnergyAccountsClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
-        this.client = new SCBClient().environment().seea().energyAccounts();
+        this.client = new EnvironmentSEEAEnergyAccountsClient();
     }
 
     @Test
+    @Date("2017-05-29")
     public void getCombustionOfFuels() {
         assertNotEquals(0, this.client.getCombustionOfFuels().size());
     }
 
     @Test
+    @Date("2017-05-29")
     public void getCombustionOfFuelsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getCombustionOfFuels(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-05-29")
     public void getCombustionOfFuelsWithParameters() {
         List<String> industrialClassifications = Arrays.asList("C23", "C24");
         List<String> typesOfFuels = Arrays.asList("01", "02");

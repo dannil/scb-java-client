@@ -14,42 +14,45 @@
 
 package com.github.dannil.scbjavaclient.client.environment.packagingandpackagingwaste;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
-public class EnvironmentPackagingAndPackagingWasteClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class EnvironmentPackagingAndPackagingWasteClientIT {
 
     private EnvironmentPackagingAndPackagingWasteClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
-        this.client = new SCBClient().environment().packagingAndPackagingWaste();
+        this.client = new EnvironmentPackagingAndPackagingWasteClient();
     }
 
     @Test
+    @Date("2015-03-06")
     public void getPackagingAndPackagingWaste() {
         assertNotEquals(0, this.client.getPackagingAndPackagingWaste().size());
     }
 
     @Test
+    @Date("2015-03-06")
     public void getPackagingAndPackagingWasteWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getPackagingAndPackagingWaste(Collections.<Integer>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2015-03-06")
     public void getPackagingAndPackagingWasteWithParameters() {
         List<Integer> types = Arrays.asList(10, 20);
         List<Integer> years = Arrays.asList(2012, 2013);

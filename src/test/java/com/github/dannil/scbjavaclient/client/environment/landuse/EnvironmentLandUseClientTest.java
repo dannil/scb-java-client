@@ -14,7 +14,7 @@
 
 package com.github.dannil.scbjavaclient.client.environment.landuse;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
@@ -22,12 +22,11 @@ import com.github.dannil.scbjavaclient.client.environment.landuse.buildings.Envi
 import com.github.dannil.scbjavaclient.client.environment.landuse.planning.EnvironmentLandUsePlanningClient;
 import com.github.dannil.scbjavaclient.client.environment.landuse.usage.EnvironmentLandUseUsageClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
+@Suite
 public class EnvironmentLandUseClientTest {
 
     @Test
@@ -42,21 +41,21 @@ public class EnvironmentLandUseClientTest {
     public void buildingsClient() {
         EnvironmentLandUseClient client = new EnvironmentLandUseClient();
 
-        assertEquals(client.buildings().getClass(), EnvironmentLandUseBuildingsClient.class);
+        assertEquals(EnvironmentLandUseBuildingsClient.class, client.buildings().getClass());
     }
 
     @Test
     public void planningClient() {
         EnvironmentLandUseClient client = new EnvironmentLandUseClient();
 
-        assertEquals(client.planning().getClass(), EnvironmentLandUsePlanningClient.class);
+        assertEquals(EnvironmentLandUsePlanningClient.class, client.planning().getClass());
     }
 
     @Test
     public void usageClient() {
         EnvironmentLandUseClient client = new EnvironmentLandUseClient();
 
-        assertEquals(client.usage().getClass(), EnvironmentLandUseUsageClient.class);
+        assertEquals(EnvironmentLandUseUsageClient.class, client.usage().getClass());
     }
 
     @Test

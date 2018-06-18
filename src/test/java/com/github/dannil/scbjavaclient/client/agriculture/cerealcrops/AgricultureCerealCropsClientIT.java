@@ -14,42 +14,45 @@
 
 package com.github.dannil.scbjavaclient.client.agriculture.cerealcrops;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
-public class AgricultureCerealCropsClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class AgricultureCerealCropsClientIT {
 
     private AgricultureCerealCropsClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
-        this.client = new SCBClient().agriculture().cerealCrops();
+        this.client = new AgricultureCerealCropsClient();
     }
 
     @Test
+    @Date("2017-05-21")
     public void getYieldPerHectarAndTotalProduction() {
         assertNotEquals(0, this.client.getYieldPerHectarAndTotalProduction().size());
     }
 
     @Test
+    @Date("2017-05-21")
     public void getYieldPerHectarAndTotalProductionWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getYieldPerHectarAndTotalProduction(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-05-21")
     public void getYieldPerHectarAndTotalProductionWithParameters() {
         List<String> regions = Arrays.asList("05", "08");
         List<Integer> crops = Arrays.asList(105, 150);

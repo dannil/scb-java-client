@@ -14,42 +14,45 @@
 
 package com.github.dannil.scbjavaclient.client.energy.monthlystatistics;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
-public class EnergyMonthlyStatisticsClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class EnergyMonthlyStatisticsClientIT {
 
     private EnergyMonthlyStatisticsClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
-        this.client = new SCBClient().energy().monthlyStatistics();
+        this.client = new EnergyMonthlyStatisticsClient();
     }
 
     @Test
+    @Date("2017-03-14")
     public void getDeliveriesOfLiquidFuels() {
         assertNotEquals(0, this.client.getDeliveriesOfLiquidFuels().size());
     }
 
     @Test
+    @Date("2017-03-14")
     public void getDeliveriesOfLiquidFuelsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getDeliveriesOfLiquidFuels(Collections.<Integer>emptyList(),
                 Collections.<String>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test
+    @Date("2017-03-14")
     public void getDeliveriesOfLiquidFuelsWithParameters() {
         List<Integer> commodities = Arrays.asList(36, 39);
         List<String> userCategories = Arrays.asList("010", "014");
@@ -59,17 +62,20 @@ public class EnergyMonthlyStatisticsClientIT extends RemoteIntegrationTestSuite 
     }
 
     @Test
+    @Date("2017-03-14")
     public void getDeliveriesOfOilProducts() {
         assertNotEquals(0, this.client.getDeliveriesOfOilProducts().size());
     }
 
     @Test
+    @Date("2017-03-14")
     public void getDeliveriesOfOilProductsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getDeliveriesOfOilProducts(Collections.<Integer>emptyList(),
                 Collections.<String>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test
+    @Date("2017-03-14")
     public void getDeliveriesOfOilProductsWithParameters() {
         List<Integer> commodities = Arrays.asList(13, 15);
         List<String> userCategories = Arrays.asList("002", "004");

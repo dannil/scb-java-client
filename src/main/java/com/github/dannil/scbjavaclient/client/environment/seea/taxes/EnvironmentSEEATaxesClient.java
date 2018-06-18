@@ -81,7 +81,7 @@ public class EnvironmentSEEATaxesClient extends AbstractClient {
         mappings.put(APIConstants.SNI2007_CODE, industrialClassifications);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("MiljoSkattSNIb", mappings);
+        return getResponseModels("MiljoSkattSNIbN", mappings);
     }
 
     /**

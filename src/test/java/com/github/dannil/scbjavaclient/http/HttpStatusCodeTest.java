@@ -14,15 +14,15 @@
 
 package com.github.dannil.scbjavaclient.http;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-@RunWith(JUnit4.class)
+import org.junit.jupiter.api.Test;
+
+@Suite
 public class HttpStatusCodeTest {
 
     @Test
@@ -56,12 +56,9 @@ public class HttpStatusCodeTest {
         assertEquals("404", httpStatusCode.asText());
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void valueOfIllegalArgument() {
-        int code = -1;
-        HttpStatusCode httpStatusCode = HttpStatusCode.valueOf(code);
-
-        assertNull(httpStatusCode);
+        assertThrows(IllegalArgumentException.class, () -> HttpStatusCode.valueOf(-1));
     }
 
     @Test

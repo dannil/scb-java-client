@@ -14,42 +14,45 @@
 
 package com.github.dannil.scbjavaclient.client.environment.seea.materialflowaccounts;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
-public class EnvironmentSEEAMaterialFlowAccountsClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class EnvironmentSEEAMaterialFlowAccountsClientIT {
 
     private EnvironmentSEEAMaterialFlowAccountsClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
-        this.client = new SCBClient().environment().seea().materialFlowAccounts();
+        this.client = new EnvironmentSEEAMaterialFlowAccountsClient();
     }
 
     @Test
+    @Date("2017-05-29")
     public void getMaterialFlows() {
         assertNotEquals(0, this.client.getMaterialFlows().size());
     }
 
     @Test
+    @Date("2017-05-29")
     public void getMaterialFlowsWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getMaterialFlows(Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-05-29")
     public void getMaterialFlowsWithParameters() {
         List<String> categories = Arrays.asList("1.2.1", "1.2.2");
         List<Integer> years = Arrays.asList(2010, 2011);

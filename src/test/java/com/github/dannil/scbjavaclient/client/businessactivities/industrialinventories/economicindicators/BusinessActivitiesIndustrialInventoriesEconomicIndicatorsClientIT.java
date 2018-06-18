@@ -14,41 +14,44 @@
 
 package com.github.dannil.scbjavaclient.client.businessactivities.industrialinventories.economicindicators;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
-public class BusinessActivitiesIndustrialInventoriesEconomicIndicatorsClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class BusinessActivitiesIndustrialInventoriesEconomicIndicatorsClientIT {
 
     private BusinessActivitiesIndustrialInventoriesEconomicIndicatorsClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
-        this.client = new SCBClient().businessActivities().industrialInventories().economicIndicators();
+        this.client = new BusinessActivitiesIndustrialInventoriesEconomicIndicatorsClient();
     }
 
     @Test
+    @Date("2017-04-13")
     public void getTotalInventories() {
         assertNotEquals(0, this.client.getTotalInventories().size());
     }
 
     @Test
+    @Date("2017-04-13")
     public void getTotalInventoriesWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getTotalInventories(Collections.<String>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-13")
     public void getTotalInventoriesWithParameters() {
         List<String> quarters = Arrays.asList("2015K2", "2015K4");
 

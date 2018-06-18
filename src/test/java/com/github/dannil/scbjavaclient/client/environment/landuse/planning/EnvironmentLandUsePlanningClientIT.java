@@ -14,42 +14,45 @@
 
 package com.github.dannil.scbjavaclient.client.environment.landuse.planning;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
-public class EnvironmentLandUsePlanningClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class EnvironmentLandUsePlanningClientIT {
 
     private EnvironmentLandUsePlanningClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
-        this.client = new SCBClient().environment().landUse().planning();
+        this.client = new EnvironmentLandUsePlanningClient();
     }
 
     @Test
+    @Date("2017-03-17")
     public void getPlanning() {
         assertNotEquals(0, this.client.getPlanning().size());
     }
 
     @Test
+    @Date("2017-03-17")
     public void getPlanningWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getPlanning(Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-03-17")
     public void getPlanningWithParameters() {
         List<String> regions = Arrays.asList("0114", "0140");
         List<Integer> years = Arrays.asList(2010);

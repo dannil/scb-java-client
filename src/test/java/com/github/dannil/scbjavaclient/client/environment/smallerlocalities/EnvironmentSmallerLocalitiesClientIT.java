@@ -14,42 +14,45 @@
 
 package com.github.dannil.scbjavaclient.client.environment.smallerlocalities;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
-public class EnvironmentSmallerLocalitiesClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class EnvironmentSmallerLocalitiesClientIT {
 
     private EnvironmentSmallerLocalitiesClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
-        this.client = new SCBClient().environment().smallerLocalities();
+        this.client = new EnvironmentSmallerLocalitiesClient();
     }
 
     @Test
+    @Date("2017-05-27")
     public void getLandArea() {
         assertNotEquals(0, this.client.getLandArea().size());
     }
 
     @Test
+    @Date("2017-05-27")
     public void getLandAreaWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getLandArea(Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-05-27")
     public void getLandAreaWithParameters() {
         List<String> regions = Arrays.asList("S0245", "S0225");
         List<Integer> years = Arrays.asList(2005, 2010);

@@ -14,42 +14,45 @@
 
 package com.github.dannil.scbjavaclient.client.publicfinances.taxassessment;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
-public class PublicFinancesTaxAssessmentClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class PublicFinancesTaxAssessmentClientIT {
 
     private PublicFinancesTaxAssessmentClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
-        this.client = new SCBClient().publicFinances().taxAssessment();
+        this.client = new PublicFinancesTaxAssessmentClient();
     }
 
     @Test
+    @Date("2017-03-21")
     public void getAssessedAndTaxableEarnedIncome() {
         assertNotEquals(0, this.client.getAssessedAndTaxableEarnedIncome().size());
     }
 
     @Test
+    @Date("2017-03-21")
     public void getAssessedAndTaxableEarnedIncomeWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getAssessedAndTaxableEarnedIncome(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-03-21")
     public void getAssessedAndTaxableEarnedIncomeWithParameters() {
         List<String> regions = Arrays.asList("0182", "0305");
         List<Integer> years = Arrays.asList(2004, 2008);
@@ -58,17 +61,20 @@ public class PublicFinancesTaxAssessmentClientIT extends RemoteIntegrationTestSu
     }
 
     @Test
+    @Date("2017-03-21")
     public void getAssessmentForNationalCapitalIncomeTax() {
         assertNotEquals(0, this.client.getAssessmentForNationalCapitalIncomeTax().size());
     }
 
     @Test
+    @Date("2017-03-21")
     public void getAssessmentForNationalCapitalIncomeTaxWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getAssessedAndTaxableEarnedIncome(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-03-21")
     public void getAssessmentForNationalCapitalIncomeTaxWithParameters() {
         List<String> regions = Arrays.asList("0182", "0305");
         List<Integer> years = Arrays.asList(2004, 2008);

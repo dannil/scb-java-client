@@ -113,7 +113,7 @@ public class GoodsAndServicesFoodSalesClient extends AbstractClient {
         mappings.put("Varugrupp", productGroups);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("Livs", mappings);
+        return getResponseModels("EkoLivs", mappings);
     }
 
     @Override

@@ -14,18 +14,18 @@
 
 package com.github.dannil.scbjavaclient.client.energy;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
+import com.github.dannil.scbjavaclient.client.energy.annualstatistics.EnergyAnnualStatisticsClient;
 import com.github.dannil.scbjavaclient.client.energy.monthlystatistics.EnergyMonthlyStatisticsClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
+@Suite
 public class EnergyClientTest {
 
     @Test
@@ -37,10 +37,17 @@ public class EnergyClientTest {
     }
 
     @Test
+    public void annualStatisticsClient() {
+        EnergyClient client = new EnergyClient();
+
+        assertEquals(EnergyAnnualStatisticsClient.class, client.annualStatistics().getClass());
+    }
+
+    @Test
     public void monthlyStatisticsClient() {
         EnergyClient client = new EnergyClient();
 
-        assertEquals(client.monthlyStatistics().getClass(), EnergyMonthlyStatisticsClient.class);
+        assertEquals(EnergyMonthlyStatisticsClient.class, client.monthlyStatistics().getClass());
     }
 
     @Test

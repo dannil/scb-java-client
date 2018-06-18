@@ -14,36 +14,40 @@
 
 package com.github.dannil.scbjavaclient.client.livingconditions.families.adoptions;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
-public class LivingConditionsFamiliesAdoptionsClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class LivingConditionsFamiliesAdoptionsClientIT {
 
     private LivingConditionsFamiliesAdoptionsClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
-        this.client = new SCBClient().livingConditions().families().adoptions();
+        this.client = new LivingConditionsFamiliesAdoptionsClient();
     }
 
     @Test
+    @SuppressWarnings("deprecation")
+    @Date("2018-06-15")
     public void getChildAdoptions() {
         assertNotEquals(0, this.client.getChildAdoptions().size());
     }
 
     @Test
+    @SuppressWarnings("deprecation")
+    @Date("2018-06-15")
     public void getChildAdoptionsWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getChildAdoptions(Collections.<String>emptyList(), Collections.<String>emptyList(),
@@ -51,6 +55,8 @@ public class LivingConditionsFamiliesAdoptionsClientIT extends RemoteIntegration
     }
 
     @Test
+    @SuppressWarnings("deprecation")
+    @Date("2018-06-15")
     public void getChildAdoptionsWithParameters() {
         List<String> sexes = Arrays.asList("5", "6");
         List<String> ages = Arrays.asList("10", "13");
@@ -58,6 +64,31 @@ public class LivingConditionsFamiliesAdoptionsClientIT extends RemoteIntegration
         List<Integer> years = Arrays.asList(2004, 2008);
 
         assertNotEquals(0, this.client.getChildAdoptions(sexes, ages, birthCountries, years).size());
+    }
+    
+    @Test
+    @Date("2018-06-15")
+    public void getAllAdoptedChildrenAndYoungPersons() {
+        assertNotEquals(0, this.client.getAllAdoptedChildrenAndYoungPersons().size());
+    }
+
+    @Test
+    @Date("2018-06-15")
+    public void getAllAdoptedChildrenAndYoungPersonsWithParametersEmptyLists() {
+        assertNotEquals(0,
+                this.client.getAllAdoptedChildrenAndYoungPersons(Collections.<String>emptyList(), Collections.<String>emptyList(),
+                        Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
+    }
+
+    @Test
+    @Date("2018-06-15")
+    public void getAllAdoptedChildrenAndYoungPersonsWithParameters() {
+        List<String> sexes = Arrays.asList("5", "6");
+        List<String> ages = Arrays.asList("4", "5");
+        List<String> birthCountries = Arrays.asList("LV", "RO");
+        List<Integer> years = Arrays.asList(2005, 2009);
+
+        assertNotEquals(0, this.client.getAllAdoptedChildrenAndYoungPersons(sexes, ages, birthCountries, years).size());
     }
 
 }

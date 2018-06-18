@@ -14,8 +14,8 @@
 
 package com.github.dannil.scbjavaclient.format.json;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -24,19 +24,19 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-@RunWith(JUnit4.class)
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+@Suite
 public class JsonAPIConfigTableFormatTest {
 
     private String json;
 
     private JsonAPIConfigTableFormat format;
 
-    @Before
+    @BeforeEach
     public void setup() {
         this.json = "{\"maxValues\": 100000,\"maxCalls\": 30,\"timeWindow\": 10,\"CORS\": true}";
         this.format = new JsonAPIConfigTableFormat(this.json);
@@ -138,7 +138,7 @@ public class JsonAPIConfigTableFormatTest {
 
         // Remove whitespace for easier comparison; JSON is still valid
         expected = expected.replace(" ", "");
-        toString = expected.replace(" ", "");
+        toString = toString.replace(" ", "");
 
         assertEquals(expected, toString);
     }

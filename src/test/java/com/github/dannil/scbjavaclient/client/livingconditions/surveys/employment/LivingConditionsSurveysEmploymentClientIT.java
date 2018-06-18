@@ -14,42 +14,45 @@
 
 package com.github.dannil.scbjavaclient.client.livingconditions.surveys.employment;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
-public class LivingConditionsSurveysEmploymentClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class LivingConditionsSurveysEmploymentClientIT {
 
     private LivingConditionsSurveysEmploymentClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
-        this.client = new SCBClient().livingConditions().surveys().employment();
+        this.client = new LivingConditionsSurveysEmploymentClient();
     }
 
     @Test
+    @Date("2017-03-25")
     public void getMainActivity() {
         assertNotEquals(0, this.client.getMainActivity().size());
     }
 
     @Test
+    @Date("2017-03-25")
     public void getMainActivityWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getMainActivity(Collections.<String>emptyList(), Collections.<String>emptyList(),
                 Collections.<Integer>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test
+    @Date("2017-03-25")
     public void getMainActivityWithParameters() {
         List<String> activities = Arrays.asList("S215", "S225");
         List<String> ages = Arrays.asList("35-44");
@@ -60,11 +63,13 @@ public class LivingConditionsSurveysEmploymentClientIT extends RemoteIntegration
     }
 
     @Test
+    @Date("2017-03-25")
     public void getGainfullyEmployedPersons() {
         assertNotEquals(0, this.client.getGainfullyEmployedPersons().size());
     }
 
     @Test
+    @Date("2017-03-25")
     public void getGainfullyEmployedPersonsWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getGainfullyEmployedPersons(Collections.<String>emptyList(),
@@ -73,6 +78,7 @@ public class LivingConditionsSurveysEmploymentClientIT extends RemoteIntegration
     }
 
     @Test
+    @Date("2017-03-25")
     public void getGainfullyEmployedPersonsWithParameters() {
         List<String> fullAndPartTimes = Arrays.asList("S238", "S240");
         List<String> ages = Arrays.asList("35-44");
@@ -83,11 +89,13 @@ public class LivingConditionsSurveysEmploymentClientIT extends RemoteIntegration
     }
 
     @Test
+    @Date("2017-03-25")
     public void getTypeOfEmployment() {
         assertNotEquals(0, this.client.getTypeOfEmployment().size());
     }
 
     @Test
+    @Date("2017-03-25")
     public void getTypeOfEmploymentWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getTypeOfEmployment(Collections.<String>emptyList(), Collections.<String>emptyList(),
@@ -95,6 +103,7 @@ public class LivingConditionsSurveysEmploymentClientIT extends RemoteIntegration
     }
 
     @Test
+    @Date("2017-03-25")
     public void getTypeOfEmploymentWithParameters() {
         List<String> types = Arrays.asList("S265", "S365");
         List<String> ages = Arrays.asList("35-44");
@@ -105,11 +114,13 @@ public class LivingConditionsSurveysEmploymentClientIT extends RemoteIntegration
     }
 
     @Test
+    @Date("2017-03-25")
     public void getDistributionOfWorkingHoursForEmployees() {
         assertNotEquals(0, this.client.getDistributionOfWorkingHoursForEmployees().size());
     }
 
     @Test
+    @Date("2017-03-25")
     public void getDistributionOfWorkingHoursForEmployeesWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getDistributionOfWorkingHoursForEmployees(Collections.<String>emptyList(),
@@ -118,6 +129,7 @@ public class LivingConditionsSurveysEmploymentClientIT extends RemoteIntegration
     }
 
     @Test
+    @Date("2017-03-25")
     public void getDistributionOfWorkingHoursForEmployeesWithParameters() {
         List<String> types = Arrays.asList("A437", "A445");
         List<String> ages = Arrays.asList("35-44");

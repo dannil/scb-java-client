@@ -14,36 +14,38 @@
 
 package com.github.dannil.scbjavaclient.client.livingconditions.surveys.health;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
-public class LivingConditionsSurveysHealthClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class LivingConditionsSurveysHealthClientIT {
 
     private LivingConditionsSurveysHealthClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
-        this.client = new SCBClient().livingConditions().surveys().health();
+        this.client = new LivingConditionsSurveysHealthClient();
     }
 
     @Test
+    @Date("2017-03-25")
     public void getPhysicalAndMentalHealth() {
         assertNotEquals(0, this.client.getPhysicalAndMentalHealth().size());
     }
 
     @Test
+    @Date("2017-03-25")
     public void getPhysicalAndMentalHealthWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getPhysicalAndMentalHealth(Collections.<String>emptyList(), Collections.<String>emptyList(),
@@ -51,6 +53,7 @@ public class LivingConditionsSurveysHealthClientIT extends RemoteIntegrationTest
     }
 
     @Test
+    @Date("2017-03-25")
     public void getPhysicalAndMentalHealthWithParameters() {
         List<String> indicators = Arrays.asList("H656", "H680");
         List<String> ages = Arrays.asList("35-44");
@@ -61,11 +64,13 @@ public class LivingConditionsSurveysHealthClientIT extends RemoteIntegrationTest
     }
 
     @Test
+    @Date("2017-03-25")
     public void getLongTermIllness() {
         assertNotEquals(0, this.client.getLongTermIllness().size());
     }
 
     @Test
+    @Date("2017-03-25")
     public void getLongTermIllnessWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getLongTermIllness(Collections.<String>emptyList(), Collections.<String>emptyList(),
@@ -73,6 +78,7 @@ public class LivingConditionsSurveysHealthClientIT extends RemoteIntegrationTest
     }
 
     @Test
+    @Date("2017-03-25")
     public void getLongTermIllnessWithParameters() {
         List<String> indicators = Arrays.asList("H755", "H760");
         List<String> ages = Arrays.asList("35-44");
@@ -83,17 +89,20 @@ public class LivingConditionsSurveysHealthClientIT extends RemoteIntegrationTest
     }
 
     @Test
+    @Date("2017-03-25")
     public void getDisabilities() {
         assertNotEquals(0, this.client.getDisabilities().size());
     }
 
     @Test
+    @Date("2017-03-25")
     public void getDisabilitiesWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getDisabilities(Collections.<String>emptyList(), Collections.<String>emptyList(),
                 Collections.<Integer>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test
+    @Date("2017-03-25")
     public void getDisabilitiesWithParameters() {
         List<String> indicators = Arrays.asList("H780", "H840");
         List<String> ages = Arrays.asList("35-44");
@@ -104,11 +113,13 @@ public class LivingConditionsSurveysHealthClientIT extends RemoteIntegrationTest
     }
 
     @Test
+    @Date("2017-03-25")
     public void getDoctorAndDentistAppointments() {
         assertNotEquals(0, this.client.getDoctorAndDentistAppointments().size());
     }
 
     @Test
+    @Date("2017-03-25")
     public void getDoctorAndDentistAppointmentsWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getDoctorAndDentistAppointments(Collections.<String>emptyList(),
@@ -117,6 +128,7 @@ public class LivingConditionsSurveysHealthClientIT extends RemoteIntegrationTest
     }
 
     @Test
+    @Date("2017-03-25")
     public void getDoctorAndDentistAppointmentsWithParameters() {
         List<String> indicators = Arrays.asList("H812", "H820");
         List<String> ages = Arrays.asList("35-44");
@@ -127,11 +139,13 @@ public class LivingConditionsSurveysHealthClientIT extends RemoteIntegrationTest
     }
 
     @Test
+    @Date("2017-03-25")
     public void getTobaccoHabits() {
         assertNotEquals(0, this.client.getTobaccoHabits().size());
     }
 
     @Test
+    @Date("2017-03-25")
     public void getTobaccoHabitsWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getTobaccoHabits(Collections.<String>emptyList(), Collections.<String>emptyList(),
@@ -139,6 +153,7 @@ public class LivingConditionsSurveysHealthClientIT extends RemoteIntegrationTest
     }
 
     @Test
+    @Date("2017-03-25")
     public void getTobaccoHabitsWithParameters() {
         List<String> indicators = Arrays.asList("H825", "H830");
         List<String> ages = Arrays.asList("35-44");
@@ -149,11 +164,13 @@ public class LivingConditionsSurveysHealthClientIT extends RemoteIntegrationTest
     }
 
     @Test
+    @Date("2017-03-25")
     public void getBodyMassIndex() {
         assertNotEquals(0, this.client.getBodyMassIndex().size());
     }
 
     @Test
+    @Date("2017-03-25")
     public void getBodyMassIndexWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getBodyMassIndex(Collections.<String>emptyList(), Collections.<String>emptyList(),
@@ -161,6 +178,7 @@ public class LivingConditionsSurveysHealthClientIT extends RemoteIntegrationTest
     }
 
     @Test
+    @Date("2017-03-25")
     public void getBodyMassIndexWithParameters() {
         List<String> indicators = Arrays.asList("H785", "H787");
         List<String> ages = Arrays.asList("35-44");

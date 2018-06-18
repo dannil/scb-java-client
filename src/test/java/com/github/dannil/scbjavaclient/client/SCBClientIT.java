@@ -14,11 +14,10 @@
 
 package com.github.dannil.scbjavaclient.client;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -28,16 +27,18 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
-public class SCBClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class SCBClientIT {
 
     @Test
+    @Date("2017-01-01")
     public void getInputs() {
         Locale locale = new Locale("sv", "SE");
         SCBClient client = new SCBClient(locale);
@@ -58,6 +59,7 @@ public class SCBClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    @Date("2017-01-01")
     public void getRawData() {
         Locale locale = new Locale("sv", "SE");
         SCBClient client = new SCBClient(locale);
@@ -66,11 +68,15 @@ public class SCBClientIT extends RemoteIntegrationTestSuite {
 
         assertTrue(response.contains("BE0101N1"));
         assertTrue(response.contains("BE0101N2"));
-        assertTrue(response.contains("Region"));
         assertTrue(response.contains("Tid"));
+        assertFalse(response.contains("Region"));
+        assertFalse(response.contains("Civilstand"));
+        assertFalse(response.contains("Alder"));
+        assertFalse(response.contains("Kon"));
     }
 
     @Test
+    @Date("2017-01-01")
     public void getRawDataWithInputs() {
         Locale locale = new Locale("sv", "SE");
         SCBClient client = new SCBClient(locale);
@@ -90,6 +96,7 @@ public class SCBClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    @Date("2017-01-01")
     public void getConfig() {
         Locale locale = new Locale("sv", "SE");
         SCBClient client = new SCBClient(locale);
@@ -103,6 +110,7 @@ public class SCBClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    @Date("2017-01-01")
     public void getRegions() {
         SCBClient client = new SCBClient();
 
@@ -112,15 +120,19 @@ public class SCBClientIT extends RemoteIntegrationTestSuite {
         assertFalse(regions.isEmpty());
     }
 
+    @Test
+    @Date("2017-08-19")
     public void getRegionsMissingCodeInTable() {
         SCBClient client = new SCBClient();
 
-        List<String> regions = client.getRegions("BE/BE0001/BE0001T04Ar");
+        List<String> regions = client.getRegions("BE/BE0001/BE0001D/BE0001T04Ar");
 
-        assertNull(regions);
+        assertNotNull(regions);
+        assertTrue(regions.isEmpty());
     }
 
     @Test
+    @Date("2017-01-01")
     public void getTimes() {
         SCBClient client = new SCBClient();
 
@@ -130,15 +142,35 @@ public class SCBClientIT extends RemoteIntegrationTestSuite {
         assertFalse(times.isEmpty());
     }
 
+    @Test
+    @Date("2017-01-01")
     public void getTimesMissingCodeInTable() {
         SCBClient client = new SCBClient();
 
         List<String> times = client.getTimes("NR/NR0105/NR0105A");
 
-        assertNull(times);
+        assertNotNull(times);
+        assertTrue(times.isEmpty());
     }
 
     @Test
+    @Date("2018-01-01")
+    public void supportedLanguage() {
+        String language = "sv";
+
+        assertTrue(SCBClient.isSupportedLanguage(language));
+    }
+
+    @Test
+    @Date("2018-01-01")
+    public void unsupportedLanguage() {
+        String language = "fr";
+
+        assertFalse(SCBClient.isSupportedLanguage(language));
+    }
+
+    @Test
+    @Date("2017-01-01")
     public void supportedLocale() {
         Locale locale = new Locale("sv", "SE");
 
@@ -146,6 +178,7 @@ public class SCBClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    @Date("2017-01-01")
     public void unsupportedLocale() {
         Locale locale = new Locale("fr", "CA");
 

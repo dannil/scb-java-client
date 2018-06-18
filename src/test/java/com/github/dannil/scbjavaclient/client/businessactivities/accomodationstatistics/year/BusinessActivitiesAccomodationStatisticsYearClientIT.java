@@ -14,42 +14,45 @@
 
 package com.github.dannil.scbjavaclient.client.businessactivities.accomodationstatistics.year;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
-public class BusinessActivitiesAccomodationStatisticsYearClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class BusinessActivitiesAccomodationStatisticsYearClientIT {
 
     private BusinessActivitiesAccomodationStatisticsYearClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
-        this.client = new SCBClient().businessActivities().accomodationStatistics().year();
+        this.client = new BusinessActivitiesAccomodationStatisticsYearClient();
     }
 
     @Test
+    @Date("2017-04-13")
     public void getNumberOfHotels() {
         assertNotEquals(0, this.client.getNumberOfHotels().size());
     }
 
     @Test
+    @Date("2017-04-13")
     public void getNumberOfHotelsParametersEmptyLists() {
         assertNotEquals(0, this.client.getNumberOfHotels(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-13")
     public void getNumberOfHotelsWithParameters() {
         List<String> regions = Arrays.asList("06", "08");
         List<String> typesOfEstablishments = Arrays.asList("H", "S");
@@ -59,17 +62,20 @@ public class BusinessActivitiesAccomodationStatisticsYearClientIT extends Remote
     }
 
     @Test
+    @Date("2017-04-13")
     public void getCapacityForHotels() {
         assertNotEquals(0, this.client.getCapacityForHotels().size());
     }
 
     @Test
+    @Date("2017-04-13")
     public void getCapacityForHotelsEmptyLists() {
-        assertNotEquals(0, this.client.getNumberOfHotels(Collections.<String>emptyList(),
+        assertNotEquals(0, this.client.getCapacityForHotels(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-13")
     public void getCapacityForHotelsWithParameters() {
         List<String> regions = Arrays.asList("0030", "07");
         List<String> typesOfHousing = Arrays.asList("012", "014");
@@ -79,17 +85,20 @@ public class BusinessActivitiesAccomodationStatisticsYearClientIT extends Remote
     }
 
     @Test
+    @Date("2017-04-13")
     public void getOccupancyRate() {
         assertNotEquals(0, this.client.getOccupancyRate().size());
     }
 
     @Test
+    @Date("2017-04-13")
     public void getOccupancyRateEmptyLists() {
         assertNotEquals(0, this.client.getOccupancyRate(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-13")
     public void getOccupancyRateWithParameters() {
         List<String> regions = Arrays.asList("0030", "07");
         List<String> typesOfHousing = Arrays.asList("012", "014");
@@ -99,17 +108,20 @@ public class BusinessActivitiesAccomodationStatisticsYearClientIT extends Remote
     }
 
     @Test
+    @Date("2017-04-13")
     public void getNumberOfOccupiedRooms() {
         assertNotEquals(0, this.client.getNumberOfOccupiedRooms().size());
     }
 
     @Test
+    @Date("2017-04-13")
     public void getNumberOfOccupiedRoomsEmptyLists() {
         assertNotEquals(0, this.client.getNumberOfOccupiedRooms(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-13")
     public void getNumberOfOccupiedRoomsWithParameters() {
         List<String> regions = Arrays.asList("06", "08");
         List<Integer> years = Arrays.asList(2010, 2012);
@@ -118,17 +130,20 @@ public class BusinessActivitiesAccomodationStatisticsYearClientIT extends Remote
     }
 
     @Test
+    @Date("2017-04-13")
     public void getAccomodationRevenue() {
         assertNotEquals(0, this.client.getAccomodationRevenue().size());
     }
 
     @Test
+    @Date("2017-04-13")
     public void getAccomodationRevenueEmptyLists() {
         assertNotEquals(0, this.client.getAccomodationRevenue(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-13")
     public void getAccomodationRevenueWithParameters() {
         List<String> regions = Arrays.asList("06", "08");
         List<Integer> years = Arrays.asList(2010, 2012);

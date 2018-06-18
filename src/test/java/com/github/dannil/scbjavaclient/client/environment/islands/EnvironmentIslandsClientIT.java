@@ -14,42 +14,45 @@
 
 package com.github.dannil.scbjavaclient.client.environment.islands;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
-public class EnvironmentIslandsClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class EnvironmentIslandsClientIT {
 
     private EnvironmentIslandsClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
-        this.client = new SCBClient().environment().islands();
+        this.client = new EnvironmentIslandsClient();
     }
 
     @Test
+    @Date("2017-05-28")
     public void getShorelinePopulation() {
         assertNotEquals(0, this.client.getShorelinePopulation().size());
     }
 
     @Test
+    @Date("2017-05-28")
     public void getShorelinePopulationWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getShorelinePopulation(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-05-28")
     public void getShorelinePopulationWithParameters() {
         List<String> regions = Arrays.asList("0117", "0120");
         List<String> livings = Arrays.asList("TO", "UTO");
@@ -59,17 +62,20 @@ public class EnvironmentIslandsClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    @Date("2017-05-28")
     public void getPopulatedIslands() {
         assertNotEquals(0, this.client.getPopulatedIslands().size());
     }
 
     @Test
+    @Date("2017-05-28")
     public void getPopulatedIslandsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getPopulatedIslands(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-05-28")
     public void getPopulatedIslandsWithParameters() {
         List<String> regions = Arrays.asList("0117", "0120");
         List<Integer> years = Arrays.asList(2013);
@@ -78,17 +84,20 @@ public class EnvironmentIslandsClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    @Date("2017-05-28")
     public void getIslandsInSweden() {
         assertNotEquals(0, this.client.getIslandsInSweden().size());
     }
 
     @Test
+    @Date("2017-05-28")
     public void getIslandsInSwedenWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getIslandsInSweden(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-05-28")
     public void getIslandsInSwedenWithParameters() {
         List<String> regions = Arrays.asList("0117", "0120");
         List<Integer> years = Arrays.asList(2013);
@@ -97,17 +106,20 @@ public class EnvironmentIslandsClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    @Date("2017-05-28")
     public void getBuildingsOnIslands() {
         assertNotEquals(0, this.client.getBuildingsOnIslands().size());
     }
 
     @Test
+    @Date("2017-05-28")
     public void getBuildingsOnIslandsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getBuildingsOnIslands(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-05-28")
     public void getBuildingsOnIslandsWithParameters() {
         List<String> regions = Arrays.asList("0117", "0120");
         List<Integer> years = Arrays.asList(2013);
@@ -116,17 +128,20 @@ public class EnvironmentIslandsClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    @Date("2017-05-28")
     public void getIslandsInSwedenByNumberAreaAndPerimiter() {
         assertNotEquals(0, this.client.getIslandsInSwedenByNumberAreaAndPerimiter().size());
     }
 
     @Test
+    @Date("2017-05-28")
     public void getIslandsInSwedenByNumberAreaAndPerimiterWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getIslandsInSwedenByNumberAreaAndPerimiter(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-05-28")
     public void getIslandsInSwedenByNumberAreaAndPerimiterWithParameters() {
         List<String> regions = Arrays.asList("0117", "0120");
         List<Integer> years = Arrays.asList(2013);
@@ -135,17 +150,20 @@ public class EnvironmentIslandsClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    @Date("2017-05-28")
     public void getPopulationOnIslands() {
         assertNotEquals(0, this.client.getPopulationOnIslands().size());
     }
 
     @Test
+    @Date("2017-05-28")
     public void getPopulationOnIslandsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getPopulationOnIslands(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-05-28")
     public void getPopulationOnIslandsWithParameters() {
         List<String> regions = Arrays.asList("0117", "0120");
         List<Integer> years = Arrays.asList(2013);
@@ -154,17 +172,20 @@ public class EnvironmentIslandsClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    @Date("2017-05-28")
     public void getNumberOfIslandsInSweden() {
         assertNotEquals(0, this.client.getNumberOfIslandsInSweden().size());
     }
 
     @Test
+    @Date("2017-05-28")
     public void getNumberOfIslandsInSwedenWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getNumberOfIslandsInSweden(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-05-28")
     public void getNumberOfIslandsInSwedenWithParameters() {
         List<String> regions = Arrays.asList("0117", "0120");
         List<String> sizeClasses = Arrays.asList("1-9", "10-99");

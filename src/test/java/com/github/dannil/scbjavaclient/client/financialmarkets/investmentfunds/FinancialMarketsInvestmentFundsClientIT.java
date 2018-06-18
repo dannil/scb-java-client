@@ -14,48 +14,59 @@
 
 package com.github.dannil.scbjavaclient.client.financialmarkets.investmentfunds;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.AllowFailure;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.NoticeStrategy;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
-public class FinancialMarketsInvestmentFundsClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class FinancialMarketsInvestmentFundsClientIT {
 
     private FinancialMarketsInvestmentFundsClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
-        this.client = new SCBClient().financialMarkets().investmentFunds();
+        this.client = new FinancialMarketsInvestmentFundsClient();
     }
 
     @Test
-    public void getOwnershipOfInvestmentFundShares() {
-        assertNotEquals(0, this.client.getOwnershipOfInvestmentFundShares().size());
+    @Date("2017-12-22")
+    @AllowFailure(notice = NoticeStrategy.ALWAYS)
+    public void getOwnershipOfInvestmentFund() {
+        assertNotEquals(0, this.client.getOwnershipOfInvestmentFund().size());
     }
 
     @Test
-    public void getOwnershipOfInvestmentFundSharesWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getOwnershipOfInvestmentFundShares(Collections.<String>emptyList(),
-                Collections.<String>emptyList(), Collections.<String>emptyList()).size());
+    @Date("2017-12-22")
+    @AllowFailure(notice = NoticeStrategy.ALWAYS)
+    public void getOwnershipOfInvestmentFundWithParametersEmptyLists() {
+        assertNotEquals(0,
+                this.client.getOwnershipOfInvestmentFund(Collections.<String>emptyList(),
+                        Collections.<String>emptyList(), Collections.<String>emptyList(),
+                        Collections.<String>emptyList()).size());
     }
 
     @Test
-    public void getOwnershipOfInvestmentFundSharesWithParameters() {
+    @Date("2017-12-22")
+    @AllowFailure(notice = NoticeStrategy.ALWAYS)
+    public void getOwnershipOfInvestmentFundWithParameters() {
+        List<String> observations = Arrays.asList("inbet", "utbet");
         List<String> types = Arrays.asList("S12251", "S12354");
         List<String> sectors = Arrays.asList("S14", "S15");
         List<String> quarters = Arrays.asList("2011K1", "2011K2");
 
-        assertNotEquals(0, this.client.getOwnershipOfInvestmentFundShares(types, sectors, quarters).size());
+        assertNotEquals(0, this.client.getOwnershipOfInvestmentFund(observations, types, sectors, quarters).size());
     }
 
 }

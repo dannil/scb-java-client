@@ -14,42 +14,45 @@
 
 package com.github.dannil.scbjavaclient.client.publicfinances.localtaxes;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
-public class PublicFinancesLocalTaxesClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class PublicFinancesLocalTaxesClientIT {
 
     private PublicFinancesLocalTaxesClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
-        this.client = new SCBClient().publicFinances().localTaxes();
+        this.client = new PublicFinancesLocalTaxesClient();
     }
 
     @Test
+    @Date("2017-03-21")
     public void getLocalTaxRates() {
         assertNotEquals(0, this.client.getLocalTaxRates().size());
     }
 
     @Test
+    @Date("2017-03-21")
     public void getLocalTaxRatesWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getLocalTaxRates(Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-03-21")
     public void getLocalTaxRatesWithParameters() {
         List<String> regions = Arrays.asList("0182", "0305");
         List<Integer> years = Arrays.asList(2004, 2008);

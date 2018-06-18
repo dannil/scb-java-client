@@ -14,19 +14,18 @@
 
 package com.github.dannil.scbjavaclient.client.businessactivities.accomodationstatistics;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.businessactivities.accomodationstatistics.month.BusinessActivitiesAccomodationStatisticsMonthClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.accomodationstatistics.year.BusinessActivitiesAccomodationStatisticsYearClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
+@Suite
 public class BusinessActivitiesAccomodationStatisticsClientTest {
 
     @Test
@@ -42,14 +41,14 @@ public class BusinessActivitiesAccomodationStatisticsClientTest {
     public void monthClient() {
         BusinessActivitiesAccomodationStatisticsClient client = new BusinessActivitiesAccomodationStatisticsClient();
 
-        assertEquals(client.month().getClass(), BusinessActivitiesAccomodationStatisticsMonthClient.class);
+        assertEquals(BusinessActivitiesAccomodationStatisticsMonthClient.class, client.month().getClass());
     }
 
     @Test
     public void yearClient() {
         BusinessActivitiesAccomodationStatisticsClient client = new BusinessActivitiesAccomodationStatisticsClient();
 
-        assertEquals(client.year().getClass(), BusinessActivitiesAccomodationStatisticsYearClient.class);
+        assertEquals(BusinessActivitiesAccomodationStatisticsYearClient.class, client.year().getClass());
     }
 
     @Test

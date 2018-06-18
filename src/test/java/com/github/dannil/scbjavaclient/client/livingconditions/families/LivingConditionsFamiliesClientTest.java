@@ -14,7 +14,7 @@
 
 package com.github.dannil.scbjavaclient.client.livingconditions.families;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
@@ -23,12 +23,11 @@ import com.github.dannil.scbjavaclient.client.livingconditions.families.housing.
 import com.github.dannil.scbjavaclient.client.livingconditions.families.legalguardians.LivingConditionsFamiliesLegalGuardiansClient;
 import com.github.dannil.scbjavaclient.client.livingconditions.families.siblings.LivingConditionsFamiliesSiblingsClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
+@Suite
 public class LivingConditionsFamiliesClientTest {
 
     @Test
@@ -43,28 +42,28 @@ public class LivingConditionsFamiliesClientTest {
     public void adoptionsClient() {
         LivingConditionsFamiliesClient client = new LivingConditionsFamiliesClient();
 
-        assertEquals(client.adoptions().getClass(), LivingConditionsFamiliesAdoptionsClient.class);
+        assertEquals(LivingConditionsFamiliesAdoptionsClient.class, client.adoptions().getClass());
     }
 
     @Test
     public void housingClient() {
         LivingConditionsFamiliesClient client = new LivingConditionsFamiliesClient();
 
-        assertEquals(client.housing().getClass(), LivingConditionsFamiliesHousingClient.class);
+        assertEquals(LivingConditionsFamiliesHousingClient.class, client.housing().getClass());
     }
 
     @Test
     public void legalGuardiansClient() {
         LivingConditionsFamiliesClient client = new LivingConditionsFamiliesClient();
 
-        assertEquals(client.legalGuardians().getClass(), LivingConditionsFamiliesLegalGuardiansClient.class);
+        assertEquals(LivingConditionsFamiliesLegalGuardiansClient.class, client.legalGuardians().getClass());
     }
 
     @Test
     public void siblingsClient() {
         LivingConditionsFamiliesClient client = new LivingConditionsFamiliesClient();
 
-        assertEquals(client.siblings().getClass(), LivingConditionsFamiliesSiblingsClient.class);
+        assertEquals(LivingConditionsFamiliesSiblingsClient.class, client.siblings().getClass());
     }
 
     @Test

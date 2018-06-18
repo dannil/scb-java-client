@@ -14,42 +14,45 @@
 
 package com.github.dannil.scbjavaclient.client.labourmarket.shorttermemployment.population;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
-public class LabourMarketShortTermEmploymentPopulationClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class LabourMarketShortTermEmploymentPopulationClientIT {
 
     private LabourMarketShortTermEmploymentPopulationClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
-        this.client = new SCBClient().labourMarket().shortTermEmployment().population();
+        this.client = new LabourMarketShortTermEmploymentPopulationClient();
     }
 
     @Test
+    @Date("2017-04-24")
     public void getNumberOfEmployees() {
         assertNotEquals(0, this.client.getNumberOfEmployees().size());
     }
 
     @Test
+    @Date("2017-04-24")
     public void getNumberOfEmployeesWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getNumberOfEmployees(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-24")
     public void getNumberOfEmployeesWithParameters() {
         List<String> regions = Arrays.asList("01", "03");
         List<String> sectors = Arrays.asList("410", "420");

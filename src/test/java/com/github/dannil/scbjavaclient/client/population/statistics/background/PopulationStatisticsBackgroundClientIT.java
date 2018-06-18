@@ -14,36 +14,38 @@
 
 package com.github.dannil.scbjavaclient.client.population.statistics.background;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
-public class PopulationStatisticsBackgroundClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class PopulationStatisticsBackgroundClientIT {
 
     private PopulationStatisticsBackgroundClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
-        this.client = new SCBClient().population().statistics().background();
+        this.client = new PopulationStatisticsBackgroundClient();
     }
 
     @Test
+    @Date("2017-06-09")
     public void getPersonWithBackgroundRoughDivision() {
         assertNotEquals(0, this.client.getPersonsWithBackgroundRoughDivision().size());
     }
 
     @Test
+    @Date("2017-06-09")
     public void getPersonWithBackgroundRoughDivisionWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getPersonsWithBackgroundRoughDivision(Collections.<String>emptyList(),
@@ -52,10 +54,11 @@ public class PopulationStatisticsBackgroundClientIT extends RemoteIntegrationTes
     }
 
     @Test
+    @Date("2017-06-09")
     public void getPersonWithBackgroundRoughDivisionWithParameters() {
         List<String> regions = Arrays.asList("0162", "0180");
         List<Integer> backgrounds = Arrays.asList(1, 2);
-        List<String> ages = Arrays.asList("25-34", "55-64");
+        List<String> ages = Arrays.asList("77", "100+");
         List<Integer> sexes = Arrays.asList(1, 2);
         List<Integer> years = Arrays.asList(2009);
 
@@ -64,11 +67,13 @@ public class PopulationStatisticsBackgroundClientIT extends RemoteIntegrationTes
     }
 
     @Test
+    @Date("2017-06-09")
     public void getPersonWithBackgroundDetailedDivision() {
         assertNotEquals(0, this.client.getPersonsWithBackgroundDetailedDivision().size());
     }
 
     @Test
+    @Date("2017-06-09")
     public void getPersonWithBackgroundDetailedDivisionWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getPersonsWithBackgroundDetailedDivision(Collections.<String>emptyList(),
@@ -77,10 +82,11 @@ public class PopulationStatisticsBackgroundClientIT extends RemoteIntegrationTes
     }
 
     @Test
+    @Date("2017-06-09")
     public void getPersonWithBackgroundDetailedDivisionWithParameters() {
         List<String> regions = Arrays.asList("0162", "0180");
         List<String> backgrounds = Arrays.asList("08", "4");
-        List<String> ages = Arrays.asList("25-34", "55-64");
+        List<String> ages = Arrays.asList("77", "100+");
         List<Integer> sexes = Arrays.asList(1, 2);
         List<Integer> years = Arrays.asList(2009);
 

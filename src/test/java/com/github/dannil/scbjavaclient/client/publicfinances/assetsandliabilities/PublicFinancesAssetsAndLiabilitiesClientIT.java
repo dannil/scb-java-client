@@ -14,42 +14,45 @@
 
 package com.github.dannil.scbjavaclient.client.publicfinances.assetsandliabilities;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
-public class PublicFinancesAssetsAndLiabilitiesClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class PublicFinancesAssetsAndLiabilitiesClientIT {
 
     private PublicFinancesAssetsAndLiabilitiesClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
-        this.client = new SCBClient().publicFinances().assetsAndLiabilities();
+        this.client = new PublicFinancesAssetsAndLiabilitiesClient();
     }
 
     @Test
+    @Date("2017-04-17")
     public void getAssetsAndLiabilities() {
         assertNotEquals(0, this.client.getAssetsAndLiabilities().size());
     }
 
     @Test
+    @Date("2017-04-17")
     public void getAssetsAndLiabilitiesWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getAssetsAndLiabilities(Collections.<Integer>emptyList(),
                 Collections.<Integer>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-17")
     public void getAssetsAndLiabilitiesWithParameters() {
         List<Integer> items = Arrays.asList(501, 504);
         List<Integer> sectors = Arrays.asList(410, 420);

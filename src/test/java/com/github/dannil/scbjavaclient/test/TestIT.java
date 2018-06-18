@@ -14,43 +14,37 @@
 
 package com.github.dannil.scbjavaclient.test;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
+import java.lang.reflect.Field;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Objects;
+import java.util.Map;
 
-import com.github.dannil.scbjavaclient.client.AbstractClientIT;
-import com.github.dannil.scbjavaclient.client.AbstractClientTest;
-import com.github.dannil.scbjavaclient.client.AbstractContainerClientTest;
-import com.github.dannil.scbjavaclient.client.SCBClientIT;
-import com.github.dannil.scbjavaclient.client.SCBClientTest;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 import com.github.dannil.scbjavaclient.test.utility.Files;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.utility.Filters;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
+@Suite
 public class TestIT {
 
     @Test
-    public void checkForRemoteIntegrationTestSuiteAsSuperclass() {
+    public void checkForExistingRemoteAnnotation() {
         String execPath = System.getProperty("user.dir");
 
         // Find files matching the wildcard pattern
         List<File> files = Files.find(execPath + "/src/test/java/com/github/dannil/scbjavaclient", "*IT.java");
 
         // Filter out THIS class from the list
-        Iterator<File> it = files.iterator();
-        while (it.hasNext()) {
-            if (Objects.equals(Files.fileToBinaryName(it.next()), this.getClass().getName())) {
-                it.remove();
-            }
-        }
+        Filters.files(files, this.getClass());
 
         List<Class<?>> matchedClasses = new ArrayList<Class<?>>();
         for (File file : files) {
@@ -61,88 +55,29 @@ public class TestIT {
             Class<?> clazz = null;
             try {
                 clazz = Class.forName(binaryName);
-                if (!RemoteIntegrationTestSuite.class.isAssignableFrom(clazz)) {
+                Remote r = clazz.getDeclaredAnnotation(Remote.class);
+                if (r == null) {
                     matchedClasses.add(clazz);
                 }
             } catch (ClassNotFoundException e) {
                 // Class could not be created; respond with an assertion that'll always
                 // fail
                 e.printStackTrace();
-                assertTrue(e.getMessage(), false);
+                assertTrue(false, e.getMessage());
             }
         }
-        assertTrue("Classes not extending RemoteIntegrationTestSuite: " + matchedClasses.toString(),
-                matchedClasses.isEmpty());
+        assertTrue(matchedClasses.isEmpty(), "Classes not annotated with Remote " + matchedClasses.toString());
     }
 
     @Test
-    public void checkForRunWithAnnotation() {
-        String execPath = System.getProperty("user.dir");
-
-        // Find files matching the wildcard pattern
-        List<File> files = Files.find(execPath + "/src/test/java/com/github/dannil/scbjavaclient", "*.java");
-
-        // Filter out some classes from the list which shouldn't be annotated
-        List<Class<?>> filters = new ArrayList<>();
-        filters.add(RemoteIntegrationTestSuite.class);
-        filters.add(Files.class);
-
-        Iterator<File> it = files.iterator();
-        while (it.hasNext()) {
-            File f = it.next();
-            for (Class<?> clazz : filters) {
-                if (Objects.equals(Files.fileToBinaryName(f), clazz.getName())) {
-                    it.remove();
-                }
-            }
-        }
-
-        List<Class<?>> matchedClasses = new ArrayList<>();
-        for (File file : files) {
-            // Convert path into binary name
-            String binaryName = Files.fileToBinaryName(file);
-
-            // Reflect the binary name into a concrete Java class
-            Class<?> clazz = null;
-            try {
-                clazz = Class.forName(binaryName);
-                if (clazz.getAnnotation(RunWith.class) == null) {
-                    matchedClasses.add(clazz);
-                }
-            } catch (ClassNotFoundException e) {
-                // Class could not be created; respond with an assertion that'll always
-                // fail
-                e.printStackTrace();
-                assertTrue(e.getMessage(), false);
-            }
-        }
-        assertTrue("Classes not annotated with RunWith: " + matchedClasses.toString(), matchedClasses.isEmpty());
-    }
-
-    @Test
-    public void checkForCorrectPackageAndClientNames() {
+    public void checkForCorrectPackageAndName() {
         String execPath = System.getProperty("user.dir");
 
         // Find files matching the wildcard pattern
         List<File> files = Files.find(execPath + "/src/test/java/com/github/dannil/scbjavaclient/client", "*.java");
 
         // Filter out some classes from the list
-        List<Class<?>> filters = new ArrayList<>();
-        filters.add(AbstractClientIT.class);
-        filters.add(AbstractClientTest.class);
-        filters.add(AbstractContainerClientTest.class);
-        filters.add(SCBClientIT.class);
-        filters.add(SCBClientTest.class);
-
-        Iterator<File> it = files.iterator();
-        while (it.hasNext()) {
-            File f = it.next();
-            for (Class<?> clazz : filters) {
-                if (Objects.equals(Files.fileToBinaryName(f), clazz.getName())) {
-                    it.remove();
-                }
-            }
-        }
+        Filters.files(files, false, "com.github.dannil.scbjavaclient.client");
 
         List<Class<?>> matchedClasses = new ArrayList<>();
         for (File file : files) {
@@ -160,18 +95,141 @@ public class TestIT {
                 String sub = packageName.substring(beginIndex);
                 String lastPart = sub.replace(".", "").concat("client");
 
+                // Check if package name is correct
                 if (clazz.getSimpleName().toLowerCase().indexOf(lastPart) > 0) {
+                    matchedClasses.add(clazz);
+                }
+                // Check if test class name is correct
+                else if (!clazz.getSimpleName().toLowerCase().startsWith(lastPart)) {
                     matchedClasses.add(clazz);
                 }
             } catch (ClassNotFoundException e) {
                 // Class could not be created; respond with an assertion that'll always
                 // fail
                 e.printStackTrace();
-                assertTrue(e.getMessage(), false);
+                assertTrue(false, e.getMessage());
             }
         }
-        assertTrue("Classes not having matching package and client name: " + matchedClasses.toString(),
-                matchedClasses.isEmpty());
+        assertTrue(matchedClasses.isEmpty(),
+                "Classes not having correct package and/or name: " + matchedClasses.toString());
+    }
+
+    @Test
+    public void checkForMatchingNameAndPackage() {
+        String execPath = System.getProperty("user.dir");
+
+        // Find files matching the wildcard pattern
+        List<File> mainFiles = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient", "*.java");
+        List<File> testFiles = Files.find(execPath + "/src/test/java/com/github/dannil/scbjavaclient", "*.java");
+
+        // Filter out some classes from the list
+        Filters.files(mainFiles, "com.github.dannil.scbjavaclient.format.json.IJsonTableFormat",
+                "com.github.dannil.scbjavaclient.format.AbstractTableFormat");
+
+        List<Class<?>> matchedClasses = new ArrayList<>();
+        for (File fileMain : mainFiles) {
+            // Convert path into binary name
+            String binaryNameMain = Files.fileToBinaryName(fileMain);
+            if (binaryNameMain.contains("package-info")) {
+                continue;
+            }
+
+            // Reflect the binary name into a concrete Java class
+            Class<?> clazz = null;
+            try {
+                clazz = Class.forName(binaryNameMain);
+                matchedClasses.add(clazz);
+            } catch (ClassNotFoundException e) {
+                // Class could not be created; respond with an assertion that'll always
+                // fail
+                e.printStackTrace();
+                assertTrue(false, e.getMessage());
+            }
+
+            for (File fileTest : testFiles) {
+                String binaryNameTest = Files.fileToBinaryName(fileTest);
+                if (binaryNameTest.startsWith(binaryNameMain)) {
+                    matchedClasses.remove(clazz);
+                }
+            }
+        }
+        assertTrue(matchedClasses.isEmpty(),
+                "Classes not having matching test class name and/or package: " + matchedClasses.toString());
+    }
+
+    @Test
+    public void checkForUsageOfAPIVariables() throws Exception {
+        String execPath = System.getProperty("user.dir");
+
+        // Find files matching the wildcard pattern
+        List<File> mainFiles = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient", "*.java");
+
+        // Filter out some classes from the list
+        Filters.files(mainFiles, APIConstants.class);
+
+        Field[] apiFields = APIConstants.class.getDeclaredFields();
+
+        // Remove non-codes and save the values of the code fields in a list
+        List<String> fields = new ArrayList<>();
+        for (int i = 0; i < apiFields.length; i++) {
+            Field field = apiFields[i];
+            if (!field.isAccessible()) {
+                field.setAccessible(true);
+            }
+            Object obj = null;
+            obj = field.get(obj);
+            if (field.getName().endsWith("_CODE")) {
+                fields.add((String) obj);
+            }
+        }
+
+        Map<Class<?>, List<String>> matchedClasses = new LinkedHashMap<>();
+        for (File f : mainFiles) {
+            // Convert path into binary name
+            String binaryNameMain = Files.fileToBinaryName(f);
+            if (binaryNameMain.endsWith("package-info")) {
+                continue;
+            }
+
+            // Reflect the binary name into a concrete Java class
+            Class<?> clazz = null;
+            try {
+                clazz = Class.forName(binaryNameMain);
+            } catch (ClassNotFoundException e) {
+                // Class could not be created; respond with an assertion that'll always
+                // fail
+                e.printStackTrace();
+                assertTrue(false, e.getMessage());
+            }
+
+            List<String> lines = java.nio.file.Files.readAllLines(Paths.get(f.getPath()), StandardCharsets.UTF_8);
+            List<String> offending = new ArrayList<>();
+            for (String line : lines) {
+                // Skip line if it is a comment, Javadoc or alike
+                String trimmedLine = line.trim();
+                String[] comments = { "//", "/**", "/*", "*", "*/" };
+                boolean offendingLine = false;
+                for (int i = 0; i < comments.length; i++) {
+                    if (trimmedLine.startsWith(comments[i])) {
+                        offendingLine = true;
+                    }
+                }
+                if (offendingLine) {
+                    continue;
+                }
+
+                for (String field : fields) {
+                    String fieldAsJavaString = "\"" + field + "\"";
+                    if (line.contains(fieldAsJavaString)) {
+                        offending.add(field);
+                    }
+                }
+            }
+            if (!offending.isEmpty()) {
+                matchedClasses.put(clazz, offending);
+            }
+        }
+        assertTrue(matchedClasses.isEmpty(), "Clients not utilizing API constants : " + matchedClasses.toString());
     }
 
 }

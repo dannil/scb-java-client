@@ -14,35 +14,37 @@
 
 package com.github.dannil.scbjavaclient.client.population.statistics.averageage;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
-public class PopulationStatisticsAverageAgeClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class PopulationStatisticsAverageAgeClientIT {
 
     private PopulationStatisticsAverageAgeClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
-        this.client = new SCBClient().population().statistics().averageAge();
+        this.client = new PopulationStatisticsAverageAgeClient();
     }
 
     @Test
+    @Date("2017-01-01")
     public void getAverageAge() {
         assertNotEquals(0, this.client.getAverageAge().size());
     }
 
     @Test
+    @Date("2017-01-01")
     public void getAverageAgeWithParameters() {
         List<String> regions = Arrays.asList("1263");
         List<String> genders = Arrays.asList("1", "2", "1+2");

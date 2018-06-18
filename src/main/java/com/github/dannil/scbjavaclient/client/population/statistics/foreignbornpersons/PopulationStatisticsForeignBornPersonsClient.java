@@ -50,20 +50,22 @@ public class PopulationStatisticsForeignBornPersonsClient extends AbstractClient
     }
 
     /**
-     * <p>Fetch all foreign-born persons data.</p>
+     * <p>Fetch all Swedish and foreign-born population data.</p>
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @see #getForeignBornPersons(Collection, Collection, Collection, Collection)
+     * @see #getSwedishAndForeignBornPopulation(Collection, Collection, Collection,
+     *      Collection, Collection)
      */
-    public List<ResponseModel> getForeignBornPersons() {
-        return getForeignBornPersons(null, null, null, null);
+    public List<ResponseModel> getSwedishAndForeignBornPopulation() {
+        return getSwedishAndForeignBornPopulation(null, null, null, null, null);
     }
 
     /**
-     * <p>Fetch all foreign-born persons data which match the input constraints.</p>
+     * <p>Fetch all Swedish and foreign-born population data which match the input
+     * constraints.</p>
      *
      * @param regions
      *            the regions
@@ -76,33 +78,61 @@ public class PopulationStatisticsForeignBornPersonsClient extends AbstractClient
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
+     * @deprecated use
+     *             {@link #getSwedishAndForeignBornPopulation(Collection, Collection, Collection, Collection, Collection)}
+     *             instead.
      */
-    public List<ResponseModel> getForeignBornPersons(Collection<String> regions, Collection<String> ages,
+    @Deprecated
+    public List<ResponseModel> getSwedishAndForeignBornPopulation(Collection<String> regions, Collection<String> ages,
             Collection<Integer> sexes, Collection<Integer> years) {
+        return getSwedishAndForeignBornPopulation(regions, ages, sexes, null, years);
+    }
+
+    /**
+     * <p>Fetch all Swedish and foreign-born population data which match the input
+     * constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param ages
+     *            the ages
+     * @param sexes
+     *            the sexes
+     * @param regionOfBirths
+     *            the region of births
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getSwedishAndForeignBornPopulation(Collection<String> regions, Collection<String> ages,
+            Collection<Integer> sexes, Collection<String> regionOfBirths, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put(APIConstants.AGE_CODE, ages);
         mappings.put(APIConstants.SEX_CODE, sexes);
+        mappings.put("Fodelseregion", regionOfBirths);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("UtrikesFoddaTotNK", mappings);
+        return getResponseModels("InrUtrFoddaRegAlKon", mappings);
     }
 
     /**
-     * <p>Fetch all foreign-born persons in Sweden data.</p>
+     * <p>Fetch all population by country of birth data.</p>
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @see #getForeignBornPersonsInSweden(Collection, Collection, Collection, Collection)
+     * @see #getPopulationByCountryOfBirth(Collection, Collection, Collection, Collection)
      */
-    public List<ResponseModel> getForeignBornPersonsInSweden() {
-        return getForeignBornPersonsInSweden(null, null, null, null);
+    public List<ResponseModel> getPopulationByCountryOfBirth() {
+        return getPopulationByCountryOfBirth(null, null, null, null);
     }
 
     /**
-     * <p>Fetch all foreign-born persons in Sweden data which match the input
+     * <p>Fetch all population by country of birth data which match the input
      * constraints.</p>
      *
      * @param countriesOfBirths
@@ -117,7 +147,7 @@ public class PopulationStatisticsForeignBornPersonsClient extends AbstractClient
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getForeignBornPersonsInSweden(Collection<String> countriesOfBirths,
+    public List<ResponseModel> getPopulationByCountryOfBirth(Collection<String> countriesOfBirths,
             Collection<String> ages, Collection<Integer> sexes, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("Fodelseland", countriesOfBirths);
@@ -125,7 +155,7 @@ public class PopulationStatisticsForeignBornPersonsClient extends AbstractClient
         mappings.put(APIConstants.SEX_CODE, sexes);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("UtrikesFoddaR", mappings);
+        return getResponseModels("FodelselandArK", mappings);
     }
 
     @Override

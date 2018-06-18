@@ -17,7 +17,6 @@ package com.github.dannil.scbjavaclient.client.population;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
-import com.github.dannil.scbjavaclient.client.population.demography.PopulationDemographyClient;
 import com.github.dannil.scbjavaclient.client.population.name.PopulationNameClient;
 import com.github.dannil.scbjavaclient.client.population.projections.PopulationProjectionsClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.PopulationStatisticsClient;
@@ -36,7 +35,6 @@ public class PopulationClient extends AbstractContainerClient {
     public PopulationClient() {
         super();
 
-        addClient("demography", new PopulationDemographyClient());
         addClient("name", new PopulationNameClient());
         addClient("projections", new PopulationProjectionsClient());
         addClient("statistics", new PopulationStatisticsClient());
@@ -52,15 +50,6 @@ public class PopulationClient extends AbstractContainerClient {
         this();
 
         setLocale(locale);
-    }
-
-    /**
-     * <p>Retrieve the client for interacting with population demography data.</p>
-     *
-     * @return a client for population demography data
-     */
-    public PopulationDemographyClient demography() {
-        return (PopulationDemographyClient) getClient("demography");
     }
 
     /**

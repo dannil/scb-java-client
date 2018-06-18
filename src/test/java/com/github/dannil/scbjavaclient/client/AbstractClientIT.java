@@ -14,39 +14,53 @@
 
 package com.github.dannil.scbjavaclient.client;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Objects;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.concurrent.TimeUnit;
 
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
+import com.github.dannil.scbjavaclient.test.TestConstants;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 import com.github.dannil.scbjavaclient.test.utility.Files;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.utility.Filters;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
-public class AbstractClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class AbstractClientIT {
 
     @Test
+    @Date("2017-01-01")
     public void toFallbackUrlDoGetRequest() {
         SCBClient client = new SCBClient(new Locale("en", "US"));
 
@@ -64,6 +78,7 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    @Date("2017-01-01")
     public void toFallbackUrlDoPostRequest() {
         SCBClient client = new SCBClient(new Locale("en", "US"));
 
@@ -86,6 +101,7 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    @Date("2017-01-01")
     public void doPostRequestWithEmptyList() {
         SCBClient client = new SCBClient(new Locale("sv", "SE"));
 
@@ -103,6 +119,7 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    @Date("2017-01-01")
     public void urlNotFound() {
         SCBClient client = new SCBClient(new Locale("sv", "SE"));
 
@@ -112,6 +129,7 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    @Date("2017-01-01")
     public void urlForbidden() {
         SCBClient client = new SCBClient(new Locale("sv", "SE"));
 
@@ -124,6 +142,7 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    @Date("2017-01-01")
     public void getResponseModels() {
         Locale locale = new Locale("sv", "SE");
         SCBClient client = new SCBClient(locale);
@@ -135,6 +154,7 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    @Date("2017-01-01")
     public void getResponseModelsWithParameters() {
         Locale locale = new Locale("sv", "SE");
         SCBClient client = new SCBClient(locale);
@@ -172,38 +192,25 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
                 // Class could not be created; respond with an assertion that'll always
                 // fail
                 e.printStackTrace();
-                assertTrue(e.getMessage(), false);
+                assertTrue(false, e.getMessage());
             } catch (NoSuchMethodException e) {
                 // Nope! Locale constructor not found
                 matchedClasses.add(clazz);
             }
         }
-        assertTrue("Classes not declaring a Locale constructor: " + matchedClasses.toString(),
-                matchedClasses.isEmpty());
+        assertTrue(matchedClasses.isEmpty(),
+                "Classes not declaring a Locale constructor: " + matchedClasses.toString());
     }
 
     @Test
-    public void checkForCorrectPackageAndClientNames() {
+    public void checkForCorrectPackageAndName() {
         String execPath = System.getProperty("user.dir");
 
         // Find files matching the wildcard pattern
         List<File> files = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient/client", "*.java");
 
         // Filter out some classes from the list
-        List<Class<?>> filters = new ArrayList<>();
-        filters.add(AbstractClient.class);
-        filters.add(AbstractContainerClient.class);
-        filters.add(SCBClient.class);
-
-        Iterator<File> it = files.iterator();
-        while (it.hasNext()) {
-            File f = it.next();
-            for (Class<?> clazz : filters) {
-                if (Objects.equals(Files.fileToBinaryName(f), clazz.getName())) {
-                    it.remove();
-                }
-            }
-        }
+        Filters.files(files, AbstractClient.class, AbstractContainerClient.class, SCBClient.class);
 
         List<Class<?>> matchedClasses = new ArrayList<>();
         for (File file : files) {
@@ -224,18 +231,23 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
                 String substr = packageName.substring(beginIndex);
                 String lastPart = substr.replace(".", "").concat("client");
 
+                // Check if package name is correct
                 if (clazz.getSimpleName().toLowerCase().indexOf(lastPart) > 0) {
+                    matchedClasses.add(clazz);
+                }
+                // Check if class name is correct
+                else if (!clazz.getSimpleName().toLowerCase().startsWith(lastPart)) {
                     matchedClasses.add(clazz);
                 }
             } catch (ClassNotFoundException e) {
                 // Class could not be created; respond with an assertion that'll always
                 // fail
                 e.printStackTrace();
-                assertTrue(e.getMessage(), false);
+                assertTrue(false, e.getMessage());
             }
         }
-        assertTrue("Classes not having matching package and client name: " + matchedClasses.toString(),
-                matchedClasses.isEmpty());
+        assertTrue(matchedClasses.isEmpty(),
+                "Classes not having correct package and/or name: " + matchedClasses.toString());
     }
 
     @Test
@@ -246,19 +258,7 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
         List<File> files = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient/client", "*.java");
 
         // Filter out some classes from the list
-        List<Class<?>> filters = new ArrayList<>();
-        filters.add(AbstractClient.class);
-        filters.add(AbstractContainerClient.class);
-
-        Iterator<File> it = files.iterator();
-        while (it.hasNext()) {
-            File f = it.next();
-            for (Class<?> clazz : filters) {
-                if (Objects.equals(Files.fileToBinaryName(f), clazz.getName())) {
-                    it.remove();
-                }
-            }
-        }
+        Filters.files(files, AbstractClient.class, AbstractContainerClient.class);
 
         Map<String, Class<?>> register = new HashMap<>();
         Map<String, List<Class<?>>> offendingClasses = new HashMap<>();
@@ -273,9 +273,15 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
             Class<?> clazz = null;
             try {
                 clazz = Class.forName(binaryName);
+                if (clazz.isAnnotationPresent(Deprecated.class)) {
+                    // Class is deprecated; we don't care if there's another class
+                    // implementing the same tables as clazz (which is its replacer class)
+                    continue;
+                }
 
                 Method m = clazz.getDeclaredMethod("getUrl");
-                Object t = clazz.newInstance();
+                Constructor<?> c = clazz.getConstructor();
+                Object t = c.newInstance();
                 Object o = m.invoke(t);
 
                 URLEndpoint endPoint = (URLEndpoint) o;
@@ -295,10 +301,318 @@ public class AbstractClientIT extends RemoteIntegrationTestSuite {
                 // Class could not be created; respond with an assertion that'll always
                 // fail
                 e.printStackTrace();
-                assertTrue(e.getMessage(), false);
+                assertTrue(false, e.getMessage());
             }
         }
-        assertTrue("Classes implementing same table: " + offendingClasses.toString(), offendingClasses.isEmpty());
+        assertTrue(offendingClasses.isEmpty(), "Classes implementing same table: " + offendingClasses.toString());
+    }
+
+    @Test
+    public void checkForCorrectSuperclass() {
+        String execPath = System.getProperty("user.dir");
+
+        // Find files matching the wildcard pattern
+        List<File> files = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient/client", "*.java");
+
+        // Filter out some classes from the list
+        Filters.files(files, AbstractClient.class, AbstractContainerClient.class);
+
+        // Convert paths into binary names
+        Set<String> binaryNames = new TreeSet<String>();
+        for (File file : files) {
+            String binaryName = Files.fileToBinaryName(file);
+            if (binaryName.contains("package-info")) {
+                continue;
+            } else {
+                binaryNames.add(binaryName);
+            }
+        }
+
+        List<Class<?>> matchedClasses = new ArrayList<>();
+        for (String binaryName : binaryNames) {
+            // Reflect the binary name into a concrete Java class
+            Class<?> clazz = null;
+            try {
+                clazz = Class.forName(binaryName);
+                String packageName = clazz.getPackage().getName();
+
+                // Add all binary names which starts with the current class's package
+                Set<String> children = new TreeSet<String>();
+                for (String s : binaryNames) {
+                    if (s.startsWith(packageName)) {
+                        children.add(s);
+                    }
+                }
+                // Remove the parent from the list
+                children.remove(binaryName);
+
+                Class<?> actualSuperclass = clazz.getSuperclass();
+                Class<?> supposedSuperclass = null;
+                if (children.size() > 0) {
+                    // Current class's package has sub-packages; is a container client
+                    supposedSuperclass = AbstractContainerClient.class;
+                } else {
+                    // Current class's package has no sub-packages; is a regular client
+                    supposedSuperclass = AbstractClient.class;
+                }
+                if (!actualSuperclass.equals(supposedSuperclass)) {
+                    matchedClasses.add(clazz);
+                }
+            } catch (ClassNotFoundException e) {
+                // Class could not be created; respond with an assertion that'll always
+                // fail
+                e.printStackTrace();
+                assertTrue(false, e.getMessage());
+            }
+        }
+        assertTrue(matchedClasses.isEmpty(), "Classes not extending correct superclass: " + matchedClasses.toString());
+    }
+
+    // Method which is used to check for correctly overloaded methods (with methods
+    // throwing HTTP 403 removed)
+    @Test
+    public void checkForOverloadedMethods() {
+        String execPath = System.getProperty("user.dir");
+
+        // Find files matching the wildcard pattern
+        List<File> files = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient/client", "*.java");
+
+        // Filter out some classes from the list
+        Filters.files(files, AbstractClient.class, AbstractContainerClient.class, SCBClient.class);
+
+        Map<String, Integer> offendingMethods = new HashMap<String, Integer>();
+        for (File file : files) {
+            // Convert path into binary name
+            String binaryName = Files.fileToBinaryName(file);
+            if (binaryName.contains("package-info")) {
+                continue;
+            }
+
+            // Reflect the binary name into a concrete Java class
+            Class<?> clazz = null;
+            try {
+                clazz = Class.forName(binaryName);
+                Method[] methods = clazz.getDeclaredMethods();
+                for (int i = 0; i < methods.length; i++) {
+                    Method m = methods[i];
+                    if (m.getName().equals("getUrl") || !m.getName().startsWith("get")) {
+                        continue;
+                    }
+                    String full = clazz.getSimpleName() + "." + m.getName();
+                    if (!offendingMethods.containsKey(full)) {
+                        offendingMethods.put(full, 1);
+                    } else {
+                        offendingMethods.put(full, offendingMethods.get(full) + 1);
+                    }
+                }
+            } catch (ClassNotFoundException e) {
+                // Class could not be created; respond with an assertion that'll always
+                // fail
+                e.printStackTrace();
+                assertTrue(false, e.getMessage());
+            }
+        }
+        for (Iterator<Integer> it = offendingMethods.values().iterator(); it.hasNext();) {
+            Integer value = it.next();
+            // Remove offending methods which occur more than once (which means
+            // that there does exists an overload)
+            if (value > 1) {
+                it.remove();
+            }
+        }
+        // Filter out known methods throwing HTTP 403. Format is the same used for the
+        // entries in the offending methods collection
+        Set<String> knownMethods = new HashSet<>();
+        knownMethods.add("PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient.getPriceIndexForDomesticSupply");
+        knownMethods.add("FinancialMarketsStatisticsClaimsAndLiabilitiesClient.getClaimsAndLiabilitiesOutsideSweden");
+        knownMethods.add(
+                "FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClient.getNonResidentTradeInSwedishShares");
+        knownMethods.add("PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient.getProducerPriceIndexHomeSales");
+        knownMethods.add("PublicFinancesAnnualAccountsStatementAccountsMunicipalityClient.getCostsAndIncomes");
+        knownMethods.add("PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient.getProducerPriceIndex");
+        knownMethods.add("GoodsAndServicesForeignTradeCNClient.getImportsAndExportsOfGoods");
+        knownMethods.add("GoodsAndServicesForeignTradeGoodsCNClient.getImportsAndExportsOfGoods");
+        knownMethods.add("PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient.getExportPriceIndex");
+        knownMethods.add("PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient.getBalanceSheet");
+        knownMethods.add("PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient.getImportPriceIndex");
+        knownMethods.add("PublicFinancesAnnualAccountsStatementAccountsCountyClient.getIncomeAndCosts");
+        knownMethods.add("PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient.getPriceIndexForDomesticSupply");
+        knownMethods.add("PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient.getIncomeStatements");
+        knownMethods.add(
+                "FinancialMarketsStatisticsDepositAndLendingClient.getLendingRatesToHouseholdsAndNonFinancialCorporationsBreakdownByMaturity");
+        knownMethods.add(
+                "EnvironmentLocalitiesAreasAndPopulationPopulationClient.getPopulationAndLandAreaWithinLocalities");
+        knownMethods.add("PopulationProjectionsLatestAssumptionsClient.getEmigrationRateAssumption");
+        knownMethods.add("PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient.getProducerPriceIndex");
+        for (String knownMethod : knownMethods) {
+            offendingMethods.remove(knownMethod);
+        }
+        assertTrue(offendingMethods.isEmpty(),
+                "Methods not having correct overloads: " + offendingMethods.keySet().toString());
+    }
+
+    @Test
+    @Date("2017-12-11")
+    public void checkForUsageOfAllCodes() throws Exception {
+        String execPath = System.getProperty("user.dir");
+
+        // Find files matching the wildcard pattern
+        List<File> files = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient/client", "*.java");
+
+        // Filter out some classes from the list
+        Filters.files(files, AbstractClient.class, AbstractContainerClient.class, SCBClient.class);
+
+        List<String> offendingMethods = new ArrayList<>();
+        for (File f : files) {
+            // Convert path into binary name
+            String binaryName = Files.fileToBinaryName(f);
+            if (binaryName.endsWith("package-info")) {
+                continue;
+            }
+
+            // Reflect the binary name into a concrete Java class
+            Class<?> clazz = null;
+            try {
+                clazz = Class.forName(binaryName);
+            } catch (ClassNotFoundException e) {
+                // Class could not be created; respond with an assertion that'll always
+                // fail
+                e.printStackTrace();
+                assertTrue(false, e.getMessage());
+            }
+
+            Map<String, String> tables = new LinkedHashMap<>();
+            // Figure out implemented tables by inspecting the source code
+            List<String> lines = java.nio.file.Files.readAllLines(Paths.get(f.getPath()), StandardCharsets.UTF_8);
+            String beginningOfMethod = "List<ResponseModel>";
+            String method = "";
+            String table = "";
+            for (String line : lines) {
+                // Skip line if it is a comment, Javadoc or alike
+                String trimmedLine = line.trim();
+                String[] comments = { "//", "/**", "/*", "*", "*/" };
+                boolean offendingLine = false;
+                for (int i = 0; i < comments.length; i++) {
+                    if (trimmedLine.startsWith(comments[i])) {
+                        offendingLine = true;
+                    }
+                }
+                if (offendingLine) {
+                    continue;
+                }
+                if (trimmedLine.contains(beginningOfMethod)) {
+                    int beginIndex = trimmedLine.indexOf(beginningOfMethod) + beginningOfMethod.length() + 1;
+                    int endIndex = trimmedLine.indexOf('(', beginIndex + 1);
+                    method = trimmedLine.substring(beginIndex, endIndex);
+                }
+                if (trimmedLine.contains("return generate") || trimmedLine.contains("return getResponseModels")) {
+                    int beginIndex = trimmedLine.indexOf('"') + 1;
+                    int endIndex = trimmedLine.indexOf('"', beginIndex + 2);
+                    if (beginIndex > 0 && endIndex > 0) {
+                        table = trimmedLine.substring(beginIndex, endIndex);
+                        tables.put(method, table);
+                    }
+                }
+            }
+            if (tables.isEmpty()) {
+                continue;
+            }
+
+            Object instance = clazz.newInstance();
+            URLEndpoint url = (URLEndpoint) clazz.getMethod("getUrl", new Class<?>[] {}).invoke(instance,
+                    new Object[] {});
+            Method[] declaredMethods = clazz.getDeclaredMethods();
+            List<Method> filteredMethods = new ArrayList<>();
+            for (int i = 0; i < declaredMethods.length; i++) {
+                Method m = declaredMethods[i];
+                if (m.getName().equals("getUrl") || !m.getName().startsWith("get") || m.getParameterCount() == 0) {
+                    continue;
+                }
+                filteredMethods.add(m);
+            }
+            SCBClient client = new SCBClient();
+            for (Entry<String, String> entry : tables.entrySet()) {
+                String key = entry.getKey();
+                String value = entry.getValue();
+                for (Method filteredMethod : filteredMethods) {
+                    // Method is deprecated; we don't care if it doesn't have all the
+                    // codes
+                    if (filteredMethod.isAnnotationPresent(Deprecated.class)) {
+                        continue;
+                    }
+                    if (Objects.equals(filteredMethod.getName(), key)) {
+                        URLEndpoint fullUrl = url.append(value);
+                        Map<String, Collection<String>> inputs = client.getInputs(fullUrl.getTable());
+                        // Check for same amount of codes. Remove one as the code
+                        // ContentsCode is implicitly added by every method and doesn't
+                        // need to be a parameter
+                        int differenceOfParameters = inputs.keySet().size() - filteredMethod.getParameterCount() - 1;
+                        if (differenceOfParameters > 0) {
+                            offendingMethods.add(clazz.getSimpleName() + "." + filteredMethod.getName());
+                        }
+                        TimeUnit.MILLISECONDS.sleep(TestConstants.API_SLEEP_MS);
+                    }
+                }
+            }
+        }
+        assertTrue(offendingMethods.isEmpty(), "Methods not implementing all codes: " + offendingMethods);
+    }
+
+    @Test
+    public void checkForNonDuplicatedCodeAndValueCombinations()
+            throws IllegalArgumentException, IllegalAccessException {
+        String execPath = System.getProperty("user.dir");
+
+        // Find files matching the wildcard pattern
+        List<File> files = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient/client", "*.java");
+
+        Map<String, List<String>> offendingCodes = new HashMap<>();
+        for (File file : files) {
+            // Convert path into binary name
+            String binaryName = Files.fileToBinaryName(file);
+            if (binaryName.contains("package-info")) {
+                continue;
+            }
+
+            // Reflect the binary name into a concrete Java class
+            Class<?> clazz = null;
+            try {
+                clazz = Class.forName(binaryName);
+                Field[] fields = clazz.getDeclaredFields();
+                for (int i = 0; i < fields.length; i++) {
+                    Field field = fields[i];
+                    String name = field.getName();
+                    if (name.endsWith("CODE")) {
+                        field.setAccessible(true);
+                        String value = (String) field.get(clazz);
+                        field.setAccessible(false);
+                        String full = name + "." + value;
+                        List<String> classes = null;
+                        if (!offendingCodes.containsKey(full)) {
+                            classes = new ArrayList<>();
+                        } else {
+                            classes = offendingCodes.get(full);
+                        }
+                        classes.add(clazz.getSimpleName());
+                        offendingCodes.put(full, classes);
+                    }
+                }
+            } catch (ClassNotFoundException e) {
+                // Class could not be created; respond with an assertion that'll always
+                // fail
+                e.printStackTrace();
+                assertTrue(false, e.getMessage());
+            }
+        }
+        // Remove code and value combinations which only occurs once (which means it isn't
+        // a duplicate)
+        for (Iterator<List<String>> it = offendingCodes.values().iterator(); it.hasNext();) {
+            List<String> value = it.next();
+            if (value.size() == 1) {
+                it.remove();
+            }
+        }
+        assertTrue(offendingCodes.isEmpty(), "Duplicated code and value combinations: " + offendingCodes.toString());
     }
 
 }

@@ -14,35 +14,37 @@
 
 package com.github.dannil.scbjavaclient.client.population.statistics.partnership;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
-public class PopulationStatisticsPartnershipClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class PopulationStatisticsPartnershipClientIT {
 
     private PopulationStatisticsPartnershipClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
-        this.client = new SCBClient().population().statistics().partnership();
+        this.client = new PopulationStatisticsPartnershipClient();
     }
 
     @Test
+    @Date("2017-01-01")
     public void getPartnership() {
         assertNotEquals(0, this.client.getPartnership().size());
     }
 
     @Test
+    @Date("2017-01-01")
     public void getPartnershipWithParameters() {
         List<String> regions = Arrays.asList("12");
         List<String> statuses = Arrays.asList("RP", "SP", "EP");
@@ -53,11 +55,13 @@ public class PopulationStatisticsPartnershipClientIT extends RemoteIntegrationTe
     }
 
     @Test
+    @Date("2017-01-01")
     public void getPartnershipChange() {
         assertNotEquals(0, this.client.getPartnershipChange().size());
     }
 
     @Test
+    @Date("2017-01-01")
     public void getPartnershipChangeWithParameters() {
         List<String> regions = Arrays.asList("122");
         List<String> statuses = Arrays.asList("RP", "SP", "EP");

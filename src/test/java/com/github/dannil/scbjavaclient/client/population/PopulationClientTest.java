@@ -14,20 +14,19 @@
 
 package com.github.dannil.scbjavaclient.client.population;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.client.population.demography.PopulationDemographyClient;
 import com.github.dannil.scbjavaclient.client.population.name.PopulationNameClient;
+import com.github.dannil.scbjavaclient.client.population.projections.PopulationProjectionsClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.PopulationStatisticsClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
+@Suite
 public class PopulationClientTest {
 
     @Test
@@ -45,30 +44,29 @@ public class PopulationClientTest {
 
         // Not all sub-clients needs to be here. If one of the asserts fails it
         // automatically applies to all sub-clients since they share the same logic
-        assertEquals(client.demography().getLocale(), locale);
-        assertEquals(client.name().getLocale(), locale);
-        assertEquals(client.statistics().getLocale(), locale);
-    }
-
-    @Test
-    public void demographyClient() {
-        PopulationClient client = new PopulationClient();
-
-        assertEquals(client.demography().getClass(), PopulationDemographyClient.class);
+        assertEquals(locale, client.name().getLocale());
+        assertEquals(locale, client.statistics().getLocale());
     }
 
     @Test
     public void nameClient() {
         PopulationClient client = new PopulationClient();
 
-        assertEquals(client.name().getClass(), PopulationNameClient.class);
+        assertEquals(PopulationNameClient.class, client.name().getClass());
+    }
+
+    @Test
+    public void projectionsClient() {
+        PopulationClient client = new PopulationClient();
+
+        assertEquals(PopulationProjectionsClient.class, client.projections().getClass());
     }
 
     @Test
     public void statisticsClient() {
         PopulationClient client = new PopulationClient();
 
-        assertEquals(client.statistics().getClass(), PopulationStatisticsClient.class);
+        assertEquals(PopulationStatisticsClient.class, client.statistics().getClass());
     }
 
     @Test

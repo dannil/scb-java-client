@@ -14,42 +14,45 @@
 
 package com.github.dannil.scbjavaclient.client.goodsandservices.foodsales;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
-public class GoodsAndServicesFoodSalesClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class GoodsAndServicesFoodSalesClientIT {
 
     private GoodsAndServicesFoodSalesClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
-        this.client = new SCBClient().goodsAndServices().foodSales();
+        this.client = new GoodsAndServicesFoodSalesClient();
     }
 
     @Test
+    @Date("2017-04-28")
     public void getTurnoverOfFoodAndDrinks() {
         assertNotEquals(0, this.client.getTurnoverOfFoodAndDrinks().size());
     }
 
     @Test
+    @Date("2017-04-28")
     public void getTurnoverOfFoodAndDrinksWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getTurnoverOfFoodAndDrinks(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-28")
     public void getTurnoverOfFoodAndDrinksWithParameters() {
         List<String> productGroups = Arrays.asList("01.1.6.1-7", "01.1.9.3+4");
         List<Integer> years = Arrays.asList(2010, 2011);
@@ -58,17 +61,20 @@ public class GoodsAndServicesFoodSalesClientIT extends RemoteIntegrationTestSuit
     }
 
     @Test
+    @Date("2017-04-28")
     public void getTurnoverOfEcologicalFoodAndNonAlcoholicDrinks() {
         assertNotEquals(0, this.client.getTurnoverOfEcologicalFoodAndNonAlcoholicDrinks().size());
     }
 
     @Test
+    @Date("2017-04-28")
     public void getTurnoverOfEcologicalFoodAndNonAlcoholicDrinksWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getTurnoverOfEcologicalFoodAndNonAlcoholicDrinks(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-28")
     public void getTurnoverOfEcologicalFoodAndNonAlcoholicDrinksWithParameters() {
         List<String> productGroups = Arrays.asList("01.1.6", "01.1.7");
         List<Integer> years = Arrays.asList(2010, 2011);

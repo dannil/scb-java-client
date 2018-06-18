@@ -14,42 +14,45 @@
 
 package com.github.dannil.scbjavaclient.client.agriculture.livestock;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
-public class AgricultureLivestockClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class AgricultureLivestockClientIT {
 
     private AgricultureLivestockClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
-        this.client = new SCBClient().agriculture().livestock();
+        this.client = new AgricultureLivestockClient();
     }
 
     @Test
+    @Date("2017-05-21")
     public void getLivestockByMunicipality() {
         assertNotEquals(0, this.client.getLivestockByMunicipality().size());
     }
 
     @Test
+    @Date("2017-05-21")
     public void getLivestockByMunicipalityWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getLivestockByMunicipality(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-05-21")
     public void getLivestockByMunicipalityWithParameters() {
         List<String> regions = Arrays.asList("0128", "0136");
         List<String> typesOfAnimals = Arrays.asList("05", "10");
@@ -59,17 +62,20 @@ public class AgricultureLivestockClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    @Date("2017-05-21")
     public void getLivestockByCounty() {
         assertNotEquals(0, this.client.getLivestockByCounty().size());
     }
 
     @Test
+    @Date("2017-05-21")
     public void getLivestockByCountyWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getLivestockByCounty(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-05-21")
     public void getLivestockByCountyWithParameters() {
         List<String> regions = Arrays.asList("10", "12");
         List<String> typesOfAnimals = Arrays.asList("05", "10");

@@ -14,42 +14,45 @@
 
 package com.github.dannil.scbjavaclient.client.environment.waste;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
-public class EnvironmentWasteClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class EnvironmentWasteClientIT {
 
     private EnvironmentWasteClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
-        this.client = new SCBClient().environment().waste();
+        this.client = new EnvironmentWasteClient();
     }
 
     @Test
+    @Date("2017-03-06")
     public void getGeneratedWaste() {
         assertNotEquals(0, this.client.getGeneratedWaste().size());
     }
 
     @Test
+    @Date("2017-03-06")
     public void getGeneratedWasteWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getGeneratedWaste(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-03-06")
     public void getGeneratedWasteWasteWithParameters() {
         List<String> industrialClassifications = Arrays.asList("A01-03", "C16");
         List<String> wasteCategories = Arrays.asList("01.1", "03.2");
@@ -59,17 +62,20 @@ public class EnvironmentWasteClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    @Date("2017-03-06")
     public void getTreatedWaste() {
         assertNotEquals(0, this.client.getTreatedWaste().size());
     }
 
     @Test
+    @Date("2017-03-06")
     public void getTreatedWasteWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getTreatedWaste(Collections.<Integer>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-03-06")
     public void getTreatedWasteWasteWithParameters() {
         List<Integer> treatmentCategories = Arrays.asList(40, 50);
         List<String> wasteCategories = Arrays.asList("01.1", "03.2");

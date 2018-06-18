@@ -50,6 +50,21 @@ public class PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient extends 
         super(locale);
     }
 
+    // Daniel 2017-04-17: Returns HTTP 403
+    //
+    // /**
+    // * <p>Fetch all income statements data.</p>
+    // *
+    // * @return the data wrapped in a list of
+    // * {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+    // * objects
+    // *
+    // * @see #getIncomeStatements(Collection, Collection, Collection)
+    // */
+    // public List<ResponseModel> getIncomeStatements() {
+    // return getIncomeStatements(null, null, null);
+    // }
+
     /**
      * <p>Fetch all income statements data which match the input constraints.</p>
      *
@@ -72,6 +87,21 @@ public class PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient extends 
 
         return getResponseModels("ResultKn", mappings);
     }
+
+    // Daniel 2017-04-17: Returns HTTP 403
+    //
+    // /**
+    // * <p>Fetch all balance sheet data.</p>
+    // *
+    // * @return the data wrapped in a list of
+    // * {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+    // * objects
+    // *
+    // * @see #getBalanceSheet(Collection, Collection, Collection)
+    // */
+    // public List<ResponseModel> getBalanceSheet() {
+    // return getBalanceSheet(null, null, null);
+    // }
 
     /**
      * <p>Fetch all balance sheet data which match the input constraints.</p>
@@ -163,7 +193,7 @@ public class PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient extends 
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
-        mappings.put("Kontopost", items);
+        mappings.put(APIConstants.ITEM_CODE, items);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("VerksInt", mappings);
@@ -199,7 +229,7 @@ public class PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient extends 
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
-        mappings.put("Kontopost", items);
+        mappings.put(APIConstants.ITEM_CODE, items);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("VerksKostn", mappings);

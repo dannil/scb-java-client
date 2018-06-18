@@ -14,27 +14,29 @@
 
 package com.github.dannil.scbjavaclient.client;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.agriculture.AgricultureClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.BusinessActivitiesClient;
+import com.github.dannil.scbjavaclient.client.educationandresearch.EducationAndResearchClient;
 import com.github.dannil.scbjavaclient.client.energy.EnergyClient;
 import com.github.dannil.scbjavaclient.client.environment.EnvironmentClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.FinancialMarketsClient;
 import com.github.dannil.scbjavaclient.client.goodsandservices.GoodsAndServicesClient;
 import com.github.dannil.scbjavaclient.client.labourmarket.LabourMarketClient;
+import com.github.dannil.scbjavaclient.client.livingconditions.LivingConditionsClient;
 import com.github.dannil.scbjavaclient.client.population.PopulationClient;
+import com.github.dannil.scbjavaclient.client.pricesandconsumption.PricesAndConsumptionClient;
 import com.github.dannil.scbjavaclient.client.publicfinances.PublicFinancesClient;
 import com.github.dannil.scbjavaclient.client.transport.TransportClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
+@Suite
 public class SCBClientTest {
 
     @Test
@@ -60,69 +62,91 @@ public class SCBClientTest {
     public void agriculture() {
         SCBClient client = new SCBClient();
 
-        assertEquals(client.agriculture().getClass(), AgricultureClient.class);
+        assertEquals(AgricultureClient.class, client.agriculture().getClass());
     }
 
+    @Test
     public void businessActivities() {
         SCBClient client = new SCBClient();
 
-        assertEquals(client.businessActivities().getClass(), BusinessActivitiesClient.class);
+        assertEquals(BusinessActivitiesClient.class, client.businessActivities().getClass());
+    }
+
+    @Test
+    public void educationAndResearch() {
+        SCBClient client = new SCBClient();
+
+        assertEquals(EducationAndResearchClient.class, client.educationAndResearch().getClass());
     }
 
     @Test
     public void energy() {
         SCBClient client = new SCBClient();
 
-        assertEquals(client.energy().getClass(), EnergyClient.class);
+        assertEquals(EnergyClient.class, client.energy().getClass());
     }
 
     @Test
     public void environment() {
         SCBClient client = new SCBClient();
 
-        assertEquals(client.environment().getClass(), EnvironmentClient.class);
+        assertEquals(EnvironmentClient.class, client.environment().getClass());
     }
 
     @Test
     public void financialMarkets() {
         SCBClient client = new SCBClient();
 
-        assertEquals(client.financialMarkets().getClass(), FinancialMarketsClient.class);
+        assertEquals(FinancialMarketsClient.class, client.financialMarkets().getClass());
     }
 
     @Test
     public void goodsAndServices() {
         SCBClient client = new SCBClient();
 
-        assertEquals(client.goodsAndServices().getClass(), GoodsAndServicesClient.class);
+        assertEquals(GoodsAndServicesClient.class, client.goodsAndServices().getClass());
     }
 
     @Test
     public void labourMarket() {
         SCBClient client = new SCBClient();
 
-        assertEquals(client.labourMarket().getClass(), LabourMarketClient.class);
+        assertEquals(LabourMarketClient.class, client.labourMarket().getClass());
+    }
+
+    @Test
+    public void livingConditions() {
+        SCBClient client = new SCBClient();
+
+        assertEquals(LivingConditionsClient.class, client.livingConditions().getClass());
     }
 
     @Test
     public void population() {
         SCBClient client = new SCBClient();
 
-        assertEquals(client.population().getClass(), PopulationClient.class);
+        assertEquals(PopulationClient.class, client.population().getClass());
+    }
+
+    @Test
+    public void pricesAndConsumption() {
+        SCBClient client = new SCBClient();
+
+        assertEquals(PricesAndConsumptionClient.class, client.pricesAndConsumption().getClass());
     }
 
     @Test
     public void publicFinances() {
         SCBClient client = new SCBClient();
 
-        assertEquals(client.publicFinances().getClass(), PublicFinancesClient.class);
+        assertEquals(PublicFinancesClient.class, client.publicFinances().getClass());
     }
 
     @Test
     public void transport() {
         SCBClient client = new SCBClient();
 
-        assertEquals(client.transport().getClass(), TransportClient.class);
+        assertEquals(TransportClient.class, client.transport().getClass());
     }
 
     @Test

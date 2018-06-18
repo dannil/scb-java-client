@@ -14,42 +14,45 @@
 
 package com.github.dannil.scbjavaclient.client.businessactivities.nonprofitorganizations.satelliteaccounts;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
-public class BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClientIT {
 
     private BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
-        this.client = new SCBClient().businessActivities().nonProfitOrganizations().satelliteAccounts();
+        this.client = new BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClient();
     }
 
     @Test
+    @Date("2017-04-09")
     public void getIncomeExpenditureAndSavings() {
         assertNotEquals(0, this.client.getIncomeExpenditureAndSavings().size());
     }
 
     @Test
+    @Date("2017-04-09")
     public void getIncomeExpenditureAndSavingsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getIncomeExpenditureAndSavings(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-09")
     public void getIncomeExpenditureAndSavingsWithParameters() {
         List<String> icnpo = Arrays.asList("02", "06");
         List<String> transactionItems = Arrays.asList("D42.PAY", "B6n");
@@ -59,17 +62,20 @@ public class BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClientIT e
     }
 
     @Test
+    @Date("2017-04-09")
     public void getNumberOfOrganizationsAndEmployment() {
         assertNotEquals(0, this.client.getNumberOfOrganizationsAndEmployment().size());
     }
 
     @Test
+    @Date("2017-04-09")
     public void getNumberOfOrganizationsAndEmploymentWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getNumberOfOrganizationsAndEmployment(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-09")
     public void getNumberOfOrganizationsAndEmploymentWithParameters() {
         List<String> incomesAndCosts = Arrays.asList("07", "10");
         List<Integer> years = Arrays.asList(2013, 2014);

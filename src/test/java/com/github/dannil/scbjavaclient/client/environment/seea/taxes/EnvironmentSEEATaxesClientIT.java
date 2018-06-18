@@ -14,42 +14,45 @@
 
 package com.github.dannil.scbjavaclient.client.environment.seea.taxes;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
-public class EnvironmentSEEATaxesClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class EnvironmentSEEATaxesClientIT {
 
     private EnvironmentSEEATaxesClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
-        this.client = new SCBClient().environment().seea().taxes();
+        this.client = new EnvironmentSEEATaxesClient();
     }
 
     @Test
+    @Date("2017-10-05")
     public void getEnvironmentalTaxesSNI2007() {
         assertNotEquals(0, this.client.getEnvironmentalTaxesSNI2007().size());
     }
 
     @Test
+    @Date("2017-10-05")
     public void getEnvironmentalTaxesSNI2007WithParametersEmptyLists() {
         assertNotEquals(0, this.client.getEnvironmentalTaxesSNI2007(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-10-05")
     public void getEnvironmentalTaxesSNI2007WithParameters() {
         List<String> industrialClassifications = Arrays.asList("K65", "K66");
         List<Integer> years = Arrays.asList(2010, 2011);
@@ -58,17 +61,20 @@ public class EnvironmentSEEATaxesClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    @Date("2017-05-31")
     public void getEnvironmentalTaxesSNI92() {
         assertNotEquals(0, this.client.getEnvironmentalTaxesSNI92().size());
     }
 
     @Test
+    @Date("2017-05-31")
     public void getEnvironmentalTaxesSNI92WithParametersEmptyLists() {
         assertNotEquals(0, this.client.getEnvironmentalTaxesSNI92(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-05-31")
     public void getEnvironmentalTaxesSNI92WithParameters() {
         List<String> industrialClassifications = Arrays.asList("13+14", "35");
         List<Integer> years = Arrays.asList(1995, 1996);

@@ -14,42 +14,45 @@
 
 package com.github.dannil.scbjavaclient.client.publicfinances.governmentdebt;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
-public class PublicFinancesGovernmentDebtClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class PublicFinancesGovernmentDebtClientIT {
 
     private PublicFinancesGovernmentDebtClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
-        this.client = new SCBClient().publicFinances().governmentDebt();
+        this.client = new PublicFinancesGovernmentDebtClient();
     }
 
     @Test
+    @Date("2017-03-21")
     public void getGovernmentDebt() {
         assertNotEquals(0, this.client.getGovernmentDebt().size());
     }
 
     @Test
+    @Date("2017-03-21")
     public void getGovernmentDebtWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getGovernmentDebt(Collections.<String>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test
+    @Date("2017-03-21")
     public void getGovernmentDebtWithParameters() {
         List<String> items = Arrays.asList("RG242", "RG290");
         List<String> months = Arrays.asList("1976M05", "1986M07");

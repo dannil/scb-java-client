@@ -14,42 +14,45 @@
 
 package com.github.dannil.scbjavaclient.client.labourmarket.costindex;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
-public class LabourMarketCostIndexClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class LabourMarketCostIndexClientIT {
 
     private LabourMarketCostIndexClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
-        this.client = new SCBClient().labourMarket().costIndex();
+        this.client = new LabourMarketCostIndexClient();
     }
 
     @Test
+    @Date("2017-04-04")
     public void getCostIndexForManualWorkersLCI() {
         assertNotEquals(0, this.client.getCostIndexForManualWorkersLCI().size());
     }
 
     @Test
+    @Date("2017-04-04")
     public void getCostIndexForManualWorkersLCIWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getCostIndexForManualWorkersLCI(Collections.<String>emptyList(),
                 Collections.<String>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-04")
     public void getCostIndexForManualWorkersLCIWithParameters() {
         List<String> industrialClassifications = Arrays.asList("E", "F");
         List<String> quarters = Arrays.asList("2011K3", "2012K3");
@@ -58,17 +61,20 @@ public class LabourMarketCostIndexClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    @Date("2017-04-04")
     public void getCostIndexForNonManualWorkersLCI() {
         assertNotEquals(0, this.client.getCostIndexForNonManualWorkersLCI().size());
     }
 
     @Test
+    @Date("2017-04-04")
     public void getCostIndexForNonManualWorkersLCIWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getCostIndexForNonManualWorkersLCI(Collections.<String>emptyList(),
                 Collections.<String>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-04")
     public void getCostIndexForNonManualWorkersLCIWithParameters() {
         List<String> industrialClassifications = Arrays.asList("E", "F");
         List<String> quarters = Arrays.asList("2011K3", "2012K3");
@@ -77,17 +83,20 @@ public class LabourMarketCostIndexClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    @Date("2017-04-04")
     public void getCostIndexForManualWorkersWAG() {
         assertNotEquals(0, this.client.getCostIndexForManualWorkersWAG().size());
     }
 
     @Test
+    @Date("2017-04-04")
     public void getCostIndexForManualWorkersWAGWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getCostIndexForManualWorkersWAG(Collections.<String>emptyList(),
                 Collections.<String>emptyList()).size());
     }
 
     @Test
+    @Date("2017-04-04")
     public void getCostIndexForManualWorkersWAGWithParameters() {
         List<String> industrialClassifications = Arrays.asList("E", "F");
         List<String> quarters = Arrays.asList("2011K3", "2012K3");
@@ -96,17 +105,20 @@ public class LabourMarketCostIndexClientIT extends RemoteIntegrationTestSuite {
     }
 
     @Test
+    @Date("2017-04-04")
     public void getCostIndexForNonManualWorkersWAG() {
         assertNotEquals(0, this.client.getCostIndexForNonManualWorkersWAG().size());
     }
 
     @Test
+    @Date("2017-04-04")
     public void getCostIndexForNonManualWorkersWAGWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getCostIndexForNonManualWorkersWAG(Collections.<String>emptyList(),
                 Collections.<String>emptyList()));
     }
 
     @Test
+    @Date("2017-04-04")
     public void getCostIndexForNonManualWorkersWAGWithParameters() {
         List<String> industrialClassifications = Arrays.asList("E", "F");
         List<String> quarters = Arrays.asList("2011K3", "2012K3");

@@ -14,29 +14,30 @@
 
 package com.github.dannil.scbjavaclient.client.environment.protectednature;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
-import com.github.dannil.scbjavaclient.client.AbstractClient;
-import com.github.dannil.scbjavaclient.constants.APIConstants;
+import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
+import com.github.dannil.scbjavaclient.client.environment.protectednature.naturetypes.EnvironmentProtectedNatureNatureTypesClient;
+import com.github.dannil.scbjavaclient.client.environment.protectednature.numberandarea.EnvironmentProtectedNatureNumberAndAreaClient;
+import com.github.dannil.scbjavaclient.client.environment.protectednature.populationandaccessibility.EnvironmentProtectedNaturePopulationAndAccessibilityClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
-import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles environment protected nature data fetching.</p>
  *
- * @since 0.3.0
+ * @since 0.5.0
  */
-public class EnvironmentProtectedNatureClient extends AbstractClient {
+public class EnvironmentProtectedNatureClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor.</p>
+     * <p>Default constructor. Initializes values and creates sub-clients.</p>
      */
     public EnvironmentProtectedNatureClient() {
         super();
+
+        addClient("naturetypes", new EnvironmentProtectedNatureNatureTypesClient());
+        addClient("numberandarea", new EnvironmentProtectedNatureNumberAndAreaClient());
+        addClient("populationandaccessibility", new EnvironmentProtectedNaturePopulationAndAccessibilityClient());
     }
 
     /**
@@ -46,135 +47,39 @@ public class EnvironmentProtectedNatureClient extends AbstractClient {
      *            the <code>Locale</code> for this client
      */
     public EnvironmentProtectedNatureClient(Locale locale) {
-        super(locale);
+        this();
+
+        setLocale(locale);
     }
 
     /**
-     * <p>Fetch all wildlife sanctuaries data.</p>
+     * <p>Retrieve the client for interacting with environment protected nature nature
+     * types data.</p>
      *
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     *
-     * @see #getWildlifeSanctuaries(Collection, Collection)
+     * @return a client for environment protected nature nature types data
      */
-    public List<ResponseModel> getWildlifeSanctuaries() {
-        return getWildlifeSanctuaries(null, null);
+    public EnvironmentProtectedNatureNatureTypesClient natureTypes() {
+        return (EnvironmentProtectedNatureNatureTypesClient) getClient("naturetypes");
     }
 
     /**
-     * <p>Fetch all wildlife sanctuaries data which match the input constraints.</p>
+     * <p>Retrieve the client for interacting with environment protected nature number and
+     * area data.</p>
      *
-     * @param regions
-     *            the regions
-     * @param years
-     *            the years
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
+     * @return a client for environment protected nature number and area data
      */
-    public List<ResponseModel> getWildlifeSanctuaries(Collection<String> regions, Collection<Integer> years) {
-        Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.REGION_CODE, regions);
-        mappings.put(APIConstants.TIME_CODE, years);
-
-        return getResponseModels("DjurVaxtskydd", mappings);
+    public EnvironmentProtectedNatureNumberAndAreaClient numberAndArea() {
+        return (EnvironmentProtectedNatureNumberAndAreaClient) getClient("numberandarea");
     }
 
     /**
-     * <p>Fetch all Natura 2000 sites data.</p>
+     * <p>Retrieve the client for interacting with environment protected nature population
+     * and accessibility data.</p>
      *
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     *
-     * @see #getNatura2000Sites(Collection, Collection)
+     * @return a client for environment protected nature population and accessibility data
      */
-    public List<ResponseModel> getNatura2000Sites() {
-        return getNatura2000Sites(null, null);
-    }
-
-    /**
-     * <p>Fetch all Natura 2000 sites data which match the input constraints.</p>
-     *
-     * @param regions
-     *            the regions
-     * @param years
-     *            the years
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     */
-    public List<ResponseModel> getNatura2000Sites(Collection<String> regions, Collection<Integer> years) {
-        Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.REGION_CODE, regions);
-        mappings.put(APIConstants.TIME_CODE, years);
-
-        return getResponseModels("Natura2000", mappings);
-    }
-
-    /**
-     * <p>Fetch all protected areas data.</p>
-     *
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     *
-     * @see #getProtectedAreas(Collection, Collection)
-     */
-    public List<ResponseModel> getProtectedAreas() {
-        return getProtectedAreas(null, null);
-    }
-
-    /**
-     * <p>Fetch all protected areas data which match the input constraints.</p>
-     *
-     * @param natureTypes
-     *            the nature types
-     * @param years
-     *            the years
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     */
-    public List<ResponseModel> getProtectedAreas(Collection<String> natureTypes, Collection<Integer> years) {
-        Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Naturtyp", natureTypes);
-        mappings.put(APIConstants.TIME_CODE, years);
-
-        return getResponseModels("NaturTypSkyddOmr", mappings);
-    }
-
-    /**
-     * <p>Fetch all productive forest land data.</p>
-     *
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     *
-     * @see #getProductiveForestLand(Collection, Collection)
-     */
-    public List<ResponseModel> getProductiveForestLand() {
-        return getProductiveForestLand(null, null);
-    }
-
-    /**
-     * <p>Fetch all productive forest land data which match the input constraints.</p>
-     *
-     * @param regions
-     *            the regions
-     * @param years
-     *            the years
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     */
-    public List<ResponseModel> getProductiveForestLand(Collection<String> regions, Collection<Integer> years) {
-        Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.REGION_CODE, regions);
-        mappings.put(APIConstants.TIME_CODE, years);
-
-        return getResponseModels("ProdSkogsmark", mappings);
+    public EnvironmentProtectedNaturePopulationAndAccessibilityClient populationAndAccessibility() {
+        return (EnvironmentProtectedNaturePopulationAndAccessibilityClient) getClient("populationandaccessibility");
     }
 
     @Override

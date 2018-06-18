@@ -14,7 +14,7 @@
 
 package com.github.dannil.scbjavaclient.client.population.statistics;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
@@ -33,12 +33,11 @@ import com.github.dannil.scbjavaclient.client.population.statistics.migration.Po
 import com.github.dannil.scbjavaclient.client.population.statistics.partnership.PopulationStatisticsPartnershipClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.vitalevents.PopulationStatisticsVitalEventsClient;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
+@Suite
 public class PopulationStatisticsClientTest {
 
     @Test
@@ -56,108 +55,108 @@ public class PopulationStatisticsClientTest {
 
         // Not all sub-clients needs to be here. If one of the asserts fails it
         // automatically applies to all sub-clients since they share the same logic
-        assertEquals(client.amount().getLocale(), locale);
-        assertEquals(client.density().getLocale(), locale);
-        assertEquals(client.liveBirths().getLocale(), locale);
-        assertEquals(client.partnership().getLocale(), locale);
+        assertEquals(locale, client.amount().getLocale());
+        assertEquals(locale, client.density().getLocale());
+        assertEquals(locale, client.liveBirths().getLocale());
+        assertEquals(locale, client.partnership().getLocale());
     }
 
     @Test
     public void adopteesClient() {
         PopulationStatisticsClient client = new PopulationStatisticsClient();
 
-        assertEquals(client.adoptees().getClass(), PopulationStatisticsAdopteesClient.class);
+        assertEquals(PopulationStatisticsAdopteesClient.class, client.adoptees().getClass());
     }
 
     @Test
     public void amountClient() {
         PopulationStatisticsClient client = new PopulationStatisticsClient();
 
-        assertEquals(client.amount().getClass(), PopulationStatisticsAmountClient.class);
+        assertEquals(PopulationStatisticsAmountClient.class, client.amount().getClass());
     }
 
     @Test
     public void asylumSeekersClient() {
         PopulationStatisticsClient client = new PopulationStatisticsClient();
 
-        assertEquals(client.asylumSeekers().getClass(), PopulationStatisticsAsylumSeekersClient.class);
+        assertEquals(PopulationStatisticsAsylumSeekersClient.class, client.asylumSeekers().getClass());
     }
 
     @Test
     public void averageAgeClient() {
         PopulationStatisticsClient client = new PopulationStatisticsClient();
 
-        assertEquals(client.averageAge().getClass(), PopulationStatisticsAverageAgeClient.class);
+        assertEquals(PopulationStatisticsAverageAgeClient.class, client.averageAge().getClass());
     }
 
     @Test
     public void backgroundClient() {
         PopulationStatisticsClient client = new PopulationStatisticsClient();
 
-        assertEquals(client.background().getClass(), PopulationStatisticsBackgroundClient.class);
+        assertEquals(PopulationStatisticsBackgroundClient.class, client.background().getClass());
     }
 
     @Test
     public void deathsClient() {
         PopulationStatisticsClient client = new PopulationStatisticsClient();
 
-        assertEquals(client.deaths().getClass(), PopulationStatisticsDeathsClient.class);
+        assertEquals(PopulationStatisticsDeathsClient.class, client.deaths().getClass());
     }
 
     @Test
     public void densityClient() {
         PopulationStatisticsClient client = new PopulationStatisticsClient();
 
-        assertEquals(client.density().getClass(), PopulationStatisticsDensityClient.class);
+        assertEquals(PopulationStatisticsDensityClient.class, client.density().getClass());
     }
 
     @Test
     public void foreignBornPersonsClient() {
         PopulationStatisticsClient client = new PopulationStatisticsClient();
 
-        assertEquals(client.foreignBornPersons().getClass(), PopulationStatisticsForeignBornPersonsClient.class);
+        assertEquals(PopulationStatisticsForeignBornPersonsClient.class, client.foreignBornPersons().getClass());
     }
 
     @Test
     public void foreignCitizensClient() {
         PopulationStatisticsClient client = new PopulationStatisticsClient();
 
-        assertEquals(client.foreignCitizens().getClass(), PopulationStatisticsForeignCitizensClient.class);
+        assertEquals(PopulationStatisticsForeignCitizensClient.class, client.foreignCitizens().getClass());
     }
 
     @Test
     public void householdClient() {
         PopulationStatisticsClient client = new PopulationStatisticsClient();
 
-        assertEquals(client.household().getClass(), PopulationStatisticsHouseholdClient.class);
+        assertEquals(PopulationStatisticsHouseholdClient.class, client.household().getClass());
     }
 
     @Test
     public void liveBirthsClient() {
         PopulationStatisticsClient client = new PopulationStatisticsClient();
 
-        assertEquals(client.liveBirths().getClass(), PopulationStatisticsLiveBirthsClient.class);
+        assertEquals(PopulationStatisticsLiveBirthsClient.class, client.liveBirths().getClass());
     }
 
     @Test
     public void migrationClient() {
         PopulationStatisticsClient client = new PopulationStatisticsClient();
 
-        assertEquals(client.migration().getClass(), PopulationStatisticsMigrationClient.class);
+        assertEquals(PopulationStatisticsMigrationClient.class, client.migration().getClass());
     }
 
     @Test
     public void partnershipClient() {
         PopulationStatisticsClient client = new PopulationStatisticsClient();
 
-        assertEquals(client.partnership().getClass(), PopulationStatisticsPartnershipClient.class);
+        assertEquals(PopulationStatisticsPartnershipClient.class, client.partnership().getClass());
     }
 
     @Test
     public void vitalEventsClient() {
         PopulationStatisticsClient client = new PopulationStatisticsClient();
 
-        assertEquals(client.vitalEvents().getClass(), PopulationStatisticsVitalEventsClient.class);
+        assertEquals(PopulationStatisticsVitalEventsClient.class, client.vitalEvents().getClass());
     }
 
     @Test

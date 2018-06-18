@@ -14,56 +14,61 @@
 
 package com.github.dannil.scbjavaclient.client.population.statistics.asylumseekers;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
-public class PopulationStatisticsAsylumSeekersClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class PopulationStatisticsAsylumSeekersClientIT {
 
     private PopulationStatisticsAsylumSeekersClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
-        this.client = new SCBClient().population().statistics().asylumSeekers();
+        this.client = new PopulationStatisticsAsylumSeekersClient();
     }
 
     @Test
+    @Date("2017-08-23")
     public void getAsylumSeekers() {
         assertNotEquals(0, this.client.getAsylumSeekers().size());
     }
 
     @Test
+    @Date("2017-08-23")
     public void getAsylumSeekersWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getAsylumSeekers(Collections.<String>emptyList(),
-                Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
+                Collections.<Integer>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-08-23")
     public void getAsylumSeekersWithParameters() {
         List<String> countriesOfCitizenships = Arrays.asList("CD", "HR");
-        List<String> sexes = Arrays.asList("1", "2");
+        List<Integer> sexes = Arrays.asList(1, 2);
         List<Integer> years = Arrays.asList(2009);
 
         assertNotEquals(0, this.client.getAsylumSeekers(countriesOfCitizenships, sexes, years).size());
     }
 
     @Test
+    @Date("2017-04-27")
     public void getUnaccompaniedRefugeeMinors() {
         assertNotEquals(0, this.client.getUnaccompaniedRefugeeMinors().size());
     }
 
     @Test
+    @Date("2017-04-27")
     public void getUnaccompaniedRefugeeMinorsWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getUnaccompaniedRefugeeMinors(Collections.<String>emptyList(),
@@ -72,6 +77,7 @@ public class PopulationStatisticsAsylumSeekersClientIT extends RemoteIntegration
     }
 
     @Test
+    @Date("2017-04-27")
     public void getUnaccompaniedRefugeeMinorsWithParameters() {
         List<String> sexes = Arrays.asList("5", "6");
         List<String> ages = Arrays.asList("0-6");

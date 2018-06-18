@@ -14,20 +14,20 @@
 
 package com.github.dannil.scbjavaclient.validator.json;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.dannil.scbjavaclient.format.json.JsonConverter;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
+@Suite
 public class JsonValidatorTest {
 
     @Test
@@ -35,10 +35,10 @@ public class JsonValidatorTest {
             throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
         Constructor<?>[] cons = JsonValidator.class.getDeclaredConstructors();
         cons[0].setAccessible(true);
-        cons[0].newInstance();
+        Object o = cons[0].newInstance();
         cons[0].setAccessible(false);
 
-        assertFalse(cons[0].isAccessible());
+        assertNotNull(o);
     }
 
     @Test

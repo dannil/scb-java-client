@@ -14,42 +14,45 @@
 
 package com.github.dannil.scbjavaclient.client.environment.landuse.usage;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.client.SCBClient;
-import com.github.dannil.scbjavaclient.test.utility.RemoteIntegrationTestSuite;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-@RunWith(JUnit4.class)
-public class EnvironmentLandUseUsageClientIT extends RemoteIntegrationTestSuite {
+@Suite
+@Remote
+public class EnvironmentLandUseUsageClientIT {
 
     private EnvironmentLandUseUsageClient client;
 
-    @Before
+    @BeforeEach
     public void setup() {
-        this.client = new SCBClient().environment().landUse().usage();
+        this.client = new EnvironmentLandUseUsageClient();
     }
 
     @Test
+    @Date("2017-03-17")
     public void getArableAndForestLand() {
         assertNotEquals(0, this.client.getArableAndForestLand().size());
     }
 
     @Test
+    @Date("2017-03-17")
     public void getArableAndForestLandWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getArableAndForestLand(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-03-17")
     public void getArableAndForestLandWithParameters() {
         List<String> regions = Arrays.asList("0114", "0140");
         List<Integer> categories = Arrays.asList(14);
@@ -59,17 +62,20 @@ public class EnvironmentLandUseUsageClientIT extends RemoteIntegrationTestSuite 
     }
 
     @Test
+    @Date("2017-03-17")
     public void getBuiltUpLand() {
         assertNotEquals(0, this.client.getBuiltUpLand().size());
     }
 
     @Test
+    @Date("2017-03-17")
     public void getBuiltUpLandWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getBuiltUpLand(Collections.<String>emptyList(), Collections.<Integer>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-03-17")
     public void getBuiltUpLandWithParameters() {
         List<String> regions = Arrays.asList("0114", "0140");
         List<Integer> categories = Arrays.asList(233, 236);
@@ -79,17 +85,20 @@ public class EnvironmentLandUseUsageClientIT extends RemoteIntegrationTestSuite 
     }
 
     @Test
+    @Date("2017-03-17")
     public void getLandUseByCounty() {
         assertNotEquals(0, this.client.getLandUseByCounty().size());
     }
 
     @Test
+    @Date("2017-03-17")
     public void getLandUseByCountyWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getLandUseByCounty(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-03-17")
     public void getLandUseByCountyWithParameters() {
         List<String> regions = Arrays.asList("07", "10");
         List<Integer> categories = Arrays.asList(211, 212);
@@ -99,17 +108,20 @@ public class EnvironmentLandUseUsageClientIT extends RemoteIntegrationTestSuite 
     }
 
     @Test
+    @Date("2017-03-17")
     public void getLandUseByMunicipality() {
         assertNotEquals(0, this.client.getLandUseByMunicipality().size());
     }
 
     @Test
+    @Date("2017-03-17")
     public void getLandUseByMunicipalityWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getLandUseByMunicipality(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
+    @Date("2017-03-17")
     public void getLandUseByMunicipalityWithParameters() {
         List<String> regions = Arrays.asList("0140", "0160");
         List<Integer> categories = Arrays.asList(811, 911);
