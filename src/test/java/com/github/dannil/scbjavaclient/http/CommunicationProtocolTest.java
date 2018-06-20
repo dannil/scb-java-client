@@ -23,33 +23,40 @@ import com.github.dannil.scbjavaclient.test.extensions.Suite;
 import org.junit.jupiter.api.Test;
 
 @Suite
-public class HttpProtocolTest {
+public class CommunicationProtocolTest {
 
     @Test
-    public void getProtocol() {
-        HttpProtocol httpProtocol = HttpProtocol.HTTP;
+    public void getProtocolHttp() {
+        CommunicationProtocol protocol = CommunicationProtocol.HTTP;
 
-        assertEquals("http", httpProtocol.getProtocol());
+        assertEquals("http", protocol.getProtocol());
+    }
+    
+    @Test
+    public void getProtocolHttps() {
+        CommunicationProtocol protocol = CommunicationProtocol.HTTPS;
+
+        assertEquals("https", protocol.getProtocol());
     }
 
     @Test
     public void valueOf() {
         String protocol = "HTTP";
-        HttpProtocol httpProtocol = HttpProtocol.valueOf(protocol);
+        CommunicationProtocol httpProtocol = CommunicationProtocol.valueOf(protocol);
 
         assertEquals("http", httpProtocol.getProtocol());
     }
 
     @Test
     public void valueOfIllegalArgument() {
-        assertThrows(IllegalArgumentException.class, () -> HttpProtocol.valueOf(""));
+        assertThrows(IllegalArgumentException.class, () -> CommunicationProtocol.valueOf(""));
     }
 
     @Test
     public void values() {
-        HttpProtocol[] protocols = HttpProtocol.values();
+        CommunicationProtocol[] protocols = CommunicationProtocol.values();
 
-        assertArrayEquals(HttpProtocol.values(), protocols);
+        assertArrayEquals(CommunicationProtocol.values(), protocols);
     }
 
 }

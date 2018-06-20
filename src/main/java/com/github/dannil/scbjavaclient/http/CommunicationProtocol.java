@@ -15,11 +15,12 @@
 package com.github.dannil.scbjavaclient.http;
 
 /**
- * <p>Enumerable for the available HTTP protocols.</p>
+ * <p>Enumerable for the available communication protocols which the API (and in extension
+ * this library) can accept.</p>
  *
  * @since 1.2.0
  */
-public enum HttpProtocol {
+public enum CommunicationProtocol {
 
     HTTP("http"), HTTPS("https");
 
@@ -31,7 +32,7 @@ public enum HttpProtocol {
      * @param protocol
      *            the protocol
      */
-    HttpProtocol(String protocol) {
+    CommunicationProtocol(String protocol) {
         this.protocol = protocol;
     }
 

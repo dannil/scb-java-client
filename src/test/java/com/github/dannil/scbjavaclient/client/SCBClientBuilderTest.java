@@ -22,7 +22,7 @@ import java.util.Locale;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.github.dannil.scbjavaclient.http.HttpProtocol;
+import com.github.dannil.scbjavaclient.http.CommunicationProtocol;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 @Suite
@@ -44,7 +44,7 @@ public class SCBClientBuilderTest {
         assertNotNull(this.client);
 
         // Tests the default values
-        assertEquals(HttpProtocol.HTTPS, this.client.getHttpProtocol());
+        assertEquals(CommunicationProtocol.HTTPS, this.client.getCommunicationProtocol());
         assertEquals(Locale.getDefault(), this.client.getLocale());
     }
 
@@ -54,7 +54,7 @@ public class SCBClientBuilderTest {
         assertNotNull(c);
 
         // Tests the default values
-        assertEquals(HttpProtocol.HTTPS, c.getHttpProtocol());
+        assertEquals(CommunicationProtocol.HTTPS, c.getCommunicationProtocol());
         assertEquals(Locale.getDefault(), c.getLocale());
     }
 

@@ -16,7 +16,7 @@ package com.github.dannil.scbjavaclient.client;
 
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.http.HttpProtocol;
+import com.github.dannil.scbjavaclient.http.CommunicationProtocol;
 
 /**
  * <p>Builder class for constructing new clients.</p>
@@ -48,23 +48,24 @@ public class SCBClientBuilder {
     }
 
     /**
-     * <p>Sets the {@link com.github.dannil.scbjavaclient.http.HttpProtocol HttpProtocol}
-     * for this builder, and therefore the client generated from this builder.</p>
+     * <p>Sets the {@link com.github.dannil.scbjavaclient.http.CommunicationProtocol
+     * CommunicationProtocol} for this builder, and therefore the client generated from
+     * this builder.</p>
      *
-     * @param httpProtocol
-     *            the {@link com.github.dannil.scbjavaclient.http.HttpProtocol
-     *            HttpProtocol} to use
+     * @param communicationProtocol
+     *            the {@link com.github.dannil.scbjavaclient.http.CommunicationProtocol
+     *            CommunicationProtocol} to use
      * @return the instance of this builder
      */
-    public SCBClientBuilder setHttpProtocol(HttpProtocol httpProtocol) {
-        this.client.setHttpProtocol(httpProtocol);
+    public SCBClientBuilder setCommunicationProtocol(CommunicationProtocol communicationProtocol) {
+        this.client.setCommunicationProtocol(communicationProtocol);
         return this;
     }
 
     /**
      * <p>Generates a {@link SCBClient} with the previously assigned parameters.</p>
      *
-     * @return a {@link SCBClient} with specified parameters
+     * @return a {@link SCBClient} with parameters which were supplied to this builder
      */
     public SCBClient build() {
         return this.client;

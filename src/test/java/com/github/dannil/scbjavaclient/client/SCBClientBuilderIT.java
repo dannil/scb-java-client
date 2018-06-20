@@ -21,47 +21,47 @@ import java.util.Locale;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.github.dannil.scbjavaclient.http.HttpProtocol;
+import com.github.dannil.scbjavaclient.http.CommunicationProtocol;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 @Suite
 public class SCBClientBuilderIT {
 
     private SCBClientBuilder builder;
-    
+
     @BeforeEach
     public void setup() {
         this.builder = new SCBClientBuilder();
     }
-    
+
     @Test
     public void setLocale() {
         Locale locale = new Locale("fr", "FR");
-        
+
         this.builder.setLocale(locale);
-        
+
         SCBClient c = this.builder.build();
         assertEquals(new Locale("fr", "FR"), c.getLocale());
     }
-    
+
     @Test
-    public void setHttpProtocolAsHttp() {
-        HttpProtocol protocol = HttpProtocol.HTTP;
-        
-        this.builder.setHttpProtocol(protocol);
-        
+    public void setCommunicationProtocolAsHttp() {
+        CommunicationProtocol protocol = CommunicationProtocol.HTTP;
+
+        this.builder.setCommunicationProtocol(protocol);
+
         SCBClient c = this.builder.build();
-        assertEquals(HttpProtocol.HTTP, c.getHttpProtocol());
+        assertEquals(CommunicationProtocol.HTTP, c.getCommunicationProtocol());
     }
-    
+
     @Test
-    public void setHttpProtocolAsHttps() {
-        HttpProtocol protocol = HttpProtocol.HTTPS;
-        
-        this.builder.setHttpProtocol(protocol);
-        
+    public void setCommunicationProtocolAsHttps() {
+        CommunicationProtocol protocol = CommunicationProtocol.HTTPS;
+
+        this.builder.setCommunicationProtocol(protocol);
+
         SCBClient c = this.builder.build();
-        assertEquals(HttpProtocol.HTTPS, c.getHttpProtocol());
+        assertEquals(CommunicationProtocol.HTTPS, c.getCommunicationProtocol());
     }
-    
+
 }
