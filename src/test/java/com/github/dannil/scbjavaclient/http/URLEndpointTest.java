@@ -64,6 +64,22 @@ public class URLEndpointTest {
     }
 
     @Test
+    public void toURLWithStringAndCommunicationProtocol() {
+        URLEndpoint url = new URLEndpoint("http://api.scb.se/OV0104/v1/doris/sv/ssd/AM");
+        url = url.toURL("fr", CommunicationProtocol.HTTPS);
+
+        assertEquals("https://api.scb.se/OV0104/v1/doris/fr/ssd/AM/", url.toString());
+    }
+
+    @Test
+    public void toURLWithStringAndNullCommunicationProtocol() {
+        URLEndpoint url = new URLEndpoint("https://api.scb.se/OV0104/v1/doris/sv/ssd/AM");
+        url = url.toURL("fr", null);
+
+        assertEquals("https://api.scb.se/OV0104/v1/doris/fr/ssd/AM/", url.toString());
+    }
+
+    @Test
     public void getTable() {
         URLEndpoint url = new URLEndpoint("http://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0401/BE0401A/");
 

@@ -15,7 +15,7 @@ matrix:
   include:
   - os: linux
     dist: trusty
-    jdk: oraclejdk8
+    jdk: openjdk8
     after_success:
     # SonarQube needs to be run with at least Java 8
     # Make sure we are on the correct branch
@@ -23,16 +23,22 @@ matrix:
     - if [[ $TRAVIS_BRANCH == test/run-all-tests ]]; then sh push_build_results.sh; fi
   - os: linux
     dist: trusty
-    jdk: oraclejdk9
+    jdk: openjdk9
   - os: linux
     dist: trusty
-    jdk: oraclejdk10
+    jdk: openjdk10
+  - os: linux
+    dist: trusty
+    jdk: openjdk11
+    script:
+    # As JaCoCo does not yet support Java 11 (as of 2018-06-16), we skip it
+    - mvn install -B -V -DtestsDayLimit=7 -Djacoco.skip=true
 install:
 - true
 before_script:
 # If we get the same IP on concurrent builds and this triggers an error
 # on the API (rate limiting), this can be easily debugged by checking the log
-- curl icanhazip.com
+- dig +short myip.opendns.com @resolver1.opendns.com
 script:
 - mvn install -B -V -DtestsDayLimit=7
 after_success:
