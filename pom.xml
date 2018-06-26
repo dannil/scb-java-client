@@ -551,6 +551,7 @@
         <version>3.0.1</version>
         <configuration>
           <additionalparam>-Xdoclint:all</additionalparam>
+          <additionalparam>-html5</additionalparam>
           <failOnError>true</failOnError>
         </configuration>
         <executions>
