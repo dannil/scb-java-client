@@ -376,6 +376,9 @@
           <source>${project.java.source}</source>
           <target>${project.java.target}</target>
           <encoding>${project.build.sourceEncoding}</encoding>
+          <compilerArgs>
+            <arg>-Xlint:all</arg>
+          </compilerArgs>
         </configuration>
       </plugin>
       <plugin>
