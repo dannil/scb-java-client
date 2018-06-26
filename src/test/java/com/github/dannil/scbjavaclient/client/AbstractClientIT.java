@@ -453,7 +453,7 @@ public class AbstractClientIT {
     }
 
     @Test
-    @Date("2017-12-11")
+    @Date("2018-06-25")
     public void checkForUsageOfAllCodes() throws Exception {
         String execPath = System.getProperty("user.dir");
 
@@ -519,7 +519,7 @@ public class AbstractClientIT {
                 continue;
             }
 
-            Object instance = clazz.newInstance();
+            Object instance = clazz.getConstructor().newInstance();
             URLEndpoint url = (URLEndpoint) clazz.getMethod("getUrl", new Class<?>[] {}).invoke(instance,
                     new Object[] {});
             Method[] declaredMethods = clazz.getDeclaredMethods();
