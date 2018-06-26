@@ -81,7 +81,7 @@ public class EnvironmentSEEAGoodsAndServicesSectorClient extends AbstractClient 
         mappings.put("Miljoomrade", environmentalAreas);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("MiljosektorOmr", mappings);
+        return getResponseModels("MI1301T05", mappings);
     }
 
     /**
@@ -114,7 +114,7 @@ public class EnvironmentSEEAGoodsAndServicesSectorClient extends AbstractClient 
         mappings.put("Lan", counties);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("MiljosektorLan", mappings);
+        return getResponseModels("MI1301T04", mappings);
     }
 
     /**
@@ -125,7 +125,11 @@ public class EnvironmentSEEAGoodsAndServicesSectorClient extends AbstractClient 
      *         objects
      *
      * @see #getEnvironmentalSectorByIndustry(Collection, Collection)
+     *
+     * @deprecated use
+     *             {@link #getEnvironmentalSectorValueAddedByIndustrialClassification()}
      */
+    @Deprecated
     public List<ResponseModel> getEnvironmentalSectorByIndustry() {
         return getEnvironmentalSectorByIndustry(null, null);
     }
@@ -141,14 +145,135 @@ public class EnvironmentSEEAGoodsAndServicesSectorClient extends AbstractClient 
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
+     *
+     * @deprecated use
+     *             {@link #getEnvironmentalSectorValueAddedByIndustrialClassification(Collection, Collection)}
      */
+    @Deprecated
     public List<ResponseModel> getEnvironmentalSectorByIndustry(Collection<String> naceGroups,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Branschgrupp", naceGroups);
+        mappings.put(APIConstants.SNI2007_CODE, naceGroups);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("MiljosektorBrGrp", mappings);
+        return getResponseModels("MI1301T02", mappings);
+    }
+
+    /**
+     * <p>Fetch all environmental sector net turnover by industrial classification
+     * data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getEnvironmentalSectorNetTurnoverByIndustrialClassification(Collection,
+     *      Collection)
+     */
+    public List<ResponseModel> getEnvironmentalSectorNetTurnoverByIndustrialClassification() {
+        return getEnvironmentalSectorNetTurnoverByIndustrialClassification(null, null);
+    }
+
+    /**
+     * <p>Fetch all environmental sector net turnover by industrial classification data
+     * which match the input constraints.</p>
+     *
+     * @param industrialClassifications
+     *            the industrial classifications
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getEnvironmentalSectorNetTurnoverByIndustrialClassification(
+            Collection<String> industrialClassifications, Collection<Integer> years) {
+        return generateEnvironmentalSectorByIndustrialClassification(industrialClassifications, years, "MI1301T01");
+    }
+
+    /**
+     * <p>Fetch all environmental sector value added by industrial classification
+     * data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getEnvironmentalSectorValueAddedByIndustrialClassification(Collection,
+     *      Collection)
+     */
+    public List<ResponseModel> getEnvironmentalSectorValueAddedByIndustrialClassification() {
+        return getEnvironmentalSectorValueAddedByIndustrialClassification(null, null);
+    }
+
+    /**
+     * <p>Fetch all environmental sector value added by industrial classification data
+     * which match the input constraints.</p>
+     *
+     * @param industrialClassifications
+     *            the industrial classifications
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getEnvironmentalSectorValueAddedByIndustrialClassification(
+            Collection<String> industrialClassifications, Collection<Integer> years) {
+        return generateEnvironmentalSectorByIndustrialClassification(industrialClassifications, years, "MI1301T02");
+    }
+
+    /**
+     * <p>Fetch all environmental sector export by industrial classification data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getEnvironmentalSectorExportByIndustrialClassification(Collection,
+     *      Collection)
+     */
+    public List<ResponseModel> getEnvironmentalSectorExportByIndustrialClassification() {
+        return getEnvironmentalSectorExportByIndustrialClassification(null, null);
+    }
+
+    /**
+     * <p>Fetch all environmental sector export by industrial classification data which
+     * match the input constraints.</p>
+     *
+     * @param industrialClassifications
+     *            the industrial classifications
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getEnvironmentalSectorExportByIndustrialClassification(
+            Collection<String> industrialClassifications, Collection<Integer> years) {
+        return generateEnvironmentalSectorByIndustrialClassification(industrialClassifications, years, "MI1301T03");
+    }
+
+    /**
+     * <p>Common generator method for methods handling environmental sector by industrial
+     * classification data.</p>
+     *
+     * @param industrialClassifications
+     *            the industrial classifications
+     * @param years
+     *            the years
+     * @param table
+     *            the table
+     * @return a <code>List</code> of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     */
+    private List<ResponseModel> generateEnvironmentalSectorByIndustrialClassification(
+            Collection<String> industrialClassifications, Collection<Integer> years, String table) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.SNI2007_CODE, industrialClassifications);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels(table, mappings);
     }
 
     @Override
