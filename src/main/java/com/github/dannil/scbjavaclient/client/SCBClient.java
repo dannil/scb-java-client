@@ -219,7 +219,7 @@ public class SCBClient extends AbstractContainerClient {
         String json = doGetRequest(url);
 
         if (json == null) {
-            return new HashMap<String, Collection<String>>();
+            return new HashMap<>();
         }
         return new JsonAPITableFormat(json).getPairs();
     }
@@ -237,7 +237,7 @@ public class SCBClient extends AbstractContainerClient {
         String json = doGetRequest(url);
 
         if (json == null) {
-            return new ArrayList<String>();
+            return new ArrayList<>();
         }
         JsonAPITableFormat format = new JsonAPITableFormat(json);
         return format.getValues(APIConstants.REGION_CODE);
@@ -256,7 +256,7 @@ public class SCBClient extends AbstractContainerClient {
         String json = doGetRequest(url);
 
         if (json == null) {
-            return new ArrayList<String>();
+            return new ArrayList<>();
         }
         JsonAPITableFormat format = new JsonAPITableFormat(json);
         return format.getValues(APIConstants.TIME_CODE);
