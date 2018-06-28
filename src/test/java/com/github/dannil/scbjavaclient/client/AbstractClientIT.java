@@ -17,6 +17,7 @@ package com.github.dannil.scbjavaclient.client;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
@@ -43,6 +44,7 @@ import java.util.TreeSet;
 import java.util.concurrent.TimeUnit;
 
 import com.github.dannil.scbjavaclient.constants.APIConstants;
+import com.github.dannil.scbjavaclient.exception.SCBClientResponseTooLargeException;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.test.TestConstants;
@@ -129,16 +131,14 @@ public class AbstractClientIT {
     }
 
     @Test
-    @Date("2017-01-01")
+    @Date("2018-06-28")
     public void urlForbidden() {
         SCBClient client = new SCBClient(new Locale("sv", "SE"));
 
         // This call will result in a HTTP 403 response (forbidden) since the
         // response from this table is larger than the API allows (given all the available
         // inputs)
-        String response = client.getRawData("NV/NV0119/IVPKNLonAr");
-
-        assertNull(response);
+        assertThrows(SCBClientResponseTooLargeException.class, () -> client.getRawData("NV/NV0119/IVPKNLonAr"));
     }
 
     @Test

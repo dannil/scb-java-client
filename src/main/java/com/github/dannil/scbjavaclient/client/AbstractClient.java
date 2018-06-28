@@ -21,6 +21,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.constants.APIConstants;
+import com.github.dannil.scbjavaclient.exception.SCBClientResponseTooLargeException;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.http.CommunicationProtocol;
 import com.github.dannil.scbjavaclient.http.HttpResponse;
@@ -186,6 +187,8 @@ public abstract class AbstractClient {
             // HTTP code 404, call the API again with the fallback language
             URLEndpoint endpointUrl = new URLEndpoint(url).toURL(APIConstants.FALLBACK_LOCALE);
             body = requester.getResponse(endpointUrl.toString()).getBody();
+        } else if (response.getStatus() == HttpStatusCode.FORBIDDEN) {
+            throw new SCBClientResponseTooLargeException("The response exceeded the maximum size allowed by the API");
         }
         return body;
     }
