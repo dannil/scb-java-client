@@ -152,9 +152,52 @@
         </plugins>
       </build>
     </profile>
+    <profile>
+      <id>generate-javadoc-html5</id>
+      <activation>
+        <jdk>[9,)</jdk>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <configuration>
+              <additionalJOptions>
+                <additionalJOption>-Xdoclint:all</additionalJOption>
+                <additionalJOption>-html5</additionalJOption>
+              </additionalJOptions>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
   </profiles>
 
   <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>3.0.1</version>
+          <configuration>
+            <additionalJOptions>
+              <additionalJOption>-Xdoclint:all</additionalJOption>
+            </additionalJOptions>
+            <failOnError>true</failOnError>
+          </configuration>
+          <executions>
+            <execution>
+              <id>attach-javadocs</id>
+              <goals>
+                <goal>jar</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </pluginManagement>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -551,20 +594,6 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>3.0.1</version>
-        <configuration>
-          <additionalparam>-Xdoclint:all</additionalparam>
-          <additionalparam>-html5</additionalparam>
-          <failOnError>true</failOnError>
-        </configuration>
-        <executions>
-          <execution>
-            <id>attach-javadocs</id>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
