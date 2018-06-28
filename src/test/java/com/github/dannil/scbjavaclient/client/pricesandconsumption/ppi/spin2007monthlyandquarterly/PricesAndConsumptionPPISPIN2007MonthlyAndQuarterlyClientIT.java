@@ -22,7 +22,6 @@ import java.util.Collections;
 import java.util.List;
 
 import com.github.dannil.scbjavaclient.exception.SCBClientResponseTooLargeException;
-import com.github.dannil.scbjavaclient.test.extensions.AllowFailure;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
