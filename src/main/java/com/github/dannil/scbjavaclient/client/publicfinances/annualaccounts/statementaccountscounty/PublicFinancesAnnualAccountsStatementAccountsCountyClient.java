@@ -174,8 +174,6 @@ public class PublicFinancesAnnualAccountsStatementAccountsCountyClient extends A
         return generate(regions, activities, years, "LamnadeBidragTotalt");
     }
 
-    // Daniel 2017-04-17: Returns HTTP 403
-    //
     /**
      * <p>Fetch all income and costs data.</p>
      *

@@ -40,20 +40,17 @@ public class PublicFinancesAnnualAccountsBalanceSheetMunicipalityClientIT {
         this.client = new PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient();
     }
 
-    // Daniel 2017-04-17: Returns HTTP 403
     @Test
     @Date("2018-06-28")
     public void getIncomeStatements() {
-        assertThrows(SCBClientResponseTooLargeException.class, () -> this.client.getIncomeStatements());
+        assertNotEquals(0, this.client.getIncomeStatements().size());
     }
 
-    // Daniel 2017-04-17: Returns HTTP 403
     @Test
     @Date("2018-06-28")
     public void getIncomeStatementsWithParametersEmptyLists() {
-        assertThrows(SCBClientResponseTooLargeException.class,
-                () -> this.client.getIncomeStatements(Collections.<String>emptyList(), Collections.<String>emptyList(),
-                        Collections.<Integer>emptyList()));
+        assertNotEquals(0, this.client.getIncomeStatements(Collections.<String>emptyList(),
+                Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test

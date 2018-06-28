@@ -52,7 +52,6 @@ public class PublicFinancesAnnualAccountsStatementAccountsMunicipalityClient ext
         super(locale);
     }
 
-    // Daniel 2017-04-17: Returns HTTP 403
     /**
      * <p>Fetch all costs and incomes data.</p>
      *

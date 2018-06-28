@@ -50,7 +50,6 @@ public class PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient extends 
         super(locale);
     }
 
-    // Daniel 2017-04-17: Returns HTTP 403
     /**
      * <p>Fetch all income statements data.</p>
      *
