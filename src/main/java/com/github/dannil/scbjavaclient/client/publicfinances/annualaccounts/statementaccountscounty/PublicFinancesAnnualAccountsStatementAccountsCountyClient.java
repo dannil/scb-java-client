@@ -176,18 +176,18 @@ public class PublicFinancesAnnualAccountsStatementAccountsCountyClient extends A
 
     // Daniel 2017-04-17: Returns HTTP 403
     //
-    // /**
-    // * <p>Fetch all income and costs data.</p>
-    // *
-    // * @return the data wrapped in a list of
-    // * {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-    // * objects
-    // *
-    // * @see #getIncomeAndCosts(Collection, Collection, Collection)
-    // */
-    // public List<ResponseModel> getIncomeAndCosts() {
-    // return getIncomeAndCosts(null, null, null);
-    // }
+    /**
+     * <p>Fetch all income and costs data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getIncomeAndCosts(Collection, Collection, Collection)
+     */
+    public List<ResponseModel> getIncomeAndCosts() {
+        return getIncomeAndCosts(null, null, null);
+    }
 
     /**
      * <p>Fetch all income and costs data which match the input constraints.</p>

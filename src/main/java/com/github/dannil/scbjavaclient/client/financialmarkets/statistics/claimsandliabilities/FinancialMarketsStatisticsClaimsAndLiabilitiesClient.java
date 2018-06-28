@@ -51,19 +51,19 @@ public class FinancialMarketsStatisticsClaimsAndLiabilitiesClient extends Abstra
     }
 
     // Daniel 2017-05-30: Returns HTTP 403
-    // /**
-    // * <p>Fetch all claims and liabilities outside Sweden data.</p>
-    // *
-    // * @return the data wrapped in a list of
-    // * {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-    // * objects
-    // *
-    // * @see #getClaimsAndLiabilitiesOutsideSweden(Collection, Collection, Collection,
-    // * Collection, Collection)
-    // */
-    // public List<ResponseModel> getClaimsAndLiabilitiesOutsideSweden() {
-    // return getClaimsAndLiabilitiesOutsideSweden(null, null, null, null, null);
-    // }
+    /**
+     * <p>Fetch all claims and liabilities outside Sweden data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getClaimsAndLiabilitiesOutsideSweden(Collection, Collection, Collection,
+     *      Collection, Collection)
+     */
+    public List<ResponseModel> getClaimsAndLiabilitiesOutsideSweden() {
+        return getClaimsAndLiabilitiesOutsideSweden(null, null, null, null, null);
+    }
 
     /**
      * <p>Fetch all claims and liabilities outside Sweden data which match the input

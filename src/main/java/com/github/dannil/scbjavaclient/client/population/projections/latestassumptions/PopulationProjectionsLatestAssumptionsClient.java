@@ -86,19 +86,18 @@ public class PopulationProjectionsLatestAssumptionsClient extends AbstractClient
     }
 
     // Daniel 2018-05-12: Returns HTTP 403
-    //
-    // /**
-    // * <p>Fetch all emigration rate assumption data.</p>
-    // *
-    // * @return the data wrapped in a list of
-    // * {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-    // * objects
-    // *
-    // * @see #getEmigrationRateAssumption(Collection, Collection, Collection, Collection)
-    // */
-    // public List<ResponseModel> getEmigrationRateAssumption() {
-    // return getEmigrationRateAssumption(null, null, null, null);
-    // }
+    /**
+     * <p>Fetch all emigration rate assumption data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getEmigrationRateAssumption(Collection, Collection, Collection, Collection)
+     */
+    public List<ResponseModel> getEmigrationRateAssumption() {
+        return getEmigrationRateAssumption(null, null, null, null);
+    }
 
     /**
      * <p>Fetch all emigration rate assumption data which match the input constraints.</p>

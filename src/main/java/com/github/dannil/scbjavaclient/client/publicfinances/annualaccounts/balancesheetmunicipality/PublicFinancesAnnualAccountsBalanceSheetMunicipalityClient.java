@@ -51,19 +51,18 @@ public class PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient extends 
     }
 
     // Daniel 2017-04-17: Returns HTTP 403
-    //
-    // /**
-    // * <p>Fetch all income statements data.</p>
-    // *
-    // * @return the data wrapped in a list of
-    // * {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-    // * objects
-    // *
-    // * @see #getIncomeStatements(Collection, Collection, Collection)
-    // */
-    // public List<ResponseModel> getIncomeStatements() {
-    // return getIncomeStatements(null, null, null);
-    // }
+    /**
+     * <p>Fetch all income statements data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getIncomeStatements(Collection, Collection, Collection)
+     */
+    public List<ResponseModel> getIncomeStatements() {
+        return getIncomeStatements(null, null, null);
+    }
 
     /**
      * <p>Fetch all income statements data which match the input constraints.</p>
@@ -89,19 +88,18 @@ public class PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient extends 
     }
 
     // Daniel 2017-04-17: Returns HTTP 403
-    //
-    // /**
-    // * <p>Fetch all balance sheet data.</p>
-    // *
-    // * @return the data wrapped in a list of
-    // * {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-    // * objects
-    // *
-    // * @see #getBalanceSheet(Collection, Collection, Collection)
-    // */
-    // public List<ResponseModel> getBalanceSheet() {
-    // return getBalanceSheet(null, null, null);
-    // }
+    /**
+     * <p>Fetch all balance sheet data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getBalanceSheet(Collection, Collection, Collection)
+     */
+    public List<ResponseModel> getBalanceSheet() {
+        return getBalanceSheet(null, null, null);
+    }
 
     /**
      * <p>Fetch all balance sheet data which match the input constraints.</p>

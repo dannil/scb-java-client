@@ -89,19 +89,18 @@ public class FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClient extends 
     }
 
     // Daniel 2017-06-11: Returns HTTP 403
-    //
-    // /**
-    // * <p>Fetch all non-resident trade in Swedish shares data.</p>
-    // *
-    // * @return the data wrapped in a list of
-    // * {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-    // * objects
-    // *
-    // * @see #getNonResidentTradeInSwedishShares(Collection, Collection, Collection)
-    // */
-    // public List<ResponseModel> getNonResidentTradeInSwedishShares() {
-    // return getNonResidentTradeInSwedishShares(null, null, null);
-    // }
+    /**
+     * <p>Fetch all non-resident trade in Swedish shares data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getNonResidentTradeInSwedishShares(Collection, Collection, Collection)
+     */
+    public List<ResponseModel> getNonResidentTradeInSwedishShares() {
+        return getNonResidentTradeInSwedishShares(null, null, null);
+    }
 
     /**
      * <p>Fetch all non-resident trade in Swedish shares data which match the input

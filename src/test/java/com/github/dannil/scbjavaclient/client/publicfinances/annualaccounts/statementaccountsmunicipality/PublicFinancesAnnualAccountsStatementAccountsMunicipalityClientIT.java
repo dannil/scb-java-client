@@ -15,11 +15,13 @@
 package com.github.dannil.scbjavaclient.client.publicfinances.annualaccounts.statementaccountsmunicipality;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import com.github.dannil.scbjavaclient.exception.SCBClientResponseTooLargeException;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
@@ -39,19 +41,20 @@ public class PublicFinancesAnnualAccountsStatementAccountsMunicipalityClientIT {
     }
 
     // Daniel 2017-04-17: Returns HTTP 403
-    //
-    // @Test @Date("2017-04-17")
-    // public void getCostsAndIncomes() {
-    // assertNotEquals(0, this.client.getCostsAndIncomes().size());
-    // }
+    @Test
+    @Date("2018-06-28")
+    public void getCostsAndIncomes() {
+        assertThrows(SCBClientResponseTooLargeException.class, () -> this.client.getCostsAndIncomes());
+    }
 
     // Daniel 2017-04-17: Returns HTTP 403
-    //
-    // @Test @Date("2017-04-17")
-    // public void getCostsAndIncomesWithParametersEmptyLists() {
-    // assertNotEquals(0, this.client.getCostsAndIncomes(Collections.<String>emptyList(),
-    // Collections.<Integer>emptyList(), Collections.<Integer>emptyList()).size());
-    // }
+    @Test
+    @Date("2018-06-28")
+    public void getCostsAndIncomesWithParametersEmptyLists() {
+        assertThrows(SCBClientResponseTooLargeException.class,
+                () -> this.client.getCostsAndIncomes(Collections.<String>emptyList(), Collections.<Integer>emptyList(),
+                        Collections.<Integer>emptyList()));
+    }
 
     @Test
     @Date("2017-04-17")

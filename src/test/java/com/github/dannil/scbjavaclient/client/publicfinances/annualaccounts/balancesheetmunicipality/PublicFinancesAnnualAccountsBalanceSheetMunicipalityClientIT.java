@@ -15,11 +15,13 @@
 package com.github.dannil.scbjavaclient.client.publicfinances.annualaccounts.balancesheetmunicipality;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import com.github.dannil.scbjavaclient.exception.SCBClientResponseTooLargeException;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
@@ -39,19 +41,20 @@ public class PublicFinancesAnnualAccountsBalanceSheetMunicipalityClientIT {
     }
 
     // Daniel 2017-04-17: Returns HTTP 403
-    //
-    // @Test @Date("2017-04-17")
-    // public void getIncomeStatements() {
-    // assertNotEquals(0, this.client.getIncomeStatements().size());
-    // }
+    @Test
+    @Date("2018-06-28")
+    public void getIncomeStatements() {
+        assertThrows(SCBClientResponseTooLargeException.class, () -> this.client.getIncomeStatements());
+    }
 
     // Daniel 2017-04-17: Returns HTTP 403
-    //
-    // @Test @Date("2017-04-17")
-    // public void getIncomeStatementsWithParametersEmptyLists() {
-    // assertNotEquals(0, this.client.getIncomeStatements(Collections.<String>emptyList(),
-    // Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
-    // }
+    @Test
+    @Date("2018-06-28")
+    public void getIncomeStatementsWithParametersEmptyLists() {
+        assertThrows(SCBClientResponseTooLargeException.class,
+                () -> this.client.getIncomeStatements(Collections.<String>emptyList(), Collections.<String>emptyList(),
+                        Collections.<Integer>emptyList()));
+    }
 
     @Test
     @Date("2017-04-17")
@@ -64,20 +67,19 @@ public class PublicFinancesAnnualAccountsBalanceSheetMunicipalityClientIT {
     }
 
     // Daniel 2017-04-17: Returns HTTP 403
-    //
-    // @Test @Date("2017-04-17")
-    // public void getBalanceSheet() {
-    // assertNotEquals(0, this.client.getBalanceSheet().size());
-    // }
+    @Test
+    @Date("2018-06-28")
+    public void getBalanceSheet() {
+        assertNotEquals(0, this.client.getBalanceSheet().size());
+    }
 
     // Daniel 2017-04-17: Returns HTTP 403
-    //
-    // @Test @Date("2017-04-17")
-    // public void getBalanceSheetWithParametersEmptyLists() {
-    // assertNotEquals(0, this.client.getBalanceSheet(Collections.<String>emptyList(),
-    // Collections.<String>emptyList(),
-    // Collections.<Integer>emptyList()).size());
-    // }
+    @Test
+    @Date("2018-06-28")
+    public void getBalanceSheetWithParametersEmptyLists() {
+        assertNotEquals(0, this.client.getBalanceSheet(Collections.<String>emptyList(), Collections.<String>emptyList(),
+                Collections.<Integer>emptyList()).size());
+    }
 
     @Test
     @Date("2017-04-17")

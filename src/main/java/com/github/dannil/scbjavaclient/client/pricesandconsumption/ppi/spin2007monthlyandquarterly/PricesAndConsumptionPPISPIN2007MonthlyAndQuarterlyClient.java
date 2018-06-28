@@ -136,7 +136,7 @@ public class PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient extends Ab
     }
 
     // Daniel 2018-05-12:
-    // Returns HTTP 403, remove when incrementing major version
+    // Returns HTTP 403
     /**
      * <p>Fetch all producer price index data.</p>
      *
@@ -145,12 +145,7 @@ public class PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient extends Ab
      *         objects
      *
      * @see #getProducerPriceIndex(Collection, Collection)
-     *
-     * @deprecated Results in a HTTP 403 as the resulting response is larger than the
-     *             maximum size allowed by the API, use
-     *             {@link #getProducerPriceIndex(Collection, Collection)}
      */
-    @Deprecated
     public List<ResponseModel> getProducerPriceIndex() {
         return getProducerPriceIndex(null, null);
     }
@@ -172,19 +167,18 @@ public class PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient extends Ab
 
     // Daniel 2017-06-05:
     // Returns HTTP 403
-    //
-    // /**
-    // * <p>Fetch all price index for domestic supply data.</p>
-    // *
-    // * @return the data wrapped in a list of
-    // * {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-    // * objects
-    // *
-    // * @see #getPriceIndexForDomesticSupply(Collection, Collection)
-    // */
-    // public List<ResponseModel> getPriceIndexForDomesticSupply() {
-    // return getPriceIndexForDomesticSupply(null, null);
-    // }
+    /**
+     * <p>Fetch all price index for domestic supply data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getPriceIndexForDomesticSupply(Collection, Collection)
+     */
+    public List<ResponseModel> getPriceIndexForDomesticSupply() {
+        return getPriceIndexForDomesticSupply(null, null);
+    }
 
     /**
      * <p>Fetch all price index for domestic supply data which match the input

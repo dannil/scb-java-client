@@ -148,24 +148,20 @@ public class FinancialMarketsStatisticsDepositAndLendingClient extends AbstractC
     // Daniel 2017-08-29:
     // Throws HTTP 403
     //
-    // /**
-    // * <p>Fetch all lending rates to households and non-financial corporations breakdown
-    // * by maturity data.</p>
-    // *
-    // * @return the data wrapped in a list of
-    // * {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-    // * objects
-    // *
-    // * @see
-    // #getLendingRatesToHouseholdsAndNonFinancialCorporationsBreakdownByMaturity(Collection,
-    // * Collection, Collection, Collection, Collection)
-    // */
-    // public List<ResponseModel>
-    // getLendingRatesToHouseholdsAndNonFinancialCorporationsBreakdownByMaturity() {
-    // return
-    // getLendingRatesToHouseholdsAndNonFinancialCorporationsBreakdownByMaturity(null,
-    // null, null, null, null);
-    // }
+    /**
+     * <p>Fetch all lending rates to households and non-financial corporations breakdown
+     * by maturity data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getLendingRatesToHouseholdsAndNonFinancialCorporationsBreakdownByMaturity(Collection,
+     *      Collection, Collection, Collection, Collection)
+     */
+    public List<ResponseModel> getLendingRatesToHouseholdsAndNonFinancialCorporationsBreakdownByMaturity() {
+        return getLendingRatesToHouseholdsAndNonFinancialCorporationsBreakdownByMaturity(null, null, null, null, null);
+    }
 
     /**
      * <p>Fetch all lending rates to households and non-financial corporations breakdown

@@ -15,11 +15,13 @@
 package com.github.dannil.scbjavaclient.client.population.projections.latestassumptions;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import com.github.dannil.scbjavaclient.exception.SCBClientResponseTooLargeException;
 import com.github.dannil.scbjavaclient.test.extensions.AllowFailure;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
@@ -63,23 +65,21 @@ public class PopulationProjectionsLatestAssumptionsClientIT {
     }
 
     // Daniel 2018-05-12: Returns HTTP 403
-    //
-    // @Test
-    // @Date("2018-05-12")
-    // public void getEmigrationAssumption() {
-    // assertNotEquals(0, this.client.getEmigrationRateAssumption().size());
-    // }
+    @Test
+    @Date("2018-06-28")
+    public void getEmigrationAssumption() {
+        assertThrows(SCBClientResponseTooLargeException.class, () -> this.client.getEmigrationRateAssumption().size());
+    }
 
     // Daniel 2018-05-12: Returns HTTP 403
-    //
-    // @Test
-    // @Date("2018-05-12")
-    // public void getEmigrationAssumptionWithParametersEmptyLists() {
-    // assertNotEquals(0,
-    // this.client.getEmigrationRateAssumption(Collections.<String>emptyList(),
-    // Collections.<Integer>emptyList(), Collections.<String>emptyList(),
-    // Collections.<Integer>emptyList()).size());
-    // }
+    @Test
+    @Date("2018-06-28")
+    public void getEmigrationAssumptionWithParametersEmptyLists() {
+        assertThrows(SCBClientResponseTooLargeException.class,
+                () -> this.client.getEmigrationRateAssumption(Collections.<String>emptyList(),
+                        Collections.<Integer>emptyList(), Collections.<String>emptyList(),
+                        Collections.<Integer>emptyList()).size());
+    }
 
     @Test
     @Date("2018-05-12")
