@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Daniel Nilsson
+ * Copyright 2018 Daniel Nilsson
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
@@ -12,19 +12,14 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.http;
+package com.github.dannil.scbjavaclient.communication.http;
 
 /**
  * <p>Enumerable which contains the HTTP methods supported by the API.</p>
  *
- * @since 0.0.2
- *
- * @deprecated use
- *             {@link com.github.dannil.scbjavaclient.communication.http.HttpRequestMethod
- *             HttpRequestMethod} instead
+ * @since 1.2.0
  */
-@Deprecated
-public enum RequestMethod {
+public enum HttpRequestMethod {
 
     /**
      * <p>Enumerable for HTTP method GET.</p>

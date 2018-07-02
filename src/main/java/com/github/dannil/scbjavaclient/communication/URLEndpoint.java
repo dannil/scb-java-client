@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Daniel Nilsson
+ * Copyright 2018 Daniel Nilsson
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.http;
+package com.github.dannil.scbjavaclient.communication;
 
 import java.net.URL;
 import java.util.Locale;
@@ -24,11 +24,8 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
  * <p>Class which encapsulates the API URL, and enables relevant operations on this
  * URL.</p>
  *
- * @since 0.3.0
- *
- * @deprecated use {@link com.github.dannil.scbjavaclient.communication.URLEndpoint URLEndpoint} instead
+ * @since 1.2.0
  */
-@Deprecated
 public class URLEndpoint {
 
     private static final char TRAILING_SLASH = '/';

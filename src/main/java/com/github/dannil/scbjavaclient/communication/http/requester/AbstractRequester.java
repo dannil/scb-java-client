@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Daniel Nilsson
+ * Copyright 2018 Daniel Nilsson
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.http.requester;
+package com.github.dannil.scbjavaclient.communication.http.requester;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,20 +27,15 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Properties;
 
+import com.github.dannil.scbjavaclient.communication.http.HttpResponse;
+import com.github.dannil.scbjavaclient.communication.http.HttpStatusCode;
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
-import com.github.dannil.scbjavaclient.http.HttpResponse;
-import com.github.dannil.scbjavaclient.http.HttpStatusCode;
 
 /**
  * <p>Class which contains the logic for sending URL requests to a specified address.</p>
  *
- * @since 0.0.2
- *
- * @deprecated use
- *             {@link com.github.dannil.scbjavaclient.communication.http.requester.AbstractRequester
- *             AbstractRequester} instead
+ * @since 1.2.0
  */
-@Deprecated
 public abstract class AbstractRequester {
 
     private static final int HTTP_ERRORS_START_CODE = 400;

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Daniel Nilsson
+ * Copyright 2018 Daniel Nilsson
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
@@ -12,18 +12,13 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.http;
+package com.github.dannil.scbjavaclient.communication.http;
 
 /**
  * <p>Enumerable for the most common HTTP status codes returned by the API.</p>
  *
- * @since 0.2.0
- *
- * @deprecated use
- *             {@link com.github.dannil.scbjavaclient.communication.http.HttpStatusCode
- *             HttpStatusCode} instead
+ * @since 1.2.0
  */
-@Deprecated
 public enum HttpStatusCode {
 
     OK(200, "OK"), FORBIDDEN(403, "Forbidden"), NOT_FOUND(404, "Not Found"), TOO_MANY_REQUESTS(429,

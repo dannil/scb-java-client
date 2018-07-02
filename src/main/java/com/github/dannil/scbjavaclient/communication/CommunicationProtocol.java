@@ -12,19 +12,14 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.http;
+package com.github.dannil.scbjavaclient.communication;
 
 /**
  * <p>Enumerable for the available communication protocols which the API (and in extension
  * this library) can accept.</p>
  *
  * @since 1.2.0
- *
- * @deprecated use
- *             {@link com.github.dannil.scbjavaclient.communication.CommunicationProtocol
- *             CommunicationProtocol} instead
  */
-@Deprecated
 public enum CommunicationProtocol {
 
     HTTP("http"), HTTPS("https");

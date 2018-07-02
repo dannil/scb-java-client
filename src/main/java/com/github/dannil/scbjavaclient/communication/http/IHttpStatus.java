@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Daniel Nilsson
+ * Copyright 2018 Daniel Nilsson
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
@@ -12,17 +12,13 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.http;
+package com.github.dannil.scbjavaclient.communication.http;
 
 /**
  * <p>Interface which has methods relevant for HTTP status.</p>
  *
- * @since 0.2.0
- *
- * @deprecated use {@link com.github.dannil.scbjavaclient.communication.http.IHttpStatus
- *             IHttpStatus} instead
+ * @since 1.2.0
  */
-@Deprecated
 public interface IHttpStatus {
 
     /**
