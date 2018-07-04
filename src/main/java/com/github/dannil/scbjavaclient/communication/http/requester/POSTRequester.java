@@ -19,11 +19,11 @@ import java.io.OutputStream;
 import java.net.URLConnection;
 import java.nio.charset.Charset;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.github.dannil.scbjavaclient.communication.http.HttpResponse;
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>HTTP requester for POST requests.</p>

@@ -17,11 +17,11 @@ package com.github.dannil.scbjavaclient.communication.http.requester;
 import java.io.IOException;
 import java.nio.charset.Charset;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.github.dannil.scbjavaclient.communication.http.HttpResponse;
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>HTTP requester for GET requests.</p>

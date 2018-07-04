@@ -18,9 +18,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.apache.commons.io.input.BOMInputStream;
-
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
+
+import org.apache.commons.io.input.BOMInputStream;
 
 /**
  * <p>Class which encapsulates HTTP response data.</p>
