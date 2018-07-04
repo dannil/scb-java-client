@@ -16,9 +16,9 @@ package com.github.dannil.scbjavaclient.communication.http;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.io.ByteArrayInputStream;
-import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
@@ -45,11 +45,37 @@ public class HttpResponseTest {
     }
 
     @Test
-    public void getStream() throws FileNotFoundException {
+    public void getStream() {
         InputStream stream = new ByteArrayInputStream(new byte[] {});
         HttpResponse response = new HttpResponse(HttpStatusCode.OK, stream);
 
         assertNotNull(response.getStream());
+    }
+    
+    @Test
+    public void getBody() {
+        String bodyContent = "hello world";
+        InputStream stream = new ByteArrayInputStream(bodyContent.getBytes());
+        HttpResponse response = new HttpResponse(HttpStatusCode.OK, stream);
+
+        assertEquals("hello world", response.getBody());
+    }
+    
+    @Test
+    public void getBodyEmpty() {
+        String bodyContent = "";
+        InputStream stream = new ByteArrayInputStream(bodyContent.getBytes());
+        HttpResponse response = new HttpResponse(HttpStatusCode.OK, stream);
+
+        assertEquals("", response.getBody());
+    }
+    
+    @Test
+    public void getBodyNullStream() {
+        InputStream stream = null;
+        HttpResponse response = new HttpResponse(HttpStatusCode.OK, stream);
+
+        assertNull(response.getBody());
     }
 
 }
