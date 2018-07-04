@@ -48,12 +48,14 @@ public class SCBClientBuilder {
     }
 
     /**
-     * <p>Sets the {@link com.github.dannil.scbjavaclient.communication.http.CommunicationProtocol
+     * <p>Sets the
+     * {@link com.github.dannil.scbjavaclient.communication.CommunicationProtocol
      * CommunicationProtocol} for this builder, and therefore the client generated from
      * this builder.</p>
      *
      * @param communicationProtocol
-     *            the {@link com.github.dannil.scbjavaclient.communication.http.CommunicationProtocol
+     *            the
+     *            {@link com.github.dannil.scbjavaclient.communication.CommunicationProtocol
      *            CommunicationProtocol} to use
      * @return the instance of this builder
      */

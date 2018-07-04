@@ -71,7 +71,8 @@ public abstract class AbstractClient {
     /**
      * <p>Returns the communication protocol for this client instance.</p>
      *
-     * @return the {@link com.github.dannil.scbjavaclient.communication.http.CommunicationProtocol
+     * @return the
+     *         {@link com.github.dannil.scbjavaclient.communication.CommunicationProtocol
      *         CommunicationProtocol} for this client instance
      */
     public CommunicationProtocol getCommunicationProtocol() {
@@ -82,7 +83,8 @@ public abstract class AbstractClient {
      * <p>Sets the communication protocol for this client instance.</p>
      *
      * @param communicationProtocol
-     *            the {@link com.github.dannil.scbjavaclient.communication.http.CommunicationProtocol
+     *            the
+     *            {@link com.github.dannil.scbjavaclient.communication.CommunicationProtocol
      *            CommunicationProtocol} for this client instance
      */
     public void setCommunicationProtocol(CommunicationProtocol communicationProtocol) {
