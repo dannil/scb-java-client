@@ -16,9 +16,9 @@ package com.github.dannil.scbjavaclient.exception;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
 import org.junit.jupiter.api.Test;
+
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 @Suite
 public class SCBClientExceptionTest {

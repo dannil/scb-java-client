@@ -25,10 +25,10 @@ import java.util.MissingResourceException;
 import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
-import com.github.dannil.scbjavaclient.constants.ClientConstants;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.github.dannil.scbjavaclient.constants.ClientConstants;
 
 /**
  * <p>Class for handling localization for the clients.</p>
