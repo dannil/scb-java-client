@@ -101,7 +101,7 @@ public abstract class AbstractRequester {
      *
      * @param connection
      *            the <code>URLConnection</code>
-     * @return the response as an {@link com.github.dannil.scbjavaclient.http.HttpResponse
+     * @return the response as an {@link com.github.dannil.scbjavaclient.communication.http.HttpResponse
      *         Response}
      * @throws IOException
      *             if an exception occurred while retrieving the <code>Response</code>
@@ -121,7 +121,7 @@ public abstract class AbstractRequester {
      *
      * @param url
      *            the URL to call
-     * @return the response as an {@link com.github.dannil.scbjavaclient.http.HttpResponse
+     * @return the response as an {@link com.github.dannil.scbjavaclient.communication.http.HttpResponse
      *         Response}
      */
     public abstract HttpResponse getResponse(String url);
