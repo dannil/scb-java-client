@@ -19,7 +19,7 @@ import java.util.Locale;
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cci.fpiexcludingwage.PricesAndConsumptionCCIFPIExcludingWageClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cci.fpiincludingwage.PricesAndConsumptionCCIFPIIncludingWageClient;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
  * <p>Client which handles prices and consumption construction cost index (CCI) data

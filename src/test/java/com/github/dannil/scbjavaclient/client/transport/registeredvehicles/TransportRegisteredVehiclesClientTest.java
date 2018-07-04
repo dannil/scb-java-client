@@ -20,7 +20,7 @@ import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.transport.registeredvehicles.economicindicators.TransportRegisteredVehiclesEconomicIndicatorsClient;
 import com.github.dannil.scbjavaclient.client.transport.registeredvehicles.vehicles.TransportRegisteredVehiclesVehiclesClient;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 import org.junit.jupiter.api.Test;

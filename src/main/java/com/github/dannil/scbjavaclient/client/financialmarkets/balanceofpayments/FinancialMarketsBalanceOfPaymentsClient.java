@@ -22,7 +22,7 @@ import com.github.dannil.scbjavaclient.client.financialmarkets.balanceofpayments
 import com.github.dannil.scbjavaclient.client.financialmarkets.balanceofpayments.internationalinvestmentposition.FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.balanceofpayments.payments.FinancialMarketsBalanceOfPaymentsPaymentsClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.balanceofpayments.portfolioinvestment.FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClient;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
  * <p>Client which handles financial markets balance of payments data fetching.</p>

@@ -20,7 +20,7 @@ import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.labourmarket.costindex.LabourMarketCostIndexClient;
 import com.github.dannil.scbjavaclient.client.labourmarket.grosspay.LabourMarketGrossPayClient;
 import com.github.dannil.scbjavaclient.client.labourmarket.shorttermemployment.LabourMarketShortTermEmploymentClient;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
  * <p>Client which handles labour market data fetching.</p>

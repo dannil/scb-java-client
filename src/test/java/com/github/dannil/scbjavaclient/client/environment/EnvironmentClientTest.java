@@ -29,7 +29,7 @@ import com.github.dannil.scbjavaclient.client.environment.protectednature.Enviro
 import com.github.dannil.scbjavaclient.client.environment.seea.EnvironmentSEEAClient;
 import com.github.dannil.scbjavaclient.client.environment.smallerlocalities.EnvironmentSmallerLocalitiesClient;
 import com.github.dannil.scbjavaclient.client.environment.waste.EnvironmentWasteClient;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 import org.junit.jupiter.api.Test;

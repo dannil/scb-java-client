@@ -19,7 +19,7 @@ import java.util.Locale;
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.nonprofitorganizations.primarystatistics.BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.nonprofitorganizations.satelliteaccounts.BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClient;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
  * <p>Client which handles business activities non-profit organizations data fetching.</p>
