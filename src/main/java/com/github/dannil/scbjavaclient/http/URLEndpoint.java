@@ -172,7 +172,7 @@ public class URLEndpoint {
         // Find the index where the language tag starts
         int start = builder.toString().indexOf(startSegment) + startSegment.length() + 1;
         // Find the index where the language tag ends
-        int end = start + builder.toString().substring(start).indexOf('/');
+        int end = builder.toString().indexOf('/', start);
 
         // Replace the contents between the start and end index with our new
         // language tag
