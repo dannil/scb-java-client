@@ -141,25 +141,6 @@ public class PopulationProjectionsLatestAssumptionsClient extends AbstractClient
     /**
      * <p>Fetch all fertility assumption data which match the input constraints.</p>
      *
-     * @param years
-     *            the years
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     *
-     * @deprecated use {@link #getFertilityAssumption(Collection, Collection, Collection)}
-     */
-    @Deprecated
-    public List<ResponseModel> getFertilityAssumption(Collection<Integer> years) {
-        Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.TIME_CODE, years);
-
-        return getResponseModels("BefProgFruktTotN", mappings);
-    }
-
-    /**
-     * <p>Fetch all fertility assumption data which match the input constraints.</p>
-     *
      * @param mothersRegionOfBirths
      *            the mother´s region of birth
      * @param ages

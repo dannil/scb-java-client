@@ -83,31 +83,6 @@ public class EnvironmentSEEAGoodsAndServicesSectorClientIT {
     }
 
     @Test
-    @SuppressWarnings("deprecation")
-    @Date("2018-06-26")
-    public void getEnvironmentalSectorByIndustry() {
-        assertNotEquals(0, this.client.getEnvironmentalSectorByIndustry().size());
-    }
-
-    @Test
-    @SuppressWarnings("deprecation")
-    @Date("2018-06-26")
-    public void getEnvironmentalSectorByIndustryWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getEnvironmentalSectorByIndustry(Collections.<String>emptyList(),
-                Collections.<Integer>emptyList()).size());
-    }
-
-    @Test
-    @SuppressWarnings("deprecation")
-    @Date("2018-06-26")
-    public void getEnvironmentalSectorByIndustryWithParameters() {
-        List<String> naceGroups = Arrays.asList("D35", "OFF");
-        List<Integer> years = Arrays.asList(2010, 2011);
-
-        assertNotEquals(0, this.client.getEnvironmentalSectorByIndustry(naceGroups, years).size());
-    }
-
-    @Test
     @Date("2018-06-26")
     public void getEnvironmentalSectorNetTurnoverByIndustrialClassification() {
         assertNotEquals(0, this.client.getEnvironmentalSectorNetTurnoverByIndustrialClassification().size());

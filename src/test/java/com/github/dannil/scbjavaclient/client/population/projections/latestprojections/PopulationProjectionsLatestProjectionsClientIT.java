@@ -23,7 +23,6 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.github.dannil.scbjavaclient.test.extensions.AllowFailure;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
@@ -43,27 +42,6 @@ public class PopulationProjectionsLatestProjectionsClientIT {
     @Date("2018-05-12")
     public void getPopulation() {
         assertNotEquals(0, this.client.getPopulation().size());
-    }
-
-    @Test
-    @SuppressWarnings("deprecation")
-    @AllowFailure
-    @Date("2018-05-12")
-    public void getPopulationWithParametersEmptyListsDeprecated1() {
-        assertNotEquals(0, this.client.getPopulation(Collections.<String>emptyList(), Collections.<Integer>emptyList(),
-                Collections.<Integer>emptyList()).size());
-    }
-
-    @Test
-    @SuppressWarnings("deprecation")
-    @AllowFailure
-    @Date("2018-05-12")
-    public void getPopulationWithParametersDeprecated1() {
-        List<String> ages = Arrays.asList("13", "66");
-        List<Integer> sexes = Arrays.asList(1, 2);
-        List<Integer> years = Arrays.asList(2038, 2053);
-
-        assertNotEquals(0, this.client.getPopulation(ages, sexes, years).size());
     }
 
     @Test

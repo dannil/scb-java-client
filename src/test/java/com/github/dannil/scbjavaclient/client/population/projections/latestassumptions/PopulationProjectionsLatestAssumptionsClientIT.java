@@ -25,7 +25,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.github.dannil.scbjavaclient.exception.SCBClientResponseTooLargeException;
-import com.github.dannil.scbjavaclient.test.extensions.AllowFailure;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
@@ -96,24 +95,6 @@ public class PopulationProjectionsLatestAssumptionsClientIT {
     @Date("2018-05-12")
     public void getFertilityAssumption() {
         assertNotEquals(0, this.client.getFertilityAssumption().size());
-    }
-
-    @Test
-    @SuppressWarnings("deprecation")
-    @AllowFailure
-    @Date("2018-05-12")
-    public void getFertilityAssumptionWithParametersEmptyListsDeprecated1() {
-        assertNotEquals(0, this.client.getFertilityAssumption(Collections.<Integer>emptyList()).size());
-    }
-
-    @Test
-    @SuppressWarnings("deprecation")
-    @AllowFailure
-    @Date("2018-05-12")
-    public void getFertilityAssumptionWithParametersDeprecated1() {
-        List<Integer> years = Arrays.asList(2038, 2053);
-
-        assertNotEquals(0, this.client.getFertilityAssumption(years).size());
     }
 
     @Test

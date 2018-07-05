@@ -118,48 +118,6 @@ public class EnvironmentSEEAGoodsAndServicesSectorClient extends AbstractClient 
     }
 
     /**
-     * <p>Fetch all environmental sector by industry data.</p>
-     *
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     *
-     * @see #getEnvironmentalSectorByIndustry(Collection, Collection)
-     *
-     * @deprecated use
-     *             {@link #getEnvironmentalSectorValueAddedByIndustrialClassification()}
-     */
-    @Deprecated
-    public List<ResponseModel> getEnvironmentalSectorByIndustry() {
-        return getEnvironmentalSectorByIndustry(null, null);
-    }
-
-    /**
-     * <p>Fetch all environmental sector by industry data which match the input
-     * constraints.</p>
-     *
-     * @param naceGroups
-     *            the NACE groups
-     * @param years
-     *            the years
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     *
-     * @deprecated use
-     *             {@link #getEnvironmentalSectorValueAddedByIndustrialClassification(Collection, Collection)}
-     */
-    @Deprecated
-    public List<ResponseModel> getEnvironmentalSectorByIndustry(Collection<String> naceGroups,
-            Collection<Integer> years) {
-        Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.SNI2007_CODE, naceGroups);
-        mappings.put(APIConstants.TIME_CODE, years);
-
-        return getResponseModels("MI1301T02", mappings);
-    }
-
-    /**
      * <p>Fetch all environmental sector net turnover by industrial classification
      * data.</p>
      *
