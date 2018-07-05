@@ -22,7 +22,7 @@ import com.github.dannil.scbjavaclient.client.pricesandconsumption.cci.PricesAnd
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.PricesAndConsumptionCPIClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.ppi.PricesAndConsumptionPPIClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.purchasingpowerparities.PricesAndConsumptionPurchasingPowerParitiesClient;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
  * <p>Client which handles prices and consumption data fetching.</p>

@@ -18,12 +18,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
+import org.junit.jupiter.api.Test;
+
 import com.github.dannil.scbjavaclient.client.labourmarket.shorttermemployment.population.LabourMarketShortTermEmploymentPopulationClient;
 import com.github.dannil.scbjavaclient.client.labourmarket.shorttermemployment.sickleave.LabourMarketShortTermEmploymentSickLeaveClient;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
-import org.junit.jupiter.api.Test;
 
 @Suite
 public class LabourMarketShortTermEmploymentClientTest {

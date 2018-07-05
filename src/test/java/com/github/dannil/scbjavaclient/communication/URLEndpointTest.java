@@ -7,9 +7,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
 import org.junit.jupiter.api.Test;
+
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 @Suite
 public class URLEndpointTest {

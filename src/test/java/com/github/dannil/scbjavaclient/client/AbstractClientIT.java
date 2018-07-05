@@ -42,9 +42,11 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.jupiter.api.Test;
+
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.exception.SCBClientResponseTooLargeException;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.test.TestConstants;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
@@ -53,8 +55,6 @@ import com.github.dannil.scbjavaclient.test.extensions.Suite;
 import com.github.dannil.scbjavaclient.test.utility.Files;
 import com.github.dannil.scbjavaclient.test.utility.Filters;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
-
-import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote

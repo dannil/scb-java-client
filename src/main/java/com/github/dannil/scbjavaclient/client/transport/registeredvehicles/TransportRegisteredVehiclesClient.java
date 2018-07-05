@@ -19,7 +19,7 @@ import java.util.Locale;
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.transport.registeredvehicles.economicindicators.TransportRegisteredVehiclesEconomicIndicatorsClient;
 import com.github.dannil.scbjavaclient.client.transport.registeredvehicles.vehicles.TransportRegisteredVehiclesVehiclesClient;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
  * <p>Client which handles transport registered vehicles data fetching.</p>

@@ -18,15 +18,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
+import org.junit.jupiter.api.Test;
+
 import com.github.dannil.scbjavaclient.client.environment.seea.airemissionsaccounts.EnvironmentSEEAAirEmissionsAccountsClient;
 import com.github.dannil.scbjavaclient.client.environment.seea.energyaccounts.EnvironmentSEEAEnergyAccountsClient;
 import com.github.dannil.scbjavaclient.client.environment.seea.goodsandservicessector.EnvironmentSEEAGoodsAndServicesSectorClient;
 import com.github.dannil.scbjavaclient.client.environment.seea.materialflowaccounts.EnvironmentSEEAMaterialFlowAccountsClient;
 import com.github.dannil.scbjavaclient.client.environment.seea.taxes.EnvironmentSEEATaxesClient;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
-import org.junit.jupiter.api.Test;
 
 @Suite
 public class EnvironmentSEEAClientTest {

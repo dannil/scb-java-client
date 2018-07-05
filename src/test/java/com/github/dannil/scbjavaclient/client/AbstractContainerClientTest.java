@@ -19,10 +19,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
-import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
 import org.junit.jupiter.api.Test;
+
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 @Suite
 public class AbstractContainerClientTest {

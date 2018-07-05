@@ -24,13 +24,13 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.model.ValueNode;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 @Suite
 public class JsonCustomResponseFormatTest {

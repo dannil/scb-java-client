@@ -36,14 +36,14 @@ import com.github.dannil.scbjavaclient.client.population.PopulationClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.PricesAndConsumptionClient;
 import com.github.dannil.scbjavaclient.client.publicfinances.PublicFinancesClient;
 import com.github.dannil.scbjavaclient.client.transport.TransportClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
+import com.github.dannil.scbjavaclient.communication.http.HttpResponse;
+import com.github.dannil.scbjavaclient.communication.http.HttpStatusCode;
+import com.github.dannil.scbjavaclient.communication.http.requester.AbstractRequester;
+import com.github.dannil.scbjavaclient.communication.http.requester.GETRequester;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonAPIConfigTableFormat;
 import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
-import com.github.dannil.scbjavaclient.http.HttpResponse;
-import com.github.dannil.scbjavaclient.http.HttpStatusCode;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
-import com.github.dannil.scbjavaclient.http.requester.AbstractRequester;
-import com.github.dannil.scbjavaclient.http.requester.GETRequester;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**

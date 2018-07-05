@@ -21,7 +21,7 @@ import com.github.dannil.scbjavaclient.client.agriculture.cerealcrops.Agricultur
 import com.github.dannil.scbjavaclient.client.agriculture.holdings.AgricultureHoldingsClient;
 import com.github.dannil.scbjavaclient.client.agriculture.landuse.AgricultureLandUseClient;
 import com.github.dannil.scbjavaclient.client.agriculture.livestock.AgricultureLivestockClient;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
  * <p>Client which handles agriculture data fetching.</p>

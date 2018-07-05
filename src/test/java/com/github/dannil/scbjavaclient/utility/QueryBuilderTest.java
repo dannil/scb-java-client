@@ -28,9 +28,9 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
 import org.junit.jupiter.api.Test;
+
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 @Suite
 public class QueryBuilderTest {
