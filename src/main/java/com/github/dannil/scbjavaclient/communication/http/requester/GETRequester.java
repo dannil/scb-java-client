@@ -51,10 +51,10 @@ public class GETRequester extends AbstractRequester {
 
     @Override
     public HttpResponse getResponse(String url) {
-        LOGGER.info("GET: {}", url);
+        LOGGER.debug("GET: {}", url);
         try {
             HttpResponse response = getResponse(getConnection(url));
-            LOGGER.info("HTTP {}: {}", response.getStatus().getCode(), url);
+            LOGGER.debug("HTTP {}: {}", response.getStatus().getCode(), url);
             return response;
         } catch (IOException e) {
             throw new SCBClientException(e);
