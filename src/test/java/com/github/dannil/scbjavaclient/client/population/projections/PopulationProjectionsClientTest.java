@@ -18,12 +18,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
+import org.junit.jupiter.api.Test;
+
 import com.github.dannil.scbjavaclient.client.population.projections.latestassumptions.PopulationProjectionsLatestAssumptionsClient;
 import com.github.dannil.scbjavaclient.client.population.projections.latestprojections.PopulationProjectionsLatestProjectionsClient;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
-import org.junit.jupiter.api.Test;
 
 @Suite
 public class PopulationProjectionsClientTest {
@@ -40,14 +40,14 @@ public class PopulationProjectionsClientTest {
     public void latestAssumptionsClient() {
         PopulationProjectionsClient client = new PopulationProjectionsClient();
 
-        assertEquals(client.latestAssumptions().getClass(), PopulationProjectionsLatestAssumptionsClient.class);
+        assertEquals(PopulationProjectionsLatestAssumptionsClient.class, client.latestAssumptions().getClass());
     }
 
     @Test
     public void latestProjectionsClient() {
         PopulationProjectionsClient client = new PopulationProjectionsClient();
 
-        assertEquals(client.latestProjections().getClass(), PopulationProjectionsLatestProjectionsClient.class);
+        assertEquals(PopulationProjectionsLatestProjectionsClient.class, client.latestProjections().getClass());
     }
 
     @Test

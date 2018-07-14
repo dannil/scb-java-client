@@ -18,12 +18,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
+import org.junit.jupiter.api.Test;
+
 import com.github.dannil.scbjavaclient.client.educationandresearch.communityinnovationsurvey.activity.EducationAndResearchCommunityInnovationSurveyActivityClient;
 import com.github.dannil.scbjavaclient.client.educationandresearch.communityinnovationsurvey.cooperation.EducationAndResearchCommunityInnovationSurveyCooperationClient;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
-import org.junit.jupiter.api.Test;
 
 @Suite
 public class EducationAndResearchCommunityInnovationSurveyClientTest {
@@ -41,15 +41,15 @@ public class EducationAndResearchCommunityInnovationSurveyClientTest {
     public void activity() {
         EducationAndResearchCommunityInnovationSurveyClient client = new EducationAndResearchCommunityInnovationSurveyClient();
 
-        assertEquals(client.activity().getClass(), EducationAndResearchCommunityInnovationSurveyActivityClient.class);
+        assertEquals(EducationAndResearchCommunityInnovationSurveyActivityClient.class, client.activity().getClass());
     }
 
     @Test
     public void cooperation() {
         EducationAndResearchCommunityInnovationSurveyClient client = new EducationAndResearchCommunityInnovationSurveyClient();
 
-        assertEquals(client.cooperation().getClass(),
-                EducationAndResearchCommunityInnovationSurveyCooperationClient.class);
+        assertEquals(EducationAndResearchCommunityInnovationSurveyCooperationClient.class,
+                client.cooperation().getClass());
     }
 
     @Test

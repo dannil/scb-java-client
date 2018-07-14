@@ -18,16 +18,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
+import org.junit.jupiter.api.Test;
+
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.ppi.economicindicators.PricesAndConsumptionPPIEconomicIndicatorsClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.ppi.spin2002month.PricesAndConsumptionPPISPIN2002MonthClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.ppi.spin2002year.PricesAndConsumptionPPISPIN2002YearClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.ppi.spin2007monthlyandquarterly.PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.ppi.spin2007year.PricesAndConsumptionPPISPIN2007YearClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.ppi.spin2015monthlyandquarterly.PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
-import org.junit.jupiter.api.Test;
 
 @Suite
 public class PricesAndConsumptionPPIClientTest {
@@ -44,44 +44,44 @@ public class PricesAndConsumptionPPIClientTest {
     public void economicIndicators() {
         PricesAndConsumptionPPIClient client = new PricesAndConsumptionPPIClient();
 
-        assertEquals(client.economicIndicators().getClass(), PricesAndConsumptionPPIEconomicIndicatorsClient.class);
+        assertEquals(PricesAndConsumptionPPIEconomicIndicatorsClient.class, client.economicIndicators().getClass());
     }
 
     @Test
     public void spin2002Month() {
         PricesAndConsumptionPPIClient client = new PricesAndConsumptionPPIClient();
 
-        assertEquals(client.spin2002Month().getClass(), PricesAndConsumptionPPISPIN2002MonthClient.class);
+        assertEquals(PricesAndConsumptionPPISPIN2002MonthClient.class, client.spin2002Month().getClass());
     }
 
     @Test
     public void spin2002Year() {
         PricesAndConsumptionPPIClient client = new PricesAndConsumptionPPIClient();
 
-        assertEquals(client.spin2002Year().getClass(), PricesAndConsumptionPPISPIN2002YearClient.class);
+        assertEquals(PricesAndConsumptionPPISPIN2002YearClient.class, client.spin2002Year().getClass());
     }
 
     @Test
     public void spin2007MonthlyAndQuarterly() {
         PricesAndConsumptionPPIClient client = new PricesAndConsumptionPPIClient();
 
-        assertEquals(client.spin2007MonthlyAndQuarterly().getClass(),
-                PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient.class);
+        assertEquals(PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient.class,
+                client.spin2007MonthlyAndQuarterly().getClass());
     }
 
     @Test
     public void spin2007Year() {
         PricesAndConsumptionPPIClient client = new PricesAndConsumptionPPIClient();
 
-        assertEquals(client.spin2007Year().getClass(), PricesAndConsumptionPPISPIN2007YearClient.class);
+        assertEquals(PricesAndConsumptionPPISPIN2007YearClient.class, client.spin2007Year().getClass());
     }
 
     @Test
     public void spin2015MonthlyAndQuarterly() {
         PricesAndConsumptionPPIClient client = new PricesAndConsumptionPPIClient();
 
-        assertEquals(client.spin2015MonthlyAndQuarterly().getClass(),
-                PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient.class);
+        assertEquals(PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient.class,
+                client.spin2015MonthlyAndQuarterly().getClass());
     }
 
     @Test

@@ -21,8 +21,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
@@ -113,7 +113,7 @@ public class GoodsAndServicesFoodSalesClient extends AbstractClient {
         mappings.put("Varugrupp", productGroups);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("Livs", mappings);
+        return getResponseModels("EkoLivs", mappings);
     }
 
     @Override

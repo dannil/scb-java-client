@@ -20,12 +20,12 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
@@ -81,6 +81,53 @@ public class EnergyAnnualStatisticsClientIT {
         List<Integer> years = Arrays.asList(1997, 1999);
 
         assertNotEquals(0, this.client.getElectricitySupply(powerPlants, years).size());
+    }
+
+    @Test
+    @Date("2017-12-16")
+    public void getConsumptionOfFuelsForSteamAndHotWaterProduction() {
+        assertNotEquals(0, this.client.getConsumptionOfFuelsForSteamAndHotWaterProduction().size());
+    }
+
+    @Test
+    @Date("2017-12-16")
+    public void getConsumptionOfFuelsForSteamAndHotWaterProductionWithParametersEmptyLists() {
+        assertNotEquals(0,
+                this.client.getConsumptionOfFuelsForSteamAndHotWaterProduction(Collections.<String>emptyList(),
+                        Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
+    }
+
+    @Test
+    @Date("2017-12-16")
+    public void getConsumptionOfFuelsForSteamAndHotWaterProductionWithParameters() {
+        List<String> powerPlants = Arrays.asList("Kraftvvarmkr", "Frist");
+        List<String> fuels = Arrays.asList("E4", "E5");
+        List<Integer> years = Arrays.asList(1997, 1999);
+
+        assertNotEquals(0,
+                this.client.getConsumptionOfFuelsForSteamAndHotWaterProduction(powerPlants, fuels, years).size());
+    }
+
+    @Test
+    @Date("2017-12-16")
+    public void getElectricityUseInSweden() {
+        assertNotEquals(0, this.client.getElectricityUseInSweden().size());
+    }
+
+    @Test
+    @Date("2017-12-16")
+    public void getElectricityUseInSwedenWithParametersEmptyLists() {
+        assertNotEquals(0, this.client.getElectricityUseInSweden(Collections.<String>emptyList(),
+                Collections.<Integer>emptyList()).size());
+    }
+
+    @Test
+    @Date("2017-12-16")
+    public void getElectricityUseInSwedenWithParameters() {
+        List<String> areaOfUses = Arrays.asList("StamF", "Överf");
+        List<Integer> years = Arrays.asList(2012, 2013);
+
+        assertNotEquals(0, this.client.getElectricityUseInSweden(areaOfUses, years).size());
     }
 
 }

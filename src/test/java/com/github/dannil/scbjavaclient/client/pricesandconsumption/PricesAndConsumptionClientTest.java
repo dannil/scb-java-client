@@ -18,15 +18,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
+import org.junit.jupiter.api.Test;
+
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.bpi.PricesAndConsumptionBPIClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cci.PricesAndConsumptionCCIClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.PricesAndConsumptionCPIClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.ppi.PricesAndConsumptionPPIClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.purchasingpowerparities.PricesAndConsumptionPurchasingPowerParitiesClient;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
-import org.junit.jupiter.api.Test;
 
 @Suite
 public class PricesAndConsumptionClientTest {
@@ -43,36 +43,36 @@ public class PricesAndConsumptionClientTest {
     public void bpi() {
         PricesAndConsumptionClient client = new PricesAndConsumptionClient();
 
-        assertEquals(client.bpi().getClass(), PricesAndConsumptionBPIClient.class);
+        assertEquals(PricesAndConsumptionBPIClient.class, client.bpi().getClass());
     }
 
     @Test
     public void cci() {
         PricesAndConsumptionClient client = new PricesAndConsumptionClient();
 
-        assertEquals(client.cci().getClass(), PricesAndConsumptionCCIClient.class);
+        assertEquals(PricesAndConsumptionCCIClient.class, client.cci().getClass());
     }
 
     @Test
     public void cpi() {
         PricesAndConsumptionClient client = new PricesAndConsumptionClient();
 
-        assertEquals(client.cpi().getClass(), PricesAndConsumptionCPIClient.class);
+        assertEquals(PricesAndConsumptionCPIClient.class, client.cpi().getClass());
     }
 
     @Test
     public void ppi() {
         PricesAndConsumptionClient client = new PricesAndConsumptionClient();
 
-        assertEquals(client.ppi().getClass(), PricesAndConsumptionPPIClient.class);
+        assertEquals(PricesAndConsumptionPPIClient.class, client.ppi().getClass());
     }
 
     @Test
     public void purchasingPowerParities() {
         PricesAndConsumptionClient client = new PricesAndConsumptionClient();
 
-        assertEquals(client.purchasingPowerParities().getClass(),
-                PricesAndConsumptionPurchasingPowerParitiesClient.class);
+        assertEquals(PricesAndConsumptionPurchasingPowerParitiesClient.class,
+                client.purchasingPowerParities().getClass());
     }
 
     @Test

@@ -18,15 +18,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
+import org.junit.jupiter.api.Test;
+
 import com.github.dannil.scbjavaclient.client.financialmarkets.balanceofpayments.directinvestments.FinancialMarketsBalanceOfPaymentsDirectInvestmentsClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.balanceofpayments.economicindicators.FinancialMarketsBalanceOfPaymentsEconomicIndicatorsClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.balanceofpayments.internationalinvestmentposition.FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.balanceofpayments.payments.FinancialMarketsBalanceOfPaymentsPaymentsClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.balanceofpayments.portfolioinvestment.FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClient;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
-import org.junit.jupiter.api.Test;
 
 @Suite
 public class FinancialMarketsBalanceOfPaymentsClientTest {
@@ -43,39 +43,39 @@ public class FinancialMarketsBalanceOfPaymentsClientTest {
     public void directInvestments() {
         FinancialMarketsBalanceOfPaymentsClient client = new FinancialMarketsBalanceOfPaymentsClient();
 
-        assertEquals(client.directInvestments().getClass(),
-                FinancialMarketsBalanceOfPaymentsDirectInvestmentsClient.class);
+        assertEquals(FinancialMarketsBalanceOfPaymentsDirectInvestmentsClient.class,
+                client.directInvestments().getClass());
     }
 
     @Test
     public void economicIndicators() {
         FinancialMarketsBalanceOfPaymentsClient client = new FinancialMarketsBalanceOfPaymentsClient();
 
-        assertEquals(client.economicIndicators().getClass(),
-                FinancialMarketsBalanceOfPaymentsEconomicIndicatorsClient.class);
+        assertEquals(FinancialMarketsBalanceOfPaymentsEconomicIndicatorsClient.class,
+                client.economicIndicators().getClass());
     }
 
     @Test
     public void internationalInvestmentPosition() {
         FinancialMarketsBalanceOfPaymentsClient client = new FinancialMarketsBalanceOfPaymentsClient();
 
-        assertEquals(client.internationalInvestmentPosition().getClass(),
-                FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionClient.class);
+        assertEquals(FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionClient.class,
+                client.internationalInvestmentPosition().getClass());
     }
 
     @Test
     public void payments() {
         FinancialMarketsBalanceOfPaymentsClient client = new FinancialMarketsBalanceOfPaymentsClient();
 
-        assertEquals(client.payments().getClass(), FinancialMarketsBalanceOfPaymentsPaymentsClient.class);
+        assertEquals(FinancialMarketsBalanceOfPaymentsPaymentsClient.class, client.payments().getClass());
     }
 
     @Test
     public void portfolioInvestment() {
         FinancialMarketsBalanceOfPaymentsClient client = new FinancialMarketsBalanceOfPaymentsClient();
 
-        assertEquals(client.portfolioInvestment().getClass(),
-                FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClient.class);
+        assertEquals(FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClient.class,
+                client.portfolioInvestment().getClass());
     }
 
     @Test

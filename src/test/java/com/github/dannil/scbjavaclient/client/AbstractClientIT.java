@@ -17,28 +17,20 @@ package com.github.dannil.scbjavaclient.client;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.PrintStream;
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.lang.reflect.Parameter;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
-import java.text.Collator;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -46,17 +38,19 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Objects;
-import java.util.Random;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.jupiter.api.Test;
+
 import com.fasterxml.jackson.databind.JsonNode;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
+import com.github.dannil.scbjavaclient.communication.http.HttpResponse;
+import com.github.dannil.scbjavaclient.communication.http.requester.GETRequester;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
+import com.github.dannil.scbjavaclient.exception.SCBClientResponseTooLargeException;
 import com.github.dannil.scbjavaclient.format.json.JsonConverter;
-import com.github.dannil.scbjavaclient.http.HttpResponse;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
-import com.github.dannil.scbjavaclient.http.requester.GETRequester;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.test.TestConstants;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
@@ -65,9 +59,6 @@ import com.github.dannil.scbjavaclient.test.extensions.Suite;
 import com.github.dannil.scbjavaclient.test.utility.Files;
 import com.github.dannil.scbjavaclient.test.utility.Filters;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
-
-import org.junit.jupiter.api.Test;
-import org.omg.CORBA.Environment;
 
 @Suite
 @Remote
@@ -145,7 +136,7 @@ public class AbstractClientIT {
     }
 
     @Test
-    @Date("2017-01-01")
+    @Date("2018-06-28")
     public void urlForbidden() {
         SCBClient client = new SCBClient(new Locale("sv", "SE"));
 
@@ -153,9 +144,7 @@ public class AbstractClientIT {
         // response from this table is larger than the API allows (given all the
         // available
         // inputs)
-        String response = client.getRawData("NV/NV0119/IVPKNLonAr");
-
-        assertNull(response);
+        assertThrows(SCBClientResponseTooLargeException.class, () -> client.getRawData("NV/NV0119/IVPKNLonAr"));
     }
 
     @Test
@@ -220,14 +209,15 @@ public class AbstractClientIT {
     }
 
     @Test
-    public void checkForCorrectPackageAndClientNames() {
+    public void checkForCorrectPackageAndName() {
         String execPath = System.getProperty("user.dir");
 
         // Find files matching the wildcard pattern
         List<File> files = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient/client", "*.java");
 
         // Filter out some classes from the list
-        Filters.files(files, AbstractClient.class, AbstractContainerClient.class, SCBClient.class);
+        Filters.files(files, AbstractClient.class, AbstractContainerClient.class, SCBClient.class,
+                SCBClientBuilder.class);
 
         List<Class<?>> matchedClasses = new ArrayList<>();
         for (File file : files) {
@@ -248,7 +238,12 @@ public class AbstractClientIT {
                 String substr = packageName.substring(beginIndex);
                 String lastPart = substr.replace(".", "").concat("client");
 
+                // Check if package name is correct
                 if (clazz.getSimpleName().toLowerCase().indexOf(lastPart) > 0) {
+                    matchedClasses.add(clazz);
+                }
+                // Check if class name is correct
+                else if (!clazz.getSimpleName().toLowerCase().startsWith(lastPart)) {
                     matchedClasses.add(clazz);
                 }
             } catch (ClassNotFoundException e) {
@@ -259,7 +254,7 @@ public class AbstractClientIT {
             }
         }
         assertTrue(matchedClasses.isEmpty(),
-                "Classes not having matching package and client name: " + matchedClasses.toString());
+                "Classes not having correct package and/or name: " + matchedClasses.toString());
     }
 
     @Test
@@ -270,7 +265,7 @@ public class AbstractClientIT {
         List<File> files = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient/client", "*.java");
 
         // Filter out some classes from the list
-        Filters.files(files, AbstractClient.class, AbstractContainerClient.class);
+        Filters.files(files, AbstractClient.class, AbstractContainerClient.class, SCBClientBuilder.class);
 
         Map<String, Class<?>> register = new HashMap<>();
         Map<String, List<Class<?>>> offendingClasses = new HashMap<>();
@@ -285,6 +280,11 @@ public class AbstractClientIT {
             Class<?> clazz = null;
             try {
                 clazz = Class.forName(binaryName);
+                if (clazz.isAnnotationPresent(Deprecated.class)) {
+                    // Class is deprecated; we don't care if there's another class
+                    // implementing the same tables as clazz (which is its replacer class)
+                    continue;
+                }
 
                 Method m = clazz.getDeclaredMethod("getUrl");
                 Constructor<?> c = clazz.getConstructor();
@@ -322,7 +322,7 @@ public class AbstractClientIT {
         List<File> files = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient/client", "*.java");
 
         // Filter out some classes from the list
-        Filters.files(files, AbstractClient.class, AbstractContainerClient.class);
+        Filters.files(files, AbstractClient.class, AbstractContainerClient.class, SCBClientBuilder.class);
 
         // Convert paths into binary names
         Set<String> binaryNames = new TreeSet<String>();
@@ -427,37 +427,12 @@ public class AbstractClientIT {
                 it.remove();
             }
         }
-        // Filter out known methods throwing HTTP 403. Format is the same used for the
-        // entries in the offending methods collection
-        Set<String> knownMethods = new HashSet<>();
-        knownMethods.add("PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient.getPriceIndexForDomesticSupply");
-        knownMethods.add("FinancialMarketsStatisticsClaimsAndLiabilitiesClient.getClaimsAndLiabilitiesOutsideSweden");
-        knownMethods.add(
-                "FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClient.getNonResidentTradeInSwedishShares");
-        knownMethods.add("PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient.getProducerPriceIndexHomeSales");
-        knownMethods.add("PublicFinancesAnnualAccountsStatementAccountsMunicipalityClient.getCostsAndIncomes");
-        knownMethods.add("PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient.getProducerPriceIndex");
-        knownMethods.add("GoodsAndServicesForeignTradeCNClient.getImportsAndExportsOfGoods");
-        knownMethods.add("PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient.getExportPriceIndex");
-        knownMethods.add("PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient.getBalanceSheet");
-        knownMethods.add("PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient.getImportPriceIndex");
-        knownMethods.add("PublicFinancesAnnualAccountsStatementAccountsCountyClient.getIncomeAndCosts");
-        knownMethods.add("PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient.getPriceIndexForDomesticSupply");
-        knownMethods.add("PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient.getIncomeStatements");
-        knownMethods.add(
-                "FinancialMarketsStatisticsDepositAndLendingClient.getLendingRatesToHouseholdsAndNonFinancialCorporationsBreakdownByMaturity");
-        for (Iterator<Entry<String, Integer>> it = offendingMethods.entrySet().iterator(); it.hasNext();) {
-            Entry<String, Integer> entry = it.next();
-            if (knownMethods.contains(entry.getKey())) {
-                it.remove();
-            }
-        }
         assertTrue(offendingMethods.isEmpty(),
                 "Methods not having correct overloads: " + offendingMethods.keySet().toString());
     }
 
     @Test
-    // @Date("2017-12-11")
+    // @Date("2018-06-25")
     public void checkForUsageOfAllCodes() throws Exception {
         String execPath = System.getProperty("user.dir");
 
@@ -486,7 +461,6 @@ public class AbstractClientIT {
                 assertTrue(false, e.getMessage());
             }
 
-            Set<String> deprecated = new HashSet<>();
             Map<String, String> tables = new LinkedHashMap<>();
             Map<String, List<String>> parameters = new LinkedHashMap<>();
             // Figure out implemented tables by inspecting the source code
@@ -552,7 +526,7 @@ public class AbstractClientIT {
                 continue;
             }
 
-            Object instance = clazz.newInstance();
+            Object instance = clazz.getConstructor().newInstance();
             URLEndpoint url = (URLEndpoint) clazz.getMethod("getUrl", new Class<?>[] {}).invoke(instance,
                     new Object[] {});
             Method[] declaredMethods = clazz.getDeclaredMethods();
@@ -564,7 +538,7 @@ public class AbstractClientIT {
                 }
                 filteredMethods.add(m);
             }
-            // SCBClient client = new SCBClient(new Locale("en", "US"));
+            SCBClient client = new SCBClient(new Locale("en", "US"));
             for (Entry<String, String> entry : tables.entrySet()) {
                 String key = entry.getKey();
                 String value = entry.getValue();
@@ -575,12 +549,14 @@ public class AbstractClientIT {
                         continue;
                     }
                     if (Objects.equals(filteredMethod.getName(), key)) {
-                        // We need to use the English locale as the parameter names in the
-                        // methods match the API
-                        URLEndpoint fullUrl = url.append(value).toURL(new Locale("en", "US"));
+                        URLEndpoint fullUrl = url.append(value);
+                        Map<String, Collection<String>> inputs = client.getInputs(fullUrl.getTable());
 
                         GETRequester requester = new GETRequester(StandardCharsets.UTF_8);
-                        HttpResponse res = requester.getResponse(fullUrl.toString());
+
+                        // We need to use the English locale as the parameter names in the
+                        // methods match the API
+                        HttpResponse res = requester.getResponse(fullUrl.toURL("en").toString());
                         String body = res.getBody();
                         if (body == null) {
                             // Table does not exist for the given language, ignore it
@@ -599,16 +575,6 @@ public class AbstractClientIT {
                         // Remove ContentsCode code as this is implicitly added by every
                         // method
                         codesTexts.remove("ContentsCode");
-
-                        // System.out.println(codesTexts);
-
-                        // Check for same amount of codes
-                        int differenceInParameters = codesTexts.size() - filteredMethod.getParameterCount();
-
-                        // Check for matching parameter names
-
-                        // System.out.println("P: " + params);
-                        // System.out.println("C: " + codesTexts.values());
 
                         boolean missingOrJumbledParameters = false;
                         List<String> methodParameters = parameters.get(key);
@@ -629,9 +595,16 @@ public class AbstractClientIT {
                                 missingOrJumbledParameters = true;
                             }
                         }
-                        // Validate constraints
+
                         System.out.println(missingOrJumbledParameters);
-                        if (missingOrJumbledParameters || differenceInParameters > 0) {
+
+                        // Check for same amount of codes. Remove one as the code
+                        // ContentsCode is implicitly added by every method and doesn't
+                        // need to be a parameter
+                        int differenceOfParameters = inputs.keySet().size() - filteredMethod.getParameterCount() - 1;
+
+                        // Validate constraints
+                        if (missingOrJumbledParameters || differenceOfParameters > 0) {
                             offendingMethods.add(clazz.getSimpleName() + "." + filteredMethod.getName());
                         }
                         TimeUnit.MILLISECONDS.sleep(TestConstants.API_SLEEP_MS);
@@ -640,6 +613,63 @@ public class AbstractClientIT {
             }
         }
         assertTrue(offendingMethods.isEmpty(), "Methods not implementing all codes: " + offendingMethods);
+    }
+
+    @Test
+    public void checkForNonDuplicatedCodeAndValueCombinations()
+            throws IllegalArgumentException, IllegalAccessException {
+        String execPath = System.getProperty("user.dir");
+
+        // Find files matching the wildcard pattern
+        List<File> files = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient/client", "*.java");
+
+        Map<String, List<String>> offendingCodes = new HashMap<>();
+        for (File file : files) {
+            // Convert path into binary name
+            String binaryName = Files.fileToBinaryName(file);
+            if (binaryName.contains("package-info")) {
+                continue;
+            }
+
+            // Reflect the binary name into a concrete Java class
+            Class<?> clazz = null;
+            try {
+                clazz = Class.forName(binaryName);
+                Field[] fields = clazz.getDeclaredFields();
+                for (int i = 0; i < fields.length; i++) {
+                    Field field = fields[i];
+                    String name = field.getName();
+                    if (name.endsWith("CODE")) {
+                        field.setAccessible(true);
+                        String value = (String) field.get(clazz);
+                        field.setAccessible(false);
+                        String full = name + "." + value;
+                        List<String> classes = null;
+                        if (!offendingCodes.containsKey(full)) {
+                            classes = new ArrayList<>();
+                        } else {
+                            classes = offendingCodes.get(full);
+                        }
+                        classes.add(clazz.getSimpleName());
+                        offendingCodes.put(full, classes);
+                    }
+                }
+            } catch (ClassNotFoundException e) {
+                // Class could not be created; respond with an assertion that'll always
+                // fail
+                e.printStackTrace();
+                assertTrue(false, e.getMessage());
+            }
+        }
+        // Remove code and value combinations which only occurs once (which means it isn't
+        // a duplicate)
+        for (Iterator<List<String>> it = offendingCodes.values().iterator(); it.hasNext();) {
+            List<String> value = it.next();
+            if (value.size() == 1) {
+                it.remove();
+            }
+        }
+        assertTrue(offendingCodes.isEmpty(), "Duplicated code and value combinations: " + offendingCodes.toString());
     }
 
 }

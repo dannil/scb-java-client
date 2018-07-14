@@ -18,11 +18,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.client.transport.registeredvehicles.TransportRegisteredVehiclesClient;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
-import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
 import org.junit.jupiter.api.Test;
+
+import com.github.dannil.scbjavaclient.client.transport.registeredvehicles.TransportRegisteredVehiclesClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 @Suite
 public class TransportClientTest {
@@ -39,7 +39,7 @@ public class TransportClientTest {
     public void registeredVehiclesClient() {
         TransportClient client = new TransportClient();
 
-        assertEquals(client.registeredVehicles().getClass(), TransportRegisteredVehiclesClient.class);
+        assertEquals(TransportRegisteredVehiclesClient.class, client.registeredVehicles().getClass());
     }
 
     @Test

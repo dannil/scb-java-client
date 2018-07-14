@@ -18,12 +18,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
+import org.junit.jupiter.api.Test;
+
 import com.github.dannil.scbjavaclient.client.businessactivities.nonprofitorganizations.primarystatistics.BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.nonprofitorganizations.satelliteaccounts.BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClient;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
-import org.junit.jupiter.api.Test;
 
 @Suite
 public class BusinessActivitiesNonProfitOrganizationsClientTest {
@@ -41,16 +41,16 @@ public class BusinessActivitiesNonProfitOrganizationsClientTest {
     public void primaryStatisticsClient() {
         BusinessActivitiesNonProfitOrganizationsClient client = new BusinessActivitiesNonProfitOrganizationsClient();
 
-        assertEquals(client.primaryStatistics().getClass(),
-                BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClient.class);
+        assertEquals(BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClient.class,
+                client.primaryStatistics().getClass());
     }
 
     @Test
     public void satelliteAccountsClient() {
         BusinessActivitiesNonProfitOrganizationsClient client = new BusinessActivitiesNonProfitOrganizationsClient();
 
-        assertEquals(client.satelliteAccounts().getClass(),
-                BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClient.class);
+        assertEquals(BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClient.class,
+                client.satelliteAccounts().getClass());
     }
 
     @Test

@@ -21,8 +21,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
@@ -78,7 +78,7 @@ public class FinancialMarketsStatisticsEconomicIndicatorsClient extends Abstract
     public List<ResponseModel> getFinancialMarketStatisticsGrowthRate(Collection<String> economicIndicators,
             Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("EkoIndikator", economicIndicators);
+        mappings.put(APIConstants.ECONOMICINDICATOR_CODE, economicIndicators);
         mappings.put(APIConstants.TIME_CODE, months);
 
         return getResponseModels("SnabbStatFM5001", mappings);

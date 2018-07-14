@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.dannil</groupId>
   <artifactId>scb-java-client</artifactId>
-  <version>0.7.0-SNAPSHOT</version>
+  <version>2.0.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>scb-java-client</name>
@@ -56,8 +55,7 @@
     <project.java.source>1.8</project.java.source>
     <project.java.target>1.8</project.java.target>
 
-    <argLine>-Xmx2048m -XX:MaxPermSize=512m
-      -Dfile.encoding=${project.build.sourceEncoding}</argLine>
+    <argLine>-Dfile.encoding=${project.build.sourceEncoding}</argLine>
   </properties>
 
   <dependencies>
@@ -65,12 +63,12 @@
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-core</artifactId>
-      <version>2.9.3</version>
+      <version>2.9.6</version>
     </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
-      <version>2.9.3</version>
+      <version>2.9.6</version>
     </dependency>
     <dependency>
       <groupId>commons-io</groupId>
@@ -80,34 +78,43 @@
 
     <!-- Logging -->
     <dependency>
-      <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-core</artifactId>
-      <version>2.10.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-slf4j-impl</artifactId>
-      <version>2.10.0</version>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.8.0-beta2</version>
     </dependency>
 
     <!-- Test dependencies -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
-      <version>5.0.2</version>
+      <version>5.3.0-M1</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
-      <version>5.0.2</version>
+      <version>5.3.0-M1</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.junit.platform</groupId>
       <artifactId>junit-platform-launcher</artifactId>
-      <version>1.0.2</version>
+      <version>1.3.0-M1</version>
       <scope>test</scope>
+    </dependency>
+    
+    <!-- Tests dependencies - logging -->
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-slf4j-impl</artifactId>
+      <version>2.11.0</version>
+      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-api</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
   </dependencies>
 
@@ -152,31 +159,57 @@
         </plugins>
       </build>
     </profile>
+    <profile>
+      <id>generate-javadoc-html5</id>
+      <activation>
+        <jdk>[9,)</jdk>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <configuration>
+              <additionalJOptions>
+                <additionalJOption>-Xdoclint:all</additionalJOption>
+                <additionalJOption>-html5</additionalJOption>
+              </additionalJOptions>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
   </profiles>
 
   <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>3.0.1</version>
+          <configuration>
+            <additionalJOptions>
+              <additionalJOption>-Xdoclint:all</additionalJOption>
+            </additionalJOptions>
+            <failOnError>true</failOnError>
+          </configuration>
+          <executions>
+            <execution>
+              <id>attach-javadocs</id>
+              <goals>
+                <goal>jar</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </pluginManagement>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <!-- Do not upgrade if the new version doesn't support JUnit 5, due 
-          to the process of running the tests will break; it seems that surefire-provider 
-          needs surefire/failsafe version 2.19.1 to work -->
-        <version>2.19.1</version>
-        <!-- Remove these dependencies when surefire/failsafe has support 
-          for JUnit 5 -->
-        <dependencies>
-          <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-surefire-provider</artifactId>
-            <version>1.0.2</version>
-          </dependency>
-          <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.0.2</version>
-          </dependency>
-        </dependencies>
+        <version>2.22.0</version>
         <configuration>
           <forkCount>3</forkCount>
           <reuseForks>true</reuseForks>
@@ -185,24 +218,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-failsafe-plugin</artifactId>
-        <!-- Do not upgrade if the new version doesn't support JUnit 5, due 
-          to the process of running the tests will break; it seems that surefire-provider 
-          needs surefire/failsafe version 2.19.1 to work -->
-        <version>2.19.1</version>
-        <!-- Remove these dependencies when surefire/failsafe has support 
-          for JUnit 5 -->
-        <dependencies>
-          <dependency>
-            <groupId>org.junit.platform</groupId>
-            <artifactId>junit-platform-surefire-provider</artifactId>
-            <version>1.0.2</version>
-          </dependency>
-          <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.0.2</version>
-          </dependency>
-        </dependencies>
+        <version>2.22.0</version>
         <configuration>
           <systemPropertyVariables>
             <testsDayLimit>7</testsDayLimit>
@@ -226,11 +242,10 @@
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
-        <version>0.7.9</version>
+        <version>0.8.1</version>
         <executions>
           <!-- Prepares the property pointing to the JaCoCo runtime agent 
-            which -->
-          <!-- is passed as a VM argument when maven-surefire-plugin is executed. -->
+            which is passed as a VM argument when maven-surefire-plugin is executed -->
           <execution>
             <id>pre-unit-test</id>
             <goals>
@@ -238,16 +253,15 @@
             </goals>
             <configuration>
               <!-- Sets the path to the file which contains the execution 
-                data. -->
+                data -->
               <destFile>${project.build.directory}/jacoco-unit.exec</destFile>
               <!-- Sets the name of the property containing the settings 
-                for JaCoCo -->
-              <!-- runtime agent. -->
+                for JaCoCo runtime agent -->
               <propertyName>argLine</propertyName>
             </configuration>
           </execution>
-          <!-- Ensures that the code coverage report for unit tests is created -->
-          <!-- after unit tests have been run. -->
+          <!-- Ensures that the code coverage report for unit tests is created 
+            after unit tests have been run -->
           <execution>
             <id>post-unit-test</id>
             <phase>test</phase>
@@ -256,16 +270,15 @@
             </goals>
             <configuration>
               <!-- Sets the path to the file which contains the execution 
-                data. -->
+                data -->
               <dataFile>${project.build.directory}/jacoco-unit.exec</dataFile>
-              <!-- Sets the output directory for the code coverage report. -->
+              <!-- Sets the output directory for the code coverage report -->
               <outputDirectory>${project.reporting.outputDirectory}/jacoco-unit</outputDirectory>
             </configuration>
           </execution>
-          <!-- The Executions required by unit tests are omitted. -->
-          <!-- Prepares the property pointing to the JaCoCo runtime agent 
-            which -->
-          <!-- is passed as a VM argument when maven-failsafe-plugin is executed. -->
+          <!-- The Executions required by unit tests are omitted. Prepares 
+            the property pointing to the JaCoCo runtime agent which is passed as a VM 
+            argument when maven-failsafe-plugin is executed. -->
           <execution>
             <id>pre-integration-test</id>
             <phase>pre-integration-test</phase>
@@ -274,17 +287,15 @@
             </goals>
             <configuration>
               <!-- Sets the path to the file which contains the execution 
-                data. -->
+                data -->
               <destFile>${project.build.directory}/jacoco-integration.exec</destFile>
               <!-- Sets the name of the property containing the settings 
-                for JaCoCo -->
-              <!-- runtime agent. -->
+                for JaCoCo runtime agent -->
               <propertyName>argLine</propertyName>
             </configuration>
           </execution>
           <!-- Ensures that the code coverage report for integration tests 
-            after -->
-          <!-- integration tests have been run. -->
+            after integration tests have been run -->
           <execution>
             <id>post-integration-test</id>
             <phase>post-integration-test</phase>
@@ -293,9 +304,9 @@
             </goals>
             <configuration>
               <!-- Sets the path to the file which contains the execution 
-                data. -->
+                data -->
               <dataFile>${project.build.directory}/jacoco-integration.exec</dataFile>
-              <!-- Sets the output directory for the code coverage report. -->
+              <!-- Sets the output directory for the code coverage report -->
               <outputDirectory>${project.reporting.outputDirectory}/jacoco-integration</outputDirectory>
             </configuration>
           </execution>
@@ -329,7 +340,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>animal-sniffer-maven-plugin</artifactId>
-        <version>1.16</version>
+        <version>1.17</version>
         <executions>
           <execution>
             <id>signature-check</id>
@@ -350,10 +361,27 @@
       <plugin>
         <groupId>com.github.siom79.japicmp</groupId>
         <artifactId>japicmp-maven-plugin</artifactId>
-        <version>0.11.0</version>
+        <version>0.12.0</version>
+        <!-- These dependencies are needed to compile on Java 9 and onward, 
+          as this plugin (version 0.12.0) doesn't yet declare these on their own. These 
+          dependencies can be removed in the future when the plugin supports Java 9 
+          out-of-box -->
+        <!-- The next release after 0.12 (probably 0.13?) added own dependency 
+          on javax.activation (see https://github.com/siom79/japicmp/commit/63a399f88bcb220 
+          5444051e3117d3269cefcc12f#diff-600376dffeb79835ede4a0b285078036R176) which 
+          means that this dependency can be removed after the next release -->
+        <dependencies>
+          <dependency>
+            <groupId>javax.activation</groupId>
+            <artifactId>activation</artifactId>
+            <version>1.1.1</version>
+          </dependency>
+        </dependencies>
         <configuration>
           <parameter>
-            <onlyBinaryIncompatible>true</onlyBinaryIncompatible>
+            <onlyModified>true</onlyModified>
+            <onlyBinaryIncompatible>false</onlyBinaryIncompatible>
+            <breakBuildBasedOnSemanticVersioning>true</breakBuildBasedOnSemanticVersioning>
           </parameter>
         </configuration>
         <executions>
@@ -368,12 +396,12 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
-        <version>2.17</version>
+        <version>3.0.0</version>
         <dependencies>
           <dependency>
             <groupId>com.puppycrawl.tools</groupId>
             <artifactId>checkstyle</artifactId>
-            <version>8.5</version>
+            <version>8.11</version>
           </dependency>
         </dependencies>
         <executions>
@@ -398,12 +426,15 @@
           <source>${project.java.source}</source>
           <target>${project.java.target}</target>
           <encoding>${project.build.sourceEncoding}</encoding>
+          <compilerArgs>
+            <arg>-Xlint:all</arg>
+          </compilerArgs>
         </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-clean-plugin</artifactId>
-        <version>3.0.0</version>
+        <version>3.1.0</version>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -413,8 +444,38 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
-        <version>3.0.0-M1</version>
+        <version>3.0.0-M2</version>
         <executions>
+          <execution>
+            <id>enforce-consistency</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <dependencyConvergence />
+              </rules>
+              <fail>true</fail>
+            </configuration>
+          </execution>
+          <execution>
+            <id>enforce-banned-dependencies</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <bannedDependencies>
+                  <searchTransitive>true</searchTransitive>
+                  <excludes>
+                    <!-- CVE-2015-7501 (https://access.redhat.com/security/cve/cve-2015-7501) -->
+                    <exclude>commons-collections:commons-collection</exclude>
+                  </excludes>
+                </bannedDependencies>
+              </rules>
+              <fail>true</fail>
+            </configuration>
+          </execution>
           <execution>
             <id>enforce-versions</id>
             <goals>
@@ -423,11 +484,32 @@
             <configuration>
               <rules>
                 <requireMavenVersion>
-                  <version>3.0</version>
+                  <version>3.1.1</version>
                 </requireMavenVersion>
                 <requireJavaVersion>
                   <version>${project.java.source}</version>
                 </requireJavaVersion>
+                <requireSameVersions>
+                  <dependencies>
+                    <dependency>com.fasterxml.jackson.core:jackson-core</dependency>
+                    <dependency>com.fasterxml.jackson.core:jackson-databind</dependency>
+                  </dependencies>
+                </requireSameVersions>
+                <requireSameVersions>
+                  <dependencies>
+                    <dependency>org.apache.logging.log4j:*</dependency>
+                  </dependencies>
+                </requireSameVersions>
+                <requireSameVersions>
+                  <dependencies>
+                    <dependency>org.junit.jupiter:*</dependency>
+                  </dependencies>
+                </requireSameVersions>
+                <requireSameVersions>
+                  <dependencies>
+                    <dependency>org.junit.platform:*</dependency>
+                  </dependencies>
+                </requireSameVersions>
               </rules>
               <fail>true</fail>
             </configuration>
@@ -446,7 +528,59 @@
               <fail>true</fail>
             </configuration>
           </execution>
+          <execution>
+            <id>enforce-bytecode-version</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <enforceBytecodeVersion>
+                  <maxJdkVersion>${project.java.target}</maxJdkVersion>
+                </enforceBytecodeVersion>
+              </rules>
+              <fail>true</fail>
+            </configuration>
+          </execution>
+          <execution>
+            <id>enforce-ban-duplicate-classes</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <banDuplicateClasses>
+                  <findAllDuplicates>true</findAllDuplicates>
+                </banDuplicateClasses>
+              </rules>
+              <fail>true</fail>
+            </configuration>
+          </execution>
+          <!-- Not usable right now, see https://github.com/mojohaus/extra-enforcer-rules/issues/48 -->
+          <!-- <execution> -->
+          <!-- <id>enforce-utf8-encoding</id> -->
+          <!-- <goals> -->
+          <!-- <goal>enforce</goal> -->
+          <!-- </goals> -->
+          <!-- <configuration> -->
+          <!-- <rules> -->
+          <!-- <requireEncoding> -->
+          <!-- <encoding>${project.build.sourceEncoding}</encoding> -->
+          <!-- <includes>src/main/resources/**,src/test/resources/**</includes> -->
+          <!-- </requireEncoding> -->
+          <!-- </rules> -->
+          <!-- <failFast>false</failFast> -->
+          <!-- <fail>true</fail> -->
+          <!-- </configuration> -->
+          <!-- </execution> -->
         </executions>
+        <dependencies>
+          <dependency>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>extra-enforcer-rules</artifactId>
+            <version>1.0-beta-9</version>
+          </dependency>
+        </dependencies>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -456,23 +590,11 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
-        <version>3.0.2</version>
+        <version>3.1.0</version>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>3.0.0-M1</version>
-        <configuration>
-          <failOnError>true</failOnError>
-        </configuration>
-        <executions>
-          <execution>
-            <id>attach-javadocs</id>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -482,19 +604,12 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-resources-plugin</artifactId>
-        <version>3.0.2</version>
+        <version>3.1.0</version>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
-        <version>3.6</version>
-<!--         <dependencies> -->
-<!--           <dependency> -->
-<!--             <groupId>org.apache.maven.doxia</groupId> -->
-<!--             <artifactId>doxia-module-markdown</artifactId> -->
-<!--             <version>1.7</version> -->
-<!--           </dependency> -->
-<!--         </dependencies> -->
+        <version>3.7.1</version>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -511,5 +626,36 @@
       </plugin>
     </plugins>
   </build>
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <version>3.0.0</version>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <!-- The ordering of the elements below effects the menu generated 
+                by maven-site-plugin, with the top-most element appearing highest in the 
+                menu, the next below that and so forth -->
+              <report>index</report>
+              <report>summary</report>
+              <report>ci-management</report>
+              <report>dependencies</report>
+              <report>dependency-info</report>
+              <report>distribution-management</report>
+              <report>issue-management</report>
+              <report>licenses</report>
+              <report>plugin-management</report>
+              <report>plugins</report>
+              <report>scm</report>
+              <report>team</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+    </plugins>
+  </reporting>
 
 </project>
