@@ -27,6 +27,7 @@ import java.io.PrintStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
@@ -50,8 +51,12 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.concurrent.TimeUnit;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
+import com.github.dannil.scbjavaclient.format.json.JsonConverter;
+import com.github.dannil.scbjavaclient.http.HttpResponse;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.http.requester.GETRequester;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.test.TestConstants;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
@@ -62,6 +67,7 @@ import com.github.dannil.scbjavaclient.test.utility.Filters;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 import org.junit.jupiter.api.Test;
+import org.omg.CORBA.Environment;
 
 @Suite
 @Remote
@@ -74,7 +80,8 @@ public class AbstractClientIT {
 
         String url = client.getRootUrl() + "HE/HE0103/HE0103B/BefolkningAlder";
 
-        // This request is performed with the locale set to English. This means that if we
+        // This request is performed with the locale set to English. This means that if
+        // we
         // receive a response with Swedish text, we've used the fallback url.
         String response = client.doGetRequest(url);
 
@@ -98,7 +105,8 @@ public class AbstractClientIT {
         map.put("Boendeform", Arrays.asList("SMAG"));
         map.put("Tid", Arrays.asList("2012"));
 
-        // This request is performed with the locale set to English. This means that if we
+        // This request is performed with the locale set to English. This means that if
+        // we
         // receive a response with Swedish text, we've used the fallback url.
         String response = client.doPostRequest(url, QueryBuilder.build(map));
 
@@ -142,7 +150,8 @@ public class AbstractClientIT {
         SCBClient client = new SCBClient(new Locale("sv", "SE"));
 
         // This call will result in a HTTP 403 response (forbidden) since the
-        // response from this table is larger than the API allows (given all the available
+        // response from this table is larger than the API allows (given all the
+        // available
         // inputs)
         String response = client.getRawData("NV/NV0119/IVPKNLonAr");
 
@@ -448,7 +457,7 @@ public class AbstractClientIT {
     }
 
     @Test
-    @Date("2017-12-11")
+    // @Date("2017-12-11")
     public void checkForUsageOfAllCodes() throws Exception {
         String execPath = System.getProperty("user.dir");
 
@@ -477,12 +486,14 @@ public class AbstractClientIT {
                 assertTrue(false, e.getMessage());
             }
 
+            Set<String> deprecated = new HashSet<>();
             Map<String, String> tables = new LinkedHashMap<>();
+            Map<String, List<String>> parameters = new LinkedHashMap<>();
             // Figure out implemented tables by inspecting the source code
             List<String> lines = java.nio.file.Files.readAllLines(Paths.get(f.getPath()), StandardCharsets.UTF_8);
             String beginningOfMethod = "List<ResponseModel>";
-            String method = "";
-            String table = "";
+            String method = null;
+            String table = null;
             for (String line : lines) {
                 // Skip line if it is a comment, Javadoc or alike
                 String trimmedLine = line.trim();
@@ -501,12 +512,39 @@ public class AbstractClientIT {
                     int endIndex = trimmedLine.indexOf('(', beginIndex + 1);
                     method = trimmedLine.substring(beginIndex, endIndex);
                 }
-                if (trimmedLine.contains("return generate") || trimmedLine.contains("return getResponseModels")) {
+                if (method != null && trimmedLine.contains("Collection") && !trimmedLine.contains("mappings")) {
+                    String[] parts = trimmedLine.split(" ");
+                    List<String> forbiddenElements = Arrays.asList("Collection", "public", "List", "{", "}", ",", " ");
+                    for (int i = 0; i < parts.length; i++) {
+                        String part = parts[i].replaceAll("[^a-zA-Z]", "");
+                        boolean isForbidden = false;
+                        for (String element : forbiddenElements) {
+                            if (part == null || part.length() == 0 || part.contains(element)) {
+                                isForbidden = true;
+                            }
+                        }
+                        if (!isForbidden) {
+                            if (parameters.containsKey(method)) {
+                                List<String> temp = parameters.get(method);
+                                if (!temp.contains(part)) {
+                                    temp.add(part);
+                                }
+                            } else {
+                                List<String> params = new ArrayList<>();
+                                params.add(part);
+                                parameters.put(method, params);
+                            }
+                        }
+                    }
+                }
+                if (method != null && (trimmedLine.contains("return generate")
+                        || trimmedLine.contains("return getResponseModels"))) {
                     int beginIndex = trimmedLine.indexOf('"') + 1;
                     int endIndex = trimmedLine.indexOf('"', beginIndex + 2);
                     if (beginIndex > 0 && endIndex > 0) {
                         table = trimmedLine.substring(beginIndex, endIndex);
                         tables.put(method, table);
+                        method = null;
                     }
                 }
             }
@@ -526,22 +564,74 @@ public class AbstractClientIT {
                 }
                 filteredMethods.add(m);
             }
-            SCBClient client = new SCBClient();
+            // SCBClient client = new SCBClient(new Locale("en", "US"));
             for (Entry<String, String> entry : tables.entrySet()) {
                 String key = entry.getKey();
                 String value = entry.getValue();
                 for (Method filteredMethod : filteredMethods) {
-                    // Method is deprecated; we don't care if it has all the codes
+                    // Method is deprecated; we don't care if it doesn't have all the
+                    // codes
                     if (filteredMethod.isAnnotationPresent(Deprecated.class)) {
                         continue;
                     }
                     if (Objects.equals(filteredMethod.getName(), key)) {
-                        URLEndpoint fullUrl = new URLEndpoint(url.getTable() + value);
-                        Map<String, Collection<String>> inputs = client.getInputs(fullUrl.getTable());
-                        // Check for same amount of codes. Add one to the parameter count
-                        // as the code ContentsCode is implicitly added by every method
-                        // and doesn't need to be a parameter
-                        if (inputs.keySet().size() != filteredMethod.getParameterCount() + 1) {
+                        // We need to use the English locale as the parameter names in the
+                        // methods match the API
+                        URLEndpoint fullUrl = url.append(value).toURL(new Locale("en", "US"));
+
+                        GETRequester requester = new GETRequester(StandardCharsets.UTF_8);
+                        HttpResponse res = requester.getResponse(fullUrl.toString());
+                        String body = res.getBody();
+                        if (body == null) {
+                            // Table does not exist for the given language, ignore it
+                            continue;
+                        }
+
+                        JsonNode n = new JsonConverter().toNode(body);
+                        JsonNode m = n.get("variables");
+                        List<String> codes = m.findValuesAsText("code");
+                        List<String> texts = m.findValuesAsText("text");
+
+                        Map<String, String> codesTexts = new LinkedHashMap<>();
+                        for (int i = 0; i < codes.size(); i++) {
+                            codesTexts.put(codes.get(i), texts.get(i));
+                        }
+                        // Remove ContentsCode code as this is implicitly added by every
+                        // method
+                        codesTexts.remove("ContentsCode");
+
+                        // System.out.println(codesTexts);
+
+                        // Check for same amount of codes
+                        int differenceInParameters = codesTexts.size() - filteredMethod.getParameterCount();
+
+                        // Check for matching parameter names
+
+                        // System.out.println("P: " + params);
+                        // System.out.println("C: " + codesTexts.values());
+
+                        boolean missingOrJumbledParameters = false;
+                        List<String> methodParameters = parameters.get(key);
+                        List<String> apiParameters = new ArrayList<>(codesTexts.values());
+
+                        System.out.println("M: " + methodParameters);
+                        System.out.println("A: " + apiParameters);
+
+                        for (int i = 0; i < methodParameters.size(); i++) {
+                            String param = methodParameters.get(i).toLowerCase();
+                            String text = apiParameters.get(i).toLowerCase().replaceAll("[^a-zA-Z]", "");
+                            // Cut off end of the text for a code to handle singular
+                            // (code) to plural (method parameters) conversion
+                            String subText = text.substring(0, text.length() - 1);
+                            // System.out.println("PP: " + param);
+                            // System.out.println("CC: " + text);
+                            if (!param.startsWith(text)) {
+                                missingOrJumbledParameters = true;
+                            }
+                        }
+                        // Validate constraints
+                        System.out.println(missingOrJumbledParameters);
+                        if (missingOrJumbledParameters || differenceInParameters > 0) {
                             offendingMethods.add(clazz.getSimpleName() + "." + filteredMethod.getName());
                         }
                         TimeUnit.MILLISECONDS.sleep(TestConstants.API_SLEEP_MS);
