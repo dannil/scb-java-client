@@ -550,57 +550,56 @@ public class AbstractClientIT {
                     }
                     if (Objects.equals(filteredMethod.getName(), key)) {
                         URLEndpoint fullUrl = url.append(value);
-                        Map<String, Collection<String>> inputs = client.getInputs(fullUrl.getTable());
 
                         GETRequester requester = new GETRequester(StandardCharsets.UTF_8);
 
                         // We need to use the English locale as the parameter names in the
                         // methods match the API
+                        boolean missingOrJumbledParameters = false;
+                        
                         HttpResponse res = requester.getResponse(fullUrl.toURL("en").toString());
                         String body = res.getBody();
-                        if (body == null) {
-                            // Table does not exist for the given language, ignore it
-                            continue;
-                        }
+                        if (body != null) {
+                            // Table exist for the given language; process it
+                            JsonNode n = new JsonConverter().toNode(body);
+                            JsonNode m = n.get("variables");
+                            List<String> codes = m.findValuesAsText("code");
+                            List<String> texts = m.findValuesAsText("text");
 
-                        JsonNode n = new JsonConverter().toNode(body);
-                        JsonNode m = n.get("variables");
-                        List<String> codes = m.findValuesAsText("code");
-                        List<String> texts = m.findValuesAsText("text");
+                            Map<String, String> codesTexts = new LinkedHashMap<>();
+                            for (int i = 0; i < codes.size(); i++) {
+                                codesTexts.put(codes.get(i), texts.get(i));
+                            }
+                            // Remove ContentsCode code as this is implicitly added by every
+                            // method
+                            codesTexts.remove("ContentsCode");
 
-                        Map<String, String> codesTexts = new LinkedHashMap<>();
-                        for (int i = 0; i < codes.size(); i++) {
-                            codesTexts.put(codes.get(i), texts.get(i));
-                        }
-                        // Remove ContentsCode code as this is implicitly added by every
-                        // method
-                        codesTexts.remove("ContentsCode");
+                            List<String> methodParameters = parameters.get(key);
+                            List<String> apiParameters = new ArrayList<>(codesTexts.values());
 
-                        boolean missingOrJumbledParameters = false;
-                        List<String> methodParameters = parameters.get(key);
-                        List<String> apiParameters = new ArrayList<>(codesTexts.values());
+                            System.out.println("M: " + methodParameters);
+                            System.out.println("A: " + apiParameters);
 
-                        System.out.println("M: " + methodParameters);
-                        System.out.println("A: " + apiParameters);
-
-                        for (int i = 0; i < methodParameters.size(); i++) {
-                            String param = methodParameters.get(i).toLowerCase();
-                            String text = apiParameters.get(i).toLowerCase().replaceAll("[^a-zA-Z]", "");
-                            // Cut off end of the text for a code to handle singular
-                            // (code) to plural (method parameters) conversion
-                            String subText = text.substring(0, text.length() - 1);
-                            // System.out.println("PP: " + param);
-                            // System.out.println("CC: " + text);
-                            if (!param.startsWith(text)) {
-                                missingOrJumbledParameters = true;
+                            for (int i = 0; i < methodParameters.size(); i++) {
+                                String param = methodParameters.get(i).toLowerCase();
+                                String text = apiParameters.get(i).toLowerCase().replaceAll("[^a-zA-Z]", "");
+                                // Cut off end of the text for a code to handle singular
+                                // (code) to plural (method parameters) conversion
+                                String subText = text.substring(0, text.length() - 1);
+                                // System.out.println("PP: " + param);
+                                // System.out.println("CC: " + text);
+                                if (!param.startsWith(text)) {
+                                    missingOrJumbledParameters = true;
+                                    break;
+                                }
                             }
                         }
-
                         System.out.println(missingOrJumbledParameters);
 
                         // Check for same amount of codes. Remove one as the code
                         // ContentsCode is implicitly added by every method and doesn't
                         // need to be a parameter
+                        Map<String, Collection<String>> inputs = client.getInputs(fullUrl.getTable());
                         int differenceOfParameters = inputs.keySet().size() - filteredMethod.getParameterCount() - 1;
 
                         // Validate constraints
