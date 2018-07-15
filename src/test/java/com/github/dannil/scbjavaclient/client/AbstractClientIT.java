@@ -433,7 +433,7 @@ public class AbstractClientIT {
 
     @Test
     // @Date("2018-06-25")
-    public void checkForUsageOfAllCodes() throws Exception {
+    public void checkForCorrectUsageOfAllCodes() throws Exception {
         String execPath = System.getProperty("user.dir");
 
         // Find files matching the wildcard pattern
@@ -551,12 +551,11 @@ public class AbstractClientIT {
                     if (Objects.equals(filteredMethod.getName(), key)) {
                         URLEndpoint fullUrl = url.append(value);
 
-                        GETRequester requester = new GETRequester(StandardCharsets.UTF_8);
+                        boolean missingOrJumbledParameters = false;
 
                         // We need to use the English locale as the parameter names in the
                         // methods match the API
-                        boolean missingOrJumbledParameters = false;
-                        
+                        GETRequester requester = new GETRequester(StandardCharsets.UTF_8);
                         HttpResponse res = requester.getResponse(fullUrl.toURL("en").toString());
                         String body = res.getBody();
                         if (body != null) {
@@ -570,25 +569,37 @@ public class AbstractClientIT {
                             for (int i = 0; i < codes.size(); i++) {
                                 codesTexts.put(codes.get(i), texts.get(i));
                             }
-                            // Remove ContentsCode code as this is implicitly added by every
-                            // method
+                            // Remove ContentsCode code as this is implicitly added by
+                            // every method
                             codesTexts.remove("ContentsCode");
 
                             List<String> methodParameters = parameters.get(key);
                             List<String> apiParameters = new ArrayList<>(codesTexts.values());
 
-                            System.out.println("M: " + methodParameters);
-                            System.out.println("A: " + apiParameters);
+                            System.out.println("M[]: " + methodParameters);
+                            System.out.println("A[]: " + apiParameters);
 
                             for (int i = 0; i < methodParameters.size(); i++) {
-                                String param = methodParameters.get(i).toLowerCase();
-                                String text = apiParameters.get(i).toLowerCase().replaceAll("[^a-zA-Z]", "");
-                                // Cut off end of the text for a code to handle singular
-                                // (code) to plural (method parameters) conversion
-                                String subText = text.substring(0, text.length() - 1);
+                                String methodParameter = methodParameters.get(i);
+                                String apiParameter = apiParameters.get(i).replaceAll(" ", "");
+
+                                System.out.println("M: " + methodParameter);
+                                System.out.println("A: " + apiParameter);
+
+                                String lastCharacter = apiParameter.substring(apiParameter.length() - 1);
+                                System.out.println("LAST: " + lastCharacter);
+
+                                // Last character of the last word in the API parameter is
+                                // a letter; let's pluralize it
+                                if (lastCharacter.matches("[a-zA-Z]")) {
+                                    apiParameter += 's';
+                                }
+
+                                System.out.println("AP: " + apiParameter);
+
                                 // System.out.println("PP: " + param);
                                 // System.out.println("CC: " + text);
-                                if (!param.startsWith(text)) {
+                                if (!methodParameter.equalsIgnoreCase(apiParameter)) {
                                     missingOrJumbledParameters = true;
                                     break;
                                 }
