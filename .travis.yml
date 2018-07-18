@@ -6,9 +6,6 @@ jdk:
   - openjdk9
   - openjdk10
   - openjdk11
-cache:
-  directories:
-  - $HOME/.m2
 git:
   depth: 99999
 branches:
