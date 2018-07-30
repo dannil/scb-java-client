@@ -14,6 +14,7 @@
 
 package com.github.dannil.scbjavaclient.test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
@@ -21,9 +22,12 @@ import java.lang.reflect.Field;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.junit.jupiter.api.Test;
 
@@ -172,16 +176,10 @@ public class TestIT {
 
         // Remove non-codes and save the values of the code fields in a list
         List<String> fields = new ArrayList<>();
-        for (int i = 0; i < apiFields.length; i++) {
-            Field field = apiFields[i];
-            if (!field.isAccessible()) {
-                field.setAccessible(true);
-            }
-            Object obj = null;
-            obj = field.get(obj);
-            if (field.getName().endsWith("_CODE")) {
-                fields.add((String) obj);
-            }
+
+        Stream<Field> streamFields = Arrays.stream(apiFields).filter(x -> x.getName().endsWith("_CODE"));
+        for (Field f : streamFields.collect(Collectors.toList())) {
+            fields.add((String) f.get(null));
         }
 
         Map<Class<?>, List<String>> matchedClasses = new LinkedHashMap<>();
