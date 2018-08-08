@@ -106,8 +106,8 @@
     <!-- Tests dependencies - logging -->
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-slf4j-impl</artifactId>
-      <version>2.11.0</version>
+      <artifactId>log4j-slf4j18-impl</artifactId>
+      <version>2.11.1</version>
       <scope>test</scope>
       <exclusions>
         <exclusion>
