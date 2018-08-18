@@ -20,18 +20,12 @@ env:
   - secure: Ob+txuzaiED1BdNO67hQbDCNv+/7vnngKfptzqKYVlW8ZA9RpwU9I27+dHAdfVvFkzY1xP/hk6Y3u//Js5u/5dpiNU4RWo37koK0hgmNtMKiSNwUkIii+yFvFn0y5ynG6HPRyQca3i0EXSqIZg0PvONLAcV76132qgMJs0cmOKk=
   matrix:
   - MAVEN_VERSION=3.1.1
-  - MAVEN_VERSION=3.5.4
 matrix:
   exclude:
-  - jdk: openjdk8
-    env: MAVEN_VERSION=3.5.4
   - jdk: openjdk11
     env: MAVEN_VERSION=3.1.1
-  - jdk: openjdk11
-    env: MAVEN_VERSION=3.5.4
   include:
   - jdk: openjdk8
-    env: MAVEN_VERSION=3.5.4
     after_success:
     # SonarQube needs to be run with at least Java 8
     # Make sure we are on the correct branch
@@ -40,12 +34,6 @@ matrix:
         sh push_build_results.sh;
       fi;
   - jdk: openjdk11
-    env: MAVEN_VERSION=3.1.1
-    script:
-    # As JaCoCo does not yet support Java 11 (as of 2018-06-16), we skip it
-    - mvn install -B -V -DtestsDayLimit=7 -Djacoco.skip=true
-  - jdk: openjdk11
-    env: MAVEN_VERSION=3.5.4
     script:
     # As JaCoCo does not yet support Java 11 (as of 2018-06-16), we skip it
     - mvn install -B -V -DtestsDayLimit=7 -Djacoco.skip=true
