@@ -40,8 +40,9 @@ matrix:
   - jdk: openjdk11
     env: MAVEN_VERSION=3.2.5
     script:
+    # Skip japicmp as it halts the build due to some weird SSL errors when communicating with sonatype and apache repositories (2018-08-19)
     # As JaCoCo does not yet support Java 11 (as of 2018-06-16), we skip it
-    - mvn install -B -V -DtestsDayLimit=7 -Djacoco.skip=true
+    - mvn install -B -V -DtestsDayLimit=7 -Djapicmp.skip=true -Djacoco.skip=true
 before_install:
 - wget https://archive.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.zip
 - unzip -qq apache-maven-${MAVEN_VERSION}-bin.zip
@@ -54,6 +55,7 @@ before_script:
 # on the API (rate limiting), this can be easily debugged by checking the log
 - dig +short myip.opendns.com @resolver1.opendns.com
 script:
-- mvn install -B -V -DtestsDayLimit=7
+# Skip japicmp as it halts the build due to some weird SSL errors when communicating with sonatype and apache repositories (2018-08-19)
+- mvn install -B -V -DtestsDayLimit=7 -Djapicmp.skip=true
 after_success:
 # - mvn com.gavinmogan:codacy-maven-plugin:coverage -DcoverageReportFile=target/site/jacoco/jacoco.xml -DprojectToken=$CODACY_PROJECT_TOKEN -DapiToken=$CODACY_API_TOKEN
