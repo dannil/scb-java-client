@@ -242,7 +242,7 @@
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
-        <version>0.8.1</version>
+        <version>0.8.2</version>
         <executions>
           <!-- Prepares the property pointing to the JaCoCo runtime agent 
             which is passed as a VM argument when maven-surefire-plugin is executed -->
@@ -361,22 +361,7 @@
       <plugin>
         <groupId>com.github.siom79.japicmp</groupId>
         <artifactId>japicmp-maven-plugin</artifactId>
-        <version>0.12.0</version>
-        <!-- These dependencies are needed to compile on Java 9 and onward, 
-          as this plugin (version 0.12.0) doesn't yet declare these on their own. These 
-          dependencies can be removed in the future when the plugin supports Java 9 
-          out-of-box -->
-        <!-- The next release after 0.12 (probably 0.13?) added own dependency 
-          on javax.activation (see https://github.com/siom79/japicmp/commit/63a399f88bcb220 
-          5444051e3117d3269cefcc12f#diff-600376dffeb79835ede4a0b285078036R176) which 
-          means that this dependency can be removed after the next release -->
-        <dependencies>
-          <dependency>
-            <groupId>javax.activation</groupId>
-            <artifactId>activation</artifactId>
-            <version>1.1.1</version>
-          </dependency>
-        </dependencies>
+        <version>0.13.0</version>
         <configuration>
           <parameter>
             <onlyModified>true</onlyModified>
@@ -484,7 +469,7 @@
             <configuration>
               <rules>
                 <requireMavenVersion>
-                  <version>3.2.5</version>
+                  <version>3.3.9</version>
                 </requireMavenVersion>
                 <requireJavaVersion>
                   <version>${project.java.source}</version>
