@@ -33,7 +33,7 @@ matrix:
     # Make sure we are on the correct branch
     - if [[ $TRAVIS_BRANCH == test/run-all-tests ]]; then
         mvn sonar:sonar -Dsonar.organization=dannil-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONARQUBE_TOKEN;
-        sh push_build_results.sh;
+        rm -rf apache-maven-${MAVEN_VERSION}* && sh push_build_results.sh;
       fi;
 before_install:
 - wget https://archive.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.zip
