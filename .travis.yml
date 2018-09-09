@@ -47,7 +47,6 @@ before_script:
 # on the API (rate limiting), this can be easily debugged by checking the log
 - dig +short myip.opendns.com @resolver1.opendns.com
 script:
-# Skip japicmp as it halts the build due to some weird SSL errors when communicating with sonatype and apache repositories (2018-08-19)
-- mvn install -B -V -DtestsDayLimit=7 -Djapicmp.skip=true
+- mvn install -B -V -DtestsDayLimit=7
 after_success:
 # - mvn com.gavinmogan:codacy-maven-plugin:coverage -DcoverageReportFile=target/site/jacoco/jacoco.xml -DprojectToken=$CODACY_PROJECT_TOKEN -DapiToken=$CODACY_API_TOKEN
