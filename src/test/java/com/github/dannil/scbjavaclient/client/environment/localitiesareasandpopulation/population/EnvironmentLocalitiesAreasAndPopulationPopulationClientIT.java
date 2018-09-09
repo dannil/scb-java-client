@@ -15,17 +15,19 @@
 package com.github.dannil.scbjavaclient.client.environment.localitiesareasandpopulation.population;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import com.github.dannil.scbjavaclient.exception.SCBClientResponseTooLargeException;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
@@ -39,24 +41,21 @@ public class EnvironmentLocalitiesAreasAndPopulationPopulationClientIT {
     }
 
     // Daniel 2017-03-29: Returns HTTP 403
-    //
-    // @Test
-    // @Date("2018-03-29")
-    // public void getPopulationAndLandAreaWithinLocalities() {
-    // assertNotEquals(0,
-    // this.client.getPopulationAndLandAreaWithinLocalities().size());
-    // }
+    @Test
+    @Date("2018-06-28")
+    public void getPopulationAndLandAreaWithinLocalities() {
+        assertThrows(SCBClientResponseTooLargeException.class,
+                () -> this.client.getPopulationAndLandAreaWithinLocalities());
+    }
 
     // Daniel 2017-03-29: Returns HTTP 403
-    //
-    // @Test
-    // @Date("2018-03-29")
-    // public void
-    // getPopulationAndLandAreaWithinLocalitiesWithParametersEmptyLists() {
-    // assertNotEquals(0,
-    // this.client.getPopulationAndLandAreaWithinLocalities(Collections.<String>emptyList(),
-    // Collections.<Integer>emptyList()).size());
-    // }
+    @Test
+    @Date("2018-06-28")
+    public void getPopulationAndLandAreaWithinLocalitiesWithParametersEmptyLists() {
+        assertThrows(SCBClientResponseTooLargeException.class,
+                () -> this.client.getPopulationAndLandAreaWithinLocalities(Collections.<String>emptyList(),
+                        Collections.<Integer>emptyList()));
+    }
 
     @Test
     @Date("2018-03-29")

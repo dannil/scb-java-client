@@ -18,13 +18,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
+import org.junit.jupiter.api.Test;
+
 import com.github.dannil.scbjavaclient.client.businessactivities.ordersandturnover.oldtablessni2002.BusinessActivitiesOrdersAndTurnoverOldTablesSNI2002Client;
 import com.github.dannil.scbjavaclient.client.businessactivities.ordersandturnover.oldtablessni2007.BusinessActivitiesOrdersAndTurnoverOldTablesSNI2007Client;
 import com.github.dannil.scbjavaclient.client.businessactivities.ordersandturnover.ordersandturnover.BusinessActivitiesOrdersAndTurnoverOrdersAndTurnoverClient;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
-import org.junit.jupiter.api.Test;
 
 @Suite
 public class BusinessActivitiesOrdersAndTurnoverClientTest {

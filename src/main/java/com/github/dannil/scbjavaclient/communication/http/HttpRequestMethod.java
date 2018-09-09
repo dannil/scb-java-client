@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Daniel Nilsson
+ * Copyright 2018 Daniel Nilsson
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
@@ -12,26 +12,23 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.http;
+package com.github.dannil.scbjavaclient.communication.http;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+/**
+ * <p>Enumerable which contains the HTTP methods supported by the API.</p>
+ *
+ * @since 1.2.0
+ */
+public enum HttpRequestMethod {
 
-import com.github.dannil.scbjavaclient.test.extensions.Suite;
+    /**
+     * <p>Enumerable for HTTP method GET.</p>
+     */
+    GET,
 
-import org.junit.jupiter.api.Test;
-
-@Suite
-public class RequestMethodTest {
-
-    @Test
-    public void valueOf() {
-        assertEquals(RequestMethod.GET, RequestMethod.valueOf("GET"));
-    }
-
-    @Test
-    public void values() {
-        assertNotNull(RequestMethod.values());
-    }
+    /**
+     * <p>Enumerable for HTTP method POST.</p>
+     */
+    POST
 
 }

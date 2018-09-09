@@ -15,17 +15,19 @@
 package com.github.dannil.scbjavaclient.client.financialmarkets.balanceofpayments.portfolioinvestment;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import com.github.dannil.scbjavaclient.exception.SCBClientResponseTooLargeException;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
@@ -62,20 +64,21 @@ public class FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClientIT {
     }
 
     // Daniel 2017-06-11: Returns HTTP 403
-    //
-    // @Test @Date("2017-06-11")
-    // public void getNonResidentTradeInSwedishShares() {
-    // assertNotEquals(0, this.client.getNonResidentTradeInSwedishShares().size());
-    // }
-    //
+    @Test
+    @Date("2018-06-28")
+    public void getNonResidentTradeInSwedishShares() {
+        assertThrows(SCBClientResponseTooLargeException.class,
+                () -> this.client.getNonResidentTradeInSwedishShares());
+    }
+
     // Daniel 2017-06-11: Returns HTTP 403
-    //
-    // @Test @Date("2017-06-11")
-    // public void getNonResidentTradeInSwedishSharesWithParametersEmptyLists() {
-    // assertNotEquals(0,
-    // this.client.getNonResidentTradeInSwedishShares(Collections.<String>emptyList(),
-    // Collections.<String>emptyList(), Collections.<String>emptyList()).size());
-    // }
+    @Test
+    @Date("2018-06-28")
+    public void getNonResidentTradeInSwedishSharesWithParametersEmptyLists() {
+        assertThrows(SCBClientResponseTooLargeException.class,
+                () -> this.client.getNonResidentTradeInSwedishShares(Collections.<String>emptyList(),
+                Collections.<String>emptyList(), Collections.<String>emptyList()));
+    }
 
     @Test
     @Date("2017-06-11")

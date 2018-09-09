@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Daniel Nilsson
+ * Copyright 2018 Daniel Nilsson
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
@@ -12,15 +12,15 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.http.requester;
+package com.github.dannil.scbjavaclient.communication.http.requester;
 
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URLConnection;
 import java.nio.charset.Charset;
 
+import com.github.dannil.scbjavaclient.communication.http.HttpResponse;
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
-import com.github.dannil.scbjavaclient.http.HttpResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +28,7 @@ import org.slf4j.LoggerFactory;
 /**
  * <p>HTTP requester for POST requests.</p>
  *
- * @since 0.0.2
+ * @since 1.2.0
  */
 public class POSTRequester extends AbstractRequester {
 
@@ -77,7 +77,7 @@ public class POSTRequester extends AbstractRequester {
         if (this.query == null) {
             throw new IllegalStateException("Payload is null");
         }
-        LOGGER.info("POST: {}, {}", url, this.query);
+        LOGGER.debug("POST: {}, {}", url, this.query);
         try {
             URLConnection connection = getConnection(url);
             connection.setDoOutput(true);
@@ -85,7 +85,7 @@ public class POSTRequester extends AbstractRequester {
                 output.write(this.query.getBytes(getCharset()));
             }
             HttpResponse response = getResponse(connection);
-            LOGGER.info("HTTP {}: {}", response.getStatus().getCode(), url);
+            LOGGER.debug("HTTP {}: {}", response.getStatus().getCode(), url);
             return response;
         } catch (IOException e) {
             throw new SCBClientException(e);

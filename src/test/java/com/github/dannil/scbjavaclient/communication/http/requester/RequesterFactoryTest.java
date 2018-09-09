@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Daniel Nilsson
+ * Copyright 2018 Daniel Nilsson
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.http.requester;
+package com.github.dannil.scbjavaclient.communication.http.requester;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -21,10 +21,10 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.StandardCharsets;
 
-import com.github.dannil.scbjavaclient.http.RequestMethod;
-import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
 import org.junit.jupiter.api.Test;
+
+import com.github.dannil.scbjavaclient.communication.http.HttpRequestMethod;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 @Suite
 public class RequesterFactoryTest {
@@ -42,28 +42,28 @@ public class RequesterFactoryTest {
 
     @Test
     public void getGETRequester() {
-        AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET);
+        AbstractRequester get = RequesterFactory.getRequester(HttpRequestMethod.GET);
 
         assertEquals(StandardCharsets.UTF_8, get.getCharset());
     }
 
     @Test
     public void getGETRequesterWithCharset() {
-        AbstractRequester get = RequesterFactory.getRequester(RequestMethod.GET, StandardCharsets.US_ASCII);
+        AbstractRequester get = RequesterFactory.getRequester(HttpRequestMethod.GET, StandardCharsets.US_ASCII);
 
         assertEquals(StandardCharsets.US_ASCII, get.getCharset());
     }
 
     @Test
     public void getPOSTRequester() {
-        AbstractRequester post = RequesterFactory.getRequester(RequestMethod.POST);
+        AbstractRequester post = RequesterFactory.getRequester(HttpRequestMethod.POST);
 
         assertEquals(StandardCharsets.UTF_8, post.getCharset());
     }
 
     @Test
     public void getPOSTRequesterWithCharset() {
-        AbstractRequester post = RequesterFactory.getRequester(RequestMethod.POST, StandardCharsets.US_ASCII);
+        AbstractRequester post = RequesterFactory.getRequester(HttpRequestMethod.POST, StandardCharsets.US_ASCII);
 
         assertEquals(StandardCharsets.US_ASCII, post.getCharset());
     }

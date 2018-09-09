@@ -20,12 +20,12 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
@@ -43,17 +43,7 @@ public class PopulationStatisticsForeignBornPersonsClientIT {
     public void getSwedishAndForeignBornPopulation() {
         assertNotEquals(0, this.client.getSwedishAndForeignBornPopulation().size());
     }
-
-    @Test
-    @Date("2017-06-09")
-    @SuppressWarnings("deprecation")
-    public void getSwedishAndForeignBornPopulationDeprecated() {
-        assertNotEquals(0,
-                this.client.getSwedishAndForeignBornPopulation(Collections.<String>emptyList(),
-                        Collections.<String>emptyList(), Collections.<Integer>emptyList(),
-                        Collections.<Integer>emptyList()).size());
-    }
-
+    
     @Test
     @Date("2017-12-12")
     public void getSwedishAndForeignBornPopulationWithParametersEmptyLists() {

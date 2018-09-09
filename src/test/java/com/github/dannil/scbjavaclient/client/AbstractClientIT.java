@@ -17,6 +17,7 @@ package com.github.dannil.scbjavaclient.client;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
@@ -30,7 +31,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -42,8 +42,11 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.jupiter.api.Test;
+
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.exception.SCBClientResponseTooLargeException;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.test.TestConstants;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
@@ -52,8 +55,6 @@ import com.github.dannil.scbjavaclient.test.extensions.Suite;
 import com.github.dannil.scbjavaclient.test.utility.Files;
 import com.github.dannil.scbjavaclient.test.utility.Filters;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
-
-import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
@@ -129,16 +130,14 @@ public class AbstractClientIT {
     }
 
     @Test
-    @Date("2017-01-01")
+    @Date("2018-06-28")
     public void urlForbidden() {
         SCBClient client = new SCBClient(new Locale("sv", "SE"));
 
         // This call will result in a HTTP 403 response (forbidden) since the
         // response from this table is larger than the API allows (given all the available
         // inputs)
-        String response = client.getRawData("NV/NV0119/IVPKNLonAr");
-
-        assertNull(response);
+        assertThrows(SCBClientResponseTooLargeException.class, () -> client.getRawData("NV/NV0119/IVPKNLonAr"));
     }
 
     @Test
@@ -421,39 +420,12 @@ public class AbstractClientIT {
                 it.remove();
             }
         }
-        // Filter out known methods throwing HTTP 403. Format is the same used for the
-        // entries in the offending methods collection
-        Set<String> knownMethods = new HashSet<>();
-        knownMethods.add("PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient.getPriceIndexForDomesticSupply");
-        knownMethods.add("FinancialMarketsStatisticsClaimsAndLiabilitiesClient.getClaimsAndLiabilitiesOutsideSweden");
-        knownMethods.add(
-                "FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClient.getNonResidentTradeInSwedishShares");
-        knownMethods.add("PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient.getProducerPriceIndexHomeSales");
-        knownMethods.add("PublicFinancesAnnualAccountsStatementAccountsMunicipalityClient.getCostsAndIncomes");
-        knownMethods.add("PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient.getProducerPriceIndex");
-        knownMethods.add("GoodsAndServicesForeignTradeCNClient.getImportsAndExportsOfGoods");
-        knownMethods.add("GoodsAndServicesForeignTradeGoodsCNClient.getImportsAndExportsOfGoods");
-        knownMethods.add("PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient.getExportPriceIndex");
-        knownMethods.add("PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient.getBalanceSheet");
-        knownMethods.add("PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient.getImportPriceIndex");
-        knownMethods.add("PublicFinancesAnnualAccountsStatementAccountsCountyClient.getIncomeAndCosts");
-        knownMethods.add("PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient.getPriceIndexForDomesticSupply");
-        knownMethods.add("PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient.getIncomeStatements");
-        knownMethods.add(
-                "FinancialMarketsStatisticsDepositAndLendingClient.getLendingRatesToHouseholdsAndNonFinancialCorporationsBreakdownByMaturity");
-        knownMethods.add(
-                "EnvironmentLocalitiesAreasAndPopulationPopulationClient.getPopulationAndLandAreaWithinLocalities");
-        knownMethods.add("PopulationProjectionsLatestAssumptionsClient.getEmigrationRateAssumption");
-        knownMethods.add("PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient.getProducerPriceIndex");
-        for (String knownMethod : knownMethods) {
-            offendingMethods.remove(knownMethod);
-        }
         assertTrue(offendingMethods.isEmpty(),
                 "Methods not having correct overloads: " + offendingMethods.keySet().toString());
     }
 
     @Test
-    @Date("2017-12-11")
+    @Date("2018-06-25")
     public void checkForUsageOfAllCodes() throws Exception {
         String execPath = System.getProperty("user.dir");
 
@@ -519,7 +491,7 @@ public class AbstractClientIT {
                 continue;
             }
 
-            Object instance = clazz.newInstance();
+            Object instance = clazz.getConstructor().newInstance();
             URLEndpoint url = (URLEndpoint) clazz.getMethod("getUrl", new Class<?>[] {}).invoke(instance,
                     new Object[] {});
             Method[] declaredMethods = clazz.getDeclaredMethods();

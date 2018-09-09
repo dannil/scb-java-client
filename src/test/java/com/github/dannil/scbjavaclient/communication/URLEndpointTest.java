@@ -1,4 +1,4 @@
-package com.github.dannil.scbjavaclient.http;
+package com.github.dannil.scbjavaclient.communication;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -7,9 +7,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
 import org.junit.jupiter.api.Test;
+
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 @Suite
 public class URLEndpointTest {
@@ -84,6 +84,47 @@ public class URLEndpointTest {
         URLEndpoint url = new URLEndpoint("http://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0401/BE0401A/");
 
         assertEquals("BE/BE0401/BE0401A/", url.getTable());
+    }
+
+    @Test
+    public void getRootUrl() {
+        URLEndpoint url = URLEndpoint.getRootUrl();
+
+        String rootUrl = "https://api.scb.se/OV0104/v1/doris/sv/ssd/";
+        URLEndpoint endpoint = new URLEndpoint(rootUrl);
+
+        assertEquals(url, endpoint);
+        assertEquals("", endpoint.getTable());
+    }
+
+    @Test
+    public void getRootUrlWithLocale() {
+        URLEndpoint url = URLEndpoint.getRootUrl(new Locale("fr", "FR"));
+
+        String rootUrl = "https://api.scb.se/OV0104/v1/doris/fr/ssd/";
+        URLEndpoint endpoint = new URLEndpoint(rootUrl);
+
+        assertEquals(url, endpoint);
+        assertEquals("", endpoint.getTable());
+    }
+
+    @Test
+    public void getRootUrlWithLocaleAndCommunicationProtocol() {
+        URLEndpoint url = URLEndpoint.getRootUrl(new Locale("fr", "FR"), CommunicationProtocol.HTTP);
+
+        String rootUrl = "http://api.scb.se/OV0104/v1/doris/fr/ssd/";
+        URLEndpoint endpoint = new URLEndpoint(rootUrl);
+
+        assertEquals(url, endpoint);
+        assertEquals("", endpoint.getTable());
+        
+        url = URLEndpoint.getRootUrl(new Locale("da", "DK"), CommunicationProtocol.HTTPS);
+        
+        rootUrl = "https://api.scb.se/OV0104/v1/doris/da/ssd/";
+        endpoint = new URLEndpoint(rootUrl);
+        
+        assertEquals(url, endpoint);
+        assertEquals("", endpoint.getTable());
     }
 
     @Test

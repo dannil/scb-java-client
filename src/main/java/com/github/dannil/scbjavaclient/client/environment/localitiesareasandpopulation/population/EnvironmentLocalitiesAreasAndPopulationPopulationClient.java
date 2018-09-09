@@ -21,8 +21,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
@@ -51,19 +51,18 @@ public class EnvironmentLocalitiesAreasAndPopulationPopulationClient extends Abs
     }
 
     // Daniel 2017-03-29: Returns HTTP 403
-    //
-    // /**
-    // * <p>Fetch all population and land area within localities data.</p>
-    // *
-    // * @return the data wrapped in a list of
-    // * {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-    // * objects
-    // *
-    // * @see #getPopulationAndLandAreaWithinLocalities(Collection, Collection)
-    // */
-    // public List<ResponseModel> getPopulationAndLandAreaWithinLocalities() {
-    // return getPopulationAndLandAreaWithinLocalities(null, null);
-    // }
+    /**
+     * <p>Fetch all population and land area within localities data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getPopulationAndLandAreaWithinLocalities(Collection, Collection)
+     */
+    public List<ResponseModel> getPopulationAndLandAreaWithinLocalities() {
+        return getPopulationAndLandAreaWithinLocalities(null, null);
+    }
 
     /**
      * <p>Fetch all population and land area within localities data which match the input

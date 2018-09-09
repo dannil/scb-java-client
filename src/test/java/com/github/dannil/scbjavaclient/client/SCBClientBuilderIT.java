@@ -21,7 +21,7 @@ import java.util.Locale;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.github.dannil.scbjavaclient.http.CommunicationProtocol;
+import com.github.dannil.scbjavaclient.communication.CommunicationProtocol;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 @Suite

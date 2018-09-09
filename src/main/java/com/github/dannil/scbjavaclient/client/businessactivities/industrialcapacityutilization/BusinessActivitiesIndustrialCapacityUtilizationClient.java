@@ -19,7 +19,7 @@ import java.util.Locale;
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.industrialcapacityutilization.economicindicators.BusinessActivitiesIndustrialCapacityUtilizationEconomicIndicatorsClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.industrialcapacityutilization.industrialcapacityutilization.BusinessActivitiesIndustrialCapacityUtilizationIndustrialCapacityUtilizationClient;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
  * <p>Client which handles business activities industrial capacity utilization data

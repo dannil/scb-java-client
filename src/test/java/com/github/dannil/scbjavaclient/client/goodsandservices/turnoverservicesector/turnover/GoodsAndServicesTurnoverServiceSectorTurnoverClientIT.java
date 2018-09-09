@@ -15,17 +15,19 @@
 package com.github.dannil.scbjavaclient.client.goodsandservices.turnoverservicesector.turnover;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import com.github.dannil.scbjavaclient.exception.SCBClientResponseTooLargeException;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
@@ -38,17 +40,22 @@ public class GoodsAndServicesTurnoverServiceSectorTurnoverClientIT {
         this.client = new GoodsAndServicesTurnoverServiceSectorTurnoverClient();
     }
 
+    // Daniel, 2018-06-28
+    // Returns HTTP 403
     @Test
-    @Date("2017-12-18")
+    @Date("2018-06-28")
     public void getRetailSaleIndexSIC2007Monthly() {
-        assertNotEquals(0, this.client.getRetailSaleIndexSIC2007Monthly().size());
+        assertThrows(SCBClientResponseTooLargeException.class, () -> this.client.getRetailSaleIndexSIC2007Monthly());
     }
 
+    // Daniel, 2018-06-28
+    // Returns HTTP 403
     @Test
-    @Date("2017-12-18")
+    @Date("2018-06-28")
     public void getRetailSaleIndexSIC2007MonthlyWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getRetailSaleIndexSIC2007Monthly(Collections.<String>emptyList(),
-                Collections.<String>emptyList()).size());
+        assertThrows(SCBClientResponseTooLargeException.class,
+                () -> this.client.getRetailSaleIndexSIC2007Monthly(Collections.<String>emptyList(),
+                        Collections.<String>emptyList()));
     }
 
     @Test
@@ -127,7 +134,7 @@ public class GoodsAndServicesTurnoverServiceSectorTurnoverClientIT {
         assertNotEquals(0, this.client.getTurnoverIndexForTheServiceSectorSIC2007Monthly(industrialClassifications,
                 months).size());
     }
-    
+
     @Test
     @Date("2018-02-01")
     public void getRetailTradeSales() {

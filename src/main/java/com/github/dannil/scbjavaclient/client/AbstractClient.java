@@ -20,15 +20,16 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import com.github.dannil.scbjavaclient.communication.CommunicationProtocol;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
+import com.github.dannil.scbjavaclient.communication.http.HttpResponse;
+import com.github.dannil.scbjavaclient.communication.http.HttpStatusCode;
+import com.github.dannil.scbjavaclient.communication.http.requester.AbstractRequester;
+import com.github.dannil.scbjavaclient.communication.http.requester.GETRequester;
+import com.github.dannil.scbjavaclient.communication.http.requester.POSTRequester;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
+import com.github.dannil.scbjavaclient.exception.SCBClientResponseTooLargeException;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
-import com.github.dannil.scbjavaclient.http.CommunicationProtocol;
-import com.github.dannil.scbjavaclient.http.HttpResponse;
-import com.github.dannil.scbjavaclient.http.HttpStatusCode;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
-import com.github.dannil.scbjavaclient.http.requester.AbstractRequester;
-import com.github.dannil.scbjavaclient.http.requester.GETRequester;
-import com.github.dannil.scbjavaclient.http.requester.POSTRequester;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.utility.Localization;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
@@ -70,7 +71,8 @@ public abstract class AbstractClient {
     /**
      * <p>Returns the communication protocol for this client instance.</p>
      *
-     * @return the {@link com.github.dannil.scbjavaclient.http.CommunicationProtocol
+     * @return the
+     *         {@link com.github.dannil.scbjavaclient.communication.CommunicationProtocol
      *         CommunicationProtocol} for this client instance
      */
     public CommunicationProtocol getCommunicationProtocol() {
@@ -81,7 +83,8 @@ public abstract class AbstractClient {
      * <p>Sets the communication protocol for this client instance.</p>
      *
      * @param communicationProtocol
-     *            the {@link com.github.dannil.scbjavaclient.http.CommunicationProtocol
+     *            the
+     *            {@link com.github.dannil.scbjavaclient.communication.CommunicationProtocol
      *            CommunicationProtocol} for this client instance
      */
     public void setCommunicationProtocol(CommunicationProtocol communicationProtocol) {
@@ -186,6 +189,8 @@ public abstract class AbstractClient {
             // HTTP code 404, call the API again with the fallback language
             URLEndpoint endpointUrl = new URLEndpoint(url).toURL(APIConstants.FALLBACK_LOCALE);
             body = requester.getResponse(endpointUrl.toString()).getBody();
+        } else if (response.getStatus() == HttpStatusCode.FORBIDDEN) {
+            throw new SCBClientResponseTooLargeException("The response exceeded the maximum size allowed by the API");
         }
         return body;
     }

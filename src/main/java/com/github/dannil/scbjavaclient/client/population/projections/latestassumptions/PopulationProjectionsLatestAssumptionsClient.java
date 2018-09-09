@@ -21,8 +21,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
@@ -86,19 +86,18 @@ public class PopulationProjectionsLatestAssumptionsClient extends AbstractClient
     }
 
     // Daniel 2018-05-12: Returns HTTP 403
-    //
-    // /**
-    // * <p>Fetch all emigration rate assumption data.</p>
-    // *
-    // * @return the data wrapped in a list of
-    // * {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-    // * objects
-    // *
-    // * @see #getEmigrationRateAssumption(Collection, Collection, Collection, Collection)
-    // */
-    // public List<ResponseModel> getEmigrationRateAssumption() {
-    // return getEmigrationRateAssumption(null, null, null, null);
-    // }
+    /**
+     * <p>Fetch all emigration rate assumption data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getEmigrationRateAssumption(Collection, Collection, Collection, Collection)
+     */
+    public List<ResponseModel> getEmigrationRateAssumption() {
+        return getEmigrationRateAssumption(null, null, null, null);
+    }
 
     /**
      * <p>Fetch all emigration rate assumption data which match the input constraints.</p>
@@ -137,25 +136,6 @@ public class PopulationProjectionsLatestAssumptionsClient extends AbstractClient
      */
     public List<ResponseModel> getFertilityAssumption() {
         return getFertilityAssumption(null, null, null);
-    }
-
-    /**
-     * <p>Fetch all fertility assumption data which match the input constraints.</p>
-     *
-     * @param years
-     *            the years
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     *
-     * @deprecated use {@link #getFertilityAssumption(Collection, Collection, Collection)}
-     */
-    @Deprecated
-    public List<ResponseModel> getFertilityAssumption(Collection<Integer> years) {
-        Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.TIME_CODE, years);
-
-        return getResponseModels("BefProgFruktTotN", mappings);
     }
 
     /**

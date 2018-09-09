@@ -21,8 +21,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
@@ -52,20 +52,18 @@ public class PublicFinancesAnnualAccountsStatementAccountsMunicipalityClient ext
         super(locale);
     }
 
-    // Daniel 2017-04-17: Returns HTTP 403
-    //
-    // /**
-    // * <p>Fetch all costs and incomes data.</p>
-    // *
-    // * @return the data wrapped in a list of
-    // * {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-    // * objects
-    // *
-    // * @see #getCostsAndIncomes(Collection, Collection, Collection)
-    // */
-    // public List<ResponseModel> getCostsAndIncomes() {
-    // return getCostsAndIncomes(null, null, null);
-    // }
+    /**
+     * <p>Fetch all costs and incomes data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getCostsAndIncomes(Collection, Collection, Collection)
+     */
+    public List<ResponseModel> getCostsAndIncomes() {
+        return getCostsAndIncomes(null, null, null);
+    }
 
     /**
      * <p>Fetch all costs and incomes data which match the input constraints.</p>
@@ -161,7 +159,7 @@ public class PublicFinancesAnnualAccountsStatementAccountsMunicipalityClient ext
         mappings.put("Omsorg", cares);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("IndFamTkrR", mappings);
+        return getResponseModels("IndFamTkrRN", mappings);
     }
 
     /**

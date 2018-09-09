@@ -15,18 +15,19 @@
 package com.github.dannil.scbjavaclient.client.population.projections.latestassumptions;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.test.extensions.AllowFailure;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import com.github.dannil.scbjavaclient.exception.SCBClientResponseTooLargeException;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
@@ -63,23 +64,21 @@ public class PopulationProjectionsLatestAssumptionsClientIT {
     }
 
     // Daniel 2018-05-12: Returns HTTP 403
-    //
-    // @Test
-    // @Date("2018-05-12")
-    // public void getEmigrationAssumption() {
-    // assertNotEquals(0, this.client.getEmigrationRateAssumption().size());
-    // }
+    @Test
+    @Date("2018-06-28")
+    public void getEmigrationAssumption() {
+        assertThrows(SCBClientResponseTooLargeException.class, () -> this.client.getEmigrationRateAssumption().size());
+    }
 
     // Daniel 2018-05-12: Returns HTTP 403
-    //
-    // @Test
-    // @Date("2018-05-12")
-    // public void getEmigrationAssumptionWithParametersEmptyLists() {
-    // assertNotEquals(0,
-    // this.client.getEmigrationRateAssumption(Collections.<String>emptyList(),
-    // Collections.<Integer>emptyList(), Collections.<String>emptyList(),
-    // Collections.<Integer>emptyList()).size());
-    // }
+    @Test
+    @Date("2018-06-28")
+    public void getEmigrationAssumptionWithParametersEmptyLists() {
+        assertThrows(SCBClientResponseTooLargeException.class,
+                () -> this.client.getEmigrationRateAssumption(Collections.<String>emptyList(),
+                        Collections.<Integer>emptyList(), Collections.<String>emptyList(),
+                        Collections.<Integer>emptyList()).size());
+    }
 
     @Test
     @Date("2018-05-12")
@@ -96,24 +95,6 @@ public class PopulationProjectionsLatestAssumptionsClientIT {
     @Date("2018-05-12")
     public void getFertilityAssumption() {
         assertNotEquals(0, this.client.getFertilityAssumption().size());
-    }
-
-    @Test
-    @SuppressWarnings("deprecation")
-    @AllowFailure
-    @Date("2018-05-12")
-    public void getFertilityAssumptionWithParametersEmptyListsDeprecated1() {
-        assertNotEquals(0, this.client.getFertilityAssumption(Collections.<Integer>emptyList()).size());
-    }
-
-    @Test
-    @SuppressWarnings("deprecation")
-    @AllowFailure
-    @Date("2018-05-12")
-    public void getFertilityAssumptionWithParametersDeprecated1() {
-        List<Integer> years = Arrays.asList(2038, 2053);
-
-        assertNotEquals(0, this.client.getFertilityAssumption(years).size());
     }
 
     @Test

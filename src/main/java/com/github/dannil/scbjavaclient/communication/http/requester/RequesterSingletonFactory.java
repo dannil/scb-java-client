@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Daniel Nilsson
+ * Copyright 2018 Daniel Nilsson
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
@@ -12,30 +12,30 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.http.requester;
+package com.github.dannil.scbjavaclient.communication.http.requester;
 
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.EnumMap;
 import java.util.Map;
 
-import com.github.dannil.scbjavaclient.http.RequestMethod;
+import com.github.dannil.scbjavaclient.communication.http.HttpRequestMethod;
 
 /**
  * <p>Factory for returning singleton requesters. The regular {@link RequesterFactory} is
  * recommended instead of this class; this class should only be used if you really need a
  * singleton.</p>
  *
- * @since 0.0.2
+ * @since 1.2.0
  */
 public final class RequesterSingletonFactory {
 
-    private static Map<RequestMethod, AbstractRequester> requesters;
+    private static Map<HttpRequestMethod, AbstractRequester> requesters;
 
     static {
-        requesters = new EnumMap<>(RequestMethod.class);
-        requesters.put(RequestMethod.GET, GETHolder.INSTANCE);
-        requesters.put(RequestMethod.POST, POSTHolder.INSTANCE);
+        requesters = new EnumMap<>(HttpRequestMethod.class);
+        requesters.put(HttpRequestMethod.GET, GETHolder.INSTANCE);
+        requesters.put(HttpRequestMethod.POST, POSTHolder.INSTANCE);
     }
 
     /**
@@ -55,7 +55,7 @@ public final class RequesterSingletonFactory {
      *            the method (i.e. GET or POST)
      * @return a singleton requester which matches the method.
      */
-    public static AbstractRequester getRequester(RequestMethod method) {
+    public static AbstractRequester getRequester(HttpRequestMethod method) {
         return getRequester(method, StandardCharsets.UTF_8);
     }
 
@@ -69,7 +69,7 @@ public final class RequesterSingletonFactory {
      *            the character encoding to use
      * @return a singleton requester which matches the method.
      */
-    public static AbstractRequester getRequester(RequestMethod method, Charset charset) {
+    public static AbstractRequester getRequester(HttpRequestMethod method, Charset charset) {
         if (!requesters.containsKey(method)) {
             throw new IllegalArgumentException(method + " is not a valid method");
         }

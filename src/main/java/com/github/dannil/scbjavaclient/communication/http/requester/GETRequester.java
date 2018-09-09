@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Daniel Nilsson
+ * Copyright 2018 Daniel Nilsson
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
@@ -12,13 +12,13 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.http.requester;
+package com.github.dannil.scbjavaclient.communication.http.requester;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
 
+import com.github.dannil.scbjavaclient.communication.http.HttpResponse;
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
-import com.github.dannil.scbjavaclient.http.HttpResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +26,7 @@ import org.slf4j.LoggerFactory;
 /**
  * <p>HTTP requester for GET requests.</p>
  *
- * @since 0.0.2
+ * @since 1.2.0
  */
 public class GETRequester extends AbstractRequester {
 
@@ -51,10 +51,10 @@ public class GETRequester extends AbstractRequester {
 
     @Override
     public HttpResponse getResponse(String url) {
-        LOGGER.info("GET: {}", url);
+        LOGGER.debug("GET: {}", url);
         try {
             HttpResponse response = getResponse(getConnection(url));
-            LOGGER.info("HTTP {}: {}", response.getStatus().getCode(), url);
+            LOGGER.debug("HTTP {}: {}", response.getStatus().getCode(), url);
             return response;
         } catch (IOException e) {
             throw new SCBClientException(e);

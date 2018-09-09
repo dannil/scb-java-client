@@ -21,8 +21,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
@@ -47,47 +47,6 @@ public class LivingConditionsFamiliesAdoptionsClient extends AbstractClient {
      */
     public LivingConditionsFamiliesAdoptionsClient(Locale locale) {
         super(locale);
-    }
-
-    /**
-     * <p>Fetch all child adoptions data.</p>
-     *
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     *
-     * @see #getChildAdoptions(Collection, Collection, Collection, Collection)
-     *
-     * @deprecated Use
-     *             {@link #getAllAdoptedChildrenAndYoungPersons(Collection, Collection, Collection, Collection)}
-     */
-    @Deprecated
-    public List<ResponseModel> getChildAdoptions() {
-        return getAllAdoptedChildrenAndYoungPersons(null, null, null, null);
-    }
-
-    /**
-     * <p>Fetch all child adoptions data which match the input constraints.</p>
-     *
-     * @param sexes
-     *            the sexes
-     * @param ages
-     *            the ages
-     * @param birthCountries
-     *            the birth countries
-     * @param years
-     *            the years
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     *
-     * @deprecated Use
-     *             {@link #getAllAdoptedChildrenAndYoungPersons(Collection, Collection, Collection, Collection)}
-     */
-    @Deprecated
-    public List<ResponseModel> getChildAdoptions(Collection<String> sexes, Collection<String> ages,
-            Collection<String> birthCountries, Collection<Integer> years) {
-        return getAllAdoptedChildrenAndYoungPersons(sexes, ages, birthCountries, years);
     }
 
     /**

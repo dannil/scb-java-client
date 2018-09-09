@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Daniel Nilsson
+ * Copyright 2018 Daniel Nilsson
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.http.requester;
+package com.github.dannil.scbjavaclient.communication.http.requester;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -23,10 +23,10 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.StandardCharsets;
 
-import com.github.dannil.scbjavaclient.http.RequestMethod;
-import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
 import org.junit.jupiter.api.Test;
+
+import com.github.dannil.scbjavaclient.communication.http.HttpRequestMethod;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 @Suite
 public class RequesterSingletonFactoryTest {
@@ -110,9 +110,9 @@ public class RequesterSingletonFactoryTest {
 
     @Test
     public void getRequester() {
-        AbstractRequester abs = RequesterSingletonFactory.getRequester(RequestMethod.GET);
+        AbstractRequester abs = RequesterSingletonFactory.getRequester(HttpRequestMethod.GET);
 
-        assertEquals(RequesterSingletonFactory.getRequester(RequestMethod.GET), abs);
+        assertEquals(RequesterSingletonFactory.getRequester(HttpRequestMethod.GET), abs);
     }
 
     @Test
@@ -132,8 +132,8 @@ public class RequesterSingletonFactoryTest {
 
     @Test
     public void requesterIsSingleton() {
-        AbstractRequester abs1 = RequesterSingletonFactory.getRequester(RequestMethod.GET, StandardCharsets.UTF_8);
-        AbstractRequester abs2 = RequesterSingletonFactory.getRequester(RequestMethod.GET, StandardCharsets.US_ASCII);
+        AbstractRequester abs1 = RequesterSingletonFactory.getRequester(HttpRequestMethod.GET, StandardCharsets.UTF_8);
+        AbstractRequester abs2 = RequesterSingletonFactory.getRequester(HttpRequestMethod.GET, StandardCharsets.US_ASCII);
 
         assertEquals(StandardCharsets.US_ASCII, abs1.getCharset());
         assertEquals(abs1.getCharset(), abs2.getCharset());

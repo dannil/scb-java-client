@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Daniel Nilsson
+ * Copyright 2018 Daniel Nilsson
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
@@ -12,17 +12,17 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.http.requester;
+package com.github.dannil.scbjavaclient.communication.http.requester;
 
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
-import com.github.dannil.scbjavaclient.http.RequestMethod;
+import com.github.dannil.scbjavaclient.communication.http.HttpRequestMethod;
 
 /**
  * <p>Factory for returning regular (non-singleton) requesters.</p>
  *
- * @since 0.0.2
+ * @since 1.2.0
  */
 public final class RequesterFactory {
 
@@ -43,7 +43,7 @@ public final class RequesterFactory {
      *            the method (i.e. GET or POST)
      * @return a regular (non-singleton) requester which matches the method.
      */
-    public static AbstractRequester getRequester(RequestMethod method) {
+    public static AbstractRequester getRequester(HttpRequestMethod method) {
         return getRequester(method, StandardCharsets.UTF_8);
     }
 
@@ -58,7 +58,7 @@ public final class RequesterFactory {
      *            the character encoding to use
      * @return a regular (non-singleton) requester which matches the method.
      */
-    public static AbstractRequester getRequester(RequestMethod method, Charset charset) {
+    public static AbstractRequester getRequester(HttpRequestMethod method, Charset charset) {
         switch (method) {
             case GET:
                 return new GETRequester(charset);

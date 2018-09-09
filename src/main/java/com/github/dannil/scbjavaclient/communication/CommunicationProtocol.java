@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.http;
+package com.github.dannil.scbjavaclient.communication;
 
 /**
  * <p>Enumerable for the available communication protocols which the API (and in extension

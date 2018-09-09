@@ -21,8 +21,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
@@ -61,31 +61,6 @@ public class PopulationStatisticsForeignBornPersonsClient extends AbstractClient
      */
     public List<ResponseModel> getSwedishAndForeignBornPopulation() {
         return getSwedishAndForeignBornPopulation(null, null, null, null, null);
-    }
-
-    /**
-     * <p>Fetch all Swedish and foreign-born population data which match the input
-     * constraints.</p>
-     *
-     * @param regions
-     *            the regions
-     * @param ages
-     *            the ages
-     * @param sexes
-     *            the sexes
-     * @param years
-     *            the years
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     * @deprecated use
-     *             {@link #getSwedishAndForeignBornPopulation(Collection, Collection, Collection, Collection, Collection)}
-     *             instead.
-     */
-    @Deprecated
-    public List<ResponseModel> getSwedishAndForeignBornPopulation(Collection<String> regions, Collection<String> ages,
-            Collection<Integer> sexes, Collection<Integer> years) {
-        return getSwedishAndForeignBornPopulation(regions, ages, sexes, null, years);
     }
 
     /**

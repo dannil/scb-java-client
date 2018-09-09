@@ -21,8 +21,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
@@ -50,6 +50,8 @@ public class GoodsAndServicesTurnoverServiceSectorTurnoverClient extends Abstrac
         super(locale);
     }
 
+    // Daniel, 2018-06-28
+    // Returns HTTP 403
     /**
      * <p>Fetch all retail sale index by industry (SIC 2007) monthly data.</p>
      *
@@ -201,7 +203,8 @@ public class GoodsAndServicesTurnoverServiceSectorTurnoverClient extends Abstrac
     }
 
     /**
-     * <p>Fetch all retail trade sales comparison to previous period data which match the input constraints.</p>
+     * <p>Fetch all retail trade sales comparison to previous period data which match the
+     * input constraints.</p>
      *
      * @param indicators
      *            the indicators

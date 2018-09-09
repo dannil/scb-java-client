@@ -15,16 +15,19 @@
 package com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods.cn;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
-
-import com.github.dannil.scbjavaclient.test.extensions.Date;
-import com.github.dannil.scbjavaclient.test.extensions.Remote;
-import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import com.github.dannil.scbjavaclient.exception.SCBClientResponseTooLargeException;
+import com.github.dannil.scbjavaclient.test.extensions.Date;
+import com.github.dannil.scbjavaclient.test.extensions.Remote;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 @Suite
 @Remote
@@ -38,22 +41,20 @@ public class GoodsAndServicesForeignTradeGoodsCNClientIT {
     }
 
     // Daniel 2017-04-28: Returns HTTP 403
-    //
-    // @Test
-    // @Date("2017-04-28")
-    // public void getImportsAndExportsOfGoods() {
-    // assertNotEquals(0, this.client.getImportsAndExportsOfGoods().size());
-    // }
+    @Test
+    @Date("2018-06-28")
+    public void getImportsAndExportsOfGoods() {
+        assertThrows(SCBClientResponseTooLargeException.class, () -> this.client.getImportsAndExportsOfGoods());
+    }
 
     // Daniel 2017-04-28: Returns HTTP 403
-    //
-    // @Test
-    // @Date("2017-04-28")
-    // public void getImportsAndExportsOfGoodsWithParametersEmptyLists() {
-    // assertNotEquals(0,
-    // this.client.getImportsAndExportsOfGoods(Collections.<String>emptyList(),
-    // Collections.<Integer>emptyList()).size());
-    // }
+    @Test
+    @Date("2018-06-28")
+    public void getImportsAndExportsOfGoodsWithParametersEmptyLists() {
+        assertThrows(SCBClientResponseTooLargeException.class,
+                () -> this.client.getImportsAndExportsOfGoods(Collections.<String>emptyList(),
+                        Collections.<Integer>emptyList()));
+    }
 
     @Test
     @Date("2017-04-28")

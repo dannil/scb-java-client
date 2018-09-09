@@ -14,6 +14,7 @@
 
 package com.github.dannil.scbjavaclient.client;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -35,14 +36,14 @@ import com.github.dannil.scbjavaclient.client.population.PopulationClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.PricesAndConsumptionClient;
 import com.github.dannil.scbjavaclient.client.publicfinances.PublicFinancesClient;
 import com.github.dannil.scbjavaclient.client.transport.TransportClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
+import com.github.dannil.scbjavaclient.communication.http.HttpResponse;
+import com.github.dannil.scbjavaclient.communication.http.HttpStatusCode;
+import com.github.dannil.scbjavaclient.communication.http.requester.AbstractRequester;
+import com.github.dannil.scbjavaclient.communication.http.requester.GETRequester;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.format.json.JsonAPIConfigTableFormat;
 import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
-import com.github.dannil.scbjavaclient.http.HttpResponse;
-import com.github.dannil.scbjavaclient.http.HttpStatusCode;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
-import com.github.dannil.scbjavaclient.http.requester.AbstractRequester;
-import com.github.dannil.scbjavaclient.http.requester.GETRequester;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
@@ -203,11 +204,12 @@ public class SCBClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Fetches all the inputs for a given table from the API.</p>
+     * <p>Fetches all the inputs for a given table from the API. If the table doesn't
+     * exist an empty <code>Map</code> will be returned.</p>
      *
      * @param table
      *            the table to fetch the inputs from
-     * @return a collection of all codes and their respective values
+     * @return a collection of all codes and their respective values for the given table
      *
      * @see com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat#getPairs()
      *      JsonAPITableFormat#getPairs()
@@ -216,11 +218,15 @@ public class SCBClient extends AbstractContainerClient {
         String url = getUrl() + table;
         String json = doGetRequest(url);
 
+        if (json == null) {
+            return new HashMap<>();
+        }
         return new JsonAPITableFormat(json).getPairs();
     }
 
     /**
-     * <p>Returns the list of the available regions for a given table.</p>
+     * <p>Returns the list of the available regions for a given table. If the table
+     * doesn't exist an empty <code>List</code> will be returned.</p>
      *
      * @param table
      *            the table to retrieve the regions from
@@ -230,12 +236,16 @@ public class SCBClient extends AbstractContainerClient {
         String url = getUrl() + table;
         String json = doGetRequest(url);
 
+        if (json == null) {
+            return new ArrayList<>();
+        }
         JsonAPITableFormat format = new JsonAPITableFormat(json);
         return format.getValues(APIConstants.REGION_CODE);
     }
 
     /**
-     * <p>Returns the list of the available times for a given table.</p>
+     * <p>Returns the list of the available times for a given table. If the table doesn't
+     * exist an empty <code>List</code> will be returned.</p>
      *
      * @param table
      *            the table to retrieve the times from
@@ -245,6 +255,9 @@ public class SCBClient extends AbstractContainerClient {
         String url = getUrl() + table;
         String json = doGetRequest(url);
 
+        if (json == null) {
+            return new ArrayList<>();
+        }
         JsonAPITableFormat format = new JsonAPITableFormat(json);
         return format.getValues(APIConstants.TIME_CODE);
     }

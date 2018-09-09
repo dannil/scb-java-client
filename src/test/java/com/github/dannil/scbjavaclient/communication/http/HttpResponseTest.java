@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Daniel Nilsson
+ * Copyright 2018 Daniel Nilsson
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
@@ -12,18 +12,18 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.http;
+package com.github.dannil.scbjavaclient.communication.http;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.io.ByteArrayInputStream;
-import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
 import org.junit.jupiter.api.Test;
+
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 @Suite
 public class HttpResponseTest {
@@ -45,11 +45,37 @@ public class HttpResponseTest {
     }
 
     @Test
-    public void getStream() throws FileNotFoundException {
+    public void getStream() {
         InputStream stream = new ByteArrayInputStream(new byte[] {});
         HttpResponse response = new HttpResponse(HttpStatusCode.OK, stream);
 
         assertNotNull(response.getStream());
+    }
+    
+    @Test
+    public void getBody() {
+        String bodyContent = "hello world";
+        InputStream stream = new ByteArrayInputStream(bodyContent.getBytes());
+        HttpResponse response = new HttpResponse(HttpStatusCode.OK, stream);
+
+        assertEquals("hello world", response.getBody());
+    }
+    
+    @Test
+    public void getBodyEmpty() {
+        String bodyContent = "";
+        InputStream stream = new ByteArrayInputStream(bodyContent.getBytes());
+        HttpResponse response = new HttpResponse(HttpStatusCode.OK, stream);
+
+        assertEquals("", response.getBody());
+    }
+    
+    @Test
+    public void getBodyNullStream() {
+        InputStream stream = null;
+        HttpResponse response = new HttpResponse(HttpStatusCode.OK, stream);
+
+        assertNull(response.getBody());
     }
 
 }

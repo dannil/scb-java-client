@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.dannil</groupId>
   <artifactId>scb-java-client</artifactId>
-  <version>1.2.0-SNAPSHOT</version>
+  <version>2.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>scb-java-client</name>
@@ -78,16 +76,11 @@
       <version>2.6</version>
     </dependency>
 
-    <!-- Logging -->
+    <!-- Core dependencies (logging) -->
     <dependency>
-      <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-core</artifactId>
-      <version>2.11.0</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-slf4j-impl</artifactId>
-      <version>2.11.0</version>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.8.0-beta2</version>
     </dependency>
 
     <!-- Test dependencies -->
@@ -108,6 +101,20 @@
       <artifactId>junit-platform-launcher</artifactId>
       <version>1.2.0</version>
       <scope>test</scope>
+    </dependency>
+
+    <!-- Test dependencies (logging) -->
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-slf4j18-impl</artifactId>
+      <version>2.11.1</version>
+      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-api</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
     <!-- TESTING -->
@@ -166,9 +173,52 @@
         </plugins>
       </build>
     </profile>
+    <profile>
+      <id>generate-javadoc-html5</id>
+      <activation>
+        <jdk>[9,)</jdk>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <configuration>
+              <additionalJOptions>
+                <additionalJOption>-Xdoclint:all</additionalJOption>
+                <additionalJOption>-html5</additionalJOption>
+              </additionalJOptions>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
   </profiles>
 
   <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>3.0.1</version>
+          <configuration>
+            <additionalJOptions>
+              <additionalJOption>-Xdoclint:all</additionalJOption>
+            </additionalJOptions>
+            <failOnError>true</failOnError>
+          </configuration>
+          <executions>
+            <execution>
+              <id>attach-javadocs</id>
+              <goals>
+                <goal>jar</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </pluginManagement>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -206,7 +256,7 @@
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
-        <version>0.8.1</version>
+        <version>0.8.2</version>
         <executions>
           <!-- Prepares the property pointing to the JaCoCo runtime agent 
             which is passed as a VM argument when maven-surefire-plugin is executed -->
@@ -304,7 +354,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>animal-sniffer-maven-plugin</artifactId>
-        <version>1.16</version>
+        <version>1.17</version>
         <executions>
           <execution>
             <id>signature-check</id>
@@ -325,22 +375,7 @@
       <plugin>
         <groupId>com.github.siom79.japicmp</groupId>
         <artifactId>japicmp-maven-plugin</artifactId>
-        <version>0.12.0</version>
-        <!-- These dependencies are needed to compile on Java 9 and onward, 
-          as this plugin (version 0.12.0) doesn't yet declare these on their own. These 
-          dependencies can be removed in the future when the plugin supports Java 9 
-          out-of-box -->
-        <!-- The next release after 0.12 (probably 0.13?) added own dependency 
-          on javax.activation (see https://github.com/siom79/japicmp/commit/63a399f88bcb220 
-          5444051e3117d3269cefcc12f#diff-600376dffeb79835ede4a0b285078036R176) which 
-          means that this dependency can be removed after the next release -->
-        <dependencies>
-          <dependency>
-            <groupId>javax.activation</groupId>
-            <artifactId>activation</artifactId>
-            <version>1.1.1</version>
-          </dependency>
-        </dependencies>
+        <version>0.13.0</version>
         <configuration>
           <parameter>
             <onlyModified>true</onlyModified>
@@ -365,7 +400,7 @@
           <dependency>
             <groupId>com.puppycrawl.tools</groupId>
             <artifactId>checkstyle</artifactId>
-            <version>8.10.1</version>
+            <version>8.12</version>
           </dependency>
         </dependencies>
         <executions>
@@ -385,11 +420,14 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.7.0</version>
+        <version>3.8.0</version>
         <configuration>
           <source>${project.java.source}</source>
           <target>${project.java.target}</target>
           <encoding>${project.build.sourceEncoding}</encoding>
+          <compilerArgs>
+            <arg>-Xlint:all</arg>
+          </compilerArgs>
         </configuration>
       </plugin>
       <plugin>
@@ -405,7 +443,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
-        <version>3.0.0-M1</version>
+        <version>3.0.0-M2</version>
         <executions>
           <execution>
             <id>enforce-consistency</id>
@@ -445,7 +483,7 @@
             <configuration>
               <rules>
                 <requireMavenVersion>
-                  <version>3.1.1</version>
+                  <version>3.3.9</version>
                 </requireMavenVersion>
                 <requireJavaVersion>
                   <version>${project.java.source}</version>
@@ -498,12 +536,6 @@
               <rules>
                 <enforceBytecodeVersion>
                   <maxJdkVersion>${project.java.target}</maxJdkVersion>
-                  <!-- Exclude SLF4J (1.8.0-alpha2 and later) as it contains 
-                    module-info.java, therefore targeted to Java 9. This does however not break 
-                    our build, so lets exclude it -->
-                  <excludes>
-                    <exclude>org.slf4j:slf4j-api:jar:1.8.0-alpha2</exclude>
-                  </excludes>
                 </enforceBytecodeVersion>
               </rules>
               <fail>true</fail>
@@ -545,7 +577,7 @@
           <dependency>
             <groupId>org.codehaus.mojo</groupId>
             <artifactId>extra-enforcer-rules</artifactId>
-            <version>1.0-beta-7</version>
+            <version>1.0-beta-9</version>
           </dependency>
         </dependencies>
       </plugin>
@@ -562,19 +594,6 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>3.0.1</version>
-        <configuration>
-          <additionalparam>-Xdoclint:all</additionalparam>
-          <failOnError>true</failOnError>
-        </configuration>
-        <executions>
-          <execution>
-            <id>attach-javadocs</id>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -612,7 +631,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-project-info-reports-plugin</artifactId>
-        <version>2.9</version>
+        <version>3.0.0</version>
         <reportSets>
           <reportSet>
             <reports>
@@ -621,16 +640,16 @@
                 menu, the next below that and so forth -->
               <report>index</report>
               <report>summary</report>
-              <report>cim</report>
+              <report>ci-management</report>
               <report>dependencies</report>
               <report>dependency-info</report>
               <report>distribution-management</report>
-              <report>issue-tracking</report>
-              <report>license</report>
+              <report>issue-management</report>
+              <report>licenses</report>
               <report>plugin-management</report>
               <report>plugins</report>
               <report>scm</report>
-              <report>project-team</report>
+              <report>team</report>
             </reports>
           </reportSet>
         </reportSets>
