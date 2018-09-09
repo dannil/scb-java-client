@@ -32,6 +32,7 @@ import java.util.concurrent.TimeUnit;
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.SCBClient;
+import com.github.dannil.scbjavaclient.client.SCBClientBuilder;
 import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.utility.Files;
 import com.github.dannil.scbjavaclient.test.utility.Filters;
@@ -48,7 +49,7 @@ public class GetImplementedTables {
         List<File> files = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient/client", "*.java");
 
         // Filter out some classes from the list
-        Filters.files(files, AbstractClient.class, AbstractContainerClient.class, SCBClient.class);
+        Filters.files(files, AbstractClient.class, AbstractContainerClient.class, SCBClient.class, SCBClientBuilder.class);
 
         Collection<String> tables = new TreeSet<>(Collator.getInstance());
         for (File f : files) {
