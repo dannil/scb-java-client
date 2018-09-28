@@ -18,6 +18,7 @@ import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.environment.landuse.buildings.EnvironmentLandUseBuildingsClient;
+import com.github.dannil.scbjavaclient.client.environment.landuse.infrastructurefortransport.EnvironmentLandUseInfrastructureForTransportClient;
 import com.github.dannil.scbjavaclient.client.environment.landuse.planning.EnvironmentLandUsePlanningClient;
 import com.github.dannil.scbjavaclient.client.environment.landuse.usage.EnvironmentLandUseUsageClient;
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
@@ -36,6 +37,7 @@ public class EnvironmentLandUseClient extends AbstractContainerClient {
         super();
 
         addClient("buildings", new EnvironmentLandUseBuildingsClient());
+        addClient("infrastructurefortransport", new EnvironmentLandUseInfrastructureForTransportClient());
         addClient("planning", new EnvironmentLandUsePlanningClient());
         addClient("usage", new EnvironmentLandUseUsageClient());
     }
@@ -60,6 +62,16 @@ public class EnvironmentLandUseClient extends AbstractContainerClient {
      */
     public EnvironmentLandUseBuildingsClient buildings() {
         return (EnvironmentLandUseBuildingsClient) getClient("buildings");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with environment land use infrastructure for
+     * transport data.</p>
+     *
+     * @return a client for environment land use infrastructure for transport data
+     */
+    public EnvironmentLandUseInfrastructureForTransportClient infrastructureForTransport() {
+        return (EnvironmentLandUseInfrastructureForTransportClient) getClient("infrastructurefortransport");
     }
 
     /**
