@@ -29,11 +29,12 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
  * <p>Client which handles environment land used for transport data fetching.</p>
  *
  * @since 0.4.0
- * 
+ *
  * @deprecated use
  *             {@link com.github.dannil.scbjavaclient.client.environment.landuse.infrastructurefortransport
  *             EnvironmentLandUseInfrastructureForTransportClient} instead.
  */
+@Deprecated
 public class EnvironmentLandUsedForTransportClient extends AbstractClient {
 
     /**
