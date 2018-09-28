@@ -26,9 +26,10 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles environment land use infrastructure for transport data fetching.</p>
+ * <p>Client which handles environment land use infrastructure for transport data
+ * fetching.</p>
  *
- * @since 0.4.0
+ * @since 2.1.0
  */
 public class EnvironmentLandUseInfrastructureForTransportClient extends AbstractClient {
 
