@@ -119,7 +119,12 @@ public class EnvironmentClient extends AbstractContainerClient {
      * data.</p>
      *
      * @return a client for environment land used for transport data
+     *
+     * @deprecated use
+     *             {@link com.github.dannil.scbjavaclient.client.environment.landuse.EnvironmentLandUseClient#infrastructureForTransport()
+     *             EnvironmentLandUseClient#infrastructureForTransport()} instead.
      */
+    @Deprecated
     public EnvironmentLandUsedForTransportClient landUsedForTransport() {
         return (EnvironmentLandUsedForTransportClient) getClient("landusedfortransport");
     }
