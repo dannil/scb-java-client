@@ -6,4 +6,8 @@
 
 <suppressions>
   <suppress checks="Regexp" files="package-info\.java" />
+
+  <!-- Due to deprecation notice on method landUsedForTransport -->
+  <suppress checks="LineLength" files="EnvironmentClient\.java"
+    lines="123-125" />
 </suppressions>
