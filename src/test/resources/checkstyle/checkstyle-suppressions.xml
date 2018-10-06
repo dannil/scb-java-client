@@ -7,7 +7,17 @@
 <suppressions>
   <suppress checks="Regexp" files="package-info\.java" />
 
+  <!-- Due to deprecation notice on class -->
+  <suppress checks="LineLength" files="EnvironmentIslandsClient\.java"
+    lines="33-35" />
+
+  <!-- Due to deprecation notice on method islands -->
+  <suppress checks="LineLength" files="EnvironmentClient\.java"
+    lines="96-98" />
+
   <!-- Due to deprecation notice on method landUsedForTransport -->
   <suppress checks="LineLength" files="EnvironmentClient\.java"
-    lines="123-125" />
+    lines="130-132" />
+
+
 </suppressions>
