@@ -29,12 +29,14 @@ import com.github.dannil.scbjavaclient.client.environment.landusedfortransport.E
 import com.github.dannil.scbjavaclient.client.environment.packagingandpackagingwaste.EnvironmentPackagingAndPackagingWasteClient;
 import com.github.dannil.scbjavaclient.client.environment.protectednature.EnvironmentProtectedNatureClient;
 import com.github.dannil.scbjavaclient.client.environment.seea.EnvironmentSEEAClient;
+import com.github.dannil.scbjavaclient.client.environment.shorelinelanduse.EnvironmentShorelineLandUseClient;
 import com.github.dannil.scbjavaclient.client.environment.smallerlocalities.EnvironmentSmallerLocalitiesClient;
 import com.github.dannil.scbjavaclient.client.environment.waste.EnvironmentWasteClient;
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 @Suite
+@SuppressWarnings("deprecation")
 public class EnvironmentClientTest {
 
     @Test
@@ -106,6 +108,13 @@ public class EnvironmentClientTest {
         EnvironmentClient client = new EnvironmentClient();
 
         assertEquals(EnvironmentSEEAClient.class, client.seea().getClass());
+    }
+    
+    @Test
+    public void shorelineLandUse() {
+        EnvironmentClient client = new EnvironmentClient();
+
+        assertEquals(EnvironmentShorelineLandUseClient.class, client.shorelineLandUse().getClass());
     }
 
     @Test

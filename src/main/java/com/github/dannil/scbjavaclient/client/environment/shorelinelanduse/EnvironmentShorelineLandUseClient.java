@@ -17,7 +17,6 @@ package com.github.dannil.scbjavaclient.client.environment.shorelinelanduse;
 import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
-import com.github.dannil.scbjavaclient.client.environment.shorelinelanduse.landuse.EnvironmentLandUseShorelineLandUseClient;
 import com.github.dannil.scbjavaclient.client.environment.shorelinelanduse.landuse.EnvironmentShorelineLandUseLandUseClient;
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
@@ -55,8 +54,8 @@ public class EnvironmentShorelineLandUseClient extends AbstractContainerClient {
      *
      * @return a client for environment shoreline land use land use data
      */
-    public EnvironmentLandUseShorelineLandUseClient landUse() {
-        return (EnvironmentLandUseShorelineLandUseClient) getClient("landuse");
+    public EnvironmentShorelineLandUseLandUseClient landUse() {
+        return (EnvironmentShorelineLandUseLandUseClient) getClient("landuse");
     }
 
     @Override

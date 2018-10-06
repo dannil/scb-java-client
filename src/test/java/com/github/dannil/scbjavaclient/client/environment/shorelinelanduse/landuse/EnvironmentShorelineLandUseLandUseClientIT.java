@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Daniel Nilsson
+ * Copyright 2018 Daniel Nilsson
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.environment.islands;
+package com.github.dannil.scbjavaclient.client.environment.shorelinelanduse.landuse;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
@@ -23,41 +23,36 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.github.dannil.scbjavaclient.test.extensions.AllowFailure;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 @Suite
 @Remote
-@SuppressWarnings("deprecation")
-public class EnvironmentIslandsClientIT {
+public class EnvironmentShorelineLandUseLandUseClientIT {
 
-    private EnvironmentIslandsClient client;
+    private EnvironmentShorelineLandUseLandUseClient client;
 
     @BeforeEach
     public void setup() {
-        this.client = new EnvironmentIslandsClient();
+        this.client = new EnvironmentShorelineLandUseLandUseClient();
     }
 
     @Test
-    @Date("2017-05-28")
-    @AllowFailure
+    @Date("2018-10-06")
     public void getShorelinePopulation() {
         assertNotEquals(0, this.client.getShorelinePopulation().size());
     }
 
     @Test
-    @Date("2017-05-28")
-    @AllowFailure
+    @Date("2018-10-06")
     public void getShorelinePopulationWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getShorelinePopulation(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
-    @Date("2017-05-28")
-    @AllowFailure
+    @Date("2018-10-06")
     public void getShorelinePopulationWithParameters() {
         List<String> regions = Arrays.asList("0117", "0120");
         List<String> livings = Arrays.asList("TO", "UTO");
@@ -67,23 +62,20 @@ public class EnvironmentIslandsClientIT {
     }
 
     @Test
-    @Date("2017-05-28")
-    @AllowFailure
+    @Date("2018-10-06")
     public void getPopulatedIslands() {
         assertNotEquals(0, this.client.getPopulatedIslands().size());
     }
 
     @Test
-    @Date("2017-05-28")
-    @AllowFailure
+    @Date("2018-10-06")
     public void getPopulatedIslandsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getPopulatedIslands(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
-    @Date("2017-05-28")
-    @AllowFailure
+    @Date("2018-10-06")
     public void getPopulatedIslandsWithParameters() {
         List<String> regions = Arrays.asList("0117", "0120");
         List<Integer> years = Arrays.asList(2013);
@@ -92,23 +84,20 @@ public class EnvironmentIslandsClientIT {
     }
 
     @Test
-    @Date("2017-05-28")
-    @AllowFailure
+    @Date("2018-10-06")
     public void getIslandsInSweden() {
         assertNotEquals(0, this.client.getIslandsInSweden().size());
     }
 
     @Test
-    @Date("2017-05-28")
-    @AllowFailure
+    @Date("2018-10-06")
     public void getIslandsInSwedenWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getIslandsInSweden(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
-    @Date("2017-05-28")
-    @AllowFailure
+    @Date("2018-10-06")
     public void getIslandsInSwedenWithParameters() {
         List<String> regions = Arrays.asList("0117", "0120");
         List<Integer> years = Arrays.asList(2013);
@@ -117,23 +106,20 @@ public class EnvironmentIslandsClientIT {
     }
 
     @Test
-    @Date("2017-05-28")
-    @AllowFailure
+    @Date("2018-10-06")
     public void getBuildingsOnIslands() {
         assertNotEquals(0, this.client.getBuildingsOnIslands().size());
     }
 
     @Test
-    @Date("2017-05-28")
-    @AllowFailure
+    @Date("2018-10-06")
     public void getBuildingsOnIslandsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getBuildingsOnIslands(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
-    @Date("2017-05-28")
-    @AllowFailure
+    @Date("2018-10-06")
     public void getBuildingsOnIslandsWithParameters() {
         List<String> regions = Arrays.asList("0117", "0120");
         List<Integer> years = Arrays.asList(2013);
@@ -142,23 +128,20 @@ public class EnvironmentIslandsClientIT {
     }
 
     @Test
-    @Date("2017-05-28")
-    @AllowFailure
+    @Date("2018-10-06")
     public void getIslandsInSwedenByNumberAreaAndPerimiter() {
         assertNotEquals(0, this.client.getIslandsInSwedenByNumberAreaAndPerimiter().size());
     }
 
     @Test
-    @Date("2017-05-28")
-    @AllowFailure
+    @Date("2018-10-06")
     public void getIslandsInSwedenByNumberAreaAndPerimiterWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getIslandsInSwedenByNumberAreaAndPerimiter(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
-    @Date("2017-05-28")
-    @AllowFailure
+    @Date("2018-10-06")
     public void getIslandsInSwedenByNumberAreaAndPerimiterWithParameters() {
         List<String> regions = Arrays.asList("0117", "0120");
         List<Integer> years = Arrays.asList(2013);
@@ -167,23 +150,20 @@ public class EnvironmentIslandsClientIT {
     }
 
     @Test
-    @Date("2017-05-28")
-    @AllowFailure
+    @Date("2018-10-06")
     public void getPopulationOnIslands() {
         assertNotEquals(0, this.client.getPopulationOnIslands().size());
     }
 
     @Test
-    @Date("2017-05-28")
-    @AllowFailure
+    @Date("2018-10-06")
     public void getPopulationOnIslandsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getPopulationOnIslands(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
-    @Date("2017-05-28")
-    @AllowFailure
+    @Date("2018-10-06")
     public void getPopulationOnIslandsWithParameters() {
         List<String> regions = Arrays.asList("0117", "0120");
         List<Integer> years = Arrays.asList(2013);
@@ -192,23 +172,20 @@ public class EnvironmentIslandsClientIT {
     }
 
     @Test
-    @Date("2017-05-28")
-    @AllowFailure
+    @Date("2018-10-06")
     public void getNumberOfIslandsInSweden() {
         assertNotEquals(0, this.client.getNumberOfIslandsInSweden().size());
     }
 
     @Test
-    @Date("2017-05-28")
-    @AllowFailure
+    @Date("2018-10-06")
     public void getNumberOfIslandsInSwedenWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getNumberOfIslandsInSweden(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
-    @Date("2017-05-28")
-    @AllowFailure
+    @Date("2018-10-06")
     public void getNumberOfIslandsInSwedenWithParameters() {
         List<String> regions = Arrays.asList("0117", "0120");
         List<String> sizeClasses = Arrays.asList("1-9", "10-99");

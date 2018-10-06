@@ -53,6 +53,7 @@ public class EnvironmentClient extends AbstractContainerClient {
         addClient("packagingandpackagingwaste", new EnvironmentPackagingAndPackagingWasteClient());
         addClient("protectednature", new EnvironmentProtectedNatureClient());
         addClient("seea", new EnvironmentSEEAClient());
+        addClient("shorelinelanduse", new EnvironmentShorelineLandUseClient());
         addClient("smallerlocalities", new EnvironmentSmallerLocalitiesClient());
         addClient("waste", new EnvironmentWasteClient());
     }
