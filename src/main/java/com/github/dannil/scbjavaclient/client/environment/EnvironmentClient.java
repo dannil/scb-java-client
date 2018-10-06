@@ -26,6 +26,7 @@ import com.github.dannil.scbjavaclient.client.environment.landusedfortransport.E
 import com.github.dannil.scbjavaclient.client.environment.packagingandpackagingwaste.EnvironmentPackagingAndPackagingWasteClient;
 import com.github.dannil.scbjavaclient.client.environment.protectednature.EnvironmentProtectedNatureClient;
 import com.github.dannil.scbjavaclient.client.environment.seea.EnvironmentSEEAClient;
+import com.github.dannil.scbjavaclient.client.environment.shorelinelanduse.EnvironmentShorelineLandUseClient;
 import com.github.dannil.scbjavaclient.client.environment.smallerlocalities.EnvironmentSmallerLocalitiesClient;
 import com.github.dannil.scbjavaclient.client.environment.waste.EnvironmentWasteClient;
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
@@ -90,7 +91,12 @@ public class EnvironmentClient extends AbstractContainerClient {
      * <p>Retrieve the client for interacting with environment islands data.</p>
      *
      * @return a client for environment islands data
+     *
+     * @deprecated use
+     *             {@link com.github.dannil.scbjavaclient.client.environment.shorelinelanduse.EnvironmentShorelineLandUseClient#shorelineLandUse()
+     *             EnvironmentShorelineLandUseClient#shorelineLandUse()} instead.
      */
+    @Deprecated
     public EnvironmentIslandsClient islands() {
         return (EnvironmentIslandsClient) getClient("islands");
     }
@@ -157,6 +163,15 @@ public class EnvironmentClient extends AbstractContainerClient {
      */
     public EnvironmentSEEAClient seea() {
         return (EnvironmentSEEAClient) getClient("seea");
+    }
+    
+    /**
+     * <p>Retrieve the client for interacting with environment shoreline land use data.</p>
+     *
+     * @return a client for environment shoreline land use data
+     */
+    public EnvironmentShorelineLandUseClient shorelineLandUse() {
+        return (EnvironmentShorelineLandUseClient) getClient("shorelinelanduse");
     }
 
     /**

@@ -18,6 +18,7 @@ import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.environment.shorelinelanduse.landuse.EnvironmentLandUseShorelineLandUseClient;
+import com.github.dannil.scbjavaclient.client.environment.shorelinelanduse.landuse.EnvironmentShorelineLandUseLandUseClient;
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
@@ -25,15 +26,15 @@ import com.github.dannil.scbjavaclient.communication.URLEndpoint;
  *
  * @since 2.1.0
  */
-public class EnvironmentLandUseShorelineClient extends AbstractContainerClient {
+public class EnvironmentShorelineLandUseClient extends AbstractContainerClient {
 
     /**
      * <p>Default constructor. Initializes values and creates sub-clients.</p>
      */
-    public EnvironmentLandUseShorelineClient() {
+    public EnvironmentShorelineLandUseClient() {
         super();
 
-        addClient("landuse", new EnvironmentLandUseShorelineLandUseClient());
+        addClient("landuse", new EnvironmentShorelineLandUseLandUseClient());
     }
 
     /**
@@ -42,7 +43,7 @@ public class EnvironmentLandUseShorelineClient extends AbstractContainerClient {
      * @param locale
      *            the <code>Locale</code> for this client
      */
-    public EnvironmentLandUseShorelineClient(Locale locale) {
+    public EnvironmentShorelineLandUseClient(Locale locale) {
         super(locale);
 
         setLocale(locale);

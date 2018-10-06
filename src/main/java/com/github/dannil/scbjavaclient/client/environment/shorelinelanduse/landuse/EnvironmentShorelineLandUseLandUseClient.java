@@ -30,12 +30,12 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
  *
  * @since 2.1.0
  */
-public class EnvironmentLandUseShorelineLandUseClient extends AbstractClient {
+public class EnvironmentShorelineLandUseLandUseClient extends AbstractClient {
 
     /**
      * <p>Default constructor.</p>
      */
-    public EnvironmentLandUseShorelineLandUseClient() {
+    public EnvironmentShorelineLandUseLandUseClient() {
         super();
     }
 
@@ -45,7 +45,7 @@ public class EnvironmentLandUseShorelineLandUseClient extends AbstractClient {
      * @param locale
      *            the <code>Locale</code> for this client
      */
-    public EnvironmentLandUseShorelineLandUseClient(Locale locale) {
+    public EnvironmentShorelineLandUseLandUseClient(Locale locale) {
         super(locale);
     }
 

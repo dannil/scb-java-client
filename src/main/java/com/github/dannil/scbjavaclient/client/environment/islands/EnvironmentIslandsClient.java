@@ -30,6 +30,7 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
  *
  * @since 0.4.0
  */
+@Deprecated
 public class EnvironmentIslandsClient extends AbstractClient {
 
     /**
