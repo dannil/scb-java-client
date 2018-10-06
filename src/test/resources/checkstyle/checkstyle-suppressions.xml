@@ -19,5 +19,4 @@
   <suppress checks="LineLength" files="EnvironmentClient\.java"
     lines="130-132" />
 
-
 </suppressions>
