@@ -23,6 +23,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.github.dannil.scbjavaclient.test.extensions.AllowFailure;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
@@ -151,12 +152,14 @@ public class EnvironmentShorelineLandUseLandUseClientIT {
 
     @Test
     @Date("2018-10-06")
+    @AllowFailure
     public void getPopulationOnIslands() {
         assertNotEquals(0, this.client.getPopulationOnIslands().size());
     }
 
     @Test
     @Date("2018-10-06")
+    @AllowFailure
     public void getPopulationOnIslandsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getPopulationOnIslands(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
@@ -164,6 +167,7 @@ public class EnvironmentShorelineLandUseLandUseClientIT {
 
     @Test
     @Date("2018-10-06")
+    @AllowFailure
     public void getPopulationOnIslandsWithParameters() {
         List<String> regions = Arrays.asList("0117", "0120");
         List<Integer> years = Arrays.asList(2013);

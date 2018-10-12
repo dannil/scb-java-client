@@ -21,7 +21,6 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
-import com.github.dannil.scbjavaclient.client.environment.shorelinelanduse.oldtables.EnvironmentShorelineLandUseOldTablesClient;
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
@@ -224,12 +223,13 @@ public class EnvironmentShorelineLandUseLandUseClient extends AbstractClient {
      *         objects
      *
      * @see #getPopulationOnIslands(Collection, Collection)
-     * 
+     *
      * @deprecated use
      *             {@link com.github.dannil.scbjavaclient.client.environment.shorelinelanduse.oldtables.EnvironmentShorelineLandUseOldTablesClient#getPopulationOnIslands()
      *             EnvironmentShorelineLandUseOldTablesClient#getPopulationOnIslands()}
      *             instead
      */
+    @Deprecated
     public List<ResponseModel> getPopulationOnIslands() {
         return getPopulationOnIslands(null, null);
     }
@@ -244,7 +244,7 @@ public class EnvironmentShorelineLandUseLandUseClient extends AbstractClient {
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
-     * 
+     *
      * @deprecated use
      *             {@link com.github.dannil.scbjavaclient.client.environment.shorelinelanduse.oldtables.EnvironmentShorelineLandUseOldTablesClient#getPopulationOnIslands(Collection, Collection)
      *             EnvironmentShorelineLandUseOldTablesClient#getPopulationOnIslands(Collection,
