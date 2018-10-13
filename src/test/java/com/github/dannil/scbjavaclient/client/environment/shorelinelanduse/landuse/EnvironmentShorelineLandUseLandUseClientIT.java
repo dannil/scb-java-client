@@ -30,6 +30,7 @@ import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 @Suite
 @Remote
+@SuppressWarnings("deprecation")
 public class EnvironmentShorelineLandUseLandUseClientIT {
 
     private EnvironmentShorelineLandUseLandUseClient client;
