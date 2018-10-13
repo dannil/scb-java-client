@@ -18,6 +18,7 @@ import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.environment.shorelinelanduse.landuse.EnvironmentShorelineLandUseLandUseClient;
+import com.github.dannil.scbjavaclient.client.environment.shorelinelanduse.oldtables.EnvironmentShorelineLandUseOldTablesClient;
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
@@ -34,6 +35,7 @@ public class EnvironmentShorelineLandUseClient extends AbstractContainerClient {
         super();
 
         addClient("landuse", new EnvironmentShorelineLandUseLandUseClient());
+        addClient("oldtables", new EnvironmentShorelineLandUseOldTablesClient());
     }
 
     /**
@@ -56,6 +58,16 @@ public class EnvironmentShorelineLandUseClient extends AbstractContainerClient {
      */
     public EnvironmentShorelineLandUseLandUseClient landUse() {
         return (EnvironmentShorelineLandUseLandUseClient) getClient("landuse");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with environment shoreline land use old
+     * tables data.</p>
+     *
+     * @return a client for environment shoreline land use old tables data
+     */
+    public EnvironmentShorelineLandUseOldTablesClient oldTables() {
+        return (EnvironmentShorelineLandUseOldTablesClient) getClient("oldtables");
     }
 
     @Override

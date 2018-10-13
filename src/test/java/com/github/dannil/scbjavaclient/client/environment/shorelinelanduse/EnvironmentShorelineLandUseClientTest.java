@@ -21,6 +21,7 @@ import java.util.Locale;
 import org.junit.jupiter.api.Test;
 
 import com.github.dannil.scbjavaclient.client.environment.shorelinelanduse.landuse.EnvironmentShorelineLandUseLandUseClient;
+import com.github.dannil.scbjavaclient.client.environment.shorelinelanduse.oldtables.EnvironmentShorelineLandUseOldTablesClient;
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
@@ -40,6 +41,13 @@ public class EnvironmentShorelineLandUseClientTest {
         EnvironmentShorelineLandUseClient client = new EnvironmentShorelineLandUseClient();
 
         assertEquals(EnvironmentShorelineLandUseLandUseClient.class, client.landUse().getClass());
+    }
+    
+    @Test
+    public void oldTables() {
+        EnvironmentShorelineLandUseClient client = new EnvironmentShorelineLandUseClient();
+
+        assertEquals(EnvironmentShorelineLandUseOldTablesClient.class, client.oldTables().getClass());
     }
 
     @Test
