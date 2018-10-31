@@ -56,10 +56,10 @@ public class EnvironmentWasteClient extends AbstractClient {
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @see #getGeneratedWaste(Collection, Collection, Collection)
+     * @see #getGeneratedWaste(Collection, Collection, Collection, Collection)
      */
     public List<ResponseModel> getGeneratedWaste() {
-        return getGeneratedWaste(null, null, null);
+        return getGeneratedWaste(null, null, null, null);
     }
 
     /**
@@ -74,7 +74,10 @@ public class EnvironmentWasteClient extends AbstractClient {
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
+     * @deprecated use
+     *             {@link #getGeneratedWaste(Collection, Collection, Collection, Collection)} instead.
      */
+    @Deprecated
     public List<ResponseModel> getGeneratedWaste(Collection<String> industrialClassification,
             Collection<String> wasteCategories, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
@@ -82,7 +85,34 @@ public class EnvironmentWasteClient extends AbstractClient {
         mappings.put("Avfallsslag", wasteCategories);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("MI0305T01", mappings);
+        return getGeneratedWaste(null, industrialClassification, wasteCategories, years);
+    }
+
+    /**
+     * <p>Fetch all generated waste data which match the input constraints.</p>
+     *
+     * @param properties
+     *            the properties to fetch data for
+     * @param industrialClassification
+     *            the industrial classifications to fetch data for
+     * @param wasteCategories
+     *            the waste categories to fetch data for
+     * @param years
+     *            the years to fetch data for
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getGeneratedWaste(Collection<String> properties,
+            Collection<String> industrialClassification, Collection<String> wasteCategories,
+            Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("OfarligtFarligt", properties);
+        mappings.put("SNI2007MI", industrialClassification);
+        mappings.put("Avfallsslag", wasteCategories);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("MI0305T01B", mappings);
     }
 
     /**
