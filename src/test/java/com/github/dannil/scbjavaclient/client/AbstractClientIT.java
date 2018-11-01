@@ -587,7 +587,7 @@ public class AbstractClientIT {
         }
         assertTrue(offendingCodes.isEmpty(), "Duplicated code and value combinations: " + offendingCodes.toString());
     }
-    
+
     @Test
     public void checkForCorrectPackageLevel() throws Exception {
         String execPath = System.getProperty("user.dir");
@@ -605,7 +605,7 @@ public class AbstractClientIT {
             if (binaryName.contains("package-info")) {
                 continue;
             }
-            
+
             String rootName = SCBClient.class.getName();
             String rootPackageName = rootName.substring(0, rootName.lastIndexOf('.'));
 
@@ -615,7 +615,7 @@ public class AbstractClientIT {
                 clazz = Class.forName(binaryName);
                 String name = clazz.getName();
                 String packageName = name.substring(0, name.lastIndexOf('.'));
-                
+
                 int childPackagesBeginningPos = packageName.indexOf(rootPackageName) + rootPackageName.length();
                 String childPackages = packageName.substring(childPackagesBeginningPos);
                 long levelsBelowRoot = childPackages.codePoints().filter(x -> x == '.').count();
@@ -628,7 +628,7 @@ public class AbstractClientIT {
                 URLEndpoint endPoint = (URLEndpoint) o;
                 String table = endPoint.getTable();
                 long numberOfTableSegments = table.codePoints().filter(x -> x == '/').count();
-                
+
                 if (levelsBelowRoot != numberOfTableSegments) {
                     matchedClasses.put(clazz, numberOfTableSegments);
                 }
@@ -651,6 +651,59 @@ public class AbstractClientIT {
             }
             assertTrue(false, builder.toString());
         }
+    }
+
+    @Test
+    public void checkForCodesPresentAmongConstants() throws Exception {
+        String execPath = System.getProperty("user.dir");
+
+        // Find files matching the wildcard pattern
+        List<File> files = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient/client", "*.java");
+
+        // Filter out some classes from the list
+        Filters.files(files, AbstractClient.class, AbstractContainerClient.class, SCBClientBuilder.class);
+
+        List<Class<?>> matchedClasses = new ArrayList<>();
+        for (File file : files) {
+            // Convert path into binary name
+            String binaryName = Files.fileToBinaryName(file);
+            if (binaryName.contains("package-info")) {
+                continue;
+            }
+
+            List<Field> constantVariables = Arrays.asList(APIConstants.class.getDeclaredFields());
+            List<String> constantVariablesValues = new ArrayList<>();
+
+            for (Field constantVariable : constantVariables) {
+                constantVariablesValues.add(constantVariable.get(null).toString());
+            }
+
+            Class<?> clazz = null;
+            try {
+                clazz = Class.forName(binaryName);
+
+                List<Field> classVariables = Arrays.asList(clazz.getDeclaredFields());
+                for (Field f1 : classVariables) {
+                    f1.setAccessible(true);
+                }
+
+                List<String> classVariablesValues = new ArrayList<>();
+                for (Field classVariable : classVariables) {
+                    classVariablesValues.add(classVariable.get(null).toString());
+                }
+
+                boolean hasMatch = classVariablesValues.stream().anyMatch(x -> constantVariablesValues.contains(x));
+                if (hasMatch) {
+                    matchedClasses.add(clazz);
+                }
+            } catch (ClassNotFoundException e) {
+                // Class could not be created; respond with an assertion that'll always
+                // fail
+                e.printStackTrace();
+                assertTrue(false, e.getMessage());
+            }
+        }
+        assertTrue(matchedClasses.isEmpty(), "Classes repeating codes: " + matchedClasses.toString());
     }
 
 }
