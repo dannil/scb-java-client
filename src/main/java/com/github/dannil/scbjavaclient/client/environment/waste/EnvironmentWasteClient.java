@@ -80,11 +80,6 @@ public class EnvironmentWasteClient extends AbstractClient {
     @Deprecated
     public List<ResponseModel> getGeneratedWaste(Collection<String> industrialClassification,
             Collection<String> wasteCategories, Collection<Integer> years) {
-        Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("SNI2007MI", industrialClassification);
-        mappings.put("Avfallsslag", wasteCategories);
-        mappings.put(APIConstants.TIME_CODE, years);
-
         return getGeneratedWaste(null, industrialClassification, wasteCategories, years);
     }
 
