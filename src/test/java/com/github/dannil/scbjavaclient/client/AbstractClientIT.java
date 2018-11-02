@@ -413,14 +413,11 @@ public class AbstractClientIT {
                 assertTrue(false, e.getMessage());
             }
         }
-        for (Iterator<Integer> it = offendingMethods.values().iterator(); it.hasNext();) {
-            Integer value = it.next();
-            // Remove offending methods which occur more than once (which means
-            // that there does exists an overload)
-            if (value > 1) {
-                it.remove();
-            }
-        }
+
+        // Remove offending methods which occur more than once (which means
+        // that there does exists an overload)
+        offendingMethods.values().removeIf(v -> v > 1);
+
         assertTrue(offendingMethods.isEmpty(),
                 "Methods not having correct overloads: " + offendingMethods.keySet().toString());
     }
@@ -578,14 +575,11 @@ public class AbstractClientIT {
                 assertTrue(false, e.getMessage());
             }
         }
+        
         // Remove code and value combinations which only occurs once (which means it isn't
         // a duplicate)
-        for (Iterator<List<String>> it = offendingCodes.values().iterator(); it.hasNext();) {
-            List<String> value = it.next();
-            if (value.size() == 1) {
-                it.remove();
-            }
-        }
+        offendingCodes.values().removeIf(v -> v.size() == 1);
+        
         assertTrue(offendingCodes.isEmpty(), "Duplicated code and value combinations: " + offendingCodes.toString());
     }
 
@@ -666,10 +660,8 @@ public class AbstractClientIT {
 
         List<Field> constantVariables = Arrays.asList(APIConstants.class.getDeclaredFields());
         // Filter out synthetic variables (such as transient variable $jacocoData)
-        constantVariables = constantVariables.stream()
-                                             .filter(x -> !x.isSynthetic())
-                                             .collect(Collectors.toList());
-        
+        constantVariables = constantVariables.stream().filter(x -> !x.isSynthetic()).collect(Collectors.toList());
+
         List<String> constantVariablesValues = new ArrayList<>();
         for (Field constantVariable : constantVariables) {
             constantVariablesValues.add(constantVariable.get(null).toString());
@@ -689,9 +681,7 @@ public class AbstractClientIT {
 
                 List<Field> classVariables = Arrays.asList(clazz.getDeclaredFields());
                 // Filter out synthetic variables (such as transient variable $jacocoData)
-                classVariables = classVariables.stream()
-                                               .filter(x -> !x.isSynthetic())
-                                               .collect(Collectors.toList());
+                classVariables = classVariables.stream().filter(x -> !x.isSynthetic()).collect(Collectors.toList());
                 for (Field f1 : classVariables) {
                     f1.setAccessible(true);
                 }
@@ -701,8 +691,7 @@ public class AbstractClientIT {
                     classVariablesValues.add(classVariable.get(null).toString());
                 }
 
-                boolean hasMatch = classVariablesValues.stream()
-                                                       .anyMatch(x -> constantVariablesValues.contains(x));
+                boolean hasMatch = classVariablesValues.stream().anyMatch(x -> constantVariablesValues.contains(x));
                 if (hasMatch) {
                     matchedClasses.add(clazz);
                 }
