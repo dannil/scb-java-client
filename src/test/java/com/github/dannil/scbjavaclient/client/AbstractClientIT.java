@@ -41,6 +41,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
@@ -663,6 +664,17 @@ public class AbstractClientIT {
         // Filter out some classes from the list
         Filters.files(files, AbstractClient.class, AbstractContainerClient.class, SCBClientBuilder.class);
 
+        List<Field> constantVariables = Arrays.asList(APIConstants.class.getDeclaredFields());
+        // Filter out synthetic variables (such as transient variable $jacocoData)
+        constantVariables = constantVariables.stream()
+                                             .filter(x -> !x.isSynthetic())
+                                             .collect(Collectors.toList());
+        
+        List<String> constantVariablesValues = new ArrayList<>();
+        for (Field constantVariable : constantVariables) {
+            constantVariablesValues.add(constantVariable.get(null).toString());
+        }
+
         List<Class<?>> matchedClasses = new ArrayList<>();
         for (File file : files) {
             // Convert path into binary name
@@ -671,18 +683,15 @@ public class AbstractClientIT {
                 continue;
             }
 
-            List<Field> constantVariables = Arrays.asList(APIConstants.class.getDeclaredFields());
-            List<String> constantVariablesValues = new ArrayList<>();
-
-            for (Field constantVariable : constantVariables) {
-                constantVariablesValues.add(constantVariable.get(null).toString());
-            }
-
             Class<?> clazz = null;
             try {
                 clazz = Class.forName(binaryName);
 
                 List<Field> classVariables = Arrays.asList(clazz.getDeclaredFields());
+                // Filter out synthetic variables (such as transient variable $jacocoData)
+                classVariables = classVariables.stream()
+                                               .filter(x -> !x.isSynthetic())
+                                               .collect(Collectors.toList());
                 for (Field f1 : classVariables) {
                     f1.setAccessible(true);
                 }
@@ -692,7 +701,8 @@ public class AbstractClientIT {
                     classVariablesValues.add(classVariable.get(null).toString());
                 }
 
-                boolean hasMatch = classVariablesValues.stream().anyMatch(x -> constantVariablesValues.contains(x));
+                boolean hasMatch = classVariablesValues.stream()
+                                                       .anyMatch(x -> constantVariablesValues.contains(x));
                 if (hasMatch) {
                     matchedClasses.add(clazz);
                 }
