@@ -58,6 +58,7 @@ import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
 import com.github.dannil.scbjavaclient.test.utility.Files;
 import com.github.dannil.scbjavaclient.test.utility.Filters;
+import com.github.dannil.scbjavaclient.test.utility.SourceInspector;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 @Suite
@@ -461,74 +462,22 @@ public class AbstractClientIT {
                 assertTrue(false, e.getMessage());
             }
 
-            Map<String, String> tables = new LinkedHashMap<>();
-            Map<String, List<String>> parameters = new LinkedHashMap<>();
-            // Figure out implemented tables by inspecting the source code
-            List<String> lines = java.nio.file.Files.readAllLines(Paths.get(f.getPath()), StandardCharsets.UTF_8);
-            String beginningOfMethod = "List<ResponseModel>";
-            String method = null;
-            String table = null;
-            for (String line : lines) {
-                // Skip line if it is a comment, Javadoc or alike
-                String trimmedLine = line.trim();
-                String[] comments = { "//", "/**", "/*", "*", "*/" };
-                boolean offendingLine = false;
-                for (int i = 0; i < comments.length; i++) {
-                    if (trimmedLine.startsWith(comments[i])) {
-                        offendingLine = true;
-                    }
-                }
-                if (offendingLine) {
-                    continue;
-                }
-                if (trimmedLine.contains(beginningOfMethod)) {
-                    int beginIndex = trimmedLine.indexOf(beginningOfMethod) + beginningOfMethod.length() + 1;
-                    int endIndex = trimmedLine.indexOf('(', beginIndex + 1);
-                    method = trimmedLine.substring(beginIndex, endIndex);
-                }
-                if (method != null && trimmedLine.contains("Collection") && !trimmedLine.contains("mappings")) {
-                    String[] parts = trimmedLine.split(" ");
-                    List<String> forbiddenElements = Arrays.asList("Collection", "public", "List", "{", "}", ",", " ");
-                    for (int i = 0; i < parts.length; i++) {
-                        String part = parts[i].replaceAll("[^a-zA-Z]", "");
-                        boolean isForbidden = false;
-                        for (String element : forbiddenElements) {
-                            if (part == null || part.length() == 0 || part.contains(element)) {
-                                isForbidden = true;
-                            }
-                        }
-                        if (!isForbidden) {
-                            if (parameters.containsKey(method)) {
-                                List<String> temp = parameters.get(method);
-                                if (!temp.contains(part)) {
-                                    temp.add(part);
-                                }
-                            } else {
-                                List<String> params = new ArrayList<>();
-                                params.add(part);
-                                parameters.put(method, params);
-                            }
-                        }
-                    }
-                }
-                if (method != null && (trimmedLine.contains("return generate")
-                        || trimmedLine.contains("return getResponseModels"))) {
-                    int beginIndex = trimmedLine.indexOf('"') + 1;
-                    int endIndex = trimmedLine.indexOf('"', beginIndex + 2);
-                    if (beginIndex > 0 && endIndex > 0) {
-                        table = trimmedLine.substring(beginIndex, endIndex);
-                        tables.put(method, table);
-                        method = null;
-                    }
-                }
+            // Class is deprecated; we don't care about it at all
+            if (clazz.isAnnotationPresent(Deprecated.class)) {
+                continue;
             }
+
+            // Figure out implemented tables by inspecting the source code
+            Map<String, String> tables = SourceInspector.getImplementedTables(Paths.get(f.getPath()));
             if (tables.isEmpty()) {
                 continue;
             }
+            Map<String, List<String>> parameters = SourceInspector.getParameters(Paths.get(f.getPath()));
 
             Object instance = clazz.getConstructor().newInstance();
             URLEndpoint url = (URLEndpoint) clazz.getMethod("getUrl", new Class<?>[] {}).invoke(instance,
                     new Object[] {});
+
             Method[] declaredMethods = clazz.getDeclaredMethods();
             List<Method> filteredMethods = new ArrayList<>();
             for (int i = 0; i < declaredMethods.length; i++) {
@@ -565,7 +514,7 @@ public class AbstractClientIT {
                             List<String> codes = m.findValuesAsText("code");
                             List<String> texts = m.findValuesAsText("text");
 
-                            Map<String, String> codesTexts = new LinkedHashMap<>();
+                            Map<String, String> codesTexts = new HashMap<>();
                             for (int i = 0; i < codes.size(); i++) {
                                 codesTexts.put(codes.get(i), texts.get(i));
                             }
@@ -587,7 +536,7 @@ public class AbstractClientIT {
                                 System.out.println("A: " + apiParameter);
 
                                 String lastCharacter = apiParameter.substring(apiParameter.length() - 1);
-                                System.out.println("LAST: " + lastCharacter);
+                                // System.out.println("LAST: " + lastCharacter);
 
                                 // Last character of the last word in the API parameter is
                                 // a letter; let's pluralize it
@@ -595,11 +544,19 @@ public class AbstractClientIT {
                                     apiParameter += 's';
                                 }
 
-                                System.out.println("AP: " + apiParameter);
+                                // System.out.println("AP: " + apiParameter);
 
                                 // System.out.println("PP: " + param);
                                 // System.out.println("CC: " + text);
-                                if (!methodParameter.equalsIgnoreCase(apiParameter)) {
+                                // if (!methodParameter.equalsIgnoreCase(apiParameter)) {
+                                // missingOrJumbledParameters = true;
+                                // break;
+                                // }
+
+                                String apiParameterLower = apiParameter.toLowerCase();
+                                String methodParameterLower = methodParameter.toLowerCase();
+
+                                if (!apiParameterLower.contains(methodParameterLower)) {
                                     missingOrJumbledParameters = true;
                                     break;
                                 }
