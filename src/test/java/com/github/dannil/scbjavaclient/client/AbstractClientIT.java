@@ -500,7 +500,7 @@ public class AbstractClientIT {
                     if (Objects.equals(filteredMethod.getName(), key)) {
                         URLEndpoint fullUrl = url.append(value);
 
-                        boolean missingOrJumbledParameters = false;
+                        boolean missingParameters = false;
 
                         // We need to use the English locale as the parameter names in the
                         // methods match the API
@@ -538,31 +538,31 @@ public class AbstractClientIT {
                                 String lastCharacter = apiParameter.substring(apiParameter.length() - 1);
                                 // System.out.println("LAST: " + lastCharacter);
 
+                                String[] prependPluralized = new String[] { "of" };
+                                StringBuilder builder = new StringBuilder(apiParameter);
+                                for (int k = 0; k < prependPluralized.length; k++) {
+                                    int position = apiParameter.indexOf(prependPluralized[k]);
+                                    if (position >= 0) {
+                                        builder = builder.insert(position, "s");
+                                    }
+                                }
+                                
                                 // Last character of the last word in the API parameter is
                                 // a letter; let's pluralize it
                                 if (lastCharacter.matches("[a-zA-Z]")) {
                                     apiParameter += 's';
                                 }
 
-                                // System.out.println("AP: " + apiParameter);
-
-                                // System.out.println("PP: " + param);
-                                // System.out.println("CC: " + text);
-                                // if (!methodParameter.equalsIgnoreCase(apiParameter)) {
-                                // missingOrJumbledParameters = true;
-                                // break;
-                                // }
-
                                 String apiParameterLower = apiParameter.toLowerCase();
                                 String methodParameterLower = methodParameter.toLowerCase();
 
-                                if (!apiParameterLower.contains(methodParameterLower)) {
-                                    missingOrJumbledParameters = true;
+                                if (!methodParameterLower.contains(apiParameterLower)) {
+                                    missingParameters = true;
                                     break;
                                 }
                             }
                         }
-                        System.out.println(missingOrJumbledParameters);
+                        System.out.println(missingParameters);
 
                         // Check for same amount of codes. Remove one as the code
                         // ContentsCode is implicitly added by every method and doesn't
@@ -571,7 +571,7 @@ public class AbstractClientIT {
                         int differenceOfParameters = inputs.keySet().size() - filteredMethod.getParameterCount() - 1;
 
                         // Validate constraints
-                        if (missingOrJumbledParameters || differenceOfParameters > 0) {
+                        if (missingParameters || differenceOfParameters > 0) {
                             offendingMethods.add(clazz.getSimpleName() + "." + filteredMethod.getName());
                         }
                         TimeUnit.MILLISECONDS.sleep(TestConstants.API_SLEEP_MS);
