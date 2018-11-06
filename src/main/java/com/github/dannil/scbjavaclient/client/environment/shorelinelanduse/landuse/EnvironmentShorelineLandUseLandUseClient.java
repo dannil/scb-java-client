@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Daniel Nilsson
+ * Copyright 2018 Daniel Nilsson
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.environment.islands;
+package com.github.dannil.scbjavaclient.client.environment.shorelinelanduse.landuse;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -26,21 +26,16 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles environment islands data fetching.</p>
+ * <p>Client which handles environment shoreline land use land use data fetching.</p>
  *
- * @since 0.4.0
- *
- * @deprecated use
- *             {@link com.github.dannil.scbjavaclient.client.environment.shorelinelanduse.landuse.EnvironmentShorelineLandUseLandUseClient
- *             EnvironmentShorelineLandUseLandUseClient} instead.
+ * @since 2.1.0
  */
-@Deprecated
-public class EnvironmentIslandsClient extends AbstractClient {
+public class EnvironmentShorelineLandUseLandUseClient extends AbstractClient {
 
     /**
      * <p>Default constructor.</p>
      */
-    public EnvironmentIslandsClient() {
+    public EnvironmentShorelineLandUseLandUseClient() {
         super();
     }
 
@@ -50,7 +45,7 @@ public class EnvironmentIslandsClient extends AbstractClient {
      * @param locale
      *            the <code>Locale</code> for this client
      */
-    public EnvironmentIslandsClient(Locale locale) {
+    public EnvironmentShorelineLandUseLandUseClient(Locale locale) {
         super(locale);
     }
 
@@ -228,7 +223,13 @@ public class EnvironmentIslandsClient extends AbstractClient {
      *         objects
      *
      * @see #getPopulationOnIslands(Collection, Collection)
+     *
+     * @deprecated use
+     *             {@link com.github.dannil.scbjavaclient.client.environment.shorelinelanduse.oldtables.EnvironmentShorelineLandUseOldTablesClient#getPopulationOnIslands()
+     *             EnvironmentShorelineLandUseOldTablesClient#getPopulationOnIslands()}
+     *             instead
      */
+    @Deprecated
     public List<ResponseModel> getPopulationOnIslands() {
         return getPopulationOnIslands(null, null);
     }
@@ -243,7 +244,13 @@ public class EnvironmentIslandsClient extends AbstractClient {
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
+     *
+     * @deprecated use
+     *             {@link com.github.dannil.scbjavaclient.client.environment.shorelinelanduse.oldtables.EnvironmentShorelineLandUseOldTablesClient#getPopulationOnIslands(Collection, Collection)
+     *             EnvironmentShorelineLandUseOldTablesClient#getPopulationOnIslands(Collection,
+     *             Collection)} instead
      */
+    @Deprecated
     public List<ResponseModel> getPopulationOnIslands(Collection<String> regions, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
@@ -291,7 +298,7 @@ public class EnvironmentIslandsClient extends AbstractClient {
 
     @Override
     public URLEndpoint getUrl() {
-        return getRootUrl().append("MI/MI0812/");
+        return getRootUrl().append("MI/MI0812/MI0812A/");
     }
 
 }

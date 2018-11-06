@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Daniel Nilsson
+ * Copyright 2018 Daniel Nilsson
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.environment.islands;
+package com.github.dannil.scbjavaclient.client.environment.shorelinelanduse.landuse;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -24,13 +24,12 @@ import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 @Suite
-@SuppressWarnings("deprecation")
-public class EnvironmentIslandsClientTest {
+public class EnvironmentShorelineLandUseLandUseClientTest {
 
     @Test
     public void createWithLocaleConstructor() {
         Locale locale = new Locale("sv", "SE");
-        EnvironmentIslandsClient client = new EnvironmentIslandsClient(locale);
+        EnvironmentShorelineLandUseLandUseClient client = new EnvironmentShorelineLandUseLandUseClient(locale);
 
         assertEquals(locale, client.getLocale());
     }
@@ -40,9 +39,9 @@ public class EnvironmentIslandsClientTest {
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints
         Locale locale = new Locale("en", "US");
-        EnvironmentIslandsClient client = new EnvironmentIslandsClient(locale);
+        EnvironmentShorelineLandUseLandUseClient client = new EnvironmentShorelineLandUseLandUseClient(locale);
 
-        assertEquals(URLEndpoint.getRootUrl(locale).append("MI/MI0812/"), client.getUrl());
+        assertEquals(URLEndpoint.getRootUrl(locale).append("MI/MI0812/MI0812A/"), client.getUrl());
     }
 
 }

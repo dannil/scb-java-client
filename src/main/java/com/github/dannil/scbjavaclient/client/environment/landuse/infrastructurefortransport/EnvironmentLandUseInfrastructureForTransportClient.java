@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Daniel Nilsson
+ * Copyright 2018 Daniel Nilsson
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.environment.landusedfortransport;
+package com.github.dannil.scbjavaclient.client.environment.landuse.infrastructurefortransport;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -26,21 +26,17 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles environment land used for transport data fetching.</p>
+ * <p>Client which handles environment land use infrastructure for transport data
+ * fetching.</p>
  *
- * @since 0.4.0
- *
- * @deprecated use
- *             {@link com.github.dannil.scbjavaclient.client.environment.landuse.infrastructurefortransport
- *             EnvironmentLandUseInfrastructureForTransportClient} instead.
+ * @since 2.1.0
  */
-@Deprecated
-public class EnvironmentLandUsedForTransportClient extends AbstractClient {
+public class EnvironmentLandUseInfrastructureForTransportClient extends AbstractClient {
 
     /**
      * <p>Default constructor.</p>
      */
-    public EnvironmentLandUsedForTransportClient() {
+    public EnvironmentLandUseInfrastructureForTransportClient() {
         super();
     }
 
@@ -50,7 +46,7 @@ public class EnvironmentLandUsedForTransportClient extends AbstractClient {
      * @param locale
      *            the <code>Locale</code> for this client
      */
-    public EnvironmentLandUsedForTransportClient(Locale locale) {
+    public EnvironmentLandUseInfrastructureForTransportClient(Locale locale) {
         super(locale);
     }
 
@@ -229,7 +225,7 @@ public class EnvironmentLandUsedForTransportClient extends AbstractClient {
 
     @Override
     public URLEndpoint getUrl() {
-        return getRootUrl().append("MI/MI0816/");
+        return getRootUrl().append("MI/MI0803/MI0803E");
     }
 
 }

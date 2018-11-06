@@ -85,20 +85,20 @@ public class PublicFinancesAnnualAccountsStatementAccountsMunicipalityClientIT {
     }
 
     @Test
-    @Date("2017-04-17")
+    @Date("2018-09-02")
     public void getCostsOfIndividualAndFamilyCare() {
         assertNotEquals(0, this.client.getCostsOfIndividualAndFamilyCare().size());
     }
 
     @Test
-    @Date("2017-04-17")
+    @Date("2018-09-02")
     public void getCostsOfIndividualAndFamilyCareWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getCostsOfIndividualAndFamilyCare(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
-    @Date("2017-04-17")
+    @Date("2018-09-02")
     public void getCostsOfIndividualAndFamilyCareWithParameters() {
         List<String> regions = Arrays.asList("0163", "0180");
         List<Integer> cares = Arrays.asList(600, 610);

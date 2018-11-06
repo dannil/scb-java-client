@@ -638,5 +638,70 @@ public class AbstractClientIT {
         }
         assertTrue(offendingCodes.isEmpty(), "Duplicated code and value combinations: " + offendingCodes.toString());
     }
+    
+    @Test
+    public void checkForCorrectPackageLevel() throws Exception {
+        String execPath = System.getProperty("user.dir");
+
+        // Find files matching the wildcard pattern
+        List<File> files = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient/client", "*.java");
+
+        // Filter out some classes from the list
+        Filters.files(files, AbstractClient.class, AbstractContainerClient.class, SCBClientBuilder.class);
+
+        Map<Class<?>, Long> matchedClasses = new HashMap<>();
+        for (File file : files) {
+            // Convert path into binary name
+            String binaryName = Files.fileToBinaryName(file);
+            if (binaryName.contains("package-info")) {
+                continue;
+            }
+            
+            String rootName = SCBClient.class.getName();
+            String rootPackageName = rootName.substring(0, rootName.lastIndexOf('.'));
+
+            // Reflect the binary name into a concrete Java class
+            Class<?> clazz = null;
+            try {
+                clazz = Class.forName(binaryName);
+                String name = clazz.getName();
+                String packageName = name.substring(0, name.lastIndexOf('.'));
+                
+                int childPackagesBeginningPos = packageName.indexOf(rootPackageName) + rootPackageName.length();
+                String childPackages = packageName.substring(childPackagesBeginningPos);
+                long levelsBelowRoot = childPackages.codePoints().filter(x -> x == '.').count();
+
+                Method m = clazz.getDeclaredMethod("getUrl");
+                Constructor<?> c = clazz.getConstructor();
+                Object t = c.newInstance();
+                Object o = m.invoke(t);
+
+                URLEndpoint endPoint = (URLEndpoint) o;
+                String table = endPoint.getTable();
+                long numberOfTableSegments = table.codePoints().filter(x -> x == '/').count();
+                
+                if (levelsBelowRoot != numberOfTableSegments) {
+                    matchedClasses.put(clazz, numberOfTableSegments);
+                }
+            } catch (ClassNotFoundException e) {
+                // Class could not be created; respond with an assertion that'll always
+                // fail
+                e.printStackTrace();
+                assertTrue(false, e.getMessage());
+            }
+        }
+        if (!matchedClasses.isEmpty()) {
+            StringBuilder builder = new StringBuilder();
+            builder.append("The following classes has wrong package level: ");
+            for (Entry<Class<?>, Long> entry : matchedClasses.entrySet()) {
+                Class<?> clazz = entry.getKey();
+                builder.append(clazz.getSimpleName());
+                builder.append(" should have level ");
+                builder.append(entry.getValue());
+                builder.append(", ");
+            }
+            assertTrue(false, builder.toString());
+        }
+    }
 
 }

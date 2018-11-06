@@ -159,7 +159,7 @@ public class PublicFinancesAnnualAccountsStatementAccountsMunicipalityClient ext
         mappings.put("Omsorg", cares);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("IndFamTkrR", mappings);
+        return getResponseModels("IndFamTkrRN", mappings);
     }
 
     /**

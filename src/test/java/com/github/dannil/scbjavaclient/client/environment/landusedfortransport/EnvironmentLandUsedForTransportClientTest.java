@@ -24,6 +24,7 @@ import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 @Suite
+@SuppressWarnings("deprecation")
 public class EnvironmentLandUsedForTransportClientTest {
 
     @Test
