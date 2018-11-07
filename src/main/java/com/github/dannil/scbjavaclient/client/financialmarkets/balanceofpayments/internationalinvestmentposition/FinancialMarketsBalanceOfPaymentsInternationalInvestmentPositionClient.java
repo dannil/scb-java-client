@@ -68,7 +68,7 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
     /**
      * <p>Fetch all revisions data which match the input constraints.</p>
      *
-     * @param assetsAndLiabilities
+     * @param assetsLiabilities
      *            the assets and liabilities
      * @param items
      *            the items
@@ -78,10 +78,10 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getRevisions(Collection<String> assetsAndLiabilities, Collection<String> items,
+    public List<ResponseModel> getRevisions(Collection<String> assetsLiabilities, Collection<String> items,
             Collection<String> quarters) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(ASSETSANDLIABILITIES_CODE, assetsAndLiabilities);
+        mappings.put(ASSETSANDLIABILITIES_CODE, assetsLiabilities);
         mappings.put(APIConstants.ITEM_CODE, items);
         mappings.put(APIConstants.TIME_CODE, quarters);
 
@@ -106,7 +106,7 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
      * <p>Fetch all assets and liabilities by sectors (quarters) data which match the
      * input constraints.</p>
      *
-     * @param assetsAndLiabilities
+     * @param assetsLiabilities
      *            the assets and liabilities
      * @param sectors
      *            the sectors
@@ -118,10 +118,10 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getAssetsAndLiabilitiesBySectorsQuarters(Collection<String> assetsAndLiabilities,
+    public List<ResponseModel> getAssetsAndLiabilitiesBySectorsQuarters(Collection<String> assetsLiabilities,
             Collection<Integer> sectors, Collection<String> items, Collection<String> quarters) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(ASSETSANDLIABILITIES_CODE, assetsAndLiabilities);
+        mappings.put(ASSETSANDLIABILITIES_CODE, assetsLiabilities);
         mappings.put(APIConstants.SECTOR_CODE, sectors);
         mappings.put(APIConstants.ITEM_CODE, items);
         mappings.put(APIConstants.TIME_CODE, quarters);
@@ -147,7 +147,7 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
      * <p>Fetch all assets and liabilities by currencies (years) data which match the
      * input constraints.</p>
      *
-     * @param assetsAndLiabilities
+     * @param assetsLiabilities
      *            the assets and liabilities
      * @param currencies
      *            the currencies
@@ -159,10 +159,10 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getAssetsAndLiabilitiesByCurrenciesYears(Collection<String> assetsAndLiabilities,
+    public List<ResponseModel> getAssetsAndLiabilitiesByCurrenciesYears(Collection<String> assetsLiabilities,
             Collection<String> currencies, Collection<String> items, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(ASSETSANDLIABILITIES_CODE, assetsAndLiabilities);
+        mappings.put(ASSETSANDLIABILITIES_CODE, assetsLiabilities);
         mappings.put("DenomValuta", currencies);
         mappings.put(APIConstants.ITEM_CODE, items);
         mappings.put(APIConstants.TIME_CODE, years);
@@ -220,7 +220,7 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
      * <p>Fetch all assets and liabilities by sectors (years) data which match the input
      * constraints.</p>
      *
-     * @param assetsAndLiabilities
+     * @param assetsLiabilities
      *            the assets and liabilities
      * @param sectors
      *            the sectors
@@ -232,10 +232,10 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getAssetsAndLiabilitiesBySectorsYears(Collection<String> assetsAndLiabilities,
+    public List<ResponseModel> getAssetsAndLiabilitiesBySectorsYears(Collection<String> assetsLiabilities,
             Collection<Integer> sectors, Collection<String> items, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(ASSETSANDLIABILITIES_CODE, assetsAndLiabilities);
+        mappings.put(ASSETSANDLIABILITIES_CODE, assetsLiabilities);
         mappings.put(APIConstants.SECTOR_CODE, sectors);
         mappings.put(APIConstants.ITEM_CODE, items);
         mappings.put(APIConstants.TIME_CODE, years);
@@ -261,7 +261,7 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
      * <p>Fetch all assets and liabilities with direct investments data which match the
      * input constraints.</p>
      *
-     * @param assetsAndLiabilities
+     * @param assetsLiabilities
      *            the assets and liabilities
      * @param currencies
      *            the currencies
@@ -273,10 +273,10 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getAssetsAndLiabilitiesWithDirectInvestments(Collection<String> assetsAndLiabilities,
+    public List<ResponseModel> getAssetsAndLiabilitiesWithDirectInvestments(Collection<String> assetsLiabilities,
             Collection<String> currencies, Collection<String> items, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(ASSETSANDLIABILITIES_CODE, assetsAndLiabilities);
+        mappings.put(ASSETSANDLIABILITIES_CODE, assetsLiabilities);
         mappings.put("Valuta", currencies);
         mappings.put(APIConstants.ITEM_CODE, items);
         mappings.put(APIConstants.TIME_CODE, years);
@@ -302,7 +302,7 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
      * <p>Fetch all assets and liabilities by currencies (quarters) data which match the
      * input constraints.</p>
      *
-     * @param assetsAndLiabilities
+     * @param assetsLiabilities
      *            the assets and liabilities
      * @param currencies
      *            the currencies
@@ -314,10 +314,10 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getAssetsAndLiabilitiesByCurrenciesQuarters(Collection<String> assetsAndLiabilities,
+    public List<ResponseModel> getAssetsAndLiabilitiesByCurrenciesQuarters(Collection<String> assetsLiabilities,
             Collection<String> currencies, Collection<String> items, Collection<String> quarters) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(ASSETSANDLIABILITIES_CODE, assetsAndLiabilities);
+        mappings.put(ASSETSANDLIABILITIES_CODE, assetsLiabilities);
         mappings.put("DenomValuta", currencies);
         mappings.put(APIConstants.ITEM_CODE, items);
         mappings.put(APIConstants.TIME_CODE, quarters);
