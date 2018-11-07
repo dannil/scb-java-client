@@ -27,8 +27,7 @@ Note that the requirements for Maven is only needed if you intend to build the p
 
 | From version | To version | Maven       |
 | ------------ | ---------- | ----------- |
-| 0.0.1        | 0.6.0      | Maven 3.0   |
-| 0.7.0        | 1.1.0      | Maven 3.0.4 |
+| 0.0.1        | 1.1.0      | Maven 3.0.4 |
 | 1.2.0        | 1.2.0      | Maven 3.1.1 |
 | 2.0.0        | 2.1.0      | Maven 3.3.9 |
 
