@@ -41,6 +41,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
@@ -412,14 +413,11 @@ public class AbstractClientIT {
                 assertTrue(false, e.getMessage());
             }
         }
-        for (Iterator<Integer> it = offendingMethods.values().iterator(); it.hasNext();) {
-            Integer value = it.next();
-            // Remove offending methods which occur more than once (which means
-            // that there does exists an overload)
-            if (value > 1) {
-                it.remove();
-            }
-        }
+
+        // Remove offending methods which occur more than once (which means
+        // that there does exists an overload)
+        offendingMethods.values().removeIf(v -> v > 1);
+
         assertTrue(offendingMethods.isEmpty(),
                 "Methods not having correct overloads: " + offendingMethods.keySet().toString());
     }
@@ -577,17 +575,14 @@ public class AbstractClientIT {
                 assertTrue(false, e.getMessage());
             }
         }
+        
         // Remove code and value combinations which only occurs once (which means it isn't
         // a duplicate)
-        for (Iterator<List<String>> it = offendingCodes.values().iterator(); it.hasNext();) {
-            List<String> value = it.next();
-            if (value.size() == 1) {
-                it.remove();
-            }
-        }
+        offendingCodes.values().removeIf(v -> v.size() == 1);
+        
         assertTrue(offendingCodes.isEmpty(), "Duplicated code and value combinations: " + offendingCodes.toString());
     }
-    
+
     @Test
     public void checkForCorrectPackageLevel() throws Exception {
         String execPath = System.getProperty("user.dir");
@@ -605,7 +600,7 @@ public class AbstractClientIT {
             if (binaryName.contains("package-info")) {
                 continue;
             }
-            
+
             String rootName = SCBClient.class.getName();
             String rootPackageName = rootName.substring(0, rootName.lastIndexOf('.'));
 
@@ -615,7 +610,7 @@ public class AbstractClientIT {
                 clazz = Class.forName(binaryName);
                 String name = clazz.getName();
                 String packageName = name.substring(0, name.lastIndexOf('.'));
-                
+
                 int childPackagesBeginningPos = packageName.indexOf(rootPackageName) + rootPackageName.length();
                 String childPackages = packageName.substring(childPackagesBeginningPos);
                 long levelsBelowRoot = childPackages.codePoints().filter(x -> x == '.').count();
@@ -628,7 +623,7 @@ public class AbstractClientIT {
                 URLEndpoint endPoint = (URLEndpoint) o;
                 String table = endPoint.getTable();
                 long numberOfTableSegments = table.codePoints().filter(x -> x == '/').count();
-                
+
                 if (levelsBelowRoot != numberOfTableSegments) {
                     matchedClasses.put(clazz, numberOfTableSegments);
                 }
@@ -651,6 +646,63 @@ public class AbstractClientIT {
             }
             assertTrue(false, builder.toString());
         }
+    }
+
+    @Test
+    public void checkForCodesPresentAmongConstants() throws Exception {
+        String execPath = System.getProperty("user.dir");
+
+        // Find files matching the wildcard pattern
+        List<File> files = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient/client", "*.java");
+
+        // Filter out some classes from the list
+        Filters.files(files, AbstractClient.class, AbstractContainerClient.class, SCBClientBuilder.class);
+
+        List<Field> constantVariables = Arrays.asList(APIConstants.class.getDeclaredFields());
+        // Filter out synthetic variables (such as transient variable $jacocoData)
+        constantVariables = constantVariables.stream().filter(x -> !x.isSynthetic()).collect(Collectors.toList());
+
+        List<String> constantVariablesValues = new ArrayList<>();
+        for (Field constantVariable : constantVariables) {
+            constantVariablesValues.add(constantVariable.get(null).toString());
+        }
+
+        List<Class<?>> matchedClasses = new ArrayList<>();
+        for (File file : files) {
+            // Convert path into binary name
+            String binaryName = Files.fileToBinaryName(file);
+            if (binaryName.contains("package-info")) {
+                continue;
+            }
+
+            Class<?> clazz = null;
+            try {
+                clazz = Class.forName(binaryName);
+
+                List<Field> classVariables = Arrays.asList(clazz.getDeclaredFields());
+                // Filter out synthetic variables (such as transient variable $jacocoData)
+                classVariables = classVariables.stream().filter(x -> !x.isSynthetic()).collect(Collectors.toList());
+                for (Field f1 : classVariables) {
+                    f1.setAccessible(true);
+                }
+
+                List<String> classVariablesValues = new ArrayList<>();
+                for (Field classVariable : classVariables) {
+                    classVariablesValues.add(classVariable.get(null).toString());
+                }
+
+                boolean hasMatch = classVariablesValues.stream().anyMatch(x -> constantVariablesValues.contains(x));
+                if (hasMatch) {
+                    matchedClasses.add(clazz);
+                }
+            } catch (ClassNotFoundException e) {
+                // Class could not be created; respond with an assertion that'll always
+                // fail
+                e.printStackTrace();
+                assertTrue(false, e.getMessage());
+            }
+        }
+        assertTrue(matchedClasses.isEmpty(), "Classes repeating codes: " + matchedClasses.toString());
     }
 
 }
