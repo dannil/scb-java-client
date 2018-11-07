@@ -1,7 +1,9 @@
 package com.github.dannil.scbjavaclient.test;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class TestConstants {
 
@@ -12,10 +14,15 @@ public class TestConstants {
     public static final int API_SLEEP_MS = 400;
 
     // public static final Map<String, String> CODE_TRANSLATIONS;
-    //
-    // static {
-    // CODE_TRANSLATIONS = new HashMap<>();
-    // CODE_TRANSLATIONS.put("AmneMiljo", "substance");
-    // }
+
+    public static final Set<String> ALREADY_PLURALIZED;
+
+    static {
+        // CODE_TRANSLATIONS = new HashMap<>();
+        // CODE_TRANSLATIONS.put("AmneMiljo", "substance");
+
+        ALREADY_PLURALIZED = new HashSet<String>();
+        ALREADY_PLURALIZED.add("assetsliabilities");
+    }
 
 }

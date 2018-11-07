@@ -554,21 +554,23 @@ public class AbstractClientIT {
                                 }
                                 modifiedApiParameter = builder.toString();
 
-                                String lastCharacter = apiParameter.substring(apiParameter.length() - 1);
                                 // If the last character of the word is a letter and not
                                 // already pluralized, then we do it ourself
-                                if (lastCharacter.matches("[xX]")) {
-                                    modifiedApiParameter += "es";
-                                } else if (lastCharacter.matches("[yY]")) {
-                                    // Remove the last y and replace it with ies
-                                    // Example: country becomes countries
-                                    String withoutLastLetter = modifiedApiParameter.substring(0,
-                                            modifiedApiParameter.length() - 1);
-                                    modifiedApiParameter = withoutLastLetter + "ies";
-                                } else if (lastCharacter.matches("[s]")) {
-                                    modifiedApiParameter += "es";
-                                } else if (lastCharacter.matches("[a-zA-Z]")) {
-                                    modifiedApiParameter += 's';
+                                if (!TestConstants.ALREADY_PLURALIZED.contains(modifiedApiParameter)) {
+                                    String lastCharacter = apiParameter.substring(apiParameter.length() - 1);
+                                    if (lastCharacter.matches("[xX]")) {
+                                        modifiedApiParameter += "es";
+                                    } else if (lastCharacter.matches("[yY]")) {
+                                        // Remove the last y and replace it with ies
+                                        // Example: country becomes countries
+                                        String withoutLastLetter = modifiedApiParameter.substring(0,
+                                                modifiedApiParameter.length() - 1);
+                                        modifiedApiParameter = withoutLastLetter + "ies";
+                                    } else if (lastCharacter.matches("[s]")) {
+                                        modifiedApiParameter += "es";
+                                    } else if (lastCharacter.matches("[a-zA-Z]")) {
+                                        modifiedApiParameter += 's';
+                                    }
                                 }
 
                                 // There exists some cases which are nigh on impossible to
