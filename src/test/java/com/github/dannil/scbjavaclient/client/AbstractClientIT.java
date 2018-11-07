@@ -540,13 +540,6 @@ public class AbstractClientIT {
                                 System.out.println("M: " + methodParameter);
                                 System.out.println("A: " + apiParameter);
 
-                                // Some API parameters aren't actually written in English;
-                                // for these we check for a translation and use that
-                                // instead
-                                if (TestConstants.CODE_TRANSLATIONS.containsKey(apiParameter)) {
-                                    apiParameter = TestConstants.CODE_TRANSLATIONS.get(apiParameter);
-                                }
-
                                 String modifiedApiParameter = new String(apiParameter);
                                 // Remove all non-alpha characters
                                 modifiedApiParameter = modifiedApiParameter.replaceAll("[^a-zA-Z]", "");
