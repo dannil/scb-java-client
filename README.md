@@ -14,7 +14,23 @@ If you have an improvement, feel free to make a pull request or start an issue i
 
 ## Requirements
 
-* Java 8 or newer
+Note that the requirements for Maven is only needed if you intend to build the project.
+
+### Java
+
+| Java   | From version | To version |
+| ------ | ------------ | ---------- |
+| Java 7 | 0.0.1        | 0.6.0      |
+| Java 8 | 0.7.0        | 2.1.0      |
+
+### Maven
+
+| Maven       | From version | To version |
+| ----------- | ------------ | ---------- |
+| Maven 3.0   | 0.0.1        | 0.6.0      |
+| Maven 3.0.4 | 0.7.0        | 1.1.0      |
+| Maven 3.1.1 | 1.2.0        | 1.2.0      |
+| Maven 3.3.9 | 2.0.0        | 2.1.0      |
 
 ## Installation
 
