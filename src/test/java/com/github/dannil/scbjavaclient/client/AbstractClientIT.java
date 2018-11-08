@@ -60,6 +60,7 @@ import com.github.dannil.scbjavaclient.test.utility.Files;
 import com.github.dannil.scbjavaclient.test.utility.Filters;
 import com.github.dannil.scbjavaclient.test.utility.Sorter;
 import com.github.dannil.scbjavaclient.test.utility.SourceInspector;
+import com.github.dannil.scbjavaclient.test.utility.TestProcessor;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 @Suite
@@ -501,7 +502,7 @@ public class AbstractClientIT {
                     if (Objects.equals(filteredMethod.getName(), key)) {
                         URLEndpoint fullUrl = url.append(value);
 
-                        boolean missingParameters = false;
+                        // boolean missingParameters = false;
 
                         // We need to use the English locale as the parameter names in the
                         // methods match the API
@@ -527,109 +528,44 @@ public class AbstractClientIT {
                             List<String> methodParameters = parameters.get(key);
                             List<String> apiParameters = new ArrayList<>(codesTexts.values());
 
-                            // Sort method parameters according to API parameters
-                            methodParameters = Sorter.sortAccordingTo(methodParameters, apiParameters);
-
                             System.out.println("M[]: " + methodParameters);
                             System.out.println("A[]: " + apiParameters);
 
-                            for (int i = 0; i < methodParameters.size(); i++) {
-                                String methodParameter = methodParameters.get(i);
-                                String apiParameter = apiParameters.get(i).replaceAll(" ", "");
-
-                                System.out.println("M: " + methodParameter);
-                                System.out.println("A: " + apiParameter);
-
-                                String modifiedApiParameter = new String(apiParameter);
-                                // Remove all non-alpha characters
-                                modifiedApiParameter = modifiedApiParameter.replaceAll("[^a-zA-Z]", "");
-
-                                String[] prependPluralized = new String[] { "of" };
-                                StringBuilder builder = new StringBuilder(modifiedApiParameter);
-                                for (int k = 0; k < prependPluralized.length; k++) {
-                                    int position = modifiedApiParameter.indexOf(prependPluralized[k]);
-                                    if (position >= 0 && modifiedApiParameter.charAt(position - 1) != 's') {
-                                        builder = builder.insert(position, "s");
-                                    }
-                                }
-                                modifiedApiParameter = builder.toString();
-
-                                // If the last character of the word is a letter and not
-                                // already pluralized, then we do it ourself
-                                if (!TestConstants.ALREADY_PLURALIZED.contains(modifiedApiParameter)) {
-                                    String lastCharacter = apiParameter.substring(apiParameter.length() - 1);
-                                    if (lastCharacter.matches("[xX]")) {
-                                        modifiedApiParameter += "es";
-                                    } else if (lastCharacter.matches("[yY]")) {
-                                        // Remove the last y and replace it with ies
-                                        // Example: country becomes countries
-                                        String withoutLastLetter = modifiedApiParameter.substring(0,
-                                                modifiedApiParameter.length() - 1);
-                                        modifiedApiParameter = withoutLastLetter + "ies";
-                                    } else if (lastCharacter.matches("[s]")) {
-                                        modifiedApiParameter += "es";
-                                    } else if (lastCharacter.matches("[a-zA-Z]")) {
-                                        modifiedApiParameter += 's';
-                                    }
-                                }
-
-                                // There exists some cases which are nigh on impossible to
-                                // handle if the method parameter name is pluralized, so
-                                // lets remove that
-                                // String modifiedMethodParameter =
-                                // methodParameter.substring(0,
-                                // methodParameter.length() - 1);
-                                String modifiedMethodParameter = methodParameter;
-
-                                String modifiedApiParameterLower = modifiedApiParameter.toLowerCase();
-                                String modifiedMethodParameterLower = modifiedMethodParameter.toLowerCase();
-
-                                System.out.println("APL: " + modifiedApiParameterLower);
-                                System.out.println("MPL: " + modifiedMethodParameterLower);
-
-                                if (!modifiedApiParameterLower.contains(modifiedMethodParameterLower)) {
-
-                                    // Is this a case of the API parameter not being
-                                    // pluralized correctly when compared to the
-                                    // method parameter?
-                                    // Example: API parameter
-                                    // industrialclassificationnacerev is written as
-                                    // method parameter industrialclassifications, and as
-                                    // such the API parameter doesn't contain the trailing
-                                    // s
-                                    StringBuilder b2 = new StringBuilder(modifiedApiParameterLower);
-                                    b2.insert(modifiedMethodParameterLower.length() - 1, "s");
-                                    modifiedApiParameterLower = b2.toString();
-                                    System.out.println("B2: " + modifiedApiParameterLower);
-                                    if (modifiedApiParameterLower.contains(modifiedMethodParameterLower)) {
-                                        continue;
-                                    }
-
-                                    System.out.println("!!! " + clazz.getName() + " !!!");
-                                    missingParameters = true;
-                                    System.exit(1);
-                                    break;
-                                }
+                            boolean missingParameters = TestProcessor.isMissingParameters(methodParameters,
+                                    apiParameters);
+                            if (missingParameters) {
+                                System.err.println("MISSING!");
+                                System.out.println("!!! " + clazz.getName() + " !!!");
+                                System.exit(1);
                             }
-                        }
-                        System.out.println(missingParameters);
 
-                        // Check for same amount of codes. Remove one as the code
-                        // ContentsCode is implicitly added by every method and doesn't
-                        // need to be a parameter
-                        Map<String, Collection<String>> inputs = client.getInputs(fullUrl.getTable());
-                        TimeUnit.MILLISECONDS.sleep(TestConstants.API_SLEEP_MS);
-                        int differenceOfParameters = inputs.keySet().size() - filteredMethod.getParameterCount() - 1;
+                            boolean jumbledParameters = TestProcessor.isJumbled(methodParameters, apiParameters);
+                            if (jumbledParameters) {
+                                System.err.println("JUMBLED!");
+                                System.exit(1);
+                            }
 
-                        // Validate constraints
-                        if (missingParameters || differenceOfParameters > 0) {
-                            offendingMethods.add(clazz.getSimpleName() + "." + filteredMethod.getName());
+                            // Check for same amount of codes. Remove one as the code
+                            // ContentsCode is implicitly added by every method and
+                            // doesn't need to be a parameter
+                            Map<String, Collection<String>> inputs = client.getInputs(fullUrl.getTable());
+                            TimeUnit.MILLISECONDS.sleep(TestConstants.API_SLEEP_MS);
+                            int differenceOfParameters = inputs.keySet().size() - filteredMethod.getParameterCount()
+                                    - 1;
+
+                            // Validate constraints
+                            if (missingParameters || differenceOfParameters > 0) {
+                                offendingMethods.add(clazz.getSimpleName() + "." + filteredMethod.getName());
+                            }
+                        } else {
+                            throw new IllegalArgumentException(clazz.getSimpleName() + "." + filteredMethod.getName());
                         }
                     }
                 }
             }
         }
-        assertTrue(offendingMethods.isEmpty(), "Methods not implementing all codes: " + offendingMethods);
+        assertTrue(offendingMethods.isEmpty(),
+                "Methods not implementing all codes OR they're jumbled: " + offendingMethods);
     }
 
     @Test
