@@ -474,6 +474,9 @@
                 <requireJavaVersion>
                   <version>${project.java.source}</version>
                 </requireJavaVersion>
+                <requirePluginVersions>
+                  <message>All plugins must have a specified version.</message>
+                </requirePluginVersions>
                 <requireSameVersions>
                   <dependencies>
                     <dependency>com.fasterxml.jackson.core:jackson-core</dependency>
