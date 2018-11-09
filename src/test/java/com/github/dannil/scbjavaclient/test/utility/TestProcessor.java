@@ -28,11 +28,18 @@ public class TestProcessor {
             System.out.println("A: " + apiParameter);
 
             String modifiedApiParameter = new String(apiParameter);
-            // Remove all non-alpha characters
-            modifiedApiParameter = modifiedApiParameter.replaceAll("[^a-zA-Z]", "");
-
-            String[] prependPluralized = new String[] { "of" };
             StringBuilder builder = new StringBuilder(modifiedApiParameter);
+
+            // Replace / with "and"
+            String toReplace = "/";
+            int indexOfToReplace = modifiedApiParameter.indexOf(toReplace);
+            if (indexOfToReplace > 0) {
+                builder.replace(indexOfToReplace, indexOfToReplace + toReplace.length(), "and");
+                modifiedApiParameter = builder.toString();
+            }
+
+            String[] prependPluralized = new String[] { /* "at", */ "and", "of", };
+            builder = new StringBuilder(modifiedApiParameter);
             for (int k = 0; k < prependPluralized.length; k++) {
                 int position = modifiedApiParameter.indexOf(prependPluralized[k]);
                 if (position >= 0 && modifiedApiParameter.charAt(position - 1) != 's') {
@@ -40,6 +47,9 @@ public class TestProcessor {
                 }
             }
             modifiedApiParameter = builder.toString();
+            
+            // Remove all non-alpha characters
+            modifiedApiParameter = modifiedApiParameter.replaceAll("[^a-zA-Z]", "");
 
             // If the last character of the word is a letter and not
             // already pluralized, then we do it ourself
@@ -84,7 +94,11 @@ public class TestProcessor {
                 // such the API parameter doesn't contain the trailing
                 // s
                 StringBuilder b2 = new StringBuilder(modifiedApiParameterLower);
-                b2.insert(modifiedMethodParameterLower.length() - 1, "s");
+                System.out.println(modifiedMethodParameterLower);
+                if (modifiedApiParameterLower.length() >= modifiedMethodParameterLower.length()) {
+                    b2.insert(modifiedMethodParameterLower.length() - 1, "s");
+                }
+
                 modifiedApiParameterLower = b2.toString();
                 System.out.println("B2: " + modifiedApiParameterLower);
                 if (modifiedApiParameterLower.contains(modifiedMethodParameterLower)) {

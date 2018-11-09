@@ -234,20 +234,6 @@ public class TestIT {
         }
         assertTrue(matchedClasses.isEmpty(), "Clients not utilizing API constants : " + matchedClasses.toString());
     }
-
-    @Test
-    public void testSorter() {
-        List<String> accordingTo = Arrays.asList("property", "industrial classification", "waste category", "every other year");
-        List<String> toBeSorted = Arrays.asList("industrialClassification", "wasteCategories", "years", "properties");
-        
-        List<String> sorted = Sorter.sortAccordingTo(toBeSorted, accordingTo);
-        
-        // Verify that elements are in the correct position
-        assertEquals(accordingTo.indexOf("property"), sorted.indexOf("properties"));
-        assertEquals(accordingTo.indexOf("industrial classification"), sorted.indexOf("industrialClassification"));
-        assertEquals(accordingTo.indexOf("waste category"), sorted.indexOf("wasteCategories"));
-        assertEquals(accordingTo.indexOf("every other year"), sorted.indexOf("years"));
-    }
     
     @Test
     public void abc() throws IOException {
