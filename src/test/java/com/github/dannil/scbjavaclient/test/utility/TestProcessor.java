@@ -84,7 +84,6 @@ public class TestProcessor {
             String modifiedMethodParameterLower = modifiedMethodParameter.toLowerCase();
 
             if (!modifiedApiParameterLower.contains(modifiedMethodParameterLower)) {
-
                 // Is this a case of the API parameter not being
                 // pluralized correctly when compared to the
                 // method parameter?
@@ -96,6 +95,7 @@ public class TestProcessor {
                 builder = new StringBuilder(modifiedApiParameterLower);
                 if (modifiedApiParameterLower.length() >= modifiedMethodParameterLower.length()) {
                     builder.insert(modifiedMethodParameterLower.length() - 1, "s");
+                    modifiedApiParameterLower = builder.toString();
                 }
                 if (modifiedApiParameterLower.contains(modifiedMethodParameterLower)) {
                     continue;

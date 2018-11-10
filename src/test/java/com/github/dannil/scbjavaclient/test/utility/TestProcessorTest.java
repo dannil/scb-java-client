@@ -33,7 +33,7 @@ public class TestProcessorTest {
 
     @Test
     public void isMissingParametersPluralize1() {
-        List<String> apiParameters = Arrays.asList("country of citizenship", "sex", "year", "every other year");
+        List<String> apiParameters = Arrays.asList("country of citizenship", "sex", "year");
         List<String> methodParameters = Arrays.asList("countriesOfCitizenships", "sexes", "years");
 
         boolean isMissing = TestProcessor.isMissingParameters(methodParameters, apiParameters);

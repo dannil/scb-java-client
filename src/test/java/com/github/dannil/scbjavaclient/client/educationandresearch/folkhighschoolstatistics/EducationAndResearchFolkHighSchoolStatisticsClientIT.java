@@ -56,10 +56,10 @@ public class EducationAndResearchFolkHighSchoolStatisticsClientIT {
     public void getParticipantsWithParameters() {
         List<String> regions = Arrays.asList("01", "09");
         List<String> sexes = Arrays.asList("1", "2");
-        List<String> typeOfCourses = Arrays.asList("18", "SUM");
+        List<String> typesOfCourses = Arrays.asList("18", "SUM");
         List<Integer> years = Arrays.asList(2016, 2018);
 
-        assertNotEquals(0, this.client.getParticipants(regions, sexes, typeOfCourses, years).size());
+        assertNotEquals(0, this.client.getParticipants(regions, sexes, typesOfCourses, years).size());
     }
 
 }
