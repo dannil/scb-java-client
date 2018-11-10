@@ -32,6 +32,8 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
  */
 public class EnvironmentWasteClient extends AbstractClient {
 
+    private static final String WASTECATEGORY_CODE = "Avfallsslag";
+
     /**
      * <p>Default constructor.</p>
      */
@@ -80,11 +82,6 @@ public class EnvironmentWasteClient extends AbstractClient {
     @Deprecated
     public List<ResponseModel> getGeneratedWaste(Collection<String> industrialClassification,
             Collection<String> wasteCategories, Collection<Integer> years) {
-        Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("SNI2007MI", industrialClassification);
-        mappings.put("Avfallsslag", wasteCategories);
-        mappings.put(APIConstants.TIME_CODE, years);
-
         return getGeneratedWaste(null, industrialClassification, wasteCategories, years);
     }
 
@@ -109,7 +106,7 @@ public class EnvironmentWasteClient extends AbstractClient {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("OfarligtFarligt", properties);
         mappings.put("SNI2007MI", industrialClassification);
-        mappings.put("Avfallsslag", wasteCategories);
+        mappings.put(WASTECATEGORY_CODE, wasteCategories);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("MI0305T01B", mappings);
@@ -145,7 +142,7 @@ public class EnvironmentWasteClient extends AbstractClient {
             Collection<String> wasteCategories, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("BehTyp", treatmentCategories);
-        mappings.put("Avfallsslag", wasteCategories);
+        mappings.put(WASTECATEGORY_CODE, wasteCategories);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("MI0305T02N", mappings);
