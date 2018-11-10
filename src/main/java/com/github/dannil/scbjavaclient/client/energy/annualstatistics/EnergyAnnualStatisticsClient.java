@@ -175,17 +175,17 @@ public class EnergyAnnualStatisticsClient extends AbstractClient {
     /**
      * <p>Fetch all electricity use in Sweden data which match the input constraints.</p>
      *
-     * @param areaOfUses
-     *            the area of uses to fetch data for
+     * @param areasOfUses
+     *            the areas of uses to fetch data for
      * @param years
      *            the years to fetch data for
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getElectricityUseInSweden(Collection<String> areaOfUses, Collection<Integer> years) {
+    public List<ResponseModel> getElectricityUseInSweden(Collection<String> areasOfUses, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("AnvOmrade", areaOfUses);
+        mappings.put("AnvOmrade", areasOfUses);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("ElAnvSNI2007Ar", mappings);

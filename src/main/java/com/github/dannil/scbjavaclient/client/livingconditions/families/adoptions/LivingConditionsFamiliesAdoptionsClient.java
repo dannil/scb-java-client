@@ -71,8 +71,8 @@ public class LivingConditionsFamiliesAdoptionsClient extends AbstractClient {
      *            the sexes
      * @param ages
      *            the ages
-     * @param birthCountries
-     *            the birth countries
+     * @param countriesOfBirths
+     *            the countries of births
      * @param years
      *            the years
      * @return the data wrapped in a list of
@@ -80,11 +80,11 @@ public class LivingConditionsFamiliesAdoptionsClient extends AbstractClient {
      *         objects
      */
     public List<ResponseModel> getAllAdoptedChildrenAndYoungPersons(Collection<String> sexes, Collection<String> ages,
-            Collection<String> birthCountries, Collection<Integer> years) {
+            Collection<String> countriesOfBirths, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.SEX_CODE, sexes);
         mappings.put(APIConstants.AGE_CODE, ages);
-        mappings.put("Fodelseland", birthCountries);
+        mappings.put("Fodelseland", countriesOfBirths);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("BarnAdoptionN", mappings);

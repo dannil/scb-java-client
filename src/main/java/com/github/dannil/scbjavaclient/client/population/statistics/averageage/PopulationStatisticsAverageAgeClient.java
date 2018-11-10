@@ -67,19 +67,19 @@ public class PopulationStatisticsAverageAgeClient extends AbstractClient {
      *
      * @param regions
      *            the regions to fetch data for
-     * @param genders
-     *            the genders to fetch data for
+     * @param sexes
+     *            the sexes to fetch data for
      * @param years
      *            the years to fetch data for
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getAverageAge(Collection<String> regions, Collection<String> genders,
+    public List<ResponseModel> getAverageAge(Collection<String> regions, Collection<String> sexes,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
-        mappings.put(APIConstants.SEX_CODE, genders);
+        mappings.put(APIConstants.SEX_CODE, sexes);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("BefolkningMedelAlder", mappings);

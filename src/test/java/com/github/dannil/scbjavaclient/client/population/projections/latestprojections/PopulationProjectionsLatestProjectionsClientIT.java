@@ -54,12 +54,12 @@ public class PopulationProjectionsLatestProjectionsClientIT {
     @Test
     @Date("2018-05-12")
     public void getPopulationWithParameters() {
-        List<Integer> regionOfBirths = Arrays.asList(13, 23);
+        List<Integer> regionsOfBirths = Arrays.asList(13, 23);
         List<String> ages = Arrays.asList("13", "66");
         List<Integer> sexes = Arrays.asList(1, 2);
         List<Integer> years = Arrays.asList(2038, 2053);
 
-        assertNotEquals(0, this.client.getPopulation(regionOfBirths, ages, sexes, years).size());
+        assertNotEquals(0, this.client.getPopulation(regionsOfBirths, ages, sexes, years).size());
     }
 
     @Test
@@ -79,12 +79,12 @@ public class PopulationProjectionsLatestProjectionsClientIT {
     @Test
     @Date("2018-05-12")
     public void getPopulationChangesWithParameters() {
-        List<String> countries = Arrays.asList("020", "060");
+        List<String> regionsOfBirths = Arrays.asList("020", "060");
         List<Integer> sexes = Arrays.asList(1, 2);
         List<String> ages = Arrays.asList("13", "66");
         List<Integer> years = Arrays.asList(2038, 2053);
 
-        assertNotEquals(0, this.client.getPopulationChanges(countries, sexes, ages, years).size());
+        assertNotEquals(0, this.client.getPopulationChanges(regionsOfBirths, sexes, ages, years).size());
     }
 
     @Test
@@ -123,11 +123,11 @@ public class PopulationProjectionsLatestProjectionsClientIT {
     @Test
     @Date("2018-05-12")
     public void getNumberOfBirthsWithParameters() {
-        List<String> countries = Arrays.asList("020", "060");
+        List<String> mothersRegionsOfBirths = Arrays.asList("020", "060");
         List<String> ages = Arrays.asList("22", "33");
         List<Integer> years = Arrays.asList(2038, 2053);
 
-        assertNotEquals(0, this.client.getNumberOfBirths(countries, ages, years).size());
+        assertNotEquals(0, this.client.getNumberOfBirths(mothersRegionsOfBirths, ages, years).size());
     }
 
     @Test

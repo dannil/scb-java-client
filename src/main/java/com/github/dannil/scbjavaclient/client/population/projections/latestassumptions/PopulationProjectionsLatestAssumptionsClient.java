@@ -102,8 +102,8 @@ public class PopulationProjectionsLatestAssumptionsClient extends AbstractClient
     /**
      * <p>Fetch all emigration rate assumption data which match the input constraints.</p>
      *
-     * @param regionOfBirths
-     *            the region of births
+     * @param regionsOfBirths
+     *            the regions of births
      * @param sexes
      *            the sexes
      * @param ages
@@ -114,10 +114,10 @@ public class PopulationProjectionsLatestAssumptionsClient extends AbstractClient
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getEmigrationRateAssumption(Collection<String> regionOfBirths, Collection<Integer> sexes,
+    public List<ResponseModel> getEmigrationRateAssumption(Collection<String> regionsOfBirths, Collection<Integer> sexes,
             Collection<String> ages, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Fodelselandgrupp", regionOfBirths);
+        mappings.put("Fodelselandgrupp", regionsOfBirths);
         mappings.put(APIConstants.SEX_CODE, sexes);
         mappings.put(APIConstants.AGE_CODE, ages);
         mappings.put(APIConstants.TIME_CODE, years);
@@ -141,8 +141,8 @@ public class PopulationProjectionsLatestAssumptionsClient extends AbstractClient
     /**
      * <p>Fetch all fertility assumption data which match the input constraints.</p>
      *
-     * @param mothersRegionOfBirths
-     *            the mother´s region of birth
+     * @param mothersRegionsOfBirths
+     *            the mother's regions of birth
      * @param ages
      *            the ages
      * @param years
@@ -151,10 +151,10 @@ public class PopulationProjectionsLatestAssumptionsClient extends AbstractClient
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getFertilityAssumption(Collection<String> mothersRegionOfBirths, Collection<String> ages,
+    public List<ResponseModel> getFertilityAssumption(Collection<String> mothersRegionsOfBirths, Collection<String> ages,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ModerFodlandgrupp", mothersRegionOfBirths);
+        mappings.put("ModerFodlandgrupp", mothersRegionsOfBirths);
         mappings.put(APIConstants.AGE_CODE, ages);
         mappings.put(APIConstants.TIME_CODE, years);
 

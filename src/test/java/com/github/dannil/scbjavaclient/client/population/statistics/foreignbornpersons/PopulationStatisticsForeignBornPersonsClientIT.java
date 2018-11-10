@@ -59,11 +59,11 @@ public class PopulationStatisticsForeignBornPersonsClientIT {
         List<String> regions = Arrays.asList("0162", "0180");
         List<String> ages = Arrays.asList("77", "100+");
         List<Integer> sexes = Arrays.asList(1, 2);
-        List<String> regionOfBirths = Arrays.asList("09", "11");
+        List<String> regionsOfBirths = Arrays.asList("09", "11");
         List<Integer> years = Arrays.asList(2009);
 
         assertNotEquals(0,
-                this.client.getSwedishAndForeignBornPopulation(regions, ages, sexes, regionOfBirths, years).size());
+                this.client.getSwedishAndForeignBornPopulation(regions, ages, sexes, regionsOfBirths, years).size());
     }
 
     @Test

@@ -83,12 +83,12 @@ public class PopulationProjectionsLatestAssumptionsClientIT {
     @Test
     @Date("2018-05-12")
     public void getEmigrationAssumptionWithParameters() {
-        List<String> regionOfBirths = Arrays.asList("010", "020");
+        List<String> regionsOfBirths = Arrays.asList("010", "020");
         List<Integer> sexes = Arrays.asList(1, 2);
         List<String> ages = Arrays.asList("19", "42");
         List<Integer> years = Arrays.asList(2030, 2050);
 
-        assertNotEquals(0, this.client.getEmigrationRateAssumption(regionOfBirths, sexes, ages, years).size());
+        assertNotEquals(0, this.client.getEmigrationRateAssumption(regionsOfBirths, sexes, ages, years).size());
     }
 
     @Test
@@ -107,11 +107,11 @@ public class PopulationProjectionsLatestAssumptionsClientIT {
     @Test
     @Date("2018-05-12")
     public void getFertilityAssumptionWithParameters() {
-        List<String> mothersRegionOfBirths = Arrays.asList("040", "070");
+        List<String> mothersRegionsOfBirths = Arrays.asList("040", "070");
         List<String> ages = Arrays.asList("24", "25");
         List<Integer> years = Arrays.asList(2039, 2054);
 
-        assertNotEquals(0, this.client.getFertilityAssumption(mothersRegionOfBirths, ages, years).size());
+        assertNotEquals(0, this.client.getFertilityAssumption(mothersRegionsOfBirths, ages, years).size());
     }
 
 }

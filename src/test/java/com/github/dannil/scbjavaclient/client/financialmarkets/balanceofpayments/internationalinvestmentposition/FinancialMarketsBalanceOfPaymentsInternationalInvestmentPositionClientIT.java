@@ -54,11 +54,11 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
     @Test
     @Date("2017-06-13")
     public void getRevisionsWithParameters() {
-        List<String> assetsLiabilities = Arrays.asList("X1", "X2");
+        List<String> assetsAndLiabilities = Arrays.asList("X1", "X2");
         List<String> items = Arrays.asList("I2", "I4");
         List<String> quarters = Arrays.asList("2016K2", "2016K3");
 
-        assertNotEquals(0, this.client.getRevisions(assetsLiabilities, items, quarters).size());
+        assertNotEquals(0, this.client.getRevisions(assetsAndLiabilities, items, quarters).size());
     }
 
     @Test
@@ -79,12 +79,12 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
     @Test
     @Date("2017-06-13")
     public void getAssetsAndLiabilitiesBySectorsQuartersWithParameters() {
-        List<String> assetsLiabilities = Arrays.asList("X1", "X2");
+        List<String> assetsAndLiabilities = Arrays.asList("X1", "X2");
         List<Integer> sectors = Arrays.asList(3, 5);
         List<String> items = Arrays.asList("J2.2.1.1", "J2.2.1.2");
         List<String> quarters = Arrays.asList("2013K1", "2013K2");
 
-        assertNotEquals(0, this.client.getAssetsAndLiabilitiesBySectorsQuarters(assetsLiabilities, sectors, items,
+        assertNotEquals(0, this.client.getAssetsAndLiabilitiesBySectorsQuarters(assetsAndLiabilities, sectors, items,
                 quarters).size());
     }
 
@@ -106,12 +106,12 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
     @Test
     @Date("2017-06-13")
     public void getAssetsAndLiabilitiesByCurrenciesYearsWithParameters() {
-        List<String> assetsLiabilities = Arrays.asList("X1", "X2");
+        List<String> assetsAndLiabilities = Arrays.asList("X1", "X2");
         List<String> currencies = Arrays.asList("v0", "v1");
         List<String> items = Arrays.asList("I4.1", "I4.2");
         List<Integer> years = Arrays.asList(2002, 2003);
 
-        assertNotEquals(0, this.client.getAssetsAndLiabilitiesByCurrenciesYears(assetsLiabilities, currencies, items,
+        assertNotEquals(0, this.client.getAssetsAndLiabilitiesByCurrenciesYears(assetsAndLiabilities, currencies, items,
                 years).size());
     }
 
@@ -155,13 +155,13 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
     @Test
     @Date("2017-06-13")
     public void getAssetsAndLiabilitiesBySectorsYearsWithParameters() {
-        List<String> assetsLiabilities = Arrays.asList("X1", "X2");
+        List<String> assetsAndLiabilities = Arrays.asList("X1", "X2");
         List<Integer> sectors = Arrays.asList(3, 5);
         List<String> items = Arrays.asList("J2.2.1.1", "J2.2.1.2");
         List<Integer> years = Arrays.asList(2008, 2009);
 
         assertNotEquals(0,
-                this.client.getAssetsAndLiabilitiesBySectorsYears(assetsLiabilities, sectors, items, years).size());
+                this.client.getAssetsAndLiabilitiesBySectorsYears(assetsAndLiabilities, sectors, items, years).size());
     }
 
     @Test
@@ -182,12 +182,12 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
     @Test
     @Date("2017-06-13")
     public void getAssetsAndLiabilitiesWithDirectInvestmentsWithParameters() {
-        List<String> assetsLiabilities = Arrays.asList("X1", "X2");
+        List<String> assetsAndLiabilities = Arrays.asList("X1", "X2");
         List<String> currencies = Arrays.asList("v0", "v1");
         List<String> items = Arrays.asList("K2.1", "K2.2");
         List<Integer> years = Arrays.asList(2002, 2003);
 
-        assertNotEquals(0, this.client.getAssetsAndLiabilitiesWithDirectInvestments(assetsLiabilities, currencies,
+        assertNotEquals(0, this.client.getAssetsAndLiabilitiesWithDirectInvestments(assetsAndLiabilities, currencies,
                 items, years).size());
     }
 
@@ -209,12 +209,12 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
     @Test
     @Date("2017-06-13")
     public void getAssetsAndLiabilitiesByCurrenciesQuartersWithParameters() {
-        List<String> assetsLiabilities = Arrays.asList("X1", "X2");
+        List<String> assetsAndLiabilities = Arrays.asList("X1", "X2");
         List<String> currencies = Arrays.asList("v0", "v1");
         List<String> items = Arrays.asList("I4.1", "I4.2");
         List<String> quarters = Arrays.asList("2012K2", "2012K3");
 
-        assertNotEquals(0, this.client.getAssetsAndLiabilitiesByCurrenciesQuarters(assetsLiabilities, currencies, items,
+        assertNotEquals(0, this.client.getAssetsAndLiabilitiesByCurrenciesQuarters(assetsAndLiabilities, currencies, items,
                 quarters).size());
     }
 
