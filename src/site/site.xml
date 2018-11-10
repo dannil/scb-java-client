@@ -27,8 +27,8 @@
     </breadcrumbs>
 
     <menu name="Overview">
-      <item name="Introduction" href="index.html"/>
-      <item name="Download" href="https://www.github.com/dannil/scb-java-client/releases/"/>
+      <item name="Introduction" href="index.html" />
+      <item name="Download" href="https://www.github.com/dannil/scb-java-client/releases/" />
     </menu>
 
     <menu ref="reports" inherit="bottom" />

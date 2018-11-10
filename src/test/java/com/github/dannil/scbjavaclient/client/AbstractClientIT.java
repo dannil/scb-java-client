@@ -76,8 +76,7 @@ public class AbstractClientIT {
         String url = client.getRootUrl() + "HE/HE0103/HE0103B/BefolkningAlder";
 
         // This request is performed with the locale set to English. This means that if
-        // we
-        // receive a response with Swedish text, we've used the fallback url.
+        // we receive a response with Swedish text, we've used the fallback url.
         String response = client.doGetRequest(url);
 
         assertTrue(response.contains("ålder"));
@@ -101,8 +100,7 @@ public class AbstractClientIT {
         map.put("Tid", Arrays.asList("2012"));
 
         // This request is performed with the locale set to English. This means that if
-        // we
-        // receive a response with Swedish text, we've used the fallback url.
+        // we receive a response with Swedish text, we've used the fallback url.
         String response = client.doPostRequest(url, QueryBuilder.build(map));
 
         assertTrue(response.contains("ålder"));
@@ -146,8 +144,7 @@ public class AbstractClientIT {
 
         // This call will result in a HTTP 403 response (forbidden) since the
         // response from this table is larger than the API allows (given all the
-        // available
-        // inputs)
+        // available inputs)
         assertThrows(SCBClientResponseTooLargeException.class, () -> client.getRawData("NV/NV0119/IVPKNLonAr"));
     }
 
@@ -500,7 +497,7 @@ public class AbstractClientIT {
                     if (Objects.equals(filteredMethod.getName(), key)) {
                         String methodFqdn = clazz.getSimpleName() + "." + filteredMethod.getName();
                         URLEndpoint fullUrl = url.append(value);
-                        
+
                         // We need to use the English locale as the parameter names in the
                         // methods match the API
                         GETRequester requester = new GETRequester(StandardCharsets.UTF_8);
@@ -601,11 +598,11 @@ public class AbstractClientIT {
                 assertTrue(false, e.getMessage());
             }
         }
-        
+
         // Remove code and value combinations which only occurs once (which means it isn't
         // a duplicate)
         offendingCodes.values().removeIf(v -> v.size() == 1);
-        
+
         assertTrue(offendingCodes.isEmpty(), "Duplicated code and value combinations: " + offendingCodes.toString());
     }
 

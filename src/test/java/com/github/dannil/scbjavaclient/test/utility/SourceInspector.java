@@ -60,7 +60,6 @@ public class SourceInspector {
         String method = null;
         boolean isDeprecated = false;
         for (String line : lines) {
-            //System.out.println(isDeprecated);
             // Skip line if it is a comment, Javadoc or alike
             String trimmedLine = line.trim();
             String[] comments = { "//", "/**", "/*", "*", "*/" };
@@ -86,7 +85,6 @@ public class SourceInspector {
             }
             if (method != null && trimmedLine.contains("Collection") && !trimmedLine.contains("mappings")) {
                 String[] parts = trimmedLine.split(" ");
-                //System.out.println(Arrays.toString(parts));
                 List<String> forbiddenElements = Arrays.asList("Collection", "public", "List", "{", "}", ",", " ");
                 for (int i = 0; i < parts.length; i++) {
                     String part = parts[i].replaceAll("[^a-zA-Z]", "");
@@ -97,7 +95,6 @@ public class SourceInspector {
                         }
                     }
                     if (!isForbidden) {
-                        //System.out.println(part);
                         if (parameters.containsKey(method)) {
                             List<String> temp = parameters.get(method);
                             if (!temp.contains(part)) {
