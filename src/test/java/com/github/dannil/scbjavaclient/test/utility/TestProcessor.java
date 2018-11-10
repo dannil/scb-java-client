@@ -1,6 +1,5 @@
 package com.github.dannil.scbjavaclient.test.utility;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,21 +21,16 @@ public class TestProcessor {
     }
 
     public static boolean isMissingParameters(List<String> methodParameters, List<String> apiParameters) {
+        // Easy test: check if the lists are of the same size
+        // If not, they obviously doesn't contain the same parameters
+        if (methodParameters.size() != apiParameters.size()) {
+            return true;
+        }
         for (int i = 0; i < methodParameters.size(); i++) {
             String methodParameter = methodParameters.get(i);
             String apiParameter = apiParameters.get(i);
 
-            System.out.println("M: " + methodParameter);
-            System.out.println("A: " + apiParameter);
-
             String modifiedApiParameter = new String(apiParameter);
-
-            // There exists some cases which are nigh on impossible to
-            // handle if the method parameter name is pluralized, so
-            // lets remove that
-            // String modifiedMethodParameter =
-            // methodParameter.substring(0,
-            // methodParameter.length() - 1);
             String modifiedMethodParameter = new String(methodParameter);
 
             // Remove trailing spaces
@@ -45,7 +39,6 @@ public class TestProcessor {
             // some weird reason, such as "grounds för settlement" instead of "grounds for
             // settlement")
             modifiedApiParameter = toEnglish(modifiedApiParameter);
-            // System.out.println("A2: " + modifiedApiParameter);
 
             String tempModifiedApiParameter = modifiedApiParameter.replaceAll("[^a-zA-Z]", "");
 
@@ -67,14 +60,10 @@ public class TestProcessor {
 
                     modifiedApiParameter = builder.toString();
                 }
-
-                System.out.println("MM1: " + modifiedMethodParameter);
-                System.out.println("MA1: " + modifiedApiParameter);
             }
 
             // Remove all characters EXCEPT alpha and whitespace
             modifiedApiParameter = modifiedApiParameter.replaceAll("[^a-zA-Z\\s]", "");
-            System.out.println("MA0: " + modifiedApiParameter);
 
             tempModifiedApiParameter = modifiedApiParameter.replaceAll("[^a-zA-Z]", "").toLowerCase();
             if (!TestConstants.ALREADY_PLURALIZED.contains(tempModifiedApiParameter)) {
@@ -83,48 +72,16 @@ public class TestProcessor {
                 modifiedApiParameter = pluralizeWord(modifiedApiParameter);
             }
 
-            System.out.println("MM2: " + modifiedMethodParameter);
-            System.out.println("MA2: " + modifiedApiParameter);
-
             tempModifiedApiParameter = modifiedApiParameter.replaceAll("[^a-zA-Z]", "").toLowerCase();
             if (!TestConstants.ALREADY_PLURALIZED.contains(tempModifiedApiParameter)) {
                 modifiedApiParameter = pluralizeWordsBeforePrepositions(modifiedApiParameter);
             }
 
-            System.out.println("MM3: " + modifiedMethodParameter);
-            System.out.println("MA3: " + modifiedApiParameter);
-
             // Remove all non-alpha characters
             modifiedApiParameter = modifiedApiParameter.replaceAll("[^a-zA-Z]", "");
 
-            System.out.println("MM4: " + modifiedMethodParameter);
-            System.out.println("MA4: " + modifiedApiParameter);
-
-            // if (!TestConstants.ALREADY_PLURALIZED.contains(modifiedApiParameter)) {
-            // String lastCharacter =
-            // modifiedApiParameter.substring(modifiedApiParameter.length() - 1);
-            // if (lastCharacter.matches("[xX]")) {
-            // modifiedApiParameter += "es";
-            // } else if (lastCharacter.matches("[yY]")) {
-            // // Remove the last y and replace it with ies
-            // // Example: country becomes countries
-            // String withoutLastLetter = modifiedApiParameter.substring(0,
-            // modifiedApiParameter.length() - 1);
-            // modifiedApiParameter = withoutLastLetter + "ies";
-            // } else if (lastCharacter.matches("[s]")) {
-            // modifiedApiParameter += "es";
-            // } else if (lastCharacter.matches("[a-zA-Z]")) {
-            // System.out.println("here");
-            // modifiedApiParameter += 's';
-            // System.out.println("A3: " + modifiedApiParameter);
-            // }
-            // }
-
             String modifiedApiParameterLower = modifiedApiParameter.toLowerCase();
             String modifiedMethodParameterLower = modifiedMethodParameter.toLowerCase();
-
-            System.out.println("APL: " + modifiedApiParameterLower);
-            System.out.println("MPL: " + modifiedMethodParameterLower);
 
             if (!modifiedApiParameterLower.contains(modifiedMethodParameterLower)) {
 
@@ -136,22 +93,13 @@ public class TestProcessor {
                 // method parameter industrialclassifications, and as
                 // such the API parameter doesn't contain the trailing
                 // s
-                StringBuilder b2 = new StringBuilder(modifiedApiParameterLower);
-                System.out.println(modifiedMethodParameterLower);
+                builder = new StringBuilder(modifiedApiParameterLower);
                 if (modifiedApiParameterLower.length() >= modifiedMethodParameterLower.length()) {
-                    b2.insert(modifiedMethodParameterLower.length() - 1, "s");
+                    builder.insert(modifiedMethodParameterLower.length() - 1, "s");
                 }
-
-                modifiedApiParameterLower = b2.toString();
-                System.out.println("B2: " + modifiedApiParameterLower);
                 if (modifiedApiParameterLower.contains(modifiedMethodParameterLower)) {
                     continue;
                 }
-
-                // System.out.println("!!! " + clazz.getName() + " !!!");
-                // missingParameters = true;
-                // System.exit(1);
-                // break;
                 return true;
             }
         }
@@ -170,9 +118,7 @@ public class TestProcessor {
         } else if (lastCharacter.matches("[s]")) {
             word += "es";
         } else if (lastCharacter.matches("[a-zA-Z]")) {
-            System.out.println("here");
             word += 's';
-            System.out.println("A3: " + word);
         }
         return word;
     }
@@ -185,33 +131,21 @@ public class TestProcessor {
             String preposition = prepositions[k];
             int position = word.indexOf(preposition);
             if (position > 0) {
-
                 // Check for space before the supposed preposition (and, of, etc.)
                 // If there is then it's an preposition and simply not a part of
                 // a word (i.e. industrial classificATions)
                 // System.out.println(modifiedApiParameter.charAt(position - 1));
                 boolean isPreposition = (word.charAt(position - 1) == ' ');
-                // System.out.println(isPreposition);
-
                 if (position >= 2 && isPreposition) {
                     boolean previousWordIsPluralized = false;
                     String wordBeforePreposition = parts.get(parts.indexOf(preposition) - 1);
-                    System.out.println(wordBeforePreposition);
-
                     int indexOfLast = position - 2;
-                    System.out.println("IOL: " + indexOfLast);
                     char last = word.charAt(indexOfLast);
                     previousWordIsPluralized = (last == 's');
-
                     if (!previousWordIsPluralized) {
                         String wordBeforePrepositionPluralized = pluralizeWord(wordBeforePreposition);
-
-                        // System.out.println("match");
                         int start = indexOfLast - wordBeforePreposition.length() + 1;
-                        System.out.println(start);
                         builder = builder.replace(start, indexOfLast + 1, wordBeforePrepositionPluralized);
-
-                        // builder = builder.insert(position - 1, "s");
                     }
                 }
             }

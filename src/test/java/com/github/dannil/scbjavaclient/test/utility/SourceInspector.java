@@ -59,7 +59,6 @@ public class SourceInspector {
         String beginningOfMethod = "List<ResponseModel>";
         String method = null;
         boolean isDeprecated = false;
-        boolean hasMethodEnded = false;
         for (String line : lines) {
             //System.out.println(isDeprecated);
             // Skip line if it is a comment, Javadoc or alike

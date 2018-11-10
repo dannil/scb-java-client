@@ -31,6 +31,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -58,7 +59,6 @@ import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
 import com.github.dannil.scbjavaclient.test.utility.Files;
 import com.github.dannil.scbjavaclient.test.utility.Filters;
-import com.github.dannil.scbjavaclient.test.utility.Sorter;
 import com.github.dannil.scbjavaclient.test.utility.SourceInspector;
 import com.github.dannil.scbjavaclient.test.utility.TestProcessor;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
@@ -435,7 +435,7 @@ public class AbstractClientIT {
     }
 
     @Test
-    // @Date("2018-06-25")
+    @Date("2018-11-10")
     public void checkForCorrectUsageOfAllCodes() throws Exception {
         String execPath = System.getProperty("user.dir");
 
@@ -445,7 +445,8 @@ public class AbstractClientIT {
         // Filter out some classes from the list
         Filters.files(files, AbstractClient.class, AbstractContainerClient.class, SCBClient.class);
 
-        List<String> offendingMethods = new ArrayList<>();
+        StringBuilder builder = new StringBuilder();
+        Set<String> offendingMethods = new HashSet<>();
         for (File f : files) {
             // Convert path into binary name
             String binaryName = Files.fileToBinaryName(f);
@@ -489,7 +490,6 @@ public class AbstractClientIT {
                 }
                 filteredMethods.add(m);
             }
-            SCBClient client = new SCBClient(new Locale("en", "US"));
             for (Entry<String, String> entry : tables.entrySet()) {
                 String key = entry.getKey();
                 String value = entry.getValue();
@@ -500,10 +500,9 @@ public class AbstractClientIT {
                         continue;
                     }
                     if (Objects.equals(filteredMethod.getName(), key)) {
+                        String methodFqdn = clazz.getSimpleName() + "." + filteredMethod.getName();
                         URLEndpoint fullUrl = url.append(value);
-
-                        // boolean missingParameters = false;
-
+                        
                         // We need to use the English locale as the parameter names in the
                         // methods match the API
                         GETRequester requester = new GETRequester(StandardCharsets.UTF_8);
@@ -528,34 +527,24 @@ public class AbstractClientIT {
                             List<String> methodParameters = parameters.get(key);
                             List<String> apiParameters = new ArrayList<>(codesTexts.values());
 
-                            System.out.println("M[]: " + methodParameters);
-                            System.out.println("A[]: " + apiParameters);
-
                             boolean missingParameters = TestProcessor.isMissingParameters(methodParameters,
                                     apiParameters);
-                            if (missingParameters) {
-                                System.err.println("MISSING!");
-                                System.out.println("!!! " + clazz.getName() + " !!!");
-                                System.exit(1);
-                            }
 
-                            boolean jumbledParameters = TestProcessor.isJumbled(methodParameters, apiParameters);
-                            if (jumbledParameters) {
-                                System.err.println("JUMBLED!");
-                                System.exit(1);
+                            boolean jumbledParameters = false;
+                            if (!missingParameters) {
+                                jumbledParameters = TestProcessor.isJumbled(methodParameters, apiParameters);
                             }
-
-                            // Check for same amount of codes. Remove one as the code
-                            // ContentsCode is implicitly added by every method and
-                            // doesn't need to be a parameter
-                            Map<String, Collection<String>> inputs = client.getInputs(fullUrl.getTable());
-                            TimeUnit.MILLISECONDS.sleep(TestConstants.API_SLEEP_MS);
-                            int differenceOfParameters = inputs.keySet().size() - filteredMethod.getParameterCount()
-                                    - 1;
 
                             // Validate constraints
-                            if (missingParameters || differenceOfParameters > 0) {
-                                offendingMethods.add(clazz.getSimpleName() + "." + filteredMethod.getName());
+                            if (missingParameters || jumbledParameters) {
+                                offendingMethods.add(methodFqdn);
+
+                                builder.append(methodFqdn + " has missing or jumbled parameters.");
+                                builder.append(System.lineSeparator() + "\t");
+                                builder.append("API parameters: " + apiParameters);
+                                builder.append(System.lineSeparator() + "\t");
+                                builder.append("Method parameters: " + methodParameters);
+                                builder.append(System.lineSeparator());
                             }
                         } else {
                             throw new IllegalArgumentException(clazz.getSimpleName() + "." + filteredMethod.getName());
@@ -565,7 +554,7 @@ public class AbstractClientIT {
             }
         }
         assertTrue(offendingMethods.isEmpty(),
-                "Methods not implementing all codes OR they're jumbled: " + offendingMethods);
+                "There are offending methods. " + System.lineSeparator() + builder.toString());
     }
 
     @Test

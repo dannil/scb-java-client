@@ -14,14 +14,11 @@
 
 package com.github.dannil.scbjavaclient.test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
-import java.io.IOException;
 import java.lang.reflect.Field;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -39,8 +36,6 @@ import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
 import com.github.dannil.scbjavaclient.test.utility.Files;
 import com.github.dannil.scbjavaclient.test.utility.Filters;
-import com.github.dannil.scbjavaclient.test.utility.Sorter;
-import com.github.dannil.scbjavaclient.test.utility.SourceInspector;
 
 @Suite
 public class TestIT {
@@ -233,12 +228,6 @@ public class TestIT {
             }
         }
         assertTrue(matchedClasses.isEmpty(), "Clients not utilizing API constants : " + matchedClasses.toString());
-    }
-    
-    @Test
-    public void abc() throws IOException {
-        Path p = Paths.get("/home/daniel/git/scb-java-client/src/main/java/com/github/dannil/scbjavaclient/client/environment/waste/EnvironmentWasteClient.java");
-        Map<String, List<String>> parameters = SourceInspector.getParameters(p);
     }
 
 }

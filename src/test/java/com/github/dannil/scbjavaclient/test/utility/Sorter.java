@@ -4,17 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import info.debatty.java.stringsimilarity.Cosine;
-import info.debatty.java.stringsimilarity.Jaccard;
-import info.debatty.java.stringsimilarity.MetricLCS;
-import info.debatty.java.stringsimilarity.NGram;
-import info.debatty.java.stringsimilarity.experimental.Sift4;
 import info.debatty.java.stringsimilarity.interfaces.StringDistance;
 
 public class Sorter {
 
     public static List<String> sortAccordingTo(List<String> toBeSorted, List<String> accordingTo) {
         String[] sortedArr = new String[toBeSorted.size()];
-
         for (int i = 0; i < toBeSorted.size(); i++) {
             String to = toBeSorted.get(i);
             String toLower = to.toLowerCase();
@@ -23,21 +18,8 @@ public class Sorter {
             for (int j = 0; j < accordingTo.size(); j++) {
                 String acc = accordingTo.get(j);
                 String accLower = acc.toLowerCase().replaceAll("[^a-zA-Z]", "");
-                System.out.println("ACCLOWER: " + accLower);
-                // StringDistance dis = new Jaccard(Math.min(to.length(), acc.length()));
-
-                StringDistance dis = null;
+                StringDistance dis = new Cosine();
                 double distance = Double.MAX_VALUE;
-
-                // String toWithoutLast = toLower.substring(0, toLower.length() - 1);
-                // if (accLower.startsWith(toWithoutLast)) {
-                // dis = new MetricLCS();
-                // System.out.println("Using metricLCS");
-                // } else {
-                // dis = new Cosine();
-                // System.out.println("Using cosine");
-                // }
-
                 String toLowerWithoutLast = toLower.substring(0, toLower.length() - 1);
                 if (accLower.startsWith(toLowerWithoutLast)) {
                     // If the method parameter constitutes the beginning of the API
@@ -45,37 +27,12 @@ public class Sorter {
                     //
                     // Due to falls positives, we need to set a likely distance, which
                     // has a high chance of being in the boundary
-                    // actualDistance > tempDistance > falsePositiveDistance
+                    // actualDistance > x > falsePositiveDistance
                     //
                     // This value might need to be adjusted in the future
-                    double tempDistance = 0.31;
-
-                    dis = new Cosine();
-                    distance = Math.min(tempDistance, dis.distance(toLower, accLower));
-
-                    // System.out.println("Using metricLCS");
-                    // dis = new MetricLCS();
-
-                    // int shortest = Math.min(accLower.length(), toLower.length());
-                    //
-                    // distance = dis.distance(toLower.substring(0, shortest),
-                    // accLower.substring(0, shortest));
-                } else {
-                    System.out.println("Using cosine");
-                    dis = new Cosine();
-                    distance = dis.distance(toLower, accLower);
+                    distance = 0.31;
                 }
-
-                // double distance = dis.distance(toLower, accLower);
-                System.out.println("TO: " + to + ", ACC: " + acc + ", DISTANCE: " + distance);
-                // if (sortedArr[pos] != null) {
-                //
-                // String a = sortedArr[pos];
-                //
-                //
-                // String[] arr = sortInternally(a, pos, accLower, bPos, accLower)
-                //
-                // } else
+                distance = Math.min(distance, dis.distance(toLower, accLower));
                 if (distance < mostProbableDistance) {
                     mostProbableDistance = distance;
                     pos = j;
@@ -89,11 +46,5 @@ public class Sorter {
         }
         return sorted;
     }
-    //
-    // private static String[] sortInternally(String a, int aPos, String b, int bPos,
-    // String compareTo) {
-    // StringDistance dis = new Cosine();
-    //
-    // }
 
 }
