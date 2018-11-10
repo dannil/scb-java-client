@@ -74,5 +74,22 @@ public class SorterTest {
         assertEquals(accordingTo.indexOf("waste category"), sorted.indexOf("wasteCategories"));
         assertEquals(accordingTo.indexOf("every other year"), sorted.indexOf("years"));
     }
-    
+
+    @Test
+    public void elementsAreSimilar() {
+        List<String> accordingTo = Arrays.asList("sex", "year of birth", "year");
+        List<String> toBeSorted = Arrays.asList("sexes", "yearsOfBirths", "years");
+
+        assertEquals(accordingTo.indexOf("sex"), toBeSorted.indexOf("sexes"));
+        assertEquals(accordingTo.indexOf("year of birth"), toBeSorted.indexOf("yearsOfBirths"));
+        assertEquals(accordingTo.indexOf("year"), toBeSorted.indexOf("years"));
+
+        List<String> sorted = Sorter.sortAccordingTo(toBeSorted, accordingTo);
+
+        // Verify that elements are in the correct position
+        assertEquals(accordingTo.indexOf("sex"), sorted.indexOf("sexes"));
+        assertEquals(accordingTo.indexOf("year of birth"), sorted.indexOf("yearsOfBirths"));
+        assertEquals(accordingTo.indexOf("year"), sorted.indexOf("years"));
+    }
+
 }

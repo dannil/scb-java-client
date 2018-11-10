@@ -22,7 +22,12 @@ public class TestConstants {
         // CODE_TRANSLATIONS.put("AmneMiljo", "substance");
 
         ALREADY_PLURALIZED = new HashSet<String>();
-        ALREADY_PLURALIZED.add("assetsliabilities");
+        //ALREADY_PLURALIZED.add("assetsandliabilities");
+        
+        ALREADY_PLURALIZED.add("numberofchildren");
+        ALREADY_PLURALIZED.add("foreignandswedishbackgrounds");
+        ALREADY_PLURALIZED.add("siblingslivingathomes");
+        ALREADY_PLURALIZED.add("fullandparttimes");
     }
 
 }

@@ -41,8 +41,18 @@ public class Sorter {
                 String toLowerWithoutLast = toLower.substring(0, toLower.length() - 1);
                 if (accLower.startsWith(toLowerWithoutLast)) {
                     // If the method parameter constitutes the beginning of the API
-                    // parameter, it's extremely likely this is a match
-                    distance = 0.0;
+                    // parameter, it's very likely this is a match
+                    //
+                    // Due to falls positives, we need to set a likely distance, which
+                    // has a high chance of being in the boundary
+                    // actualDistance > tempDistance > falsePositiveDistance
+                    //
+                    // This value might need to be adjusted in the future
+                    double tempDistance = 0.31;
+
+                    dis = new Cosine();
+                    distance = Math.min(tempDistance, dis.distance(toLower, accLower));
+
                     // System.out.println("Using metricLCS");
                     // dis = new MetricLCS();
 
@@ -58,6 +68,14 @@ public class Sorter {
 
                 // double distance = dis.distance(toLower, accLower);
                 System.out.println("TO: " + to + ", ACC: " + acc + ", DISTANCE: " + distance);
+                // if (sortedArr[pos] != null) {
+                //
+                // String a = sortedArr[pos];
+                //
+                //
+                // String[] arr = sortInternally(a, pos, accLower, bPos, accLower)
+                //
+                // } else
                 if (distance < mostProbableDistance) {
                     mostProbableDistance = distance;
                     pos = j;
@@ -71,5 +89,11 @@ public class Sorter {
         }
         return sorted;
     }
+    //
+    // private static String[] sortInternally(String a, int aPos, String b, int bPos,
+    // String compareTo) {
+    // StringDistance dis = new Cosine();
+    //
+    // }
 
 }

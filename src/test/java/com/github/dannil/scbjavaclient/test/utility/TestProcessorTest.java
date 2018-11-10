@@ -34,6 +34,26 @@ public class TestProcessorTest {
     }
 
     @Test
+    public void isMissingParametersPluralize1() {
+        List<String> apiParameters = Arrays.asList("country of citizenship", "sex", "year", "every other year");
+        List<String> methodParameters = Arrays.asList("countriesOfCitizenships", "sexes", "years");
+
+        boolean isMissing = TestProcessor.isMissingParameters(methodParameters, apiParameters);
+        assertFalse(isMissing);
+    }
+
+    @Test
+    public void isMissingParametersPluralize2() {
+        List<String> apiParameters = Arrays.asList("sex", "ages", "type of housing,", "family type",
+                "foreign/Swedish background", "parents´ income level", "year");
+        List<String> methodParameters = Arrays.asList("sexes", "ages", "typesOfHousings", "familyTypes",
+                "foreignAndSwedishBackgrounds", "parentsIncomes", "years");
+
+        boolean isMissing = TestProcessor.isMissingParameters(methodParameters, apiParameters);
+        assertFalse(isMissing);
+    }
+
+    @Test
     public void isJumbledFalse() {
         List<String> apiParameters = Arrays.asList("property", "industrial classification", "waste category",
                 "every other year");
