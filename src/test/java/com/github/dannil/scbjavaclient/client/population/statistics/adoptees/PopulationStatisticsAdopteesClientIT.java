@@ -55,10 +55,10 @@ public class PopulationStatisticsAdopteesClientIT {
     @Date("2017-04-09")
     public void getAdoptionsWithParameters() {
         List<String> sexes = Arrays.asList("1", "1+2");
-        List<Integer> yearOfBirths = Arrays.asList(1928, 1956);
+        List<Integer> yearsOfBirths = Arrays.asList(1928, 1956);
         List<Integer> years = Arrays.asList(2009);
 
-        assertNotEquals(0, this.client.getAdoptions(sexes, yearOfBirths, years).size());
+        assertNotEquals(0, this.client.getAdoptions(sexes, yearsOfBirths, years).size());
     }
 
 }

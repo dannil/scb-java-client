@@ -53,8 +53,7 @@
   <!-- <property name="header" value="/*\r\n * Copyright" /> -->
   <!-- </module> -->
   <module name="RegexpHeader">
-    <property name="headerFile"
-      value="src/test/resources/checkstyle/header/java.header" />
+    <property name="headerFile" value="src/test/resources/checkstyle/header/java.header" />
     <property name="fileExtensions" value="java" />
   </module>
 
@@ -151,8 +150,7 @@
     <module name="CustomImportOrder">
       <property name="specialImportsRegExp" value="gov." />
       <property name="sortImportsInGroupAlphabetically" value="true" />
-      <property name="customImportOrderRules"
-        value="STATIC###STANDARD_JAVA_PACKAGE###THIRD_PARTY_PACKAGE" />
+      <property name="customImportOrderRules" value="STATIC###STANDARD_JAVA_PACKAGE###THIRD_PARTY_PACKAGE" />
     </module>
     <module name="IllegalImport" /> <!-- defaults to sun.* packages -->
     <!-- <module name="ImportControl" /> -->

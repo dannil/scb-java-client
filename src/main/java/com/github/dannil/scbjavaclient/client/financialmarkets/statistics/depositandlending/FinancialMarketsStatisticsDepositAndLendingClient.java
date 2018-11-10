@@ -80,8 +80,8 @@ public class FinancialMarketsStatisticsDepositAndLendingClient extends AbstractC
      *            the reference sectors
      * @param counterpartySectors
      *            the counterparty sectors
-     * @param remainingMaturity
-     *            the remaining maturity
+     * @param remainingMaturities
+     *            the remaining maturities
      * @param months
      *            the months
      * @return the data wrapped in a list of
@@ -89,11 +89,11 @@ public class FinancialMarketsStatisticsDepositAndLendingClient extends AbstractC
      *         objects
      */
     public List<ResponseModel> getLendingRatesBreakdownByRemainingMaturity(Collection<String> referenceSectors,
-            Collection<Integer> counterpartySectors, Collection<String> remainingMaturity, Collection<String> months) {
+            Collection<Integer> counterpartySectors, Collection<String> remainingMaturities, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(REFERENCESECTOR_CODE, referenceSectors);
         mappings.put(COUNTERPARTYSECTOR_CODE, counterpartySectors);
-        mappings.put("AterstRantebtid", remainingMaturity);
+        mappings.put("AterstRantebtid", remainingMaturities);
         mappings.put(APIConstants.TIME_CODE, months);
 
         return getResponseModels("RantaT02", mappings);

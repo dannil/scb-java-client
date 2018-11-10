@@ -73,8 +73,8 @@ public class PopulationStatisticsHouseholdClient extends AbstractClient {
      *            the regions
      * @param typesOfHouseholds
      *            the types of households
-     * @param numberOfChildrens
-     *            the number of childrens
+     * @param numberOfChildren
+     *            the number of children
      * @param years
      *            the years
      * @return the data wrapped in a list of
@@ -82,11 +82,11 @@ public class PopulationStatisticsHouseholdClient extends AbstractClient {
      *         objects
      */
     public List<ResponseModel> getNumberOfHouseholdsAndPersons(Collection<String> regions,
-            Collection<String> typesOfHouseholds, Collection<String> numberOfChildrens, Collection<Integer> years) {
+            Collection<String> typesOfHouseholds, Collection<String> numberOfChildren, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put(TYPEOFHOUSEHOLD_CODE, typesOfHouseholds);
-        mappings.put("Barn", numberOfChildrens);
+        mappings.put("Barn", numberOfChildren);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("HushallT05", mappings);

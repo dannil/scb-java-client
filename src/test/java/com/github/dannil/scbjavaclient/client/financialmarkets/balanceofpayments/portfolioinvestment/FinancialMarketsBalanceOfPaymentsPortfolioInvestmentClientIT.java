@@ -83,11 +83,11 @@ public class FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClientIT {
     @Test
     @Date("2017-06-11")
     public void getNonResidentTradeInSwedishSharesWithParameters() {
-        List<String> typesOfTrades = Arrays.asList("AI", "AN");
-        List<String> typesOfShares = Arrays.asList("SE0000937682", "SE0000472268");
+        List<String> nonResidentTrades = Arrays.asList("AI", "AN");
+        List<String> swedishShares = Arrays.asList("SE0000937682", "SE0000472268");
         List<String> months = Arrays.asList("2010M06", "2012M02");
 
-        assertNotEquals(0, this.client.getNonResidentTradeInSwedishShares(typesOfTrades, typesOfShares, months).size());
+        assertNotEquals(0, this.client.getNonResidentTradeInSwedishShares(nonResidentTrades, swedishShares, months).size());
     }
 
     @Test

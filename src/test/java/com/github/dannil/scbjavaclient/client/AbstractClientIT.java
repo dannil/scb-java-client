@@ -31,6 +31,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -45,9 +46,13 @@ import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
+import com.github.dannil.scbjavaclient.communication.http.HttpResponse;
+import com.github.dannil.scbjavaclient.communication.http.requester.GETRequester;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.exception.SCBClientResponseTooLargeException;
+import com.github.dannil.scbjavaclient.format.json.JsonConverter;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.test.TestConstants;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
@@ -55,6 +60,8 @@ import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
 import com.github.dannil.scbjavaclient.test.utility.Files;
 import com.github.dannil.scbjavaclient.test.utility.Filters;
+import com.github.dannil.scbjavaclient.test.utility.SourceInspector;
+import com.github.dannil.scbjavaclient.test.utility.TestProcessor;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 @Suite
@@ -68,8 +75,8 @@ public class AbstractClientIT {
 
         String url = client.getRootUrl() + "HE/HE0103/HE0103B/BefolkningAlder";
 
-        // This request is performed with the locale set to English. This means that if we
-        // receive a response with Swedish text, we've used the fallback url.
+        // This request is performed with the locale set to English. This means that if
+        // we receive a response with Swedish text, we've used the fallback url.
         String response = client.doGetRequest(url);
 
         assertTrue(response.contains("ålder"));
@@ -92,8 +99,8 @@ public class AbstractClientIT {
         map.put("Boendeform", Arrays.asList("SMAG"));
         map.put("Tid", Arrays.asList("2012"));
 
-        // This request is performed with the locale set to English. This means that if we
-        // receive a response with Swedish text, we've used the fallback url.
+        // This request is performed with the locale set to English. This means that if
+        // we receive a response with Swedish text, we've used the fallback url.
         String response = client.doPostRequest(url, QueryBuilder.build(map));
 
         assertTrue(response.contains("ålder"));
@@ -136,8 +143,8 @@ public class AbstractClientIT {
         SCBClient client = new SCBClient(new Locale("sv", "SE"));
 
         // This call will result in a HTTP 403 response (forbidden) since the
-        // response from this table is larger than the API allows (given all the available
-        // inputs)
+        // response from this table is larger than the API allows (given all the
+        // available inputs)
         assertThrows(SCBClientResponseTooLargeException.class, () -> client.getRawData("NV/NV0119/IVPKNLonAr"));
     }
 
@@ -423,8 +430,8 @@ public class AbstractClientIT {
     }
 
     @Test
-    @Date("2018-06-25")
-    public void checkForUsageOfAllCodes() throws Exception {
+    @Date("2018-11-10")
+    public void checkForCorrectUsageOfAllCodes() throws Exception {
         String execPath = System.getProperty("user.dir");
 
         // Find files matching the wildcard pattern
@@ -433,7 +440,8 @@ public class AbstractClientIT {
         // Filter out some classes from the list
         Filters.files(files, AbstractClient.class, AbstractContainerClient.class, SCBClient.class);
 
-        List<String> offendingMethods = new ArrayList<>();
+        StringBuilder builder = new StringBuilder();
+        Set<String> offendingMethods = new HashSet<>();
         for (File f : files) {
             // Convert path into binary name
             String binaryName = Files.fileToBinaryName(f);
@@ -452,46 +460,22 @@ public class AbstractClientIT {
                 assertTrue(false, e.getMessage());
             }
 
-            Map<String, String> tables = new LinkedHashMap<>();
-            // Figure out implemented tables by inspecting the source code
-            List<String> lines = java.nio.file.Files.readAllLines(Paths.get(f.getPath()), StandardCharsets.UTF_8);
-            String beginningOfMethod = "List<ResponseModel>";
-            String method = "";
-            String table = "";
-            for (String line : lines) {
-                // Skip line if it is a comment, Javadoc or alike
-                String trimmedLine = line.trim();
-                String[] comments = { "//", "/**", "/*", "*", "*/" };
-                boolean offendingLine = false;
-                for (int i = 0; i < comments.length; i++) {
-                    if (trimmedLine.startsWith(comments[i])) {
-                        offendingLine = true;
-                    }
-                }
-                if (offendingLine) {
-                    continue;
-                }
-                if (trimmedLine.contains(beginningOfMethod)) {
-                    int beginIndex = trimmedLine.indexOf(beginningOfMethod) + beginningOfMethod.length() + 1;
-                    int endIndex = trimmedLine.indexOf('(', beginIndex + 1);
-                    method = trimmedLine.substring(beginIndex, endIndex);
-                }
-                if (trimmedLine.contains("return generate") || trimmedLine.contains("return getResponseModels")) {
-                    int beginIndex = trimmedLine.indexOf('"') + 1;
-                    int endIndex = trimmedLine.indexOf('"', beginIndex + 2);
-                    if (beginIndex > 0 && endIndex > 0) {
-                        table = trimmedLine.substring(beginIndex, endIndex);
-                        tables.put(method, table);
-                    }
-                }
+            // Class is deprecated; we don't care about it at all
+            if (clazz.isAnnotationPresent(Deprecated.class)) {
+                continue;
             }
+
+            // Figure out implemented tables by inspecting the source code
+            Map<String, String> tables = SourceInspector.getImplementedTables(Paths.get(f.getPath()));
             if (tables.isEmpty()) {
                 continue;
             }
+            Map<String, List<String>> parameters = SourceInspector.getParameters(Paths.get(f.getPath()));
 
             Object instance = clazz.getConstructor().newInstance();
             URLEndpoint url = (URLEndpoint) clazz.getMethod("getUrl", new Class<?>[] {}).invoke(instance,
                     new Object[] {});
+
             Method[] declaredMethods = clazz.getDeclaredMethods();
             List<Method> filteredMethods = new ArrayList<>();
             for (int i = 0; i < declaredMethods.length; i++) {
@@ -501,7 +485,6 @@ public class AbstractClientIT {
                 }
                 filteredMethods.add(m);
             }
-            SCBClient client = new SCBClient();
             for (Entry<String, String> entry : tables.entrySet()) {
                 String key = entry.getKey();
                 String value = entry.getValue();
@@ -512,21 +495,61 @@ public class AbstractClientIT {
                         continue;
                     }
                     if (Objects.equals(filteredMethod.getName(), key)) {
+                        String methodFqdn = clazz.getSimpleName() + "." + filteredMethod.getName();
                         URLEndpoint fullUrl = url.append(value);
-                        Map<String, Collection<String>> inputs = client.getInputs(fullUrl.getTable());
-                        // Check for same amount of codes. Remove one as the code
-                        // ContentsCode is implicitly added by every method and doesn't
-                        // need to be a parameter
-                        int differenceOfParameters = inputs.keySet().size() - filteredMethod.getParameterCount() - 1;
-                        if (differenceOfParameters > 0) {
-                            offendingMethods.add(clazz.getSimpleName() + "." + filteredMethod.getName());
-                        }
+
+                        // We need to use the English locale as the parameter names in the
+                        // methods match the API
+                        GETRequester requester = new GETRequester(StandardCharsets.UTF_8);
+                        HttpResponse res = requester.getResponse(fullUrl.toURL("en").toString());
                         TimeUnit.MILLISECONDS.sleep(TestConstants.API_SLEEP_MS);
+                        String body = res.getBody();
+                        if (body != null) {
+                            // Table exist for the given language; process it
+                            JsonNode n = new JsonConverter().toNode(body);
+                            JsonNode m = n.get("variables");
+                            List<String> codes = m.findValuesAsText("code");
+                            List<String> texts = m.findValuesAsText("text");
+
+                            Map<String, String> codesTexts = new LinkedHashMap<>();
+                            for (int i = 0; i < codes.size(); i++) {
+                                codesTexts.put(codes.get(i), texts.get(i));
+                            }
+                            // Remove ContentsCode code as this is implicitly added by
+                            // every method
+                            codesTexts.remove("ContentsCode");
+
+                            List<String> methodParameters = parameters.get(key);
+                            List<String> apiParameters = new ArrayList<>(codesTexts.values());
+
+                            boolean missingParameters = TestProcessor.isMissingParameters(methodParameters,
+                                    apiParameters);
+
+                            boolean jumbledParameters = false;
+                            if (!missingParameters) {
+                                jumbledParameters = TestProcessor.isJumbled(methodParameters, apiParameters);
+                            }
+
+                            // Validate constraints
+                            if (missingParameters || jumbledParameters) {
+                                offendingMethods.add(methodFqdn);
+
+                                builder.append(methodFqdn + " has missing or jumbled parameters.");
+                                builder.append(System.lineSeparator() + "\t");
+                                builder.append("API parameters: " + apiParameters);
+                                builder.append(System.lineSeparator() + "\t");
+                                builder.append("Method parameters: " + methodParameters);
+                                builder.append(System.lineSeparator());
+                            }
+                        } else {
+                            throw new IllegalArgumentException(clazz.getSimpleName() + "." + filteredMethod.getName());
+                        }
                     }
                 }
             }
         }
-        assertTrue(offendingMethods.isEmpty(), "Methods not implementing all codes: " + offendingMethods);
+        assertTrue(offendingMethods.isEmpty(),
+                "There are offending methods. " + System.lineSeparator() + builder.toString());
     }
 
     @Test
@@ -575,11 +598,11 @@ public class AbstractClientIT {
                 assertTrue(false, e.getMessage());
             }
         }
-        
+
         // Remove code and value combinations which only occurs once (which means it isn't
         // a duplicate)
         offendingCodes.values().removeIf(v -> v.size() == 1);
-        
+
         assertTrue(offendingCodes.isEmpty(), "Duplicated code and value combinations: " + offendingCodes.toString());
     }
 

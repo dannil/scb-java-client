@@ -214,8 +214,8 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
         List<String> items = Arrays.asList("I4.1", "I4.2");
         List<String> quarters = Arrays.asList("2012K2", "2012K3");
 
-        assertNotEquals(0, this.client.getAssetsAndLiabilitiesByCurrenciesQuarters(assetsAndLiabilities, currencies,
-                items, quarters).size());
+        assertNotEquals(0, this.client.getAssetsAndLiabilitiesByCurrenciesQuarters(assetsAndLiabilities, currencies, items,
+                quarters).size());
     }
 
 }

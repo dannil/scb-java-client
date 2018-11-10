@@ -60,11 +60,11 @@ public class FinancialMarketsStatisticsDepositAndLendingClientIT {
     public void getLendingRatesBreakdownByRemainingMaturityWithParameters() {
         List<String> referenceSectors = Arrays.asList("1", "1.1");
         List<Integer> counterpartySectors = Arrays.asList(1, 2);
-        List<String> remainingMaturity = Arrays.asList("1.2", "1.3");
+        List<String> remainingMaturities = Arrays.asList("1.2", "1.3");
         List<String> months = Arrays.asList("2012M04", "2012M06");
 
         assertNotEquals(0, this.client.getLendingRatesBreakdownByRemainingMaturity(referenceSectors,
-                counterpartySectors, remainingMaturity, months).size());
+                counterpartySectors, remainingMaturities, months).size());
     }
 
     @Test

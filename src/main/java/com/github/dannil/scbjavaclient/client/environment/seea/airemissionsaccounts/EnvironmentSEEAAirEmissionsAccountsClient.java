@@ -148,18 +148,18 @@ public class EnvironmentSEEAAirEmissionsAccountsClient extends AbstractClient {
      *            the industrial classifications
      * @param substances
      *            the substances
-     * @param years
-     *            the years
+     * @param quarters
+     *            the quarters
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
     public List<ResponseModel> getAirEmissionsByIndustryAndQuartersSNI2007(Collection<String> industrialClassifications,
-            Collection<String> substances, Collection<String> years) {
+            Collection<String> substances, Collection<String> quarters) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.SNI2007_CODE, industrialClassifications);
         mappings.put(SUBSTANCE_CODE, substances);
-        mappings.put(APIConstants.TIME_CODE, years);
+        mappings.put(APIConstants.TIME_CODE, quarters);
 
         return getResponseModels("MiljoUtslappAmneSNIK", mappings);
     }

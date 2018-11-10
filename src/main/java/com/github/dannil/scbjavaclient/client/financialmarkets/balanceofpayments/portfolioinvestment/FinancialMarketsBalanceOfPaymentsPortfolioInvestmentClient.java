@@ -106,21 +106,21 @@ public class FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClient extends 
      * <p>Fetch all non-resident trade in Swedish shares data which match the input
      * constraints.</p>
      *
-     * @param typesOfTrades
-     *            the types of trades
-     * @param typesOfShares
-     *            the types of shares
+     * @param nonResidentTrades
+     *            the non-resident trades
+     * @param swedishShares
+     *            the Swedish shares
      * @param months
      *            the months
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getNonResidentTradeInSwedishShares(Collection<String> typesOfTrades,
-            Collection<String> typesOfShares, Collection<String> months) {
+    public List<ResponseModel> getNonResidentTradeInSwedishShares(Collection<String> nonResidentTrades,
+            Collection<String> swedishShares, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("UtlHandelAktier", typesOfTrades);
-        mappings.put("Aktieslag", typesOfShares);
+        mappings.put("UtlHandelAktier", nonResidentTrades);
+        mappings.put("Aktieslag", swedishShares);
         mappings.put(APIConstants.TIME_CODE, months);
 
         return getResponseModels("FM0001PIM", mappings);

@@ -71,8 +71,8 @@ public class EducationAndResearchFolkHighSchoolStatisticsClient extends Abstract
      *            the regions
      * @param sexes
      *            the sexes
-     * @param typeOfCourses
-     *            the type of courses
+     * @param typesOfCourses
+     *            the types of courses
      * @param years
      *            the years
      * @return the data wrapped in a list of
@@ -80,11 +80,11 @@ public class EducationAndResearchFolkHighSchoolStatisticsClient extends Abstract
      *         objects
      */
     public List<ResponseModel> getParticipants(Collection<String> regions, Collection<String> sexes,
-            Collection<String> typeOfCourses, Collection<Integer> years) {
+            Collection<String> typesOfCourses, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put(APIConstants.SEX_CODE, regions);
-        mappings.put("KursTyp", typeOfCourses);
+        mappings.put("KursTyp", typesOfCourses);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("UF0510Tab1", mappings);

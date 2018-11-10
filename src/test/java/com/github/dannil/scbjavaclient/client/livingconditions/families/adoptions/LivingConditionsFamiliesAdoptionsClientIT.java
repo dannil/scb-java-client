@@ -57,10 +57,10 @@ public class LivingConditionsFamiliesAdoptionsClientIT {
     public void getAllAdoptedChildrenAndYoungPersonsWithParameters() {
         List<String> sexes = Arrays.asList("5", "6");
         List<String> ages = Arrays.asList("4", "5");
-        List<String> birthCountries = Arrays.asList("LV", "RO");
+        List<String> countriesOfBirths = Arrays.asList("LV", "RO");
         List<Integer> years = Arrays.asList(2005, 2009);
 
-        assertNotEquals(0, this.client.getAllAdoptedChildrenAndYoungPersons(sexes, ages, birthCountries, years).size());
+        assertNotEquals(0, this.client.getAllAdoptedChildrenAndYoungPersons(sexes, ages, countriesOfBirths, years).size());
     }
 
 }

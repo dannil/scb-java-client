@@ -65,8 +65,8 @@ public class PopulationProjectionsLatestProjectionsClient extends AbstractClient
     /**
      * <p>Fetch all population data which match the input constraints.</p>
      *
-     * @param regionOfBirths
-     *            the region of births
+     * @param regionsOfBirths
+     *            the regions of births
      * @param ages
      *            the ages
      * @param sexes
@@ -77,10 +77,10 @@ public class PopulationProjectionsLatestProjectionsClient extends AbstractClient
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getPopulation(Collection<Integer> regionOfBirths, Collection<String> ages,
+    public List<ResponseModel> getPopulation(Collection<Integer> regionsOfBirths, Collection<String> ages,
             Collection<Integer> sexes, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Fodelseregion", regionOfBirths);
+        mappings.put("Fodelseregion", regionsOfBirths);
         mappings.put(APIConstants.AGE_CODE, ages);
         mappings.put(APIConstants.SEX_CODE, sexes);
         mappings.put(APIConstants.TIME_CODE, years);
@@ -104,8 +104,8 @@ public class PopulationProjectionsLatestProjectionsClient extends AbstractClient
     /**
      * <p>Fetch all population changes data which match the input constraints.</p>
      *
-     * @param countries
-     *            the countries
+     * @param regionsOfBirths
+     *            the regions of births
      * @param sexes
      *            the sexes
      * @param ages
@@ -116,10 +116,10 @@ public class PopulationProjectionsLatestProjectionsClient extends AbstractClient
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getPopulationChanges(Collection<String> countries, Collection<Integer> sexes,
+    public List<ResponseModel> getPopulationChanges(Collection<String> regionsOfBirths, Collection<Integer> sexes,
             Collection<String> ages, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Fodelselandgrupp", countries);
+        mappings.put("Fodelselandgrupp", regionsOfBirths);
         mappings.put(APIConstants.SEX_CODE, sexes);
         mappings.put(APIConstants.AGE_CODE, ages);
         mappings.put(APIConstants.TIME_CODE, years);
@@ -173,8 +173,8 @@ public class PopulationProjectionsLatestProjectionsClient extends AbstractClient
     /**
      * <p>Fetch all number of births data which match the input constraints.</p>
      *
-     * @param countries
-     *            the countries
+     * @param mothersRegionsOfBirths
+     *            the mother's regions of births
      * @param ages
      *            the ages
      * @param years
@@ -183,10 +183,10 @@ public class PopulationProjectionsLatestProjectionsClient extends AbstractClient
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getNumberOfBirths(Collection<String> countries, Collection<String> ages,
+    public List<ResponseModel> getNumberOfBirths(Collection<String> mothersRegionsOfBirths, Collection<String> ages,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ModerFodlandgrupp", countries);
+        mappings.put("ModerFodlandgrupp", mothersRegionsOfBirths);
         mappings.put(APIConstants.AGE_CODE, ages);
         mappings.put(APIConstants.TIME_CODE, years);
 

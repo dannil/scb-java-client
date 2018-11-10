@@ -105,8 +105,8 @@ public class EnvironmentLocalitiesAreasAndPopulationPopulationClient extends Abs
      *
      * @param regions
      *            the regions to fetch data for
-     * @param typeOfAreas
-     *            the type of areas to fetch data for
+     * @param typesOfAreas
+     *            the types of areas to fetch data for
      * @param years
      *            the years to fetch data for
      * @return the data wrapped in a list of
@@ -114,10 +114,10 @@ public class EnvironmentLocalitiesAreasAndPopulationPopulationClient extends Abs
      *         objects
      */
     public List<ResponseModel> getPopulationAndLandAreaWithinAndOutsideOfLocalities(Collection<String> regions,
-            Collection<String> typeOfAreas, Collection<Integer> years) {
+            Collection<String> typesOfAreas, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
-        mappings.put("TypOmr", typeOfAreas);
+        mappings.put("TypOmr", typesOfAreas);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("BefLandInvKvmTO", mappings);
