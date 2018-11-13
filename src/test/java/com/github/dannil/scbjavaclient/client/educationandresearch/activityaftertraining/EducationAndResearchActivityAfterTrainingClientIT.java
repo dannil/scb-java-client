@@ -61,11 +61,11 @@ public class EducationAndResearchActivityAfterTrainingClientIT {
         List<Integer> levelsOfAcademicDegrees = Arrays.asList(14, 17);
         List<Integer> activities = Arrays.asList(3, 4);
         List<Integer> sexes = Arrays.asList(1, 2);
-        List<String> agesAtExam = Arrays.asList("25-29", "30-34");
-        List<String> yearsOfExam = Arrays.asList("2003/2004", "2005/2006");
+        List<String> agesAtExams = Arrays.asList("25-29", "30-34");
+        List<String> yearsOfExams = Arrays.asList("2003/2004", "2005/2006");
 
         assertNotEquals(0, this.client.getPersonsActivitiesAfterCompletingHigherEducation(yearsAfterCompletedEducation,
-                levelsOfAcademicDegrees, activities, sexes, agesAtExam, yearsOfExam).size());
+                levelsOfAcademicDegrees, activities, sexes, agesAtExams, yearsOfExams).size());
     }
 
     @Test
@@ -93,10 +93,10 @@ public class EducationAndResearchActivityAfterTrainingClientIT {
         List<Integer> sexes = Arrays.asList(1, 2);
         List<String> counties = Arrays.asList("05", "06");
         List<Integer> municipalityGroups = Arrays.asList(7, 8);
-        List<String> yearsOfExam = Arrays.asList("2003/2004", "2005/2006");
+        List<String> yearsOfExams = Arrays.asList("2003/2004", "2005/2006");
 
         assertNotEquals(0, this.client.getPersonsActivitiesAfterCompletingCompulsorySchool(yearsAfterCompletedEducation,
-                levelsOfEducations, activities, sexes, counties, municipalityGroups, yearsOfExam).size());
+                levelsOfEducations, activities, sexes, counties, municipalityGroups, yearsOfExams).size());
     }
 
 }

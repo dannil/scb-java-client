@@ -54,10 +54,10 @@ public class PricesAndConsumptionPPISPIN2007YearClientIT {
     @Test
     @Date("2017-06-06")
     public void getProducerPriceIndexHomeSalesWithParameters() {
-        List<String> spin2007 = Arrays.asList("MIG_CAG_ORD", "MIG_ING_ORD");
+        List<String> spin2007s = Arrays.asList("MIG_CAG_ORD", "MIG_ING_ORD");
         List<Integer> years = Arrays.asList(1998, 2000);
 
-        assertNotEquals(0, this.client.getProducerPriceIndexHomeSales(spin2007, years).size());
+        assertNotEquals(0, this.client.getProducerPriceIndexHomeSales(spin2007s, years).size());
     }
 
     @Test
@@ -76,10 +76,10 @@ public class PricesAndConsumptionPPISPIN2007YearClientIT {
     @Test
     @Date("2017-06-06")
     public void getExportPriceIndexWithParameters() {
-        List<String> spin2007 = Arrays.asList("MIG_CAG_ORD", "MIG_ING_ORD");
+        List<String> spin2007s = Arrays.asList("MIG_CAG_ORD", "MIG_ING_ORD");
         List<Integer> years = Arrays.asList(1998, 2000);
 
-        assertNotEquals(0, this.client.getExportPriceIndex(spin2007, years).size());
+        assertNotEquals(0, this.client.getExportPriceIndex(spin2007s, years).size());
     }
 
     @Test
@@ -98,10 +98,10 @@ public class PricesAndConsumptionPPISPIN2007YearClientIT {
     @Test
     @Date("2017-06-06")
     public void getImportPriceIndexWithParameters() {
-        List<String> spin2007 = Arrays.asList("MIG_CAG_ORD", "MIG_ING_ORD");
+        List<String> spin2007s = Arrays.asList("MIG_CAG_ORD", "MIG_ING_ORD");
         List<Integer> years = Arrays.asList(1998, 2000);
 
-        assertNotEquals(0, this.client.getImportPriceIndex(spin2007, years).size());
+        assertNotEquals(0, this.client.getImportPriceIndex(spin2007s, years).size());
     }
 
     @Test
@@ -120,10 +120,10 @@ public class PricesAndConsumptionPPISPIN2007YearClientIT {
     @Test
     @Date("2017-06-06")
     public void getProducerPriceIndexWithParameters() {
-        List<String> spin2007 = Arrays.asList("MIG_CAG_ORD", "MIG_ING_ORD");
+        List<String> spin2007s = Arrays.asList("MIG_CAG_ORD", "MIG_ING_ORD");
         List<Integer> years = Arrays.asList(1998, 2000);
 
-        assertNotEquals(0, this.client.getProducerPriceIndex(spin2007, years).size());
+        assertNotEquals(0, this.client.getProducerPriceIndex(spin2007s, years).size());
     }
 
     @Test
@@ -142,10 +142,10 @@ public class PricesAndConsumptionPPISPIN2007YearClientIT {
     @Test
     @Date("2017-06-06")
     public void getPriceIndexForDomesticSupplyWithParameters() {
-        List<String> spin2007 = Arrays.asList("MIG_CAG_ORD", "MIG_ING_ORD");
+        List<String> spin2007s = Arrays.asList("MIG_CAG_ORD", "MIG_ING_ORD");
         List<Integer> years = Arrays.asList(1998, 2000);
 
-        assertNotEquals(0, this.client.getPriceIndexForDomesticSupply(spin2007, years).size());
+        assertNotEquals(0, this.client.getPriceIndexForDomesticSupply(spin2007s, years).size());
     }
 
     @Test
@@ -164,10 +164,10 @@ public class PricesAndConsumptionPPISPIN2007YearClientIT {
     @Test
     @Date("2017-06-06")
     public void getWeightsForDifferentIndicesWithParameters() {
-        List<String> spin2007 = Arrays.asList("07", "08");
+        List<String> spin2007s = Arrays.asList("07", "08");
         List<Integer> years = Arrays.asList(2012, 2013);
 
-        assertNotEquals(0, this.client.getWeightsForDifferentIndices(spin2007, years).size());
+        assertNotEquals(0, this.client.getWeightsForDifferentIndices(spin2007s, years).size());
     }
 
     @Test
@@ -186,10 +186,10 @@ public class PricesAndConsumptionPPISPIN2007YearClientIT {
     @Test
     @Date("2017-06-06")
     public void getProducerPriceIndexForServicesWithParameters() {
-        List<String> spin2007 = Arrays.asList("77.1A", "77.1B");
+        List<String> spin2007s = Arrays.asList("77.1A", "77.1B");
         List<Integer> years = Arrays.asList(1998, 2000);
 
-        assertNotEquals(0, this.client.getProducerPriceIndexForServices(spin2007, years).size());
+        assertNotEquals(0, this.client.getProducerPriceIndexForServices(spin2007s, years).size());
     }
 
 }

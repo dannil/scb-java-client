@@ -78,10 +78,10 @@ public class BusinessActivitiesAccomodationStatisticsYearClientIT {
     @Date("2017-04-13")
     public void getCapacityForHotelsWithParameters() {
         List<String> regions = Arrays.asList("0030", "07");
-        List<String> typesOfHousing = Arrays.asList("012", "014");
+        List<String> typesOfHousings = Arrays.asList("012", "014");
         List<Integer> years = Arrays.asList(2010, 2012);
 
-        assertNotEquals(0, this.client.getCapacityForHotels(regions, typesOfHousing, years).size());
+        assertNotEquals(0, this.client.getCapacityForHotels(regions, typesOfHousings, years).size());
     }
 
     @Test
@@ -101,10 +101,10 @@ public class BusinessActivitiesAccomodationStatisticsYearClientIT {
     @Date("2017-04-13")
     public void getOccupancyRateWithParameters() {
         List<String> regions = Arrays.asList("0030", "07");
-        List<String> typesOfHousing = Arrays.asList("012", "014");
+        List<String> typesOfHousings = Arrays.asList("012", "014");
         List<Integer> years = Arrays.asList(2010, 2012);
 
-        assertNotEquals(0, this.client.getOccupancyRate(regions, typesOfHousing, years).size());
+        assertNotEquals(0, this.client.getOccupancyRate(regions, typesOfHousings, years).size());
     }
 
     @Test

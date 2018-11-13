@@ -104,19 +104,19 @@ public class BusinessActivitiesAccomodationStatisticsYearClient extends Abstract
      *
      * @param regions
      *            the regions
-     * @param typesOfHousing
-     *            the types of housing
+     * @param typesOfHousings
+     *            the types of housings
      * @param years
      *            the years
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getCapacityForHotels(Collection<String> regions, Collection<String> typesOfHousing,
+    public List<ResponseModel> getCapacityForHotels(Collection<String> regions, Collection<String> typesOfHousings,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
-        mappings.put("Overnattningstyp", typesOfHousing);
+        mappings.put("Overnattningstyp", typesOfHousings);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("NV1701T12Ar", mappings);
@@ -140,19 +140,19 @@ public class BusinessActivitiesAccomodationStatisticsYearClient extends Abstract
      *
      * @param regions
      *            the regions
-     * @param typesOfHousing
-     *            the types of housing
+     * @param typesOfHousings
+     *            the types of housings
      * @param years
      *            the years
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getOccupancyRate(Collection<String> regions, Collection<String> typesOfHousing,
+    public List<ResponseModel> getOccupancyRate(Collection<String> regions, Collection<String> typesOfHousings,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
-        mappings.put("Overnattningstyp", typesOfHousing);
+        mappings.put("Overnattningstyp", typesOfHousings);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("NV1701T4Ar", mappings);

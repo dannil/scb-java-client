@@ -198,17 +198,17 @@ public class BusinessActivitiesAccomodationStatisticsMonthClient extends Abstrac
     /**
      * <p>Fetch all occupancy data which match the input constraints.</p>
      *
-     * @param typesOfHousing
-     *            the types of housing
+     * @param typesOfHousings
+     *            the types of housings
      * @param months
      *            the months
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getOccupancy(Collection<String> typesOfHousing, Collection<String> months) {
+    public List<ResponseModel> getOccupancy(Collection<String> typesOfHousings, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Overnattningstyp", typesOfHousing);
+        mappings.put("Overnattningstyp", typesOfHousings);
         mappings.put(APIConstants.TIME_CODE, months);
 
         return getResponseModels("NV1701T5M", mappings);

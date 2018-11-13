@@ -106,8 +106,8 @@ public class PopulationStatisticsCitizenshipClient extends AbstractClient {
      * <p>Fetch all acquired Swedish citizenship in Sweden data which match the input
      * constraints.</p>
      *
-     * @param countriesOfCitizenship
-     *            the countries of citizenship
+     * @param countriesOfCitizenships
+     *            the countries of citizenships
      * @param sexes
      *            the sexes
      * @param years
@@ -116,10 +116,10 @@ public class PopulationStatisticsCitizenshipClient extends AbstractClient {
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getAcquiredSwedishCitizenshipInSweden(Collection<String> countriesOfCitizenship,
+    public List<ResponseModel> getAcquiredSwedishCitizenshipInSweden(Collection<String> countriesOfCitizenships,
             Collection<Integer> sexes, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Medbland", countriesOfCitizenship);
+        mappings.put("Medbland", countriesOfCitizenships);
         mappings.put(APIConstants.SEX_CODE, sexes);
         mappings.put(APIConstants.TIME_CODE, years);
 

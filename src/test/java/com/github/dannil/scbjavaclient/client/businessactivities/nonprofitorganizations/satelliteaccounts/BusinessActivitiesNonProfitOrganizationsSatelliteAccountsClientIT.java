@@ -77,10 +77,10 @@ public class BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClientIT {
     @Test
     @Date("2017-04-09")
     public void getNumberOfOrganizationsAndEmploymentWithParameters() {
-        List<String> incomesAndCosts = Arrays.asList("07", "10");
+        List<String> icnpo = Arrays.asList("07", "10");
         List<Integer> years = Arrays.asList(2013, 2014);
 
-        assertNotEquals(0, this.client.getNumberOfOrganizationsAndEmployment(incomesAndCosts, years).size());
+        assertNotEquals(0, this.client.getNumberOfOrganizationsAndEmployment(icnpo, years).size());
     }
 
 }

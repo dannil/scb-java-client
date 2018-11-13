@@ -73,33 +73,33 @@ public class EducationAndResearchActivityAfterTrainingClient extends AbstractCli
      * <p>Fetch all persons' activities 1-3 years after completing higher education data
      * which match the input constraints.</p>
      *
-     * @param yearsAfterCompletedEducation
-     *            the years after completed education
+     * @param yearsAfterCompletedEducations
+     *            the years after completed educations
      * @param levelsOfAcademicDegrees
      *            the levels of academic degrees
      * @param activities
      *            the activities
      * @param sexes
      *            the sexes
-     * @param agesAtExam
-     *            the ages at exam
-     * @param yearsOfExam
-     *            the years of exam
+     * @param agesAtExams
+     *            the ages at exams
+     * @param yearsOfExams
+     *            the years of exams
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
     public List<ResponseModel> getPersonsActivitiesAfterCompletingHigherEducation(
-            Collection<Integer> yearsAfterCompletedEducation, Collection<Integer> levelsOfAcademicDegrees,
-            Collection<Integer> activities, Collection<Integer> sexes, Collection<String> agesAtExam,
-            Collection<String> yearsOfExam) {
+            Collection<Integer> yearsAfterCompletedEducations, Collection<Integer> levelsOfAcademicDegrees,
+            Collection<Integer> activities, Collection<Integer> sexes, Collection<String> agesAtExams,
+            Collection<String> yearsOfExams) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(YEARSAFTERCOMPLETEDEDUCATION_CODE, yearsAfterCompletedEducation);
+        mappings.put(YEARSAFTERCOMPLETEDEDUCATION_CODE, yearsAfterCompletedEducations);
         mappings.put("Examensniva", levelsOfAcademicDegrees);
         mappings.put(ACTIVITY_CODE, activities);
         mappings.put(APIConstants.SEX_CODE, sexes);
-        mappings.put("AldEx", agesAtExam);
-        mappings.put(APIConstants.TIME_CODE, yearsOfExam);
+        mappings.put("AldEx", agesAtExams);
+        mappings.put(APIConstants.TIME_CODE, yearsOfExams);
 
         return getResponseModels("UF0503T01UH", mappings);
     }
@@ -123,8 +123,8 @@ public class EducationAndResearchActivityAfterTrainingClient extends AbstractCli
      * <p>Fetch all persons' activities 1-3 years after completing compulsory school data
      * which match the input constraints.</p>
      *
-     * @param yearsAfterCompletedEducation
-     *            the years after completed education
+     * @param yearsAfterCompletedEducations
+     *            the years after completed educations
      * @param levelsOfEducations
      *            the levels of educations
      * @param activities
@@ -135,24 +135,24 @@ public class EducationAndResearchActivityAfterTrainingClient extends AbstractCli
      *            the counties
      * @param municipalityGroups
      *            the municipality groups
-     * @param yearsOfExam
-     *            the years of exam
+     * @param yearsOfExams
+     *            the years of exams
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
     public List<ResponseModel> getPersonsActivitiesAfterCompletingCompulsorySchool(
-            Collection<Integer> yearsAfterCompletedEducation, Collection<Integer> levelsOfEducations,
+            Collection<Integer> yearsAfterCompletedEducations, Collection<Integer> levelsOfEducations,
             Collection<Integer> activities, Collection<Integer> sexes, Collection<String> counties,
-            Collection<Integer> municipalityGroups, Collection<String> yearsOfExam) {
+            Collection<Integer> municipalityGroups, Collection<String> yearsOfExams) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(YEARSAFTERCOMPLETEDEDUCATION_CODE, yearsAfterCompletedEducation);
+        mappings.put(YEARSAFTERCOMPLETEDEDUCATION_CODE, yearsAfterCompletedEducations);
         mappings.put("UtbildningsNiva", levelsOfEducations);
         mappings.put(ACTIVITY_CODE, activities);
         mappings.put(APIConstants.SEX_CODE, sexes);
         mappings.put("Lan", counties);
         mappings.put("Kommunskl", municipalityGroups);
-        mappings.put(APIConstants.TIME_CODE, yearsOfExam);
+        mappings.put(APIConstants.TIME_CODE, yearsOfExams);
 
         return getResponseModels("UF0503T02GG", mappings);
     }
