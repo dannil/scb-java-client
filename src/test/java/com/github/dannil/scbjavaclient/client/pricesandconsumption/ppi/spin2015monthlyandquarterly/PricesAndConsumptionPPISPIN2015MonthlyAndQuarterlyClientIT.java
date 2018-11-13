@@ -61,10 +61,10 @@ public class PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClientIT {
     @Test
     @Date("2017-06-06")
     public void getProducerPriceIndexHomeSalesWithParameters() {
-        List<String> spin2015 = Arrays.asList("B", "C");
+        List<String> spin2015s = Arrays.asList("B", "C");
         List<String> months = Arrays.asList("2001M03", "2001M07");
 
-        assertNotEquals(0, this.client.getProducerPriceIndexHomeSales(spin2015, months).size());
+        assertNotEquals(0, this.client.getProducerPriceIndexHomeSales(spin2015s, months).size());
     }
 
     // Daniel 2017-06-06:
@@ -88,10 +88,10 @@ public class PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClientIT {
     @Test
     @Date("2017-06-06")
     public void getExportPriceIndexWithParameters() {
-        List<String> spin2015 = Arrays.asList("A", "B");
+        List<String> spin2015s = Arrays.asList("A", "B");
         List<String> months = Arrays.asList("2001M03", "2001M07");
 
-        assertNotEquals(0, this.client.getExportPriceIndex(spin2015, months).size());
+        assertNotEquals(0, this.client.getExportPriceIndex(spin2015s, months).size());
     }
 
     // Daniel 2017-06-06:
@@ -115,10 +115,10 @@ public class PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClientIT {
     @Test
     @Date("2017-06-06")
     public void getImportPriceIndexWithParameters() {
-        List<String> spin2015 = Arrays.asList("A", "B");
+        List<String> spin2015s = Arrays.asList("A", "B");
         List<String> months = Arrays.asList("2001M03", "2001M07");
 
-        assertNotEquals(0, this.client.getImportPriceIndex(spin2015, months).size());
+        assertNotEquals(0, this.client.getImportPriceIndex(spin2015s, months).size());
     }
 
     // Daniel 2017-06-06:
@@ -142,10 +142,10 @@ public class PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClientIT {
     @Test
     @Date("2017-06-06")
     public void getProducerPriceIndexWithParameters() {
-        List<String> spin2015 = Arrays.asList("A", "B");
+        List<String> spin2015s = Arrays.asList("A", "B");
         List<String> months = Arrays.asList("2001M03", "2001M07");
 
-        assertNotEquals(0, this.client.getProducerPriceIndex(spin2015, months).size());
+        assertNotEquals(0, this.client.getProducerPriceIndex(spin2015s, months).size());
     }
 
     // Daniel 2017-06-06:
@@ -169,10 +169,10 @@ public class PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClientIT {
     @Test
     @Date("2017-06-06")
     public void getPriceIndexForDomesticSupplyWithParameters() {
-        List<String> spin2015 = Arrays.asList("A", "B");
+        List<String> spin2015s = Arrays.asList("A", "B");
         List<String> months = Arrays.asList("2001M03", "2001M07");
 
-        assertNotEquals(0, this.client.getPriceIndexForDomesticSupply(spin2015, months).size());
+        assertNotEquals(0, this.client.getPriceIndexForDomesticSupply(spin2015s, months).size());
     }
 
 }

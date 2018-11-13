@@ -522,24 +522,27 @@ public class AbstractClientIT {
                             List<String> methodParameters = parameters.get(key);
                             List<String> apiParameters = new ArrayList<>(codesTexts.values());
 
-                            boolean missingParameters = TestProcessor.isMissingParameters(methodParameters,
+                            boolean isParametersPluralized = TestProcessor.isParametersPluralized(methodParameters);
+                            boolean isMissingParameters = TestProcessor.isMissingParameters(methodParameters,
                                     apiParameters);
-
-                            boolean jumbledParameters = false;
-                            if (!missingParameters) {
-                                jumbledParameters = TestProcessor.isJumbled(methodParameters, apiParameters);
-                            }
-
+                            boolean hasJumbledParameters = TestProcessor.isJumbled(methodParameters, apiParameters);
+                            
                             // Validate constraints
-                            if (missingParameters || jumbledParameters) {
-                                offendingMethods.add(methodFqdn);
-
-                                builder.append(methodFqdn + " has missing or jumbled parameters.");
+                            if (!isParametersPluralized || isMissingParameters || hasJumbledParameters) {
+                                if (!isParametersPluralized) {
+                                    builder.append(methodFqdn + " has parameters which aren't pluralized.");
+                                } else if (isMissingParameters) {
+                                    builder.append(methodFqdn + " has missing parameters.");
+                                } else if (hasJumbledParameters) {
+                                    builder.append(methodFqdn + " has jumbled parameters.");
+                                }
                                 builder.append(System.lineSeparator() + "\t");
                                 builder.append("API parameters: " + apiParameters);
                                 builder.append(System.lineSeparator() + "\t");
                                 builder.append("Method parameters: " + methodParameters);
                                 builder.append(System.lineSeparator());
+                                
+                                offendingMethods.add(methodFqdn);
                             }
                         } else {
                             throw new IllegalArgumentException(clazz.getSimpleName() + "." + filteredMethod.getName());

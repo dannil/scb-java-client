@@ -54,11 +54,11 @@ public class BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClientIT {
     @Test
     @Date("2017-04-09")
     public void getIncomeExpenditureAndSavingsWithParameters() {
-        List<String> icnpo = Arrays.asList("02", "06");
+        List<String> icnpos = Arrays.asList("02", "06");
         List<String> transactionItems = Arrays.asList("D42.PAY", "B6n");
         List<Integer> years = Arrays.asList(2012, 2014);
 
-        assertNotEquals(0, this.client.getIncomeExpenditureAndSavings(icnpo, transactionItems, years).size());
+        assertNotEquals(0, this.client.getIncomeExpenditureAndSavings(icnpos, transactionItems, years).size());
     }
 
     @Test
@@ -77,10 +77,10 @@ public class BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClientIT {
     @Test
     @Date("2017-04-09")
     public void getNumberOfOrganizationsAndEmploymentWithParameters() {
-        List<String> incomesAndCosts = Arrays.asList("07", "10");
+        List<String> icnpos = Arrays.asList("07", "10");
         List<Integer> years = Arrays.asList(2013, 2014);
 
-        assertNotEquals(0, this.client.getNumberOfOrganizationsAndEmployment(incomesAndCosts, years).size());
+        assertNotEquals(0, this.client.getNumberOfOrganizationsAndEmployment(icnpos, years).size());
     }
 
 }

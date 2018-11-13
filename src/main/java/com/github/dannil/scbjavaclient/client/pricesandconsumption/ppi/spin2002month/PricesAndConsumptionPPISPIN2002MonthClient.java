@@ -67,16 +67,16 @@ public class PricesAndConsumptionPPISPIN2002MonthClient extends AbstractClient {
      * <p>Fetch all producer price index home sales data which match the input
      * constraints.</p>
      *
-     * @param spin2002
-     *            the SPIN 2002
+     * @param spin2002s
+     *            the SPIN 2002s
      * @param months
      *            the months
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getProducerPriceIndexHomeSales(Collection<String> spin2002, Collection<String> months) {
-        return generate(spin2002, months, "HMPIM");
+    public List<ResponseModel> getProducerPriceIndexHomeSales(Collection<String> spin2002s, Collection<String> months) {
+        return generate(spin2002s, months, "HMPIM");
     }
 
     /**
@@ -95,16 +95,16 @@ public class PricesAndConsumptionPPISPIN2002MonthClient extends AbstractClient {
     /**
      * <p>Fetch all export price index data which match the input constraints.</p>
      *
-     * @param spin2002
-     *            the SPIN 2002
+     * @param spin2002s
+     *            the SPIN 2002s
      * @param months
      *            the months
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getExportPriceIndex(Collection<String> spin2002, Collection<String> months) {
-        return generate(spin2002, months, "EXPIM");
+    public List<ResponseModel> getExportPriceIndex(Collection<String> spin2002s, Collection<String> months) {
+        return generate(spin2002s, months, "EXPIM");
     }
 
     /**
@@ -123,16 +123,16 @@ public class PricesAndConsumptionPPISPIN2002MonthClient extends AbstractClient {
     /**
      * <p>Fetch all import price index data which match the input constraints.</p>
      *
-     * @param spin2002
-     *            the SPIN 2002
+     * @param spin2002s
+     *            the SPIN 2002s
      * @param months
      *            the months
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getImportPriceIndex(Collection<String> spin2002, Collection<String> months) {
-        return generate(spin2002, months, "IMPIM");
+    public List<ResponseModel> getImportPriceIndex(Collection<String> spin2002s, Collection<String> months) {
+        return generate(spin2002s, months, "IMPIM");
     }
 
     /**
@@ -151,16 +151,16 @@ public class PricesAndConsumptionPPISPIN2002MonthClient extends AbstractClient {
     /**
      * <p>Fetch all producer price index data which match the input constraints.</p>
      *
-     * @param spin2002
-     *            the SPIN 2002
+     * @param spin2002s
+     *            the SPIN 2002s
      * @param months
      *            the months
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getProducerPriceIndex(Collection<String> spin2002, Collection<String> months) {
-        return generate(spin2002, months, "PPIM");
+    public List<ResponseModel> getProducerPriceIndex(Collection<String> spin2002s, Collection<String> months) {
+        return generate(spin2002s, months, "PPIM");
     }
 
     /**
@@ -180,16 +180,16 @@ public class PricesAndConsumptionPPISPIN2002MonthClient extends AbstractClient {
      * <p>Fetch all price index for domestic supply data which match the input
      * constraints.</p>
      *
-     * @param spin2002
-     *            the SPIN 2002
+     * @param spin2002s
+     *            the SPIN 2002s
      * @param months
      *            the months
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getPriceIndexForDomesticSupply(Collection<String> spin2002, Collection<String> months) {
-        return generate(spin2002, months, "ITPIM");
+    public List<ResponseModel> getPriceIndexForDomesticSupply(Collection<String> spin2002s, Collection<String> months) {
+        return generate(spin2002s, months, "ITPIM");
     }
 
     /**
@@ -209,24 +209,24 @@ public class PricesAndConsumptionPPISPIN2002MonthClient extends AbstractClient {
      * <p>Fetch all producer price index for services data which match the input
      * constraints.</p>
      *
-     * @param spin2002
-     *            the SPIN 2002
+     * @param spin2002s
+     *            the SPIN 2002s
      * @param quarters
      *            the quarters
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getProducerPriceIndexForServices(Collection<String> spin2002,
+    public List<ResponseModel> getProducerPriceIndexForServices(Collection<String> spin2002s,
             Collection<String> quarters) {
-        return generate(spin2002, quarters, "TPI2005Kv");
+        return generate(spin2002s, quarters, "TPI2005Kv");
     }
 
     /**
      * <p>Common generator method for the methods in this class.</p>
      *
-     * @param spin2002
-     *            the SPIN 2002
+     * @param spin2002s
+     *            the SPIN 2002s
      * @param times
      *            the times
      * @param table
@@ -234,9 +234,9 @@ public class PricesAndConsumptionPPISPIN2002MonthClient extends AbstractClient {
      * @return a <code>List</code> of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      */
-    private List<ResponseModel> generate(Collection<String> spin2002, Collection<String> times, String table) {
+    private List<ResponseModel> generate(Collection<String> spin2002s, Collection<String> times, String table) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.SPIN_2002, spin2002);
+        mappings.put(APIConstants.SPIN_2002, spin2002s);
         mappings.put(APIConstants.TIME_CODE, times);
 
         return getResponseModels(table, mappings);

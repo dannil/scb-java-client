@@ -19,10 +19,12 @@ public class TestConstants {
 
     static {
         ALREADY_PLURALIZED = new HashSet<String>();
-        ALREADY_PLURALIZED.add("numberofchildren");
+        //ALREADY_PLURALIZED.add("assetsandliabilities");
         ALREADY_PLURALIZED.add("foreignandswedishbackgrounds");
-        ALREADY_PLURALIZED.add("siblingslivingathomes");
         ALREADY_PLURALIZED.add("fullandparttimes");
+        ALREADY_PLURALIZED.add("icnpos");
+        ALREADY_PLURALIZED.add("numberofchildren");
+        ALREADY_PLURALIZED.add("siblingslivingathomes");
     }
 
 }

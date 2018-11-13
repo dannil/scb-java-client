@@ -67,16 +67,16 @@ public class PricesAndConsumptionPPISPIN2007YearClient extends AbstractClient {
      * <p>Fetch all producer price index home sales data which match the input
      * constraints.</p>
      *
-     * @param spin2007
-     *            the SPIN 2007
+     * @param spin2007s
+     *            the SPIN 2007s
      * @param years
      *            the years
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getProducerPriceIndexHomeSales(Collection<String> spin2007, Collection<Integer> years) {
-        return generate(spin2007, years, "HMPIAr07");
+    public List<ResponseModel> getProducerPriceIndexHomeSales(Collection<String> spin2007s, Collection<Integer> years) {
+        return generate(spin2007s, years, "HMPIAr07");
     }
 
     /**
@@ -95,16 +95,16 @@ public class PricesAndConsumptionPPISPIN2007YearClient extends AbstractClient {
     /**
      * <p>Fetch all export price index data which match the input constraints.</p>
      *
-     * @param spin2007
-     *            the SPIN 2007
+     * @param spin2007s
+     *            the SPIN 2007s
      * @param years
      *            the years
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getExportPriceIndex(Collection<String> spin2007, Collection<Integer> years) {
-        return generate(spin2007, years, "EXPIAr07");
+    public List<ResponseModel> getExportPriceIndex(Collection<String> spin2007s, Collection<Integer> years) {
+        return generate(spin2007s, years, "EXPIAr07");
     }
 
     /**
@@ -123,16 +123,16 @@ public class PricesAndConsumptionPPISPIN2007YearClient extends AbstractClient {
     /**
      * <p>Fetch all import price index data which match the input constraints.</p>
      *
-     * @param spin2007
-     *            the SPIN 2007
+     * @param spin2007s
+     *            the SPIN 2007s
      * @param years
      *            the years
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getImportPriceIndex(Collection<String> spin2007, Collection<Integer> years) {
-        return generate(spin2007, years, "IMPIAr07");
+    public List<ResponseModel> getImportPriceIndex(Collection<String> spin2007s, Collection<Integer> years) {
+        return generate(spin2007s, years, "IMPIAr07");
     }
 
     /**
@@ -151,16 +151,16 @@ public class PricesAndConsumptionPPISPIN2007YearClient extends AbstractClient {
     /**
      * <p>Fetch all producer price index data which match the input constraints.</p>
      *
-     * @param spin2007
-     *            the SPIN 2007
+     * @param spin2007s
+     *            the SPIN 2007s
      * @param years
      *            the years
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getProducerPriceIndex(Collection<String> spin2007, Collection<Integer> years) {
-        return generate(spin2007, years, "PPIAr07");
+    public List<ResponseModel> getProducerPriceIndex(Collection<String> spin2007s, Collection<Integer> years) {
+        return generate(spin2007s, years, "PPIAr07");
     }
 
     /**
@@ -180,16 +180,16 @@ public class PricesAndConsumptionPPISPIN2007YearClient extends AbstractClient {
      * <p>Fetch all price index for domestic supply data which match the input
      * constraints.</p>
      *
-     * @param spin2007
-     *            the SPIN 2007
+     * @param spin2007s
+     *            the SPIN 2007s
      * @param years
      *            the years
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getPriceIndexForDomesticSupply(Collection<String> spin2007, Collection<Integer> years) {
-        return generate(spin2007, years, "ITPIAr07");
+    public List<ResponseModel> getPriceIndexForDomesticSupply(Collection<String> spin2007s, Collection<Integer> years) {
+        return generate(spin2007s, years, "ITPIAr07");
     }
 
     /**
@@ -209,16 +209,16 @@ public class PricesAndConsumptionPPISPIN2007YearClient extends AbstractClient {
      * <p>Fetch all weights for different indices data which match the input
      * constraints.</p>
      *
-     * @param spin2007
-     *            the SPIN 2007
+     * @param spin2007s
+     *            the SPIN 2007s
      * @param years
      *            the years
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getWeightsForDifferentIndices(Collection<String> spin2007, Collection<Integer> years) {
-        return generate(spin2007, years, "PPIviktB");
+    public List<ResponseModel> getWeightsForDifferentIndices(Collection<String> spin2007s, Collection<Integer> years) {
+        return generate(spin2007s, years, "PPIviktB");
     }
 
     /**
@@ -238,24 +238,24 @@ public class PricesAndConsumptionPPISPIN2007YearClient extends AbstractClient {
      * <p>Fetch all producer price index for services data which match the input
      * constraints.</p>
      *
-     * @param spin2007
-     *            the SPIN 2007
+     * @param spin2007s
+     *            the SPIN 2007s
      * @param years
      *            the years
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getProducerPriceIndexForServices(Collection<String> spin2007,
+    public List<ResponseModel> getProducerPriceIndexForServices(Collection<String> spin2007s,
             Collection<Integer> years) {
-        return generate(spin2007, years, "TPI2005Ar07");
+        return generate(spin2007s, years, "TPI2005Ar07");
     }
 
     /**
      * <p>Common generator method for the methods in this class.</p>
      *
-     * @param spin2007
-     *            the SPIN 2007
+     * @param spin2007s
+     *            the SPIN 2007s
      * @param times
      *            the times
      * @param table
@@ -263,9 +263,9 @@ public class PricesAndConsumptionPPISPIN2007YearClient extends AbstractClient {
      * @return a <code>List</code> of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      */
-    private List<ResponseModel> generate(Collection<String> spin2007, Collection<Integer> times, String table) {
+    private List<ResponseModel> generate(Collection<String> spin2007s, Collection<Integer> times, String table) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.SPIN_2007, spin2007);
+        mappings.put(APIConstants.SPIN_2007, spin2007s);
         mappings.put(APIConstants.TIME_CODE, times);
 
         return getResponseModels(table, mappings);

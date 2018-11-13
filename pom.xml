@@ -109,6 +109,12 @@
       <version>1.1.0</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>com.hypertino</groupId>
+      <artifactId>inflector_2.12</artifactId>
+      <version>1.0.10</version>
+      <scope>test</scope>
+    </dependency>
 
     <!-- Test dependencies (logging) -->
     <dependency>

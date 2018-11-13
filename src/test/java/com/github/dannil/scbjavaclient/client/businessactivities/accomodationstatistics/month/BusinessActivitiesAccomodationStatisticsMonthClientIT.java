@@ -143,10 +143,10 @@ public class BusinessActivitiesAccomodationStatisticsMonthClientIT {
     @Test
     @Date("2017-04-13")
     public void getOccupancyWithParameters() {
-        List<String> typesOfHousing = Arrays.asList("014", "016");
+        List<String> typesOfHousings = Arrays.asList("014", "016");
         List<String> months = Arrays.asList("2008M06", "2009M06");
 
-        assertNotEquals(0, this.client.getOccupancy(typesOfHousing, months).size());
+        assertNotEquals(0, this.client.getOccupancy(typesOfHousings, months).size());
     }
 
     @Test

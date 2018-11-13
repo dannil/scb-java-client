@@ -2,10 +2,22 @@ package com.github.dannil.scbjavaclient.test.utility;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 import com.github.dannil.scbjavaclient.test.TestConstants;
+import com.hypertino.inflector.English;
 
 public class TestProcessor {
+
+    public static boolean isParametersPluralized(List<String> methodParameters) {
+        for (String methodParameter : methodParameters) {
+            boolean isPluralized = isPluralized(methodParameter);
+            if (!isPluralized) {
+                return false;
+            }
+        }
+        return true;
+    }
 
     public static boolean isJumbled(List<String> methodParameters, List<String> apiParameters) {
         // Sort method parameters according to API parameters
@@ -26,12 +38,21 @@ public class TestProcessor {
         if (methodParameters.size() != apiParameters.size()) {
             return true;
         }
+        // Also an easy test: check if the method parameters
+        // are pluralized
+        boolean isPluralized = isParametersPluralized(methodParameters);
+        if (!isPluralized) {
+            return true;
+        }
+        
         for (int i = 0; i < methodParameters.size(); i++) {
             String methodParameter = methodParameters.get(i);
             String apiParameter = apiParameters.get(i);
 
             String modifiedApiParameter = new String(apiParameter);
             String modifiedMethodParameter = new String(methodParameter);
+
+            Set<String> alreadyPluralized = TestConstants.ALREADY_PLURALIZED;
 
             // Remove trailing spaces
             modifiedApiParameter = modifiedApiParameter.trim();
@@ -43,7 +64,7 @@ public class TestProcessor {
             String tempModifiedApiParameter = modifiedApiParameter.replaceAll("[^a-zA-Z]", "");
 
             StringBuilder builder = new StringBuilder(modifiedApiParameter);
-            if (!TestConstants.ALREADY_PLURALIZED.contains(tempModifiedApiParameter)) {
+            if (!alreadyPluralized.contains(tempModifiedApiParameter)) {
                 // Replace / with "and"
                 String toReplace = "/";
                 String replaceWith = "and";
@@ -66,14 +87,14 @@ public class TestProcessor {
             modifiedApiParameter = modifiedApiParameter.replaceAll("[^a-zA-Z\\s]", "");
 
             tempModifiedApiParameter = modifiedApiParameter.replaceAll("[^a-zA-Z]", "").toLowerCase();
-            if (!TestConstants.ALREADY_PLURALIZED.contains(tempModifiedApiParameter)) {
+            if (!alreadyPluralized.contains(tempModifiedApiParameter)) {
                 // If the last character of the word is a letter and not
                 // already pluralized, then we do it ourself
                 modifiedApiParameter = pluralizeWord(modifiedApiParameter);
             }
 
             tempModifiedApiParameter = modifiedApiParameter.replaceAll("[^a-zA-Z]", "").toLowerCase();
-            if (!TestConstants.ALREADY_PLURALIZED.contains(tempModifiedApiParameter)) {
+            if (!alreadyPluralized.contains(tempModifiedApiParameter)) {
                 modifiedApiParameter = pluralizeWordsBeforePrepositions(modifiedApiParameter);
             }
 
@@ -83,23 +104,24 @@ public class TestProcessor {
             String modifiedApiParameterLower = modifiedApiParameter.toLowerCase();
             String modifiedMethodParameterLower = modifiedMethodParameter.toLowerCase();
 
-            if (!modifiedApiParameterLower.contains(modifiedMethodParameterLower)) {
-                // Is this a case of the API parameter not being
-                // pluralized correctly when compared to the
-                // method parameter?
-                // Example: API parameter
-                // industrialclassificationnacerev is written as
-                // method parameter industrialclassifications, and as
-                // such the API parameter doesn't contain the trailing
-                // s
+            int maLength = modifiedApiParameterLower.length();
+            int mmLength = modifiedMethodParameterLower.length();
+
+            // Is this a case of the API parameter not being pluralized correctly when
+            // compared to the method parameter? Example: API parameter
+            // industrialclassificationnacerev is written as method parameter
+            // industrialclassifications, and as such the API parameter doesn't contain
+            // the pluralization
+            if (!modifiedApiParameterLower.contains(modifiedMethodParameterLower) && maLength >= mmLength) {
                 builder = new StringBuilder(modifiedApiParameterLower);
-                if (modifiedApiParameterLower.length() >= modifiedMethodParameterLower.length()) {
-                    builder.insert(modifiedMethodParameterLower.length() - 1, "s");
-                    modifiedApiParameterLower = builder.toString();
-                }
-                if (modifiedApiParameterLower.contains(modifiedMethodParameterLower)) {
-                    continue;
-                }
+                String commonPart = modifiedApiParameterLower.substring(0, modifiedMethodParameter.length() - 1);
+                String commonPartPluralized = English.plural(commonPart);
+                builder.replace(0, modifiedMethodParameterLower.length() - 1, commonPartPluralized);
+                modifiedApiParameterLower = builder.toString();
+            }
+            if (!modifiedApiParameterLower.contains(modifiedMethodParameterLower)) {
+                System.out.println("MAP: " + modifiedApiParameterLower);
+                System.out.println("MMP: " + modifiedMethodParameterLower);
                 return true;
             }
         }
@@ -107,20 +129,7 @@ public class TestProcessor {
     }
 
     private static String pluralizeWord(String word) {
-        String lastCharacter = word.substring(word.length() - 1);
-        if (lastCharacter.matches("[xX]")) {
-            word += "es";
-        } else if (lastCharacter.matches("[yY]")) {
-            // Remove the last y and replace it with ies
-            // Example: country becomes countries
-            String withoutLastLetter = word.substring(0, word.length() - 1);
-            word = withoutLastLetter + "ies";
-        } else if (lastCharacter.matches("[s]")) {
-            word += "es";
-        } else if (lastCharacter.matches("[a-zA-Z]")) {
-            word += 's';
-        }
-        return word;
+        return English.plural(word);
     }
 
     private static String pluralizeWordsBeforePrepositions(String word) {
@@ -158,6 +167,20 @@ public class TestProcessor {
         word = word.replace('ä', 'a');
         word = word.replace('ö', 'o');
         return word;
+    }
+
+    private static boolean isPluralized(String word) {
+        String tempWord = word.replaceAll("[^a-zA-Z]", "").toLowerCase();
+        if (TestConstants.ALREADY_PLURALIZED.contains(tempWord)) {
+            return true;
+        }
+        String[] pluralizedEndings = { "s", "es" };
+        for (int i = 0; i < pluralizedEndings.length; i++) {
+            if (word.endsWith(pluralizedEndings[i])) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

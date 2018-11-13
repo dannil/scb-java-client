@@ -67,8 +67,8 @@ public class BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClient ext
      * <p>Fetch all income, expenditure and savings data which match the input
      * constraints.</p>
      *
-     * @param icnpo
-     *            the ICNPO
+     * @param icnpos
+     *            the ICNPOs
      * @param transactionItems
      *            the transaction items
      * @param years
@@ -77,10 +77,10 @@ public class BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClient ext
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getIncomeExpenditureAndSavings(Collection<String> icnpo,
+    public List<ResponseModel> getIncomeExpenditureAndSavings(Collection<String> icnpos,
             Collection<String> transactionItems, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ICNPO", icnpo);
+        mappings.put("ICNPO", icnpos);
         mappings.put("Transaktionspost", transactionItems);
         mappings.put(APIConstants.TIME_CODE, years);
 
@@ -104,18 +104,18 @@ public class BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClient ext
      * <p>Fetch all number of organizations and employment data which match the input
      * constraints.</p>
      *
-     * @param icnpo
-     *            the ICNPO
+     * @param icnpos
+     *            the ICNPOs
      * @param years
      *            the years
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getNumberOfOrganizationsAndEmployment(Collection<String> icnpo,
+    public List<ResponseModel> getNumberOfOrganizationsAndEmployment(Collection<String> icnpos,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ICNPO", icnpo);
+        mappings.put("ICNPO", icnpos);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("CivSamSyssICNPO2", mappings);

@@ -58,11 +58,11 @@ public class LivingConditionsFamiliesSiblingsClientIT {
     public void getSiblingsWithParameters() {
         List<String> sexes = Arrays.asList("5", "6");
         List<String> ages = Arrays.asList("0-17");
-        List<Integer> siblingsLivingAtHome = Arrays.asList(50, 70);
+        List<Integer> siblingsLivingAtHomes = Arrays.asList(50, 70);
         List<String> familyTypes = Arrays.asList("Annan");
         List<Integer> years = Arrays.asList(2015);
 
-        assertNotEquals(0, this.client.getSiblings(sexes, ages, siblingsLivingAtHome, familyTypes, years).size());
+        assertNotEquals(0, this.client.getSiblings(sexes, ages, siblingsLivingAtHomes, familyTypes, years).size());
     }
 
 }

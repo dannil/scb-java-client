@@ -69,16 +69,16 @@ public class PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient extends Ab
      * <p>Fetch all producer price index home sales data which match the input
      * constraints.</p>
      *
-     * @param spin2015
-     *            the SPIN 2015
+     * @param spin2015s
+     *            the SPIN 2015s
      * @param months
      *            the months
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getProducerPriceIndexHomeSales(Collection<String> spin2015, Collection<String> months) {
-        return generate(spin2015, months, "HMPIM15");
+    public List<ResponseModel> getProducerPriceIndexHomeSales(Collection<String> spin2015s, Collection<String> months) {
+        return generate(spin2015s, months, "HMPIM15");
     }
 
     // Daniel 2017-06-06:
@@ -99,16 +99,16 @@ public class PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient extends Ab
     /**
      * <p>Fetch all export price index data which match the input constraints.</p>
      *
-     * @param spin2015
-     *            the SPIN 2015
+     * @param spin2015s
+     *            the SPIN 2015s
      * @param months
      *            the months
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getExportPriceIndex(Collection<String> spin2015, Collection<String> months) {
-        return generate(spin2015, months, "EXPIM15");
+    public List<ResponseModel> getExportPriceIndex(Collection<String> spin2015s, Collection<String> months) {
+        return generate(spin2015s, months, "EXPIM15");
     }
 
     // Daniel 2017-06-06:
@@ -129,16 +129,16 @@ public class PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient extends Ab
     /**
      * <p>Fetch all import price index data which match the input constraints.</p>
      *
-     * @param spin2015
-     *            the SPIN 2015
+     * @param spin2015s
+     *            the SPIN 2015s
      * @param months
      *            the months
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getImportPriceIndex(Collection<String> spin2015, Collection<String> months) {
-        return generate(spin2015, months, "IMPIM15");
+    public List<ResponseModel> getImportPriceIndex(Collection<String> spin2015s, Collection<String> months) {
+        return generate(spin2015s, months, "IMPIM15");
     }
 
     // Daniel 2017-06-06:
@@ -159,16 +159,16 @@ public class PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient extends Ab
     /**
      * <p>Fetch all producer price index data which match the input constraints.</p>
      *
-     * @param spin2015
-     *            the SPIN 2015
+     * @param spin2015s
+     *            the SPIN 2015s
      * @param months
      *            the months
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getProducerPriceIndex(Collection<String> spin2015, Collection<String> months) {
-        return generate(spin2015, months, "PPIM15");
+    public List<ResponseModel> getProducerPriceIndex(Collection<String> spin2015s, Collection<String> months) {
+        return generate(spin2015s, months, "PPIM15");
     }
 
     // Daniel 2017-06-06
@@ -190,23 +190,23 @@ public class PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient extends Ab
      * <p>Fetch all price index for domestic supply data which match the input
      * constraints.</p>
      *
-     * @param spin2015
-     *            the SPIN 2015
+     * @param spin2015s
+     *            the SPIN 2015s
      * @param months
      *            the months
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getPriceIndexForDomesticSupply(Collection<String> spin2015, Collection<String> months) {
-        return generate(spin2015, months, "ITPIM15");
+    public List<ResponseModel> getPriceIndexForDomesticSupply(Collection<String> spin2015s, Collection<String> months) {
+        return generate(spin2015s, months, "ITPIM15");
     }
 
     /**
      * <p>Common generator method for the methods in this class.</p>
      *
-     * @param spin2015
-     *            the SPIN 2015
+     * @param spin2015s
+     *            the SPIN 2015s
      * @param times
      *            the times
      * @param table
@@ -214,9 +214,9 @@ public class PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient extends Ab
      * @return a <code>List</code> of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      */
-    private List<ResponseModel> generate(Collection<String> spin2015, Collection<String> times, String table) {
+    private List<ResponseModel> generate(Collection<String> spin2015s, Collection<String> times, String table) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.SPIN_2015, spin2015);
+        mappings.put(APIConstants.SPIN_2015, spin2015s);
         mappings.put(APIConstants.TIME_CODE, times);
 
         return getResponseModels(table, mappings);

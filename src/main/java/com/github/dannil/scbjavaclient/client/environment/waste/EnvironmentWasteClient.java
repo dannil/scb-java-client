@@ -67,7 +67,7 @@ public class EnvironmentWasteClient extends AbstractClient {
     /**
      * <p>Fetch all generated waste data which match the input constraints.</p>
      *
-     * @param industrialClassification
+     * @param industrialClassifications
      *            the industrial classifications to fetch data for
      * @param wasteCategories
      *            the waste categories to fetch data for
@@ -77,12 +77,13 @@ public class EnvironmentWasteClient extends AbstractClient {
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      * @deprecated use
-     *             {@link #getGeneratedWaste(Collection, Collection, Collection, Collection)} instead.
+     *             {@link #getGeneratedWaste(Collection, Collection, Collection, Collection)}
+     *             instead.
      */
     @Deprecated
-    public List<ResponseModel> getGeneratedWaste(Collection<String> industrialClassification,
+    public List<ResponseModel> getGeneratedWaste(Collection<String> industrialClassifications,
             Collection<String> wasteCategories, Collection<Integer> years) {
-        return getGeneratedWaste(null, industrialClassification, wasteCategories, years);
+        return getGeneratedWaste(null, industrialClassifications, wasteCategories, years);
     }
 
     /**
@@ -90,7 +91,7 @@ public class EnvironmentWasteClient extends AbstractClient {
      *
      * @param properties
      *            the properties to fetch data for
-     * @param industrialClassification
+     * @param industrialClassifications
      *            the industrial classifications to fetch data for
      * @param wasteCategories
      *            the waste categories to fetch data for
@@ -101,11 +102,11 @@ public class EnvironmentWasteClient extends AbstractClient {
      *         objects
      */
     public List<ResponseModel> getGeneratedWaste(Collection<String> properties,
-            Collection<String> industrialClassification, Collection<String> wasteCategories,
+            Collection<String> industrialClassifications, Collection<String> wasteCategories,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("OfarligtFarligt", properties);
-        mappings.put("SNI2007MI", industrialClassification);
+        mappings.put("SNI2007MI", industrialClassifications);
         mappings.put(WASTECATEGORY_CODE, wasteCategories);
         mappings.put(APIConstants.TIME_CODE, years);
 

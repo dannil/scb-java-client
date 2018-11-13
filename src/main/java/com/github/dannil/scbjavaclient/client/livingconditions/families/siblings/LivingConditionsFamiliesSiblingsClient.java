@@ -69,8 +69,8 @@ public class LivingConditionsFamiliesSiblingsClient extends AbstractClient {
      *            the sexes
      * @param ages
      *            the ages
-     * @param siblingsLivingAtHome
-     *            the siblings living at home
+     * @param siblingsLivingAtHomes
+     *            the siblings living at homes
      * @param familyTypes
      *            the family types
      * @param years
@@ -80,11 +80,11 @@ public class LivingConditionsFamiliesSiblingsClient extends AbstractClient {
      *         objects
      */
     public List<ResponseModel> getSiblings(Collection<String> sexes, Collection<String> ages,
-            Collection<Integer> siblingsLivingAtHome, Collection<String> familyTypes, Collection<Integer> years) {
+            Collection<Integer> siblingsLivingAtHomes, Collection<String> familyTypes, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.SEX_CODE, sexes);
         mappings.put(APIConstants.AGE_CODE, ages);
-        mappings.put("SyskonHembo", siblingsLivingAtHome);
+        mappings.put("SyskonHembo", siblingsLivingAtHomes);
         mappings.put("Familjetyp", familyTypes);
         mappings.put(APIConstants.TIME_CODE, years);
 

@@ -80,12 +80,12 @@ public class PopulationStatisticsCitizenshipClientIT {
     @Test
     @Date("2018-06-22")
     public void getAcquiredSwedishCitizenshipInSwedenWithParameters() {
-        List<String> countriesOfCitizenship = Arrays.asList("AD", "BR");
+        List<String> countriesOfCitizenships = Arrays.asList("AD", "BR");
         List<Integer> sexes = Arrays.asList(1, 2);
         List<Integer> years = Arrays.asList(2005, 2006);
 
         assertNotEquals(0,
-                this.client.getAcquiredSwedishCitizenshipInSweden(countriesOfCitizenship, sexes, years).size());
+                this.client.getAcquiredSwedishCitizenshipInSweden(countriesOfCitizenships, sexes, years).size());
     }
 
 }

@@ -1,7 +1,10 @@
 package com.github.dannil.scbjavaclient.test.utility;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import com.hypertino.inflector.English;
 
 import info.debatty.java.stringsimilarity.Cosine;
 import info.debatty.java.stringsimilarity.interfaces.StringDistance;
@@ -10,41 +13,58 @@ public class Sorter {
 
     public static List<String> sortAccordingTo(List<String> toBeSorted, List<String> accordingTo) {
         String[] sortedArr = new String[toBeSorted.size()];
-        for (int i = 0; i < toBeSorted.size(); i++) {
-            String to = toBeSorted.get(i);
-            String toLower = to.toLowerCase();
+        StringDistance comparer = new Cosine();
+
+        for (String to : toBeSorted) {
+            // Normalize value so we can perform comparison easier
+            String toNormalized = normalize(to);
+
+            int accIndex = 0;
+            int mostProbableSortedPosition = -1;
             double mostProbableDistance = Double.MAX_VALUE;
-            int pos = -1;
-            for (int j = 0; j < accordingTo.size(); j++) {
-                String acc = accordingTo.get(j);
-                String accLower = acc.toLowerCase().replaceAll("[^a-zA-Z]", "");
-                StringDistance dis = new Cosine();
+
+            for (String acc : accordingTo) {
+                // Normalize value so we can perform comparison easier
+                String accNormalized = normalize(acc);
+
                 double distance = Double.MAX_VALUE;
-                String toLowerWithoutLast = toLower.substring(0, toLower.length() - 1);
-                if (accLower.startsWith(toLowerWithoutLast)) {
+
+                String toNormalizedWithoutPluralization = English.singular(toNormalized);
+                if (accNormalized.startsWith(toNormalizedWithoutPluralization)) {
                     // If the method parameter constitutes the beginning of the API
                     // parameter, it's very likely this is a match
                     //
-                    // Due to falls positives, we need to set a likely distance, which
+                    // Due to false positives, we need to set a likely distance, which
                     // has a high chance of being in the boundary
-                    // actualDistance > x > falsePositiveDistance
+                    // actualDistance < x < falsePositiveDistance
                     //
                     // This value might need to be adjusted in the future
                     distance = 0.31;
                 }
-                distance = Math.min(distance, dis.distance(toLower, accLower));
+
+                distance = Math.min(distance, comparer.distance(toNormalized, accNormalized));
                 if (distance < mostProbableDistance) {
                     mostProbableDistance = distance;
-                    pos = j;
+                    mostProbableSortedPosition = accIndex;
                 }
+
+                accIndex++;
             }
-            sortedArr[pos] = to;
+            String parameterAtSortedPosition = sortedArr[mostProbableSortedPosition];
+            if (parameterAtSortedPosition != null) {
+                throw new UnsupportedOperationException("Position " + mostProbableSortedPosition
+                        + " isn't empty, value is: " + parameterAtSortedPosition);
+            }
+            sortedArr[mostProbableSortedPosition] = to;
         }
-        List<String> sorted = new ArrayList<>(sortedArr.length);
-        for (int i = 0; i < sortedArr.length; i++) {
-            sorted.add(sortedArr[i]);
-        }
-        return sorted;
+        return Arrays.stream(sortedArr).collect(Collectors.toList());
+    }
+
+    private static String normalize(String word) {
+        word = word.trim();
+        word = word.replaceAll("[^a-zA-Z]", "");
+        word = word.toLowerCase();
+        return word;
     }
 
 }
