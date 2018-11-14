@@ -34,6 +34,8 @@ public class JsonAPITableFormat implements ITableFormat {
 
     private JsonNode json;
 
+    private Map<String, String> texts;
+
     private Map<String, Collection<String>> inputs;
 
     /**
@@ -45,17 +47,11 @@ public class JsonAPITableFormat implements ITableFormat {
     public JsonAPITableFormat(String json) {
         super();
         this.json = new JsonConverter().toNode(json);
-    }
-
-    @Override
-    public Map<String, Collection<String>> getPairs() {
-        if (this.inputs != null) {
-            return this.inputs;
-        }
+        
         JsonNode variables = this.json.get("variables");
-        if (variables == null) {
-            return new HashMap<>();
-        }
+//        if (variables == null) {
+//            return new HashMap<>();
+//        }
         this.inputs = new HashMap<>();
         for (int i = 0; i < variables.size(); i++) {
             JsonNode entry = variables.get(i);
@@ -66,7 +62,39 @@ public class JsonAPITableFormat implements ITableFormat {
             }
             this.inputs.put(entry.get("code").asText(), values);
         }
+    }
+
+    @Override
+    public Map<String, Collection<String>> getPairs() {
+        if (this.inputs != null) {
+            return this.inputs;
+        }
+//        JsonNode variables = this.json.get("variables");
+//        if (variables == null) {
+//            return new HashMap<>();
+//        }
+//        this.inputs = new HashMap<>();
+//        for (int i = 0; i < variables.size(); i++) {
+//            JsonNode entry = variables.get(i);
+//            List<String> values = new ArrayList<>();
+//            JsonNode valuesNode = entry.get("values");
+//            for (int j = 0; j < valuesNode.size(); j++) {
+//                values.add(valuesNode.get(j).asText());
+//            }
+//            this.inputs.put(entry.get("code").asText(), values);
+//        }
         return this.inputs;
+    }
+
+    /**
+     * <p>Returns the text for a given code.</p>
+     * 
+     * @param code
+     *            the code to fetch the corresponding text for
+     * @return the text for the code
+     */
+    public String getText(String code) {
+        return texts.get(code);
     }
 
     @Override

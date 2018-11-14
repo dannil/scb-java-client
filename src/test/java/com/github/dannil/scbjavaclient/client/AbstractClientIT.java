@@ -430,7 +430,7 @@ public class AbstractClientIT {
     }
 
     @Test
-    @Date("2018-11-10")
+    //@Date("2018-11-10")
     public void checkForCorrectUsageOfAllCodes() throws Exception {
         String execPath = System.getProperty("user.dir");
 
@@ -506,18 +506,18 @@ public class AbstractClientIT {
                         String body = res.getBody();
                         if (body != null) {
                             // Table exist for the given language; process it
-                            JsonNode n = new JsonConverter().toNode(body);
-                            JsonNode m = n.get("variables");
-                            List<String> codes = m.findValuesAsText("code");
-                            List<String> texts = m.findValuesAsText("text");
-
-                            Map<String, String> codesTexts = new LinkedHashMap<>();
-                            for (int i = 0; i < codes.size(); i++) {
-                                codesTexts.put(codes.get(i), texts.get(i));
-                            }
-                            // Remove ContentsCode code as this is implicitly added by
-                            // every method
-                            codesTexts.remove("ContentsCode");
+//                            JsonNode n = new JsonConverter().toNode(body);
+//                            JsonNode m = n.get("variables");
+//                            List<String> codes = m.findValuesAsText("code");
+//                            List<String> texts = m.findValuesAsText("text");
+//
+//                            Map<String, String> codesTexts = new LinkedHashMap<>();
+//                            for (int i = 0; i < codes.size(); i++) {
+//                                codesTexts.put(codes.get(i), texts.get(i));
+//                            }
+//                            // Remove ContentsCode code as this is implicitly added by
+//                            // every method
+//                            codesTexts.remove("ContentsCode");
 
                             List<String> methodParameters = parameters.get(key);
                             List<String> apiParameters = new ArrayList<>(codesTexts.values());
