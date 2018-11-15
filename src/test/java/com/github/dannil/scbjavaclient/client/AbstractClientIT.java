@@ -32,7 +32,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
@@ -522,11 +521,10 @@ public class AbstractClientIT {
                             List<String> methodParameters = parameters.get(key);
                             List<String> apiParameters = new ArrayList<>(codesTexts.values());
 
-                            boolean isParametersPluralized = TestProcessor.isParametersPluralized(methodParameters);
-                            boolean isMissingParameters = TestProcessor.isMissingParameters(methodParameters,
-                                    apiParameters);
+                            boolean isParametersPluralized = TestProcessor.isPluralized(methodParameters);
+                            boolean isMissingParameters = TestProcessor.isMissing(methodParameters, apiParameters);
                             boolean hasJumbledParameters = TestProcessor.isJumbled(methodParameters, apiParameters);
-                            
+
                             // Validate constraints
                             if (!isParametersPluralized || isMissingParameters || hasJumbledParameters) {
                                 if (!isParametersPluralized) {
@@ -541,7 +539,7 @@ public class AbstractClientIT {
                                 builder.append(System.lineSeparator() + "\t");
                                 builder.append("Method parameters: " + methodParameters);
                                 builder.append(System.lineSeparator());
-                                
+
                                 offendingMethods.add(methodFqdn);
                             }
                         } else {

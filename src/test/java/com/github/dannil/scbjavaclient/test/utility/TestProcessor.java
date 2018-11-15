@@ -1,7 +1,9 @@
 package com.github.dannil.scbjavaclient.test.utility;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import com.github.dannil.scbjavaclient.test.TestConstants;
@@ -9,45 +11,34 @@ import com.hypertino.inflector.English;
 
 public class TestProcessor {
 
-    public static boolean isParametersPluralized(List<String> methodParameters) {
-        for (String methodParameter : methodParameters) {
-            boolean isPluralized = isPluralized(methodParameter);
-            if (!isPluralized) {
-                return false;
-            }
-        }
-        return true;
-    }
-
     public static boolean isJumbled(List<String> methodParameters, List<String> apiParameters) {
         // Sort method parameters according to API parameters
         List<String> sortedMethodParameters = Sorter.sortAccordingTo(methodParameters, apiParameters);
-        for (int i = 0; i < methodParameters.size(); i++) {
-            String p1 = methodParameters.get(i);
-            String p2 = sortedMethodParameters.get(i);
-            if (!p1.equals(p2)) {
+
+        Iterator<String> methodIterator = methodParameters.iterator();
+        Iterator<String> sortedMethodIterator = sortedMethodParameters.iterator();
+        while (methodIterator.hasNext() && sortedMethodIterator.hasNext()) {
+            String methodParameter = methodIterator.next();
+            String sortedMethodParameter = sortedMethodIterator.next();
+            if (!Objects.equals(methodParameter, sortedMethodParameter)) {
                 return true;
             }
         }
         return false;
     }
 
-    public static boolean isMissingParameters(List<String> methodParameters, List<String> apiParameters) {
+    public static boolean isMissing(List<String> methodParameters, List<String> apiParameters) {
         // Easy test: check if the lists are of the same size
         // If not, they obviously doesn't contain the same parameters
         if (methodParameters.size() != apiParameters.size()) {
             return true;
         }
-        // Also an easy test: check if the method parameters
-        // are pluralized
-        boolean isPluralized = isParametersPluralized(methodParameters);
-        if (!isPluralized) {
-            return true;
-        }
 
-        for (int i = 0; i < methodParameters.size(); i++) {
-            String methodParameter = methodParameters.get(i);
-            String apiParameter = apiParameters.get(i);
+        Iterator<String> methodIterator = methodParameters.iterator();
+        Iterator<String> apiIterator = apiParameters.iterator();
+        while (methodIterator.hasNext() && apiIterator.hasNext()) {
+            String methodParameter = methodIterator.next();
+            String apiParameter = apiIterator.next();
 
             String modifiedApiParameter = new String(apiParameter);
             String modifiedMethodParameter = new String(methodParameter);
@@ -165,6 +156,16 @@ public class TestProcessor {
         word = word.replace('ä', 'a');
         word = word.replace('ö', 'o');
         return word;
+    }
+    
+    public static boolean isPluralized(List<String> methodParameters) {
+        for (String methodParameter : methodParameters) {
+            boolean isPluralized = isPluralized(methodParameter);
+            if (!isPluralized) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private static boolean isPluralized(String word) {
