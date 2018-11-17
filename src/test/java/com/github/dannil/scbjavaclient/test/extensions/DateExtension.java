@@ -22,7 +22,6 @@ public class DateExtension implements ExecutionCondition {
         if (dayLimit < 0) {
             return ConditionEvaluationResult.disabled("Day limit is less than 0");
         }
-
         // Get the annotated date
         Optional<AnnotatedElement> opElement = context.getElement();
         Optional<Date> opDate = opElement.map(e -> e.getAnnotation(Date.class));
@@ -31,20 +30,33 @@ public class DateExtension implements ExecutionCondition {
         }
         String value = opDate.get().value();
 
+        // Convert the annotated date to a LocalDateTime
+        LocalDateTime date = getDate(value);
+
+        // Check if the converted annotated date is equal to or after the current time
+        // with the day limit subtracted from the current time
+        if (hasDateOccured(date, dayLimit)) {
+            return ConditionEvaluationResult.enabled("Date is within the day limit");
+        }
+        return ConditionEvaluationResult.disabled("Date is not within the day limit");
+    }
+
+    private boolean hasDateOccured(LocalDateTime date, int days) {
+        // If days are less than 0, no tests should be run
+        if (days < 0) {
+            return false;
+        }
         // Create a new date which to represent the current date with the day limit
         // subtracted
-        LocalDateTime cutoff = LocalDateTime.now().minusDays(dayLimit);
-
-        // Convert the annotation date to a LocalDateTime
-        LocalDateTime date = getDate(value);
+        LocalDateTime cutoff = LocalDateTime.now().minusDays(days);
 
         // If the date is equal to the cutoff date OR the date is after the cutoff
         // date (a point in time which occurred after the cutoff date), the test
         // should be run, otherwise not
         if (date.equals(cutoff) || date.isAfter(cutoff)) {
-            return ConditionEvaluationResult.enabled("Date is within the day limit");
+            return true;
         }
-        return ConditionEvaluationResult.disabled("Date is not within the day limit");
+        return false;
     }
 
     private LocalDateTime getDate(String value) {
