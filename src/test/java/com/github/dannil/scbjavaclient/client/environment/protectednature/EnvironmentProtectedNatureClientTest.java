@@ -18,13 +18,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
+import org.junit.jupiter.api.Test;
+
 import com.github.dannil.scbjavaclient.client.environment.protectednature.naturetypes.EnvironmentProtectedNatureNatureTypesClient;
 import com.github.dannil.scbjavaclient.client.environment.protectednature.numberandarea.EnvironmentProtectedNatureNumberAndAreaClient;
 import com.github.dannil.scbjavaclient.client.environment.protectednature.populationandaccessibility.EnvironmentProtectedNaturePopulationAndAccessibilityClient;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
-import org.junit.jupiter.api.Test;
 
 @Suite
 public class EnvironmentProtectedNatureClientTest {
@@ -41,22 +41,22 @@ public class EnvironmentProtectedNatureClientTest {
     public void natureTypes() {
         EnvironmentProtectedNatureClient client = new EnvironmentProtectedNatureClient();
 
-        assertEquals(client.natureTypes().getClass(), EnvironmentProtectedNatureNatureTypesClient.class);
+        assertEquals(EnvironmentProtectedNatureNatureTypesClient.class, client.natureTypes().getClass());
     }
 
     @Test
     public void numberAndArea() {
         EnvironmentProtectedNatureClient client = new EnvironmentProtectedNatureClient();
 
-        assertEquals(client.numberAndArea().getClass(), EnvironmentProtectedNatureNumberAndAreaClient.class);
+        assertEquals(EnvironmentProtectedNatureNumberAndAreaClient.class, client.numberAndArea().getClass());
     }
 
     @Test
     public void populationAndAccessibility() {
         EnvironmentProtectedNatureClient client = new EnvironmentProtectedNatureClient();
 
-        assertEquals(client.populationAndAccessibility().getClass(),
-                EnvironmentProtectedNaturePopulationAndAccessibilityClient.class);
+        assertEquals(EnvironmentProtectedNaturePopulationAndAccessibilityClient.class,
+                client.populationAndAccessibility().getClass());
     }
 
     @Test

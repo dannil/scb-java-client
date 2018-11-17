@@ -18,14 +18,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
+import org.junit.jupiter.api.Test;
+
 import com.github.dannil.scbjavaclient.client.publicfinances.annualaccounts.balancesheetcounty.PublicFinancesAnnualAccountsBalanceSheetCountyClient;
 import com.github.dannil.scbjavaclient.client.publicfinances.annualaccounts.balancesheetmunicipality.PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient;
 import com.github.dannil.scbjavaclient.client.publicfinances.annualaccounts.statementaccountscounty.PublicFinancesAnnualAccountsStatementAccountsCountyClient;
 import com.github.dannil.scbjavaclient.client.publicfinances.annualaccounts.statementaccountsmunicipality.PublicFinancesAnnualAccountsStatementAccountsMunicipalityClient;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
-import org.junit.jupiter.api.Test;
 
 @Suite
 public class PublicFinancesAnnualAccountsClientTest {
@@ -42,32 +42,32 @@ public class PublicFinancesAnnualAccountsClientTest {
     public void balanceSheetCountyClient() {
         PublicFinancesAnnualAccountsClient client = new PublicFinancesAnnualAccountsClient();
 
-        assertEquals(client.balanceSheetCounty().getClass(),
-                PublicFinancesAnnualAccountsBalanceSheetCountyClient.class);
+        assertEquals(PublicFinancesAnnualAccountsBalanceSheetCountyClient.class,
+                client.balanceSheetCounty().getClass());
     }
 
     @Test
     public void balanceSheetMunicipalityClient() {
         PublicFinancesAnnualAccountsClient client = new PublicFinancesAnnualAccountsClient();
 
-        assertEquals(client.balanceSheetMunicipality().getClass(),
-                PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient.class);
+        assertEquals(PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient.class,
+                client.balanceSheetMunicipality().getClass());
     }
 
     @Test
     public void statementAccountsCountyClient() {
         PublicFinancesAnnualAccountsClient client = new PublicFinancesAnnualAccountsClient();
 
-        assertEquals(client.statementAccountsCounty().getClass(),
-                PublicFinancesAnnualAccountsStatementAccountsCountyClient.class);
+        assertEquals(PublicFinancesAnnualAccountsStatementAccountsCountyClient.class,
+                client.statementAccountsCounty().getClass());
     }
 
     @Test
     public void statementAccountsMunicipalityClient() {
         PublicFinancesAnnualAccountsClient client = new PublicFinancesAnnualAccountsClient();
 
-        assertEquals(client.statementAccountsMunicipality().getClass(),
-                PublicFinancesAnnualAccountsStatementAccountsMunicipalityClient.class);
+        assertEquals(PublicFinancesAnnualAccountsStatementAccountsMunicipalityClient.class,
+                client.statementAccountsMunicipality().getClass());
     }
 
     @Test

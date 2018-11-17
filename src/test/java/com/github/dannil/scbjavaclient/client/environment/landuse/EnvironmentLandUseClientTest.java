@@ -18,13 +18,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
+import org.junit.jupiter.api.Test;
+
 import com.github.dannil.scbjavaclient.client.environment.landuse.buildings.EnvironmentLandUseBuildingsClient;
+import com.github.dannil.scbjavaclient.client.environment.landuse.infrastructurefortransport.EnvironmentLandUseInfrastructureForTransportClient;
 import com.github.dannil.scbjavaclient.client.environment.landuse.planning.EnvironmentLandUsePlanningClient;
 import com.github.dannil.scbjavaclient.client.environment.landuse.usage.EnvironmentLandUseUsageClient;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
-import org.junit.jupiter.api.Test;
 
 @Suite
 public class EnvironmentLandUseClientTest {
@@ -41,21 +42,29 @@ public class EnvironmentLandUseClientTest {
     public void buildingsClient() {
         EnvironmentLandUseClient client = new EnvironmentLandUseClient();
 
-        assertEquals(client.buildings().getClass(), EnvironmentLandUseBuildingsClient.class);
+        assertEquals(EnvironmentLandUseBuildingsClient.class, client.buildings().getClass());
+    }
+
+    @Test
+    public void infrastructureForTransport() {
+        EnvironmentLandUseClient client = new EnvironmentLandUseClient();
+
+        assertEquals(EnvironmentLandUseInfrastructureForTransportClient.class,
+                client.infrastructureForTransport().getClass());
     }
 
     @Test
     public void planningClient() {
         EnvironmentLandUseClient client = new EnvironmentLandUseClient();
 
-        assertEquals(client.planning().getClass(), EnvironmentLandUsePlanningClient.class);
+        assertEquals(EnvironmentLandUsePlanningClient.class, client.planning().getClass());
     }
 
     @Test
     public void usageClient() {
         EnvironmentLandUseClient client = new EnvironmentLandUseClient();
 
-        assertEquals(client.usage().getClass(), EnvironmentLandUseUsageClient.class);
+        assertEquals(EnvironmentLandUseUsageClient.class, client.usage().getClass());
     }
 
     @Test

@@ -21,8 +21,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
@@ -32,8 +32,6 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
  * @since 0.4.0
  */
 public class PricesAndConsumptionBPIClient extends AbstractClient {
-
-    private static final String TYPEOFBUILDING_CODE = "Hustyp";
 
     private static final String TYPEOFINDEX_CODE = "Indexslag";
 
@@ -84,7 +82,7 @@ public class PricesAndConsumptionBPIClient extends AbstractClient {
     public List<ResponseModel> getBuildingPriceIndexForDwellingsQuarters(Collection<String> typesOfBuildings,
             Collection<String> typesOfIndexes, Collection<String> quarters) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(TYPEOFBUILDING_CODE, typesOfBuildings);
+        mappings.put(APIConstants.TYPEOFBUILDING_CODE, typesOfBuildings);
         mappings.put(TYPEOFINDEX_CODE, typesOfIndexes);
         mappings.put(APIConstants.TIME_CODE, quarters);
 
@@ -121,7 +119,7 @@ public class PricesAndConsumptionBPIClient extends AbstractClient {
     public List<ResponseModel> getBuildingPriceIndexForDwellingsYears(Collection<String> typesOfBuildings,
             Collection<String> typesOfIndexes, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(TYPEOFBUILDING_CODE, typesOfBuildings);
+        mappings.put(APIConstants.TYPEOFBUILDING_CODE, typesOfBuildings);
         mappings.put(TYPEOFINDEX_CODE, typesOfIndexes);
         mappings.put(APIConstants.TIME_CODE, years);
 

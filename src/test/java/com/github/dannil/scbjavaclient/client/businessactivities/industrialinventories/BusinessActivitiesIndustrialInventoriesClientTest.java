@@ -18,12 +18,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
+import org.junit.jupiter.api.Test;
+
 import com.github.dannil.scbjavaclient.client.businessactivities.industrialinventories.economicindicators.BusinessActivitiesIndustrialInventoriesEconomicIndicatorsClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.industrialinventories.inventories.BusinessActivitiesIndustrialInventoriesInventoriesClient;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
-import org.junit.jupiter.api.Test;
 
 @Suite
 public class BusinessActivitiesIndustrialInventoriesClientTest {
@@ -41,15 +41,15 @@ public class BusinessActivitiesIndustrialInventoriesClientTest {
     public void economicIndicatorsClient() {
         BusinessActivitiesIndustrialInventoriesClient client = new BusinessActivitiesIndustrialInventoriesClient();
 
-        assertEquals(client.economicIndicators().getClass(),
-                BusinessActivitiesIndustrialInventoriesEconomicIndicatorsClient.class);
+        assertEquals(BusinessActivitiesIndustrialInventoriesEconomicIndicatorsClient.class,
+                client.economicIndicators().getClass());
     }
 
     @Test
     public void inventoriesClient() {
         BusinessActivitiesIndustrialInventoriesClient client = new BusinessActivitiesIndustrialInventoriesClient();
 
-        assertEquals(client.inventories().getClass(), BusinessActivitiesIndustrialInventoriesInventoriesClient.class);
+        assertEquals(BusinessActivitiesIndustrialInventoriesInventoriesClient.class, client.inventories().getClass());
     }
 
     @Test

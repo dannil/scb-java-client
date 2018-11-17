@@ -18,15 +18,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
+import org.junit.jupiter.api.Test;
+
 import com.github.dannil.scbjavaclient.client.financialmarkets.statistics.claimsandliabilities.FinancialMarketsStatisticsClaimsAndLiabilitiesClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.statistics.depositandlending.FinancialMarketsStatisticsDepositAndLendingClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.statistics.economicindicators.FinancialMarketsStatisticsEconomicIndicatorsClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.statistics.keyfigures.FinancialMarketsStatisticsKeyFiguresClient;
 import com.github.dannil.scbjavaclient.client.financialmarkets.statistics.statistics.FinancialMarketsStatisticsStatisticsClient;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
-import org.junit.jupiter.api.Test;
 
 @Suite
 public class FinancialMarketsStatisticsClientTest {
@@ -43,36 +43,36 @@ public class FinancialMarketsStatisticsClientTest {
     public void claimsAndLiabilities() {
         FinancialMarketsStatisticsClient client = new FinancialMarketsStatisticsClient();
 
-        assertEquals(client.claimsAndLiabilities().getClass(),
-                FinancialMarketsStatisticsClaimsAndLiabilitiesClient.class);
+        assertEquals(FinancialMarketsStatisticsClaimsAndLiabilitiesClient.class,
+                client.claimsAndLiabilities().getClass());
     }
 
     @Test
     public void depositAndLending() {
         FinancialMarketsStatisticsClient client = new FinancialMarketsStatisticsClient();
 
-        assertEquals(client.depositAndLending().getClass(), FinancialMarketsStatisticsDepositAndLendingClient.class);
+        assertEquals(FinancialMarketsStatisticsDepositAndLendingClient.class, client.depositAndLending().getClass());
     }
 
     @Test
     public void economicIndicators() {
         FinancialMarketsStatisticsClient client = new FinancialMarketsStatisticsClient();
 
-        assertEquals(client.economicIndicators().getClass(), FinancialMarketsStatisticsEconomicIndicatorsClient.class);
+        assertEquals(FinancialMarketsStatisticsEconomicIndicatorsClient.class, client.economicIndicators().getClass());
     }
 
     @Test
     public void keyFigures() {
         FinancialMarketsStatisticsClient client = new FinancialMarketsStatisticsClient();
 
-        assertEquals(client.keyFigures().getClass(), FinancialMarketsStatisticsKeyFiguresClient.class);
+        assertEquals(FinancialMarketsStatisticsKeyFiguresClient.class, client.keyFigures().getClass());
     }
 
     @Test
     public void statistics() {
         FinancialMarketsStatisticsClient client = new FinancialMarketsStatisticsClient();
 
-        assertEquals(client.statistics().getClass(), FinancialMarketsStatisticsStatisticsClient.class);
+        assertEquals(FinancialMarketsStatisticsStatisticsClient.class, client.statistics().getClass());
     }
 
     @Test

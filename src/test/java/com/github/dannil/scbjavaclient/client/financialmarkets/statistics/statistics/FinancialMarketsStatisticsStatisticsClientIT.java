@@ -20,12 +20,12 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
@@ -55,11 +55,11 @@ public class FinancialMarketsStatisticsStatisticsClientIT {
     @Date("2017-06-02")
     public void getAssetsAndLiabilitiesWithParameters() {
         List<String> institutions = Arrays.asList("MFI", "RB");
-        List<String> itemsAndCounterPartsSectors = Arrays.asList("5LM4A.1E.N11.V.A", "5LM4A.1E.N31.V.A");
+        List<String> itemsAndCounterPartSectors = Arrays.asList("5LM4A.1E.N11.V.A", "5LM4A.1E.N31.V.A");
         List<String> months = Arrays.asList("2008M08", "2009M08");
 
         assertNotEquals(0,
-                this.client.getAssetsAndLiabilities(institutions, itemsAndCounterPartsSectors, months).size());
+                this.client.getAssetsAndLiabilities(institutions, itemsAndCounterPartSectors, months).size());
     }
 
     @Test

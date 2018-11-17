@@ -19,7 +19,7 @@ import java.util.Locale;
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.accomodationstatistics.month.BusinessActivitiesAccomodationStatisticsMonthClient;
 import com.github.dannil.scbjavaclient.client.businessactivities.accomodationstatistics.year.BusinessActivitiesAccomodationStatisticsYearClient;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
  * <p>Client which handles business activities accomodation statistics data fetching.</p>

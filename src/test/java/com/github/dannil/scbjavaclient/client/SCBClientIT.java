@@ -27,11 +27,11 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.junit.jupiter.api.Test;
+
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
-import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
@@ -56,6 +56,18 @@ public class SCBClientIT {
         staticInputs.put("Tid", staticInputsTid);
 
         assertEquals(staticInputs, inputs);
+    }
+    
+    @Test
+    @Date("2018-06-26")
+    public void getInputsNonExistingTable() {
+        Locale locale = new Locale("sv", "SE");
+        SCBClient client = new SCBClient(locale);
+        
+        Map<String, Collection<String>> inputs = client.getInputs("ABC/ABC/ABC");
+        
+        assertNotNull(inputs);
+        assertTrue(inputs.isEmpty());
     }
 
     @Test
@@ -130,6 +142,18 @@ public class SCBClientIT {
         assertNotNull(regions);
         assertTrue(regions.isEmpty());
     }
+    
+    @Test
+    @Date("2018-06-26")
+    public void getRegionsNonExistingTable() {
+        Locale locale = new Locale("sv", "SE");
+        SCBClient client = new SCBClient(locale);
+        
+        List<String> regions = client.getRegions("ABC/ABC/ABC");
+        
+        assertNotNull(regions);
+        assertTrue(regions.isEmpty());
+    }
 
     @Test
     @Date("2017-01-01")
@@ -151,6 +175,34 @@ public class SCBClientIT {
 
         assertNotNull(times);
         assertTrue(times.isEmpty());
+    }
+    
+    @Test
+    @Date("2018-06-26")
+    public void getTimesNonExistingTable() {
+        Locale locale = new Locale("sv", "SE");
+        SCBClient client = new SCBClient(locale);
+        
+        List<String> times = client.getTimes("ABC/ABC/ABC");
+        
+        assertNotNull(times);
+        assertTrue(times.isEmpty());
+    }
+
+    @Test
+    @Date("2018-01-01")
+    public void supportedLanguage() {
+        String language = "sv";
+
+        assertTrue(SCBClient.isSupportedLanguage(language));
+    }
+
+    @Test
+    @Date("2018-01-01")
+    public void unsupportedLanguage() {
+        String language = "fr";
+
+        assertFalse(SCBClient.isSupportedLanguage(language));
     }
 
     @Test

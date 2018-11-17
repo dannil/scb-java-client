@@ -21,8 +21,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
@@ -70,14 +70,14 @@ public class LivingConditionsFamiliesHousingClient extends AbstractClient {
      *            the sexes
      * @param ages
      *            the ages
-     * @param housingTypes
-     *            the housing types
+     * @param typesOfHousings
+     *            the types of housings
      * @param familyTypes
      *            the family types
-     * @param backgrounds
-     *            the backgrounds
-     * @param parentIncomes
-     *            the parent incomes
+     * @param foreignAndSwedishBackgrounds
+     *            the foreign and Swedish backgrounds
+     * @param parentsIncomes
+     *            the parents incomes
      * @param years
      *            the years
      * @return the data wrapped in a list of
@@ -85,15 +85,16 @@ public class LivingConditionsFamiliesHousingClient extends AbstractClient {
      *         objects
      */
     public List<ResponseModel> getHousing(Collection<String> sexes, Collection<String> ages,
-            Collection<String> housingTypes, Collection<String> familyTypes, Collection<String> backgrounds,
-            Collection<Integer> parentIncomes, Collection<Integer> years) {
+            Collection<String> typesOfHousings, Collection<String> familyTypes,
+            Collection<String> foreignAndSwedishBackgrounds, Collection<Integer> parentsIncomes,
+            Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.SEX_CODE, sexes);
         mappings.put(APIConstants.AGE_CODE, ages);
-        mappings.put("Boendeform", housingTypes);
+        mappings.put("Boendeform", typesOfHousings);
         mappings.put("Familjetyp", familyTypes);
-        mappings.put("UtlBakgrund", backgrounds);
-        mappings.put("Foraldrarinkniv", parentIncomes);
+        mappings.put("UtlBakgrund", foreignAndSwedishBackgrounds);
+        mappings.put("Foraldrarinkniv", parentsIncomes);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("LE0102T34", mappings);

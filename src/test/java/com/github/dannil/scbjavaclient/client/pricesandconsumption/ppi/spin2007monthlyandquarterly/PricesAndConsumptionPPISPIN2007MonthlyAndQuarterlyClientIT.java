@@ -15,17 +15,19 @@
 package com.github.dannil.scbjavaclient.client.pricesandconsumption.ppi.spin2007monthlyandquarterly;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import com.github.dannil.scbjavaclient.exception.SCBClientResponseTooLargeException;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
@@ -104,21 +106,26 @@ public class PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClientIT {
         assertNotEquals(0, this.client.getImportPriceIndex(spin2007, months).size());
     }
 
+    // Daniel 2018-05-12:
+    // Returns HTTP 403
     @Test
-    @Date("2017-06-05")
+    @Date("2018-06-28")
     public void getProducerPriceIndex() {
-        assertNotEquals(0, this.client.getProducerPriceIndex().size());
+        assertThrows(SCBClientResponseTooLargeException.class, () -> this.client.getProducerPriceIndex());
     }
 
+    // Daniel 2018-05-12:
+    // Returns HTTP 403
     @Test
-    @Date("2017-06-05")
+    @Date("2018-06-28")
     public void getProducerPriceIndexWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getProducerPriceIndex(Collections.<String>emptyList(),
-                Collections.<String>emptyList()).size());
+        assertThrows(SCBClientResponseTooLargeException.class,
+                () -> this.client.getProducerPriceIndex(Collections.<String>emptyList(),
+                        Collections.<String>emptyList()));
     }
 
     @Test
-    @Date("2017-06-05")
+    @Date("2018-05-12")
     public void getProducerPriceIndexWithParameters() {
         List<String> spin2007 = Arrays.asList("MIG_CAG_ORD", "MIG_COG_ORD");
         List<String> months = Arrays.asList("2001M03", "2001M07");
@@ -128,21 +135,21 @@ public class PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClientIT {
 
     // Daniel 2017-06-05:
     // Returns HTTP 403
-    //
-    // @Test @Date("2017-06-05")
-    // public void getPriceIndexForDomesticSupply() {
-    // assertNotEquals(0, this.client.getPriceIndexForDomesticSupply().size());
-    // }
+    @Test
+    @Date("2018-06-28")
+    public void getPriceIndexForDomesticSupply() {
+        assertThrows(SCBClientResponseTooLargeException.class, () -> this.client.getPriceIndexForDomesticSupply());
+    }
 
     // Daniel 2017-06-05:
     // Returns HTTP 403
-    //
-    // @Test @Date("2017-06-05")
-    // public void getPriceIndexForDomesticSupplyWithParametersEmptyLists() {
-    // assertNotEquals(0,
-    // this.client.getPriceIndexForDomesticSupply(Collections.<String>emptyList(),
-    // Collections.<String>emptyList()).size());
-    // }
+    @Test
+    @Date("2018-06-28")
+    public void getPriceIndexForDomesticSupplyWithParametersEmptyLists() {
+        assertThrows(SCBClientResponseTooLargeException.class,
+                () -> this.client.getPriceIndexForDomesticSupply(Collections.<String>emptyList(),
+                        Collections.<String>emptyList()));
+    }
 
     @Test
     @Date("2017-06-05")

@@ -21,8 +21,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
@@ -82,7 +82,47 @@ public class PopulationProjectionsLatestAssumptionsClient extends AbstractClient
         mappings.put(APIConstants.AGE_CODE, ages);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("BefProgDodstal17", mappings);
+        return getResponseModels("BefProgDodstalN", mappings);
+    }
+
+    // Daniel 2018-05-12: Returns HTTP 403
+    /**
+     * <p>Fetch all emigration rate assumption data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getEmigrationRateAssumption(Collection, Collection, Collection, Collection)
+     */
+    public List<ResponseModel> getEmigrationRateAssumption() {
+        return getEmigrationRateAssumption(null, null, null, null);
+    }
+
+    /**
+     * <p>Fetch all emigration rate assumption data which match the input constraints.</p>
+     *
+     * @param regionsOfBirths
+     *            the regions of births
+     * @param sexes
+     *            the sexes
+     * @param ages
+     *            the ages
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getEmigrationRateAssumption(Collection<String> regionsOfBirths, Collection<Integer> sexes,
+            Collection<String> ages, Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("Fodelselandgrupp", regionsOfBirths);
+        mappings.put(APIConstants.SEX_CODE, sexes);
+        mappings.put(APIConstants.AGE_CODE, ages);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("BefProgUtflyttN", mappings);
     }
 
     /**
@@ -92,26 +132,33 @@ public class PopulationProjectionsLatestAssumptionsClient extends AbstractClient
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @see #getFertilityAssumption(Collection)
+     * @see #getFertilityAssumption(Collection, Collection, Collection)
      */
     public List<ResponseModel> getFertilityAssumption() {
-        return getFertilityAssumption(null);
+        return getFertilityAssumption(null, null, null);
     }
 
     /**
      * <p>Fetch all fertility assumption data which match the input constraints.</p>
      *
+     * @param mothersRegionsOfBirths
+     *            the mother's regions of birth
+     * @param ages
+     *            the ages
      * @param years
      *            the years
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getFertilityAssumption(Collection<Integer> years) {
+    public List<ResponseModel> getFertilityAssumption(Collection<String> mothersRegionsOfBirths, Collection<String> ages,
+            Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("ModerFodlandgrupp", mothersRegionsOfBirths);
+        mappings.put(APIConstants.AGE_CODE, ages);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("BefProgFruktTot17", mappings);
+        return getResponseModels("BefProgFruktTotN", mappings);
     }
 
     @Override

@@ -21,8 +21,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
@@ -67,22 +67,22 @@ public class PopulationStatisticsLiveBirthsClient extends AbstractClient {
      *
      * @param regions
      *            the regions to fetch data for
-     * @param motherAges
-     *            the mothers' ages to fetch data for
-     * @param genders
-     *            the genders to fetch data for
+     * @param agesOfMothers
+     *            the ages of mothers to fetch data for
+     * @param sexes
+     *            the sexes to fetch data for
      * @param years
      *            the years to fetch data for
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getLiveBirths(Collection<String> regions, Collection<String> motherAges,
-            Collection<Integer> genders, Collection<Integer> years) {
+    public List<ResponseModel> getLiveBirths(Collection<String> regions, Collection<String> agesOfMothers,
+            Collection<Integer> sexes, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
-        mappings.put("AlderModer", motherAges);
-        mappings.put(APIConstants.SEX_CODE, genders);
+        mappings.put("AlderModer", agesOfMothers);
+        mappings.put(APIConstants.SEX_CODE, sexes);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("FoddaK", mappings);

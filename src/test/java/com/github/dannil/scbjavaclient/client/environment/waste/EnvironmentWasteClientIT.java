@@ -20,15 +20,16 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 @Suite
 @Remote
+@SuppressWarnings("deprecation")
 public class EnvironmentWasteClientIT {
 
     private EnvironmentWasteClient client;
@@ -39,26 +40,45 @@ public class EnvironmentWasteClientIT {
     }
 
     @Test
-    @Date("2017-03-06")
+    @Date("2018-10-31")
     public void getGeneratedWaste() {
         assertNotEquals(0, this.client.getGeneratedWaste().size());
     }
 
     @Test
     @Date("2017-03-06")
-    public void getGeneratedWasteWithParametersEmptyLists() {
+    public void getGeneratedWasteWithParametersEmptyListsDeprecated() {
         assertNotEquals(0, this.client.getGeneratedWaste(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
     @Date("2017-03-06")
-    public void getGeneratedWasteWasteWithParameters() {
+    public void getGeneratedWasteWasteWithParametersDeprecated() {
         List<String> industrialClassifications = Arrays.asList("A01-03", "C16");
         List<String> wasteCategories = Arrays.asList("01.1", "03.2");
         List<Integer> years = Arrays.asList(2012, 2014);
 
         assertNotEquals(0, this.client.getGeneratedWaste(industrialClassifications, wasteCategories, years).size());
+    }
+
+    @Test
+    @Date("2018-10-31")
+    public void getGeneratedWasteWithParametersEmptyLists() {
+        assertNotEquals(0,
+                this.client.getGeneratedWaste(Collections.<String>emptyList(), Collections.<String>emptyList(),
+                        Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
+    }
+
+    @Test
+    @Date("2018-10-31")
+    public void getGeneratedWasteWasteWithParameters() {
+        List<String> properties = Arrays.asList("O", "F");
+        List<String> industrialClassifications = Arrays.asList("A01-03", "C16");
+        List<String> wasteCategories = Arrays.asList("01.1", "03.2");
+        List<Integer> years = Arrays.asList(2012, 2014);
+
+        assertNotEquals(0, this.client.getGeneratedWaste(properties, industrialClassifications, wasteCategories, years).size());
     }
 
     @Test

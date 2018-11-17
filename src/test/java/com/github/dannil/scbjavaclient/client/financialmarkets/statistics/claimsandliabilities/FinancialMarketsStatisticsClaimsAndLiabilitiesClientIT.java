@@ -15,17 +15,19 @@
 package com.github.dannil.scbjavaclient.client.financialmarkets.statistics.claimsandliabilities;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import com.github.dannil.scbjavaclient.exception.SCBClientResponseTooLargeException;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
@@ -39,19 +41,22 @@ public class FinancialMarketsStatisticsClaimsAndLiabilitiesClientIT {
     }
 
     // Daniel 2017-05-30: Returns HTTP 403
-    // @Test @Date("2017-05-30")
-    // public void getClaimsAndLiabilitiesOutsideSweden() {
-    // assertNotEquals(0, this.client.getClaimsAndLiabilitiesOutsideSweden().size());
-    // }
-    //
+    @Test
+    @Date("2018-06-28")
+    public void getClaimsAndLiabilitiesOutsideSweden() {
+        assertThrows(SCBClientResponseTooLargeException.class,
+                () -> this.client.getClaimsAndLiabilitiesOutsideSweden());
+    }
+
     // Daniel 2017-05-30: Returns HTTP 403
-    // @Test @Date("2017-05-30")
-    // public void getClaimsAndLiabilitiesOutsideSwedenWithParametersEmptyLists() {
-    // assertNotEquals(0,
-    // this.client.getClaimsAndLiabilitiesOutsideSweden(Collections.<String>emptyList(),
-    // Collections.<String>emptyList(), Collections.<String>emptyList(),
-    // Collections.<Integer>emptyList(), Collections.<String>emptyList()).size());
-    // }
+    @Test
+    @Date("2018-06-28")
+    public void getClaimsAndLiabilitiesOutsideSwedenWithParametersEmptyLists() {
+        assertThrows(SCBClientResponseTooLargeException.class,
+                () -> this.client.getClaimsAndLiabilitiesOutsideSweden(Collections.<String>emptyList(),
+                        Collections.<String>emptyList(), Collections.<String>emptyList(),
+                        Collections.<Integer>emptyList(), Collections.<String>emptyList()));
+    }
 
     @Test
     @Date("2017-05-30")

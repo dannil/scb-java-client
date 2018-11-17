@@ -21,8 +21,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
@@ -33,8 +33,6 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
 public class FinancialMarketsEnterprisesClient extends AbstractClient {
 
     private static final String INSTITUTE_CODE = "Finansinstitut";
-
-    private static final String ITEM_CODE = "Kontopost";
 
     /**
      * <p>Default constructor.</p>
@@ -83,7 +81,7 @@ public class FinancialMarketsEnterprisesClient extends AbstractClient {
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(INSTITUTE_CODE, institutes);
-        mappings.put(ITEM_CODE, items);
+        mappings.put(APIConstants.ITEM_CODE, items);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("FinResAr", mappings);
@@ -119,7 +117,7 @@ public class FinancialMarketsEnterprisesClient extends AbstractClient {
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(INSTITUTE_CODE, institutes);
-        mappings.put(ITEM_CODE, items);
+        mappings.put(APIConstants.ITEM_CODE, items);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("FinBalAr", mappings);

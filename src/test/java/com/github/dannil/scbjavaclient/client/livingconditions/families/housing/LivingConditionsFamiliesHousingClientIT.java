@@ -20,12 +20,12 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
@@ -57,14 +57,14 @@ public class LivingConditionsFamiliesHousingClientIT {
     public void getHousingWithParameters() {
         List<String> sexes = Arrays.asList("5", "6");
         List<String> ages = Arrays.asList("18-21");
-        List<String> housingTypes = Arrays.asList("HR", "BR");
+        List<String> typesOfHousings = Arrays.asList("HR", "BR");
         List<String> familyTypes = Arrays.asList("EnsamTot", "Annan");
-        List<String> backgrounds = Arrays.asList("TotalC");
-        List<Integer> parentIncomes = Arrays.asList(30);
+        List<String> foreignAndSwedishBackgrounds = Arrays.asList("TotalC");
+        List<Integer> parentsIncomes = Arrays.asList(30);
         List<Integer> years = Arrays.asList(2015);
 
-        assertNotEquals(0, this.client.getHousing(sexes, ages, housingTypes, familyTypes, backgrounds, parentIncomes,
-                years).size());
+        assertNotEquals(0, this.client.getHousing(sexes, ages, typesOfHousings, familyTypes,
+                foreignAndSwedishBackgrounds, parentsIncomes, years).size());
     }
 
 }

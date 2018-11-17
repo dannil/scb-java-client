@@ -21,8 +21,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
@@ -103,8 +103,8 @@ public class PopulationStatisticsDeathsClient extends AbstractClient {
      *
      * @param regions
      *            the regions
-     * @param motherAges
-     *            the mothers' ages
+     * @param agesOfMothers
+     *            the ages of mothers
      * @param sexes
      *            the sexes
      * @param years
@@ -113,11 +113,11 @@ public class PopulationStatisticsDeathsClient extends AbstractClient {
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getStillborn(Collection<String> regions, Collection<String> motherAges,
+    public List<ResponseModel> getStillborn(Collection<String> regions, Collection<String> agesOfMothers,
             Collection<Integer> sexes, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
-        mappings.put("AlderModer", motherAges);
+        mappings.put("AlderModer", agesOfMothers);
         mappings.put(APIConstants.SEX_CODE, sexes);
         mappings.put(APIConstants.TIME_CODE, years);
 
@@ -144,18 +144,18 @@ public class PopulationStatisticsDeathsClient extends AbstractClient {
      *            the regions
      * @param sexes
      *            the sexes
-     * @param years
-     *            the years
+     * @param periods
+     *            the periods
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
     public List<ResponseModel> getLifeExpectency(Collection<String> regions, Collection<Integer> sexes,
-            Collection<String> years) {
+            Collection<String> periods) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put(APIConstants.SEX_CODE, sexes);
-        mappings.put(APIConstants.TIME_CODE, years);
+        mappings.put(APIConstants.TIME_CODE, periods);
 
         return getResponseModels("Medellivsl", mappings);
     }

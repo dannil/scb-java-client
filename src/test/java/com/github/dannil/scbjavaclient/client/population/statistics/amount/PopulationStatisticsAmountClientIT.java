@@ -19,12 +19,12 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
@@ -47,12 +47,12 @@ public class PopulationStatisticsAmountClientIT {
     @Date("2017-01-01")
     public void getPopulationWithParameters() {
         List<String> regions = Arrays.asList("1263");
-        List<String> statuses = Arrays.asList("OG", "G", "SK", "ÄNKL");
+        List<String> maritalStatuses = Arrays.asList("OG", "G", "SK", "ÄNKL");
         List<String> ages = Arrays.asList("25");
-        List<Integer> genders = Arrays.asList(1, 2);
+        List<Integer> sexes = Arrays.asList(1, 2);
         List<Integer> years = Arrays.asList(1996);
 
-        assertNotEquals(0, this.client.getPopulation(regions, statuses, ages, genders, years).size());
+        assertNotEquals(0, this.client.getPopulation(regions, maritalStatuses, ages, sexes, years).size());
     }
 
 }

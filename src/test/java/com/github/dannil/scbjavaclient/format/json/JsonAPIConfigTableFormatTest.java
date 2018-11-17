@@ -24,10 +24,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 @Suite
 public class JsonAPIConfigTableFormatTest {
@@ -138,7 +138,7 @@ public class JsonAPIConfigTableFormatTest {
 
         // Remove whitespace for easier comparison; JSON is still valid
         expected = expected.replace(" ", "");
-        toString = expected.replace(" ", "");
+        toString = toString.replace(" ", "");
 
         assertEquals(expected, toString);
     }

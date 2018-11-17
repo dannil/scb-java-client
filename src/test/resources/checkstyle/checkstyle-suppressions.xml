@@ -6,4 +6,18 @@
 
 <suppressions>
   <suppress checks="Regexp" files="package-info\.java" />
+
+  <!-- Due to deprecation notice on class -->
+  <suppress checks="LineLength" files="EnvironmentIslandsClient\.java" lines="33-35" />
+
+  <!-- Due to deprecation notice on method islands -->
+  <suppress checks="LineLength" files="EnvironmentClient\.java" lines="96-98" />
+
+  <!-- Due to deprecation notice on method landUsedForTransport -->
+  <suppress checks="LineLength" files="EnvironmentClient\.java" lines="130-132" />
+
+  <!-- Due to deprecation notice on method getPopulationOnIslands -->
+  <suppress checks="LineLength" files="EnvironmentShorelineLandUseLandUseClient\.java" lines="228-230" />
+  <suppress checks="LineLength" files="EnvironmentShorelineLandUseLandUseClient\.java" lines="249-251" />
+
 </suppressions>

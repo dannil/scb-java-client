@@ -18,11 +18,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
-import com.github.dannil.scbjavaclient.client.labourmarket.grosspay.aggregatewages.LabourMarketGrossPayAggregateWagesClient;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
-import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
 import org.junit.jupiter.api.Test;
+
+import com.github.dannil.scbjavaclient.client.labourmarket.grosspay.aggregatewages.LabourMarketGrossPayAggregateWagesClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
+import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 @Suite
 public class LabourMarketGrossPayClientTest {
@@ -39,7 +39,7 @@ public class LabourMarketGrossPayClientTest {
     public void aggregateWages() {
         LabourMarketGrossPayClient client = new LabourMarketGrossPayClient();
 
-        assertEquals(client.aggregateWages().getClass(), LabourMarketGrossPayAggregateWagesClient.class);
+        assertEquals(LabourMarketGrossPayAggregateWagesClient.class, client.aggregateWages().getClass());
     }
 
     @Test

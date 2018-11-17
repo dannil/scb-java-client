@@ -20,15 +20,17 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import com.github.dannil.scbjavaclient.test.extensions.AllowFailure;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 @Suite
 @Remote
+@SuppressWarnings("deprecation")
 public class EnvironmentLandUsedForTransportClientIT {
 
     private EnvironmentLandUsedForTransportClient client;
@@ -40,12 +42,14 @@ public class EnvironmentLandUsedForTransportClientIT {
 
     @Test
     @Date("2017-05-29")
+    @AllowFailure
     public void getTransportInfrastructureArea() {
         assertNotEquals(0, this.client.getTransportInfrastructureArea().size());
     }
 
     @Test
     @Date("2017-05-29")
+    @AllowFailure
     public void getTransportInfrastructureAreaWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getTransportInfrastructureArea(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
@@ -53,6 +57,7 @@ public class EnvironmentLandUsedForTransportClientIT {
 
     @Test
     @Date("2017-05-29")
+    @AllowFailure
     public void getTransportInfrastructureAreaWithParameters() {
         List<String> regions = Arrays.asList("0184", "0186");
         List<Integer> years = Arrays.asList(2010);
@@ -62,12 +67,14 @@ public class EnvironmentLandUsedForTransportClientIT {
 
     @Test
     @Date("2017-05-29")
+    @AllowFailure
     public void getRoadLengthByOwner() {
         assertNotEquals(0, this.client.getRoadLengthByOwner().size());
     }
 
     @Test
     @Date("2017-05-29")
+    @AllowFailure
     public void getRoadLengthByRoadOwnerWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getRoadLengthByOwner(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
@@ -75,6 +82,7 @@ public class EnvironmentLandUsedForTransportClientIT {
 
     @Test
     @Date("2017-05-29")
+    @AllowFailure
     public void getRoadLengthByOwnerWithParameters() {
         List<String> regions = Arrays.asList("0184", "0186");
         List<String> owners = Arrays.asList("04", "06");
@@ -85,12 +93,14 @@ public class EnvironmentLandUsedForTransportClientIT {
 
     @Test
     @Date("2017-05-29")
+    @AllowFailure
     public void getRailways() {
         assertNotEquals(0, this.client.getRailways().size());
     }
 
     @Test
     @Date("2017-05-29")
+    @AllowFailure
     public void getRailwaysWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getRailways(Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
@@ -98,6 +108,7 @@ public class EnvironmentLandUsedForTransportClientIT {
 
     @Test
     @Date("2017-05-29")
+    @AllowFailure
     public void getRailwaysWithParameters() {
         List<String> regions = Arrays.asList("0184", "0186");
         List<Integer> years = Arrays.asList(2010);
@@ -107,12 +118,14 @@ public class EnvironmentLandUsedForTransportClientIT {
 
     @Test
     @Date("2017-05-29")
+    @AllowFailure
     public void getRoadArea() {
         assertNotEquals(0, this.client.getRoadArea().size());
     }
 
     @Test
     @Date("2017-05-29")
+    @AllowFailure
     public void getRoadAreaWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getRoadArea(Collections.<String>emptyList(), Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
@@ -120,6 +133,7 @@ public class EnvironmentLandUsedForTransportClientIT {
 
     @Test
     @Date("2017-05-29")
+    @AllowFailure
     public void getRoadAreaWithParameters() {
         List<String> regions = Arrays.asList("0184", "0186");
         List<String> areas = Arrays.asList("VagOmr", "VagBana");
@@ -130,12 +144,14 @@ public class EnvironmentLandUsedForTransportClientIT {
 
     @Test
     @Date("2017-05-29")
+    @AllowFailure
     public void getRoadLengthByCategory() {
         assertNotEquals(0, this.client.getRoadLengthByCategory().size());
     }
 
     @Test
     @Date("2017-05-29")
+    @AllowFailure
     public void getRoadLengthByCategoryWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getRoadLengthByCategory(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
@@ -143,6 +159,7 @@ public class EnvironmentLandUsedForTransportClientIT {
 
     @Test
     @Date("2017-05-29")
+    @AllowFailure
     public void getRoadLengthByCategoryWithParameters() {
         List<String> regions = Arrays.asList("0184", "0186");
         List<String> categories = Arrays.asList("L", "O");

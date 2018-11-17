@@ -19,12 +19,12 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
@@ -47,9 +47,10 @@ public class PopulationStatisticsAverageAgeClientIT {
     @Date("2017-01-01")
     public void getAverageAgeWithParameters() {
         List<String> regions = Arrays.asList("1263");
-        List<String> genders = Arrays.asList("1", "2", "1+2");
+        List<String> sexes = Arrays.asList("1", "2", "1+2");
         List<Integer> years = Arrays.asList(2002);
 
-        assertNotEquals(0, this.client.getAverageAge(regions, genders, years).size());
+        assertNotEquals(0, this.client.getAverageAge(regions, sexes, years).size());
     }
+    
 }

@@ -21,8 +21,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
@@ -62,28 +62,6 @@ public class TransportRegisteredVehiclesVehiclesClient extends AbstractClient {
      */
     public List<ResponseModel> getVehiclesInUse() {
         return getVehiclesInUse(null, null, null);
-    }
-
-    /**
-     * <p>Fetch all vehicles in use data which match the input constraints.</p>
-     *
-     * @param typesOfVehicles
-     *            the types of vehicles
-     * @param years
-     *            the years
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     * @deprecated use {@link #getVehiclesInUse(Collection, Collection, Collection)}
-     *             instead.
-     */
-    @Deprecated
-    public List<ResponseModel> getVehiclesInUse(Collection<Integer> typesOfVehicles, Collection<Integer> years) {
-        Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(TYPEOFVEHICLE_CODE, typesOfVehicles);
-        mappings.put(APIConstants.TIME_CODE, years);
-
-        return getResponseModels("FordonTrafik", mappings);
     }
 
     /**

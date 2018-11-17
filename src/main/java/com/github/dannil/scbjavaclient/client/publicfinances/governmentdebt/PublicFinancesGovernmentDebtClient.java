@@ -21,8 +21,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
@@ -75,7 +75,7 @@ public class PublicFinancesGovernmentDebtClient extends AbstractClient {
      */
     public List<ResponseModel> getGovernmentDebt(Collection<String> items, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Kontopost", items);
+        mappings.put(APIConstants.ITEM_CODE, items);
         mappings.put(APIConstants.TIME_CODE, months);
 
         return getResponseModels("Statsskuld", mappings);

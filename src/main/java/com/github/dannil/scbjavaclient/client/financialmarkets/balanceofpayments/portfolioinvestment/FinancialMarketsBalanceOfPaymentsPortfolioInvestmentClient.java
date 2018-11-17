@@ -21,8 +21,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
@@ -34,8 +34,6 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
 public class FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClient extends AbstractClient {
 
     private static final String CURRENCY_CODE = "DenomValuta";
-
-    private static final String ITEM_CODE = "Kontopost";
 
     /**
      * <p>Default constructor.</p>
@@ -84,46 +82,45 @@ public class FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClient extends 
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(CURRENCY_CODE, currencies);
-        mappings.put(ITEM_CODE, items);
+        mappings.put(APIConstants.ITEM_CODE, items);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("FM0001PIAr", mappings);
     }
 
     // Daniel 2017-06-11: Returns HTTP 403
-    //
-    // /**
-    // * <p>Fetch all non-resident trade in Swedish shares data.</p>
-    // *
-    // * @return the data wrapped in a list of
-    // * {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-    // * objects
-    // *
-    // * @see #getNonResidentTradeInSwedishShares(Collection, Collection, Collection)
-    // */
-    // public List<ResponseModel> getNonResidentTradeInSwedishShares() {
-    // return getNonResidentTradeInSwedishShares(null, null, null);
-    // }
+    /**
+     * <p>Fetch all non-resident trade in Swedish shares data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getNonResidentTradeInSwedishShares(Collection, Collection, Collection)
+     */
+    public List<ResponseModel> getNonResidentTradeInSwedishShares() {
+        return getNonResidentTradeInSwedishShares(null, null, null);
+    }
 
     /**
      * <p>Fetch all non-resident trade in Swedish shares data which match the input
      * constraints.</p>
      *
-     * @param typesOfTrades
-     *            the types of trades
-     * @param typesOfShares
-     *            the types of shares
+     * @param nonResidentTrades
+     *            the non-resident trades
+     * @param swedishShares
+     *            the Swedish shares
      * @param months
      *            the months
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getNonResidentTradeInSwedishShares(Collection<String> typesOfTrades,
-            Collection<String> typesOfShares, Collection<String> months) {
+    public List<ResponseModel> getNonResidentTradeInSwedishShares(Collection<String> nonResidentTrades,
+            Collection<String> swedishShares, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("UtlHandelAktier", typesOfTrades);
-        mappings.put("Aktieslag", typesOfShares);
+        mappings.put("UtlHandelAktier", nonResidentTrades);
+        mappings.put("Aktieslag", swedishShares);
         mappings.put(APIConstants.TIME_CODE, months);
 
         return getResponseModels("FM0001PIM", mappings);
@@ -200,7 +197,7 @@ public class FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClient extends 
             Collection<String> quarters) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(CURRENCY_CODE, currencies);
-        mappings.put(ITEM_CODE, items);
+        mappings.put(APIConstants.ITEM_CODE, items);
         mappings.put(APIConstants.TIME_CODE, quarters);
 
         return getResponseModels("FM0001PIKv", mappings);

@@ -14,24 +14,19 @@ public class DateExtension implements ExecutionCondition {
 
     @Override
     public ConditionEvaluationResult evaluateExecutionCondition(ExtensionContext context) {
-        int dayLimit = 0;
-
-        // Set the number of cutoff days
+        // Get the argument representing the number of cutoff days
         Optional<String> opDayLimitParameter = Optional.ofNullable(System.getProperty("testsDayLimit"));
-        String dayLimitParameter = opDayLimitParameter.orElse("0");
-        if (!dayLimitParameter.isEmpty()) {
-            dayLimit = Integer.valueOf(dayLimitParameter);
-        }
+        int dayLimit = Integer.valueOf(opDayLimitParameter.filter(s -> !s.isEmpty()).orElse("0"));
 
-        // Retrieve the annotated date
-        Optional<AnnotatedElement> opElement = context.getElement();
-        if (!opElement.isPresent()) {
-            return ConditionEvaluationResult.disabled("No annotated element present");
+        // If day limit is less than 0, no tests should be run
+        if (dayLimit < 0) {
+            return ConditionEvaluationResult.disabled("Day limit is less than 0");
         }
-        AnnotatedElement element = opElement.get();
-        Optional<Date> opDate = Optional.ofNullable(element.getAnnotation(Date.class));
+        // Get the annotated date
+        Optional<AnnotatedElement> opElement = context.getElement();
+        Optional<Date> opDate = opElement.map(e -> e.getAnnotation(Date.class));
         if (!opDate.isPresent()) {
-            return ConditionEvaluationResult.disabled("No Date annotation present");
+            return ConditionEvaluationResult.disabled("No annotation present");
         }
         String value = opDate.get().value();
 
@@ -57,7 +52,7 @@ public class DateExtension implements ExecutionCondition {
 
         // If the date is equal to the cutoff date OR the date is after the cutoff
         // date (a point in time which occurred after the cutoff date), the test
-        // should be run; otherwise not
+        // should be run, otherwise not
         if (date.equals(cutoff) || date.isAfter(cutoff)) {
             return true;
         }

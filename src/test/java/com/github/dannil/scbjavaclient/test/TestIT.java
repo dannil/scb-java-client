@@ -21,17 +21,21 @@ import java.lang.reflect.Field;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
+import org.junit.jupiter.api.Test;
+
+import com.github.dannil.scbjavaclient.client.SCBClientBuilderIT;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
 import com.github.dannil.scbjavaclient.test.utility.Files;
 import com.github.dannil.scbjavaclient.test.utility.Filters;
-
-import org.junit.jupiter.api.Test;
 
 @Suite
 public class TestIT {
@@ -43,8 +47,8 @@ public class TestIT {
         // Find files matching the wildcard pattern
         List<File> files = Files.find(execPath + "/src/test/java/com/github/dannil/scbjavaclient", "*IT.java");
 
-        // Filter out THIS class from the list
-        Filters.files(files, this.getClass());
+        // Filter out THIS and some other classes from the list
+        Filters.files(files, this.getClass(), SCBClientBuilderIT.class);
 
         List<Class<?>> matchedClasses = new ArrayList<Class<?>>();
         for (File file : files) {
@@ -70,7 +74,7 @@ public class TestIT {
     }
 
     @Test
-    public void checkForCorrectPackageAndClientNames() {
+    public void checkForCorrectPackageAndName() {
         String execPath = System.getProperty("user.dir");
 
         // Find files matching the wildcard pattern
@@ -95,7 +99,12 @@ public class TestIT {
                 String sub = packageName.substring(beginIndex);
                 String lastPart = sub.replace(".", "").concat("client");
 
+                // Check if package name is correct
                 if (clazz.getSimpleName().toLowerCase().indexOf(lastPart) > 0) {
+                    matchedClasses.add(clazz);
+                }
+                // Check if test class name is correct
+                else if (!clazz.getSimpleName().toLowerCase().startsWith(lastPart)) {
                     matchedClasses.add(clazz);
                 }
             } catch (ClassNotFoundException e) {
@@ -106,7 +115,7 @@ public class TestIT {
             }
         }
         assertTrue(matchedClasses.isEmpty(),
-                "Classes not having matching package and client name: " + matchedClasses.toString());
+                "Classes not having correct package and/or name: " + matchedClasses.toString());
     }
 
     @Test
@@ -118,7 +127,8 @@ public class TestIT {
         List<File> testFiles = Files.find(execPath + "/src/test/java/com/github/dannil/scbjavaclient", "*.java");
 
         // Filter out some classes from the list
-        Filters.files(mainFiles, "com.github.dannil.scbjavaclient.format.json.IJsonTableFormat");
+        Filters.files(mainFiles, "com.github.dannil.scbjavaclient.format.json.IJsonTableFormat",
+                "com.github.dannil.scbjavaclient.format.AbstractTableFormat");
 
         List<Class<?>> matchedClasses = new ArrayList<>();
         for (File fileMain : mainFiles) {
@@ -148,7 +158,7 @@ public class TestIT {
             }
         }
         assertTrue(matchedClasses.isEmpty(),
-                "Test classes not having matching name and/or package : " + matchedClasses.toString());
+                "Classes not having matching test class name and/or package: " + matchedClasses.toString());
     }
 
     @Test
@@ -165,16 +175,10 @@ public class TestIT {
 
         // Remove non-codes and save the values of the code fields in a list
         List<String> fields = new ArrayList<>();
-        for (int i = 0; i < apiFields.length; i++) {
-            Field field = apiFields[i];
-            if (!field.isAccessible()) {
-                field.setAccessible(true);
-            }
-            Object obj = null;
-            obj = field.get(obj);
-            if (field.getName().endsWith("_CODE")) {
-                fields.add((String) obj);
-            }
+
+        Stream<Field> streamFields = Arrays.stream(apiFields).filter(x -> x.getName().endsWith("_CODE"));
+        for (Field f : streamFields.collect(Collectors.toList())) {
+            fields.add((String) f.get(null));
         }
 
         Map<Class<?>, List<String>> matchedClasses = new LinkedHashMap<>();

@@ -21,8 +21,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
@@ -66,17 +66,18 @@ public class EnvironmentPackagingAndPackagingWasteClient extends AbstractClient 
      * <p>Fetch all packaging and packaging waste data which match the input
      * constraints.</p>
      *
-     * @param types
-     *            the types to fetch data for
+     * @param packagingTypes
+     *            the packaging types to fetch data for
      * @param years
      *            the years to fetch data for
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getPackagingAndPackagingWaste(Collection<Integer> types, Collection<Integer> years) {
+    public List<ResponseModel> getPackagingAndPackagingWaste(Collection<Integer> packagingTypes,
+            Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Forpackning", types);
+        mappings.put("Forpackning", packagingTypes);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("MI0307T1", mappings);

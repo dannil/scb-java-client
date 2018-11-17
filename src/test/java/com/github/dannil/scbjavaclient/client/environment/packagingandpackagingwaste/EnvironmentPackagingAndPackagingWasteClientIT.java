@@ -20,12 +20,12 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
@@ -54,10 +54,10 @@ public class EnvironmentPackagingAndPackagingWasteClientIT {
     @Test
     @Date("2015-03-06")
     public void getPackagingAndPackagingWasteWithParameters() {
-        List<Integer> types = Arrays.asList(10, 20);
+        List<Integer> packagingTypes = Arrays.asList(10, 20);
         List<Integer> years = Arrays.asList(2012, 2013);
 
-        assertNotEquals(0, this.client.getPackagingAndPackagingWaste(types, years).size());
+        assertNotEquals(0, this.client.getPackagingAndPackagingWaste(packagingTypes, years).size());
     }
 
 }

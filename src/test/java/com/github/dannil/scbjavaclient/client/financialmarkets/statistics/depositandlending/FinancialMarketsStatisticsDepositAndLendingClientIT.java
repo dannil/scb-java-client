@@ -15,17 +15,19 @@
 package com.github.dannil.scbjavaclient.client.financialmarkets.statistics.depositandlending;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import com.github.dannil.scbjavaclient.exception.SCBClientResponseTooLargeException;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
@@ -58,11 +60,11 @@ public class FinancialMarketsStatisticsDepositAndLendingClientIT {
     public void getLendingRatesBreakdownByRemainingMaturityWithParameters() {
         List<String> referenceSectors = Arrays.asList("1", "1.1");
         List<Integer> counterpartySectors = Arrays.asList(1, 2);
-        List<String> remainingMaturity = Arrays.asList("1.2", "1.3");
+        List<String> remainingMaturities = Arrays.asList("1.2", "1.3");
         List<String> months = Arrays.asList("2012M04", "2012M06");
 
         assertNotEquals(0, this.client.getLendingRatesBreakdownByRemainingMaturity(referenceSectors,
-                counterpartySectors, remainingMaturity, months).size());
+                counterpartySectors, remainingMaturities, months).size());
     }
 
     @Test
@@ -96,27 +98,24 @@ public class FinancialMarketsStatisticsDepositAndLendingClientIT {
 
     // Daniel 2017-08-29:
     // Throws HTTP 403
-    // @Test
-    // @Date("2017-08-29")
-    // public void
-    // getLendingRatesToHouseholdsAndNonFinancialCorporationsBreakdownByMaturity() {
-    // assertNotEquals(0,
-    // this.client.getLendingRatesToHouseholdsAndNonFinancialCorporationsBreakdownByMaturity().size());
-    // }
+    @Test
+    @Date("2018-06-28")
+    public void getLendingRatesToHouseholdsAndNonFinancialCorporationsBreakdownByMaturity() {
+        assertThrows(SCBClientResponseTooLargeException.class,
+                () -> this.client.getLendingRatesToHouseholdsAndNonFinancialCorporationsBreakdownByMaturity().size());
+    }
 
     // Daniel 2017-08-29:
     // Throws HTTP 403
-    // @Test
-    // @Date("2017-08-29")
-    // public void
-    // getLendingRatesToHouseholdsAndNonFinancialCorporationsBreakdownByMaturityWithParametersEmptyLists()
-    // {
-    // assertNotEquals(0,
-    // this.client.getLendingRatesToHouseholdsAndNonFinancialCorporationsBreakdownByMaturity(
-    // Collections.<String>emptyList(), Collections.<String>emptyList(),
-    // Collections.<String>emptyList(), Collections.<String>emptyList(),
-    // Collections.<String>emptyList()).size());
-    // }
+    @Test
+    @Date("2018-06-28")
+    public void getLendingRatesToHouseholdsAndNonFinancialCorporationsBreakdownByMaturityWithParametersEmptyLists() {
+        assertThrows(SCBClientResponseTooLargeException.class,
+                () -> this.client.getLendingRatesToHouseholdsAndNonFinancialCorporationsBreakdownByMaturity(
+                        Collections.<String>emptyList(), Collections.<String>emptyList(),
+                        Collections.<String>emptyList(), Collections.<String>emptyList(),
+                        Collections.<String>emptyList()).size());
+    }
 
     @Test
     @Date("2017-08-29")

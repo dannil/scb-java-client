@@ -21,8 +21,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
@@ -80,8 +80,8 @@ public class FinancialMarketsStatisticsDepositAndLendingClient extends AbstractC
      *            the reference sectors
      * @param counterpartySectors
      *            the counterparty sectors
-     * @param remainingMaturity
-     *            the remaining maturity
+     * @param remainingMaturities
+     *            the remaining maturities
      * @param months
      *            the months
      * @return the data wrapped in a list of
@@ -89,11 +89,11 @@ public class FinancialMarketsStatisticsDepositAndLendingClient extends AbstractC
      *         objects
      */
     public List<ResponseModel> getLendingRatesBreakdownByRemainingMaturity(Collection<String> referenceSectors,
-            Collection<Integer> counterpartySectors, Collection<String> remainingMaturity, Collection<String> months) {
+            Collection<Integer> counterpartySectors, Collection<String> remainingMaturities, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(REFERENCESECTOR_CODE, referenceSectors);
         mappings.put(COUNTERPARTYSECTOR_CODE, counterpartySectors);
-        mappings.put("AterstRantebtid", remainingMaturity);
+        mappings.put("AterstRantebtid", remainingMaturities);
         mappings.put(APIConstants.TIME_CODE, months);
 
         return getResponseModels("RantaT02", mappings);
@@ -148,24 +148,20 @@ public class FinancialMarketsStatisticsDepositAndLendingClient extends AbstractC
     // Daniel 2017-08-29:
     // Throws HTTP 403
     //
-    // /**
-    // * <p>Fetch all lending rates to households and non-financial corporations breakdown
-    // * by maturity data.</p>
-    // *
-    // * @return the data wrapped in a list of
-    // * {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-    // * objects
-    // *
-    // * @see
-    // #getLendingRatesToHouseholdsAndNonFinancialCorporationsBreakdownByMaturity(Collection,
-    // * Collection, Collection, Collection, Collection)
-    // */
-    // public List<ResponseModel>
-    // getLendingRatesToHouseholdsAndNonFinancialCorporationsBreakdownByMaturity() {
-    // return
-    // getLendingRatesToHouseholdsAndNonFinancialCorporationsBreakdownByMaturity(null,
-    // null, null, null, null);
-    // }
+    /**
+     * <p>Fetch all lending rates to households and non-financial corporations breakdown
+     * by maturity data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getLendingRatesToHouseholdsAndNonFinancialCorporationsBreakdownByMaturity(Collection,
+     *      Collection, Collection, Collection, Collection)
+     */
+    public List<ResponseModel> getLendingRatesToHouseholdsAndNonFinancialCorporationsBreakdownByMaturity() {
+        return getLendingRatesToHouseholdsAndNonFinancialCorporationsBreakdownByMaturity(null, null, null, null, null);
+    }
 
     /**
      * <p>Fetch all lending rates to households and non-financial corporations breakdown

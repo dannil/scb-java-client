@@ -20,12 +20,12 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
@@ -55,9 +55,9 @@ public class FinancialMarketsShareholdersClientIT {
     @Date("2017-09-07")
     public void getOwnershipOfSharesWithParameters() {
         List<String> sectors = Arrays.asList("S12", "S1254");
-        List<String> halfYears = Arrays.asList("2012M12", "2013M06");
+        List<String> twoTimesPerYears = Arrays.asList("2012M12", "2013M06");
 
-        assertNotEquals(0, this.client.getOwnershipOfShares(sectors, halfYears).size());
+        assertNotEquals(0, this.client.getOwnershipOfShares(sectors, twoTimesPerYears).size());
     }
 
     @Test
@@ -78,9 +78,10 @@ public class FinancialMarketsShareholdersClientIT {
     public void getOwnershipOfSharesByMarketplaceWithParameters() {
         List<String> sectors = Arrays.asList("100", "200");
         List<String> marketplaces = Arrays.asList("AUKTMPTORGTORG");
-        List<String> halfYears = Arrays.asList("2001M12", "2002M12");
+        List<String> twoTimesPerYears = Arrays.asList("2001M12", "2002M12");
 
-        assertNotEquals(0, this.client.getOwnershipOfSharesByMarketplace(sectors, marketplaces, halfYears).size());
+        assertNotEquals(0,
+                this.client.getOwnershipOfSharesByMarketplace(sectors, marketplaces, twoTimesPerYears).size());
     }
 
     @Test
@@ -101,9 +102,9 @@ public class FinancialMarketsShareholdersClientIT {
     public void getOwnershipOfSharesBySeriesWithParameters() {
         List<String> sectors = Arrays.asList("S1311", "S1313");
         List<String> classesOfShares = Arrays.asList("Noterad");
-        List<String> halfYears = Arrays.asList("2008M12", "2009M12");
+        List<String> twoTimesPerYears = Arrays.asList("2008M12", "2009M12");
 
-        assertNotEquals(0, this.client.getOwnershipOfSharesBySeries(sectors, classesOfShares, halfYears).size());
+        assertNotEquals(0, this.client.getOwnershipOfSharesBySeries(sectors, classesOfShares, twoTimesPerYears).size());
     }
 
     @Test
@@ -123,9 +124,9 @@ public class FinancialMarketsShareholdersClientIT {
     @Date("2017-03-08")
     public void getForeignOwnershipOfSharesWithParameters() {
         List<String> countries = Arrays.asList("BE", "DK");
-        List<String> halfYears = Arrays.asList("2001M12", "2002M12");
+        List<String> twoTimesPerYears = Arrays.asList("2001M12", "2002M12");
 
-        assertNotEquals(0, this.client.getForeignOwnershipOfShares(countries, halfYears).size());
+        assertNotEquals(0, this.client.getForeignOwnershipOfShares(countries, twoTimesPerYears).size());
     }
 
 }

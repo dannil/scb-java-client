@@ -20,12 +20,12 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
@@ -38,20 +38,18 @@ public class PublicFinancesAnnualAccountsStatementAccountsMunicipalityClientIT {
         this.client = new PublicFinancesAnnualAccountsStatementAccountsMunicipalityClient();
     }
 
-    // Daniel 2017-04-17: Returns HTTP 403
-    //
-    // @Test @Date("2017-04-17")
-    // public void getCostsAndIncomes() {
-    // assertNotEquals(0, this.client.getCostsAndIncomes().size());
-    // }
+    @Test
+    @Date("2018-06-28")
+    public void getCostsAndIncomes() {
+        assertNotEquals(0, this.client.getCostsAndIncomes().size());
+    }
 
-    // Daniel 2017-04-17: Returns HTTP 403
-    //
-    // @Test @Date("2017-04-17")
-    // public void getCostsAndIncomesWithParametersEmptyLists() {
-    // assertNotEquals(0, this.client.getCostsAndIncomes(Collections.<String>emptyList(),
-    // Collections.<Integer>emptyList(), Collections.<Integer>emptyList()).size());
-    // }
+    @Test
+    @Date("2018-06-28")
+    public void getCostsAndIncomesWithParametersEmptyLists() {
+        assertNotEquals(0, this.client.getCostsAndIncomes(Collections.<String>emptyList(),
+                Collections.<Integer>emptyList(), Collections.<Integer>emptyList()).size());
+    }
 
     @Test
     @Date("2017-04-17")
@@ -87,20 +85,20 @@ public class PublicFinancesAnnualAccountsStatementAccountsMunicipalityClientIT {
     }
 
     @Test
-    @Date("2017-04-17")
+    @Date("2018-09-02")
     public void getCostsOfIndividualAndFamilyCare() {
         assertNotEquals(0, this.client.getCostsOfIndividualAndFamilyCare().size());
     }
 
     @Test
-    @Date("2017-04-17")
+    @Date("2018-09-02")
     public void getCostsOfIndividualAndFamilyCareWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getCostsOfIndividualAndFamilyCare(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
-    @Date("2017-04-17")
+    @Date("2018-09-02")
     public void getCostsOfIndividualAndFamilyCareWithParameters() {
         List<String> regions = Arrays.asList("0163", "0180");
         List<Integer> cares = Arrays.asList(600, 610);

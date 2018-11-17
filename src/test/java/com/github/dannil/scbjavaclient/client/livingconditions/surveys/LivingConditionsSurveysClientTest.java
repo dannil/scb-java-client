@@ -18,12 +18,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
+import org.junit.jupiter.api.Test;
+
 import com.github.dannil.scbjavaclient.client.livingconditions.surveys.employment.LivingConditionsSurveysEmploymentClient;
 import com.github.dannil.scbjavaclient.client.livingconditions.surveys.health.LivingConditionsSurveysHealthClient;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
-import org.junit.jupiter.api.Test;
 
 @Suite
 public class LivingConditionsSurveysClientTest {
@@ -40,14 +40,14 @@ public class LivingConditionsSurveysClientTest {
     public void employmentClient() {
         LivingConditionsSurveysClient client = new LivingConditionsSurveysClient();
 
-        assertEquals(client.employment().getClass(), LivingConditionsSurveysEmploymentClient.class);
+        assertEquals(LivingConditionsSurveysEmploymentClient.class, client.employment().getClass());
     }
 
     @Test
     public void healthClient() {
         LivingConditionsSurveysClient client = new LivingConditionsSurveysClient();
 
-        assertEquals(client.health().getClass(), LivingConditionsSurveysHealthClient.class);
+        assertEquals(LivingConditionsSurveysHealthClient.class, client.health().getClass());
     }
 
     @Test

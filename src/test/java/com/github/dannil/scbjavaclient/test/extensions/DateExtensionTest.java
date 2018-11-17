@@ -33,7 +33,7 @@ public class DateExtensionTest {
 
         ConditionEvaluationResult result = ex.evaluateExecutionCondition(context);
         assertTrue(result.isDisabled());
-        assertEquals("No annotated element present", result.getReason().get());
+        assertEquals("No annotation present", result.getReason().get());
     }
 
     @Test
@@ -46,7 +46,7 @@ public class DateExtensionTest {
 
         ConditionEvaluationResult result = ex.evaluateExecutionCondition(context);
         assertTrue(result.isDisabled());
-        assertEquals("No Date annotation present", result.getReason().get());
+        assertEquals("No annotation present", result.getReason().get());
     }
 
     @Test
@@ -105,7 +105,7 @@ public class DateExtensionTest {
 
         ConditionEvaluationResult result = ex.evaluateExecutionCondition(context);
         assertTrue(result.isDisabled());
-        assertEquals("Date is not within the day limit", result.getReason().get());
+        assertEquals("Day limit is less than 0", result.getReason().get());
         
         if (dayLimitBackup == null) {
             System.setProperty("testsDayLimit", "");

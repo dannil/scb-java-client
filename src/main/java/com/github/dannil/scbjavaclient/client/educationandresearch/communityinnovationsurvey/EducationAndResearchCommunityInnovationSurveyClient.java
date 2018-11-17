@@ -19,7 +19,7 @@ import java.util.Locale;
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.educationandresearch.communityinnovationsurvey.activity.EducationAndResearchCommunityInnovationSurveyActivityClient;
 import com.github.dannil.scbjavaclient.client.educationandresearch.communityinnovationsurvey.cooperation.EducationAndResearchCommunityInnovationSurveyCooperationClient;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
  * <p>Client which handles education and research community innovation survey data

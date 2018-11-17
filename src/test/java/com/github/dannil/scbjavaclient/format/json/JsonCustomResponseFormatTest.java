@@ -24,13 +24,13 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.model.ValueNode;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 @Suite
 public class JsonCustomResponseFormatTest {
@@ -81,9 +81,7 @@ public class JsonCustomResponseFormatTest {
     public void toListOfInvalidConversionClass() {
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(this.json);
 
-        assertThrows(SCBClientParsingException.class, () -> {
-            format.toListOf(Locale.class);
-        });
+        assertThrows(SCBClientParsingException.class, () -> format.toListOf(Locale.class));
     }
 
     @Test
@@ -92,12 +90,12 @@ public class JsonCustomResponseFormatTest {
 
         JsonCustomResponseFormat format = new JsonCustomResponseFormat(input);
 
-        String expected = "[{\"region\": \"00\",\"values\":[{\"text\": \"Population\",\"value\": \"48403\",\"code\":\"BE0101N1\"},{\"text\":\"Population growth\",\"value\":\"1007\",\"code\":\"BE0101N2\"}],\"alder\":\"45\",\"tid\":\"2011\",\"civilstand\":\"OG\"}]";
+        String expected = "[{\"Variables\":{\"Alder\":\"45\",\"Region\":\"00\",\"Civilstand\":\"OG\",\"Tid\":\"2011\"},\"Values\":[{\"Value\":\"48403\",\"Text\":\"Population\",\"Code\":\"BE0101N1\"},{\"Value\":\"1007\",\"Text\":\"Populationgrowth\",\"Code\":\"BE0101N2\"}]}]";
         String toString = format.toString();
 
         // Remove whitespace for easier comparison; JSON is still valid
         expected = expected.replace(" ", "");
-        toString = expected.replace(" ", "");
+        toString = toString.replace(" ", "");
 
         assertEquals(expected, toString);
     }

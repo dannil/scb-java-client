@@ -21,15 +21,20 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
  * <p>Client which handles environment islands data fetching.</p>
  *
  * @since 0.4.0
+ *
+ * @deprecated use
+ *             {@link com.github.dannil.scbjavaclient.client.environment.shorelinelanduse.landuse.EnvironmentShorelineLandUseLandUseClient
+ *             EnvironmentShorelineLandUseLandUseClient} instead.
  */
+@Deprecated
 public class EnvironmentIslandsClient extends AbstractClient {
 
     /**

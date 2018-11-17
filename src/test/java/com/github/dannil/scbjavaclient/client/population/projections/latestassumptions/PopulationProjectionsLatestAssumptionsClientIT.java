@@ -15,17 +15,19 @@
 package com.github.dannil.scbjavaclient.client.population.projections.latestassumptions;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import com.github.dannil.scbjavaclient.exception.SCBClientResponseTooLargeException;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
@@ -39,20 +41,20 @@ public class PopulationProjectionsLatestAssumptionsClientIT {
     }
 
     @Test
-    @Date("2017-04-10")
+    @Date("2018-05-12")
     public void getDeathRate() {
         assertNotEquals(0, this.client.getDeathRate().size());
     }
 
     @Test
-    @Date("2017-04-10")
+    @Date("2018-05-12")
     public void getDeathRateWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getDeathRate(Collections.<Integer>emptyList(), Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
-    @Date("2017-04-10")
+    @Date("2018-05-12")
     public void getDeathRateWithParameters() {
         List<Integer> sexes = Arrays.asList(1, 2);
         List<String> ages = Arrays.asList("21", "31");
@@ -61,24 +63,55 @@ public class PopulationProjectionsLatestAssumptionsClientIT {
         assertNotEquals(0, this.client.getDeathRate(sexes, ages, years).size());
     }
 
+    // Daniel 2018-05-12: Returns HTTP 403
     @Test
-    @Date("2017-04-10")
+    @Date("2018-06-28")
+    public void getEmigrationAssumption() {
+        assertThrows(SCBClientResponseTooLargeException.class, () -> this.client.getEmigrationRateAssumption().size());
+    }
+
+    // Daniel 2018-05-12: Returns HTTP 403
+    @Test
+    @Date("2018-06-28")
+    public void getEmigrationAssumptionWithParametersEmptyLists() {
+        assertThrows(SCBClientResponseTooLargeException.class,
+                () -> this.client.getEmigrationRateAssumption(Collections.<String>emptyList(),
+                        Collections.<Integer>emptyList(), Collections.<String>emptyList(),
+                        Collections.<Integer>emptyList()).size());
+    }
+
+    @Test
+    @Date("2018-05-12")
+    public void getEmigrationAssumptionWithParameters() {
+        List<String> regionsOfBirths = Arrays.asList("010", "020");
+        List<Integer> sexes = Arrays.asList(1, 2);
+        List<String> ages = Arrays.asList("19", "42");
+        List<Integer> years = Arrays.asList(2030, 2050);
+
+        assertNotEquals(0, this.client.getEmigrationRateAssumption(regionsOfBirths, sexes, ages, years).size());
+    }
+
+    @Test
+    @Date("2018-05-12")
     public void getFertilityAssumption() {
         assertNotEquals(0, this.client.getFertilityAssumption().size());
     }
 
     @Test
-    @Date("2017-04-10")
+    @Date("2018-05-12")
     public void getFertilityAssumptionWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getFertilityAssumption(Collections.<Integer>emptyList()).size());
+        assertNotEquals(0, this.client.getFertilityAssumption(Collections.<String>emptyList(),
+                Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
-    @Date("2017-04-10")
+    @Date("2018-05-12")
     public void getFertilityAssumptionWithParameters() {
-        List<Integer> years = Arrays.asList(2038, 2053);
+        List<String> mothersRegionsOfBirths = Arrays.asList("040", "070");
+        List<String> ages = Arrays.asList("24", "25");
+        List<Integer> years = Arrays.asList(2039, 2054);
 
-        assertNotEquals(0, this.client.getFertilityAssumption(years).size());
+        assertNotEquals(0, this.client.getFertilityAssumption(mothersRegionsOfBirths, ages, years).size());
     }
 
 }

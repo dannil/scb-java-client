@@ -2,10 +2,10 @@ package com.github.dannil.scbjavaclient.test.extensions;
 
 import java.util.concurrent.TimeUnit;
 
-import com.github.dannil.scbjavaclient.test.TestConstants;
-
 import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
+
+import com.github.dannil.scbjavaclient.test.TestConstants;
 
 public class RemoteExtension implements BeforeEachCallback {
 
