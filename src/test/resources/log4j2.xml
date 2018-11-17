@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Configuration>
 <Configuration package="com.github.dannil.scbjavaclient" status="WARN">
   <Appenders>
     <Console name="Console" target="SYSTEM_OUT">
