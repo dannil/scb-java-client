@@ -20,7 +20,7 @@ import org.junit.jupiter.api.extension.ExtensionContext;
 public class DateExtensionTest {
 
     private final int defaultTestsDayLimit = 7;
-    
+
     private int actualTestsDayLimit;
 
     private DateExtension ex;
@@ -44,19 +44,7 @@ public class DateExtensionTest {
     }
 
     @Test
-    public void evaluateExecutionConditionNoAnnotatedElementPresent() {
-        Optional<AnnotatedElement> opElement = Optional.empty();
-
-        ExtensionContext context = mock(ExtensionContext.class);
-        when(context.getElement()).thenReturn(opElement);
-
-        ConditionEvaluationResult result = ex.evaluateExecutionCondition(context);
-        assertTrue(result.isDisabled());
-        assertEquals("No annotation present", result.getReason().get());
-    }
-
-    @Test
-    public void evaluateExecutionConditionNoDateAnnotationPresent() {
+    public void evaluateExecutionConditionNoAnnotationPresent() {
         Optional<AnnotatedElement> opElement = Optional.empty();
 
         ExtensionContext context = mock(ExtensionContext.class);
@@ -88,7 +76,7 @@ public class DateExtensionTest {
     @Test
     public void evaluateExecutionConditionDateIsInTheFuture() {
         LocalDate now = LocalDate.now();
-        
+
         Date date = mock(Date.class);
         when(date.value()).thenReturn(now.plusYears(1).toString());
 
@@ -108,7 +96,7 @@ public class DateExtensionTest {
     @Test
     public void evaluateExecutionConditionDaysAreLessThanZero() {
         modifyTestsDayLimit(-1L);
-        
+
         Date date = mock(Date.class);
         when(date.value()).thenReturn("now");
 
@@ -128,7 +116,7 @@ public class DateExtensionTest {
     @Test
     public void evaluateExecutionConditionDateIsInThePast() {
         LocalDate now = LocalDate.now();
-        
+
         Date date = mock(Date.class);
         when(date.value()).thenReturn(now.minusYears(1).toString());
 
@@ -151,7 +139,7 @@ public class DateExtensionTest {
         // dynamically so the test won't begin to fail in the future
         LocalDate now = LocalDate.now();
         LocalDate oneYearAgo = now.minusYears(1);
-        
+
         long daysBetween = ChronoUnit.DAYS.between(oneYearAgo, now);
         LocalDate dateBetween = oneYearAgo.plusDays(daysBetween / 2);
 
@@ -159,7 +147,34 @@ public class DateExtensionTest {
 
         Date date = mock(Date.class);
         when(date.value()).thenReturn(dateBetween.toString());
-        
+
+        AnnotatedElement element = mock(AnnotatedElement.class);
+        when(element.getAnnotation(Date.class)).thenReturn(date);
+
+        Optional<AnnotatedElement> opElement = Optional.ofNullable(element);
+
+        ExtensionContext context = mock(ExtensionContext.class);
+        when(context.getElement()).thenReturn(opElement);
+
+        ConditionEvaluationResult result = ex.evaluateExecutionCondition(context);
+        assertFalse(result.isDisabled());
+        assertEquals("Date is within the day limit", result.getReason().get());
+    }
+
+    @Test
+    public void evaluateExecutionConditionDateEqualsCutoff() {
+        // This test should always be equal to the cutoff, so let's do this calculation
+        // dynamically so the test won't begin to fail in the future
+        LocalDate now = LocalDate.now();
+        LocalDate oneWeekAgo = now.minusWeeks(1);
+
+        long daysBetween = ChronoUnit.DAYS.between(oneWeekAgo, now);
+
+        modifyTestsDayLimit(daysBetween);
+
+        Date date = mock(Date.class);
+        when(date.value()).thenReturn(oneWeekAgo.toString());
+
         AnnotatedElement element = mock(AnnotatedElement.class);
         when(element.getAnnotation(Date.class)).thenReturn(date);
 
