@@ -1,6 +1,6 @@
 language: java
 os: linux
-dist: trusty
+dist: xenial
 jdk:
   - openjdk8
   - openjdk9
