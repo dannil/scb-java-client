@@ -53,8 +53,8 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-    <project.java.source>1.8</project.java.source>
-    <project.java.target>1.8</project.java.target>
+    <project.java.source>9</project.java.source>
+    <project.java.target>9</project.java.target>
 
     <argLine>-Dfile.encoding=${project.build.sourceEncoding}</argLine>
   </properties>
@@ -321,27 +321,6 @@
         </executions>
       </plugin>
       <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>animal-sniffer-maven-plugin</artifactId>
-        <version>1.16</version>
-        <executions>
-          <execution>
-            <id>signature-check</id>
-            <phase>verify</phase>
-            <goals>
-              <goal>check</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <signature>
-            <groupId>org.codehaus.mojo.signature</groupId>
-            <artifactId>java18</artifactId>
-            <version>1.0</version>
-          </signature>
-        </configuration>
-      </plugin>
-      <plugin>
         <groupId>com.github.siom79.japicmp</groupId>
         <artifactId>japicmp-maven-plugin</artifactId>
         <version>0.12.0</version>
@@ -516,7 +495,7 @@
             <configuration>
               <rules>
                 <enforceBytecodeVersion>
-                  <maxJdkVersion>1.8</maxJdkVersion>
+                  <maxJdkVersion>9</maxJdkVersion>
                   <excludes>
                     <exclude>org.slf4j:slf4j-api:jar:1.8.0-alpha2</exclude>
                   </excludes>
