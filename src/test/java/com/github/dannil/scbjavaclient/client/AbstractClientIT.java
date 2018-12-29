@@ -541,8 +541,6 @@ public class AbstractClientIT {
                                 builder.append("Method parameters: " + methodParameters);
                                 builder.append(System.lineSeparator());
                             }
-                        } else {
-                            throw new IllegalArgumentException(clazz.getSimpleName() + "." + filteredMethod.getName());
                         }
                     }
                 }
