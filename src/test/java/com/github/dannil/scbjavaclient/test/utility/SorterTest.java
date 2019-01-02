@@ -6,9 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
-
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
+
+import org.junit.jupiter.api.Test;
 
 @Suite
 public class SorterTest {
