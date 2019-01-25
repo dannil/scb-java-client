@@ -88,19 +88,19 @@
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
-      <version>5.4.0-M1</version>
+      <version>5.4.0-RC1</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
-      <version>5.4.0-M1</version>
+      <version>5.4.0-RC1</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.junit.platform</groupId>
       <artifactId>junit-platform-launcher</artifactId>
-      <version>1.4.0-M1</version>
+      <version>1.4.0-RC1</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -255,7 +255,7 @@
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
-        <version>0.8.2</version>
+        <version>0.8.3</version>
         <executions>
           <!-- Prepares the property pointing to the JaCoCo runtime agent which is passed as a VM argument when maven-surefire-plugin 
             is executed -->
