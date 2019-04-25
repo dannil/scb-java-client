@@ -182,6 +182,8 @@
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-javadoc-plugin</artifactId>
             <configuration>
+              <!-- Solves https://bugs.openjdk.java.net/browse/JDK-8212233 -->
+              <source>${project.java.source}</source>
               <additionalJOptions>
                 <additionalJOption>-Xdoclint:all</additionalJOption>
                 <additionalJOption>-html5</additionalJOption>
@@ -201,6 +203,8 @@
           <artifactId>maven-javadoc-plugin</artifactId>
           <version>3.1.0</version>
           <configuration>
+            <!-- Solves https://bugs.openjdk.java.net/browse/JDK-8212233 -->
+            <source>${project.java.source}</source>
             <additionalJOptions>
               <additionalJOption>-Xdoclint:all</additionalJOption>
             </additionalJOptions>
@@ -364,7 +368,7 @@
       <plugin>
         <groupId>com.github.siom79.japicmp</groupId>
         <artifactId>japicmp-maven-plugin</artifactId>
-        <version>0.13.1</version>
+        <version>0.14.0</version>
         <configuration>
           <parameter>
             <onlyModified>true</onlyModified>
