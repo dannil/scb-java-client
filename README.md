@@ -3,8 +3,9 @@
 [![Build Status](https://img.shields.io/travis/dannil/scb-java-client/dev.svg)](https://travis-ci.org/dannil/scb-java-client)
 [![Maven Central](https://img.shields.io/maven-central/v/com.github.dannil/scb-java-client.svg)](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.github.dannil%22%20AND%20a%3A%22scb-java-client%22)
 [![Javadocs](http://www.javadoc.io/badge/com.github.dannil/scb-java-client.svg)](http://www.javadoc.io/doc/com.github.dannil/scb-java-client)
-[![SonarQube Tech Debt](https://sonarcloud.io/api/project_badges/measure?project=com.github.dannil%3Ascb-java-client&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=com.github.dannil%3Ascb-java-client)
-[![SonarQube Coverage](https://sonarcloud.io/api/project_badges/measure?project=com.github.dannil%3Ascb-java-client&metric=coverage)](https://sonarcloud.io/dashboard?id=com.github.dannil%3Ascb-java-client)
+[![Sonar Quality Gate](https://img.shields.io/sonar/https/sonarcloud.io/com.github.dannil%3Ascb-java-client/quality_gate.svg)](https://sonarcloud.io/dashboard?id=com.github.dannil%3Ascb-java-client)
+[![Sonar Tech Debt](https://img.shields.io/sonar/https/sonarcloud.io/com.github.dannil%3Ascb-java-client/tech_debt.svg)](https://sonarcloud.io/dashboard?id=com.github.dannil%3Ascb-java-client)
+[![Sonar Coverage](https://img.shields.io/sonar/https/sonarcloud.io/com.github.dannil%3Ascb-java-client/coverage.svg)](https://sonarcloud.io/dashboard?id=com.github.dannil%3Ascb-java-client)
 
 Java client for the SCB (Swedish: [Statistiska centralbyrån](http://www.scb.se/sv_/), English: [Statistics Sweden](http://www.scb.se/en_/)) API. 
 The goal of this project is to provide an easy and intuitive way for developers to interface their applications with the SCB API without having to 
