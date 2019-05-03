@@ -393,7 +393,7 @@
           <dependency>
             <groupId>com.puppycrawl.tools</groupId>
             <artifactId>checkstyle</artifactId>
-            <version>8.19</version>
+            <version>8.20</version>
           </dependency>
         </dependencies>
         <executions>
@@ -413,7 +413,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.0</version>
+        <version>3.8.1</version>
         <configuration>
           <source>${project.java.source}</source>
           <target>${project.java.target}</target>
