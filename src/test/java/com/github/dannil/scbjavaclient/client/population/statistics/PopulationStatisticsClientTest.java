@@ -18,8 +18,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
-import org.junit.jupiter.api.Test;
-
 import com.github.dannil.scbjavaclient.client.population.statistics.adoptees.PopulationStatisticsAdopteesClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.amount.PopulationStatisticsAmountClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.asylumseekers.PopulationStatisticsAsylumSeekersClient;
@@ -38,6 +36,8 @@ import com.github.dannil.scbjavaclient.client.population.statistics.partnership.
 import com.github.dannil.scbjavaclient.client.population.statistics.vitalevents.PopulationStatisticsVitalEventsClient;
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
+
+import org.junit.jupiter.api.Test;
 
 @Suite
 public class PopulationStatisticsClientTest {

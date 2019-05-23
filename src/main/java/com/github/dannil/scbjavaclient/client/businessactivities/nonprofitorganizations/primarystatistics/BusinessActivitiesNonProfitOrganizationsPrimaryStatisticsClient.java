@@ -100,18 +100,18 @@ public class BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClient ext
      * <p>Fetch all income and costs from public administration data which match the input
      * constraints.</p>
      *
-     * @param incomesAndCosts
-     *            the incomes and costs
+     * @param typesOfRevenuesAndExpenditures
+     *            the types of revenues and expenditures
      * @param years
      *            the years
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getIncomeAndCostsFromPublicAdministration(Collection<String> incomesAndCosts,
-            Collection<Integer> years) {
+    public List<ResponseModel> getIncomeAndCostsFromPublicAdministration(
+            Collection<String> typesOfRevenuesAndExpenditures, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("IntakterKostnader", incomesAndCosts);
+        mappings.put("IntakterKostnader", typesOfRevenuesAndExpenditures);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("CivSamHIOOFFSEKT", mappings);
@@ -168,18 +168,18 @@ public class BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClient ext
      * <p>Fetch all income and costs from occupational pension data which match the input
      * constraints.</p>
      *
-     * @param incomesAndCosts
-     *            the incomes and costs
+     * @param typesOfRevenuesAndExpenditures
+     *            the types of revenues and expenditures
      * @param years
      *            the years
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getIncomeAndCostsFromOccupationalPension(Collection<String> incomesAndCosts,
-            Collection<Integer> years) {
+    public List<ResponseModel> getIncomeAndCostsFromOccupationalPension(
+            Collection<String> typesOfRevenuesAndExpenditures, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("IntakterKostnader", incomesAndCosts);
+        mappings.put("IntakterKostnader", typesOfRevenuesAndExpenditures);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("CivSamTJP", mappings);

@@ -124,7 +124,7 @@ public class PopulationProjectionsLatestProjectionsClient extends AbstractClient
         mappings.put(APIConstants.AGE_CODE, ages);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("BefProgOsiktDetaljN", mappings);
+        return getResponseModels("BefProgOsiktDetN", mappings);
     }
 
     /**

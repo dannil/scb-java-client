@@ -1,11 +1,12 @@
 language: java
 os: linux
-dist: trusty
+dist: xenial
 jdk:
   - openjdk8
   - openjdk9
   - openjdk10
   - openjdk11
+  - openjdk12
 git:
   depth: 99999
 branches:

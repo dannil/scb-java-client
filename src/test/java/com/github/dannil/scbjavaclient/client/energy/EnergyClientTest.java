@@ -18,12 +18,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
-import org.junit.jupiter.api.Test;
-
 import com.github.dannil.scbjavaclient.client.energy.annualstatistics.EnergyAnnualStatisticsClient;
 import com.github.dannil.scbjavaclient.client.energy.monthlystatistics.EnergyMonthlyStatisticsClient;
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
+import com.github.dannil.scbjavaclient.test.extensions.distributed.DistributedTests;
+
+import org.junit.jupiter.api.Test;
 
 @Suite
 public class EnergyClientTest {

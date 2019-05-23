@@ -175,6 +175,35 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
     }
 
     /**
+     * <p>Fetch all transport infrastructure area data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getTransportInfrastructureArea(Collection, Collection)
+     */
+    public List<ResponseModel> getTransportInfrastructureArea() {
+        return getTransportInfrastructureArea(null, null);
+    }
+
+    /**
+     * <p>Fetch all transport infrastructure area data which match the input
+     * constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getTransportInfrastructureArea(Collection<String> regions, Collection<Integer> years) {
+        return generate(regions, null, years, "TransportInfAreal");
+    }
+
+    /**
      * <p>Common generator method for the methods in this class.</p>
      *
      * @param regions

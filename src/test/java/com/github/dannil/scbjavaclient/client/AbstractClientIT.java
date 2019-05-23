@@ -32,7 +32,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
@@ -43,8 +42,6 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
-
-import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
@@ -63,6 +60,8 @@ import com.github.dannil.scbjavaclient.test.utility.Filters;
 import com.github.dannil.scbjavaclient.test.utility.SourceInspector;
 import com.github.dannil.scbjavaclient.test.utility.TestProcessor;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
+
+import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
@@ -541,8 +540,6 @@ public class AbstractClientIT {
                                 builder.append("Method parameters: " + methodParameters);
                                 builder.append(System.lineSeparator());
                             }
-                        } else {
-                            throw new IllegalArgumentException(clazz.getSimpleName() + "." + filteredMethod.getName());
                         }
                     }
                 }

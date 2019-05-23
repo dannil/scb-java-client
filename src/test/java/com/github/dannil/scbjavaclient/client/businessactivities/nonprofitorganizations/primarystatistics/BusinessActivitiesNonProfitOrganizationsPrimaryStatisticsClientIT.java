@@ -20,12 +20,12 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
@@ -61,25 +61,26 @@ public class BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClientIT {
     }
 
     @Test
-    @Date("2017-04-09")
+    @Date("2019-03-02")
     public void getIncomeAndCostsFromPublicAdministration() {
         assertNotEquals(0, this.client.getIncomeAndCostsFromPublicAdministration().size());
     }
 
     @Test
-    @Date("2017-04-09")
+    @Date("2019-03-02")
     public void getIncomeAndCostsFromPublicAdministrationWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getIncomeAndCostsFromPublicAdministration(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
-    @Date("2017-04-09")
+    @Date("2019-03-02")
     public void getIncomeAndCostsFromPublicAdministrationWithParameters() {
-        List<String> incomesAndCosts = Arrays.asList("Int", "Kost");
+        List<String> typesOfRevenuesAndExpenditures = Arrays.asList("Int", "Kost");
         List<Integer> years = Arrays.asList(2013, 2014);
 
-        assertNotEquals(0, this.client.getIncomeAndCostsFromPublicAdministration(incomesAndCosts, years).size());
+        assertNotEquals(0,
+                this.client.getIncomeAndCostsFromPublicAdministration(typesOfRevenuesAndExpenditures, years).size());
     }
 
     @Test
@@ -105,25 +106,26 @@ public class BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClientIT {
     }
 
     @Test
-    @Date("2017-04-09")
+    @Date("2019-03-02")
     public void getIncomeAndCostsFromOccupationalPension() {
         assertNotEquals(0, this.client.getIncomeAndCostsFromOccupationalPension().size());
     }
 
     @Test
-    @Date("2017-04-09")
+    @Date("2019-03-02")
     public void getIncomeAndCostsFromOccupationalPensionWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getIncomeAndCostsFromOccupationalPension(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
-    @Date("2017-04-09")
+    @Date("2019-03-02")
     public void getIncomeAndCostsFromOccupationalPensionWithParameters() {
-        List<String> incomesAndCosts = Arrays.asList("Int", "Kost");
+        List<String> typesOfRevenuesAndExpenditures = Arrays.asList("Int", "Kost");
         List<Integer> years = Arrays.asList(2013, 2014);
 
-        assertNotEquals(0, this.client.getIncomeAndCostsFromOccupationalPension(incomesAndCosts, years).size());
+        assertNotEquals(0,
+                this.client.getIncomeAndCostsFromOccupationalPension(typesOfRevenuesAndExpenditures, years).size());
     }
 
 }

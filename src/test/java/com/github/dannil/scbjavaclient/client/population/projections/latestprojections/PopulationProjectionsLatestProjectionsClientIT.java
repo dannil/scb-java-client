@@ -20,12 +20,12 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
@@ -63,13 +63,13 @@ public class PopulationProjectionsLatestProjectionsClientIT {
     }
 
     @Test
-    @Date("2018-05-12")
+    @Date("2019-04-13")
     public void getPopulationChanges() {
         assertNotEquals(0, this.client.getPopulationChanges().size());
     }
 
     @Test
-    @Date("2018-05-12")
+    @Date("2019-04-13")
     public void getPopulationChangesWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getPopulationChanges(Collections.<String>emptyList(), Collections.<Integer>emptyList(),
@@ -77,7 +77,7 @@ public class PopulationProjectionsLatestProjectionsClientIT {
     }
 
     @Test
-    @Date("2018-05-12")
+    @Date("2019-04-13")
     public void getPopulationChangesWithParameters() {
         List<String> regionsOfBirths = Arrays.asList("020", "060");
         List<Integer> sexes = Arrays.asList(1, 2);
@@ -137,10 +137,10 @@ public class PopulationProjectionsLatestProjectionsClientIT {
     }
 
     @Test
-    @Date("2018-05-12")
+    @Date("2019-04-13")
     public void getLifeExpectancyWithParametersEmptyLists() {
         assertNotEquals(0,
-                this.client.getPopulationChanges(Collections.<String>emptyList(), Collections.<Integer>emptyList(),
+                this.client.getLifeExpectancy(Collections.<Integer>emptyList(),
                         Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
