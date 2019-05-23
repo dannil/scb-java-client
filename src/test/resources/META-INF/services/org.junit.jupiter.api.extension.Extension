@@ -1,1 +1,1 @@
-com.github.dannil.scbjavaclient.test.extensions.distributed.DistributedTestsExtension
+com.github.dannil.scbjavaclient.test.extensions.distributed.DistributedTestsExtensionHelper
