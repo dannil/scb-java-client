@@ -179,7 +179,7 @@ public class EnvironmentProtectedNatureNatureTypesClient extends AbstractClient 
         mappings.put(NATURETYPES_CODE, natureTypes);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("NytillkSkyddAreal", mappings);
+        return getResponseModels("NytillkSkyddArealN", mappings);
     }
 
     @Override

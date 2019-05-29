@@ -32,6 +32,8 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
  */
 public class EnvironmentProtectedNatureNumberAndAreaClient extends AbstractClient {
 
+    private static final String PROTECTIONTYPES_CODE = "Skyddsform";
+
     /**
      * <p>Default constructor.</p>
      */
@@ -91,7 +93,7 @@ public class EnvironmentProtectedNatureNumberAndAreaClient extends AbstractClien
      * @see #getNatura2000Sites(Collection, Collection)
      */
     public List<ResponseModel> getNatura2000Sites() {
-        return getNatura2000Sites(null, null);
+        return getNatura2000Sites(null, null, null);
     }
 
     /**
@@ -104,13 +106,39 @@ public class EnvironmentProtectedNatureNumberAndAreaClient extends AbstractClien
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
+     * @deprecated use {@link #getNatura2000Sites(Collection, Collection, Collection)
+     *             getNatura2000Sites(Collection, Collection, Collection)} instead
      */
+    @Deprecated
     public List<ResponseModel> getNatura2000Sites(Collection<String> regions, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("Natura2000", mappings);
+    }
+
+    /**
+     * <p>Fetch all Natura 2000 sites data which match the input constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param protectionTypes
+     *            the protection types
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getNatura2000Sites(Collection<String> regions, Collection<Integer> protectionTypes,
+            Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.REGION_CODE, regions);
+        mappings.put(PROTECTIONTYPES_CODE, protectionTypes);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("Natura2000N", mappings);
     }
 
     /**
@@ -143,10 +171,10 @@ public class EnvironmentProtectedNatureNumberAndAreaClient extends AbstractClien
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
-        mappings.put("Skyddsform", protectionTypes);
+        mappings.put(PROTECTIONTYPES_CODE, protectionTypes);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("Skyddadnatur", mappings);
+        return getResponseModels("SkyddadnaturN", mappings);
     }
 
     /**

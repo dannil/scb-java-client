@@ -20,6 +20,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import com.github.dannil.scbjavaclient.test.extensions.AllowFailure;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
@@ -61,21 +62,23 @@ public class EnvironmentProtectedNatureNumberAndAreaClientIT {
     }
 
     @Test
-    @Date("2017-09-15")
+    @Date("2019-05-29")
     public void getNatura2000Sites() {
         assertNotEquals(0, this.client.getNatura2000Sites().size());
     }
 
     @Test
-    @Date("2017-09-15")
+    @Date("2019-05-29")
     public void getNatura2000SitesWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getNatura2000Sites(Collections.<String>emptyList(),
-                Collections.<Integer>emptyList()).size());
+                Collections.<Integer>emptyList(), Collections.<Integer>emptyList()).size());
     }
-
+    
+    @SuppressWarnings("deprecation")
     @Test
-    @Date("2017-09-15")
-    public void getNatura2000SitesWithParameters() {
+    @Date("2019-05-29")
+    @AllowFailure
+    public void getNatura2000SitesWithParametersDeprecated() {
         List<String> regions = Arrays.asList("05", "09");
         List<Integer> years = Arrays.asList(2014, 2015);
 
@@ -83,20 +86,30 @@ public class EnvironmentProtectedNatureNumberAndAreaClientIT {
     }
 
     @Test
-    @Date("2017-09-16")
+    @Date("2019-05-29")
+    public void getNatura2000SitesWithParameters() {
+        List<String> regions = Arrays.asList("05", "09");
+        List<Integer> protectionTypes = Arrays.asList(200, 220);
+        List<Integer> years = Arrays.asList(2014, 2015);
+
+        assertNotEquals(0, this.client.getNatura2000Sites(regions, protectionTypes, years).size());
+    }
+
+    @Test
+    @Date("2019-05-29")
     public void getProtectedNature() {
         assertNotEquals(0, this.client.getProtectedNature().size());
     }
 
     @Test
-    @Date("2017-09-16")
+    @Date("2019-05-29")
     public void getProtectedNatureWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getProtectedNature(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
-    @Date("2017-09-16")
+    @Date("2019-05-29")
     public void getProtectedNatureWithParameters() {
         List<String> regions = Arrays.asList("0128", "0182");
         List<String> protectionTypes = Arrays.asList("NVO", "SBO");
