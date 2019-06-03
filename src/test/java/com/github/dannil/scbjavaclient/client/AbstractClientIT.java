@@ -109,6 +109,34 @@ public class AbstractClientIT {
     }
 
     @Test
+    @Date("2019-06-02")
+    public void urlNotFoundLocaleIsAlreadyFallbackDoGetRequest() {
+        SCBClient client = new SCBClient(new Locale("sv", "SE"));
+
+        String url = client.getRootUrl() + "ABC/ABC/ABC";
+        String response = client.doGetRequest(url);
+
+        assertNull(response);
+    }
+
+    @Test
+    @Date("2019-06-02")
+    public void urlNotFoundLocaleIsAlreadyFallbackDoPostRequest() {
+        SCBClient client = new SCBClient(new Locale("sv", "SE"));
+
+        Map<String, Collection<?>> map = new HashMap<String, Collection<?>>();
+        map.put("Alder", Arrays.asList("tot"));
+        map.put("Kon", Arrays.asList("4"));
+        map.put("Boendeform", Arrays.asList("SMAG"));
+        map.put("Tid", Arrays.asList("2012"));
+
+        String url = client.getRootUrl() + "ABC/ABC/ABC";
+        String response = client.doPostRequest(url, QueryBuilder.build(map));
+
+        assertNull(response);
+    }
+
+    @Test
     @Date("2017-01-01")
     public void doPostRequestWithEmptyList() {
         SCBClient client = new SCBClient(new Locale("sv", "SE"));
@@ -128,7 +156,7 @@ public class AbstractClientIT {
 
     @Test
     @Date("2017-01-01")
-    public void urlNotFound() {
+    public void getRawDataUrlNotFound() {
         SCBClient client = new SCBClient(new Locale("sv", "SE"));
 
         String response = client.getRawData("ABC/ABC/ABC");
@@ -138,7 +166,7 @@ public class AbstractClientIT {
 
     @Test
     @Date("2018-06-28")
-    public void urlForbidden() {
+    public void getRawDataUrlForbidden() {
         SCBClient client = new SCBClient(new Locale("sv", "SE"));
 
         // This call will result in a HTTP 403 response (forbidden) since the
