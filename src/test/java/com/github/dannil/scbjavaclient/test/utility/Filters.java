@@ -17,7 +17,7 @@ public class Filters {
         while (it.hasNext()) {
             File f = it.next();
             for (Class<?> clazz : filters) {
-                if (Objects.equals(Files.fileToBinaryName(f), clazz.getName())) {
+                if (Objects.equals(Files.fileToBinaryName(f, "com"), clazz.getName())) {
                     it.remove();
                 }
             }
@@ -32,7 +32,7 @@ public class Filters {
         Iterator<File> it = files.iterator();
         while (it.hasNext()) {
             File f = it.next();
-            String binaryName = Files.fileToBinaryName(f);
+            String binaryName = Files.fileToBinaryName(f, "com");
             for (int i = 0; i < names.length; i++) {
                 // Figure out if input name is class or package. If the character after
                 // the last dot separator is an capital letter, it's a class, otherwise a

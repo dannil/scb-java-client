@@ -215,7 +215,7 @@ public class AbstractClientIT {
         List<Class<?>> matchedClasses = new ArrayList<>();
         for (File file : files) {
             // Convert path into binary name
-            String binaryName = Files.fileToBinaryName(file);
+            String binaryName = Files.fileToBinaryName(file, "com");
 
             // Reflect the binary name into a concrete Java class
             Class<?> clazz = null;
@@ -250,7 +250,7 @@ public class AbstractClientIT {
         List<Class<?>> matchedClasses = new ArrayList<>();
         for (File file : files) {
             // Convert path into binary name
-            String binaryName = Files.fileToBinaryName(file);
+        	String binaryName = Files.fileToBinaryName(file, "com");
             if (binaryName.contains("package-info")) {
                 continue;
             }
@@ -299,7 +299,7 @@ public class AbstractClientIT {
         Map<String, List<Class<?>>> offendingClasses = new HashMap<>();
         for (File file : files) {
             // Convert path into binary name
-            String binaryName = Files.fileToBinaryName(file);
+        	String binaryName = Files.fileToBinaryName(file, "com");
             if (binaryName.contains("package-info")) {
                 continue;
             }
@@ -355,7 +355,7 @@ public class AbstractClientIT {
         // Convert paths into binary names
         Set<String> binaryNames = new TreeSet<String>();
         for (File file : files) {
-            String binaryName = Files.fileToBinaryName(file);
+        	String binaryName = Files.fileToBinaryName(file, "com");
             if (binaryName.contains("package-info")) {
                 continue;
             } else {
@@ -418,7 +418,7 @@ public class AbstractClientIT {
         Map<String, Integer> offendingMethods = new HashMap<String, Integer>();
         for (File file : files) {
             // Convert path into binary name
-            String binaryName = Files.fileToBinaryName(file);
+        	String binaryName = Files.fileToBinaryName(file, "com");
             if (binaryName.contains("package-info")) {
                 continue;
             }
@@ -469,9 +469,9 @@ public class AbstractClientIT {
 
         StringBuilder builder = new StringBuilder();
         Set<String> offendingMethods = new HashSet<>();
-        for (File f : files) {
+        for (File file : files) {
             // Convert path into binary name
-            String binaryName = Files.fileToBinaryName(f);
+        	String binaryName = Files.fileToBinaryName(file, "com");
             if (binaryName.endsWith("package-info")) {
                 continue;
             }
@@ -493,11 +493,11 @@ public class AbstractClientIT {
             }
 
             // Figure out implemented tables by inspecting the source code
-            Map<String, String> tables = SourceInspector.getImplementedTables(Paths.get(f.getPath()));
+            Map<String, String> tables = SourceInspector.getImplementedTables(Paths.get(file.getPath()));
             if (tables.isEmpty()) {
                 continue;
             }
-            Map<String, List<String>> parameters = SourceInspector.getParameters(Paths.get(f.getPath()));
+            Map<String, List<String>> parameters = SourceInspector.getParameters(Paths.get(file.getPath()));
 
             Object instance = clazz.getConstructor().newInstance();
             URLEndpoint url = (URLEndpoint) clazz.getMethod("getUrl", new Class<?>[] {}).invoke(instance,
@@ -588,7 +588,7 @@ public class AbstractClientIT {
         Map<String, List<String>> offendingCodes = new HashMap<>();
         for (File file : files) {
             // Convert path into binary name
-            String binaryName = Files.fileToBinaryName(file);
+        	String binaryName = Files.fileToBinaryName(file, "com");
             if (binaryName.contains("package-info")) {
                 continue;
             }
@@ -644,7 +644,7 @@ public class AbstractClientIT {
         Map<Class<?>, Long> matchedClasses = new HashMap<>();
         for (File file : files) {
             // Convert path into binary name
-            String binaryName = Files.fileToBinaryName(file);
+        	String binaryName = Files.fileToBinaryName(file, "com");
             if (binaryName.contains("package-info")) {
                 continue;
             }
@@ -718,7 +718,7 @@ public class AbstractClientIT {
         List<Class<?>> matchedClasses = new ArrayList<>();
         for (File file : files) {
             // Convert path into binary name
-            String binaryName = Files.fileToBinaryName(file);
+        	String binaryName = Files.fileToBinaryName(file, "com");
             if (binaryName.contains("package-info")) {
                 continue;
             }
