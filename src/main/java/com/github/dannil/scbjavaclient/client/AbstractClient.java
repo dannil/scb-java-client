@@ -19,6 +19,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 
 import com.github.dannil.scbjavaclient.communication.CommunicationProtocol;
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
@@ -34,12 +35,17 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.utility.Localization;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
- * <p>Abstract class which specifies how clients should operate.</p>
+ * <p> Abstract class which specifies how clients should operate. </p>
  *
  * @since 0.0.2
  */
 public abstract class AbstractClient {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(AbstractClient.class);
 
     private CommunicationProtocol communicationProtocol;
 
@@ -48,7 +54,7 @@ public abstract class AbstractClient {
     private Localization localization;
 
     /**
-     * <p>Default constructor.</p>
+     * <p> Default constructor. </p>
      */
     protected AbstractClient() {
         this.communicationProtocol = CommunicationProtocol.HTTPS;
@@ -57,7 +63,7 @@ public abstract class AbstractClient {
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * <p> Overloaded constructor. </p>
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -69,7 +75,7 @@ public abstract class AbstractClient {
     }
 
     /**
-     * <p>Returns the communication protocol for this client instance.</p>
+     * <p> Returns the communication protocol for this client instance. </p>
      *
      * @return the
      *         {@link com.github.dannil.scbjavaclient.communication.CommunicationProtocol
@@ -80,7 +86,7 @@ public abstract class AbstractClient {
     }
 
     /**
-     * <p>Sets the communication protocol for this client instance.</p>
+     * <p> Sets the communication protocol for this client instance. </p>
      *
      * @param communicationProtocol
      *            the
@@ -92,7 +98,7 @@ public abstract class AbstractClient {
     }
 
     /**
-     * <p>Retrieves the <code>Locale</code> for this client instance.</p>
+     * <p> Retrieves the <code>Locale</code> for this client instance. </p>
      *
      * @return the <code>Locale</code> for this client instance
      */
@@ -101,9 +107,9 @@ public abstract class AbstractClient {
     }
 
     /**
-     * <p>Sets the <code>Locale</code> for this client instance. Note that doing this
+     * <p> Sets the <code>Locale</code> for this client instance. Note that doing this
      * after a call to {@link #setLocalizationLocale(Locale)} overwrites the localization
-     * language with the input of this method.</p>
+     * language with the input of this method. </p>
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -114,7 +120,7 @@ public abstract class AbstractClient {
     }
 
     /**
-     * <p>Returns the <code>Locale</code> used for the localization.</p>
+     * <p> Returns the <code>Locale</code> used for the localization. </p>
      *
      * @return locale the <code>Locale</code> for the localization
      */
@@ -123,8 +129,8 @@ public abstract class AbstractClient {
     }
 
     /**
-     * <p>Changes the <code>Locale</code> used for the localization. Useful if the client
-     * needs to be in a different language than the error messages.</p>
+     * <p> Changes the <code>Locale</code> used for the localization. Useful if the client
+     * needs to be in a different language than the error messages. </p>
      *
      * @param loc
      *            the <code>Locale</code> for the localization
@@ -134,8 +140,8 @@ public abstract class AbstractClient {
     }
 
     /**
-     * <p>Determines the URL for the API based on the current <code>Locale</code> and
-     * communication protocol.</p>
+     * <p> Determines the URL for the API based on the current <code>Locale</code> and
+     * communication protocol. </p>
      *
      * @return the URL representing the entry point for the API
      */
@@ -144,7 +150,7 @@ public abstract class AbstractClient {
     }
 
     /**
-     * <p>Performs a GET request to the specified URL.</p>
+     * <p> Performs a GET request to the specified URL. </p>
      *
      * @param url
      *            the URL which will be sent a GET request
@@ -156,7 +162,7 @@ public abstract class AbstractClient {
     }
 
     /**
-     * <p>Performs a POST request to the specified URL.</p>
+     * <p> Performs a POST request to the specified URL. </p>
      *
      * @param url
      *            the URL which will be sent a POST request
@@ -171,8 +177,8 @@ public abstract class AbstractClient {
     }
 
     /**
-     * <p>Handles the request. This method contains the common logic for handling GET and
-     * POST requests.</p>
+     * <p> Handles the request. This method contains the common logic for handling GET and
+     * POST requests. </p>
      *
      * @param requester
      *            the requester
@@ -185,10 +191,14 @@ public abstract class AbstractClient {
         String body = null;
         if (response.getStatus() == HttpStatusCode.OK) {
             body = response.getBody();
-        } else if (response.getStatus() == HttpStatusCode.NOT_FOUND) {
+        } else if (response.getStatus() == HttpStatusCode.NOT_FOUND
+                && !Objects.equals(this.locale, APIConstants.FALLBACK_LOCALE)) {
             // HTTP code 404, call the API again with the fallback language
-            URLEndpoint endpointUrl = new URLEndpoint(url).toURL(APIConstants.FALLBACK_LOCALE);
-            body = requester.getResponse(endpointUrl.toString()).getBody();
+            URLEndpoint endpointUrl = new URLEndpoint(url);
+            URLEndpoint fallbackEndpointUrl = endpointUrl.toURL(APIConstants.FALLBACK_LOCALE);
+            LOGGER.debug("Couldn't find table {} for locale {}, retrying with fallback locale {}",
+                    endpointUrl.getTable(), this.locale.getLanguage(), APIConstants.FALLBACK_LOCALE.getLanguage());
+            body = requester.getResponse(fallbackEndpointUrl.toString()).getBody();
         } else if (response.getStatus() == HttpStatusCode.FORBIDDEN) {
             throw new SCBClientResponseTooLargeException("The response exceeded the maximum size allowed by the API");
         }
@@ -196,7 +206,7 @@ public abstract class AbstractClient {
     }
 
     /**
-     * <p>Retrieves the response models for a given table.</p>
+     * <p> Retrieves the response models for a given table. </p>
      *
      * @param table
      *            the table
@@ -209,8 +219,8 @@ public abstract class AbstractClient {
     }
 
     /**
-     * <p>Retrieves the response models for a given table which match the input
-     * constraints.</p>
+     * <p> Retrieves the response models for a given table which match the input
+     * constraints. </p>
      *
      * @param table
      *            the table
@@ -227,7 +237,7 @@ public abstract class AbstractClient {
     }
 
     /**
-     * <p>Returns the URL endpoint which this client represents.</p>
+     * <p> Returns the URL endpoint which this client represents. </p>
      *
      * @return the URL endpoint for this client
      */
