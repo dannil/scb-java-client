@@ -6,8 +6,15 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Objects;
 
-public class Filters {
+public final class Filters {
 
+    /**
+     * <p>Private constructor to prevent instantiation.</p>
+     */
+    private Filters() {
+
+    }
+	
     public static void files(Collection<File> files, Class<?>... filters) {
         files(files, Arrays.asList(filters));
     }
