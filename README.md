@@ -25,18 +25,18 @@ If you have an improvement, feel free to make a pull request or start an issue i
 <dependency>
   <groupId>com.github.dannil</groupId>
   <artifactId>scb-java-client</artifactId>
-  <version>2.3.0</version>
+  <version>2.4.0</version>
 </dependency>
 ```
 
 ### Gradle
 ```xml
-compile 'com.github.dannil:scb-java-client:2.3.0'
+compile 'com.github.dannil:scb-java-client:2.4.0'
 ```
 
 ### SBT
 ```xml
-libraryDependencies += "com.github.dannil" % "scb-java-client" % "2.3.0"
+libraryDependencies += "com.github.dannil" % "scb-java-client" % "2.4.0"
 ```
 
 ## Usage
