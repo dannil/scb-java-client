@@ -24,4 +24,7 @@
   <suppress checks="LineLength" files="EnvironmentLandUseInfrastructureForTransportClient\.java" lines="63-64" />
   <suppress checks="LineLength" files="EnvironmentLandUseInfrastructureForTransportClient\.java" lines="85-86" />
 
+  <!-- Due to class having been retrieved from GitHub, so we can't enforce our own checks without modifying the class completely -->
+  <suppress files="UnicodeBOMInputStream\.java" checks=".*" />
+
 </suppressions>

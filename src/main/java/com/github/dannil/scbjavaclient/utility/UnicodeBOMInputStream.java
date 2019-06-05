@@ -1,5 +1,5 @@
 // Class originally retrieved from https://github.com/gpakosz/UnicodeBOMInputStream 
-// with small modifications to ensure Checkstyle and Javadoc validness
+// with small modifications to ensure Javadoc validness
 
 // (‑●‑●)> released under the WTFPL v2 license, by Gregory Pakosz (@gpakosz)
 

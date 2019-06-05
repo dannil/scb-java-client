@@ -49,7 +49,7 @@ public final class Files {
 		}
 
 		// Handle both UNIX and Windows separators
-		String binaryName = path.replace(File.separatorChar, '.');
+		String binaryName = path.replaceAll("/|\\\\", ".");
 		return binaryName;
 	}
 
