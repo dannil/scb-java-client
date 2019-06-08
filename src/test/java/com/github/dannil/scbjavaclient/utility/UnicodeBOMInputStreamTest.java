@@ -15,6 +15,8 @@
 package com.github.dannil.scbjavaclient.utility;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
@@ -46,6 +48,11 @@ public class UnicodeBOMInputStreamTest {
         this.bomInputStream = new UnicodeBOMInputStream(this.stream);
         this.reader = new BufferedReader(new InputStreamReader(this.bomInputStream));
     }
+    
+    @Test
+    public void nullInputStream() {
+        assertThrows(NullPointerException.class, () -> new UnicodeBOMInputStream(null));
+    }
 
     @Test
     public void getUTF8BOM() throws IOException {
@@ -60,8 +67,22 @@ public class UnicodeBOMInputStreamTest {
     @Test
     public void skipUTF8BOM() throws IOException {
         this.bomInputStream.skipBOM();
+        
+        String data = this.reader.lines().collect(Collectors.joining());
 
-        assertEquals("abc abc abc", reader.lines().collect(Collectors.joining()));
+        assertNotEquals(this.data, data);
+        assertEquals("abc abc abc", data);
+    }
+    
+    @Test
+    public void skipUTF8BOMTwice() throws IOException {
+        this.bomInputStream.skipBOM();
+        this.bomInputStream.skipBOM();
+        
+        String data = this.reader.lines().collect(Collectors.joining());
+
+        assertNotEquals(this.data, data);
+        assertEquals("abc abc abc", data);
     }
 
 }
