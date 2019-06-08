@@ -76,11 +76,11 @@ public class BusinessActivitiesDatabaseClientIT {
     }
 
     @Test
-    @Date("2017-04-09")
+    @Date("2019-06-08")
     public void getEnterprisesAndEmployeesSNI2007WithParameters() {
         List<String> industrialClassifications = Arrays.asList("01.199", "01.3");
         List<String> sizeClasses = Arrays.asList("SGR3", "SGR5");
-        List<Integer> years = Arrays.asList(2010, 2014);
+        List<Integer> years = Arrays.asList(2010, 2011);
 
         assertNotEquals(0,
                 this.client.getEnterprisesAndEmployeesSNI2007(industrialClassifications, sizeClasses, years).size());
