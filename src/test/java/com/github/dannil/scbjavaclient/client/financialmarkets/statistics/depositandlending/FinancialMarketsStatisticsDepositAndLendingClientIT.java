@@ -56,9 +56,9 @@ public class FinancialMarketsStatisticsDepositAndLendingClientIT {
     }
 
     @Test
-    @Date("2017-08-23")
+    @Date("2019-06-08")
     public void getLendingRatesBreakdownByRemainingMaturityWithParameters() {
-        List<String> referenceSectors = Arrays.asList("1", "1.1");
+        List<String> referenceSectors = Arrays.asList("1.1", "1.2");
         List<Integer> counterpartySectors = Arrays.asList(1, 2);
         List<String> remainingMaturities = Arrays.asList("1.2", "1.3");
         List<String> months = Arrays.asList("2012M04", "2012M06");

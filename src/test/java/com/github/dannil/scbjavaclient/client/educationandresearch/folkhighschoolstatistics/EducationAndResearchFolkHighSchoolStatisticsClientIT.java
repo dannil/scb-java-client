@@ -52,7 +52,7 @@ public class EducationAndResearchFolkHighSchoolStatisticsClientIT {
     }
 
     @Test
-    @Date("2018-11-01")
+    @Date("2019-06-08")
     public void getParticipantsWithParameters() {
         List<String> regions = Arrays.asList("01", "09");
         List<String> sexes = Arrays.asList("1", "2");

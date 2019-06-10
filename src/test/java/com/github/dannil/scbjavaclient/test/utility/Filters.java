@@ -6,7 +6,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Objects;
 
-public class Filters {
+public final class Filters {
 
     public static void files(Collection<File> files, Class<?>... filters) {
         files(files, Arrays.asList(filters));
@@ -59,5 +59,4 @@ public class Filters {
             }
         }
     }
-
 }

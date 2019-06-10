@@ -35,7 +35,7 @@ public class FilesTest {
         List<File> files = Files.find(execPath + "/src/test/java/com/github/dannil/scbjavaclient/test/utility", "*");
 
         assertNotNull(files);
-        assertEquals(8, files.size());
+        assertEquals(9, files.size());
     }
 
     @Test
