@@ -63,6 +63,11 @@
     <!-- Core dependencies -->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+      <version>2.9.7</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-core</artifactId>
       <version>2.9.5</version>
     </dependency>
@@ -70,6 +75,12 @@
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
       <version>2.9.5</version>
+      <exclusions>
+        <exclusion>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-annotations</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>commons-io</groupId>
@@ -158,12 +169,10 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <!-- Do not upgrade if the new version doesn't support JUnit 5, due 
-          to the process of running the tests will break; it seems that surefire-provider 
-          1.1.0 needs surefire/failsafe version 2.19.1 to work -->
+        <!-- Do not upgrade if the new version doesn't support JUnit 5, due to the process of running the tests will break; 
+          it seems that surefire-provider 1.1.0 needs surefire/failsafe version 2.19.1 to work -->
         <version>2.19.1</version>
-        <!-- Remove these dependencies when surefire/failsafe has support 
-          for JUnit 5 -->
+        <!-- Remove these dependencies when surefire/failsafe has support for JUnit 5 -->
         <dependencies>
           <dependency>
             <groupId>org.junit.platform</groupId>
@@ -177,19 +186,17 @@
           </dependency>
         </dependencies>
         <configuration>
-          <forkCount>3</forkCount>
+          <forkCount>0</forkCount>
           <reuseForks>true</reuseForks>
         </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-failsafe-plugin</artifactId>
-        <!-- Do not upgrade if the new version doesn't support JUnit 5, due 
-          to the process of running the tests will break; it seems that surefire-provider 
-          1.1.0 needs surefire/failsafe version 2.19.1 to work -->
+        <!-- Do not upgrade if the new version doesn't support JUnit 5, due to the process of running the tests will break; 
+          it seems that surefire-provider 1.1.0 needs surefire/failsafe version 2.19.1 to work -->
         <version>2.19.1</version>
-        <!-- Remove these dependencies when surefire/failsafe has support 
-          for JUnit 5 -->
+        <!-- Remove these dependencies when surefire/failsafe has support for JUnit 5 -->
         <dependencies>
           <dependency>
             <groupId>org.junit.platform</groupId>
@@ -227,24 +234,21 @@
         <artifactId>jacoco-maven-plugin</artifactId>
         <version>0.8.1</version>
         <executions>
-          <!-- Prepares the property pointing to the JaCoCo runtime agent 
-            which is passed as a VM argument when maven-surefire-plugin is executed -->
+          <!-- Prepares the property pointing to the JaCoCo runtime agent which is passed as a VM argument when maven-surefire-plugin 
+            is executed -->
           <execution>
             <id>pre-unit-test</id>
             <goals>
               <goal>prepare-agent</goal>
             </goals>
             <configuration>
-              <!-- Sets the path to the file which contains the execution 
-                data -->
+              <!-- Sets the path to the file which contains the execution data -->
               <destFile>${project.build.directory}/jacoco-unit.exec</destFile>
-              <!-- Sets the name of the property containing the settings 
-                for JaCoCo runtime agent -->
+              <!-- Sets the name of the property containing the settings for JaCoCo runtime agent -->
               <propertyName>argLine</propertyName>
             </configuration>
           </execution>
-          <!-- Ensures that the code coverage report for unit tests is created 
-            after unit tests have been run -->
+          <!-- Ensures that the code coverage report for unit tests is created after unit tests have been run -->
           <execution>
             <id>post-unit-test</id>
             <phase>test</phase>
@@ -252,16 +256,14 @@
               <goal>report</goal>
             </goals>
             <configuration>
-              <!-- Sets the path to the file which contains the execution 
-                data -->
+              <!-- Sets the path to the file which contains the execution data -->
               <dataFile>${project.build.directory}/jacoco-unit.exec</dataFile>
               <!-- Sets the output directory for the code coverage report -->
               <outputDirectory>${project.reporting.outputDirectory}/jacoco-unit</outputDirectory>
             </configuration>
           </execution>
-          <!-- The Executions required by unit tests are omitted. Prepares 
-            the property pointing to the JaCoCo runtime agent which is passed as a VM 
-            argument when maven-failsafe-plugin is executed. -->
+          <!-- The Executions required by unit tests are omitted. Prepares the property pointing to the JaCoCo runtime agent 
+            which is passed as a VM argument when maven-failsafe-plugin is executed. -->
           <execution>
             <id>pre-integration-test</id>
             <phase>pre-integration-test</phase>
@@ -269,16 +271,13 @@
               <goal>prepare-agent</goal>
             </goals>
             <configuration>
-              <!-- Sets the path to the file which contains the execution 
-                data -->
+              <!-- Sets the path to the file which contains the execution data -->
               <destFile>${project.build.directory}/jacoco-integration.exec</destFile>
-              <!-- Sets the name of the property containing the settings 
-                for JaCoCo runtime agent -->
+              <!-- Sets the name of the property containing the settings for JaCoCo runtime agent -->
               <propertyName>argLine</propertyName>
             </configuration>
           </execution>
-          <!-- Ensures that the code coverage report for integration tests 
-            after integration tests have been run -->
+          <!-- Ensures that the code coverage report for integration tests after integration tests have been run -->
           <execution>
             <id>post-integration-test</id>
             <phase>post-integration-test</phase>
@@ -286,8 +285,7 @@
               <goal>report</goal>
             </goals>
             <configuration>
-              <!-- Sets the path to the file which contains the execution 
-                data -->
+              <!-- Sets the path to the file which contains the execution data -->
               <dataFile>${project.build.directory}/jacoco-integration.exec</dataFile>
               <!-- Sets the output directory for the code coverage report -->
               <outputDirectory>${project.reporting.outputDirectory}/jacoco-integration</outputDirectory>
@@ -324,14 +322,11 @@
         <groupId>com.github.siom79.japicmp</groupId>
         <artifactId>japicmp-maven-plugin</artifactId>
         <version>0.12.0</version>
-        <!-- These dependencies are needed to compile on Java 9 and onward, 
-          as this plugin (version 0.12.0) doesn't yet declare these on their own. These 
-          dependencies can be removed in the future when the plugin supports Java 9 
-          out-of-box -->
-        <!-- The next release after 0.12 (probably 0.13?) added own dependency 
-          on javax.activation (see https://github.com/siom79/japicmp/commit/63a399f88bcb220 
-          5444051e3117d3269cefcc12f#diff-600376dffeb79835ede4a0b285078036R176) which 
-          means that this dependency can be removed after the next release -->
+        <!-- These dependencies are needed to compile on Java 9 and onward, as this plugin (version 0.12.0) doesn't yet declare 
+          these on their own. These dependencies can be removed in the future when the plugin supports Java 9 out-of-box -->
+        <!-- The next release after 0.12 (probably 0.13?) added own dependency on javax.activation (see https://github.com/siom79/japicmp/commit/63a399f88bcb220 
+          5444051e3117d3269cefcc12f#diff-600376dffeb79835ede4a0b285078036R176) which means that this dependency can be removed after 
+          the next release -->
         <dependencies>
           <dependency>
             <groupId>javax.activation</groupId>
@@ -499,6 +494,7 @@
                   <excludes>
                     <exclude>org.slf4j:slf4j-api:jar:1.8.0-alpha2</exclude>
                   </excludes>
+                  <maxJdkVersion>${project.java.target}</maxJdkVersion>
                 </enforceBytecodeVersion>
               </rules>
               <fail>true</fail>
@@ -552,14 +548,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
-        <version>3.1.0</version>
-        <configuration>
-          <archive>
-            <manifestEntries>
-              <Automatic-Module-Name>com.github.dannil.scbjavaclient</Automatic-Module-Name>
-            </manifestEntries>
-          </archive>
-        </configuration>
+        <version>3.1.1</version>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -568,6 +557,10 @@
         <configuration>
           <additionalparam>-Xdoclint:all</additionalparam>
           <failOnError>true</failOnError>
+          <sourceFileExcludes>
+            <sourceFileExclude>module-info.java</sourceFileExclude>
+            <sourceFileExclude>package-info.java</sourceFileExclude>
+          </sourceFileExcludes>
         </configuration>
         <executions>
           <execution>
@@ -618,9 +611,8 @@
         <reportSets>
           <reportSet>
             <reports>
-              <!-- The ordering of the elements below effects the menu generated 
-                by maven-site-plugin, with the top-most element appearing highest in the 
-                menu, the next below that and so forth -->
+              <!-- The ordering of the elements below effects the menu generated by maven-site-plugin, with the top-most 
+                element appearing highest in the menu, the next below that and so forth -->
               <report>index</report>
               <report>summary</report>
               <report>cim</report>
