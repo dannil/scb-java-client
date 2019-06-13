@@ -92,7 +92,7 @@ public class EducationAndResearchFolkHighSchoolStatisticsClient extends Abstract
 
     @Override
     public URLEndpoint getUrl() {
-        return getRootUrl().append("UF/UF0510/");
+        return getRootUrl().append("UF/UF0601/");
     }
 
 }
