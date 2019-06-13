@@ -43,7 +43,7 @@ public class EducationAndResearchFolkHighSchoolStatisticsClientTest {
         EducationAndResearchFolkHighSchoolStatisticsClient client = new EducationAndResearchFolkHighSchoolStatisticsClient(
                 locale);
 
-        assertEquals(URLEndpoint.getRootUrl(locale).append("UF/UF0510/"), client.getUrl());
+        assertEquals(URLEndpoint.getRootUrl(locale).append("UF/UF0601/"), client.getUrl());
     }
 
 }
