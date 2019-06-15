@@ -229,8 +229,12 @@ public class UnicodeBOMInputStream extends InputStream
   {
     if (!skipped)
     {
-      in.skip(bom.bytes.length);
-      skipped = true;
+      // Daniel 2019-06-15: added check to see that bytes actually were skipped
+      long skippedBytes = in.skip(bom.bytes.length);
+      if (skippedBytes > 0)
+      {
+        skipped = true;
+      }
     }
     return this;
   }
