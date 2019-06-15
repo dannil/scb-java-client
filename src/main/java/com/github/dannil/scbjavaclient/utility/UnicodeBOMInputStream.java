@@ -95,25 +95,15 @@ public class UnicodeBOMInputStream extends InputStream {
         final byte[] bomRawBytes = new byte[4];
         final int read = in.read(bomRawBytes);
 
-        switch (read) {
-            case 4:
-                this.bom = getUtf32Bom(bomRawBytes);
-                if (this.bom != null) {
-                    break;
-                }
-            case 3:
-                this.bom = getUtf8Bom(bomRawBytes);
-                if (this.bom != null) {
-                    break;
-                }
-            case 2:
-                this.bom = getUtf16Bom(bomRawBytes);
-                if (this.bom != null) {
-                    break;
-                }
-            default:
-                this.bom = BOM.NONE;
-                break;
+        this.bom = getUtf32Bom(bomRawBytes);
+        if (this.bom == null) {
+            this.bom = getUtf8Bom(bomRawBytes);
+        }
+        if (this.bom == null) {
+            this.bom = getUtf16Bom(bomRawBytes);
+        }
+        if (this.bom == null) {
+            this.bom = BOM.NONE;
         }
         if (read > 0) {
             in.unread(bomRawBytes, 0, read);
@@ -206,12 +196,12 @@ public class UnicodeBOMInputStream extends InputStream {
     }
 
     @Override
-    public int read(final byte[] b) throws IOException, NullPointerException {
+    public int read(final byte[] b) throws IOException {
         return in.read(b, 0, b.length);
     }
 
     @Override
-    public int read(final byte[] b, final int off, final int len) throws IOException, NullPointerException {
+    public int read(final byte[] b, final int off, final int len) throws IOException {
         return in.read(b, off, len);
     }
 
