@@ -15,13 +15,11 @@
 package com.github.dannil.scbjavaclient.client.goodsandservices.turnoverservicesector.turnover;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.exception.SCBClientResponseTooLargeException;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
@@ -40,22 +38,17 @@ public class GoodsAndServicesTurnoverServiceSectorTurnoverClientIT {
         this.client = new GoodsAndServicesTurnoverServiceSectorTurnoverClient();
     }
 
-    // Daniel, 2018-06-28
-    // Returns HTTP 403
     @Test
-    @Date("2018-06-28")
+    @Date("2019-06-21")
     public void getRetailSaleIndexSIC2007Monthly() {
-        assertThrows(SCBClientResponseTooLargeException.class, () -> this.client.getRetailSaleIndexSIC2007Monthly());
+        assertNotEquals(0, this.client.getRetailSaleIndexSIC2007Monthly().size());
     }
 
-    // Daniel, 2018-06-28
-    // Returns HTTP 403
     @Test
-    @Date("2018-06-28")
+    @Date("2019-06-21")
     public void getRetailSaleIndexSIC2007MonthlyWithParametersEmptyLists() {
-        assertThrows(SCBClientResponseTooLargeException.class,
-                () -> this.client.getRetailSaleIndexSIC2007Monthly(Collections.<String>emptyList(),
-                        Collections.<String>emptyList()));
+        assertNotEquals(0, this.client.getRetailSaleIndexSIC2007Monthly(Collections.<String>emptyList(),
+                Collections.<String>emptyList()).size());
     }
 
     @Test
@@ -156,7 +149,5 @@ public class GoodsAndServicesTurnoverServiceSectorTurnoverClientIT {
 
         assertNotEquals(0, this.client.getRetailTradeSales(indicators, months).size());
     }
-
-    // TODO Add methods here!
 
 }
