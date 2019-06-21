@@ -37,7 +37,7 @@ script:
 # SonarQube needs to be run with at least Java 8; also make sure we are on the correct branch
 after_success:
 - if [[ $TRAVIS_JDK_VERSION == openjdk8 && $TRAVIS_BRANCH == test/run-all-tests ]]; then
-    rm -rf apache-maven-${MAVEN_VERSION}*;
     mvn sonar:sonar -Dsonar.organization=dannil-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONARQUBE_TOKEN;
+    rm -rf apache-maven-${MAVEN_VERSION}*;
     sh push_build_results.sh;
   fi;
