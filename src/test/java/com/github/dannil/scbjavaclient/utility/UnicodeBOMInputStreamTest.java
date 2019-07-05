@@ -17,6 +17,7 @@ package com.github.dannil.scbjavaclient.utility;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -25,6 +26,10 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.Charset;
 import java.security.SecureRandom;
 import java.util.Arrays;
@@ -37,6 +42,7 @@ import org.junit.jupiter.api.Test;
 
 import com.github.dannil.scbjavaclient.test.extensions.AllowFailure;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
+import com.github.dannil.scbjavaclient.utility.UnicodeBOMInputStream.BOM;
 
 @Suite
 public class UnicodeBOMInputStreamTest {
@@ -263,6 +269,69 @@ public class UnicodeBOMInputStreamTest {
         boolean markSupported = this.bomInputStream.markSupported();
 
         assertFalse(markSupported);
+    }
+
+    @Test
+    public void callPrivateBOMConstructorNullBOM()
+            throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        Constructor<?>[] cons = BOM.class.getDeclaredConstructors();
+        cons[0].setAccessible(true);
+        try {
+            Object o = cons[0].newInstance(null, "");
+        } catch (InvocationTargetException | AssertionError e) {
+
+            StringWriter writer = new StringWriter();
+            PrintWriter printWriter = new PrintWriter(writer);
+            e.printStackTrace(printWriter);
+
+            String stackTrace = writer.toString();
+
+            assertTrue(stackTrace.contains("java.lang.AssertionError"));
+            assertTrue(stackTrace.contains("invalid BOM: null is not allowed"));
+        }
+        cons[0].setAccessible(false);
+    }
+
+    @Test
+    public void callPrivateBOMConstructorNullDescription()
+            throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        Constructor<?>[] cons = BOM.class.getDeclaredConstructors();
+        cons[0].setAccessible(true);
+        try {
+            Object o = cons[0].newInstance(new byte[] {}, null);
+        } catch (InvocationTargetException | AssertionError e) {
+
+            StringWriter writer = new StringWriter();
+            PrintWriter printWriter = new PrintWriter(writer);
+            e.printStackTrace(printWriter);
+
+            String stackTrace = writer.toString();
+
+            assertTrue(stackTrace.contains("java.lang.AssertionError"));
+            assertTrue(stackTrace.contains("invalid description: null is not allowed"));
+        }
+        cons[0].setAccessible(false);
+    }
+
+    @Test
+    public void callPrivateBOMConstructorEmptyDescription()
+            throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        Constructor<?>[] cons = BOM.class.getDeclaredConstructors();
+        cons[0].setAccessible(true);
+        try {
+            Object o = cons[0].newInstance(new byte[] {}, "");
+        } catch (InvocationTargetException | AssertionError e) {
+
+            StringWriter writer = new StringWriter();
+            PrintWriter printWriter = new PrintWriter(writer);
+            e.printStackTrace(printWriter);
+
+            String stackTrace = writer.toString();
+
+            assertTrue(stackTrace.contains("java.lang.AssertionError"));
+            assertTrue(stackTrace.contains("invalid description: empty string is not allowed"));
+        }
+        cons[0].setAccessible(false);
     }
 
 }
