@@ -17,7 +17,6 @@ package com.github.dannil.scbjavaclient.utility;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -277,7 +276,7 @@ public class UnicodeBOMInputStreamTest {
         Constructor<?>[] cons = BOM.class.getDeclaredConstructors();
         cons[0].setAccessible(true);
         try {
-            Object o = cons[0].newInstance(null, "");
+            cons[0].newInstance(null, "");
         } catch (InvocationTargetException | AssertionError e) {
 
             StringWriter writer = new StringWriter();
@@ -298,7 +297,7 @@ public class UnicodeBOMInputStreamTest {
         Constructor<?>[] cons = BOM.class.getDeclaredConstructors();
         cons[0].setAccessible(true);
         try {
-            Object o = cons[0].newInstance(new byte[] {}, null);
+            cons[0].newInstance(new byte[] {}, null);
         } catch (InvocationTargetException | AssertionError e) {
 
             StringWriter writer = new StringWriter();
@@ -319,7 +318,7 @@ public class UnicodeBOMInputStreamTest {
         Constructor<?>[] cons = BOM.class.getDeclaredConstructors();
         cons[0].setAccessible(true);
         try {
-            Object o = cons[0].newInstance(new byte[] {}, "");
+            cons[0].newInstance(new byte[] {}, "");
         } catch (InvocationTargetException | AssertionError e) {
 
             StringWriter writer = new StringWriter();
