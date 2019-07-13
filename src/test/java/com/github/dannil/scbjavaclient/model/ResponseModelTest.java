@@ -173,7 +173,7 @@ public class ResponseModelTest {
     public void notEqualsNull() {
         ResponseModel model = new ResponseModel();
 
-        assertNotEquals(model, null);
+        assertNotEquals(null, model);
     }
 
     @Test

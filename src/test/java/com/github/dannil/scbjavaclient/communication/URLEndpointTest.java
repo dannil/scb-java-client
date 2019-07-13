@@ -154,7 +154,7 @@ public class URLEndpointTest {
     public void notEqualsNull() {
         URLEndpoint url1 = new URLEndpoint("http://api.scb.se/OV0104/v1/doris/sv/ssd/AM");
 
-        assertNotEquals(url1, null);
+        assertNotEquals(null, url1);
     }
 
     @Test

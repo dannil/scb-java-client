@@ -87,7 +87,7 @@ public class ValueNodeTest {
     public void notEqualsNull() {
         ValueNode<Double> value = new ValueNode<Double>();
 
-        assertNotEquals(value, null);
+        assertNotEquals(null, value);
     }
 
     @Test
