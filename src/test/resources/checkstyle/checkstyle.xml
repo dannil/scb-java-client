@@ -15,6 +15,10 @@
   <module name="NewlineAtEndOfFile">
     <property name="lineSeparator" value="lf" />
   </module>
+  
+  <module name="LineLength">
+    <property name="max" value="130" />
+  </module>
 
   <!-- Checks that property files contain the same keys -->
   <!-- See http://checkstyle.sf.net/config_misc.html#Translation -->
@@ -231,9 +235,6 @@
     <!-- See http://checkstyle.sf.net/config_sizes.html -->
     <module name="AnonInnerLength" />
     <module name="ExecutableStatementCount" />
-    <module name="LineLength">
-      <property name="max" value="130" />
-    </module>
     <module name="MethodCount" />
     <module name="MethodLength" />
     <module name="OuterTypeNumber" />
