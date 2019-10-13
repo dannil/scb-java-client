@@ -72,4 +72,31 @@ public class EducationAndResearchCommunityInnovationSurveyActivityClientIT {
                 typesOfValues, periods).size());
     }
 
+    @Test
+    @Date("2019-10-13")
+    public void getEnterprisesWithProductInnovations() {
+        assertNotEquals(0, this.client.getEnterprisesWithProductInnovations().size());
+    }
+
+    @Test
+    @Date("2019-10-13")
+    public void getEnterprisesWithProductInnovationsWithParametersEmptyLists() {
+        assertNotEquals(0,
+                this.client.getEnterprisesWithProductInnovations(Collections.<String>emptyList(),
+                        Collections.<String>emptyList(), Collections.<String>emptyList(),
+                        Collections.<String>emptyList()).size());
+    }
+
+    @Test
+    @Date("2019-10-13")
+    public void getEnterprisesWithProductInnovationsWithParameters() {
+        List<String> sni2007s = Arrays.asList("46+H+J-K+71+72", "58+61-63");
+        List<String> sizeClasses = Arrays.asList("10-49", "50-249");
+        List<String> typesOfValues = Arrays.asList("PS", "KI");
+        List<String> periods = Arrays.asList("2012-2014", "2014-2016");
+
+        assertNotEquals(0,
+                this.client.getEnterprisesWithProductInnovations(sni2007s, sizeClasses, typesOfValues, periods).size());
+    }
+
 }
