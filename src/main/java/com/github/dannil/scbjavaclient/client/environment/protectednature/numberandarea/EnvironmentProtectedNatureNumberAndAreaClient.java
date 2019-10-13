@@ -90,7 +90,7 @@ public class EnvironmentProtectedNatureNumberAndAreaClient extends AbstractClien
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @see #getNatura2000Sites(Collection, Collection)
+     * @see #getNatura2000Sites(Collection, Collection, Collection)
      */
     public List<ResponseModel> getNatura2000Sites() {
         return getNatura2000Sites(null, null, null);
