@@ -198,7 +198,7 @@ public abstract class AbstractClient {
             URLEndpoint fallbackEndpointUrl = endpointUrl.toURL(APIConstants.FALLBACK_LOCALE);
             LOGGER.debug("Couldn't find table {} for locale {}, retrying with fallback locale {}",
                     endpointUrl.getTable(), this.locale.getLanguage(), APIConstants.FALLBACK_LOCALE.getLanguage());
-            body = requester.getResponse(fallbackEndpointUrl.toString()).getBody();
+            return handleRequest(requester, fallbackEndpointUrl.toString());
         } else if (response.getStatus() == HttpStatusCode.FORBIDDEN) {
             throw new SCBClientResponseTooLargeException("The response exceeded the maximum size allowed by the API");
         }
