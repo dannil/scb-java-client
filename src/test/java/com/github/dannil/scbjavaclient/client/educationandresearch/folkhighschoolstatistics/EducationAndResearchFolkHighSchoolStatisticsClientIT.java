@@ -20,12 +20,12 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
@@ -39,20 +39,20 @@ public class EducationAndResearchFolkHighSchoolStatisticsClientIT {
     }
 
     @Test
-    @Date("2018-11-01")
+    @Date("2019-06-13")
     public void getParticipants() {
         assertNotEquals(0, this.client.getParticipants().size());
     }
 
     @Test
-    @Date("2018-11-01")
+    @Date("2019-06-13")
     public void getParticipantsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getParticipants(Collections.<String>emptyList(), Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
-    @Date("2018-11-01")
+    @Date("2019-06-13")
     public void getParticipantsWithParameters() {
         List<String> regions = Arrays.asList("01", "09");
         List<String> sexes = Arrays.asList("1", "2");

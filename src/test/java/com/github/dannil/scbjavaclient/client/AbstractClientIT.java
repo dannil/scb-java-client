@@ -32,7 +32,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
@@ -43,8 +42,6 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
-
-import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
@@ -63,6 +60,8 @@ import com.github.dannil.scbjavaclient.test.utility.Filters;
 import com.github.dannil.scbjavaclient.test.utility.SourceInspector;
 import com.github.dannil.scbjavaclient.test.utility.TestProcessor;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
+
+import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
@@ -110,6 +109,34 @@ public class AbstractClientIT {
     }
 
     @Test
+    @Date("2019-06-02")
+    public void urlNotFoundLocaleIsAlreadyFallbackDoGetRequest() {
+        SCBClient client = new SCBClient(new Locale("sv", "SE"));
+
+        String url = client.getRootUrl() + "ABC/ABC/ABC";
+        String response = client.doGetRequest(url);
+
+        assertNull(response);
+    }
+
+    @Test
+    @Date("2019-06-02")
+    public void urlNotFoundLocaleIsAlreadyFallbackDoPostRequest() {
+        SCBClient client = new SCBClient(new Locale("sv", "SE"));
+
+        Map<String, Collection<?>> map = new HashMap<String, Collection<?>>();
+        map.put("Alder", Arrays.asList("tot"));
+        map.put("Kon", Arrays.asList("4"));
+        map.put("Boendeform", Arrays.asList("SMAG"));
+        map.put("Tid", Arrays.asList("2012"));
+
+        String url = client.getRootUrl() + "ABC/ABC/ABC";
+        String response = client.doPostRequest(url, QueryBuilder.build(map));
+
+        assertNull(response);
+    }
+
+    @Test
     @Date("2017-01-01")
     public void doPostRequestWithEmptyList() {
         SCBClient client = new SCBClient(new Locale("sv", "SE"));
@@ -129,7 +156,7 @@ public class AbstractClientIT {
 
     @Test
     @Date("2017-01-01")
-    public void urlNotFound() {
+    public void getRawDataUrlNotFound() {
         SCBClient client = new SCBClient(new Locale("sv", "SE"));
 
         String response = client.getRawData("ABC/ABC/ABC");
@@ -139,7 +166,7 @@ public class AbstractClientIT {
 
     @Test
     @Date("2018-06-28")
-    public void urlForbidden() {
+    public void getRawDataUrlForbidden() {
         SCBClient client = new SCBClient(new Locale("sv", "SE"));
 
         // This call will result in a HTTP 403 response (forbidden) since the
@@ -188,7 +215,7 @@ public class AbstractClientIT {
         List<Class<?>> matchedClasses = new ArrayList<>();
         for (File file : files) {
             // Convert path into binary name
-            String binaryName = Files.fileToBinaryName(file);
+            String binaryName = Files.fileToBinaryName(file, "com");
 
             // Reflect the binary name into a concrete Java class
             Class<?> clazz = null;
@@ -223,7 +250,7 @@ public class AbstractClientIT {
         List<Class<?>> matchedClasses = new ArrayList<>();
         for (File file : files) {
             // Convert path into binary name
-            String binaryName = Files.fileToBinaryName(file);
+        	String binaryName = Files.fileToBinaryName(file, "com");
             if (binaryName.contains("package-info")) {
                 continue;
             }
@@ -272,7 +299,7 @@ public class AbstractClientIT {
         Map<String, List<Class<?>>> offendingClasses = new HashMap<>();
         for (File file : files) {
             // Convert path into binary name
-            String binaryName = Files.fileToBinaryName(file);
+        	String binaryName = Files.fileToBinaryName(file, "com");
             if (binaryName.contains("package-info")) {
                 continue;
             }
@@ -328,7 +355,7 @@ public class AbstractClientIT {
         // Convert paths into binary names
         Set<String> binaryNames = new TreeSet<String>();
         for (File file : files) {
-            String binaryName = Files.fileToBinaryName(file);
+        	String binaryName = Files.fileToBinaryName(file, "com");
             if (binaryName.contains("package-info")) {
                 continue;
             } else {
@@ -391,7 +418,7 @@ public class AbstractClientIT {
         Map<String, Integer> offendingMethods = new HashMap<String, Integer>();
         for (File file : files) {
             // Convert path into binary name
-            String binaryName = Files.fileToBinaryName(file);
+        	String binaryName = Files.fileToBinaryName(file, "com");
             if (binaryName.contains("package-info")) {
                 continue;
             }
@@ -442,9 +469,9 @@ public class AbstractClientIT {
 
         StringBuilder builder = new StringBuilder();
         Set<String> offendingMethods = new HashSet<>();
-        for (File f : files) {
+        for (File file : files) {
             // Convert path into binary name
-            String binaryName = Files.fileToBinaryName(f);
+        	String binaryName = Files.fileToBinaryName(file, "com");
             if (binaryName.endsWith("package-info")) {
                 continue;
             }
@@ -466,11 +493,11 @@ public class AbstractClientIT {
             }
 
             // Figure out implemented tables by inspecting the source code
-            Map<String, String> tables = SourceInspector.getImplementedTables(Paths.get(f.getPath()));
+            Map<String, String> tables = SourceInspector.getImplementedTables(Paths.get(file.getPath()));
             if (tables.isEmpty()) {
                 continue;
             }
-            Map<String, List<String>> parameters = SourceInspector.getParameters(Paths.get(f.getPath()));
+            Map<String, List<String>> parameters = SourceInspector.getParameters(Paths.get(file.getPath()));
 
             Object instance = clazz.getConstructor().newInstance();
             URLEndpoint url = (URLEndpoint) clazz.getMethod("getUrl", new Class<?>[] {}).invoke(instance,
@@ -541,8 +568,6 @@ public class AbstractClientIT {
                                 builder.append("Method parameters: " + methodParameters);
                                 builder.append(System.lineSeparator());
                             }
-                        } else {
-                            throw new IllegalArgumentException(clazz.getSimpleName() + "." + filteredMethod.getName());
                         }
                     }
                 }
@@ -563,7 +588,7 @@ public class AbstractClientIT {
         Map<String, List<String>> offendingCodes = new HashMap<>();
         for (File file : files) {
             // Convert path into binary name
-            String binaryName = Files.fileToBinaryName(file);
+        	String binaryName = Files.fileToBinaryName(file, "com");
             if (binaryName.contains("package-info")) {
                 continue;
             }
@@ -619,7 +644,7 @@ public class AbstractClientIT {
         Map<Class<?>, Long> matchedClasses = new HashMap<>();
         for (File file : files) {
             // Convert path into binary name
-            String binaryName = Files.fileToBinaryName(file);
+        	String binaryName = Files.fileToBinaryName(file, "com");
             if (binaryName.contains("package-info")) {
                 continue;
             }
@@ -693,7 +718,7 @@ public class AbstractClientIT {
         List<Class<?>> matchedClasses = new ArrayList<>();
         for (File file : files) {
             // Convert path into binary name
-            String binaryName = Files.fileToBinaryName(file);
+        	String binaryName = Files.fileToBinaryName(file, "com");
             if (binaryName.contains("package-info")) {
                 continue;
             }

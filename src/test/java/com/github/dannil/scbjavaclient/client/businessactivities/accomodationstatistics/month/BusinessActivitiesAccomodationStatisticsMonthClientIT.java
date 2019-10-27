@@ -20,12 +20,13 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
+import com.github.dannil.scbjavaclient.test.extensions.AllowFailure;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
@@ -128,20 +129,20 @@ public class BusinessActivitiesAccomodationStatisticsMonthClientIT {
     }
 
     @Test
-    @Date("2017-04-13")
+    @Date("2019-10-13")
     public void getOccupancy() {
         assertNotEquals(0, this.client.getOccupancy().size());
     }
 
     @Test
-    @Date("2017-04-13")
+    @Date("2019-10-13")
     public void getOccupancyWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getOccupancy(Collections.<String>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test
-    @Date("2017-04-13")
+    @Date("2019-10-13")
     public void getOccupancyWithParameters() {
         List<String> typesOfHousing = Arrays.asList("014", "016");
         List<String> months = Arrays.asList("2008M06", "2009M06");
@@ -150,25 +151,37 @@ public class BusinessActivitiesAccomodationStatisticsMonthClientIT {
     }
 
     @Test
-    @Date("2017-04-13")
+    @Date("2019-10-13")
     public void getOccupiedRooms() {
         assertNotEquals(0, this.client.getOccupiedRooms().size());
     }
 
     @Test
-    @Date("2017-04-13")
+    @Date("2019-10-13")
     public void getOccupiedRoomsWithParametersEmptyLists() {
-        assertNotEquals(0,
-                this.client.getOccupiedRooms(Collections.<String>emptyList(), Collections.<String>emptyList()).size());
+        assertNotEquals(0, this.client.getOccupiedRooms(Collections.<String>emptyList(),
+                Collections.<String>emptyList(), Collections.<String>emptyList()).size());
     }
 
+    @SuppressWarnings("deprecation")
     @Test
-    @Date("2017-04-13")
-    public void getOccupiedRoomsWithParameters() {
+    @Date("2019-10-13")
+    @AllowFailure
+    public void getOccupiedRoomsWithParametersDeprecated() {
         List<String> regions = Arrays.asList("03", "05");
         List<String> months = Arrays.asList("2008M06", "2009M06");
 
         assertNotEquals(0, this.client.getOccupiedRooms(regions, months).size());
+    }
+
+    @Test
+    @Date("2019-10-13")
+    public void getOccupiedRoomsWithParameters() {
+        List<String> regions = Arrays.asList("03", "05");
+        List<String> typesOfEstablishments = Arrays.asList("H", "V");
+        List<String> months = Arrays.asList("2008M06", "2009M06");
+
+        assertNotEquals(0, this.client.getOccupiedRooms(regions, typesOfEstablishments, months).size());
     }
 
     @Test

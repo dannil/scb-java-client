@@ -14,13 +14,14 @@
 
 package com.github.dannil.scbjavaclient.communication.http;
 
-import java.io.ByteArrayOutputStream;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.stream.Collectors;
 
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
-
-import org.apache.commons.io.input.BOMInputStream;
+import com.github.dannil.scbjavaclient.utility.UnicodeBOMInputStream;
 
 /**
  * <p>Class which encapsulates HTTP response data.</p>
@@ -73,12 +74,10 @@ public class HttpResponse {
         if (this.stream == null) {
             return null;
         }
-        try (BOMInputStream bis = new BOMInputStream(this.stream)) {
-            try (ByteArrayOutputStream bos = new ByteArrayOutputStream()) {
-                for (int result = bis.read(); result != -1; result = bis.read()) {
-                    bos.write((byte) result);
-                }
-                return bos.toString();
+        try (UnicodeBOMInputStream ubis = new UnicodeBOMInputStream(this.stream)) {
+            ubis.skipBOM();
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(ubis))) {
+                return reader.lines().parallel().collect(Collectors.joining());
             }
         } catch (IOException e) {
             throw new SCBClientException(e);

@@ -7,9 +7,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Locale;
 
-import org.junit.jupiter.api.Test;
-
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
+
+import org.junit.jupiter.api.Test;
 
 @Suite
 public class URLEndpointTest {
@@ -77,6 +77,13 @@ public class URLEndpointTest {
         url = url.toURL("fr", null);
 
         assertEquals("https://api.scb.se/OV0104/v1/doris/fr/ssd/AM/", url.toString());
+    }
+    
+    @Test
+    public void getLanguage() {
+        URLEndpoint url = new URLEndpoint("http://api.scb.se/OV0104/v1/doris/fr/ssd/BE/BE0401/BE0401A/");
+
+        assertEquals("fr", url.getLanguage());
     }
 
     @Test
@@ -154,7 +161,7 @@ public class URLEndpointTest {
     public void notEqualsNull() {
         URLEndpoint url1 = new URLEndpoint("http://api.scb.se/OV0104/v1/doris/sv/ssd/AM");
 
-        assertNotEquals(url1, null);
+        assertNotEquals(null, url1);
     }
 
     @Test

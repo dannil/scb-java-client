@@ -21,13 +21,13 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import com.github.dannil.scbjavaclient.exception.SCBClientResponseTooLargeException;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
@@ -42,7 +42,7 @@ public class EnvironmentLocalitiesAreasAndPopulationPopulationClientIT {
 
     // Daniel 2017-03-29: Returns HTTP 403
     @Test
-    @Date("2018-06-28")
+    @Date("2019-10-26")
     public void getPopulationAndLandAreaWithinLocalities() {
         assertThrows(SCBClientResponseTooLargeException.class,
                 () -> this.client.getPopulationAndLandAreaWithinLocalities());
@@ -50,7 +50,7 @@ public class EnvironmentLocalitiesAreasAndPopulationPopulationClientIT {
 
     // Daniel 2017-03-29: Returns HTTP 403
     @Test
-    @Date("2018-06-28")
+    @Date("2019-10-26")
     public void getPopulationAndLandAreaWithinLocalitiesWithParametersEmptyLists() {
         assertThrows(SCBClientResponseTooLargeException.class,
                 () -> this.client.getPopulationAndLandAreaWithinLocalities(Collections.<String>emptyList(),
@@ -58,7 +58,7 @@ public class EnvironmentLocalitiesAreasAndPopulationPopulationClientIT {
     }
 
     @Test
-    @Date("2018-03-29")
+    @Date("2019-10-26")
     public void getPopulationAndLandAreaWithinLocalitiesWithParameters() {
         List<String> regions = Arrays.asList("T0132", "T0164");
         List<Integer> years = Arrays.asList(1990, 1995);

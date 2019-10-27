@@ -20,12 +20,12 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
@@ -107,22 +107,22 @@ public class EnvironmentProtectedNatureNatureTypesClientIT {
     }
 
     @Test
-    @Date("2017-09-16")
+    @Date("2019-05-29")
     public void getNewProtectedAreas() {
         assertNotEquals(0, this.client.getNewProtectedAreas().size());
     }
 
     @Test
-    @Date("2017-09-16")
+    @Date("2019-05-29")
     public void getNewProtectedAreasWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getNewProtectedAreas(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
-    @Date("2017-09-16")
+    @Date("2019-05-29")
     public void getNewProtectedAreasWithParameters() {
-        List<String> natureTypes = Arrays.asList("Fjallbarrskog", "Sotvatten");
+        List<String> natureTypes = Arrays.asList("OVRO", "OVAT");
         List<Integer> years = Arrays.asList(2010, 2011);
 
         assertNotEquals(0, this.client.getNewProtectedAreas(natureTypes, years).size());

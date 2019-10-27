@@ -18,8 +18,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
-import org.junit.jupiter.api.Test;
-
 import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods.cn.GoodsAndServicesForeignTradeGoodsCNClient;
 import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods.economicindicators.GoodsAndServicesForeignTradeGoodsEconomicIndicatorsClient;
 import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods.sitc.GoodsAndServicesForeignTradeGoodsSITCClient;
@@ -27,6 +25,8 @@ import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods
 import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods.total.GoodsAndServicesForeignTradeGoodsTotalClient;
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
+
+import org.junit.jupiter.api.Test;
 
 @Suite
 public class GoodsAndServicesForeignTradeGoodsClientTest {

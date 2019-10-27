@@ -28,14 +28,14 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.junit.jupiter.api.Test;
-
 import com.github.dannil.scbjavaclient.client.SCBClientBuilderIT;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
 import com.github.dannil.scbjavaclient.test.utility.Files;
 import com.github.dannil.scbjavaclient.test.utility.Filters;
+
+import org.junit.jupiter.api.Test;
 
 @Suite
 public class TestIT {
@@ -53,7 +53,7 @@ public class TestIT {
         List<Class<?>> matchedClasses = new ArrayList<Class<?>>();
         for (File file : files) {
             // Convert path into binary name
-            String binaryName = Files.fileToBinaryName(file);
+            String binaryName = Files.fileToBinaryName(file, "com");
 
             // Reflect the binary name into a concrete Java class
             Class<?> clazz = null;
@@ -86,7 +86,7 @@ public class TestIT {
         List<Class<?>> matchedClasses = new ArrayList<>();
         for (File file : files) {
             // Convert path into binary name
-            String binaryName = Files.fileToBinaryName(file);
+            String binaryName = Files.fileToBinaryName(file, "com");
 
             // Reflect the binary name into a concrete Java class
             Class<?> clazz = null;
@@ -133,7 +133,7 @@ public class TestIT {
         List<Class<?>> matchedClasses = new ArrayList<>();
         for (File fileMain : mainFiles) {
             // Convert path into binary name
-            String binaryNameMain = Files.fileToBinaryName(fileMain);
+            String binaryNameMain = Files.fileToBinaryName(fileMain, "com");
             if (binaryNameMain.contains("package-info")) {
                 continue;
             }
@@ -151,7 +151,7 @@ public class TestIT {
             }
 
             for (File fileTest : testFiles) {
-                String binaryNameTest = Files.fileToBinaryName(fileTest);
+                String binaryNameTest = Files.fileToBinaryName(fileTest, "com");
                 if (binaryNameTest.startsWith(binaryNameMain)) {
                     matchedClasses.remove(clazz);
                 }
@@ -182,9 +182,9 @@ public class TestIT {
         }
 
         Map<Class<?>, List<String>> matchedClasses = new LinkedHashMap<>();
-        for (File f : mainFiles) {
+        for (File file : mainFiles) {
             // Convert path into binary name
-            String binaryNameMain = Files.fileToBinaryName(f);
+            String binaryNameMain = Files.fileToBinaryName(file, "com");
             if (binaryNameMain.endsWith("package-info")) {
                 continue;
             }
@@ -200,7 +200,7 @@ public class TestIT {
                 assertTrue(false, e.getMessage());
             }
 
-            List<String> lines = java.nio.file.Files.readAllLines(Paths.get(f.getPath()), StandardCharsets.UTF_8);
+            List<String> lines = java.nio.file.Files.readAllLines(Paths.get(file.getPath()), StandardCharsets.UTF_8);
             List<String> offending = new ArrayList<>();
             for (String line : lines) {
                 // Skip line if it is a comment, Javadoc or alike

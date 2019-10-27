@@ -83,7 +83,7 @@ public class EducationAndResearchFolkHighSchoolStatisticsClient extends Abstract
             Collection<String> typesOfCourses, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
-        mappings.put(APIConstants.SEX_CODE, regions);
+        mappings.put(APIConstants.SEX_CODE, sexes);
         mappings.put("KursTyp", typesOfCourses);
         mappings.put(APIConstants.TIME_CODE, years);
 
@@ -92,7 +92,7 @@ public class EducationAndResearchFolkHighSchoolStatisticsClient extends Abstract
 
     @Override
     public URLEndpoint getUrl() {
-        return getRootUrl().append("UF/UF0510/");
+        return getRootUrl().append("UF/UF0601/");
     }
 
 }

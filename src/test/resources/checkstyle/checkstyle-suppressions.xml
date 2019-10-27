@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 
 <!DOCTYPE suppressions PUBLIC
-    "-//Puppy Crawl//DTD Suppressions 1.1//EN"
-    "http://www.puppycrawl.com/dtds/suppressions_1_1.dtd">
+    "-//Checkstyle//DTD SuppressionFilter Configuration 1.1//EN"
+    "https://checkstyle.org/dtds/suppressions_1_1.dtd">
 
 <suppressions>
   <suppress checks="Regexp" files="package-info\.java" />
@@ -19,5 +19,16 @@
   <!-- Due to deprecation notice on method getPopulationOnIslands -->
   <suppress checks="LineLength" files="EnvironmentShorelineLandUseLandUseClient\.java" lines="228-230" />
   <suppress checks="LineLength" files="EnvironmentShorelineLandUseLandUseClient\.java" lines="249-251" />
+
+  <!-- Due to deprecation notice on method getTransportInfrastructureArea -->
+  <suppress checks="LineLength" files="EnvironmentLandUseInfrastructureForTransportClient\.java" lines="63-64" />
+  <suppress checks="LineLength" files="EnvironmentLandUseInfrastructureForTransportClient\.java" lines="85-86" />
+
+  <!-- Due to class having been retrieved from GitHub, so we can't enforce all of our own checks ! -->
+  <suppress checks="FallThrough" files="UnicodeBOMInputStream\.java" />
+  <suppress checks="MagicNumber" files="UnicodeBOMInputStream\.java" />
+  <suppress checks="NoWhitespaceAfter" files="UnicodeBOMInputStream\.java" />
+  <suppress checks="Regexp" files="UnicodeBOMInputStream\.java" />
+  <suppress checks="RegexpHeader" files="UnicodeBOMInputStream\.java" />
 
 </suppressions>

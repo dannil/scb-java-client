@@ -18,8 +18,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
-import org.junit.jupiter.api.Test;
-
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.ppi.economicindicators.PricesAndConsumptionPPIEconomicIndicatorsClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.ppi.spin2002month.PricesAndConsumptionPPISPIN2002MonthClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.ppi.spin2002year.PricesAndConsumptionPPISPIN2002YearClient;
@@ -28,6 +26,8 @@ import com.github.dannil.scbjavaclient.client.pricesandconsumption.ppi.spin2007y
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.ppi.spin2015monthlyandquarterly.PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient;
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
+
+import org.junit.jupiter.api.Test;
 
 @Suite
 public class PricesAndConsumptionPPIClientTest {

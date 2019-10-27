@@ -20,12 +20,12 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
@@ -52,10 +52,10 @@ public class FinancialMarketsBalanceOfPaymentsEconomicIndicatorsClientIT {
     }
 
     @Test
-    @Date("2018-06-05")
+    @Date("2019-06-08")
     public void getBalanceOfPaymentsNetWithParameters() {
         List<String> indicators = Arrays.asList("FM120", "FM140");
-        List<String> quarters = Arrays.asList("2017K4", "2018K1");
+        List<String> quarters = Arrays.asList("2018K3", "2018K4");
 
         assertNotEquals(0, this.client.getBalanceOfPaymentsNet(indicators, quarters).size());
     }

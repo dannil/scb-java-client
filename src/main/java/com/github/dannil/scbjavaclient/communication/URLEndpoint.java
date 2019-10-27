@@ -69,6 +69,35 @@ public class URLEndpoint {
     }
 
     /**
+     * <p>Returns the language portion of this URL.</p>
+     *
+     * <p>Example: URL of
+     * <b>https://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0401/BE0401A/</b> is converted to
+     * <b>sv</b>.</p>
+     *
+     * <p>Due to speed efficiency, this method does not perform any validity check on the
+     * specified URL. Calling this method without a valid URL for the API may (and
+     * probably will) result in undefined behavior.</p>
+     *
+     * @return the language portion of this URL
+     */
+    public String getLanguage() {
+        StringBuilder builder = new StringBuilder(this.url);
+
+        // Specify the starting point. For this implementation, the starting
+        // point is the segment preceding the language tag segment in the URL
+        String startSegment = "doris";
+
+        // Find the index where the language tag starts
+        int start = builder.toString().indexOf(startSegment) + startSegment.length() + 1;
+        // Find the index where the language tag ends
+        int end = builder.toString().indexOf('/', start);
+
+        // Return the extracted language
+        return builder.substring(start, end);
+    }
+
+    /**
      * <p>Returns the table portion of this URL.</p>
      *
      * <p>Example: URL of
