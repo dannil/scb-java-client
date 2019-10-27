@@ -189,12 +189,13 @@ public abstract class AbstractClient {
     private String handleRequest(AbstractRequester requester, String url) {
         HttpResponse response = requester.getResponse(url);
         String body = null;
+        URLEndpoint endpointUrl = new URLEndpoint(url);
+        String urlLanguage = endpointUrl.getLanguage();
         if (response.getStatus() == HttpStatusCode.OK) {
             body = response.getBody();
         } else if (response.getStatus() == HttpStatusCode.NOT_FOUND
-                && !Objects.equals(this.locale, APIConstants.FALLBACK_LOCALE)) {
+                && !Objects.equals(urlLanguage, APIConstants.FALLBACK_LOCALE.getLanguage())) {
             // HTTP code 404, call the API again with the fallback language
-            URLEndpoint endpointUrl = new URLEndpoint(url);
             URLEndpoint fallbackEndpointUrl = endpointUrl.toURL(APIConstants.FALLBACK_LOCALE);
             LOGGER.debug("Couldn't find table {} for locale {}, retrying with fallback locale {}",
                     endpointUrl.getTable(), this.locale.getLanguage(), APIConstants.FALLBACK_LOCALE.getLanguage());
