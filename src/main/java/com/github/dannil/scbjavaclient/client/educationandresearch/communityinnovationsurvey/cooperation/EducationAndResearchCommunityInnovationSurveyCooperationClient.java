@@ -59,7 +59,9 @@ public class EducationAndResearchCommunityInnovationSurveyCooperationClient exte
      *
      * @see #getNumberOfInnovativeEnterprises(Collection, Collection, Collection,
      *      Collection)
+     * @deprecated table removed from API
      */
+    @Deprecated
     public List<ResponseModel> getNumberOfInnovativeEnterprises() {
         return getNumberOfInnovativeEnterprises(null, null, null, null);
     }
@@ -79,7 +81,9 @@ public class EducationAndResearchCommunityInnovationSurveyCooperationClient exte
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
+     * @deprecated table removed from API
      */
+    @Deprecated
     public List<ResponseModel> getNumberOfInnovativeEnterprises(Collection<String> industrialClassifications,
             Collection<String> sizeClasses, Collection<String> typesOfValues, Collection<String> periods) {
         Map<String, Collection<?>> mappings = new HashMap<>();
