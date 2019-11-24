@@ -33,6 +33,8 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
  */
 public class BusinessActivitiesAccomodationStatisticsMonthClient extends AbstractClient {
 
+    private static final String TYPESOFESTABLISHMENTS_CODE = "Anlaggning";
+
     /**
      * <p>Default constructor.</p>
      */
@@ -76,7 +78,7 @@ public class BusinessActivitiesAccomodationStatisticsMonthClient extends Abstrac
      */
     public List<ResponseModel> getTotalCapacity(Collection<String> typesOfEstablishments, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("Anlaggning", typesOfEstablishments);
+        mappings.put(TYPESOFESTABLISHMENTS_CODE, typesOfEstablishments);
         mappings.put(APIConstants.TIME_CODE, months);
 
         return getResponseModels("NV1701T3M", mappings);
@@ -176,7 +178,7 @@ public class BusinessActivitiesAccomodationStatisticsMonthClient extends Abstrac
             Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
-        mappings.put("Anlaggning", typesOfEstablishments);
+        mappings.put(TYPESOFESTABLISHMENTS_CODE, typesOfEstablishments);
         mappings.put(APIConstants.TIME_CODE, months);
 
         return getResponseModels("NV1701T10M", mappings);
@@ -266,7 +268,7 @@ public class BusinessActivitiesAccomodationStatisticsMonthClient extends Abstrac
             Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
-        mappings.put("Anlaggning", typesOfEstablishments);
+        mappings.put(TYPESOFESTABLISHMENTS_CODE, typesOfEstablishments);
         mappings.put(APIConstants.TIME_CODE, months);
 
         return getResponseModels("NV1701T6MN", mappings);
