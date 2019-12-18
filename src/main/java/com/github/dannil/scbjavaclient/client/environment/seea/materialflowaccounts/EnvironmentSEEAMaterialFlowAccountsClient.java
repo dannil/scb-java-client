@@ -79,7 +79,7 @@ public class EnvironmentSEEAMaterialFlowAccountsClient extends AbstractClient {
         mappings.put("MatKat", categories);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("MI1301MFTA01", mappings);
+        return getResponseModels("MI1301MFTA01N", mappings);
     }
 
     @Override

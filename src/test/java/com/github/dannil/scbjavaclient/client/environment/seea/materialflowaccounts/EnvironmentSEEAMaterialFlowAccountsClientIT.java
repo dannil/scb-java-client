@@ -39,20 +39,20 @@ public class EnvironmentSEEAMaterialFlowAccountsClientIT {
     }
 
     @Test
-    @Date("2017-05-29")
+    @Date("2019-12-18")
     public void getMaterialFlows() {
         assertNotEquals(0, this.client.getMaterialFlows().size());
     }
 
     @Test
-    @Date("2017-05-29")
+    @Date("2019-12-18")
     public void getMaterialFlowsWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getMaterialFlows(Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
-    @Date("2017-05-29")
+    @Date("2019-12-18")
     public void getMaterialFlowsWithParameters() {
         List<String> categories = Arrays.asList("1.2.1", "1.2.2");
         List<Integer> years = Arrays.asList(2010, 2011);
