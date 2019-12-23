@@ -15,9 +15,9 @@
 package com.github.dannil.scbjavaclient.communication.http.requester;
 
 import java.io.IOException;
+import java.net.http.HttpResponse;
 import java.nio.charset.Charset;
 
-import com.github.dannil.scbjavaclient.communication.http.HttpResponse;
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
 
 import org.slf4j.Logger;
@@ -26,9 +26,12 @@ import org.slf4j.LoggerFactory;
 /**
  * <p>HTTP requester for GET requests.</p>
  *
+ * @param <T>
+ *            the type of the response
+ *
  * @since 1.2.0
  */
-public class GETRequester extends AbstractRequester {
+public class GETRequester<T> extends AbstractRequester<T> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(GETRequester.class);
 
@@ -50,13 +53,13 @@ public class GETRequester extends AbstractRequester {
     }
 
     @Override
-    public HttpResponse getResponse(String url) {
+    public HttpResponse<T> getResponse(String url) {
         LOGGER.debug("GET: {}", url);
         try {
-            HttpResponse response = getResponse(getConnection(url));
-            LOGGER.debug("HTTP {}: {}", response.getStatus().getCode(), url);
+            HttpResponse<T> response = getResponse(url, "GET", "");
+            LOGGER.debug("HTTP {}: {}", response.statusCode(), url);
             return response;
-        } catch (IOException e) {
+        } catch (IOException | InterruptedException e) {
             throw new SCBClientException(e);
         }
     }

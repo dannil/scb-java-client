@@ -16,29 +16,32 @@ package com.github.dannil.scbjavaclient.communication.http.requester;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLConnection;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.net.http.HttpResponse.BodyHandlers;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Properties;
 
-import com.github.dannil.scbjavaclient.communication.http.HttpResponse;
-import com.github.dannil.scbjavaclient.communication.http.HttpStatusCode;
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
 
 /**
  * <p>Class which contains the logic for sending URL requests to a specified address.</p>
  *
+ * @param <T>
+ *            the type of the response
+ *
  * @since 1.2.0
  */
-public abstract class AbstractRequester {
-
-    private static final int HTTP_ERRORS_START_CODE = 400;
+public abstract class AbstractRequester<T> {
 
     private static Properties properties;
 
@@ -78,53 +81,30 @@ public abstract class AbstractRequester {
     }
 
     /**
-     * <p>Retrieves the <code>URLConnection</code> that represents the specified URL. This
-     * method sets the request properties for the <code>URLConnection</code> being
-     * retrieved.</p>
-     *
-     * @param url
-     *            the URL
-     * @return a <code>URLConnection</code>
-     * @throws IOException
-     *             if an exception occurred when creating the <code>URLConnection</code>
-     */
-    protected URLConnection getConnection(String url) throws IOException {
-        URLConnection connection = new URL(url).openConnection();
-        for (Entry<String, String> entry : this.requestProperties.entrySet()) {
-            connection.setRequestProperty(entry.getKey(), entry.getValue());
-        }
-        return connection;
-    }
-
-    /**
-     * <p>Retrieves the response from the specified <code>URLConnection</code>.</p>
-     *
-     * @param connection
-     *            the <code>URLConnection</code>
-     * @return the response as an {@link com.github.dannil.scbjavaclient.communication.http.HttpResponse
-     *         Response}
-     * @throws IOException
-     *             if an exception occurred while retrieving the <code>Response</code>
-     */
-    protected HttpResponse getResponse(URLConnection connection) throws IOException {
-        HttpURLConnection httpConnection = (HttpURLConnection) connection;
-        HttpStatusCode status = HttpStatusCode.valueOf(httpConnection.getResponseCode());
-        InputStream stream = null;
-        if (status.getCode() < HTTP_ERRORS_START_CODE) {
-            stream = httpConnection.getInputStream();
-        }
-        return new HttpResponse(status, stream);
-    }
-
-    /**
      * <p>Retrieves the response from the specified URL.</p>
      *
      * @param url
      *            the URL to call
-     * @return the response as an {@link com.github.dannil.scbjavaclient.communication.http.HttpResponse
-     *         Response}
+     * @return the response as an
+     *         {@link java.net.http.HttpResponse HttpResponse}
      */
-    public abstract HttpResponse getResponse(String url);
+    public abstract HttpResponse<T> getResponse(String url);
+
+    protected HttpResponse<T> getResponse(String url, String method, String body)
+            throws IOException, InterruptedException {
+        List<String> headers = new ArrayList<>();
+        for (Entry<String, String> requestProperty : this.requestProperties.entrySet()) {
+            headers.add(requestProperty.getKey());
+            headers.add(requestProperty.getValue());
+        }
+
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).headers(
+                headers.toArray(new String[0])).method(method, HttpRequest.BodyPublishers.ofString(body)).build();
+
+        HttpResponse<T> response = (HttpResponse<T>) client.send(request, BodyHandlers.ofString(getCharset()));
+        return response;
+    }
 
     /**
      * <p>Getter for charset.</p>

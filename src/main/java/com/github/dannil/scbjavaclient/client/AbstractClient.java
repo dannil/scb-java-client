@@ -14,6 +14,8 @@
 
 package com.github.dannil.scbjavaclient.client;
 
+import java.io.ByteArrayInputStream;
+import java.net.http.HttpResponse;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -23,7 +25,6 @@ import java.util.Objects;
 
 import com.github.dannil.scbjavaclient.communication.CommunicationProtocol;
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
-import com.github.dannil.scbjavaclient.communication.http.HttpResponse;
 import com.github.dannil.scbjavaclient.communication.http.HttpStatusCode;
 import com.github.dannil.scbjavaclient.communication.http.requester.AbstractRequester;
 import com.github.dannil.scbjavaclient.communication.http.requester.GETRequester;
@@ -34,6 +35,7 @@ import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.utility.Localization;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
+import com.github.dannil.scbjavaclient.utility.StreamUtility;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -157,7 +159,7 @@ public abstract class AbstractClient {
      * @return a string representation of the API's response
      */
     protected String doGetRequest(String url) {
-        AbstractRequester get = new GETRequester();
+        AbstractRequester<String> get = new GETRequester<String>();
         return handleRequest(get, url);
     }
 
@@ -171,7 +173,7 @@ public abstract class AbstractClient {
      * @return a string representation of the API's response
      */
     protected String doPostRequest(String url, String query) {
-        POSTRequester post = new POSTRequester();
+        POSTRequester<String> post = new POSTRequester<>();
         post.setQuery(query);
         return handleRequest(post, url);
     }
@@ -186,23 +188,25 @@ public abstract class AbstractClient {
      *            the URL
      * @return a string representation of the API's response
      */
-    private String handleRequest(AbstractRequester requester, String url) {
-        HttpResponse response = requester.getResponse(url);
+    private String handleRequest(AbstractRequester<String> requester, String url) {
+        HttpResponse<String> response = requester.getResponse(url);
         String body = null;
         URLEndpoint endpointUrl = new URLEndpoint(url);
         String urlLanguage = endpointUrl.getLanguage();
-        if (response.getStatus() == HttpStatusCode.OK) {
-            body = response.getBody();
-        } else if (response.getStatus() == HttpStatusCode.NOT_FOUND
+        if (response.statusCode() == HttpStatusCode.OK.getCode()) {
+            body = response.body();
+        } else if (response.statusCode() == HttpStatusCode.NOT_FOUND.getCode()
                 && !Objects.equals(urlLanguage, APIConstants.FALLBACK_LOCALE.getLanguage())) {
             // HTTP code 404, call the API again with the fallback language
             URLEndpoint fallbackEndpointUrl = endpointUrl.toURL(APIConstants.FALLBACK_LOCALE);
             LOGGER.debug("Couldn't find table {} for locale {}, retrying with fallback locale {}",
                     endpointUrl.getTable(), this.locale.getLanguage(), APIConstants.FALLBACK_LOCALE.getLanguage());
             return handleRequest(requester, fallbackEndpointUrl.toString());
-        } else if (response.getStatus() == HttpStatusCode.FORBIDDEN) {
+        } else if (response.statusCode() == HttpStatusCode.FORBIDDEN.getCode()) {
             throw new SCBClientResponseTooLargeException("The response exceeded the maximum size allowed by the API");
         }
+        // Handle possible byte order mark
+        body = StreamUtility.skipUnicodeByteOrderMark(new ByteArrayInputStream(body.getBytes()));
         return body;
     }
 
