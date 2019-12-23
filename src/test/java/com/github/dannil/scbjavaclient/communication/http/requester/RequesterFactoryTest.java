@@ -42,28 +42,29 @@ public class RequesterFactoryTest {
 
     @Test
     public void getGETRequester() {
-        AbstractRequester get = RequesterFactory.getRequester(HttpRequestMethod.GET);
+        AbstractRequester<String> get = RequesterFactory.getRequester(HttpRequestMethod.GET);
 
         assertEquals(StandardCharsets.UTF_8, get.getCharset());
     }
 
     @Test
     public void getGETRequesterWithCharset() {
-        AbstractRequester get = RequesterFactory.getRequester(HttpRequestMethod.GET, StandardCharsets.US_ASCII);
+        AbstractRequester<String> get = RequesterFactory.getRequester(HttpRequestMethod.GET, StandardCharsets.US_ASCII);
 
         assertEquals(StandardCharsets.US_ASCII, get.getCharset());
     }
 
     @Test
     public void getPOSTRequester() {
-        AbstractRequester post = RequesterFactory.getRequester(HttpRequestMethod.POST);
+        AbstractRequester<String> post = RequesterFactory.getRequester(HttpRequestMethod.POST);
 
         assertEquals(StandardCharsets.UTF_8, post.getCharset());
     }
 
     @Test
     public void getPOSTRequesterWithCharset() {
-        AbstractRequester post = RequesterFactory.getRequester(HttpRequestMethod.POST, StandardCharsets.US_ASCII);
+        AbstractRequester<String> post = RequesterFactory.getRequester(HttpRequestMethod.POST,
+                StandardCharsets.US_ASCII);
 
         assertEquals(StandardCharsets.US_ASCII, post.getCharset());
     }

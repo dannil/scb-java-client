@@ -15,8 +15,11 @@
 package com.github.dannil.scbjavaclient.communication.http.requester;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
-import com.github.dannil.scbjavaclient.communication.http.HttpResponse;
+import java.net.http.HttpResponse;
+
 import com.github.dannil.scbjavaclient.communication.http.HttpStatusCode;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
@@ -25,11 +28,15 @@ import org.junit.jupiter.api.Test;
 @Suite
 public class AbstractRequesterTest {
 
-    private class DummyRequester extends AbstractRequester {
+    private class DummyRequester extends AbstractRequester<String> {
 
         @Override
-        public HttpResponse getResponse(String url) {
-            return new HttpResponse(HttpStatusCode.OK, null);
+        public HttpResponse<String> getResponse(String url) {
+            @SuppressWarnings("unchecked")
+            HttpResponse<String> mockResponse = (HttpResponse<String>) mock(HttpResponse.class);
+            when(mockResponse.statusCode()).thenReturn(HttpStatusCode.OK.getCode());
+            when(mockResponse.body()).thenReturn("body");
+            return mockResponse;
         }
 
     }
@@ -37,10 +44,10 @@ public class AbstractRequesterTest {
     @Test
     public void getResponse() {
         DummyRequester requester = new DummyRequester();
-        HttpResponse response = requester.getResponse("");
+        HttpResponse<String> response = requester.getResponse("");
 
-        assertEquals(HttpStatusCode.OK, response.getStatus());
-        assertEquals(null, response.getStream());
+        assertEquals(HttpStatusCode.OK.getCode(), response.statusCode());
+        assertEquals("body", response.body());
     }
 
 }

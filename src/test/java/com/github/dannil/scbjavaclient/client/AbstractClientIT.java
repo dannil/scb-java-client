@@ -24,6 +24,7 @@ import java.io.File;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -45,7 +46,6 @@ import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
-import com.github.dannil.scbjavaclient.communication.http.HttpResponse;
 import com.github.dannil.scbjavaclient.communication.http.requester.GETRequester;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.exception.SCBClientResponseTooLargeException;
@@ -134,6 +134,38 @@ public class AbstractClientIT {
         String response = client.doPostRequest(url, QueryBuilder.build(map));
 
         assertNull(response);
+    }
+
+    @Test
+    // @Date("2019-12-18")
+    @Date("now")
+    public void doGetRequestWithSpecialCharacters() {
+        SCBClient client = new SCBClient(new Locale("sv", "SE"));
+
+        String url = client.getRootUrl() + "LE/LE0201/LE0201Hälsa/Tema51";
+        String response = client.doGetRequest(url);
+
+        assertNotNull(response);
+        assertTrue(response.contains("bra hälsa"));
+        assertTrue(response.contains("ålder"));
+    }
+
+    @Test
+    // @Date("2019-12-18")
+    @Date("now")
+    public void doPostRequestWithSpecialCharacters() {
+        SCBClient client = new SCBClient(new Locale("sv", "SE"));
+
+        String url = client.getRootUrl() + "LE/LE0201/LE0201Hälsa/Tema51";
+
+        Map<String, Collection<?>> inputMap = new HashMap<String, Collection<?>>();
+        inputMap.put("Alder", Collections.EMPTY_LIST);
+
+        String response = client.doPostRequest(url, QueryBuilder.build(inputMap));
+
+        assertNotNull(response);
+        assertTrue(response.contains("hälsotillstånd"));
+        assertTrue(response.contains("ålder"));
     }
 
     @Test
@@ -250,7 +282,7 @@ public class AbstractClientIT {
         List<Class<?>> matchedClasses = new ArrayList<>();
         for (File file : files) {
             // Convert path into binary name
-        	String binaryName = Files.fileToBinaryName(file, "com");
+            String binaryName = Files.fileToBinaryName(file, "com");
             if (binaryName.contains("package-info")) {
                 continue;
             }
@@ -299,7 +331,7 @@ public class AbstractClientIT {
         Map<String, List<Class<?>>> offendingClasses = new HashMap<>();
         for (File file : files) {
             // Convert path into binary name
-        	String binaryName = Files.fileToBinaryName(file, "com");
+            String binaryName = Files.fileToBinaryName(file, "com");
             if (binaryName.contains("package-info")) {
                 continue;
             }
@@ -355,7 +387,7 @@ public class AbstractClientIT {
         // Convert paths into binary names
         Set<String> binaryNames = new TreeSet<String>();
         for (File file : files) {
-        	String binaryName = Files.fileToBinaryName(file, "com");
+            String binaryName = Files.fileToBinaryName(file, "com");
             if (binaryName.contains("package-info")) {
                 continue;
             } else {
@@ -418,7 +450,7 @@ public class AbstractClientIT {
         Map<String, Integer> offendingMethods = new HashMap<String, Integer>();
         for (File file : files) {
             // Convert path into binary name
-        	String binaryName = Files.fileToBinaryName(file, "com");
+            String binaryName = Files.fileToBinaryName(file, "com");
             if (binaryName.contains("package-info")) {
                 continue;
             }
@@ -471,7 +503,7 @@ public class AbstractClientIT {
         Set<String> offendingMethods = new HashSet<>();
         for (File file : files) {
             // Convert path into binary name
-        	String binaryName = Files.fileToBinaryName(file, "com");
+            String binaryName = Files.fileToBinaryName(file, "com");
             if (binaryName.endsWith("package-info")) {
                 continue;
             }
@@ -527,10 +559,10 @@ public class AbstractClientIT {
 
                         // We need to use the English locale as the parameter names in the
                         // methods match the API
-                        GETRequester requester = new GETRequester(StandardCharsets.UTF_8);
-                        HttpResponse res = requester.getResponse(fullUrl.toURL("en").toString());
+                        GETRequester<String> requester = new GETRequester<>(StandardCharsets.UTF_8);
+                        HttpResponse<String> res = requester.getResponse(fullUrl.toURL("en").toString());
                         TimeUnit.MILLISECONDS.sleep(TestConstants.API_SLEEP_MS);
-                        String body = res.getBody();
+                        String body = res.body();
                         if (body != null) {
                             // Table exist for the given language; process it
                             JsonNode n = new JsonConverter().toNode(body);
@@ -588,7 +620,7 @@ public class AbstractClientIT {
         Map<String, List<String>> offendingCodes = new HashMap<>();
         for (File file : files) {
             // Convert path into binary name
-        	String binaryName = Files.fileToBinaryName(file, "com");
+            String binaryName = Files.fileToBinaryName(file, "com");
             if (binaryName.contains("package-info")) {
                 continue;
             }
@@ -644,7 +676,7 @@ public class AbstractClientIT {
         Map<Class<?>, Long> matchedClasses = new HashMap<>();
         for (File file : files) {
             // Convert path into binary name
-        	String binaryName = Files.fileToBinaryName(file, "com");
+            String binaryName = Files.fileToBinaryName(file, "com");
             if (binaryName.contains("package-info")) {
                 continue;
             }
@@ -718,7 +750,7 @@ public class AbstractClientIT {
         List<Class<?>> matchedClasses = new ArrayList<>();
         for (File file : files) {
             // Convert path into binary name
-        	String binaryName = Files.fileToBinaryName(file, "com");
+            String binaryName = Files.fileToBinaryName(file, "com");
             if (binaryName.contains("package-info")) {
                 continue;
             }
