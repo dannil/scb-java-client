@@ -18,10 +18,11 @@ Note that the requirements for Maven is only needed if you intend to build the p
 
 ### Java
 
-| From version | To version | Java   | 
-| ------------ | ---------- | ------ |
-| 0.0.1        | 0.6.0      | Java 7 |
-| 0.7.0        | 2.1.0      | Java 8 |
+| From version | To version | Java    | 
+| ------------ | ---------- | ------- |
+| 0.0.1        | 0.6.0      | Java 7  |
+| 0.7.0        | 2.1.0      | Java 8  |
+| 3.0.0        | > 3.0.0    | Java 11 |
 
 ### Maven
 
@@ -29,7 +30,7 @@ Note that the requirements for Maven is only needed if you intend to build the p
 | ------------ | ---------- | ----------- |
 | 0.0.1        | 1.1.0      | Maven 3.0.4 |
 | 1.2.0        | 1.2.0      | Maven 3.1.1 |
-| 2.0.0        | 2.1.0      | Maven 3.3.9 |
+| 2.0.0        | > 3.0.0    | Maven 3.3.9 |
 
 ## Installation
 
