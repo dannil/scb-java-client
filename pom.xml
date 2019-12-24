@@ -362,15 +362,18 @@
       <plugin>
         <groupId>com.github.siom79.japicmp</groupId>
         <artifactId>japicmp-maven-plugin</artifactId>
-        <version>0.14.2</version>
+        <version>0.14.3</version>
         <configuration>
           <parameter>
-            <!-- Currently has issues with detecting new public methods, see https://github.com/siom79/japicmp/issues/241 -->
-            <!-- Was resolved with https://github.com/siom79/japicmp/pull/244, so change configuration below when version 
-              after 0.14.2 is released -->
             <onlyModified>false</onlyModified>
             <onlyBinaryIncompatible>false</onlyBinaryIncompatible>
             <breakBuildBasedOnSemanticVersioning>true</breakBuildBasedOnSemanticVersioning>
+            <overrideCompatibilityChangeParameters>
+              <overrideCompatibilityChangeParameter>
+                <compatibilityChange>METHOD_ADDED_TO_PUBLIC_CLASS</compatibilityChange>
+                <semanticVersionLevel>MINOR</semanticVersionLevel>
+              </overrideCompatibilityChangeParameter>
+            </overrideCompatibilityChangeParameters>
           </parameter>
         </configuration>
         <executions>
