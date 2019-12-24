@@ -26,12 +26,9 @@ import org.slf4j.LoggerFactory;
 /**
  * <p>HTTP requester for GET requests.</p>
  *
- * @param <T>
- *            the type of the response
- *
  * @since 1.2.0
  */
-public class GETRequester<T> extends AbstractRequester<T> {
+public class GETRequester extends AbstractRequester {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(GETRequester.class);
 
@@ -53,10 +50,10 @@ public class GETRequester<T> extends AbstractRequester<T> {
     }
 
     @Override
-    public HttpResponse<T> getResponse(String url) {
+    public HttpResponse<String> getResponse(String url) {
         LOGGER.debug("GET: {}", url);
         try {
-            HttpResponse<T> response = getResponse(url, "GET", "");
+            HttpResponse<String> response = getResponse(url, "GET", "");
             LOGGER.debug("HTTP {}: {}", response.statusCode(), url);
             return response;
         } catch (IOException | InterruptedException e) {

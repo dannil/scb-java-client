@@ -43,7 +43,7 @@ public final class RequesterFactory {
      *            the method (i.e. GET or POST)
      * @return a regular (non-singleton) requester which matches the method.
      */
-    public static AbstractRequester<String> getRequester(HttpRequestMethod method) {
+    public static AbstractRequester getRequester(HttpRequestMethod method) {
         return getRequester(method, StandardCharsets.UTF_8);
     }
 
@@ -58,13 +58,13 @@ public final class RequesterFactory {
      *            the character encoding to use
      * @return a regular (non-singleton) requester which matches the method.
      */
-    public static AbstractRequester<String> getRequester(HttpRequestMethod method, Charset charset) {
+    public static AbstractRequester getRequester(HttpRequestMethod method, Charset charset) {
         switch (method) {
             case GET:
-                return new GETRequester<String>(charset);
+                return new GETRequester(charset);
 
             case POST:
-                return new POSTRequester<String>(charset);
+                return new POSTRequester(charset);
 
             default:
                 throw new IllegalArgumentException(method + " is not a valid method");

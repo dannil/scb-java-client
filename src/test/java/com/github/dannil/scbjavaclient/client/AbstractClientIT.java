@@ -559,7 +559,7 @@ public class AbstractClientIT {
 
                         // We need to use the English locale as the parameter names in the
                         // methods match the API
-                        GETRequester<String> requester = new GETRequester<>(StandardCharsets.UTF_8);
+                        GETRequester requester = new GETRequester(StandardCharsets.UTF_8);
                         HttpResponse<String> res = requester.getResponse(fullUrl.toURL("en").toString());
                         TimeUnit.MILLISECONDS.sleep(TestConstants.API_SLEEP_MS);
                         String body = res.body();

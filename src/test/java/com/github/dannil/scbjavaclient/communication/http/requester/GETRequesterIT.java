@@ -29,7 +29,7 @@ public class GETRequesterIT {
     @Test
     @Date("2019-12-22")
     public void invalidUrl() {
-        GETRequester<String> requester = new GETRequester<>();
+        GETRequester requester = new GETRequester();
 
         assertThrows(IllegalArgumentException.class, () -> requester.getResponse("example.example").body());
     }

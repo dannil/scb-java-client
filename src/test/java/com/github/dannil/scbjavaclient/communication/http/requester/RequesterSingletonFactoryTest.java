@@ -110,7 +110,7 @@ public class RequesterSingletonFactoryTest {
 
     @Test
     public void getRequester() {
-        AbstractRequester<String> abs = RequesterSingletonFactory.getRequester(HttpRequestMethod.GET);
+        AbstractRequester abs = RequesterSingletonFactory.getRequester(HttpRequestMethod.GET);
 
         assertEquals(RequesterSingletonFactory.getRequester(HttpRequestMethod.GET), abs);
     }
@@ -132,9 +132,9 @@ public class RequesterSingletonFactoryTest {
 
     @Test
     public void requesterIsSingleton() {
-        AbstractRequester<String> abs1 = RequesterSingletonFactory.getRequester(HttpRequestMethod.GET,
+        AbstractRequester abs1 = RequesterSingletonFactory.getRequester(HttpRequestMethod.GET,
                 StandardCharsets.UTF_8);
-        AbstractRequester<String> abs2 = RequesterSingletonFactory.getRequester(HttpRequestMethod.GET,
+        AbstractRequester abs2 = RequesterSingletonFactory.getRequester(HttpRequestMethod.GET,
                 StandardCharsets.US_ASCII);
 
         assertEquals(StandardCharsets.US_ASCII, abs1.getCharset());

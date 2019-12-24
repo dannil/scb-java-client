@@ -30,7 +30,7 @@ import com.github.dannil.scbjavaclient.communication.http.HttpRequestMethod;
  */
 public final class RequesterSingletonFactory {
 
-    private static Map<HttpRequestMethod, AbstractRequester<String>> requesters;
+    private static Map<HttpRequestMethod, AbstractRequester> requesters;
 
     static {
         requesters = new EnumMap<>(HttpRequestMethod.class);
@@ -55,7 +55,7 @@ public final class RequesterSingletonFactory {
      *            the method (i.e. GET or POST)
      * @return a singleton requester which matches the method.
      */
-    public static AbstractRequester<String> getRequester(HttpRequestMethod method) {
+    public static AbstractRequester getRequester(HttpRequestMethod method) {
         return getRequester(method, StandardCharsets.UTF_8);
     }
 
@@ -69,11 +69,11 @@ public final class RequesterSingletonFactory {
      *            the character encoding to use
      * @return a singleton requester which matches the method.
      */
-    public static AbstractRequester<String> getRequester(HttpRequestMethod method, Charset charset) {
+    public static AbstractRequester getRequester(HttpRequestMethod method, Charset charset) {
         if (!requesters.containsKey(method)) {
             throw new IllegalArgumentException(method + " is not a valid method");
         }
-        AbstractRequester<String> abs = requesters.get(method);
+        AbstractRequester abs = requesters.get(method);
         abs.setCharset(charset);
         return abs;
     }
@@ -83,7 +83,7 @@ public final class RequesterSingletonFactory {
      */
     private static final class GETHolder {
 
-        protected static final AbstractRequester<String> INSTANCE = new GETRequester<>(StandardCharsets.UTF_8);
+        protected static final AbstractRequester INSTANCE = new GETRequester(StandardCharsets.UTF_8);
 
         /**
          * Private constructor.
@@ -99,7 +99,7 @@ public final class RequesterSingletonFactory {
      */
     private static final class POSTHolder {
 
-        protected static final AbstractRequester<String> INSTANCE = new POSTRequester<>(StandardCharsets.UTF_8);
+        protected static final AbstractRequester INSTANCE = new POSTRequester(StandardCharsets.UTF_8);
 
         /**
          * Private constructor.

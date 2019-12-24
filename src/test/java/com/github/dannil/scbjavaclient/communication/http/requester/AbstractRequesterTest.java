@@ -28,7 +28,7 @@ import org.junit.jupiter.api.Test;
 @Suite
 public class AbstractRequesterTest {
 
-    private class DummyRequester extends AbstractRequester<String> {
+    private class DummyRequester extends AbstractRequester {
 
         @Override
         public HttpResponse<String> getResponse(String url) {

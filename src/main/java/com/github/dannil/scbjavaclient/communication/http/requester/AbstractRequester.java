@@ -36,12 +36,9 @@ import com.github.dannil.scbjavaclient.exception.SCBClientException;
 /**
  * <p>Class which contains the logic for sending URL requests to a specified address.</p>
  *
- * @param <T>
- *            the type of the response
- *
  * @since 1.2.0
  */
-public abstract class AbstractRequester<T> {
+public abstract class AbstractRequester {
 
     private static Properties properties;
 
@@ -88,9 +85,9 @@ public abstract class AbstractRequester<T> {
      * @return the response as an
      *         {@link java.net.http.HttpResponse HttpResponse}
      */
-    public abstract HttpResponse<T> getResponse(String url);
+    public abstract HttpResponse<String> getResponse(String url);
 
-    protected HttpResponse<T> getResponse(String url, String method, String body)
+    protected HttpResponse<String> getResponse(String url, String method, String body)
             throws IOException, InterruptedException {
         List<String> headers = new ArrayList<>();
         for (Entry<String, String> requestProperty : this.requestProperties.entrySet()) {
@@ -102,7 +99,7 @@ public abstract class AbstractRequester<T> {
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).headers(
                 headers.toArray(new String[0])).method(method, HttpRequest.BodyPublishers.ofString(body)).build();
 
-        HttpResponse<T> response = (HttpResponse<T>) client.send(request, BodyHandlers.ofString(getCharset()));
+        HttpResponse<String> response = client.send(request, BodyHandlers.ofString(getCharset()));
         return response;
     }
 

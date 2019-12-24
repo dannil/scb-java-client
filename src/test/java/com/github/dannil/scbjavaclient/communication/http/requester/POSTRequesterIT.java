@@ -29,7 +29,7 @@ public class POSTRequesterIT {
     @Test
     @Date("2019-12-22")
     public void invalidUrl() {
-        POSTRequester<String> requester = new POSTRequester<>();
+        POSTRequester requester = new POSTRequester();
         requester.setQuery("query");
 
         assertThrows(IllegalArgumentException.class, () -> requester.getResponse("example.example").body());

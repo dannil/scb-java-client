@@ -159,7 +159,7 @@ public abstract class AbstractClient {
      * @return a string representation of the API's response
      */
     protected String doGetRequest(String url) {
-        AbstractRequester<String> get = new GETRequester<String>();
+        AbstractRequester get = new GETRequester();
         return handleRequest(get, url);
     }
 
@@ -173,7 +173,7 @@ public abstract class AbstractClient {
      * @return a string representation of the API's response
      */
     protected String doPostRequest(String url, String query) {
-        POSTRequester<String> post = new POSTRequester<>();
+        POSTRequester post = new POSTRequester();
         post.setQuery(query);
         return handleRequest(post, url);
     }
@@ -188,7 +188,7 @@ public abstract class AbstractClient {
      *            the URL
      * @return a string representation of the API's response
      */
-    private String handleRequest(AbstractRequester<String> requester, String url) {
+    private String handleRequest(AbstractRequester requester, String url) {
         HttpResponse<String> response = requester.getResponse(url);
         String body = null;
         URLEndpoint endpointUrl = new URLEndpoint(url);

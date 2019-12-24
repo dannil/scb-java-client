@@ -30,7 +30,7 @@ public class POSTRequesterTest {
 
     @Test
     public void createWithDefaultConstructor() {
-        POSTRequester<String> post = new POSTRequester<>();
+        POSTRequester post = new POSTRequester();
 
         // assertEquals(locale, post.getLocale());
         assertEquals(StandardCharsets.UTF_8, post.getCharset());
@@ -38,7 +38,7 @@ public class POSTRequesterTest {
 
     @Test
     public void getCharset() {
-        POSTRequester<String> post = new POSTRequester<>();
+        POSTRequester post = new POSTRequester();
 
         assertEquals(StandardCharsets.UTF_8, post.getCharset());
     }
@@ -54,7 +54,7 @@ public class POSTRequesterTest {
 
     @Test
     public void getPayload() {
-        POSTRequester<String> post = new POSTRequester<>();
+        POSTRequester post = new POSTRequester();
         post.setQuery("payload");
 
         assertEquals("payload", post.getQuery());
@@ -62,7 +62,7 @@ public class POSTRequesterTest {
 
     @Test
     public void doRequestIllegalStateNullPayload() throws IOException {
-        POSTRequester<String> post = new POSTRequester<>();
+        POSTRequester post = new POSTRequester();
 
         assertThrows(IllegalStateException.class,
                 () -> post.getResponse(URLEndpoint.getRootUrl() + "BE/BE0701/MedelAlderNY").body());
