@@ -40,7 +40,7 @@ public class BusinessActivitiesProductionValueIndexClientIT {
     }
 
     @Test
-    @Date("2017-12-29")
+    @Date("2019-10-27")
     @AllowFailure
     public void getProductionValueIndex() {
         assertNotEquals(0, this.client.getProductionValueIndex().size());

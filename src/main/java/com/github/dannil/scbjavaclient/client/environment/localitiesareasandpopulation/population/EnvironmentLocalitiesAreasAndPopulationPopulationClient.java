@@ -82,7 +82,7 @@ public class EnvironmentLocalitiesAreasAndPopulationPopulationClient extends Abs
         mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("LandarealTatort", mappings);
+        return getResponseModels("LandarealTatortN", mappings);
     }
 
     /**

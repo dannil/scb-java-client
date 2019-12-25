@@ -20,6 +20,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import com.github.dannil.scbjavaclient.test.extensions.AllowFailure;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
@@ -38,14 +39,18 @@ public class EducationAndResearchCommunityInnovationSurveyCooperationClientIT {
         this.client = new EducationAndResearchCommunityInnovationSurveyCooperationClient();
     }
 
+    @SuppressWarnings("deprecation")
     @Test
-    @Date("2017-07-11")
+    @Date("2019-11-10")
+    @AllowFailure
     public void getNumberOfInnovativeEnterprises() {
         assertNotEquals(0, this.client.getNumberOfInnovativeEnterprises().size());
     }
 
+    @SuppressWarnings("deprecation")
     @Test
-    @Date("2017-07-11")
+    @Date("2019-11-10")
+    @AllowFailure
     public void getNumberOfInnovativeEnterprisesWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getNumberOfInnovativeEnterprises(Collections.<String>emptyList(),
@@ -53,8 +58,10 @@ public class EducationAndResearchCommunityInnovationSurveyCooperationClientIT {
                         Collections.<String>emptyList()).size());
     }
 
+    @SuppressWarnings("deprecation")
     @Test
-    @Date("2017-07-11")
+    @Date("2019-11-10")
+    @AllowFailure
     public void getNumberOfInnovativeEnterprisesWithParameters() {
         List<String> industrialClassifications = Arrays.asList("64-66", "71+72");
         List<String> sizeClasses = Arrays.asList("10-49", "50-249");

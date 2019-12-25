@@ -78,6 +78,13 @@ public class URLEndpointTest {
 
         assertEquals("https://api.scb.se/OV0104/v1/doris/fr/ssd/AM/", url.toString());
     }
+    
+    @Test
+    public void getLanguage() {
+        URLEndpoint url = new URLEndpoint("http://api.scb.se/OV0104/v1/doris/fr/ssd/BE/BE0401/BE0401A/");
+
+        assertEquals("fr", url.getLanguage());
+    }
 
     @Test
     public void getTable() {

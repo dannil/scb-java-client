@@ -20,6 +20,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import com.github.dannil.scbjavaclient.test.extensions.AllowFailure;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
@@ -60,21 +61,27 @@ public class GoodsAndServicesTurnoverServiceSectorTurnoverClientIT {
         assertNotEquals(0, this.client.getRetailSaleIndexSIC2007Monthly(industrialClassifications, months).size());
     }
 
+    @SuppressWarnings("deprecation")
     @Test
-    @Date("2017-12-18")
+    @Date("2019-12-22")
+    @AllowFailure
     public void getRetailSaleIndexSIC2007Yearly() {
         assertNotEquals(0, this.client.getRetailSaleIndexSIC2007Yearly().size());
     }
 
+    @SuppressWarnings("deprecation")
     @Test
-    @Date("2017-12-18")
+    @Date("2019-12-22")
+    @AllowFailure
     public void getRetailSaleIndexSIC2007YearlyWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getRetailSaleIndexSIC2007Yearly(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
+    @SuppressWarnings("deprecation")
     @Test
-    @Date("2017-12-18")
+    @Date("2019-12-22")
+    @AllowFailure
     public void getRetailSaleIndexSIC2007YearlyWithParameters() {
         List<String> industrialClassifications = Arrays.asList("47.2exkl47.25", "47.51+47.71-72");
         List<Integer> years = Arrays.asList(2001, 2002);
