@@ -22,16 +22,18 @@ import com.github.dannil.scbjavaclient.client.population.statistics.amount.Popul
 import com.github.dannil.scbjavaclient.client.population.statistics.asylumseekers.PopulationStatisticsAsylumSeekersClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.averageage.PopulationStatisticsAverageAgeClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.background.PopulationStatisticsBackgroundClient;
+import com.github.dannil.scbjavaclient.client.population.statistics.citizenship.PopulationStatisticsCitizenshipClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.deaths.PopulationStatisticsDeathsClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.density.PopulationStatisticsDensityClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.foreignbornpersons.PopulationStatisticsForeignBornPersonsClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.foreigncitizens.PopulationStatisticsForeignCitizensClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.household.PopulationStatisticsHouseholdClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.livebirths.PopulationStatisticsLiveBirthsClient;
+import com.github.dannil.scbjavaclient.client.population.statistics.meanpopulation.PopulationStatisticsMeanPopulationClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.migration.PopulationStatisticsMigrationClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.partnership.PopulationStatisticsPartnershipClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.vitalevents.PopulationStatisticsVitalEventsClient;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
  * <p>Client which handles population statistics data fetching.</p>
@@ -51,12 +53,14 @@ public class PopulationStatisticsClient extends AbstractContainerClient {
         addClient("asylumseekers", new PopulationStatisticsAsylumSeekersClient());
         addClient("averageage", new PopulationStatisticsAverageAgeClient());
         addClient("background", new PopulationStatisticsBackgroundClient());
+        addClient("citizenship", new PopulationStatisticsCitizenshipClient());
         addClient("deaths", new PopulationStatisticsDeathsClient());
         addClient("density", new PopulationStatisticsDensityClient());
         addClient("foreignbornpersons", new PopulationStatisticsForeignBornPersonsClient());
         addClient("foreigncitizens", new PopulationStatisticsForeignCitizensClient());
         addClient("household", new PopulationStatisticsHouseholdClient());
         addClient("livebirths", new PopulationStatisticsLiveBirthsClient());
+        addClient("meanpopulation", new PopulationStatisticsMeanPopulationClient());
         addClient("migration", new PopulationStatisticsMigrationClient());
         addClient("partnership", new PopulationStatisticsPartnershipClient());
         addClient("vitalevents", new PopulationStatisticsVitalEventsClient());
@@ -124,6 +128,16 @@ public class PopulationStatisticsClient extends AbstractContainerClient {
     }
 
     /**
+     * <p>Retrieve the client for interacting with population statistics citizenship data.
+     * </p>
+     *
+     * @return a client for population statistics citizenship data
+     */
+    public PopulationStatisticsCitizenshipClient citizenship() {
+        return (PopulationStatisticsCitizenshipClient) getClient("citizenship");
+    }
+
+    /**
      * <p>Retrieve the client for interacting with population statistics deaths data.</p>
      *
      * @return a client for population statistics deaths data
@@ -180,6 +194,16 @@ public class PopulationStatisticsClient extends AbstractContainerClient {
      */
     public PopulationStatisticsLiveBirthsClient liveBirths() {
         return (PopulationStatisticsLiveBirthsClient) getClient("livebirths");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with population statistics mean population
+     * data. </p>
+     *
+     * @return a client for population statistics mean population data
+     */
+    public PopulationStatisticsMeanPopulationClient meanPopulation() {
+        return (PopulationStatisticsMeanPopulationClient) getClient("meanpopulation");
     }
 
     /**

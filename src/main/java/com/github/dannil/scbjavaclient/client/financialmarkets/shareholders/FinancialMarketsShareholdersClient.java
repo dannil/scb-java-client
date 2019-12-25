@@ -21,8 +21,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
@@ -67,16 +67,16 @@ public class FinancialMarketsShareholdersClient extends AbstractClient {
      *
      * @param sectors
      *            the sectors to fetch data for
-     * @param halfYears
-     *            the half years to fetch data for
+     * @param twoTimesPerYears
+     *            the two times per years to fetch data for
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getOwnershipOfShares(Collection<String> sectors, Collection<String> halfYears) {
+    public List<ResponseModel> getOwnershipOfShares(Collection<String> sectors, Collection<String> twoTimesPerYears) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.SECTOR_CODE, sectors);
-        mappings.put(APIConstants.TIME_CODE, halfYears);
+        mappings.put(APIConstants.TIME_CODE, twoTimesPerYears);
 
         return getResponseModels("AktieAgarNAr", mappings);
     }
@@ -102,18 +102,18 @@ public class FinancialMarketsShareholdersClient extends AbstractClient {
      *            the sectors to fetch data for
      * @param marketplaces
      *            the marketplaces to fetch data for
-     * @param halfYears
-     *            the half years to fetch data for
+     * @param twoTimesPerYears
+     *            the two times per years to fetch data for
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
     public List<ResponseModel> getOwnershipOfSharesByMarketplace(Collection<String> sectors,
-            Collection<String> marketplaces, Collection<String> halfYears) {
+            Collection<String> marketplaces, Collection<String> twoTimesPerYears) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.SECTOR_CODE, sectors);
         mappings.put("Marknadsplats", marketplaces);
-        mappings.put(APIConstants.TIME_CODE, halfYears);
+        mappings.put(APIConstants.TIME_CODE, twoTimesPerYears);
 
         return getResponseModels("AktieAgarMarknad", mappings);
     }
@@ -139,18 +139,18 @@ public class FinancialMarketsShareholdersClient extends AbstractClient {
      *            the sectors to fetch data for
      * @param classesOfShares
      *            the classes of shares to fetch data for
-     * @param halfYears
-     *            the half years to fetch data for
+     * @param twoTimesPerYears
+     *            the two times per years to fetch data for
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
     public List<ResponseModel> getOwnershipOfSharesBySeries(Collection<String> sectors,
-            Collection<String> classesOfShares, Collection<String> halfYears) {
+            Collection<String> classesOfShares, Collection<String> twoTimesPerYears) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.SECTOR_CODE, sectors);
         mappings.put("Aktieserie", classesOfShares);
-        mappings.put(APIConstants.TIME_CODE, halfYears);
+        mappings.put(APIConstants.TIME_CODE, twoTimesPerYears);
 
         return getResponseModels("AktieAgarSerieN", mappings);
     }
@@ -174,16 +174,17 @@ public class FinancialMarketsShareholdersClient extends AbstractClient {
      *
      * @param countries
      *            the countries to fetch data for
-     * @param halfYears
-     *            the half years to fetch data for
+     * @param twoTimesPerYears
+     *            the two times per years to fetch data for
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getForeignOwnershipOfShares(Collection<String> countries, Collection<String> halfYears) {
+    public List<ResponseModel> getForeignOwnershipOfShares(Collection<String> countries,
+            Collection<String> twoTimesPerYears) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("Agarland", countries);
-        mappings.put(APIConstants.TIME_CODE, halfYears);
+        mappings.put(APIConstants.TIME_CODE, twoTimesPerYears);
 
         return getResponseModels("AktieAgarUtland", mappings);
     }

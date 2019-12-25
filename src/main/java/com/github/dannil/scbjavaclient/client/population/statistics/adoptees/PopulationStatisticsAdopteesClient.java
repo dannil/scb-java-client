@@ -21,8 +21,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
@@ -67,19 +67,19 @@ public class PopulationStatisticsAdopteesClient extends AbstractClient {
      *
      * @param sexes
      *            the sexes
-     * @param yearOfBirths
-     *            the year of births
+     * @param yearsOfBirths
+     *            the years of births
      * @param years
      *            the years
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getAdoptions(Collection<String> sexes, Collection<Integer> yearOfBirths,
+    public List<ResponseModel> getAdoptions(Collection<String> sexes, Collection<Integer> yearsOfBirths,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.SEX_CODE, sexes);
-        mappings.put("Fodelsear", yearOfBirths);
+        mappings.put("Fodelsear", yearsOfBirths);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("Adopterade", mappings);

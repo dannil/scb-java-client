@@ -21,8 +21,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
@@ -51,19 +51,18 @@ public class EnvironmentLocalitiesAreasAndPopulationPopulationClient extends Abs
     }
 
     // Daniel 2017-03-29: Returns HTTP 403
-    //
-    // /**
-    // * <p>Fetch all population and land area within localities data.</p>
-    // *
-    // * @return the data wrapped in a list of
-    // * {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-    // * objects
-    // *
-    // * @see #getPopulationAndLandAreaWithinLocalities(Collection, Collection)
-    // */
-    // public List<ResponseModel> getPopulationAndLandAreaWithinLocalities() {
-    // return getPopulationAndLandAreaWithinLocalities(null, null);
-    // }
+    /**
+     * <p>Fetch all population and land area within localities data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getPopulationAndLandAreaWithinLocalities(Collection, Collection)
+     */
+    public List<ResponseModel> getPopulationAndLandAreaWithinLocalities() {
+        return getPopulationAndLandAreaWithinLocalities(null, null);
+    }
 
     /**
      * <p>Fetch all population and land area within localities data which match the input
@@ -83,7 +82,7 @@ public class EnvironmentLocalitiesAreasAndPopulationPopulationClient extends Abs
         mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("LandarealTatort", mappings);
+        return getResponseModels("LandarealTatortN", mappings);
     }
 
     /**
@@ -106,8 +105,8 @@ public class EnvironmentLocalitiesAreasAndPopulationPopulationClient extends Abs
      *
      * @param regions
      *            the regions to fetch data for
-     * @param typeOfAreas
-     *            the type of areas to fetch data for
+     * @param typesOfAreas
+     *            the types of areas to fetch data for
      * @param years
      *            the years to fetch data for
      * @return the data wrapped in a list of
@@ -115,10 +114,10 @@ public class EnvironmentLocalitiesAreasAndPopulationPopulationClient extends Abs
      *         objects
      */
     public List<ResponseModel> getPopulationAndLandAreaWithinAndOutsideOfLocalities(Collection<String> regions,
-            Collection<String> typeOfAreas, Collection<Integer> years) {
+            Collection<String> typesOfAreas, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
-        mappings.put("TypOmr", typeOfAreas);
+        mappings.put("TypOmr", typesOfAreas);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("BefLandInvKvmTO", mappings);

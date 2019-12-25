@@ -47,9 +47,10 @@ public class PopulationStatisticsAverageAgeClientIT {
     @Date("2017-01-01")
     public void getAverageAgeWithParameters() {
         List<String> regions = Arrays.asList("1263");
-        List<String> genders = Arrays.asList("1", "2", "1+2");
+        List<String> sexes = Arrays.asList("1", "2", "1+2");
         List<Integer> years = Arrays.asList(2002);
 
-        assertNotEquals(0, this.client.getAverageAge(regions, genders, years).size());
+        assertNotEquals(0, this.client.getAverageAge(regions, sexes, years).size());
     }
+    
 }

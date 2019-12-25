@@ -21,8 +21,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
@@ -50,42 +50,44 @@ public class LivingConditionsFamiliesAdoptionsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all child adoptions data.</p>
+     * <p>Fetch all adopted children and young persons aged 0-21 data.</p>
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @see #getChildAdoptions(Collection, Collection, Collection, Collection)
+     * @see #getAllAdoptedChildrenAndYoungPersons(Collection, Collection, Collection,
+     *      Collection)
      */
-    public List<ResponseModel> getChildAdoptions() {
-        return getChildAdoptions(null, null, null, null);
+    public List<ResponseModel> getAllAdoptedChildrenAndYoungPersons() {
+        return getAllAdoptedChildrenAndYoungPersons(null, null, null, null);
     }
 
     /**
-     * <p>Fetch all child adoptions data which match the input constraints.</p>
+     * <p>Fetch all adopted children and young persons aged 0-21 data which match the
+     * input constraints.</p>
      *
      * @param sexes
      *            the sexes
      * @param ages
      *            the ages
-     * @param birthCountries
-     *            the birth countries
+     * @param countriesOfBirths
+     *            the countries of births
      * @param years
      *            the years
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getChildAdoptions(Collection<String> sexes, Collection<String> ages,
-            Collection<String> birthCountries, Collection<Integer> years) {
+    public List<ResponseModel> getAllAdoptedChildrenAndYoungPersons(Collection<String> sexes, Collection<String> ages,
+            Collection<String> countriesOfBirths, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.SEX_CODE, sexes);
         mappings.put(APIConstants.AGE_CODE, ages);
-        mappings.put("Fodelseland", birthCountries);
+        mappings.put("Fodelseland", countriesOfBirths);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("BarnAdoption", mappings);
+        return getResponseModels("BarnAdoptionN", mappings);
     }
 
     @Override

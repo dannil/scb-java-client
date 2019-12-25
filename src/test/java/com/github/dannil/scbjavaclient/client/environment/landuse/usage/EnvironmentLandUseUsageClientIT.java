@@ -130,4 +130,26 @@ public class EnvironmentLandUseUsageClientIT {
         assertNotEquals(0, this.client.getLandUseByMunicipality(regions, categories, years).size());
     }
 
+    @Test
+    @Date("2019-03-02")
+    public void getTransportInfrastructureArea() {
+        assertNotEquals(0, this.client.getTransportInfrastructureArea().size());
+    }
+
+    @Test
+    @Date("2019-03-02")
+    public void getTransportInfrastructureAreaWithParametersEmptyLists() {
+        assertNotEquals(0, this.client.getTransportInfrastructureArea(Collections.<String>emptyList(),
+                Collections.<Integer>emptyList()).size());
+    }
+
+    @Test
+    @Date("2019-03-02")
+    public void getTransportInfrastructureAreaWithParameters() {
+        List<String> regions = Arrays.asList("0184", "0186");
+        List<Integer> years = Arrays.asList(2010);
+
+        assertNotEquals(0, this.client.getTransportInfrastructureArea(regions, years).size());
+    }
+
 }

@@ -20,6 +20,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import com.github.dannil.scbjavaclient.test.extensions.AllowFailure;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
@@ -39,13 +40,13 @@ public class GoodsAndServicesTurnoverServiceSectorTurnoverClientIT {
     }
 
     @Test
-    @Date("2017-12-18")
+    @Date("2019-06-21")
     public void getRetailSaleIndexSIC2007Monthly() {
         assertNotEquals(0, this.client.getRetailSaleIndexSIC2007Monthly().size());
     }
 
     @Test
-    @Date("2017-12-18")
+    @Date("2019-06-21")
     public void getRetailSaleIndexSIC2007MonthlyWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getRetailSaleIndexSIC2007Monthly(Collections.<String>emptyList(),
                 Collections.<String>emptyList()).size());
@@ -60,21 +61,27 @@ public class GoodsAndServicesTurnoverServiceSectorTurnoverClientIT {
         assertNotEquals(0, this.client.getRetailSaleIndexSIC2007Monthly(industrialClassifications, months).size());
     }
 
+    @SuppressWarnings("deprecation")
     @Test
-    @Date("2017-12-18")
+    @Date("2019-12-22")
+    @AllowFailure
     public void getRetailSaleIndexSIC2007Yearly() {
         assertNotEquals(0, this.client.getRetailSaleIndexSIC2007Yearly().size());
     }
 
+    @SuppressWarnings("deprecation")
     @Test
-    @Date("2017-12-18")
+    @Date("2019-12-22")
+    @AllowFailure
     public void getRetailSaleIndexSIC2007YearlyWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getRetailSaleIndexSIC2007Yearly(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
+    @SuppressWarnings("deprecation")
     @Test
-    @Date("2017-12-18")
+    @Date("2019-12-22")
+    @AllowFailure
     public void getRetailSaleIndexSIC2007YearlyWithParameters() {
         List<String> industrialClassifications = Arrays.asList("47.2exkl47.25", "47.51+47.71-72");
         List<Integer> years = Arrays.asList(2001, 2002);
@@ -127,7 +134,7 @@ public class GoodsAndServicesTurnoverServiceSectorTurnoverClientIT {
         assertNotEquals(0, this.client.getTurnoverIndexForTheServiceSectorSIC2007Monthly(industrialClassifications,
                 months).size());
     }
-    
+
     @Test
     @Date("2018-02-01")
     public void getRetailTradeSales() {
@@ -149,7 +156,5 @@ public class GoodsAndServicesTurnoverServiceSectorTurnoverClientIT {
 
         assertNotEquals(0, this.client.getRetailTradeSales(indicators, months).size());
     }
-
-    // TODO Add methods here!
 
 }

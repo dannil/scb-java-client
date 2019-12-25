@@ -54,10 +54,10 @@ public class GoodsAndServicesForeignTradeGoodsTotalClientIT {
     @Test
     @Date("2017-04-28")
     public void getImportsAndExportsOfGoodsWithParameters() {
-        List<String> importsOrExports = Arrays.asList("ITOT", "ETOT");
+        List<String> importsOfGoodsAndExportsOfGoods = Arrays.asList("ITOT", "ETOT");
         List<Integer> years = Arrays.asList(2010, 2011);
 
-        assertNotEquals(0, this.client.getImportsAndExportsOfGoods(importsOrExports, years).size());
+        assertNotEquals(0, this.client.getImportsAndExportsOfGoods(importsOfGoodsAndExportsOfGoods, years).size());
     }
 
 }

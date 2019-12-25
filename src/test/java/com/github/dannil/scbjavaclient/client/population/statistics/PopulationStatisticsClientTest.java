@@ -23,16 +23,18 @@ import com.github.dannil.scbjavaclient.client.population.statistics.amount.Popul
 import com.github.dannil.scbjavaclient.client.population.statistics.asylumseekers.PopulationStatisticsAsylumSeekersClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.averageage.PopulationStatisticsAverageAgeClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.background.PopulationStatisticsBackgroundClient;
+import com.github.dannil.scbjavaclient.client.population.statistics.citizenship.PopulationStatisticsCitizenshipClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.deaths.PopulationStatisticsDeathsClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.density.PopulationStatisticsDensityClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.foreignbornpersons.PopulationStatisticsForeignBornPersonsClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.foreigncitizens.PopulationStatisticsForeignCitizensClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.household.PopulationStatisticsHouseholdClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.livebirths.PopulationStatisticsLiveBirthsClient;
+import com.github.dannil.scbjavaclient.client.population.statistics.meanpopulation.PopulationStatisticsMeanPopulationClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.migration.PopulationStatisticsMigrationClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.partnership.PopulationStatisticsPartnershipClient;
 import com.github.dannil.scbjavaclient.client.population.statistics.vitalevents.PopulationStatisticsVitalEventsClient;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 import org.junit.jupiter.api.Test;
@@ -95,6 +97,13 @@ public class PopulationStatisticsClientTest {
 
         assertEquals(PopulationStatisticsBackgroundClient.class, client.background().getClass());
     }
+    
+    @Test
+    public void citizenshipClient() {
+        PopulationStatisticsClient client = new PopulationStatisticsClient();
+
+        assertEquals(PopulationStatisticsCitizenshipClient.class, client.citizenship().getClass());
+    }
 
     @Test
     public void deathsClient() {
@@ -136,6 +145,13 @@ public class PopulationStatisticsClientTest {
         PopulationStatisticsClient client = new PopulationStatisticsClient();
 
         assertEquals(PopulationStatisticsLiveBirthsClient.class, client.liveBirths().getClass());
+    }
+    
+    @Test
+    public void meanPopulationClient() {
+        PopulationStatisticsClient client = new PopulationStatisticsClient();
+
+        assertEquals(PopulationStatisticsMeanPopulationClient.class, client.meanPopulation().getClass());
     }
 
     @Test

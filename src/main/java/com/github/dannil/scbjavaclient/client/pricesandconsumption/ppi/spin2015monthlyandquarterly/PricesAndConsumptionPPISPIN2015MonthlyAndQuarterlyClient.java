@@ -21,8 +21,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
@@ -52,19 +52,18 @@ public class PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient extends Ab
 
     // Daniel 2017-06-06:
     // Returns HTTP 403
-    //
-    // /**
-    // * <p>Fetch all producer price index home sales data.</p>
-    // *
-    // * @return the data wrapped in a list of
-    // * {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-    // * objects
-    // *
-    // * @see #getProducerPriceIndexHomeSales(Collection, Collection)
-    // */
-    // public List<ResponseModel> getProducerPriceIndexHomeSales() {
-    // return getProducerPriceIndexHomeSales(null, null);
-    // }
+    /**
+     * <p>Fetch all producer price index home sales data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getProducerPriceIndexHomeSales(Collection, Collection)
+     */
+    public List<ResponseModel> getProducerPriceIndexHomeSales() {
+        return getProducerPriceIndexHomeSales(null, null);
+    }
 
     /**
      * <p>Fetch all producer price index home sales data which match the input
@@ -84,19 +83,18 @@ public class PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient extends Ab
 
     // Daniel 2017-06-06:
     // Returns HTTP 403
-    //
-    // /**
-    // * <p>Fetch all export price index data.</p>
-    // *
-    // * @return the data wrapped in a list of
-    // * {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-    // * objects
-    // *
-    // * @see #getExportPriceIndex(Collection, Collection)
-    // */
-    // public List<ResponseModel> getExportPriceIndex() {
-    // return getExportPriceIndex(null, null);
-    // }
+    /**
+     * <p>Fetch all export price index data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getExportPriceIndex(Collection, Collection)
+     */
+    public List<ResponseModel> getExportPriceIndex() {
+        return getExportPriceIndex(null, null);
+    }
 
     /**
      * <p>Fetch all export price index data which match the input constraints.</p>
@@ -115,19 +113,18 @@ public class PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient extends Ab
 
     // Daniel 2017-06-06:
     // Returns HTTP 403
-    //
-    // /**
-    // * <p>Fetch all import price index data.</p>
-    // *
-    // * @return the data wrapped in a list of
-    // * {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-    // * objects
-    // *
-    // * @see #getImportPriceIndex(Collection, Collection)
-    // */
-    // public List<ResponseModel> getImportPriceIndex() {
-    // return getImportPriceIndex(null, null);
-    // }
+    /**
+     * <p>Fetch all import price index data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getImportPriceIndex(Collection, Collection)
+     */
+    public List<ResponseModel> getImportPriceIndex() {
+        return getImportPriceIndex(null, null);
+    }
 
     /**
      * <p>Fetch all import price index data which match the input constraints.</p>
@@ -146,19 +143,18 @@ public class PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient extends Ab
 
     // Daniel 2017-06-06:
     // Returns HTTP 403
-    //
-    // /**
-    // * <p>Fetch all producer price index data.</p>
-    // *
-    // * @return the data wrapped in a list of
-    // * {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-    // * objects
-    // *
-    // * @see #getProducerPriceIndex(Collection, Collection)
-    // */
-    // public List<ResponseModel> getProducerPriceIndex() {
-    // return getProducerPriceIndex(null, null);
-    // }
+    /**
+     * <p>Fetch all producer price index data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getProducerPriceIndex(Collection, Collection)
+     */
+    public List<ResponseModel> getProducerPriceIndex() {
+        return getProducerPriceIndex(null, null);
+    }
 
     /**
      * <p>Fetch all producer price index data which match the input constraints.</p>
@@ -177,19 +173,18 @@ public class PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient extends Ab
 
     // Daniel 2017-06-06
     // Returns HTTP 403
-    //
-    // /**
-    // * <p>Fetch all price index for domestic supply data.</p>
-    // *
-    // * @return the data wrapped in a list of
-    // * {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-    // * objects
-    // *
-    // * @see #getPriceIndexForDomesticSupply(Collection, Collection)
-    // */
-    // public List<ResponseModel> getPriceIndexForDomesticSupply() {
-    // return getPriceIndexForDomesticSupply(null, null);
-    // }
+    /**
+     * <p>Fetch all price index for domestic supply data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getPriceIndexForDomesticSupply(Collection, Collection)
+     */
+    public List<ResponseModel> getPriceIndexForDomesticSupply() {
+        return getPriceIndexForDomesticSupply(null, null);
+    }
 
     /**
      * <p>Fetch all price index for domestic supply data which match the input

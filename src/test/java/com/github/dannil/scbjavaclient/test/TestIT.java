@@ -21,10 +21,14 @@ import java.lang.reflect.Field;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
+import com.github.dannil.scbjavaclient.client.SCBClientBuilderIT;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
@@ -43,13 +47,13 @@ public class TestIT {
         // Find files matching the wildcard pattern
         List<File> files = Files.find(execPath + "/src/test/java/com/github/dannil/scbjavaclient", "*IT.java");
 
-        // Filter out THIS class from the list
-        Filters.files(files, this.getClass());
+        // Filter out THIS and some other classes from the list
+        Filters.files(files, this.getClass(), SCBClientBuilderIT.class);
 
         List<Class<?>> matchedClasses = new ArrayList<Class<?>>();
         for (File file : files) {
             // Convert path into binary name
-            String binaryName = Files.fileToBinaryName(file);
+            String binaryName = Files.fileToBinaryName(file, "com");
 
             // Reflect the binary name into a concrete Java class
             Class<?> clazz = null;
@@ -82,7 +86,7 @@ public class TestIT {
         List<Class<?>> matchedClasses = new ArrayList<>();
         for (File file : files) {
             // Convert path into binary name
-            String binaryName = Files.fileToBinaryName(file);
+            String binaryName = Files.fileToBinaryName(file, "com");
 
             // Reflect the binary name into a concrete Java class
             Class<?> clazz = null;
@@ -129,7 +133,7 @@ public class TestIT {
         List<Class<?>> matchedClasses = new ArrayList<>();
         for (File fileMain : mainFiles) {
             // Convert path into binary name
-            String binaryNameMain = Files.fileToBinaryName(fileMain);
+            String binaryNameMain = Files.fileToBinaryName(fileMain, "com");
             if (binaryNameMain.contains("package-info") || binaryNameMain.endsWith("module-info")) {
                 continue;
             }
@@ -147,7 +151,7 @@ public class TestIT {
             }
 
             for (File fileTest : testFiles) {
-                String binaryNameTest = Files.fileToBinaryName(fileTest);
+                String binaryNameTest = Files.fileToBinaryName(fileTest, "com");
                 if (binaryNameTest.startsWith(binaryNameMain)) {
                     matchedClasses.remove(clazz);
                 }
@@ -171,22 +175,16 @@ public class TestIT {
 
         // Remove non-codes and save the values of the code fields in a list
         List<String> fields = new ArrayList<>();
-        for (int i = 0; i < apiFields.length; i++) {
-            Field field = apiFields[i];
-            if (!field.isAccessible()) {
-                field.setAccessible(true);
-            }
-            Object obj = null;
-            obj = field.get(obj);
-            if (field.getName().endsWith("_CODE")) {
-                fields.add((String) obj);
-            }
+
+        Stream<Field> streamFields = Arrays.stream(apiFields).filter(x -> x.getName().endsWith("_CODE"));
+        for (Field f : streamFields.collect(Collectors.toList())) {
+            fields.add((String) f.get(null));
         }
 
         Map<Class<?>, List<String>> matchedClasses = new LinkedHashMap<>();
-        for (File f : mainFiles) {
+        for (File file : mainFiles) {
             // Convert path into binary name
-            String binaryNameMain = Files.fileToBinaryName(f);
+            String binaryNameMain = Files.fileToBinaryName(file, "com");
             if (binaryNameMain.endsWith("package-info") || binaryNameMain.endsWith("module-info")) {
                 continue;
             }
@@ -202,7 +200,7 @@ public class TestIT {
                 assertTrue(false, e.getMessage());
             }
 
-            List<String> lines = java.nio.file.Files.readAllLines(Paths.get(f.getPath()), StandardCharsets.UTF_8);
+            List<String> lines = java.nio.file.Files.readAllLines(Paths.get(file.getPath()), StandardCharsets.UTF_8);
             List<String> offending = new ArrayList<>();
             for (String line : lines) {
                 // Skip line if it is a comment, Javadoc or alike

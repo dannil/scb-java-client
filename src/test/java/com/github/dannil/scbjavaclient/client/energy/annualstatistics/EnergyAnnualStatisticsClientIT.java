@@ -124,10 +124,10 @@ public class EnergyAnnualStatisticsClientIT {
     @Test
     @Date("2017-12-16")
     public void getElectricityUseInSwedenWithParameters() {
-        List<String> areaOfUses = Arrays.asList("StamF", "Överf");
+        List<String> areasOfUses = Arrays.asList("StamF", "Överf");
         List<Integer> years = Arrays.asList(2012, 2013);
 
-        assertNotEquals(0, this.client.getElectricityUseInSweden(areaOfUses, years).size());
+        assertNotEquals(0, this.client.getElectricityUseInSweden(areasOfUses, years).size());
     }
 
 }

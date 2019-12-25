@@ -21,8 +21,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
@@ -59,7 +59,9 @@ public class EducationAndResearchCommunityInnovationSurveyCooperationClient exte
      *
      * @see #getNumberOfInnovativeEnterprises(Collection, Collection, Collection,
      *      Collection)
+     * @deprecated table removed from API
      */
+    @Deprecated
     public List<ResponseModel> getNumberOfInnovativeEnterprises() {
         return getNumberOfInnovativeEnterprises(null, null, null, null);
     }
@@ -79,7 +81,9 @@ public class EducationAndResearchCommunityInnovationSurveyCooperationClient exte
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
+     * @deprecated table removed from API
      */
+    @Deprecated
     public List<ResponseModel> getNumberOfInnovativeEnterprises(Collection<String> industrialClassifications,
             Collection<String> sizeClasses, Collection<String> typesOfValues, Collection<String> periods) {
         Map<String, Collection<?>> mappings = new HashMap<>();

@@ -19,18 +19,24 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 
+import com.github.dannil.scbjavaclient.communication.CommunicationProtocol;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
+import com.github.dannil.scbjavaclient.communication.http.HttpResponse;
+import com.github.dannil.scbjavaclient.communication.http.HttpStatusCode;
+import com.github.dannil.scbjavaclient.communication.http.requester.AbstractRequester;
+import com.github.dannil.scbjavaclient.communication.http.requester.GETRequester;
+import com.github.dannil.scbjavaclient.communication.http.requester.POSTRequester;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
+import com.github.dannil.scbjavaclient.exception.SCBClientResponseTooLargeException;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
-import com.github.dannil.scbjavaclient.http.HttpResponse;
-import com.github.dannil.scbjavaclient.http.HttpStatusCode;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
-import com.github.dannil.scbjavaclient.http.requester.AbstractRequester;
-import com.github.dannil.scbjavaclient.http.requester.GETRequester;
-import com.github.dannil.scbjavaclient.http.requester.POSTRequester;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.utility.Localization;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>Abstract class which specifies how clients should operate.</p>
@@ -38,6 +44,10 @@ import com.github.dannil.scbjavaclient.utility.QueryBuilder;
  * @since 0.0.2
  */
 public abstract class AbstractClient {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(AbstractClient.class);
+
+    private CommunicationProtocol communicationProtocol;
 
     private Locale locale;
 
@@ -47,6 +57,7 @@ public abstract class AbstractClient {
      * <p>Default constructor.</p>
      */
     protected AbstractClient() {
+        this.communicationProtocol = CommunicationProtocol.HTTPS;
         this.locale = Locale.getDefault();
         this.localization = new Localization(this.locale);
     }
@@ -61,6 +72,29 @@ public abstract class AbstractClient {
         this();
         this.locale = locale;
         this.localization.setLocale(this.locale);
+    }
+
+    /**
+     * <p>Returns the communication protocol for this client instance.</p>
+     *
+     * @return the
+     *         {@link com.github.dannil.scbjavaclient.communication.CommunicationProtocol
+     *         CommunicationProtocol} for this client instance
+     */
+    public CommunicationProtocol getCommunicationProtocol() {
+        return this.communicationProtocol;
+    }
+
+    /**
+     * <p>Sets the communication protocol for this client instance.</p>
+     *
+     * @param communicationProtocol
+     *            the
+     *            {@link com.github.dannil.scbjavaclient.communication.CommunicationProtocol
+     *            CommunicationProtocol} for this client instance
+     */
+    public void setCommunicationProtocol(CommunicationProtocol communicationProtocol) {
+        this.communicationProtocol = communicationProtocol;
     }
 
     /**
@@ -106,12 +140,13 @@ public abstract class AbstractClient {
     }
 
     /**
-     * <p>Determines the URL for the API based on the current <code>Locale</code>.</p>
+     * <p>Determines the URL for the API based on the current <code>Locale</code> and
+     * communication protocol.</p>
      *
      * @return the URL representing the entry point for the API
      */
     protected URLEndpoint getRootUrl() {
-        return URLEndpoint.getRootUrl(this.locale);
+        return URLEndpoint.getRootUrl(this.locale, this.communicationProtocol);
     }
 
     /**
@@ -142,8 +177,8 @@ public abstract class AbstractClient {
     }
 
     /**
-     * <p>Handles the request. This method contains the common logic for handling GET and
-     * POST requests.</p>
+     * <p>Handles the HTTP request. This method contains the common logic for handling GET
+     * and POST requests.</p>
      *
      * @param requester
      *            the requester
@@ -154,12 +189,19 @@ public abstract class AbstractClient {
     private String handleRequest(AbstractRequester requester, String url) {
         HttpResponse response = requester.getResponse(url);
         String body = null;
+        URLEndpoint endpointUrl = new URLEndpoint(url);
+        String urlLanguage = endpointUrl.getLanguage();
         if (response.getStatus() == HttpStatusCode.OK) {
             body = response.getBody();
-        } else if (response.getStatus() == HttpStatusCode.NOT_FOUND) {
+        } else if (response.getStatus() == HttpStatusCode.NOT_FOUND
+                && !Objects.equals(urlLanguage, APIConstants.FALLBACK_LOCALE.getLanguage())) {
             // HTTP code 404, call the API again with the fallback language
-            URLEndpoint endpointUrl = new URLEndpoint(url).toURL(APIConstants.FALLBACK_LOCALE);
-            body = requester.getResponse(endpointUrl.toString()).getBody();
+            URLEndpoint fallbackEndpointUrl = endpointUrl.toURL(APIConstants.FALLBACK_LOCALE);
+            LOGGER.debug("Couldn't find table {} for locale {}, retrying with fallback locale {}",
+                    endpointUrl.getTable(), this.locale.getLanguage(), APIConstants.FALLBACK_LOCALE.getLanguage());
+            return handleRequest(requester, fallbackEndpointUrl.toString());
+        } else if (response.getStatus() == HttpStatusCode.FORBIDDEN) {
+            throw new SCBClientResponseTooLargeException("The response exceeded the maximum size allowed by the API");
         }
         return body;
     }

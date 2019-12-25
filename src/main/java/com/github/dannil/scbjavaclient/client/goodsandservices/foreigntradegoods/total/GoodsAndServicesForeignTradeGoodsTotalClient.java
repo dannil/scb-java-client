@@ -21,8 +21,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
@@ -66,18 +66,18 @@ public class GoodsAndServicesForeignTradeGoodsTotalClient extends AbstractClient
      * <p>Fetch all imports and exports of goods data which match the input
      * constraints.</p>
      *
-     * @param importsOrExports
-     *            the imports or exports to fetch data for
+     * @param importsOfGoodsAndExportsOfGoods
+     *            the imports of goods and exports of goods to fetch data for
      * @param years
      *            the years to fetch data for
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getImportsAndExportsOfGoods(Collection<String> importsOrExports,
+    public List<ResponseModel> getImportsAndExportsOfGoods(Collection<String> importsOfGoodsAndExportsOfGoods,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("ImportExport", importsOrExports);
+        mappings.put("ImportExport", importsOfGoodsAndExportsOfGoods);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("ImportExportSnabbAr", mappings);

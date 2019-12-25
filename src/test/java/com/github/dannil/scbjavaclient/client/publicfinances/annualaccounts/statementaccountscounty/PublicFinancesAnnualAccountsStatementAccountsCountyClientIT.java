@@ -130,20 +130,18 @@ public class PublicFinancesAnnualAccountsStatementAccountsCountyClientIT {
         assertNotEquals(0, this.client.getContributions(regions, activities, years).size());
     }
 
-    // Daniel 2017-04-17: Returns HTTP 403
-    //
-    // @Test @Date("2017-04-17")
-    // public void getIncomeAndCosts() {
-    // assertNotEquals(0, this.client.getIncomeAndCosts().size());
-    // }
+    @Test
+    @Date("2018-06-28")
+    public void getIncomeAndCosts() {
+        assertNotEquals(0, this.client.getIncomeAndCosts().size());
+    }
 
-    // Daniel 2017-04-17: Returns HTTP 403
-    //
-    // @Test @Date("2017-04-17")
-    // public void getIncomeAndCostsWithParametersEmptyLists() {
-    // assertNotEquals(0, this.client.getIncomeAndCosts(Collections.<String>emptyList(),
-    // Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
-    // }
+    @Test
+    @Date("2018-06-28")
+    public void getIncomeAndCostsWithParametersEmptyLists() {
+        assertNotEquals(0, this.client.getIncomeAndCosts(Collections.<String>emptyList(),
+                Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
+    }
 
     @Test
     @Date("2017-04-17")

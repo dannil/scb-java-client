@@ -58,10 +58,10 @@ public class PopulationStatisticsHouseholdClientIT {
     public void getNumberOfHouseholdsAndPersonsWithParameters() {
         List<String> regions = Arrays.asList("0162", "0180");
         List<String> typesOfHouseholds = Arrays.asList("SMUB", "SAKNAS");
-        List<String> numberOfChildrens = Arrays.asList("M1B", "M2B");
+        List<String> numberOfChildren = Arrays.asList("M1B", "M2B");
         List<Integer> years = Arrays.asList(2014);
 
-        assertNotEquals(0, this.client.getNumberOfHouseholdsAndPersons(regions, typesOfHouseholds, numberOfChildrens,
+        assertNotEquals(0, this.client.getNumberOfHouseholdsAndPersons(regions, typesOfHouseholds, numberOfChildren,
                 years).size());
     }
 

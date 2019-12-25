@@ -21,8 +21,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
@@ -50,6 +50,8 @@ public class GoodsAndServicesTurnoverServiceSectorTurnoverClient extends Abstrac
         super(locale);
     }
 
+    // Daniel, 2018-06-28
+    // Returns HTTP 403
     /**
      * <p>Fetch all retail sale index by industry (SIC 2007) monthly data.</p>
      *
@@ -92,7 +94,9 @@ public class GoodsAndServicesTurnoverServiceSectorTurnoverClient extends Abstrac
      *         objects
      *
      * @see #getRetailSaleIndexSIC2007Yearly(Collection, Collection)
+     * @deprecated table removed from API
      */
+    @Deprecated
     public List<ResponseModel> getRetailSaleIndexSIC2007Yearly() {
         return getRetailSaleIndexSIC2007Yearly(null, null);
     }
@@ -108,7 +112,9 @@ public class GoodsAndServicesTurnoverServiceSectorTurnoverClient extends Abstrac
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
+     * @deprecated table removed from API
      */
+    @Deprecated
     public List<ResponseModel> getRetailSaleIndexSIC2007Yearly(Collection<String> industrialClassifications,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
@@ -201,7 +207,8 @@ public class GoodsAndServicesTurnoverServiceSectorTurnoverClient extends Abstrac
     }
 
     /**
-     * <p>Fetch all retail trade sales comparison to previous period data which match the input constraints.</p>
+     * <p>Fetch all retail trade sales comparison to previous period data which match the
+     * input constraints.</p>
      *
      * @param indicators
      *            the indicators

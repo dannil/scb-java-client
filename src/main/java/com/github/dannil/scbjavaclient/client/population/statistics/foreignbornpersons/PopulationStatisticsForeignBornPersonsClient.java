@@ -21,8 +21,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
@@ -73,33 +73,8 @@ public class PopulationStatisticsForeignBornPersonsClient extends AbstractClient
      *            the ages
      * @param sexes
      *            the sexes
-     * @param years
-     *            the years
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     * @deprecated use
-     *             {@link #getSwedishAndForeignBornPopulation(Collection, Collection, Collection, Collection, Collection)}
-     *             instead.
-     */
-    @Deprecated
-    public List<ResponseModel> getSwedishAndForeignBornPopulation(Collection<String> regions, Collection<String> ages,
-            Collection<Integer> sexes, Collection<Integer> years) {
-        return getSwedishAndForeignBornPopulation(regions, ages, sexes, null, years);
-    }
-
-    /**
-     * <p>Fetch all Swedish and foreign-born population data which match the input
-     * constraints.</p>
-     *
-     * @param regions
-     *            the regions
-     * @param ages
-     *            the ages
-     * @param sexes
-     *            the sexes
-     * @param regionOfBirths
-     *            the region of births
+     * @param regionsOfBirths
+     *            the regions of births
      * @param years
      *            the years
      * @return the data wrapped in a list of
@@ -107,12 +82,12 @@ public class PopulationStatisticsForeignBornPersonsClient extends AbstractClient
      *         objects
      */
     public List<ResponseModel> getSwedishAndForeignBornPopulation(Collection<String> regions, Collection<String> ages,
-            Collection<Integer> sexes, Collection<String> regionOfBirths, Collection<Integer> years) {
+            Collection<Integer> sexes, Collection<String> regionsOfBirths, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put(APIConstants.AGE_CODE, ages);
         mappings.put(APIConstants.SEX_CODE, sexes);
-        mappings.put("Fodelseregion", regionOfBirths);
+        mappings.put("Fodelseregion", regionsOfBirths);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("InrUtrFoddaRegAlKon", mappings);

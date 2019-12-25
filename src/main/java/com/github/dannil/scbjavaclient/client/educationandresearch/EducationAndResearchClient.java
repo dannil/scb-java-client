@@ -19,7 +19,8 @@ import java.util.Locale;
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.educationandresearch.activityaftertraining.EducationAndResearchActivityAfterTrainingClient;
 import com.github.dannil.scbjavaclient.client.educationandresearch.communityinnovationsurvey.EducationAndResearchCommunityInnovationSurveyClient;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.client.educationandresearch.folkhighschoolstatistics.EducationAndResearchFolkHighSchoolStatisticsClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
  * <p>Client which handles education and research data fetching.</p>
@@ -36,6 +37,7 @@ public class EducationAndResearchClient extends AbstractContainerClient {
 
         addClient("activityaftertraining", new EducationAndResearchActivityAfterTrainingClient());
         addClient("communityinnovationsurvey", new EducationAndResearchCommunityInnovationSurveyClient());
+        addClient("folkhighschoolstatistics", new EducationAndResearchFolkHighSchoolStatisticsClient());
     }
 
     /**
@@ -68,6 +70,16 @@ public class EducationAndResearchClient extends AbstractContainerClient {
      */
     public EducationAndResearchCommunityInnovationSurveyClient communityInnovationSurvey() {
         return (EducationAndResearchCommunityInnovationSurveyClient) getClient("communityinnovationsurvey");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with education and research folk high school
+     * statistics data.</p>
+     *
+     * @return a client for education and research folk high school statistics data
+     */
+    public EducationAndResearchFolkHighSchoolStatisticsClient folkHighSchoolStatistics() {
+        return (EducationAndResearchFolkHighSchoolStatisticsClient) getClient("folkhighschoolstatistics");
     }
 
     @Override

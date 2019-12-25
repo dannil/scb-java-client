@@ -21,8 +21,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
@@ -172,6 +172,35 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
     public List<ResponseModel> getLandUseByMunicipality(Collection<String> regions, Collection<Integer> categories,
             Collection<Integer> years) {
         return generate(regions, categories, years, "MarkanvKn");
+    }
+
+    /**
+     * <p>Fetch all transport infrastructure area data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getTransportInfrastructureArea(Collection, Collection)
+     */
+    public List<ResponseModel> getTransportInfrastructureArea() {
+        return getTransportInfrastructureArea(null, null);
+    }
+
+    /**
+     * <p>Fetch all transport infrastructure area data which match the input
+     * constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getTransportInfrastructureArea(Collection<String> regions, Collection<Integer> years) {
+        return generate(regions, null, years, "TransportInfAreal");
     }
 
     /**

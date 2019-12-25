@@ -1,43 +1,43 @@
 <?xml version="1.0"?>
-<!DOCTYPE module PUBLIC
-          "-//Puppy Crawl//DTD Check Configuration 1.3//EN"
-          "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
+<!DOCTYPE module PUBLIC 
+    "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
+    "https://checkstyle.org/dtds/configuration_1_3.dtd">
 
 <module name="Checker">
   <property name="fileExtensions" value="java, properties, xml" />
 
-  <!-- Checks that a package-info.java file exists for each package. -->
+  <!-- Checks that a package-info.java file exists for each package -->
   <!-- See http://checkstyle.sf.net/config_javadoc.html#JavadocPackage -->
   <module name="JavadocPackage" />
 
-  <!-- Checks whether files end with a new line. -->
+  <!-- Checks whether files end with a new line -->
   <!-- See http://checkstyle.sf.net/config_misc.html#NewlineAtEndOfFile -->
   <module name="NewlineAtEndOfFile">
     <property name="lineSeparator" value="lf" />
   </module>
+  
+  <module name="LineLength">
+    <property name="max" value="130" />
+  </module>
 
-  <!-- Checks that property files contain the same keys. -->
+  <!-- Checks that property files contain the same keys -->
   <!-- See http://checkstyle.sf.net/config_misc.html#Translation -->
   <module name="Translation">
     <property name="fileExtensions" value="language" />
     <property name="requiredTranslations" value="en" />
   </module>
 
-  <!-- Checks properties files for duplicated properties. -->
+  <!-- Checks properties files for duplicated properties -->
   <!-- See http://checkstyle.sf.net/config_misc.html#UniqueProperties -->
   <module name="UniqueProperties">
     <property name="fileExtensions" value="language" />
   </module>
 
-  <!-- Checks for Size Violations. -->
-  <!-- See http://checkstyle.sf.net/config_sizes.html -->
-  <module name="FileLength" />
-
   <!-- Checks for whitespace -->
   <!-- See http://checkstyle.sf.net/config_whitespace.html -->
   <module name="FileTabCharacter" />
 
-  <!-- Miscellaneous other checks. -->
+  <!-- Miscellaneous other checks -->
   <!-- See http://checkstyle.sf.net/config_misc.html -->
   <module name="RegexpSingleline">
     <property name="format" value="\s+$" />
@@ -46,21 +46,16 @@
     <property name="message" value="Line has trailing spaces." />
   </module>
 
-  <!-- Checks for Headers -->
+  <!-- Checks for headers -->
   <!-- See http://checkstyle.sf.net/config_header.html -->
-  <!-- <module name="Header"> -->
-  <!-- <property name="fileExtensions" value="java" /> -->
-  <!-- <property name="header" value="/*\r\n * Copyright" /> -->
-  <!-- </module> -->
   <module name="RegexpHeader">
-    <property name="headerFile"
-      value="src/test/resources/checkstyle/header/java.header" />
+    <property name="headerFile" value="src/test/resources/checkstyle/header/java.header" />
     <property name="fileExtensions" value="java" />
   </module>
 
   <module name="TreeWalker">
 
-    <!-- Checks for annotations. -->
+    <!-- Checks for annotations -->
     <!-- See http://checkstyle.sf.net/config_annotation.html -->
     <module name="AnnotationLocation" />
     <module name="AnnotationUseStyle" />
@@ -92,7 +87,7 @@
     <!-- Checks for common coding problems -->
     <!-- See http://checkstyle.sf.net/config_coding.html -->
     <module name="ArrayTrailingComma" />
-    <!-- <module name="AvoidInlineConditionals" /> -->
+    <module name="AvoidInlineConditionals" />
     <module name="CovariantEquals" />
     <module name="DeclarationOrder" />
     <module name="DefaultComesLast" />
@@ -151,8 +146,7 @@
     <module name="CustomImportOrder">
       <property name="specialImportsRegExp" value="gov." />
       <property name="sortImportsInGroupAlphabetically" value="true" />
-      <property name="customImportOrderRules"
-        value="STATIC###STANDARD_JAVA_PACKAGE###THIRD_PARTY_PACKAGE" />
+      <property name="customImportOrderRules" value="STATIC###STANDARD_JAVA_PACKAGE###THIRD_PARTY_PACKAGE" />
     </module>
     <module name="IllegalImport" /> <!-- defaults to sun.* packages -->
     <!-- <module name="ImportControl" /> -->
@@ -166,7 +160,7 @@
     <module name="RedundantImport" />
     <module name="UnusedImports" />
 
-    <!-- Checks for Javadoc comments. -->
+    <!-- Checks for Javadoc comments -->
     <!-- See http://checkstyle.sf.net/config_javadoc.html -->
     <module name="AtclauseOrder" />
     <module name="JavadocMethod" />
@@ -175,12 +169,13 @@
     <module name="JavadocTagContinuationIndentation" />
     <module name="JavadocType" />
     <!-- <module name="JavadocVariable" /> -->
+    <module name="MissingJavadocMethod"/>
     <module name="NonEmptyAtclauseDescription" />
     <module name="SingleLineJavadoc" />
     <module name="SummaryJavadocCheck" />
     <module name="WriteTag" />
 
-    <!-- Checks for metrics. -->
+    <!-- Checks for metrics -->
     <!-- See http://checkstyle.sf.net/config_metrics.html -->
     <module name="BooleanExpressionComplexity" />
     <!-- <module name="ClassDataAbstractionCoupling" /> -->
@@ -189,7 +184,7 @@
     <module name="JavaNCSS" />
     <module name="NPathComplexity" />
 
-    <!-- Miscellaneous other checks. -->
+    <!-- Miscellaneous other checks -->
     <!-- See http://checkstyle.sf.net/config_misc.html -->
     <module name="ArrayTypeStyle" />
     <module name="AvoidEscapedUnicodeCharacters" />
@@ -205,12 +200,12 @@
     <module name="UncommentedMain" />
     <module name="UpperEll" />
 
-    <!-- Modifier Checks -->
+    <!-- Modifier checks -->
     <!-- See http://checkstyle.sf.net/config_modifier.html -->
     <module name="ModifierOrder" />
     <module name="RedundantModifier" />
 
-    <!-- Checks for Naming Conventions. -->
+    <!-- Checks for naming conventions -->
     <!-- See http://checkstyle.sf.net/config_naming.html -->
     <module name="AbbreviationAsWordInName">
       <property name="allowedAbbreviationLength" value="9" />
@@ -230,19 +225,16 @@
     <module name="StaticVariableName" />
     <module name="TypeName" />
 
-    <!-- Checks for regular expressions. -->
+    <!-- Checks for regular expressions -->
     <!-- See http://checkstyle.sf.net/config_regexp.html -->
     <module name="Regexp">
       <property name="format" value="^\s*\*\s+@since\s+\S+" />
     </module>
 
-    <!-- Checks for Size Violations. -->
+    <!-- Checks for size violations -->
     <!-- See http://checkstyle.sf.net/config_sizes.html -->
     <module name="AnonInnerLength" />
     <module name="ExecutableStatementCount" />
-    <module name="LineLength">
-      <property name="max" value="130" />
-    </module>
     <module name="MethodCount" />
     <module name="MethodLength" />
     <module name="OuterTypeNumber" />

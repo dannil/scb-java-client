@@ -20,7 +20,8 @@ import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.educationandresearch.activityaftertraining.EducationAndResearchActivityAfterTrainingClient;
 import com.github.dannil.scbjavaclient.client.educationandresearch.communityinnovationsurvey.EducationAndResearchCommunityInnovationSurveyClient;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.client.educationandresearch.folkhighschoolstatistics.EducationAndResearchFolkHighSchoolStatisticsClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 import org.junit.jupiter.api.Test;
@@ -49,6 +50,14 @@ public class EducationAndResearchClientTest {
 
         assertEquals(EducationAndResearchCommunityInnovationSurveyClient.class,
                 client.communityInnovationSurvey().getClass());
+    }
+
+    @Test
+    public void folkHighSchoolStatistics() {
+        EducationAndResearchClient client = new EducationAndResearchClient();
+
+        assertEquals(EducationAndResearchFolkHighSchoolStatisticsClient.class,
+                client.folkHighSchoolStatistics().getClass());
     }
 
     @Test

@@ -21,8 +21,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
@@ -67,25 +67,25 @@ public class PopulationStatisticsAmountClient extends AbstractClient {
      *
      * @param regions
      *            the regions to fetch data for
-     * @param relationshipStatuses
-     *            the relationship statuses to fetch data for
+     * @param maritalStatuses
+     *            the marital statuses to fetch data for
      * @param ages
      *            the ages to fetch data for
-     * @param genders
-     *            the genders to fetch data for
+     * @param sexes
+     *            the sexes to fetch data for
      * @param years
      *            the years to fetch data for
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getPopulation(Collection<String> regions, Collection<String> relationshipStatuses,
-            Collection<String> ages, Collection<Integer> genders, Collection<Integer> years) {
+    public List<ResponseModel> getPopulation(Collection<String> regions, Collection<String> maritalStatuses,
+            Collection<String> ages, Collection<Integer> sexes, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
-        mappings.put("Civilstand", relationshipStatuses);
+        mappings.put("Civilstand", maritalStatuses);
         mappings.put(APIConstants.AGE_CODE, ages);
-        mappings.put(APIConstants.SEX_CODE, genders);
+        mappings.put(APIConstants.SEX_CODE, sexes);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("BefolkningNy", mappings);

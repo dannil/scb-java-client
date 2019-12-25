@@ -23,7 +23,7 @@ import com.github.dannil.scbjavaclient.client.pricesandconsumption.ppi.spin2002y
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.ppi.spin2007monthlyandquarterly.PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.ppi.spin2007year.PricesAndConsumptionPPISPIN2007YearClient;
 import com.github.dannil.scbjavaclient.client.pricesandconsumption.ppi.spin2015monthlyandquarterly.PricesAndConsumptionPPISPIN2015MonthlyAndQuarterlyClient;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
  * <p>Client which handles prices and consumption producer and import price index (PPI)

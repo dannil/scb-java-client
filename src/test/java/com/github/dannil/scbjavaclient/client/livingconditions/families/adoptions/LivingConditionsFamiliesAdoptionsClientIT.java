@@ -37,30 +37,30 @@ public class LivingConditionsFamiliesAdoptionsClientIT {
     public void setup() {
         this.client = new LivingConditionsFamiliesAdoptionsClient();
     }
-
+    
     @Test
-    @Date("2017-03-16")
-    public void getChildAdoptions() {
-        assertNotEquals(0, this.client.getChildAdoptions().size());
+    @Date("2018-06-15")
+    public void getAllAdoptedChildrenAndYoungPersons() {
+        assertNotEquals(0, this.client.getAllAdoptedChildrenAndYoungPersons().size());
     }
 
     @Test
-    @Date("2017-03-16")
-    public void getChildAdoptionsWithParametersEmptyLists() {
+    @Date("2018-06-15")
+    public void getAllAdoptedChildrenAndYoungPersonsWithParametersEmptyLists() {
         assertNotEquals(0,
-                this.client.getChildAdoptions(Collections.<String>emptyList(), Collections.<String>emptyList(),
+                this.client.getAllAdoptedChildrenAndYoungPersons(Collections.<String>emptyList(), Collections.<String>emptyList(),
                         Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
-    @Date("2017-03-16")
-    public void getChildAdoptionsWithParameters() {
+    @Date("2018-06-15")
+    public void getAllAdoptedChildrenAndYoungPersonsWithParameters() {
         List<String> sexes = Arrays.asList("5", "6");
-        List<String> ages = Arrays.asList("10", "13");
-        List<String> birthCountries = Arrays.asList("CN", "RU");
-        List<Integer> years = Arrays.asList(2004, 2008);
+        List<String> ages = Arrays.asList("4", "5");
+        List<String> countriesOfBirths = Arrays.asList("LV", "RO");
+        List<Integer> years = Arrays.asList(2005, 2009);
 
-        assertNotEquals(0, this.client.getChildAdoptions(sexes, ages, birthCountries, years).size());
+        assertNotEquals(0, this.client.getAllAdoptedChildrenAndYoungPersons(sexes, ages, countriesOfBirths, years).size());
     }
 
 }

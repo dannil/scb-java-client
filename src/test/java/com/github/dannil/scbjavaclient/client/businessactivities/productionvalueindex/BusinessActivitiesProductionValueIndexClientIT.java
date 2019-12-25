@@ -20,6 +20,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import com.github.dannil.scbjavaclient.test.extensions.AllowFailure;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
@@ -39,13 +40,15 @@ public class BusinessActivitiesProductionValueIndexClientIT {
     }
 
     @Test
-    @Date("2017-12-29")
+    @Date("2019-10-27")
+    @AllowFailure
     public void getProductionValueIndex() {
         assertNotEquals(0, this.client.getProductionValueIndex().size());
     }
 
     @Test
     @Date("2017-12-29")
+    @AllowFailure
     public void getProductionValueIndexWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getProductionValueIndex(Collections.<String>emptyList(),
                 Collections.<String>emptyList()).size());
@@ -53,6 +56,7 @@ public class BusinessActivitiesProductionValueIndexClientIT {
 
     @Test
     @Date("2017-12-29")
+    @AllowFailure
     public void getProductionValueIndexWithParameters() {
         List<String> industrialClassifications = Arrays.asList("ERV", "INV");
         List<String> months = Arrays.asList("2014M02", "2014M03");

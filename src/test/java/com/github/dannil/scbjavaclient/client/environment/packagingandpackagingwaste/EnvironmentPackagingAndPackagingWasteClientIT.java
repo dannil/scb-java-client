@@ -54,10 +54,10 @@ public class EnvironmentPackagingAndPackagingWasteClientIT {
     @Test
     @Date("2015-03-06")
     public void getPackagingAndPackagingWasteWithParameters() {
-        List<Integer> types = Arrays.asList(10, 20);
+        List<Integer> packagingTypes = Arrays.asList(10, 20);
         List<Integer> years = Arrays.asList(2012, 2013);
 
-        assertNotEquals(0, this.client.getPackagingAndPackagingWaste(types, years).size());
+        assertNotEquals(0, this.client.getPackagingAndPackagingWaste(packagingTypes, years).size());
     }
 
 }

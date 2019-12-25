@@ -47,11 +47,11 @@ public class PopulationStatisticsLiveBirthsClientIT {
     @Date("2017-01-01")
     public void getLiveBirthsWithParameters() {
         List<String> regions = Arrays.asList("1263");
-        List<String> motherAges = Arrays.asList("tot");
-        List<Integer> genders = Arrays.asList(1, 2);
+        List<String> agesOfMothers = Arrays.asList("tot");
+        List<Integer> sexes = Arrays.asList(1, 2);
         List<Integer> years = Arrays.asList(1996);
 
-        assertNotEquals(0, this.client.getLiveBirths(regions, motherAges, genders, years).size());
+        assertNotEquals(0, this.client.getLiveBirths(regions, agesOfMothers, sexes, years).size());
     }
 
 }

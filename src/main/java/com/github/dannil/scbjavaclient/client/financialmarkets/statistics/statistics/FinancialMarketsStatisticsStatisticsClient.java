@@ -21,8 +21,8 @@ import java.util.Locale;
 import java.util.Map;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
-import com.github.dannil.scbjavaclient.http.URLEndpoint;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
@@ -67,8 +67,8 @@ public class FinancialMarketsStatisticsStatisticsClient extends AbstractClient {
      *
      * @param institutions
      *            the institutions
-     * @param itemsAndCounterPartsSectors
-     *            the items and counter parts sector
+     * @param itemsAndCounterPartSectors
+     *            the items and counter part sectors
      * @param months
      *            the months
      * @return the data wrapped in a list of
@@ -76,10 +76,10 @@ public class FinancialMarketsStatisticsStatisticsClient extends AbstractClient {
      *         objects
      */
     public List<ResponseModel> getAssetsAndLiabilities(Collection<String> institutions,
-            Collection<String> itemsAndCounterPartsSectors, Collection<String> months) {
+            Collection<String> itemsAndCounterPartSectors, Collection<String> months) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("Institut", institutions);
-        mappings.put("KontopostMotsektor", itemsAndCounterPartsSectors);
+        mappings.put("KontopostMotsektor", itemsAndCounterPartSectors);
         mappings.put(APIConstants.TIME_CODE, months);
 
         return getResponseModels("FM5001SDDSMFI", mappings);
