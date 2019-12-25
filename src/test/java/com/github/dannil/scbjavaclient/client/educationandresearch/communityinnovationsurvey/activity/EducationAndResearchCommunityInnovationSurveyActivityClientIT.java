@@ -126,4 +126,32 @@ public class EducationAndResearchCommunityInnovationSurveyActivityClientIT {
                 this.client.getPlatformsToAcquireKnowledge(sni2007s, sizeClasses, typesOfValues, periods).size());
     }
 
+    @Test
+    @Date("2019-12-25")
+    public void getObstaclesToInnovation() {
+        assertNotEquals(0, this.client.getObstaclesToInnovation().size());
+    }
+
+    @Test
+    @Date("2019-12-25")
+    public void getObstaclesToInnovationWithParametersEmptyLists() {
+        assertNotEquals(0,
+                this.client.getObstaclesToInnovation(Collections.<Integer>emptyList(), Collections.<String>emptyList(),
+                        Collections.<String>emptyList(), Collections.<String>emptyList(),
+                        Collections.<String>emptyList()).size());
+    }
+
+    @Test
+    @Date("2019-12-25")
+    public void getObstaclesToInnovationWithParameters() {
+        List<Integer> degreesOfSignificances = Arrays.asList(220, 260);
+        List<String> sni2007s = Arrays.asList("SA14", "G+H+I+J+K+69-74+N");
+        List<String> sizeClasses = Arrays.asList("10-49", "50-249");
+        List<String> typesOfValues = Arrays.asList("PS", "KI");
+        List<String> periods = Arrays.asList("2016-2018");
+
+        assertNotEquals(0, this.client.getObstaclesToInnovation(degreesOfSignificances, sni2007s, sizeClasses,
+                typesOfValues, periods).size());
+    }
+
 }

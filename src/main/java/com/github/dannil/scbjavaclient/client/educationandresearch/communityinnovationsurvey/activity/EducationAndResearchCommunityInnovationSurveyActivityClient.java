@@ -177,6 +177,50 @@ public class EducationAndResearchCommunityInnovationSurveyActivityClient extends
         return getResponseModels("CKnoSNIStrl", mappings);
     }
 
+    /**
+     * <p>Fetch all obstacles to innovation data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getObstaclesToInnovation(Collection, Collection, Collection, Collection,
+     *      Collection)
+     */
+    public List<ResponseModel> getObstaclesToInnovation() {
+        return getObstaclesToInnovation(null, null, null, null, null);
+    }
+
+    /**
+     * <p>Fetch all obstacles to innovation data which match the input constraints.</p>
+     *
+     * @param degreesOfSignificances
+     *            the degrees of significances
+     * @param sni2007s
+     *            the SNI 2007s
+     * @param sizeClasses
+     *            the size classes
+     * @param typesOfValues
+     *            the types of values
+     * @param periods
+     *            the periods
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getObstaclesToInnovation(Collection<Integer> degreesOfSignificances,
+            Collection<String> sni2007s, Collection<String> sizeClasses, Collection<String> typesOfValues,
+            Collection<String> periods) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("Betydelse", degreesOfSignificances);
+        mappings.put(APIConstants.SNI2007_CODE, sni2007s);
+        mappings.put("Storleksklass", sizeClasses);
+        mappings.put("VarTyp", typesOfValues);
+        mappings.put(APIConstants.TIME_CODE, periods);
+
+        return getResponseModels("UF0315T20N", mappings);
+    }
+
     @Override
     public URLEndpoint getUrl() {
         return getRootUrl().append("UF/UF0315/UF0315A/");
