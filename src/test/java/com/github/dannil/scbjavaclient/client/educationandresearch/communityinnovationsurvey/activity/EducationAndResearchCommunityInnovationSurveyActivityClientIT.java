@@ -73,13 +73,13 @@ public class EducationAndResearchCommunityInnovationSurveyActivityClientIT {
     }
 
     @Test
-    @Date("2019-10-13")
+    @Date("2019-12-25")
     public void getEnterprisesWithProductInnovations() {
         assertNotEquals(0, this.client.getEnterprisesWithProductInnovations().size());
     }
 
     @Test
-    @Date("2019-10-13")
+    @Date("2019-12-25")
     public void getEnterprisesWithProductInnovationsWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getEnterprisesWithProductInnovations(Collections.<String>emptyList(),
@@ -88,7 +88,7 @@ public class EducationAndResearchCommunityInnovationSurveyActivityClientIT {
     }
 
     @Test
-    @Date("2019-10-13")
+    @Date("2019-12-25")
     public void getEnterprisesWithProductInnovationsWithParameters() {
         List<String> sni2007s = Arrays.asList("46+H+J-K+71+72", "58+61-63");
         List<String> sizeClasses = Arrays.asList("10-49", "50-249");
