@@ -136,6 +136,47 @@ public class EducationAndResearchCommunityInnovationSurveyActivityClient extends
         return getResponseModels("NCISprodSNIStrl", mappings);
     }
 
+    /**
+     * <p>Fetch all platforms to acquire knowledge data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getPlatformsToAcquireKnowledge(Collection, Collection, Collection,
+     *      Collection)
+     */
+    public List<ResponseModel> getPlatformsToAcquireKnowledge() {
+        return getPlatformsToAcquireKnowledge(null, null, null, null);
+    }
+
+    /**
+     * <p>Fetch all platforms to acquire knowledge data which match the input
+     * constraints.</p>
+     *
+     * @param sni2007s
+     *            the SNI 2007s
+     * @param sizeClasses
+     *            the size classes
+     * @param typesOfValues
+     *            the types of values
+     * @param periods
+     *            the periods
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getPlatformsToAcquireKnowledge(Collection<String> sni2007s,
+            Collection<String> sizeClasses, Collection<String> typesOfValues, Collection<String> periods) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.SNI2007_CODE, sni2007s);
+        mappings.put("Storleksklass", sizeClasses);
+        mappings.put("VarTyp", typesOfValues);
+        mappings.put(APIConstants.TIME_CODE, periods);
+
+        return getResponseModels("CKnoSNIStrl", mappings);
+    }
+
     @Override
     public URLEndpoint getUrl() {
         return getRootUrl().append("UF/UF0315/UF0315A/");
