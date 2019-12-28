@@ -137,8 +137,7 @@ public class AbstractClientIT {
     }
 
     @Test
-    // @Date("2019-12-18")
-    @Date("now")
+    @Date("2019-12-28")
     public void doGetRequestWithSpecialCharacters() {
         SCBClient client = new SCBClient(new Locale("sv", "SE"));
 
@@ -151,8 +150,7 @@ public class AbstractClientIT {
     }
 
     @Test
-    // @Date("2019-12-18")
-    @Date("now")
+    @Date("2019-12-28")
     public void doPostRequestWithSpecialCharacters() {
         SCBClient client = new SCBClient(new Locale("sv", "SE"));
 
