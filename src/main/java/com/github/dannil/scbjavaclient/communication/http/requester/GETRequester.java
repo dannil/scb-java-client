@@ -53,7 +53,7 @@ public class GETRequester extends AbstractRequester {
     public HttpResponse<String> getResponse(String url) {
         LOGGER.debug("GET: {}", url);
         try {
-            HttpResponse<String> response = getResponse(url, "GET", "");
+            HttpResponse<String> response = getResponse(url, "GET");
             LOGGER.debug("HTTP {}: {}", response.statusCode(), url);
             return response;
         } catch (IOException | InterruptedException e) {

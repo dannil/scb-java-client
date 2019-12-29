@@ -19,6 +19,9 @@ import java.io.InputStream;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
+import java.net.http.HttpRequest.BodyPublisher;
+import java.net.http.HttpRequest.BodyPublishers;
+import java.net.http.HttpRequest.Builder;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 import java.nio.charset.Charset;
@@ -87,6 +90,42 @@ public abstract class AbstractRequester {
      */
     public abstract HttpResponse<String> getResponse(String url);
 
+    /**
+     * <p>Retrieves the response from the specified URL, using the specified HTTP
+     * method.</p>
+     *
+     * @param url
+     *            the URL to call
+     * @param method
+     *            the HTTP method to use
+     * @return the response as an
+     *         {@link java.net.http.HttpResponse HttpResponse}
+     * @throws IOException
+     *             if an input/output error occurred during the request
+     * @throws InterruptedException
+     *             if the request was interrupted
+     */
+    protected HttpResponse<String> getResponse(String url, String method) throws IOException, InterruptedException {
+        return getResponse(url, method, "");
+    }
+
+    /**
+     * <p>Retrieves the response from the specified URL, using the specified HTTP method
+     * and request body.</p>
+     *
+     * @param url
+     *            the URL to call
+     * @param method
+     *            the HTTP method to use
+     * @param body
+     *            the request body
+     * @return the response as an
+     *         {@link java.net.http.HttpResponse HttpResponse}
+     * @throws IOException
+     *             if an input/output error occurred during the request
+     * @throws InterruptedException
+     *             if the request was interrupted
+     */
     protected HttpResponse<String> getResponse(String url, String method, String body)
             throws IOException, InterruptedException {
         List<String> headers = new ArrayList<>();
@@ -95,12 +134,17 @@ public abstract class AbstractRequester {
             headers.add(requestProperty.getValue());
         }
 
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).headers(
-                headers.toArray(new String[0])).method(method, HttpRequest.BodyPublishers.ofString(body)).build();
+        BodyPublisher bodyPublisher = BodyPublishers.ofString(body, getCharset());
+        if (!body.isEmpty()) {
+            bodyPublisher = BodyPublishers.noBody();
+        }
 
-        HttpResponse<String> response = client.send(request, BodyHandlers.ofString(getCharset()));
-        return response;
+        HttpClient client = HttpClient.newHttpClient();
+        Builder builder = HttpRequest.newBuilder().uri(URI.create(url)).headers(headers.toArray(new String[0])).method(
+                method, bodyPublisher);
+        HttpRequest request = builder.build();
+
+        return client.send(request, BodyHandlers.ofString(getCharset()));
     }
 
     /**
