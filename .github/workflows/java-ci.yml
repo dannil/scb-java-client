@@ -7,7 +7,7 @@ on:
     - '*tag*'
     - 'test/run-all-tests'
   schedule:
-    - cron: '00 03 * * *'
+    - cron: '30 04 * * *'
 
 jobs:
   maven-build:
@@ -21,11 +21,11 @@ jobs:
     container: ${{ matrix.container }}
     steps:
     - name: Update and install packages
-      run: apt-get update && apt-get install -y dnsutils 
+      run: apt-get update && apt-get install -y dnsutils
       # If we get the same IP on concurrent builds and this triggers an error
       # on the API (rate limiting), this can be easily debugged by checking the log
     - name: Get IP
-      run: 'echo "IP: $(dig +short myip.opendns.com @resolver1.opendns.com)"'
+      run: 'echo IP: $(dig +short myip.opendns.com @resolver1.opendns.com)'
     - name: Checkout repository
       uses: actions/checkout@v1
     - name: Setup Java
