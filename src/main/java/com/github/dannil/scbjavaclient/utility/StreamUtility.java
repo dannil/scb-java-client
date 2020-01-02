@@ -15,6 +15,7 @@
 package com.github.dannil.scbjavaclient.utility;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -34,6 +35,20 @@ public final class StreamUtility {
      */
     private StreamUtility() {
 
+    }
+
+    /**
+     * <p>Removes any Unicode byte order marks from the specified string.</p>
+     *
+     * @param str
+     *            the string to remove byte order marks from
+     * @return a <code>String</code> having the contents of the specified string, without
+     *         any byte order marks
+     *
+     * @see #skipUnicodeByteOrderMark(InputStream)
+     */
+    public static String skipUnicodeByteOrderMark(String str) {
+        return skipUnicodeByteOrderMark(new ByteArrayInputStream(str.getBytes()));
     }
 
     /**

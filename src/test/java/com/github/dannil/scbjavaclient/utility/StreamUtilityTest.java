@@ -41,7 +41,18 @@ public class StreamUtilityTest {
     }
 
     @Test
-    public void skipByteOrderMark() throws UnsupportedEncodingException {
+    public void skipByteOrderMarkWithString() throws UnsupportedEncodingException {
+        String byteOrderMarkText = "this is the tested byte order mark text";
+        byte[] utf8bom = new byte[] { (byte) 0xEF, (byte) 0xBB, (byte) 0xBF };
+        String textWithBOM = new String(utf8bom, "UTF-8") + byteOrderMarkText;
+        String textWithoutBOM = byteOrderMarkText;
+
+        assertEquals(textWithoutBOM, StreamUtility.skipUnicodeByteOrderMark(textWithBOM));
+        assertEquals(textWithoutBOM, StreamUtility.skipUnicodeByteOrderMark(textWithoutBOM));
+    }
+
+    @Test
+    public void skipByteOrderMarkWithInputStream() throws UnsupportedEncodingException {
         String byteOrderMarkText = "this is the tested byte order mark text";
         byte[] utf8bom = new byte[] { (byte) 0xEF, (byte) 0xBB, (byte) 0xBF };
         String textWithBOM = new String(utf8bom, "UTF-8") + byteOrderMarkText;

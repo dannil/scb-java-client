@@ -14,7 +14,6 @@
 
 package com.github.dannil.scbjavaclient.client;
 
-import java.io.ByteArrayInputStream;
 import java.net.http.HttpResponse;
 import java.util.Collection;
 import java.util.HashMap;
@@ -194,7 +193,8 @@ public abstract class AbstractClient {
         URLEndpoint endpointUrl = new URLEndpoint(url);
         String urlLanguage = endpointUrl.getLanguage();
         if (response.statusCode() == HttpStatusCode.OK.getCode()) {
-            body = response.body();
+            // Handle possible byte order mark
+            body = StreamUtility.skipUnicodeByteOrderMark(response.body());
         } else if (response.statusCode() == HttpStatusCode.NOT_FOUND.getCode()
                 && !Objects.equals(urlLanguage, APIConstants.FALLBACK_LOCALE.getLanguage())) {
             // HTTP code 404, call the API again with the fallback language
@@ -205,8 +205,6 @@ public abstract class AbstractClient {
         } else if (response.statusCode() == HttpStatusCode.FORBIDDEN.getCode()) {
             throw new SCBClientResponseTooLargeException("The response exceeded the maximum size allowed by the API");
         }
-        // Handle possible byte order mark
-        body = StreamUtility.skipUnicodeByteOrderMark(new ByteArrayInputStream(body.getBytes()));
         return body;
     }
 

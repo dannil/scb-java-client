@@ -109,7 +109,7 @@ public class AbstractClientIT {
     }
 
     @Test
-    @Date("2019-06-02")
+    @Date("2020-01-02")
     public void urlNotFoundLocaleIsAlreadyFallbackDoGetRequest() {
         SCBClient client = new SCBClient(new Locale("sv", "SE"));
 
@@ -120,7 +120,7 @@ public class AbstractClientIT {
     }
 
     @Test
-    @Date("2019-06-02")
+    @Date("2020-01-02")
     public void urlNotFoundLocaleIsAlreadyFallbackDoPostRequest() {
         SCBClient client = new SCBClient(new Locale("sv", "SE"));
 
@@ -137,7 +137,7 @@ public class AbstractClientIT {
     }
 
     @Test
-    @Date("2019-12-28")
+    @Date("2020-01-02")
     public void doGetRequestWithSpecialCharacters() {
         SCBClient client = new SCBClient(new Locale("sv", "SE"));
 
@@ -150,7 +150,7 @@ public class AbstractClientIT {
     }
 
     @Test
-    @Date("2019-12-28")
+    @Date("2020-01-02")
     public void doPostRequestWithSpecialCharacters() {
         SCBClient client = new SCBClient(new Locale("sv", "SE"));
 
@@ -185,7 +185,7 @@ public class AbstractClientIT {
     }
 
     @Test
-    @Date("2017-01-01")
+    @Date("2020-01-02")
     public void getRawDataUrlNotFound() {
         SCBClient client = new SCBClient(new Locale("sv", "SE"));
 
@@ -487,7 +487,7 @@ public class AbstractClientIT {
     }
 
     @Test
-    @Date("2018-11-10")
+    @Date("2020-01-02")
     public void checkForCorrectUsageOfAllCodes() throws Exception {
         String execPath = System.getProperty("user.dir");
 
@@ -555,13 +555,14 @@ public class AbstractClientIT {
                         String methodFqdn = clazz.getSimpleName() + "." + filteredMethod.getName();
                         URLEndpoint fullUrl = url.append(value);
 
-                        // We need to use the English locale as the parameter names in the
-                        // methods match the API
+                        // We need to use the English locale, as the parameter names in
+                        // the methods match the API. Skip checking tables which doesn't
+                        // exist on the English locale
                         GETRequester requester = new GETRequester(StandardCharsets.UTF_8);
                         HttpResponse<String> res = requester.getResponse(fullUrl.toURL("en").toString());
                         TimeUnit.MILLISECONDS.sleep(TestConstants.API_SLEEP_MS);
                         String body = res.body();
-                        if (body != null) {
+                        if (res.statusCode() == 200 && body != null) {
                             // Table exist for the given language; process it
                             JsonNode n = new JsonConverter().toNode(body);
                             JsonNode m = n.get("variables");
