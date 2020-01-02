@@ -94,7 +94,9 @@ public class GoodsAndServicesTurnoverServiceSectorTurnoverClient extends Abstrac
      *         objects
      *
      * @see #getRetailSaleIndexSIC2007Yearly(Collection, Collection)
+     * @deprecated table removed from API
      */
+    @Deprecated
     public List<ResponseModel> getRetailSaleIndexSIC2007Yearly() {
         return getRetailSaleIndexSIC2007Yearly(null, null);
     }
@@ -110,7 +112,9 @@ public class GoodsAndServicesTurnoverServiceSectorTurnoverClient extends Abstrac
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
+     * @deprecated table removed from API
      */
+    @Deprecated
     public List<ResponseModel> getRetailSaleIndexSIC2007Yearly(Collection<String> industrialClassifications,
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();

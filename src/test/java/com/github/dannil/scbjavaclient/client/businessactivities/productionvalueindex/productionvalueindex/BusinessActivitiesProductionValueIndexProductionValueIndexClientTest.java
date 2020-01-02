@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.businessactivities.productionvalueindex;
+package com.github.dannil.scbjavaclient.client.businessactivities.productionvalueindex.productionvalueindex;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -20,27 +20,19 @@ import java.util.Locale;
 
 import org.junit.jupiter.api.Test;
 
-import com.github.dannil.scbjavaclient.client.businessactivities.productionvalueindex.productionvalueindex.BusinessActivitiesProductionValueIndexProductionValueIndexClient;
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
 @Suite
-public class BusinessActivitiesProductionValueIndexClientTest {
+public class BusinessActivitiesProductionValueIndexProductionValueIndexClientTest {
 
     @Test
     public void createWithLocaleConstructor() {
         Locale locale = new Locale("sv", "SE");
-        BusinessActivitiesProductionValueIndexClient client = new BusinessActivitiesProductionValueIndexClient(locale);
+        BusinessActivitiesProductionValueIndexProductionValueIndexClient client = new BusinessActivitiesProductionValueIndexProductionValueIndexClient(
+                locale);
 
         assertEquals(locale, client.getLocale());
-    }
-
-    @Test
-    public void productionValueIndex() {
-        BusinessActivitiesProductionValueIndexClient client = new BusinessActivitiesProductionValueIndexClient();
-
-        assertEquals(BusinessActivitiesProductionValueIndexProductionValueIndexClient.class,
-                client.productionValueIndex().getClass());
     }
 
     @Test
@@ -48,9 +40,10 @@ public class BusinessActivitiesProductionValueIndexClientTest {
         // Check with a locale that isn't the fallback locale; results in a more specific
         // test with harder constraints
         Locale locale = new Locale("en", "US");
-        BusinessActivitiesProductionValueIndexClient client = new BusinessActivitiesProductionValueIndexClient(locale);
+        BusinessActivitiesProductionValueIndexProductionValueIndexClient client = new BusinessActivitiesProductionValueIndexProductionValueIndexClient(
+                locale);
 
-        assertEquals(URLEndpoint.getRootUrl(locale).append("NV/NV0006/"), client.getUrl());
+        assertEquals(URLEndpoint.getRootUrl(locale).append("NV/NV0006/NV0006A/"), client.getUrl());
     }
 
 }

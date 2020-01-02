@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Daniel Nilsson
+ * Copyright 2018 Daniel Nilsson
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.businessactivities.productionvalueindex;
+package com.github.dannil.scbjavaclient.client.businessactivities.productionvalueindex.productionvalueindex;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
@@ -20,43 +20,39 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.test.extensions.AllowFailure;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 @Suite
 @Remote
-public class BusinessActivitiesProductionValueIndexClientIT {
+public class BusinessActivitiesProductionValueIndexProductionValueIndexClientIT {
 
-    private BusinessActivitiesProductionValueIndexClient client;
+    private BusinessActivitiesProductionValueIndexProductionValueIndexClient client;
 
     @BeforeEach
     public void setup() {
-        this.client = new BusinessActivitiesProductionValueIndexClient();
+        this.client = new BusinessActivitiesProductionValueIndexProductionValueIndexClient();
     }
 
     @Test
-    @Date("2019-10-27")
-    @AllowFailure
+    @Date("2018-12-15")
     public void getProductionValueIndex() {
         assertNotEquals(0, this.client.getProductionValueIndex().size());
     }
 
     @Test
-    @Date("2017-12-29")
-    @AllowFailure
+    @Date("2018-12-15")
     public void getProductionValueIndexWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getProductionValueIndex(Collections.<String>emptyList(),
                 Collections.<String>emptyList()).size());
     }
 
     @Test
-    @Date("2017-12-29")
-    @AllowFailure
+    @Date("2018-12-15")
     public void getProductionValueIndexWithParameters() {
         List<String> industrialClassifications = Arrays.asList("ERV", "INV");
         List<String> months = Arrays.asList("2014M02", "2014M03");
