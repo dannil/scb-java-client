@@ -30,18 +30,15 @@ import java.io.StringWriter;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.charset.Charset;
-import java.security.SecureRandom;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 import java.util.stream.Collectors;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import com.github.dannil.scbjavaclient.test.extensions.AllowFailure;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
 import com.github.dannil.scbjavaclient.utility.UnicodeBOMInputStream.BOM;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 @Suite
 public class UnicodeBOMInputStreamTest {
@@ -84,12 +81,6 @@ public class UnicodeBOMInputStreamTest {
         this.stream = new ByteArrayInputStream(data.getBytes(Charset.forName(encoding)));
         this.bomInputStream = new UnicodeBOMInputStream(this.stream);
         this.reader = new BufferedReader(new InputStreamReader(this.bomInputStream));
-    }
-
-    public String createRandomCode(int codeLength, String id) {
-        List<Character> temp = id.chars().mapToObj(i -> (char) i).collect(Collectors.toList());
-        Collections.shuffle(temp, new SecureRandom());
-        return temp.stream().map(Object::toString).limit(codeLength).collect(Collectors.joining());
     }
 
     @Test
