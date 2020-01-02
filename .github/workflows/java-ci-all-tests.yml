@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         container: ['ubuntu:18.04']
-        jdk: [openjdk8]
+        jdk: [openjdk11]
         maven: [3.3.9]
       fail-fast: false
     runs-on: ubuntu-18.04
