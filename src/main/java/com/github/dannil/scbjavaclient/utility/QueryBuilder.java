@@ -85,7 +85,7 @@ public final class QueryBuilder {
      * <p>Constructs a query which matches the format the API expects. This method
      * performs two distinct steps:</p>
      *
-     * <h1>1. Filter out the null keys and values</h1>
+     * <b>1. Filter out the null keys and values</b>
      *
      * <p>If a key (such as region or year) is defined and it's value is either defined as
      * null or as an empty list, it means that all data for this key should be fetched
@@ -93,7 +93,7 @@ public final class QueryBuilder {
      * to the API it recognizes that it should respond with all data corresponding to this
      * key.</p>
      *
-     * <h1>2. Construct the query</h1>
+     * <b>2. Construct the query</b>
      *
      * <p>For every key in the input map, it creates an entry for this key. It then writes
      * all of the values corresponding with this key (defined somewhere by using the
