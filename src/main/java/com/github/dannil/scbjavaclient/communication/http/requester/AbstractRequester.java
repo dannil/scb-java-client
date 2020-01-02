@@ -135,7 +135,7 @@ public abstract class AbstractRequester {
         }
 
         BodyPublisher bodyPublisher = BodyPublishers.ofString(body, getCharset());
-        if (!body.isEmpty()) {
+        if (body.isEmpty()) {
             bodyPublisher = BodyPublishers.noBody();
         }
 
