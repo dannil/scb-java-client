@@ -16,7 +16,7 @@ If you have an improvement, feel free to make a pull request or start an issue i
 
 ## Requirements
 
-* Java 8 or newer
+* Java 11 or newer
 
 ## Installation
 
