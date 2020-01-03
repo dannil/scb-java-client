@@ -20,7 +20,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.test.extensions.AllowFailure;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
@@ -30,7 +29,6 @@ import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
-@SuppressWarnings("deprecation")
 public class EnvironmentLandUseInfrastructureForTransportClientIT {
 
     private EnvironmentLandUseInfrastructureForTransportClient client;
@@ -38,31 +36,6 @@ public class EnvironmentLandUseInfrastructureForTransportClientIT {
     @BeforeEach
     public void setup() {
         this.client = new EnvironmentLandUseInfrastructureForTransportClient();
-    }
-
-    @Test
-    @Date("2019-03-02")
-    @AllowFailure
-    public void getTransportInfrastructureArea() {
-        assertNotEquals(0, this.client.getTransportInfrastructureArea().size());
-    }
-
-    @Test
-    @Date("2019-03-02")
-    @AllowFailure
-    public void getTransportInfrastructureAreaWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getTransportInfrastructureArea(Collections.<String>emptyList(),
-                Collections.<Integer>emptyList()).size());
-    }
-
-    @Test
-    @Date("2019-03-02")
-    @AllowFailure
-    public void getTransportInfrastructureAreaWithParameters() {
-        List<String> regions = Arrays.asList("0184", "0186");
-        List<Integer> years = Arrays.asList(2010);
-
-        assertNotEquals(0, this.client.getTransportInfrastructureArea(regions, years).size());
     }
 
     @Test

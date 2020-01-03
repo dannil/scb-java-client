@@ -20,7 +20,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.test.extensions.AllowFailure;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
@@ -72,17 +71,6 @@ public class EnvironmentProtectedNatureNumberAndAreaClientIT {
     public void getNatura2000SitesWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getNatura2000Sites(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList(), Collections.<Integer>emptyList()).size());
-    }
-    
-    @SuppressWarnings("deprecation")
-    @Test
-    @Date("2019-05-29")
-    @AllowFailure
-    public void getNatura2000SitesWithParametersDeprecated() {
-        List<String> regions = Arrays.asList("05", "09");
-        List<Integer> years = Arrays.asList(2014, 2015);
-
-        assertNotEquals(0, this.client.getNatura2000Sites(regions, years).size());
     }
 
     @Test

@@ -87,44 +87,6 @@ public class GoodsAndServicesTurnoverServiceSectorTurnoverClient extends Abstrac
     }
 
     /**
-     * <p>Fetch all retail sale index by industry (SIC 2007) yearly data.</p>
-     *
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     *
-     * @see #getRetailSaleIndexSIC2007Yearly(Collection, Collection)
-     * @deprecated table removed from API
-     */
-    @Deprecated
-    public List<ResponseModel> getRetailSaleIndexSIC2007Yearly() {
-        return getRetailSaleIndexSIC2007Yearly(null, null);
-    }
-
-    /**
-     * <p>Fetch all retail sale index by industry (SIC 2007) yearly data which match the
-     * input constraints.</p>
-     *
-     * @param industrialClassifications
-     *            the industrial classifications
-     * @param years
-     *            the years
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     * @deprecated table removed from API
-     */
-    @Deprecated
-    public List<ResponseModel> getRetailSaleIndexSIC2007Yearly(Collection<String> industrialClassifications,
-            Collection<Integer> years) {
-        Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.SNI2007_CODE, industrialClassifications);
-        mappings.put(APIConstants.TIME_CODE, years);
-
-        return getResponseModels("DetOmsAr07", mappings);
-    }
-
-    /**
      * <p>Fetch all monthly indicator for household consumption data.</p>
      *
      * @return the data wrapped in a list of

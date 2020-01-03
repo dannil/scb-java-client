@@ -19,10 +19,8 @@ import java.util.Locale;
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.environment.airpollutants.EnvironmentAirPollutantsClient;
 import com.github.dannil.scbjavaclient.client.environment.greenhousegas.EnvironmentGreenhouseGasClient;
-import com.github.dannil.scbjavaclient.client.environment.islands.EnvironmentIslandsClient;
 import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.EnvironmentLandAndWaterAreaClient;
 import com.github.dannil.scbjavaclient.client.environment.landuse.EnvironmentLandUseClient;
-import com.github.dannil.scbjavaclient.client.environment.landusedfortransport.EnvironmentLandUsedForTransportClient;
 import com.github.dannil.scbjavaclient.client.environment.packagingandpackagingwaste.EnvironmentPackagingAndPackagingWasteClient;
 import com.github.dannil.scbjavaclient.client.environment.protectednature.EnvironmentProtectedNatureClient;
 import com.github.dannil.scbjavaclient.client.environment.seea.EnvironmentSEEAClient;
@@ -46,10 +44,8 @@ public class EnvironmentClient extends AbstractContainerClient {
 
         addClient("airpollutants", new EnvironmentAirPollutantsClient());
         addClient("greenhousegas", new EnvironmentGreenhouseGasClient());
-        addClient("islands", new EnvironmentIslandsClient());
         addClient("landandwaterarea", new EnvironmentLandAndWaterAreaClient());
         addClient("landuse", new EnvironmentLandUseClient());
-        addClient("landusedfortransport", new EnvironmentLandUsedForTransportClient());
         addClient("packagingandpackagingwaste", new EnvironmentPackagingAndPackagingWasteClient());
         addClient("protectednature", new EnvironmentProtectedNatureClient());
         addClient("seea", new EnvironmentSEEAClient());
@@ -89,20 +85,6 @@ public class EnvironmentClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with environment islands data.</p>
-     *
-     * @return a client for environment islands data
-     *
-     * @deprecated use
-     *             {@link com.github.dannil.scbjavaclient.client.environment.shorelinelanduse.EnvironmentShorelineLandUseClient#landUse()
-     *             EnvironmentShorelineLandUseClient#landUse()} instead.
-     */
-    @Deprecated
-    public EnvironmentIslandsClient islands() {
-        return (EnvironmentIslandsClient) getClient("islands");
-    }
-
-    /**
      * <p>Retrieve the client for interacting with environment land and water area
      * data.</p>
      *
@@ -119,21 +101,6 @@ public class EnvironmentClient extends AbstractContainerClient {
      */
     public EnvironmentLandUseClient landUse() {
         return (EnvironmentLandUseClient) getClient("landuse");
-    }
-
-    /**
-     * <p>Retrieve the client for interacting with environment land used for transport
-     * data.</p>
-     *
-     * @return a client for environment land used for transport data
-     *
-     * @deprecated use
-     *             {@link com.github.dannil.scbjavaclient.client.environment.landuse.EnvironmentLandUseClient#infrastructureForTransport()
-     *             EnvironmentLandUseClient#infrastructureForTransport()} instead.
-     */
-    @Deprecated
-    public EnvironmentLandUsedForTransportClient landUsedForTransport() {
-        return (EnvironmentLandUsedForTransportClient) getClient("landusedfortransport");
     }
 
     /**

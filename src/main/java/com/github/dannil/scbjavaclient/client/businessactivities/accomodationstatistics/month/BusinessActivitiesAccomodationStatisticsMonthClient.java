@@ -234,28 +234,6 @@ public class BusinessActivitiesAccomodationStatisticsMonthClient extends Abstrac
      *
      * @param regions
      *            the regions
-     * @param months
-     *            the months
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     * @deprecated use {@link #getOccupiedRooms(Collection, Collection, Collection)
-     *             getOccupiedRooms(Collection, Collection, Collection)} instead
-     */
-    @Deprecated
-    public List<ResponseModel> getOccupiedRooms(Collection<String> regions, Collection<String> months) {
-        Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.REGION_CODE, regions);
-        mappings.put(APIConstants.TIME_CODE, months);
-
-        return getResponseModels("NV1701T6M", mappings);
-    }
-
-    /**
-     * <p>Fetch all occupied rooms data which match the input constraints.</p>
-     *
-     * @param regions
-     *            the regions
      * @param typesOfEstablishments
      *            the types of establishments
      * @param months
