@@ -80,7 +80,7 @@ public class BusinessActivitiesDatabaseClient extends AbstractClient {
             Collection<String> sizeClasses, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.SNI2002_CODE, industrialClassifications);
-        mappings.put("Storleksklass", sizeClasses);
+        mappings.put(APIConstants.SIZECLASS_CODE, sizeClasses);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("FDBR", mappings);
@@ -116,7 +116,7 @@ public class BusinessActivitiesDatabaseClient extends AbstractClient {
             Collection<String> sizeClasses, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.SNI2007_CODE, industrialClassifications);
-        mappings.put("Storleksklass", sizeClasses);
+        mappings.put(APIConstants.SIZECLASS_CODE, sizeClasses);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("FDBR07", mappings);

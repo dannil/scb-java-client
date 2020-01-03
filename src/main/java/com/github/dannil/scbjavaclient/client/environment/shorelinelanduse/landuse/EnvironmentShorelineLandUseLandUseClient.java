@@ -246,7 +246,7 @@ public class EnvironmentShorelineLandUseLandUseClient extends AbstractClient {
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
-        mappings.put("Storleksklass", sizeClasses);
+        mappings.put(APIConstants.SIZECLASS_CODE, sizeClasses);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("OarStorleksklass", mappings);

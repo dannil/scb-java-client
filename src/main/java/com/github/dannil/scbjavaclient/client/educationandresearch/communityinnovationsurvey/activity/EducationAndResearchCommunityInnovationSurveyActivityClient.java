@@ -33,10 +33,6 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
  */
 public class EducationAndResearchCommunityInnovationSurveyActivityClient extends AbstractClient {
 
-    private static final String SIZECLASSES_CODE = "Storleksklass";
-
-    private static final String TYPESOFVALUES_CODE = "VarTyp";
-
     /**
      * <p>Default constructor.</p>
      */
@@ -88,8 +84,8 @@ public class EducationAndResearchCommunityInnovationSurveyActivityClient extends
             Collection<String> sizeClasses, Collection<String> typesOfValues, Collection<String> periods) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.SNI2007_CODE, industrialClassifications);
-        mappings.put(SIZECLASSES_CODE, sizeClasses);
-        mappings.put(TYPESOFVALUES_CODE, typesOfValues);
+        mappings.put(APIConstants.SIZECLASS_CODE, sizeClasses);
+        mappings.put(APIConstants.TYPEOFVALUE_CODE, typesOfValues);
         mappings.put(APIConstants.TIME_CODE, periods);
 
         return getResponseModels("ACISAntalSNIStrlN", mappings);
@@ -129,8 +125,8 @@ public class EducationAndResearchCommunityInnovationSurveyActivityClient extends
             Collection<String> sizeClasses, Collection<String> typesOfValues, Collection<String> periods) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.SNI2007_CODE, sni2007s);
-        mappings.put(SIZECLASSES_CODE, sizeClasses);
-        mappings.put(TYPESOFVALUES_CODE, typesOfValues);
+        mappings.put(APIConstants.SIZECLASS_CODE, sizeClasses);
+        mappings.put(APIConstants.TYPEOFVALUE_CODE, typesOfValues);
         mappings.put(APIConstants.TIME_CODE, periods);
 
         return getResponseModels("NCISprodSNIStrl", mappings);
@@ -170,8 +166,8 @@ public class EducationAndResearchCommunityInnovationSurveyActivityClient extends
             Collection<String> sizeClasses, Collection<String> typesOfValues, Collection<String> periods) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.SNI2007_CODE, sni2007s);
-        mappings.put(SIZECLASSES_CODE, sizeClasses);
-        mappings.put(TYPESOFVALUES_CODE, typesOfValues);
+        mappings.put(APIConstants.SIZECLASS_CODE, sizeClasses);
+        mappings.put(APIConstants.TYPEOFVALUE_CODE, typesOfValues);
         mappings.put(APIConstants.TIME_CODE, periods);
 
         return getResponseModels("CKnoSNIStrl", mappings);
@@ -214,8 +210,8 @@ public class EducationAndResearchCommunityInnovationSurveyActivityClient extends
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put("Betydelse", degreesOfSignificances);
         mappings.put(APIConstants.SNI2007_CODE, sni2007s);
-        mappings.put(SIZECLASSES_CODE, sizeClasses);
-        mappings.put(TYPESOFVALUES_CODE, typesOfValues);
+        mappings.put(APIConstants.SIZECLASS_CODE, sizeClasses);
+        mappings.put(APIConstants.TYPEOFVALUE_CODE, typesOfValues);
         mappings.put(APIConstants.TIME_CODE, periods);
 
         return getResponseModels("UF0315T20N", mappings);
