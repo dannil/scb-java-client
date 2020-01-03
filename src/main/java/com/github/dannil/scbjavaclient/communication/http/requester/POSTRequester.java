@@ -15,12 +15,9 @@
 package com.github.dannil.scbjavaclient.communication.http.requester;
 
 import java.io.IOException;
-import java.io.OutputStream;
-import java.net.URLConnection;
+import java.io.UncheckedIOException;
+import java.net.http.HttpResponse;
 import java.nio.charset.Charset;
-
-import com.github.dannil.scbjavaclient.communication.http.HttpResponse;
-import com.github.dannil.scbjavaclient.exception.SCBClientException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -73,23 +70,22 @@ public class POSTRequester extends AbstractRequester {
     }
 
     @Override
-    public HttpResponse getResponse(String url) {
+    public HttpResponse<String> getResponse(String url) {
         if (this.query == null) {
             throw new IllegalStateException("Payload is null");
         }
         LOGGER.debug("POST: {}, {}", url, this.query);
+        HttpResponse<String> response = null;
         try {
-            URLConnection connection = getConnection(url);
-            connection.setDoOutput(true);
-            try (OutputStream output = connection.getOutputStream()) {
-                output.write(this.query.getBytes(getCharset()));
-            }
-            HttpResponse response = getResponse(connection);
-            LOGGER.debug("HTTP {}: {}", response.getStatus().getCode(), url);
-            return response;
+            response = getResponse(url, "POST", this.query);
+            LOGGER.debug("HTTP {}: {}", response.statusCode(), url);
         } catch (IOException e) {
-            throw new SCBClientException(e);
+            throw new UncheckedIOException(e);
+        } catch (InterruptedException e) {
+            LOGGER.warn("Thread was interrupted", e);
+            Thread.currentThread().interrupt();
         }
+        return response;
     }
 
 }

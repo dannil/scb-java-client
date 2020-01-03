@@ -67,27 +67,6 @@ public class EnvironmentWasteClient extends AbstractClient {
     /**
      * <p>Fetch all generated waste data which match the input constraints.</p>
      *
-     * @param industrialClassification
-     *            the industrial classifications to fetch data for
-     * @param wasteCategories
-     *            the waste categories to fetch data for
-     * @param years
-     *            the years to fetch data for
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     * @deprecated use
-     *             {@link #getGeneratedWaste(Collection, Collection, Collection, Collection)} instead.
-     */
-    @Deprecated
-    public List<ResponseModel> getGeneratedWaste(Collection<String> industrialClassification,
-            Collection<String> wasteCategories, Collection<Integer> years) {
-        return getGeneratedWaste(null, industrialClassification, wasteCategories, years);
-    }
-
-    /**
-     * <p>Fetch all generated waste data which match the input constraints.</p>
-     *
      * @param properties
      *            the properties to fetch data for
      * @param industrialClassification

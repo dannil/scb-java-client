@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Daniel Nilsson
+ * Copyright 2018 Daniel Nilsson
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
@@ -18,10 +18,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
+import org.junit.jupiter.api.Test;
+
+import com.github.dannil.scbjavaclient.client.businessactivities.productionvalueindex.productionvalueindex.BusinessActivitiesProductionValueIndexProductionValueIndexClient;
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
-import org.junit.jupiter.api.Test;
 
 @Suite
 public class BusinessActivitiesProductionValueIndexClientTest {
@@ -32,6 +33,14 @@ public class BusinessActivitiesProductionValueIndexClientTest {
         BusinessActivitiesProductionValueIndexClient client = new BusinessActivitiesProductionValueIndexClient(locale);
 
         assertEquals(locale, client.getLocale());
+    }
+
+    @Test
+    public void productionValueIndex() {
+        BusinessActivitiesProductionValueIndexClient client = new BusinessActivitiesProductionValueIndexClient();
+
+        assertEquals(BusinessActivitiesProductionValueIndexProductionValueIndexClient.class,
+                client.productionValueIndex().getClass());
     }
 
     @Test

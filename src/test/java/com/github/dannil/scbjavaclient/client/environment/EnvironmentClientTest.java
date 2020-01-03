@@ -20,10 +20,8 @@ import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.environment.airpollutants.EnvironmentAirPollutantsClient;
 import com.github.dannil.scbjavaclient.client.environment.greenhousegas.EnvironmentGreenhouseGasClient;
-import com.github.dannil.scbjavaclient.client.environment.islands.EnvironmentIslandsClient;
 import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.EnvironmentLandAndWaterAreaClient;
 import com.github.dannil.scbjavaclient.client.environment.landuse.EnvironmentLandUseClient;
-import com.github.dannil.scbjavaclient.client.environment.landusedfortransport.EnvironmentLandUsedForTransportClient;
 import com.github.dannil.scbjavaclient.client.environment.packagingandpackagingwaste.EnvironmentPackagingAndPackagingWasteClient;
 import com.github.dannil.scbjavaclient.client.environment.protectednature.EnvironmentProtectedNatureClient;
 import com.github.dannil.scbjavaclient.client.environment.seea.EnvironmentSEEAClient;
@@ -36,7 +34,6 @@ import com.github.dannil.scbjavaclient.test.extensions.Suite;
 import org.junit.jupiter.api.Test;
 
 @Suite
-@SuppressWarnings("deprecation")
 public class EnvironmentClientTest {
 
     @Test
@@ -62,13 +59,6 @@ public class EnvironmentClientTest {
     }
 
     @Test
-    public void islandsClient() {
-        EnvironmentClient client = new EnvironmentClient();
-
-        assertEquals(EnvironmentIslandsClient.class, client.islands().getClass());
-    }
-
-    @Test
     public void landAndWaterAreaClient() {
         EnvironmentClient client = new EnvironmentClient();
 
@@ -80,13 +70,6 @@ public class EnvironmentClientTest {
         EnvironmentClient client = new EnvironmentClient();
 
         assertEquals(EnvironmentLandUseClient.class, client.landUse().getClass());
-    }
-
-    @Test
-    public void landUsedForTransportClient() {
-        EnvironmentClient client = new EnvironmentClient();
-
-        assertEquals(EnvironmentLandUsedForTransportClient.class, client.landUsedForTransport().getClass());
     }
 
     @Test
@@ -109,7 +92,7 @@ public class EnvironmentClientTest {
 
         assertEquals(EnvironmentSEEAClient.class, client.seea().getClass());
     }
-    
+
     @Test
     public void shorelineLandUse() {
         EnvironmentClient client = new EnvironmentClient();

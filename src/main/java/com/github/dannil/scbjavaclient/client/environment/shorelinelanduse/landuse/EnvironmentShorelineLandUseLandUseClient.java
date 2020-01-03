@@ -216,50 +216,6 @@ public class EnvironmentShorelineLandUseLandUseClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all population on islands data.</p>
-     *
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     *
-     * @see #getPopulationOnIslands(Collection, Collection)
-     *
-     * @deprecated use
-     *             {@link com.github.dannil.scbjavaclient.client.environment.shorelinelanduse.oldtables.EnvironmentShorelineLandUseOldTablesClient#getPopulationOnIslands()
-     *             EnvironmentShorelineLandUseOldTablesClient#getPopulationOnIslands()}
-     *             instead
-     */
-    @Deprecated
-    public List<ResponseModel> getPopulationOnIslands() {
-        return getPopulationOnIslands(null, null);
-    }
-
-    /**
-     * <p>Fetch all population on islands data which match the input constraints.</p>
-     *
-     * @param regions
-     *            the regions
-     * @param years
-     *            the years
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     *
-     * @deprecated use
-     *             {@link com.github.dannil.scbjavaclient.client.environment.shorelinelanduse.oldtables.EnvironmentShorelineLandUseOldTablesClient#getPopulationOnIslands(Collection, Collection)
-     *             EnvironmentShorelineLandUseOldTablesClient#getPopulationOnIslands(Collection,
-     *             Collection)} instead
-     */
-    @Deprecated
-    public List<ResponseModel> getPopulationOnIslands(Collection<String> regions, Collection<Integer> years) {
-        Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.REGION_CODE, regions);
-        mappings.put(APIConstants.TIME_CODE, years);
-
-        return getResponseModels("OarBefolkning", mappings);
-    }
-
-    /**
      * <p>Fetch all number of islands in Sweden data.</p>
      *
      * @return the data wrapped in a list of
@@ -290,7 +246,7 @@ public class EnvironmentShorelineLandUseLandUseClient extends AbstractClient {
             Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
-        mappings.put("Storleksklass", sizeClasses);
+        mappings.put(APIConstants.SIZECLASS_CODE, sizeClasses);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("OarStorleksklass", mappings);

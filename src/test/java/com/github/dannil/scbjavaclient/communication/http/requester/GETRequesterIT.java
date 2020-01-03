@@ -16,7 +16,6 @@ package com.github.dannil.scbjavaclient.communication.http.requester;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import com.github.dannil.scbjavaclient.exception.SCBClientException;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
@@ -28,11 +27,11 @@ import org.junit.jupiter.api.Test;
 public class GETRequesterIT {
 
     @Test
-    @Date("2017-03-12")
+    @Date("2019-12-22")
     public void invalidUrl() {
         GETRequester requester = new GETRequester();
 
-        assertThrows(SCBClientException.class, () -> requester.getResponse("example.example").getBody());
+        assertThrows(IllegalArgumentException.class, () -> requester.getResponse("example.example").body());
     }
 
 }

@@ -65,7 +65,7 @@ public class POSTRequesterTest {
         POSTRequester post = new POSTRequester();
 
         assertThrows(IllegalStateException.class,
-                () -> post.getResponse(URLEndpoint.getRootUrl() + "BE/BE0701/MedelAlderNY").getBody());
+                () -> post.getResponse(URLEndpoint.getRootUrl() + "BE/BE0701/MedelAlderNY").body());
     }
 
 }

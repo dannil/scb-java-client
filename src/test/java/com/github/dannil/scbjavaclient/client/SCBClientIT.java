@@ -57,15 +57,15 @@ public class SCBClientIT {
 
         assertEquals(staticInputs, inputs);
     }
-    
+
     @Test
-    @Date("2018-06-26")
+    @Date("2020-01-02")
     public void getInputsNonExistingTable() {
         Locale locale = new Locale("sv", "SE");
         SCBClient client = new SCBClient(locale);
-        
+
         Map<String, Collection<String>> inputs = client.getInputs("ABC/ABC/ABC");
-        
+
         assertNotNull(inputs);
         assertTrue(inputs.isEmpty());
     }
@@ -142,21 +142,21 @@ public class SCBClientIT {
         assertNotNull(regions);
         assertTrue(regions.isEmpty());
     }
-    
+
     @Test
-    @Date("2018-06-26")
+    @Date("2020-01-02")
     public void getRegionsNonExistingTable() {
         Locale locale = new Locale("sv", "SE");
         SCBClient client = new SCBClient(locale);
-        
+
         List<String> regions = client.getRegions("ABC/ABC/ABC");
-        
+
         assertNotNull(regions);
         assertTrue(regions.isEmpty());
     }
 
     @Test
-    @Date("2017-01-01")
+    @Date("2020-01-02")
     public void getTimes() {
         SCBClient client = new SCBClient();
 
@@ -176,15 +176,15 @@ public class SCBClientIT {
         assertNotNull(times);
         assertTrue(times.isEmpty());
     }
-    
+
     @Test
-    @Date("2018-06-26")
+    @Date("2020-01-02")
     public void getTimesNonExistingTable() {
         Locale locale = new Locale("sv", "SE");
         SCBClient client = new SCBClient(locale);
-        
+
         List<String> times = client.getTimes("ABC/ABC/ABC");
-        
+
         assertNotNull(times);
         assertTrue(times.isEmpty());
     }

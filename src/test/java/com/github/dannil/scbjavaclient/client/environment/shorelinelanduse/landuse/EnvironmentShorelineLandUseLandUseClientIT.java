@@ -20,7 +20,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.test.extensions.AllowFailure;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
@@ -30,7 +29,6 @@ import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
-@SuppressWarnings("deprecation")
 public class EnvironmentShorelineLandUseLandUseClientIT {
 
     private EnvironmentShorelineLandUseLandUseClient client;
@@ -149,31 +147,6 @@ public class EnvironmentShorelineLandUseLandUseClientIT {
         List<Integer> years = Arrays.asList(2013);
 
         assertNotEquals(0, this.client.getIslandsInSwedenByNumberAreaAndPerimiter(regions, years).size());
-    }
-
-    @Test
-    @Date("2018-10-06")
-    @AllowFailure
-    public void getPopulationOnIslands() {
-        assertNotEquals(0, this.client.getPopulationOnIslands().size());
-    }
-
-    @Test
-    @Date("2018-10-06")
-    @AllowFailure
-    public void getPopulationOnIslandsWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getPopulationOnIslands(Collections.<String>emptyList(),
-                Collections.<Integer>emptyList()).size());
-    }
-
-    @Test
-    @Date("2018-10-06")
-    @AllowFailure
-    public void getPopulationOnIslandsWithParameters() {
-        List<String> regions = Arrays.asList("0117", "0120");
-        List<Integer> years = Arrays.asList(2013);
-
-        assertNotEquals(0, this.client.getPopulationOnIslands(regions, years).size());
     }
 
     @Test

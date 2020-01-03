@@ -20,7 +20,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.test.extensions.AllowFailure;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
@@ -39,37 +38,58 @@ public class EducationAndResearchCommunityInnovationSurveyCooperationClientIT {
         this.client = new EducationAndResearchCommunityInnovationSurveyCooperationClient();
     }
 
-    @SuppressWarnings("deprecation")
     @Test
-    @Date("2019-11-10")
-    @AllowFailure
-    public void getNumberOfInnovativeEnterprises() {
-        assertNotEquals(0, this.client.getNumberOfInnovativeEnterprises().size());
+    @Date("2020-01-03")
+    public void getEnterprisesInnovationCooperationInPrivateSector() {
+        assertNotEquals(0, this.client.getEnterprisesInnovationCooperationInPrivateSector().size());
     }
 
-    @SuppressWarnings("deprecation")
     @Test
-    @Date("2019-11-10")
-    @AllowFailure
-    public void getNumberOfInnovativeEnterprisesWithParametersEmptyLists() {
+    @Date("2020-01-03")
+    public void getEnterprisesInnovationCooperationInPrivateSectorWithParametersEmptyLists() {
         assertNotEquals(0,
-                this.client.getNumberOfInnovativeEnterprises(Collections.<String>emptyList(),
+                this.client.getEnterprisesInnovationCooperationInPrivateSector(Collections.<String>emptyList(),
                         Collections.<String>emptyList(), Collections.<String>emptyList(),
                         Collections.<String>emptyList()).size());
     }
 
-    @SuppressWarnings("deprecation")
     @Test
-    @Date("2019-11-10")
-    @AllowFailure
-    public void getNumberOfInnovativeEnterprisesWithParameters() {
-        List<String> industrialClassifications = Arrays.asList("64-66", "71+72");
-        List<String> sizeClasses = Arrays.asList("10-49", "50-249");
+    @Date("2020-01-03")
+    public void getEnterprisesInnovationCooperationInPrivateSectorWithParameters() {
+        List<String> industrialClassifications = Arrays.asList("SA14", "SA12");
+        List<String> sizeClasses = Arrays.asList("tot10+", "50-249");
         List<String> typesOfValues = Arrays.asList("PS", "KI");
-        List<String> periods = Arrays.asList("2010-2012", "2012-2014");
+        List<String> periods = Arrays.asList("2016-2018");
 
-        assertNotEquals(0, this.client.getNumberOfInnovativeEnterprises(industrialClassifications, sizeClasses,
-                typesOfValues, periods).size());
+        assertNotEquals(0, this.client.getEnterprisesInnovationCooperationInPrivateSector(industrialClassifications,
+                sizeClasses, typesOfValues, periods).size());
+    }
+
+    @Test
+    @Date("2020-01-03")
+    public void getEnterprisesInnovationCooperationInPublicSector() {
+        assertNotEquals(0, this.client.getEnterprisesInnovationCooperationInPublicSector().size());
+    }
+
+    @Test
+    @Date("2020-01-03")
+    public void getEnterprisesInnovationCooperationInPublicSectorWithParametersEmptyLists() {
+        assertNotEquals(0,
+                this.client.getEnterprisesInnovationCooperationInPublicSector(Collections.<String>emptyList(),
+                        Collections.<String>emptyList(), Collections.<String>emptyList(),
+                        Collections.<String>emptyList()).size());
+    }
+
+    @Test
+    @Date("2020-01-03")
+    public void getEnterprisesInnovationCooperationInPublicSectorWithParameters() {
+        List<String> industrialClassifications = Arrays.asList("10-12", "58+61-63");
+        List<String> sizeClasses = Arrays.asList("50-249", "tot250+");
+        List<String> typesOfValues = Arrays.asList("PS", "KI");
+        List<String> periods = Arrays.asList("2016-2018");
+
+        assertNotEquals(0, this.client.getEnterprisesInnovationCooperationInPublicSector(industrialClassifications,
+                sizeClasses, typesOfValues, periods).size());
     }
 
 }
