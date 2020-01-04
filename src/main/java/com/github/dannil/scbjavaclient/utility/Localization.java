@@ -14,21 +14,12 @@
 
 package com.github.dannil.scbjavaclient.utility;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.text.MessageFormat;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Locale;
 import java.util.MissingResourceException;
-import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
 import com.github.dannil.scbjavaclient.constants.ClientConstants;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * <p>Class for handling localization for the clients.</p>
@@ -43,16 +34,12 @@ public class Localization {
 
     private ResourceBundle bundle;
 
-    private ResourceBundleEncodingControl encodingControl;
-
     /**
      * <p>Private constructor. Initializes encoding control for the resource bundles.</p>
      */
     private Localization() {
         this.baseName = ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX;
         this.fallbackLocale = ClientConstants.LOCALIZATION_FALLBACK_LOCALE;
-
-        this.encodingControl = new ResourceBundleEncodingControl("UTF-8");
     }
 
     /**
@@ -63,7 +50,7 @@ public class Localization {
      */
     public Localization(Locale locale) {
         this();
-        this.bundle = ResourceBundle.getBundle(this.baseName, locale, this.encodingControl);
+        this.bundle = ResourceBundle.getBundle(this.baseName, locale);
     }
 
     /**
@@ -82,7 +69,7 @@ public class Localization {
      *            the <code>Locale</code>
      */
     public void setLocale(Locale locale) {
-        this.bundle = ResourceBundle.getBundle(this.baseName, locale, this.encodingControl);
+        this.bundle = ResourceBundle.getBundle(this.baseName);
     }
 
     /**
@@ -98,7 +85,7 @@ public class Localization {
         try {
             return this.bundle.getString(key);
         } catch (MissingResourceException e) {
-            return ResourceBundle.getBundle(this.baseName, this.fallbackLocale, this.encodingControl).getString(key);
+            return ResourceBundle.getBundle(this.baseName, this.fallbackLocale).getString(key);
         }
     }
 
@@ -120,58 +107,61 @@ public class Localization {
         return formatter.format(variables);
     }
 
-    /**
-     * <p>Class to handle non-ASCII encodings for {@link java.util.ResourceBundle
-     * ResourceBundle}, such as UTF-8.</p>
-     *
-     * @author Daniel Nilsson
-     */
-    private static class ResourceBundleEncodingControl extends ResourceBundle.Control {
-
-        private static final Logger LOGGER = LoggerFactory.getLogger(ResourceBundleEncodingControl.class);
-
-        private String encoding;
-
-        /**
-         * <p>Overloaded constructor.</p>
-         *
-         * @param encoding
-         *            the encoding to use (i.e. UTF-8)
-         */
-        protected ResourceBundleEncodingControl(String encoding) {
-            super();
-            this.encoding = encoding;
-        }
-
-        @Override
-        public List<String> getFormats(String baseName) {
-            if (baseName == null) {
-                throw new IllegalArgumentException();
-            }
-            return Arrays.asList("properties");
-        }
-
-        @Override
-        public ResourceBundle newBundle(String baseName, Locale locale, String format, ClassLoader loader,
-                boolean reload) {
-            if (baseName == null || locale == null || format == null || loader == null) {
-                throw new IllegalArgumentException();
-            }
-
-            if ("properties".equals(format)) {
-                String bundleName = toBundleName(baseName, locale);
-                String resourceName = toResourceName(bundleName, format);
-
-                try (InputStream stream = loader.getResourceAsStream(resourceName)) {
-                    try (InputStreamReader streamReader = new InputStreamReader(stream, this.encoding)) {
-                        return new PropertyResourceBundle(streamReader);
-                    }
-                } catch (IOException e) {
-                    LOGGER.error(e.getMessage());
-                }
-            }
-            return null;
-        }
-    }
+    // /**
+    // * <p>Class to handle non-ASCII encodings for {@link java.util.ResourceBundle
+    // * ResourceBundle}, such as UTF-8.</p>
+    // *
+    // * @author Daniel Nilsson
+    // */
+    // private static class ResourceBundleEncodingControl extends ResourceBundle.Control {
+    //
+    // private static final Logger LOGGER =
+    // LoggerFactory.getLogger(ResourceBundleEncodingControl.class);
+    //
+    // private String encoding;
+    //
+    // /**
+    // * <p>Overloaded constructor.</p>
+    // *
+    // * @param encoding
+    // * the encoding to use (i.e. UTF-8)
+    // */
+    // protected ResourceBundleEncodingControl(String encoding) {
+    // super();
+    // this.encoding = encoding;
+    // }
+    //
+    // @Override
+    // public List<String> getFormats(String baseName) {
+    // if (baseName == null) {
+    // throw new IllegalArgumentException();
+    // }
+    // return Arrays.asList("properties");
+    // }
+    //
+    // @Override
+    // public ResourceBundle newBundle(String baseName, Locale locale, String format,
+    // ClassLoader loader,
+    // boolean reload) {
+    // if (baseName == null || locale == null || format == null || loader == null) {
+    // throw new IllegalArgumentException();
+    // }
+    //
+    // if ("properties".equals(format)) {
+    // String bundleName = toBundleName(baseName, locale);
+    // String resourceName = toResourceName(bundleName, format);
+    //
+    // try (InputStream stream = loader.getResourceAsStream(resourceName)) {
+    // try (InputStreamReader streamReader = new InputStreamReader(stream, this.encoding))
+    // {
+    // return new PropertyResourceBundle(streamReader);
+    // }
+    // } catch (IOException e) {
+    // LOGGER.error(e.getMessage());
+    // }
+    // }
+    // return null;
+    // }
+    // }
 
 }
