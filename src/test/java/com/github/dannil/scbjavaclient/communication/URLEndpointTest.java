@@ -1,6 +1,7 @@
 package com.github.dannil.scbjavaclient.communication;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.net.MalformedURLException;
@@ -143,10 +144,10 @@ public class URLEndpointTest {
     }
 
     @Test
-    public void equalsNull() {
-        URLEndpoint url1 = null;
+    public void equalsNullParameter() {
+        URLEndpoint url1 = new URLEndpoint("http://api.scb.se/OV0104/v1/doris/sv/ssd/AM");
 
-        assertEquals(null, url1);
+        assertFalse(url1.equals(null));
     }
 
     @Test

@@ -15,6 +15,7 @@
 package com.github.dannil.scbjavaclient.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -76,10 +77,10 @@ public class ValueNodeTest {
     }
 
     @Test
-    public void equalsNull() {
-        ValueNode<Double> value = null;
+    public void equalsNullParameter() {
+        ValueNode<Double> value = new ValueNode<Double>();
 
-        assertEquals(null, value);
+        assertFalse(value.equals(null));
     }
 
     @Test

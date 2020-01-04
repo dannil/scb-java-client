@@ -73,7 +73,7 @@ public class StreamUtilityTest {
     @Test
     public void skipByteOrderMarkWithClosedInputStream() throws IOException {
         ByteArrayInputStream bais = mock(ByteArrayInputStream.class);
-        doThrow(new UncheckedIOException(new IOException())).when(bais).close();
+        doThrow(new UncheckedIOException(new IOException())).when(bais).read();
 
         assertThrows(UncheckedIOException.class, () -> StreamUtility.skipUnicodeByteOrderMark(bais));
     }

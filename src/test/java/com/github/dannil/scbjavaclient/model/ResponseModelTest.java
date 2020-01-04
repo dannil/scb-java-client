@@ -162,10 +162,10 @@ public class ResponseModelTest {
     }
 
     @Test
-    public void equalsNull() {
-        ResponseModel model = null;
+    public void equalsNullParameter() {
+        ResponseModel model = new ResponseModel();
 
-        assertEquals(null, model);
+        assertFalse(model.equals(null));
     }
 
     @Test
