@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Daniel Nilsson
+ * Copyright 2020 Daniel Nilsson
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
@@ -23,61 +23,31 @@ import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.nio.charset.StandardCharsets;
 
-import com.github.dannil.scbjavaclient.communication.URLEndpoint;
-import com.github.dannil.scbjavaclient.test.extensions.Suite;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-@Suite
-public class POSTRequesterTest {
+public class GETRequesterTest {
 
-    private POSTRequester mock;
+    private GETRequester mock;
 
     @BeforeEach
     public void setup() {
-        this.mock = mock(POSTRequester.class);
+        this.mock = mock(GETRequester.class);
         when(this.mock.getResponse("IOException")).thenThrow(new UncheckedIOException(new IOException()));
     }
 
     @Test
     public void createWithDefaultConstructor() {
-        POSTRequester post = new POSTRequester();
+        GETRequester get = new GETRequester();
 
-        // assertEquals(locale, post.getLocale());
-        assertEquals(StandardCharsets.UTF_8, post.getCharset());
+        assertEquals(StandardCharsets.UTF_8, get.getCharset());
     }
 
     @Test
     public void getCharset() {
-        POSTRequester post = new POSTRequester();
+        GETRequester get = new GETRequester();
 
-        assertEquals(StandardCharsets.UTF_8, post.getCharset());
-    }
-
-    // @Test
-    // public void getLocale() {
-    // Locale locale = new Locale("sv", "SE");
-    // POSTRequester post = (POSTRequester)
-    // RequesterFactory.getRequester(RequestMethod.POST, locale);
-    //
-    // assertEquals(locale, post.getLocale());
-    // }
-
-    @Test
-    public void getPayload() {
-        POSTRequester post = new POSTRequester();
-        post.setQuery("payload");
-
-        assertEquals("payload", post.getQuery());
-    }
-
-    @Test
-    public void doRequestIllegalStateNullPayload() throws IOException {
-        POSTRequester post = new POSTRequester();
-
-        assertThrows(IllegalStateException.class,
-                () -> post.getResponse(URLEndpoint.getRootUrl() + "BE/BE0701/MedelAlderNY").body());
+        assertEquals(StandardCharsets.UTF_8, get.getCharset());
     }
 
     @Test

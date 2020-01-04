@@ -76,6 +76,13 @@ public class ValueNodeTest {
     }
 
     @Test
+    public void equalsNull() {
+        ValueNode<Double> value = null;
+
+        assertEquals(null, value);
+    }
+
+    @Test
     public void equalsItselfWithValues() {
         ValueNode<Double> value = new ValueNode<Double>(11.22d, "TESTCODE", "TESTTEXT");
         ValueNode<Double> value2 = new ValueNode<Double>(11.22d, "TESTCODE", "TESTTEXT");

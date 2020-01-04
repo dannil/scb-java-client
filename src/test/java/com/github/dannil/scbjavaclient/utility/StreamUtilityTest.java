@@ -16,8 +16,13 @@ package com.github.dannil.scbjavaclient.utility;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.mock;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -63,6 +68,14 @@ public class StreamUtilityTest {
 
         ByteArrayInputStream baisBOM = new ByteArrayInputStream(textWithBOM.getBytes());
         assertEquals(textWithoutBOM, StreamUtility.skipUnicodeByteOrderMark(baisBOM));
+    }
+
+    @Test
+    public void skipByteOrderMarkWithClosedInputStream() throws IOException {
+        ByteArrayInputStream bais = mock(ByteArrayInputStream.class);
+        doThrow(new UncheckedIOException(new IOException())).when(bais).close();
+
+        assertThrows(UncheckedIOException.class, () -> StreamUtility.skipUnicodeByteOrderMark(bais));
     }
 
 }

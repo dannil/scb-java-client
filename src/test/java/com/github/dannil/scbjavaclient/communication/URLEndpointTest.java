@@ -78,7 +78,7 @@ public class URLEndpointTest {
 
         assertEquals("https://api.scb.se/OV0104/v1/doris/fr/ssd/AM/", url.toString());
     }
-    
+
     @Test
     public void getLanguage() {
         URLEndpoint url = new URLEndpoint("http://api.scb.se/OV0104/v1/doris/fr/ssd/BE/BE0401/BE0401A/");
@@ -124,12 +124,12 @@ public class URLEndpointTest {
 
         assertEquals(url, endpoint);
         assertEquals("", endpoint.getTable());
-        
+
         url = URLEndpoint.getRootUrl(new Locale("da", "DK"), CommunicationProtocol.HTTPS);
-        
+
         rootUrl = "https://api.scb.se/OV0104/v1/doris/da/ssd/";
         endpoint = new URLEndpoint(rootUrl);
-        
+
         assertEquals(url, endpoint);
         assertEquals("", endpoint.getTable());
     }
@@ -140,6 +140,13 @@ public class URLEndpointTest {
         URLEndpoint url2 = new URLEndpoint("http://api.scb.se/OV0104/v1/doris/sv/ssd/AM");
 
         assertEquals(url1, url2);
+    }
+
+    @Test
+    public void equalsNull() {
+        URLEndpoint url1 = null;
+
+        assertEquals(null, url1);
     }
 
     @Test
