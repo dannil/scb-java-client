@@ -1,0 +1,41 @@
+name: Java CI
+
+on:
+  push:
+    branches-ignore:
+    - 'gh-pages'
+    - '*tag*'
+    - 'test/run-all-tests'
+  schedule:
+    - cron: '30 04 * * *'
+
+jobs:
+  maven-build:
+    strategy:
+      matrix:
+        container: ['ubuntu:18.04']
+        jdk: [openjdk11, openjdk12, openjdk13]
+        maven: [3.3.9]
+      fail-fast: false
+    runs-on: ubuntu-18.04
+    container: ${{ matrix.container }}
+    steps:
+    - name: Update and install packages
+      run: apt-get update && apt-get install -y dnsutils
+      # If we get the same IP on concurrent builds and this triggers an error
+      # on the API (rate limiting), this can be easily debugged by checking the log
+    - name: Get IP
+      run: 'echo IP: $(dig +short myip.opendns.com @resolver1.opendns.com)'
+    - name: Checkout repository
+      uses: actions/checkout@v1
+    - name: Setup Java
+      uses: joschi/setup-jdk@v1
+      with:
+        java-version: ${{ matrix.jdk }}
+        architecture: x64
+    - name: Setup Maven
+      uses: aahmed-se/setup-maven@v3
+      with:
+        maven-version: ${{ matrix.maven }}
+    - name: Build with Maven
+      run: mvn install -B -V -DtestsDayLimit=7
