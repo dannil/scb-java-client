@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UnicodeBOMInputStream.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.utility</a> &gt; <span class="el_source">UnicodeBOMInputStream.java</span></div><h1>UnicodeBOMInputStream.java</h1><pre class="source lang-java linenums">// Class originally retrieved from https://github.com/gpakosz/UnicodeBOMInputStream
+// with modifications to ensure project formatting, Javadoc validness and SonarCloud rules
+// test
+
+// (‑●‑●)&gt; released under the WTFPL v2 license, by Gregory Pakosz (@gpakosz)
+
+package com.github.dannil.scbjavaclient.utility;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PushbackInputStream;
+
+/**
+ * The &lt;code&gt;UnicodeBOMInputStream&lt;/code&gt; class wraps any
+ * &lt;code&gt;InputStream&lt;/code&gt; and detects the presence of any Unicode BOM
+ * (Byte Order Mark) at its beginning, as defined by
+ * &lt;a href=&quot;http://www.faqs.org/rfcs/rfc3629.html&quot;&gt;RFC 3629 - UTF-8, a
+ * transformation format of ISO 10646&lt;/a&gt;.
+ *
+ * &lt;p&gt;The
+ * &lt;a href=&quot;http://www.unicode.org/unicode/faq/utf_bom.html&quot;&gt;Unicode FAQ&lt;/a&gt;
+ * defines 5 types of BOMs:&lt;/p&gt;&lt;ul&gt;
+ * &lt;li&gt;
+ *
+ * &lt;pre&gt;
+ * 00 00 FE FF  = UTF-32, big-endian
+ * &lt;/pre&gt;
+ *
+ * &lt;/li&gt;
+ * &lt;li&gt;
+ *
+ * &lt;pre&gt;
+ * FF FE 00 00  = UTF-32, little-endian
+ * &lt;/pre&gt;
+ *
+ * &lt;/li&gt;
+ * &lt;li&gt;
+ *
+ * &lt;pre&gt;
+ * FE FF        = UTF-16, big-endian
+ * &lt;/pre&gt;
+ *
+ * &lt;/li&gt;
+ * &lt;li&gt;
+ *
+ * &lt;pre&gt;
+ * FF FE        = UTF-16, little-endian
+ * &lt;/pre&gt;
+ *
+ * &lt;/li&gt;
+ * &lt;li&gt;
+ *
+ * &lt;pre&gt;
+ * EF BB BF     = UTF-8
+ * &lt;/pre&gt;
+ *
+ * &lt;/li&gt;
+ * &lt;/ul&gt;
+ *
+ * &lt;p&gt;Use the {@link #getBOM()} method to know whether a BOM has been detected
+ * or not.
+ * &lt;/p&gt;
+ * &lt;p&gt;Use the {@link #skipBOM()} method to remove the detected BOM from the
+ * wrapped &lt;code&gt;InputStream&lt;/code&gt; object.&lt;/p&gt;
+ *
+ * @author Gregory Pakosz
+ * @version 1.0
+ */
+public class UnicodeBOMInputStream extends InputStream {
+
+    private final PushbackInputStream in;
+
+    private BOM bom;
+
+    private boolean skipped;
+
+    /**
+     * Constructs a new &lt;code&gt;UnicodeBOMInputStream&lt;/code&gt; that wraps the
+     * specified &lt;code&gt;InputStream&lt;/code&gt;.
+     *
+     * @param inputStream
+     *            an &lt;code&gt;InputStream&lt;/code&gt;.
+     * @throws IOException
+     *             on reading from the specified &lt;code&gt;InputStream&lt;/code&gt;
+     *             when trying to detect the Unicode BOM.
+     */
+<span class="fc" id="L87">    public UnicodeBOMInputStream(final InputStream inputStream) throws IOException {</span>
+<span class="fc bfc" id="L88" title="All 2 branches covered.">        if (inputStream == null) {</span>
+<span class="fc" id="L89">            throw new NullPointerException(&quot;invalid input stream: null is not allowed&quot;);</span>
+        }
+
+<span class="fc" id="L92">        int size = 4;</span>
+<span class="fc" id="L93">        in = new PushbackInputStream(inputStream, size);</span>
+
+<span class="fc" id="L95">        final byte[] bomRawBytes = new byte[4];</span>
+<span class="fc" id="L96">        final int read = in.read(bomRawBytes);</span>
+
+<span class="fc" id="L98">        this.bom = getUtf32Bom(bomRawBytes);</span>
+<span class="pc bpc" id="L99" title="1 of 2 branches missed.">        if (this.bom == null) {</span>
+<span class="fc" id="L100">            this.bom = getUtf8Bom(bomRawBytes);</span>
+        }
+<span class="fc bfc" id="L102" title="All 2 branches covered.">        if (this.bom == null) {</span>
+<span class="fc" id="L103">            this.bom = getUtf16Bom(bomRawBytes);</span>
+        }
+<span class="fc bfc" id="L105" title="All 2 branches covered.">        if (this.bom == null) {</span>
+<span class="fc" id="L106">            this.bom = BOM.NONE;</span>
+        }
+<span class="fc bfc" id="L108" title="All 2 branches covered.">        if (read &gt; 0) {</span>
+<span class="fc" id="L109">            in.unread(bomRawBytes, 0, read);</span>
+        }
+<span class="fc" id="L111">    }</span>
+
+    /**
+     * Retrieves the UTF-32 &lt;code&gt;BOM&lt;/code&gt; from the specified &lt;code&gt;byte&lt;/code&gt; array.
+     * 
+     * @param bomRawBytes
+     *            the bytes to read
+     * @return an &lt;code&gt;BOM&lt;/code&gt; (if any) present in the specified array
+     */
+    public final BOM getUtf32Bom(byte[] bomRawBytes) {
+<span class="pc bpc" id="L121" title="4 of 8 branches missed.">        if ((bomRawBytes[0] == (byte) 0xFF) &amp;&amp; (bomRawBytes[1] == (byte) 0xFE) &amp;&amp; (bomRawBytes[2] == (byte) 0x00)</span>
+                &amp;&amp; (bomRawBytes[3] == (byte) 0x00)) {
+<span class="nc" id="L123">            return BOM.UTF_32_LE;</span>
+<span class="pc bpc" id="L124" title="4 of 8 branches missed.">        } else if ((bomRawBytes[0] == (byte) 0x00) &amp;&amp; (bomRawBytes[1] == (byte) 0x00) &amp;&amp; (bomRawBytes[2] == (byte) 0xFE)</span>
+                &amp;&amp; (bomRawBytes[3] == (byte) 0xFF)) {
+<span class="nc" id="L126">            return BOM.UTF_32_BE;</span>
+        }
+<span class="fc" id="L128">        return null;</span>
+    }
+
+    /**
+     * Retrieves the UTF-8 &lt;code&gt;BOM&lt;/code&gt; from the specified &lt;code&gt;byte&lt;/code&gt; array.
+     * 
+     * @param bomRawBytes
+     *            the bytes to read
+     * @return an &lt;code&gt;BOM&lt;/code&gt; (if any) present in the specified array
+     */
+    public final BOM getUtf8Bom(byte[] bomRawBytes) {
+<span class="pc bpc" id="L139" title="2 of 6 branches missed.">        if ((bomRawBytes[0] == (byte) 0xEF) &amp;&amp; (bomRawBytes[1] == (byte) 0xBB) &amp;&amp; (bomRawBytes[2] == (byte) 0xBF)) {</span>
+<span class="fc" id="L140">            return BOM.UTF_8;</span>
+        }
+<span class="fc" id="L142">        return null;</span>
+    }
+
+    /**
+     * Retrieves the UTF-16 &lt;code&gt;BOM&lt;/code&gt; from the specified &lt;code&gt;byte&lt;/code&gt; array.
+     * 
+     * @param bomRawBytes
+     *            the bytes to read
+     * @return an &lt;code&gt;BOM&lt;/code&gt; (if any) present in the specified array
+     */
+    public final BOM getUtf16Bom(byte[] bomRawBytes) {
+<span class="pc bpc" id="L153" title="1 of 4 branches missed.">        if ((bomRawBytes[0] == (byte) 0xFF) &amp;&amp; (bomRawBytes[1] == (byte) 0xFE)) {</span>
+<span class="fc" id="L154">            return BOM.UTF_16_LE;</span>
+<span class="pc bpc" id="L155" title="1 of 4 branches missed.">        } else if ((bomRawBytes[0] == (byte) 0xFE) &amp;&amp; (bomRawBytes[1] == (byte) 0xFF)) {</span>
+<span class="fc" id="L156">            return BOM.UTF_16_BE;</span>
+        }
+<span class="fc" id="L158">        return null;</span>
+    }
+
+    /**
+     * Returns the &lt;code&gt;BOM&lt;/code&gt; that was detected in the wrapped
+     * &lt;code&gt;InputStream&lt;/code&gt; object.
+     *
+     * @return a &lt;code&gt;BOM&lt;/code&gt; value.
+     */
+    public final BOM getBOM() {
+        // BOM type is immutable.
+<span class="fc" id="L169">        return bom;</span>
+    }
+
+    /**
+     * Skips the &lt;code&gt;BOM&lt;/code&gt; that was found in the wrapped
+     * &lt;code&gt;InputStream&lt;/code&gt; object.
+     *
+     * @return this &lt;code&gt;UnicodeBOMInputStream&lt;/code&gt;.
+     *
+     * @throws IOException
+     *             when trying to skip the BOM from the wrapped
+     *             &lt;code&gt;InputStream&lt;/code&gt; object.
+     */
+    public final synchronized UnicodeBOMInputStream skipBOM() throws IOException {
+<span class="fc bfc" id="L183" title="All 2 branches covered.">        if (!skipped) {</span>
+            // Daniel 2019-06-15: added check to see that bytes actually were skipped
+<span class="fc" id="L185">            long skippedBytes = in.skip(bom.bytes.length);</span>
+<span class="fc bfc" id="L186" title="All 2 branches covered.">            if (skippedBytes &gt; 0) {</span>
+<span class="fc" id="L187">                skipped = true;</span>
+            }
+        }
+<span class="fc" id="L190">        return this;</span>
+    }
+
+    @Override
+    public int read() throws IOException {
+<span class="fc" id="L195">        return in.read();</span>
+    }
+
+    @Override
+    public int read(final byte[] b) throws IOException {
+<span class="fc" id="L200">        return in.read(b, 0, b.length);</span>
+    }
+
+    @Override
+    public int read(final byte[] b, final int off, final int len) throws IOException {
+<span class="fc" id="L205">        return in.read(b, off, len);</span>
+    }
+
+    @Override
+    public long skip(final long n) throws IOException {
+<span class="fc" id="L210">        return in.skip(n);</span>
+    }
+
+    @Override
+    public int available() throws IOException {
+<span class="fc" id="L215">        return in.available();</span>
+    }
+
+    @Override
+    public void close() throws IOException {
+<span class="fc" id="L220">        in.close();</span>
+<span class="fc" id="L221">    }</span>
+
+    @Override
+    public synchronized void mark(final int readlimit) {
+<span class="fc" id="L225">        in.mark(readlimit);</span>
+<span class="fc" id="L226">    }</span>
+
+    @Override
+    public synchronized void reset() throws IOException {
+<span class="nc" id="L230">        in.reset();</span>
+<span class="nc" id="L231">    }</span>
+
+    @Override
+    public boolean markSupported() {
+<span class="fc" id="L235">        return in.markSupported();</span>
+    }
+
+    /**
+     * Type safe enumeration class that describes the different types of Unicode
+     * BOMs.
+     */
+<span class="pc bpc" id="L242" title="1 of 2 branches missed.">    public static final class BOM {</span>
+
+        /**
+         * NONE.
+         */
+<span class="fc" id="L247">        public static final BOM NONE = new BOM(new byte[] {}, &quot;NONE&quot;);</span>
+
+        /**
+         * UTF-8 BOM (EF BB BF).
+         */
+<span class="fc" id="L252">        public static final BOM UTF_8 = new BOM(new byte[] { (byte) 0xEF, (byte) 0xBB, (byte) 0xBF }, &quot;UTF-8&quot;);</span>
+
+        /**
+         * UTF-16, little-endian (FF FE).
+         */
+<span class="fc" id="L257">        public static final BOM UTF_16_LE = new BOM(new byte[] { (byte) 0xFF, (byte) 0xFE }, &quot;UTF-16 little-endian&quot;);</span>
+
+        /**
+         * UTF-16, big-endian (FE FF).
+         */
+<span class="fc" id="L262">        public static final BOM UTF_16_BE = new BOM(new byte[] { (byte) 0xFE, (byte) 0xFF }, &quot;UTF-16 big-endian&quot;);</span>
+
+        /**
+         * UTF-32, little-endian (FF FE 00 00).
+         */
+<span class="fc" id="L267">        public static final BOM UTF_32_LE = new BOM(new byte[] { (byte) 0xFF, (byte) 0xFE, (byte) 0x00, (byte) 0x00 },</span>
+                &quot;UTF-32 little-endian&quot;);
+
+        /**
+         * UTF-32, big-endian (00 00 FE FF).
+         */
+<span class="fc" id="L273">        public static final BOM UTF_32_BE = new BOM(new byte[] { (byte) 0x00, (byte) 0x00, (byte) 0xFE, (byte) 0xFF },</span>
+                &quot;UTF-32 big-endian&quot;);
+
+        private final byte[] bytes;
+
+        private final String description;
+
+<span class="fc" id="L280">        private BOM(final byte[] bom, final String description) {</span>
+<span class="pc bpc" id="L281" title="1 of 4 branches missed.">            assert bom != null : &quot;invalid BOM: null is not allowed&quot;;</span>
+<span class="pc bpc" id="L282" title="1 of 4 branches missed.">            assert description != null : &quot;invalid description: null is not allowed&quot;;</span>
+<span class="pc bpc" id="L283" title="1 of 4 branches missed.">            assert description.length() != 0 : &quot;invalid description: empty string is not allowed&quot;;</span>
+
+<span class="fc" id="L285">            this.bytes = bom;</span>
+<span class="fc" id="L286">            this.description = description;</span>
+<span class="fc" id="L287">        }</span>
+
+        /**
+         * Returns a &lt;code&gt;String&lt;/code&gt; representation of this &lt;code&gt;BOM&lt;/code&gt;
+         * value.
+         *
+         * @return a &lt;code&gt;String&lt;/code&gt; representation of this &lt;code&gt;BOM&lt;/code&gt; value.
+         */
+        public String toString() {
+<span class="fc" id="L296">            return description;</span>
+        }
+
+        /**
+         * Returns the bytes corresponding to this &lt;code&gt;BOM&lt;/code&gt; value.
+         *
+         * @return the bytes for this &lt;code&gt;BOM&lt;/code&gt; value.
+         */
+        public byte[] getBytes() {
+<span class="fc" id="L305">            final int length = bytes.length;</span>
+<span class="fc" id="L306">            final byte[] result = new byte[length];</span>
+
+            // make a defensive copy
+<span class="fc" id="L309">            System.arraycopy(bytes, 0, result, 0, length);</span>
+
+<span class="fc" id="L311">            return result;</span>
+        }
+
+    } // BOM
+
+} // UnicodeBOMInputStream
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
