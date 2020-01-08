@@ -17,10 +17,11 @@ package com.github.dannil.scbjavaclient.format.json;
 import java.io.IOException;
 import java.util.List;
 
+import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
+
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.dannil.scbjavaclient.exception.SCBClientParsingException;
 
 /**
  * <p>Class which encapsulates methods for converting JSON.</p>
