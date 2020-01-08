@@ -16,6 +16,3 @@ update_configs:
           # Should be upgraded all at once in a single PR; not yet possible 
           # with Dependabot so let's handle that manually
           dependency_name: "com.fasterxml.jackson.core:jackson-*"
-      - match:
-          dependency_name: "org.slf4j:slf4j-api"
-          version_requirement: "1.8.x"
