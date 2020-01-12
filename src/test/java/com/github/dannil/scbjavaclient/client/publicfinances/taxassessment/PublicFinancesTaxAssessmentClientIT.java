@@ -15,11 +15,13 @@
 package com.github.dannil.scbjavaclient.client.publicfinances.taxassessment;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
@@ -39,42 +41,52 @@ public class PublicFinancesTaxAssessmentClientIT {
     }
 
     @Test
-    @Date("2017-03-21")
+    @Date("2020-01-12")
     public void getAssessedAndTaxableEarnedIncome() {
-        assertNotEquals(0, this.client.getAssessedAndTaxableEarnedIncome().size());
+        List<ResponseModel> response = this.client.getAssessedAndTaxableEarnedIncome();
+
+        assertNotEquals(0, response.size());
+        assertTrue(response.stream().allMatch(model -> model.getVariables().keySet().containsAll(List.of("Tid"))));
     }
 
     @Test
-    @Date("2017-03-21")
+    @Date("2020-01-12")
     public void getAssessedAndTaxableEarnedIncomeWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getAssessedAndTaxableEarnedIncome(Collections.<String>emptyList(),
-                Collections.<Integer>emptyList()).size());
+        List<ResponseModel> response = this.client.getAssessedAndTaxableEarnedIncome(Collections.<String>emptyList(),
+                Collections.<Integer>emptyList());
+
+        assertNotEquals(0, response.size());
+        assertTrue(response.stream().allMatch(model -> model.getVariables().keySet().containsAll(List.of("Tid"))));
     }
 
     @Test
-    @Date("2017-03-21")
+    @Date("2020-01-12")
     public void getAssessedAndTaxableEarnedIncomeWithParameters() {
-        List<String> regions = Arrays.asList("0182", "0305");
-        List<Integer> years = Arrays.asList(2004, 2008);
+        List<String> regions = List.of("0182", "0305");
+        List<Integer> years = List.of(2004, 2008);
 
-        assertNotEquals(0, this.client.getAssessedAndTaxableEarnedIncome(regions, years).size());
+        List<ResponseModel> response = this.client.getAssessedAndTaxableEarnedIncome(regions, years);
+
+        assertNotEquals(0, response.size());
+        assertTrue(response.stream().allMatch(
+                model -> model.getVariables().keySet().containsAll(List.of("Region", "Tid"))));
     }
 
     @Test
-    @Date("2017-03-21")
+    @Date("2020-01-12")
     public void getAssessmentForNationalCapitalIncomeTax() {
         assertNotEquals(0, this.client.getAssessmentForNationalCapitalIncomeTax().size());
     }
 
     @Test
-    @Date("2017-03-21")
+    @Date("2020-01-12")
     public void getAssessmentForNationalCapitalIncomeTaxWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getAssessedAndTaxableEarnedIncome(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
-    @Date("2017-03-21")
+    @Date("2020-01-12")
     public void getAssessmentForNationalCapitalIncomeTaxWithParameters() {
         List<String> regions = Arrays.asList("0182", "0305");
         List<Integer> years = Arrays.asList(2004, 2008);
