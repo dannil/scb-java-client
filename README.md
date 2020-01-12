@@ -1,6 +1,6 @@
 # scb-java-client
 
-[![Build Status](https://img.shields.io/travis/dannil/scb-java-client/dev.svg?label=Travis%20build)](https://travis-ci.org/dannil/scb-java-client)
+[![Build Status](https://img.shields.io/travis/dannil/scb-java-client/dev.svg?label=Travis%20build)](https://travis-ci.com/dannil/scb-java-client)
 [![GitHub Actions CI](https://img.shields.io/github/workflow/status/dannil/scb-java-client/CI.svg?label=GitHub%20Workflow%20build)](https://github.com/dannil/scb-java-client/actions?query=workflow%3A%22GitHub+Actions+CI%22)
 [![Maven Central](https://img.shields.io/maven-central/v/com.github.dannil/scb-java-client.svg)](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.github.dannil%22%20AND%20a%3A%22scb-java-client%22)
 [![Javadocs](http://www.javadoc.io/badge/com.github.dannil/scb-java-client.svg)](http://www.javadoc.io/doc/com.github.dannil/scb-java-client)
