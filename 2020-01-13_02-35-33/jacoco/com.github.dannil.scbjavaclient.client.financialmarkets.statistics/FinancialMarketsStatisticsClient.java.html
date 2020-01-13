@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FinancialMarketsStatisticsClient.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.client.financialmarkets.statistics</a> &gt; <span class="el_source">FinancialMarketsStatisticsClient.java</span></div><h1>FinancialMarketsStatisticsClient.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2017 Daniel Nilsson
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
+package com.github.dannil.scbjavaclient.client.financialmarkets.statistics;
+
+import java.util.Locale;
+
+import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.statistics.claimsandliabilities.FinancialMarketsStatisticsClaimsAndLiabilitiesClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.statistics.depositandlending.FinancialMarketsStatisticsDepositAndLendingClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.statistics.economicindicators.FinancialMarketsStatisticsEconomicIndicatorsClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.statistics.keyfigures.FinancialMarketsStatisticsKeyFiguresClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.statistics.statistics.FinancialMarketsStatisticsStatisticsClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
+
+/**
+ * &lt;p&gt;Client which handles financial markets statistics data fetching.&lt;/p&gt;
+ *
+ * @since 0.4.0
+ */
+public class FinancialMarketsStatisticsClient extends AbstractContainerClient {
+
+    /**
+     * &lt;p&gt;Default constructor. Initializes values and creates sub-clients.&lt;/p&gt;
+     */
+    public FinancialMarketsStatisticsClient() {
+<span class="fc" id="L38">        super();</span>
+
+<span class="fc" id="L40">        addClient(&quot;claimsandliabilities&quot;, new FinancialMarketsStatisticsClaimsAndLiabilitiesClient());</span>
+<span class="fc" id="L41">        addClient(&quot;depositandlending&quot;, new FinancialMarketsStatisticsDepositAndLendingClient());</span>
+<span class="fc" id="L42">        addClient(&quot;economicindicators&quot;, new FinancialMarketsStatisticsEconomicIndicatorsClient());</span>
+<span class="fc" id="L43">        addClient(&quot;keyfigures&quot;, new FinancialMarketsStatisticsKeyFiguresClient());</span>
+<span class="fc" id="L44">        addClient(&quot;statistics&quot;, new FinancialMarketsStatisticsStatisticsClient());</span>
+<span class="fc" id="L45">    }</span>
+
+    /**
+     * &lt;p&gt;Overloaded constructor.&lt;/p&gt;
+     *
+     * @param locale
+     *            the &lt;code&gt;Locale&lt;/code&gt; for this client
+     */
+    public FinancialMarketsStatisticsClient(Locale locale) {
+<span class="fc" id="L54">        this();</span>
+
+<span class="fc" id="L56">        setLocale(locale);</span>
+<span class="fc" id="L57">    }</span>
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with financial markets statistics claims and
+     * liabilities data.&lt;/p&gt;
+     *
+     * @return a client for financial markets statistics claims and liabilities data
+     */
+    public FinancialMarketsStatisticsClaimsAndLiabilitiesClient claimsAndLiabilities() {
+<span class="fc" id="L66">        return (FinancialMarketsStatisticsClaimsAndLiabilitiesClient) getClient(&quot;claimsandliabilities&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with financial markets statistics deposit
+     * and lending data.&lt;/p&gt;
+     *
+     * @return a client for financial markets statistics deposit and lending data
+     */
+    public FinancialMarketsStatisticsDepositAndLendingClient depositAndLending() {
+<span class="fc" id="L76">        return (FinancialMarketsStatisticsDepositAndLendingClient) getClient(&quot;depositandlending&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with financial markets statistics economic
+     * indicators data.&lt;/p&gt;
+     *
+     * @return a client for financial markets statistics economic indicators data
+     */
+    public FinancialMarketsStatisticsEconomicIndicatorsClient economicIndicators() {
+<span class="fc" id="L86">        return (FinancialMarketsStatisticsEconomicIndicatorsClient) getClient(&quot;economicindicators&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with financial markets statistics key
+     * figures data.&lt;/p&gt;
+     *
+     * @return a client for financial markets statistics key figures data
+     */
+    public FinancialMarketsStatisticsKeyFiguresClient keyFigures() {
+<span class="fc" id="L96">        return (FinancialMarketsStatisticsKeyFiguresClient) getClient(&quot;keyfigures&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with financial markets statistics statistics
+     * data.&lt;/p&gt;
+     *
+     * @return a client for financial markets statistics statistics data
+     */
+    public FinancialMarketsStatisticsStatisticsClient statistics() {
+<span class="fc" id="L106">        return (FinancialMarketsStatisticsStatisticsClient) getClient(&quot;statistics&quot;);</span>
+    }
+
+    @Override
+    public URLEndpoint getUrl() {
+<span class="fc" id="L111">        return getRootUrl().append(&quot;FM/FM5001/&quot;);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
