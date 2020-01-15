@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EnvironmentProtectedNatureNumberAndAreaClient.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.client.environment.protectednature.numberandarea</a> &gt; <span class="el_source">EnvironmentProtectedNatureNumberAndAreaClient.java</span></div><h1>EnvironmentProtectedNatureNumberAndAreaClient.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2017 Daniel Nilsson
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
+package com.github.dannil.scbjavaclient.client.environment.protectednature.numberandarea;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+
+import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
+
+/**
+ * &lt;p&gt;Client which handles environment protected nature number and area data fetching.&lt;/p&gt;
+ *
+ * @since 0.5.0
+ */
+public class EnvironmentProtectedNatureNumberAndAreaClient extends AbstractClient {
+
+    private static final String PROTECTIONTYPES_CODE = &quot;Skyddsform&quot;;
+
+    /**
+     * &lt;p&gt;Default constructor.&lt;/p&gt;
+     */
+    public EnvironmentProtectedNatureNumberAndAreaClient() {
+<span class="fc" id="L41">        super();</span>
+<span class="fc" id="L42">    }</span>
+
+    /**
+     * &lt;p&gt;Overloaded constructor.&lt;/p&gt;
+     *
+     * @param locale
+     *            the &lt;code&gt;Locale&lt;/code&gt; for this client
+     */
+    public EnvironmentProtectedNatureNumberAndAreaClient(Locale locale) {
+<span class="fc" id="L51">        super(locale);</span>
+<span class="fc" id="L52">    }</span>
+
+    /**
+     * &lt;p&gt;Fetch all wildlife sanctuaries data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getWildlifeSanctuaries(Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getWildlifeSanctuaries() {
+<span class="fc" id="L64">        return getWildlifeSanctuaries(null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all wildlife sanctuaries data which match the input constraints.&lt;/p&gt;
+     *
+     * @param regions
+     *            the regions
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getWildlifeSanctuaries(Collection&lt;String&gt; regions, Collection&lt;Integer&gt; years) {
+<span class="fc" id="L79">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L80">        mappings.put(APIConstants.REGION_CODE, regions);</span>
+<span class="fc" id="L81">        mappings.put(APIConstants.TIME_CODE, years);</span>
+
+<span class="fc" id="L83">        return getResponseModels(&quot;DjurVaxtskydd&quot;, mappings);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all Natura 2000 sites data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getNatura2000Sites(Collection, Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getNatura2000Sites() {
+<span class="fc" id="L96">        return getNatura2000Sites(null, null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all Natura 2000 sites data which match the input constraints.&lt;/p&gt;
+     *
+     * @param regions
+     *            the regions
+     * @param protectionTypes
+     *            the protection types
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getNatura2000Sites(Collection&lt;String&gt; regions, Collection&lt;Integer&gt; protectionTypes,
+            Collection&lt;Integer&gt; years) {
+<span class="fc" id="L114">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L115">        mappings.put(APIConstants.REGION_CODE, regions);</span>
+<span class="fc" id="L116">        mappings.put(PROTECTIONTYPES_CODE, protectionTypes);</span>
+<span class="fc" id="L117">        mappings.put(APIConstants.TIME_CODE, years);</span>
+
+<span class="fc" id="L119">        return getResponseModels(&quot;Natura2000N&quot;, mappings);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all protected nature data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getProtectedNature(Collection, Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getProtectedNature() {
+<span class="fc" id="L132">        return getProtectedNature(null, null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all protected nature data which match the input constraints.&lt;/p&gt;
+     *
+     * @param regions
+     *            the regions
+     * @param protectionTypes
+     *            the protection types
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getProtectedNature(Collection&lt;String&gt; regions, Collection&lt;String&gt; protectionTypes,
+            Collection&lt;Integer&gt; years) {
+<span class="fc" id="L150">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L151">        mappings.put(APIConstants.REGION_CODE, regions);</span>
+<span class="fc" id="L152">        mappings.put(PROTECTIONTYPES_CODE, protectionTypes);</span>
+<span class="fc" id="L153">        mappings.put(APIConstants.TIME_CODE, years);</span>
+
+<span class="fc" id="L155">        return getResponseModels(&quot;SkyddadnaturN&quot;, mappings);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all species protected by law data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getSpeciesProtectedByLaw(Collection, Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getSpeciesProtectedByLaw() {
+<span class="fc" id="L168">        return getSpeciesProtectedByLaw(null, null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all species protected by law data which match the input constraints.&lt;/p&gt;
+     *
+     * @param regions
+     *            the regions
+     * @param species
+     *            the species
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getSpeciesProtectedByLaw(Collection&lt;String&gt; regions, Collection&lt;String&gt; species,
+            Collection&lt;Integer&gt; years) {
+<span class="fc" id="L186">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L187">        mappings.put(APIConstants.REGION_CODE, regions);</span>
+<span class="fc" id="L188">        mappings.put(&quot;Arter&quot;, species);</span>
+<span class="fc" id="L189">        mappings.put(APIConstants.TIME_CODE, years);</span>
+
+<span class="fc" id="L191">        return getResponseModels(&quot;DjuroVaxtart&quot;, mappings);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all culture reserves data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getCultureReserves(Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getCultureReserves() {
+<span class="fc" id="L204">        return getCultureReserves(null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all culture reserves data which match the input constraints.&lt;/p&gt;
+     *
+     * @param regions
+     *            the regions
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getCultureReserves(Collection&lt;String&gt; regions, Collection&lt;Integer&gt; years) {
+<span class="fc" id="L219">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L220">        mappings.put(APIConstants.REGION_CODE, regions);</span>
+<span class="fc" id="L221">        mappings.put(APIConstants.TIME_CODE, years);</span>
+
+<span class="fc" id="L223">        return getResponseModels(&quot;KulturRes&quot;, mappings);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all natural monuments data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getNaturalMonuments(Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getNaturalMonuments() {
+<span class="fc" id="L236">        return getNaturalMonuments(null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all natural monuments data which match the input constraints.&lt;/p&gt;
+     *
+     * @param regions
+     *            the regions
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getNaturalMonuments(Collection&lt;String&gt; regions, Collection&lt;Integer&gt; years) {
+<span class="fc" id="L251">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L252">        mappings.put(APIConstants.REGION_CODE, regions);</span>
+<span class="fc" id="L253">        mappings.put(APIConstants.TIME_CODE, years);</span>
+
+<span class="fc" id="L255">        return getResponseModels(&quot;Naturminnen&quot;, mappings);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all water protection areas data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getWaterProtectionAreas(Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getWaterProtectionAreas() {
+<span class="fc" id="L268">        return getWaterProtectionAreas(null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all water protection areas data which match the input constraints.&lt;/p&gt;
+     *
+     * @param regions
+     *            the regions
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getWaterProtectionAreas(Collection&lt;String&gt; regions, Collection&lt;Integer&gt; years) {
+<span class="fc" id="L283">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L284">        mappings.put(APIConstants.REGION_CODE, regions);</span>
+<span class="fc" id="L285">        mappings.put(APIConstants.TIME_CODE, years);</span>
+
+<span class="fc" id="L287">        return getResponseModels(&quot;Vattenskyddsomr&quot;, mappings);</span>
+    }
+
+    @Override
+    public URLEndpoint getUrl() {
+<span class="fc" id="L292">        return getRootUrl().append(&quot;MI/MI0603/MI0603D/&quot;);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
