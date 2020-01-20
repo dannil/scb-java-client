@@ -15,11 +15,13 @@
 package com.github.dannil.scbjavaclient.client.environment.landuse.infrastructurefortransport;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
@@ -127,6 +129,38 @@ public class EnvironmentLandUseInfrastructureForTransportClientIT {
         List<Integer> years = Arrays.asList(2010);
 
         assertNotEquals(0, this.client.getRoadLengthByCategory(regions, categories, years).size());
+    }
+
+    @Test
+    @Date("2020-01-20")
+    public void getLandWithTransportInfrastructure() {
+        List<ResponseModel> response = this.client.getLandWithTransportInfrastructure();
+
+        assertNotEquals(0, response.size());
+        assertTrue(response.stream().allMatch(model -> model.getVariables().keySet().containsAll(List.of("Tid"))));
+    }
+
+    @Test
+    @Date("2020-01-20")
+    public void getLandWithTransportInfrastructureWithParametersEmptyLists() {
+        List<ResponseModel> response = this.client.getLandWithTransportInfrastructure(Collections.<String>emptyList(),
+                Collections.<Integer>emptyList());
+
+        assertNotEquals(0, response.size());
+        assertTrue(response.stream().allMatch(model -> model.getVariables().keySet().containsAll(List.of("Tid"))));
+    }
+
+    @Test
+    @Date("2020-01-20")
+    public void getLandWithTransportInfrastructureWithParameters() {
+        List<String> regions = Arrays.asList("0184", "0186");
+        List<Integer> years = Arrays.asList(2010);
+
+        List<ResponseModel> response = this.client.getLandWithTransportInfrastructure(regions, years);
+
+        assertNotEquals(0, response.size());
+        assertTrue(response.stream().allMatch(
+                model -> model.getVariables().keySet().containsAll(List.of("Region", "Tid"))));
     }
 
 }

@@ -23,6 +23,14 @@
   <!-- Due to deprecation notice on method getTransportInfrastructureArea -->
   <suppress checks="LineLength" files="EnvironmentLandUseInfrastructureForTransportClient\.java" lines="63-64" />
   <suppress checks="LineLength" files="EnvironmentLandUseInfrastructureForTransportClient\.java" lines="85-86" />
+  
+  <!-- Due to deprecation notice on method getTransportInfrastructureArea -->
+  <suppress checks="LineLength" files="EnvironmentLandUseInfrastructureForTransportClient\.java" lines="63-64" />
+  <suppress checks="LineLength" files="EnvironmentLandUseInfrastructureForTransportClient\.java" lines="85-86" />
+  
+  <!-- Due to deprecation notice on method getTransportInfrastructureArea -->
+  <suppress checks="LineLength" files="EnvironmentLandUseUsageClient\.java" lines="187-188" />
+  <suppress checks="LineLength" files="EnvironmentLandUseUsageClient\.java" lines="208-209" />
 
   <!-- Due to class having been retrieved from GitHub, so we can't enforce all of our own checks ! -->
   <suppress checks="FallThrough" files="UnicodeBOMInputStream\.java" />

@@ -182,7 +182,13 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
      *         objects
      *
      * @see #getTransportInfrastructureArea(Collection, Collection)
+     *
+     * @deprecated use
+     *             {@link com.github.dannil.scbjavaclient.client.environment.landuse.infrastructurefortransport.EnvironmentLandUseInfrastructureForTransportClient#getLandWithTransportInfrastructure()
+     *             EnvironmentLandUseInfrastructureForTransportClient#getLandWithTransportInfrastructure()}
+     *             instead.
      */
+    @Deprecated
     public List<ResponseModel> getTransportInfrastructureArea() {
         return getTransportInfrastructureArea(null, null);
     }
@@ -198,7 +204,12 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
+     * @deprecated use
+     *             {@link com.github.dannil.scbjavaclient.client.environment.landuse.infrastructurefortransport.EnvironmentLandUseInfrastructureForTransportClient#getLandWithTransportInfrastructure(Collection, Collection)
+     *             EnvironmentLandUseInfrastructureForTransportClient#getLandWithTransportInfrastructure(Collection,
+     *             Collection)} instead.
      */
+    @Deprecated
     public List<ResponseModel> getTransportInfrastructureArea(Collection<String> regions, Collection<Integer> years) {
         return generate(regions, null, years, "TransportInfAreal");
     }
