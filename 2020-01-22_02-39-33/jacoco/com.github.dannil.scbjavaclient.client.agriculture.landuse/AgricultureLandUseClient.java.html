@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AgricultureLandUseClient.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.client.agriculture.landuse</a> &gt; <span class="el_source">AgricultureLandUseClient.java</span></div><h1>AgricultureLandUseClient.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2017 Daniel Nilsson
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
+package com.github.dannil.scbjavaclient.client.agriculture.landuse;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+
+import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
+
+/**
+ * &lt;p&gt;Client which handles agriculture land use data fetching.&lt;/p&gt;
+ *
+ * @since 0.4.0
+ */
+public class AgricultureLandUseClient extends AbstractClient {
+
+    private static final String CROP_CODE = &quot;Groda&quot;;
+
+    private static final String TYPEOFLAND_CODE = &quot;Agoslag&quot;;
+
+    /**
+     * &lt;p&gt;Default constructor.&lt;/p&gt;
+     */
+    public AgricultureLandUseClient() {
+<span class="fc" id="L43">        super();</span>
+<span class="fc" id="L44">    }</span>
+
+    /**
+     * &lt;p&gt;Overloaded constructor.&lt;/p&gt;
+     *
+     * @param locale
+     *            the &lt;code&gt;Locale&lt;/code&gt; for this client
+     */
+    public AgricultureLandUseClient(Locale locale) {
+<span class="fc" id="L53">        super(locale);</span>
+<span class="fc" id="L54">    }</span>
+
+    /**
+     * &lt;p&gt;Fetch all use of arable land by municipality data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getUseOfArableLandByMunicipality(Collection, Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getUseOfArableLandByMunicipality() {
+<span class="fc" id="L66">        return getUseOfArableLandByMunicipality(null, null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all use of arable land by municipality data which match the input
+     * constraints.&lt;/p&gt;
+     *
+     * @param regions
+     *            the regions
+     * @param crops
+     *            the crops
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getUseOfArableLandByMunicipality(Collection&lt;String&gt; regions, Collection&lt;String&gt; crops,
+            Collection&lt;Integer&gt; years) {
+<span class="fc" id="L85">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L86">        mappings.put(APIConstants.REGION_CODE, regions);</span>
+<span class="fc" id="L87">        mappings.put(CROP_CODE, crops);</span>
+<span class="fc" id="L88">        mappings.put(APIConstants.TIME_CODE, years);</span>
+
+<span class="fc" id="L90">        return getResponseModels(&quot;AkerArealGrodaK&quot;, mappings);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all use of arable land by county data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getUseOfArableLandByCounty(Collection, Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getUseOfArableLandByCounty() {
+<span class="fc" id="L103">        return getUseOfArableLandByCounty(null, null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all use of arable land by county data which match the input
+     * constraints.&lt;/p&gt;
+     *
+     * @param regions
+     *            the regions
+     * @param crops
+     *            the crops
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getUseOfArableLandByCounty(Collection&lt;String&gt; regions, Collection&lt;String&gt; crops,
+            Collection&lt;Integer&gt; years) {
+<span class="fc" id="L122">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L123">        mappings.put(APIConstants.REGION_CODE, regions);</span>
+<span class="fc" id="L124">        mappings.put(CROP_CODE, crops);</span>
+<span class="fc" id="L125">        mappings.put(APIConstants.TIME_CODE, years);</span>
+
+<span class="fc" id="L127">        return getResponseModels(&quot;AkerArealGrodaL&quot;, mappings);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all type of land area by municipality data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getTypeOfLandAreaByMunicipality(Collection, Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getTypeOfLandAreaByMunicipality() {
+<span class="fc" id="L140">        return getTypeOfLandAreaByMunicipality(null, null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all type of land area by municipality data which match the input
+     * constraints.&lt;/p&gt;
+     *
+     * @param regions
+     *            the regions
+     * @param typesOfLands
+     *            the types of lands
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getTypeOfLandAreaByMunicipality(Collection&lt;String&gt; regions,
+            Collection&lt;Integer&gt; typesOfLands, Collection&lt;Integer&gt; years) {
+<span class="fc" id="L159">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L160">        mappings.put(APIConstants.REGION_CODE, regions);</span>
+<span class="fc" id="L161">        mappings.put(TYPEOFLAND_CODE, typesOfLands);</span>
+<span class="fc" id="L162">        mappings.put(APIConstants.TIME_CODE, years);</span>
+
+<span class="fc" id="L164">        return getResponseModels(&quot;AgoslagArealK&quot;, mappings);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all type of land area by county data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getTypeOfLandAreaByCounty(Collection, Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getTypeOfLandAreaByCounty() {
+<span class="fc" id="L177">        return getTypeOfLandAreaByCounty(null, null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all type of land area by county data which match the input
+     * constraints.&lt;/p&gt;
+     *
+     * @param regions
+     *            the regions
+     * @param typesOfLands
+     *            the types of lands
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getTypeOfLandAreaByCounty(Collection&lt;String&gt; regions, Collection&lt;Integer&gt; typesOfLands,
+            Collection&lt;Integer&gt; years) {
+<span class="fc" id="L196">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L197">        mappings.put(APIConstants.REGION_CODE, regions);</span>
+<span class="fc" id="L198">        mappings.put(TYPEOFLAND_CODE, typesOfLands);</span>
+<span class="fc" id="L199">        mappings.put(APIConstants.TIME_CODE, years);</span>
+
+<span class="fc" id="L201">        return getResponseModels(&quot;AgoslagArealL&quot;, mappings);</span>
+    }
+
+    @Override
+    public URLEndpoint getUrl() {
+<span class="fc" id="L206">        return getRootUrl().append(&quot;JO/JO0104/&quot;);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
