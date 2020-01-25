@@ -188,7 +188,7 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
      *             EnvironmentLandUseInfrastructureForTransportClient#getLandWithTransportInfrastructure()}
      *             instead.
      */
-    @Deprecated
+    @Deprecated(since = "2.6.0", forRemoval = true)
     public List<ResponseModel> getTransportInfrastructureArea() {
         return getTransportInfrastructureArea(null, null);
     }
@@ -209,7 +209,7 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
      *             EnvironmentLandUseInfrastructureForTransportClient#getLandWithTransportInfrastructure(Collection,
      *             Collection)} instead.
      */
-    @Deprecated
+    @Deprecated(since = "2.6.0", forRemoval = true)
     public List<ResponseModel> getTransportInfrastructureArea(Collection<String> regions, Collection<Integer> years) {
         return generate(regions, null, years, "TransportInfAreal");
     }
