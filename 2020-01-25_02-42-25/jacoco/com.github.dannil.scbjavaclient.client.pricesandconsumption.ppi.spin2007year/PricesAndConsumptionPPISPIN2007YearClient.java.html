@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PricesAndConsumptionPPISPIN2007YearClient.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.client.pricesandconsumption.ppi.spin2007year</a> &gt; <span class="el_source">PricesAndConsumptionPPISPIN2007YearClient.java</span></div><h1>PricesAndConsumptionPPISPIN2007YearClient.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2017 Daniel Nilsson
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
+package com.github.dannil.scbjavaclient.client.pricesandconsumption.ppi.spin2007year;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+
+import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
+
+/**
+ * &lt;p&gt;Client which handles prices and consumption producer and import price index (PPI)
+ * SPIN 2007 year data fetching.&lt;/p&gt;
+ *
+ * @since 0.4.0
+ */
+public class PricesAndConsumptionPPISPIN2007YearClient extends AbstractClient {
+
+    /**
+     * &lt;p&gt;Default constructor.&lt;/p&gt;
+     */
+    public PricesAndConsumptionPPISPIN2007YearClient() {
+<span class="fc" id="L40">        super();</span>
+<span class="fc" id="L41">    }</span>
+
+    /**
+     * &lt;p&gt;Overloaded constructor.&lt;/p&gt;
+     *
+     * @param locale
+     *            the &lt;code&gt;Locale&lt;/code&gt; for this client
+     */
+    public PricesAndConsumptionPPISPIN2007YearClient(Locale locale) {
+<span class="fc" id="L50">        super(locale);</span>
+<span class="fc" id="L51">    }</span>
+
+    /**
+     * &lt;p&gt;Fetch all producer price index home sales data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getProducerPriceIndexHomeSales(Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getProducerPriceIndexHomeSales() {
+<span class="fc" id="L63">        return getProducerPriceIndexHomeSales(null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all producer price index home sales data which match the input
+     * constraints.&lt;/p&gt;
+     *
+     * @param spin2007
+     *            the SPIN 2007
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getProducerPriceIndexHomeSales(Collection&lt;String&gt; spin2007, Collection&lt;Integer&gt; years) {
+<span class="fc" id="L79">        return generate(spin2007, years, &quot;HMPIAr07&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all export price index data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getExportPriceIndex(Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getExportPriceIndex() {
+<span class="fc" id="L92">        return getExportPriceIndex(null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all export price index data which match the input constraints.&lt;/p&gt;
+     *
+     * @param spin2007
+     *            the SPIN 2007
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getExportPriceIndex(Collection&lt;String&gt; spin2007, Collection&lt;Integer&gt; years) {
+<span class="fc" id="L107">        return generate(spin2007, years, &quot;EXPIAr07&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all import price index data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getImportPriceIndex(Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getImportPriceIndex() {
+<span class="fc" id="L120">        return getImportPriceIndex(null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all import price index data which match the input constraints.&lt;/p&gt;
+     *
+     * @param spin2007
+     *            the SPIN 2007
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getImportPriceIndex(Collection&lt;String&gt; spin2007, Collection&lt;Integer&gt; years) {
+<span class="fc" id="L135">        return generate(spin2007, years, &quot;IMPIAr07&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all producer price index data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getProducerPriceIndex(Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getProducerPriceIndex() {
+<span class="fc" id="L148">        return getProducerPriceIndex(null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all producer price index data which match the input constraints.&lt;/p&gt;
+     *
+     * @param spin2007
+     *            the SPIN 2007
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getProducerPriceIndex(Collection&lt;String&gt; spin2007, Collection&lt;Integer&gt; years) {
+<span class="fc" id="L163">        return generate(spin2007, years, &quot;PPIAr07&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all price index for domestic supply data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getPriceIndexForDomesticSupply(Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getPriceIndexForDomesticSupply() {
+<span class="fc" id="L176">        return getPriceIndexForDomesticSupply(null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all price index for domestic supply data which match the input
+     * constraints.&lt;/p&gt;
+     *
+     * @param spin2007
+     *            the SPIN 2007
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getPriceIndexForDomesticSupply(Collection&lt;String&gt; spin2007, Collection&lt;Integer&gt; years) {
+<span class="fc" id="L192">        return generate(spin2007, years, &quot;ITPIAr07&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all weights for different indices data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getWeightsForDifferentIndices(Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getWeightsForDifferentIndices() {
+<span class="fc" id="L205">        return getWeightsForDifferentIndices(null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all weights for different indices data which match the input
+     * constraints.&lt;/p&gt;
+     *
+     * @param spin2007
+     *            the SPIN 2007
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getWeightsForDifferentIndices(Collection&lt;String&gt; spin2007, Collection&lt;Integer&gt; years) {
+<span class="fc" id="L221">        return generate(spin2007, years, &quot;PPIviktB&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all producer price index for services data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getProducerPriceIndexForServices(Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getProducerPriceIndexForServices() {
+<span class="fc" id="L234">        return getProducerPriceIndexForServices(null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all producer price index for services data which match the input
+     * constraints.&lt;/p&gt;
+     *
+     * @param spin2007
+     *            the SPIN 2007
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getProducerPriceIndexForServices(Collection&lt;String&gt; spin2007,
+            Collection&lt;Integer&gt; years) {
+<span class="fc" id="L251">        return generate(spin2007, years, &quot;TPI2005Ar07&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Common generator method for the methods in this class.&lt;/p&gt;
+     *
+     * @param spin2007
+     *            the SPIN 2007
+     * @param times
+     *            the times
+     * @param table
+     *            the table
+     * @return a &lt;code&gt;List&lt;/code&gt; of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     */
+    private List&lt;ResponseModel&gt; generate(Collection&lt;String&gt; spin2007, Collection&lt;Integer&gt; times, String table) {
+<span class="fc" id="L267">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L268">        mappings.put(APIConstants.SPIN_2007, spin2007);</span>
+<span class="fc" id="L269">        mappings.put(APIConstants.TIME_CODE, times);</span>
+
+<span class="fc" id="L271">        return getResponseModels(table, mappings);</span>
+    }
+
+    @Override
+    public URLEndpoint getUrl() {
+<span class="fc" id="L276">        return getRootUrl().append(&quot;PR/PR0301/PR0301E/&quot;);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
