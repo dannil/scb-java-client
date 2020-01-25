@@ -185,7 +185,7 @@
         <version>3.0.0-M4</version>
         <configuration>
           <systemPropertyVariables>
-            <testsDayLimit>7</testsDayLimit>
+            <testsDayLimit>16000</testsDayLimit>
           </systemPropertyVariables>
         </configuration>
         <executions>

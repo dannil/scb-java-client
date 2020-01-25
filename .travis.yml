@@ -37,7 +37,7 @@ before_script:
 # on the API (rate limiting), this can be easily debugged by checking the log
 - dig +short myip.opendns.com @resolver1.opendns.com
 script:
-- mvn install -B -V -DtestsDayLimit=7
+- mvn install -B -V -DtestsDayLimit=16000
 # SonarQube needs to be run with at least Java 8; also make sure we are on the correct branch
 after_success:
 - if [[ $TRAVIS_JDK_VERSION == openjdk11 && $TRAVIS_BRANCH == test/run-all-tests ]]; then
