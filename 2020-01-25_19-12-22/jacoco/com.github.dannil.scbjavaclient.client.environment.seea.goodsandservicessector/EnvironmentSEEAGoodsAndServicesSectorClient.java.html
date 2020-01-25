@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EnvironmentSEEAGoodsAndServicesSectorClient.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.client.environment.seea.goodsandservicessector</a> &gt; <span class="el_source">EnvironmentSEEAGoodsAndServicesSectorClient.java</span></div><h1>EnvironmentSEEAGoodsAndServicesSectorClient.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2017 Daniel Nilsson
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
+package com.github.dannil.scbjavaclient.client.environment.seea.goodsandservicessector;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+
+import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
+
+/**
+ * &lt;p&gt;Client which handles environment System of Environmental-Economic Accounting (SEEA)
+ * goods and services sector data fetching.&lt;/p&gt;
+ *
+ * @since 0.4.0
+ */
+public class EnvironmentSEEAGoodsAndServicesSectorClient extends AbstractClient {
+
+    /**
+     * &lt;p&gt;Default constructor.&lt;/p&gt;
+     */
+    public EnvironmentSEEAGoodsAndServicesSectorClient() {
+<span class="fc" id="L40">        super();</span>
+<span class="fc" id="L41">    }</span>
+
+    /**
+     * &lt;p&gt;Overloaded constructor.&lt;/p&gt;
+     *
+     * @param locale
+     *            the &lt;code&gt;Locale&lt;/code&gt; for this client
+     */
+    public EnvironmentSEEAGoodsAndServicesSectorClient(Locale locale) {
+<span class="fc" id="L50">        super(locale);</span>
+<span class="fc" id="L51">    }</span>
+
+    /**
+     * &lt;p&gt;Fetch all environmental sector by environmental area data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getEnvironmentalSectorByEnvironmentalArea(Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getEnvironmentalSectorByEnvironmentalArea() {
+<span class="fc" id="L63">        return getEnvironmentalSectorByEnvironmentalArea(null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all environmental sector by environmental area data which match the input
+     * constraints.&lt;/p&gt;
+     *
+     * @param environmentalAreas
+     *            the environmental areas
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getEnvironmentalSectorByEnvironmentalArea(Collection&lt;Integer&gt; environmentalAreas,
+            Collection&lt;Integer&gt; years) {
+<span class="fc" id="L80">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L81">        mappings.put(&quot;Miljoomrade&quot;, environmentalAreas);</span>
+<span class="fc" id="L82">        mappings.put(APIConstants.TIME_CODE, years);</span>
+
+<span class="fc" id="L84">        return getResponseModels(&quot;MI1301T05&quot;, mappings);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all environmental sector by county data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getEnvironmentalSectorByCounty(Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getEnvironmentalSectorByCounty() {
+<span class="fc" id="L97">        return getEnvironmentalSectorByCounty(null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all environmental sector by county data which match the input
+     * constraints.&lt;/p&gt;
+     *
+     * @param counties
+     *            the counties
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getEnvironmentalSectorByCounty(Collection&lt;String&gt; counties, Collection&lt;Integer&gt; years) {
+<span class="fc" id="L113">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L114">        mappings.put(&quot;Lan&quot;, counties);</span>
+<span class="fc" id="L115">        mappings.put(APIConstants.TIME_CODE, years);</span>
+
+<span class="fc" id="L117">        return getResponseModels(&quot;MI1301T04&quot;, mappings);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all environmental sector net turnover by industrial classification
+     * data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getEnvironmentalSectorNetTurnoverByIndustrialClassification(Collection,
+     *      Collection)
+     */
+    public List&lt;ResponseModel&gt; getEnvironmentalSectorNetTurnoverByIndustrialClassification() {
+<span class="fc" id="L132">        return getEnvironmentalSectorNetTurnoverByIndustrialClassification(null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all environmental sector net turnover by industrial classification data
+     * which match the input constraints.&lt;/p&gt;
+     *
+     * @param industrialClassifications
+     *            the industrial classifications
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getEnvironmentalSectorNetTurnoverByIndustrialClassification(
+            Collection&lt;String&gt; industrialClassifications, Collection&lt;Integer&gt; years) {
+<span class="fc" id="L149">        return generateEnvironmentalSectorByIndustrialClassification(industrialClassifications, years, &quot;MI1301T01&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all environmental sector value added by industrial classification
+     * data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getEnvironmentalSectorValueAddedByIndustrialClassification(Collection,
+     *      Collection)
+     */
+    public List&lt;ResponseModel&gt; getEnvironmentalSectorValueAddedByIndustrialClassification() {
+<span class="fc" id="L164">        return getEnvironmentalSectorValueAddedByIndustrialClassification(null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all environmental sector value added by industrial classification data
+     * which match the input constraints.&lt;/p&gt;
+     *
+     * @param industrialClassifications
+     *            the industrial classifications
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getEnvironmentalSectorValueAddedByIndustrialClassification(
+            Collection&lt;String&gt; industrialClassifications, Collection&lt;Integer&gt; years) {
+<span class="fc" id="L181">        return generateEnvironmentalSectorByIndustrialClassification(industrialClassifications, years, &quot;MI1301T02&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all environmental sector export by industrial classification data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getEnvironmentalSectorExportByIndustrialClassification(Collection,
+     *      Collection)
+     */
+    public List&lt;ResponseModel&gt; getEnvironmentalSectorExportByIndustrialClassification() {
+<span class="fc" id="L195">        return getEnvironmentalSectorExportByIndustrialClassification(null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all environmental sector export by industrial classification data which
+     * match the input constraints.&lt;/p&gt;
+     *
+     * @param industrialClassifications
+     *            the industrial classifications
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getEnvironmentalSectorExportByIndustrialClassification(
+            Collection&lt;String&gt; industrialClassifications, Collection&lt;Integer&gt; years) {
+<span class="fc" id="L212">        return generateEnvironmentalSectorByIndustrialClassification(industrialClassifications, years, &quot;MI1301T03&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Common generator method for methods handling environmental sector by industrial
+     * classification data.&lt;/p&gt;
+     *
+     * @param industrialClassifications
+     *            the industrial classifications
+     * @param years
+     *            the years
+     * @param table
+     *            the table
+     * @return a &lt;code&gt;List&lt;/code&gt; of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     */
+    private List&lt;ResponseModel&gt; generateEnvironmentalSectorByIndustrialClassification(
+            Collection&lt;String&gt; industrialClassifications, Collection&lt;Integer&gt; years, String table) {
+<span class="fc" id="L230">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L231">        mappings.put(APIConstants.SNI2007_CODE, industrialClassifications);</span>
+<span class="fc" id="L232">        mappings.put(APIConstants.TIME_CODE, years);</span>
+
+<span class="fc" id="L234">        return getResponseModels(table, mappings);</span>
+    }
+
+    @Override
+    public URLEndpoint getUrl() {
+<span class="fc" id="L239">        return getRootUrl().append(&quot;MI/MI1301/MI1301D/&quot;);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
