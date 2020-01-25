@@ -1,33 +1,17 @@
 package com.github.dannil.scbjavaclient;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintStream;
-import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import java.text.Collator;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
 import java.util.TreeSet;
-import java.util.Map.Entry;
-import java.util.concurrent.TimeUnit;
 
 import com.github.dannil.scbjavaclient.client.AbstractClient;
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
@@ -36,8 +20,6 @@ import com.github.dannil.scbjavaclient.client.SCBClientBuilder;
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.utility.Files;
 import com.github.dannil.scbjavaclient.test.utility.Filters;
-
-import org.joda.time.DateTime;
 
 public class GetImplementedTables {
 
@@ -49,7 +31,8 @@ public class GetImplementedTables {
         List<File> files = Files.find(execPath + "/src/main/java/com/github/dannil/scbjavaclient/client", "*.java");
 
         // Filter out some classes from the list
-        Filters.files(files, AbstractClient.class, AbstractContainerClient.class, SCBClient.class, SCBClientBuilder.class);
+        Filters.files(files, AbstractClient.class, AbstractContainerClient.class, SCBClient.class,
+                SCBClientBuilder.class);
 
         Collection<String> tables = new TreeSet<>(Collator.getInstance());
         for (File f : files) {
@@ -73,7 +56,7 @@ public class GetImplementedTables {
             Object instance = clazz.newInstance();
             URLEndpoint url = (URLEndpoint) clazz.getMethod("getUrl", new Class<?>[] {}).invoke(instance,
                     new Object[] {});
-            
+
             tables.add(url.getTable());
 
             // Figure out implemented tables by inspecting the source code
@@ -116,7 +99,7 @@ public class GetImplementedTables {
 
         DateTimeFormatter formatter = DateTimeFormatter.ISO_OFFSET_DATE_TIME;
         String date = LocalDateTime.now().format(formatter).replace(':', '-');
-        
+
         String fileName = "tables_implemented_" + date + ".txt";
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))) {
             for (String s : tables) {

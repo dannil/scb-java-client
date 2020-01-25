@@ -13,7 +13,6 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
-import com.github.dannil.scbjavaclient.GetImplementedTables;
 import com.github.dannil.scbjavaclientutil.contents.SCBTreeStructure;
 
 public class GetNonImplementedTables {
@@ -21,7 +20,7 @@ public class GetNonImplementedTables {
     public static void main(String[] args) throws IOException, ReflectiveOperationException, InterruptedException {
         SCBTreeStructure tree = new SCBTreeStructure(new Locale("sv", "SE"));
 
-        File f = new File("scb_2018-06-15T10-12-11.947_2018-06-15T10-43-35.304_en.json");
+        File f = new File("scb_2019-12-20T20-41-29.582_2019-12-20T21-18-10.573_en.json");
         Collection<String> allTables = tree.getTables("", f);
         System.out.println("ALL size: " + allTables.size());
         // for (String e : allTables) {
@@ -68,7 +67,7 @@ public class GetNonImplementedTables {
             writer2.write(System.getProperty("line.separator"));
         }
         writer2.close();
-        
+
         String implementationPriorities = "implementation_priorities_" + now + ".txt";
         Map<String, Integer> priorities = tree.getImplementationPriority(f, t1.getImplementedTables());
         priorities = MapUtil.sortByValue(priorities);
