@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FinancialMarketsBalanceOfPaymentsDirectInvestmentsClient.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.client.financialmarkets.balanceofpayments.directinvestments</a> &gt; <span class="el_source">FinancialMarketsBalanceOfPaymentsDirectInvestmentsClient.java</span></div><h1>FinancialMarketsBalanceOfPaymentsDirectInvestmentsClient.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2017 Daniel Nilsson
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
+package com.github.dannil.scbjavaclient.client.financialmarkets.balanceofpayments.directinvestments;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+
+import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
+
+/**
+ * &lt;p&gt;Client which handles financial markets balance of payments direct investments data
+ * fetching.&lt;/p&gt;
+ *
+ * @since 0.4.0
+ */
+public class FinancialMarketsBalanceOfPaymentsDirectInvestmentsClient extends AbstractClient {
+
+    /**
+     * &lt;p&gt;Default constructor.&lt;/p&gt;
+     */
+    public FinancialMarketsBalanceOfPaymentsDirectInvestmentsClient() {
+<span class="fc" id="L40">        super();</span>
+<span class="fc" id="L41">    }</span>
+
+    /**
+     * &lt;p&gt;Overloaded constructor.&lt;/p&gt;
+     *
+     * @param locale
+     *            the &lt;code&gt;Locale&lt;/code&gt; for this client
+     */
+    public FinancialMarketsBalanceOfPaymentsDirectInvestmentsClient(Locale locale) {
+<span class="fc" id="L50">        super(locale);</span>
+<span class="fc" id="L51">    }</span>
+
+    /**
+     * &lt;p&gt;Fetch all direct investments by economic activity (NACE 2007) data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getDirectInvestmentsByEconomicActivityNACE2007(Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getDirectInvestmentsByEconomicActivityNACE2007() {
+<span class="fc" id="L63">        return getDirectInvestmentsByEconomicActivityNACE2007(null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all direct investments by economic activity (NACE 2007) data which match
+     * the input constraints.&lt;/p&gt;
+     *
+     * @param industrialClassifications
+     *            the industrial classifications
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getDirectInvestmentsByEconomicActivityNACE2007(
+            Collection&lt;String&gt; industrialClassifications, Collection&lt;Integer&gt; years) {
+<span class="fc" id="L80">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L81">        mappings.put(APIConstants.SNI2007_CODE, industrialClassifications);</span>
+<span class="fc" id="L82">        mappings.put(APIConstants.TIME_CODE, years);</span>
+
+<span class="fc" id="L84">        return getResponseModels(&quot;FM0001SNI07T03&quot;, mappings);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all direct investments by country (years) data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getDirectInvestmentsByCountryYears(Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getDirectInvestmentsByCountryYears() {
+<span class="fc" id="L97">        return getDirectInvestmentsByCountryYears(null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all direct investments by country (years) data which match the input
+     * constraints.&lt;/p&gt;
+     *
+     * @param countries
+     *            the countries
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getDirectInvestmentsByCountryYears(Collection&lt;String&gt; countries,
+            Collection&lt;Integer&gt; years) {
+<span class="fc" id="L114">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L115">        mappings.put(&quot;Land&quot;, countries);</span>
+<span class="fc" id="L116">        mappings.put(APIConstants.TIME_CODE, years);</span>
+
+<span class="fc" id="L118">        return getResponseModels(&quot;FM0001T04&quot;, mappings);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all direct investments by economic activity (NACE 2002) data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getDirectInvestmentsByEconomicActivityNACE2002(Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getDirectInvestmentsByEconomicActivityNACE2002() {
+<span class="fc" id="L131">        return getDirectInvestmentsByEconomicActivityNACE2002(null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all direct investments by economic activity (NACE 2002) data which match
+     * the input constraints.&lt;/p&gt;
+     *
+     * @param industrialClassifications
+     *            the industrial classifications
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getDirectInvestmentsByEconomicActivityNACE2002(
+            Collection&lt;String&gt; industrialClassifications, Collection&lt;Integer&gt; years) {
+<span class="fc" id="L148">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L149">        mappings.put(APIConstants.SNI2002_CODE, industrialClassifications);</span>
+<span class="fc" id="L150">        mappings.put(APIConstants.TIME_CODE, years);</span>
+
+<span class="fc" id="L152">        return getResponseModels(&quot;FM0001SNI02T03&quot;, mappings);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all direct investments by investment item data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getDirectInvestmentsByInvestmentItem(Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getDirectInvestmentsByInvestmentItem() {
+<span class="fc" id="L165">        return getDirectInvestmentsByInvestmentItem(null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all direct investments by investment item data which match the input
+     * constraints.&lt;/p&gt;
+     *
+     * @param investments
+     *            the investments
+     * @param quarters
+     *            the quarters
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getDirectInvestmentsByInvestmentItem(Collection&lt;String&gt; investments,
+            Collection&lt;String&gt; quarters) {
+<span class="fc" id="L182">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L183">        mappings.put(&quot;Investeringsposter&quot;, investments);</span>
+<span class="fc" id="L184">        mappings.put(APIConstants.TIME_CODE, quarters);</span>
+
+<span class="fc" id="L186">        return getResponseModels(&quot;FM0001T01&quot;, mappings);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all direct investments by country (quarters) data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getDirectInvestmentsByCountryQuarters(Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getDirectInvestmentsByCountryQuarters() {
+<span class="fc" id="L199">        return getDirectInvestmentsByCountryQuarters(null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all direct investments by country (quarters) data which match the input
+     * constraints.&lt;/p&gt;
+     *
+     * @param countries
+     *            the countries
+     * @param quarters
+     *            the quarters
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getDirectInvestmentsByCountryQuarters(Collection&lt;String&gt; countries,
+            Collection&lt;String&gt; quarters) {
+<span class="fc" id="L216">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L217">        mappings.put(&quot;Land&quot;, countries);</span>
+<span class="fc" id="L218">        mappings.put(APIConstants.TIME_CODE, quarters);</span>
+
+<span class="fc" id="L220">        return getResponseModels(&quot;FM0001T04Kv&quot;, mappings);</span>
+    }
+
+    @Override
+    public URLEndpoint getUrl() {
+<span class="fc" id="L225">        return getRootUrl().append(&quot;FM/FM0001/FM0001D/&quot;);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
