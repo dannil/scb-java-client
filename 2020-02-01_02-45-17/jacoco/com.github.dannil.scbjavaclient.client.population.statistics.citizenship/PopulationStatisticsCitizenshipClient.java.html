@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PopulationStatisticsCitizenshipClient.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.client.population.statistics.citizenship</a> &gt; <span class="el_source">PopulationStatisticsCitizenshipClient.java</span></div><h1>PopulationStatisticsCitizenshipClient.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2018 Daniel Nilsson
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
+package com.github.dannil.scbjavaclient.client.population.statistics.citizenship;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+
+import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
+
+/**
+ * &lt;p&gt;Client which handles population statistics citizenship data fetching.&lt;/p&gt;
+ *
+ * @since 1.2.0
+ */
+public class PopulationStatisticsCitizenshipClient extends AbstractClient {
+
+    /**
+     * &lt;p&gt;Default constructor.&lt;/p&gt;
+     */
+    public PopulationStatisticsCitizenshipClient() {
+<span class="fc" id="L39">        super();</span>
+<span class="fc" id="L40">    }</span>
+
+    /**
+     * &lt;p&gt;Overloaded constructor.&lt;/p&gt;
+     *
+     * @param locale
+     *            the &lt;code&gt;Locale&lt;/code&gt; for this client
+     */
+    public PopulationStatisticsCitizenshipClient(Locale locale) {
+<span class="fc" id="L49">        super(locale);</span>
+<span class="fc" id="L50">    }</span>
+
+    /**
+     * &lt;p&gt;Fetch all acquired Swedish citizenship data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getAcquiredSwedishCitizenship(Collection, Collection, Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getAcquiredSwedishCitizenship() {
+<span class="fc" id="L62">        return getAcquiredSwedishCitizenship(null, null, null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all acquired Swedish citizenship data which match the input
+     * constraints.&lt;/p&gt;
+     *
+     * @param regions
+     *            the regions
+     * @param ages
+     *            the ages
+     * @param sexes
+     *            the sexes
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getAcquiredSwedishCitizenship(Collection&lt;String&gt; regions, Collection&lt;String&gt; ages,
+            Collection&lt;Integer&gt; sexes, Collection&lt;Integer&gt; years) {
+<span class="fc" id="L83">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L84">        mappings.put(APIConstants.REGION_CODE, regions);</span>
+<span class="fc" id="L85">        mappings.put(APIConstants.AGE_CODE, ages);</span>
+<span class="fc" id="L86">        mappings.put(APIConstants.SEX_CODE, sexes);</span>
+<span class="fc" id="L87">        mappings.put(APIConstants.TIME_CODE, years);</span>
+
+<span class="fc" id="L89">        return getResponseModels(&quot;MedborgarByteTotK&quot;, mappings);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all acquired Swedish citizenship in Sweden data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getAcquiredSwedishCitizenshipInSweden(Collection, Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getAcquiredSwedishCitizenshipInSweden() {
+<span class="fc" id="L102">        return getAcquiredSwedishCitizenshipInSweden(null, null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all acquired Swedish citizenship in Sweden data which match the input
+     * constraints.&lt;/p&gt;
+     *
+     * @param countriesOfCitizenship
+     *            the countries of citizenship
+     * @param sexes
+     *            the sexes
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getAcquiredSwedishCitizenshipInSweden(Collection&lt;String&gt; countriesOfCitizenship,
+            Collection&lt;Integer&gt; sexes, Collection&lt;Integer&gt; years) {
+<span class="fc" id="L121">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L122">        mappings.put(&quot;Medbland&quot;, countriesOfCitizenship);</span>
+<span class="fc" id="L123">        mappings.put(APIConstants.SEX_CODE, sexes);</span>
+<span class="fc" id="L124">        mappings.put(APIConstants.TIME_CODE, years);</span>
+
+<span class="fc" id="L126">        return getResponseModels(&quot;MedborgarByteLandR&quot;, mappings);</span>
+    }
+
+    @Override
+    public URLEndpoint getUrl() {
+<span class="fc" id="L131">        return getRootUrl().append(&quot;BE/BE0101/BE0101N/&quot;);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
