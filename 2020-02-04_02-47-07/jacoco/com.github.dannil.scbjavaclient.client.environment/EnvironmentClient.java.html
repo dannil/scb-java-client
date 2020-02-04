@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EnvironmentClient.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.client.environment</a> &gt; <span class="el_source">EnvironmentClient.java</span></div><h1>EnvironmentClient.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2014 Daniel Nilsson
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
+package com.github.dannil.scbjavaclient.client.environment;
+
+import java.util.Locale;
+
+import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
+import com.github.dannil.scbjavaclient.client.environment.airpollutants.EnvironmentAirPollutantsClient;
+import com.github.dannil.scbjavaclient.client.environment.greenhousegas.EnvironmentGreenhouseGasClient;
+import com.github.dannil.scbjavaclient.client.environment.landandwaterarea.EnvironmentLandAndWaterAreaClient;
+import com.github.dannil.scbjavaclient.client.environment.landuse.EnvironmentLandUseClient;
+import com.github.dannil.scbjavaclient.client.environment.packagingandpackagingwaste.EnvironmentPackagingAndPackagingWasteClient;
+import com.github.dannil.scbjavaclient.client.environment.protectednature.EnvironmentProtectedNatureClient;
+import com.github.dannil.scbjavaclient.client.environment.seea.EnvironmentSEEAClient;
+import com.github.dannil.scbjavaclient.client.environment.shorelinelanduse.EnvironmentShorelineLandUseClient;
+import com.github.dannil.scbjavaclient.client.environment.smallerlocalities.EnvironmentSmallerLocalitiesClient;
+import com.github.dannil.scbjavaclient.client.environment.waste.EnvironmentWasteClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
+
+/**
+ * &lt;p&gt;Client which handles environment data fetching.&lt;/p&gt;
+ *
+ * @since 0.0.2
+ */
+public class EnvironmentClient extends AbstractContainerClient {
+
+    /**
+     * &lt;p&gt;Default constructor. Initializes values and creates sub-clients.&lt;/p&gt;
+     */
+    public EnvironmentClient() {
+<span class="fc" id="L43">        super();</span>
+
+<span class="fc" id="L45">        addClient(&quot;airpollutants&quot;, new EnvironmentAirPollutantsClient());</span>
+<span class="fc" id="L46">        addClient(&quot;greenhousegas&quot;, new EnvironmentGreenhouseGasClient());</span>
+<span class="fc" id="L47">        addClient(&quot;landandwaterarea&quot;, new EnvironmentLandAndWaterAreaClient());</span>
+<span class="fc" id="L48">        addClient(&quot;landuse&quot;, new EnvironmentLandUseClient());</span>
+<span class="fc" id="L49">        addClient(&quot;packagingandpackagingwaste&quot;, new EnvironmentPackagingAndPackagingWasteClient());</span>
+<span class="fc" id="L50">        addClient(&quot;protectednature&quot;, new EnvironmentProtectedNatureClient());</span>
+<span class="fc" id="L51">        addClient(&quot;seea&quot;, new EnvironmentSEEAClient());</span>
+<span class="fc" id="L52">        addClient(&quot;shorelinelanduse&quot;, new EnvironmentShorelineLandUseClient());</span>
+<span class="fc" id="L53">        addClient(&quot;smallerlocalities&quot;, new EnvironmentSmallerLocalitiesClient());</span>
+<span class="fc" id="L54">        addClient(&quot;waste&quot;, new EnvironmentWasteClient());</span>
+<span class="fc" id="L55">    }</span>
+
+    /**
+     * &lt;p&gt;Overloaded constructor.&lt;/p&gt;
+     *
+     * @param locale
+     *            the &lt;code&gt;Locale&lt;/code&gt; for this client
+     */
+    public EnvironmentClient(Locale locale) {
+<span class="fc" id="L64">        this();</span>
+
+<span class="fc" id="L66">        setLocale(locale);</span>
+<span class="fc" id="L67">    }</span>
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with environment air pollutants data.&lt;/p&gt;
+     *
+     * @return a client for environment air pollutants data
+     */
+    public EnvironmentAirPollutantsClient airPollutants() {
+<span class="fc" id="L75">        return (EnvironmentAirPollutantsClient) getClient(&quot;airpollutants&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with environment greenhouse gas data.&lt;/p&gt;
+     *
+     * @return a client for environment greenhouse gas data
+     */
+    public EnvironmentGreenhouseGasClient greenhouseGas() {
+<span class="fc" id="L84">        return (EnvironmentGreenhouseGasClient) getClient(&quot;greenhousegas&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with environment land and water area
+     * data.&lt;/p&gt;
+     *
+     * @return a client for environment land and water area data
+     */
+    public EnvironmentLandAndWaterAreaClient landAndWaterArea() {
+<span class="fc" id="L94">        return (EnvironmentLandAndWaterAreaClient) getClient(&quot;landandwaterarea&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with environment land use data.&lt;/p&gt;
+     *
+     * @return a client for environment land use data
+     */
+    public EnvironmentLandUseClient landUse() {
+<span class="fc" id="L103">        return (EnvironmentLandUseClient) getClient(&quot;landuse&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with environment packaging and packaging
+     * waste data.&lt;/p&gt;
+     *
+     * @return a client for environment packaging and packaging waste data
+     */
+    public EnvironmentPackagingAndPackagingWasteClient packagingAndPackagingWaste() {
+<span class="fc" id="L113">        return (EnvironmentPackagingAndPackagingWasteClient) getClient(&quot;packagingandpackagingwaste&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with environment protected nature data.&lt;/p&gt;
+     *
+     * @return a client for environment protected nature data
+     */
+    public EnvironmentProtectedNatureClient protectedNature() {
+<span class="fc" id="L122">        return (EnvironmentProtectedNatureClient) getClient(&quot;protectednature&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with environment System of
+     * Environmental-Economic Accounting (SEEA) data.&lt;/p&gt;
+     *
+     * @return a client for environment System of Environmental-Economic Accounting (SEEA)
+     *         data
+     */
+    public EnvironmentSEEAClient seea() {
+<span class="fc" id="L133">        return (EnvironmentSEEAClient) getClient(&quot;seea&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with environment shoreline land use
+     * data.&lt;/p&gt;
+     *
+     * @return a client for environment shoreline land use data
+     */
+    public EnvironmentShorelineLandUseClient shorelineLandUse() {
+<span class="fc" id="L143">        return (EnvironmentShorelineLandUseClient) getClient(&quot;shorelinelanduse&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with environment smaller localities
+     * data.&lt;/p&gt;
+     *
+     * @return a client for environment smaller localities data
+     */
+    public EnvironmentSmallerLocalitiesClient smallerLocalities() {
+<span class="fc" id="L153">        return (EnvironmentSmallerLocalitiesClient) getClient(&quot;smallerlocalities&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with environment waste data.&lt;/p&gt;
+     *
+     * @return a client for environment waste data
+     */
+    public EnvironmentWasteClient waste() {
+<span class="fc" id="L162">        return (EnvironmentWasteClient) getClient(&quot;waste&quot;);</span>
+    }
+
+    @Override
+    public URLEndpoint getUrl() {
+<span class="fc" id="L167">        return getRootUrl().append(&quot;MI/&quot;);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

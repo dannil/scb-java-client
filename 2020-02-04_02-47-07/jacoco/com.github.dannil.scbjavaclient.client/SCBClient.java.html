@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SCBClient.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.client</a> &gt; <span class="el_source">SCBClient.java</span></div><h1>SCBClient.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2014 Daniel Nilsson
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
+package com.github.dannil.scbjavaclient.client;
+
+import java.net.http.HttpResponse;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import com.github.dannil.scbjavaclient.client.agriculture.AgricultureClient;
+import com.github.dannil.scbjavaclient.client.businessactivities.BusinessActivitiesClient;
+import com.github.dannil.scbjavaclient.client.educationandresearch.EducationAndResearchClient;
+import com.github.dannil.scbjavaclient.client.energy.EnergyClient;
+import com.github.dannil.scbjavaclient.client.environment.EnvironmentClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.FinancialMarketsClient;
+import com.github.dannil.scbjavaclient.client.goodsandservices.GoodsAndServicesClient;
+import com.github.dannil.scbjavaclient.client.labourmarket.LabourMarketClient;
+import com.github.dannil.scbjavaclient.client.livingconditions.LivingConditionsClient;
+import com.github.dannil.scbjavaclient.client.population.PopulationClient;
+import com.github.dannil.scbjavaclient.client.pricesandconsumption.PricesAndConsumptionClient;
+import com.github.dannil.scbjavaclient.client.publicfinances.PublicFinancesClient;
+import com.github.dannil.scbjavaclient.client.transport.TransportClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
+import com.github.dannil.scbjavaclient.communication.http.HttpStatusCode;
+import com.github.dannil.scbjavaclient.communication.http.requester.AbstractRequester;
+import com.github.dannil.scbjavaclient.communication.http.requester.GETRequester;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
+import com.github.dannil.scbjavaclient.format.json.JsonAPIConfigTableFormat;
+import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
+import com.github.dannil.scbjavaclient.utility.QueryBuilder;
+
+/**
+ * &lt;p&gt;Root client for the client hierarchy.&lt;/p&gt;
+ *
+ * @since 0.0.2
+ */
+public class SCBClient extends AbstractContainerClient {
+
+    /**
+     * &lt;p&gt;Default constructor. Initializes values and creates sub-clients.&lt;/p&gt;
+     */
+    public SCBClient() {
+<span class="fc" id="L60">        super();</span>
+
+<span class="fc" id="L62">        addClient(&quot;agriculture&quot;, new AgricultureClient());</span>
+<span class="fc" id="L63">        addClient(&quot;businessactivities&quot;, new BusinessActivitiesClient());</span>
+<span class="fc" id="L64">        addClient(&quot;educationandresearch&quot;, new EducationAndResearchClient());</span>
+<span class="fc" id="L65">        addClient(&quot;energy&quot;, new EnergyClient());</span>
+<span class="fc" id="L66">        addClient(&quot;environment&quot;, new EnvironmentClient());</span>
+<span class="fc" id="L67">        addClient(&quot;financialmarkets&quot;, new FinancialMarketsClient());</span>
+<span class="fc" id="L68">        addClient(&quot;goodsandservices&quot;, new GoodsAndServicesClient());</span>
+<span class="fc" id="L69">        addClient(&quot;labourmarket&quot;, new LabourMarketClient());</span>
+<span class="fc" id="L70">        addClient(&quot;livingconditions&quot;, new LivingConditionsClient());</span>
+<span class="fc" id="L71">        addClient(&quot;population&quot;, new PopulationClient());</span>
+<span class="fc" id="L72">        addClient(&quot;pricesandconsumption&quot;, new PricesAndConsumptionClient());</span>
+<span class="fc" id="L73">        addClient(&quot;publicfinances&quot;, new PublicFinancesClient());</span>
+<span class="fc" id="L74">        addClient(&quot;transport&quot;, new TransportClient());</span>
+<span class="fc" id="L75">    }</span>
+
+    /**
+     * &lt;p&gt;Overloaded constructor.&lt;/p&gt;
+     *
+     * @param locale
+     *            the locale for this client
+     */
+    public SCBClient(Locale locale) {
+<span class="fc" id="L84">        this();</span>
+
+<span class="fc" id="L86">        setLocale(locale);</span>
+<span class="fc" id="L87">    }</span>
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with agriculture data.&lt;/p&gt;
+     *
+     * @return a client for agriculture data
+     */
+    public AgricultureClient agriculture() {
+<span class="fc" id="L95">        return (AgricultureClient) getClient(&quot;agriculture&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with business activities data.&lt;/p&gt;
+     *
+     * @return a client for business activities data
+     */
+    public BusinessActivitiesClient businessActivities() {
+<span class="fc" id="L104">        return (BusinessActivitiesClient) getClient(&quot;businessactivities&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with education and research data.&lt;/p&gt;
+     *
+     * @return a client for education and research data
+     */
+    public EducationAndResearchClient educationAndResearch() {
+<span class="fc" id="L113">        return (EducationAndResearchClient) getClient(&quot;educationandresearch&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with energy data.&lt;/p&gt;
+     *
+     * @return a client for energy data
+     */
+    public EnergyClient energy() {
+<span class="fc" id="L122">        return (EnergyClient) getClient(&quot;energy&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with environment data.&lt;/p&gt;
+     *
+     * @return a client for environment data
+     */
+    public EnvironmentClient environment() {
+<span class="fc" id="L131">        return (EnvironmentClient) getClient(&quot;environment&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with financial markets data.&lt;/p&gt;
+     *
+     * @return a client for financial markets data
+     */
+    public FinancialMarketsClient financialMarkets() {
+<span class="fc" id="L140">        return (FinancialMarketsClient) getClient(&quot;financialmarkets&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with goods and services data.&lt;/p&gt;
+     *
+     * @return a client for goods and services data
+     */
+    public GoodsAndServicesClient goodsAndServices() {
+<span class="fc" id="L149">        return (GoodsAndServicesClient) getClient(&quot;goodsandservices&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with labour market data.&lt;/p&gt;
+     *
+     * @return a client for labour market data
+     */
+    public LabourMarketClient labourMarket() {
+<span class="fc" id="L158">        return (LabourMarketClient) getClient(&quot;labourmarket&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with living conditions data.&lt;/p&gt;
+     *
+     * @return a client for living conditions data
+     */
+    public LivingConditionsClient livingConditions() {
+<span class="fc" id="L167">        return (LivingConditionsClient) getClient(&quot;livingconditions&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with population data.&lt;/p&gt;
+     *
+     * @return a client for population data
+     */
+    public PopulationClient population() {
+<span class="fc" id="L176">        return (PopulationClient) getClient(&quot;population&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with prices and consumption data.&lt;/p&gt;
+     *
+     * @return a client for prices and consumption data
+     */
+    public PricesAndConsumptionClient pricesAndConsumption() {
+<span class="fc" id="L185">        return (PricesAndConsumptionClient) getClient(&quot;pricesandconsumption&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with public finances data.&lt;/p&gt;
+     *
+     * @return a client for public finances data
+     */
+    public PublicFinancesClient publicFinances() {
+<span class="fc" id="L194">        return (PublicFinancesClient) getClient(&quot;publicfinances&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with transport data.&lt;/p&gt;
+     *
+     * @return a client for transport data
+     */
+    public TransportClient transport() {
+<span class="fc" id="L203">        return (TransportClient) getClient(&quot;transport&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetches all the inputs for a given table from the API. If the table doesn't
+     * exist an empty &lt;code&gt;Map&lt;/code&gt; will be returned.&lt;/p&gt;
+     *
+     * @param table
+     *            the table to fetch the inputs from
+     * @return a collection of all codes and their respective values for the given table
+     *
+     * @see com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat#getPairs()
+     *      JsonAPITableFormat#getPairs()
+     */
+    public Map&lt;String, Collection&lt;String&gt;&gt; getInputs(String table) {
+<span class="fc" id="L218">        String url = getUrl() + table;</span>
+<span class="fc" id="L219">        String json = doGetRequest(url);</span>
+
+<span class="fc bfc" id="L221" title="All 2 branches covered.">        if (json == null) {</span>
+<span class="fc" id="L222">            return new HashMap&lt;&gt;();</span>
+        }
+<span class="fc" id="L224">        return new JsonAPITableFormat(json).getPairs();</span>
+    }
+
+    /**
+     * &lt;p&gt;Returns the list of the available regions for a given table. If the table
+     * doesn't exist an empty &lt;code&gt;List&lt;/code&gt; will be returned.&lt;/p&gt;
+     *
+     * @param table
+     *            the table to retrieve the regions from
+     * @return a list of the available regions for the given table
+     */
+    public List&lt;String&gt; getRegions(String table) {
+<span class="fc" id="L236">        String url = getUrl() + table;</span>
+<span class="fc" id="L237">        String json = doGetRequest(url);</span>
+
+<span class="fc bfc" id="L239" title="All 2 branches covered.">        if (json == null) {</span>
+<span class="fc" id="L240">            return new ArrayList&lt;&gt;();</span>
+        }
+<span class="fc" id="L242">        JsonAPITableFormat format = new JsonAPITableFormat(json);</span>
+<span class="fc" id="L243">        return format.getValues(APIConstants.REGION_CODE);</span>
+    }
+
+    /**
+     * &lt;p&gt;Returns the list of the available times for a given table. If the table doesn't
+     * exist an empty &lt;code&gt;List&lt;/code&gt; will be returned.&lt;/p&gt;
+     *
+     * @param table
+     *            the table to retrieve the times from
+     * @return a list of the available times for the given table
+     */
+    public List&lt;String&gt; getTimes(String table) {
+<span class="fc" id="L255">        String url = getUrl() + table;</span>
+<span class="fc" id="L256">        String json = doGetRequest(url);</span>
+
+<span class="fc bfc" id="L258" title="All 2 branches covered.">        if (json == null) {</span>
+<span class="fc" id="L259">            return new ArrayList&lt;&gt;();</span>
+        }
+<span class="fc" id="L261">        JsonAPITableFormat format = new JsonAPITableFormat(json);</span>
+<span class="fc" id="L262">        return format.getValues(APIConstants.TIME_CODE);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch the JSON response from the specified table. As opposed to
+     * {@link #getRawData(String, Map)}, this method fetches all available data and
+     * therefore doesn't support selecting specific values before calling the API.&lt;/p&gt;
+     *
+     * &lt;p&gt;Do note: as this method matches all content codes available on the API, the
+     * response is likely to be several times larger than the response when selecting
+     * values.&lt;/p&gt;
+     *
+     * @param table
+     *            the table to fetch data from
+     * @return a JSON string containing all available data in the specified table
+     *
+     * @see com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat#getValues(String)
+     *      JsonAPITableFormat#getValues(String)
+     */
+    public String getRawData(String table) {
+<span class="fc" id="L282">        Map&lt;String, Collection&lt;?&gt;&gt; inputs = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L283">        return getRawData(table, inputs);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch the JSON response from the specified table. Useful if you're only
+     * interested in the raw JSON data.&lt;/p&gt;
+     *
+     * @param table
+     *            the table to fetch data from
+     * @param query
+     *            the selected values
+     * @return a response from the API formatted as JSON
+     */
+    public String getRawData(String table, Map&lt;String, Collection&lt;?&gt;&gt; query) {
+<span class="fc" id="L297">        return doPostRequest(getUrl() + table, QueryBuilder.build(query));</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetches the config from the API. Useful if you for example need to know how
+     * often you're allowed to make calls to the API, or the max size of the response.&lt;/p&gt;
+     *
+     * @return the config
+     */
+    public Map&lt;String, String&gt; getConfig() {
+<span class="fc" id="L307">        String url = getUrl() + &quot;?config&quot;;</span>
+<span class="fc" id="L308">        String json = doGetRequest(url);</span>
+
+<span class="fc" id="L310">        JsonAPIConfigTableFormat format = new JsonAPIConfigTableFormat(json);</span>
+
+<span class="fc" id="L312">        Map&lt;String, String&gt; config = new HashMap&lt;&gt;();</span>
+<span class="fc bfc" id="L313" title="All 2 branches covered.">        for (Entry&lt;String, Collection&lt;String&gt;&gt; entry : format.getPairs().entrySet()) {</span>
+<span class="fc" id="L314">            Iterator&lt;String&gt; it = entry.getValue().iterator();</span>
+<span class="fc" id="L315">            config.put(entry.getKey(), it.next());</span>
+<span class="fc" id="L316">        }</span>
+<span class="fc" id="L317">        return config;</span>
+    }
+
+    /**
+     * &lt;p&gt;Checks if the specified language is supported by the API. See
+     * {@link #isSupportedLocale(Locale)} for implementation details.&lt;/p&gt;
+     *
+     * @param language
+     *            the language to check
+     * @return true if the language is supported, otherwise false
+     */
+    public static boolean isSupportedLanguage(String language) {
+<span class="fc" id="L329">        Locale locale = new Locale(language);</span>
+<span class="fc" id="L330">        return isSupportedLocale(locale);</span>
+    }
+
+    /**
+     * &lt;p&gt;Checks if the specified &lt;code&gt;Locale&lt;/code&gt; is supported by the API. The method
+     * performs a request to the API using the &lt;code&gt;Locale&lt;/code&gt;'s language and checks
+     * if a HTTP resource exists matching the language.&lt;/p&gt;
+     *
+     * @param locale
+     *            the &lt;code&gt;Locale&lt;/code&gt; to check
+     * @return true if the &lt;code&gt;Locale&lt;/code&gt; is supported, otherwise false
+     */
+    public static boolean isSupportedLocale(Locale locale) {
+<span class="fc" id="L343">        String url = URLEndpoint.getRootUrl(locale).toString();</span>
+<span class="fc" id="L344">        AbstractRequester get = new GETRequester();</span>
+<span class="fc" id="L345">        HttpResponse&lt;String&gt; response = get.getResponse(url);</span>
+<span class="fc bfc" id="L346" title="All 2 branches covered.">        return response.statusCode() == HttpStatusCode.OK.getCode();</span>
+    }
+
+    @Override
+    public URLEndpoint getUrl() {
+<span class="fc" id="L351">        return getRootUrl();</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
