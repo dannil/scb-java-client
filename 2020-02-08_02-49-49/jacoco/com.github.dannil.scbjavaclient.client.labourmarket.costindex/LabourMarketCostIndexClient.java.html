@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LabourMarketCostIndexClient.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.client.labourmarket.costindex</a> &gt; <span class="el_source">LabourMarketCostIndexClient.java</span></div><h1>LabourMarketCostIndexClient.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2017 Daniel Nilsson
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
+package com.github.dannil.scbjavaclient.client.labourmarket.costindex;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+
+import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
+
+/**
+ * &lt;p&gt;Client which handles labour market cost index data fetching.&lt;/p&gt;
+ *
+ * @since 0.3.0
+ */
+public class LabourMarketCostIndexClient extends AbstractClient {
+
+    /**
+     * &lt;p&gt;Default constructor.&lt;/p&gt;
+     */
+    public LabourMarketCostIndexClient() {
+<span class="fc" id="L39">        super();</span>
+<span class="fc" id="L40">    }</span>
+
+    /**
+     * &lt;p&gt;Overloaded constructor.&lt;/p&gt;
+     *
+     * @param locale
+     *            the &lt;code&gt;Locale&lt;/code&gt; for this client
+     */
+    public LabourMarketCostIndexClient(Locale locale) {
+<span class="fc" id="L49">        super(locale);</span>
+<span class="fc" id="L50">    }</span>
+
+    /**
+     * &lt;p&gt;Fetch all cost index for manual workers (LCI) data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getCostIndexForManualWorkersLCI(Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getCostIndexForManualWorkersLCI() {
+<span class="fc" id="L62">        return getCostIndexForManualWorkersLCI(null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all cost index for manual workers (LCI) data which match the input
+     * constraints.&lt;/p&gt;
+     *
+     * @param industrialClassifications
+     *            the industrial classifications to fetch data for
+     * @param quarters
+     *            the quarters to fetch data for
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getCostIndexForManualWorkersLCI(Collection&lt;String&gt; industrialClassifications,
+            Collection&lt;String&gt; quarters) {
+<span class="fc" id="L79">        return generate(industrialClassifications, quarters, &quot;LCIArbKv&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all cost index for non-manual workers (LCI) data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getCostIndexForNonManualWorkersLCI(Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getCostIndexForNonManualWorkersLCI() {
+<span class="fc" id="L92">        return getCostIndexForNonManualWorkersLCI(null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all cost index for non-manual workers (LCI) data which match the input
+     * constraints.&lt;/p&gt;
+     *
+     * @param industrialClassifications
+     *            the industrial classifications to fetch data for
+     * @param quarters
+     *            the quarters to fetch data for
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getCostIndexForNonManualWorkersLCI(Collection&lt;String&gt; industrialClassifications,
+            Collection&lt;String&gt; quarters) {
+<span class="fc" id="L109">        return generate(industrialClassifications, quarters, &quot;LCItjmKv&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all cost index for manual workers (WAG) data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getCostIndexForManualWorkersWAG(Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getCostIndexForManualWorkersWAG() {
+<span class="fc" id="L122">        return getCostIndexForManualWorkersLCI(null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all cost index for manual workers (WAG) data which match the input
+     * constraints.&lt;/p&gt;
+     *
+     * @param industrialClassifications
+     *            the industrial classifications to fetch data for
+     * @param quarters
+     *            the quarters to fetch data for
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     */
+    public List&lt;ResponseModel&gt; getCostIndexForManualWorkersWAG(Collection&lt;String&gt; industrialClassifications,
+            Collection&lt;String&gt; quarters) {
+<span class="fc" id="L138">        return generate(industrialClassifications, quarters, &quot;WAGArbKv&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all cost index for non-manual workers (WAG) data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getCostIndexForNonManualWorkersWAG(Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getCostIndexForNonManualWorkersWAG() {
+<span class="fc" id="L151">        return getCostIndexForNonManualWorkersLCI(null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all cost index for non-manual workers (WAG) data which match the input
+     * constraints.&lt;/p&gt;
+     *
+     * @param industrialClassifications
+     *            the industrial classifications to fetch data for
+     * @param quarters
+     *            the quarters to fetch data for
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getCostIndexForNonManualWorkersWAG(Collection&lt;String&gt; industrialClassifications,
+            Collection&lt;String&gt; quarters) {
+<span class="fc" id="L168">        return generate(industrialClassifications, quarters, &quot;WAGtjmKv&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Common generator method for the methods in this class.&lt;/p&gt;
+     *
+     * @param industrialClassifications
+     *            the industrial classifications
+     * @param quarters
+     *            the quarters
+     * @param table
+     *            the table
+     * @return a &lt;code&gt;List&lt;/code&gt; of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     */
+    private List&lt;ResponseModel&gt; generate(Collection&lt;String&gt; industrialClassifications, Collection&lt;String&gt; quarters,
+            String table) {
+<span class="fc" id="L185">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L186">        mappings.put(APIConstants.SNI2007_CODE, industrialClassifications);</span>
+<span class="fc" id="L187">        mappings.put(APIConstants.TIME_CODE, quarters);</span>
+
+<span class="fc" id="L189">        return getResponseModels(table, mappings);</span>
+    }
+
+    @Override
+    public URLEndpoint getUrl() {
+<span class="fc" id="L194">        return getRootUrl().append(&quot;AM/AM0114/&quot;);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
