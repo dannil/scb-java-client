@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <element name="japicmp" type="jApiCmpXmlRoot"/>
+
+  <complexType name="jApiCmpXmlRoot">
+    <sequence>
+      <element name="classes" minOccurs="0">
+        <complexType>
+          <sequence>
+            <element name="class" type="jApiClass" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+        </complexType>
+      </element>
+    </sequence>
+    <attribute name="accessModifier" type="xs:string"/>
+    <attribute name="creationTimestamp" type="xs:string"/>
+    <attribute name="ignoreMissingClasses" type="xs:boolean" use="required"/>
+    <attribute name="ignoreMissingClassesByRegularExpressions" type="xs:string"/>
+    <attribute name="newJar" type="xs:string"/>
+    <attribute name="newVersion" type="xs:string"/>
+    <attribute name="oldJar" type="xs:string"/>
+    <attribute name="oldVersion" type="xs:string"/>
+    <attribute name="onlyBinaryIncompatibleModifications" type="xs:boolean" use="required"/>
+    <attribute name="onlyModifications" type="xs:boolean" use="required"/>
+    <attribute name="packagesExclude" type="xs:string"/>
+    <attribute name="packagesInclude" type="xs:string"/>
+    <attribute name="semanticVersioning" type="xs:string"/>
+    <attribute name="title" type="xs:string"/>
+  </complexType>
+
+  <complexType name="jApiClass">
+    <sequence>
+      <element name="annotations" minOccurs="0">
+        <complexType>
+          <sequence>
+            <element name="annotation" type="jApiAnnotation" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="attributes" minOccurs="0">
+        <complexType>
+          <sequence>
+            <element name="attribute" type="jApiAttribute" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="classFileFormatVersion" type="jApiClassFileFormatVersion" minOccurs="0"/>
+      <element name="classType" type="jApiClassType" minOccurs="0"/>
+      <element name="compatibilityChanges" minOccurs="0">
+        <complexType>
+          <sequence>
+            <element name="compatibilityChange" type="jApiCompatibilityChange" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="constructors" minOccurs="0">
+        <complexType>
+          <sequence>
+            <element name="constructor" type="jApiConstructor" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="fields" minOccurs="0">
+        <complexType>
+          <sequence>
+            <element name="field" type="jApiField" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="interfaces" minOccurs="0">
+        <complexType>
+          <sequence>
+            <element name="interface" type="jApiImplementedInterface" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="methods" minOccurs="0">
+        <complexType>
+          <sequence>
+            <element name="method" type="jApiMethod" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="modifiers" minOccurs="0">
+        <complexType>
+          <sequence>
+            <element name="modifier" type="jApiModifier" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="serialVersionUid" type="jApiSerialVersionUid" minOccurs="0"/>
+      <element name="superclass" type="jApiSuperclass" minOccurs="0"/>
+    </sequence>
+    <attribute name="binaryCompatible" type="xs:boolean" use="required"/>
+    <attribute name="changeStatus" type="jApiChangeStatus"/>
+    <attribute name="fullyQualifiedName" type="xs:string"/>
+    <attribute name="javaObjectSerializationCompatible" type="jApiJavaObjectSerializationChangeStatus"/>
+    <attribute name="javaObjectSerializationCompatibleAsString" type="xs:string"/>
+    <attribute name="sourceCompatible" type="xs:boolean" use="required"/>
+  </complexType>
+
+  <complexType name="jApiAnnotation">
+    <sequence>
+      <element name="compatibilityChanges" minOccurs="0">
+        <complexType>
+          <sequence>
+            <element name="compatibilityChange" type="jApiCompatibilityChange" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="elements" minOccurs="0">
+        <complexType>
+          <sequence>
+            <element name="element" type="jApiAnnotationElement" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+        </complexType>
+      </element>
+    </sequence>
+    <attribute name="binaryCompatible" type="xs:boolean" use="required"/>
+    <attribute name="changeStatus" type="jApiChangeStatus"/>
+    <attribute name="fullyQualifiedName" type="xs:string"/>
+    <attribute name="sourceCompatible" type="xs:boolean" use="required"/>
+  </complexType>
+
+  <complexType name="jApiAnnotationElement">
+    <sequence>
+      <element name="compatibilityChanges" minOccurs="0">
+        <complexType>
+          <sequence>
+            <element name="compatibilityChange" type="jApiCompatibilityChange" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="newElementValues" minOccurs="0">
+        <complexType>
+          <sequence>
+            <element name="newElementValue" type="jApiAnnotationElementValue" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="oldElementValues" minOccurs="0">
+        <complexType>
+          <sequence>
+            <element name="oldElementValue" type="jApiAnnotationElementValue" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+        </complexType>
+      </element>
+    </sequence>
+    <attribute name="binaryCompatible" type="xs:boolean" use="required"/>
+    <attribute name="changeStatus" type="jApiChangeStatus"/>
+    <attribute name="name" type="xs:string"/>
+    <attribute name="sourceCompatible" type="xs:boolean" use="required"/>
+  </complexType>
+
+  <complexType name="jApiAnnotationElementValue">
+    <sequence>
+      <element name="values" minOccurs="0">
+        <complexType>
+          <sequence>
+            <element name="value" type="jApiAnnotationElementValue" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+        </complexType>
+      </element>
+    </sequence>
+    <attribute name="fullyQualifiedName" type="xs:string"/>
+    <attribute name="name" type="xs:string"/>
+    <attribute name="type" type="xs:string"/>
+    <attribute name="value" type="xs:string"/>
+  </complexType>
+
+  <complexType name="jApiAttribute">
+    <sequence/>
+    <attribute name="changeStatus" type="jApiChangeStatus"/>
+    <attribute name="newValue" type="xs:string"/>
+    <attribute name="oldValue" type="xs:string"/>
+  </complexType>
+
+  <complexType name="jApiClassFileFormatVersion">
+    <sequence/>
+    <attribute name="changeStatus" type="jApiChangeStatus"/>
+    <attribute name="majorVersionNew" type="xs:int" use="required"/>
+    <attribute name="majorVersionOld" type="xs:int" use="required"/>
+    <attribute name="minorVersionNew" type="xs:int" use="required"/>
+    <attribute name="minorVersionOld" type="xs:int" use="required"/>
+  </complexType>
+
+  <complexType name="jApiClassType">
+    <sequence/>
+    <attribute name="changeStatus" type="jApiChangeStatus"/>
+    <attribute name="newType" type="xs:string"/>
+    <attribute name="oldType" type="xs:string"/>
+  </complexType>
+
+  <complexType name="jApiConstructor">
+    <complexContent>
+      <extension base="jApiBehavior">
+        <sequence/>
+      </extension>
+    </complexContent>
+  </complexType>
+
+  <complexType name="jApiBehavior">
+    <sequence>
+      <element name="annotations" minOccurs="0">
+        <complexType>
+          <sequence>
+            <element name="annotation" type="jApiAnnotation" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="attributes" minOccurs="0">
+        <complexType>
+          <sequence>
+            <element name="attribute" type="jApiAttribute" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="compatibilityChanges" minOccurs="0">
+        <complexType>
+          <sequence>
+            <element name="compatibilityChange" type="jApiCompatibilityChange" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="exceptions" minOccurs="0">
+        <complexType>
+          <sequence>
+            <element name="exception" type="jApiException" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="modifiers" minOccurs="0">
+        <complexType>
+          <sequence>
+            <element name="modifier" type="jApiModifier" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="parameters" minOccurs="0">
+        <complexType>
+          <sequence>
+            <element name="parameter" type="jApiParameter" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+        </complexType>
+      </element>
+    </sequence>
+    <attribute name="binaryCompatible" type="xs:boolean" use="required"/>
+    <attribute name="changeStatus" type="jApiChangeStatus"/>
+    <attribute name="name" type="xs:string"/>
+    <attribute name="newLineNumber" type="xs:string"/>
+    <attribute name="oldLineNumber" type="xs:string"/>
+    <attribute name="sourceCompatible" type="xs:boolean" use="required"/>
+  </complexType>
+
+  <complexType name="jApiException">
+    <sequence/>
+    <attribute name="changeStatus" type="jApiChangeStatus"/>
+    <attribute name="name" type="xs:string"/>
+  </complexType>
+
+  <complexType name="jApiModifier">
+    <sequence/>
+    <attribute name="changeStatus" type="jApiChangeStatus"/>
+    <attribute name="newValue" type="xs:string"/>
+    <attribute name="oldValue" type="xs:string"/>
+  </complexType>
+
+  <complexType name="jApiParameter">
+    <sequence/>
+    <attribute name="type" type="xs:string"/>
+  </complexType>
+
+  <complexType name="jApiField">
+    <sequence>
+      <element name="annotations" minOccurs="0">
+        <complexType>
+          <sequence>
+            <element name="annotation" type="jApiAnnotation" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="attributes" minOccurs="0">
+        <complexType>
+          <sequence>
+            <element name="attribute" type="jApiAttribute" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="compatibilityChanges" minOccurs="0">
+        <complexType>
+          <sequence>
+            <element name="compatibilityChange" type="jApiCompatibilityChange" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="modifiers" minOccurs="0">
+        <complexType>
+          <sequence>
+            <element name="modifier" type="jApiModifier" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="type" type="jApiType" minOccurs="0"/>
+    </sequence>
+    <attribute name="binaryCompatible" type="xs:boolean" use="required"/>
+    <attribute name="changeStatus" type="jApiChangeStatus"/>
+    <attribute name="name" type="xs:string"/>
+    <attribute name="sourceCompatible" type="xs:boolean" use="required"/>
+  </complexType>
+
+  <complexType name="jApiType">
+    <sequence/>
+    <attribute name="changeStatus" type="jApiChangeStatus"/>
+    <attribute name="newValue" type="xs:string"/>
+    <attribute name="oldValue" type="xs:string"/>
+  </complexType>
+
+  <complexType name="jApiImplementedInterface">
+    <sequence>
+      <element name="compatibilityChanges" minOccurs="0">
+        <complexType>
+          <sequence>
+            <element name="compatibilityChange" type="jApiCompatibilityChange" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+        </complexType>
+      </element>
+    </sequence>
+    <attribute name="binaryCompatible" type="xs:boolean" use="required"/>
+    <attribute name="changeStatus" type="jApiChangeStatus"/>
+    <attribute name="fullyQualifiedName" type="xs:string"/>
+    <attribute name="sourceCompatible" type="xs:boolean" use="required"/>
+  </complexType>
+
+  <complexType name="jApiMethod">
+    <complexContent>
+      <extension base="jApiBehavior">
+        <sequence>
+          <element name="returnType" type="jApiReturnType" minOccurs="0"/>
+        </sequence>
+      </extension>
+    </complexContent>
+  </complexType>
+
+  <complexType name="jApiReturnType">
+    <sequence/>
+    <attribute name="changeStatus" type="jApiChangeStatus"/>
+    <attribute name="newValue" type="xs:string"/>
+    <attribute name="oldValue" type="xs:string"/>
+  </complexType>
+
+  <complexType name="jApiSerialVersionUid">
+    <sequence/>
+    <attribute name="serialVersionUidDefaultNew" type="xs:string"/>
+    <attribute name="serialVersionUidDefaultOld" type="xs:string"/>
+    <attribute name="serialVersionUidInClassNew" type="xs:string"/>
+    <attribute name="serialVersionUidInClassOld" type="xs:string"/>
+    <attribute name="serializableNew" type="xs:boolean" use="required"/>
+    <attribute name="serializableOld" type="xs:boolean" use="required"/>
+  </complexType>
+
+  <complexType name="jApiSuperclass">
+    <sequence>
+      <element name="compatibilityChanges" minOccurs="0">
+        <complexType>
+          <sequence>
+            <element name="compatibilityChange" type="jApiCompatibilityChange" minOccurs="0" maxOccurs="unbounded"/>
+          </sequence>
+        </complexType>
+      </element>
+    </sequence>
+    <attribute name="binaryCompatible" type="xs:boolean" use="required"/>
+    <attribute name="changeStatus" type="jApiChangeStatus"/>
+    <attribute name="sourceCompatible" type="xs:boolean" use="required"/>
+    <attribute name="superclassNew" type="xs:string"/>
+    <attribute name="superclassOld" type="xs:string"/>
+  </complexType>
+
+  <simpleType name="jApiChangeStatus">
+    <restriction base="xs:string">
+      <enumeration value="NEW"/>
+      <enumeration value="REMOVED"/>
+      <enumeration value="UNCHANGED"/>
+      <enumeration value="MODIFIED"/>
+    </restriction>
+  </simpleType>
+
+  <simpleType name="jApiCompatibilityChange">
+    <restriction base="xs:string">
+      <enumeration value="ANNOTATION_DEPRECATED_ADDED"/>
+      <enumeration value="CLASS_REMOVED"/>
+      <enumeration value="CLASS_NOW_ABSTRACT"/>
+      <enumeration value="CLASS_NOW_FINAL"/>
+      <enumeration value="CLASS_NO_LONGER_PUBLIC"/>
+      <enumeration value="CLASS_TYPE_CHANGED"/>
+      <enumeration value="CLASS_NOW_CHECKED_EXCEPTION"/>
+      <enumeration value="CLASS_LESS_ACCESSIBLE"/>
+      <enumeration value="SUPERCLASS_REMOVED"/>
+      <enumeration value="SUPERCLASS_ADDED"/>
+      <enumeration value="SUPERCLASS_MODIFIED_INCOMPATIBLE"/>
+      <enumeration value="INTERFACE_ADDED"/>
+      <enumeration value="INTERFACE_REMOVED"/>
+      <enumeration value="METHOD_REMOVED"/>
+      <enumeration value="METHOD_REMOVED_IN_SUPERCLASS"/>
+      <enumeration value="METHOD_LESS_ACCESSIBLE"/>
+      <enumeration value="METHOD_LESS_ACCESSIBLE_THAN_IN_SUPERCLASS"/>
+      <enumeration value="METHOD_IS_STATIC_AND_OVERRIDES_NOT_STATIC"/>
+      <enumeration value="METHOD_RETURN_TYPE_CHANGED"/>
+      <enumeration value="METHOD_NOW_ABSTRACT"/>
+      <enumeration value="METHOD_NOW_FINAL"/>
+      <enumeration value="METHOD_NOW_STATIC"/>
+      <enumeration value="METHOD_NO_LONGER_STATIC"/>
+      <enumeration value="METHOD_ADDED_TO_INTERFACE"/>
+      <enumeration value="METHOD_ADDED_TO_PUBLIC_CLASS"/>
+      <enumeration value="METHOD_NOW_THROWS_CHECKED_EXCEPTION"/>
+      <enumeration value="METHOD_ABSTRACT_ADDED_TO_CLASS"/>
+      <enumeration value="METHOD_ABSTRACT_ADDED_IN_SUPERCLASS"/>
+      <enumeration value="METHOD_ABSTRACT_ADDED_IN_IMPLEMENTED_INTERFACE"/>
+      <enumeration value="METHOD_NEW_DEFAULT"/>
+      <enumeration value="METHOD_ABSTRACT_NOW_DEFAULT"/>
+      <enumeration value="FIELD_STATIC_AND_OVERRIDES_STATIC"/>
+      <enumeration value="FIELD_LESS_ACCESSIBLE_THAN_IN_SUPERCLASS"/>
+      <enumeration value="FIELD_NOW_FINAL"/>
+      <enumeration value="FIELD_NOW_STATIC"/>
+      <enumeration value="FIELD_NO_LONGER_STATIC"/>
+      <enumeration value="FIELD_TYPE_CHANGED"/>
+      <enumeration value="FIELD_REMOVED"/>
+      <enumeration value="FIELD_REMOVED_IN_SUPERCLASS"/>
+      <enumeration value="FIELD_LESS_ACCESSIBLE"/>
+      <enumeration value="CONSTRUCTOR_REMOVED"/>
+      <enumeration value="CONSTRUCTOR_LESS_ACCESSIBLE"/>
+    </restriction>
+  </simpleType>
+
+  <simpleType name="jApiJavaObjectSerializationChangeStatus">
+    <restriction base="xs:string">
+      <enumeration value="NOT_SERIALIZABLE"/>
+      <enumeration value="SERIALIZABLE_COMPATIBLE"/>
+      <enumeration value="SERIALIZABLE_INCOMPATIBLE_SERIALVERSIONUID_MODIFIED"/>
+      <enumeration value="SERIALIZABLE_INCOMPATIBLE_SERIALVERSIONUID_REMOVED_AND_NOT_MATCHES_NEW_DEFAULT"/>
+      <enumeration value="SERIALIZABLE_INCOMPATIBLE_SERIALVERSIONUID_ADDED_AND_NOT_MATCHES_OLD_DEFAULT"/>
+      <enumeration value="SERIALIZABLE_INCOMPATIBLE_CLASS_TYPE_MODIFIED"/>
+      <enumeration value="SERIALIZABLE_INCOMPATIBLE_CHANGED_FROM_SERIALIZABLE_TO_EXTERNALIZABLE"/>
+      <enumeration value="SERIALIZABLE_INCOMPATIBLE_CHANGED_FROM_EXTERNALIZABLE_TO_SERIALIZABLE"/>
+      <enumeration value="SERIALIZABLE_INCOMPATIBLE_SERIALIZABLE_REMOVED"/>
+      <enumeration value="SERIALIZABLE_INCOMPATIBLE_EXTERNALIZABLE_REMOVED"/>
+      <enumeration value="SERIALIZABLE_INCOMPATIBLE_FIELD_REMOVED"/>
+      <enumeration value="SERIALIZABLE_INCOMPATIBLE_FIELD_CHANGED_FROM_NONSTATIC_TO_STATIC"/>
+      <enumeration value="SERIALIZABLE_INCOMPATIBLE_FIELD_CHANGED_FROM_NONTRANSIENT_TO_TRANSIENT"/>
+      <enumeration value="SERIALIZABLE_INCOMPATIBLE_FIELD_TYPE_MODIFIED"/>
+      <enumeration value="SERIALIZABLE_INCOMPATIBLE_BUT_SUID_EQUAL"/>
+      <enumeration value="SERIALIZABLE_INCOMPATIBLE_CLASS_REMOVED"/>
+      <enumeration value="SERIALIZABLE_INCOMPATIBLE_DEFAULT_SERIALVERSIONUID_CHANGED"/>
+      <enumeration value="SERIALIZABLE_INCOMPATIBLE_SUPERCLASS_MODIFIED"/>
+    </restriction>
+  </simpleType>
+</schema>
+
