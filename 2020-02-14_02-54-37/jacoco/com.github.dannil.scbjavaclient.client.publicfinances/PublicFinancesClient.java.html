@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PublicFinancesClient.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.client.publicfinances</a> &gt; <span class="el_source">PublicFinancesClient.java</span></div><h1>PublicFinancesClient.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2017 Daniel Nilsson
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
+package com.github.dannil.scbjavaclient.client.publicfinances;
+
+import java.util.Locale;
+
+import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
+import com.github.dannil.scbjavaclient.client.publicfinances.annualaccounts.PublicFinancesAnnualAccountsClient;
+import com.github.dannil.scbjavaclient.client.publicfinances.assetsandliabilities.PublicFinancesAssetsAndLiabilitiesClient;
+import com.github.dannil.scbjavaclient.client.publicfinances.governmentdebt.PublicFinancesGovernmentDebtClient;
+import com.github.dannil.scbjavaclient.client.publicfinances.localtaxes.PublicFinancesLocalTaxesClient;
+import com.github.dannil.scbjavaclient.client.publicfinances.publiclyownedenterprises.PublicFinancesPubliclyOwnedEnterprisesClient;
+import com.github.dannil.scbjavaclient.client.publicfinances.taxassessment.PublicFinancesTaxAssessmentClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
+
+/**
+ * &lt;p&gt;Client which handles public finances data fetching.&lt;/p&gt;
+ *
+ * @since 0.3.0
+ */
+public class PublicFinancesClient extends AbstractContainerClient {
+
+    /**
+     * &lt;p&gt;Default constructor. Initializes values and creates sub-clients.&lt;/p&gt;
+     */
+    public PublicFinancesClient() {
+<span class="fc" id="L39">        super();</span>
+
+<span class="fc" id="L41">        addClient(&quot;annualaccounts&quot;, new PublicFinancesAnnualAccountsClient());</span>
+<span class="fc" id="L42">        addClient(&quot;assetsandliabilities&quot;, new PublicFinancesAssetsAndLiabilitiesClient());</span>
+<span class="fc" id="L43">        addClient(&quot;governmentdebt&quot;, new PublicFinancesGovernmentDebtClient());</span>
+<span class="fc" id="L44">        addClient(&quot;localtaxes&quot;, new PublicFinancesLocalTaxesClient());</span>
+<span class="fc" id="L45">        addClient(&quot;publiclyownedenterprises&quot;, new PublicFinancesPubliclyOwnedEnterprisesClient());</span>
+<span class="fc" id="L46">        addClient(&quot;taxassessment&quot;, new PublicFinancesTaxAssessmentClient());</span>
+<span class="fc" id="L47">    }</span>
+
+    /**
+     * &lt;p&gt;Overloaded constructor.&lt;/p&gt;
+     *
+     * @param locale
+     *            the &lt;code&gt;Locale&lt;/code&gt; for this client
+     */
+    public PublicFinancesClient(Locale locale) {
+<span class="fc" id="L56">        this();</span>
+
+<span class="fc" id="L58">        setLocale(locale);</span>
+<span class="fc" id="L59">    }</span>
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with public finances annual accounts
+     * data.&lt;/p&gt;
+     *
+     * @return a client for public finances annual accounts data
+     */
+    public PublicFinancesAnnualAccountsClient annualAccounts() {
+<span class="fc" id="L68">        return (PublicFinancesAnnualAccountsClient) getClient(&quot;annualaccounts&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with public finances assets and liabilities
+     * data.&lt;/p&gt;
+     *
+     * @return a client for public finances assets and liabilities data
+     */
+    public PublicFinancesAssetsAndLiabilitiesClient assetsAndLiabilities() {
+<span class="fc" id="L78">        return (PublicFinancesAssetsAndLiabilitiesClient) getClient(&quot;assetsandliabilities&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with public finances government debt
+     * data.&lt;/p&gt;
+     *
+     * @return a client for public finances government debt data
+     */
+    public PublicFinancesGovernmentDebtClient governmentDebt() {
+<span class="fc" id="L88">        return (PublicFinancesGovernmentDebtClient) getClient(&quot;governmentdebt&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with public finances local taxes data.&lt;/p&gt;
+     *
+     * @return a client for public finances local taxes data
+     */
+    public PublicFinancesLocalTaxesClient localTaxes() {
+<span class="fc" id="L97">        return (PublicFinancesLocalTaxesClient) getClient(&quot;localtaxes&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with public finances publicly owned
+     * enterprises data.&lt;/p&gt;
+     *
+     * @return a client for public finances publicly owned enterprises data
+     */
+    public PublicFinancesPubliclyOwnedEnterprisesClient publiclyOwnedEnterprises() {
+<span class="fc" id="L107">        return (PublicFinancesPubliclyOwnedEnterprisesClient) getClient(&quot;publiclyownedenterprises&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with public finances tax assessment
+     * data.&lt;/p&gt;
+     *
+     * @return a client for public finances tax assessment data
+     */
+    public PublicFinancesTaxAssessmentClient taxAssessment() {
+<span class="fc" id="L117">        return (PublicFinancesTaxAssessmentClient) getClient(&quot;taxassessment&quot;);</span>
+    }
+
+    @Override
+    public URLEndpoint getUrl() {
+<span class="fc" id="L122">        return getRootUrl().append(&quot;OE/&quot;);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
