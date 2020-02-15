@@ -57,7 +57,10 @@ public class FinancialMarketsShareholdersClient extends AbstractClient {
      *         objects
      *
      * @see #getOwnershipOfShares(Collection, Collection)
+     *
+     * @deprecated table removed from API
      */
+    @Deprecated(since = "3.0.0", forRemoval = true)
     public List<ResponseModel> getOwnershipOfShares() {
         return getOwnershipOfShares(null, null);
     }
@@ -72,7 +75,10 @@ public class FinancialMarketsShareholdersClient extends AbstractClient {
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
+     *
+     * @deprecated table removed from API
      */
+    @Deprecated(since = "3.0.0", forRemoval = true)
     public List<ResponseModel> getOwnershipOfShares(Collection<String> sectors, Collection<String> twoTimesPerYears) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.SECTOR_CODE, sectors);
