@@ -134,7 +134,6 @@ public class EnvironmentLandUseUsageClientIT {
     @Test
     @Date("2020-01-20")
     @AllowFailure
-    @SuppressWarnings("deprecation")
     public void getTransportInfrastructureArea() {
         assertNotEquals(0, this.client.getTransportInfrastructureArea().size());
     }
@@ -142,7 +141,6 @@ public class EnvironmentLandUseUsageClientIT {
     @Test
     @Date("2020-01-20")
     @AllowFailure
-    @SuppressWarnings("deprecation")
     public void getTransportInfrastructureAreaWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getTransportInfrastructureArea(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
@@ -151,7 +149,6 @@ public class EnvironmentLandUseUsageClientIT {
     @Test
     @Date("2020-01-20")
     @AllowFailure
-    @SuppressWarnings("deprecation")
     public void getTransportInfrastructureAreaWithParameters() {
         List<String> regions = Arrays.asList("0184", "0186");
         List<Integer> years = Arrays.asList(2010);

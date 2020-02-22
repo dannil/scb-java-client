@@ -20,6 +20,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import com.github.dannil.scbjavaclient.test.extensions.AllowFailure;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
@@ -39,20 +40,23 @@ public class FinancialMarketsShareholdersClientIT {
     }
 
     @Test
-    @Date("2017-09-07")
+    @Date("2020-02-22")
+    @AllowFailure
     public void getOwnershipOfShares() {
         assertNotEquals(0, this.client.getOwnershipOfShares().size());
     }
 
     @Test
-    @Date("2017-09-07")
+    @Date("2020-02-22")
+    @AllowFailure
     public void getOwnershipOfSharesWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getOwnershipOfShares(Collections.<String>emptyList(),
                 Collections.<String>emptyList()).size());
     }
 
     @Test
-    @Date("2017-09-07")
+    @Date("2020-02-22")
+    @AllowFailure
     public void getOwnershipOfSharesWithParameters() {
         List<String> sectors = Arrays.asList("S12", "S1254");
         List<String> twoTimesPerYears = Arrays.asList("2012M12", "2013M06");

@@ -39,24 +39,24 @@ public class EnvironmentLandAndWaterAreaClientIT {
     }
 
     @Test
-    @Date("2015-04-22")
+    @Date("2020-02-22")
     public void getArea() {
         assertNotEquals(0, this.client.getArea().size());
     }
 
     @Test
-    @Date("2015-04-22")
+    @Date("2020-02-22")
     public void getAreaWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getArea(Collections.<String>emptyList(), Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
-    @Date("2015-04-22")
+    @Date("2020-02-22")
     public void getAreaWithParameters() {
         List<String> regions = Arrays.asList("1263");
-        List<String> types = Arrays.asList("01", "02", "03", "04");
-        List<Integer> years = Arrays.asList(2012);
+        List<String> types = Arrays.asList("01", "02", "03", "04", "05");
+        List<Integer> years = Arrays.asList(2012, 2015);
 
         assertNotEquals(0, this.client.getArea(regions, types, years).size());
     }

@@ -82,7 +82,7 @@ public class EnvironmentLandAndWaterAreaClient extends AbstractClient {
         mappings.put("ArealTyp", types);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("Areal2012", mappings);
+        return getResponseModels("Areal2012N", mappings);
     }
 
     @Override
