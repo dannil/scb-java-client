@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GoodsAndServicesTurnoverServiceSectorClient.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.client.goodsandservices.turnoverservicesector</a> &gt; <span class="el_source">GoodsAndServicesTurnoverServiceSectorClient.java</span></div><h1>GoodsAndServicesTurnoverServiceSectorClient.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2017 Daniel Nilsson
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
+package com.github.dannil.scbjavaclient.client.goodsandservices.turnoverservicesector;
+
+import java.util.Locale;
+
+import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
+import com.github.dannil.scbjavaclient.client.goodsandservices.turnoverservicesector.oldtablessni2002.GoodsAndServicesTurnoverServiceSectorOldTablesSNI2002Client;
+import com.github.dannil.scbjavaclient.client.goodsandservices.turnoverservicesector.oldtablessni2007.GoodsAndServicesTurnoverServiceSectorOldTablesSNI2007Client;
+import com.github.dannil.scbjavaclient.client.goodsandservices.turnoverservicesector.turnover.GoodsAndServicesTurnoverServiceSectorTurnoverClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
+
+/**
+ * &lt;p&gt;Client which handles goods and services turnover service sector data fetching.&lt;/p&gt;
+ *
+ * @since 0.7.0
+ */
+public class GoodsAndServicesTurnoverServiceSectorClient extends AbstractContainerClient {
+
+    /**
+     * &lt;p&gt;Default constructor. Initializes values and creates sub-clients.&lt;/p&gt;
+     */
+    public GoodsAndServicesTurnoverServiceSectorClient() {
+<span class="fc" id="L36">        super();</span>
+
+<span class="fc" id="L38">        addClient(&quot;oldtablessni2002&quot;, new GoodsAndServicesTurnoverServiceSectorOldTablesSNI2002Client());</span>
+<span class="fc" id="L39">        addClient(&quot;oldtablessni2007&quot;, new GoodsAndServicesTurnoverServiceSectorOldTablesSNI2007Client());</span>
+<span class="fc" id="L40">        addClient(&quot;turnover&quot;, new GoodsAndServicesTurnoverServiceSectorTurnoverClient());</span>
+<span class="fc" id="L41">    }</span>
+
+    /**
+     * &lt;p&gt;Overloaded constructor.&lt;/p&gt;
+     *
+     * @param locale
+     *            the &lt;code&gt;Locale&lt;/code&gt; for this client
+     */
+    public GoodsAndServicesTurnoverServiceSectorClient(Locale locale) {
+<span class="fc" id="L50">        this();</span>
+
+<span class="fc" id="L52">        setLocale(locale);</span>
+<span class="fc" id="L53">    }</span>
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with goods and services turnover service
+     * sector old tables SNI 2002 data.&lt;/p&gt;
+     *
+     * @return a client for goods and services turnover service sector old tables SNI 2002
+     *         data
+     */
+    public GoodsAndServicesTurnoverServiceSectorOldTablesSNI2002Client oldTablesSNI2002() {
+<span class="fc" id="L63">        return (GoodsAndServicesTurnoverServiceSectorOldTablesSNI2002Client) getClient(&quot;oldtablessni2002&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with goods and services turnover service
+     * sector old tables SNI 2007 data.&lt;/p&gt;
+     *
+     * @return a client for goods and services turnover service sector old tables SNI 2007
+     *         data
+     */
+    public GoodsAndServicesTurnoverServiceSectorOldTablesSNI2007Client oldTablesSNI2007() {
+<span class="fc" id="L74">        return (GoodsAndServicesTurnoverServiceSectorOldTablesSNI2007Client) getClient(&quot;oldtablessni2007&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with goods and services turnover service
+     * sector turnover data.&lt;/p&gt;
+     *
+     * @return a client for goods and services turnover service sector turnover data
+     */
+    public GoodsAndServicesTurnoverServiceSectorTurnoverClient turnover() {
+<span class="fc" id="L84">        return (GoodsAndServicesTurnoverServiceSectorTurnoverClient) getClient(&quot;turnover&quot;);</span>
+    }
+
+    @Override
+    public URLEndpoint getUrl() {
+<span class="fc" id="L89">        return getRootUrl().append(&quot;HA/HA0101/&quot;);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
