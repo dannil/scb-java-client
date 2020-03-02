@@ -16,17 +16,29 @@ package com.github.dannil.scbjavaclient.communication.http.requester;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.nio.charset.StandardCharsets;
 
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 @Suite
 public class POSTRequesterTest {
+
+    private POSTRequester mock;
+
+    @BeforeEach
+    public void setup() {
+        this.mock = mock(POSTRequester.class);
+        when(this.mock.getResponse("IOException")).thenThrow(new UncheckedIOException(new IOException()));
+    }
 
     @Test
     public void createWithDefaultConstructor() {
@@ -65,7 +77,12 @@ public class POSTRequesterTest {
         POSTRequester post = new POSTRequester();
 
         assertThrows(IllegalStateException.class,
-                () -> post.getResponse(URLEndpoint.getRootUrl() + "BE/BE0701/MedelAlderNY").getBody());
+                () -> post.getResponse(URLEndpoint.getRootUrl() + "BE/BE0701/MedelAlderNY").body());
+    }
+
+    @Test
+    public void doRequestIOException() {
+        assertThrows(UncheckedIOException.class, () -> this.mock.getResponse("IOException"));
     }
 
 }

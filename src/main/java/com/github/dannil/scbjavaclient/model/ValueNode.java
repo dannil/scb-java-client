@@ -16,8 +16,9 @@ package com.github.dannil.scbjavaclient.model;
 
 import java.util.Objects;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.dannil.scbjavaclient.constants.ModelConstants;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * <p>Class which holds all data for a specific value.</p>

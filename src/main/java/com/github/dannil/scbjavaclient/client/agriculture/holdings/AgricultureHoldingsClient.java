@@ -32,8 +32,6 @@ import com.github.dannil.scbjavaclient.model.ResponseModel;
  */
 public class AgricultureHoldingsClient extends AbstractClient {
 
-    private static final String SIZECLASS_CODE = "Storleksklass";
-
     /**
      * <p>Default constructor.</p>
      */
@@ -83,7 +81,7 @@ public class AgricultureHoldingsClient extends AbstractClient {
             Collection<String> sizeClasses, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
-        mappings.put(SIZECLASS_CODE, sizeClasses);
+        mappings.put(APIConstants.SIZECLASS_CODE, sizeClasses);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("ForetagStorlekK", mappings);
@@ -121,7 +119,7 @@ public class AgricultureHoldingsClient extends AbstractClient {
             Collection<String> sizeClasses, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.REGION_CODE, regions);
-        mappings.put(SIZECLASS_CODE, sizeClasses);
+        mappings.put(APIConstants.SIZECLASS_CODE, sizeClasses);
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("ForetagStorlekL", mappings);

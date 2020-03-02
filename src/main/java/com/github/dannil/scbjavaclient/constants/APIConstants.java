@@ -81,6 +81,11 @@ public final class APIConstants {
     public static final String SECTOR_CODE = "Sektor";
 
     /**
+     * <p>Constant for size class code.</p>
+     */
+    public static final String SIZECLASS_CODE = "Storleksklass";
+
+    /**
      * <p>Constant for SNI 2002 code.</p>
      */
     public static final String SNI2002_CODE = "SNI2002";
@@ -134,6 +139,11 @@ public final class APIConstants {
      * <p>Constant for type of expenditure code.</p>
      */
     public static final String TYPEOFEXPENDITURE_CODE = "Kostnadsslag";
+
+    /**
+     * <p>Constant for type of value code.</p>
+     */
+    public static final String TYPEOFVALUE_CODE = "VarTyp";
 
     /**
      * <p>Private constructor to prevent instantiation.</p>

@@ -1,6 +1,7 @@
 package com.github.dannil.scbjavaclient.communication;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.net.MalformedURLException;
@@ -78,7 +79,7 @@ public class URLEndpointTest {
 
         assertEquals("https://api.scb.se/OV0104/v1/doris/fr/ssd/AM/", url.toString());
     }
-    
+
     @Test
     public void getLanguage() {
         URLEndpoint url = new URLEndpoint("http://api.scb.se/OV0104/v1/doris/fr/ssd/BE/BE0401/BE0401A/");
@@ -124,12 +125,12 @@ public class URLEndpointTest {
 
         assertEquals(url, endpoint);
         assertEquals("", endpoint.getTable());
-        
+
         url = URLEndpoint.getRootUrl(new Locale("da", "DK"), CommunicationProtocol.HTTPS);
-        
+
         rootUrl = "https://api.scb.se/OV0104/v1/doris/da/ssd/";
         endpoint = new URLEndpoint(rootUrl);
-        
+
         assertEquals(url, endpoint);
         assertEquals("", endpoint.getTable());
     }
@@ -140,6 +141,13 @@ public class URLEndpointTest {
         URLEndpoint url2 = new URLEndpoint("http://api.scb.se/OV0104/v1/doris/sv/ssd/AM");
 
         assertEquals(url1, url2);
+    }
+
+    @Test
+    public void equalsNullParameter() {
+        URLEndpoint url1 = new URLEndpoint("http://api.scb.se/OV0104/v1/doris/sv/ssd/AM");
+
+        assertFalse(url1.equals(null));
     }
 
     @Test

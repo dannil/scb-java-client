@@ -59,9 +59,7 @@ public class EducationAndResearchCommunityInnovationSurveyActivityClient extends
      *
      * @see #getNumberOfInnovativeEnterprises(Collection, Collection, Collection,
      *      Collection)
-     * @deprecated table removed from API
      */
-    @Deprecated
     public List<ResponseModel> getNumberOfInnovativeEnterprises() {
         return getNumberOfInnovativeEnterprises(null, null, null, null);
     }
@@ -81,18 +79,142 @@ public class EducationAndResearchCommunityInnovationSurveyActivityClient extends
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
-     * @deprecated table removed from API
      */
-    @Deprecated
     public List<ResponseModel> getNumberOfInnovativeEnterprises(Collection<String> industrialClassifications,
             Collection<String> sizeClasses, Collection<String> typesOfValues, Collection<String> periods) {
         Map<String, Collection<?>> mappings = new HashMap<>();
         mappings.put(APIConstants.SNI2007_CODE, industrialClassifications);
-        mappings.put("Storleksklass", sizeClasses);
-        mappings.put("VarTyp", typesOfValues);
+        mappings.put(APIConstants.SIZECLASS_CODE, sizeClasses);
+        mappings.put(APIConstants.TYPEOFVALUE_CODE, typesOfValues);
         mappings.put(APIConstants.TIME_CODE, periods);
 
-        return getResponseModels("ACISAntalSNIStrl", mappings);
+        return getResponseModels("ACISAntalSNIStrlN", mappings);
+    }
+
+    /**
+     * <p>Fetch all enterprises with product innovations data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getEnterprisesWithProductInnovations(Collection, Collection, Collection,
+     *      Collection)
+     */
+    public List<ResponseModel> getEnterprisesWithProductInnovations() {
+        return getEnterprisesWithProductInnovations(null, null, null, null);
+    }
+
+    /**
+     * <p>Fetch all enterprises with product innovations data which match the input
+     * constraints.</p>
+     *
+     * @param sni2007s
+     *            the SNI 2007s
+     * @param sizeClasses
+     *            the size classes
+     * @param typesOfValues
+     *            the types of values
+     * @param periods
+     *            the periods
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getEnterprisesWithProductInnovations(Collection<String> sni2007s,
+            Collection<String> sizeClasses, Collection<String> typesOfValues, Collection<String> periods) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.SNI2007_CODE, sni2007s);
+        mappings.put(APIConstants.SIZECLASS_CODE, sizeClasses);
+        mappings.put(APIConstants.TYPEOFVALUE_CODE, typesOfValues);
+        mappings.put(APIConstants.TIME_CODE, periods);
+
+        return getResponseModels("NCISprodSNIStrl", mappings);
+    }
+
+    /**
+     * <p>Fetch all platforms to acquire knowledge data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getPlatformsToAcquireKnowledge(Collection, Collection, Collection,
+     *      Collection)
+     */
+    public List<ResponseModel> getPlatformsToAcquireKnowledge() {
+        return getPlatformsToAcquireKnowledge(null, null, null, null);
+    }
+
+    /**
+     * <p>Fetch all platforms to acquire knowledge data which match the input
+     * constraints.</p>
+     *
+     * @param sni2007s
+     *            the SNI 2007s
+     * @param sizeClasses
+     *            the size classes
+     * @param typesOfValues
+     *            the types of values
+     * @param periods
+     *            the periods
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getPlatformsToAcquireKnowledge(Collection<String> sni2007s,
+            Collection<String> sizeClasses, Collection<String> typesOfValues, Collection<String> periods) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.SNI2007_CODE, sni2007s);
+        mappings.put(APIConstants.SIZECLASS_CODE, sizeClasses);
+        mappings.put(APIConstants.TYPEOFVALUE_CODE, typesOfValues);
+        mappings.put(APIConstants.TIME_CODE, periods);
+
+        return getResponseModels("CKnoSNIStrl", mappings);
+    }
+
+    /**
+     * <p>Fetch all obstacles to innovation data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getObstaclesToInnovation(Collection, Collection, Collection, Collection,
+     *      Collection)
+     */
+    public List<ResponseModel> getObstaclesToInnovation() {
+        return getObstaclesToInnovation(null, null, null, null, null);
+    }
+
+    /**
+     * <p>Fetch all obstacles to innovation data which match the input constraints.</p>
+     *
+     * @param degreesOfSignificances
+     *            the degrees of significances
+     * @param sni2007s
+     *            the SNI 2007s
+     * @param sizeClasses
+     *            the size classes
+     * @param typesOfValues
+     *            the types of values
+     * @param periods
+     *            the periods
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getObstaclesToInnovation(Collection<Integer> degreesOfSignificances,
+            Collection<String> sni2007s, Collection<String> sizeClasses, Collection<String> typesOfValues,
+            Collection<String> periods) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put("Betydelse", degreesOfSignificances);
+        mappings.put(APIConstants.SNI2007_CODE, sni2007s);
+        mappings.put(APIConstants.SIZECLASS_CODE, sizeClasses);
+        mappings.put(APIConstants.TYPEOFVALUE_CODE, typesOfValues);
+        mappings.put(APIConstants.TIME_CODE, periods);
+
+        return getResponseModels("UF0315T20N", mappings);
     }
 
     @Override

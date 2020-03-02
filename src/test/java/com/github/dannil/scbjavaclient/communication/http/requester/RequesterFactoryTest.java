@@ -63,7 +63,8 @@ public class RequesterFactoryTest {
 
     @Test
     public void getPOSTRequesterWithCharset() {
-        AbstractRequester post = RequesterFactory.getRequester(HttpRequestMethod.POST, StandardCharsets.US_ASCII);
+        AbstractRequester post = RequesterFactory.getRequester(HttpRequestMethod.POST,
+                StandardCharsets.US_ASCII);
 
         assertEquals(StandardCharsets.US_ASCII, post.getCharset());
     }

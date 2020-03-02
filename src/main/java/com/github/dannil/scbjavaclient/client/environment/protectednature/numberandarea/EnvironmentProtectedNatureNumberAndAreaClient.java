@@ -101,28 +101,6 @@ public class EnvironmentProtectedNatureNumberAndAreaClient extends AbstractClien
      *
      * @param regions
      *            the regions
-     * @param years
-     *            the years
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     * @deprecated use {@link #getNatura2000Sites(Collection, Collection, Collection)
-     *             getNatura2000Sites(Collection, Collection, Collection)} instead
-     */
-    @Deprecated
-    public List<ResponseModel> getNatura2000Sites(Collection<String> regions, Collection<Integer> years) {
-        Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.REGION_CODE, regions);
-        mappings.put(APIConstants.TIME_CODE, years);
-
-        return getResponseModels("Natura2000", mappings);
-    }
-
-    /**
-     * <p>Fetch all Natura 2000 sites data which match the input constraints.</p>
-     *
-     * @param regions
-     *            the regions
      * @param protectionTypes
      *            the protection types
      * @param years

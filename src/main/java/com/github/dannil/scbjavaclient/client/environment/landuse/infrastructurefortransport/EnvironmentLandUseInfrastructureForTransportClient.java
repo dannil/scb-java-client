@@ -51,51 +51,6 @@ public class EnvironmentLandUseInfrastructureForTransportClient extends Abstract
     }
 
     /**
-     * <p>Fetch all transport infrastructure area data.</p>
-     *
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     *
-     * @see #getTransportInfrastructureArea(Collection, Collection)
-     *
-     * @deprecated use
-     *             {@link com.github.dannil.scbjavaclient.client.environment.landuse.usage.EnvironmentLandUseUsageClient#getTransportInfrastructureArea()
-     *             EnvironmentLandUseUsageClient#getTransportInfrastructureArea()}
-     *             instead.
-     */
-    @Deprecated
-    public List<ResponseModel> getTransportInfrastructureArea() {
-        return getTransportInfrastructureArea(null, null);
-    }
-
-    /**
-     * <p>Fetch all transport infrastructure area data which match the input
-     * constraints.</p>
-     *
-     * @param regions
-     *            the regions
-     * @param years
-     *            the years
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     *
-     * @deprecated use
-     *             {@link com.github.dannil.scbjavaclient.client.environment.landuse.usage.EnvironmentLandUseUsageClient#getTransportInfrastructureArea(Collection, Collection)
-     *             EnvironmentLandUseUsageClient#getTransportInfrastructureArea(Collection,
-     *             Collection)} instead.
-     */
-    @Deprecated
-    public List<ResponseModel> getTransportInfrastructureArea(Collection<String> regions, Collection<Integer> years) {
-        Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.REGION_CODE, regions);
-        mappings.put(APIConstants.TIME_CODE, years);
-
-        return getResponseModels("TransportInfAreal", mappings);
-    }
-
-    /**
      * <p>Fetch all road length by road owner data.</p>
      *
      * @return the data wrapped in a list of
@@ -233,6 +188,40 @@ public class EnvironmentLandUseInfrastructureForTransportClient extends Abstract
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("VaglangdKategori", mappings);
+    }
+
+    /**
+     * <p>Fetch all land with transport infrastructure data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getLandWithTransportInfrastructure(Collection, Collection)
+     */
+    public List<ResponseModel> getLandWithTransportInfrastructure() {
+        return getLandWithTransportInfrastructure(null, null);
+    }
+
+    /**
+     * <p>Fetch all land with transport infrastructure data which match the input
+     * constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getLandWithTransportInfrastructure(Collection<String> regions,
+            Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.REGION_CODE, regions);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("TransportInfAreal", mappings);
     }
 
     @Override

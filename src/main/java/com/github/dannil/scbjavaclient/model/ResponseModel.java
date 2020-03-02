@@ -20,8 +20,9 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.dannil.scbjavaclient.constants.ModelConstants;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * <p>Class which encapsulates data retrieved from the API.</p>

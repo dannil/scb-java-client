@@ -16,6 +16,7 @@ package com.github.dannil.scbjavaclient.utility;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Locale;
 
@@ -33,12 +34,10 @@ public class LocalizationTest {
         assertEquals(new Locale("sv", "SE"), localization.getLocale());
     }
 
-    // @Test(expected = NullPointerException.class)
-    // public void createWithConstructorNullArgument() {
-    // Localization localization = new Localization(null);
-    //
-    // assertNull(localization);
-    // }
+    @Test
+    public void createWithConstructorNullArgument() {
+        assertThrows(NullPointerException.class, () -> new Localization(null));
+    }
 
     @Test
     public void getString() {
@@ -47,14 +46,12 @@ public class LocalizationTest {
         assertEquals("TestSvenska", localization.getString("test"));
     }
 
-    // @Test(expected = NullPointerException.class)
-    // public void getStringNullArgument() {
-    // Localization localization = new Localization(new Locale("sv", "SE"));
-    //
-    // String s = localization.getString(null);
-    //
-    // assertNull(s);
-    // }
+    @Test
+    public void getStringNullArgument() {
+        Localization localization = new Localization(new Locale("sv", "SE"));
+
+        assertThrows(NullPointerException.class, () -> localization.getString(null));
+    }
 
     @Test
     public void getStringFallback() {
@@ -65,7 +62,7 @@ public class LocalizationTest {
     }
 
     @Test
-    public void getStringFormat() {
+    public void getStringFormatEnglish() {
         Localization localization = new Localization(new Locale("en", "US"));
 
         Object[] variables = new Object[] { "http://www.abc.com" };
@@ -73,6 +70,17 @@ public class LocalizationTest {
         String translation = localization.getString("regions_is_not_supported_for_url", variables);
 
         assertEquals("Regions is not supported for URL " + variables[0], translation);
+    }
+
+    @Test
+    public void getStringFormatSwedish() {
+        Localization localization = new Localization(new Locale("sv", "SE"));
+
+        Object[] variables = new Object[] { "http://www.abc.com" };
+
+        String translation = localization.getString("regions_is_not_supported_for_url", variables);
+
+        assertEquals("Regioner stöds inte för URL " + variables[0], translation);
     }
 
     @Test

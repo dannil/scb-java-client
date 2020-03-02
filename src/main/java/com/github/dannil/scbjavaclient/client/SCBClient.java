@@ -14,6 +14,7 @@
 
 package com.github.dannil.scbjavaclient.client;
 
+import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -37,7 +38,6 @@ import com.github.dannil.scbjavaclient.client.pricesandconsumption.PricesAndCons
 import com.github.dannil.scbjavaclient.client.publicfinances.PublicFinancesClient;
 import com.github.dannil.scbjavaclient.client.transport.TransportClient;
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
-import com.github.dannil.scbjavaclient.communication.http.HttpResponse;
 import com.github.dannil.scbjavaclient.communication.http.HttpStatusCode;
 import com.github.dannil.scbjavaclient.communication.http.requester.AbstractRequester;
 import com.github.dannil.scbjavaclient.communication.http.requester.GETRequester;
@@ -342,8 +342,8 @@ public class SCBClient extends AbstractContainerClient {
     public static boolean isSupportedLocale(Locale locale) {
         String url = URLEndpoint.getRootUrl(locale).toString();
         AbstractRequester get = new GETRequester();
-        HttpResponse response = get.getResponse(url);
-        return response.getStatus() == HttpStatusCode.OK;
+        HttpResponse<String> response = get.getResponse(url);
+        return response.statusCode() == HttpStatusCode.OK.getCode();
     }
 
     @Override

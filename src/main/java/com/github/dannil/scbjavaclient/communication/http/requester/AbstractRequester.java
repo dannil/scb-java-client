@@ -16,19 +16,24 @@ package com.github.dannil.scbjavaclient.communication.http.requester;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLConnection;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpRequest.BodyPublisher;
+import java.net.http.HttpRequest.BodyPublishers;
+import java.net.http.HttpRequest.Builder;
+import java.net.http.HttpResponse;
+import java.net.http.HttpResponse.BodyHandlers;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Properties;
 
-import com.github.dannil.scbjavaclient.communication.http.HttpResponse;
-import com.github.dannil.scbjavaclient.communication.http.HttpStatusCode;
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
 
 /**
@@ -37,8 +42,6 @@ import com.github.dannil.scbjavaclient.exception.SCBClientException;
  * @since 1.2.0
  */
 public abstract class AbstractRequester {
-
-    private static final int HTTP_ERRORS_START_CODE = 400;
 
     private static Properties properties;
 
@@ -78,53 +81,71 @@ public abstract class AbstractRequester {
     }
 
     /**
-     * <p>Retrieves the <code>URLConnection</code> that represents the specified URL. This
-     * method sets the request properties for the <code>URLConnection</code> being
-     * retrieved.</p>
-     *
-     * @param url
-     *            the URL
-     * @return a <code>URLConnection</code>
-     * @throws IOException
-     *             if an exception occurred when creating the <code>URLConnection</code>
-     */
-    protected URLConnection getConnection(String url) throws IOException {
-        URLConnection connection = new URL(url).openConnection();
-        for (Entry<String, String> entry : this.requestProperties.entrySet()) {
-            connection.setRequestProperty(entry.getKey(), entry.getValue());
-        }
-        return connection;
-    }
-
-    /**
-     * <p>Retrieves the response from the specified <code>URLConnection</code>.</p>
-     *
-     * @param connection
-     *            the <code>URLConnection</code>
-     * @return the response as an {@link com.github.dannil.scbjavaclient.communication.http.HttpResponse
-     *         Response}
-     * @throws IOException
-     *             if an exception occurred while retrieving the <code>Response</code>
-     */
-    protected HttpResponse getResponse(URLConnection connection) throws IOException {
-        HttpURLConnection httpConnection = (HttpURLConnection) connection;
-        HttpStatusCode status = HttpStatusCode.valueOf(httpConnection.getResponseCode());
-        InputStream stream = null;
-        if (status.getCode() < HTTP_ERRORS_START_CODE) {
-            stream = httpConnection.getInputStream();
-        }
-        return new HttpResponse(status, stream);
-    }
-
-    /**
      * <p>Retrieves the response from the specified URL.</p>
      *
      * @param url
      *            the URL to call
-     * @return the response as an {@link com.github.dannil.scbjavaclient.communication.http.HttpResponse
-     *         Response}
+     * @return the response as an
+     *         {@link java.net.http.HttpResponse HttpResponse}
      */
-    public abstract HttpResponse getResponse(String url);
+    public abstract HttpResponse<String> getResponse(String url);
+
+    /**
+     * <p>Retrieves the response from the specified URL, using the specified HTTP
+     * method.</p>
+     *
+     * @param url
+     *            the URL to call
+     * @param method
+     *            the HTTP method to use
+     * @return the response as an
+     *         {@link java.net.http.HttpResponse HttpResponse}
+     * @throws IOException
+     *             if an input/output error occurred during the request
+     * @throws InterruptedException
+     *             if the request was interrupted
+     */
+    protected HttpResponse<String> getResponse(String url, String method) throws IOException, InterruptedException {
+        return getResponse(url, method, "");
+    }
+
+    /**
+     * <p>Retrieves the response from the specified URL, using the specified HTTP method
+     * and request body.</p>
+     *
+     * @param url
+     *            the URL to call
+     * @param method
+     *            the HTTP method to use
+     * @param body
+     *            the request body
+     * @return the response as an
+     *         {@link java.net.http.HttpResponse HttpResponse}
+     * @throws IOException
+     *             if an input/output error occurred during the request
+     * @throws InterruptedException
+     *             if the request was interrupted
+     */
+    protected HttpResponse<String> getResponse(String url, String method, String body)
+            throws IOException, InterruptedException {
+        List<String> headers = new ArrayList<>();
+        for (Entry<String, String> requestProperty : this.requestProperties.entrySet()) {
+            headers.add(requestProperty.getKey());
+            headers.add(requestProperty.getValue());
+        }
+
+        BodyPublisher bodyPublisher = BodyPublishers.ofString(body, getCharset());
+        if (body.isEmpty()) {
+            bodyPublisher = BodyPublishers.noBody();
+        }
+
+        HttpClient client = HttpClient.newHttpClient();
+        Builder builder = HttpRequest.newBuilder().uri(URI.create(url)).headers(headers.toArray(new String[0])).method(
+                method, bodyPublisher);
+        HttpRequest request = builder.build();
+
+        return client.send(request, BodyHandlers.ofString(getCharset()));
+    }
 
     /**
      * <p>Getter for charset.</p>

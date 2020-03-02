@@ -15,12 +15,13 @@
 package com.github.dannil.scbjavaclient.client.environment.landuse.infrastructurefortransport;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.test.extensions.AllowFailure;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
@@ -30,7 +31,6 @@ import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
-@SuppressWarnings("deprecation")
 public class EnvironmentLandUseInfrastructureForTransportClientIT {
 
     private EnvironmentLandUseInfrastructureForTransportClient client;
@@ -38,31 +38,6 @@ public class EnvironmentLandUseInfrastructureForTransportClientIT {
     @BeforeEach
     public void setup() {
         this.client = new EnvironmentLandUseInfrastructureForTransportClient();
-    }
-
-    @Test
-    @Date("2019-03-02")
-    @AllowFailure
-    public void getTransportInfrastructureArea() {
-        assertNotEquals(0, this.client.getTransportInfrastructureArea().size());
-    }
-
-    @Test
-    @Date("2019-03-02")
-    @AllowFailure
-    public void getTransportInfrastructureAreaWithParametersEmptyLists() {
-        assertNotEquals(0, this.client.getTransportInfrastructureArea(Collections.<String>emptyList(),
-                Collections.<Integer>emptyList()).size());
-    }
-
-    @Test
-    @Date("2019-03-02")
-    @AllowFailure
-    public void getTransportInfrastructureAreaWithParameters() {
-        List<String> regions = Arrays.asList("0184", "0186");
-        List<Integer> years = Arrays.asList(2010);
-
-        assertNotEquals(0, this.client.getTransportInfrastructureArea(regions, years).size());
     }
 
     @Test
@@ -154,6 +129,38 @@ public class EnvironmentLandUseInfrastructureForTransportClientIT {
         List<Integer> years = Arrays.asList(2010);
 
         assertNotEquals(0, this.client.getRoadLengthByCategory(regions, categories, years).size());
+    }
+
+    @Test
+    @Date("2020-01-20")
+    public void getLandWithTransportInfrastructure() {
+        List<ResponseModel> response = this.client.getLandWithTransportInfrastructure();
+
+        assertNotEquals(0, response.size());
+        assertTrue(response.stream().allMatch(model -> model.getVariables().keySet().containsAll(List.of("Tid"))));
+    }
+
+    @Test
+    @Date("2020-01-20")
+    public void getLandWithTransportInfrastructureWithParametersEmptyLists() {
+        List<ResponseModel> response = this.client.getLandWithTransportInfrastructure(Collections.<String>emptyList(),
+                Collections.<Integer>emptyList());
+
+        assertNotEquals(0, response.size());
+        assertTrue(response.stream().allMatch(model -> model.getVariables().keySet().containsAll(List.of("Tid"))));
+    }
+
+    @Test
+    @Date("2020-01-20")
+    public void getLandWithTransportInfrastructureWithParameters() {
+        List<String> regions = Arrays.asList("0184", "0186");
+        List<Integer> years = Arrays.asList(2010);
+
+        List<ResponseModel> response = this.client.getLandWithTransportInfrastructure(regions, years);
+
+        assertNotEquals(0, response.size());
+        assertTrue(response.stream().allMatch(
+                model -> model.getVariables().keySet().containsAll(List.of("Region", "Tid"))));
     }
 
 }

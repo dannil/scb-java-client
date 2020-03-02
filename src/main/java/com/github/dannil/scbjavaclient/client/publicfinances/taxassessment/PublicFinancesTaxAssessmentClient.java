@@ -80,7 +80,7 @@ public class PublicFinancesTaxAssessmentClient extends AbstractClient {
         mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("ForvInkomsterA", mappings);
+        return getResponseModels("ForvInkomsterAN", mappings);
     }
 
     /**

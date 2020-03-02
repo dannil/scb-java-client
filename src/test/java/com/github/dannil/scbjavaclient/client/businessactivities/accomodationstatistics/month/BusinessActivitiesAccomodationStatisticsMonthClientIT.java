@@ -20,7 +20,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.test.extensions.AllowFailure;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
@@ -161,17 +160,6 @@ public class BusinessActivitiesAccomodationStatisticsMonthClientIT {
     public void getOccupiedRoomsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getOccupiedRooms(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<String>emptyList()).size());
-    }
-
-    @SuppressWarnings("deprecation")
-    @Test
-    @Date("2019-10-13")
-    @AllowFailure
-    public void getOccupiedRoomsWithParametersDeprecated() {
-        List<String> regions = Arrays.asList("03", "05");
-        List<String> months = Arrays.asList("2008M06", "2009M06");
-
-        assertNotEquals(0, this.client.getOccupiedRooms(regions, months).size());
     }
 
     @Test

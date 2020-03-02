@@ -51,27 +51,25 @@ public class EducationAndResearchCommunityInnovationSurveyCooperationClient exte
     }
 
     /**
-     * <p>Fetch all number of innovative enterprises data.</p>
+     * <p>Fetch all enterprises innovation cooperation in private sector data.</p>
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @see #getNumberOfInnovativeEnterprises(Collection, Collection, Collection,
-     *      Collection)
-     * @deprecated table removed from API
+     * @see #getEnterprisesInnovationCooperationInPrivateSector(Collection, Collection,
+     *      Collection, Collection)
      */
-    @Deprecated
-    public List<ResponseModel> getNumberOfInnovativeEnterprises() {
-        return getNumberOfInnovativeEnterprises(null, null, null, null);
+    public List<ResponseModel> getEnterprisesInnovationCooperationInPrivateSector() {
+        return getEnterprisesInnovationCooperationInPrivateSector(null, null, null, null);
     }
 
     /**
-     * <p>Fetch all number of innovative enterprises data which match the input
-     * constraints.</p>
+     * <p>Fetch all enterprises innovation cooperation in private sector data which match
+     * the input constraints.</p>
      *
-     * @param industrialClassifications
-     *            the industrial classifications
+     * @param sni2007s
+     *            the SNI 2007s
      * @param sizeClasses
      *            the size classes
      * @param typesOfValues
@@ -81,18 +79,57 @@ public class EducationAndResearchCommunityInnovationSurveyCooperationClient exte
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
-     * @deprecated table removed from API
      */
-    @Deprecated
-    public List<ResponseModel> getNumberOfInnovativeEnterprises(Collection<String> industrialClassifications,
+    public List<ResponseModel> getEnterprisesInnovationCooperationInPrivateSector(Collection<String> sni2007s,
             Collection<String> sizeClasses, Collection<String> typesOfValues, Collection<String> periods) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put(APIConstants.SNI2007_CODE, industrialClassifications);
-        mappings.put("Storleksklass", sizeClasses);
-        mappings.put("VarTyp", typesOfValues);
+        mappings.put(APIConstants.SNI2007_CODE, sni2007s);
+        mappings.put(APIConstants.SIZECLASS_CODE, sizeClasses);
+        mappings.put(APIConstants.TYPEOFVALUE_CODE, typesOfValues);
         mappings.put(APIConstants.TIME_CODE, periods);
 
-        return getResponseModels("DCISAntalsamSNIStrl", mappings);
+        return getResponseModels("CoopPrvSNIStr", mappings);
+    }
+
+    /**
+     * <p>Fetch all enterprises innovation cooperation in public sector data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getEnterprisesInnovationCooperationInPublicSector(Collection, Collection,
+     *      Collection, Collection)
+     */
+    public List<ResponseModel> getEnterprisesInnovationCooperationInPublicSector() {
+        return getEnterprisesInnovationCooperationInPublicSector(null, null, null, null);
+    }
+
+    /**
+     * <p>Fetch all enterprises innovation cooperation in public sector data which match
+     * the input constraints.</p>
+     *
+     * @param sni2007s
+     *            the SNI 2007s
+     * @param sizeClasses
+     *            the size classes
+     * @param typesOfValues
+     *            the types of values
+     * @param periods
+     *            the periods
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getEnterprisesInnovationCooperationInPublicSector(Collection<String> sni2007s,
+            Collection<String> sizeClasses, Collection<String> typesOfValues, Collection<String> periods) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.SNI2007_CODE, sni2007s);
+        mappings.put(APIConstants.SIZECLASS_CODE, sizeClasses);
+        mappings.put(APIConstants.TYPEOFVALUE_CODE, typesOfValues);
+        mappings.put(APIConstants.TIME_CODE, periods);
+
+        return getResponseModels("CoopPublSNIStr", mappings);
     }
 
     @Override

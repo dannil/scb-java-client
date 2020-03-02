@@ -1,0 +1,18 @@
+version: 1
+update_configs:
+  - package_manager: "java:maven"
+    directory: "/"
+    update_schedule: "daily"
+    default_reviewers:
+      - "dannil"
+    default_labels:
+      - "dependencies"
+    ignored_updates:
+      - match:
+          # Should be upgraded all at once in a single PR; not yet possible 
+          # with Dependabot so let's handle that manually
+          dependency_name: "org.junit.jupiter:junit-*"
+      - match:
+          # Should be upgraded all at once in a single PR; not yet possible 
+          # with Dependabot so let's handle that manually
+          dependency_name: "com.fasterxml.jackson.core:jackson-*"
