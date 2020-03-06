@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.dannil</groupId>
@@ -355,9 +356,12 @@
         <configuration>
           <source>${project.java.source}</source>
           <target>${project.java.target}</target>
+          <release>${project.java.target}</release>
           <encoding>${project.build.sourceEncoding}</encoding>
           <compilerArgs>
             <arg>-Xlint:all</arg>
+            <compilerArg>--module-path</compilerArg>
+            <compilerArg>${project.build.directory}/modules</compilerArg>
           </compilerArgs>
         </configuration>
       </plugin>
@@ -577,6 +581,38 @@
             <goals>
               <goal>jar-no-fork</goal>
             </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.moditect</groupId>
+        <artifactId>moditect-maven-plugin</artifactId>
+        <version>1.0.0.Beta2</version>
+        <executions>
+          <execution>
+            <id>add-module-info</id>
+            <phase>package</phase>
+            <goals>
+              <goal>add-module-info</goal>
+            </goals>
+            <configuration>
+              <modules>
+                <module>
+                  <artifact>
+                    <groupId>${project.groupId}</groupId>
+                    <artifactId>${project.artifactId}</artifactId>
+                    <version>${project.version}</version>
+                  </artifact>
+                  <moduleInfo>
+                    <name>${project.artifactId}</name>
+                  </moduleInfo>
+                </module>
+              </modules>
+              <jdepsExtraArgs>
+                <arg>--multi-release</arg>
+                <arg>${project.java.target}</arg>
+              </jdepsExtraArgs>
+            </configuration>
           </execution>
         </executions>
       </plugin>
