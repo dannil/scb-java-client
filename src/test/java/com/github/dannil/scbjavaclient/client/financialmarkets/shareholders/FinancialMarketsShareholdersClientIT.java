@@ -65,20 +65,23 @@ public class FinancialMarketsShareholdersClientIT {
     }
 
     @Test
-    @Date("2017-03-08")
+    @Date("2020-03-07")
+    @AllowFailure
     public void getOwnershipOfSharesByMarketplace() {
         assertNotEquals(0, this.client.getOwnershipOfSharesByMarketplace().size());
     }
 
     @Test
-    @Date("2017-03-08")
+    @Date("2020-03-07")
+    @AllowFailure
     public void getOwnershipOfSharesByMarketplaceWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getOwnershipOfSharesByMarketplace(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test
-    @Date("2017-03-08")
+    @Date("2020-03-07")
+    @AllowFailure
     public void getOwnershipOfSharesByMarketplaceWithParameters() {
         List<String> sectors = Arrays.asList("100", "200");
         List<String> marketplaces = Arrays.asList("AUKTMPTORGTORG");
@@ -89,20 +92,23 @@ public class FinancialMarketsShareholdersClientIT {
     }
 
     @Test
-    @Date("2017-09-07")
+    @Date("2020-03-07")
+    @AllowFailure
     public void getOwnershipOfSharesBySeries() {
         assertNotEquals(0, this.client.getOwnershipOfSharesBySeries().size());
     }
 
     @Test
-    @Date("2017-09-07")
+    @Date("2020-03-07")
+    @AllowFailure
     public void getOwnershipOfSharesBySeriesWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getOwnershipOfSharesBySeries(Collections.<String>emptyList(),
                 Collections.<String>emptyList(), Collections.<String>emptyList()).size());
     }
 
     @Test
-    @Date("2017-09-07")
+    @Date("2020-03-07")
+    @AllowFailure
     public void getOwnershipOfSharesBySeriesWithParameters() {
         List<String> sectors = Arrays.asList("S1311", "S1313");
         List<String> classesOfShares = Arrays.asList("Noterad");
@@ -112,20 +118,23 @@ public class FinancialMarketsShareholdersClientIT {
     }
 
     @Test
-    @Date("2017-03-08")
+    @Date("2020-03-07")
+    @AllowFailure
     public void getForeignOwnershipOfShares() {
         assertNotEquals(0, this.client.getForeignOwnershipOfShares().size());
     }
 
     @Test
-    @Date("2017-03-08")
+    @Date("2020-03-07")
+    @AllowFailure
     public void getForeignOwnershipOfSharesWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getForeignOwnershipOfShares(Collections.<String>emptyList(),
                 Collections.<String>emptyList()).size());
     }
 
     @Test
-    @Date("2017-03-08")
+    @Date("2020-03-07")
+    @AllowFailure
     public void getForeignOwnershipOfSharesWithParameters() {
         List<String> countries = Arrays.asList("BE", "DK");
         List<String> twoTimesPerYears = Arrays.asList("2001M12", "2002M12");

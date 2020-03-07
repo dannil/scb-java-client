@@ -123,7 +123,10 @@ public class FinancialMarketsShareholdersClient extends AbstractContainerClient 
      *
      * @see #getOwnershipOfSharesByMarketplace(Collection, Collection, Collection)
      *
-     * @deprecated table removed from API
+     * @deprecated table removed from API, use
+     *             {@link com.github.dannil.scbjavaclient.client.financialmarkets.shareholders.swedishmarketplace.FinancialMarketsShareholdersSwedishMarketplaceClient#getOwnershipOfSharesByMarketplace()
+     *             FinancialMarketsShareholdersSwedishMarketplaceClient#getOwnershipOfSharesByMarketplace()}
+     *             instead
      */
     @Deprecated(since = "3.0.0", forRemoval = true)
     public List<ResponseModel> getOwnershipOfSharesByMarketplace() {
@@ -144,7 +147,11 @@ public class FinancialMarketsShareholdersClient extends AbstractContainerClient 
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @deprecated table removed from API
+     * @deprecated table removed from API, use
+     *             {@link com.github.dannil.scbjavaclient.client.financialmarkets.shareholders.swedishmarketplace.FinancialMarketsShareholdersSwedishMarketplaceClient#getOwnershipOfSharesByMarketplace(Collection, Collection, Collection)
+     *             FinancialMarketsShareholdersSwedishMarketplaceClient#getOwnershipOfSharesByMarketplace(Collection,
+     *             Collection, Collection)}
+     *             instead
      */
     @Deprecated(since = "3.0.0", forRemoval = true)
     public List<ResponseModel> getOwnershipOfSharesByMarketplace(Collection<String> sectors,
@@ -166,7 +173,10 @@ public class FinancialMarketsShareholdersClient extends AbstractContainerClient 
      *
      * @see #getOwnershipOfSharesBySeries(Collection, Collection, Collection)
      *
-     * @deprecated table removed from API
+     * @deprecated table removed from API, use
+     *             {@link com.github.dannil.scbjavaclient.client.financialmarkets.shareholders.swedishmarketplace.FinancialMarketsShareholdersSwedishMarketplaceClient#getOwnershipOfSharesBySeries()
+     *             FinancialMarketsShareholdersSwedishMarketplaceClient#getOwnershipOfSharesBySeries()}
+     *             instead
      */
     @Deprecated(since = "3.0.0", forRemoval = true)
     public List<ResponseModel> getOwnershipOfSharesBySeries() {
@@ -187,7 +197,11 @@ public class FinancialMarketsShareholdersClient extends AbstractContainerClient 
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @deprecated table removed from API
+     * @deprecated table removed from API, use
+     *             {@link com.github.dannil.scbjavaclient.client.financialmarkets.shareholders.swedishmarketplace.FinancialMarketsShareholdersSwedishMarketplaceClient#getOwnershipOfSharesBySeries(Collection, Collection, Collection)
+     *             FinancialMarketsShareholdersSwedishMarketplaceClient#getOwnershipOfSharesBySeries(Collection,
+     *             Collection, Collection)}
+     *             instead
      */
     @Deprecated(since = "3.0.0", forRemoval = true)
     public List<ResponseModel> getOwnershipOfSharesBySeries(Collection<String> sectors,
@@ -209,7 +223,10 @@ public class FinancialMarketsShareholdersClient extends AbstractContainerClient 
      *
      * @see #getForeignOwnershipOfShares(Collection, Collection)
      *
-     * @deprecated table removed from API
+     * @deprecated table removed from API, use
+     *             {@link com.github.dannil.scbjavaclient.client.financialmarkets.shareholders.restoftheworld.FinancialMarketsShareholdersRestOfTheWorldClient#getForeignOwnershipOfShares()
+     *             FinancialMarketsShareholdersRestOfTheWorldClient#getForeignOwnershipOfShares()}
+     *             instead
      */
     @Deprecated(since = "3.0.0", forRemoval = true)
     public List<ResponseModel> getForeignOwnershipOfShares() {
@@ -228,7 +245,11 @@ public class FinancialMarketsShareholdersClient extends AbstractContainerClient 
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      *
-     * @deprecated table removed from API
+     * @deprecated table removed from API, use
+     *             {@link com.github.dannil.scbjavaclient.client.financialmarkets.shareholders.restoftheworld.FinancialMarketsShareholdersRestOfTheWorldClient#getForeignOwnershipOfShares(Collection, Collection)
+     *             FinancialMarketsShareholdersRestOfTheWorldClient#getForeignOwnershipOfShares(Collection,
+     *             Collection)}
+     *             instead
      */
     @Deprecated(since = "3.0.0", forRemoval = true)
     public List<ResponseModel> getForeignOwnershipOfShares(Collection<String> countries,
