@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GoodsAndServicesTurnoverServiceSectorTurnoverClient.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.client.goodsandservices.turnoverservicesector.turnover</a> &gt; <span class="el_source">GoodsAndServicesTurnoverServiceSectorTurnoverClient.java</span></div><h1>GoodsAndServicesTurnoverServiceSectorTurnoverClient.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2017 Daniel Nilsson
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
+package com.github.dannil.scbjavaclient.client.goodsandservices.turnoverservicesector.turnover;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+
+import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
+
+/**
+ * &lt;p&gt;Client which handles goods and services turnover service sector turnover data
+ * fetching.&lt;/p&gt;
+ *
+ * @since 0.7.0
+ */
+public class GoodsAndServicesTurnoverServiceSectorTurnoverClient extends AbstractClient {
+
+    /**
+     * &lt;p&gt;Default constructor.&lt;/p&gt;
+     */
+    public GoodsAndServicesTurnoverServiceSectorTurnoverClient() {
+<span class="fc" id="L40">        super();</span>
+<span class="fc" id="L41">    }</span>
+
+    /**
+     * &lt;p&gt;Overloaded constructor.&lt;/p&gt;
+     *
+     * @param locale
+     *            the &lt;code&gt;Locale&lt;/code&gt; for this client
+     */
+    public GoodsAndServicesTurnoverServiceSectorTurnoverClient(Locale locale) {
+<span class="fc" id="L50">        super(locale);</span>
+<span class="fc" id="L51">    }</span>
+
+    // Daniel, 2018-06-28
+    // Returns HTTP 403
+    /**
+     * &lt;p&gt;Fetch all retail sale index by industry (SIC 2007) monthly data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getRetailSaleIndexSIC2007Monthly(Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getRetailSaleIndexSIC2007Monthly() {
+<span class="fc" id="L65">        return getRetailSaleIndexSIC2007Monthly(null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all retail sale index by industry (SIC 2007) monthly data which match the
+     * input constraints.&lt;/p&gt;
+     *
+     * @param industrialClassifications
+     *            the industrial classifications
+     * @param months
+     *            the months
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getRetailSaleIndexSIC2007Monthly(Collection&lt;String&gt; industrialClassifications,
+            Collection&lt;String&gt; months) {
+<span class="fc" id="L82">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L83">        mappings.put(APIConstants.SNI2007_CODE, industrialClassifications);</span>
+<span class="fc" id="L84">        mappings.put(APIConstants.TIME_CODE, months);</span>
+
+<span class="fc" id="L86">        return getResponseModels(&quot;Detoms07&quot;, mappings);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all monthly indicator for household consumption data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getMonthlyIndicatorForHouseholdConsumption(Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getMonthlyIndicatorForHouseholdConsumption() {
+<span class="fc" id="L99">        return getMonthlyIndicatorForHouseholdConsumption(null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all monthly indicator for household consumption data which match the input
+     * constraints.&lt;/p&gt;
+     *
+     * @param purposes
+     *            the purposes
+     * @param months
+     *            the months
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getMonthlyIndicatorForHouseholdConsumption(Collection&lt;String&gt; purposes,
+            Collection&lt;String&gt; months) {
+<span class="fc" id="L116">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L117">        mappings.put(&quot;Andamal&quot;, purposes);</span>
+<span class="fc" id="L118">        mappings.put(APIConstants.TIME_CODE, months);</span>
+
+<span class="fc" id="L120">        return getResponseModels(&quot;HushKonInd&quot;, mappings);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all turnover index for the service sector by industry (SIC 2007) monthly
+     * data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getTurnoverIndexForTheServiceSectorSIC2007Monthly(Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getTurnoverIndexForTheServiceSectorSIC2007Monthly() {
+<span class="fc" id="L134">        return getTurnoverIndexForTheServiceSectorSIC2007Monthly(null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all turnover index for the service sector by industry (SIC 2007) monthly
+     * data which match the input constraints.&lt;/p&gt;
+     *
+     * @param industrialClassifications
+     *            the industrial classifications
+     * @param months
+     *            the months
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getTurnoverIndexForTheServiceSectorSIC2007Monthly(
+            Collection&lt;String&gt; industrialClassifications, Collection&lt;String&gt; months) {
+<span class="fc" id="L151">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L152">        mappings.put(APIConstants.SNI2007_CODE, industrialClassifications);</span>
+<span class="fc" id="L153">        mappings.put(APIConstants.TIME_CODE, months);</span>
+
+<span class="fc" id="L155">        return getResponseModels(&quot;DivtjansterM07X&quot;, mappings);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all retail trade sales comparison to previous period data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getRetailTradeSales(Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getRetailTradeSales() {
+<span class="fc" id="L168">        return getRetailTradeSales(null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all retail trade sales comparison to previous period data which match the
+     * input constraints.&lt;/p&gt;
+     *
+     * @param indicators
+     *            the indicators
+     * @param months
+     *            the months
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getRetailTradeSales(Collection&lt;String&gt; indicators, Collection&lt;String&gt; months) {
+<span class="fc" id="L184">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L185">        mappings.put(APIConstants.ECONOMICINDICATOR_CODE, indicators);</span>
+<span class="fc" id="L186">        mappings.put(APIConstants.TIME_CODE, months);</span>
+
+<span class="fc" id="L188">        return getResponseModels(&quot;SnabbStatHA0101&quot;, mappings);</span>
+    }
+
+    @Override
+    public URLEndpoint getUrl() {
+<span class="fc" id="L193">        return getRootUrl().append(&quot;HA/HA0101/HA0101B&quot;);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
