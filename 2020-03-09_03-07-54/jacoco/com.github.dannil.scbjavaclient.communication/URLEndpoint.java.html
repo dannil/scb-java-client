@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>URLEndpoint.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.communication</a> &gt; <span class="el_source">URLEndpoint.java</span></div><h1>URLEndpoint.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2018 Daniel Nilsson
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
+package com.github.dannil.scbjavaclient.communication;
+
+import java.net.URL;
+import java.util.Locale;
+import java.util.Objects;
+
+import com.github.dannil.scbjavaclient.constants.APIConstants;
+
+/**
+ * &lt;p&gt;Class which encapsulates the API URL, and enables relevant operations on this
+ * URL.&lt;/p&gt;
+ *
+ * @since 1.2.0
+ */
+public class URLEndpoint {
+
+    private static final char TRAILING_SLASH = '/';
+
+    private String url;
+
+    /**
+     * &lt;p&gt;Overloaded constructor.&lt;/p&gt;
+     *
+     * @param url
+     *            the URL
+     */
+    public URLEndpoint(URL url) {
+<span class="fc" id="L42">        this(url.toString());</span>
+<span class="fc" id="L43">    }</span>
+
+    /**
+     * &lt;p&gt;Overloaded constructor.&lt;/p&gt;
+     *
+     * @param url
+     *            the URL
+     */
+<span class="fc" id="L51">    public URLEndpoint(String url) {</span>
+<span class="fc" id="L52">        this.url = url;</span>
+
+<span class="fc" id="L54">        char[] chars = this.url.toCharArray();</span>
+<span class="fc bfc" id="L55" title="All 2 branches covered.">        if (chars[chars.length - 1] != TRAILING_SLASH) {</span>
+<span class="fc" id="L56">            this.url = this.url + TRAILING_SLASH;</span>
+        }
+<span class="fc" id="L58">    }</span>
+
+    /**
+     * &lt;p&gt;Appends the given string to the URL.&lt;/p&gt;
+     *
+     * @param str
+     *            the string to append
+     * @return a {@link URLEndpoint} with the given string appended
+     */
+    public URLEndpoint append(String str) {
+<span class="fc" id="L68">        return new URLEndpoint(this.url + str);</span>
+    }
+
+    /**
+     * &lt;p&gt;Returns the language portion of this URL.&lt;/p&gt;
+     *
+     * &lt;p&gt;Example: URL of
+     * &lt;b&gt;https://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0401/BE0401A/&lt;/b&gt; is converted to
+     * &lt;b&gt;sv&lt;/b&gt;.&lt;/p&gt;
+     *
+     * &lt;p&gt;Due to speed efficiency, this method does not perform any validity check on the
+     * specified URL. Calling this method without a valid URL for the API may (and
+     * probably will) result in undefined behavior.&lt;/p&gt;
+     *
+     * @return the language portion of this URL
+     */
+    public String getLanguage() {
+<span class="fc" id="L85">        StringBuilder builder = new StringBuilder(this.url);</span>
+
+        // Specify the starting point. For this implementation, the starting
+        // point is the segment preceding the language tag segment in the URL
+<span class="fc" id="L89">        String startSegment = &quot;doris&quot;;</span>
+
+        // Find the index where the language tag starts
+<span class="fc" id="L92">        int start = builder.toString().indexOf(startSegment) + startSegment.length() + 1;</span>
+        // Find the index where the language tag ends
+<span class="fc" id="L94">        int end = builder.toString().indexOf('/', start);</span>
+
+        // Return the extracted language
+<span class="fc" id="L97">        return builder.substring(start, end);</span>
+    }
+
+    /**
+     * &lt;p&gt;Returns the table portion of this URL.&lt;/p&gt;
+     *
+     * &lt;p&gt;Example: URL of
+     * &lt;b&gt;https://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0401/BE0401A/&lt;/b&gt; is converted to
+     * &lt;b&gt;BE/BE0401/BE0401A/&lt;/b&gt;.&lt;/p&gt;
+     *
+     * &lt;p&gt;Due to speed efficiency, this method does not perform any validity check on the
+     * specified URL. Calling this method without a valid URL for the API may (and
+     * probably will) result in undefined behavior.&lt;/p&gt;
+     *
+     * @return the table portion of this URL
+     */
+    public String getTable() {
+<span class="fc" id="L114">        String startSegment = &quot;ssd&quot;;</span>
+
+<span class="fc" id="L116">        return this.url.substring(this.url.indexOf(startSegment) + startSegment.length() + 1);</span>
+    }
+
+    /**
+     * &lt;p&gt;Generates a new URL to the API using the specified &lt;code&gt;Locale&lt;/code&gt;.&lt;/p&gt;
+     *
+     * &lt;p&gt;See {@link #toURL(String)} for implementation details.&lt;/p&gt;
+     *
+     * @param locale
+     *            the &lt;code&gt;Locale&lt;/code&gt; to use
+     * @return an {@link URLEndpoint} representing the URL
+     */
+    public URLEndpoint toURL(Locale locale) {
+<span class="fc" id="L129">        return toURL(locale.getLanguage());</span>
+    }
+
+    /**
+     * &lt;p&gt;Generates a new URL to the API by replacing the current language tag in the URL
+     * with the specified language tag. The communication protocol used, such as HTTP or
+     * HTTPS, is not modified.&lt;/p&gt;
+     *
+     * @param language
+     *            the language to use
+     * @return an {@link URLEndpoint} representing the modified URL
+     *
+     * @see #toURL(String, CommunicationProtocol)
+     */
+    public URLEndpoint toURL(String language) {
+<span class="fc" id="L144">        return toURL(language, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Generates a new URL to the API by replacing the current language tag and
+     * communication protocol in the URL with the specified language tag and
+     * {@link CommunicationProtocol}.&lt;/p&gt;
+     *
+     * &lt;p&gt;The method performs two distinct operations, if needed: replacement of the
+     * communication protocol and replacement of the language tag. The following steps are
+     * performed to figure out what needs to be replaced:&lt;/p&gt;
+     *
+     * &lt;ol&gt; &lt;li&gt;Replaces the &lt;b&gt;communication protocol&lt;/b&gt; (such as &quot;http&quot;) with the
+     * specified protocol.&lt;/li&gt;
+     *
+     * &lt;li&gt;Specifies the &lt;b&gt;start segment&lt;/b&gt; as the segment preceding the &lt;b&gt;language tag
+     * segment&lt;/b&gt; in the URL.&lt;/li&gt;
+     *
+     * &lt;li&gt;Finds the length of the &lt;b&gt;language tag segment&lt;/b&gt; by finding the next forward
+     * slash following the &lt;b&gt;start segment&lt;/b&gt;, as this indicates that the segment has
+     * ended.&lt;/li&gt;
+     *
+     * &lt;li&gt;Replaces the content between the start and end of the segment (forward slashes
+     * excluded) with the new language tag.&lt;/li&gt; &lt;/ol&gt;
+     *
+     * &lt;p&gt;Example: URL of &lt;b&gt;https://api.scb.se/OV0104/v1/doris/sv/ssd/&lt;/b&gt; and language
+     * input of &lt;b&gt;en&lt;/b&gt; is converted to
+     * &lt;b&gt;https://api.scb.se/OV0104/v1/doris/en/ssd/&lt;/b&gt;.&lt;/p&gt;
+     *
+     * &lt;p&gt;Due to speed efficiency, this method does not perform any validity check on the
+     * specified URL. Calling this method without a valid URL for the API may (and
+     * probably will) result in undefined behavior.&lt;/p&gt;
+     *
+     * @param language
+     *            the language to use
+     * @param communicationProtocol
+     *            the communication protocol to use
+     * @return an {@link URLEndpoint} representing the modified URL
+     */
+    public URLEndpoint toURL(String language, CommunicationProtocol communicationProtocol) {
+<span class="fc" id="L184">        StringBuilder builder = new StringBuilder(this.url);</span>
+
+        // Replace the communication protocol with the specified parameter. If the
+        // parameter is null we don't change the protocol
+<span class="fc bfc" id="L188" title="All 2 branches covered.">        if (communicationProtocol != null) {</span>
+<span class="fc" id="L189">            String protocol = communicationProtocol.getProtocol();</span>
+<span class="fc" id="L190">            builder.replace(0, builder.toString().indexOf(&quot;://&quot;), protocol);</span>
+        }
+
+        // Specify the starting point. For this implementation, the starting
+        // point is the segment preceding the language tag segment in the URL
+<span class="fc" id="L195">        String startSegment = &quot;doris&quot;;</span>
+
+        // Find the index where the language tag starts
+<span class="fc" id="L198">        int start = builder.toString().indexOf(startSegment) + startSegment.length() + 1;</span>
+        // Find the index where the language tag ends
+<span class="fc" id="L200">        int end = builder.toString().indexOf('/', start);</span>
+
+        // Replace the contents between the start and end index with our new
+        // language tag
+<span class="fc" id="L204">        builder.replace(start, end, language);</span>
+
+<span class="fc" id="L206">        return new URLEndpoint(builder.toString());</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="fc" id="L211">        return Objects.hashCode(this.url);</span>
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+<span class="fc bfc" id="L216" title="All 2 branches covered.">        if (this == obj) {</span>
+<span class="fc" id="L217">            return true;</span>
+        }
+<span class="fc bfc" id="L219" title="All 2 branches covered.">        if (obj == null) {</span>
+<span class="fc" id="L220">            return false;</span>
+        }
+<span class="fc bfc" id="L222" title="All 2 branches covered.">        if (!(obj instanceof URLEndpoint)) {</span>
+<span class="fc" id="L223">            return false;</span>
+        }
+<span class="fc" id="L225">        URLEndpoint other = (URLEndpoint) obj;</span>
+<span class="fc" id="L226">        return Objects.equals(this.url, other.url);</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="fc" id="L231">        return this.url;</span>
+    }
+
+    /**
+     * &lt;p&gt;Returns the root URL for the API.&lt;/p&gt;
+     *
+     * @return an {@link URLEndpoint} representing the
+     *         {@link com.github.dannil.scbjavaclient.constants.APIConstants#ROOT_URL
+     *         ROOT_URL}
+     */
+    public static URLEndpoint getRootUrl() {
+<span class="fc" id="L242">        return new URLEndpoint(APIConstants.ROOT_URL);</span>
+    }
+
+    /**
+     * &lt;p&gt;Returns the root URL for the API for a specific &lt;code&gt;Locale&lt;/code&gt;.&lt;/p&gt;
+     *
+     * @param locale
+     *            the &lt;code&gt;Locale&lt;/code&gt;
+     * @return an {@link URLEndpoint} representing the
+     *         {@link com.github.dannil.scbjavaclient.constants.APIConstants#ROOT_URL
+     *         ROOT_URL} with a converted language tag segment matching the specified
+     *         &lt;code&gt;Locale&lt;/code&gt;
+     */
+    public static URLEndpoint getRootUrl(Locale locale) {
+<span class="fc" id="L256">        return new URLEndpoint(APIConstants.ROOT_URL).toURL(locale);</span>
+    }
+
+    /**
+     * &lt;p&gt;Returns the root URL for the API for a specific &lt;code&gt;Locale&lt;/code&gt; and
+     * {@link CommunicationProtocol}.&lt;/p&gt;
+     *
+     * @param locale
+     *            the &lt;code&gt;Locale&lt;/code&gt;
+     * @param communicationProtocol
+     *            the {@link CommunicationProtocol}
+     * @return an {@link URLEndpoint} representing the
+     *         {@link com.github.dannil.scbjavaclient.constants.APIConstants#ROOT_URL
+     *         ROOT_URL} with a converted language tag segment matching the specified
+     *         &lt;code&gt;Locale&lt;/code&gt; and {@link CommunicationProtocol}
+     */
+    public static URLEndpoint getRootUrl(Locale locale, CommunicationProtocol communicationProtocol) {
+<span class="fc" id="L273">        return new URLEndpoint(APIConstants.ROOT_URL).toURL(locale.getLanguage(), communicationProtocol);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
