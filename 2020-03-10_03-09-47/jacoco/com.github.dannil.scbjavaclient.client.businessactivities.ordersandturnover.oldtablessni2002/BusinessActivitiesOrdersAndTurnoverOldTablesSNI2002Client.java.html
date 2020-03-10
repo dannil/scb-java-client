@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BusinessActivitiesOrdersAndTurnoverOldTablesSNI2002Client.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.client.businessactivities.ordersandturnover.oldtablessni2002</a> &gt; <span class="el_source">BusinessActivitiesOrdersAndTurnoverOldTablesSNI2002Client.java</span></div><h1>BusinessActivitiesOrdersAndTurnoverOldTablesSNI2002Client.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2018 Daniel Nilsson
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
+package com.github.dannil.scbjavaclient.client.businessactivities.ordersandturnover.oldtablessni2002;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+
+import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
+
+/**
+ * &lt;p&gt;Client which handles business activities orders and turnover old tables SNI 2002
+ * data fetching.&lt;/p&gt;
+ *
+ * @since 0.7.0
+ */
+public class BusinessActivitiesOrdersAndTurnoverOldTablesSNI2002Client extends AbstractClient {
+
+    /**
+     * &lt;p&gt;Default constructor.&lt;/p&gt;
+     */
+    public BusinessActivitiesOrdersAndTurnoverOldTablesSNI2002Client() {
+<span class="fc" id="L40">        super();</span>
+<span class="fc" id="L41">    }</span>
+
+    /**
+     * &lt;p&gt;Overloaded constructor.&lt;/p&gt;
+     *
+     * @param locale
+     *            the &lt;code&gt;Locale&lt;/code&gt; for this client
+     */
+    public BusinessActivitiesOrdersAndTurnoverOldTablesSNI2002Client(Locale locale) {
+<span class="fc" id="L50">        super(locale);</span>
+<span class="fc" id="L51">    }</span>
+
+    /**
+     * &lt;p&gt;Fetch all turnover in industry SNI 2002 annual data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getTurnoverInIndustrySNI2002Annual(Collection, Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getTurnoverInIndustrySNI2002Annual() {
+<span class="fc" id="L63">        return getTurnoverInIndustrySNI2002Annual(null, null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all turnover in industry SNI 2002 annual data which match the input
+     * constraints.&lt;/p&gt;
+     *
+     * @param markets
+     *            the markets
+     * @param industrialClassifications
+     *            the industrial classifications
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getTurnoverInIndustrySNI2002Annual(Collection&lt;String&gt; markets,
+            Collection&lt;String&gt; industrialClassifications, Collection&lt;Integer&gt; years) {
+<span class="fc" id="L82">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L83">        mappings.put(APIConstants.MARKET_CODE, markets);</span>
+<span class="fc" id="L84">        mappings.put(APIConstants.SNI2002_CODE, industrialClassifications);</span>
+<span class="fc" id="L85">        mappings.put(APIConstants.TIME_CODE, years);</span>
+
+<span class="fc" id="L87">        return getResponseModels(&quot;IndLev2000Ar&quot;, mappings);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all turnover in industry SNI 2002 monthly data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getTurnoverInIndustrySNI2002Monthly(Collection, Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getTurnoverInIndustrySNI2002Monthly() {
+<span class="fc" id="L100">        return getTurnoverInIndustrySNI2002Monthly(null, null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all turnover in industry SNI 2002 monthly data which match the input
+     * constraints.&lt;/p&gt;
+     *
+     * @param markets
+     *            the markets
+     * @param industrialClassifications
+     *            the industrial classifications
+     * @param months
+     *            the months
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getTurnoverInIndustrySNI2002Monthly(Collection&lt;String&gt; markets,
+            Collection&lt;String&gt; industrialClassifications, Collection&lt;String&gt; months) {
+<span class="fc" id="L119">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L120">        mappings.put(APIConstants.MARKET_CODE, markets);</span>
+<span class="fc" id="L121">        mappings.put(APIConstants.SNI2002_CODE, industrialClassifications);</span>
+<span class="fc" id="L122">        mappings.put(APIConstants.TIME_CODE, months);</span>
+
+<span class="fc" id="L124">        return getResponseModels(&quot;IndLev2000M&quot;, mappings);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all orders in industry SNI 2002 annual data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getOrdersInIndustrySNI2002Annual(Collection, Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getOrdersInIndustrySNI2002Annual() {
+<span class="fc" id="L137">        return getOrdersInIndustrySNI2002Annual(null, null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all orders in industry SNI 2002 annual data which match the input
+     * constraints.&lt;/p&gt;
+     *
+     * @param markets
+     *            the markets
+     * @param industrialClassifications
+     *            the industrial classifications
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getOrdersInIndustrySNI2002Annual(Collection&lt;String&gt; markets,
+            Collection&lt;String&gt; industrialClassifications, Collection&lt;Integer&gt; years) {
+<span class="fc" id="L156">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L157">        mappings.put(APIConstants.MARKET_CODE, markets);</span>
+<span class="fc" id="L158">        mappings.put(APIConstants.SNI2002_CODE, industrialClassifications);</span>
+<span class="fc" id="L159">        mappings.put(APIConstants.TIME_CODE, years);</span>
+
+<span class="fc" id="L161">        return getResponseModels(&quot;IndOrd2000Ar&quot;, mappings);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all orders in industry SNI 2002 monthly data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getOrdersInIndustrySNI2002Monthly(Collection, Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getOrdersInIndustrySNI2002Monthly() {
+<span class="fc" id="L174">        return getOrdersInIndustrySNI2002Monthly(null, null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all orders in industry SNI 2002 monthly data which match the input
+     * constraints.&lt;/p&gt;
+     *
+     * @param markets
+     *            the markets
+     * @param industrialClassifications
+     *            the industrial classifications
+     * @param months
+     *            the months
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getOrdersInIndustrySNI2002Monthly(Collection&lt;String&gt; markets,
+            Collection&lt;String&gt; industrialClassifications, Collection&lt;String&gt; months) {
+<span class="fc" id="L193">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L194">        mappings.put(APIConstants.MARKET_CODE, markets);</span>
+<span class="fc" id="L195">        mappings.put(APIConstants.SNI2002_CODE, industrialClassifications);</span>
+<span class="fc" id="L196">        mappings.put(APIConstants.TIME_CODE, months);</span>
+
+<span class="fc" id="L198">        return getResponseModels(&quot;IndOrd2000M&quot;, mappings);</span>
+    }
+
+    @Override
+    public URLEndpoint getUrl() {
+<span class="fc" id="L203">        return getRootUrl().append(&quot;NV/NV0501/NV0501C/&quot;);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
