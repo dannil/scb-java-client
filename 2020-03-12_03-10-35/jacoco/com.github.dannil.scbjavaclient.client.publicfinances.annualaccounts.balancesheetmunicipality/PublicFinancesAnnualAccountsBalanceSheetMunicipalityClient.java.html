@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.client.publicfinances.annualaccounts.balancesheetmunicipality</a> &gt; <span class="el_source">PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient.java</span></div><h1>PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2017 Daniel Nilsson
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
+package com.github.dannil.scbjavaclient.client.publicfinances.annualaccounts.balancesheetmunicipality;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+
+import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
+
+/**
+ * &lt;p&gt;Client which handles public finances annual accounts balance sheet municipality data
+ * fetching.&lt;/p&gt;
+ *
+ * @since 0.3.0
+ */
+public class PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient extends AbstractClient {
+
+    /**
+     * &lt;p&gt;Default constructor.&lt;/p&gt;
+     */
+    public PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient() {
+<span class="fc" id="L40">        super();</span>
+<span class="fc" id="L41">    }</span>
+
+    /**
+     * &lt;p&gt;Overloaded constructor.&lt;/p&gt;
+     *
+     * @param locale
+     *            the &lt;code&gt;Locale&lt;/code&gt; for this client
+     */
+    public PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient(Locale locale) {
+<span class="fc" id="L50">        super(locale);</span>
+<span class="fc" id="L51">    }</span>
+
+    /**
+     * &lt;p&gt;Fetch all income statements data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getIncomeStatements(Collection, Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getIncomeStatements() {
+<span class="fc" id="L63">        return getIncomeStatements(null, null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all income statements data which match the input constraints.&lt;/p&gt;
+     *
+     * @param regions
+     *            the regions
+     * @param incomeStatements
+     *            the income statements
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getIncomeStatements(Collection&lt;String&gt; regions, Collection&lt;String&gt; incomeStatements,
+            Collection&lt;Integer&gt; years) {
+<span class="fc" id="L81">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L82">        mappings.put(APIConstants.REGION_CODE, regions);</span>
+<span class="fc" id="L83">        mappings.put(&quot;Resultatraknposter&quot;, incomeStatements);</span>
+<span class="fc" id="L84">        mappings.put(APIConstants.TIME_CODE, years);</span>
+
+<span class="fc" id="L86">        return getResponseModels(&quot;ResultKn&quot;, mappings);</span>
+    }
+
+    // Daniel 2017-04-17: Returns HTTP 403
+    /**
+     * &lt;p&gt;Fetch all balance sheet data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getBalanceSheet(Collection, Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getBalanceSheet() {
+<span class="fc" id="L100">        return getBalanceSheet(null, null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all balance sheet data which match the input constraints.&lt;/p&gt;
+     *
+     * @param regions
+     *            the regions
+     * @param balanceSheets
+     *            the balance sheets
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getBalanceSheet(Collection&lt;String&gt; regions, Collection&lt;String&gt; balanceSheets,
+            Collection&lt;Integer&gt; years) {
+<span class="fc" id="L118">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L119">        mappings.put(APIConstants.REGION_CODE, regions);</span>
+<span class="fc" id="L120">        mappings.put(&quot;Balansraknposter&quot;, balanceSheets);</span>
+<span class="fc" id="L121">        mappings.put(APIConstants.TIME_CODE, years);</span>
+
+<span class="fc" id="L123">        return getResponseModels(&quot;BalansKn&quot;, mappings);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all guarantees and contingent liabilities data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getGuaranteesAndContingentLiabilities(Collection, Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getGuaranteesAndContingentLiabilities() {
+<span class="fc" id="L136">        return getGuaranteesAndContingentLiabilities(null, null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all guarantees and contingent liabilities data which match the input
+     * constraints.&lt;/p&gt;
+     *
+     * @param regions
+     *            the regions
+     * @param typesOfGuarantees
+     *            the types of guarantees
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getGuaranteesAndContingentLiabilities(Collection&lt;String&gt; regions,
+            Collection&lt;Integer&gt; typesOfGuarantees, Collection&lt;Integer&gt; years) {
+<span class="fc" id="L155">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L156">        mappings.put(APIConstants.REGION_CODE, regions);</span>
+<span class="fc" id="L157">        mappings.put(&quot;BorgenAnsvarsposter&quot;, typesOfGuarantees);</span>
+<span class="fc" id="L158">        mappings.put(APIConstants.TIME_CODE, years);</span>
+
+<span class="fc" id="L160">        return getResponseModels(&quot;BorgensforbKn&quot;, mappings);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all local government incomes data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getLocalGovernmentIncomes(Collection, Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getLocalGovernmentIncomes() {
+<span class="fc" id="L173">        return getLocalGovernmentIncomes(null, null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all local government incomes data which match the input constraints.&lt;/p&gt;
+     *
+     * @param regions
+     *            the regions
+     * @param items
+     *            the items
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getLocalGovernmentIncomes(Collection&lt;String&gt; regions, Collection&lt;Integer&gt; items,
+            Collection&lt;Integer&gt; years) {
+<span class="fc" id="L191">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L192">        mappings.put(APIConstants.REGION_CODE, regions);</span>
+<span class="fc" id="L193">        mappings.put(APIConstants.ITEM_CODE, items);</span>
+<span class="fc" id="L194">        mappings.put(APIConstants.TIME_CODE, years);</span>
+
+<span class="fc" id="L196">        return getResponseModels(&quot;VerksInt&quot;, mappings);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all municipalities costs data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getMunicipalitiesCosts(Collection, Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getMunicipalitiesCosts() {
+<span class="fc" id="L209">        return getMunicipalitiesCosts(null, null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all municipalities costs data which match the input constraints.&lt;/p&gt;
+     *
+     * @param regions
+     *            the regions
+     * @param items
+     *            the items
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getMunicipalitiesCosts(Collection&lt;String&gt; regions, Collection&lt;Integer&gt; items,
+            Collection&lt;Integer&gt; years) {
+<span class="fc" id="L227">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L228">        mappings.put(APIConstants.REGION_CODE, regions);</span>
+<span class="fc" id="L229">        mappings.put(APIConstants.ITEM_CODE, items);</span>
+<span class="fc" id="L230">        mappings.put(APIConstants.TIME_CODE, years);</span>
+
+<span class="fc" id="L232">        return getResponseModels(&quot;VerksKostn&quot;, mappings);</span>
+    }
+
+    @Override
+    public URLEndpoint getUrl() {
+<span class="fc" id="L237">        return getRootUrl().append(&quot;OE/OE0107/OE0107A/&quot;);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
