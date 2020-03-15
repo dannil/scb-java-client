@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>RequesterSingletonFactory.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.communication.http.requester</a> &gt; <span class="el_source">RequesterSingletonFactory.java</span></div><h1>RequesterSingletonFactory.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2018 Daniel Nilsson
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
+package com.github.dannil.scbjavaclient.communication.http.requester;
+
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.util.EnumMap;
+import java.util.Map;
+
+import com.github.dannil.scbjavaclient.communication.http.HttpRequestMethod;
+
+/**
+ * &lt;p&gt;Factory for returning singleton requesters. The regular {@link RequesterFactory} is
+ * recommended instead of this class; this class should only be used if you really need a
+ * singleton.&lt;/p&gt;
+ *
+ * @since 1.2.0
+ */
+public final class RequesterSingletonFactory {
+
+    private static Map&lt;HttpRequestMethod, AbstractRequester&gt; requesters;
+
+    static {
+<span class="fc" id="L36">        requesters = new EnumMap&lt;&gt;(HttpRequestMethod.class);</span>
+<span class="fc" id="L37">        requesters.put(HttpRequestMethod.GET, GETHolder.INSTANCE);</span>
+<span class="fc" id="L38">        requesters.put(HttpRequestMethod.POST, POSTHolder.INSTANCE);</span>
+<span class="fc" id="L39">    }</span>
+
+    /**
+     * &lt;p&gt;Private constructor to prevent instantiation.&lt;/p&gt;
+     */
+    private RequesterSingletonFactory() {
+
+    }
+
+    /**
+     * &lt;p&gt;Returns a singleton requester which matches the method. All requests are routed
+     * to match the
+     * {@link com.github.dannil.scbjavaclient.constants.APIConstants#FALLBACK_LOCALE
+     * FALLBACK_LOCALE} and responses are read as UTF-8 character encoding.&lt;/p&gt;
+     *
+     * @param method
+     *            the method (i.e. GET or POST)
+     * @return a singleton requester which matches the method.
+     */
+    public static AbstractRequester getRequester(HttpRequestMethod method) {
+<span class="fc" id="L59">        return getRequester(method, StandardCharsets.UTF_8);</span>
+    }
+
+    /**
+     * &lt;p&gt;Returns a singleton requester which matches the method. All responses are read
+     * as to match the character encoding.&lt;/p&gt;
+     *
+     * @param method
+     *            the method (i.e. GET or POST)
+     * @param charset
+     *            the character encoding to use
+     * @return a singleton requester which matches the method.
+     */
+    public static AbstractRequester getRequester(HttpRequestMethod method, Charset charset) {
+<span class="fc bfc" id="L73" title="All 2 branches covered.">        if (!requesters.containsKey(method)) {</span>
+<span class="fc" id="L74">            throw new IllegalArgumentException(method + &quot; is not a valid method&quot;);</span>
+        }
+<span class="fc" id="L76">        AbstractRequester abs = requesters.get(method);</span>
+<span class="fc" id="L77">        abs.setCharset(charset);</span>
+<span class="fc" id="L78">        return abs;</span>
+    }
+
+    /**
+     * &lt;p&gt;Singleton holder for GET requester.&lt;/p&gt;
+     */
+    private static final class GETHolder {
+
+<span class="fc" id="L86">        protected static final AbstractRequester INSTANCE = new GETRequester(StandardCharsets.UTF_8);</span>
+
+        /**
+         * Private constructor.
+         */
+        private GETHolder() {
+            // To avoid initialization outside this class
+        }
+
+    }
+
+    /**
+     * &lt;p&gt;Singleton holder for POST requester.&lt;/p&gt;
+     */
+    private static final class POSTHolder {
+
+<span class="fc" id="L102">        protected static final AbstractRequester INSTANCE = new POSTRequester(StandardCharsets.UTF_8);</span>
+
+        /**
+         * Private constructor.
+         */
+        private POSTHolder() {
+            // To avoid initialization outside this class
+        }
+
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
