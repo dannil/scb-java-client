@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FinancialMarketsShareholdersClient.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.client.financialmarkets.shareholders</a> &gt; <span class="el_source">FinancialMarketsShareholdersClient.java</span></div><h1>FinancialMarketsShareholdersClient.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2017 Daniel Nilsson
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
+package com.github.dannil.scbjavaclient.client.financialmarkets.shareholders;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+
+import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.shareholders.restoftheworld.FinancialMarketsShareholdersRestOfTheWorldClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.shareholders.swedishmarketplace.FinancialMarketsShareholdersSwedishMarketplaceClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
+
+/**
+ * &lt;p&gt;Client which handles financial markets shareholders data fetching.&lt;/p&gt;
+ *
+ * @since 0.2.0
+ */
+public class FinancialMarketsShareholdersClient extends AbstractContainerClient {
+
+    /**
+     * &lt;p&gt;Default constructor. Initializes values and creates sub-clients.&lt;/p&gt;
+     */
+    public FinancialMarketsShareholdersClient() {
+<span class="fc" id="L41">        super();</span>
+
+<span class="fc" id="L43">        addClient(&quot;restoftheworld&quot;, new FinancialMarketsShareholdersRestOfTheWorldClient());</span>
+<span class="fc" id="L44">        addClient(&quot;swedishmarketplace&quot;, new FinancialMarketsShareholdersSwedishMarketplaceClient());</span>
+<span class="fc" id="L45">    }</span>
+
+    /**
+     * &lt;p&gt;Overloaded constructor.&lt;/p&gt;
+     *
+     * @param locale
+     *            the &lt;code&gt;Locale&lt;/code&gt; for this client
+     */
+    public FinancialMarketsShareholdersClient(Locale locale) {
+<span class="fc" id="L54">        this();</span>
+
+<span class="fc" id="L56">        setLocale(locale);</span>
+<span class="fc" id="L57">    }</span>
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with financial markets Swedish marketplace
+     * data.&lt;/p&gt;
+     *
+     * @return a client for financial markets Swedish marketplace data
+     */
+    public FinancialMarketsShareholdersSwedishMarketplaceClient swedishMarketplace() {
+<span class="fc" id="L66">        return (FinancialMarketsShareholdersSwedishMarketplaceClient) getClient(&quot;swedishmarketplace&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with financial markets rest of the world
+     * data.&lt;/p&gt;
+     *
+     * @return a client for financial markets rest of the world data
+     */
+    public FinancialMarketsShareholdersRestOfTheWorldClient restOfTheWorld() {
+<span class="fc" id="L76">        return (FinancialMarketsShareholdersRestOfTheWorldClient) getClient(&quot;restoftheworld&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all ownership of shares data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getOwnershipOfShares(Collection, Collection)
+     *
+     * @deprecated table removed from API
+     */
+    @Deprecated(since = &quot;3.0.0&quot;, forRemoval = true)
+    public List&lt;ResponseModel&gt; getOwnershipOfShares() {
+<span class="nc" id="L92">        return getOwnershipOfShares(null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all ownership of shares data which match the input constraints.&lt;/p&gt;
+     *
+     * @param sectors
+     *            the sectors to fetch data for
+     * @param twoTimesPerYears
+     *            the two times per years to fetch data for
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @deprecated table removed from API
+     */
+    @Deprecated(since = &quot;3.0.0&quot;, forRemoval = true)
+    public List&lt;ResponseModel&gt; getOwnershipOfShares(Collection&lt;String&gt; sectors, Collection&lt;String&gt; twoTimesPerYears) {
+<span class="fc" id="L110">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L111">        mappings.put(APIConstants.SECTOR_CODE, sectors);</span>
+<span class="fc" id="L112">        mappings.put(APIConstants.TIME_CODE, twoTimesPerYears);</span>
+
+<span class="nc" id="L114">        return getResponseModels(&quot;AktieAgarNAr&quot;, mappings);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all ownership of shares by marketplace data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getOwnershipOfSharesByMarketplace(Collection, Collection, Collection)
+     *
+     * @deprecated table removed from API, use
+     *             {@link com.github.dannil.scbjavaclient.client.financialmarkets.shareholders.swedishmarketplace.FinancialMarketsShareholdersSwedishMarketplaceClient#getOwnershipOfSharesByMarketplace()
+     *             FinancialMarketsShareholdersSwedishMarketplaceClient#getOwnershipOfSharesByMarketplace()}
+     *             instead
+     */
+    @Deprecated(since = &quot;3.0.0&quot;, forRemoval = true)
+    public List&lt;ResponseModel&gt; getOwnershipOfSharesByMarketplace() {
+<span class="nc" id="L133">        return getOwnershipOfSharesByMarketplace(null, null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all ownership of shares by marketplace data which match the input
+     * constraints.&lt;/p&gt;
+     *
+     * @param sectors
+     *            the sectors to fetch data for
+     * @param marketplaces
+     *            the marketplaces to fetch data for
+     * @param twoTimesPerYears
+     *            the two times per years to fetch data for
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @deprecated table removed from API, use
+     *             {@link com.github.dannil.scbjavaclient.client.financialmarkets.shareholders.swedishmarketplace.FinancialMarketsShareholdersSwedishMarketplaceClient#getOwnershipOfSharesByMarketplace(Collection, Collection, Collection)
+     *             FinancialMarketsShareholdersSwedishMarketplaceClient#getOwnershipOfSharesByMarketplace(Collection,
+     *             Collection, Collection)}
+     *             instead
+     */
+    @Deprecated(since = &quot;3.0.0&quot;, forRemoval = true)
+    public List&lt;ResponseModel&gt; getOwnershipOfSharesByMarketplace(Collection&lt;String&gt; sectors,
+            Collection&lt;String&gt; marketplaces, Collection&lt;String&gt; twoTimesPerYears) {
+<span class="fc" id="L159">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L160">        mappings.put(APIConstants.SECTOR_CODE, sectors);</span>
+<span class="fc" id="L161">        mappings.put(&quot;Marknadsplats&quot;, marketplaces);</span>
+<span class="fc" id="L162">        mappings.put(APIConstants.TIME_CODE, twoTimesPerYears);</span>
+
+<span class="nc" id="L164">        return getResponseModels(&quot;AktieAgarMarknad&quot;, mappings);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all ownership of shares by series data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getOwnershipOfSharesBySeries(Collection, Collection, Collection)
+     *
+     * @deprecated table removed from API, use
+     *             {@link com.github.dannil.scbjavaclient.client.financialmarkets.shareholders.swedishmarketplace.FinancialMarketsShareholdersSwedishMarketplaceClient#getOwnershipOfSharesBySeries()
+     *             FinancialMarketsShareholdersSwedishMarketplaceClient#getOwnershipOfSharesBySeries()}
+     *             instead
+     */
+    @Deprecated(since = &quot;3.0.0&quot;, forRemoval = true)
+    public List&lt;ResponseModel&gt; getOwnershipOfSharesBySeries() {
+<span class="nc" id="L183">        return getOwnershipOfSharesBySeries(null, null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all ownership of shares by series data which match the input
+     * constraints.&lt;/p&gt;
+     *
+     * @param sectors
+     *            the sectors to fetch data for
+     * @param classesOfShares
+     *            the classes of shares to fetch data for
+     * @param twoTimesPerYears
+     *            the two times per years to fetch data for
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @deprecated table removed from API, use
+     *             {@link com.github.dannil.scbjavaclient.client.financialmarkets.shareholders.swedishmarketplace.FinancialMarketsShareholdersSwedishMarketplaceClient#getOwnershipOfSharesBySeries(Collection, Collection, Collection)
+     *             FinancialMarketsShareholdersSwedishMarketplaceClient#getOwnershipOfSharesBySeries(Collection,
+     *             Collection, Collection)}
+     *             instead
+     */
+    @Deprecated(since = &quot;3.0.0&quot;, forRemoval = true)
+    public List&lt;ResponseModel&gt; getOwnershipOfSharesBySeries(Collection&lt;String&gt; sectors,
+            Collection&lt;String&gt; classesOfShares, Collection&lt;String&gt; twoTimesPerYears) {
+<span class="fc" id="L209">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L210">        mappings.put(APIConstants.SECTOR_CODE, sectors);</span>
+<span class="fc" id="L211">        mappings.put(&quot;Aktieserie&quot;, classesOfShares);</span>
+<span class="fc" id="L212">        mappings.put(APIConstants.TIME_CODE, twoTimesPerYears);</span>
+
+<span class="nc" id="L214">        return getResponseModels(&quot;AktieAgarSerieN&quot;, mappings);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all foreign ownership of shares data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getForeignOwnershipOfShares(Collection, Collection)
+     *
+     * @deprecated table removed from API, use
+     *             {@link com.github.dannil.scbjavaclient.client.financialmarkets.shareholders.restoftheworld.FinancialMarketsShareholdersRestOfTheWorldClient#getForeignOwnershipOfShares()
+     *             FinancialMarketsShareholdersRestOfTheWorldClient#getForeignOwnershipOfShares()}
+     *             instead
+     */
+    @Deprecated(since = &quot;3.0.0&quot;, forRemoval = true)
+    public List&lt;ResponseModel&gt; getForeignOwnershipOfShares() {
+<span class="nc" id="L233">        return getForeignOwnershipOfShares(null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all foreign ownership of shares data which match the input
+     * constraints.&lt;/p&gt;
+     *
+     * @param countries
+     *            the countries to fetch data for
+     * @param twoTimesPerYears
+     *            the two times per years to fetch data for
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @deprecated table removed from API, use
+     *             {@link com.github.dannil.scbjavaclient.client.financialmarkets.shareholders.restoftheworld.FinancialMarketsShareholdersRestOfTheWorldClient#getForeignOwnershipOfShares(Collection, Collection)
+     *             FinancialMarketsShareholdersRestOfTheWorldClient#getForeignOwnershipOfShares(Collection,
+     *             Collection)}
+     *             instead
+     */
+    @Deprecated(since = &quot;3.0.0&quot;, forRemoval = true)
+    public List&lt;ResponseModel&gt; getForeignOwnershipOfShares(Collection&lt;String&gt; countries,
+            Collection&lt;String&gt; twoTimesPerYears) {
+<span class="fc" id="L257">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L258">        mappings.put(&quot;Agarland&quot;, countries);</span>
+<span class="fc" id="L259">        mappings.put(APIConstants.TIME_CODE, twoTimesPerYears);</span>
+
+<span class="nc" id="L261">        return getResponseModels(&quot;AktieAgarUtland&quot;, mappings);</span>
+    }
+
+    @Override
+    public URLEndpoint getUrl() {
+<span class="fc" id="L266">        return getRootUrl().append(&quot;FM/FM0201&quot;);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
