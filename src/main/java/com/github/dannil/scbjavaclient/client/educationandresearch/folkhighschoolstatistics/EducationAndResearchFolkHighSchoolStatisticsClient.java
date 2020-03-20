@@ -58,7 +58,12 @@ public class EducationAndResearchFolkHighSchoolStatisticsClient extends Abstract
      *         objects
      *
      * @see #getParticipants(Collection, Collection, Collection, Collection)
+     *
+     * @deprecated use {@link #getParticipantsInCourses()
+     *             EducationAndResearchFolkHighSchoolStatisticsClient#getParticipantsInCourses()}
+     *             instead.
      */
+    @Deprecated
     public List<ResponseModel> getParticipants() {
         return getParticipants(null, null, null, null);
     }
@@ -78,7 +83,13 @@ public class EducationAndResearchFolkHighSchoolStatisticsClient extends Abstract
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
+     *
+     * @deprecated use
+     *             {@link #getParticipantsInCourses(Collection, Collection, Collection, Collection, Collection, Collection)
+     *             EducationAndResearchFolkHighSchoolStatisticsClient#getParticipantsInCourses(Collection,
+     *             Collection, Collection, Collection, Collection, Collection)} instead.
      */
+    @Deprecated
     public List<ResponseModel> getParticipants(Collection<String> regions, Collection<String> sexes,
             Collection<String> typesOfCourses, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
@@ -88,6 +99,54 @@ public class EducationAndResearchFolkHighSchoolStatisticsClient extends Abstract
         mappings.put(APIConstants.TIME_CODE, years);
 
         return getResponseModels("UF0510Tab1", mappings);
+    }
+
+    /**
+     * <p>Fetch all participants in folk high school courses data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getParticipantsInCourses(Collection, Collection, Collection, Collection,
+     *      Collection, Collection)
+     */
+    public List<ResponseModel> getParticipantsInCourses() {
+        return getParticipantsInCourses(null, null, null, null, null, null);
+    }
+
+    /**
+     * <p>Fetch all participants in folk high school courses data which match the input
+     * constraints.</p>
+     *
+     * @param sexes
+     *            the sexes to fetch data for
+     * @param typesOfCourses
+     *            the types of courses to fetch data for
+     * @param nationalBackgrounds
+     *            the national backgrounds to fetch data for
+     * @param regionOfEducations
+     *            the region of educations to fetch data for
+     * @param ageGroups
+     *            the age groups to fetch data for
+     * @param years
+     *            the years to fetch data for
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getParticipantsInCourses(Collection<String> sexes, Collection<String> typesOfCourses,
+            Collection<String> nationalBackgrounds, Collection<String> regionOfEducations, Collection<String> ageGroups,
+            Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.SEX_CODE, sexes);
+        mappings.put("KursTyp", typesOfCourses);
+        mappings.put("NationellBakgrund", nationalBackgrounds);
+        mappings.put("RegionUtb", regionOfEducations);
+        mappings.put("Aldersgrupp", ageGroups);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("UF0601T01b", mappings);
     }
 
     @Override
