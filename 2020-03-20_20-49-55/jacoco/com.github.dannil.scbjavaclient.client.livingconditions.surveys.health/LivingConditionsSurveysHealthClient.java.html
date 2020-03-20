@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LivingConditionsSurveysHealthClient.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.client.livingconditions.surveys.health</a> &gt; <span class="el_source">LivingConditionsSurveysHealthClient.java</span></div><h1>LivingConditionsSurveysHealthClient.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2017 Daniel Nilsson
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
+package com.github.dannil.scbjavaclient.client.livingconditions.surveys.health;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+
+import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
+
+/**
+ * &lt;p&gt;Client which handles living conditions surveys health data fetching.&lt;/p&gt;
+ *
+ * @since 0.2.0
+ */
+public class LivingConditionsSurveysHealthClient extends AbstractClient {
+
+    /**
+     * &lt;p&gt;Default constructor.&lt;/p&gt;
+     */
+    public LivingConditionsSurveysHealthClient() {
+<span class="fc" id="L39">        super();</span>
+<span class="fc" id="L40">    }</span>
+
+    /**
+     * &lt;p&gt;Overloaded constructor.&lt;/p&gt;
+     *
+     * @param locale
+     *            the &lt;code&gt;Locale&lt;/code&gt; for this client
+     */
+    public LivingConditionsSurveysHealthClient(Locale locale) {
+<span class="fc" id="L49">        super(locale);</span>
+<span class="fc" id="L50">    }</span>
+
+    /**
+     * &lt;p&gt;Fetch all physical and mental health data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getPhysicalAndMentalHealth(Collection, Collection, Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getPhysicalAndMentalHealth() {
+<span class="fc" id="L62">        return getPhysicalAndMentalHealth(null, null, null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all physical and mental health data which match the input constraints.&lt;/p&gt;
+     *
+     * @param indicators
+     *            the indicators
+     * @param ages
+     *            the ages
+     * @param sexes
+     *            the sexes
+     * @param periods
+     *            the periods
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getPhysicalAndMentalHealth(Collection&lt;String&gt; indicators, Collection&lt;String&gt; ages,
+            Collection&lt;Integer&gt; sexes, Collection&lt;String&gt; periods) {
+<span class="fc" id="L82">        return generate(indicators, ages, sexes, periods, &quot;LE0101H01&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all long term illness data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getLongTermIllness(Collection, Collection, Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getLongTermIllness() {
+<span class="fc" id="L95">        return getLongTermIllness(null, null, null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all long term illness data which match the input constraints.&lt;/p&gt;
+     *
+     * @param indicators
+     *            the indicators
+     * @param ages
+     *            the ages
+     * @param sexes
+     *            the sexes
+     * @param periods
+     *            the periods
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getLongTermIllness(Collection&lt;String&gt; indicators, Collection&lt;String&gt; ages,
+            Collection&lt;Integer&gt; sexes, Collection&lt;String&gt; periods) {
+<span class="fc" id="L115">        return generate(indicators, ages, sexes, periods, &quot;LE0101H07&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all disabilities data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getDisabilities(Collection, Collection, Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getDisabilities() {
+<span class="fc" id="L128">        return getDisabilities(null, null, null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all disabilities data which match the input constraints.&lt;/p&gt;
+     *
+     * @param indicators
+     *            the indicators
+     * @param ages
+     *            the ages
+     * @param sexes
+     *            the sexes
+     * @param periods
+     *            the periods
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getDisabilities(Collection&lt;String&gt; indicators, Collection&lt;String&gt; ages,
+            Collection&lt;Integer&gt; sexes, Collection&lt;String&gt; periods) {
+<span class="fc" id="L148">        return generate(indicators, ages, sexes, periods, &quot;LE0101H13&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all doctor and dentist appointments data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getDoctorAndDentistAppointments(Collection, Collection, Collection,
+     *      Collection)
+     */
+    public List&lt;ResponseModel&gt; getDoctorAndDentistAppointments() {
+<span class="fc" id="L162">        return getDoctorAndDentistAppointments(null, null, null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all doctor and dentist appointments data which match the input
+     * constraints.&lt;/p&gt;
+     *
+     * @param indicators
+     *            the indicators
+     * @param ages
+     *            the ages
+     * @param sexes
+     *            the sexes
+     * @param periods
+     *            the periods
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getDoctorAndDentistAppointments(Collection&lt;String&gt; indicators, Collection&lt;String&gt; ages,
+            Collection&lt;Integer&gt; sexes, Collection&lt;String&gt; periods) {
+<span class="fc" id="L183">        return generate(indicators, ages, sexes, periods, &quot;LE0101H19&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all tobacco habits data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getTobaccoHabits(Collection, Collection, Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getTobaccoHabits() {
+<span class="fc" id="L196">        return getTobaccoHabits(null, null, null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all tobacco habits data which match the input constraints.&lt;/p&gt;
+     *
+     * @param indicators
+     *            the indicators
+     * @param ages
+     *            the ages
+     * @param sexes
+     *            the sexes
+     * @param periods
+     *            the periods
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getTobaccoHabits(Collection&lt;String&gt; indicators, Collection&lt;String&gt; ages,
+            Collection&lt;Integer&gt; sexes, Collection&lt;String&gt; periods) {
+<span class="fc" id="L216">        return generate(indicators, ages, sexes, periods, &quot;LE0101H25&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all body mass index data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getBodyMassIndex(Collection, Collection, Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getBodyMassIndex() {
+<span class="fc" id="L229">        return getBodyMassIndex(null, null, null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all body mass index data which match the input constraints.&lt;/p&gt;
+     *
+     * @param indicators
+     *            the indicators
+     * @param ages
+     *            the ages
+     * @param sexes
+     *            the sexes
+     * @param periods
+     *            the periods
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getBodyMassIndex(Collection&lt;String&gt; indicators, Collection&lt;String&gt; ages,
+            Collection&lt;Integer&gt; sexes, Collection&lt;String&gt; periods) {
+<span class="fc" id="L249">        return generate(indicators, ages, sexes, periods, &quot;LE0101BMI01&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Common generator method for the methods in this class.&lt;/p&gt;
+     *
+     * @param indicators
+     *            the indicators
+     * @param ages
+     *            the ages
+     * @param sexes
+     *            the sexes
+     * @param periods
+     *            the periods
+     * @param table
+     *            the table
+     * @return a &lt;code&gt;List&lt;/code&gt; of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     */
+    private List&lt;ResponseModel&gt; generate(Collection&lt;String&gt; indicators, Collection&lt;String&gt; ages,
+            Collection&lt;Integer&gt; sexes, Collection&lt;String&gt; periods, String table) {
+<span class="fc" id="L270">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L271">        mappings.put(&quot;Indikator&quot;, indicators);</span>
+<span class="fc" id="L272">        mappings.put(APIConstants.AGE_CODE, ages);</span>
+<span class="fc" id="L273">        mappings.put(APIConstants.SEX_CODE, sexes);</span>
+<span class="fc" id="L274">        mappings.put(APIConstants.TIME_CODE, periods);</span>
+
+<span class="fc" id="L276">        return getResponseModels(table, mappings);</span>
+    }
+
+    @Override
+    public URLEndpoint getUrl() {
+<span class="fc" id="L281">        return getRootUrl().append(&quot;LE/LE0101/LE0101H/&quot;);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

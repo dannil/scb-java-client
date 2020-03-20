@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Localization.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.utility</a> &gt; <span class="el_source">Localization.java</span></div><h1>Localization.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2016 Daniel Nilsson
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
+package com.github.dannil.scbjavaclient.utility;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.text.MessageFormat;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
+import java.util.MissingResourceException;
+import java.util.PropertyResourceBundle;
+import java.util.ResourceBundle;
+
+import com.github.dannil.scbjavaclient.constants.ClientConstants;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+/**
+ * &lt;p&gt;Class for handling localization for the clients.&lt;/p&gt;
+ *
+ * @since 0.0.1
+ */
+public class Localization {
+
+    private String baseName;
+
+    private Locale fallbackLocale;
+
+    private ResourceBundle bundle;
+
+    private ResourceBundleEncodingControl encodingControl;
+
+    /**
+     * &lt;p&gt;Private constructor. Initializes encoding control for the resource bundles.&lt;/p&gt;
+     */
+<span class="fc" id="L51">    private Localization() {</span>
+<span class="fc" id="L52">        this.baseName = ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX;</span>
+<span class="fc" id="L53">        this.fallbackLocale = ClientConstants.LOCALIZATION_FALLBACK_LOCALE;</span>
+
+<span class="fc" id="L55">        this.encodingControl = new ResourceBundleEncodingControl(&quot;UTF-8&quot;);</span>
+<span class="fc" id="L56">    }</span>
+
+    /**
+     * &lt;p&gt;Overloaded constructor.&lt;/p&gt;
+     *
+     * @param locale
+     *            the &lt;code&gt;Locale&lt;/code&gt; for this localization instance
+     */
+    public Localization(Locale locale) {
+<span class="fc" id="L65">        this();</span>
+<span class="fc" id="L66">        this.bundle = ResourceBundle.getBundle(this.baseName, locale, this.encodingControl);</span>
+<span class="fc" id="L67">    }</span>
+
+    /**
+     * &lt;p&gt;Getter for the &lt;code&gt;Locale&lt;/code&gt; of this localization instance.&lt;/p&gt;
+     *
+     * @return the &lt;code&gt;Locale&lt;/code&gt; for this localization instance.
+     */
+    public Locale getLocale() {
+<span class="fc" id="L75">        return this.bundle.getLocale();</span>
+    }
+
+    /**
+     * &lt;p&gt;Setter for the &lt;code&gt;Locale&lt;/code&gt; for this localization instance.&lt;/p&gt;
+     *
+     * @param locale
+     *            the &lt;code&gt;Locale&lt;/code&gt;
+     */
+    public void setLocale(Locale locale) {
+<span class="fc" id="L85">        this.bundle = ResourceBundle.getBundle(this.baseName, locale, this.encodingControl);</span>
+<span class="fc" id="L86">    }</span>
+
+    /**
+     * &lt;p&gt;Returns the translation for the specified key. If it can't find the key in the
+     * current specified language's localization file, it attempts to use the fallback
+     * &lt;code&gt;Locale&lt;/code&gt;'s localization file as the translation source.&lt;/p&gt;
+     *
+     * @param key
+     *            the key to get the translation for
+     * @return the translated string
+     */
+    public String getString(String key) {
+        try {
+<span class="fc" id="L99">            return this.bundle.getString(key);</span>
+<span class="fc" id="L100">        } catch (MissingResourceException e) {</span>
+<span class="fc" id="L101">            return ResourceBundle.getBundle(this.baseName, this.fallbackLocale, this.encodingControl).getString(key);</span>
+        }
+    }
+
+    /**
+     * &lt;p&gt;Returns a formatted translation for the specified key.&lt;/p&gt;
+     *
+     * @param key
+     *            the key to get the translation for
+     * @param variables
+     *            the variables which shall be inserted into the translation
+     * @return the translated string
+     */
+    public String getString(String key, Object... variables) {
+<span class="fc" id="L115">        MessageFormat formatter = new MessageFormat(&quot;&quot;);</span>
+
+<span class="fc" id="L117">        formatter.setLocale(getLocale());</span>
+
+<span class="fc" id="L119">        formatter.applyPattern(getString(key));</span>
+<span class="fc" id="L120">        return formatter.format(variables);</span>
+    }
+
+    /**
+     * &lt;p&gt;Class to handle non-ASCII encodings for {@link java.util.ResourceBundle
+     * ResourceBundle}, such as UTF-8.&lt;/p&gt;
+     *
+     * @author Daniel Nilsson
+     */
+    private static class ResourceBundleEncodingControl extends ResourceBundle.Control {
+
+<span class="fc" id="L131">        private static final Logger LOGGER = LoggerFactory.getLogger(ResourceBundleEncodingControl.class);</span>
+
+        private String encoding;
+
+        /**
+         * &lt;p&gt;Overloaded constructor.&lt;/p&gt;
+         *
+         * @param encoding
+         *            the encoding to use (i.e. UTF-8)
+         */
+        protected ResourceBundleEncodingControl(String encoding) {
+<span class="fc" id="L142">            super();</span>
+<span class="fc" id="L143">            this.encoding = encoding;</span>
+<span class="fc" id="L144">        }</span>
+
+        @Override
+        public List&lt;String&gt; getFormats(String baseName) {
+<span class="pc bpc" id="L148" title="1 of 2 branches missed.">            if (baseName == null) {</span>
+<span class="nc" id="L149">                throw new IllegalArgumentException();</span>
+            }
+<span class="fc" id="L151">            return Arrays.asList(&quot;properties&quot;);</span>
+        }
+
+        @Override
+        public ResourceBundle newBundle(String baseName, Locale locale, String format, ClassLoader loader,
+                boolean reload) {
+<span class="pc bpc" id="L157" title="4 of 8 branches missed.">            if (baseName == null || locale == null || format == null || loader == null) {</span>
+<span class="nc" id="L158">                throw new IllegalArgumentException();</span>
+            }
+
+<span class="pc bpc" id="L161" title="1 of 2 branches missed.">            if (&quot;properties&quot;.equals(format)) {</span>
+<span class="fc" id="L162">                String bundleName = toBundleName(baseName, locale);</span>
+<span class="fc" id="L163">                String resourceName = toResourceName(bundleName, format);</span>
+
+<span class="fc" id="L165">                try (InputStream stream = loader.getResourceAsStream(resourceName)) {</span>
+<span class="fc" id="L166">                    try (InputStreamReader streamReader = new InputStreamReader(stream, this.encoding)) {</span>
+<span class="fc" id="L167">                        return new PropertyResourceBundle(streamReader);</span>
+                    }
+<span class="nc" id="L169">                } catch (IOException e) {</span>
+<span class="nc" id="L170">                    LOGGER.error(e.getMessage());</span>
+                }
+            }
+<span class="nc" id="L173">            return null;</span>
+        }
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
