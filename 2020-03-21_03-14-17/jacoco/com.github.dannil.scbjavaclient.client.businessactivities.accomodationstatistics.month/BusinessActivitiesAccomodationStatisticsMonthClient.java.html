@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BusinessActivitiesAccomodationStatisticsMonthClient.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.client.businessactivities.accomodationstatistics.month</a> &gt; <span class="el_source">BusinessActivitiesAccomodationStatisticsMonthClient.java</span></div><h1>BusinessActivitiesAccomodationStatisticsMonthClient.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2017 Daniel Nilsson
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
+package com.github.dannil.scbjavaclient.client.businessactivities.accomodationstatistics.month;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+
+import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
+
+/**
+ * &lt;p&gt;Client which handles business activities accomodation statistics month data
+ * fetching.&lt;/p&gt;
+ *
+ * @since 0.3.0
+ */
+public class BusinessActivitiesAccomodationStatisticsMonthClient extends AbstractClient {
+
+    private static final String TYPESOFESTABLISHMENTS_CODE = &quot;Anlaggning&quot;;
+
+    /**
+     * &lt;p&gt;Default constructor.&lt;/p&gt;
+     */
+    public BusinessActivitiesAccomodationStatisticsMonthClient() {
+<span class="fc" id="L42">        super();</span>
+<span class="fc" id="L43">    }</span>
+
+    /**
+     * &lt;p&gt;Overloaded constructor.&lt;/p&gt;
+     *
+     * @param locale
+     *            the &lt;code&gt;Locale&lt;/code&gt; for this client
+     */
+    public BusinessActivitiesAccomodationStatisticsMonthClient(Locale locale) {
+<span class="fc" id="L52">        super(locale);</span>
+<span class="fc" id="L53">    }</span>
+
+    /**
+     * &lt;p&gt;Fetch all total capacity data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getTotalCapacity(Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getTotalCapacity() {
+<span class="fc" id="L65">        return getTotalCapacity(null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all total capacity data which match the input constraints.&lt;/p&gt;
+     *
+     * @param typesOfEstablishments
+     *            the types of establishments
+     * @param months
+     *            the months
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getTotalCapacity(Collection&lt;String&gt; typesOfEstablishments, Collection&lt;String&gt; months) {
+<span class="fc" id="L80">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L81">        mappings.put(TYPESOFESTABLISHMENTS_CODE, typesOfEstablishments);</span>
+<span class="fc" id="L82">        mappings.put(APIConstants.TIME_CODE, months);</span>
+
+<span class="fc" id="L84">        return getResponseModels(&quot;NV1701T3M&quot;, mappings);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all available beds data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getAvailableBeds(Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getAvailableBeds() {
+<span class="fc" id="L97">        return getAvailableBeds(null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all available beds data which match the input constraints.&lt;/p&gt;
+     *
+     * @param regions
+     *            the regions
+     * @param months
+     *            the months
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getAvailableBeds(Collection&lt;String&gt; regions, Collection&lt;String&gt; months) {
+<span class="fc" id="L112">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L113">        mappings.put(APIConstants.REGION_CODE, regions);</span>
+<span class="fc" id="L114">        mappings.put(APIConstants.TIME_CODE, months);</span>
+
+<span class="fc" id="L116">        return getResponseModels(&quot;NV1701T5BM&quot;, mappings);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all number of available rooms data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getNumberOfAvailableRooms(Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getNumberOfAvailableRooms() {
+<span class="fc" id="L129">        return getNumberOfAvailableRooms(null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all number of available rooms data which match the input constraints.&lt;/p&gt;
+     *
+     * @param regions
+     *            the regions
+     * @param months
+     *            the months
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getNumberOfAvailableRooms(Collection&lt;String&gt; regions, Collection&lt;String&gt; months) {
+<span class="fc" id="L144">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L145">        mappings.put(APIConstants.REGION_CODE, regions);</span>
+<span class="fc" id="L146">        mappings.put(APIConstants.TIME_CODE, months);</span>
+
+<span class="fc" id="L148">        return getResponseModels(&quot;NV1701T7M&quot;, mappings);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all nights spent data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getNightsSpent(Collection, Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getNightsSpent() {
+<span class="fc" id="L161">        return getNightsSpent(null, null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all nights spent data which match the input constraints.&lt;/p&gt;
+     *
+     * @param regions
+     *            the regions
+     * @param typesOfEstablishments
+     *            the types of establishments
+     * @param months
+     *            the months
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getNightsSpent(Collection&lt;String&gt; regions, Collection&lt;String&gt; typesOfEstablishments,
+            Collection&lt;String&gt; months) {
+<span class="fc" id="L179">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L180">        mappings.put(APIConstants.REGION_CODE, regions);</span>
+<span class="fc" id="L181">        mappings.put(TYPESOFESTABLISHMENTS_CODE, typesOfEstablishments);</span>
+<span class="fc" id="L182">        mappings.put(APIConstants.TIME_CODE, months);</span>
+
+<span class="fc" id="L184">        return getResponseModels(&quot;NV1701T10M&quot;, mappings);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all occupancy data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getOccupancy(Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getOccupancy() {
+<span class="fc" id="L197">        return getOccupancy(null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all occupancy data which match the input constraints.&lt;/p&gt;
+     *
+     * @param typesOfHousing
+     *            the types of housing
+     * @param months
+     *            the months
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getOccupancy(Collection&lt;String&gt; typesOfHousing, Collection&lt;String&gt; months) {
+<span class="fc" id="L212">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L213">        mappings.put(&quot;Overnattningstyp&quot;, typesOfHousing);</span>
+<span class="fc" id="L214">        mappings.put(APIConstants.TIME_CODE, months);</span>
+
+<span class="fc" id="L216">        return getResponseModels(&quot;NV1701T5MN&quot;, mappings);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all occupied rooms data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getOccupiedRooms(Collection, Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getOccupiedRooms() {
+<span class="fc" id="L229">        return getOccupiedRooms(null, null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all occupied rooms data which match the input constraints.&lt;/p&gt;
+     *
+     * @param regions
+     *            the regions
+     * @param typesOfEstablishments
+     *            the types of establishments
+     * @param months
+     *            the months
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getOccupiedRooms(Collection&lt;String&gt; regions, Collection&lt;String&gt; typesOfEstablishments,
+            Collection&lt;String&gt; months) {
+<span class="fc" id="L247">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L248">        mappings.put(APIConstants.REGION_CODE, regions);</span>
+<span class="fc" id="L249">        mappings.put(TYPESOFESTABLISHMENTS_CODE, typesOfEstablishments);</span>
+<span class="fc" id="L250">        mappings.put(APIConstants.TIME_CODE, months);</span>
+
+<span class="fc" id="L252">        return getResponseModels(&quot;NV1701T6MN&quot;, mappings);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all revenue of occupied rooms data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getRevenueOfOccupiedRooms(Collection)
+     */
+    public List&lt;ResponseModel&gt; getRevenueOfOccupiedRooms() {
+<span class="fc" id="L265">        return getRevenueOfOccupiedRooms(null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all revenue of occupied rooms data which match the input constraints.&lt;/p&gt;
+     *
+     * @param months
+     *            the months
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getRevenueOfOccupiedRooms(Collection&lt;String&gt; months) {
+<span class="fc" id="L278">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L279">        mappings.put(APIConstants.TIME_CODE, months);</span>
+
+<span class="fc" id="L281">        return getResponseModels(&quot;NV1701T8M&quot;, mappings);</span>
+    }
+
+    @Override
+    public URLEndpoint getUrl() {
+<span class="fc" id="L286">        return getRootUrl().append(&quot;NV/NV1701/NV1701B/&quot;);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
