@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>JsonCustomResponseFormat.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.format.json</a> &gt; <span class="el_source">JsonCustomResponseFormat.java</span></div><h1>JsonCustomResponseFormat.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2016 Daniel Nilsson
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
+package com.github.dannil.scbjavaclient.format.json;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.fasterxml.jackson.databind.JsonNode;
+
+/**
+ * &lt;p&gt;Class which encapsulates behavior for the custom JSON response format. Note that
+ * this class is immutable; to change the containing JSON, a new class needs to be
+ * instantiated.&lt;/p&gt;
+ *
+ * @since 0.1.0
+ */
+public final class JsonCustomResponseFormat {
+
+    private List&lt;Map&lt;String, Object&gt;&gt; entries;
+
+    private JsonConverter converter;
+
+    private JsonNode json;
+
+    /**
+     * &lt;p&gt;Private constructor.&lt;/p&gt;
+     */
+<span class="fc" id="L42">    private JsonCustomResponseFormat() {</span>
+<span class="fc" id="L43">        this.converter = new JsonConverter();</span>
+<span class="fc" id="L44">    }</span>
+
+    /**
+     * &lt;p&gt;Default constructor.&lt;/p&gt;
+     *
+     * @param json
+     *            the JSON to format
+     */
+    public JsonCustomResponseFormat(String json) {
+<span class="fc" id="L53">        this();</span>
+<span class="fc" id="L54">        this.entries = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L55">        this.json = this.converter.toNode(json);</span>
+<span class="fc" id="L56">        this.json = this.converter.convertValue(getEntries(), JsonNode.class);</span>
+<span class="fc" id="L57">    }</span>
+
+    /**
+     * &lt;p&gt;Retrieves all the entries.&lt;/p&gt;
+     *
+     * @return all the entries
+     */
+    public List&lt;Map&lt;String, Object&gt;&gt; getEntries() {
+<span class="fc bfc" id="L65" title="All 2 branches covered.">        if (!this.entries.isEmpty()) {</span>
+<span class="fc" id="L66">            return this.entries;</span>
+        }
+<span class="fc" id="L68">        JsonNode columns = this.json.get(&quot;columns&quot;);</span>
+<span class="fc" id="L69">        JsonNode data = this.json.get(&quot;data&quot;);</span>
+
+<span class="fc" id="L71">        List&lt;String&gt; contentCodes = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L72">        List&lt;String&gt; contentCodesTexts = new ArrayList&lt;&gt;();</span>
+
+<span class="fc" id="L74">        List&lt;String&gt; codes = columns.findValuesAsText(&quot;code&quot;);</span>
+<span class="fc" id="L75">        List&lt;String&gt; texts = columns.findValuesAsText(&quot;text&quot;);</span>
+
+<span class="fc bfc" id="L77" title="All 2 branches covered.">        for (int i = 0; i &lt; data.size(); i++) {</span>
+<span class="fc" id="L78">            Map&lt;String, Object&gt; map = new HashMap&lt;&gt;();</span>
+
+<span class="fc" id="L80">            JsonNode entry = data.get(i);</span>
+
+            // Sort out the content codes
+<span class="fc" id="L83">            List&lt;String&gt; types = columns.findValuesAsText(&quot;type&quot;);</span>
+<span class="fc bfc" id="L84" title="All 2 branches covered.">            for (int l = 0; l &lt; codes.size(); l++) {</span>
+<span class="fc bfc" id="L85" title="All 2 branches covered.">                if (&quot;c&quot;.equals(types.get(l))) {</span>
+<span class="fc" id="L86">                    contentCodes.add(codes.get(l));</span>
+<span class="fc" id="L87">                    contentCodesTexts.add(texts.get(l));</span>
+                }
+            }
+
+            // Get the key values and the value
+<span class="fc" id="L92">            JsonNode keysNode = entry.get(&quot;key&quot;);</span>
+<span class="fc" id="L93">            JsonNode valuesNode = entry.get(&quot;values&quot;);</span>
+
+<span class="fc" id="L95">            Map&lt;String, String&gt; variables = new HashMap&lt;&gt;();</span>
+<span class="fc bfc" id="L96" title="All 2 branches covered.">            for (int j = 0; j &lt; keysNode.size(); j++) {</span>
+<span class="fc" id="L97">                variables.put(codes.get(j), keysNode.get(j).asText());</span>
+            }
+<span class="fc" id="L99">            map.put(&quot;Variables&quot;, variables);</span>
+
+<span class="fc" id="L101">            List&lt;Map&lt;String, String&gt;&gt; values = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L102" title="All 2 branches covered.">            for (int k = 0; k &lt; valuesNode.size(); k++) {</span>
+<span class="fc" id="L103">                Map&lt;String, String&gt; valuesContents = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L104">                valuesContents.put(&quot;Value&quot;, valuesNode.get(k).asText());</span>
+<span class="fc" id="L105">                valuesContents.put(&quot;Code&quot;, contentCodes.get(k));</span>
+<span class="fc" id="L106">                valuesContents.put(&quot;Text&quot;, contentCodesTexts.get(k));</span>
+<span class="fc" id="L107">                values.add(valuesContents);</span>
+            }
+<span class="fc" id="L109">            map.put(&quot;Values&quot;, values);</span>
+
+<span class="fc" id="L111">            this.entries.add(map);</span>
+        }
+<span class="fc" id="L113">        return this.entries;</span>
+    }
+
+    /**
+     * &lt;p&gt;Converts the JSON string into a list of the specified class.&lt;/p&gt;
+     *
+     * @param clazz
+     *            the class to convert each JSON entry to
+     * @param &lt;T&gt;
+     *            the data type of the list
+     * @return a list of elements, which type is the specified class. Each element
+     *         represents the corresponding entry in the JSON
+     */
+    public &lt;T&gt; List&lt;T&gt; toListOf(Class&lt;T&gt; clazz) {
+<span class="fc" id="L127">        return this.converter.toListOf(this.json.toString(), clazz);</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="fc" id="L132">        return this.json.toString();</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
