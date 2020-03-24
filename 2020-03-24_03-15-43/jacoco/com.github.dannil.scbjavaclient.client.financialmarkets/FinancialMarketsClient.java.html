@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FinancialMarketsClient.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.client.financialmarkets</a> &gt; <span class="el_source">FinancialMarketsClient.java</span></div><h1>FinancialMarketsClient.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2017 Daniel Nilsson
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
+package com.github.dannil.scbjavaclient.client.financialmarkets;
+
+import java.util.Locale;
+
+import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.balanceofpayments.FinancialMarketsBalanceOfPaymentsClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.enterprises.FinancialMarketsEnterprisesClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.institutions.FinancialMarketsInstitutionsClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.investmentfunds.FinancialMarketsInvestmentFundsClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.securities.FinancialMarketsSecuritiesClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.shareholders.FinancialMarketsShareholdersClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.statistics.FinancialMarketsStatisticsClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
+
+/**
+ * &lt;p&gt;Client which handles financial markets data fetching.&lt;/p&gt;
+ *
+ * @since 0.2.0
+ */
+public class FinancialMarketsClient extends AbstractContainerClient {
+
+    /**
+     * &lt;p&gt;Default constructor. Initializes values and creates sub-clients.&lt;/p&gt;
+     */
+    public FinancialMarketsClient() {
+<span class="fc" id="L40">        super();</span>
+
+<span class="fc" id="L42">        addClient(&quot;balanceofpayments&quot;, new FinancialMarketsBalanceOfPaymentsClient());</span>
+<span class="fc" id="L43">        addClient(&quot;enterprises&quot;, new FinancialMarketsEnterprisesClient());</span>
+<span class="fc" id="L44">        addClient(&quot;institutions&quot;, new FinancialMarketsInstitutionsClient());</span>
+<span class="fc" id="L45">        addClient(&quot;investmentfunds&quot;, new FinancialMarketsInvestmentFundsClient());</span>
+<span class="fc" id="L46">        addClient(&quot;securities&quot;, new FinancialMarketsSecuritiesClient());</span>
+<span class="fc" id="L47">        addClient(&quot;shareholders&quot;, new FinancialMarketsShareholdersClient());</span>
+<span class="fc" id="L48">        addClient(&quot;statistics&quot;, new FinancialMarketsStatisticsClient());</span>
+<span class="fc" id="L49">    }</span>
+
+    /**
+     * &lt;p&gt;Overloaded constructor.&lt;/p&gt;
+     *
+     * @param locale
+     *            the &lt;code&gt;Locale&lt;/code&gt; for this client
+     */
+    public FinancialMarketsClient(Locale locale) {
+<span class="fc" id="L58">        this();</span>
+
+<span class="fc" id="L60">        setLocale(locale);</span>
+<span class="fc" id="L61">    }</span>
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with financial markets balance of payments
+     * data.&lt;/p&gt;
+     *
+     * @return a client for financial markets balance of payments data
+     */
+    public FinancialMarketsBalanceOfPaymentsClient balanceOfPayments() {
+<span class="fc" id="L70">        return (FinancialMarketsBalanceOfPaymentsClient) getClient(&quot;balanceofpayments&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with financial markets enterprises data.&lt;/p&gt;
+     *
+     * @return a client for financial markets enterprises data
+     */
+    public FinancialMarketsEnterprisesClient enterprises() {
+<span class="fc" id="L79">        return (FinancialMarketsEnterprisesClient) getClient(&quot;enterprises&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with financial markets institutions
+     * data.&lt;/p&gt;
+     *
+     * @return a client for financial markets institutions data
+     */
+    public FinancialMarketsInstitutionsClient institutions() {
+<span class="fc" id="L89">        return (FinancialMarketsInstitutionsClient) getClient(&quot;institutions&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with financial markets investment funds
+     * data.&lt;/p&gt;
+     *
+     * @return a client for financial markets investment funds data
+     */
+    public FinancialMarketsInvestmentFundsClient investmentFunds() {
+<span class="fc" id="L99">        return (FinancialMarketsInvestmentFundsClient) getClient(&quot;investmentfunds&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with financial markets securities data.&lt;/p&gt;
+     *
+     * @return a client for financial markets securities data
+     */
+    public FinancialMarketsSecuritiesClient securities() {
+<span class="fc" id="L108">        return (FinancialMarketsSecuritiesClient) getClient(&quot;securities&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with financial markets shareholders
+     * data.&lt;/p&gt;
+     *
+     * @return a client for financial markets shareholders data
+     */
+    public FinancialMarketsShareholdersClient shareholders() {
+<span class="fc" id="L118">        return (FinancialMarketsShareholdersClient) getClient(&quot;shareholders&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with financial markets statistics data.&lt;/p&gt;
+     *
+     * @return a client for financial markets statistics data
+     */
+    public FinancialMarketsStatisticsClient statistics() {
+<span class="fc" id="L127">        return (FinancialMarketsStatisticsClient) getClient(&quot;statistics&quot;);</span>
+    }
+
+    @Override
+    public URLEndpoint getUrl() {
+<span class="fc" id="L132">        return getRootUrl().append(&quot;FM/&quot;);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
