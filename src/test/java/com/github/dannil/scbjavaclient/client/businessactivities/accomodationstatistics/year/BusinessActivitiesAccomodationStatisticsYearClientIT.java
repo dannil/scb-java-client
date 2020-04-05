@@ -15,11 +15,13 @@
 package com.github.dannil.scbjavaclient.client.businessactivities.accomodationstatistics.year;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import com.github.dannil.scbjavaclient.model.ResponseModel;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
@@ -62,26 +64,38 @@ public class BusinessActivitiesAccomodationStatisticsYearClientIT {
     }
 
     @Test
-    @Date("2017-04-13")
+    @Date("2020-04-05")
     public void getCapacityForHotels() {
-        assertNotEquals(0, this.client.getCapacityForHotels().size());
+        List<ResponseModel> response = this.client.getCapacityForHotels();
+
+        assertNotEquals(0, response.size());
+        assertTrue(response.stream().allMatch(
+                model -> model.getVariables().keySet().containsAll(List.of("Region", "Overnattningstyp", "Tid"))));
     }
 
     @Test
-    @Date("2017-04-13")
+    @Date("2020-04-05")
     public void getCapacityForHotelsEmptyLists() {
-        assertNotEquals(0, this.client.getCapacityForHotels(Collections.<String>emptyList(),
-                Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
+        List<ResponseModel> response = this.client.getCapacityForHotels(Collections.<String>emptyList(),
+                Collections.<String>emptyList(), Collections.<Integer>emptyList());
+
+        assertNotEquals(0, response.size());
+        assertTrue(response.stream().allMatch(
+                model -> model.getVariables().keySet().containsAll(List.of("Region", "Overnattningstyp", "Tid"))));
     }
 
     @Test
-    @Date("2017-04-13")
+    @Date("2020-04-05")
     public void getCapacityForHotelsWithParameters() {
         List<String> regions = Arrays.asList("0030", "07");
         List<String> typesOfHousing = Arrays.asList("012", "014");
         List<Integer> years = Arrays.asList(2010, 2012);
 
-        assertNotEquals(0, this.client.getCapacityForHotels(regions, typesOfHousing, years).size());
+        List<ResponseModel> response = this.client.getCapacityForHotels(regions, typesOfHousing, years);
+
+        assertNotEquals(0, response.size());
+        assertTrue(response.stream().allMatch(
+                model -> model.getVariables().keySet().containsAll(List.of("Region", "Overnattningstyp", "Tid"))));
     }
 
     @Test
