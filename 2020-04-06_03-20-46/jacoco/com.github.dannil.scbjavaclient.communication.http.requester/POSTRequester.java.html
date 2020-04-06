@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>POSTRequester.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.communication.http.requester</a> &gt; <span class="el_source">POSTRequester.java</span></div><h1>POSTRequester.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2018 Daniel Nilsson
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
+package com.github.dannil.scbjavaclient.communication.http.requester;
+
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.net.http.HttpResponse;
+import java.nio.charset.Charset;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+/**
+ * &lt;p&gt;HTTP requester for POST requests.&lt;/p&gt;
+ *
+ * @since 1.2.0
+ */
+public class POSTRequester extends AbstractRequester {
+
+<span class="fc" id="L32">    private static final Logger LOGGER = LoggerFactory.getLogger(POSTRequester.class);</span>
+
+    private String query;
+
+    /**
+     * &lt;p&gt;Default constructor.&lt;/p&gt;
+     */
+    public POSTRequester() {
+<span class="fc" id="L40">        super();</span>
+<span class="fc" id="L41">    }</span>
+
+    /**
+     * &lt;p&gt;Overloaded constructor.&lt;/p&gt;
+     *
+     * @param charset
+     *            the charset
+     */
+    public POSTRequester(Charset charset) {
+<span class="fc" id="L50">        super(charset);</span>
+<span class="fc" id="L51">    }</span>
+
+    /**
+     * &lt;p&gt;Getter for query.&lt;/p&gt;
+     *
+     * @return the query
+     */
+    public String getQuery() {
+<span class="fc" id="L59">        return this.query;</span>
+    }
+
+    /**
+     * &lt;p&gt;Setter for query.&lt;/p&gt;
+     *
+     * @param query
+     *            the query
+     */
+    public void setQuery(String query) {
+<span class="fc" id="L69">        this.query = query;</span>
+<span class="fc" id="L70">    }</span>
+
+    @Override
+    public HttpResponse&lt;String&gt; getResponse(String url) {
+<span class="fc bfc" id="L74" title="All 2 branches covered.">        if (this.query == null) {</span>
+<span class="fc" id="L75">            throw new IllegalStateException(&quot;Payload is null&quot;);</span>
+        }
+<span class="fc" id="L77">        LOGGER.debug(&quot;POST: {}, {}&quot;, url, this.query);</span>
+<span class="fc" id="L78">        HttpResponse&lt;String&gt; response = null;</span>
+        try {
+<span class="fc" id="L80">            response = getResponse(url, &quot;POST&quot;, this.query);</span>
+<span class="fc" id="L81">            LOGGER.debug(&quot;HTTP {}: {}&quot;, response.statusCode(), url);</span>
+<span class="nc" id="L82">        } catch (IOException e) {</span>
+<span class="nc" id="L83">            throw new UncheckedIOException(e);</span>
+<span class="nc" id="L84">        } catch (InterruptedException e) {</span>
+<span class="nc" id="L85">            LOGGER.warn(&quot;Thread was interrupted&quot;, e);</span>
+<span class="nc" id="L86">            Thread.currentThread().interrupt();</span>
+<span class="fc" id="L87">        }</span>
+<span class="fc" id="L88">        return response;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
