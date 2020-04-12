@@ -144,25 +144,37 @@ public class BusinessActivitiesAccomodationStatisticsYearClientIT {
     }
 
     @Test
-    @Date("2017-04-13")
+    @Date("2020-04-12")
     public void getAccomodationRevenue() {
-        assertNotEquals(0, this.client.getAccomodationRevenue().size());
+        List<ResponseModel> response = this.client.getAccomodationRevenue();
+
+        assertNotEquals(0, response.size());
+        assertTrue(response.stream().allMatch(
+                model -> model.getVariables().keySet().containsAll(List.of("Region", "Tid"))));
     }
 
     @Test
-    @Date("2017-04-13")
+    @Date("2020-04-12")
     public void getAccomodationRevenueEmptyLists() {
-        assertNotEquals(0, this.client.getAccomodationRevenue(Collections.<String>emptyList(),
-                Collections.<Integer>emptyList()).size());
+        List<ResponseModel> response = this.client.getAccomodationRevenue(Collections.<String>emptyList(),
+                Collections.<Integer>emptyList());
+
+        assertNotEquals(0, response.size());
+        assertTrue(response.stream().allMatch(
+                model -> model.getVariables().keySet().containsAll(List.of("Region", "Tid"))));
     }
 
     @Test
-    @Date("2017-04-13")
+    @Date("2020-04-12")
     public void getAccomodationRevenueWithParameters() {
         List<String> regions = Arrays.asList("06", "08");
         List<Integer> years = Arrays.asList(2010, 2012);
 
-        assertNotEquals(0, this.client.getAccomodationRevenue(regions, years).size());
+        List<ResponseModel> response = this.client.getAccomodationRevenue(regions, years);
+
+        assertNotEquals(0, response.size());
+        assertTrue(response.stream().allMatch(
+                model -> model.getVariables().keySet().containsAll(List.of("Region", "Tid"))));
     }
 
 }
