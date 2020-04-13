@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ValueNode.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.model</a> &gt; <span class="el_source">ValueNode.java</span></div><h1>ValueNode.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2016 Daniel Nilsson
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
+package com.github.dannil.scbjavaclient.model;
+
+import java.util.Objects;
+
+import com.github.dannil.scbjavaclient.constants.ModelConstants;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+/**
+ * &lt;p&gt;Class which holds all data for a specific value.&lt;/p&gt;
+ *
+ * @param &lt;V&gt;
+ *            the data type of the value
+ * @since 0.0.4
+ */
+public class ValueNode&lt;V&gt; {
+
+    @JsonProperty(&quot;Value&quot;)
+    private V value;
+
+    @JsonProperty(&quot;Code&quot;)
+    private String code;
+
+    @JsonProperty(&quot;Text&quot;)
+    private String text;
+
+    /**
+     * &lt;p&gt;Default constructor.&lt;/p&gt;
+     */
+<span class="fc" id="L44">    public ValueNode() {</span>
+        // Constructor to use when some of the values are missing, such as text
+<span class="fc" id="L46">    }</span>
+
+    /**
+     * &lt;p&gt;Overloaded constructor.&lt;/p&gt;
+     *
+     * @param value
+     *            the value
+     * @param code
+     *            the code
+     * @param text
+     *            the text
+     */
+<span class="fc" id="L58">    public ValueNode(V value, String code, String text) {</span>
+<span class="fc" id="L59">        this.value = value;</span>
+<span class="fc" id="L60">        this.code = code;</span>
+<span class="fc" id="L61">        this.text = text;</span>
+<span class="fc" id="L62">    }</span>
+
+    /**
+     * &lt;p&gt;Getter for value.&lt;/p&gt;
+     *
+     * @return the value
+     */
+    public V getValue() {
+<span class="fc" id="L70">        return this.value;</span>
+    }
+
+    /**
+     * &lt;p&gt;Setter for value.&lt;/p&gt;
+     *
+     * @param value
+     *            the value
+     */
+    public void setValue(V value) {
+<span class="fc" id="L80">        this.value = value;</span>
+<span class="fc" id="L81">    }</span>
+
+    /**
+     * &lt;p&gt;Getter for code.&lt;/p&gt;
+     *
+     * @return the code
+     */
+    public String getCode() {
+<span class="fc" id="L89">        return this.code;</span>
+    }
+
+    /**
+     * &lt;p&gt;Setter for code.&lt;/p&gt;
+     *
+     * @param code
+     *            the code
+     */
+    public void setCode(String code) {
+<span class="fc" id="L99">        this.code = code;</span>
+<span class="fc" id="L100">    }</span>
+
+    /**
+     * &lt;p&gt;Getter for text.&lt;/p&gt;
+     *
+     * @return the text
+     */
+    public String getText() {
+<span class="fc" id="L108">        return this.text;</span>
+    }
+
+    /**
+     * &lt;p&gt;Setter for text.&lt;/p&gt;
+     *
+     * @param text
+     *            the text
+     */
+    public void setText(String text) {
+<span class="fc" id="L118">        this.text = text;</span>
+<span class="fc" id="L119">    }</span>
+
+    @Override
+    public int hashCode() {
+<span class="fc" id="L123">        return Objects.hash(this.code, this.value, this.text);</span>
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+<span class="fc bfc" id="L128" title="All 2 branches covered.">        if (this == obj) {</span>
+<span class="fc" id="L129">            return true;</span>
+        }
+<span class="fc bfc" id="L131" title="All 2 branches covered.">        if (obj == null) {</span>
+<span class="fc" id="L132">            return false;</span>
+        }
+<span class="fc bfc" id="L134" title="All 2 branches covered.">        if (!(obj instanceof ValueNode&lt;?&gt;)) {</span>
+<span class="fc" id="L135">            return false;</span>
+        }
+<span class="fc" id="L137">        ValueNode&lt;?&gt; other = (ValueNode&lt;?&gt;) obj;</span>
+<span class="fc bfc" id="L138" title="All 4 branches covered.">        return Objects.equals(this.code, other.code) &amp;&amp; Objects.equals(this.value, other.value)</span>
+<span class="fc bfc" id="L139" title="All 2 branches covered.">                &amp;&amp; Objects.equals(this.text, other.text);</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="fc" id="L144">        StringBuilder builder = new StringBuilder(ModelConstants.TOSTRING_BUILDER_LENGTH);</span>
+<span class="fc" id="L145">        builder.append(&quot;[code=&quot;);</span>
+<span class="fc" id="L146">        builder.append(this.code);</span>
+<span class="fc" id="L147">        builder.append(&quot;, value=&quot;);</span>
+<span class="fc" id="L148">        builder.append(this.value);</span>
+<span class="fc" id="L149">        builder.append(&quot;, text=&quot;);</span>
+<span class="fc" id="L150">        builder.append(this.text);</span>
+<span class="fc" id="L151">        builder.append(']');</span>
+<span class="fc" id="L152">        return builder.toString();</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
