@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PopulationStatisticsClient.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.client.population.statistics</a> &gt; <span class="el_source">PopulationStatisticsClient.java</span></div><h1>PopulationStatisticsClient.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2014 Daniel Nilsson
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
+package com.github.dannil.scbjavaclient.client.population.statistics;
+
+import java.util.Locale;
+
+import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
+import com.github.dannil.scbjavaclient.client.population.statistics.adoptees.PopulationStatisticsAdopteesClient;
+import com.github.dannil.scbjavaclient.client.population.statistics.amount.PopulationStatisticsAmountClient;
+import com.github.dannil.scbjavaclient.client.population.statistics.asylumseekers.PopulationStatisticsAsylumSeekersClient;
+import com.github.dannil.scbjavaclient.client.population.statistics.averageage.PopulationStatisticsAverageAgeClient;
+import com.github.dannil.scbjavaclient.client.population.statistics.background.PopulationStatisticsBackgroundClient;
+import com.github.dannil.scbjavaclient.client.population.statistics.citizenship.PopulationStatisticsCitizenshipClient;
+import com.github.dannil.scbjavaclient.client.population.statistics.deaths.PopulationStatisticsDeathsClient;
+import com.github.dannil.scbjavaclient.client.population.statistics.density.PopulationStatisticsDensityClient;
+import com.github.dannil.scbjavaclient.client.population.statistics.foreignbornpersons.PopulationStatisticsForeignBornPersonsClient;
+import com.github.dannil.scbjavaclient.client.population.statistics.foreigncitizens.PopulationStatisticsForeignCitizensClient;
+import com.github.dannil.scbjavaclient.client.population.statistics.household.PopulationStatisticsHouseholdClient;
+import com.github.dannil.scbjavaclient.client.population.statistics.livebirths.PopulationStatisticsLiveBirthsClient;
+import com.github.dannil.scbjavaclient.client.population.statistics.meanpopulation.PopulationStatisticsMeanPopulationClient;
+import com.github.dannil.scbjavaclient.client.population.statistics.migration.PopulationStatisticsMigrationClient;
+import com.github.dannil.scbjavaclient.client.population.statistics.partnership.PopulationStatisticsPartnershipClient;
+import com.github.dannil.scbjavaclient.client.population.statistics.vitalevents.PopulationStatisticsVitalEventsClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
+
+/**
+ * &lt;p&gt;Client which handles population statistics data fetching.&lt;/p&gt;
+ *
+ * @since 0.0.2
+ */
+public class PopulationStatisticsClient extends AbstractContainerClient {
+
+    /**
+     * &lt;p&gt;Default constructor. Initializes values and creates sub-clients.&lt;/p&gt;
+     */
+    public PopulationStatisticsClient() {
+<span class="fc" id="L49">        super();</span>
+
+<span class="fc" id="L51">        addClient(&quot;adoptees&quot;, new PopulationStatisticsAdopteesClient());</span>
+<span class="fc" id="L52">        addClient(&quot;amount&quot;, new PopulationStatisticsAmountClient());</span>
+<span class="fc" id="L53">        addClient(&quot;asylumseekers&quot;, new PopulationStatisticsAsylumSeekersClient());</span>
+<span class="fc" id="L54">        addClient(&quot;averageage&quot;, new PopulationStatisticsAverageAgeClient());</span>
+<span class="fc" id="L55">        addClient(&quot;background&quot;, new PopulationStatisticsBackgroundClient());</span>
+<span class="fc" id="L56">        addClient(&quot;citizenship&quot;, new PopulationStatisticsCitizenshipClient());</span>
+<span class="fc" id="L57">        addClient(&quot;deaths&quot;, new PopulationStatisticsDeathsClient());</span>
+<span class="fc" id="L58">        addClient(&quot;density&quot;, new PopulationStatisticsDensityClient());</span>
+<span class="fc" id="L59">        addClient(&quot;foreignbornpersons&quot;, new PopulationStatisticsForeignBornPersonsClient());</span>
+<span class="fc" id="L60">        addClient(&quot;foreigncitizens&quot;, new PopulationStatisticsForeignCitizensClient());</span>
+<span class="fc" id="L61">        addClient(&quot;household&quot;, new PopulationStatisticsHouseholdClient());</span>
+<span class="fc" id="L62">        addClient(&quot;livebirths&quot;, new PopulationStatisticsLiveBirthsClient());</span>
+<span class="fc" id="L63">        addClient(&quot;meanpopulation&quot;, new PopulationStatisticsMeanPopulationClient());</span>
+<span class="fc" id="L64">        addClient(&quot;migration&quot;, new PopulationStatisticsMigrationClient());</span>
+<span class="fc" id="L65">        addClient(&quot;partnership&quot;, new PopulationStatisticsPartnershipClient());</span>
+<span class="fc" id="L66">        addClient(&quot;vitalevents&quot;, new PopulationStatisticsVitalEventsClient());</span>
+<span class="fc" id="L67">    }</span>
+
+    /**
+     * &lt;p&gt;Overloaded constructor.&lt;/p&gt;
+     *
+     * @param locale
+     *            the &lt;code&gt;Locale&lt;/code&gt; for this client
+     */
+    public PopulationStatisticsClient(Locale locale) {
+<span class="fc" id="L76">        this();</span>
+
+<span class="fc" id="L78">        setLocale(locale);</span>
+<span class="fc" id="L79">    }</span>
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with population statistics adoptees
+     * data.&lt;/p&gt;
+     *
+     * @return a client for population statistics adoptees data
+     */
+    public PopulationStatisticsAdopteesClient adoptees() {
+<span class="fc" id="L88">        return (PopulationStatisticsAdopteesClient) getClient(&quot;adoptees&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with population statistics amount data.&lt;/p&gt;
+     *
+     * @return a client for population statistics amount data
+     */
+    public PopulationStatisticsAmountClient amount() {
+<span class="fc" id="L97">        return (PopulationStatisticsAmountClient) getClient(&quot;amount&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with population statistics asylum seekers
+     * data.&lt;/p&gt;
+     *
+     * @return a client for population statistics asylum seekers data
+     */
+    public PopulationStatisticsAsylumSeekersClient asylumSeekers() {
+<span class="fc" id="L107">        return (PopulationStatisticsAsylumSeekersClient) getClient(&quot;asylumseekers&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with population statistics average age data.
+     * &lt;/p&gt;
+     *
+     * @return a client for population statistics average age data
+     */
+    public PopulationStatisticsAverageAgeClient averageAge() {
+<span class="fc" id="L117">        return (PopulationStatisticsAverageAgeClient) getClient(&quot;averageage&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with population statistics background data.
+     * &lt;/p&gt;
+     *
+     * @return a client for population statistics background data
+     */
+    public PopulationStatisticsBackgroundClient background() {
+<span class="fc" id="L127">        return (PopulationStatisticsBackgroundClient) getClient(&quot;background&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with population statistics citizenship data.
+     * &lt;/p&gt;
+     *
+     * @return a client for population statistics citizenship data
+     */
+    public PopulationStatisticsCitizenshipClient citizenship() {
+<span class="fc" id="L137">        return (PopulationStatisticsCitizenshipClient) getClient(&quot;citizenship&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with population statistics deaths data.&lt;/p&gt;
+     *
+     * @return a client for population statistics deaths data
+     */
+    public PopulationStatisticsDeathsClient deaths() {
+<span class="fc" id="L146">        return (PopulationStatisticsDeathsClient) getClient(&quot;deaths&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with population statistics density data.
+     * &lt;/p&gt;
+     *
+     * @return a client for population statistics density data
+     */
+    public PopulationStatisticsDensityClient density() {
+<span class="fc" id="L156">        return (PopulationStatisticsDensityClient) getClient(&quot;density&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with population statistics foreign-born
+     * persons data. &lt;/p&gt;
+     *
+     * @return a client for population statistics foreign-born persons data
+     */
+    public PopulationStatisticsForeignBornPersonsClient foreignBornPersons() {
+<span class="fc" id="L166">        return (PopulationStatisticsForeignBornPersonsClient) getClient(&quot;foreignbornpersons&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with population statistics foreign citizens
+     * data. &lt;/p&gt;
+     *
+     * @return a client for population statistics foreign citizens data
+     */
+    public PopulationStatisticsForeignCitizensClient foreignCitizens() {
+<span class="fc" id="L176">        return (PopulationStatisticsForeignCitizensClient) getClient(&quot;foreigncitizens&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with population statistics household data.
+     * &lt;/p&gt;
+     *
+     * @return a client for population statistics household data
+     */
+    public PopulationStatisticsHouseholdClient household() {
+<span class="fc" id="L186">        return (PopulationStatisticsHouseholdClient) getClient(&quot;household&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with population statistics live births data.
+     * &lt;/p&gt;
+     *
+     * @return a client for population statistics live births data
+     */
+    public PopulationStatisticsLiveBirthsClient liveBirths() {
+<span class="fc" id="L196">        return (PopulationStatisticsLiveBirthsClient) getClient(&quot;livebirths&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with population statistics mean population
+     * data. &lt;/p&gt;
+     *
+     * @return a client for population statistics mean population data
+     */
+    public PopulationStatisticsMeanPopulationClient meanPopulation() {
+<span class="fc" id="L206">        return (PopulationStatisticsMeanPopulationClient) getClient(&quot;meanpopulation&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with population statistics migration data.
+     * &lt;/p&gt;
+     *
+     * @return a client for population statistics migration data
+     */
+    public PopulationStatisticsMigrationClient migration() {
+<span class="fc" id="L216">        return (PopulationStatisticsMigrationClient) getClient(&quot;migration&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with population statistics partnership
+     * data.&lt;/p&gt;
+     *
+     * @return a client for population statistics partnership data
+     */
+    public PopulationStatisticsPartnershipClient partnership() {
+<span class="fc" id="L226">        return (PopulationStatisticsPartnershipClient) getClient(&quot;partnership&quot;);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieve the client for interacting with population statistics vital events
+     * data.&lt;/p&gt;
+     *
+     * @return a client for population statistics vital events data
+     */
+    public PopulationStatisticsVitalEventsClient vitalEvents() {
+<span class="fc" id="L236">        return (PopulationStatisticsVitalEventsClient) getClient(&quot;vitalevents&quot;);</span>
+    }
+
+    @Override
+    public URLEndpoint getUrl() {
+<span class="fc" id="L241">        return getRootUrl().append(&quot;BE/BE0101/&quot;);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
