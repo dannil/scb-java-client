@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AbstractClient.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.client</a> &gt; <span class="el_source">AbstractClient.java</span></div><h1>AbstractClient.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2014 Daniel Nilsson
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
+package com.github.dannil.scbjavaclient.client;
+
+import java.net.http.HttpResponse;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Objects;
+
+import com.github.dannil.scbjavaclient.communication.CommunicationProtocol;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
+import com.github.dannil.scbjavaclient.communication.http.HttpStatusCode;
+import com.github.dannil.scbjavaclient.communication.http.requester.AbstractRequester;
+import com.github.dannil.scbjavaclient.communication.http.requester.GETRequester;
+import com.github.dannil.scbjavaclient.communication.http.requester.POSTRequester;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
+import com.github.dannil.scbjavaclient.exception.SCBClientResponseTooLargeException;
+import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
+import com.github.dannil.scbjavaclient.utility.Localization;
+import com.github.dannil.scbjavaclient.utility.QueryBuilder;
+import com.github.dannil.scbjavaclient.utility.StreamUtility;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+/**
+ * &lt;p&gt;Abstract class which specifies how clients should operate.&lt;/p&gt;
+ *
+ * @since 0.0.2
+ */
+public abstract class AbstractClient {
+
+<span class="fc" id="L49">    private static final Logger LOGGER = LoggerFactory.getLogger(AbstractClient.class);</span>
+
+    private CommunicationProtocol communicationProtocol;
+
+    private Locale locale;
+
+    private Localization localization;
+
+    /**
+     * &lt;p&gt;Default constructor.&lt;/p&gt;
+     */
+<span class="fc" id="L60">    protected AbstractClient() {</span>
+<span class="fc" id="L61">        this.communicationProtocol = CommunicationProtocol.HTTPS;</span>
+<span class="fc" id="L62">        this.locale = Locale.getDefault();</span>
+<span class="fc" id="L63">        this.localization = new Localization(this.locale);</span>
+<span class="fc" id="L64">    }</span>
+
+    /**
+     * &lt;p&gt;Overloaded constructor.&lt;/p&gt;
+     *
+     * @param locale
+     *            the &lt;code&gt;Locale&lt;/code&gt; for this client
+     */
+    protected AbstractClient(Locale locale) {
+<span class="fc" id="L73">        this();</span>
+<span class="fc" id="L74">        this.locale = locale;</span>
+<span class="fc" id="L75">        this.localization.setLocale(this.locale);</span>
+<span class="fc" id="L76">    }</span>
+
+    /**
+     * &lt;p&gt;Returns the communication protocol for this client instance.&lt;/p&gt;
+     *
+     * @return the
+     *         {@link com.github.dannil.scbjavaclient.communication.CommunicationProtocol
+     *         CommunicationProtocol} for this client instance
+     */
+    public CommunicationProtocol getCommunicationProtocol() {
+<span class="fc" id="L86">        return this.communicationProtocol;</span>
+    }
+
+    /**
+     * &lt;p&gt;Sets the communication protocol for this client instance.&lt;/p&gt;
+     *
+     * @param communicationProtocol
+     *            the
+     *            {@link com.github.dannil.scbjavaclient.communication.CommunicationProtocol
+     *            CommunicationProtocol} for this client instance
+     */
+    public void setCommunicationProtocol(CommunicationProtocol communicationProtocol) {
+<span class="fc" id="L98">        this.communicationProtocol = communicationProtocol;</span>
+<span class="fc" id="L99">    }</span>
+
+    /**
+     * &lt;p&gt;Retrieves the &lt;code&gt;Locale&lt;/code&gt; for this client instance.&lt;/p&gt;
+     *
+     * @return the &lt;code&gt;Locale&lt;/code&gt; for this client instance
+     */
+    public Locale getLocale() {
+<span class="fc" id="L107">        return this.locale;</span>
+    }
+
+    /**
+     * &lt;p&gt;Sets the &lt;code&gt;Locale&lt;/code&gt; for this client instance. Note that doing this
+     * after a call to {@link #setLocalizationLocale(Locale)} overwrites the localization
+     * language with the input of this method.&lt;/p&gt;
+     *
+     * @param locale
+     *            the &lt;code&gt;Locale&lt;/code&gt; for this client
+     */
+    public void setLocale(Locale locale) {
+<span class="fc" id="L119">        this.locale = locale;</span>
+<span class="fc" id="L120">        this.localization.setLocale(locale);</span>
+<span class="fc" id="L121">    }</span>
+
+    /**
+     * &lt;p&gt;Returns the &lt;code&gt;Locale&lt;/code&gt; used for the localization.&lt;/p&gt;
+     *
+     * @return locale the &lt;code&gt;Locale&lt;/code&gt; for the localization
+     */
+    public Locale getLocalizationLocale() {
+<span class="fc" id="L129">        return this.localization.getLocale();</span>
+    }
+
+    /**
+     * &lt;p&gt;Changes the &lt;code&gt;Locale&lt;/code&gt; used for the localization. Useful if the client
+     * needs to be in a different language than the error messages.&lt;/p&gt;
+     *
+     * @param loc
+     *            the &lt;code&gt;Locale&lt;/code&gt; for the localization
+     */
+    public void setLocalizationLocale(Locale loc) {
+<span class="fc" id="L140">        this.localization.setLocale(loc);</span>
+<span class="fc" id="L141">    }</span>
+
+    /**
+     * &lt;p&gt;Determines the URL for the API based on the current &lt;code&gt;Locale&lt;/code&gt; and
+     * communication protocol.&lt;/p&gt;
+     *
+     * @return the URL representing the entry point for the API
+     */
+    protected URLEndpoint getRootUrl() {
+<span class="fc" id="L150">        return URLEndpoint.getRootUrl(this.locale, this.communicationProtocol);</span>
+    }
+
+    /**
+     * &lt;p&gt;Performs a GET request to the specified URL.&lt;/p&gt;
+     *
+     * @param url
+     *            the URL which will be sent a GET request
+     * @return a string representation of the API's response
+     */
+    protected String doGetRequest(String url) {
+<span class="fc" id="L161">        AbstractRequester get = new GETRequester();</span>
+<span class="fc" id="L162">        return handleRequest(get, url);</span>
+    }
+
+    /**
+     * &lt;p&gt;Performs a POST request to the specified URL.&lt;/p&gt;
+     *
+     * @param url
+     *            the URL which will be sent a POST request
+     * @param query
+     *            the query which the API will process
+     * @return a string representation of the API's response
+     */
+    protected String doPostRequest(String url, String query) {
+<span class="fc" id="L175">        POSTRequester post = new POSTRequester();</span>
+<span class="fc" id="L176">        post.setQuery(query);</span>
+<span class="fc" id="L177">        return handleRequest(post, url);</span>
+    }
+
+    /**
+     * &lt;p&gt;Handles the HTTP request. This method contains the common logic for handling GET
+     * and POST requests.&lt;/p&gt;
+     *
+     * @param requester
+     *            the requester
+     * @param url
+     *            the URL
+     * @return a string representation of the API's response
+     */
+    private String handleRequest(AbstractRequester requester, String url) {
+<span class="fc" id="L191">        HttpResponse&lt;String&gt; response = requester.getResponse(url);</span>
+<span class="fc" id="L192">        String body = null;</span>
+<span class="fc" id="L193">        URLEndpoint endpointUrl = new URLEndpoint(url);</span>
+<span class="fc" id="L194">        String urlLanguage = endpointUrl.getLanguage();</span>
+<span class="fc bfc" id="L195" title="All 2 branches covered.">        if (response.statusCode() == HttpStatusCode.OK.getCode()) {</span>
+            // Handle possible byte order mark
+<span class="fc" id="L197">            body = StreamUtility.skipUnicodeByteOrderMark(response.body());</span>
+<span class="fc bfc" id="L198" title="All 2 branches covered.">        } else if (response.statusCode() == HttpStatusCode.NOT_FOUND.getCode()</span>
+<span class="fc bfc" id="L199" title="All 2 branches covered.">                &amp;&amp; !Objects.equals(urlLanguage, APIConstants.FALLBACK_LOCALE.getLanguage())) {</span>
+            // HTTP code 404, call the API again with the fallback language
+<span class="fc" id="L201">            URLEndpoint fallbackEndpointUrl = endpointUrl.toURL(APIConstants.FALLBACK_LOCALE);</span>
+<span class="fc" id="L202">            LOGGER.debug(&quot;Couldn't find table {} for locale {}, retrying with fallback locale {}&quot;,</span>
+<span class="fc" id="L203">                    endpointUrl.getTable(), this.locale.getLanguage(), APIConstants.FALLBACK_LOCALE.getLanguage());</span>
+<span class="fc" id="L204">            return handleRequest(requester, fallbackEndpointUrl.toString());</span>
+<span class="fc bfc" id="L205" title="All 2 branches covered.">        } else if (response.statusCode() == HttpStatusCode.FORBIDDEN.getCode()) {</span>
+<span class="fc" id="L206">            throw new SCBClientResponseTooLargeException(&quot;The response exceeded the maximum size allowed by the API&quot;);</span>
+        }
+<span class="fc" id="L208">        return body;</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieves the response models for a given table.&lt;/p&gt;
+     *
+     * @param table
+     *            the table
+     * @return a list of {@link com.github.dannil.scbjavaclient.model.ResponseModel
+     *         ResponseModel}
+     */
+    protected List&lt;ResponseModel&gt; getResponseModels(String table) {
+<span class="fc" id="L220">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L221">        return getResponseModels(table, mappings);</span>
+    }
+
+    /**
+     * &lt;p&gt;Retrieves the response models for a given table which match the input
+     * constraints.&lt;/p&gt;
+     *
+     * @param table
+     *            the table
+     * @param mappings
+     *            the mappings
+     * @return a list of {@link com.github.dannil.scbjavaclient.model.ResponseModel
+     *         ResponseModel}
+     */
+    protected List&lt;ResponseModel&gt; getResponseModels(String table, Map&lt;String, Collection&lt;?&gt;&gt; mappings) {
+<span class="fc" id="L236">        String response = doPostRequest(getUrl() + table, QueryBuilder.build(mappings));</span>
+
+<span class="fc" id="L238">        JsonCustomResponseFormat format = new JsonCustomResponseFormat(response);</span>
+<span class="fc" id="L239">        return format.toListOf(ResponseModel.class);</span>
+    }
+
+    /**
+     * &lt;p&gt;Returns the URL endpoint which this client represents.&lt;/p&gt;
+     *
+     * @return the URL endpoint for this client
+     */
+    public abstract URLEndpoint getUrl();
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
