@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FinancialMarketsStatisticsDepositAndLendingClient.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">scb-java-client</a> &gt; <a href="index.source.html" class="el_package">com.github.dannil.scbjavaclient.client.financialmarkets.statistics.depositandlending</a> &gt; <span class="el_source">FinancialMarketsStatisticsDepositAndLendingClient.java</span></div><h1>FinancialMarketsStatisticsDepositAndLendingClient.java</h1><pre class="source lang-java linenums">/*
+ * Copyright 2017 Daniel Nilsson
+ *
+ * Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this
+ * file except in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
+package com.github.dannil.scbjavaclient.client.financialmarkets.statistics.depositandlending;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+
+import com.github.dannil.scbjavaclient.client.AbstractClient;
+import com.github.dannil.scbjavaclient.communication.URLEndpoint;
+import com.github.dannil.scbjavaclient.constants.APIConstants;
+import com.github.dannil.scbjavaclient.model.ResponseModel;
+
+/**
+ * &lt;p&gt;Client which handles financial markets statistics deposit and lending data
+ * fetching.&lt;/p&gt;
+ *
+ * @since 0.5.0
+ */
+public class FinancialMarketsStatisticsDepositAndLendingClient extends AbstractClient {
+
+    private static final String AGREEMENT_CODE = &quot;Avtal&quot;;
+
+    private static final String COUNTERPARTYSECTOR_CODE = &quot;Motpartssektor&quot;;
+
+    private static final String ORIGINALRATEFIXATIONS_CODE = &quot;Rantebindningstid&quot;;
+
+    private static final String REFERENCESECTOR_CODE = &quot;Referenssektor&quot;;
+
+    /**
+     * &lt;p&gt;Default constructor.&lt;/p&gt;
+     */
+    public FinancialMarketsStatisticsDepositAndLendingClient() {
+<span class="fc" id="L48">        super();</span>
+<span class="fc" id="L49">    }</span>
+
+    /**
+     * &lt;p&gt;Overloaded constructor.&lt;/p&gt;
+     *
+     * @param locale
+     *            the &lt;code&gt;Locale&lt;/code&gt; for this client
+     */
+    public FinancialMarketsStatisticsDepositAndLendingClient(Locale locale) {
+<span class="fc" id="L58">        super(locale);</span>
+<span class="fc" id="L59">    }</span>
+
+    /**
+     * &lt;p&gt;Fetch all lending rates breakdown by remaining maturity data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getLendingRatesBreakdownByRemainingMaturity(Collection, Collection,
+     *      Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getLendingRatesBreakdownByRemainingMaturity() {
+<span class="fc" id="L72">        return getLendingRatesBreakdownByRemainingMaturity(null, null, null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all lending rates breakdown by remaining maturity data which match the
+     * input constraints.&lt;/p&gt;
+     *
+     * @param referenceSectors
+     *            the reference sectors
+     * @param counterpartySectors
+     *            the counterparty sectors
+     * @param remainingMaturities
+     *            the remaining maturities
+     * @param months
+     *            the months
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getLendingRatesBreakdownByRemainingMaturity(Collection&lt;String&gt; referenceSectors,
+            Collection&lt;Integer&gt; counterpartySectors, Collection&lt;String&gt; remainingMaturities, Collection&lt;String&gt; months) {
+<span class="fc" id="L93">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L94">        mappings.put(REFERENCESECTOR_CODE, referenceSectors);</span>
+<span class="fc" id="L95">        mappings.put(COUNTERPARTYSECTOR_CODE, counterpartySectors);</span>
+<span class="fc" id="L96">        mappings.put(&quot;AterstRantebtid&quot;, remainingMaturities);</span>
+<span class="fc" id="L97">        mappings.put(APIConstants.TIME_CODE, months);</span>
+
+<span class="fc" id="L99">        return getResponseModels(&quot;RantaT02&quot;, mappings);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all lending rates to households for housing loans breakdown by maturity
+     * data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getLendingRatesToHouseholdsForHousingLoansBreakdownByMaturity(Collection,
+     *      Collection, Collection, Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getLendingRatesToHouseholdsForHousingLoansBreakdownByMaturity() {
+<span class="fc" id="L114">        return getLendingRatesToHouseholdsForHousingLoansBreakdownByMaturity(null, null, null, null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all lending rates to households for housing loans breakdown by maturity
+     * data which match the input constraints.&lt;/p&gt;
+     *
+     * @param referenceSectors
+     *            the reference sectors
+     * @param counterpartySectors
+     *            the counterparty sectors
+     * @param agreements
+     *            the agreements
+     * @param originalRateFixations
+     *            the original rate fixations
+     * @param months
+     *            the months
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getLendingRatesToHouseholdsForHousingLoansBreakdownByMaturity(
+            Collection&lt;String&gt; referenceSectors, Collection&lt;String&gt; counterpartySectors, Collection&lt;String&gt; agreements,
+            Collection&lt;String&gt; originalRateFixations, Collection&lt;String&gt; months) {
+<span class="fc" id="L138">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L139">        mappings.put(REFERENCESECTOR_CODE, referenceSectors);</span>
+<span class="fc" id="L140">        mappings.put(COUNTERPARTYSECTOR_CODE, counterpartySectors);</span>
+<span class="fc" id="L141">        mappings.put(AGREEMENT_CODE, agreements);</span>
+<span class="fc" id="L142">        mappings.put(ORIGINALRATEFIXATIONS_CODE, originalRateFixations);</span>
+<span class="fc" id="L143">        mappings.put(APIConstants.TIME_CODE, months);</span>
+
+<span class="fc" id="L145">        return getResponseModels(&quot;RantaT04&quot;, mappings);</span>
+    }
+
+    // Daniel 2017-08-29:
+    // Throws HTTP 403
+    //
+    /**
+     * &lt;p&gt;Fetch all lending rates to households and non-financial corporations breakdown
+     * by maturity data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getLendingRatesToHouseholdsAndNonFinancialCorporationsBreakdownByMaturity(Collection,
+     *      Collection, Collection, Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getLendingRatesToHouseholdsAndNonFinancialCorporationsBreakdownByMaturity() {
+<span class="nc" id="L163">        return getLendingRatesToHouseholdsAndNonFinancialCorporationsBreakdownByMaturity(null, null, null, null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all lending rates to households and non-financial corporations breakdown
+     * by maturity data which match the input constraints.&lt;/p&gt;
+     *
+     * @param referenceSectors
+     *            the reference sectors
+     * @param counterpartySectors
+     *            the counterparty sectors
+     * @param agreements
+     *            the agreements
+     * @param originalRateFixations
+     *            the original rate fixations
+     * @param months
+     *            the months
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getLendingRatesToHouseholdsAndNonFinancialCorporationsBreakdownByMaturity(
+            Collection&lt;String&gt; referenceSectors, Collection&lt;String&gt; counterpartySectors, Collection&lt;String&gt; agreements,
+            Collection&lt;String&gt; originalRateFixations, Collection&lt;String&gt; months) {
+<span class="fc" id="L187">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L188">        mappings.put(REFERENCESECTOR_CODE, referenceSectors);</span>
+<span class="fc" id="L189">        mappings.put(COUNTERPARTYSECTOR_CODE, counterpartySectors);</span>
+<span class="fc" id="L190">        mappings.put(AGREEMENT_CODE, agreements);</span>
+<span class="fc" id="L191">        mappings.put(ORIGINALRATEFIXATIONS_CODE, originalRateFixations);</span>
+<span class="fc" id="L192">        mappings.put(APIConstants.TIME_CODE, months);</span>
+
+<span class="fc" id="L194">        return getResponseModels(&quot;RantaT01&quot;, mappings);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all lending rates breakdown by purpose data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getLendingRatesBreakdownByPurpose(Collection, Collection, Collection,
+     *      Collection, Collection)
+     */
+    public List&lt;ResponseModel&gt; getLendingRatesBreakdownByPurpose() {
+<span class="fc" id="L208">        return getLendingRatesBreakdownByPurpose(null, null, null, null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all lending rates breakdown by purpose data which match the input
+     * constraints.&lt;/p&gt;
+     *
+     * @param referenceSectors
+     *            the reference sectors
+     * @param counterpartySectors
+     *            the counterparty sectors
+     * @param agreements
+     *            the agreements
+     * @param purposes
+     *            the purposes
+     * @param months
+     *            the months
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getLendingRatesBreakdownByPurpose(Collection&lt;String&gt; referenceSectors,
+            Collection&lt;String&gt; counterpartySectors, Collection&lt;String&gt; agreements, Collection&lt;String&gt; purposes,
+            Collection&lt;String&gt; months) {
+<span class="fc" id="L232">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L233">        mappings.put(REFERENCESECTOR_CODE, referenceSectors);</span>
+<span class="fc" id="L234">        mappings.put(COUNTERPARTYSECTOR_CODE, counterpartySectors);</span>
+<span class="fc" id="L235">        mappings.put(AGREEMENT_CODE, agreements);</span>
+<span class="fc" id="L236">        mappings.put(&quot;Andamal&quot;, purposes);</span>
+<span class="fc" id="L237">        mappings.put(APIConstants.TIME_CODE, months);</span>
+
+<span class="fc" id="L239">        return getResponseModels(&quot;RantaT03&quot;, mappings);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all banks deposit rates data.&lt;/p&gt;
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getBanksDepositRates(Collection, Collection, Collection, Collection,
+     *      Collection)
+     */
+    public List&lt;ResponseModel&gt; getBanksDepositRates() {
+<span class="fc" id="L253">        return getBanksDepositRates(null, null, null, null, null);</span>
+    }
+
+    /**
+     * &lt;p&gt;Fetch all banks deposit rates data which match the input constraints.&lt;/p&gt;
+     *
+     * @param referenceSectors
+     *            the reference sectors
+     * @param counterpartySectors
+     *            the counterparty sectors
+     * @param agreements
+     *            the agreements
+     * @param originalRateFixations
+     *            the original rate fixations
+     * @param months
+     *            the months
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List&lt;ResponseModel&gt; getBanksDepositRates(Collection&lt;String&gt; referenceSectors,
+            Collection&lt;Integer&gt; counterpartySectors, Collection&lt;String&gt; agreements,
+            Collection&lt;Integer&gt; originalRateFixations, Collection&lt;String&gt; months) {
+<span class="fc" id="L276">        Map&lt;String, Collection&lt;?&gt;&gt; mappings = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L277">        mappings.put(REFERENCESECTOR_CODE, referenceSectors);</span>
+<span class="fc" id="L278">        mappings.put(COUNTERPARTYSECTOR_CODE, counterpartySectors);</span>
+<span class="fc" id="L279">        mappings.put(AGREEMENT_CODE, agreements);</span>
+<span class="fc" id="L280">        mappings.put(ORIGINALRATEFIXATIONS_CODE, originalRateFixations);</span>
+<span class="fc" id="L281">        mappings.put(APIConstants.TIME_CODE, months);</span>
+
+<span class="fc" id="L283">        return getResponseModels(&quot;RantaT05&quot;, mappings);</span>
+    }
+
+    @Override
+    public URLEndpoint getUrl() {
+<span class="fc" id="L288">        return getRootUrl().append(&quot;FM/FM5001/FM5001C/&quot;);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
