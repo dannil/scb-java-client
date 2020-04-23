@@ -38,14 +38,7 @@ public class LocalizationTest {
     public void createWithConstructorNullArgument() {
         assertThrows(NullPointerException.class, () -> new Localization(null));
     }
-
-    @Test
-    public void getString() {
-        Localization localization = new Localization(new Locale("sv", "SE"));
-
-        assertEquals("TestSvenska", localization.getString("test"));
-    }
-
+    
     @Test
     public void getStringNullArgument() {
         Localization localization = new Localization(new Locale("sv", "SE"));
@@ -54,15 +47,45 @@ public class LocalizationTest {
     }
 
     @Test
+    public void getString() {
+        Localization localization = new Localization(new Locale("sv", "SE"));
+
+        assertEquals("TestSvenska", localization.getString("test"));
+    }
+    
+    @Test
+    public void getStringBritishEnglish() {
+        Localization localization = new Localization(new Locale("en", "GB"));
+        
+        assertEquals("TestBritishEnglish", localization.getString("test"));
+    }
+    
+    @Test
+    public void getStringAmericanEnglish() {
+        Localization localization = new Localization(new Locale("en", "US"));
+
+        assertEquals("TestAmericanEnglish", localization.getString("test"));
+    }
+    
+    @Test
     public void getStringFallback() {
         Localization localization = new Localization(new Locale("sv", "SE"));
 
         assertNotEquals(new Locale("en", "US"), localization.getLocale());
-        assertEquals("UniqueEnglish", localization.getString("unique"));
+        assertEquals("UniqueAmericanEnglish", localization.getString("unique_american"));
+    }
+    
+    @Test
+    public void getStringUniqueWithSetLocale() {
+        Localization localization = new Localization(new Locale("sv", "SE"));
+        
+        assertEquals("TestSvenska", localization.getString("test"));
+        localization.setLocale(new Locale("en", "GB"));
+        assertEquals("UniqueEnglishBritish", localization.getString("unique_british"));
     }
 
     @Test
-    public void getStringFormatEnglish() {
+    public void getStringFormatAmericanEnglish() {
         Localization localization = new Localization(new Locale("en", "US"));
 
         Object[] variables = new Object[] { "http://www.abc.com" };
@@ -89,7 +112,7 @@ public class LocalizationTest {
 
         assertEquals("TestSvenska", localization.getString("test"));
         localization.setLocale(new Locale("en", "US"));
-        assertEquals("TestEnglish", localization.getString("test"));
+        assertEquals("TestAmericanEnglish", localization.getString("test"));
     }
 
 }
