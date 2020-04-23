@@ -162,6 +162,13 @@ public class ResponseModelTest {
     }
 
     @Test
+    public void equalsNullParameter() {
+        ResponseModel model = new ResponseModel();
+
+        assertFalse(model.equals(null));
+    }
+
+    @Test
     public void equalsItselfWithValues() {
         ResponseModel model1 = new ResponseModel(this.variables, this.values);
         ResponseModel model2 = new ResponseModel(this.variables, this.values);

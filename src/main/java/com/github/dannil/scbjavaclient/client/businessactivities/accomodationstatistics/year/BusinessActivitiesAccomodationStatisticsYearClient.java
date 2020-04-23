@@ -119,7 +119,7 @@ public class BusinessActivitiesAccomodationStatisticsYearClient extends Abstract
         mappings.put("Overnattningstyp", typesOfHousing);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("NV1701T12Ar", mappings);
+        return getResponseModels("NV1701T4Ar", mappings);
     }
 
     /**
@@ -219,7 +219,7 @@ public class BusinessActivitiesAccomodationStatisticsYearClient extends Abstract
         mappings.put(APIConstants.REGION_CODE, regions);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("NV1701T15Ar", mappings);
+        return getResponseModels("NV1701T15ArN", mappings);
     }
 
     @Override

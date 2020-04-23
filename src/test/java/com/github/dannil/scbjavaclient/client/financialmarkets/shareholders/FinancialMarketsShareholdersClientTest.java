@@ -18,6 +18,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Locale;
 
+import com.github.dannil.scbjavaclient.client.financialmarkets.shareholders.restoftheworld.FinancialMarketsShareholdersRestOfTheWorldClient;
+import com.github.dannil.scbjavaclient.client.financialmarkets.shareholders.swedishmarketplace.FinancialMarketsShareholdersSwedishMarketplaceClient;
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
@@ -32,6 +34,21 @@ public class FinancialMarketsShareholdersClientTest {
         FinancialMarketsShareholdersClient client = new FinancialMarketsShareholdersClient(locale);
 
         assertEquals(locale, client.getLocale());
+    }
+
+    @Test
+    public void restOfTheWorld() {
+        FinancialMarketsShareholdersClient client = new FinancialMarketsShareholdersClient();
+
+        assertEquals(FinancialMarketsShareholdersRestOfTheWorldClient.class, client.restOfTheWorld().getClass());
+    }
+
+    @Test
+    public void swedishMarketplace() {
+        FinancialMarketsShareholdersClient client = new FinancialMarketsShareholdersClient();
+
+        assertEquals(FinancialMarketsShareholdersSwedishMarketplaceClient.class,
+                client.swedishMarketplace().getClass());
     }
 
     @Test

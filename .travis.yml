@@ -5,6 +5,8 @@ jdk:
   - openjdk11
   - openjdk12
   - openjdk13
+  - openjdk14
+  - openjdk15
 git:
   depth: 99999
 branches:
@@ -19,6 +21,10 @@ env:
   - secure: Ob+txuzaiED1BdNO67hQbDCNv+/7vnngKfptzqKYVlW8ZA9RpwU9I27+dHAdfVvFkzY1xP/hk6Y3u//Js5u/5dpiNU4RWo37koK0hgmNtMKiSNwUkIii+yFvFn0y5ynG6HPRyQca3i0EXSqIZg0PvONLAcV76132qgMJs0cmOKk=
   matrix:
   - MAVEN_VERSION=3.3.9
+matrix:
+  allow_failures:
+  - jdk: openjdk14
+  - jdk: openjdk15
 before_install:
 - wget https://archive.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.zip
 - unzip -qq apache-maven-${MAVEN_VERSION}-bin.zip
@@ -37,5 +43,5 @@ after_success:
 - if [[ $TRAVIS_JDK_VERSION == openjdk11 && $TRAVIS_BRANCH == test/run-all-tests ]]; then
     mvn sonar:sonar -Dsonar.organization=dannil-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONARQUBE_TOKEN;
     rm -rf apache-maven-${MAVEN_VERSION}*;
-    sh push_build_results.sh;
+    sh src/test/resources/travis/push_build_results.sh;
   fi;

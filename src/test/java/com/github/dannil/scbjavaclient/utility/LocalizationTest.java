@@ -16,6 +16,7 @@ package com.github.dannil.scbjavaclient.utility;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Locale;
 
@@ -34,6 +35,18 @@ public class LocalizationTest {
     }
 
     @Test
+    public void createWithConstructorNullArgument() {
+        assertThrows(NullPointerException.class, () -> new Localization(null));
+    }
+    
+    @Test
+    public void getStringNullArgument() {
+        Localization localization = new Localization(new Locale("sv", "SE"));
+
+        assertThrows(NullPointerException.class, () -> localization.getString(null));
+    }
+
+    @Test
     public void getString() {
         Localization localization = new Localization(new Locale("sv", "SE"));
 
@@ -43,7 +56,7 @@ public class LocalizationTest {
     @Test
     public void getStringBritishEnglish() {
         Localization localization = new Localization(new Locale("en", "GB"));
-
+        
         assertEquals("TestBritishEnglish", localization.getString("test"));
     }
     
@@ -53,7 +66,7 @@ public class LocalizationTest {
 
         assertEquals("TestAmericanEnglish", localization.getString("test"));
     }
-
+    
     @Test
     public void getStringFallback() {
         Localization localization = new Localization(new Locale("sv", "SE"));
@@ -72,7 +85,7 @@ public class LocalizationTest {
     }
 
     @Test
-    public void getStringFormat() {
+    public void getStringFormatAmericanEnglish() {
         Localization localization = new Localization(new Locale("en", "US"));
 
         Object[] variables = new Object[] { "http://www.abc.com" };
@@ -81,7 +94,7 @@ public class LocalizationTest {
 
         assertEquals("Regions is not supported for URL " + variables[0], translation);
     }
-    
+
     @Test
     public void getStringFormatSwedish() {
         Localization localization = new Localization(new Locale("sv", "SE"));

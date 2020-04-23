@@ -7,22 +7,21 @@
 <suppressions>
   <suppress checks="Regexp" files="package-info\.java" />
 
-  <!-- Due to deprecation notice on class -->
-  <suppress checks="LineLength" files="EnvironmentIslandsClient\.java" lines="33-35" />
-
-  <!-- Due to deprecation notice on method islands -->
-  <suppress checks="LineLength" files="EnvironmentClient\.java" lines="96-98" />
-
-  <!-- Due to deprecation notice on method landUsedForTransport -->
-  <suppress checks="LineLength" files="EnvironmentClient\.java" lines="130-132" />
-
-  <!-- Due to deprecation notice on method getPopulationOnIslands -->
-  <suppress checks="LineLength" files="EnvironmentShorelineLandUseLandUseClient\.java" lines="228-230" />
-  <suppress checks="LineLength" files="EnvironmentShorelineLandUseLandUseClient\.java" lines="249-251" />
-
   <!-- Due to deprecation notice on method getTransportInfrastructureArea -->
-  <suppress checks="LineLength" files="EnvironmentLandUseInfrastructureForTransportClient\.java" lines="63-64" />
-  <suppress checks="LineLength" files="EnvironmentLandUseInfrastructureForTransportClient\.java" lines="85-86" />
+  <suppress checks="LineLength" files="EnvironmentLandUseUsageClient\.java" lines="187-188" />
+  <suppress checks="LineLength" files="EnvironmentLandUseUsageClient\.java" lines="208-209" />
+  
+  <!-- Due to deprecation notice on method getOwnershipOfSharesByMarketplace -->
+  <suppress checks="LineLength" files="FinancialMarketsShareholdersClient\.java" lines="127-128" />
+  <suppress checks="LineLength" files="FinancialMarketsShareholdersClient\.java" lines="151-152" />
+  
+  <!-- Due to deprecation notice on method getOwnershipOfSharesBySeries -->
+  <suppress checks="LineLength" files="FinancialMarketsShareholdersClient\.java" lines="177-178" />
+  <suppress checks="LineLength" files="FinancialMarketsShareholdersClient\.java" lines="201-202" />
+  
+  <!-- Due to deprecation notice on method getForeignOwnershipOfShares -->
+  <suppress checks="LineLength" files="FinancialMarketsShareholdersClient\.java" lines="227-228" />
+  <suppress checks="LineLength" files="FinancialMarketsShareholdersClient\.java" lines="249-250" />
 
   <!-- Due to class having been retrieved from GitHub, so we can't enforce all of our own checks ! -->
   <suppress checks="FallThrough" files="UnicodeBOMInputStream\.java" />

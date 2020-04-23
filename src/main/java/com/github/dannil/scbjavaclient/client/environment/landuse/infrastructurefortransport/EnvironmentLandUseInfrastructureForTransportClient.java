@@ -190,6 +190,40 @@ public class EnvironmentLandUseInfrastructureForTransportClient extends Abstract
         return getResponseModels("VaglangdKategori", mappings);
     }
 
+    /**
+     * <p>Fetch all land with transport infrastructure data.</p>
+     *
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     *
+     * @see #getLandWithTransportInfrastructure(Collection, Collection)
+     */
+    public List<ResponseModel> getLandWithTransportInfrastructure() {
+        return getLandWithTransportInfrastructure(null, null);
+    }
+
+    /**
+     * <p>Fetch all land with transport infrastructure data which match the input
+     * constraints.</p>
+     *
+     * @param regions
+     *            the regions
+     * @param years
+     *            the years
+     * @return the data wrapped in a list of
+     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
+     *         objects
+     */
+    public List<ResponseModel> getLandWithTransportInfrastructure(Collection<String> regions,
+            Collection<Integer> years) {
+        Map<String, Collection<?>> mappings = new HashMap<>();
+        mappings.put(APIConstants.REGION_CODE, regions);
+        mappings.put(APIConstants.TIME_CODE, years);
+
+        return getResponseModels("TransportInfAreal", mappings);
+    }
+
     @Override
     public URLEndpoint getUrl() {
         return getRootUrl().append("MI/MI0803/MI0803E");

@@ -143,20 +143,20 @@
     <!-- See http://checkstyle.sf.net/config_import.html -->
     <module name="AvoidStarImport" />
     <module name="AvoidStaticImport" />
-    <module name="CustomImportOrder">
-      <property name="specialImportsRegExp" value="gov." />
-      <property name="sortImportsInGroupAlphabetically" value="true" />
-      <property name="customImportOrderRules" value="STATIC###STANDARD_JAVA_PACKAGE###THIRD_PARTY_PACKAGE" />
-    </module>
-    <module name="IllegalImport" /> <!-- defaults to sun.* packages -->
-    <!-- <module name="ImportControl" /> -->
     <module name="ImportOrder">
-      <property name="groups" value="/^java\./,javax,com,org" />
+      <property name="groups" value="/^java\./,javax,com.github.dannil.scbjavaclient,com,org" />
       <property name="ordered" value="true" />
       <property name="separated" value="true" />
       <property name="option" value="above" />
       <property name="sortStaticImportsAlphabetically" value="true" />
     </module>
+    <module name="CustomImportOrder">
+      <property name="specialImportsRegExp" value="gov." />
+      <property name="sortImportsInGroupAlphabetically" value="true" />
+      <property name="customImportOrderRules" value="STATIC###STANDARD_JAVA_PACKAGE###SAME_PACKAGE(4)###THIRD_PARTY_PACKAGE" />
+    </module>
+    <module name="IllegalImport" /> <!-- defaults to sun.* packages -->
+    <!-- <module name="ImportControl" /> -->
     <module name="RedundantImport" />
     <module name="UnusedImports" />
 
