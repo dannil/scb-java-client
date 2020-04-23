@@ -33,35 +33,42 @@ public class LocalizationTest {
         assertEquals(new Locale("sv", "SE"), localization.getLocale());
     }
 
-    // @Test(expected = NullPointerException.class)
-    // public void createWithConstructorNullArgument() {
-    // Localization localization = new Localization(null);
-    //
-    // assertNull(localization);
-    // }
-
     @Test
     public void getString() {
         Localization localization = new Localization(new Locale("sv", "SE"));
 
         assertEquals("TestSvenska", localization.getString("test"));
     }
+    
+    @Test
+    public void getStringBritishEnglish() {
+        Localization localization = new Localization(new Locale("en", "GB"));
 
-    // @Test(expected = NullPointerException.class)
-    // public void getStringNullArgument() {
-    // Localization localization = new Localization(new Locale("sv", "SE"));
-    //
-    // String s = localization.getString(null);
-    //
-    // assertNull(s);
-    // }
+        assertEquals("TestBritishEnglish", localization.getString("test"));
+    }
+    
+    @Test
+    public void getStringAmericanEnglish() {
+        Localization localization = new Localization(new Locale("en", "US"));
+
+        assertEquals("TestAmericanEnglish", localization.getString("test"));
+    }
 
     @Test
     public void getStringFallback() {
         Localization localization = new Localization(new Locale("sv", "SE"));
 
         assertNotEquals(new Locale("en", "US"), localization.getLocale());
-        assertEquals("UniqueEnglish", localization.getString("unique"));
+        assertEquals("UniqueAmericanEnglish", localization.getString("unique_american"));
+    }
+    
+    @Test
+    public void getStringUniqueWithSetLocale() {
+        Localization localization = new Localization(new Locale("sv", "SE"));
+        
+        assertEquals("TestSvenska", localization.getString("test"));
+        localization.setLocale(new Locale("en", "GB"));
+        assertEquals("UniqueEnglishBritish", localization.getString("unique_british"));
     }
 
     @Test
@@ -74,6 +81,17 @@ public class LocalizationTest {
 
         assertEquals("Regions is not supported for URL " + variables[0], translation);
     }
+    
+    @Test
+    public void getStringFormatSwedish() {
+        Localization localization = new Localization(new Locale("sv", "SE"));
+
+        Object[] variables = new Object[] { "http://www.abc.com" };
+
+        String translation = localization.getString("regions_is_not_supported_for_url", variables);
+
+        assertEquals("Regioner stöds inte för URL " + variables[0], translation);
+    }
 
     @Test
     public void setLanguage() {
@@ -81,7 +99,7 @@ public class LocalizationTest {
 
         assertEquals("TestSvenska", localization.getString("test"));
         localization.setLocale(new Locale("en", "US"));
-        assertEquals("TestEnglish", localization.getString("test"));
+        assertEquals("TestAmericanEnglish", localization.getString("test"));
     }
 
 }
