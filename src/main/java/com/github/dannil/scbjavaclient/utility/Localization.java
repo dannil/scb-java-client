@@ -69,7 +69,7 @@ public class Localization {
      *            the <code>Locale</code>
      */
     public void setLocale(Locale locale) {
-        this.bundle = ResourceBundle.getBundle(this.baseName);
+        this.bundle = ResourceBundle.getBundle(this.baseName, locale);
     }
 
     /**
