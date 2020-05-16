@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Daniel Nilsson
+ * Copyright 2020 Daniel Nilsson
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.livingconditions.surveys.health;
+package com.github.dannil.scbjavaclient.client.livingconditions.surveys.oldtables;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
@@ -20,7 +20,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.github.dannil.scbjavaclient.test.extensions.AllowFailure;
 import com.github.dannil.scbjavaclient.test.extensions.Date;
 import com.github.dannil.scbjavaclient.test.extensions.Remote;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
@@ -30,13 +29,13 @@ import org.junit.jupiter.api.Test;
 
 @Suite
 @Remote
-public class LivingConditionsSurveysHealthClientIT {
+public class LivingConditionsSurveysOldTablesClientIT {
 
-    private LivingConditionsSurveysHealthClient client;
+    private LivingConditionsSurveysOldTablesClient client;
 
     @BeforeEach
     public void setup() {
-        this.client = new LivingConditionsSurveysHealthClient();
+        this.client = new LivingConditionsSurveysOldTablesClient();
     }
 
     @Test
@@ -121,7 +120,6 @@ public class LivingConditionsSurveysHealthClientIT {
 
     @Test
     @Date("2020-05-03")
-    @AllowFailure
     public void getDoctorAndDentistAppointmentsWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getDoctorAndDentistAppointments(Collections.<String>emptyList(),
@@ -131,7 +129,6 @@ public class LivingConditionsSurveysHealthClientIT {
 
     @Test
     @Date("2020-05-03")
-    @AllowFailure
     public void getDoctorAndDentistAppointmentsWithParameters() {
         List<String> indicators = Arrays.asList("H812", "H820");
         List<String> ages = Arrays.asList("35-44");

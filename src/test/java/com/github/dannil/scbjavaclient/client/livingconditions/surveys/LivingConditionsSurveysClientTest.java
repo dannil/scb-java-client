@@ -20,6 +20,7 @@ import java.util.Locale;
 
 import com.github.dannil.scbjavaclient.client.livingconditions.surveys.employment.LivingConditionsSurveysEmploymentClient;
 import com.github.dannil.scbjavaclient.client.livingconditions.surveys.health.LivingConditionsSurveysHealthClient;
+import com.github.dannil.scbjavaclient.client.livingconditions.surveys.oldtables.LivingConditionsSurveysOldTablesClient;
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 import com.github.dannil.scbjavaclient.test.extensions.Suite;
 
@@ -48,6 +49,13 @@ public class LivingConditionsSurveysClientTest {
         LivingConditionsSurveysClient client = new LivingConditionsSurveysClient();
 
         assertEquals(LivingConditionsSurveysHealthClient.class, client.health().getClass());
+    }
+    
+    @Test
+    public void oldTablesClient() {
+        LivingConditionsSurveysClient client = new LivingConditionsSurveysClient();
+
+        assertEquals(LivingConditionsSurveysOldTablesClient.class, client.oldTables().getClass());
     }
 
     @Test

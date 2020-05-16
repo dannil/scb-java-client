@@ -19,6 +19,7 @@ import java.util.Locale;
 import com.github.dannil.scbjavaclient.client.AbstractContainerClient;
 import com.github.dannil.scbjavaclient.client.livingconditions.surveys.employment.LivingConditionsSurveysEmploymentClient;
 import com.github.dannil.scbjavaclient.client.livingconditions.surveys.health.LivingConditionsSurveysHealthClient;
+import com.github.dannil.scbjavaclient.client.livingconditions.surveys.oldtables.LivingConditionsSurveysOldTablesClient;
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
@@ -36,6 +37,7 @@ public class LivingConditionsSurveysClient extends AbstractContainerClient {
 
         addClient("employment", new LivingConditionsSurveysEmploymentClient());
         addClient("health", new LivingConditionsSurveysHealthClient());
+        addClient("oldtables", new LivingConditionsSurveysOldTablesClient());
     }
 
     /**
@@ -68,6 +70,16 @@ public class LivingConditionsSurveysClient extends AbstractContainerClient {
      */
     public LivingConditionsSurveysHealthClient health() {
         return (LivingConditionsSurveysHealthClient) getClient("health");
+    }
+
+    /**
+     * <p>Retrieve the client for interacting with living conditions surveys old tables
+     * data.</p>
+     *
+     * @return a client for living conditions surveys old tables data
+     */
+    public LivingConditionsSurveysOldTablesClient oldTables() {
+        return (LivingConditionsSurveysOldTablesClient) getClient("oldtables");
     }
 
     @Override

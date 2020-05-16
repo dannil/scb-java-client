@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Daniel Nilsson
+ * Copyright 2020 Daniel Nilsson
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this
  * file except in compliance with the License. You may obtain a copy of the License at
@@ -12,7 +12,7 @@
  * permissions and limitations under the License.
  */
 
-package com.github.dannil.scbjavaclient.client.livingconditions.surveys.health;
+package com.github.dannil.scbjavaclient.client.livingconditions.surveys.oldtables;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -26,16 +26,16 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles living conditions surveys health data fetching.</p>
+ * <p>Client which handles living conditions surveys old tables data fetching.</p>
  *
- * @since 0.2.0
+ * @since 3.1.0
  */
-public class LivingConditionsSurveysHealthClient extends AbstractClient {
+public class LivingConditionsSurveysOldTablesClient extends AbstractClient {
 
     /**
      * <p>Default constructor.</p>
      */
-    public LivingConditionsSurveysHealthClient() {
+    public LivingConditionsSurveysOldTablesClient() {
         super();
     }
 
@@ -45,7 +45,7 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
      * @param locale
      *            the <code>Locale</code> for this client
      */
-    public LivingConditionsSurveysHealthClient(Locale locale) {
+    public LivingConditionsSurveysOldTablesClient(Locale locale) {
         super(locale);
     }
 
@@ -79,27 +79,7 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
      */
     public List<ResponseModel> getPhysicalAndMentalHealth(Collection<String> indicators, Collection<String> ages,
             Collection<Integer> sexes, Collection<String> periods) {
-        return generate(indicators, ages, sexes, periods, "LE01012019H03");
-    }
-    
-    /**
-     * <p>Fetch all physical and mental health data which match the input constraints.</p>
-     *
-     * @param indicators
-     *            the indicators
-     * @param studyDomains
-     *            the study domains
-     * @param sexes
-     *            the sexes
-     * @param periods
-     *            the periods
-     * @return the data wrapped in a list of
-     *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
-     *         objects
-     */
-    public List<ResponseModel> getPhysicalAndMentalHealth(Collection<String> indicators, Collection<String> studyDomains,
-            Collection<String> sexes, Collection<String> periods) {
-        return generate(indicators, studyDomains, sexes, periods, "LE01012019H03");
+        return generate(indicators, ages, sexes, periods, "LE0101H01");
     }
 
     /**
@@ -177,13 +157,7 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
      *
      * @see #getDoctorAndDentistAppointments(Collection, Collection, Collection,
      *      Collection)
-     *
-     * @deprecated table removed from API, use
-     *             {@link com.github.dannil.scbjavaclient.client.livingconditions.surveys.oldtables.LivingConditionsSurveysOldTablesClient#getDoctorAndDentistAppointments()
-     *             LivingConditionsSurveysOldTablesClient#getDoctorAndDentistAppointments()}
-     *             instead
      */
-    @Deprecated(since = "3.1.0", forRemoval = true)
     public List<ResponseModel> getDoctorAndDentistAppointments() {
         return getDoctorAndDentistAppointments(null, null, null, null);
     }
@@ -203,13 +177,7 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
-     *
-     * @deprecated table removed from API, use
-     *             {@link com.github.dannil.scbjavaclient.client.livingconditions.surveys.oldtables.LivingConditionsSurveysOldTablesClient#getDoctorAndDentistAppointments(Collection, Collection, Collection, Collection)
-     *             LivingConditionsSurveysOldTablesClient#getDoctorAndDentistAppointments(Collection, Collection, Collection, Collection)}
-     *             instead
      */
-    @Deprecated(since = "3.1.0", forRemoval = true)
     public List<ResponseModel> getDoctorAndDentistAppointments(Collection<String> indicators, Collection<String> ages,
             Collection<Integer> sexes, Collection<String> periods) {
         return generate(indicators, ages, sexes, periods, "LE0101H19");
@@ -310,7 +278,7 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
 
     @Override
     public URLEndpoint getUrl() {
-        return getRootUrl().append("LE/LE0101/LE0101H/");
+        return getRootUrl().append("LE/LE0101/LE0101X/");
     }
 
 }
