@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.dannil</groupId>
@@ -487,23 +488,22 @@
               <fail>true</fail>
             </configuration>
           </execution>
-          <!-- Not usable right now, see https://github.com/mojohaus/extra-enforcer-rules/issues/48 -->
-          <!-- <execution> -->
-          <!-- <id>enforce-utf8-encoding</id> -->
-          <!-- <goals> -->
-          <!-- <goal>enforce</goal> -->
-          <!-- </goals> -->
-          <!-- <configuration> -->
-          <!-- <rules> -->
-          <!-- <requireEncoding> -->
-          <!-- <encoding>${project.build.sourceEncoding}</encoding> -->
-          <!-- <includes>src/main/resources/**,src/test/resources/**</includes> -->
-          <!-- </requireEncoding> -->
-          <!-- </rules> -->
-          <!-- <failFast>false</failFast> -->
-          <!-- <fail>true</fail> -->
-          <!-- </configuration> -->
-          <!-- </execution> -->
+          <execution>
+            <id>enforce-utf8-encoding</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <requireEncoding>
+                  <encoding>${project.build.sourceEncoding}</encoding>
+                  <includes>src/main/resources/**,src/test/resources/**</includes>
+                </requireEncoding>
+              </rules>
+              <failFast>false</failFast>
+              <fail>true</fail>
+            </configuration>
+          </execution>
         </executions>
         <dependencies>
           <dependency>
