@@ -23,7 +23,6 @@ env:
   - MAVEN_VERSION=3.3.9
 matrix:
   allow_failures:
-  - jdk: openjdk14
   - jdk: openjdk15
 before_install:
 - wget https://archive.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.zip
