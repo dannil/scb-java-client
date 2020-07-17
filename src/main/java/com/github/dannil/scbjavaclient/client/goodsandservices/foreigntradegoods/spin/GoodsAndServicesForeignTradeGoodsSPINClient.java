@@ -67,20 +67,20 @@ public class GoodsAndServicesForeignTradeGoodsSPINClient extends AbstractClient 
      * <p>Fetch all imports and exports of goods data which match the input
      * constraints.</p>
      *
-     * @param spin2007
-     *            the SPIN 2007
+     * @param spin2015
+     *            the SPIN 2015
      * @param years
      *            the years
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
      *         objects
      */
-    public List<ResponseModel> getImportsAndExportsOfGoods(Collection<String> spin2007, Collection<Integer> years) {
+    public List<ResponseModel> getImportsAndExportsOfGoods(Collection<String> spin2015, Collection<Integer> years) {
         Map<String, Collection<?>> mappings = new HashMap<>();
-        mappings.put("SPIN2007Original", spin2007);
+        mappings.put("SPIN2015Original", spin2015);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("ImpExpSPIN2007TotAr", mappings);
+        return getResponseModels("ImpExpSPIN2015TotAr", mappings);
     }
 
     @Override
