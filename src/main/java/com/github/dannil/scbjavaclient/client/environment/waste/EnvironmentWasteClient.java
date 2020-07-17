@@ -88,7 +88,7 @@ public class EnvironmentWasteClient extends AbstractClient {
         mappings.put(WASTECATEGORY_CODE, wasteCategories);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("MI0305T01B", mappings);
+        return getResponseModels("MI0305T01C", mappings);
     }
 
     /**
@@ -124,7 +124,7 @@ public class EnvironmentWasteClient extends AbstractClient {
         mappings.put(WASTECATEGORY_CODE, wasteCategories);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("MI0305T02N", mappings);
+        return getResponseModels("MI0305T003", mappings);
     }
 
     @Override
