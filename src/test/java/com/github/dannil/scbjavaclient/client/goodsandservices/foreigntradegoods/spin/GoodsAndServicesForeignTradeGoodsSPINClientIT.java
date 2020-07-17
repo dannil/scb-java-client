@@ -39,22 +39,22 @@ public class GoodsAndServicesForeignTradeGoodsSPINClientIT {
     }
 
     @Test
-    @Date("2017-04-28")
+    @Date("2020-07-17")
     public void getImportsAndExportsOfGoods() {
         assertNotEquals(0, this.client.getImportsAndExportsOfGoods().size());
     }
 
     @Test
-    @Date("2017-04-28")
+    @Date("2020-07-17")
     public void getImportsAndExportsOfGoodsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getImportsAndExportsOfGoods(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
-    @Date("2017-04-28")
+    @Date("2020-07-17")
     public void getImportsAndExportsOfGoodsWithParameters() {
-        List<String> spin2007 = Arrays.asList("A-U", "01");
+        List<String> spin2007 = Arrays.asList("A-U", "01.210");
         List<Integer> years = Arrays.asList(2010, 2011);
 
         assertNotEquals(0, this.client.getImportsAndExportsOfGoods(spin2007, years).size());
