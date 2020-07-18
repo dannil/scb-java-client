@@ -178,7 +178,7 @@ public class EnvironmentSEEAGoodsAndServicesSectorClient extends AbstractClient 
      */
     public List<ResponseModel> getEnvironmentalSectorValueAddedByIndustrialClassification(
             Collection<String> industrialClassifications, Collection<Integer> years) {
-        return generateEnvironmentalSectorByIndustrialClassification(industrialClassifications, years, "MI1301T02");
+        return generateEnvironmentalSectorByIndustrialClassification(industrialClassifications, years, "MI1301T02N");
     }
 
     /**

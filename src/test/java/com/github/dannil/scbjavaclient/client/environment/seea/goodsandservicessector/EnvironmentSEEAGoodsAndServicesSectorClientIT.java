@@ -108,13 +108,13 @@ public class EnvironmentSEEAGoodsAndServicesSectorClientIT {
     }
 
     @Test
-    @Date("2018-06-26")
+    @Date("2020-07-18")
     public void getEnvironmentalSectorValueAddedByIndustrialClassification() {
         assertNotEquals(0, this.client.getEnvironmentalSectorValueAddedByIndustrialClassification().size());
     }
 
     @Test
-    @Date("2018-06-26")
+    @Date("2020-07-18")
     public void getEnvironmentalSectorValueAddedByIndustrialClassificationWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getEnvironmentalSectorValueAddedByIndustrialClassification(Collections.<String>emptyList(),
@@ -122,7 +122,7 @@ public class EnvironmentSEEAGoodsAndServicesSectorClientIT {
     }
 
     @Test
-    @Date("2018-06-26")
+    @Date("2020-07-18")
     public void getEnvironmentalSectorValueAddedByIndustrialClassificationWithParameters() {
         List<String> industrialClassifications = Arrays.asList("L68", "S94-T98");
         List<Integer> years = Arrays.asList(2008, 2009);
