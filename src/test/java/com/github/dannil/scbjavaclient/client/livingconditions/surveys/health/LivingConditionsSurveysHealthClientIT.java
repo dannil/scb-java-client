@@ -39,30 +39,30 @@ public class LivingConditionsSurveysHealthClientIT {
         this.client = new LivingConditionsSurveysHealthClient();
     }
 
-    @Test
-    @Date("2020-05-03")
-    public void getPhysicalAndMentalHealth() {
-        assertNotEquals(0, this.client.getPhysicalAndMentalHealth().size());
-    }
-
-    @Test
-    @Date("2020-05-03")
-    public void getPhysicalAndMentalHealthWithParametersEmptyLists() {
-        assertNotEquals(0,
-                this.client.getPhysicalAndMentalHealth(Collections.<String>emptyList(), Collections.<String>emptyList(),
-                        Collections.<Integer>emptyList(), Collections.<String>emptyList()).size());
-    }
-
-    @Test
-    @Date("2020-05-03")
-    public void getPhysicalAndMentalHealthWithParameters() {
-        List<String> indicators = Arrays.asList("H656", "H680");
-        List<String> ages = Arrays.asList("35-44");
-        List<Integer> sexes = Arrays.asList(1, 2);
-        List<String> periods = Arrays.asList("2008-2009", "2014-2015");
-
-        assertNotEquals(0, this.client.getPhysicalAndMentalHealth(indicators, ages, sexes, periods).size());
-    }
+//    @Test
+//    @Date("2020-05-03")
+//    public void getPhysicalAndMentalHealth() {
+//        assertNotEquals(0, this.client.getPhysicalAndMentalHealth().size());
+//    }
+//
+//    @Test
+//    @Date("2020-05-03")
+//    public void getPhysicalAndMentalHealthWithParametersEmptyLists() {
+//        assertNotEquals(0,
+//                this.client.getPhysicalAndMentalHealth(Collections.<String>emptyList(), Collections.<String>emptyList(),
+//                        Collections.<Integer>emptyList(), Collections.<String>emptyList()).size());
+//    }
+//
+//    @Test
+//    @Date("2020-05-03")
+//    public void getPhysicalAndMentalHealthWithParameters() {
+//        List<String> indicators = Arrays.asList("H656", "H680");
+//        List<String> ages = Arrays.asList("35-44");
+//        List<Integer> sexes = Arrays.asList(1, 2);
+//        List<String> periods = Arrays.asList("2008-2009", "2014-2015");
+//
+//        assertNotEquals(0, this.client.getPhysicalAndMentalHealth(indicators, ages, sexes, periods).size());
+//    }
 
     @Test
     @Date("2020-05-03")
