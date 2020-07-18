@@ -115,7 +115,7 @@ public class FinancialMarketsBalanceOfPaymentsDirectInvestmentsClient extends Ab
         mappings.put("Land", countries);
         mappings.put(APIConstants.TIME_CODE, years);
 
-        return getResponseModels("FM0001T04", mappings);
+        return getResponseModels("FM0001T04b", mappings);
     }
 
     /**
@@ -217,7 +217,7 @@ public class FinancialMarketsBalanceOfPaymentsDirectInvestmentsClient extends Ab
         mappings.put("Land", countries);
         mappings.put(APIConstants.TIME_CODE, quarters);
 
-        return getResponseModels("FM0001T04Kv", mappings);
+        return getResponseModels("FM0001T04Kvb", mappings);
     }
 
     @Override
