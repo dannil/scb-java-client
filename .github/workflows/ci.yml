@@ -13,7 +13,7 @@ jobs:
   build:
     strategy:
       matrix:
-        java: [11, 12, 13, 14-ea, 15-ea]
+        java: [11, 12, 13, 14, 15-ea]
       fail-fast: false
     name: Java ${{ matrix.java }}
     runs-on: ubuntu-16.04

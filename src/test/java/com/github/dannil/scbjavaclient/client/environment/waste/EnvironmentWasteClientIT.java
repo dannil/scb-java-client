@@ -39,13 +39,13 @@ public class EnvironmentWasteClientIT {
     }
 
     @Test
-    @Date("2018-10-31")
+    @Date("2020-07-17")
     public void getGeneratedWaste() {
         assertNotEquals(0, this.client.getGeneratedWaste().size());
     }
 
     @Test
-    @Date("2018-10-31")
+    @Date("2020-07-17")
     public void getGeneratedWasteWithParametersEmptyLists() {
         assertNotEquals(0,
                 this.client.getGeneratedWaste(Collections.<String>emptyList(), Collections.<String>emptyList(),
@@ -53,7 +53,7 @@ public class EnvironmentWasteClientIT {
     }
 
     @Test
-    @Date("2018-10-31")
+    @Date("2020-07-17")
     public void getGeneratedWasteWasteWithParameters() {
         List<String> properties = Arrays.asList("O", "F");
         List<String> industrialClassifications = Arrays.asList("A01-03", "C16");
@@ -65,20 +65,20 @@ public class EnvironmentWasteClientIT {
     }
 
     @Test
-    @Date("2017-03-06")
+    @Date("2020-07-17")
     public void getTreatedWaste() {
         assertNotEquals(0, this.client.getTreatedWaste().size());
     }
 
     @Test
-    @Date("2017-03-06")
+    @Date("2020-07-17")
     public void getTreatedWasteWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getTreatedWaste(Collections.<Integer>emptyList(),
                 Collections.<String>emptyList(), Collections.<Integer>emptyList()).size());
     }
 
     @Test
-    @Date("2017-03-06")
+    @Date("2020-07-17")
     public void getTreatedWasteWasteWithParameters() {
         List<Integer> treatmentCategories = Arrays.asList(40, 50);
         List<String> wasteCategories = Arrays.asList("01.1", "03.2");
