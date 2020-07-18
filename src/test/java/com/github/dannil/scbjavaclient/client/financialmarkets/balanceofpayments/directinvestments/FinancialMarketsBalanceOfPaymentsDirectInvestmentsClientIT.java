@@ -62,20 +62,20 @@ public class FinancialMarketsBalanceOfPaymentsDirectInvestmentsClientIT {
     }
 
     @Test
-    @Date("2017-06-13")
+    @Date("2020-07-18")
     public void getDirectInvestmentsByCountryYears() {
         assertNotEquals(0, this.client.getDirectInvestmentsByCountryYears().size());
     }
 
     @Test
-    @Date("2017-06-13")
+    @Date("2020-07-18")
     public void getDirectInvestmentsByCountryYearsWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getDirectInvestmentsByCountryYears(Collections.<String>emptyList(),
                 Collections.<Integer>emptyList()).size());
     }
 
     @Test
-    @Date("2017-06-13")
+    @Date("2020-07-18")
     public void getDirectInvestmentsByCountryYearsWithParameters() {
         List<String> countries = Arrays.asList("IT", "LU");
         List<Integer> years = Arrays.asList(2012, 2013);
@@ -129,20 +129,20 @@ public class FinancialMarketsBalanceOfPaymentsDirectInvestmentsClientIT {
     }
 
     @Test
-    @Date("2017-06-13")
+    @Date("2020-07-18")
     public void getDirectInvestmentsByCountryQuarters() {
         assertNotEquals(0, this.client.getDirectInvestmentsByCountryQuarters().size());
     }
 
     @Test
-    @Date("2017-06-13")
+    @Date("2020-07-18")
     public void getDirectInvestmentsByCountryQuartersWithParametersEmptyLists() {
         assertNotEquals(0, this.client.getDirectInvestmentsByCountryQuarters(Collections.<String>emptyList(),
                 Collections.<String>emptyList()).size());
     }
 
     @Test
-    @Date("2017-06-13")
+    @Date("2020-07-18")
     public void getDirectInvestmentsByCountryQuartersWithParameters() {
         List<String> countries = Arrays.asList("IT", "LU");
         List<String> quarters = Arrays.asList("2008K1", "2008K2");
