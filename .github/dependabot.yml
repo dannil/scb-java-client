@@ -1,0 +1,17 @@
+version: 2
+updates:
+- package-ecosystem: maven
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "04:30"
+  open-pull-requests-limit: 10
+  labels:
+  - dependencies
+  ignore:
+  - dependency-name: com.fasterxml.jackson.core:jackson-*
+    versions:
+    - ">= 0"
+  - dependency-name: org.junit*
+    versions:
+    - ">= 0"
