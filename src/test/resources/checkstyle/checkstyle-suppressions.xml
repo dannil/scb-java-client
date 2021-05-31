@@ -23,11 +23,12 @@
   <suppress checks="LineLength" files="FinancialMarketsShareholdersClient\.java" lines="227-228" />
   <suppress checks="LineLength" files="FinancialMarketsShareholdersClient\.java" lines="249-250" />
 
-  <!-- Due to class having been retrieved from GitHub, so we can't enforce all of our own checks ! -->
+  <!-- Due to class having been retrieved from GitHub, we can't enforce all of our own checks ! -->
   <suppress checks="FallThrough" files="UnicodeBOMInputStream\.java" />
   <suppress checks="MagicNumber" files="UnicodeBOMInputStream\.java" />
   <suppress checks="NoWhitespaceAfter" files="UnicodeBOMInputStream\.java" />
   <suppress checks="Regexp" files="UnicodeBOMInputStream\.java" />
   <suppress checks="RegexpHeader" files="UnicodeBOMInputStream\.java" />
+  <suppress checks="UnnecessaryParentheses" files="UnicodeBOMInputStream\.java" />
 
 </suppressions>
