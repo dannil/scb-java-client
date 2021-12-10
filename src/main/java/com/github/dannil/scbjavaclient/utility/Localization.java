@@ -30,6 +30,8 @@ public class Localization {
 
     private String baseName;
 
+    private Locale locale;
+
     private Locale fallbackLocale;
 
     private ResourceBundle bundle;
@@ -50,6 +52,7 @@ public class Localization {
      */
     public Localization(Locale locale) {
         this();
+        this.locale = locale;
         this.bundle = ResourceBundle.getBundle(this.baseName, locale);
     }
 
@@ -59,7 +62,7 @@ public class Localization {
      * @return the <code>Locale</code> for this localization instance.
      */
     public Locale getLocale() {
-        return this.bundle.getLocale();
+        return this.locale;
     }
 
     /**
@@ -85,7 +88,7 @@ public class Localization {
         try {
             return this.bundle.getString(key);
         } catch (MissingResourceException e) {
-            return ResourceBundle.getBundle(this.baseName).getString(key);
+            return ResourceBundle.getBundle(this.baseName, this.fallbackLocale).getString(key);
         }
     }
 
