@@ -89,4 +89,22 @@ public class Localization {
         }
     }
 
+    /**
+     * <p>Returns a formatted translation for the specified key.</p>
+     *
+     * @param key
+     *            the key to get the translation for
+     * @param variables
+     *            the variables which shall be inserted into the translation
+     * @return the translated string
+     */
+    public String getString(String key, Object... variables) {
+        MessageFormat formatter = new MessageFormat("");
+
+        formatter.setLocale(getLocale());
+
+        formatter.applyPattern(getString(key));
+        return formatter.format(variables);
+    }
+
 }
