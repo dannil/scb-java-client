@@ -107,6 +107,17 @@ public class LocalizationTest {
     }
 
     @Test
+    public void getStringFormatEscapedCharactersFrench() {
+        Localization localization = new Localization(new Locale("fr", "FR"));
+
+        Object[] variables = new Object[] { "http://www.abc.com" };
+
+        String translation = localization.getString("regions_is_not_supported_for_url", variables);
+
+        assertEquals("Les régions ne sont pas prises en charge pour l'URL " + variables[0], translation);
+    }
+
+    @Test
     public void setLanguage() {
         Localization localization = new Localization(new Locale("sv", "SE"));
 
