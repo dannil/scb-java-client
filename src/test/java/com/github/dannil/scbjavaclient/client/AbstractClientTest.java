@@ -50,7 +50,7 @@ public class AbstractClientTest {
 
     @Test
     public void getRootUrl() {
-        Locale locale = new Locale("fr", "CA");
+        Locale locale = new Locale("fr", "FR");
         AbstractClient client = new DummyClient(locale);
 
         assertEquals("https://api.scb.se/OV0104/v1/doris/fr/ssd/", client.getRootUrl().toString());

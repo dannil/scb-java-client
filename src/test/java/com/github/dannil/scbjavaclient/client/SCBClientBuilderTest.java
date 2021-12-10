@@ -45,7 +45,7 @@ public class SCBClientBuilderTest {
 
         // Tests the default values
         assertEquals(CommunicationProtocol.HTTPS, this.client.getCommunicationProtocol());
-        assertEquals(Locale.getDefault(), this.client.getLocale());
+        assertEquals(Locale.US, this.client.getLocale());
     }
 
     @Test
@@ -55,7 +55,7 @@ public class SCBClientBuilderTest {
 
         // Tests the default values
         assertEquals(CommunicationProtocol.HTTPS, c.getCommunicationProtocol());
-        assertEquals(Locale.getDefault(), c.getLocale());
+        assertEquals(Locale.US, c.getLocale());
     }
 
 }

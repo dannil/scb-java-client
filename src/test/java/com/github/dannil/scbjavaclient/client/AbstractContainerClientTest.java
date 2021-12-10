@@ -60,7 +60,7 @@ public class AbstractContainerClientTest {
         client.addClient("client1", subClientOne);
         client.addClient("client2", subClientTwo);
 
-        Locale newLocale = new Locale("fr", "CA");
+        Locale newLocale = new Locale("fr", "FR");
         client.setLocale(newLocale);
 
         assertEquals(newLocale, subClientOne.getLocale());
@@ -69,7 +69,7 @@ public class AbstractContainerClientTest {
 
     @Test
     public void getRootUrl() {
-        Locale locale = new Locale("fr", "CA");
+        Locale locale = new Locale("fr", "FR");
         AbstractContainerClient client = new DummyContainerClient(locale);
 
         assertEquals("https://api.scb.se/OV0104/v1/doris/fr/ssd/", client.getRootUrl().toString());

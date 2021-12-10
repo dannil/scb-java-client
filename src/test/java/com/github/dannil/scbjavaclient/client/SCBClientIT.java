@@ -216,7 +216,7 @@ public class SCBClientIT {
     @Test
     @Date("2017-01-01")
     public void unsupportedLocale() {
-        Locale locale = new Locale("fr", "CA");
+        Locale locale = new Locale("fr", "FR");
 
         assertFalse(SCBClient.isSupportedLocale(locale));
     }

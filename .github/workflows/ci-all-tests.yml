@@ -8,10 +8,10 @@ jobs:
   build:
     strategy:
       matrix:
-        java: [11, 12, 13, 14, 15, 16]
+        java: [11, 17]
       fail-fast: false
     name: Java ${{ matrix.java }}
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-latest
     steps:
       # If we get the same IP on concurrent builds and this triggers an error
       # on the API (rate limiting), this can be easily debugged by checking the log

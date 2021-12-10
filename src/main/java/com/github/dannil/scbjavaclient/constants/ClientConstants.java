@@ -26,7 +26,7 @@ public final class ClientConstants {
     /**
      * <p>The localization locale to use if a translation lookup fails (en, US).</p>
      */
-    public static final Locale LOCALIZATION_FALLBACK_LOCALE = new Locale("en", "US");
+    public static final Locale LOCALIZATION_FALLBACK_LOCALE = Locale.US;
 
     /**
      * <p>The prefix for the translation files.</p>
