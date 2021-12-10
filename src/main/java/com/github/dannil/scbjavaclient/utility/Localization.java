@@ -85,7 +85,7 @@ public class Localization {
         try {
             return this.bundle.getString(key);
         } catch (MissingResourceException e) {
-            return ResourceBundle.getBundle(this.baseName, this.fallbackLocale).getString(key);
+            return ResourceBundle.getBundle(this.baseName).getString(key);
         }
     }
 
