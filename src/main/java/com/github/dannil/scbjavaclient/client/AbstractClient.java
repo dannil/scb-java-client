@@ -59,7 +59,7 @@ public abstract class AbstractClient {
      */
     protected AbstractClient() {
         this.communicationProtocol = CommunicationProtocol.HTTPS;
-        this.locale = Locale.getDefault();
+        this.locale = Locale.US;
         this.localization = new Localization(this.locale);
     }
 

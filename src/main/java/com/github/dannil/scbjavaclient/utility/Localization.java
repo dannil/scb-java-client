@@ -30,8 +30,6 @@ public class Localization {
 
     private String baseName;
 
-    private Locale locale;
-
     private Locale fallbackLocale;
 
     private ResourceBundle bundle;
@@ -52,7 +50,6 @@ public class Localization {
      */
     public Localization(Locale locale) {
         this();
-        this.locale = locale;
         this.bundle = ResourceBundle.getBundle(this.baseName, locale);
     }
 
@@ -62,7 +59,7 @@ public class Localization {
      * @return the <code>Locale</code> for this localization instance.
      */
     public Locale getLocale() {
-        return this.locale;
+        return this.bundle.getLocale();
     }
 
     /**
@@ -90,24 +87,6 @@ public class Localization {
         } catch (MissingResourceException e) {
             return ResourceBundle.getBundle(this.baseName, this.fallbackLocale).getString(key);
         }
-    }
-
-    /**
-     * <p>Returns a formatted translation for the specified key.</p>
-     *
-     * @param key
-     *            the key to get the translation for
-     * @param variables
-     *            the variables which shall be inserted into the translation
-     * @return the translated string
-     */
-    public String getString(String key, Object... variables) {
-        MessageFormat formatter = new MessageFormat("");
-
-        formatter.setLocale(getLocale());
-
-        formatter.applyPattern(getString(key));
-        return formatter.format(variables);
     }
 
 }
