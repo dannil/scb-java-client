@@ -107,7 +107,7 @@ public class LocalizationTest {
     }
 
     @Test
-    public void getStringFormatEscapedCharactersFrench() {
+    public void getStringFormatFrenchEscapedCharacters() {
         Localization localization = new Localization(new Locale("fr", "FR"));
 
         Object[] variables = new Object[] { "http://www.abc.com" };
