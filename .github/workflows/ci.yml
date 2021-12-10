@@ -29,4 +29,4 @@ jobs:
       with:
         java-version: ${{ matrix.java }}
     - name: Build with Maven
-      run: mvn install -B -V -DtestsDayLimit=7 -Duser.country=US -Duser.language=en
+      run: mvn install -B -V -DtestsDayLimit=7
