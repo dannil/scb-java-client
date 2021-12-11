@@ -487,23 +487,23 @@
               <fail>true</fail>
             </configuration>
           </execution>
-          <!-- Not usable right now, see https://github.com/mojohaus/extra-enforcer-rules/issues/48 -->
-          <!-- <execution> -->
-          <!-- <id>enforce-utf8-encoding</id> -->
-          <!-- <goals> -->
-          <!-- <goal>enforce</goal> -->
-          <!-- </goals> -->
-          <!-- <configuration> -->
-          <!-- <rules> -->
-          <!-- <requireEncoding> -->
-          <!-- <encoding>${project.build.sourceEncoding}</encoding> -->
-          <!-- <includes>src/main/resources/**,src/test/resources/**</includes> -->
-          <!-- </requireEncoding> -->
-          <!-- </rules> -->
-          <!-- <failFast>false</failFast> -->
-          <!-- <fail>true</fail> -->
-          <!-- </configuration> -->
-          <!-- </execution> -->
+          <execution>
+            <id>enforce-utf8-encoding</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <configuration>
+              <rules>
+                <requireEncoding>
+                  <encoding>${project.build.sourceEncoding}</encoding>
+                  <includes>src/main/resources/**,src/test/resources/**</includes>
+                  <acceptAsciiSubset>true</acceptAsciiSubset>
+                </requireEncoding>
+              </rules>
+              <failFast>false</failFast>
+              <fail>true</fail>
+            </configuration>
+          </execution>
         </executions>
         <dependencies>
           <dependency>
