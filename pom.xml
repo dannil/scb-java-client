@@ -434,13 +434,6 @@
                     <dependency>org.junit.platform:*</dependency>
                   </dependencies>
                 </requireSameVersions>
-                <bannedDependencies>
-                  <excludes>
-                    <!--Due to changes in the logging system for slf4j versions 2.0.0 and over, which breaks logging in applications 
-                      using this library, only versions below this (i.e. 1.8.0) is allowed -->
-                    <exclude>org.slf4j:slf4j-api:1.9*</exclude>
-                  </excludes>
-                </bannedDependencies>
               </rules>
               <fail>true</fail>
             </configuration>
