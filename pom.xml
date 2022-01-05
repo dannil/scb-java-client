@@ -115,11 +115,13 @@
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-core</artifactId>
       <version>1.3.0-alpha12</version>
+      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
       <version>1.3.0-alpha12</version>
+      <scope>test</scope>
       <exclusions>
         <exclusion>
           <groupId>org.slf4j</groupId>
@@ -425,7 +427,8 @@
                 </requireSameVersions>
                 <requireSameVersions>
                   <dependencies>
-                    <dependency>org.apache.logging.log4j:*</dependency>
+                    <dependency>ch.qos.logback:logback-core</dependency>
+                    <dependency>ch.qos.logback:logback-classic</dependency>
                   </dependencies>
                 </requireSameVersions>
                 <requireSameVersions>
