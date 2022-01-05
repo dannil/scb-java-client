@@ -13,6 +13,6 @@ updates:
   - dependency-name: com.fasterxml.jackson.core:jackson-*
     versions:
     - ">= 0"
-  - dependency-name: org.junit*
+  - dependency-name: ch.qos.logback:logback-*
     versions:
     - ">= 0"
