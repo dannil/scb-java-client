@@ -25,6 +25,7 @@ public enum HttpStatusCode {
             "Too Many Requests");
 
     private int code;
+
     private String description;
 
     /**
