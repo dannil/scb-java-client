@@ -26,21 +26,21 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles living conditions surveys employment data fetching.</p>
+ * Client which handles living conditions surveys employment data fetching.
  *
  * @since 0.2.0
  */
 public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public LivingConditionsSurveysEmploymentClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -50,7 +50,7 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all main activity data.</p>
+     * Fetch all main activity data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -63,7 +63,7 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all main activity data which match the input constraints.</p>
+     * Fetch all main activity data which match the input constraints.
      *
      * @param activities
      *            the activities
@@ -89,7 +89,7 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all gainfully employed persons data.</p>
+     * Fetch all gainfully employed persons data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -100,7 +100,7 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all gainfully employed persons data which match the input constraints.</p>
+     * Fetch all gainfully employed persons data which match the input constraints.
      *
      * @param fullAndPartTimes
      *            the full and part times
@@ -126,7 +126,7 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all type of employment data.</p>
+     * Fetch all type of employment data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -137,7 +137,7 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all type of employment data which match the input constraints.</p>
+     * Fetch all type of employment data which match the input constraints.
      *
      * @param types
      *            the types
@@ -163,7 +163,7 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all distribution of working hours for employees data.</p>
+     * Fetch all distribution of working hours for employees data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -174,8 +174,8 @@ public class LivingConditionsSurveysEmploymentClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all distribution of working hours for employees data which match the input
-     * constraints.</p>
+     * Fetch all distribution of working hours for employees data which match the input
+     * constraints.
      *
      * @param indicators
      *            the indicators

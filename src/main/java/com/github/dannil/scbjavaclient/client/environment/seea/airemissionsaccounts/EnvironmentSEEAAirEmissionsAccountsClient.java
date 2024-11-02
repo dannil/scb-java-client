@@ -26,8 +26,8 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles environment System of Environmental-Economic Accounting (SEEA)
- * air emissions accounts data fetching.</p>
+ * Client which handles environment System of Environmental-Economic Accounting (SEEA)
+ * air emissions accounts data fetching.
  *
  * @since 0.4.0
  */
@@ -36,14 +36,14 @@ public class EnvironmentSEEAAirEmissionsAccountsClient extends AbstractClient {
     private static final String SUBSTANCE_CODE = "AmneMiljo";
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public EnvironmentSEEAAirEmissionsAccountsClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -53,7 +53,7 @@ public class EnvironmentSEEAAirEmissionsAccountsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all air emissions by industry (SNI 2007) data.</p>
+     * Fetch all air emissions by industry (SNI 2007) data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -66,8 +66,8 @@ public class EnvironmentSEEAAirEmissionsAccountsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all air emissions by industry (SNI 2007) data which match the input
-     * constraints.</p>
+     * Fetch all air emissions by industry (SNI 2007) data which match the input
+     * constraints.
      *
      * @param industrialClassifications
      *            the industrial classifications
@@ -90,7 +90,7 @@ public class EnvironmentSEEAAirEmissionsAccountsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all air emissions by industry (SNI 92) data.</p>
+     * Fetch all air emissions by industry (SNI 92) data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -103,8 +103,8 @@ public class EnvironmentSEEAAirEmissionsAccountsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all air emissions by industry (SNI 92) data which match the input
-     * constraints.</p>
+     * Fetch all air emissions by industry (SNI 92) data which match the input
+     * constraints.
      *
      * @param industrialClassifications
      *            the industrial classifications
@@ -127,7 +127,7 @@ public class EnvironmentSEEAAirEmissionsAccountsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all air emissions by industry and quarters (SNI 2007) data.</p>
+     * Fetch all air emissions by industry and quarters (SNI 2007) data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -141,8 +141,8 @@ public class EnvironmentSEEAAirEmissionsAccountsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all air emissions by industry and quarters (SNI 2007) data which match the
-     * input constraints.</p>
+     * Fetch all air emissions by industry and quarters (SNI 2007) data which match the
+     * input constraints.
      *
      * @param industrialClassifications
      *            the industrial classifications
@@ -165,7 +165,7 @@ public class EnvironmentSEEAAirEmissionsAccountsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all air emissions (municipality, LAU2) data.</p>
+     * Fetch all air emissions (municipality, LAU2) data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -178,8 +178,8 @@ public class EnvironmentSEEAAirEmissionsAccountsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all air emissions (municipality, LAU2) data which match the input
-     * constraints.</p>
+     * Fetch all air emissions (municipality, LAU2) data which match the input
+     * constraints.
      *
      * @param regions
      *            the regions
@@ -202,7 +202,7 @@ public class EnvironmentSEEAAirEmissionsAccountsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all air emissions (NUTS 2) data.</p>
+     * Fetch all air emissions (NUTS 2) data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -215,7 +215,7 @@ public class EnvironmentSEEAAirEmissionsAccountsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all air emissions (NUTS 2) data which match the input constraints.</p>
+     * Fetch all air emissions (NUTS 2) data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -241,7 +241,7 @@ public class EnvironmentSEEAAirEmissionsAccountsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all air emissions from transport (NUTS 2) data.</p>
+     * Fetch all air emissions from transport (NUTS 2) data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -255,8 +255,8 @@ public class EnvironmentSEEAAirEmissionsAccountsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all air emissions from transport (NUTS 2) data which match the input
-     * constraints.</p>
+     * Fetch all air emissions from transport (NUTS 2) data which match the input
+     * constraints.
      *
      * @param regions
      *            the regions
@@ -282,7 +282,7 @@ public class EnvironmentSEEAAirEmissionsAccountsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all air emissions (county, NUTS3) data.</p>
+     * Fetch all air emissions (county, NUTS3) data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -295,8 +295,8 @@ public class EnvironmentSEEAAirEmissionsAccountsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all air emissions (county, NUTS3) data which match the input
-     * constraints.</p>
+     * Fetch all air emissions (county, NUTS3) data which match the input
+     * constraints.
      *
      * @param regions
      *            the regions

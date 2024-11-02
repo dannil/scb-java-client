@@ -15,19 +15,19 @@
 package com.github.dannil.scbjavaclient.communication.http;
 
 /**
- * <p>Enumerable which contains the HTTP methods supported by the API.</p>
+ * Enumerable which contains the HTTP methods supported by the API.
  *
  * @since 1.2.0
  */
 public enum HttpRequestMethod {
 
     /**
-     * <p>Enumerable for HTTP method GET.</p>
+     * Enumerable for HTTP method GET.
      */
     GET,
 
     /**
-     * <p>Enumerable for HTTP method POST.</p>
+     * Enumerable for HTTP method POST.
      */
     POST
 

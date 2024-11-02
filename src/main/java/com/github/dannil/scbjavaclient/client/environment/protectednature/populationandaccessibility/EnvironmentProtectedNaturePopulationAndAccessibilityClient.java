@@ -26,22 +26,22 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles environment protected nature population and accessibility data
- * fetching.</p>
+ * Client which handles environment protected nature population and accessibility data
+ * fetching.
  *
  * @since 0.5.0
  */
 public class EnvironmentProtectedNaturePopulationAndAccessibilityClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public EnvironmentProtectedNaturePopulationAndAccessibilityClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,7 +51,7 @@ public class EnvironmentProtectedNaturePopulationAndAccessibilityClient extends 
     }
 
     /**
-     * <p>Fetch all protected nature within and around localities data.</p>
+     * Fetch all protected nature within and around localities data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -64,8 +64,8 @@ public class EnvironmentProtectedNaturePopulationAndAccessibilityClient extends 
     }
 
     /**
-     * <p>Fetch all protected nature within and around localities data which match the
-     * input constraints.</p>
+     * Fetch all protected nature within and around localities data which match the
+     * input constraints.
      *
      * @param regions
      *            the regions
@@ -85,7 +85,7 @@ public class EnvironmentProtectedNaturePopulationAndAccessibilityClient extends 
     }
 
     /**
-     * <p>Fetch all population within zone around protected nature data.</p>
+     * Fetch all population within zone around protected nature data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -98,8 +98,8 @@ public class EnvironmentProtectedNaturePopulationAndAccessibilityClient extends 
     }
 
     /**
-     * <p>Fetch all population within zone around protected nature data which match the
-     * input constraints.</p>
+     * Fetch all population within zone around protected nature data which match the
+     * input constraints.
      *
      * @param regions
      *            the regions

@@ -26,22 +26,22 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles business activities non-profit organizations primary statistics
- * data fetching.</p>
+ * Client which handles business activities non-profit organizations primary statistics
+ * data fetching.
  *
  * @since 0.3.0
  */
 public class BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,7 +51,7 @@ public class BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClient ext
     }
 
     /**
-     * <p>Fetch all presentation of results data.</p>
+     * Fetch all presentation of results data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -64,7 +64,7 @@ public class BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClient ext
     }
 
     /**
-     * <p>Fetch all presentation of results data which match the input constraints.</p>
+     * Fetch all presentation of results data which match the input constraints.
      *
      * @param incomeStatements
      *            the income statements
@@ -84,7 +84,7 @@ public class BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClient ext
     }
 
     /**
-     * <p>Fetch all income and costs from public administration data.</p>
+     * Fetch all income and costs from public administration data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -97,8 +97,8 @@ public class BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClient ext
     }
 
     /**
-     * <p>Fetch all income and costs from public administration data which match the input
-     * constraints.</p>
+     * Fetch all income and costs from public administration data which match the input
+     * constraints.
      *
      * @param typesOfRevenuesAndExpenditures
      *            the types of revenues and expenditures
@@ -118,7 +118,7 @@ public class BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClient ext
     }
 
     /**
-     * <p>Fetch all presentation of results for the Swedish Church data.</p>
+     * Fetch all presentation of results for the Swedish Church data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -131,8 +131,8 @@ public class BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClient ext
     }
 
     /**
-     * <p>Fetch all presentation of results for the Swedish Church data which match the
-     * input constraints.</p>
+     * Fetch all presentation of results for the Swedish Church data which match the
+     * input constraints.
      *
      * @param incomeStatements
      *            the income statements
@@ -152,7 +152,7 @@ public class BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClient ext
     }
 
     /**
-     * <p>Fetch all income and costs from occupational pension data.</p>
+     * Fetch all income and costs from occupational pension data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -165,8 +165,8 @@ public class BusinessActivitiesNonProfitOrganizationsPrimaryStatisticsClient ext
     }
 
     /**
-     * <p>Fetch all income and costs from occupational pension data which match the input
-     * constraints.</p>
+     * Fetch all income and costs from occupational pension data which match the input
+     * constraints.
      *
      * @param typesOfRevenuesAndExpenditures
      *            the types of revenues and expenditures

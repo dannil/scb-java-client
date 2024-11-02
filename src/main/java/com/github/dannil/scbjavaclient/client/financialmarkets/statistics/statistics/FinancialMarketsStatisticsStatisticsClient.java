@@ -26,21 +26,21 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles financial markets statistics statistics data fetching.</p>
+ * Client which handles financial markets statistics statistics data fetching.
  *
  * @since 0.4.0
  */
 public class FinancialMarketsStatisticsStatisticsClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public FinancialMarketsStatisticsStatisticsClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -50,7 +50,7 @@ public class FinancialMarketsStatisticsStatisticsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all assets and liabilities data.</p>
+     * Fetch all assets and liabilities data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -63,7 +63,7 @@ public class FinancialMarketsStatisticsStatisticsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all assets and liabilities data which match the input constraints.</p>
+     * Fetch all assets and liabilities data which match the input constraints.
      *
      * @param institutions
      *            the institutions
@@ -86,7 +86,7 @@ public class FinancialMarketsStatisticsStatisticsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all financial soundness indicators data.</p>
+     * Fetch all financial soundness indicators data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -99,8 +99,8 @@ public class FinancialMarketsStatisticsStatisticsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all financial soundness indicators data which match the input
-     * constraints.</p>
+     * Fetch all financial soundness indicators data which match the input
+     * constraints.
      *
      * @param indicators
      *            the indicators
@@ -120,7 +120,7 @@ public class FinancialMarketsStatisticsStatisticsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all money supply data.</p>
+     * Fetch all money supply data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -133,7 +133,7 @@ public class FinancialMarketsStatisticsStatisticsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all money supply data which match the input constraints.</p>
+     * Fetch all money supply data which match the input constraints.
      *
      * @param moneySupplies
      *            the money supplies

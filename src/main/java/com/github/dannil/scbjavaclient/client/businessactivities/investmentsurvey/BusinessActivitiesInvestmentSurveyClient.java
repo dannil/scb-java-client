@@ -21,14 +21,14 @@ import com.github.dannil.scbjavaclient.client.businessactivities.investmentsurve
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
- * <p>Client which handles business activities investment survey data fetching.</p>
+ * Client which handles business activities investment survey data fetching.
  *
  * @since 0.7.0
  */
 public class BusinessActivitiesInvestmentSurveyClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public BusinessActivitiesInvestmentSurveyClient() {
         super();
@@ -37,7 +37,7 @@ public class BusinessActivitiesInvestmentSurveyClient extends AbstractContainerC
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -49,8 +49,8 @@ public class BusinessActivitiesInvestmentSurveyClient extends AbstractContainerC
     }
 
     /**
-     * <p>Retrieve the client for interacting with business activities investment survey
-     * economic indicators data.</p>
+     * Retrieve the client for interacting with business activities investment survey
+     * economic indicators data.
      *
      * @return a client for business activities investment survey economic indicators data
      */

@@ -26,22 +26,22 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles financial markets statistics economic indicators data
- * fetching.</p>
+ * Client which handles financial markets statistics economic indicators data
+ * fetching.
  *
  * @since 0.5.0
  */
 public class FinancialMarketsStatisticsEconomicIndicatorsClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public FinancialMarketsStatisticsEconomicIndicatorsClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,7 +51,7 @@ public class FinancialMarketsStatisticsEconomicIndicatorsClient extends Abstract
     }
 
     /**
-     * <p>Fetch all financial market statistics growth rate data.</p>
+     * Fetch all financial market statistics growth rate data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -64,8 +64,8 @@ public class FinancialMarketsStatisticsEconomicIndicatorsClient extends Abstract
     }
 
     /**
-     * <p>Fetch all financial market statistics growth rate data which match the input
-     * constraints.</p>
+     * Fetch all financial market statistics growth rate data which match the input
+     * constraints.
      *
      * @param economicIndicators
      *            the economic indicators

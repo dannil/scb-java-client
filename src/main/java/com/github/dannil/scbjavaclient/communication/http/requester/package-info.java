@@ -1,5 +1,5 @@
 /**
- * <p>Package which contains the classes used for communicating with the API over
- * HTTP.</p>
+ * Package which contains the classes used for communicating with the API over
+ * HTTP.
  */
 package com.github.dannil.scbjavaclient.communication.http.requester;

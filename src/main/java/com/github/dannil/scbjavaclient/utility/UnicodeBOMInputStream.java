@@ -17,10 +17,15 @@ import java.io.PushbackInputStream;
  * <a href="http://www.faqs.org/rfcs/rfc3629.html">RFC 3629 - UTF-8, a
  * transformation format of ISO 10646</a>.
  *
- * <p>The
+ * <p>
+ * The
  * <a href="http://www.unicode.org/unicode/faq/utf_bom.html">Unicode FAQ</a>
- * defines 5 types of BOMs:</p><ul>
+ * defines 5 types of BOMs:
+ * </p>
+ * 
+ * <ul>
  * <li>
+ * 
  *
  * <pre>
  * 00 00 FE FF  = UTF-32, big-endian
@@ -58,8 +63,9 @@ import java.io.PushbackInputStream;
  * </ul>
  *
  * <p>Use the {@link #getBOM()} method to know whether a BOM has been detected
- * or not.
- * </p>
+ * or not.</p>
+ * 
+ *
  * <p>Use the {@link #skipBOM()} method to remove the detected BOM from the
  * wrapped <code>InputStream</code> object.</p>
  *

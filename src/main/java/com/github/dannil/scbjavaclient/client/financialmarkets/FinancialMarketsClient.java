@@ -27,14 +27,14 @@ import com.github.dannil.scbjavaclient.client.financialmarkets.statistics.Financ
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
- * <p>Client which handles financial markets data fetching.</p>
+ * Client which handles financial markets data fetching.
  *
  * @since 0.2.0
  */
 public class FinancialMarketsClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor. Initializes values and creates sub-clients.</p>
+     * Default constructor. Initializes values and creates sub-clients.
      */
     public FinancialMarketsClient() {
         super();
@@ -49,7 +49,7 @@ public class FinancialMarketsClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -61,8 +61,8 @@ public class FinancialMarketsClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with financial markets balance of payments
-     * data.</p>
+     * Retrieve the client for interacting with financial markets balance of payments
+     * data.
      *
      * @return a client for financial markets balance of payments data
      */
@@ -71,7 +71,7 @@ public class FinancialMarketsClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with financial markets enterprises data.</p>
+     * Retrieve the client for interacting with financial markets enterprises data.
      *
      * @return a client for financial markets enterprises data
      */
@@ -80,8 +80,8 @@ public class FinancialMarketsClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with financial markets institutions
-     * data.</p>
+     * Retrieve the client for interacting with financial markets institutions
+     * data.
      *
      * @return a client for financial markets institutions data
      */
@@ -90,8 +90,8 @@ public class FinancialMarketsClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with financial markets investment funds
-     * data.</p>
+     * Retrieve the client for interacting with financial markets investment funds
+     * data.
      *
      * @return a client for financial markets investment funds data
      */
@@ -100,7 +100,7 @@ public class FinancialMarketsClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with financial markets securities data.</p>
+     * Retrieve the client for interacting with financial markets securities data.
      *
      * @return a client for financial markets securities data
      */
@@ -109,8 +109,8 @@ public class FinancialMarketsClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with financial markets shareholders
-     * data.</p>
+     * Retrieve the client for interacting with financial markets shareholders
+     * data.
      *
      * @return a client for financial markets shareholders data
      */
@@ -119,7 +119,7 @@ public class FinancialMarketsClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with financial markets statistics data.</p>
+     * Retrieve the client for interacting with financial markets statistics data.
      *
      * @return a client for financial markets statistics data
      */

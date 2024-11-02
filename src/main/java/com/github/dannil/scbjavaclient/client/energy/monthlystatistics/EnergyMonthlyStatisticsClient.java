@@ -26,21 +26,21 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles energy monthly statistics data fetching.</p>
+ * Client which handles energy monthly statistics data fetching.
  *
  * @since 0.2.0
  */
 public class EnergyMonthlyStatisticsClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public EnergyMonthlyStatisticsClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -50,7 +50,7 @@ public class EnergyMonthlyStatisticsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all deliveries of liquid fuels data.</p>
+     * Fetch all deliveries of liquid fuels data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -63,7 +63,7 @@ public class EnergyMonthlyStatisticsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all deliveries of liquid fuels data which match the input constraints.</p>
+     * Fetch all deliveries of liquid fuels data which match the input constraints.
      *
      * @param commodities
      *            the commodities to fetch data for
@@ -81,7 +81,7 @@ public class EnergyMonthlyStatisticsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all deliveries of oil products data.</p>
+     * Fetch all deliveries of oil products data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -94,7 +94,7 @@ public class EnergyMonthlyStatisticsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all deliveries of oil products data which match the input constraints.</p>
+     * Fetch all deliveries of oil products data which match the input constraints.
      *
      * @param commodities
      *            the commodities to fetch data for
@@ -113,7 +113,7 @@ public class EnergyMonthlyStatisticsClient extends AbstractClient {
     }
 
     /**
-     * <p>Common generator method for the methods in this class.</p>
+     * Common generator method for the methods in this class.
      *
      * @param commodities
      *            the commodities

@@ -26,22 +26,22 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles goods and services turnover service sector old tables SNI 2007
- * data fetching.</p>
+ * Client which handles goods and services turnover service sector old tables SNI 2007
+ * data fetching.
  *
  * @since 0.7.0
  */
 public class GoodsAndServicesTurnoverServiceSectorOldTablesSNI2007Client extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public GoodsAndServicesTurnoverServiceSectorOldTablesSNI2007Client() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,8 +51,8 @@ public class GoodsAndServicesTurnoverServiceSectorOldTablesSNI2007Client extends
     }
 
     /**
-     * <p>Fetch all turnover index for the service sector by industry (SIC 2007) yearly
-     * data.</p>
+     * Fetch all turnover index for the service sector by industry (SIC 2007) yearly
+     * data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -65,8 +65,8 @@ public class GoodsAndServicesTurnoverServiceSectorOldTablesSNI2007Client extends
     }
 
     /**
-     * <p>Fetch all turnover index for the service sector by industry (SIC 2007) yearly
-     * data which match the input constraints.</p>
+     * Fetch all turnover index for the service sector by industry (SIC 2007) yearly
+     * data which match the input constraints.
      *
      * @param industrialClassifications
      *            the industrial classifications
@@ -86,8 +86,8 @@ public class GoodsAndServicesTurnoverServiceSectorOldTablesSNI2007Client extends
     }
 
     /**
-     * <p>Fetch all turnover index for the service sector by industry (SIC 2007) quarterly
-     * data.</p>
+     * Fetch all turnover index for the service sector by industry (SIC 2007) quarterly
+     * data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -100,8 +100,8 @@ public class GoodsAndServicesTurnoverServiceSectorOldTablesSNI2007Client extends
     }
 
     /**
-     * <p>Fetch all turnover index for the service sector by industry (SIC 2007) quarterly
-     * data which match the input constraints.</p>
+     * Fetch all turnover index for the service sector by industry (SIC 2007) quarterly
+     * data which match the input constraints.
      *
      * @param industrialClassifications
      *            the industrial classifications

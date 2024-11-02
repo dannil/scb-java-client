@@ -25,9 +25,9 @@ import com.github.dannil.scbjavaclient.format.ITableFormat;
 import com.fasterxml.jackson.databind.JsonNode;
 
 /**
- * <p>Class which encapsulates behavior for the JSON API table format. Note that this
+ * Class which encapsulates behavior for the JSON API table format. Note that this
  * class is immutable; to change the containing JSON, a new class needs to be
- * instantiated.</p>
+ * instantiated.
  *
  * @since 0.1.0
  */
@@ -38,7 +38,7 @@ public class JsonAPITableFormat implements ITableFormat {
     private Map<String, Collection<String>> inputs;
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      *
      * @param json
      *            the JSON to format

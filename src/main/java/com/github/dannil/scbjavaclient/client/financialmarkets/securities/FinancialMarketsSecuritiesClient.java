@@ -26,21 +26,21 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles financial markets securities data fetching.</p>
+ * Client which handles financial markets securities data fetching.
  *
  * @since 0.2.0
  */
 public class FinancialMarketsSecuritiesClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public FinancialMarketsSecuritiesClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -50,7 +50,7 @@ public class FinancialMarketsSecuritiesClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all maturity structure data.</p>
+     * Fetch all maturity structure data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -63,7 +63,7 @@ public class FinancialMarketsSecuritiesClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all maturity structure data which match the input constraints.</p>
+     * Fetch all maturity structure data which match the input constraints.
      *
      * @param sectors
      *            the sectors to fetch data for
@@ -89,7 +89,7 @@ public class FinancialMarketsSecuritiesClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all outstanding and issued amount data.</p>
+     * Fetch all outstanding and issued amount data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -102,8 +102,8 @@ public class FinancialMarketsSecuritiesClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all outstanding and issued amount data which match the input
-     * constraints.</p>
+     * Fetch all outstanding and issued amount data which match the input
+     * constraints.
      *
      * @param sectors
      *            the sectors to fetch data for

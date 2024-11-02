@@ -22,14 +22,14 @@ import com.github.dannil.scbjavaclient.client.businessactivities.nonprofitorgani
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
- * <p>Client which handles business activities non-profit organizations data fetching.</p>
+ * Client which handles business activities non-profit organizations data fetching.
  *
  * @since 0.3.0
  */
 public class BusinessActivitiesNonProfitOrganizationsClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor. Initializes values and creates sub-clients.</p>
+     * Default constructor. Initializes values and creates sub-clients.
      */
     public BusinessActivitiesNonProfitOrganizationsClient() {
         super();
@@ -39,7 +39,7 @@ public class BusinessActivitiesNonProfitOrganizationsClient extends AbstractCont
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,8 +51,8 @@ public class BusinessActivitiesNonProfitOrganizationsClient extends AbstractCont
     }
 
     /**
-     * <p>Retrieve the client for interacting with business activities non-profit
-     * organizations primary statistics data.</p>
+     * Retrieve the client for interacting with business activities non-profit
+     * organizations primary statistics data.
      *
      * @return a client for business activities non-profit organizations primary
      *         statistics data
@@ -62,8 +62,8 @@ public class BusinessActivitiesNonProfitOrganizationsClient extends AbstractCont
     }
 
     /**
-     * <p>Retrieve the client for interacting with business activities non-profit
-     * organizations satellite accounts data.</p>
+     * Retrieve the client for interacting with business activities non-profit
+     * organizations satellite accounts data.
      *
      * @return a client for business activities non-profit organizations satellite
      *         accounts data

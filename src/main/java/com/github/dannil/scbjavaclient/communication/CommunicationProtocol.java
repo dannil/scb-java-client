@@ -15,8 +15,8 @@
 package com.github.dannil.scbjavaclient.communication;
 
 /**
- * <p>Enumerable for the available communication protocols which the API (and in extension
- * this library) can accept.</p>
+ * Enumerable for the available communication protocols which the API (and in extension
+ * this library) can accept.
  *
  * @since 1.2.0
  */
@@ -27,7 +27,7 @@ public enum CommunicationProtocol {
     private String protocol;
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param protocol
      *            the protocol
@@ -37,7 +37,7 @@ public enum CommunicationProtocol {
     }
 
     /**
-     * <p>Returns the protocol.</p>
+     * Returns the protocol.
      *
      * @return the protocol
      */

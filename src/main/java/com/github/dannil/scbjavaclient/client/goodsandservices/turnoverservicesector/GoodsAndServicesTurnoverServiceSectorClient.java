@@ -23,14 +23,14 @@ import com.github.dannil.scbjavaclient.client.goodsandservices.turnoverservicese
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
- * <p>Client which handles goods and services turnover service sector data fetching.</p>
+ * Client which handles goods and services turnover service sector data fetching.
  *
  * @since 0.7.0
  */
 public class GoodsAndServicesTurnoverServiceSectorClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor. Initializes values and creates sub-clients.</p>
+     * Default constructor. Initializes values and creates sub-clients.
      */
     public GoodsAndServicesTurnoverServiceSectorClient() {
         super();
@@ -41,7 +41,7 @@ public class GoodsAndServicesTurnoverServiceSectorClient extends AbstractContain
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -53,8 +53,8 @@ public class GoodsAndServicesTurnoverServiceSectorClient extends AbstractContain
     }
 
     /**
-     * <p>Retrieve the client for interacting with goods and services turnover service
-     * sector old tables SNI 2002 data.</p>
+     * Retrieve the client for interacting with goods and services turnover service
+     * sector old tables SNI 2002 data.
      *
      * @return a client for goods and services turnover service sector old tables SNI 2002
      *         data
@@ -64,8 +64,8 @@ public class GoodsAndServicesTurnoverServiceSectorClient extends AbstractContain
     }
 
     /**
-     * <p>Retrieve the client for interacting with goods and services turnover service
-     * sector old tables SNI 2007 data.</p>
+     * Retrieve the client for interacting with goods and services turnover service
+     * sector old tables SNI 2007 data.
      *
      * @return a client for goods and services turnover service sector old tables SNI 2007
      *         data
@@ -75,8 +75,8 @@ public class GoodsAndServicesTurnoverServiceSectorClient extends AbstractContain
     }
 
     /**
-     * <p>Retrieve the client for interacting with goods and services turnover service
-     * sector turnover data.</p>
+     * Retrieve the client for interacting with goods and services turnover service
+     * sector turnover data.
      *
      * @return a client for goods and services turnover service sector turnover data
      */

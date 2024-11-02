@@ -26,8 +26,8 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles education and research activity after training data
- * fetching.</p>
+ * Client which handles education and research activity after training data
+ * fetching.
  *
  * @since 0.5.0
  */
@@ -38,14 +38,14 @@ public class EducationAndResearchActivityAfterTrainingClient extends AbstractCli
     private static final String YEARSAFTERCOMPLETEDEDUCATION_CODE = "ArEfterAvgangsar";
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public EducationAndResearchActivityAfterTrainingClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -55,8 +55,8 @@ public class EducationAndResearchActivityAfterTrainingClient extends AbstractCli
     }
 
     /**
-     * <p>Fetch all persons' activities 1-3 years after completing higher education
-     * data.</p>
+     * Fetch all persons' activities 1-3 years after completing higher education
+     * data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -70,8 +70,8 @@ public class EducationAndResearchActivityAfterTrainingClient extends AbstractCli
     }
 
     /**
-     * <p>Fetch all persons' activities 1-3 years after completing higher education data
-     * which match the input constraints.</p>
+     * Fetch all persons' activities 1-3 years after completing higher education data
+     * which match the input constraints.
      *
      * @param yearsAfterCompletedEducation
      *            the years after completed education
@@ -105,8 +105,8 @@ public class EducationAndResearchActivityAfterTrainingClient extends AbstractCli
     }
 
     /**
-     * <p>Fetch all persons' activities 1-3 years after completing compulsory school
-     * data.</p>
+     * Fetch all persons' activities 1-3 years after completing compulsory school
+     * data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -120,8 +120,8 @@ public class EducationAndResearchActivityAfterTrainingClient extends AbstractCli
     }
 
     /**
-     * <p>Fetch all persons' activities 1-3 years after completing compulsory school data
-     * which match the input constraints.</p>
+     * Fetch all persons' activities 1-3 years after completing compulsory school data
+     * which match the input constraints.
      *
      * @param yearsAfterCompletedEducation
      *            the years after completed education

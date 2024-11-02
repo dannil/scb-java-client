@@ -22,14 +22,14 @@ import com.github.dannil.scbjavaclient.client.energy.monthlystatistics.EnergyMon
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
- * <p>Client which handles energy data fetching.</p>
+ * Client which handles energy data fetching.
  *
  * @since 0.2.0
  */
 public class EnergyClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor. Initializes values and creates sub-clients.</p>
+     * Default constructor. Initializes values and creates sub-clients.
      */
     public EnergyClient() {
         super();
@@ -39,7 +39,7 @@ public class EnergyClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,7 +51,7 @@ public class EnergyClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with energy annual statistics data.</p>
+     * Retrieve the client for interacting with energy annual statistics data.
      *
      * @return a client for energy annual statistics data
      */
@@ -60,7 +60,7 @@ public class EnergyClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with energy monthly statistics data.</p>
+     * Retrieve the client for interacting with energy monthly statistics data.
      *
      * @return a client for energy monthly statistics data
      */

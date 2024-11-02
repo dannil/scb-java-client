@@ -26,21 +26,21 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles environment shoreline land use land use data fetching.</p>
+ * Client which handles environment shoreline land use land use data fetching.
  *
  * @since 2.1.0
  */
 public class EnvironmentShorelineLandUseLandUseClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public EnvironmentShorelineLandUseLandUseClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -50,7 +50,7 @@ public class EnvironmentShorelineLandUseLandUseClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all shoreline population data.</p>
+     * Fetch all shoreline population data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -63,7 +63,7 @@ public class EnvironmentShorelineLandUseLandUseClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all shoreline population data which match the input constraints.</p>
+     * Fetch all shoreline population data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -86,7 +86,7 @@ public class EnvironmentShorelineLandUseLandUseClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all populated islands data.</p>
+     * Fetch all populated islands data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -99,7 +99,7 @@ public class EnvironmentShorelineLandUseLandUseClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all populated islands data which match the input constraints.</p>
+     * Fetch all populated islands data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -118,7 +118,7 @@ public class EnvironmentShorelineLandUseLandUseClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all islands in Sweden data.</p>
+     * Fetch all islands in Sweden data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -131,7 +131,7 @@ public class EnvironmentShorelineLandUseLandUseClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all islands in Sweden data which match the input constraints.</p>
+     * Fetch all islands in Sweden data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -150,7 +150,7 @@ public class EnvironmentShorelineLandUseLandUseClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all buildings on islands data.</p>
+     * Fetch all buildings on islands data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -163,7 +163,7 @@ public class EnvironmentShorelineLandUseLandUseClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all buildings on islands data which match the input constraints.</p>
+     * Fetch all buildings on islands data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -182,7 +182,7 @@ public class EnvironmentShorelineLandUseLandUseClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all islands in Sweden by number, area and perimeter data.</p>
+     * Fetch all islands in Sweden by number, area and perimeter data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -195,8 +195,8 @@ public class EnvironmentShorelineLandUseLandUseClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all islands in Sweden by number, area and perimeter data which match the
-     * input constraints.</p>
+     * Fetch all islands in Sweden by number, area and perimeter data which match the
+     * input constraints.
      *
      * @param regions
      *            the regions
@@ -216,7 +216,7 @@ public class EnvironmentShorelineLandUseLandUseClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all number of islands in Sweden data.</p>
+     * Fetch all number of islands in Sweden data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -229,8 +229,8 @@ public class EnvironmentShorelineLandUseLandUseClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all number of islands in Sweden data which match the input
-     * constraints.</p>
+     * Fetch all number of islands in Sweden data which match the input
+     * constraints.
      *
      * @param regions
      *            the regions

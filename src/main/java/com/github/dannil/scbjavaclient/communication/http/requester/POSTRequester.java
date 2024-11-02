@@ -23,7 +23,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * <p>HTTP requester for POST requests.</p>
+ * HTTP requester for POST requests.
  *
  * @since 1.2.0
  */
@@ -34,14 +34,14 @@ public class POSTRequester extends AbstractRequester {
     private String query;
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public POSTRequester() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param charset
      *            the charset
@@ -51,7 +51,7 @@ public class POSTRequester extends AbstractRequester {
     }
 
     /**
-     * <p>Getter for query.</p>
+     * Getter for query.
      *
      * @return the query
      */
@@ -60,7 +60,7 @@ public class POSTRequester extends AbstractRequester {
     }
 
     /**
-     * <p>Setter for query.</p>
+     * Setter for query.
      *
      * @param query
      *            the query

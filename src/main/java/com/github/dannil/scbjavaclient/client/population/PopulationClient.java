@@ -23,14 +23,14 @@ import com.github.dannil.scbjavaclient.client.population.statistics.PopulationSt
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
- * <p>Client which handles population data fetching.</p>
+ * Client which handles population data fetching.
  *
  * @since 0.0.2
  */
 public class PopulationClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor. Initializes values and creates sub-clients.</p>
+     * Default constructor. Initializes values and creates sub-clients.
      */
     public PopulationClient() {
         super();
@@ -41,7 +41,7 @@ public class PopulationClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -53,7 +53,7 @@ public class PopulationClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with population statistics name data.</p>
+     * Retrieve the client for interacting with population statistics name data.
      *
      * @return a client for population statistics name data
      */
@@ -62,7 +62,7 @@ public class PopulationClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with population projections data.</p>
+     * Retrieve the client for interacting with population projections data.
      *
      * @return a client for population projections data
      */
@@ -71,7 +71,7 @@ public class PopulationClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with population statistics data.</p>
+     * Retrieve the client for interacting with population statistics data.
      *
      * @return a client for population statistics data
      */

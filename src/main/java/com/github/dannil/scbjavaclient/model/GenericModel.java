@@ -23,8 +23,8 @@ import java.util.Map.Entry;
 import com.github.dannil.scbjavaclient.format.json.JsonCustomResponseFormat;
 
 /**
- * <p>Generic model which tries to convert a raw JSON string to classes which can be
- * operated upon.</p>
+ * Generic model which tries to convert a raw JSON string to classes which can be
+ * operated upon.
  *
  * @since 0.1.1
  */
@@ -33,14 +33,14 @@ public class GenericModel {
     private JsonCustomResponseFormat format;
 
     /**
-     * <p>Private constructor.</p>
+     * Private constructor.
      */
     private GenericModel() {
 
     }
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      *
      * @param json
      *            the JSON to format
@@ -51,7 +51,7 @@ public class GenericModel {
     }
 
     /**
-     * <p>Retrieves all the entries.</p>
+     * Retrieves all the entries.
      *
      * @return all the entries
      */
@@ -60,7 +60,7 @@ public class GenericModel {
     }
 
     /**
-     * <p>Retrieves all the entries matching the input criterion.</p>
+     * Retrieves all the entries matching the input criterion.
      *
      * @param inputs
      *            the input criterion
@@ -85,7 +85,7 @@ public class GenericModel {
     }
 
     /**
-     * <p>Retrieves all the entries matching the input criterion.</p>
+     * Retrieves all the entries matching the input criterion.
      *
      * @param key
      *            the key

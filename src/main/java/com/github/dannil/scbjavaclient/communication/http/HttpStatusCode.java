@@ -15,7 +15,7 @@
 package com.github.dannil.scbjavaclient.communication.http;
 
 /**
- * <p>Enumerable for the most common HTTP status codes returned by the API.</p>
+ * Enumerable for the most common HTTP status codes returned by the API.
  *
  * @since 1.2.0
  */
@@ -29,7 +29,7 @@ public enum HttpStatusCode {
     private String description;
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      *
      * @param code
      *            the status code
@@ -42,7 +42,7 @@ public enum HttpStatusCode {
     }
 
     /**
-     * <p>Get the HTTP status code.</p>
+     * Get the HTTP status code.
      *
      * @return the status code
      */
@@ -51,7 +51,7 @@ public enum HttpStatusCode {
     }
 
     /**
-     * <p>Get the description.</p>
+     * Get the description.
      *
      * @return the description
      */
@@ -60,7 +60,7 @@ public enum HttpStatusCode {
     }
 
     /**
-     * <p>Get the HTTP status code as a text string.</p>
+     * Get the HTTP status code as a text string.
      *
      * @return the status code as a text string
      */
@@ -69,8 +69,8 @@ public enum HttpStatusCode {
     }
 
     /**
-     * <p>Returns a <code>HttpStatusCode</code> which corresponds to the input status
-     * code.</p>
+     * Returns a <code>HttpStatusCode</code> which corresponds to the input status
+     * code.
      *
      * @param code
      *            the status code

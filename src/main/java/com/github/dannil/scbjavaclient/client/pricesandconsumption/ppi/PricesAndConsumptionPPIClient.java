@@ -26,15 +26,15 @@ import com.github.dannil.scbjavaclient.client.pricesandconsumption.ppi.spin2015m
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
- * <p>Client which handles prices and consumption producer and import price index (PPI)
- * data fetching.</p>
+ * Client which handles prices and consumption producer and import price index (PPI)
+ * data fetching.
  *
  * @since 0.4.0
  */
 public class PricesAndConsumptionPPIClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor. Initializes values and creates sub-clients.</p>
+     * Default constructor. Initializes values and creates sub-clients.
      */
     public PricesAndConsumptionPPIClient() {
         super();
@@ -48,7 +48,7 @@ public class PricesAndConsumptionPPIClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -60,8 +60,8 @@ public class PricesAndConsumptionPPIClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with prices and consumption producer and
-     * import price index (PPI) economic indicators data.</p>
+     * Retrieve the client for interacting with prices and consumption producer and
+     * import price index (PPI) economic indicators data.
      *
      * @return a client for prices and consumption producer and import price index (PPI)
      *         economic indicators data
@@ -71,8 +71,8 @@ public class PricesAndConsumptionPPIClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with prices and consumption producer and
-     * import price index (PPI) SPIN 2002 month data.</p>
+     * Retrieve the client for interacting with prices and consumption producer and
+     * import price index (PPI) SPIN 2002 month data.
      *
      * @return a client for prices and consumption producer and import price index (PPI)
      *         SPIN 2002 month data
@@ -82,8 +82,8 @@ public class PricesAndConsumptionPPIClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with prices and consumption producer and
-     * import price index (PPI) SPIN 2002 year data.</p>
+     * Retrieve the client for interacting with prices and consumption producer and
+     * import price index (PPI) SPIN 2002 year data.
      *
      * @return a client for prices and consumption producer and import price index (PPI)
      *         SPIN 2002 year data
@@ -93,8 +93,8 @@ public class PricesAndConsumptionPPIClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with prices and consumption producer and
-     * import price index (PPI) SPIN 2007 monthly and quarterly data.</p>
+     * Retrieve the client for interacting with prices and consumption producer and
+     * import price index (PPI) SPIN 2007 monthly and quarterly data.
      *
      * @return a client for prices and consumption producer and import price index (PPI)
      *         SPIN 2007 monthly and quarterly data
@@ -104,8 +104,8 @@ public class PricesAndConsumptionPPIClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with prices and consumption producer and
-     * import price index (PPI) SPIN 2007 year data.</p>
+     * Retrieve the client for interacting with prices and consumption producer and
+     * import price index (PPI) SPIN 2007 year data.
      *
      * @return a client for prices and consumption producer and import price index (PPI)
      *         SPIN 2007 year data
@@ -115,8 +115,8 @@ public class PricesAndConsumptionPPIClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with prices and consumption producer and
-     * import price index (PPI) SPIN 2015 monthly and quarterly data.</p>
+     * Retrieve the client for interacting with prices and consumption producer and
+     * import price index (PPI) SPIN 2015 monthly and quarterly data.
      *
      * @return a client for prices and consumption producer and import price index (PPI)
      *         SPIN 2015 monthly and quarterly data

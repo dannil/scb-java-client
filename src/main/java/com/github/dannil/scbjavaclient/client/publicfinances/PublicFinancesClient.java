@@ -26,14 +26,14 @@ import com.github.dannil.scbjavaclient.client.publicfinances.taxassessment.Publi
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
- * <p>Client which handles public finances data fetching.</p>
+ * Client which handles public finances data fetching.
  *
  * @since 0.3.0
  */
 public class PublicFinancesClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor. Initializes values and creates sub-clients.</p>
+     * Default constructor. Initializes values and creates sub-clients.
      */
     public PublicFinancesClient() {
         super();
@@ -47,7 +47,7 @@ public class PublicFinancesClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -59,8 +59,8 @@ public class PublicFinancesClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with public finances annual accounts
-     * data.</p>
+     * Retrieve the client for interacting with public finances annual accounts
+     * data.
      *
      * @return a client for public finances annual accounts data
      */
@@ -69,8 +69,8 @@ public class PublicFinancesClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with public finances assets and liabilities
-     * data.</p>
+     * Retrieve the client for interacting with public finances assets and liabilities
+     * data.
      *
      * @return a client for public finances assets and liabilities data
      */
@@ -79,8 +79,8 @@ public class PublicFinancesClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with public finances government debt
-     * data.</p>
+     * Retrieve the client for interacting with public finances government debt
+     * data.
      *
      * @return a client for public finances government debt data
      */
@@ -89,7 +89,7 @@ public class PublicFinancesClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with public finances local taxes data.</p>
+     * Retrieve the client for interacting with public finances local taxes data.
      *
      * @return a client for public finances local taxes data
      */
@@ -98,8 +98,8 @@ public class PublicFinancesClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with public finances publicly owned
-     * enterprises data.</p>
+     * Retrieve the client for interacting with public finances publicly owned
+     * enterprises data.
      *
      * @return a client for public finances publicly owned enterprises data
      */
@@ -108,8 +108,8 @@ public class PublicFinancesClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with public finances tax assessment
-     * data.</p>
+     * Retrieve the client for interacting with public finances tax assessment
+     * data.
      *
      * @return a client for public finances tax assessment data
      */

@@ -25,15 +25,15 @@ import com.github.dannil.scbjavaclient.client.pricesandconsumption.cpi.pricebasi
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
- * <p>Client which handles prices and consumption Consumer Price Index (CPI) data
- * fetching.</p>
+ * Client which handles prices and consumption Consumer Price Index (CPI) data
+ * fetching.
  *
  * @since 0.4.0
  */
 public class PricesAndConsumptionCPIClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor. Initializes values and creates sub-clients.</p>
+     * Default constructor. Initializes values and creates sub-clients.
      */
     public PricesAndConsumptionCPIClient() {
         super();
@@ -46,7 +46,7 @@ public class PricesAndConsumptionCPIClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -58,8 +58,8 @@ public class PricesAndConsumptionCPIClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with prices and consumption Consumer Price
-     * Index (CPI) with fixed interest rate and at constant taxes (CPIF-CT) data.</p>
+     * Retrieve the client for interacting with prices and consumption Consumer Price
+     * Index (CPI) with fixed interest rate and at constant taxes (CPIF-CT) data.
      *
      * @return a client for prices and consumption Consumer Price Index (CPI) with fixed
      *         interest rate and at constant taxes (CPIF-CT) data
@@ -69,8 +69,8 @@ public class PricesAndConsumptionCPIClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with prices and consumption Consumer Price
-     * Index (CPI) economic indicators data.</p>
+     * Retrieve the client for interacting with prices and consumption Consumer Price
+     * Index (CPI) economic indicators data.
      *
      * @return a client for prices and consumption Consumer Price Index (CPI) economic
      *         indicators data
@@ -80,8 +80,8 @@ public class PricesAndConsumptionCPIClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with prices and consumption Consumer Price
-     * Index (CPI) Harmonized Index of Consumer Prices (HICP) data.</p>
+     * Retrieve the client for interacting with prices and consumption Consumer Price
+     * Index (CPI) Harmonized Index of Consumer Prices (HICP) data.
      *
      * @return a client for prices and consumption Consumer Price Index (CPI) Harmonized
      *         Index of Consumer Prices (HICP) data
@@ -91,8 +91,8 @@ public class PricesAndConsumptionCPIClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with prices and consumption Consumer Price
-     * Index (CPI) Price Basic Amount data.</p>
+     * Retrieve the client for interacting with prices and consumption Consumer Price
+     * Index (CPI) Price Basic Amount data.
      *
      * @return a client for prices and consumption Consumer Price Index (CPI) Price Basic
      *         Amount data
@@ -102,8 +102,8 @@ public class PricesAndConsumptionCPIClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with prices and consumption Consumer Price
-     * Index (CPI) Underlying Inflation Rate (KPIF) data.</p>
+     * Retrieve the client for interacting with prices and consumption Consumer Price
+     * Index (CPI) Underlying Inflation Rate (KPIF) data.
      *
      * @return a client for prices and consumption Consumer Price Index (CPI) Underlying
      *         Inflation Rate (KPIF) data

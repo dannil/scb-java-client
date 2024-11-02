@@ -26,22 +26,22 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles environment land use infrastructure for transport data
- * fetching.</p>
+ * Client which handles environment land use infrastructure for transport data
+ * fetching.
  *
  * @since 2.1.0
  */
 public class EnvironmentLandUseInfrastructureForTransportClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public EnvironmentLandUseInfrastructureForTransportClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,7 +51,7 @@ public class EnvironmentLandUseInfrastructureForTransportClient extends Abstract
     }
 
     /**
-     * <p>Fetch all road length by road owner data.</p>
+     * Fetch all road length by road owner data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -64,7 +64,7 @@ public class EnvironmentLandUseInfrastructureForTransportClient extends Abstract
     }
 
     /**
-     * <p>Fetch all road length by owner data which match the input constraints.</p>
+     * Fetch all road length by owner data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -87,7 +87,7 @@ public class EnvironmentLandUseInfrastructureForTransportClient extends Abstract
     }
 
     /**
-     * <p>Fetch all railways data.</p>
+     * Fetch all railways data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -100,7 +100,7 @@ public class EnvironmentLandUseInfrastructureForTransportClient extends Abstract
     }
 
     /**
-     * <p>Fetch all railways data which match the input constraints.</p>
+     * Fetch all railways data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -119,7 +119,7 @@ public class EnvironmentLandUseInfrastructureForTransportClient extends Abstract
     }
 
     /**
-     * <p>Fetch all road area data.</p>
+     * Fetch all road area data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -132,7 +132,7 @@ public class EnvironmentLandUseInfrastructureForTransportClient extends Abstract
     }
 
     /**
-     * <p>Fetch all road area data which match the input constraints.</p>
+     * Fetch all road area data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -155,7 +155,7 @@ public class EnvironmentLandUseInfrastructureForTransportClient extends Abstract
     }
 
     /**
-     * <p>Fetch all road length by category data.</p>
+     * Fetch all road length by category data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -168,7 +168,7 @@ public class EnvironmentLandUseInfrastructureForTransportClient extends Abstract
     }
 
     /**
-     * <p>Fetch all road length by category data which match the input constraints.</p>
+     * Fetch all road length by category data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -191,7 +191,7 @@ public class EnvironmentLandUseInfrastructureForTransportClient extends Abstract
     }
 
     /**
-     * <p>Fetch all land with transport infrastructure data.</p>
+     * Fetch all land with transport infrastructure data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -204,8 +204,8 @@ public class EnvironmentLandUseInfrastructureForTransportClient extends Abstract
     }
 
     /**
-     * <p>Fetch all land with transport infrastructure data which match the input
-     * constraints.</p>
+     * Fetch all land with transport infrastructure data which match the input
+     * constraints.
      *
      * @param regions
      *            the regions

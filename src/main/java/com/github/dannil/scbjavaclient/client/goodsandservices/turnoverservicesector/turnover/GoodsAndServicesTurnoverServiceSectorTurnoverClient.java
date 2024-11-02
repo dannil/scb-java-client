@@ -26,22 +26,22 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles goods and services turnover service sector turnover data
- * fetching.</p>
+ * Client which handles goods and services turnover service sector turnover data
+ * fetching.
  *
  * @since 0.7.0
  */
 public class GoodsAndServicesTurnoverServiceSectorTurnoverClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public GoodsAndServicesTurnoverServiceSectorTurnoverClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -53,7 +53,7 @@ public class GoodsAndServicesTurnoverServiceSectorTurnoverClient extends Abstrac
     // Daniel, 2018-06-28
     // Returns HTTP 403
     /**
-     * <p>Fetch all retail sale index by industry (SIC 2007) monthly data.</p>
+     * Fetch all retail sale index by industry (SIC 2007) monthly data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -66,8 +66,8 @@ public class GoodsAndServicesTurnoverServiceSectorTurnoverClient extends Abstrac
     }
 
     /**
-     * <p>Fetch all retail sale index by industry (SIC 2007) monthly data which match the
-     * input constraints.</p>
+     * Fetch all retail sale index by industry (SIC 2007) monthly data which match the
+     * input constraints.
      *
      * @param industrialClassifications
      *            the industrial classifications
@@ -87,7 +87,7 @@ public class GoodsAndServicesTurnoverServiceSectorTurnoverClient extends Abstrac
     }
 
     /**
-     * <p>Fetch all monthly indicator for household consumption data.</p>
+     * Fetch all monthly indicator for household consumption data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -100,8 +100,8 @@ public class GoodsAndServicesTurnoverServiceSectorTurnoverClient extends Abstrac
     }
 
     /**
-     * <p>Fetch all monthly indicator for household consumption data which match the input
-     * constraints.</p>
+     * Fetch all monthly indicator for household consumption data which match the input
+     * constraints.
      *
      * @param purposes
      *            the purposes
@@ -121,8 +121,8 @@ public class GoodsAndServicesTurnoverServiceSectorTurnoverClient extends Abstrac
     }
 
     /**
-     * <p>Fetch all turnover index for the service sector by industry (SIC 2007) monthly
-     * data.</p>
+     * Fetch all turnover index for the service sector by industry (SIC 2007) monthly
+     * data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -135,8 +135,8 @@ public class GoodsAndServicesTurnoverServiceSectorTurnoverClient extends Abstrac
     }
 
     /**
-     * <p>Fetch all turnover index for the service sector by industry (SIC 2007) monthly
-     * data which match the input constraints.</p>
+     * Fetch all turnover index for the service sector by industry (SIC 2007) monthly
+     * data which match the input constraints.
      *
      * @param industrialClassifications
      *            the industrial classifications
@@ -156,7 +156,7 @@ public class GoodsAndServicesTurnoverServiceSectorTurnoverClient extends Abstrac
     }
 
     /**
-     * <p>Fetch all retail trade sales comparison to previous period data.</p>
+     * Fetch all retail trade sales comparison to previous period data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -169,8 +169,8 @@ public class GoodsAndServicesTurnoverServiceSectorTurnoverClient extends Abstrac
     }
 
     /**
-     * <p>Fetch all retail trade sales comparison to previous period data which match the
-     * input constraints.</p>
+     * Fetch all retail trade sales comparison to previous period data which match the
+     * input constraints.
      *
      * @param indicators
      *            the indicators

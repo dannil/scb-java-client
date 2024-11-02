@@ -25,14 +25,14 @@ import com.github.dannil.scbjavaclient.client.financialmarkets.statistics.statis
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
- * <p>Client which handles financial markets statistics data fetching.</p>
+ * Client which handles financial markets statistics data fetching.
  *
  * @since 0.4.0
  */
 public class FinancialMarketsStatisticsClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor. Initializes values and creates sub-clients.</p>
+     * Default constructor. Initializes values and creates sub-clients.
      */
     public FinancialMarketsStatisticsClient() {
         super();
@@ -45,7 +45,7 @@ public class FinancialMarketsStatisticsClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -57,8 +57,8 @@ public class FinancialMarketsStatisticsClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with financial markets statistics claims and
-     * liabilities data.</p>
+     * Retrieve the client for interacting with financial markets statistics claims and
+     * liabilities data.
      *
      * @return a client for financial markets statistics claims and liabilities data
      */
@@ -67,8 +67,8 @@ public class FinancialMarketsStatisticsClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with financial markets statistics deposit
-     * and lending data.</p>
+     * Retrieve the client for interacting with financial markets statistics deposit
+     * and lending data.
      *
      * @return a client for financial markets statistics deposit and lending data
      */
@@ -77,8 +77,8 @@ public class FinancialMarketsStatisticsClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with financial markets statistics economic
-     * indicators data.</p>
+     * Retrieve the client for interacting with financial markets statistics economic
+     * indicators data.
      *
      * @return a client for financial markets statistics economic indicators data
      */
@@ -87,8 +87,8 @@ public class FinancialMarketsStatisticsClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with financial markets statistics key
-     * figures data.</p>
+     * Retrieve the client for interacting with financial markets statistics key
+     * figures data.
      *
      * @return a client for financial markets statistics key figures data
      */
@@ -97,8 +97,8 @@ public class FinancialMarketsStatisticsClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with financial markets statistics statistics
-     * data.</p>
+     * Retrieve the client for interacting with financial markets statistics statistics
+     * data.
      *
      * @return a client for financial markets statistics statistics data
      */

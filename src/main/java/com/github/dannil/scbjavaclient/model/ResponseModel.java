@@ -25,7 +25,7 @@ import com.github.dannil.scbjavaclient.constants.ModelConstants;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * <p>Class which encapsulates data retrieved from the API.</p>
+ * Class which encapsulates data retrieved from the API.
  *
  * @since 0.3.0
  */
@@ -38,7 +38,7 @@ public class ResponseModel {
     private Collection<ValueNode<String>> values;
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public ResponseModel() {
         this.variables = new LinkedHashMap<>();
@@ -46,7 +46,7 @@ public class ResponseModel {
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param variables
      *            the variables
@@ -60,7 +60,7 @@ public class ResponseModel {
     }
 
     /**
-     * <p>Getter for variables.</p>
+     * Getter for variables.
      *
      * @return the variables
      */
@@ -69,7 +69,7 @@ public class ResponseModel {
     }
 
     /**
-     * <p>Setter for variables.</p>
+     * Setter for variables.
      *
      * @param variables
      *            the variables
@@ -79,7 +79,7 @@ public class ResponseModel {
     }
 
     /**
-     * <p>Getter for values.</p>
+     * Getter for values.
      *
      * @return the values
      */
@@ -88,7 +88,7 @@ public class ResponseModel {
     }
 
     /**
-     * <p>Setter for values.</p>
+     * Setter for values.
      *
      * @param values
      *            the values
@@ -98,7 +98,7 @@ public class ResponseModel {
     }
 
     /**
-     * <p>Get the variable value for a specific key.</p>
+     * Get the variable value for a specific key.
      *
      * @param key
      *            the key
@@ -109,7 +109,7 @@ public class ResponseModel {
     }
 
     /**
-     * <p>Set the variable value for a specific key.</p>
+     * Set the variable value for a specific key.
      *
      * @param key
      *            the key
@@ -121,7 +121,7 @@ public class ResponseModel {
     }
 
     /**
-     * <p>Get the value node for a specific contents code.</p>
+     * Get the value node for a specific contents code.
      *
      * @param code
      *            the contents code to get the {@link ValueNode ValueNode} for
@@ -137,7 +137,7 @@ public class ResponseModel {
     }
 
     /**
-     * <p>Set the value for a specific contents code.</p>
+     * Set the value for a specific contents code.
      *
      * @param code
      *            the contents code to set the value for

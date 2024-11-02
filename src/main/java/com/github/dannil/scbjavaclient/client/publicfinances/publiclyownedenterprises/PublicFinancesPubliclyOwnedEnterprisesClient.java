@@ -26,7 +26,7 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles public finances publicly owned enterprises data fetching.</p>
+ * Client which handles public finances publicly owned enterprises data fetching.
  *
  * @since 0.3.0
  */
@@ -35,14 +35,14 @@ public class PublicFinancesPubliclyOwnedEnterprisesClient extends AbstractClient
     private static final String OWNERCATEGORY_CODE = "Agarkategori";
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public PublicFinancesPubliclyOwnedEnterprisesClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -52,7 +52,7 @@ public class PublicFinancesPubliclyOwnedEnterprisesClient extends AbstractClient
     }
 
     /**
-     * <p>Fetch all municipality owned enterprises data.</p>
+     * Fetch all municipality owned enterprises data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -65,8 +65,8 @@ public class PublicFinancesPubliclyOwnedEnterprisesClient extends AbstractClient
     }
 
     /**
-     * <p>Fetch all municipality owned enterprises data which match the input
-     * constraints.</p>
+     * Fetch all municipality owned enterprises data which match the input
+     * constraints.
      *
      * @param regions
      *            the regions
@@ -86,7 +86,7 @@ public class PublicFinancesPubliclyOwnedEnterprisesClient extends AbstractClient
     }
 
     /**
-     * <p>Fetch all enterprises data.</p>
+     * Fetch all enterprises data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -99,7 +99,7 @@ public class PublicFinancesPubliclyOwnedEnterprisesClient extends AbstractClient
     }
 
     /**
-     * <p>Fetch all enterprises data which match the input constraints.</p>
+     * Fetch all enterprises data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -118,7 +118,7 @@ public class PublicFinancesPubliclyOwnedEnterprisesClient extends AbstractClient
     }
 
     /**
-     * <p>Fetch all county councils enterprises data.</p>
+     * Fetch all county councils enterprises data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -131,8 +131,8 @@ public class PublicFinancesPubliclyOwnedEnterprisesClient extends AbstractClient
     }
 
     /**
-     * <p>Fetch all county councils enterprises data which match the input
-     * constraints.</p>
+     * Fetch all county councils enterprises data which match the input
+     * constraints.
      *
      * @param regions
      *            the regions
@@ -155,7 +155,7 @@ public class PublicFinancesPubliclyOwnedEnterprisesClient extends AbstractClient
     }
 
     /**
-     * <p>Fetch all publicly owned enterprises data.</p>
+     * Fetch all publicly owned enterprises data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -168,7 +168,7 @@ public class PublicFinancesPubliclyOwnedEnterprisesClient extends AbstractClient
     }
 
     /**
-     * <p>Fetch all publicly owned enterprises data which match the input constraints.</p>
+     * Fetch all publicly owned enterprises data which match the input constraints.
      *
      * @param sectors
      *            the sectors
@@ -194,7 +194,7 @@ public class PublicFinancesPubliclyOwnedEnterprisesClient extends AbstractClient
     }
 
     /**
-     * <p>Fetch all income statements data.</p>
+     * Fetch all income statements data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -207,7 +207,7 @@ public class PublicFinancesPubliclyOwnedEnterprisesClient extends AbstractClient
     }
 
     /**
-     * <p>Fetch all income statements data which match the input constraints.</p>
+     * Fetch all income statements data which match the input constraints.
      *
      * @param sectors
      *            the sectors
@@ -233,7 +233,7 @@ public class PublicFinancesPubliclyOwnedEnterprisesClient extends AbstractClient
     }
 
     /**
-     * <p>Fetch all liabilities and equity data.</p>
+     * Fetch all liabilities and equity data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -246,7 +246,7 @@ public class PublicFinancesPubliclyOwnedEnterprisesClient extends AbstractClient
     }
 
     /**
-     * <p>Fetch all liabilities and equity data which match the input constraints.</p>
+     * Fetch all liabilities and equity data which match the input constraints.
      *
      * @param sectors
      *            the sectors
@@ -273,7 +273,7 @@ public class PublicFinancesPubliclyOwnedEnterprisesClient extends AbstractClient
     }
 
     /**
-     * <p>Fetch all assets data.</p>
+     * Fetch all assets data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -286,7 +286,7 @@ public class PublicFinancesPubliclyOwnedEnterprisesClient extends AbstractClient
     }
 
     /**
-     * <p>Fetch all assets data which match the input constraints.</p>
+     * Fetch all assets data which match the input constraints.
      *
      * @param sectors
      *            the sectors

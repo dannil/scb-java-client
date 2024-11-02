@@ -23,7 +23,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * <p>HTTP requester for GET requests.</p>
+ * HTTP requester for GET requests.
  *
  * @since 1.2.0
  */
@@ -32,14 +32,14 @@ public class GETRequester extends AbstractRequester {
     private static final Logger LOGGER = LoggerFactory.getLogger(GETRequester.class);
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public GETRequester() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param charset
      *            the charset

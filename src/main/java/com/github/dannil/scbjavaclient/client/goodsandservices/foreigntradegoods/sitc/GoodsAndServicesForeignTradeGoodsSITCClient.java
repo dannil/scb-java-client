@@ -26,22 +26,22 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles goods and services foreign trade goods SITC (Standard
- * International Trade Classification) data fetching.</p>
+ * Client which handles goods and services foreign trade goods SITC (Standard
+ * International Trade Classification) data fetching.
  *
  * @since 0.7.0
  */
 public class GoodsAndServicesForeignTradeGoodsSITCClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public GoodsAndServicesForeignTradeGoodsSITCClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,7 +51,7 @@ public class GoodsAndServicesForeignTradeGoodsSITCClient extends AbstractClient 
     }
 
     /**
-     * <p>Fetch all imports and exports of goods data.</p>
+     * Fetch all imports and exports of goods data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -64,8 +64,8 @@ public class GoodsAndServicesForeignTradeGoodsSITCClient extends AbstractClient 
     }
 
     /**
-     * <p>Fetch all imports and exports of goods data which match the input
-     * constraints.</p>
+     * Fetch all imports and exports of goods data which match the input
+     * constraints.
      *
      * @param commodityGroups
      *            the commodity groups

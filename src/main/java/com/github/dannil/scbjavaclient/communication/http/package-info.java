@@ -1,4 +1,4 @@
 /**
- * <p>Package which contains classes related to HTTP communication.</p>
+ * Package which contains classes related to HTTP communication.
  */
 package com.github.dannil.scbjavaclient.communication.http;

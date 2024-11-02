@@ -26,22 +26,22 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles education and research community innovation survey co-operation
- * activity among enterprises data fetching.</p>
+ * Client which handles education and research community innovation survey co-operation
+ * activity among enterprises data fetching.
  *
  * @since 0.5.0
  */
 public class EducationAndResearchCommunityInnovationSurveyCooperationClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public EducationAndResearchCommunityInnovationSurveyCooperationClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,7 +51,7 @@ public class EducationAndResearchCommunityInnovationSurveyCooperationClient exte
     }
 
     /**
-     * <p>Fetch all enterprises innovation cooperation in private sector data.</p>
+     * Fetch all enterprises innovation cooperation in private sector data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -65,8 +65,8 @@ public class EducationAndResearchCommunityInnovationSurveyCooperationClient exte
     }
 
     /**
-     * <p>Fetch all enterprises innovation cooperation in private sector data which match
-     * the input constraints.</p>
+     * Fetch all enterprises innovation cooperation in private sector data which match
+     * the input constraints.
      *
      * @param sni2007s
      *            the SNI 2007s
@@ -92,7 +92,7 @@ public class EducationAndResearchCommunityInnovationSurveyCooperationClient exte
     }
 
     /**
-     * <p>Fetch all enterprises innovation cooperation in public sector data.</p>
+     * Fetch all enterprises innovation cooperation in public sector data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -106,8 +106,8 @@ public class EducationAndResearchCommunityInnovationSurveyCooperationClient exte
     }
 
     /**
-     * <p>Fetch all enterprises innovation cooperation in public sector data which match
-     * the input constraints.</p>
+     * Fetch all enterprises innovation cooperation in public sector data which match
+     * the input constraints.
      *
      * @param sni2007s
      *            the SNI 2007s

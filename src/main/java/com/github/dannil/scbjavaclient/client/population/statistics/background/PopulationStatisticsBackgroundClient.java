@@ -26,7 +26,7 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles population statistics background data fetching.</p>
+ * Client which handles population statistics background data fetching.
  *
  * @since 0.4.0
  */
@@ -35,14 +35,14 @@ public class PopulationStatisticsBackgroundClient extends AbstractClient {
     private static final String BACKGROUND_CODE = "UtlBakgrund";
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public PopulationStatisticsBackgroundClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -52,8 +52,8 @@ public class PopulationStatisticsBackgroundClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all number of persons with foreign or Swedish background (rough division)
-     * data.</p>
+     * Fetch all number of persons with foreign or Swedish background (rough division)
+     * data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -67,8 +67,8 @@ public class PopulationStatisticsBackgroundClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all number of persons with foreign or Swedish background (rough division)
-     * data which match the input constraints.</p>
+     * Fetch all number of persons with foreign or Swedish background (rough division)
+     * data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -98,8 +98,8 @@ public class PopulationStatisticsBackgroundClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all number of persons with foreign or Swedish background (detailed
-     * division) data.</p>
+     * Fetch all number of persons with foreign or Swedish background (detailed
+     * division) data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -113,8 +113,8 @@ public class PopulationStatisticsBackgroundClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all number of persons with foreign or Swedish background (detailed
-     * division) data which match the input constraints.</p>
+     * Fetch all number of persons with foreign or Swedish background (detailed
+     * division) data which match the input constraints.
      *
      * @param regions
      *            the regions

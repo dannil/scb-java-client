@@ -26,21 +26,21 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles environment shoreline land use old tables data fetching.</p>
+ * Client which handles environment shoreline land use old tables data fetching.
  *
  * @since 2.1.0
  */
 public class EnvironmentShorelineLandUseOldTablesClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public EnvironmentShorelineLandUseOldTablesClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -50,7 +50,7 @@ public class EnvironmentShorelineLandUseOldTablesClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all population on islands data.</p>
+     * Fetch all population on islands data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -63,7 +63,7 @@ public class EnvironmentShorelineLandUseOldTablesClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all population on islands data which match the input constraints.</p>
+     * Fetch all population on islands data which match the input constraints.
      *
      * @param regions
      *            the regions

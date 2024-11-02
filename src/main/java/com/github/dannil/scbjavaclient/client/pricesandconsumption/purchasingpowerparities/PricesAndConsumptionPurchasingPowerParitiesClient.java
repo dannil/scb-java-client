@@ -26,22 +26,22 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles prices and consumption purchasing power parities data
- * fetching.</p>
+ * Client which handles prices and consumption purchasing power parities data
+ * fetching.
  *
  * @since 0.4.0
  */
 public class PricesAndConsumptionPurchasingPowerParitiesClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public PricesAndConsumptionPurchasingPowerParitiesClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,7 +51,7 @@ public class PricesAndConsumptionPurchasingPowerParitiesClient extends AbstractC
     }
 
     /**
-     * <p>Fetch all extrapolated price level indices data.</p>
+     * Fetch all extrapolated price level indices data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -64,8 +64,8 @@ public class PricesAndConsumptionPurchasingPowerParitiesClient extends AbstractC
     }
 
     /**
-     * <p>Fetch all extrapolated price level indices data which match the input
-     * constraints.</p>
+     * Fetch all extrapolated price level indices data which match the input
+     * constraints.
      *
      * @param countryGroups
      *            the country groups
@@ -85,7 +85,7 @@ public class PricesAndConsumptionPurchasingPowerParitiesClient extends AbstractC
     }
 
     /**
-     * <p>Fetch all purchasing power parities data.</p>
+     * Fetch all purchasing power parities data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -98,7 +98,7 @@ public class PricesAndConsumptionPurchasingPowerParitiesClient extends AbstractC
     }
 
     /**
-     * <p>Fetch all purchasing power parities data which match the input constraints.</p>
+     * Fetch all purchasing power parities data which match the input constraints.
      *
      * @param countries
      *            the countries

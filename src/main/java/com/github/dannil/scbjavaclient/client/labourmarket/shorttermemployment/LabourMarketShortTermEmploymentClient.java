@@ -22,14 +22,14 @@ import com.github.dannil.scbjavaclient.client.labourmarket.shorttermemployment.s
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
- * <p>Client which handles labour market short-term employment data fetching.</p>
+ * Client which handles labour market short-term employment data fetching.
  *
  * @since 0.3.0
  */
 public class LabourMarketShortTermEmploymentClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor. Initializes values and creates sub-clients.</p>
+     * Default constructor. Initializes values and creates sub-clients.
      */
     public LabourMarketShortTermEmploymentClient() {
         super();
@@ -39,7 +39,7 @@ public class LabourMarketShortTermEmploymentClient extends AbstractContainerClie
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,8 +51,8 @@ public class LabourMarketShortTermEmploymentClient extends AbstractContainerClie
     }
 
     /**
-     * <p>Retrieve the client for interacting with labour market short-term employment
-     * population data.</p>
+     * Retrieve the client for interacting with labour market short-term employment
+     * population data.
      *
      * @return a client for labour market short-term employment population data
      */
@@ -61,8 +61,8 @@ public class LabourMarketShortTermEmploymentClient extends AbstractContainerClie
     }
 
     /**
-     * <p>Retrieve the client for interacting with labour market short-term employment
-     * sick leave data.</p>
+     * Retrieve the client for interacting with labour market short-term employment
+     * sick leave data.
      *
      * @return a client for labour market short-term employment sick leave data
      */

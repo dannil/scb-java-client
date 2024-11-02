@@ -26,22 +26,22 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles public finances annual accounts statement accounts county data
- * fetching.</p>
+ * Client which handles public finances annual accounts statement accounts county data
+ * fetching.
  *
  * @since 0.3.0
  */
 public class PublicFinancesAnnualAccountsStatementAccountsCountyClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public PublicFinancesAnnualAccountsStatementAccountsCountyClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,7 +51,7 @@ public class PublicFinancesAnnualAccountsStatementAccountsCountyClient extends A
     }
 
     /**
-     * <p>Fetch all expenses and revenues data.</p>
+     * Fetch all expenses and revenues data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -64,7 +64,7 @@ public class PublicFinancesAnnualAccountsStatementAccountsCountyClient extends A
     }
 
     /**
-     * <p>Fetch all expenses and revenues data which match the input constraints.</p>
+     * Fetch all expenses and revenues data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -82,7 +82,7 @@ public class PublicFinancesAnnualAccountsStatementAccountsCountyClient extends A
     }
 
     /**
-     * <p>Fetch all net costs data.</p>
+     * Fetch all net costs data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -95,7 +95,7 @@ public class PublicFinancesAnnualAccountsStatementAccountsCountyClient extends A
     }
 
     /**
-     * <p>Fetch all net costs data which match the input constraints.</p>
+     * Fetch all net costs data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -113,7 +113,7 @@ public class PublicFinancesAnnualAccountsStatementAccountsCountyClient extends A
     }
 
     /**
-     * <p>Fetch all purchases and sales data.</p>
+     * Fetch all purchases and sales data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -126,7 +126,7 @@ public class PublicFinancesAnnualAccountsStatementAccountsCountyClient extends A
     }
 
     /**
-     * <p>Fetch all purchases and sales data which match the input constraints.</p>
+     * Fetch all purchases and sales data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -144,7 +144,7 @@ public class PublicFinancesAnnualAccountsStatementAccountsCountyClient extends A
     }
 
     /**
-     * <p>Fetch all contributions data.</p>
+     * Fetch all contributions data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -157,7 +157,7 @@ public class PublicFinancesAnnualAccountsStatementAccountsCountyClient extends A
     }
 
     /**
-     * <p>Fetch all contributions data which match the input constraints.</p>
+     * Fetch all contributions data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -175,7 +175,7 @@ public class PublicFinancesAnnualAccountsStatementAccountsCountyClient extends A
     }
 
     /**
-     * <p>Fetch all income and costs data.</p>
+     * Fetch all income and costs data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -188,7 +188,7 @@ public class PublicFinancesAnnualAccountsStatementAccountsCountyClient extends A
     }
 
     /**
-     * <p>Fetch all income and costs data which match the input constraints.</p>
+     * Fetch all income and costs data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -206,7 +206,7 @@ public class PublicFinancesAnnualAccountsStatementAccountsCountyClient extends A
     }
 
     /**
-     * <p>Fetch all income and costs data.</p>
+     * Fetch all income and costs data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -219,7 +219,7 @@ public class PublicFinancesAnnualAccountsStatementAccountsCountyClient extends A
     }
 
     /**
-     * <p>Fetch all income and costs data which match the input constraints.</p>
+     * Fetch all income and costs data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -237,7 +237,7 @@ public class PublicFinancesAnnualAccountsStatementAccountsCountyClient extends A
     }
 
     /**
-     * <p>Common generator method for the methods in this class.</p>
+     * Common generator method for the methods in this class.
      *
      * @param regions
      *            the regions

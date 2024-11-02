@@ -26,21 +26,21 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles population statistics asylum seekers data fetching.</p>
+ * Client which handles population statistics asylum seekers data fetching.
  *
  * @since 0.3.0
  */
 public class PopulationStatisticsAsylumSeekersClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public PopulationStatisticsAsylumSeekersClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -50,7 +50,7 @@ public class PopulationStatisticsAsylumSeekersClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all asylum seekers data.</p>
+     * Fetch all asylum seekers data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -63,7 +63,7 @@ public class PopulationStatisticsAsylumSeekersClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all asylum seekers data which match the input constraints.</p>
+     * Fetch all asylum seekers data which match the input constraints.
      *
      * @param countriesOfCitizenships
      *            the countries of citizenships
@@ -86,7 +86,7 @@ public class PopulationStatisticsAsylumSeekersClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all unaccompanied refugee minors data.</p>
+     * Fetch all unaccompanied refugee minors data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -99,8 +99,8 @@ public class PopulationStatisticsAsylumSeekersClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all unaccompanied refugee minors data which match the input
-     * constraints.</p>
+     * Fetch all unaccompanied refugee minors data which match the input
+     * constraints.
      *
      * @param sexes
      *            the sexes

@@ -26,21 +26,21 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles population projections latest projections data fetching.</p>
+ * Client which handles population projections latest projections data fetching.
  *
  * @since 0.3.0
  */
 public class PopulationProjectionsLatestProjectionsClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public PopulationProjectionsLatestProjectionsClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -50,7 +50,7 @@ public class PopulationProjectionsLatestProjectionsClient extends AbstractClient
     }
 
     /**
-     * <p>Fetch all population data.</p>
+     * Fetch all population data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -63,7 +63,7 @@ public class PopulationProjectionsLatestProjectionsClient extends AbstractClient
     }
 
     /**
-     * <p>Fetch all population data which match the input constraints.</p>
+     * Fetch all population data which match the input constraints.
      *
      * @param regionsOfBirths
      *            the regions of births
@@ -89,7 +89,7 @@ public class PopulationProjectionsLatestProjectionsClient extends AbstractClient
     }
 
     /**
-     * <p>Fetch all population changes data.</p>
+     * Fetch all population changes data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -102,7 +102,7 @@ public class PopulationProjectionsLatestProjectionsClient extends AbstractClient
     }
 
     /**
-     * <p>Fetch all population changes data which match the input constraints.</p>
+     * Fetch all population changes data which match the input constraints.
      *
      * @param regionsOfBirths
      *            the regions of births
@@ -128,7 +128,7 @@ public class PopulationProjectionsLatestProjectionsClient extends AbstractClient
     }
 
     /**
-     * <p>Fetch all population changes overview data.</p>
+     * Fetch all population changes overview data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -141,8 +141,8 @@ public class PopulationProjectionsLatestProjectionsClient extends AbstractClient
     }
 
     /**
-     * <p>Fetch all population changes overview data which match the input
-     * constraints.</p>
+     * Fetch all population changes overview data which match the input
+     * constraints.
      *
      * @param years
      *            the years
@@ -158,7 +158,7 @@ public class PopulationProjectionsLatestProjectionsClient extends AbstractClient
     }
 
     /**
-     * <p>Fetch all number of births data.</p>
+     * Fetch all number of births data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -171,7 +171,7 @@ public class PopulationProjectionsLatestProjectionsClient extends AbstractClient
     }
 
     /**
-     * <p>Fetch all number of births data which match the input constraints.</p>
+     * Fetch all number of births data which match the input constraints.
      *
      * @param mothersRegionsOfBirths
      *            the mother's regions of births
@@ -194,7 +194,7 @@ public class PopulationProjectionsLatestProjectionsClient extends AbstractClient
     }
 
     /**
-     * <p>Fetch all life expectancy data.</p>
+     * Fetch all life expectancy data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -208,7 +208,7 @@ public class PopulationProjectionsLatestProjectionsClient extends AbstractClient
     }
 
     /**
-     * <p>Fetch all life expectancy data which match the input constraints.</p>
+     * Fetch all life expectancy data which match the input constraints.
      *
      * @param sexes
      *            the sexes

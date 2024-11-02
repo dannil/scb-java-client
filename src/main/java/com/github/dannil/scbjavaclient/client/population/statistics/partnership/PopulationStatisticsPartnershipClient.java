@@ -26,21 +26,21 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles population statistics partnership data fetching.</p>
+ * Client which handles population statistics partnership data fetching.
  *
  * @since 0.1.0
  */
 public class PopulationStatisticsPartnershipClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public PopulationStatisticsPartnershipClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -50,7 +50,7 @@ public class PopulationStatisticsPartnershipClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all population partnership data.</p>
+     * Fetch all population partnership data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -63,7 +63,7 @@ public class PopulationStatisticsPartnershipClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all population partnership data which match the input constraints.</p>
+     * Fetch all population partnership data which match the input constraints.
      *
      * @param regions
      *            the regions to fetch data for
@@ -89,7 +89,7 @@ public class PopulationStatisticsPartnershipClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all population partnership change data.</p>
+     * Fetch all population partnership change data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -102,8 +102,8 @@ public class PopulationStatisticsPartnershipClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all population partnership change data which match the input
-     * constraints.</p>
+     * Fetch all population partnership change data which match the input
+     * constraints.
      *
      * @param regions
      *            the regions to fetch data for

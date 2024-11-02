@@ -26,8 +26,8 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles financial markets balance of payments payments data
- * fetching.</p>
+ * Client which handles financial markets balance of payments payments data
+ * fetching.
  *
  * @since 0.4.0
  */
@@ -36,14 +36,14 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClient extends AbstractCli
     private static final String EXPORTANDIMPORT_CODE = "ExpImp";
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public FinancialMarketsBalanceOfPaymentsPaymentsClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -53,7 +53,7 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClient extends AbstractCli
     }
 
     /**
-     * <p>Fetch all transactions quarters data.</p>
+     * Fetch all transactions quarters data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -66,7 +66,7 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClient extends AbstractCli
     }
 
     /**
-     * <p>Fetch all transactions quarters data which match the input constraints.</p>
+     * Fetch all transactions quarters data which match the input constraints.
      *
      * @param items
      *            the items
@@ -85,7 +85,7 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClient extends AbstractCli
     }
 
     /**
-     * <p>Fetch all seasonally adjusted current account and capital account data.</p>
+     * Fetch all seasonally adjusted current account and capital account data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -98,8 +98,8 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClient extends AbstractCli
     }
 
     /**
-     * <p>Fetch all seasonally adjusted current account and capital account data which
-     * match the input constraints.</p>
+     * Fetch all seasonally adjusted current account and capital account data which
+     * match the input constraints.
      *
      * @param items
      *            the items
@@ -119,7 +119,7 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClient extends AbstractCli
     }
 
     /**
-     * <p>Fetch all current accounts quarters data.</p>
+     * Fetch all current accounts quarters data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -132,7 +132,7 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClient extends AbstractCli
     }
 
     /**
-     * <p>Fetch all current accounts quarters data which match the input constraints.</p>
+     * Fetch all current accounts quarters data which match the input constraints.
      *
      * @param countryGroups
      *            the country groups
@@ -158,7 +158,7 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClient extends AbstractCli
     }
 
     /**
-     * <p>Fetch all financial accounts quarters data.</p>
+     * Fetch all financial accounts quarters data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -171,8 +171,8 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClient extends AbstractCli
     }
 
     /**
-     * <p>Fetch all financial accounts quarters data which match the input
-     * constraints.</p>
+     * Fetch all financial accounts quarters data which match the input
+     * constraints.
      *
      * @param typesOfInvestments
      *            the types of investments
@@ -195,7 +195,7 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClient extends AbstractCli
     }
 
     /**
-     * <p>Fetch all secondary income and capital accounts data.</p>
+     * Fetch all secondary income and capital accounts data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -208,8 +208,8 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClient extends AbstractCli
     }
 
     /**
-     * <p>Fetch all secondary income and capital accounts data which match the input
-     * constraints.</p>
+     * Fetch all secondary income and capital accounts data which match the input
+     * constraints.
      *
      * @param transactions
      *            the transactions
@@ -232,7 +232,7 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClient extends AbstractCli
     }
 
     /**
-     * <p>Fetch all transactions years data.</p>
+     * Fetch all transactions years data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -245,7 +245,7 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClient extends AbstractCli
     }
 
     /**
-     * <p>Fetch all transactions years data which match the input constraints.</p>
+     * Fetch all transactions years data which match the input constraints.
      *
      * @param items
      *            the items
@@ -264,7 +264,7 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClient extends AbstractCli
     }
 
     /**
-     * <p>Fetch all revisions data.</p>
+     * Fetch all revisions data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -277,7 +277,7 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClient extends AbstractCli
     }
 
     /**
-     * <p>Fetch all revisions data which match the input constraints.</p>
+     * Fetch all revisions data which match the input constraints.
      *
      * @param items
      *            the items
@@ -296,7 +296,7 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClient extends AbstractCli
     }
 
     /**
-     * <p>Fetch all current accounts years data.</p>
+     * Fetch all current accounts years data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -309,7 +309,7 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClient extends AbstractCli
     }
 
     /**
-     * <p>Fetch all current accounts years data which match the input constraints.</p>
+     * Fetch all current accounts years data which match the input constraints.
      *
      * @param countryGroups
      *            the country groups
@@ -335,7 +335,7 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClient extends AbstractCli
     }
 
     /**
-     * <p>Fetch all financial accounts years data.</p>
+     * Fetch all financial accounts years data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -348,7 +348,7 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClient extends AbstractCli
     }
 
     /**
-     * <p>Fetch all financial accounts years data which match the input constraints.</p>
+     * Fetch all financial accounts years data which match the input constraints.
      *
      * @param typesOfInvestments
      *            the types of investments
@@ -371,7 +371,7 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClient extends AbstractCli
     }
 
     /**
-     * <p>Fetch all primary income data.</p>
+     * Fetch all primary income data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -384,7 +384,7 @@ public class FinancialMarketsBalanceOfPaymentsPaymentsClient extends AbstractCli
     }
 
     /**
-     * <p>Fetch all primary income data which match the input constraints.</p>
+     * Fetch all primary income data which match the input constraints.
      *
      * @param exportsAndImports
      *            the exports and imports

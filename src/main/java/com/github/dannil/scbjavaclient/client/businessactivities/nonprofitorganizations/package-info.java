@@ -1,5 +1,5 @@
 /**
- * <p>Package which contains all clients for business activities non-profit organizations
- * data.</p>
+ * Package which contains all clients for business activities non-profit organizations
+ * data.
  */
 package com.github.dannil.scbjavaclient.client.businessactivities.nonprofitorganizations;

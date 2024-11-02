@@ -21,14 +21,14 @@ import com.github.dannil.scbjavaclient.client.businessactivities.productionvalue
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
- * <p>Client which handles business activities production value index data fetching.</p>
+ * Client which handles business activities production value index data fetching.
  *
  * @since 3.0.0
  */
 public class BusinessActivitiesProductionValueIndexClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public BusinessActivitiesProductionValueIndexClient() {
         super();
@@ -37,7 +37,7 @@ public class BusinessActivitiesProductionValueIndexClient extends AbstractContai
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -49,8 +49,8 @@ public class BusinessActivitiesProductionValueIndexClient extends AbstractContai
     }
 
     /**
-     * <p>Retrieve the client for interacting with business activities production value
-     * index production value index data.</p>
+     * Retrieve the client for interacting with business activities production value
+     * index production value index data.
      *
      * @return a client for business activities production value index production value
      *         index data

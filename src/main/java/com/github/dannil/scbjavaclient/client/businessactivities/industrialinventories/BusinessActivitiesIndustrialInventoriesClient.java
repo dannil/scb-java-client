@@ -22,14 +22,14 @@ import com.github.dannil.scbjavaclient.client.businessactivities.industrialinven
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
- * <p>Client which handles business activities industrial inventories data fetching.</p>
+ * Client which handles business activities industrial inventories data fetching.
  *
  * @since 0.3.0
  */
 public class BusinessActivitiesIndustrialInventoriesClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public BusinessActivitiesIndustrialInventoriesClient() {
         super();
@@ -39,7 +39,7 @@ public class BusinessActivitiesIndustrialInventoriesClient extends AbstractConta
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,8 +51,8 @@ public class BusinessActivitiesIndustrialInventoriesClient extends AbstractConta
     }
 
     /**
-     * <p>Retrieve the client for interacting with business activities industrial
-     * inventories economic indicators data.</p>
+     * Retrieve the client for interacting with business activities industrial
+     * inventories economic indicators data.
      *
      * @return a client for business activities industrial inventories economic indicators
      *         data
@@ -62,8 +62,8 @@ public class BusinessActivitiesIndustrialInventoriesClient extends AbstractConta
     }
 
     /**
-     * <p>Retrieve the client for interacting with business activities industrial
-     * inventories inventories data.</p>
+     * Retrieve the client for interacting with business activities industrial
+     * inventories inventories data.
      *
      * @return a client for business activities industrial inventories inventories data
      */

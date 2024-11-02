@@ -26,22 +26,22 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles financial markets balance of payments direct investments data
- * fetching.</p>
+ * Client which handles financial markets balance of payments direct investments data
+ * fetching.
  *
  * @since 0.4.0
  */
 public class FinancialMarketsBalanceOfPaymentsDirectInvestmentsClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public FinancialMarketsBalanceOfPaymentsDirectInvestmentsClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,7 +51,7 @@ public class FinancialMarketsBalanceOfPaymentsDirectInvestmentsClient extends Ab
     }
 
     /**
-     * <p>Fetch all direct investments by economic activity (NACE 2007) data.</p>
+     * Fetch all direct investments by economic activity (NACE 2007) data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -64,8 +64,8 @@ public class FinancialMarketsBalanceOfPaymentsDirectInvestmentsClient extends Ab
     }
 
     /**
-     * <p>Fetch all direct investments by economic activity (NACE 2007) data which match
-     * the input constraints.</p>
+     * Fetch all direct investments by economic activity (NACE 2007) data which match
+     * the input constraints.
      *
      * @param industrialClassifications
      *            the industrial classifications
@@ -85,7 +85,7 @@ public class FinancialMarketsBalanceOfPaymentsDirectInvestmentsClient extends Ab
     }
 
     /**
-     * <p>Fetch all direct investments by country (years) data.</p>
+     * Fetch all direct investments by country (years) data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -98,8 +98,8 @@ public class FinancialMarketsBalanceOfPaymentsDirectInvestmentsClient extends Ab
     }
 
     /**
-     * <p>Fetch all direct investments by country (years) data which match the input
-     * constraints.</p>
+     * Fetch all direct investments by country (years) data which match the input
+     * constraints.
      *
      * @param countries
      *            the countries
@@ -119,7 +119,7 @@ public class FinancialMarketsBalanceOfPaymentsDirectInvestmentsClient extends Ab
     }
 
     /**
-     * <p>Fetch all direct investments by economic activity (NACE 2002) data.</p>
+     * Fetch all direct investments by economic activity (NACE 2002) data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -132,8 +132,8 @@ public class FinancialMarketsBalanceOfPaymentsDirectInvestmentsClient extends Ab
     }
 
     /**
-     * <p>Fetch all direct investments by economic activity (NACE 2002) data which match
-     * the input constraints.</p>
+     * Fetch all direct investments by economic activity (NACE 2002) data which match
+     * the input constraints.
      *
      * @param industrialClassifications
      *            the industrial classifications
@@ -153,7 +153,7 @@ public class FinancialMarketsBalanceOfPaymentsDirectInvestmentsClient extends Ab
     }
 
     /**
-     * <p>Fetch all direct investments by investment item data.</p>
+     * Fetch all direct investments by investment item data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -166,8 +166,8 @@ public class FinancialMarketsBalanceOfPaymentsDirectInvestmentsClient extends Ab
     }
 
     /**
-     * <p>Fetch all direct investments by investment item data which match the input
-     * constraints.</p>
+     * Fetch all direct investments by investment item data which match the input
+     * constraints.
      *
      * @param investments
      *            the investments
@@ -187,7 +187,7 @@ public class FinancialMarketsBalanceOfPaymentsDirectInvestmentsClient extends Ab
     }
 
     /**
-     * <p>Fetch all direct investments by country (quarters) data.</p>
+     * Fetch all direct investments by country (quarters) data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -200,8 +200,8 @@ public class FinancialMarketsBalanceOfPaymentsDirectInvestmentsClient extends Ab
     }
 
     /**
-     * <p>Fetch all direct investments by country (quarters) data which match the input
-     * constraints.</p>
+     * Fetch all direct investments by country (quarters) data which match the input
+     * constraints.
      *
      * @param countries
      *            the countries

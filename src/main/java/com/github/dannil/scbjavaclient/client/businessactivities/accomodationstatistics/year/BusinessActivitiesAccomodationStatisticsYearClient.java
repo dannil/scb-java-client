@@ -26,22 +26,22 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles business activities accomodation statistics year data
- * fetching.</p>
+ * Client which handles business activities accomodation statistics year data
+ * fetching.
  *
  * @since 0.3.0
  */
 public class BusinessActivitiesAccomodationStatisticsYearClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public BusinessActivitiesAccomodationStatisticsYearClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,7 +51,7 @@ public class BusinessActivitiesAccomodationStatisticsYearClient extends Abstract
     }
 
     /**
-     * <p>Fetch all number of hotels data.</p>
+     * Fetch all number of hotels data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -64,7 +64,7 @@ public class BusinessActivitiesAccomodationStatisticsYearClient extends Abstract
     }
 
     /**
-     * <p>Fetch all number of hotels data which match the input constraints.</p>
+     * Fetch all number of hotels data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -87,7 +87,7 @@ public class BusinessActivitiesAccomodationStatisticsYearClient extends Abstract
     }
 
     /**
-     * <p>Fetch all capacity for hotels data.</p>
+     * Fetch all capacity for hotels data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -100,7 +100,7 @@ public class BusinessActivitiesAccomodationStatisticsYearClient extends Abstract
     }
 
     /**
-     * <p>Fetch all capacity for hotels data which match the input constraints.</p>
+     * Fetch all capacity for hotels data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -123,7 +123,7 @@ public class BusinessActivitiesAccomodationStatisticsYearClient extends Abstract
     }
 
     /**
-     * <p>Fetch all occupancy rate data.</p>
+     * Fetch all occupancy rate data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -136,7 +136,7 @@ public class BusinessActivitiesAccomodationStatisticsYearClient extends Abstract
     }
 
     /**
-     * <p>Fetch all occupancy rate data which match the input constraints.</p>
+     * Fetch all occupancy rate data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -159,7 +159,7 @@ public class BusinessActivitiesAccomodationStatisticsYearClient extends Abstract
     }
 
     /**
-     * <p>Fetch all number of occupied rooms data.</p>
+     * Fetch all number of occupied rooms data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -172,7 +172,7 @@ public class BusinessActivitiesAccomodationStatisticsYearClient extends Abstract
     }
 
     /**
-     * <p>Fetch all number of occupied rooms data which match the input constraints.</p>
+     * Fetch all number of occupied rooms data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -191,7 +191,7 @@ public class BusinessActivitiesAccomodationStatisticsYearClient extends Abstract
     }
 
     /**
-     * <p>Fetch all accomodation revenue data.</p>
+     * Fetch all accomodation revenue data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -204,7 +204,7 @@ public class BusinessActivitiesAccomodationStatisticsYearClient extends Abstract
     }
 
     /**
-     * <p>Fetch all accomodation revenue data which match the input constraints.</p>
+     * Fetch all accomodation revenue data which match the input constraints.
      *
      * @param regions
      *            the regions

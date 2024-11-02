@@ -26,22 +26,22 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles prices and consumption producer and import price index (PPI)
- * SPIN 2007 monthly and quarterly data fetching.</p>
+ * Client which handles prices and consumption producer and import price index (PPI)
+ * SPIN 2007 monthly and quarterly data fetching.
  *
  * @since 0.4.0
  */
 public class PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,7 +51,7 @@ public class PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient extends Ab
     }
 
     /**
-     * <p>Fetch all producer price index home sales data.</p>
+     * Fetch all producer price index home sales data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -64,8 +64,8 @@ public class PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient extends Ab
     }
 
     /**
-     * <p>Fetch all producer price index home sales data which match the input
-     * constraints.</p>
+     * Fetch all producer price index home sales data which match the input
+     * constraints.
      *
      * @param spin2007
      *            the SPIN 2007
@@ -80,7 +80,7 @@ public class PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient extends Ab
     }
 
     /**
-     * <p>Fetch all export price index data.</p>
+     * Fetch all export price index data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -93,7 +93,7 @@ public class PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient extends Ab
     }
 
     /**
-     * <p>Fetch all export price index data which match the input constraints.</p>
+     * Fetch all export price index data which match the input constraints.
      *
      * @param spin2007
      *            the SPIN 2007
@@ -108,7 +108,7 @@ public class PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient extends Ab
     }
 
     /**
-     * <p>Fetch all import price index data.</p>
+     * Fetch all import price index data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -121,7 +121,7 @@ public class PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient extends Ab
     }
 
     /**
-     * <p>Fetch all import price index data which match the input constraints.</p>
+     * Fetch all import price index data which match the input constraints.
      *
      * @param spin2007
      *            the SPIN 2007
@@ -138,7 +138,7 @@ public class PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient extends Ab
     // Daniel 2018-05-12:
     // Returns HTTP 403
     /**
-     * <p>Fetch all producer price index data.</p>
+     * Fetch all producer price index data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -151,7 +151,7 @@ public class PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient extends Ab
     }
 
     /**
-     * <p>Fetch all producer price index data which match the input constraints.</p>
+     * Fetch all producer price index data which match the input constraints.
      *
      * @param spin2007
      *            the SPIN 2007
@@ -168,7 +168,7 @@ public class PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient extends Ab
     // Daniel 2017-06-05:
     // Returns HTTP 403
     /**
-     * <p>Fetch all price index for domestic supply data.</p>
+     * Fetch all price index for domestic supply data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -181,8 +181,8 @@ public class PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient extends Ab
     }
 
     /**
-     * <p>Fetch all price index for domestic supply data which match the input
-     * constraints.</p>
+     * Fetch all price index for domestic supply data which match the input
+     * constraints.
      *
      * @param spin2007
      *            the SPIN 2007
@@ -197,7 +197,7 @@ public class PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient extends Ab
     }
 
     /**
-     * <p>Fetch all producer price index for services data.</p>
+     * Fetch all producer price index for services data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -210,8 +210,8 @@ public class PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient extends Ab
     }
 
     /**
-     * <p>Fetch all producer price index for services data which match the input
-     * constraints.</p>
+     * Fetch all producer price index for services data which match the input
+     * constraints.
      *
      * @param spin2007
      *            the SPIN 2007
@@ -227,7 +227,7 @@ public class PricesAndConsumptionPPISPIN2007MonthlyAndQuarterlyClient extends Ab
     }
 
     /**
-     * <p>Common generator method for the methods in this class.</p>
+     * Common generator method for the methods in this class.
      *
      * @param spin2007
      *            the SPIN 2007

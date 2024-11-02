@@ -26,21 +26,21 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles goods and services foreign trade goods total data fetching.</p>
+ * Client which handles goods and services foreign trade goods total data fetching.
  *
  * @since 0.7.0
  */
 public class GoodsAndServicesForeignTradeGoodsTotalClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public GoodsAndServicesForeignTradeGoodsTotalClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -50,7 +50,7 @@ public class GoodsAndServicesForeignTradeGoodsTotalClient extends AbstractClient
     }
 
     /**
-     * <p>Fetch all imports and exports of goods data.</p>
+     * Fetch all imports and exports of goods data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -63,8 +63,8 @@ public class GoodsAndServicesForeignTradeGoodsTotalClient extends AbstractClient
     }
 
     /**
-     * <p>Fetch all imports and exports of goods data which match the input
-     * constraints.</p>
+     * Fetch all imports and exports of goods data which match the input
+     * constraints.
      *
      * @param importsOfGoodsAndExportsOfGoods
      *            the imports of goods and exports of goods to fetch data for

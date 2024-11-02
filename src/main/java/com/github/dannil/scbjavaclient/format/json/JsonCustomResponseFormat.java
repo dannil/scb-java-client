@@ -22,9 +22,9 @@ import java.util.Map;
 import com.fasterxml.jackson.databind.JsonNode;
 
 /**
- * <p>Class which encapsulates behavior for the custom JSON response format. Note that
+ * Class which encapsulates behavior for the custom JSON response format. Note that
  * this class is immutable; to change the containing JSON, a new class needs to be
- * instantiated.</p>
+ * instantiated.
  *
  * @since 0.1.0
  */
@@ -37,14 +37,14 @@ public final class JsonCustomResponseFormat {
     private JsonNode json;
 
     /**
-     * <p>Private constructor.</p>
+     * Private constructor.
      */
     private JsonCustomResponseFormat() {
         this.converter = new JsonConverter();
     }
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      *
      * @param json
      *            the JSON to format
@@ -57,7 +57,7 @@ public final class JsonCustomResponseFormat {
     }
 
     /**
-     * <p>Retrieves all the entries.</p>
+     * Retrieves all the entries.
      *
      * @return all the entries
      */
@@ -114,7 +114,7 @@ public final class JsonCustomResponseFormat {
     }
 
     /**
-     * <p>Converts the JSON string into a list of the specified class.</p>
+     * Converts the JSON string into a list of the specified class.
      *
      * @param clazz
      *            the class to convert each JSON entry to

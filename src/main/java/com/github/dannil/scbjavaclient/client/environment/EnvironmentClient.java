@@ -30,14 +30,14 @@ import com.github.dannil.scbjavaclient.client.environment.waste.EnvironmentWaste
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
- * <p>Client which handles environment data fetching.</p>
+ * Client which handles environment data fetching.
  *
  * @since 0.0.2
  */
 public class EnvironmentClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor. Initializes values and creates sub-clients.</p>
+     * Default constructor. Initializes values and creates sub-clients.
      */
     public EnvironmentClient() {
         super();
@@ -55,7 +55,7 @@ public class EnvironmentClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -67,7 +67,7 @@ public class EnvironmentClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with environment air pollutants data.</p>
+     * Retrieve the client for interacting with environment air pollutants data.
      *
      * @return a client for environment air pollutants data
      */
@@ -76,7 +76,7 @@ public class EnvironmentClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with environment greenhouse gas data.</p>
+     * Retrieve the client for interacting with environment greenhouse gas data.
      *
      * @return a client for environment greenhouse gas data
      */
@@ -85,8 +85,8 @@ public class EnvironmentClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with environment land and water area
-     * data.</p>
+     * Retrieve the client for interacting with environment land and water area
+     * data.
      *
      * @return a client for environment land and water area data
      */
@@ -95,7 +95,7 @@ public class EnvironmentClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with environment land use data.</p>
+     * Retrieve the client for interacting with environment land use data.
      *
      * @return a client for environment land use data
      */
@@ -104,8 +104,8 @@ public class EnvironmentClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with environment packaging and packaging
-     * waste data.</p>
+     * Retrieve the client for interacting with environment packaging and packaging
+     * waste data.
      *
      * @return a client for environment packaging and packaging waste data
      */
@@ -114,7 +114,7 @@ public class EnvironmentClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with environment protected nature data.</p>
+     * Retrieve the client for interacting with environment protected nature data.
      *
      * @return a client for environment protected nature data
      */
@@ -123,8 +123,8 @@ public class EnvironmentClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with environment System of
-     * Environmental-Economic Accounting (SEEA) data.</p>
+     * Retrieve the client for interacting with environment System of
+     * Environmental-Economic Accounting (SEEA) data.
      *
      * @return a client for environment System of Environmental-Economic Accounting (SEEA)
      *         data
@@ -134,8 +134,8 @@ public class EnvironmentClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with environment shoreline land use
-     * data.</p>
+     * Retrieve the client for interacting with environment shoreline land use
+     * data.
      *
      * @return a client for environment shoreline land use data
      */
@@ -144,8 +144,8 @@ public class EnvironmentClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with environment smaller localities
-     * data.</p>
+     * Retrieve the client for interacting with environment smaller localities
+     * data.
      *
      * @return a client for environment smaller localities data
      */
@@ -154,7 +154,7 @@ public class EnvironmentClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with environment waste data.</p>
+     * Retrieve the client for interacting with environment waste data.
      *
      * @return a client for environment waste data
      */

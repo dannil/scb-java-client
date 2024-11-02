@@ -26,22 +26,22 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles financial markets shareholders rest of the world data
- * fetching.</p>
+ * Client which handles financial markets shareholders rest of the world data
+ * fetching.
  *
  * @since 3.0.0
  */
 public class FinancialMarketsShareholdersRestOfTheWorldClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public FinancialMarketsShareholdersRestOfTheWorldClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,7 +51,7 @@ public class FinancialMarketsShareholdersRestOfTheWorldClient extends AbstractCl
     }
 
     /**
-     * <p>Fetch all foreign ownership of shares data.</p>
+     * Fetch all foreign ownership of shares data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -64,8 +64,8 @@ public class FinancialMarketsShareholdersRestOfTheWorldClient extends AbstractCl
     }
 
     /**
-     * <p>Fetch all foreign ownership of shares data which match the input
-     * constraints.</p>
+     * Fetch all foreign ownership of shares data which match the input
+     * constraints.
      *
      * @param countries
      *            the countries to fetch data for

@@ -24,14 +24,14 @@ import com.github.dannil.scbjavaclient.client.livingconditions.families.siblings
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
- * <p>Client which handles living conditions families data fetching.</p>
+ * Client which handles living conditions families data fetching.
  *
  * @since 0.2.0
  */
 public class LivingConditionsFamiliesClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor. Initializes values and creates sub-clients.</p>
+     * Default constructor. Initializes values and creates sub-clients.
      */
     public LivingConditionsFamiliesClient() {
         super();
@@ -43,7 +43,7 @@ public class LivingConditionsFamiliesClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -55,8 +55,8 @@ public class LivingConditionsFamiliesClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with living conditions families adoptions
-     * data.</p>
+     * Retrieve the client for interacting with living conditions families adoptions
+     * data.
      *
      * @return a client for living conditions families adoptions data
      */
@@ -65,8 +65,8 @@ public class LivingConditionsFamiliesClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with living conditions families housing
-     * data.</p>
+     * Retrieve the client for interacting with living conditions families housing
+     * data.
      *
      * @return a client for living conditions families housing data
      */
@@ -75,8 +75,8 @@ public class LivingConditionsFamiliesClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with living conditions families legal
-     * guardians data.</p>
+     * Retrieve the client for interacting with living conditions families legal
+     * guardians data.
      *
      * @return a client for living conditions families legal guardians data
      */
@@ -85,8 +85,8 @@ public class LivingConditionsFamiliesClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with living conditions families siblings
-     * data.</p>
+     * Retrieve the client for interacting with living conditions families siblings
+     * data.
      *
      * @return a client for living conditions families siblings data
      */

@@ -26,22 +26,22 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles public finances annual accounts balance sheet county data
- * fetching.</p>
+ * Client which handles public finances annual accounts balance sheet county data
+ * fetching.
  *
  * @since 0.3.0
  */
 public class PublicFinancesAnnualAccountsBalanceSheetCountyClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public PublicFinancesAnnualAccountsBalanceSheetCountyClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,7 +51,7 @@ public class PublicFinancesAnnualAccountsBalanceSheetCountyClient extends Abstra
     }
 
     /**
-     * <p>Fetch all contingent liabilities data.</p>
+     * Fetch all contingent liabilities data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -64,7 +64,7 @@ public class PublicFinancesAnnualAccountsBalanceSheetCountyClient extends Abstra
     }
 
     /**
-     * <p>Fetch all contingent liabilities data which match the input constraints.</p>
+     * Fetch all contingent liabilities data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -87,7 +87,7 @@ public class PublicFinancesAnnualAccountsBalanceSheetCountyClient extends Abstra
     }
 
     /**
-     * <p>Fetch all revenue data.</p>
+     * Fetch all revenue data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -100,7 +100,7 @@ public class PublicFinancesAnnualAccountsBalanceSheetCountyClient extends Abstra
     }
 
     /**
-     * <p>Fetch all revenue data which match the input constraints.</p>
+     * Fetch all revenue data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -123,7 +123,7 @@ public class PublicFinancesAnnualAccountsBalanceSheetCountyClient extends Abstra
     }
 
     /**
-     * <p>Fetch all costs data.</p>
+     * Fetch all costs data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -136,7 +136,7 @@ public class PublicFinancesAnnualAccountsBalanceSheetCountyClient extends Abstra
     }
 
     /**
-     * <p>Fetch all costs data which match the input constraints.</p>
+     * Fetch all costs data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -159,7 +159,7 @@ public class PublicFinancesAnnualAccountsBalanceSheetCountyClient extends Abstra
     }
 
     /**
-     * <p>Fetch all income statements data.</p>
+     * Fetch all income statements data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -172,7 +172,7 @@ public class PublicFinancesAnnualAccountsBalanceSheetCountyClient extends Abstra
     }
 
     /**
-     * <p>Fetch all income statements data which match the input constraints.</p>
+     * Fetch all income statements data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -195,7 +195,7 @@ public class PublicFinancesAnnualAccountsBalanceSheetCountyClient extends Abstra
     }
 
     /**
-     * <p>Fetch all balance sheet data.</p>
+     * Fetch all balance sheet data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -208,7 +208,7 @@ public class PublicFinancesAnnualAccountsBalanceSheetCountyClient extends Abstra
     }
 
     /**
-     * <p>Fetch all balance sheet data which match the input constraints.</p>
+     * Fetch all balance sheet data which match the input constraints.
      *
      * @param regions
      *            the regions

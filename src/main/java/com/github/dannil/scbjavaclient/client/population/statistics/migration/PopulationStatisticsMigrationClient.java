@@ -26,21 +26,21 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles population statistics migration data fetching.</p>
+ * Client which handles population statistics migration data fetching.
  *
  * @since 0.3.0
  */
 public class PopulationStatisticsMigrationClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public PopulationStatisticsMigrationClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -50,7 +50,7 @@ public class PopulationStatisticsMigrationClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all immigrations data.</p>
+     * Fetch all immigrations data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -63,7 +63,7 @@ public class PopulationStatisticsMigrationClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all immigrations data which match the input constraints.</p>
+     * Fetch all immigrations data which match the input constraints.
      *
      * @param groundsForSettlements
      *            the grounds for settlements
@@ -89,7 +89,7 @@ public class PopulationStatisticsMigrationClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all migration data.</p>
+     * Fetch all migration data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -102,7 +102,7 @@ public class PopulationStatisticsMigrationClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all migration data which match the input constraints.</p>
+     * Fetch all migration data which match the input constraints.
      *
      * @param regions
      *            the regions
