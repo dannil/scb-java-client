@@ -26,7 +26,7 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles agriculture land use data fetching.</p>
+ * Client which handles agriculture land use data fetching.
  *
  * @since 0.4.0
  */
@@ -37,14 +37,14 @@ public class AgricultureLandUseClient extends AbstractClient {
     private static final String TYPEOFLAND_CODE = "Agoslag";
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public AgricultureLandUseClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -54,7 +54,7 @@ public class AgricultureLandUseClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all use of arable land by municipality data.</p>
+     * Fetch all use of arable land by municipality data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -67,8 +67,8 @@ public class AgricultureLandUseClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all use of arable land by municipality data which match the input
-     * constraints.</p>
+     * Fetch all use of arable land by municipality data which match the input
+     * constraints.
      *
      * @param regions
      *            the regions
@@ -91,7 +91,7 @@ public class AgricultureLandUseClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all use of arable land by county data.</p>
+     * Fetch all use of arable land by county data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -104,8 +104,8 @@ public class AgricultureLandUseClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all use of arable land by county data which match the input
-     * constraints.</p>
+     * Fetch all use of arable land by county data which match the input
+     * constraints.
      *
      * @param regions
      *            the regions
@@ -128,7 +128,7 @@ public class AgricultureLandUseClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all type of land area by municipality data.</p>
+     * Fetch all type of land area by municipality data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -141,8 +141,8 @@ public class AgricultureLandUseClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all type of land area by municipality data which match the input
-     * constraints.</p>
+     * Fetch all type of land area by municipality data which match the input
+     * constraints.
      *
      * @param regions
      *            the regions
@@ -165,7 +165,7 @@ public class AgricultureLandUseClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all type of land area by county data.</p>
+     * Fetch all type of land area by county data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -178,8 +178,8 @@ public class AgricultureLandUseClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all type of land area by county data which match the input
-     * constraints.</p>
+     * Fetch all type of land area by county data which match the input
+     * constraints.
      *
      * @param regions
      *            the regions

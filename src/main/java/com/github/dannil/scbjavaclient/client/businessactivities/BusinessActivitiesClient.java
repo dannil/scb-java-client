@@ -30,14 +30,14 @@ import com.github.dannil.scbjavaclient.client.businessactivities.productionvalue
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
- * <p>Client which handles business activities data fetching.</p>
+ * Client which handles business activities data fetching.
  *
  * @since 0.3.0
  */
 public class BusinessActivitiesClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor. Initializes values and creates sub-clients.</p>
+     * Default constructor. Initializes values and creates sub-clients.
      */
     public BusinessActivitiesClient() {
         super();
@@ -55,7 +55,7 @@ public class BusinessActivitiesClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -67,8 +67,8 @@ public class BusinessActivitiesClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with business activities accomodation
-     * statistics data.</p>
+     * Retrieve the client for interacting with business activities accomodation
+     * statistics data.
      *
      * @return a client for business activities accomodation statistics data
      */
@@ -77,8 +77,8 @@ public class BusinessActivitiesClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with business activities balance statistics
-     * data.</p>
+     * Retrieve the client for interacting with business activities balance statistics
+     * data.
      *
      * @return a client for business activities statistics data
      */
@@ -87,7 +87,7 @@ public class BusinessActivitiesClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with business activities database data.</p>
+     * Retrieve the client for interacting with business activities database data.
      *
      * @return a client for business activities database data
      */
@@ -96,8 +96,8 @@ public class BusinessActivitiesClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with business activities industrial capacity
-     * utilization data.</p>
+     * Retrieve the client for interacting with business activities industrial capacity
+     * utilization data.
      *
      * @return a client for business activities industrial capacity utilization data
      */
@@ -106,8 +106,8 @@ public class BusinessActivitiesClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with business activities industrial
-     * inventories data.</p>
+     * Retrieve the client for interacting with business activities industrial
+     * inventories data.
      *
      * @return a client for business activities industrial inventories data
      */
@@ -116,8 +116,8 @@ public class BusinessActivitiesClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with business activities investment survey
-     * data.</p>
+     * Retrieve the client for interacting with business activities investment survey
+     * data.
      *
      * @return a client for business activities investment survey data
      */
@@ -126,8 +126,8 @@ public class BusinessActivitiesClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with business activities non financial
-     * corporations data.</p>
+     * Retrieve the client for interacting with business activities non financial
+     * corporations data.
      *
      * @return a client for business activities non financial corporations data
      */
@@ -136,8 +136,8 @@ public class BusinessActivitiesClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with business activities non-profit
-     * organizations data.</p>
+     * Retrieve the client for interacting with business activities non-profit
+     * organizations data.
      *
      * @return a client for business activities non-profit organizations data
      */
@@ -146,8 +146,8 @@ public class BusinessActivitiesClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with business activities production index
-     * data.</p>
+     * Retrieve the client for interacting with business activities production index
+     * data.
      *
      * @return a client for business activities production index data
      */
@@ -156,8 +156,8 @@ public class BusinessActivitiesClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with business activities production value
-     * index data.</p>
+     * Retrieve the client for interacting with business activities production value
+     * index data.
      *
      * @return a client for business activities production value index data
      */

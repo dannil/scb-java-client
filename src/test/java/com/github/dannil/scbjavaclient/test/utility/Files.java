@@ -7,9 +7,9 @@ import java.util.List;
 public final class Files {
 
 	/**
-	 * <p>
+	 * 
 	 * Private constructor to prevent instantiation.
-	 * </p>
+	 * 
 	 */
 	private Files() {
 

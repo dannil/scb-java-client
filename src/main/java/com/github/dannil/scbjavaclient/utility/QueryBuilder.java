@@ -21,8 +21,8 @@ import java.util.Map.Entry;
 import java.util.Objects;
 
 /**
- * <p>Class which is responsible for constructing the query which should be sent to the
- * API.</p>
+ * Class which is responsible for constructing the query which should be sent to the
+ * API.
  *
  * @since 0.0.1
  */
@@ -33,15 +33,15 @@ public final class QueryBuilder {
     private static final int APPROXIMATE_ENTRY_CHARS = 80;
 
     /**
-     * <p>Private constructor to prevent instantiation.</p>
+     * Private constructor to prevent instantiation.
      */
     private QueryBuilder() {
 
     }
 
     /**
-     * <p>Filter out the specified value from the input map, including both keys and their
-     * respective values. The filtering is done in-place on the input map.</p>
+     * Filter out the specified value from the input map, including both keys and their
+     * respective values. The filtering is done in-place on the input map.
      *
      * @param inputMap
      *            the <code>Map</code> to filter
@@ -64,8 +64,8 @@ public final class QueryBuilder {
     }
 
     /**
-     * <p>Filter out the specified value from the input collection. The filtering is done
-     * in-place on the input collection.</p>
+     * Filter out the specified value from the input collection. The filtering is done
+     * in-place on the input collection.
      *
      * @param collection
      *            the <code>Collection</code> to filter
@@ -82,8 +82,8 @@ public final class QueryBuilder {
     }
 
     /**
-     * <p>Constructs a query which matches the format the API expects. This method
-     * performs two distinct steps:</p>
+     * Constructs a query which matches the format the API expects. This method
+     * performs two distinct steps:
      *
      * <b>1. Filter out the null keys and values</b>
      *
@@ -101,8 +101,10 @@ public final class QueryBuilder {
      * Tid (Swedish for year) contains the years (values) 2011 and 2012, the resulting
      * entry looks like this:</p>
      *
-     * <p>{ "code": "Tid", "selection": { "filter": "item", "values": [ "2011", "2012" ] }
-     * }</p>
+     * <p>
+     * { "code": "Tid", "selection": { "filter": "item", "values": [ "2011", "2012" ] }
+     * }
+     * </p>
      *
      * <p>The method works on the principle of pasting all these blocks together in an
      * orderly fashion to conform to the API specification.</p>

@@ -22,9 +22,9 @@ import java.util.Map;
 import com.github.dannil.scbjavaclient.communication.http.HttpRequestMethod;
 
 /**
- * <p>Factory for returning singleton requesters. The regular {@link RequesterFactory} is
+ * Factory for returning singleton requesters. The regular {@link RequesterFactory} is
  * recommended instead of this class; this class should only be used if you really need a
- * singleton.</p>
+ * singleton.
  *
  * @since 1.2.0
  */
@@ -39,17 +39,17 @@ public final class RequesterSingletonFactory {
     }
 
     /**
-     * <p>Private constructor to prevent instantiation.</p>
+     * Private constructor to prevent instantiation.
      */
     private RequesterSingletonFactory() {
 
     }
 
     /**
-     * <p>Returns a singleton requester which matches the method. All requests are routed
+     * Returns a singleton requester which matches the method. All requests are routed
      * to match the
      * {@link com.github.dannil.scbjavaclient.constants.APIConstants#FALLBACK_LOCALE
-     * FALLBACK_LOCALE} and responses are read as UTF-8 character encoding.</p>
+     * FALLBACK_LOCALE} and responses are read as UTF-8 character encoding.
      *
      * @param method
      *            the method (i.e. GET or POST)
@@ -60,8 +60,8 @@ public final class RequesterSingletonFactory {
     }
 
     /**
-     * <p>Returns a singleton requester which matches the method. All responses are read
-     * as to match the character encoding.</p>
+     * Returns a singleton requester which matches the method. All responses are read
+     * as to match the character encoding.
      *
      * @param method
      *            the method (i.e. GET or POST)
@@ -79,7 +79,7 @@ public final class RequesterSingletonFactory {
     }
 
     /**
-     * <p>Singleton holder for GET requester.</p>
+     * Singleton holder for GET requester.
      */
     private static final class GETHolder {
 
@@ -95,7 +95,7 @@ public final class RequesterSingletonFactory {
     }
 
     /**
-     * <p>Singleton holder for POST requester.</p>
+     * Singleton holder for POST requester.
      */
     private static final class POSTHolder {
 

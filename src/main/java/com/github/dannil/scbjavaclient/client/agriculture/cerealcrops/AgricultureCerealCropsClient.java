@@ -26,21 +26,21 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles agriculture cereal crops data fetching.</p>
+ * Client which handles agriculture cereal crops data fetching.
  *
  * @since 0.4.0
  */
 public class AgricultureCerealCropsClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public AgricultureCerealCropsClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -50,7 +50,7 @@ public class AgricultureCerealCropsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all yield per hectar and total production data.</p>
+     * Fetch all yield per hectar and total production data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -63,8 +63,8 @@ public class AgricultureCerealCropsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all yield per hectar and total production data which match the input
-     * constraints.</p>
+     * Fetch all yield per hectar and total production data which match the input
+     * constraints.
      *
      * @param regions
      *            the regions

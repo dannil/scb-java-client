@@ -26,22 +26,22 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles business activities industrial capacity utilization industrial
- * capacity utilization data fetching.</p>
+ * Client which handles business activities industrial capacity utilization industrial
+ * capacity utilization data fetching.
  *
  * @since 0.7.0
  */
 public class BusinessActivitiesIndustrialCapacityUtilizationIndustrialCapacityUtilizationClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public BusinessActivitiesIndustrialCapacityUtilizationIndustrialCapacityUtilizationClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,7 +51,7 @@ public class BusinessActivitiesIndustrialCapacityUtilizationIndustrialCapacityUt
     }
 
     /**
-     * <p>Fetch all industrial capacity utilisation SNI2007 data.</p>
+     * Fetch all industrial capacity utilisation SNI2007 data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -64,8 +64,8 @@ public class BusinessActivitiesIndustrialCapacityUtilizationIndustrialCapacityUt
     }
 
     /**
-     * <p>Fetch all industrial capacity utilisation SNI2007 data which match the input
-     * constraints.</p>
+     * Fetch all industrial capacity utilisation SNI2007 data which match the input
+     * constraints.
      *
      * @param industrialClassifications
      *            the industrial classifications
@@ -85,7 +85,7 @@ public class BusinessActivitiesIndustrialCapacityUtilizationIndustrialCapacityUt
     }
 
     /**
-     * <p>Fetch all industrial capacity utilisation SNI92 data.</p>
+     * Fetch all industrial capacity utilisation SNI92 data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -98,8 +98,8 @@ public class BusinessActivitiesIndustrialCapacityUtilizationIndustrialCapacityUt
     }
 
     /**
-     * <p>Fetch all industrial capacity utilisation SNI92 data which match the input
-     * constraints.</p>
+     * Fetch all industrial capacity utilisation SNI92 data which match the input
+     * constraints.
      *
      * @param industrialClassifications
      *            the industrial classifications
@@ -119,8 +119,8 @@ public class BusinessActivitiesIndustrialCapacityUtilizationIndustrialCapacityUt
     }
 
     /**
-     * <p>Fetch all industrial capacity utilisation SNI2007 historical time series
-     * data.</p>
+     * Fetch all industrial capacity utilisation SNI2007 historical time series
+     * data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -134,8 +134,8 @@ public class BusinessActivitiesIndustrialCapacityUtilizationIndustrialCapacityUt
     }
 
     /**
-     * <p>Fetch all industrial capacity utilisation SNI2007 historical time series data
-     * which match the input constraints.</p>
+     * Fetch all industrial capacity utilisation SNI2007 historical time series data
+     * which match the input constraints.
      *
      * @param industrialClassifications
      *            the industrial classifications

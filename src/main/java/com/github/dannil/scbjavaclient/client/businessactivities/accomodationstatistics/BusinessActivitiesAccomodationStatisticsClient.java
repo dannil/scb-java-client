@@ -22,14 +22,14 @@ import com.github.dannil.scbjavaclient.client.businessactivities.accomodationsta
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
- * <p>Client which handles business activities accomodation statistics data fetching.</p>
+ * Client which handles business activities accomodation statistics data fetching.
  *
  * @since 0.3.0
  */
 public class BusinessActivitiesAccomodationStatisticsClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor. Initializes values and creates sub-clients.</p>
+     * Default constructor. Initializes values and creates sub-clients.
      */
     public BusinessActivitiesAccomodationStatisticsClient() {
         super();
@@ -39,7 +39,7 @@ public class BusinessActivitiesAccomodationStatisticsClient extends AbstractCont
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,8 +51,8 @@ public class BusinessActivitiesAccomodationStatisticsClient extends AbstractCont
     }
 
     /**
-     * <p>Retrieve the client for interacting with business activities accomodation
-     * statistics month data.</p>
+     * Retrieve the client for interacting with business activities accomodation
+     * statistics month data.
      *
      * @return a client for business activities accomodation statistics month data
      */
@@ -61,8 +61,8 @@ public class BusinessActivitiesAccomodationStatisticsClient extends AbstractCont
     }
 
     /**
-     * <p>Retrieve the client for interacting with business activities accomodation
-     * statistics year data.</p>
+     * Retrieve the client for interacting with business activities accomodation
+     * statistics year data.
      *
      * @return a client for business activities accomodation statistics year data
      */

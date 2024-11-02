@@ -26,22 +26,22 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles environment System of Environmental-Economic Accounting (SEEA)
- * taxes data fetching.</p>
+ * Client which handles environment System of Environmental-Economic Accounting (SEEA)
+ * taxes data fetching.
  *
  * @since 0.4.0
  */
 public class EnvironmentSEEATaxesClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public EnvironmentSEEATaxesClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,7 +51,7 @@ public class EnvironmentSEEATaxesClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all environmental taxes SNI 2007 (NACE) data.</p>
+     * Fetch all environmental taxes SNI 2007 (NACE) data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -64,8 +64,8 @@ public class EnvironmentSEEATaxesClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all environmental taxes SNI 2007 (NACE) data which match the input
-     * constraints.</p>
+     * Fetch all environmental taxes SNI 2007 (NACE) data which match the input
+     * constraints.
      *
      * @param industrialClassifications
      *            the industrial classifications
@@ -85,7 +85,7 @@ public class EnvironmentSEEATaxesClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all environmental taxes SNI 92 (NACE) data.</p>
+     * Fetch all environmental taxes SNI 92 (NACE) data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -98,8 +98,8 @@ public class EnvironmentSEEATaxesClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all environmental taxes SNI 92 (NACE) data which match the input
-     * constraints.</p>
+     * Fetch all environmental taxes SNI 92 (NACE) data which match the input
+     * constraints.
      *
      * @param industrialClassifications
      *            the industrial classifications

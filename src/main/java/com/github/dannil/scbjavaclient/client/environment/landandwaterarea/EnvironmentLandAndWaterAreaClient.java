@@ -26,21 +26,21 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles environment land and water area data fetching.</p>
+ * Client which handles environment land and water area data fetching.
  *
  * @since 0.0.2
  */
 public class EnvironmentLandAndWaterAreaClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public EnvironmentLandAndWaterAreaClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -50,7 +50,7 @@ public class EnvironmentLandAndWaterAreaClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all area data.</p>
+     * Fetch all area data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -63,7 +63,7 @@ public class EnvironmentLandAndWaterAreaClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all area data which match the input constraints.</p>
+     * Fetch all area data which match the input constraints.
      *
      * @param regions
      *            the regions to fetch data for

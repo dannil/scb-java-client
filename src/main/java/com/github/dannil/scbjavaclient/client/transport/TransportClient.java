@@ -21,14 +21,14 @@ import com.github.dannil.scbjavaclient.client.transport.registeredvehicles.Trans
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
- * <p>Client which handles transport data fetching.</p>
+ * Client which handles transport data fetching.
  *
  * @since 0.4.0
  */
 public class TransportClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor. Initializes values and creates sub-clients.</p>
+     * Default constructor. Initializes values and creates sub-clients.
      */
     public TransportClient() {
         super();
@@ -37,7 +37,7 @@ public class TransportClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -49,7 +49,7 @@ public class TransportClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with transport registered vehicles data.</p>
+     * Retrieve the client for interacting with transport registered vehicles data.
      *
      * @return a client for transport registered vehicles data
      */

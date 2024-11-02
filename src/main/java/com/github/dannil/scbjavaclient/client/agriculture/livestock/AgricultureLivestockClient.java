@@ -26,7 +26,7 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles agriculture livestock data fetching.</p>
+ * Client which handles agriculture livestock data fetching.
  *
  * @since 0.4.0
  */
@@ -35,14 +35,14 @@ public class AgricultureLivestockClient extends AbstractClient {
     private static final String TYPEOFANIMAL_CODE = "Djurslag";
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public AgricultureLivestockClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -52,7 +52,7 @@ public class AgricultureLivestockClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all livestock by municipality data.</p>
+     * Fetch all livestock by municipality data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -65,7 +65,7 @@ public class AgricultureLivestockClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all livestock by municipality data which match the input constraints.</p>
+     * Fetch all livestock by municipality data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -88,7 +88,7 @@ public class AgricultureLivestockClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all livestock by county data.</p>
+     * Fetch all livestock by county data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -101,7 +101,7 @@ public class AgricultureLivestockClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all livestock by county data which match the input constraints.</p>
+     * Fetch all livestock by county data which match the input constraints.
      *
      * @param regions
      *            the regions

@@ -23,14 +23,14 @@ import com.github.dannil.scbjavaclient.client.environment.protectednature.popula
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
- * <p>Client which handles environment protected nature data fetching.</p>
+ * Client which handles environment protected nature data fetching.
  *
  * @since 0.5.0
  */
 public class EnvironmentProtectedNatureClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor. Initializes values and creates sub-clients.</p>
+     * Default constructor. Initializes values and creates sub-clients.
      */
     public EnvironmentProtectedNatureClient() {
         super();
@@ -41,7 +41,7 @@ public class EnvironmentProtectedNatureClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -53,8 +53,8 @@ public class EnvironmentProtectedNatureClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with environment protected nature nature
-     * types data.</p>
+     * Retrieve the client for interacting with environment protected nature nature
+     * types data.
      *
      * @return a client for environment protected nature nature types data
      */
@@ -63,8 +63,8 @@ public class EnvironmentProtectedNatureClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with environment protected nature number and
-     * area data.</p>
+     * Retrieve the client for interacting with environment protected nature number and
+     * area data.
      *
      * @return a client for environment protected nature number and area data
      */
@@ -73,8 +73,8 @@ public class EnvironmentProtectedNatureClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with environment protected nature population
-     * and accessibility data.</p>
+     * Retrieve the client for interacting with environment protected nature population
+     * and accessibility data.
      *
      * @return a client for environment protected nature population and accessibility data
      */

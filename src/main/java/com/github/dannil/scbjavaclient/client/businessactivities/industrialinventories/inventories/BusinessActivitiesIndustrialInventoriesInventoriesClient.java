@@ -26,22 +26,22 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles business activities industrial inventories inventories data
- * fetching.</p>
+ * Client which handles business activities industrial inventories inventories data
+ * fetching.
  *
  * @since 0.3.0
  */
 public class BusinessActivitiesIndustrialInventoriesInventoriesClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public BusinessActivitiesIndustrialInventoriesInventoriesClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,7 +51,7 @@ public class BusinessActivitiesIndustrialInventoriesInventoriesClient extends Ab
     }
 
     /**
-     * <p>Fetch all changes in inventories data.</p>
+     * Fetch all changes in inventories data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -64,7 +64,7 @@ public class BusinessActivitiesIndustrialInventoriesInventoriesClient extends Ab
     }
 
     /**
-     * <p>Fetch all changes in inventories data which match the input constraints.</p>
+     * Fetch all changes in inventories data which match the input constraints.
      *
      * @param inventoryTypes
      *            the inventory types

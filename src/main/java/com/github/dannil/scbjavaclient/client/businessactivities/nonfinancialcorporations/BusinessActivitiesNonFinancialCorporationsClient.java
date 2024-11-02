@@ -26,22 +26,22 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles business activities non financial corporations data
- * fetching.</p>
+ * Client which handles business activities non financial corporations data
+ * fetching.
  *
  * @since 0.7.0
  */
 public class BusinessActivitiesNonFinancialCorporationsClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public BusinessActivitiesNonFinancialCorporationsClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,7 +51,7 @@ public class BusinessActivitiesNonFinancialCorporationsClient extends AbstractCl
     }
 
     /**
-     * <p>Fetch all corporations Foreign Trade Credits data.</p>
+     * Fetch all corporations Foreign Trade Credits data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -64,8 +64,8 @@ public class BusinessActivitiesNonFinancialCorporationsClient extends AbstractCl
     }
 
     /**
-     * <p>Fetch all corporations Foreign Trade Credits data which match the input
-     * constraints.</p>
+     * Fetch all corporations Foreign Trade Credits data which match the input
+     * constraints.
      *
      * @param items
      *            the items

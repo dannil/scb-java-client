@@ -15,7 +15,7 @@
 package com.github.dannil.scbjavaclient.exception;
 
 /**
- * <p>Exception for when the client was unable to parse information.</p>
+ * Exception for when the client was unable to parse information.
  *
  * @since 0.0.2
  */
@@ -24,14 +24,14 @@ public class SCBClientParsingException extends SCBClientException {
     private static final long serialVersionUID = 2978418970046773855L;
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public SCBClientParsingException() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param message
      *            the message
@@ -41,7 +41,7 @@ public class SCBClientParsingException extends SCBClientException {
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param message
      *            the message
@@ -53,7 +53,7 @@ public class SCBClientParsingException extends SCBClientException {
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param cause
      *            the cause

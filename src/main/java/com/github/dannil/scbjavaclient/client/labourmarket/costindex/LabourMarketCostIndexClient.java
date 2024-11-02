@@ -26,21 +26,21 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles labour market cost index data fetching.</p>
+ * Client which handles labour market cost index data fetching.
  *
  * @since 0.3.0
  */
 public class LabourMarketCostIndexClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public LabourMarketCostIndexClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -50,7 +50,7 @@ public class LabourMarketCostIndexClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all cost index for manual workers (LCI) data.</p>
+     * Fetch all cost index for manual workers (LCI) data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -63,8 +63,8 @@ public class LabourMarketCostIndexClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all cost index for manual workers (LCI) data which match the input
-     * constraints.</p>
+     * Fetch all cost index for manual workers (LCI) data which match the input
+     * constraints.
      *
      * @param industrialClassifications
      *            the industrial classifications to fetch data for
@@ -80,7 +80,7 @@ public class LabourMarketCostIndexClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all cost index for non-manual workers (LCI) data.</p>
+     * Fetch all cost index for non-manual workers (LCI) data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -93,8 +93,8 @@ public class LabourMarketCostIndexClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all cost index for non-manual workers (LCI) data which match the input
-     * constraints.</p>
+     * Fetch all cost index for non-manual workers (LCI) data which match the input
+     * constraints.
      *
      * @param industrialClassifications
      *            the industrial classifications to fetch data for
@@ -110,7 +110,7 @@ public class LabourMarketCostIndexClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all cost index for manual workers (WAG) data.</p>
+     * Fetch all cost index for manual workers (WAG) data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -123,8 +123,8 @@ public class LabourMarketCostIndexClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all cost index for manual workers (WAG) data which match the input
-     * constraints.</p>
+     * Fetch all cost index for manual workers (WAG) data which match the input
+     * constraints.
      *
      * @param industrialClassifications
      *            the industrial classifications to fetch data for
@@ -139,7 +139,7 @@ public class LabourMarketCostIndexClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all cost index for non-manual workers (WAG) data.</p>
+     * Fetch all cost index for non-manual workers (WAG) data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -152,8 +152,8 @@ public class LabourMarketCostIndexClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all cost index for non-manual workers (WAG) data which match the input
-     * constraints.</p>
+     * Fetch all cost index for non-manual workers (WAG) data which match the input
+     * constraints.
      *
      * @param industrialClassifications
      *            the industrial classifications to fetch data for
@@ -169,7 +169,7 @@ public class LabourMarketCostIndexClient extends AbstractClient {
     }
 
     /**
-     * <p>Common generator method for the methods in this class.</p>
+     * Common generator method for the methods in this class.
      *
      * @param industrialClassifications
      *            the industrial classifications

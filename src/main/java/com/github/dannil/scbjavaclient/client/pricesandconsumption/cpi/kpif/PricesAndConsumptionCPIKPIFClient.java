@@ -26,22 +26,22 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles prices and consumption Consumer Price Index (CPI) Underlying
- * Inflation Rate (KPIF) data fetching.</p>
+ * Client which handles prices and consumption Consumer Price Index (CPI) Underlying
+ * Inflation Rate (KPIF) data fetching.
  *
  * @since 0.4.0
  */
 public class PricesAndConsumptionCPIKPIFClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public PricesAndConsumptionCPIKPIFClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,7 +51,7 @@ public class PricesAndConsumptionCPIKPIFClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all underlying inflation monthly changes data.</p>
+     * Fetch all underlying inflation monthly changes data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -64,8 +64,8 @@ public class PricesAndConsumptionCPIKPIFClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all underlying inflation monthly changes data which match the input
-     * constraints.</p>
+     * Fetch all underlying inflation monthly changes data which match the input
+     * constraints.
      *
      * @param months
      *            the months
@@ -78,7 +78,7 @@ public class PricesAndConsumptionCPIKPIFClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all underlying inflation annual changes data.</p>
+     * Fetch all underlying inflation annual changes data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -91,8 +91,8 @@ public class PricesAndConsumptionCPIKPIFClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all underlying inflation annual changes data which match the input
-     * constraints.</p>
+     * Fetch all underlying inflation annual changes data which match the input
+     * constraints.
      *
      * @param months
      *            the months
@@ -105,7 +105,7 @@ public class PricesAndConsumptionCPIKPIFClient extends AbstractClient {
     }
 
     /**
-     * <p>Common generator method for the methods in this class.</p>
+     * Common generator method for the methods in this class.
      *
      * @param months
      *            the months

@@ -1,4 +1,4 @@
 /**
- * <p>Package which contains all clients for transport data.</p>
+ * Package which contains all clients for transport data.
  */
 package com.github.dannil.scbjavaclient.client.transport;

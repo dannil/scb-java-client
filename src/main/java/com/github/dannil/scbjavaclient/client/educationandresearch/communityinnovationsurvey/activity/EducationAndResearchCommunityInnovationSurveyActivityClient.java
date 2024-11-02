@@ -26,22 +26,22 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles education and research community innovation survey innovation
- * activity among enterprises data fetching.</p>
+ * Client which handles education and research community innovation survey innovation
+ * activity among enterprises data fetching.
  *
  * @since 0.5.0
  */
 public class EducationAndResearchCommunityInnovationSurveyActivityClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public EducationAndResearchCommunityInnovationSurveyActivityClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,7 +51,7 @@ public class EducationAndResearchCommunityInnovationSurveyActivityClient extends
     }
 
     /**
-     * <p>Fetch all number of innovative enterprises data.</p>
+     * Fetch all number of innovative enterprises data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -65,8 +65,8 @@ public class EducationAndResearchCommunityInnovationSurveyActivityClient extends
     }
 
     /**
-     * <p>Fetch all number of innovative enterprises data which match the input
-     * constraints.</p>
+     * Fetch all number of innovative enterprises data which match the input
+     * constraints.
      *
      * @param industrialClassifications
      *            the industrial classifications
@@ -92,7 +92,7 @@ public class EducationAndResearchCommunityInnovationSurveyActivityClient extends
     }
 
     /**
-     * <p>Fetch all enterprises with product innovations data.</p>
+     * Fetch all enterprises with product innovations data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -106,8 +106,8 @@ public class EducationAndResearchCommunityInnovationSurveyActivityClient extends
     }
 
     /**
-     * <p>Fetch all enterprises with product innovations data which match the input
-     * constraints.</p>
+     * Fetch all enterprises with product innovations data which match the input
+     * constraints.
      *
      * @param sni2007s
      *            the SNI 2007s
@@ -133,7 +133,7 @@ public class EducationAndResearchCommunityInnovationSurveyActivityClient extends
     }
 
     /**
-     * <p>Fetch all platforms to acquire knowledge data.</p>
+     * Fetch all platforms to acquire knowledge data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -147,8 +147,8 @@ public class EducationAndResearchCommunityInnovationSurveyActivityClient extends
     }
 
     /**
-     * <p>Fetch all platforms to acquire knowledge data which match the input
-     * constraints.</p>
+     * Fetch all platforms to acquire knowledge data which match the input
+     * constraints.
      *
      * @param sni2007s
      *            the SNI 2007s
@@ -174,7 +174,7 @@ public class EducationAndResearchCommunityInnovationSurveyActivityClient extends
     }
 
     /**
-     * <p>Fetch all obstacles to innovation data.</p>
+     * Fetch all obstacles to innovation data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -188,7 +188,7 @@ public class EducationAndResearchCommunityInnovationSurveyActivityClient extends
     }
 
     /**
-     * <p>Fetch all obstacles to innovation data which match the input constraints.</p>
+     * Fetch all obstacles to innovation data which match the input constraints.
      *
      * @param degreesOfSignificances
      *            the degrees of significances

@@ -26,22 +26,22 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles business activities non-profit organizations satellite accounts
- * data fetching.</p>
+ * Client which handles business activities non-profit organizations satellite accounts
+ * data fetching.
  *
  * @since 0.3.0
  */
 public class BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,7 +51,7 @@ public class BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClient ext
     }
 
     /**
-     * <p>Fetch all income, expenditure and savings data.</p>
+     * Fetch all income, expenditure and savings data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -64,8 +64,8 @@ public class BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClient ext
     }
 
     /**
-     * <p>Fetch all income, expenditure and savings data which match the input
-     * constraints.</p>
+     * Fetch all income, expenditure and savings data which match the input
+     * constraints.
      *
      * @param icnpo
      *            the ICNPO
@@ -88,7 +88,7 @@ public class BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClient ext
     }
 
     /**
-     * <p>Fetch all number of organizations and employment data.</p>
+     * Fetch all number of organizations and employment data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -101,8 +101,8 @@ public class BusinessActivitiesNonProfitOrganizationsSatelliteAccountsClient ext
     }
 
     /**
-     * <p>Fetch all number of organizations and employment data which match the input
-     * constraints.</p>
+     * Fetch all number of organizations and employment data which match the input
+     * constraints.
      *
      * @param icnpo
      *            the ICNPO

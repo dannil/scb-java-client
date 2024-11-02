@@ -28,14 +28,14 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles financial markets shareholders data fetching.</p>
+ * Client which handles financial markets shareholders data fetching.
  *
  * @since 0.2.0
  */
 public class FinancialMarketsShareholdersClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor. Initializes values and creates sub-clients.</p>
+     * Default constructor. Initializes values and creates sub-clients.
      */
     public FinancialMarketsShareholdersClient() {
         super();
@@ -45,7 +45,7 @@ public class FinancialMarketsShareholdersClient extends AbstractContainerClient 
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -57,8 +57,8 @@ public class FinancialMarketsShareholdersClient extends AbstractContainerClient 
     }
 
     /**
-     * <p>Retrieve the client for interacting with financial markets Swedish marketplace
-     * data.</p>
+     * Retrieve the client for interacting with financial markets Swedish marketplace
+     * data.
      *
      * @return a client for financial markets Swedish marketplace data
      */
@@ -67,8 +67,8 @@ public class FinancialMarketsShareholdersClient extends AbstractContainerClient 
     }
 
     /**
-     * <p>Retrieve the client for interacting with financial markets rest of the world
-     * data.</p>
+     * Retrieve the client for interacting with financial markets rest of the world
+     * data.
      *
      * @return a client for financial markets rest of the world data
      */
@@ -77,7 +77,7 @@ public class FinancialMarketsShareholdersClient extends AbstractContainerClient 
     }
 
     /**
-     * <p>Fetch all ownership of shares data.</p>
+     * Fetch all ownership of shares data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -93,7 +93,7 @@ public class FinancialMarketsShareholdersClient extends AbstractContainerClient 
     }
 
     /**
-     * <p>Fetch all ownership of shares data which match the input constraints.</p>
+     * Fetch all ownership of shares data which match the input constraints.
      *
      * @param sectors
      *            the sectors to fetch data for
@@ -115,7 +115,7 @@ public class FinancialMarketsShareholdersClient extends AbstractContainerClient 
     }
 
     /**
-     * <p>Fetch all ownership of shares by marketplace data.</p>
+     * Fetch all ownership of shares by marketplace data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -134,8 +134,8 @@ public class FinancialMarketsShareholdersClient extends AbstractContainerClient 
     }
 
     /**
-     * <p>Fetch all ownership of shares by marketplace data which match the input
-     * constraints.</p>
+     * Fetch all ownership of shares by marketplace data which match the input
+     * constraints.
      *
      * @param sectors
      *            the sectors to fetch data for
@@ -165,7 +165,7 @@ public class FinancialMarketsShareholdersClient extends AbstractContainerClient 
     }
 
     /**
-     * <p>Fetch all ownership of shares by series data.</p>
+     * Fetch all ownership of shares by series data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -184,8 +184,8 @@ public class FinancialMarketsShareholdersClient extends AbstractContainerClient 
     }
 
     /**
-     * <p>Fetch all ownership of shares by series data which match the input
-     * constraints.</p>
+     * Fetch all ownership of shares by series data which match the input
+     * constraints.
      *
      * @param sectors
      *            the sectors to fetch data for
@@ -215,7 +215,7 @@ public class FinancialMarketsShareholdersClient extends AbstractContainerClient 
     }
 
     /**
-     * <p>Fetch all foreign ownership of shares data.</p>
+     * Fetch all foreign ownership of shares data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -234,8 +234,8 @@ public class FinancialMarketsShareholdersClient extends AbstractContainerClient 
     }
 
     /**
-     * <p>Fetch all foreign ownership of shares data which match the input
-     * constraints.</p>
+     * Fetch all foreign ownership of shares data which match the input
+     * constraints.
      *
      * @param countries
      *            the countries to fetch data for

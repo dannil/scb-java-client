@@ -26,8 +26,8 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles business activities accomodation statistics month data
- * fetching.</p>
+ * Client which handles business activities accomodation statistics month data
+ * fetching.
  *
  * @since 0.3.0
  */
@@ -36,14 +36,14 @@ public class BusinessActivitiesAccomodationStatisticsMonthClient extends Abstrac
     private static final String TYPESOFESTABLISHMENTS_CODE = "Anlaggning";
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public BusinessActivitiesAccomodationStatisticsMonthClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -53,7 +53,7 @@ public class BusinessActivitiesAccomodationStatisticsMonthClient extends Abstrac
     }
 
     /**
-     * <p>Fetch all total capacity data.</p>
+     * Fetch all total capacity data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -66,7 +66,7 @@ public class BusinessActivitiesAccomodationStatisticsMonthClient extends Abstrac
     }
 
     /**
-     * <p>Fetch all total capacity data which match the input constraints.</p>
+     * Fetch all total capacity data which match the input constraints.
      *
      * @param typesOfEstablishments
      *            the types of establishments
@@ -85,7 +85,7 @@ public class BusinessActivitiesAccomodationStatisticsMonthClient extends Abstrac
     }
 
     /**
-     * <p>Fetch all available beds data.</p>
+     * Fetch all available beds data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -98,7 +98,7 @@ public class BusinessActivitiesAccomodationStatisticsMonthClient extends Abstrac
     }
 
     /**
-     * <p>Fetch all available beds data which match the input constraints.</p>
+     * Fetch all available beds data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -117,7 +117,7 @@ public class BusinessActivitiesAccomodationStatisticsMonthClient extends Abstrac
     }
 
     /**
-     * <p>Fetch all number of available rooms data.</p>
+     * Fetch all number of available rooms data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -130,7 +130,7 @@ public class BusinessActivitiesAccomodationStatisticsMonthClient extends Abstrac
     }
 
     /**
-     * <p>Fetch all number of available rooms data which match the input constraints.</p>
+     * Fetch all number of available rooms data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -149,7 +149,7 @@ public class BusinessActivitiesAccomodationStatisticsMonthClient extends Abstrac
     }
 
     /**
-     * <p>Fetch all nights spent data.</p>
+     * Fetch all nights spent data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -162,7 +162,7 @@ public class BusinessActivitiesAccomodationStatisticsMonthClient extends Abstrac
     }
 
     /**
-     * <p>Fetch all nights spent data which match the input constraints.</p>
+     * Fetch all nights spent data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -185,7 +185,7 @@ public class BusinessActivitiesAccomodationStatisticsMonthClient extends Abstrac
     }
 
     /**
-     * <p>Fetch all occupancy data.</p>
+     * Fetch all occupancy data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -198,7 +198,7 @@ public class BusinessActivitiesAccomodationStatisticsMonthClient extends Abstrac
     }
 
     /**
-     * <p>Fetch all occupancy data which match the input constraints.</p>
+     * Fetch all occupancy data which match the input constraints.
      *
      * @param typesOfHousing
      *            the types of housing
@@ -217,7 +217,7 @@ public class BusinessActivitiesAccomodationStatisticsMonthClient extends Abstrac
     }
 
     /**
-     * <p>Fetch all occupied rooms data.</p>
+     * Fetch all occupied rooms data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -230,7 +230,7 @@ public class BusinessActivitiesAccomodationStatisticsMonthClient extends Abstrac
     }
 
     /**
-     * <p>Fetch all occupied rooms data which match the input constraints.</p>
+     * Fetch all occupied rooms data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -253,7 +253,7 @@ public class BusinessActivitiesAccomodationStatisticsMonthClient extends Abstrac
     }
 
     /**
-     * <p>Fetch all revenue of occupied rooms data.</p>
+     * Fetch all revenue of occupied rooms data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -266,7 +266,7 @@ public class BusinessActivitiesAccomodationStatisticsMonthClient extends Abstrac
     }
 
     /**
-     * <p>Fetch all revenue of occupied rooms data which match the input constraints.</p>
+     * Fetch all revenue of occupied rooms data which match the input constraints.
      *
      * @param months
      *            the months

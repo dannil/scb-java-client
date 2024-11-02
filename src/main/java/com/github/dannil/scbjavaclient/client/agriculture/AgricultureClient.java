@@ -24,14 +24,14 @@ import com.github.dannil.scbjavaclient.client.agriculture.livestock.AgricultureL
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
- * <p>Client which handles agriculture data fetching.</p>
+ * Client which handles agriculture data fetching.
  *
  * @since 0.4.0
  */
 public class AgricultureClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor. Initializes values and creates sub-clients.</p>
+     * Default constructor. Initializes values and creates sub-clients.
      */
     public AgricultureClient() {
         super();
@@ -43,7 +43,7 @@ public class AgricultureClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -55,7 +55,7 @@ public class AgricultureClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with agriculture cereal crops data.</p>
+     * Retrieve the client for interacting with agriculture cereal crops data.
      *
      * @return a client for agriculture cereal crops data
      */
@@ -64,7 +64,7 @@ public class AgricultureClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with agriculture holdings data.</p>
+     * Retrieve the client for interacting with agriculture holdings data.
      *
      * @return a client for agriculture holdings data
      */
@@ -73,7 +73,7 @@ public class AgricultureClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with agriculture land use data.</p>
+     * Retrieve the client for interacting with agriculture land use data.
      *
      * @return a client for agriculture land use data
      */
@@ -82,7 +82,7 @@ public class AgricultureClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with agriculture livestock data.</p>
+     * Retrieve the client for interacting with agriculture livestock data.
      *
      * @return a client for agriculture livestock data
      */

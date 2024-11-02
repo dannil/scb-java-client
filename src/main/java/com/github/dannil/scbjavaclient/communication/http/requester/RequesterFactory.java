@@ -20,24 +20,24 @@ import java.nio.charset.StandardCharsets;
 import com.github.dannil.scbjavaclient.communication.http.HttpRequestMethod;
 
 /**
- * <p>Factory for returning regular (non-singleton) requesters.</p>
+ * Factory for returning regular (non-singleton) requesters.
  *
  * @since 1.2.0
  */
 public final class RequesterFactory {
 
     /**
-     * <p>Private constructor to prevent instantiation.</p>
+     * Private constructor to prevent instantiation.
      */
     private RequesterFactory() {
 
     }
 
     /**
-     * <p>Returns a regular (non-singleton) requester which matches the method. All
+     * Returns a regular (non-singleton) requester which matches the method. All
      * requests are routed to match the
      * {@link com.github.dannil.scbjavaclient.constants.APIConstants#FALLBACK_LOCALE
-     * FALLBACK_LOCALE} and responses are read as UTF-8 character encoding.</p>
+     * FALLBACK_LOCALE} and responses are read as UTF-8 character encoding.
      *
      * @param method
      *            the method (i.e. GET or POST)
@@ -48,9 +48,9 @@ public final class RequesterFactory {
     }
 
     /**
-     * <p>Returns a regular (non-singleton) requester which matches the method. All
+     * Returns a regular (non-singleton) requester which matches the method. All
      * requests are routed to match the specified <code>Locale</code> and responses are
-     * read as to match the character encoding.</p>
+     * read as to match the character encoding.
      *
      * @param method
      *            the method (i.e. GET or POST)

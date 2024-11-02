@@ -1,5 +1,5 @@
 /**
- * <p>Package which contains all clients for business activities accomodation statistics
- * month data.</p>
+ * Package which contains all clients for business activities accomodation statistics
+ * month data.
  */
 package com.github.dannil.scbjavaclient.client.businessactivities.accomodationstatistics.month;

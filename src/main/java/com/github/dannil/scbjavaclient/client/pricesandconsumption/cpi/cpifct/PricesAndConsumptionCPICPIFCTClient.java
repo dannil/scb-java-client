@@ -26,22 +26,22 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles prices and consumption Consumer Price Index (CPI) with fixed
- * interest rate and at constant taxes (CPIF-CT) data fetching.</p>
+ * Client which handles prices and consumption Consumer Price Index (CPI) with fixed
+ * interest rate and at constant taxes (CPIF-CT) data fetching.
  *
  * @since 0.4.0
  */
 public class PricesAndConsumptionCPICPIFCTClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public PricesAndConsumptionCPICPIFCTClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,8 +51,8 @@ public class PricesAndConsumptionCPICPIFCTClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all fixed interest rate and at constant taxes (CPIF-CT) monthly changes
-     * data.</p>
+     * Fetch all fixed interest rate and at constant taxes (CPIF-CT) monthly changes
+     * data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -65,8 +65,8 @@ public class PricesAndConsumptionCPICPIFCTClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all fixed interest rate and at constant taxes (CPIF-CT) monthly changes
-     * data which match the input constraints.</p>
+     * Fetch all fixed interest rate and at constant taxes (CPIF-CT) monthly changes
+     * data which match the input constraints.
      *
      * @param months
      *            the months
@@ -82,8 +82,8 @@ public class PricesAndConsumptionCPICPIFCTClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all fixed interest rate and at constant taxes (CPIF-CT) annual changes
-     * data.</p>
+     * Fetch all fixed interest rate and at constant taxes (CPIF-CT) annual changes
+     * data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -96,8 +96,8 @@ public class PricesAndConsumptionCPICPIFCTClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all fixed interest rate and at constant taxes (CPIF-CT) annual changes
-     * data which match the input constraints.</p>
+     * Fetch all fixed interest rate and at constant taxes (CPIF-CT) annual changes
+     * data which match the input constraints.
      *
      * @param months
      *            the months

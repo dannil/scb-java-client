@@ -26,7 +26,7 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles transport registered vehicles vehicles data fetching.</p>
+ * Client which handles transport registered vehicles vehicles data fetching.
  *
  * @since 0.4.0
  */
@@ -35,14 +35,14 @@ public class TransportRegisteredVehiclesVehiclesClient extends AbstractClient {
     private static final String TYPEOFVEHICLE_CODE = "Fordonsslag";
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public TransportRegisteredVehiclesVehiclesClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -52,7 +52,7 @@ public class TransportRegisteredVehiclesVehiclesClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all vehicles in use data.</p>
+     * Fetch all vehicles in use data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -65,7 +65,7 @@ public class TransportRegisteredVehiclesVehiclesClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all vehicles in use data which match the input constraints.</p>
+     * Fetch all vehicles in use data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -88,7 +88,7 @@ public class TransportRegisteredVehiclesVehiclesClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all new registrations of passenger cars data.</p>
+     * Fetch all new registrations of passenger cars data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -101,8 +101,8 @@ public class TransportRegisteredVehiclesVehiclesClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all new registrations of passenger cars data which match the input
-     * constraints.</p>
+     * Fetch all new registrations of passenger cars data which match the input
+     * constraints.
      *
      * @param regions
      *            the regions
@@ -125,7 +125,7 @@ public class TransportRegisteredVehiclesVehiclesClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all vehicles from the vehicle register data.</p>
+     * Fetch all vehicles from the vehicle register data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -138,8 +138,8 @@ public class TransportRegisteredVehiclesVehiclesClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all vehicles from the vehicle register data which match the input
-     * constraints.</p>
+     * Fetch all vehicles from the vehicle register data which match the input
+     * constraints.
      *
      * @param typesOfVehicles
      *            the types of vehicles
@@ -162,7 +162,7 @@ public class TransportRegisteredVehiclesVehiclesClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all passenger cars in use data.</p>
+     * Fetch all passenger cars in use data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -175,7 +175,7 @@ public class TransportRegisteredVehiclesVehiclesClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all passenger cars in use data which match the input constraints.</p>
+     * Fetch all passenger cars in use data which match the input constraints.
      *
      * @param regions
      *            the regions

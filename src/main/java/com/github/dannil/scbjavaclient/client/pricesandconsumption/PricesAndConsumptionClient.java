@@ -25,14 +25,14 @@ import com.github.dannil.scbjavaclient.client.pricesandconsumption.purchasingpow
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
- * <p>Client which handles prices and consumption data fetching.</p>
+ * Client which handles prices and consumption data fetching.
  *
  * @since 0.4.0
  */
 public class PricesAndConsumptionClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor. Initializes values and creates sub-clients.</p>
+     * Default constructor. Initializes values and creates sub-clients.
      */
     public PricesAndConsumptionClient() {
         super();
@@ -45,7 +45,7 @@ public class PricesAndConsumptionClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -57,8 +57,8 @@ public class PricesAndConsumptionClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with prices and consumption building price
-     * index (BPI) data.</p>
+     * Retrieve the client for interacting with prices and consumption building price
+     * index (BPI) data.
      *
      * @return a client for prices and consumption building price index (BPI) data
      */
@@ -67,8 +67,8 @@ public class PricesAndConsumptionClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with prices and consumption construction
-     * cost index (CCI) data.</p>
+     * Retrieve the client for interacting with prices and consumption construction
+     * cost index (CCI) data.
      *
      * @return a client for prices and consumption construction cost index (CCI) data
      */
@@ -77,8 +77,8 @@ public class PricesAndConsumptionClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with prices and consumption Consumer Price
-     * Index (CPI) data.</p>
+     * Retrieve the client for interacting with prices and consumption Consumer Price
+     * Index (CPI) data.
      *
      * @return a client for prices and consumption Consumer Price Index (CPI) data
      */
@@ -87,8 +87,8 @@ public class PricesAndConsumptionClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with prices and consumption producer and
-     * import price index (PPI) data.</p>
+     * Retrieve the client for interacting with prices and consumption producer and
+     * import price index (PPI) data.
      *
      * @return a client for prices and consumption producer and import price index (PPI)
      *         data
@@ -98,8 +98,8 @@ public class PricesAndConsumptionClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with prices and consumption purchasing power
-     * parities data.</p>
+     * Retrieve the client for interacting with prices and consumption purchasing power
+     * parities data.
      *
      * @return a client for prices and consumption purchasing power parities data
      */

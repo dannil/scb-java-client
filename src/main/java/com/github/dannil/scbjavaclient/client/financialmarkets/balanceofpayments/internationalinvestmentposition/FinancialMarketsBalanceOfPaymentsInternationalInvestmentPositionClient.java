@@ -26,8 +26,8 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles financial markets balance of payments international investment
- * position data fetching.</p>
+ * Client which handles financial markets balance of payments international investment
+ * position data fetching.
  *
  * @since 0.4.0
  */
@@ -36,14 +36,14 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
     private static final String ASSETSANDLIABILITIES_CODE = "TillgangSkuld";
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -53,7 +53,7 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
     }
 
     /**
-     * <p>Fetch all revisions data.</p>
+     * Fetch all revisions data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -66,7 +66,7 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
     }
 
     /**
-     * <p>Fetch all revisions data which match the input constraints.</p>
+     * Fetch all revisions data which match the input constraints.
      *
      * @param assetsAndLiabilities
      *            the assets and liabilities
@@ -89,7 +89,7 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
     }
 
     /**
-     * <p>Fetch all assets and liabilities by sectors (quarters) data.</p>
+     * Fetch all assets and liabilities by sectors (quarters) data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -103,8 +103,8 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
     }
 
     /**
-     * <p>Fetch all assets and liabilities by sectors (quarters) data which match the
-     * input constraints.</p>
+     * Fetch all assets and liabilities by sectors (quarters) data which match the
+     * input constraints.
      *
      * @param assetsAndLiabilities
      *            the assets and liabilities
@@ -130,7 +130,7 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
     }
 
     /**
-     * <p>Fetch all assets and liabilities by currencies (years) data.</p>
+     * Fetch all assets and liabilities by currencies (years) data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -144,8 +144,8 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
     }
 
     /**
-     * <p>Fetch all assets and liabilities by currencies (years) data which match the
-     * input constraints.</p>
+     * Fetch all assets and liabilities by currencies (years) data which match the
+     * input constraints.
      *
      * @param assetsAndLiabilities
      *            the assets and liabilities
@@ -171,7 +171,7 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
     }
 
     /**
-     * <p>Fetch all gross external debt data.</p>
+     * Fetch all gross external debt data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -184,7 +184,7 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
     }
 
     /**
-     * <p>Fetch all gross external debt data which match the input constraints.</p>
+     * Fetch all gross external debt data which match the input constraints.
      *
      * @param items
      *            the items
@@ -203,7 +203,7 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
     }
 
     /**
-     * <p>Fetch all assets and liabilities by sectors (years) data.</p>
+     * Fetch all assets and liabilities by sectors (years) data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -217,8 +217,8 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
     }
 
     /**
-     * <p>Fetch all assets and liabilities by sectors (years) data which match the input
-     * constraints.</p>
+     * Fetch all assets and liabilities by sectors (years) data which match the input
+     * constraints.
      *
      * @param assetsAndLiabilities
      *            the assets and liabilities
@@ -244,7 +244,7 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
     }
 
     /**
-     * <p>Fetch all assets and liabilities with direct investments data.</p>
+     * Fetch all assets and liabilities with direct investments data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -258,8 +258,8 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
     }
 
     /**
-     * <p>Fetch all assets and liabilities with direct investments data which match the
-     * input constraints.</p>
+     * Fetch all assets and liabilities with direct investments data which match the
+     * input constraints.
      *
      * @param assetsAndLiabilities
      *            the assets and liabilities
@@ -285,7 +285,7 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
     }
 
     /**
-     * <p>Fetch all assets and liabilities by currencies (quarters) data.</p>
+     * Fetch all assets and liabilities by currencies (quarters) data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -299,8 +299,8 @@ public class FinancialMarketsBalanceOfPaymentsInternationalInvestmentPositionCli
     }
 
     /**
-     * <p>Fetch all assets and liabilities by currencies (quarters) data which match the
-     * input constraints.</p>
+     * Fetch all assets and liabilities by currencies (quarters) data which match the
+     * input constraints.
      *
      * @param assetsAndLiabilities
      *            the assets and liabilities

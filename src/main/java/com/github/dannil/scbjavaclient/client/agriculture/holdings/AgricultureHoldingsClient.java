@@ -26,21 +26,21 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles agriculture holdings data fetching.</p>
+ * Client which handles agriculture holdings data fetching.
  *
  * @since 0.4.0
  */
 public class AgricultureHoldingsClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public AgricultureHoldingsClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -50,7 +50,7 @@ public class AgricultureHoldingsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all agricultural enterprises by municipality and size class data.</p>
+     * Fetch all agricultural enterprises by municipality and size class data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -64,8 +64,8 @@ public class AgricultureHoldingsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all agricultural enterprises by municipality and size class data which
-     * match the input constraints.</p>
+     * Fetch all agricultural enterprises by municipality and size class data which
+     * match the input constraints.
      *
      * @param regions
      *            the regions
@@ -88,7 +88,7 @@ public class AgricultureHoldingsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all agricultural enterprises by county and size class data.</p>
+     * Fetch all agricultural enterprises by county and size class data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -102,8 +102,8 @@ public class AgricultureHoldingsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all agricultural enterprises by county and size class data which match the
-     * input constraints.</p>
+     * Fetch all agricultural enterprises by county and size class data which match the
+     * input constraints.
      *
      * @param regions
      *            the regions
@@ -126,7 +126,7 @@ public class AgricultureHoldingsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all agricultural enterprises by county and juridical form data.</p>
+     * Fetch all agricultural enterprises by county and juridical form data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -140,8 +140,8 @@ public class AgricultureHoldingsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all agricultural enterprises by county and juridical form data which match
-     * the input constraints.</p>
+     * Fetch all agricultural enterprises by county and juridical form data which match
+     * the input constraints.
      *
      * @param regions
      *            the regions

@@ -26,21 +26,21 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles goods and services food sales data fetching.</p>
+ * Client which handles goods and services food sales data fetching.
  *
  * @since 0.3.0
  */
 public class GoodsAndServicesFoodSalesClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public GoodsAndServicesFoodSalesClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -50,7 +50,7 @@ public class GoodsAndServicesFoodSalesClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all turnover of food and drinks data.</p>
+     * Fetch all turnover of food and drinks data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -63,8 +63,8 @@ public class GoodsAndServicesFoodSalesClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all turnover of food and drinks data which match the input
-     * constraints.</p>
+     * Fetch all turnover of food and drinks data which match the input
+     * constraints.
      *
      * @param productGroups
      *            the product groups to fetch data for
@@ -83,7 +83,7 @@ public class GoodsAndServicesFoodSalesClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all turnover of ecological food and non alcoholic drinks data.</p>
+     * Fetch all turnover of ecological food and non alcoholic drinks data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -96,8 +96,8 @@ public class GoodsAndServicesFoodSalesClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all turnover of ecological food and non alcoholic drinks data which match
-     * the input constraints.</p>
+     * Fetch all turnover of ecological food and non alcoholic drinks data which match
+     * the input constraints.
      *
      * @param productGroups
      *            the product groups to fetch data for

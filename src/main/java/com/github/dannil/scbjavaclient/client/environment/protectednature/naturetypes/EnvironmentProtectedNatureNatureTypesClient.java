@@ -26,7 +26,7 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles environment protected nature nature types data fetching.</p>
+ * Client which handles environment protected nature nature types data fetching.
  *
  * @since 0.5.0
  */
@@ -35,14 +35,14 @@ public class EnvironmentProtectedNatureNatureTypesClient extends AbstractClient 
     private static final String NATURETYPES_CODE = "Naturtyp";
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public EnvironmentProtectedNatureNatureTypesClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -52,7 +52,7 @@ public class EnvironmentProtectedNatureNatureTypesClient extends AbstractClient 
     }
 
     /**
-     * <p>Fetch all protected areas data.</p>
+     * Fetch all protected areas data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -65,7 +65,7 @@ public class EnvironmentProtectedNatureNatureTypesClient extends AbstractClient 
     }
 
     /**
-     * <p>Fetch all protected areas data which match the input constraints.</p>
+     * Fetch all protected areas data which match the input constraints.
      *
      * @param natureTypes
      *            the nature types
@@ -84,7 +84,7 @@ public class EnvironmentProtectedNatureNatureTypesClient extends AbstractClient 
     }
 
     /**
-     * <p>Fetch all productive forest land data.</p>
+     * Fetch all productive forest land data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -97,7 +97,7 @@ public class EnvironmentProtectedNatureNatureTypesClient extends AbstractClient 
     }
 
     /**
-     * <p>Fetch all productive forest land data which match the input constraints.</p>
+     * Fetch all productive forest land data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -116,7 +116,7 @@ public class EnvironmentProtectedNatureNatureTypesClient extends AbstractClient 
     }
 
     /**
-     * <p>Fetch all protected nature above the boundaries for mountain forests data.</p>
+     * Fetch all protected nature above the boundaries for mountain forests data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -130,8 +130,8 @@ public class EnvironmentProtectedNatureNatureTypesClient extends AbstractClient 
     }
 
     /**
-     * <p>Fetch all protected nature above the boundaries for mountain forests data which
-     * match the input constraints.</p>
+     * Fetch all protected nature above the boundaries for mountain forests data which
+     * match the input constraints.
      *
      * @param natureTypes
      *            the nature types
@@ -151,7 +151,7 @@ public class EnvironmentProtectedNatureNatureTypesClient extends AbstractClient 
     }
 
     /**
-     * <p>Fetch all new protected areas data.</p>
+     * Fetch all new protected areas data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -164,7 +164,7 @@ public class EnvironmentProtectedNatureNatureTypesClient extends AbstractClient 
     }
 
     /**
-     * <p>Fetch all new protected areas data which match the input constraints.</p>
+     * Fetch all new protected areas data which match the input constraints.
      *
      * @param natureTypes
      *            the nature types

@@ -26,21 +26,21 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles living conditions families adoptions data fetching.</p>
+ * Client which handles living conditions families adoptions data fetching.
  *
  * @since 0.2.0
  */
 public class LivingConditionsFamiliesAdoptionsClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public LivingConditionsFamiliesAdoptionsClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -50,7 +50,7 @@ public class LivingConditionsFamiliesAdoptionsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all adopted children and young persons aged 0-21 data.</p>
+     * Fetch all adopted children and young persons aged 0-21 data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -64,8 +64,8 @@ public class LivingConditionsFamiliesAdoptionsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all adopted children and young persons aged 0-21 data which match the
-     * input constraints.</p>
+     * Fetch all adopted children and young persons aged 0-21 data which match the
+     * input constraints.
      *
      * @param sexes
      *            the sexes

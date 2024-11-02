@@ -26,7 +26,7 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles environment waste data fetching.</p>
+ * Client which handles environment waste data fetching.
  *
  * @since 0.2.0
  */
@@ -35,14 +35,14 @@ public class EnvironmentWasteClient extends AbstractClient {
     private static final String WASTECATEGORY_CODE = "Avfallsslag";
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public EnvironmentWasteClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -52,7 +52,7 @@ public class EnvironmentWasteClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all generated waste data.</p>
+     * Fetch all generated waste data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -65,7 +65,7 @@ public class EnvironmentWasteClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all generated waste data which match the input constraints.</p>
+     * Fetch all generated waste data which match the input constraints.
      *
      * @param properties
      *            the properties to fetch data for
@@ -92,7 +92,7 @@ public class EnvironmentWasteClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all treated waste data.</p>
+     * Fetch all treated waste data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -105,7 +105,7 @@ public class EnvironmentWasteClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all treated waste data which match the input constraints.</p>
+     * Fetch all treated waste data which match the input constraints.
      *
      * @param treatmentCategories
      *            the treatment categories to fetch data for

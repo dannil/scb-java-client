@@ -19,8 +19,8 @@ import java.util.Locale;
 import java.util.Map;
 
 /**
- * <p>Abstract class which specifies how methods by container clients (a client that has
- * sub-clients) should operate.</p>
+ * Abstract class which specifies how methods by container clients (a client that has
+ * sub-clients) should operate.
  *
  * @since 0.0.2
  */
@@ -29,7 +29,7 @@ public abstract class AbstractContainerClient extends AbstractClient {
     private Map<String, AbstractClient> clients;
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     protected AbstractContainerClient() {
         super();
@@ -38,7 +38,7 @@ public abstract class AbstractContainerClient extends AbstractClient {
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -50,7 +50,7 @@ public abstract class AbstractContainerClient extends AbstractClient {
     }
 
     /**
-     * <p>Set the <code>Locale</code> for all sub-clients.</p>
+     * Set the <code>Locale</code> for all sub-clients.
      */
     @Override
     public final void setLocale(Locale locale) {
@@ -62,7 +62,7 @@ public abstract class AbstractContainerClient extends AbstractClient {
     }
 
     /**
-     * <p>Add a sub-client to this client.</p>
+     * Add a sub-client to this client.
      *
      * @param key
      *            the key
@@ -80,7 +80,7 @@ public abstract class AbstractContainerClient extends AbstractClient {
     }
 
     /**
-     * <p>Get a sub-client from this client.</p>
+     * Get a sub-client from this client.
      *
      * @param key
      *            the key

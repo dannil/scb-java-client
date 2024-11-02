@@ -21,8 +21,8 @@ import java.util.Objects;
 import com.github.dannil.scbjavaclient.constants.APIConstants;
 
 /**
- * <p>Class which encapsulates the API URL, and enables relevant operations on this
- * URL.</p>
+ * Class which encapsulates the API URL, and enables relevant operations on this
+ * URL.
  *
  * @since 1.2.0
  */
@@ -33,7 +33,7 @@ public class URLEndpoint {
     private String url;
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param url
      *            the URL
@@ -43,7 +43,7 @@ public class URLEndpoint {
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param url
      *            the URL
@@ -58,7 +58,7 @@ public class URLEndpoint {
     }
 
     /**
-     * <p>Appends the given string to the URL.</p>
+     * Appends the given string to the URL.
      *
      * @param str
      *            the string to append
@@ -69,7 +69,7 @@ public class URLEndpoint {
     }
 
     /**
-     * <p>Returns the language portion of this URL.</p>
+     * Returns the language portion of this URL.
      *
      * <p>Example: URL of
      * <b>https://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0401/BE0401A/</b> is converted to
@@ -98,7 +98,7 @@ public class URLEndpoint {
     }
 
     /**
-     * <p>Returns the table portion of this URL.</p>
+     * Returns the table portion of this URL.
      *
      * <p>Example: URL of
      * <b>https://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0401/BE0401A/</b> is converted to
@@ -117,7 +117,7 @@ public class URLEndpoint {
     }
 
     /**
-     * <p>Generates a new URL to the API using the specified <code>Locale</code>.</p>
+     * Generates a new URL to the API using the specified <code>Locale</code>.
      *
      * <p>See {@link #toURL(String)} for implementation details.</p>
      *
@@ -130,9 +130,9 @@ public class URLEndpoint {
     }
 
     /**
-     * <p>Generates a new URL to the API by replacing the current language tag in the URL
+     * Generates a new URL to the API by replacing the current language tag in the URL
      * with the specified language tag. The communication protocol used, such as HTTP or
-     * HTTPS, is not modified.</p>
+     * HTTPS, is not modified.
      *
      * @param language
      *            the language to use
@@ -145,9 +145,9 @@ public class URLEndpoint {
     }
 
     /**
-     * <p>Generates a new URL to the API by replacing the current language tag and
+     * Generates a new URL to the API by replacing the current language tag and
      * communication protocol in the URL with the specified language tag and
-     * {@link CommunicationProtocol}.</p>
+     * {@link CommunicationProtocol}.
      *
      * <p>The method performs two distinct operations, if needed: replacement of the
      * communication protocol and replacement of the language tag. The following steps are
@@ -232,7 +232,7 @@ public class URLEndpoint {
     }
 
     /**
-     * <p>Returns the root URL for the API.</p>
+     * Returns the root URL for the API.
      *
      * @return an {@link URLEndpoint} representing the
      *         {@link com.github.dannil.scbjavaclient.constants.APIConstants#ROOT_URL
@@ -243,7 +243,7 @@ public class URLEndpoint {
     }
 
     /**
-     * <p>Returns the root URL for the API for a specific <code>Locale</code>.</p>
+     * Returns the root URL for the API for a specific <code>Locale</code>.
      *
      * @param locale
      *            the <code>Locale</code>
@@ -257,8 +257,8 @@ public class URLEndpoint {
     }
 
     /**
-     * <p>Returns the root URL for the API for a specific <code>Locale</code> and
-     * {@link CommunicationProtocol}.</p>
+     * Returns the root URL for the API for a specific <code>Locale</code> and
+     * {@link CommunicationProtocol}.
      *
      * @param locale
      *            the <code>Locale</code>

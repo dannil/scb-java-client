@@ -26,8 +26,8 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles prices and consumption building price index (BPI) data
- * fetching.</p>
+ * Client which handles prices and consumption building price index (BPI) data
+ * fetching.
  *
  * @since 0.4.0
  */
@@ -36,14 +36,14 @@ public class PricesAndConsumptionBPIClient extends AbstractClient {
     private static final String TYPEOFINDEX_CODE = "Indexslag";
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public PricesAndConsumptionBPIClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -53,7 +53,7 @@ public class PricesAndConsumptionBPIClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all building price index for dwellings (quarters) data.</p>
+     * Fetch all building price index for dwellings (quarters) data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -66,8 +66,8 @@ public class PricesAndConsumptionBPIClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all building price index for dwellings (quarters) data which match the
-     * input constraints.</p>
+     * Fetch all building price index for dwellings (quarters) data which match the
+     * input constraints.
      *
      * @param typesOfBuildings
      *            the types of buildings
@@ -90,7 +90,7 @@ public class PricesAndConsumptionBPIClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all building price index for dwellings (years) data.</p>
+     * Fetch all building price index for dwellings (years) data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -103,8 +103,8 @@ public class PricesAndConsumptionBPIClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all building price index for dwellings (years) data which match the input
-     * constraints.</p>
+     * Fetch all building price index for dwellings (years) data which match the input
+     * constraints.
      *
      * @param typesOfBuildings
      *            the types of buildings

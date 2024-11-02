@@ -26,21 +26,21 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles environment land use usage data fetching.</p>
+ * Client which handles environment land use usage data fetching.
  *
  * @since 0.2.0
  */
 public class EnvironmentLandUseUsageClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public EnvironmentLandUseUsageClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -50,7 +50,7 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all arable land and forest land data.</p>
+     * Fetch all arable land and forest land data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -63,8 +63,8 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all arable land and forest land data which match the input
-     * constraints.</p>
+     * Fetch all arable land and forest land data which match the input
+     * constraints.
      *
      * @param regions
      *            the regions to fetch data for
@@ -82,7 +82,7 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all built up land data.</p>
+     * Fetch all built up land data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -95,7 +95,7 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all built up land data which match the input constraints.</p>
+     * Fetch all built up land data which match the input constraints.
      *
      * @param regions
      *            the regions to fetch data for
@@ -113,7 +113,7 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all land use by county data.</p>
+     * Fetch all land use by county data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -126,7 +126,7 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all land use by county data which match the input constraints.</p>
+     * Fetch all land use by county data which match the input constraints.
      *
      * @param regions
      *            the regions to fetch data for
@@ -144,7 +144,7 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all land use by municipality data.</p>
+     * Fetch all land use by municipality data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -157,7 +157,7 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all land use by municipality data which match the input constraints.</p>
+     * Fetch all land use by municipality data which match the input constraints.
      *
      * @param regions
      *            the regions to fetch data for
@@ -175,7 +175,7 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all transport infrastructure area data.</p>
+     * Fetch all transport infrastructure area data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -194,8 +194,8 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all transport infrastructure area data which match the input
-     * constraints.</p>
+     * Fetch all transport infrastructure area data which match the input
+     * constraints.
      *
      * @param regions
      *            the regions
@@ -215,7 +215,7 @@ public class EnvironmentLandUseUsageClient extends AbstractClient {
     }
 
     /**
-     * <p>Common generator method for the methods in this class.</p>
+     * Common generator method for the methods in this class.
      *
      * @param regions
      *            the regions

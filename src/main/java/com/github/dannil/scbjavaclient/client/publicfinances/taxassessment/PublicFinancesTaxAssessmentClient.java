@@ -26,21 +26,21 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles public finances tax assessment data fetching.</p>
+ * Client which handles public finances tax assessment data fetching.
  *
  * @since 0.3.0
  */
 public class PublicFinancesTaxAssessmentClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public PublicFinancesTaxAssessmentClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -50,7 +50,7 @@ public class PublicFinancesTaxAssessmentClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all assessed and taxable earned income data.</p>
+     * Fetch all assessed and taxable earned income data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -63,8 +63,8 @@ public class PublicFinancesTaxAssessmentClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all assessed and taxable earned income data which match the input
-     * constraints.</p>
+     * Fetch all assessed and taxable earned income data which match the input
+     * constraints.
      *
      * @param regions
      *            the regions
@@ -84,7 +84,7 @@ public class PublicFinancesTaxAssessmentClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all assessment for national capital income tax data.</p>
+     * Fetch all assessment for national capital income tax data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -97,8 +97,8 @@ public class PublicFinancesTaxAssessmentClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all assessment for national capital income tax data which match the input
-     * constraints.</p>
+     * Fetch all assessment for national capital income tax data which match the input
+     * constraints.
      *
      * @param regions
      *            the regions

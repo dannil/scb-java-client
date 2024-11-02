@@ -24,14 +24,14 @@ import com.github.dannil.scbjavaclient.client.environment.landuse.usage.Environm
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
- * <p>Client which handles environment land use data fetching.</p>
+ * Client which handles environment land use data fetching.
  *
  * @since 0.2.0
  */
 public class EnvironmentLandUseClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor. Initializes values and creates sub-clients.</p>
+     * Default constructor. Initializes values and creates sub-clients.
      */
     public EnvironmentLandUseClient() {
         super();
@@ -43,7 +43,7 @@ public class EnvironmentLandUseClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -55,8 +55,8 @@ public class EnvironmentLandUseClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with environment land use buildings
-     * data.</p>
+     * Retrieve the client for interacting with environment land use buildings
+     * data.
      *
      * @return a client for environment land use buildings data
      */
@@ -65,8 +65,8 @@ public class EnvironmentLandUseClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with environment land use infrastructure for
-     * transport data.</p>
+     * Retrieve the client for interacting with environment land use infrastructure for
+     * transport data.
      *
      * @return a client for environment land use infrastructure for transport data
      */
@@ -75,7 +75,7 @@ public class EnvironmentLandUseClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with environment land use planning data.</p>
+     * Retrieve the client for interacting with environment land use planning data.
      *
      * @return a client for environment land use planning data
      */
@@ -84,7 +84,7 @@ public class EnvironmentLandUseClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with environment land use usage data.</p>
+     * Retrieve the client for interacting with environment land use usage data.
      *
      * @return a client for environment land use usage data
      */

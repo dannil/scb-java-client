@@ -26,22 +26,22 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles public finances annual accounts balance sheet municipality data
- * fetching.</p>
+ * Client which handles public finances annual accounts balance sheet municipality data
+ * fetching.
  *
  * @since 0.3.0
  */
 public class PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,7 +51,7 @@ public class PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient extends 
     }
 
     /**
-     * <p>Fetch all income statements data.</p>
+     * Fetch all income statements data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -64,7 +64,7 @@ public class PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient extends 
     }
 
     /**
-     * <p>Fetch all income statements data which match the input constraints.</p>
+     * Fetch all income statements data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -88,7 +88,7 @@ public class PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient extends 
 
     // Daniel 2017-04-17: Returns HTTP 403
     /**
-     * <p>Fetch all balance sheet data.</p>
+     * Fetch all balance sheet data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -101,7 +101,7 @@ public class PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient extends 
     }
 
     /**
-     * <p>Fetch all balance sheet data which match the input constraints.</p>
+     * Fetch all balance sheet data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -124,7 +124,7 @@ public class PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient extends 
     }
 
     /**
-     * <p>Fetch all guarantees and contingent liabilities data.</p>
+     * Fetch all guarantees and contingent liabilities data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -137,8 +137,8 @@ public class PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient extends 
     }
 
     /**
-     * <p>Fetch all guarantees and contingent liabilities data which match the input
-     * constraints.</p>
+     * Fetch all guarantees and contingent liabilities data which match the input
+     * constraints.
      *
      * @param regions
      *            the regions
@@ -161,7 +161,7 @@ public class PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient extends 
     }
 
     /**
-     * <p>Fetch all local government incomes data.</p>
+     * Fetch all local government incomes data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -174,7 +174,7 @@ public class PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient extends 
     }
 
     /**
-     * <p>Fetch all local government incomes data which match the input constraints.</p>
+     * Fetch all local government incomes data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -197,7 +197,7 @@ public class PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient extends 
     }
 
     /**
-     * <p>Fetch all municipalities costs data.</p>
+     * Fetch all municipalities costs data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -210,7 +210,7 @@ public class PublicFinancesAnnualAccountsBalanceSheetMunicipalityClient extends 
     }
 
     /**
-     * <p>Fetch all municipalities costs data which match the input constraints.</p>
+     * Fetch all municipalities costs data which match the input constraints.
      *
      * @param regions
      *            the regions

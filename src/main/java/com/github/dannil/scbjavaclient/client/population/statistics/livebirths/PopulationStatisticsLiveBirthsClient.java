@@ -26,21 +26,21 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles population statistics live births data fetching.</p>
+ * Client which handles population statistics live births data fetching.
  *
  * @since 0.1.0
  */
 public class PopulationStatisticsLiveBirthsClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public PopulationStatisticsLiveBirthsClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -50,7 +50,7 @@ public class PopulationStatisticsLiveBirthsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all live births data.</p>
+     * Fetch all live births data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -63,7 +63,7 @@ public class PopulationStatisticsLiveBirthsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all live births data which match the input constraints.</p>
+     * Fetch all live births data which match the input constraints.
      *
      * @param regions
      *            the regions to fetch data for

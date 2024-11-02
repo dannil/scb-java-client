@@ -23,22 +23,22 @@ import java.io.UncheckedIOException;
 import java.util.stream.Collectors;
 
 /**
- * <p>Class which defines various utility methods which operates principally around
- * various instances of <code>Stream</code>.</p>
+ * Class which defines various utility methods which operates principally around
+ * various instances of <code>Stream</code>.
  *
  * @since 3.0.0
  */
 public final class StreamUtility {
 
     /**
-     * <p>Private constructor to prevent instantiation.</p>
+     * Private constructor to prevent instantiation.
      */
     private StreamUtility() {
 
     }
 
     /**
-     * <p>Removes any Unicode byte order marks from the specified string.</p>
+     * Removes any Unicode byte order marks from the specified string.
      *
      * @param str
      *            the string to remove byte order marks from
@@ -52,7 +52,7 @@ public final class StreamUtility {
     }
 
     /**
-     * <p>Removes any Unicode byte order marks from the specified stream.</p>
+     * Removes any Unicode byte order marks from the specified stream.
      *
      * @param stream
      *            the stream to remove byte order marks from

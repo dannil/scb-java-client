@@ -26,21 +26,21 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles living conditions surveys health data fetching.</p>
+ * Client which handles living conditions surveys health data fetching.
  *
  * @since 0.2.0
  */
 public class LivingConditionsSurveysHealthClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public LivingConditionsSurveysHealthClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -50,7 +50,7 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all physical and mental health data.</p>
+     * Fetch all physical and mental health data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -63,7 +63,7 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all physical and mental health data which match the input constraints.</p>
+     * Fetch all physical and mental health data which match the input constraints.
      *
      * @param indicators
      *            the indicators
@@ -83,7 +83,7 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all long term illness data.</p>
+     * Fetch all long term illness data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -96,7 +96,7 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all long term illness data which match the input constraints.</p>
+     * Fetch all long term illness data which match the input constraints.
      *
      * @param indicators
      *            the indicators
@@ -116,7 +116,7 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all disabilities data.</p>
+     * Fetch all disabilities data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -129,7 +129,7 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all disabilities data which match the input constraints.</p>
+     * Fetch all disabilities data which match the input constraints.
      *
      * @param indicators
      *            the indicators
@@ -149,7 +149,7 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all doctor and dentist appointments data.</p>
+     * Fetch all doctor and dentist appointments data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -163,8 +163,8 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all doctor and dentist appointments data which match the input
-     * constraints.</p>
+     * Fetch all doctor and dentist appointments data which match the input
+     * constraints.
      *
      * @param indicators
      *            the indicators
@@ -184,7 +184,7 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all tobacco habits data.</p>
+     * Fetch all tobacco habits data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -197,7 +197,7 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all tobacco habits data which match the input constraints.</p>
+     * Fetch all tobacco habits data which match the input constraints.
      *
      * @param indicators
      *            the indicators
@@ -217,7 +217,7 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all body mass index data.</p>
+     * Fetch all body mass index data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -230,7 +230,7 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all body mass index data which match the input constraints.</p>
+     * Fetch all body mass index data which match the input constraints.
      *
      * @param indicators
      *            the indicators
@@ -250,7 +250,7 @@ public class LivingConditionsSurveysHealthClient extends AbstractClient {
     }
 
     /**
-     * <p>Common generator method for the methods in this class.</p>
+     * Common generator method for the methods in this class.
      *
      * @param indicators
      *            the indicators

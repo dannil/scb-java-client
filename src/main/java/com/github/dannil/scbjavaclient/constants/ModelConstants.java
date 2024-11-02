@@ -15,20 +15,20 @@
 package com.github.dannil.scbjavaclient.constants;
 
 /**
- * <p>Constants which hold specific values for use by the various models.</p>
+ * Constants which hold specific values for use by the various models.
  *
  * @since 0.2.0
  */
 public final class ModelConstants {
 
     /**
-     * <p>The default number of characters to use for the StringBuilder in the
-     * <code>toString()</code> method.</p>
+     * The default number of characters to use for the StringBuilder in the
+     * <code>toString()</code> method.
      */
     public static final int TOSTRING_BUILDER_LENGTH = 128;
 
     /**
-     * <p>Private constructor to prevent instantiation.</p>
+     * Private constructor to prevent instantiation.
      */
     private ModelConstants() {
 

@@ -15,8 +15,8 @@
 package com.github.dannil.scbjavaclient.exception;
 
 /**
- * <p>Exception for when the resulting response of a call to the API exceeded the maximum
- * response size, as defined by the PI.</p>
+ * Exception for when the resulting response of a call to the API exceeded the maximum
+ * response size, as defined by the PI.
  *
  * @since 1.2.0
  */
@@ -25,14 +25,14 @@ public class SCBClientResponseTooLargeException extends SCBClientException {
     private static final long serialVersionUID = 4871111166346462765L;
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public SCBClientResponseTooLargeException() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param message
      *            the message
@@ -42,7 +42,7 @@ public class SCBClientResponseTooLargeException extends SCBClientException {
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param message
      *            the message
@@ -54,7 +54,7 @@ public class SCBClientResponseTooLargeException extends SCBClientException {
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param cause
      *            the cause

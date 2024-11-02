@@ -26,22 +26,22 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles business activities production value index production value
- * index data fetching.</p>
+ * Client which handles business activities production value index production value
+ * index data fetching.
  *
  * @since 3.0.0
  */
 public class BusinessActivitiesProductionValueIndexProductionValueIndexClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public BusinessActivitiesProductionValueIndexProductionValueIndexClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,7 +51,7 @@ public class BusinessActivitiesProductionValueIndexProductionValueIndexClient ex
     }
 
     /**
-     * <p>Fetch all production value index data.</p>
+     * Fetch all production value index data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -64,7 +64,7 @@ public class BusinessActivitiesProductionValueIndexProductionValueIndexClient ex
     }
 
     /**
-     * <p>Fetch all production value index data which match the input constraints.</p>
+     * Fetch all production value index data which match the input constraints.
      *
      * @param industrialClassifications
      *            the industrial classifications

@@ -26,22 +26,22 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles environment System of Environmental-Economic Accounting (SEEA)
- * goods and services sector data fetching.</p>
+ * Client which handles environment System of Environmental-Economic Accounting (SEEA)
+ * goods and services sector data fetching.
  *
  * @since 0.4.0
  */
 public class EnvironmentSEEAGoodsAndServicesSectorClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public EnvironmentSEEAGoodsAndServicesSectorClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,7 +51,7 @@ public class EnvironmentSEEAGoodsAndServicesSectorClient extends AbstractClient 
     }
 
     /**
-     * <p>Fetch all environmental sector by environmental area data.</p>
+     * Fetch all environmental sector by environmental area data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -64,8 +64,8 @@ public class EnvironmentSEEAGoodsAndServicesSectorClient extends AbstractClient 
     }
 
     /**
-     * <p>Fetch all environmental sector by environmental area data which match the input
-     * constraints.</p>
+     * Fetch all environmental sector by environmental area data which match the input
+     * constraints.
      *
      * @param environmentalAreas
      *            the environmental areas
@@ -85,7 +85,7 @@ public class EnvironmentSEEAGoodsAndServicesSectorClient extends AbstractClient 
     }
 
     /**
-     * <p>Fetch all environmental sector by county data.</p>
+     * Fetch all environmental sector by county data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -98,8 +98,8 @@ public class EnvironmentSEEAGoodsAndServicesSectorClient extends AbstractClient 
     }
 
     /**
-     * <p>Fetch all environmental sector by county data which match the input
-     * constraints.</p>
+     * Fetch all environmental sector by county data which match the input
+     * constraints.
      *
      * @param counties
      *            the counties
@@ -118,8 +118,8 @@ public class EnvironmentSEEAGoodsAndServicesSectorClient extends AbstractClient 
     }
 
     /**
-     * <p>Fetch all environmental sector net turnover by industrial classification
-     * data.</p>
+     * Fetch all environmental sector net turnover by industrial classification
+     * data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -133,8 +133,8 @@ public class EnvironmentSEEAGoodsAndServicesSectorClient extends AbstractClient 
     }
 
     /**
-     * <p>Fetch all environmental sector net turnover by industrial classification data
-     * which match the input constraints.</p>
+     * Fetch all environmental sector net turnover by industrial classification data
+     * which match the input constraints.
      *
      * @param industrialClassifications
      *            the industrial classifications
@@ -150,8 +150,8 @@ public class EnvironmentSEEAGoodsAndServicesSectorClient extends AbstractClient 
     }
 
     /**
-     * <p>Fetch all environmental sector value added by industrial classification
-     * data.</p>
+     * Fetch all environmental sector value added by industrial classification
+     * data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -165,8 +165,8 @@ public class EnvironmentSEEAGoodsAndServicesSectorClient extends AbstractClient 
     }
 
     /**
-     * <p>Fetch all environmental sector value added by industrial classification data
-     * which match the input constraints.</p>
+     * Fetch all environmental sector value added by industrial classification data
+     * which match the input constraints.
      *
      * @param industrialClassifications
      *            the industrial classifications
@@ -182,7 +182,7 @@ public class EnvironmentSEEAGoodsAndServicesSectorClient extends AbstractClient 
     }
 
     /**
-     * <p>Fetch all environmental sector export by industrial classification data.</p>
+     * Fetch all environmental sector export by industrial classification data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -196,8 +196,8 @@ public class EnvironmentSEEAGoodsAndServicesSectorClient extends AbstractClient 
     }
 
     /**
-     * <p>Fetch all environmental sector export by industrial classification data which
-     * match the input constraints.</p>
+     * Fetch all environmental sector export by industrial classification data which
+     * match the input constraints.
      *
      * @param industrialClassifications
      *            the industrial classifications
@@ -213,8 +213,8 @@ public class EnvironmentSEEAGoodsAndServicesSectorClient extends AbstractClient 
     }
 
     /**
-     * <p>Common generator method for methods handling environmental sector by industrial
-     * classification data.</p>
+     * Common generator method for methods handling environmental sector by industrial
+     * classification data.
      *
      * @param industrialClassifications
      *            the industrial classifications

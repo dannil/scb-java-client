@@ -26,21 +26,21 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles living conditions families housing data fetching.</p>
+ * Client which handles living conditions families housing data fetching.
  *
  * @since 0.2.0
  */
 public class LivingConditionsFamiliesHousingClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public LivingConditionsFamiliesHousingClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -50,7 +50,7 @@ public class LivingConditionsFamiliesHousingClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all housing data.</p>
+     * Fetch all housing data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -64,7 +64,7 @@ public class LivingConditionsFamiliesHousingClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all housing data which match the input constraints.</p>
+     * Fetch all housing data which match the input constraints.
      *
      * @param sexes
      *            the sexes

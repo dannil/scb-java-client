@@ -26,21 +26,21 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles population statistics deaths data fetching.</p>
+ * Client which handles population statistics deaths data fetching.
  *
  * @since 0.3.0
  */
 public class PopulationStatisticsDeathsClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public PopulationStatisticsDeathsClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -50,7 +50,7 @@ public class PopulationStatisticsDeathsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all mortality rate data.</p>
+     * Fetch all mortality rate data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -63,7 +63,7 @@ public class PopulationStatisticsDeathsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all mortality rate data which match the input constraints.</p>
+     * Fetch all mortality rate data which match the input constraints.
      *
      * @param ages
      *            the ages
@@ -86,7 +86,7 @@ public class PopulationStatisticsDeathsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all stillborn data.</p>
+     * Fetch all stillborn data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -99,7 +99,7 @@ public class PopulationStatisticsDeathsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all stillborn data which match the input constraints.</p>
+     * Fetch all stillborn data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -125,7 +125,7 @@ public class PopulationStatisticsDeathsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all life expectancy data.</p>
+     * Fetch all life expectancy data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -138,7 +138,7 @@ public class PopulationStatisticsDeathsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all life expectancy data which match the input constraints.</p>
+     * Fetch all life expectancy data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -161,7 +161,7 @@ public class PopulationStatisticsDeathsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all life table data.</p>
+     * Fetch all life table data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -174,7 +174,7 @@ public class PopulationStatisticsDeathsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all life table data which match the input constraints.</p>
+     * Fetch all life table data which match the input constraints.
      *
      * @param sexes
      *            the sexes
@@ -197,7 +197,7 @@ public class PopulationStatisticsDeathsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all infant mortality data.</p>
+     * Fetch all infant mortality data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -210,7 +210,7 @@ public class PopulationStatisticsDeathsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all infant mortality data which match the input constraints.</p>
+     * Fetch all infant mortality data which match the input constraints.
      *
      * @param sexes
      *            the sexes

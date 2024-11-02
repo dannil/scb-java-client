@@ -26,21 +26,21 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles business activities database data fetching.</p>
+ * Client which handles business activities database data fetching.
  *
  * @since 0.3.0
  */
 public class BusinessActivitiesDatabaseClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public BusinessActivitiesDatabaseClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -50,7 +50,7 @@ public class BusinessActivitiesDatabaseClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all enterprises and employees (SNI 2002) data.</p>
+     * Fetch all enterprises and employees (SNI 2002) data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -63,8 +63,8 @@ public class BusinessActivitiesDatabaseClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all enterprises and employees (SNI 2002) data which match the input
-     * constraints.</p>
+     * Fetch all enterprises and employees (SNI 2002) data which match the input
+     * constraints.
      *
      * @param industrialClassifications
      *            the industrial classifications
@@ -87,7 +87,7 @@ public class BusinessActivitiesDatabaseClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all enterprises and employees (SNI 2007) data.</p>
+     * Fetch all enterprises and employees (SNI 2007) data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -99,8 +99,8 @@ public class BusinessActivitiesDatabaseClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all enterprises and employees (SNI 2007) data which match the input
-     * constraints.</p>
+     * Fetch all enterprises and employees (SNI 2007) data which match the input
+     * constraints.
      *
      * @param industrialClassifications
      *            the industrial classifications

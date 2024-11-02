@@ -22,14 +22,14 @@ import com.github.dannil.scbjavaclient.client.environment.shorelinelanduse.oldta
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
- * <p>Client which handles environment shoreline land use data fetching.</p>
+ * Client which handles environment shoreline land use data fetching.
  *
  * @since 2.1.0
  */
 public class EnvironmentShorelineLandUseClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor. Initializes values and creates sub-clients.</p>
+     * Default constructor. Initializes values and creates sub-clients.
      */
     public EnvironmentShorelineLandUseClient() {
         super();
@@ -39,7 +39,7 @@ public class EnvironmentShorelineLandUseClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,8 +51,8 @@ public class EnvironmentShorelineLandUseClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with environment shoreline land use land use
-     * data.</p>
+     * Retrieve the client for interacting with environment shoreline land use land use
+     * data.
      *
      * @return a client for environment shoreline land use land use data
      */
@@ -61,8 +61,8 @@ public class EnvironmentShorelineLandUseClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with environment shoreline land use old
-     * tables data.</p>
+     * Retrieve the client for interacting with environment shoreline land use old
+     * tables data.
      *
      * @return a client for environment shoreline land use old tables data
      */

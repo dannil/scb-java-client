@@ -25,14 +25,14 @@ import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
- * <p>Client which handles goods and services foreign trade goods data fetching.</p>
+ * Client which handles goods and services foreign trade goods data fetching.
  *
  * @since 0.7.0
  */
 public class GoodsAndServicesForeignTradeGoodsClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor. Initializes values and creates sub-clients.</p>
+     * Default constructor. Initializes values and creates sub-clients.
      */
     public GoodsAndServicesForeignTradeGoodsClient() {
         super();
@@ -45,7 +45,7 @@ public class GoodsAndServicesForeignTradeGoodsClient extends AbstractContainerCl
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -57,8 +57,8 @@ public class GoodsAndServicesForeignTradeGoodsClient extends AbstractContainerCl
     }
 
     /**
-     * <p>Retrieve the client for interacting with goods and services foreign trade goods
-     * CN (Combined Nomenclature) data.</p>
+     * Retrieve the client for interacting with goods and services foreign trade goods
+     * CN (Combined Nomenclature) data.
      *
      * @return a client for goods and services foreign trade goods CN (Combined
      *         Nomenclature) data
@@ -68,8 +68,8 @@ public class GoodsAndServicesForeignTradeGoodsClient extends AbstractContainerCl
     }
 
     /**
-     * <p>Retrieve the client for interacting with goods and services foreign trade goods
-     * economic indicators data.</p>
+     * Retrieve the client for interacting with goods and services foreign trade goods
+     * economic indicators data.
      *
      * @return a client for goods and services foreign trade goods economic indicators
      *         data
@@ -79,8 +79,8 @@ public class GoodsAndServicesForeignTradeGoodsClient extends AbstractContainerCl
     }
 
     /**
-     * <p>Retrieve the client for interacting with goods and services foreign trade goods
-     * SITC (Standard International Trade Classification) data.</p>
+     * Retrieve the client for interacting with goods and services foreign trade goods
+     * SITC (Standard International Trade Classification) data.
      *
      * @return a client for goods and services foreign trade goods SITC (Standard
      *         International Trade Classification) data
@@ -90,8 +90,8 @@ public class GoodsAndServicesForeignTradeGoodsClient extends AbstractContainerCl
     }
 
     /**
-     * <p>Retrieve the client for interacting with goods and services foreign trade goods
-     * SPIN (Swedish Standard Classification of Products by Activity) data.</p>
+     * Retrieve the client for interacting with goods and services foreign trade goods
+     * SPIN (Swedish Standard Classification of Products by Activity) data.
      *
      * @return a client for goods and services foreign trade goods SPIN (Swedish Standard
      *         Classification of Products by Activity) data
@@ -101,8 +101,8 @@ public class GoodsAndServicesForeignTradeGoodsClient extends AbstractContainerCl
     }
 
     /**
-     * <p>Retrieve the client for interacting with goods and services foreign trade goods
-     * total data.</p>
+     * Retrieve the client for interacting with goods and services foreign trade goods
+     * total data.
      *
      * @return a client for goods and services foreign trade goods total data
      */

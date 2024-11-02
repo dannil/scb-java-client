@@ -22,14 +22,14 @@ import com.github.dannil.scbjavaclient.client.goodsandservices.foreigntradegoods
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
- * <p>Client which handles goods and services data fetching.</p>
+ * Client which handles goods and services data fetching.
  *
  * @since 0.3.0
  */
 public class GoodsAndServicesClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor. Initializes values and creates sub-clients.</p>
+     * Default constructor. Initializes values and creates sub-clients.
      */
     public GoodsAndServicesClient() {
         super();
@@ -39,7 +39,7 @@ public class GoodsAndServicesClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,7 +51,7 @@ public class GoodsAndServicesClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with goods and services food sales data.</p>
+     * Retrieve the client for interacting with goods and services food sales data.
      *
      * @return a client for goods and services food sales data
      */
@@ -60,8 +60,8 @@ public class GoodsAndServicesClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with goods and services foreign trade goods
-     * data.</p>
+     * Retrieve the client for interacting with goods and services foreign trade goods
+     * data.
      *
      * @return a client for goods and services foreign trade goods data
      */

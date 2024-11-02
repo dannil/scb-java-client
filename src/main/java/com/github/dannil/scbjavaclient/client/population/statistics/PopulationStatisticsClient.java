@@ -36,14 +36,14 @@ import com.github.dannil.scbjavaclient.client.population.statistics.vitalevents.
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
- * <p>Client which handles population statistics data fetching.</p>
+ * Client which handles population statistics data fetching.
  *
  * @since 0.0.2
  */
 public class PopulationStatisticsClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor. Initializes values and creates sub-clients.</p>
+     * Default constructor. Initializes values and creates sub-clients.
      */
     public PopulationStatisticsClient() {
         super();
@@ -67,7 +67,7 @@ public class PopulationStatisticsClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -79,8 +79,8 @@ public class PopulationStatisticsClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with population statistics adoptees
-     * data.</p>
+     * Retrieve the client for interacting with population statistics adoptees
+     * data.
      *
      * @return a client for population statistics adoptees data
      */
@@ -89,7 +89,7 @@ public class PopulationStatisticsClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with population statistics amount data.</p>
+     * Retrieve the client for interacting with population statistics amount data.
      *
      * @return a client for population statistics amount data
      */
@@ -98,8 +98,8 @@ public class PopulationStatisticsClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with population statistics asylum seekers
-     * data.</p>
+     * Retrieve the client for interacting with population statistics asylum seekers
+     * data.
      *
      * @return a client for population statistics asylum seekers data
      */
@@ -108,8 +108,8 @@ public class PopulationStatisticsClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with population statistics average age data.
-     * </p>
+     * Retrieve the client for interacting with population statistics average age data.
+     *
      *
      * @return a client for population statistics average age data
      */
@@ -118,8 +118,8 @@ public class PopulationStatisticsClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with population statistics background data.
-     * </p>
+     * Retrieve the client for interacting with population statistics background data.
+     *
      *
      * @return a client for population statistics background data
      */
@@ -128,8 +128,8 @@ public class PopulationStatisticsClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with population statistics citizenship data.
-     * </p>
+     * Retrieve the client for interacting with population statistics citizenship data.
+     *
      *
      * @return a client for population statistics citizenship data
      */
@@ -138,7 +138,7 @@ public class PopulationStatisticsClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with population statistics deaths data.</p>
+     * Retrieve the client for interacting with population statistics deaths data.
      *
      * @return a client for population statistics deaths data
      */
@@ -147,8 +147,8 @@ public class PopulationStatisticsClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with population statistics density data.
-     * </p>
+     * Retrieve the client for interacting with population statistics density data.
+     *
      *
      * @return a client for population statistics density data
      */
@@ -157,8 +157,8 @@ public class PopulationStatisticsClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with population statistics foreign-born
-     * persons data. </p>
+     * Retrieve the client for interacting with population statistics foreign-born
+     * persons data.
      *
      * @return a client for population statistics foreign-born persons data
      */
@@ -167,8 +167,8 @@ public class PopulationStatisticsClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with population statistics foreign citizens
-     * data. </p>
+     * Retrieve the client for interacting with population statistics foreign citizens
+     * data.
      *
      * @return a client for population statistics foreign citizens data
      */
@@ -177,8 +177,8 @@ public class PopulationStatisticsClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with population statistics household data.
-     * </p>
+     * Retrieve the client for interacting with population statistics household data.
+     *
      *
      * @return a client for population statistics household data
      */
@@ -187,8 +187,8 @@ public class PopulationStatisticsClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with population statistics live births data.
-     * </p>
+     * Retrieve the client for interacting with population statistics live births data.
+     *
      *
      * @return a client for population statistics live births data
      */
@@ -197,8 +197,8 @@ public class PopulationStatisticsClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with population statistics mean population
-     * data. </p>
+     * Retrieve the client for interacting with population statistics mean population
+     * data.
      *
      * @return a client for population statistics mean population data
      */
@@ -207,8 +207,8 @@ public class PopulationStatisticsClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with population statistics migration data.
-     * </p>
+     * Retrieve the client for interacting with population statistics migration data.
+     *
      *
      * @return a client for population statistics migration data
      */
@@ -217,8 +217,8 @@ public class PopulationStatisticsClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with population statistics partnership
-     * data.</p>
+     * Retrieve the client for interacting with population statistics partnership
+     * data.
      *
      * @return a client for population statistics partnership data
      */
@@ -227,8 +227,8 @@ public class PopulationStatisticsClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with population statistics vital events
-     * data.</p>
+     * Retrieve the client for interacting with population statistics vital events
+     * data.
      *
      * @return a client for population statistics vital events data
      */

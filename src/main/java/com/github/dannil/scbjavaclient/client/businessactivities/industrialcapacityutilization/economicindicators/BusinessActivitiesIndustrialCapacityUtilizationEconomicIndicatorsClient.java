@@ -26,22 +26,22 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles business activities industrial capacity utilization economic
- * indicators data fetching.</p>
+ * Client which handles business activities industrial capacity utilization economic
+ * indicators data fetching.
  *
  * @since 0.7.0
  */
 public class BusinessActivitiesIndustrialCapacityUtilizationEconomicIndicatorsClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public BusinessActivitiesIndustrialCapacityUtilizationEconomicIndicatorsClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,7 +51,7 @@ public class BusinessActivitiesIndustrialCapacityUtilizationEconomicIndicatorsCl
     }
 
     /**
-     * <p>Fetch all capacity utilisation in total industry data.</p>
+     * Fetch all capacity utilisation in total industry data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -64,8 +64,8 @@ public class BusinessActivitiesIndustrialCapacityUtilizationEconomicIndicatorsCl
     }
 
     /**
-     * <p>Fetch all capacity utilisation in total industry data which match the input
-     * constraints.</p>
+     * Fetch all capacity utilisation in total industry data which match the input
+     * constraints.
      *
      * @param quarters
      *            the quarters
