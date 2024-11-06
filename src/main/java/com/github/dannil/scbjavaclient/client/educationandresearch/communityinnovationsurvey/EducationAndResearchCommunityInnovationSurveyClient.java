@@ -22,15 +22,15 @@ import com.github.dannil.scbjavaclient.client.educationandresearch.communityinno
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
- * <p>Client which handles education and research community innovation survey data
- * fetching.</p>
+ * Client which handles education and research community innovation survey data
+ * fetching.
  *
  * @since 0.5.0
  */
 public class EducationAndResearchCommunityInnovationSurveyClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor. Initializes values and creates sub-clients.</p>
+     * Default constructor. Initializes values and creates sub-clients.
      */
     public EducationAndResearchCommunityInnovationSurveyClient() {
         super();
@@ -40,7 +40,7 @@ public class EducationAndResearchCommunityInnovationSurveyClient extends Abstrac
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -52,8 +52,8 @@ public class EducationAndResearchCommunityInnovationSurveyClient extends Abstrac
     }
 
     /**
-     * <p>Retrieve the client for interacting with education and research community
-     * innovation survey innovation activity among enterprises data.</p>
+     * Retrieve the client for interacting with education and research community
+     * innovation survey innovation activity among enterprises data.
      *
      * @return a client for education and research community innovation survey innovation
      *         activity among enterprises data
@@ -63,8 +63,8 @@ public class EducationAndResearchCommunityInnovationSurveyClient extends Abstrac
     }
 
     /**
-     * <p>Retrieve the client for interacting with education and research community
-     * innovation survey co-operation activity among enterprises data.</p>
+     * Retrieve the client for interacting with education and research community
+     * innovation survey co-operation activity among enterprises data.
      *
      * @return a client for education and research community innovation survey
      *         co-operation activity among enterprises data

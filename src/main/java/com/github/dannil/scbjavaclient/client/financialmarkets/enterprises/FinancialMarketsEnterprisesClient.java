@@ -26,7 +26,7 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles financial markets enterprises data fetching.</p>
+ * Client which handles financial markets enterprises data fetching.
  *
  * @since 0.4.0
  */
@@ -35,14 +35,14 @@ public class FinancialMarketsEnterprisesClient extends AbstractClient {
     private static final String INSTITUTE_CODE = "Finansinstitut";
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public FinancialMarketsEnterprisesClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -52,7 +52,7 @@ public class FinancialMarketsEnterprisesClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all income statements data.</p>
+     * Fetch all income statements data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -65,7 +65,7 @@ public class FinancialMarketsEnterprisesClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all income statements data which match the input constraints.</p>
+     * Fetch all income statements data which match the input constraints.
      *
      * @param institutes
      *            the institutes
@@ -88,7 +88,7 @@ public class FinancialMarketsEnterprisesClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all balance sheet data.</p>
+     * Fetch all balance sheet data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -101,7 +101,7 @@ public class FinancialMarketsEnterprisesClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all balance sheet data which match the input constraints.</p>
+     * Fetch all balance sheet data which match the input constraints.
      *
      * @param institutes
      *            the institutes

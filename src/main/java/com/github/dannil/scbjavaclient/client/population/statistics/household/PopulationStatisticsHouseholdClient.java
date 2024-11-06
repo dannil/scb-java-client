@@ -26,7 +26,7 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles population statistics household data fetching.</p>
+ * Client which handles population statistics household data fetching.
  *
  * @since 0.4.0
  */
@@ -35,14 +35,14 @@ public class PopulationStatisticsHouseholdClient extends AbstractClient {
     private static final String TYPEOFHOUSEHOLD_CODE = "Hushallstyp";
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public PopulationStatisticsHouseholdClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -52,7 +52,7 @@ public class PopulationStatisticsHouseholdClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all number of households and persons data.</p>
+     * Fetch all number of households and persons data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -66,8 +66,8 @@ public class PopulationStatisticsHouseholdClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all number of households and persons data which match the input
-     * constraints.</p>
+     * Fetch all number of households and persons data which match the input
+     * constraints.
      *
      * @param regions
      *            the regions
@@ -93,7 +93,7 @@ public class PopulationStatisticsHouseholdClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all number of persons data.</p>
+     * Fetch all number of persons data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -107,7 +107,7 @@ public class PopulationStatisticsHouseholdClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all number of persons data which match the input constraints.</p>
+     * Fetch all number of persons data which match the input constraints.
      *
      * @param typesOfHouseholds
      *            the types of households
@@ -137,7 +137,7 @@ public class PopulationStatisticsHouseholdClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all number and percentage of persons and households data.</p>
+     * Fetch all number and percentage of persons and households data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -151,8 +151,8 @@ public class PopulationStatisticsHouseholdClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all number and percentage of persons and households data which match the
-     * input constraints.</p>
+     * Fetch all number and percentage of persons and households data which match the
+     * input constraints.
      *
      * @param regions
      *            the regions

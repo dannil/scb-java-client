@@ -21,14 +21,14 @@ import com.github.dannil.scbjavaclient.client.environment.localitiesareasandpopu
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
- * <p>Client which handles environment localities areas and population data.</p>
+ * Client which handles environment localities areas and population data.
  *
  * @since 0.7.0
  */
 public class EnvironmentLocalitiesAreasAndPopulationClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor. Initializes values and creates sub-clients.</p>
+     * Default constructor. Initializes values and creates sub-clients.
      */
     public EnvironmentLocalitiesAreasAndPopulationClient() {
         super();
@@ -37,7 +37,7 @@ public class EnvironmentLocalitiesAreasAndPopulationClient extends AbstractConta
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -49,8 +49,8 @@ public class EnvironmentLocalitiesAreasAndPopulationClient extends AbstractConta
     }
 
     /**
-     * <p>Retrieve the client for interacting with environment localities areas and
-     * population population data.</p>
+     * Retrieve the client for interacting with environment localities areas and
+     * population population data.
      *
      * @return a client for environment localities areas and population population data
      */

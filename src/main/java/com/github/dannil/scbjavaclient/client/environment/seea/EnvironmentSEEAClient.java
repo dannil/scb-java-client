@@ -25,15 +25,15 @@ import com.github.dannil.scbjavaclient.client.environment.seea.taxes.Environment
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
- * <p>Client which handles environment System of Environmental-Economic Accounting (SEEA)
- * data fetching.</p>
+ * Client which handles environment System of Environmental-Economic Accounting (SEEA)
+ * data fetching.
  *
  * @since 0.4.0
  */
 public class EnvironmentSEEAClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor. Initializes values and creates sub-clients.</p>
+     * Default constructor. Initializes values and creates sub-clients.
      */
     public EnvironmentSEEAClient() {
         super();
@@ -46,7 +46,7 @@ public class EnvironmentSEEAClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -58,8 +58,8 @@ public class EnvironmentSEEAClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with environment System of
-     * Environmental-Economic Accounting (SEEA) air emissions accounts data.</p>
+     * Retrieve the client for interacting with environment System of
+     * Environmental-Economic Accounting (SEEA) air emissions accounts data.
      *
      * @return a client for environment System of Environmental-Economic Accounting (SEEA)
      *         air emissions accounts data
@@ -69,8 +69,8 @@ public class EnvironmentSEEAClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with environment System of
-     * Environmental-Economic Accounting (SEEA) energy accounts data.</p>
+     * Retrieve the client for interacting with environment System of
+     * Environmental-Economic Accounting (SEEA) energy accounts data.
      *
      * @return a client for environment System of Environmental-Economic Accounting (SEEA)
      *         energy accounts data
@@ -80,8 +80,8 @@ public class EnvironmentSEEAClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with environment System of
-     * Environmental-Economic Accounting (SEEA) goods and services sector data.</p>
+     * Retrieve the client for interacting with environment System of
+     * Environmental-Economic Accounting (SEEA) goods and services sector data.
      *
      * @return a client for environment System of Environmental-Economic Accounting (SEEA)
      *         goods and services sector data
@@ -91,8 +91,8 @@ public class EnvironmentSEEAClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with environment System of
-     * Environmental-Economic Accounting (SEEA) material flow accounts data.</p>
+     * Retrieve the client for interacting with environment System of
+     * Environmental-Economic Accounting (SEEA) material flow accounts data.
      *
      * @return a client for environment System of Environmental-Economic Accounting (SEEA)
      *         material flow accounts data
@@ -102,8 +102,8 @@ public class EnvironmentSEEAClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with environment System of
-     * Environmental-Economic Accounting (SEEA) taxes data.</p>
+     * Retrieve the client for interacting with environment System of
+     * Environmental-Economic Accounting (SEEA) taxes data.
      *
      * @return a client for environment System of Environmental-Economic Accounting (SEEA)
      *         taxes data

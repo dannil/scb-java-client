@@ -22,15 +22,15 @@ import com.github.dannil.scbjavaclient.client.businessactivities.industrialcapac
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
- * <p>Client which handles business activities industrial capacity utilization data
- * fetching.</p>
+ * Client which handles business activities industrial capacity utilization data
+ * fetching.
  *
  * @since 0.7.0
  */
 public class BusinessActivitiesIndustrialCapacityUtilizationClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public BusinessActivitiesIndustrialCapacityUtilizationClient() {
         super();
@@ -41,7 +41,7 @@ public class BusinessActivitiesIndustrialCapacityUtilizationClient extends Abstr
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -53,8 +53,8 @@ public class BusinessActivitiesIndustrialCapacityUtilizationClient extends Abstr
     }
 
     /**
-     * <p>Retrieve the client for interacting with business activities industrial capacity
-     * utilization economic indicators data.</p>
+     * Retrieve the client for interacting with business activities industrial capacity
+     * utilization economic indicators data.
      *
      * @return a client for business activities industrial capacity utilization economic
      *         indicators data
@@ -65,8 +65,8 @@ public class BusinessActivitiesIndustrialCapacityUtilizationClient extends Abstr
     }
 
     /**
-     * <p>Retrieve the client for interacting with business activities industrial capacity
-     * utilization industrial capacity utilization data.</p>
+     * Retrieve the client for interacting with business activities industrial capacity
+     * utilization industrial capacity utilization data.
      *
      * @return a client for business activities industrial capacity utilization industrial
      *         capacity utilization data

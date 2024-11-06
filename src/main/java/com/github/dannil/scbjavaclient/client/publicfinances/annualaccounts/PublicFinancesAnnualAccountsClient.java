@@ -24,14 +24,14 @@ import com.github.dannil.scbjavaclient.client.publicfinances.annualaccounts.stat
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
- * <p>Client which handles public finances annual accounts data fetching.</p>
+ * Client which handles public finances annual accounts data fetching.
  *
  * @since 0.3.0
  */
 public class PublicFinancesAnnualAccountsClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor. Initializes values and creates sub-clients.</p>
+     * Default constructor. Initializes values and creates sub-clients.
      */
     public PublicFinancesAnnualAccountsClient() {
         super();
@@ -44,7 +44,7 @@ public class PublicFinancesAnnualAccountsClient extends AbstractContainerClient 
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -56,8 +56,8 @@ public class PublicFinancesAnnualAccountsClient extends AbstractContainerClient 
     }
 
     /**
-     * <p>Retrieve the client for interacting with public finances annual accounts balance
-     * sheet county data.</p>
+     * Retrieve the client for interacting with public finances annual accounts balance
+     * sheet county data.
      *
      * @return a client for public finances annual accounts balance sheet county data
      */
@@ -66,8 +66,8 @@ public class PublicFinancesAnnualAccountsClient extends AbstractContainerClient 
     }
 
     /**
-     * <p>Retrieve the client for interacting with public finances annual accounts balance
-     * sheet municipality data.</p>
+     * Retrieve the client for interacting with public finances annual accounts balance
+     * sheet municipality data.
      *
      * @return a client for public finances annual accounts balance sheet municipality
      *         data
@@ -77,8 +77,8 @@ public class PublicFinancesAnnualAccountsClient extends AbstractContainerClient 
     }
 
     /**
-     * <p>Retrieve the client for interacting with public finances annual accounts
-     * statement accounts county data.</p>
+     * Retrieve the client for interacting with public finances annual accounts
+     * statement accounts county data.
      *
      * @return a client for public finances annual accounts statement accounts county data
      */
@@ -87,8 +87,8 @@ public class PublicFinancesAnnualAccountsClient extends AbstractContainerClient 
     }
 
     /**
-     * <p>Retrieve the client for interacting with public finances annual accounts
-     * statement accounts municipality data.</p>
+     * Retrieve the client for interacting with public finances annual accounts
+     * statement accounts municipality data.
      *
      * @return a client for public finances annual accounts statement accounts
      *         municipality data

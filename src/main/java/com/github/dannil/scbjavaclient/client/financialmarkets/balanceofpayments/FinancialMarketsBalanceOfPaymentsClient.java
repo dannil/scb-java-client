@@ -25,14 +25,14 @@ import com.github.dannil.scbjavaclient.client.financialmarkets.balanceofpayments
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
- * <p>Client which handles financial markets balance of payments data fetching.</p>
+ * Client which handles financial markets balance of payments data fetching.
  *
  * @since 0.4.0
  */
 public class FinancialMarketsBalanceOfPaymentsClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor. Initializes values and creates sub-clients.</p>
+     * Default constructor. Initializes values and creates sub-clients.
      */
     public FinancialMarketsBalanceOfPaymentsClient() {
         super();
@@ -46,7 +46,7 @@ public class FinancialMarketsBalanceOfPaymentsClient extends AbstractContainerCl
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -58,8 +58,8 @@ public class FinancialMarketsBalanceOfPaymentsClient extends AbstractContainerCl
     }
 
     /**
-     * <p>Retrieve the client for interacting with financial markets balance of payments
-     * direct investments data.</p>
+     * Retrieve the client for interacting with financial markets balance of payments
+     * direct investments data.
      *
      * @return a client for financial markets balance of payments direct investments data
      */
@@ -68,8 +68,8 @@ public class FinancialMarketsBalanceOfPaymentsClient extends AbstractContainerCl
     }
 
     /**
-     * <p>Retrieve the client for interacting with financial markets balance of payments
-     * economic indicators data.</p>
+     * Retrieve the client for interacting with financial markets balance of payments
+     * economic indicators data.
      *
      * @return a client for financial markets balance of payments economic indicators data
      */
@@ -78,8 +78,8 @@ public class FinancialMarketsBalanceOfPaymentsClient extends AbstractContainerCl
     }
 
     /**
-     * <p>Retrieve the client for interacting with financial markets balance of payments
-     * international investment position data.</p>
+     * Retrieve the client for interacting with financial markets balance of payments
+     * international investment position data.
      *
      * @return a client for financial markets balance of payments international investment
      *         position data
@@ -90,8 +90,8 @@ public class FinancialMarketsBalanceOfPaymentsClient extends AbstractContainerCl
     }
 
     /**
-     * <p>Retrieve the client for interacting with financial markets balance of payments
-     * payments data.</p>
+     * Retrieve the client for interacting with financial markets balance of payments
+     * payments data.
      *
      * @return a client for financial markets balance of payments payments data
      */
@@ -100,8 +100,8 @@ public class FinancialMarketsBalanceOfPaymentsClient extends AbstractContainerCl
     }
 
     /**
-     * <p>Retrieve the client for interacting with financial markets balance of payments
-     * portfolio investment data.</p>
+     * Retrieve the client for interacting with financial markets balance of payments
+     * portfolio investment data.
      *
      * @return a client for financial markets balance of payments portfolio investment
      *         data

@@ -22,15 +22,15 @@ import com.github.dannil.scbjavaclient.client.pricesandconsumption.cci.fpiinclud
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
- * <p>Client which handles prices and consumption construction cost index (CCI) data
- * fetching.</p>
+ * Client which handles prices and consumption construction cost index (CCI) data
+ * fetching.
  *
  * @since 0.4.0
  */
 public class PricesAndConsumptionCCIClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor. Initializes values and creates sub-clients.</p>
+     * Default constructor. Initializes values and creates sub-clients.
      */
     public PricesAndConsumptionCCIClient() {
         super();
@@ -40,7 +40,7 @@ public class PricesAndConsumptionCCIClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -52,8 +52,8 @@ public class PricesAndConsumptionCCIClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with prices and consumption construction
-     * cost index (CCI) factor price index (FPI) excluding wage data.</p>
+     * Retrieve the client for interacting with prices and consumption construction
+     * cost index (CCI) factor price index (FPI) excluding wage data.
      *
      * @return a client for prices and consumption construction cost index (CCI) factor
      *         price index (FPI) excluding wage data
@@ -63,8 +63,8 @@ public class PricesAndConsumptionCCIClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with prices and consumption construction
-     * cost index (CCI) factor price index (FPI) including wage data.</p>
+     * Retrieve the client for interacting with prices and consumption construction
+     * cost index (CCI) factor price index (FPI) including wage data.
      *
      * @return a client for prices and consumption construction cost index (CCI) factor
      *         price index (FPI) including wage data

@@ -23,14 +23,14 @@ import com.github.dannil.scbjavaclient.client.educationandresearch.folkhighschoo
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
- * <p>Client which handles education and research data fetching.</p>
+ * Client which handles education and research data fetching.
  *
  * @since 0.5.0
  */
 public class EducationAndResearchClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor. Initializes values and creates sub-clients.</p>
+     * Default constructor. Initializes values and creates sub-clients.
      */
     public EducationAndResearchClient() {
         super();
@@ -41,7 +41,7 @@ public class EducationAndResearchClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -53,8 +53,8 @@ public class EducationAndResearchClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with education and research activity after
-     * training data.</p>
+     * Retrieve the client for interacting with education and research activity after
+     * training data.
      *
      * @return a client for education and research activity after training data
      */
@@ -63,8 +63,8 @@ public class EducationAndResearchClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with education and research community
-     * innovation survey data.</p>
+     * Retrieve the client for interacting with education and research community
+     * innovation survey data.
      *
      * @return a client for education and research community innovation survey data
      */
@@ -73,8 +73,8 @@ public class EducationAndResearchClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with education and research folk high school
-     * statistics data.</p>
+     * Retrieve the client for interacting with education and research folk high school
+     * statistics data.
      *
      * @return a client for education and research folk high school statistics data
      */

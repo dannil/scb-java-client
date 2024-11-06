@@ -15,14 +15,14 @@
 package com.github.dannil.scbjavaclient.communication.http;
 
 /**
- * <p>Interface which has methods relevant for HTTP status.</p>
+ * Interface which has methods relevant for HTTP status.
  *
  * @since 1.2.0
  */
 public interface IHttpStatus {
 
     /**
-     * <p>Get the status code.</p>
+     * Get the status code.
      *
      * @return the status code
      */

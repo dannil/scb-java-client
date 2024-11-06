@@ -17,24 +17,24 @@ package com.github.dannil.scbjavaclient.constants;
 import java.util.Locale;
 
 /**
- * <p>Constants which hold specific values for use by the client.</p>
+ * Constants which hold specific values for use by the client.
  *
  * @since 0.0.4
  */
 public final class ClientConstants {
 
     /**
-     * <p>The localization locale to use if a translation lookup fails (en, US).</p>
+     * The localization locale to use if a translation lookup fails (en, US).
      */
     public static final Locale LOCALIZATION_FALLBACK_LOCALE = Locale.US;
 
     /**
-     * <p>The prefix for the translation files.</p>
+     * The prefix for the translation files.
      */
     public static final String LOCALIZATION_TRANSLATION_FILE_PREFIX = "languages/language";
 
     /**
-     * <p>Private constructor to prevent instantiation.</p>
+     * Private constructor to prevent instantiation.
      */
     private ClientConstants() {
 

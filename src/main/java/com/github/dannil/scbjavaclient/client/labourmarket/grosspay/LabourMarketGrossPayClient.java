@@ -21,14 +21,14 @@ import com.github.dannil.scbjavaclient.client.labourmarket.grosspay.aggregatewag
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
- * <p>Client which handles labour market gross pay data fetching.</p>
+ * Client which handles labour market gross pay data fetching.
  *
  * @since 0.3.0
  */
 public class LabourMarketGrossPayClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor. Initializes values and creates sub-clients.</p>
+     * Default constructor. Initializes values and creates sub-clients.
      */
     public LabourMarketGrossPayClient() {
         super();
@@ -37,7 +37,7 @@ public class LabourMarketGrossPayClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -49,8 +49,8 @@ public class LabourMarketGrossPayClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with labour market gross pay aggregate wages
-     * data.</p>
+     * Retrieve the client for interacting with labour market gross pay aggregate wages
+     * data.
      *
      * @return a client for labour market gross pay aggregate wages data
      */

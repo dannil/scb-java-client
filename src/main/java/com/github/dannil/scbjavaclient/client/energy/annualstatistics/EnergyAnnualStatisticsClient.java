@@ -26,7 +26,7 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles energy annual statistics data fetching.</p>
+ * Client which handles energy annual statistics data fetching.
  *
  * @since 0.2.0
  */
@@ -35,14 +35,14 @@ public class EnergyAnnualStatisticsClient extends AbstractClient {
     private static final String POWERPLANTS_CODE = "Prodslag";
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public EnergyAnnualStatisticsClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -52,7 +52,7 @@ public class EnergyAnnualStatisticsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all consumption of fuels in electricity generation data.</p>
+     * Fetch all consumption of fuels in electricity generation data.
      *
      * @return the consumption of fuels in electricity generation data wrapped in a list
      *         of {@link com.github.dannil.scbjavaclient.model.ResponseModel
@@ -66,8 +66,8 @@ public class EnergyAnnualStatisticsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all consumption of fuels in electricity generation data which match the
-     * input constraints.</p>
+     * Fetch all consumption of fuels in electricity generation data which match the
+     * input constraints.
      *
      * @param powerPlants
      *            the power plants to fetch data for
@@ -90,7 +90,7 @@ public class EnergyAnnualStatisticsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all electricity supply data.</p>
+     * Fetch all electricity supply data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -103,7 +103,7 @@ public class EnergyAnnualStatisticsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all electricity supply data which match the input constraints.</p>
+     * Fetch all electricity supply data which match the input constraints.
      *
      * @param powerPlants
      *            the power plants to fetch data for
@@ -122,7 +122,7 @@ public class EnergyAnnualStatisticsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all consumption of fuels for steam and hot water production data.</p>
+     * Fetch all consumption of fuels for steam and hot water production data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -136,8 +136,8 @@ public class EnergyAnnualStatisticsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all consumption of fuels for steam and hot water production data which
-     * match the input constraints.</p>
+     * Fetch all consumption of fuels for steam and hot water production data which
+     * match the input constraints.
      *
      * @param powerPlants
      *            the power plants to fetch data for
@@ -160,7 +160,7 @@ public class EnergyAnnualStatisticsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all electricity use in Sweden data.</p>
+     * Fetch all electricity use in Sweden data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -173,7 +173,7 @@ public class EnergyAnnualStatisticsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all electricity use in Sweden data which match the input constraints.</p>
+     * Fetch all electricity use in Sweden data which match the input constraints.
      *
      * @param areasOfUses
      *            the areas of uses to fetch data for

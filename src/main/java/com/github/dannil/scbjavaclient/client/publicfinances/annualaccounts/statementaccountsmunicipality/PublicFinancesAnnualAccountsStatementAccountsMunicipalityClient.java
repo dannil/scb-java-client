@@ -26,8 +26,8 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles public finances annual accounts statement accounts municipality
- * data fetching.</p>
+ * Client which handles public finances annual accounts statement accounts municipality
+ * data fetching.
  *
  * @since 0.3.0
  */
@@ -36,14 +36,14 @@ public class PublicFinancesAnnualAccountsStatementAccountsMunicipalityClient ext
     private static final String ACTIVITY_CODE = "Verksomrkom";
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public PublicFinancesAnnualAccountsStatementAccountsMunicipalityClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -53,7 +53,7 @@ public class PublicFinancesAnnualAccountsStatementAccountsMunicipalityClient ext
     }
 
     /**
-     * <p>Fetch all costs and incomes data.</p>
+     * Fetch all costs and incomes data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -66,7 +66,7 @@ public class PublicFinancesAnnualAccountsStatementAccountsMunicipalityClient ext
     }
 
     /**
-     * <p>Fetch all costs and incomes data which match the input constraints.</p>
+     * Fetch all costs and incomes data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -89,7 +89,7 @@ public class PublicFinancesAnnualAccountsStatementAccountsMunicipalityClient ext
     }
 
     /**
-     * <p>Fetch all purchase of main activities data.</p>
+     * Fetch all purchase of main activities data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -102,8 +102,8 @@ public class PublicFinancesAnnualAccountsStatementAccountsMunicipalityClient ext
     }
 
     /**
-     * <p>Fetch all purchase of main activities data which match the input
-     * constraints.</p>
+     * Fetch all purchase of main activities data which match the input
+     * constraints.
      *
      * @param regions
      *            the regions
@@ -126,7 +126,7 @@ public class PublicFinancesAnnualAccountsStatementAccountsMunicipalityClient ext
     }
 
     /**
-     * <p>Fetch all costs of individual and family care data.</p>
+     * Fetch all costs of individual and family care data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -139,8 +139,8 @@ public class PublicFinancesAnnualAccountsStatementAccountsMunicipalityClient ext
     }
 
     /**
-     * <p>Fetch all costs of individual and family care data which match the input
-     * constraints.</p>
+     * Fetch all costs of individual and family care data which match the input
+     * constraints.
      *
      * @param regions
      *            the regions
@@ -163,7 +163,7 @@ public class PublicFinancesAnnualAccountsStatementAccountsMunicipalityClient ext
     }
 
     /**
-     * <p>Fetch all grants data.</p>
+     * Fetch all grants data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -176,7 +176,7 @@ public class PublicFinancesAnnualAccountsStatementAccountsMunicipalityClient ext
     }
 
     /**
-     * <p>Fetch all grants data which match the input constraints.</p>
+     * Fetch all grants data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -199,7 +199,7 @@ public class PublicFinancesAnnualAccountsStatementAccountsMunicipalityClient ext
     }
 
     /**
-     * <p>Fetch all some incomes data.</p>
+     * Fetch all some incomes data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -212,7 +212,7 @@ public class PublicFinancesAnnualAccountsStatementAccountsMunicipalityClient ext
     }
 
     /**
-     * <p>Fetch all some incomes data which match the input constraints.</p>
+     * Fetch all some incomes data which match the input constraints.
      *
      * @param regions
      *            the regions

@@ -26,21 +26,21 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles environment land use planning data fetching.</p>
+ * Client which handles environment land use planning data fetching.
  *
  * @since 0.2.0
  */
 public class EnvironmentLandUsePlanningClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public EnvironmentLandUsePlanningClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -50,7 +50,7 @@ public class EnvironmentLandUsePlanningClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all planning data.</p>
+     * Fetch all planning data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -63,7 +63,7 @@ public class EnvironmentLandUsePlanningClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all planning data which match the input constraints.</p>
+     * Fetch all planning data which match the input constraints.
      *
      * @param regions
      *            the regions to fetch data for

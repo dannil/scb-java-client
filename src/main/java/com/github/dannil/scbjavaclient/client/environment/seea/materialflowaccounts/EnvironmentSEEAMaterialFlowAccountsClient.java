@@ -26,22 +26,22 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles environment System of Environmental-Economic Accounting (SEEA)
- * material flow accounts data fetching.</p>
+ * Client which handles environment System of Environmental-Economic Accounting (SEEA)
+ * material flow accounts data fetching.
  *
  * @since 0.4.0
  */
 public class EnvironmentSEEAMaterialFlowAccountsClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public EnvironmentSEEAMaterialFlowAccountsClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,7 +51,7 @@ public class EnvironmentSEEAMaterialFlowAccountsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all material flows data.</p>
+     * Fetch all material flows data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -64,7 +64,7 @@ public class EnvironmentSEEAMaterialFlowAccountsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all material flows data which match the input constraints.</p>
+     * Fetch all material flows data which match the input constraints.
      *
      * @param categories
      *            the categories

@@ -26,7 +26,7 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles environment protected nature number and area data fetching.</p>
+ * Client which handles environment protected nature number and area data fetching.
  *
  * @since 0.5.0
  */
@@ -35,14 +35,14 @@ public class EnvironmentProtectedNatureNumberAndAreaClient extends AbstractClien
     private static final String PROTECTIONTYPES_CODE = "Skyddsform";
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public EnvironmentProtectedNatureNumberAndAreaClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -52,7 +52,7 @@ public class EnvironmentProtectedNatureNumberAndAreaClient extends AbstractClien
     }
 
     /**
-     * <p>Fetch all wildlife sanctuaries data.</p>
+     * Fetch all wildlife sanctuaries data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -65,7 +65,7 @@ public class EnvironmentProtectedNatureNumberAndAreaClient extends AbstractClien
     }
 
     /**
-     * <p>Fetch all wildlife sanctuaries data which match the input constraints.</p>
+     * Fetch all wildlife sanctuaries data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -84,7 +84,7 @@ public class EnvironmentProtectedNatureNumberAndAreaClient extends AbstractClien
     }
 
     /**
-     * <p>Fetch all Natura 2000 sites data.</p>
+     * Fetch all Natura 2000 sites data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -97,7 +97,7 @@ public class EnvironmentProtectedNatureNumberAndAreaClient extends AbstractClien
     }
 
     /**
-     * <p>Fetch all Natura 2000 sites data which match the input constraints.</p>
+     * Fetch all Natura 2000 sites data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -120,7 +120,7 @@ public class EnvironmentProtectedNatureNumberAndAreaClient extends AbstractClien
     }
 
     /**
-     * <p>Fetch all protected nature data.</p>
+     * Fetch all protected nature data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -133,7 +133,7 @@ public class EnvironmentProtectedNatureNumberAndAreaClient extends AbstractClien
     }
 
     /**
-     * <p>Fetch all protected nature data which match the input constraints.</p>
+     * Fetch all protected nature data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -156,7 +156,7 @@ public class EnvironmentProtectedNatureNumberAndAreaClient extends AbstractClien
     }
 
     /**
-     * <p>Fetch all species protected by law data.</p>
+     * Fetch all species protected by law data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -169,7 +169,7 @@ public class EnvironmentProtectedNatureNumberAndAreaClient extends AbstractClien
     }
 
     /**
-     * <p>Fetch all species protected by law data which match the input constraints.</p>
+     * Fetch all species protected by law data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -192,7 +192,7 @@ public class EnvironmentProtectedNatureNumberAndAreaClient extends AbstractClien
     }
 
     /**
-     * <p>Fetch all culture reserves data.</p>
+     * Fetch all culture reserves data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -205,7 +205,7 @@ public class EnvironmentProtectedNatureNumberAndAreaClient extends AbstractClien
     }
 
     /**
-     * <p>Fetch all culture reserves data which match the input constraints.</p>
+     * Fetch all culture reserves data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -224,7 +224,7 @@ public class EnvironmentProtectedNatureNumberAndAreaClient extends AbstractClien
     }
 
     /**
-     * <p>Fetch all natural monuments data.</p>
+     * Fetch all natural monuments data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -237,7 +237,7 @@ public class EnvironmentProtectedNatureNumberAndAreaClient extends AbstractClien
     }
 
     /**
-     * <p>Fetch all natural monuments data which match the input constraints.</p>
+     * Fetch all natural monuments data which match the input constraints.
      *
      * @param regions
      *            the regions
@@ -256,7 +256,7 @@ public class EnvironmentProtectedNatureNumberAndAreaClient extends AbstractClien
     }
 
     /**
-     * <p>Fetch all water protection areas data.</p>
+     * Fetch all water protection areas data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -269,7 +269,7 @@ public class EnvironmentProtectedNatureNumberAndAreaClient extends AbstractClien
     }
 
     /**
-     * <p>Fetch all water protection areas data which match the input constraints.</p>
+     * Fetch all water protection areas data which match the input constraints.
      *
      * @param regions
      *            the regions

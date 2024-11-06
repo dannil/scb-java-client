@@ -26,8 +26,8 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles financial markets balance of payments portfolio investment data
- * fetching.</p>
+ * Client which handles financial markets balance of payments portfolio investment data
+ * fetching.
  *
  * @since 0.4.0
  */
@@ -36,14 +36,14 @@ public class FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClient extends 
     private static final String CURRENCY_CODE = "DenomValuta";
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -53,7 +53,7 @@ public class FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClient extends 
     }
 
     /**
-     * <p>Fetch all net flows years data.</p>
+     * Fetch all net flows years data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -66,7 +66,7 @@ public class FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClient extends 
     }
 
     /**
-     * <p>Fetch all net flows years data which match the input constraints.</p>
+     * Fetch all net flows years data which match the input constraints.
      *
      * @param currencies
      *            the currencies
@@ -90,7 +90,7 @@ public class FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClient extends 
 
     // Daniel 2017-06-11: Returns HTTP 403
     /**
-     * <p>Fetch all non-resident trade in Swedish shares data.</p>
+     * Fetch all non-resident trade in Swedish shares data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -103,8 +103,8 @@ public class FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClient extends 
     }
 
     /**
-     * <p>Fetch all non-resident trade in Swedish shares data which match the input
-     * constraints.</p>
+     * Fetch all non-resident trade in Swedish shares data which match the input
+     * constraints.
      *
      * @param nonResidentTrades
      *            the non-resident trades
@@ -127,7 +127,7 @@ public class FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClient extends 
     }
 
     /**
-     * <p>Fetch all non-resident holdings of Swedish interest-bearing securities data.</p>
+     * Fetch all non-resident holdings of Swedish interest-bearing securities data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -141,8 +141,8 @@ public class FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClient extends 
     }
 
     /**
-     * <p>Fetch all non-resident holdings of Swedish interest-bearing securities data
-     * which match the input constraints.</p>
+     * Fetch all non-resident holdings of Swedish interest-bearing securities data
+     * which match the input constraints.
      *
      * @param holdings
      *            the holdings
@@ -168,7 +168,7 @@ public class FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClient extends 
     }
 
     /**
-     * <p>Fetch all net flows quarters data.</p>
+     * Fetch all net flows quarters data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -181,7 +181,7 @@ public class FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClient extends 
     }
 
     /**
-     * <p>Fetch all net flows quarters data which match the input constraints.</p>
+     * Fetch all net flows quarters data which match the input constraints.
      *
      * @param currencies
      *            the currencies
@@ -204,7 +204,7 @@ public class FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClient extends 
     }
 
     /**
-     * <p>Fetch all Swedish portfolio holdings of foreign securities data.</p>
+     * Fetch all Swedish portfolio holdings of foreign securities data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -218,8 +218,8 @@ public class FinancialMarketsBalanceOfPaymentsPortfolioInvestmentClient extends 
     }
 
     /**
-     * <p>Fetch all Swedish portfolio holdings of foreign securities data which match the
-     * input constraints.</p>
+     * Fetch all Swedish portfolio holdings of foreign securities data which match the
+     * input constraints.
      *
      * @param countries
      *            the countries

@@ -26,22 +26,22 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles prices and consumption Consumer Price Index (CPI) Price Basic
- * Amount data fetching.</p>
+ * Client which handles prices and consumption Consumer Price Index (CPI) Price Basic
+ * Amount data fetching.
  *
  * @since 0.4.0
  */
 public class PricesAndConsumptionCPIPriceBasicAmountClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public PricesAndConsumptionCPIPriceBasicAmountClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,7 +51,7 @@ public class PricesAndConsumptionCPIPriceBasicAmountClient extends AbstractClien
     }
 
     /**
-     * <p>Fetch all price basic amount data.</p>
+     * Fetch all price basic amount data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -64,7 +64,7 @@ public class PricesAndConsumptionCPIPriceBasicAmountClient extends AbstractClien
     }
 
     /**
-     * <p>Fetch all price basic amount data which match the input constraints.</p>
+     * Fetch all price basic amount data which match the input constraints.
      *
      * @param years
      *            the years
@@ -80,7 +80,7 @@ public class PricesAndConsumptionCPIPriceBasicAmountClient extends AbstractClien
     }
 
     /**
-     * <p>Fetch all increased price basic amount data.</p>
+     * Fetch all increased price basic amount data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -93,8 +93,8 @@ public class PricesAndConsumptionCPIPriceBasicAmountClient extends AbstractClien
     }
 
     /**
-     * <p>Fetch all increased price basic amount data which match the input
-     * constraints.</p>
+     * Fetch all increased price basic amount data which match the input
+     * constraints.
      *
      * @param years
      *            the years

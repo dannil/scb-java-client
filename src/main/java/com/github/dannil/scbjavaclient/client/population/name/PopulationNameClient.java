@@ -22,14 +22,14 @@ import com.github.dannil.scbjavaclient.client.population.name.registeredpersons.
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
- * <p>Client which handles population name data fetching.</p>
+ * Client which handles population name data fetching.
  *
  * @since 0.5.0
  */
 public class PopulationNameClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor. Initializes values and creates sub-clients.</p>
+     * Default constructor. Initializes values and creates sub-clients.
      */
     public PopulationNameClient() {
         super();
@@ -39,7 +39,7 @@ public class PopulationNameClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,7 +51,7 @@ public class PopulationNameClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with population name newborn data.</p>
+     * Retrieve the client for interacting with population name newborn data.
      *
      * @return a client for population name newborn data
      */
@@ -60,8 +60,8 @@ public class PopulationNameClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with population name registered persons
-     * data.</p>
+     * Retrieve the client for interacting with population name registered persons
+     * data.
      *
      * @return a client for population name registered persons data
      */

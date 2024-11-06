@@ -24,7 +24,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
- * <p>Class which encapsulates methods for converting JSON.</p>
+ * Class which encapsulates methods for converting JSON.
  *
  * @since 0.1.0
  */
@@ -33,16 +33,16 @@ public class JsonConverter {
     private ObjectMapper mapper;
 
     /**
-     * <p>Default constructor. Initializes the
+     * Default constructor. Initializes the
      * {@link com.fasterxml.jackson.databind.ObjectMapper ObjectMapper} needed for
-     * converting objects.</p>
+     * converting objects.
      */
     public JsonConverter() {
         this.mapper = new ObjectMapper();
     }
 
     /**
-     * <p>Converts the specified object to the specified class.</p>
+     * Converts the specified object to the specified class.
      *
      * @param fromValue
      *            the object to convert
@@ -57,7 +57,7 @@ public class JsonConverter {
     }
 
     /**
-     * <p>Converts the JSON string into a list of the specified class.</p>
+     * Converts the JSON string into a list of the specified class.
      *
      * @param json
      *            the JSON string to convert
@@ -78,7 +78,7 @@ public class JsonConverter {
     }
 
     /**
-     * <p>Parse the JSON string into a {@link JsonNode} object.</p>
+     * Parse the JSON string into a {@link JsonNode} object.
      *
      * @param json
      *            the JSON content
@@ -90,8 +90,8 @@ public class JsonConverter {
     }
 
     /**
-     * <p>Parse the JSON string into a {@link JsonNode} object with the specified field as
-     * root field.</p>
+     * Parse the JSON string into a {@link JsonNode} object with the specified field as
+     * root field.
      *
      * @param json
      *            the JSON content

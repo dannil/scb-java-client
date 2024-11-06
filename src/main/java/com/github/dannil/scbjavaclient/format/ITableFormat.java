@@ -21,23 +21,23 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * <p>Interface which contains operations for working with API table format. All
+ * Interface which contains operations for working with API table format. All
  * implementing classes should specify an instance variable which contains the data which
- * should be operated on by the methods.</p>
+ * should be operated on by the methods.
  *
  * @since 0.7.0
  */
 public interface ITableFormat {
 
     /**
-     * <p>Extracts the keys and their respective values from the data.</p>
+     * Extracts the keys and their respective values from the data.
      *
      * @return a <code>Map</code> of all keys and their respective values
      */
     Map<String, Collection<String>> getPairs();
 
     /**
-     * <p>Extracts the values for a key from the data.</p>
+     * Extracts the values for a key from the data.
      *
      * @return a <code>List</code> of values
      */
@@ -46,7 +46,7 @@ public interface ITableFormat {
     }
 
     /**
-     * <p>Extracts the codes from the data.</p>
+     * Extracts the codes from the data.
      *
      * @param key
      *            the key

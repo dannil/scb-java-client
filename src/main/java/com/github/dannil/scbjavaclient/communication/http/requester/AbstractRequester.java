@@ -37,7 +37,7 @@ import java.util.Properties;
 import com.github.dannil.scbjavaclient.exception.SCBClientException;
 
 /**
- * <p>Class which contains the logic for sending URL requests to a specified address.</p>
+ * Class which contains the logic for sending URL requests to a specified address.
  *
  * @since 1.2.0
  */
@@ -60,15 +60,15 @@ public abstract class AbstractRequester {
     }
 
     /**
-     * <p>Default constructor. Specifies the charset to be used for requests as UTF-8.</p>
+     * Default constructor. Specifies the charset to be used for requests as UTF-8.
      */
     protected AbstractRequester() {
         this(StandardCharsets.UTF_8);
     }
 
     /**
-     * <p>Overloaded constructor. Loads the request properties and other data needed for
-     * the requesters.</p>
+     * Overloaded constructor. Loads the request properties and other data needed for
+     * the requesters.
      *
      * @param charset
      *            the charset to use when doing a request
@@ -81,7 +81,7 @@ public abstract class AbstractRequester {
     }
 
     /**
-     * <p>Retrieves the response from the specified URL.</p>
+     * Retrieves the response from the specified URL.
      *
      * @param url
      *            the URL to call
@@ -91,8 +91,8 @@ public abstract class AbstractRequester {
     public abstract HttpResponse<String> getResponse(String url);
 
     /**
-     * <p>Retrieves the response from the specified URL, using the specified HTTP
-     * method.</p>
+     * Retrieves the response from the specified URL, using the specified HTTP
+     * method.
      *
      * @param url
      *            the URL to call
@@ -110,8 +110,8 @@ public abstract class AbstractRequester {
     }
 
     /**
-     * <p>Retrieves the response from the specified URL, using the specified HTTP method
-     * and request body.</p>
+     * Retrieves the response from the specified URL, using the specified HTTP method
+     * and request body.
      *
      * @param url
      *            the URL to call
@@ -148,7 +148,7 @@ public abstract class AbstractRequester {
     }
 
     /**
-     * <p>Getter for charset.</p>
+     * Getter for charset.
      *
      * @return the charset
      */
@@ -157,7 +157,7 @@ public abstract class AbstractRequester {
     }
 
     /**
-     * <p>Setter for charset.</p>
+     * Setter for charset.
      *
      * @param charset
      *            the charset
@@ -170,7 +170,7 @@ public abstract class AbstractRequester {
     }
 
     /**
-     * <p>Creates the user agent string.</p>
+     * Creates the user agent string.
      *
      * @return the user agent string
      */

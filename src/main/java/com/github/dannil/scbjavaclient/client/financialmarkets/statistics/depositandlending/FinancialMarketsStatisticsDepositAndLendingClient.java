@@ -26,8 +26,8 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles financial markets statistics deposit and lending data
- * fetching.</p>
+ * Client which handles financial markets statistics deposit and lending data
+ * fetching.
  *
  * @since 0.5.0
  */
@@ -42,14 +42,14 @@ public class FinancialMarketsStatisticsDepositAndLendingClient extends AbstractC
     private static final String REFERENCESECTOR_CODE = "Referenssektor";
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public FinancialMarketsStatisticsDepositAndLendingClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -59,7 +59,7 @@ public class FinancialMarketsStatisticsDepositAndLendingClient extends AbstractC
     }
 
     /**
-     * <p>Fetch all lending rates breakdown by remaining maturity data.</p>
+     * Fetch all lending rates breakdown by remaining maturity data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -73,8 +73,8 @@ public class FinancialMarketsStatisticsDepositAndLendingClient extends AbstractC
     }
 
     /**
-     * <p>Fetch all lending rates breakdown by remaining maturity data which match the
-     * input constraints.</p>
+     * Fetch all lending rates breakdown by remaining maturity data which match the
+     * input constraints.
      *
      * @param referenceSectors
      *            the reference sectors
@@ -100,8 +100,8 @@ public class FinancialMarketsStatisticsDepositAndLendingClient extends AbstractC
     }
 
     /**
-     * <p>Fetch all lending rates to households for housing loans breakdown by maturity
-     * data.</p>
+     * Fetch all lending rates to households for housing loans breakdown by maturity
+     * data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -115,8 +115,8 @@ public class FinancialMarketsStatisticsDepositAndLendingClient extends AbstractC
     }
 
     /**
-     * <p>Fetch all lending rates to households for housing loans breakdown by maturity
-     * data which match the input constraints.</p>
+     * Fetch all lending rates to households for housing loans breakdown by maturity
+     * data which match the input constraints.
      *
      * @param referenceSectors
      *            the reference sectors
@@ -149,8 +149,8 @@ public class FinancialMarketsStatisticsDepositAndLendingClient extends AbstractC
     // Throws HTTP 403
     //
     /**
-     * <p>Fetch all lending rates to households and non-financial corporations breakdown
-     * by maturity data.</p>
+     * Fetch all lending rates to households and non-financial corporations breakdown
+     * by maturity data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -164,8 +164,8 @@ public class FinancialMarketsStatisticsDepositAndLendingClient extends AbstractC
     }
 
     /**
-     * <p>Fetch all lending rates to households and non-financial corporations breakdown
-     * by maturity data which match the input constraints.</p>
+     * Fetch all lending rates to households and non-financial corporations breakdown
+     * by maturity data which match the input constraints.
      *
      * @param referenceSectors
      *            the reference sectors
@@ -195,7 +195,7 @@ public class FinancialMarketsStatisticsDepositAndLendingClient extends AbstractC
     }
 
     /**
-     * <p>Fetch all lending rates breakdown by purpose data.</p>
+     * Fetch all lending rates breakdown by purpose data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -209,8 +209,8 @@ public class FinancialMarketsStatisticsDepositAndLendingClient extends AbstractC
     }
 
     /**
-     * <p>Fetch all lending rates breakdown by purpose data which match the input
-     * constraints.</p>
+     * Fetch all lending rates breakdown by purpose data which match the input
+     * constraints.
      *
      * @param referenceSectors
      *            the reference sectors
@@ -240,7 +240,7 @@ public class FinancialMarketsStatisticsDepositAndLendingClient extends AbstractC
     }
 
     /**
-     * <p>Fetch all banks deposit rates data.</p>
+     * Fetch all banks deposit rates data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -254,7 +254,7 @@ public class FinancialMarketsStatisticsDepositAndLendingClient extends AbstractC
     }
 
     /**
-     * <p>Fetch all banks deposit rates data which match the input constraints.</p>
+     * Fetch all banks deposit rates data which match the input constraints.
      *
      * @param referenceSectors
      *            the reference sectors

@@ -23,14 +23,14 @@ import com.github.dannil.scbjavaclient.client.businessactivities.ordersandturnov
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
- * <p>Client which handles business activities orders and turnover data fetching.</p>
+ * Client which handles business activities orders and turnover data fetching.
  *
  * @since 0.7.0
  */
 public class BusinessActivitiesOrdersAndTurnoverClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public BusinessActivitiesOrdersAndTurnoverClient() {
         super();
@@ -41,7 +41,7 @@ public class BusinessActivitiesOrdersAndTurnoverClient extends AbstractContainer
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -53,8 +53,8 @@ public class BusinessActivitiesOrdersAndTurnoverClient extends AbstractContainer
     }
 
     /**
-     * <p>Retrieve the client for interacting with business activities orders and turnover
-     * old tables SNI 2002 data.</p>
+     * Retrieve the client for interacting with business activities orders and turnover
+     * old tables SNI 2002 data.
      *
      * @return a client for business activities orders and turnover old tables SNI 2002
      *         data
@@ -64,8 +64,8 @@ public class BusinessActivitiesOrdersAndTurnoverClient extends AbstractContainer
     }
 
     /**
-     * <p>Retrieve the client for interacting with business activities orders and turnover
-     * old tables SNI 2007 data.</p>
+     * Retrieve the client for interacting with business activities orders and turnover
+     * old tables SNI 2007 data.
      *
      * @return a client for business activities orders and turnover old tables SNI 2007
      *         data
@@ -75,8 +75,8 @@ public class BusinessActivitiesOrdersAndTurnoverClient extends AbstractContainer
     }
 
     /**
-     * <p>Retrieve the client for interacting with business activities orders and turnover
-     * orders and turnover data.</p>
+     * Retrieve the client for interacting with business activities orders and turnover
+     * orders and turnover data.
      *
      * @return a client for business activities orders and turnover orders and turnover
      *         data

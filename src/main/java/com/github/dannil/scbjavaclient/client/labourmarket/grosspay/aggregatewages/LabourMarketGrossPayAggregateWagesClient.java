@@ -26,21 +26,21 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles labour market gross pay aggregate wages data fetching.</p>
+ * Client which handles labour market gross pay aggregate wages data fetching.
  *
  * @since 0.3.0
  */
 public class LabourMarketGrossPayAggregateWagesClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public LabourMarketGrossPayAggregateWagesClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -50,7 +50,7 @@ public class LabourMarketGrossPayAggregateWagesClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all gross pay data.</p>
+     * Fetch all gross pay data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -63,7 +63,7 @@ public class LabourMarketGrossPayAggregateWagesClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all gross pay data which match the input constraints.</p>
+     * Fetch all gross pay data which match the input constraints.
      *
      * @param counties
      *            the counties

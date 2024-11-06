@@ -26,22 +26,22 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles goods and services turnover service sector old tables SNI 2002
- * data fetching.</p>
+ * Client which handles goods and services turnover service sector old tables SNI 2002
+ * data fetching.
  *
  * @since 0.7.0
  */
 public class GoodsAndServicesTurnoverServiceSectorOldTablesSNI2002Client extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public GoodsAndServicesTurnoverServiceSectorOldTablesSNI2002Client() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,8 +51,8 @@ public class GoodsAndServicesTurnoverServiceSectorOldTablesSNI2002Client extends
     }
 
     /**
-     * <p>Fetch all turnover index for motor trade, hotels, restaurants and other services
-     * (SIC 2002) yearly data.</p>
+     * Fetch all turnover index for motor trade, hotels, restaurants and other services
+     * (SIC 2002) yearly data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -66,8 +66,8 @@ public class GoodsAndServicesTurnoverServiceSectorOldTablesSNI2002Client extends
     }
 
     /**
-     * <p>Fetch all turnover index for motor trade, hotels, restaurants and other services
-     * (SIC 2002) yearly data which match the input constraints.</p>
+     * Fetch all turnover index for motor trade, hotels, restaurants and other services
+     * (SIC 2002) yearly data which match the input constraints.
      *
      * @param industrialClassifications
      *            the industrial classifications
@@ -87,8 +87,8 @@ public class GoodsAndServicesTurnoverServiceSectorOldTablesSNI2002Client extends
     }
 
     /**
-     * <p>Fetch all turnover index for wholesale trade and other services by industry (SIC
-     * 2002) yearly data.</p>
+     * Fetch all turnover index for wholesale trade and other services by industry (SIC
+     * 2002) yearly data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -102,8 +102,8 @@ public class GoodsAndServicesTurnoverServiceSectorOldTablesSNI2002Client extends
     }
 
     /**
-     * <p>Fetch all turnover index for wholesale trade and other services by industry (SIC
-     * 2002) yearly data which match the input constraints.</p>
+     * Fetch all turnover index for wholesale trade and other services by industry (SIC
+     * 2002) yearly data which match the input constraints.
      *
      * @param industrialClassifications
      *            the industrial classifications
@@ -123,7 +123,7 @@ public class GoodsAndServicesTurnoverServiceSectorOldTablesSNI2002Client extends
     }
 
     /**
-     * <p>Fetch all retail sale index by industry (SIC 2002) monthly data.</p>
+     * Fetch all retail sale index by industry (SIC 2002) monthly data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -136,8 +136,8 @@ public class GoodsAndServicesTurnoverServiceSectorOldTablesSNI2002Client extends
     }
 
     /**
-     * <p>Fetch all retail sale index by industry (SIC 2002) monthly data which match the
-     * input constraints.</p>
+     * Fetch all retail sale index by industry (SIC 2002) monthly data which match the
+     * input constraints.
      *
      * @param industrialClassifications
      *            the industrial classifications
@@ -157,7 +157,7 @@ public class GoodsAndServicesTurnoverServiceSectorOldTablesSNI2002Client extends
     }
 
     /**
-     * <p>Fetch all retail sale index by industry (SIC 2002) yearly data.</p>
+     * Fetch all retail sale index by industry (SIC 2002) yearly data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -170,8 +170,8 @@ public class GoodsAndServicesTurnoverServiceSectorOldTablesSNI2002Client extends
     }
 
     /**
-     * <p>Fetch all retail sale index by industry (SIC 2002) yearly data which match the
-     * input constraints.</p>
+     * Fetch all retail sale index by industry (SIC 2002) yearly data which match the
+     * input constraints.
      *
      * @param industrialClassifications
      *            the industrial classifications
@@ -191,8 +191,8 @@ public class GoodsAndServicesTurnoverServiceSectorOldTablesSNI2002Client extends
     }
 
     /**
-     * <p>Fetch all turnover index for motor trade, hotels, restaurants and other services
-     * by industry (SIC 2002) quarterly data.</p>
+     * Fetch all turnover index for motor trade, hotels, restaurants and other services
+     * by industry (SIC 2002) quarterly data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -206,8 +206,8 @@ public class GoodsAndServicesTurnoverServiceSectorOldTablesSNI2002Client extends
     }
 
     /**
-     * <p>Fetch all turnover index for motor trade, hotels, restaurants and other services
-     * by industry (SIC 2002) quarterly data which match the input constraints.</p>
+     * Fetch all turnover index for motor trade, hotels, restaurants and other services
+     * by industry (SIC 2002) quarterly data which match the input constraints.
      *
      * @param industrialClassifications
      *            the industrial classifications
@@ -227,8 +227,8 @@ public class GoodsAndServicesTurnoverServiceSectorOldTablesSNI2002Client extends
     }
 
     /**
-     * <p>Fetch all turnover index for wholesale trade and other services by industry (SIC
-     * 2002) quarterly data.</p>
+     * Fetch all turnover index for wholesale trade and other services by industry (SIC
+     * 2002) quarterly data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -242,8 +242,8 @@ public class GoodsAndServicesTurnoverServiceSectorOldTablesSNI2002Client extends
     }
 
     /**
-     * <p>Fetch all turnover index for wholesale trade and other services by industry (SIC
-     * 2002) quarterly data which match the input constraints.</p>
+     * Fetch all turnover index for wholesale trade and other services by industry (SIC
+     * 2002) quarterly data which match the input constraints.
      *
      * @param industrialClassifications
      *            the industrial classifications

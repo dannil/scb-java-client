@@ -21,7 +21,7 @@ import com.github.dannil.scbjavaclient.constants.ModelConstants;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * <p>Class which holds all data for a specific value.</p>
+ * Class which holds all data for a specific value.
  *
  * @param <V>
  *            the data type of the value
@@ -39,14 +39,14 @@ public class ValueNode<V> {
     private String text;
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public ValueNode() {
         // Constructor to use when some of the values are missing, such as text
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param value
      *            the value
@@ -62,7 +62,7 @@ public class ValueNode<V> {
     }
 
     /**
-     * <p>Getter for value.</p>
+     * Getter for value.
      *
      * @return the value
      */
@@ -71,7 +71,7 @@ public class ValueNode<V> {
     }
 
     /**
-     * <p>Setter for value.</p>
+     * Setter for value.
      *
      * @param value
      *            the value
@@ -81,7 +81,7 @@ public class ValueNode<V> {
     }
 
     /**
-     * <p>Getter for code.</p>
+     * Getter for code.
      *
      * @return the code
      */
@@ -90,7 +90,7 @@ public class ValueNode<V> {
     }
 
     /**
-     * <p>Setter for code.</p>
+     * Setter for code.
      *
      * @param code
      *            the code
@@ -100,7 +100,7 @@ public class ValueNode<V> {
     }
 
     /**
-     * <p>Getter for text.</p>
+     * Getter for text.
      *
      * @return the text
      */
@@ -109,7 +109,7 @@ public class ValueNode<V> {
     }
 
     /**
-     * <p>Setter for text.</p>
+     * Setter for text.
      *
      * @param text
      *            the text

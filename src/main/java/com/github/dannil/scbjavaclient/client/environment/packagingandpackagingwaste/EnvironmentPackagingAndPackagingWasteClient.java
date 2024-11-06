@@ -26,21 +26,21 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles environment packaging and packaging waste data fetching.</p>
+ * Client which handles environment packaging and packaging waste data fetching.
  *
  * @since 0.2.0
  */
 public class EnvironmentPackagingAndPackagingWasteClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public EnvironmentPackagingAndPackagingWasteClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -50,7 +50,7 @@ public class EnvironmentPackagingAndPackagingWasteClient extends AbstractClient 
     }
 
     /**
-     * <p>Fetch all packaging and packaging waste data.</p>
+     * Fetch all packaging and packaging waste data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -63,8 +63,8 @@ public class EnvironmentPackagingAndPackagingWasteClient extends AbstractClient 
     }
 
     /**
-     * <p>Fetch all packaging and packaging waste data which match the input
-     * constraints.</p>
+     * Fetch all packaging and packaging waste data which match the input
+     * constraints.
      *
      * @param packagingTypes
      *            the packaging types to fetch data for

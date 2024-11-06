@@ -26,21 +26,21 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles environment air pollutants data fetching.</p>
+ * Client which handles environment air pollutants data fetching.
  *
  * @since 0.4.0
  */
 public class EnvironmentAirPollutantsClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public EnvironmentAirPollutantsClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -50,7 +50,7 @@ public class EnvironmentAirPollutantsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all total emissions data.</p>
+     * Fetch all total emissions data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -63,7 +63,7 @@ public class EnvironmentAirPollutantsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all total emissions data which match the input constraints.</p>
+     * Fetch all total emissions data which match the input constraints.
      *
      * @param airPollutants
      *            the air pollutants
@@ -86,7 +86,7 @@ public class EnvironmentAirPollutantsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all emissions from off-road vehicles and machinery data.</p>
+     * Fetch all emissions from off-road vehicles and machinery data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -100,8 +100,8 @@ public class EnvironmentAirPollutantsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all emissions from off-road vehicles and machinery data which match the
-     * input constraints.</p>
+     * Fetch all emissions from off-road vehicles and machinery data which match the
+     * input constraints.
      *
      * @param airPollutants
      *            the air pollutants
@@ -124,7 +124,7 @@ public class EnvironmentAirPollutantsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all emissions from waste data.</p>
+     * Fetch all emissions from waste data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -137,7 +137,7 @@ public class EnvironmentAirPollutantsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all emissions from waste data which match the input constraints.</p>
+     * Fetch all emissions from waste data which match the input constraints.
      *
      * @param airPollutants
      *            the air pollutants
@@ -160,7 +160,7 @@ public class EnvironmentAirPollutantsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all emissions from electricity and heating data.</p>
+     * Fetch all emissions from electricity and heating data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -173,8 +173,8 @@ public class EnvironmentAirPollutantsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all emissions from electricity and heating data which match the input
-     * constraints.</p>
+     * Fetch all emissions from electricity and heating data which match the input
+     * constraints.
      *
      * @param airPollutants
      *            the air pollutants
@@ -197,7 +197,7 @@ public class EnvironmentAirPollutantsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all emissions from industry data.</p>
+     * Fetch all emissions from industry data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -210,7 +210,7 @@ public class EnvironmentAirPollutantsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all emissions from industry data which match the input constraints.</p>
+     * Fetch all emissions from industry data which match the input constraints.
      *
      * @param airPollutants
      *            the air pollutants
@@ -233,7 +233,7 @@ public class EnvironmentAirPollutantsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all emissions from domestic transport data.</p>
+     * Fetch all emissions from domestic transport data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -246,8 +246,8 @@ public class EnvironmentAirPollutantsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all emissions from domestic transport data which match the input
-     * constraints.</p>
+     * Fetch all emissions from domestic transport data which match the input
+     * constraints.
      *
      * @param airPollutants
      *            the air pollutants
@@ -270,7 +270,7 @@ public class EnvironmentAirPollutantsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all emissions from agriculture data.</p>
+     * Fetch all emissions from agriculture data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -283,7 +283,7 @@ public class EnvironmentAirPollutantsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all emissions from agriculture data which match the input constraints.</p>
+     * Fetch all emissions from agriculture data which match the input constraints.
      *
      * @param airPollutants
      *            the air pollutants
@@ -306,7 +306,7 @@ public class EnvironmentAirPollutantsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all emissions from solvent use data.</p>
+     * Fetch all emissions from solvent use data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -319,7 +319,7 @@ public class EnvironmentAirPollutantsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all emissions from solvent use data which match the input constraints.</p>
+     * Fetch all emissions from solvent use data which match the input constraints.
      *
      * @param airPollutants
      *            the air pollutants
@@ -342,7 +342,7 @@ public class EnvironmentAirPollutantsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all emissions from heating of houses and buildings data.</p>
+     * Fetch all emissions from heating of houses and buildings data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -356,8 +356,8 @@ public class EnvironmentAirPollutantsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all emissions from heating of houses and buildings data which match the
-     * input constraints.</p>
+     * Fetch all emissions from heating of houses and buildings data which match the
+     * input constraints.
      *
      * @param airPollutants
      *            the air pollutants
@@ -380,7 +380,7 @@ public class EnvironmentAirPollutantsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all emissions from international transport data.</p>
+     * Fetch all emissions from international transport data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -393,8 +393,8 @@ public class EnvironmentAirPollutantsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all emissions from international transport data which match the input
-     * constraints.</p>
+     * Fetch all emissions from international transport data which match the input
+     * constraints.
      *
      * @param airPollutants
      *            the air pollutants

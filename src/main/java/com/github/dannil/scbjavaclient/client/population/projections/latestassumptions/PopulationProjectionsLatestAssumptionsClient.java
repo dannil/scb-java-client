@@ -26,21 +26,21 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles population projections latest assumptions data fetching.</p>
+ * Client which handles population projections latest assumptions data fetching.
  *
  * @since 0.3.0
  */
 public class PopulationProjectionsLatestAssumptionsClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public PopulationProjectionsLatestAssumptionsClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -50,7 +50,7 @@ public class PopulationProjectionsLatestAssumptionsClient extends AbstractClient
     }
 
     /**
-     * <p>Fetch all death rate data.</p>
+     * Fetch all death rate data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -63,7 +63,7 @@ public class PopulationProjectionsLatestAssumptionsClient extends AbstractClient
     }
 
     /**
-     * <p>Fetch all death rate data which match the input constraints.</p>
+     * Fetch all death rate data which match the input constraints.
      *
      * @param sexes
      *            the sexes
@@ -87,7 +87,7 @@ public class PopulationProjectionsLatestAssumptionsClient extends AbstractClient
 
     // Daniel 2018-05-12: Returns HTTP 403
     /**
-     * <p>Fetch all emigration rate assumption data.</p>
+     * Fetch all emigration rate assumption data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -100,7 +100,7 @@ public class PopulationProjectionsLatestAssumptionsClient extends AbstractClient
     }
 
     /**
-     * <p>Fetch all emigration rate assumption data which match the input constraints.</p>
+     * Fetch all emigration rate assumption data which match the input constraints.
      *
      * @param regionsOfBirths
      *            the regions of births
@@ -126,7 +126,7 @@ public class PopulationProjectionsLatestAssumptionsClient extends AbstractClient
     }
 
     /**
-     * <p>Fetch all fertility assumption data.</p>
+     * Fetch all fertility assumption data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -139,7 +139,7 @@ public class PopulationProjectionsLatestAssumptionsClient extends AbstractClient
     }
 
     /**
-     * <p>Fetch all fertility assumption data which match the input constraints.</p>
+     * Fetch all fertility assumption data which match the input constraints.
      *
      * @param mothersRegionsOfBirths
      *            the mother's regions of birth

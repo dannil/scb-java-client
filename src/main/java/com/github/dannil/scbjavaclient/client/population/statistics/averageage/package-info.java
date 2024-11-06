@@ -1,4 +1,4 @@
 /**
- * <p>Package which contains all clients for population statistics average age data.</p>
+ * Package which contains all clients for population statistics average age data.
  */
 package com.github.dannil.scbjavaclient.client.population.statistics.averageage;

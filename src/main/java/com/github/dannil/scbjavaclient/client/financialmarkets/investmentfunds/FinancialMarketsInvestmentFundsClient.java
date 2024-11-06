@@ -26,21 +26,21 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles financial markets investment funds data fetching.</p>
+ * Client which handles financial markets investment funds data fetching.
  *
  * @since 0.2.0
  */
 public class FinancialMarketsInvestmentFundsClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public FinancialMarketsInvestmentFundsClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -50,7 +50,7 @@ public class FinancialMarketsInvestmentFundsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all ownership of investment fund data.</p>
+     * Fetch all ownership of investment fund data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -63,8 +63,8 @@ public class FinancialMarketsInvestmentFundsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all ownership of investment fund data which match the input
-     * constraints.</p>
+     * Fetch all ownership of investment fund data which match the input
+     * constraints.
      *
      * @param observations
      *            the observations to fetch data for

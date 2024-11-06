@@ -26,22 +26,22 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles prices and consumption Consumer Price Index (CPI) Harmonized
- * Index of Consumer Prices (HICP) data fetching.</p>
+ * Client which handles prices and consumption Consumer Price Index (CPI) Harmonized
+ * Index of Consumer Prices (HICP) data fetching.
  *
  * @since 0.5.0
  */
 public class PricesAndConsumptionCPIHICPClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public PricesAndConsumptionCPIHICPClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,7 +51,7 @@ public class PricesAndConsumptionCPIHICPClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all harmonized index annual changes data.</p>
+     * Fetch all harmonized index annual changes data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -64,8 +64,8 @@ public class PricesAndConsumptionCPIHICPClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all harmonized index annual changes data which match the input
-     * constraints.</p>
+     * Fetch all harmonized index annual changes data which match the input
+     * constraints.
      *
      * @param months
      *            the months
@@ -78,7 +78,7 @@ public class PricesAndConsumptionCPIHICPClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all harmonized index monthly changes data.</p>
+     * Fetch all harmonized index monthly changes data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -91,8 +91,8 @@ public class PricesAndConsumptionCPIHICPClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all harmonized index monthly changes data which match the input
-     * constraints.</p>
+     * Fetch all harmonized index monthly changes data which match the input
+     * constraints.
      *
      * @param months
      *            the months
@@ -105,7 +105,7 @@ public class PricesAndConsumptionCPIHICPClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all harmonized index months data.</p>
+     * Fetch all harmonized index months data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -118,7 +118,7 @@ public class PricesAndConsumptionCPIHICPClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all harmonized index months data which match the input constraints.</p>
+     * Fetch all harmonized index months data which match the input constraints.
      *
      * @param months
      *            the months
@@ -131,7 +131,7 @@ public class PricesAndConsumptionCPIHICPClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all harmonized index years data.</p>
+     * Fetch all harmonized index years data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -144,7 +144,7 @@ public class PricesAndConsumptionCPIHICPClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all harmonized index years data which match the input constraints.</p>
+     * Fetch all harmonized index years data which match the input constraints.
      *
      * @param years
      *            the years
@@ -157,7 +157,7 @@ public class PricesAndConsumptionCPIHICPClient extends AbstractClient {
     }
 
     /**
-     * <p>Common generator method for the methods in this class.</p>
+     * Common generator method for the methods in this class.
      *
      * @param times
      *            the times

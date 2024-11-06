@@ -26,22 +26,22 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles financial markets statistics claims and liabilities data
- * fetching.</p>
+ * Client which handles financial markets statistics claims and liabilities data
+ * fetching.
  *
  * @since 0.4.0
  */
 public class FinancialMarketsStatisticsClaimsAndLiabilitiesClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public FinancialMarketsStatisticsClaimsAndLiabilitiesClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -52,7 +52,7 @@ public class FinancialMarketsStatisticsClaimsAndLiabilitiesClient extends Abstra
 
     // Daniel 2017-05-30: Returns HTTP 403
     /**
-     * <p>Fetch all claims and liabilities outside Sweden data.</p>
+     * Fetch all claims and liabilities outside Sweden data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -66,8 +66,8 @@ public class FinancialMarketsStatisticsClaimsAndLiabilitiesClient extends Abstra
     }
 
     /**
-     * <p>Fetch all claims and liabilities outside Sweden data which match the input
-     * constraints.</p>
+     * Fetch all claims and liabilities outside Sweden data which match the input
+     * constraints.
      *
      * @param positions
      *            the positions
@@ -97,7 +97,7 @@ public class FinancialMarketsStatisticsClaimsAndLiabilitiesClient extends Abstra
     }
 
     /**
-     * <p>Fetch all consolidated claims outside Sweden data.</p>
+     * Fetch all consolidated claims outside Sweden data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -111,8 +111,8 @@ public class FinancialMarketsStatisticsClaimsAndLiabilitiesClient extends Abstra
     }
 
     /**
-     * <p>Fetch all consolidated claims outside Sweden data which match the input
-     * constraints.</p>
+     * Fetch all consolidated claims outside Sweden data which match the input
+     * constraints.
      *
      * @param positions
      *            the positions

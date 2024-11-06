@@ -47,14 +47,14 @@ import com.github.dannil.scbjavaclient.format.json.JsonAPITableFormat;
 import com.github.dannil.scbjavaclient.utility.QueryBuilder;
 
 /**
- * <p>Root client for the client hierarchy.</p>
+ * Root client for the client hierarchy.
  *
  * @since 0.0.2
  */
 public class SCBClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor. Initializes values and creates sub-clients.</p>
+     * Default constructor. Initializes values and creates sub-clients.
      */
     public SCBClient() {
         super();
@@ -75,7 +75,7 @@ public class SCBClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the locale for this client
@@ -87,7 +87,7 @@ public class SCBClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with agriculture data.</p>
+     * Retrieve the client for interacting with agriculture data.
      *
      * @return a client for agriculture data
      */
@@ -96,7 +96,7 @@ public class SCBClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with business activities data.</p>
+     * Retrieve the client for interacting with business activities data.
      *
      * @return a client for business activities data
      */
@@ -105,7 +105,7 @@ public class SCBClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with education and research data.</p>
+     * Retrieve the client for interacting with education and research data.
      *
      * @return a client for education and research data
      */
@@ -114,7 +114,7 @@ public class SCBClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with energy data.</p>
+     * Retrieve the client for interacting with energy data.
      *
      * @return a client for energy data
      */
@@ -123,7 +123,7 @@ public class SCBClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with environment data.</p>
+     * Retrieve the client for interacting with environment data.
      *
      * @return a client for environment data
      */
@@ -132,7 +132,7 @@ public class SCBClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with financial markets data.</p>
+     * Retrieve the client for interacting with financial markets data.
      *
      * @return a client for financial markets data
      */
@@ -141,7 +141,7 @@ public class SCBClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with goods and services data.</p>
+     * Retrieve the client for interacting with goods and services data.
      *
      * @return a client for goods and services data
      */
@@ -150,7 +150,7 @@ public class SCBClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with labour market data.</p>
+     * Retrieve the client for interacting with labour market data.
      *
      * @return a client for labour market data
      */
@@ -159,7 +159,7 @@ public class SCBClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with living conditions data.</p>
+     * Retrieve the client for interacting with living conditions data.
      *
      * @return a client for living conditions data
      */
@@ -168,7 +168,7 @@ public class SCBClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with population data.</p>
+     * Retrieve the client for interacting with population data.
      *
      * @return a client for population data
      */
@@ -177,7 +177,7 @@ public class SCBClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with prices and consumption data.</p>
+     * Retrieve the client for interacting with prices and consumption data.
      *
      * @return a client for prices and consumption data
      */
@@ -186,7 +186,7 @@ public class SCBClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with public finances data.</p>
+     * Retrieve the client for interacting with public finances data.
      *
      * @return a client for public finances data
      */
@@ -195,7 +195,7 @@ public class SCBClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with transport data.</p>
+     * Retrieve the client for interacting with transport data.
      *
      * @return a client for transport data
      */
@@ -204,8 +204,8 @@ public class SCBClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Fetches all the inputs for a given table from the API. If the table doesn't
-     * exist an empty <code>Map</code> will be returned.</p>
+     * Fetches all the inputs for a given table from the API. If the table doesn't
+     * exist an empty <code>Map</code> will be returned.
      *
      * @param table
      *            the table to fetch the inputs from
@@ -225,8 +225,8 @@ public class SCBClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Returns the list of the available regions for a given table. If the table
-     * doesn't exist an empty <code>List</code> will be returned.</p>
+     * Returns the list of the available regions for a given table. If the table
+     * doesn't exist an empty <code>List</code> will be returned.
      *
      * @param table
      *            the table to retrieve the regions from
@@ -244,8 +244,8 @@ public class SCBClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Returns the list of the available times for a given table. If the table doesn't
-     * exist an empty <code>List</code> will be returned.</p>
+     * Returns the list of the available times for a given table. If the table doesn't
+     * exist an empty <code>List</code> will be returned.
      *
      * @param table
      *            the table to retrieve the times from
@@ -263,9 +263,9 @@ public class SCBClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Fetch the JSON response from the specified table. As opposed to
+     * Fetch the JSON response from the specified table. As opposed to
      * {@link #getRawData(String, Map)}, this method fetches all available data and
-     * therefore doesn't support selecting specific values before calling the API.</p>
+     * therefore doesn't support selecting specific values before calling the API.
      *
      * <p>Do note: as this method matches all content codes available on the API, the
      * response is likely to be several times larger than the response when selecting
@@ -284,8 +284,8 @@ public class SCBClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Fetch the JSON response from the specified table. Useful if you're only
-     * interested in the raw JSON data.</p>
+     * Fetch the JSON response from the specified table. Useful if you're only
+     * interested in the raw JSON data.
      *
      * @param table
      *            the table to fetch data from
@@ -298,8 +298,8 @@ public class SCBClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Fetches the config from the API. Useful if you for example need to know how
-     * often you're allowed to make calls to the API, or the max size of the response.</p>
+     * Fetches the config from the API. Useful if you for example need to know how
+     * often you're allowed to make calls to the API, or the max size of the response.
      *
      * @return the config
      */
@@ -318,8 +318,8 @@ public class SCBClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Checks if the specified language is supported by the API. See
-     * {@link #isSupportedLocale(Locale)} for implementation details.</p>
+     * Checks if the specified language is supported by the API. See
+     * {@link #isSupportedLocale(Locale)} for implementation details.
      *
      * @param language
      *            the language to check
@@ -331,9 +331,9 @@ public class SCBClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Checks if the specified <code>Locale</code> is supported by the API. The method
+     * Checks if the specified <code>Locale</code> is supported by the API. The method
      * performs a request to the API using the <code>Locale</code>'s language and checks
-     * if a HTTP resource exists matching the language.</p>
+     * if a HTTP resource exists matching the language.
      *
      * @param locale
      *            the <code>Locale</code> to check

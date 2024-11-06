@@ -22,7 +22,7 @@ import java.util.ResourceBundle;
 import com.github.dannil.scbjavaclient.constants.ClientConstants;
 
 /**
- * <p>Class for handling localization for the clients.</p>
+ * Class for handling localization for the clients.
  *
  * @since 0.0.1
  */
@@ -35,7 +35,7 @@ public class Localization {
     private ResourceBundle bundle;
 
     /**
-     * <p>Private constructor. Initializes encoding control for the resource bundles.</p>
+     * Private constructor. Initializes encoding control for the resource bundles.
      */
     private Localization() {
         this.baseName = ClientConstants.LOCALIZATION_TRANSLATION_FILE_PREFIX;
@@ -43,7 +43,7 @@ public class Localization {
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this localization instance
@@ -54,7 +54,7 @@ public class Localization {
     }
 
     /**
-     * <p>Getter for the <code>Locale</code> of this localization instance.</p>
+     * Getter for the <code>Locale</code> of this localization instance.
      *
      * @return the <code>Locale</code> for this localization instance.
      */
@@ -63,7 +63,7 @@ public class Localization {
     }
 
     /**
-     * <p>Setter for the <code>Locale</code> for this localization instance.</p>
+     * Setter for the <code>Locale</code> for this localization instance.
      *
      * @param locale
      *            the <code>Locale</code>
@@ -73,9 +73,9 @@ public class Localization {
     }
 
     /**
-     * <p>Returns the translation for the specified key. If it can't find the key in the
+     * Returns the translation for the specified key. If it can't find the key in the
      * current specified language's localization file, it attempts to use the fallback
-     * <code>Locale</code>'s localization file as the translation source.</p>
+     * <code>Locale</code>'s localization file as the translation source.
      *
      * @param key
      *            the key to get the translation for
@@ -90,7 +90,7 @@ public class Localization {
     }
 
     /**
-     * <p>Returns a formatted translation for the specified key.</p>
+     * Returns a formatted translation for the specified key.
      *
      * @param key
      *            the key to get the translation for

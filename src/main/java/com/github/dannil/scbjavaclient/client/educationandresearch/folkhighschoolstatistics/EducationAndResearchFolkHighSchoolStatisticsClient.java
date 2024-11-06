@@ -26,22 +26,22 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles education and research folk high school statistics data
- * fetching.</p>
+ * Client which handles education and research folk high school statistics data
+ * fetching.
  *
  * @since 2.2.0
  */
 public class EducationAndResearchFolkHighSchoolStatisticsClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public EducationAndResearchFolkHighSchoolStatisticsClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,7 +51,7 @@ public class EducationAndResearchFolkHighSchoolStatisticsClient extends Abstract
     }
 
     /**
-     * <p>Fetch all participants in long folk high school courses data.</p>
+     * Fetch all participants in long folk high school courses data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -69,8 +69,8 @@ public class EducationAndResearchFolkHighSchoolStatisticsClient extends Abstract
     }
 
     /**
-     * <p>Fetch all participants in long folk high school courses data which match the
-     * input constraints.</p>
+     * Fetch all participants in long folk high school courses data which match the
+     * input constraints.
      *
      * @param regions
      *            the regions
@@ -102,7 +102,7 @@ public class EducationAndResearchFolkHighSchoolStatisticsClient extends Abstract
     }
 
     /**
-     * <p>Fetch all participants in folk high school courses data.</p>
+     * Fetch all participants in folk high school courses data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -116,8 +116,8 @@ public class EducationAndResearchFolkHighSchoolStatisticsClient extends Abstract
     }
 
     /**
-     * <p>Fetch all participants in folk high school courses data which match the input
-     * constraints.</p>
+     * Fetch all participants in folk high school courses data which match the input
+     * constraints.
      *
      * @param sexes
      *            the sexes to fetch data for

@@ -22,14 +22,14 @@ import com.github.dannil.scbjavaclient.client.livingconditions.surveys.health.Li
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
- * <p>Client which handles living conditions surveys data fetching.</p>
+ * Client which handles living conditions surveys data fetching.
  *
  * @since 0.2.0
  */
 public class LivingConditionsSurveysClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor. Initializes values and creates sub-clients.</p>
+     * Default constructor. Initializes values and creates sub-clients.
      */
     public LivingConditionsSurveysClient() {
         super();
@@ -39,7 +39,7 @@ public class LivingConditionsSurveysClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,8 +51,8 @@ public class LivingConditionsSurveysClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with living conditions surveys employment
-     * data.</p>
+     * Retrieve the client for interacting with living conditions surveys employment
+     * data.
      *
      * @return a client for living conditions surveys employment data
      */
@@ -61,8 +61,8 @@ public class LivingConditionsSurveysClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with living conditions surveys health
-     * data.</p>
+     * Retrieve the client for interacting with living conditions surveys health
+     * data.
      *
      * @return a client for living conditions surveys health data
      */

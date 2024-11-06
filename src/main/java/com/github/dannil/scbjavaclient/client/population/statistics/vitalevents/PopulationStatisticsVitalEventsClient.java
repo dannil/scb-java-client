@@ -26,21 +26,21 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles population statistics vital events data fetching.</p>
+ * Client which handles population statistics vital events data fetching.
  *
  * @since 0.4.0
  */
 public class PopulationStatisticsVitalEventsClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public PopulationStatisticsVitalEventsClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -50,7 +50,7 @@ public class PopulationStatisticsVitalEventsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all population changes number of persons data.</p>
+     * Fetch all population changes number of persons data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -64,8 +64,8 @@ public class PopulationStatisticsVitalEventsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all population changes number of persons data which match the input
-     * constraints.</p>
+     * Fetch all population changes number of persons data which match the input
+     * constraints.
      *
      * @param regions
      *            the regions
@@ -91,7 +91,7 @@ public class PopulationStatisticsVitalEventsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all population and population changes data.</p>
+     * Fetch all population and population changes data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -104,8 +104,8 @@ public class PopulationStatisticsVitalEventsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all population and population changes data which match the input
-     * constraints.</p>
+     * Fetch all population and population changes data which match the input
+     * constraints.
      *
      * @param sexes
      *            the sexes
@@ -124,7 +124,7 @@ public class PopulationStatisticsVitalEventsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all births and deaths per month data.</p>
+     * Fetch all births and deaths per month data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -137,8 +137,8 @@ public class PopulationStatisticsVitalEventsClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all births and deaths per month data which match the input
-     * constraints.</p>
+     * Fetch all births and deaths per month data which match the input
+     * constraints.
      *
      * @param sexes
      *            the sexes

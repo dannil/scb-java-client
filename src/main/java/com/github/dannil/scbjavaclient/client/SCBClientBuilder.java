@@ -19,7 +19,7 @@ import java.util.Locale;
 import com.github.dannil.scbjavaclient.communication.CommunicationProtocol;
 
 /**
- * <p>Builder class for constructing new clients.</p>
+ * Builder class for constructing new clients.
  *
  * @since 1.2.0
  */
@@ -28,15 +28,15 @@ public class SCBClientBuilder {
     private SCBClient client;
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public SCBClientBuilder() {
         this.client = new SCBClient();
     }
 
     /**
-     * <p>Sets the <code>Locale</code> for this builder, and therefore the client
-     * generated from this builder.</p>
+     * Sets the <code>Locale</code> for this builder, and therefore the client
+     * generated from this builder.
      *
      * @param locale
      *            the <code>Locale</code> to use
@@ -48,10 +48,10 @@ public class SCBClientBuilder {
     }
 
     /**
-     * <p>Sets the
+     * Sets the
      * {@link com.github.dannil.scbjavaclient.communication.CommunicationProtocol
      * CommunicationProtocol} for this builder, and therefore the client generated from
-     * this builder.</p>
+     * this builder.
      *
      * @param communicationProtocol
      *            the
@@ -65,7 +65,7 @@ public class SCBClientBuilder {
     }
 
     /**
-     * <p>Generates a {@link SCBClient} with the previously assigned parameters.</p>
+     * Generates a {@link SCBClient} with the previously assigned parameters.
      *
      * @return a {@link SCBClient} with parameters which were supplied to this builder
      */

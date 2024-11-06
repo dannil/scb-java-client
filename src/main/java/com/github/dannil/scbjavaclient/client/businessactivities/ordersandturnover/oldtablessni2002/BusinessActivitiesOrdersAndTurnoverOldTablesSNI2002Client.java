@@ -26,22 +26,22 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles business activities orders and turnover old tables SNI 2002
- * data fetching.</p>
+ * Client which handles business activities orders and turnover old tables SNI 2002
+ * data fetching.
  *
  * @since 0.7.0
  */
 public class BusinessActivitiesOrdersAndTurnoverOldTablesSNI2002Client extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public BusinessActivitiesOrdersAndTurnoverOldTablesSNI2002Client() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,7 +51,7 @@ public class BusinessActivitiesOrdersAndTurnoverOldTablesSNI2002Client extends A
     }
 
     /**
-     * <p>Fetch all turnover in industry SNI 2002 annual data.</p>
+     * Fetch all turnover in industry SNI 2002 annual data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -64,8 +64,8 @@ public class BusinessActivitiesOrdersAndTurnoverOldTablesSNI2002Client extends A
     }
 
     /**
-     * <p>Fetch all turnover in industry SNI 2002 annual data which match the input
-     * constraints.</p>
+     * Fetch all turnover in industry SNI 2002 annual data which match the input
+     * constraints.
      *
      * @param markets
      *            the markets
@@ -88,7 +88,7 @@ public class BusinessActivitiesOrdersAndTurnoverOldTablesSNI2002Client extends A
     }
 
     /**
-     * <p>Fetch all turnover in industry SNI 2002 monthly data.</p>
+     * Fetch all turnover in industry SNI 2002 monthly data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -101,8 +101,8 @@ public class BusinessActivitiesOrdersAndTurnoverOldTablesSNI2002Client extends A
     }
 
     /**
-     * <p>Fetch all turnover in industry SNI 2002 monthly data which match the input
-     * constraints.</p>
+     * Fetch all turnover in industry SNI 2002 monthly data which match the input
+     * constraints.
      *
      * @param markets
      *            the markets
@@ -125,7 +125,7 @@ public class BusinessActivitiesOrdersAndTurnoverOldTablesSNI2002Client extends A
     }
 
     /**
-     * <p>Fetch all orders in industry SNI 2002 annual data.</p>
+     * Fetch all orders in industry SNI 2002 annual data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -138,8 +138,8 @@ public class BusinessActivitiesOrdersAndTurnoverOldTablesSNI2002Client extends A
     }
 
     /**
-     * <p>Fetch all orders in industry SNI 2002 annual data which match the input
-     * constraints.</p>
+     * Fetch all orders in industry SNI 2002 annual data which match the input
+     * constraints.
      *
      * @param markets
      *            the markets
@@ -162,7 +162,7 @@ public class BusinessActivitiesOrdersAndTurnoverOldTablesSNI2002Client extends A
     }
 
     /**
-     * <p>Fetch all orders in industry SNI 2002 monthly data.</p>
+     * Fetch all orders in industry SNI 2002 monthly data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -175,8 +175,8 @@ public class BusinessActivitiesOrdersAndTurnoverOldTablesSNI2002Client extends A
     }
 
     /**
-     * <p>Fetch all orders in industry SNI 2002 monthly data which match the input
-     * constraints.</p>
+     * Fetch all orders in industry SNI 2002 monthly data which match the input
+     * constraints.
      *
      * @param markets
      *            the markets

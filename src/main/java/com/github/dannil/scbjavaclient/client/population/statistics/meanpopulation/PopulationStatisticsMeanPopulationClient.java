@@ -26,21 +26,21 @@ import com.github.dannil.scbjavaclient.constants.APIConstants;
 import com.github.dannil.scbjavaclient.model.ResponseModel;
 
 /**
- * <p>Client which handles population statistics mean population data fetching.</p>
+ * Client which handles population statistics mean population data fetching.
  *
  * @since 1.2.0
  */
 public class PopulationStatisticsMeanPopulationClient extends AbstractClient {
 
     /**
-     * <p>Default constructor.</p>
+     * Default constructor.
      */
     public PopulationStatisticsMeanPopulationClient() {
         super();
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -50,7 +50,7 @@ public class PopulationStatisticsMeanPopulationClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all mean population by birth year data.</p>
+     * Fetch all mean population by birth year data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -63,8 +63,8 @@ public class PopulationStatisticsMeanPopulationClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all mean population by birth year data which match the input
-     * constraints.</p>
+     * Fetch all mean population by birth year data which match the input
+     * constraints.
      *
      * @param regions
      *            the regions to fetch data for
@@ -90,7 +90,7 @@ public class PopulationStatisticsMeanPopulationClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all mean population by current age data.</p>
+     * Fetch all mean population by current age data.
      *
      * @return the data wrapped in a list of
      *         {@link com.github.dannil.scbjavaclient.model.ResponseModel ResponseModel}
@@ -104,8 +104,8 @@ public class PopulationStatisticsMeanPopulationClient extends AbstractClient {
     }
 
     /**
-     * <p>Fetch all mean population by current age data which match the input
-     * constraints.</p>
+     * Fetch all mean population by current age data which match the input
+     * constraints.
      *
      * @param regions
      *            the regions to fetch data for

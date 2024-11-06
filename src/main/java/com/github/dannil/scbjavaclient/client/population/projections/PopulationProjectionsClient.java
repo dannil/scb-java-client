@@ -22,14 +22,14 @@ import com.github.dannil.scbjavaclient.client.population.projections.latestproje
 import com.github.dannil.scbjavaclient.communication.URLEndpoint;
 
 /**
- * <p>Client which handles population projections data fetching.</p>
+ * Client which handles population projections data fetching.
  *
  * @since 0.3.0
  */
 public class PopulationProjectionsClient extends AbstractContainerClient {
 
     /**
-     * <p>Default constructor. Initializes values and creates sub-clients.</p>
+     * Default constructor. Initializes values and creates sub-clients.
      */
     public PopulationProjectionsClient() {
         super();
@@ -39,7 +39,7 @@ public class PopulationProjectionsClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Overloaded constructor.</p>
+     * Overloaded constructor.
      *
      * @param locale
      *            the <code>Locale</code> for this client
@@ -51,8 +51,8 @@ public class PopulationProjectionsClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with population projections latest
-     * assumptions data.</p>
+     * Retrieve the client for interacting with population projections latest
+     * assumptions data.
      *
      * @return a client for population projections latest assumptions data
      */
@@ -61,8 +61,8 @@ public class PopulationProjectionsClient extends AbstractContainerClient {
     }
 
     /**
-     * <p>Retrieve the client for interacting with population projections latest
-     * projections data.</p>
+     * Retrieve the client for interacting with population projections latest
+     * projections data.
      *
      * @return a client for population projections latest projections data
      */
