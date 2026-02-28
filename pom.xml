@@ -52,8 +52,8 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-    <project.java.source>11</project.java.source>
-    <project.java.target>11</project.java.target>
+    <project.java.source>17</project.java.source>
+    <project.java.target>17</project.java.target>
 
     <argLine>-Dfile.encoding=${project.build.sourceEncoding}</argLine>
   </properties>
