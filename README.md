@@ -12,7 +12,10 @@ If you have an improvement, feel free to make a pull request or start an issue i
 
 ## Requirements
 
-* Java 11 or newer
+| Release       | Java version |
+|---------------|--------------|
+| 1.x.x - 3.x.x | 11           |
+| SNAPSHOT      | 21           |
 
 ## Installation
 
