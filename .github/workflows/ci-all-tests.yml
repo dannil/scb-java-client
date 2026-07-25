@@ -18,7 +18,7 @@ jobs:
     - name: Get IP
       run: 'echo IP: $(dig +short myip.opendns.com @resolver1.opendns.com)'
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
     - name: Setup Java ${{ matrix.java }}
       uses: actions/setup-java@v5
       with:
