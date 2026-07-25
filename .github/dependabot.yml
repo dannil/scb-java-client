@@ -19,3 +19,11 @@ updates:
     logback:
       patterns:
         - "ch.qos.logback:logback-*"
+- package-ecosystem: github-actions
+  directory: "/"
+  schedule:
+    interval: "weekly"
+    day: "saturday"
+    time: "04:30"
+  labels:
+    - dependencies
