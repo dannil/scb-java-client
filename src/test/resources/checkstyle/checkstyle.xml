@@ -165,13 +165,13 @@
     <module name="AtclauseOrder" />
     <module name="JavadocMethod" />
     <module name="JavadocParagraph" />
-    <module name="JavadocStyle" />
     <module name="JavadocTagContinuationIndentation" />
     <module name="JavadocType" />
     <!-- <module name="JavadocVariable" /> -->
     <module name="MissingJavadocMethod"/>
     <module name="NonEmptyAtclauseDescription" />
     <module name="SingleLineJavadoc" />
+    <module name="SummaryJavadoc" />
     <module name="SummaryJavadocCheck" />
     <module name="WriteTag" />
 
